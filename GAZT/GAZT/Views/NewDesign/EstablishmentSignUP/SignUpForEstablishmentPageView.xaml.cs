@@ -51,7 +51,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.IsAllValidDataEntered = false;
             viewModel.IsAllValidCRNumberEntered = false;
             viewModel.IsDeclarationCheckedForInstruction = false;
-             IsTermsAndConditionPage = true;
+            IsTermsAndConditionPage = true;
 
             ChangeAeroIcon();
             SetLTR();
@@ -68,7 +68,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 IntnlCodes.Margin = new Thickness(12, -12, 12, -12);
             }
-          // ClearFields();
+            // ClearFields();
 
             if (Device.RuntimePlatform == Device.iOS)
             {
@@ -90,8 +90,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 if (!App.IsArabic)
                 {
-                       TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
-                    
+                    TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
+
                 }
                 else
                 {
@@ -251,8 +251,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         public void ClearFields()
         {
-           
-          viewModel.PageTitle = AppResources.ZVatTermsAndConditions;
+
+            viewModel.PageTitle = AppResources.ZVatTermsAndConditions;
             viewModel.BodyText = "";
             viewModel.NextBTN = AppResources.ZZProceedtoindividualSignup;
             viewModel.CurrentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
@@ -282,12 +282,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtCRNumber = string.Empty;
             viewModel.TxtLicenseNumber = string.Empty;
             viewModel.TxtEmailAddress = string.Empty;
-           viewModel.TxtCountryCode = "+966";
-            viewModel.TxtConfirmPassword=string.Empty;
+            viewModel.TxtCountryCode = "+966";
+            viewModel.TxtConfirmPassword = string.Empty;
             viewModel.TxtPassword = string.Empty;
             ResetPasswordValidationConditions();
             viewModel.TxtMobileNumber = string.Empty;
-           viewModel.TxtMobileNumberwithCountryCode = string.Empty;
+            viewModel.TxtMobileNumberwithCountryCode = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
             viewModel.ImgBackgroundCRNubmer = "FP_selected_tile";
             viewModel.ImgBackgroundLicenseNubmer = "FP_unselected_tile";
@@ -308,13 +308,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.MOTPThirdDigit = string.Empty;
             viewModel.MOTPFourthDigit = string.Empty;
             viewModel.IsHijriCal = false;
-           // HijriCalSwitch.IsToggled = false;
+            // HijriCalSwitch.IsToggled = false;
         }
         private void SetLTR()
         {
             if (App.IsArabic)
             {
-                
+
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
@@ -480,7 +480,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
 
         private void OnDOBClicked(object sender, EventArgs e)
-        {if (!viewModel.IsHijriCal)
+        {
+            if (!viewModel.IsHijriCal)
             {
                 DpDbo.IsOpen = true;
             }
@@ -503,7 +504,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 {
                     try
                     {
-                         FrmCR.HasError = false;
+                        FrmCR.HasError = false;
                         CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
                         if (Result != null)
                         {
@@ -512,7 +513,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 if (Result.d.NotFound == "X")
                                 {
                                     FrmCR.HasError = true;
-                                   // viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
+                                    // viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentervalidCRnumber));
                                     EntryCRNumber.Text = string.Empty;
                                     return false;
@@ -539,7 +540,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     catch (InternetException ex)
                     {
 
-                      //  viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        //  viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                         PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
                         return false;
                     }
@@ -563,7 +564,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     FrmCR.HasError = true;
                     EntryCRNumber.Text = string.Empty;
 
-                  //  EntryCRNumber.Focus();
+                    //  EntryCRNumber.Focus();
                     return false;
                 }
             }
@@ -636,17 +637,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                   // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCommercialReiterationNumbershouddbe10digits));
                     FrmCR.HasError = true;
                     viewModel.IsAllValidCRNumberEntered = false;
                     EntryCRNumber.Text = string.Empty;
-                   // EntryCRNumber.Focus();
+                    // EntryCRNumber.Focus();
                 }
             }
             else
             {
-                if(viewModel.IsCRChecked == false)
+                if (viewModel.IsCRChecked == false)
                 {
                     viewModel.IsAllValidCRNumberEntered = true;
                 }
@@ -683,7 +684,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 else
                 {
                     viewModel.IsAllValidContactDataEnteredEmail = true;
-                     FrmEmailAddress.HasError = false;
+                    FrmEmailAddress.HasError = false;
                 }
             }
         }
@@ -692,17 +693,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
-                  //  viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryPhoneNumber.Text;
+                //  viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryPhoneNumber.Text;
                 if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
                 {
-                   // viewModel.IsAllValidContactDataEnteredPhoneNbr = false;
-                     FrmPhoneNumber.HasError = true;
+                    // viewModel.IsAllValidContactDataEnteredPhoneNbr = false;
+                    FrmPhoneNumber.HasError = true;
 
                 }
                 else
                 {
                     //viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
-                     FrmPhoneNumber.HasError = false;
+                    FrmPhoneNumber.HasError = false;
 
                 }
             }
@@ -751,7 +752,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                 //   PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    //   PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                     FrmPhoneNumber.HasError = true;
 
@@ -762,7 +763,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 {
                     viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
                     //  viewModel.IsAllValidContactDataEntered = true;
-                     FrmPhoneNumber.HasError = false;
+                    FrmPhoneNumber.HasError = false;
                 }
             }
         }
@@ -775,7 +776,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                 if (EntryMobileNumber.Text.Substring(0, 1) == "0")
                 {
-                    Message.AppendLine(AppResources.ZZMobilenumberCannotStartWith0+" ");
+                    Message.AppendLine(AppResources.ZZMobilenumberCannotStartWith0 + " ");
                 }
                 if (viewModel.TxtCountryCode == "+966")
                 {
@@ -826,7 +827,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 Message.AppendLine(AppResources.EnterMobileNumber);
                 popUp.Message = Message.ToString();
-              ///  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                ///  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
             }
             //if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
@@ -835,7 +836,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             //    FrmMobile.BorderColor = Color.LightGray;
             //}
 
-           // EntryPhoneNumber.Focus();
+            // EntryPhoneNumber.Focus();
         }
 
         public bool IsValid(string emailaddress)
@@ -861,7 +862,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.SelectedSignUpUsing = signUpUsing;
             viewModel.TxtIDType = signUpUsing.SUType;
             viewModel.TxtIDNumber = string.Empty;
-            if(IsTermsAndConditionPage == false)
+            if (IsTermsAndConditionPage == false)
             {
                 EntryIDNumber.Focus();
             }
@@ -893,7 +894,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                           // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
                             FrmIDNumber.HasError = true;
                             viewModel.IsAllValidDataEntered = false;
@@ -923,7 +924,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                               // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                                 FrmIDNumber.HasError = true;
                                 viewModel.IsAllValidDataEntered = false;
@@ -931,14 +932,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             }
                             else
                             {
-                              
+
                                 viewModel.IsAllValidDataEntered = true;
-                                 FrmIDNumber.HasError = false;
+                                FrmIDNumber.HasError = false;
                                 if (!string.IsNullOrEmpty(viewModel.PkrDBO))
                                 {
-                                    ValidateIDNumber();   
+                                    ValidateIDNumber();
                                 }
-                                
+
                             }
                         }
                     }
@@ -957,7 +958,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                          //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
                             FrmIDNumber.HasError = true;
                             viewModel.IsAllValidDataEntered = false;
@@ -986,7 +987,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                               // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                                 FrmIDNumber.HasError = true;
                                 viewModel.IsAllValidDataEntered = false;
@@ -995,7 +996,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             else
                             {
                                 // viewModel.IsAllValidDataEntered = true;
-                                 FrmIDNumber.HasError = false;
+                                FrmIDNumber.HasError = false;
                                 if (!string.IsNullOrEmpty(viewModel.PkrDBO))
                                 {
                                     ValidateIDNumber();
@@ -1060,17 +1061,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                     else
                     {
-                       // ValidateIDNumber();
-                         viewModel.IsAllValidDataEntered = true;
-                         FrmIDNumber.HasError = false;
+                        // ValidateIDNumber();
+                        viewModel.IsAllValidDataEntered = true;
+                        FrmIDNumber.HasError = false;
                     }
-                  
+
                 }
             }
             else
             {
                 viewModel.IsAllValidDataEntered = false;
-                 FrmIDNumber.HasError = false;
+                FrmIDNumber.HasError = false;
             }
         }
         public void OnDateEntryFocussed(object sender, EventArgs args)
@@ -1083,11 +1084,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 DpDbo.IsOpen = true;
             }
-            
+
         }
         private void DOBpicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-          //  ValidateIDNumber();
+            //  ValidateIDNumber();
         }
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
@@ -1095,7 +1096,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         public async void ValidateIDNumber()
         {
-           // viewModel.IsAllValidDataEntered = true;
+            // viewModel.IsAllValidDataEntered = true;
             Device.BeginInvokeOnMainThread(async () =>
             {
                 await Task.Run(() =>
@@ -1112,7 +1113,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
                 viewModel.PkrDBO = year + "/" + month + "/" + day;
-                 DBO = year + month + day;
+                DBO = year + month + day;
             }
             else
             {
@@ -1121,9 +1122,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
                 viewModel.PkrDBO = year + "/" + month + "/" + day;
-                 DBO = year + month + day;
+                DBO = year + month + day;
             }
-            
+
             viewModel.PkrDBOPrev = viewModel.PkrDBO;
             //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
             EntryName.IsEnabled = true;
@@ -1143,20 +1144,20 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                               // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = false;
-                               // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
                         {
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " "+ SignupIsIDTypeValid.d.FamilyName;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
                             //EntryName.IsEnabled = false;
                             viewModel.IsAllValidDataEntered = true;
                             FrmIDNumber.HasError = false;
@@ -1190,15 +1191,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                 FrmIDNumber.HasError = true;
-                             //   viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                FrmIDNumber.HasError = true;
+                                //   viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                              //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
@@ -1228,7 +1229,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsLoading = false;
 
-                              //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //viewModel._navigationService.GoBack();
                             });
@@ -1237,7 +1238,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                               // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
@@ -1253,7 +1254,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 // IsLoading = false;
 
-                              //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //_navigationService.GoBack();
                             });
@@ -1266,7 +1267,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 // IsLoading = false;
 
-                               // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //_navigationService.GoBack();
                             });
@@ -1290,15 +1291,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                              //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                               // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -1336,14 +1337,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                               // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = false;
-                               // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
@@ -1372,7 +1373,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsLoading = false;
 
-                               // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 // viewModel._navigationService.GoBack();
                             });
@@ -1381,8 +1382,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                               // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -1434,15 +1435,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                              //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                               // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -1480,14 +1481,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                               // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = false;
-                               // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
@@ -1516,7 +1517,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsLoading = false;
 
-                               // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 // viewModel._navigationService.GoBack();
                             });
@@ -1525,8 +1526,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                               // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -1612,7 +1613,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             //        string day = selectedItem[0].ToString();
             //        string year = selectedItem[2].ToString();
             //        viewModel.PkrDBO = year + "/" + month + "/" + day;
-                  
+
             //    }
 
             //}
@@ -1652,7 +1653,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                     }
                 }
-                
+
 
             }
             catch (Exception ex)
@@ -2058,7 +2059,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             PopupNavigation.Instance.PushAsync(new InstructionPopUpPageView());
         }
 
-       
+
         private void EntryTIN_focused(object sender, FocusEventArgs e)
         {
             PopUp popUp = new PopUp();
@@ -2091,10 +2092,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                   // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                     viewModel.IsAllValidDataEntered = false;
-                     FrmTIN.HasError = true;
+                    FrmTIN.HasError = true;
                     EntryTIN.Text = string.Empty;
                 }
                 else
@@ -2102,7 +2103,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     // ValidateIDNumber();
                     // viewModel.IsAllValidDataEntered = true;
 
-                     FrmTIN.HasError = false;
+                    FrmTIN.HasError = false;
                 }
             }
             //eMPTY tin
@@ -2142,7 +2143,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.ImgBackgroundLicenseNubmer = "FP_unselected_tile";
             viewModel.IsCRChecked = true;
             viewModel.TxtLicenseNumber = string.Empty;
-           
+
         }
 
         private void OnLicenseNumberTapped(object sender, EventArgs e)
@@ -2172,19 +2173,19 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 if (EntryTIN.Text.Substring(0, 1) != "3")
                 {
                     viewModel.IsAllValidDataEntered = false;
-                     FrmTIN.HasError = true;
+                    FrmTIN.HasError = true;
                 }
                 else
                 {
                     ////
-                     viewModel.IsAllValidDataEntered = true;
+                    viewModel.IsAllValidDataEntered = true;
                     FrmTIN.HasError = false;
                 }
             }
             else
             {
                 /////
-                 viewModel.IsAllValidDataEntered = false;
+                viewModel.IsAllValidDataEntered = false;
             }
         }
 
@@ -2232,13 +2233,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 {
                     if (!string.IsNullOrEmpty(viewModel.TxtIDNumber) && !string.IsNullOrEmpty(viewModel.PickerDobToDisplay))
                     {
-                    ValidateIDNumber();
+                        ValidateIDNumber();
                     }
 
-                    
+
                     // viewModel.IsAllValidDataEntered = true;
 
-                     FrmTIN.HasError = false;
+                    FrmTIN.HasError = false;
                 }
             }
         }
@@ -2280,7 +2281,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             if (!string.IsNullOrEmpty(viewModel.TxtName))
             {
                 viewModel.IsAllValidDataEntered = true;
-                 FrmName.HasError = false;
+                FrmName.HasError = false;
             }
         }
 
@@ -2302,7 +2303,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
-               string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
                 string[] SplitDate = date.Split('/');
                 SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
             }
@@ -2314,9 +2315,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 string year = selectedItem[2].ToString();
                 SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
             }
-            
 
-            
+
+
             SiguupModel.AType = "1";
             SiguupModel.AFirstname = viewModel.TxtName;
             SiguupModel.ALastname = ".";
@@ -2371,7 +2372,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
             SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-          // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+            // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
             SiguupModel.ACountry = viewModel.MobileCountryCode;
 
             // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
@@ -2407,7 +2408,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         Message.Append(itemerror.message);
                     }
                 }
-              //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
             }
             else
@@ -2488,7 +2489,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     viewModel.navigateToNext();
                 }
             }
-            
+
         }
         public void CheckValidationForIndividualStep()
         {
@@ -2503,7 +2504,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 flag = false;
                 txtEntryName.HasError = true;
             }
-            if (string.IsNullOrEmpty(viewModel.TxtIDNumber)||  FrmIDNumber.HasError)
+            if (string.IsNullOrEmpty(viewModel.TxtIDNumber) || FrmIDNumber.HasError)
             {
                 flag = false;
                 FrmIDNumber.HasError = true;
@@ -2533,7 +2534,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
             else
             {
-               // viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                // viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
             }
 
@@ -2549,7 +2550,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             if (string.IsNullOrEmpty(viewModel.TxtEmailAddress))
             {
                 FrmEmailAddress.HasError = true;
-                 flag = false;
+                flag = false;
             }
             if (flag)
             {
@@ -2560,7 +2561,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
             else
             {
-            //    viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                //    viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
             }
         }
@@ -2579,7 +2580,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 {
                     viewModel.TxtCRNumber = string.Empty;
                     FrmCR.HasError = true;
-                   // viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                    // viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                 }
             }
@@ -2593,19 +2594,19 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber))
                 {
                     FrmLicenseNumber.HasError = true;
-                       flag = false;
+                    flag = false;
                 }
                 if (string.IsNullOrEmpty(viewModel.TxtLOrCIssuedBy))
                 {
                     FrmlicenceNumberIssuedbyframe.HasError = true;
-                       flag = false;
+                    flag = false;
                 }
                 if (string.IsNullOrEmpty(viewModel.TxtLOrCIssuedByCity))
                 {
                     FrmIssuedByCity.HasError = true;
                     flag = false;
                 }
-               
+
                 if (flag)
                 {
                     viewModel.PageTitle = AppResources.ZZZContactInformation;
@@ -2616,7 +2617,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 {
                     FrmLicenseNumber.HasError = false;
                     FrmlicenceNumberIssuedbyframe.HasError = false;
-                   // viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                    // viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
 
                 }
@@ -2633,7 +2634,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 //    viewModel.CurrentTab = EstablishmentSignUPTabEnum.ContactInformation;
 
                 //}
-              
+
 
             }
         }
@@ -2643,24 +2644,24 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             StringBuilder PopMsg = new StringBuilder();
             bool IsAllValid = true;
             if (string.IsNullOrEmpty(viewModel.OTPFirstDigit)
-                ||(string.IsNullOrEmpty(viewModel.OTPSecondDigit))
-                ||(string.IsNullOrEmpty(viewModel.OTPThirdDigit))
-                ||(string.IsNullOrEmpty(viewModel.OTPFourthDigit)))
+                || (string.IsNullOrEmpty(viewModel.OTPSecondDigit))
+                || (string.IsNullOrEmpty(viewModel.OTPThirdDigit))
+                || (string.IsNullOrEmpty(viewModel.OTPFourthDigit)))
             {
-            //  frmEmailCode.HasError = true;
+                //  frmEmailCode.HasError = true;
                 PopMsg.Append(AppResources.ZZPleaseenterconfirmationcodesenttoyouremailaddress);
                 IsAllValid = false;
             }
             else
             {
-              //frmEmailCode.HasError = false;
+                //frmEmailCode.HasError = false;
             }
-            if  (string.IsNullOrEmpty(viewModel.MOTPFirstDigit)
+            if (string.IsNullOrEmpty(viewModel.MOTPFirstDigit)
                 || (string.IsNullOrEmpty(viewModel.MOTPSecondDigit))
                 || (string.IsNullOrEmpty(viewModel.MOTPThirdDigit))
                 || (string.IsNullOrEmpty(viewModel.MOTPFourthDigit)))
-                {
-              //frmMobileCode.HasError = true;
+            {
+                //frmMobileCode.HasError = true;
                 if (PopMsg.Length > 0)
                 {
                     PopMsg.Append(Environment.NewLine);
@@ -2675,11 +2676,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
             else
             {
-              //frmMobileCode.HasError = false;
+                //frmMobileCode.HasError = false;
             }
             if (string.IsNullOrEmpty(viewModel.TxtPassword))
             {
-              //frmPass.HasError = true;
+                //frmPass.HasError = true;
                 if (PopMsg.Length > 0)
                 {
                     PopMsg.Append(Environment.NewLine);
@@ -2694,11 +2695,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
             else
             {
-              //frmPass.HasError = false;
+                //frmPass.HasError = false;
                 bool IsValidPass = UtilityManager.IsPasswordValid(viewModel.TxtPassword);
                 if (!IsValidPass)
                 {
-                  //frmPass.HasError = true;
+                    //frmPass.HasError = true;
                     if (PopMsg.Length > 0)
                     {
                         PopMsg.Append(Environment.NewLine);
@@ -2713,11 +2714,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
                 else
                 {
-                   //rmPass.HasError = false;
+                    //rmPass.HasError = false;
                 }
                 if (viewModel.TxtPassword != viewModel.TxtConfirmPassword)
                 {
-                  //frmPass.HasError = true;
+                    //frmPass.HasError = true;
                     if (PopMsg.Length > 0)
                     {
                         PopMsg.Append(Environment.NewLine);
@@ -2732,7 +2733,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
                 else
                 {
-                   //rmCfrmPass.HasError = false;
+                    //rmCfrmPass.HasError = false;
                 }
             }
             if (IsAllValid == true)
@@ -2755,24 +2756,24 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                   // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopMsg.ToString()));
                 }
             }
         }
 
-       
+
         private void EntryCfrmPass_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryCfrmPass.Text))
             {
                 if (EntryPass.Text != EntryCfrmPass.Text)
                 {
-                  //mCfrmPass.HasError = true;
+                    //mCfrmPass.HasError = true;
                 }
                 else
                 {
-                  //frmCfrmPass.HasError = false;
+                    //frmCfrmPass.HasError = false;
                 }
             }
         }
@@ -2814,14 +2815,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             try
             {
-                
+
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     viewModel.IsLoading = false;
 
 
                 });
-               // viewModel.otpTimer.Stop();
+                // viewModel.otpTimer.Stop();
                 viewModel.StartOTPTimer();
                 viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
                 viewModel.ButtonDisableTextColor = Color.Gray;
@@ -2843,7 +2844,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
                 OTPFirstEntry.Focus();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
@@ -2853,37 +2854,37 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
 
             viewModel.IsLoading = true;
-                await Task.Run(() =>
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+
+            if (viewModel.SelectedSignUpUsing.ID == 1)
+            {
+                try
                 {
-                    viewModel.IsLoading = true;
-                });
-            
-                if (viewModel.SelectedSignUpUsing.ID == 1)
-                {
-                    try
+                    DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty, string.Empty);
+                    if (ResultDuplicate.d.Flag == "")
                     {
-                        DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty, string.Empty);
-                        if (ResultDuplicate.d.Flag == "")
+                        if (viewModel.IsCRChecked == true)
                         {
-                            if (viewModel.IsCRChecked == true)
-                            {
                             viewModel.IsAllValidCRNumberEntered = false;
                             try
+                            {
+                                //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
+                                DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
+                                if (ResultDuplicateCR.d.Flag == "")
                                 {
-                                    //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                    DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
-                                    if (ResultDuplicateCR.d.Flag == "")
+                                    CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+                                    SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
+                                    if (App.IsArabic)
                                     {
-                                        CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
-                                        SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
-                                        if (App.IsArabic)
-                                        {
-                                            SiguupModel.ALang = "A";
-                                        }
-                                        else
-                                        {
-                                            SiguupModel.ALang = "E";
-                                        }
+                                        SiguupModel.ALang = "A";
+                                    }
+                                    else
+                                    {
+                                        SiguupModel.ALang = "E";
+                                    }
                                     //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                                     //string month = selectedItem[1].ToString();
                                     //string day = selectedItem[0].ToString();
@@ -2908,277 +2909,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                     }
                                     SiguupModel.AType = "1";
-                                        SiguupModel.AFirstname = viewModel.TxtName;
-                                        SiguupModel.ALastname = ".";
-                                        if (viewModel.IsTIN)
-                                        {
-                                            SiguupModel.ATin = viewModel.TxtTIN;
-                                            SiguupModel.ATinExist = "X";
-                                        }
-                                        else
-                                        {
-                                            SiguupModel.ATin = "";
-                                            SiguupModel.ATinExist = "";
-                                        }
-                                        SiguupModel.AIdnumber = viewModel.TxtIDNumber;
-                                        if (viewModel.IsCRChecked == true)
-                                        {
-                                            SiguupModel.ACommId = viewModel.TxtCRNumber;
-                                            SiguupModel.ALicenceNo = "";
-                                            SiguupModel.AIssuedBy = "";
-                                            SiguupModel.ACity = "";
-                                            SiguupModel.ACityCode = "";
-                                        }
-                                        else
-                                        {
-                                            SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
-                                            SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
-                                            try
-                                            {
-                                                if (viewModel.SelectCityList != null && viewModel.SelectCityList.CityName != null)
-                                                {
-                                                    SiguupModel.ACity = viewModel.SelectCityList.CityName;
-                                                    SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
-                                                }
-                                                else
-                                                {
-                                                    SiguupModel.ACity = string.Empty;
-                                                    SiguupModel.ACityCode = string.Empty;
-
-                                                }
-                                                SiguupModel.ACommId = "";
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                            }
-                                            //SiguupModel.ACity = viewModel.SelectCityList.CityName;
-                                            //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
-                                            SiguupModel.ACommId = "";
-                                        }
-                                        SiguupModel.AEmail = viewModel.TxtEmailAddress;
-
-                                        if (viewModel.TxtPhoneNumber != null || viewModel.TxtPhoneNumber != string.Empty)
-                                        {
-                                            SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
-                                        }
-                                        else
-                                        {
-                                            SiguupModel.APhone = "";
-
-                                        }
-
-                                        string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
-                                        SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                 //  viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
-                                    SiguupModel.ACountry = viewModel.MobileCountryCode;
-                                        // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
-                                        if (viewModel.SelectedSignUpUsing.ID == 1)
-                                        {
-                                            SiguupModel.AIdtype = "ZS0001";
-                                        }
-                                        else if (viewModel.SelectedSignUpUsing.ID == 2)
-                                        {
-                                            SiguupModel.AIdtype = "ZS0002";
-                                        }
-                                        else if (viewModel.SelectedSignUpUsing.ID == 3)
-                                        {
-                                            SiguupModel.AIdtype = "ZS0003";
-                                        }
-                                        SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
-                                        string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
-                                        SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
-                                        viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
-                                        if (ResultFirstSubmitModel.d == null)
-                                        {
-                                            SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                                            StringBuilder Message = new StringBuilder();
-                                            foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
-                                            {
-                                                if (itemerror.code.Contains("ZD_PUSR"))
-                                                {
-                                                    if (Message.Length > 0)
-                                                    {
-                                                        Message.Append(Environment.NewLine);
-                                                    }
-                                                    Message.Append(itemerror.message);
-                                                }
-                                            }
-                                           // viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-                                    }
-                                        else
-                                        {
-
-                                        
-                                        NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
-
-                                    }
-                                    }
-                                    else if (ResultDuplicateCR.d.Flag == "X")
-                                    {
-                                        var result = false;
-
-                                        if (App.IsArabic)
-                                        {
-
-                                            result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
-                                                                            (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
-                                                                                AppResources.ZZZNoText, AppResources.ZZZYesText);
-                                            if (result == true)
-                                            {
-                                                viewModel.IsLoading = false;
-
-                                                return;
-
-                                            }
-                                            else // if it's equal to YES
-                                            {
-                                                CRDuplicateCheck();
-                                            }
-                                        }
-                                        else
-                                        {
-
-                                            result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
-                                                                           (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
-                                                                               AppResources.ZZZYesText, AppResources.ZZZNoText);
-
-                                            if (result == true)
-                                            {
-                                                CRDuplicateCheck();
-                                                // _navigationService.GoBack();
-
-                                            }
-                                            else // if it's equal to NO
-                                            {
-                                                viewModel.IsLoading = false;
-
-                                                return; // just return to the page and do nothing.
-                                            }
-                                        }
-
-                                        //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
-
-
-                                    }
-                                    else
-                                    {
-                                       // viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
-                                }
-                                }
-
-                                catch (GAZTException gex)
-                                {
-                                    // Handle the GAZT custom exception.
-                                    string MessageForTheUser = gex.Message;
-                                    if (gex is GAZTInvalidDataException)
-                                    {
-                                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                    }
-                                    if (gex is GAZTNetworkConnectivityIssueException)
-                                    {
-                                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                                    }
-                                    else if (gex is GAZTInternetException)
-                                    {
-                                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                                    }
-                                    else if (gex is GAZTSessionExpiredException)
-                                    {
-                                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                                    }
-
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        viewModel.IsLoading = false;
-
-                                      //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                        viewModel._navigationService.GoBack();
-                                    });
-                                }
-                                catch (HttpRequestException ex)
-                                {
-                                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        // IsLoading = false;
-
-                                      //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                        //_navigationService.GoBack();
-                                    });
-                                }
-
-
-                                catch (InternetException ex)
-                                {
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                    });
-                                }
-                                catch (Exception ex)
-                                {
-
-                                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        // IsLoading = false;
-
-                                       // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
-                                    });
-
-                                }
-
-
-
-                            }
-                            else
-                            {
-                            viewModel.IsAllValidCRNumberEntered = false;
-                            try
-                                {
-                                    CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
-                                    SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
-                                    if (App.IsArabic)
-                                    {
-                                        SiguupModel.ALang = "A";
-                                    }
-                                    else
-                                    {
-                                        SiguupModel.ALang = "E";
-                                    }
-                                    //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                                    //string month = selectedItem[1].ToString();
-                                    //string day = selectedItem[0].ToString();
-                                    //string year = selectedItem[2].ToString();
-                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                if (viewModel.IsHijriCal)
-                                {
-                                    var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
-                                    string month = selectedItem[1].ToString();
-                                    string day = selectedItem[0].ToString();
-                                    string year = selectedItem[2].ToString();
-                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                    string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
-                                    string[] SplitDate = date.Split('/');
-                                    SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
-                                }
-                                else
-                                {
-                                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                                    string month = selectedItem[1].ToString();
-                                    string day = selectedItem[0].ToString();
-                                    string year = selectedItem[2].ToString();
-                                    SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                }
-                                SiguupModel.AType = "1";
                                     SiguupModel.AFirstname = viewModel.TxtName;
                                     SiguupModel.ALastname = ".";
                                     if (viewModel.IsTIN)
@@ -3227,6 +2957,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         SiguupModel.ACommId = "";
                                     }
                                     SiguupModel.AEmail = viewModel.TxtEmailAddress;
+
                                     if (viewModel.TxtPhoneNumber != null || viewModel.TxtPhoneNumber != string.Empty)
                                     {
                                         SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
@@ -3239,9 +2970,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                              //  viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
-                                SiguupModel.ACountry = viewModel.MobileCountryCode;
-
+                                    //  viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                    SiguupModel.ACountry = viewModel.MobileCountryCode;
                                     // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                                     if (viewModel.SelectedSignUpUsing.ID == 1)
                                     {
@@ -3274,309 +3004,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                 Message.Append(itemerror.message);
                                             }
                                         }
-                                       // viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-                                }
-                                    else
-                                    {
-
-                                 NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
-
-                                //  viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
-                                    }
-                                }
-
-                                catch (GAZTException gex)
-                                {
-                                    // Handle the GAZT custom exception.
-                                    string MessageForTheUser = gex.Message;
-                                    if (gex is GAZTInvalidDataException)
-                                    {
-                                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                    }
-                                    if (gex is GAZTNetworkConnectivityIssueException)
-                                    {
-                                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                                    }
-                                    else if (gex is GAZTInternetException)
-                                    {
-                                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                                    }
-                                    else if (gex is GAZTSessionExpiredException)
-                                    {
-                                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                                    }
-
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        viewModel.IsLoading = false;
-
-                                       // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                        viewModel._navigationService.GoBack();
-                                    });
-                                }
-
-
-
-                                catch (InternetException ex)
-                                {
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                      //  viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                         PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                    });
-                                }
-                                catch (HttpRequestException ex)
-                                {
-                                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        // IsLoading = false;
-
-                                      //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                        //_navigationService.GoBack();
-                                    });
-                                }
-                                catch (Exception ex)
-                                {
-
-                                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        // IsLoading = false;
-
-                                       // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                        //_navigationService.GoBack();
-                                    });
-                                }
-                            }
-                        }
-                        else
-                        {
-                         //   viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
-                    }
-                    }
-                    catch (GAZTException gex)
-                    {
-                        // Handle the GAZT custom exception.
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTInvalidDataException)
-                        {
-                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                        }
-                        if (gex is GAZTNetworkConnectivityIssueException)
-                        {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                        }
-                        else if (gex is GAZTInternetException)
-                        {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                        }
-                        else if (gex is GAZTSessionExpiredException)
-                        {
-                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                        }
-
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            viewModel.IsLoading = false;
-
-                            //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            viewModel._navigationService.GoBack();
-                        });
-                    }
-                    catch (InternetException ex)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                           // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        });
-                    }
-                    catch (HttpRequestException ex)
-                    {
-                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            viewModel.IsLoading = false;
-
-                           // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            viewModel._navigationService.GoBack();
-                        });
-                    }
-                    catch (Exception ex)
-                    {
-
-                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            viewModel.IsLoading = false;
-
-                          //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            viewModel._navigationService.GoBack();
-                        });
-                    }
-                }
-                if (viewModel.SelectedSignUpUsing.ID == 2)
-                {
-                    DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty, string.Empty);
-                    if (ResultDuplicate.d.Flag == "")
-                    {
-                        if (viewModel.IsCRChecked == true)
-                        {
-                            try
-                            {
-                                //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
-
-                                if (ResultDuplicateCR.d.Flag == "")
-                                {
-                                    CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
-                                    SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
-                                    if (App.IsArabic)
-                                    {
-                                        SiguupModel.ALang = "A";
+                                        // viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                                     }
                                     else
                                     {
-                                        SiguupModel.ALang = "E";
-                                    }
-                                //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                                //string month = selectedItem[1].ToString();
-                                //string day = selectedItem[0].ToString();
-                                //string year = selectedItem[2].ToString();
-                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                if (viewModel.IsHijriCal)
-                                {
-                                    var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
-                                    string month = selectedItem[1].ToString();
-                                    string day = selectedItem[0].ToString();
-                                    string year = selectedItem[2].ToString();
-                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                    string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
-                                    string[] SplitDate = date.Split('/');
-                                    SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
-                                }
-                                else
-                                {
-                                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                                    string month = selectedItem[1].ToString();
-                                    string day = selectedItem[0].ToString();
-                                    string year = selectedItem[2].ToString();
-                                    SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                }
-                                SiguupModel.AType = "1";
-                                    SiguupModel.AFirstname = viewModel.TxtName;
-                                    SiguupModel.ALastname = ".";
-                                    if (viewModel.IsTIN)
-                                    {
-                                        SiguupModel.ATin = viewModel.TxtTIN;
-                                        SiguupModel.ATinExist = "X";
-                                    }
-                                    else
-                                    {
-                                        SiguupModel.ATin = "";
-                                        SiguupModel.ATinExist = "";
-                                    }
-                                    SiguupModel.AIdnumber = viewModel.TxtIDNumber;
-                                    if (viewModel.IsCRChecked == true)
-                                    {
-                                        SiguupModel.ACommId = viewModel.TxtCRNumber;
-                                        SiguupModel.ALicenceNo = "";
-                                        SiguupModel.AIssuedBy = "";
-                                        SiguupModel.ACity = "";
-                                        SiguupModel.ACityCode = "";
-                                    }
-                                    else
-                                    {
-                                        SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
-                                        SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
-                                        try
-                                        {
-                                            if (viewModel.SelectCityList != null && viewModel.SelectCityList.CityName != null)
-                                            {
-                                                SiguupModel.ACity = viewModel.SelectCityList.CityName;
-                                                SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
-                                            }
-                                            else
-                                            {
-                                                SiguupModel.ACity = string.Empty;
-                                                SiguupModel.ACityCode = string.Empty;
 
-                                            }
-                                            SiguupModel.ACommId = "";
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                        }
-                                        //SiguupModel.ACity = viewModel.SelectCityList.CityName;
-                                        //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
-                                        SiguupModel.ACommId = "";
-                                    }
-                                    SiguupModel.AEmail = viewModel.TxtEmailAddress;
-                                    if (viewModel.TxtPhoneNumber != null || viewModel.TxtPhoneNumber != string.Empty)
-                                    {
-                                        SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
-                                    }
-                                    else
-                                    {
-                                        SiguupModel.APhone = "";
 
-                                    }
+                                        NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
 
-                                    string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
-                                    SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                               // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
-                                // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
-                                SiguupModel.ACountry = viewModel.MobileCountryCode;
-
-                                    if (viewModel.SelectedSignUpUsing.ID == 1)
-                                    {
-                                        SiguupModel.AIdtype = "ZS0001";
-                                    }
-                                    else if (viewModel.SelectedSignUpUsing.ID == 2)
-                                    {
-                                        SiguupModel.AIdtype = "ZS0002";
-                                    }
-                                    else if (viewModel.SelectedSignUpUsing.ID == 3)
-                                    {
-                                        SiguupModel.AIdtype = "ZS0003";
-                                    }
-                                    SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
-                                    string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
-                                    SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
-                                    viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
-                                    if (ResultFirstSubmitModel.d == null)
-                                    {
-                                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                                        StringBuilder Message = new StringBuilder();
-                                        foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
-                                        {
-                                            if (itemerror.code.Contains("ZD_PUSR"))
-                                            {
-                                                if (Message.Length > 0)
-                                                {
-                                                    Message.Append(Environment.NewLine);
-                                                }
-                                                Message.Append(itemerror.message);
-                                            }
-                                        }
-                                     //   viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-                                }
-                                    else
-                                    {
-                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
-                                      //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                     }
                                 }
                                 else if (ResultDuplicateCR.d.Flag == "X")
@@ -3628,10 +3064,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 }
                                 else
                                 {
-                                 //   viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                                    // viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                                }
                             }
-                            }
+
                             catch (GAZTException gex)
                             {
                                 // Handle the GAZT custom exception.
@@ -3657,17 +3094,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     viewModel.IsLoading = false;
 
-                                 //   await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                     viewModel._navigationService.GoBack();
-                                });
-                            }
-                            catch (InternetException ex)
-                            {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 });
                             }
                             catch (HttpRequestException ex)
@@ -3676,11 +3105,21 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    viewModel.IsLoading = false;
+                                    // IsLoading = false;
 
-                                  //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                    viewModel._navigationService.GoBack();
+                                    //_navigationService.GoBack();
+                                });
+                            }
+
+
+                            catch (InternetException ex)
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 });
                             }
                             catch (Exception ex)
@@ -3689,16 +3128,21 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    viewModel.IsLoading = false;
+                                    // IsLoading = false;
 
-                                   // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                    viewModel._navigationService.GoBack();
+
                                 });
+
                             }
+
+
+
                         }
                         else
                         {
+                            viewModel.IsAllValidCRNumberEntered = false;
                             try
                             {
                                 CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
@@ -3711,31 +3155,31 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.ALang = "E";
                                 }
-                            //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                            //string month = selectedItem[1].ToString();
-                            //string day = selectedItem[0].ToString();
-                            //string year = selectedItem[2].ToString();
-                            //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                            if (viewModel.IsHijriCal)
-                            {
-                                var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
-                                string month = selectedItem[1].ToString();
-                                string day = selectedItem[0].ToString();
-                                string year = selectedItem[2].ToString();
+                                //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                //string month = selectedItem[1].ToString();
+                                //string day = selectedItem[0].ToString();
+                                //string year = selectedItem[2].ToString();
                                 //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
-                                string[] SplitDate = date.Split('/');
-                                SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
-                            }
-                            else
-                            {
-                                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                                string month = selectedItem[1].ToString();
-                                string day = selectedItem[0].ToString();
-                                string year = selectedItem[2].ToString();
-                                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                            }
-                            SiguupModel.AType = "1";
+                                if (viewModel.IsHijriCal)
+                                {
+                                    var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                                    string month = selectedItem[1].ToString();
+                                    string day = selectedItem[0].ToString();
+                                    string year = selectedItem[2].ToString();
+                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                    string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                                    string[] SplitDate = date.Split('/');
+                                    SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
+                                }
+                                else
+                                {
+                                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                    string month = selectedItem[1].ToString();
+                                    string day = selectedItem[0].ToString();
+                                    string year = selectedItem[2].ToString();
+                                    SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                }
+                                SiguupModel.AType = "1";
                                 SiguupModel.AFirstname = viewModel.TxtName;
                                 SiguupModel.ALastname = ".";
                                 if (viewModel.IsTIN)
@@ -3784,7 +3228,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     SiguupModel.ACommId = "";
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
-                                if (!viewModel.TxtPhoneNumber.Contains(string.Empty))
+                                if (viewModel.TxtPhoneNumber != null || viewModel.TxtPhoneNumber != string.Empty)
                                 {
                                     SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
                                 }
@@ -3796,8 +3240,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                 SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                           // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
-                            SiguupModel.ACountry = viewModel.MobileCountryCode;
+                                //  viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                 // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                                 if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -3831,15 +3275,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                             Message.Append(itemerror.message);
                                         }
                                     }
-                                    //viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-                            }
+                                    // viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                                }
                                 else
                                 {
-                                NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
-                                  //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+
+                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+
+                                    //  viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
                             }
+
                             catch (GAZTException gex)
                             {
                                 // Handle the GAZT custom exception.
@@ -3865,17 +3312,20 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     viewModel.IsLoading = false;
 
-                                   // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                     viewModel._navigationService.GoBack();
                                 });
                             }
+
+
+
                             catch (InternetException ex)
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                    //  viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 });
                             }
                             catch (HttpRequestException ex)
@@ -3884,11 +3334,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    viewModel.IsLoading = false;
+                                    // IsLoading = false;
 
-                                  //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                    viewModel._navigationService.GoBack();
+                                    //_navigationService.GoBack();
                                 });
                             }
                             catch (Exception ex)
@@ -3897,45 +3347,110 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    viewModel.IsLoading = false;
+                                    // IsLoading = false;
 
-                                   // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                    viewModel._navigationService.GoBack();
+                                    //_navigationService.GoBack();
                                 });
                             }
                         }
                     }
                     else
                     {
-                       // viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                        //   viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                    }
                 }
-                }
-                if (viewModel.SelectedSignUpUsing.ID == 3)
+                catch (GAZTException gex)
                 {
-                    try
+                    // Handle the GAZT custom exception.
+                    string MessageForTheUser = gex.Message;
+                    if (gex is GAZTInvalidDataException)
                     {
-                        DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty, string.Empty);
-                        if (viewModel.IsCRChecked == true)
-                        {
-                            try
-                            {
-                                //  DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
+                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    }
+                    if (gex is GAZTNetworkConnectivityIssueException)
+                    {
+                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                    }
+                    else if (gex is GAZTInternetException)
+                    {
+                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                    }
+                    else if (gex is GAZTSessionExpiredException)
+                    {
+                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                    }
 
-                                if (ResultDuplicateCR.d.Flag == "")
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel.IsLoading = false;
+
+                        //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                        viewModel._navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    });
+                }
+                catch (HttpRequestException ex)
+                {
+                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel.IsLoading = false;
+
+                        // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                        viewModel._navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+
+                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel.IsLoading = false;
+
+                        //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                        viewModel._navigationService.GoBack();
+                    });
+                }
+            }
+            if (viewModel.SelectedSignUpUsing.ID == 2)
+            {
+                DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty, string.Empty);
+                if (ResultDuplicate.d.Flag == "")
+                {
+                    if (viewModel.IsCRChecked == true)
+                    {
+                        try
+                        {
+                            //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
+                            DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
+
+                            if (ResultDuplicateCR.d.Flag == "")
+                            {
+                                CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+                                SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
+                                if (App.IsArabic)
                                 {
-                                    CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
-                                    SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
-                                    if (App.IsArabic)
-                                    {
-                                        SiguupModel.ALang = "A";
-                                    }
-                                    else
-                                    {
-                                        SiguupModel.ALang = "E";
-                                    }
+                                    SiguupModel.ALang = "A";
+                                }
+                                else
+                                {
+                                    SiguupModel.ALang = "E";
+                                }
                                 //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                                 //string month = selectedItem[1].ToString();
                                 //string day = selectedItem[0].ToString();
@@ -3961,267 +3476,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                 }
                                 SiguupModel.AType = "1";
-                                    SiguupModel.AFirstname = viewModel.TxtName;
-                                    SiguupModel.ALastname = ".";
-                                    if (viewModel.IsTIN)
-                                    {
-                                        SiguupModel.ATin = viewModel.TxtTIN;
-                                        SiguupModel.ATinExist = "X";
-                                    }
-                                    else
-                                    {
-                                        SiguupModel.ATin = "";
-                                        SiguupModel.ATinExist = "";
-                                    }
-                                    SiguupModel.AIdnumber = viewModel.TxtIDNumber;
-                                    if (viewModel.IsCRChecked == true)
-                                    {
-                                        SiguupModel.ACommId = viewModel.TxtCRNumber;
-                                        SiguupModel.ALicenceNo = "";
-                                        SiguupModel.AIssuedBy = "";
-                                        SiguupModel.ACity = "";
-                                        SiguupModel.ACityCode = "";
-                                    }
-                                    else
-                                    {
-                                        SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
-                                        SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
-                                        try
-                                        {
-                                            if (viewModel.SelectCityList != null && viewModel.SelectCityList.CityName != null)
-                                            {
-                                                SiguupModel.ACity = viewModel.SelectCityList.CityName;
-                                                SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
-                                            }
-                                            else
-                                            {
-                                                SiguupModel.ACity = string.Empty;
-                                                SiguupModel.ACityCode = string.Empty;
-
-                                            }
-                                            SiguupModel.ACommId = "";
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                        }
-                                        //SiguupModel.ACity = viewModel.SelectCityList.CityName;
-                                        //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
-                                        SiguupModel.ACommId = "";
-                                    }
-                                    SiguupModel.AEmail = viewModel.TxtEmailAddress;
-
-                                    if (!viewModel.TxtPhoneNumber.Contains(string.Empty))
-                                    {
-                                        SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
-                                    }
-                                    else
-                                    {
-                                        SiguupModel.APhone = "";
-
-                                    }
-
-                                    string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
-                                    SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                //viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
-                                SiguupModel.ACountry = viewModel.MobileCountryCode;
-
-                                    // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
-
-                                    if (viewModel.SelectedSignUpUsing.ID == 1)
-                                    {
-                                        SiguupModel.AIdtype = "ZS0001";
-                                    }
-                                    else if (viewModel.SelectedSignUpUsing.ID == 2)
-                                    {
-                                        SiguupModel.AIdtype = "ZS0002";
-                                    }
-                                    else if (viewModel.SelectedSignUpUsing.ID == 3)
-                                    {
-                                        SiguupModel.AIdtype = "ZS0003";
-                                    }
-                                    SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
-                                    string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
-                                    SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
-                                    viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
-                                    if (ResultFirstSubmitModel.d == null)
-                                    {
-                                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                                        StringBuilder Message = new StringBuilder();
-                                        foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
-                                        {
-                                            if (itemerror.code.Contains("ZD_PUSR"))
-                                            {
-                                                if (Message.Length > 0)
-                                                {
-                                                    Message.Append(Environment.NewLine);
-                                                }
-                                                Message.Append(itemerror.message);
-                                            }
-                                        }
-                                      //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-                                }
-                                    else
-                                    {
-                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
-                                     // viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
-                                    }
-                                }
-                                else if (ResultDuplicateCR.d.Flag == "X")
-                                {
-                                    var result = false;
-
-                                    if (App.IsArabic)
-                                    {
-
-                                        result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
-                                                                        (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
-                                                                            AppResources.ZZZNoText, AppResources.ZZZYesText);
-                                        if (result == true)
-                                        {
-                                            viewModel.IsLoading = false;
-
-                                            return;
-
-                                        }
-                                        else // if it's equal to YES
-                                        {
-                                            CRDuplicateCheck();
-                                        }
-                                    }
-                                    else
-                                    {
-
-                                        result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
-                                                                       (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
-                                                                           AppResources.ZZZYesText, AppResources.ZZZNoText);
-
-                                        if (result == true)
-                                        {
-                                            CRDuplicateCheck();
-                                        viewModel._navigationService.GoBack();
-
-                                        }
-                                        else // if it's equal to NO
-                                        {
-                                            viewModel.IsLoading = false;
-
-                                            return; // just return to the page and do nothing.
-                                        }
-                                    }
-
-                                    //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
-
-
-                                }
-                                else
-                                {
-                                  //  await viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
-                            }
-                            }
-
-                            catch (GAZTException gex)
-                            {
-                                // Handle the GAZT custom exception.
-                                string MessageForTheUser = gex.Message;
-
-                                if (gex is GAZTNetworkConnectivityIssueException)
-                                {
-                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                                }
-                                else if (gex is GAZTInternetException)
-                                {
-                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                                }
-                                else if (gex is GAZTSessionExpiredException)
-                                {
-                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                                }
-
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    viewModel.IsLoading = false;
-
-                                  //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                    viewModel._navigationService.GoBack();
-                                });
-                            }
-                            catch (InternetException ex)
-                            {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                  //  viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                });
-                            }
-                            catch (HttpRequestException ex)
-                            {
-                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    viewModel.IsLoading = false;
-
-                                  //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                    viewModel._navigationService.GoBack();
-                                });
-                            }
-                            catch (Exception ex)
-                            {
-
-                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    viewModel.IsLoading = false;
-
-                                    //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                    viewModel._navigationService.GoBack();
-                                });
-                            }
-                        }
-                        else
-                        {
-                            try
-                            {
-                                CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
-                                SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
-                                if (App.IsArabic)
-                                {
-                                    SiguupModel.ALang = "A";
-                                }
-                                else
-                                {
-                                    SiguupModel.ALang = "E";
-                                }
-                            //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                            //string month = selectedItem[1].ToString();
-                            //string day = selectedItem[0].ToString();
-                            //string year = selectedItem[2].ToString();
-                            //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                            if (viewModel.IsHijriCal)
-                            {
-                                var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
-                                string month = selectedItem[1].ToString();
-                                string day = selectedItem[0].ToString();
-                                string year = selectedItem[2].ToString();
-                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
-                                string[] SplitDate = date.Split('/');
-                                SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
-                            }
-                            else
-                            {
-                                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                                string month = selectedItem[1].ToString();
-                                string day = selectedItem[0].ToString();
-                                string year = selectedItem[2].ToString();
-                                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                            }
-                            SiguupModel.AType = "1";
                                 SiguupModel.AFirstname = viewModel.TxtName;
                                 SiguupModel.ALastname = ".";
                                 if (viewModel.IsTIN)
@@ -4265,8 +3519,498 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     catch (Exception ex)
                                     {
                                     }
+                                    //SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                    //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                    SiguupModel.ACommId = "";
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
+                                if (viewModel.TxtPhoneNumber != null || viewModel.TxtPhoneNumber != string.Empty)
+                                {
+                                    SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                }
+                                else
+                                {
+                                    SiguupModel.APhone = "";
+
+                                }
+
+                                string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
+                                SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                                // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                                SiguupModel.ACountry = viewModel.MobileCountryCode;
+
+                                if (viewModel.SelectedSignUpUsing.ID == 1)
+                                {
+                                    SiguupModel.AIdtype = "ZS0001";
+                                }
+                                else if (viewModel.SelectedSignUpUsing.ID == 2)
+                                {
+                                    SiguupModel.AIdtype = "ZS0002";
+                                }
+                                else if (viewModel.SelectedSignUpUsing.ID == 3)
+                                {
+                                    SiguupModel.AIdtype = "ZS0003";
+                                }
+                                SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                                string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
+                                SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                                viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
+                                if (ResultFirstSubmitModel.d == null)
+                                {
+                                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                                    StringBuilder Message = new StringBuilder();
+                                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                                    {
+                                        if (itemerror.code.Contains("ZD_PUSR"))
+                                        {
+                                            if (Message.Length > 0)
+                                            {
+                                                Message.Append(Environment.NewLine);
+                                            }
+                                            Message.Append(itemerror.message);
+                                        }
+                                    }
+                                    //   viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                                }
+                                else
+                                {
+                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                    //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+                                }
+                            }
+                            else if (ResultDuplicateCR.d.Flag == "X")
+                            {
+                                var result = false;
+
+                                if (App.IsArabic)
+                                {
+
+                                    result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
+                                                                    (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
+                                                                        AppResources.ZZZNoText, AppResources.ZZZYesText);
+                                    if (result == true)
+                                    {
+                                        viewModel.IsLoading = false;
+
+                                        return;
+
+                                    }
+                                    else // if it's equal to YES
+                                    {
+                                        CRDuplicateCheck();
+                                    }
+                                }
+                                else
+                                {
+
+                                    result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
+                                                                   (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
+                                                                       AppResources.ZZZYesText, AppResources.ZZZNoText);
+
+                                    if (result == true)
+                                    {
+                                        CRDuplicateCheck();
+                                        // _navigationService.GoBack();
+
+                                    }
+                                    else // if it's equal to NO
+                                    {
+                                        viewModel.IsLoading = false;
+
+                                        return; // just return to the page and do nothing.
+                                    }
+                                }
+
+                                //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
+
+
+                            }
+                            else
+                            {
+                                //   viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                            }
+                        }
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                //   await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                        catch (InternetException ex)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            });
+                        }
+                        catch (HttpRequestException ex)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+                            SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
+                            if (App.IsArabic)
+                            {
+                                SiguupModel.ALang = "A";
+                            }
+                            else
+                            {
+                                SiguupModel.ALang = "E";
+                            }
+                            //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                            //string month = selectedItem[1].ToString();
+                            //string day = selectedItem[0].ToString();
+                            //string year = selectedItem[2].ToString();
+                            //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                            if (viewModel.IsHijriCal)
+                            {
+                                var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                                string month = selectedItem[1].ToString();
+                                string day = selectedItem[0].ToString();
+                                string year = selectedItem[2].ToString();
+                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                                string[] SplitDate = date.Split('/');
+                                SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
+                            }
+                            else
+                            {
+                                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                string month = selectedItem[1].ToString();
+                                string day = selectedItem[0].ToString();
+                                string year = selectedItem[2].ToString();
+                                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                            }
+                            SiguupModel.AType = "1";
+                            SiguupModel.AFirstname = viewModel.TxtName;
+                            SiguupModel.ALastname = ".";
+                            if (viewModel.IsTIN)
+                            {
+                                SiguupModel.ATin = viewModel.TxtTIN;
+                                SiguupModel.ATinExist = "X";
+                            }
+                            else
+                            {
+                                SiguupModel.ATin = "";
+                                SiguupModel.ATinExist = "";
+                            }
+                            SiguupModel.AIdnumber = viewModel.TxtIDNumber;
+                            if (viewModel.IsCRChecked == true)
+                            {
+                                SiguupModel.ACommId = viewModel.TxtCRNumber;
+                                SiguupModel.ALicenceNo = "";
+                                SiguupModel.AIssuedBy = "";
+                                SiguupModel.ACity = "";
+                                SiguupModel.ACityCode = "";
+                            }
+                            else
+                            {
+                                SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
+                                SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
+                                try
+                                {
+                                    if (viewModel.SelectCityList != null && viewModel.SelectCityList.CityName != null)
+                                    {
+                                        SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                        SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                    }
+                                    else
+                                    {
+                                        SiguupModel.ACity = string.Empty;
+                                        SiguupModel.ACityCode = string.Empty;
+
+                                    }
+                                    SiguupModel.ACommId = "";
+                                }
+                                catch (Exception ex)
+                                {
+                                }
+                                //SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                SiguupModel.ACommId = "";
+                            }
+                            SiguupModel.AEmail = viewModel.TxtEmailAddress;
+                            if (!viewModel.TxtPhoneNumber.Contains(string.Empty))
+                            {
+                                SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                            }
+                            else
+                            {
+                                SiguupModel.APhone = "";
+
+                            }
+
+                            string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
+                            SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                            // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                            SiguupModel.ACountry = viewModel.MobileCountryCode;
+
+                            // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                            if (viewModel.SelectedSignUpUsing.ID == 1)
+                            {
+                                SiguupModel.AIdtype = "ZS0001";
+                            }
+                            else if (viewModel.SelectedSignUpUsing.ID == 2)
+                            {
+                                SiguupModel.AIdtype = "ZS0002";
+                            }
+                            else if (viewModel.SelectedSignUpUsing.ID == 3)
+                            {
+                                SiguupModel.AIdtype = "ZS0003";
+                            }
+                            SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                            string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
+                            SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                            viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
+                            if (ResultFirstSubmitModel.d == null)
+                            {
+                                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                                StringBuilder Message = new StringBuilder();
+                                foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                                {
+                                    if (itemerror.code.Contains("ZD_PUSR"))
+                                    {
+                                        if (Message.Length > 0)
+                                        {
+                                            Message.Append(Environment.NewLine);
+                                        }
+                                        Message.Append(itemerror.message);
+                                    }
+                                }
+                                //viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                            }
+                            else
+                            {
+                                NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+                            }
+                        }
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                        catch (InternetException ex)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            });
+                        }
+                        catch (HttpRequestException ex)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                    }
+                }
+                else
+                {
+                    // viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                }
+            }
+            if (viewModel.SelectedSignUpUsing.ID == 3)
+            {
+                try
+                {
+                    DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty, string.Empty);
+                    if (viewModel.IsCRChecked == true)
+                    {
+                        try
+                        {
+                            //  DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
+                            DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
+
+                            if (ResultDuplicateCR.d.Flag == "")
+                            {
+                                CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+                                SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
+                                if (App.IsArabic)
+                                {
+                                    SiguupModel.ALang = "A";
+                                }
+                                else
+                                {
+                                    SiguupModel.ALang = "E";
+                                }
+                                //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                //string month = selectedItem[1].ToString();
+                                //string day = selectedItem[0].ToString();
+                                //string year = selectedItem[2].ToString();
+                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                if (viewModel.IsHijriCal)
+                                {
+                                    var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                                    string month = selectedItem[1].ToString();
+                                    string day = selectedItem[0].ToString();
+                                    string year = selectedItem[2].ToString();
+                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                    string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                                    string[] SplitDate = date.Split('/');
+                                    SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
+                                }
+                                else
+                                {
+                                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                    string month = selectedItem[1].ToString();
+                                    string day = selectedItem[0].ToString();
+                                    string year = selectedItem[2].ToString();
+                                    SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                }
+                                SiguupModel.AType = "1";
+                                SiguupModel.AFirstname = viewModel.TxtName;
+                                SiguupModel.ALastname = ".";
+                                if (viewModel.IsTIN)
+                                {
+                                    SiguupModel.ATin = viewModel.TxtTIN;
+                                    SiguupModel.ATinExist = "X";
+                                }
+                                else
+                                {
+                                    SiguupModel.ATin = "";
+                                    SiguupModel.ATinExist = "";
+                                }
+                                SiguupModel.AIdnumber = viewModel.TxtIDNumber;
+                                if (viewModel.IsCRChecked == true)
+                                {
+                                    SiguupModel.ACommId = viewModel.TxtCRNumber;
+                                    SiguupModel.ALicenceNo = "";
+                                    SiguupModel.AIssuedBy = "";
+                                    SiguupModel.ACity = "";
+                                    SiguupModel.ACityCode = "";
+                                }
+                                else
+                                {
+                                    SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
+                                    SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
+                                    try
+                                    {
+                                        if (viewModel.SelectCityList != null && viewModel.SelectCityList.CityName != null)
+                                        {
+                                            SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                            SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                        }
+                                        else
+                                        {
+                                            SiguupModel.ACity = string.Empty;
+                                            SiguupModel.ACityCode = string.Empty;
+
+                                        }
+                                        SiguupModel.ACommId = "";
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                    }
+                                    //SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                    //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                    SiguupModel.ACommId = "";
+                                }
+                                SiguupModel.AEmail = viewModel.TxtEmailAddress;
+
                                 if (!viewModel.TxtPhoneNumber.Contains(string.Empty))
                                 {
                                     SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
@@ -4279,8 +4023,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                 SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                            //viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
-                            SiguupModel.ACountry = viewModel.MobileCountryCode;
+                                //viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                 // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
 
@@ -4315,97 +4059,354 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                             Message.Append(itemerror.message);
                                         }
                                     }
-                                  //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                           PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-                            }
+                                    //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                                }
                                 else
                                 {
+                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                    // viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+                                }
+                            }
+                            else if (ResultDuplicateCR.d.Flag == "X")
+                            {
+                                var result = false;
+
+                                if (App.IsArabic)
+                                {
+
+                                    result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
+                                                                    (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
+                                                                        AppResources.ZZZNoText, AppResources.ZZZYesText);
+                                    if (result == true)
+                                    {
+                                        viewModel.IsLoading = false;
+
+                                        return;
+
+                                    }
+                                    else // if it's equal to YES
+                                    {
+                                        CRDuplicateCheck();
+                                    }
+                                }
+                                else
+                                {
+
+                                    result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
+                                                                   (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
+                                                                       AppResources.ZZZYesText, AppResources.ZZZNoText);
+
+                                    if (result == true)
+                                    {
+                                        CRDuplicateCheck();
+                                        viewModel._navigationService.GoBack();
+
+                                    }
+                                    else // if it's equal to NO
+                                    {
+                                        viewModel.IsLoading = false;
+
+                                        return; // just return to the page and do nothing.
+                                    }
+                                }
+
+                                //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
+
+
+                            }
+                            else
+                            {
+                                //  await viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                            }
+                        }
+
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                        catch (InternetException ex)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //  viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            });
+                        }
+                        catch (HttpRequestException ex)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+                            SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
+                            if (App.IsArabic)
+                            {
+                                SiguupModel.ALang = "A";
+                            }
+                            else
+                            {
+                                SiguupModel.ALang = "E";
+                            }
+                            //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                            //string month = selectedItem[1].ToString();
+                            //string day = selectedItem[0].ToString();
+                            //string year = selectedItem[2].ToString();
+                            //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                            if (viewModel.IsHijriCal)
+                            {
+                                var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                                string month = selectedItem[1].ToString();
+                                string day = selectedItem[0].ToString();
+                                string year = selectedItem[2].ToString();
+                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                                string[] SplitDate = date.Split('/');
+                                SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
+                            }
+                            else
+                            {
+                                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                string month = selectedItem[1].ToString();
+                                string day = selectedItem[0].ToString();
+                                string year = selectedItem[2].ToString();
+                                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                            }
+                            SiguupModel.AType = "1";
+                            SiguupModel.AFirstname = viewModel.TxtName;
+                            SiguupModel.ALastname = ".";
+                            if (viewModel.IsTIN)
+                            {
+                                SiguupModel.ATin = viewModel.TxtTIN;
+                                SiguupModel.ATinExist = "X";
+                            }
+                            else
+                            {
+                                SiguupModel.ATin = "";
+                                SiguupModel.ATinExist = "";
+                            }
+                            SiguupModel.AIdnumber = viewModel.TxtIDNumber;
+                            if (viewModel.IsCRChecked == true)
+                            {
+                                SiguupModel.ACommId = viewModel.TxtCRNumber;
+                                SiguupModel.ALicenceNo = "";
+                                SiguupModel.AIssuedBy = "";
+                                SiguupModel.ACity = "";
+                                SiguupModel.ACityCode = "";
+                            }
+                            else
+                            {
+                                SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
+                                SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
+                                try
+                                {
+                                    if (viewModel.SelectCityList != null && viewModel.SelectCityList.CityName != null)
+                                    {
+                                        SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                        SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                    }
+                                    else
+                                    {
+                                        SiguupModel.ACity = string.Empty;
+                                        SiguupModel.ACityCode = string.Empty;
+
+                                    }
+                                    SiguupModel.ACommId = "";
+                                }
+                                catch (Exception ex)
+                                {
+                                }
+                            }
+                            SiguupModel.AEmail = viewModel.TxtEmailAddress;
+                            if (!viewModel.TxtPhoneNumber.Contains(string.Empty))
+                            {
+                                SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                            }
+                            else
+                            {
+                                SiguupModel.APhone = "";
+
+                            }
+
+                            string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
+                            SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                            //viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                            SiguupModel.ACountry = viewModel.MobileCountryCode;
+
+                            // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+
+                            if (viewModel.SelectedSignUpUsing.ID == 1)
+                            {
+                                SiguupModel.AIdtype = "ZS0001";
+                            }
+                            else if (viewModel.SelectedSignUpUsing.ID == 2)
+                            {
+                                SiguupModel.AIdtype = "ZS0002";
+                            }
+                            else if (viewModel.SelectedSignUpUsing.ID == 3)
+                            {
+                                SiguupModel.AIdtype = "ZS0003";
+                            }
+                            SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                            string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
+                            SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                            viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
+                            if (ResultFirstSubmitModel.d == null)
+                            {
+                                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                                StringBuilder Message = new StringBuilder();
+                                foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                                {
+                                    if (itemerror.code.Contains("ZD_PUSR"))
+                                    {
+                                        if (Message.Length > 0)
+                                        {
+                                            Message.Append(Environment.NewLine);
+                                        }
+                                        Message.Append(itemerror.message);
+                                    }
+                                }
+                                //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                            }
+                            else
+                            {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     viewModel.IsLoading = true;
 
-                                    
+
                                 });
                                 NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
-                                  //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
-                                }
-                            }
-                            catch (GAZTException gex)
-                            {
-                                // Handle the GAZT custom exception.
-                                string MessageForTheUser = gex.Message;
-                                if (gex is GAZTInvalidDataException)
-                                {
-                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                }
-                                if (gex is GAZTNetworkConnectivityIssueException)
-                                {
-                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                                }
-                                else if (gex is GAZTInternetException)
-                                {
-                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                                }
-                                else if (gex is GAZTSessionExpiredException)
-                                {
-                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                                }
-
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    viewModel.IsLoading = false;
-
-                                    //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                    viewModel._navigationService.GoBack();
-                                });
-                            }
-                            catch (InternetException ex)
-                            {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                });
-                            }
-                            catch (HttpRequestException ex)
-                            {
-                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    viewModel.IsLoading = false;
-
-                                  //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                    viewModel._navigationService.GoBack();
-                                });
-                            }
-                            catch (Exception ex)
-                            {
-
-                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    viewModel.IsLoading = false;
-
-                                   // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                    viewModel._navigationService.GoBack();
-                                });
+                                //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                             }
                         }
-                    }
-                    catch (InternetException ex)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        catch (GAZTException gex)
                         {
-                            //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        });
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                        catch (InternetException ex)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            });
+                        }
+                        catch (HttpRequestException ex)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
                     }
                 }
-           
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    });
+                }
+            }
+
             Device.BeginInvokeOnMainThread(async () =>
             {
                 await Task.Run(() =>
@@ -4445,7 +4446,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void EntryCRNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(EntryCRNumber.Text))
+            if (!string.IsNullOrEmpty(EntryCRNumber.Text))
             {
                 FrmCR.HasError = false;
                 //  EntryCRNumber.Unfocus();
@@ -4477,7 +4478,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             }
 
-           if((FrmIDNumber.HasError == true)&&(FrmDBO.HasError == true)&&(FrmName.HasError == true))
+            if ((FrmIDNumber.HasError == true) && (FrmDBO.HasError == true) && (FrmName.HasError == true))
             {
                 viewModel.IsAllValidDataEntered = false;
             }
@@ -4506,7 +4507,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 FrmDBO.HasError = false;
             }
-                
+
         }
 
         private void IssuedByCity_TextChanged(object sender, TextChangedEventArgs e)
@@ -4581,7 +4582,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void Btn_Edit_indiviadualInfo_Clicked(object sender, EventArgs e)
         {
-          viewModel.PageTitle = AppResources.ZZZIndividualInformation;
+            viewModel.PageTitle = AppResources.ZZZIndividualInformation;
             viewModel.BodyText = AppResources.ZZZZCompletethebelowdetails;
             viewModel.NextBTN = AppResources.ZZZZContinue;
             viewModel.CurrentTab = EstablishmentSignUPTabEnum.IndividualInformation;

@@ -2315,7 +2315,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
                     {
-                       
+
                         return false;
                     }
                     IsSaudi = taxPayerDetails?.Tpnationality == "SAUDI";
@@ -2413,19 +2413,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             CloseWhenBackgroundIsClicked = false
                         };
 
-                        someThingWhentWrong.OnDone = async() =>
+                        someThingWhentWrong.OnDone = async () =>
                         {
 
                             currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                             IsLoading = false;
                             _navigationService.GoBack();
 
-                            
-                            currentTab = EstablishmentRegistrationTabsEnum.Unknown; 
+
+                            currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                             _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
 
                         };
-                        
+
                         await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
                         return;
                     }
@@ -2447,14 +2447,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     idItem = taxPayerDetails?.Nreg_IdSet?.results?.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
                     if (idItem != null)
-                    if (App.IsArabic)
-                    {
-                        GCCIDType = ArIDType[idItem?.Type];
-                    }
-                    else
-                    {
-                        GCCIDType = EnIDType[idItem?.Type];
-                    }
+                        if (App.IsArabic)
+                        {
+                            GCCIDType = ArIDType[idItem?.Type];
+                        }
+                        else
+                        {
+                            GCCIDType = EnIDType[idItem?.Type];
+                        }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
@@ -2531,8 +2531,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 // Device.BeginInvokeOnMainThread( () => await IsLoading = false);
                 //Device.BeginInvokeOnMainThread(async () =>
                 //{
-                  
-                       
+
+
                 //});
                 await Task.Run(() =>
                 {
@@ -3018,6 +3018,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
                     taxPayerDetails.Atype = "1";// SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = NationalityMapping.Where(i => i.Value == SelectedRegNationalityType).FirstOrDefault().Key;
+                    taxPayerDetails.Tpnationality = string.IsNullOrEmpty(taxPayerDetails.Tpnationality) ? "" : taxPayerDetails.Tpnationality;
                     taxPayerDetails.Taxtpdetermination = "1";
                     taxPayerDetails.Tpresidence = SelectedTpresidence;
                     taxPayerDetails.Orgnonresident = string.IsNullOrEmpty(SelectedOrgNonResident) ? string.Empty : SelectedOrgNonResident;

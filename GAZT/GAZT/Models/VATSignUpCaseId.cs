@@ -57,10 +57,11 @@ namespace EGAZT
         public string Type { get; set; }
 
     }
+
     [Preserve(AllMembers = true)]
     public class VATSignUpCaseIdD
     {
-        public IList<VATSignUpCaseIdResults> results { get; set; }
+        public List<VATSignUpCaseIdResults> results { get; set; }
 
     }
    
