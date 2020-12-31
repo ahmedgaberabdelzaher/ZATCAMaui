@@ -33,7 +33,7 @@ namespace EGAZT.Models.Form5Models
     [Preserve(AllMembers = true)]
     public class GOVCODESet
     {
-        public IList<Results> results { get; set; }
+        public List<Results> results { get; set; }
 
     }
     [Preserve(AllMembers = true)]
@@ -53,7 +53,7 @@ namespace EGAZT.Models.Form5Models
     [Preserve(AllMembers = true)]
     public class MSGSet
     {
-        public IList<Results11> results { get; set; }
+        public List<Results11> results { get; set; }
 
     }
     [Preserve(AllMembers = true)]
@@ -70,7 +70,7 @@ namespace EGAZT.Models.Form5Models
     [Preserve(AllMembers = true)]
     public class Zsub_desc_ASet
     {
-        public IList<Results12> results { get; set; }
+        public List<Results12> results { get; set; }
 
     }
     [Preserve(AllMembers = true)]
@@ -89,7 +89,7 @@ namespace EGAZT.Models.Form5Models
     [Preserve(AllMembers = true)]
     public class URLSet
     {
-        public IList<Results13> results { get; set; }
+        public List<Results13> results { get; set; }
 
     }
     [Preserve(AllMembers = true)]
@@ -140,7 +140,7 @@ namespace EGAZT.Models.Form5Models
     [Preserve(AllMembers = true)]
     public class Zmain_descSet
     {
-        public IList<Results16> results { get; set; }
+        public List<Results16> results { get; set; }
 
     }
     [Preserve(AllMembers = true)]
@@ -160,7 +160,7 @@ namespace EGAZT.Models.Form5Models
     [Preserve(AllMembers = true)]
     public class ZcitySet
     {
-        public IList<Results17> results { get; set; }
+        public List<Results17> results { get; set; }
 
     }
     [Preserve(AllMembers = true)]

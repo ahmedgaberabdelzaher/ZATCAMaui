@@ -4,14 +4,13 @@ using Xamarin.Forms.Internals;
 
 namespace ZakatForm5Model
 {
-  
+    [Preserve(AllMembers = true)]
     public partial class ZakatForm5Data
     {
         [Preserve(AllMembers = true)]
         public ZakatForm5DataResult d { get; set; }
     }
     [Preserve(AllMembers = true)]
-
     public class Metadata
     {
         public string id { get; set; }
@@ -98,7 +97,6 @@ namespace ZakatForm5Model
         public string type { get; set; }
     }
     [Preserve(AllMembers = true)]
-
     public class Results3
     {
         public Metadata4 __metadata { get; set; }
@@ -198,7 +196,7 @@ namespace ZakatForm5Model
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results6
     {
         public Metadata7 __metadata { get; set; }
@@ -560,7 +558,7 @@ namespace ZakatForm5Model
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results13
     {
         public Metadata14 __metadata { get; set; }
@@ -654,7 +652,6 @@ namespace ZakatForm5Model
         public List<Result15> results { get; set; }
     }
     [Preserve(AllMembers = true)]
-
     public class Metadata17
     {
         public string id { get; set; }
@@ -1170,7 +1167,7 @@ namespace ZakatForm5Model
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result28
     {
         public Metadata29 __metadata { get; set; }
