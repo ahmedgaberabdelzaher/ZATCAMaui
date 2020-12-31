@@ -1,8 +1,5 @@
 ﻿using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
@@ -20,6 +17,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_SelectedTaxEvasionListItem == value) return;
                 _SelectedTaxEvasionListItem = value;
                 RaisePropertyChanged("SelectedTaxEvasionListItem");
             }

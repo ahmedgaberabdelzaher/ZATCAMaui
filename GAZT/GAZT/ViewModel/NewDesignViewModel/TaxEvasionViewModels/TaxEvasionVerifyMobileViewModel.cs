@@ -33,6 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_ResendOtpButtonColor == value) return;
                 _ResendOtpButtonColor = value;
                 RaisePropertyChanged("ResendOtpButtonColor");
             }
@@ -46,6 +47,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -59,6 +62,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_isShowMobileInput == value) return;
+
                 _isShowMobileInput = value;
                 RaisePropertyChanged("IsShowMobileInput");
             }
@@ -72,6 +77,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_isShowOTPInput == value) return;
+
                 _isShowOTPInput = value;
                 RaisePropertyChanged("IsShowOTPInput");
             }
@@ -85,6 +92,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_pageTitle == value) return;
+
                 _pageTitle = value;
                 RaisePropertyChanged("PageTitle");
             }
@@ -98,6 +107,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_pageTitleTag == value) return;
+
                 _pageTitleTag = value;
                 RaisePropertyChanged("PageTitleTag");
             }
@@ -111,6 +122,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_mobileNumber == value) return;
+
                 _mobileNumber = value;
                 RaisePropertyChanged("MobileNumber");
             }
@@ -124,6 +137,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_mobileNumberPrefix == value) return;
+
                 _mobileNumberPrefix = value;
                 RaisePropertyChanged("MobileNumberPrefix");
             }
@@ -138,6 +153,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_oTPFirstDigit == value) return;
+
                 _oTPFirstDigit = value;
                 if (!string.IsNullOrEmpty(OTPFirstDigit))
                 {
@@ -161,6 +178,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_OTPSecondDigit == value) return;
+
                 _OTPSecondDigit = value;
                 if (!string.IsNullOrEmpty(OTPSecondDigit))
                 {
@@ -183,6 +202,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_OTPThirdDigit == value) return;
+
                 _OTPThirdDigit = value;
                 if (!string.IsNullOrEmpty(OTPThirdDigit))
                 {
@@ -205,6 +226,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_OTPFourthDigit == value) return;
+
                 _OTPFourthDigit = value;
                 if (!string.IsNullOrEmpty(OTPFourthDigit))
                 {
@@ -227,6 +250,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_enteredOTP == value) return;
+
                 _enteredOTP = value;
                 RaisePropertyChanged("EnteredOTP");
             }
@@ -240,6 +265,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_oTPSentOnThisMobileNumber == value) return;
+
                 _oTPSentOnThisMobileNumber = value;
                 RaisePropertyChanged("OTPSentOnThisMobileNumber");
             }
@@ -253,6 +280,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_EncriptedMobileNumber == value) return;
+
                 _EncriptedMobileNumber = value;
                 RaisePropertyChanged("EncriptedMobileNumber");
             }
@@ -268,6 +297,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_lblCountDownTimer == value) return;
+
                 _lblCountDownTimer = value;
                 RaisePropertyChanged("LblCountDownTimer");
             }
@@ -281,6 +312,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_isResendOTPEnabled == value) return;
+
                 _isResendOTPEnabled = value;
                 if (_isResendOTPEnabled)
                 {
@@ -302,7 +335,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
-            _isTimerCancel = value;
+                if (_isTimerCancel == value) return;
+
+                _isTimerCancel = value;
                 RaisePropertyChanged("IsTimerCancel");
             }
         }
@@ -497,7 +532,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 }
                 catch (Exception ex)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
+                        Device.BeginInvokeOnMainThread(async () =>
                     {
                         await Task.Run(() =>
                         {
@@ -515,7 +552,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         }
         catch (InternetException ex)
         {
-            Device.BeginInvokeOnMainThread(async () =>
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                Device.BeginInvokeOnMainThread(async () =>
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
                // await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
@@ -524,7 +563,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         }
         catch (Exception ex)
         {
-            Device.BeginInvokeOnMainThread(async () =>
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                Device.BeginInvokeOnMainThread(async () =>
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
               //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -632,8 +673,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                     ClearOTPForm();
                                 }
                                 catch (Exception ex)
-                                { 
-                                
+                                {
+                                    Console.Write(ex.ToString());
+                                    Console.Write(ex.StackTrace.ToString());
+
                                 }
                                 await navigateToListPage();
                                 MobileNumber = string.Empty;
@@ -641,6 +684,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         }
                         catch (Exception ex)
                         {
+                            Console.Write(ex.ToString());
+                            Console.Write(ex.StackTrace.ToString());
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await Task.Run(() =>

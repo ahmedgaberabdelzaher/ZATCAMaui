@@ -48,6 +48,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
+                if (_zakatDeregResponseData == value) return;
                 _zakatDeregResponseData = value;
                 RaisePropertyChanged("ZakatDeregResponseData");
             }
@@ -63,6 +64,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
+                if (_zakatRegListData == value) return;
+
                 _zakatRegListData = value;
                 RaisePropertyChanged("ZakatRegListData");
             }
@@ -77,6 +80,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
+                if (_isArabic == value) return;
+
                 _isArabic = value;
                 RaisePropertyChanged("IsArabic");
             }
@@ -229,6 +234,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -343,6 +350,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 try
                 {
                     Device.BeginInvokeOnMainThread(async () =>

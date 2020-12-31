@@ -25,6 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_continueButtonnBackroundColor == value) return;
                 _continueButtonnBackroundColor = value;
                 RaisePropertyChanged("ContinueButtonnBackroundColor");
             }
@@ -38,6 +39,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isInstructionChecked == value) return;
+
                 _isInstructionChecked = value;
               
                     if (_isInstructionChecked)
@@ -61,6 +64,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isContinueButtonEnable == value) return;
+
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {
@@ -110,7 +115,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
                 catch (InternetException ex)
                 {

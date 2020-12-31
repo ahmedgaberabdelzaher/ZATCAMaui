@@ -47,6 +47,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLoading == value) return;
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -60,6 +61,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_DOB == value) return;
+
                 _DOB = value;
                 RaisePropertyChanged("DOB");
             }
@@ -73,6 +76,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IDType == value) return;
+
                 _IDType = value;
                 RaisePropertyChanged("IDType");
             }
@@ -86,6 +91,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IDNumber == value) return;
+
                 _IDNumber = value;
                 RaisePropertyChanged("IDNumber");
             }
@@ -99,6 +106,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ContactPersonName == value) return;
+
                 _ContactPersonName = value;
                 RaisePropertyChanged("ContactPersonName");
             }
@@ -113,6 +122,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_contactDOB == value) return;
+
                 _contactDOB = value;
                 RaisePropertyChanged("ContactDOB");
             }
@@ -126,6 +137,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_idNumberSR == value) return;
+
                 _idNumberSR = value;
                 RaisePropertyChanged("IdNumberSR");
             }
@@ -140,6 +153,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_firstNameSR == value) return;
+
                 _firstNameSR = value;
                 RaisePropertyChanged("FirstNameSR");
             }
@@ -153,6 +168,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_lastnmFR == value) return;
+
                 _lastnmFR = value;
                 RaisePropertyChanged("LastnmFR");
             }
@@ -167,6 +184,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_mobNumberFR == value) return;
+
                 _mobNumberFR = value;
                 RaisePropertyChanged("MobNumberFR");
             }
@@ -180,6 +199,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vatEligibleStartDate == value) return;
+
                 _vatEligibleStartDate = value;
                 RaisePropertyChanged("VatEligibleStartDate");
             }
@@ -193,6 +214,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_quesTion3answerSelected == value) return;
+
                 _quesTion3answerSelected = value;
 
                 RaisePropertyChanged("quesTion3answerSelected");
@@ -207,6 +230,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_quesTion4answerSelected == value) return;
+
                 _quesTion4answerSelected = value;
 
                 RaisePropertyChanged("quesTion4answerSelected");
@@ -221,6 +246,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_quesTion1answerSelected == value) return;
+
                 _quesTion1answerSelected = value;
 
                 RaisePropertyChanged("quesTion1answerSelected");
@@ -235,6 +262,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_quesTion2answerSelected == value) return;
+
                 _quesTion2answerSelected = value;
 
                 RaisePropertyChanged("quesTion2answerSelected");
@@ -249,6 +278,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_idnumberFR == value) return;
+
                 _idnumberFR = value;
                 RaisePropertyChanged("IdnumberFR");
             }
@@ -262,6 +293,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_typeFR == value) return;
+
                 _typeFR = value;
                 RaisePropertyChanged("TypeFR");
             }
@@ -276,6 +309,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_firstnmFR == value) return;
+
                 _firstnmFR = value;
                 RaisePropertyChanged("FirstnmFR");
             }
@@ -289,6 +324,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_gpartFR == value) return;
+
                 _gpartFR = value;
                 RaisePropertyChanged("GpartFR");
             }
@@ -302,6 +339,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_Iban == value) return;
+
                 _Iban = value;
                 RaisePropertyChanged("Iban");
             }
@@ -316,6 +355,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IbanText == value) return;
+
                 _IbanText = value;
                 RaisePropertyChanged("IbanText");
             }
@@ -329,6 +370,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_smtpAddrFR == value) return;
+
                 _smtpAddrFR = value;
                 RaisePropertyChanged("SmtpAddrFR");
             }
@@ -344,6 +387,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_TxtIDTypeFR == value) return;
+
                 _TxtIDTypeFR = value;
                 RaisePropertyChanged("TxtIDTypeFR");
             }
@@ -357,6 +402,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_importExportText == value) return;
+
                 _importExportText = value;
                 RaisePropertyChanged("ImportExportText");
             }
@@ -370,6 +417,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_AttachmentName == value) return;
+
                 _AttachmentName = value;
                 RaisePropertyChanged("AttachmentName");
             }
@@ -383,6 +432,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATRegistrationDetailsData == value) return;
+
                 _vATRegistrationDetailsData = value;
                 RaisePropertyChanged("VATRegistrationDetailsData");
             }
@@ -396,6 +447,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_minMaxRanges == value) return;
+
                 _minMaxRanges = value;
                 RaisePropertyChanged("MinMaxRanges");
             }
@@ -411,6 +464,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ibanList == value) return;
+
                 _ibanList = value;
                 RaisePropertyChanged("IbanList");
             }
@@ -569,6 +624,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     catch (InternetException ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -592,7 +649,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //{
 
                 //});
-                Device.BeginInvokeOnMainThread(async () =>
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading = false;
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -602,15 +661,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                   // _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                   // _navigationService.GoBack();
-                });
+           
             }
         }
         public void PopToRootPage()

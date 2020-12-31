@@ -16,6 +16,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _fbnumx;
             private set
             {
+                if (_fbnumx == value) return;
                 if (value != null)
                 {
                     _fbnumx = value;
@@ -29,6 +30,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _dateText;
             private set
             {
+                if (_dateText == value) return;
+
                 if (value != null)
                 {
                     _dateText = value;
@@ -42,6 +45,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _name;
             private set
             {
+                if (_name == value) return;
+
                 if (value != null)
                 {
                     _name = value;

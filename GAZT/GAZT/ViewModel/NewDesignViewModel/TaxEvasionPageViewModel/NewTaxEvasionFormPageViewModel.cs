@@ -37,6 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_IsTnameHasError == value) return;
                 _IsTnameHasError = value;
                 RaisePropertyChanged("IsTnameHasError");
             }
@@ -50,6 +51,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_IsTmobileHasError == value) return;
+
                 _IsTmobileHasError = value;
                 RaisePropertyChanged("IsTmobileHasError");
             }
@@ -63,6 +66,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_IsFacilityNameHasError == value) return;
+
                 _IsFacilityNameHasError = value;
                 RaisePropertyChanged("IsFacilityNameHasError");
             }
@@ -76,6 +81,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_IsRegionHasError == value) return;
+
                 _IsRegionHasError = value;
                 RaisePropertyChanged("IsRegionHasError");
             }
@@ -89,6 +96,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_IsCityHasError == value) return;
+
                 _IsCityHasError = value;
                 RaisePropertyChanged("IsCityHasError");
             }
@@ -102,6 +111,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_IsFDHasError == value) return;
+
                 _IsFDHasError = value;
                 RaisePropertyChanged("IsFDHasError");
             }
@@ -115,6 +126,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_IsFSHasError == value) return;
+
                 _IsFSHasError = value;
                 RaisePropertyChanged("IsFSHasError");
             }
@@ -128,6 +141,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_IsReportDetailHasError == value) return;
+
                 _IsReportDetailHasError = value;
                 RaisePropertyChanged("IsReportDetailHasError");
             }
@@ -142,6 +157,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -153,6 +170,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             get => _currentTab;
             private set
             {
+                if (_currentTab == value) return;
+
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)_currentTab;
@@ -165,6 +184,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -190,6 +211,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_PageTitle == value) return;
+
                 _PageTitle = value;
                 RaisePropertyChanged("PageTitle");
             }
@@ -204,6 +227,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_BodyTitle == value) return;
+
                 _BodyTitle = value;
                 RaisePropertyChanged("BodyTitle");
             }
@@ -220,11 +245,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             {
                 try
                 {
+                    if (_tName == value) return;
+
                     _tName = value;
                     RaisePropertyChanged("TName");
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }
@@ -237,6 +266,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_datePick == value) return;
+
                 _datePick = value;
                 RaisePropertyChanged("DatePick");
             }
@@ -250,6 +281,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_selectedCategory == value) return;
+
                 _selectedCategory = value;
                 RaisePropertyChanged("SelectedCategory");
             }
@@ -263,6 +296,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_txtTIN == value) return;
+
                 _txtTIN = value;
                 //if (!string.IsNullOrEmpty(_txtTIN))
                 //{
@@ -283,6 +318,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_rLocation == value) return;
+
                 _rLocation = value;
                 RaisePropertyChanged("RLocation");
             }
@@ -296,6 +333,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_tFaciName == value) return;
+
                 _tFaciName = value;
                 RaisePropertyChanged("TFaciName");
             }
@@ -309,6 +348,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_tMobNumber == value) return;
+
                 _tMobNumber = value;
                 RaisePropertyChanged("TMobNumber");
             }
@@ -322,6 +363,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_tID == value) return;
+
                 _tID = value;
                 RaisePropertyChanged("TID");
             }
@@ -335,6 +378,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_tVatNumber == value) return;
+
                 _tVatNumber = value;
                 RaisePropertyChanged("TVatNumber");
             }
@@ -348,6 +393,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_tFDAdress == value) return;
+
                 _tFDAdress = value;
                 //if (!string.IsNullOrEmpty(_tFDAdress))
                 //{
@@ -365,6 +412,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_tFSAddress == value) return;
+
                 _tFSAddress = value;
                 //if (!string.IsNullOrEmpty(_tFSAddress))
                 //{
@@ -382,6 +431,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_tFWType == value) return;
+
                 _tFWType = value;
                 //if (!string.IsNullOrEmpty(_tFWType))
                 //{ _TaxEvasionReportTobeUsedToSubmit.WorkType = _tFWType; }
@@ -397,6 +448,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_tReportDetail == value) return;
+
                 _tReportDetail = value;
                 //if (_tReportDetail != null)
                 //{
@@ -417,6 +470,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_txtReportDetailRegion == value) return;
+
                 _txtReportDetailRegion = value;
                 RaisePropertyChanged("TxtReportDetailRegion");
             }
@@ -430,6 +485,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_txtReportDetailCity == value) return;
+
                 _txtReportDetailCity = value;
                 RaisePropertyChanged("TxtReportDetailCity");
             }
@@ -443,6 +500,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_cityList == value) return;
+
                 _cityList = value;
                 RaisePropertyChanged("CList");
             }
@@ -456,6 +515,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_rList == value) return;
+
                 _rList = value;
                 RaisePropertyChanged("RList");
             }
@@ -469,6 +530,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_selectedTaxEvasionRegionPrev == value) return;
+
                 _selectedTaxEvasionRegionPrev = value;
                 //ListFormBudles = null;
                 RaisePropertyChanged("SelectedTaxEvasionRegionPrev");
@@ -483,6 +546,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_selectLCType == value) return;
+
                 _selectLCType = value;
                 if (_selectLCType != null)
                 {
@@ -522,6 +587,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_selectedTaxEvasionRegion == value) return;
+
                 _selectedTaxEvasionRegion = value;
                 if (_selectedTaxEvasionRegion != null)
                 {
@@ -550,6 +617,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_attachmentSize == value) return;
+
                 _attachmentSize = value;
                 RaisePropertyChanged("AttachmentSize");
             }
@@ -563,6 +632,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_totalAttachmentSize == value) return;
+
                 _totalAttachmentSize = value;
                 RaisePropertyChanged("TotalAttachmentSize");
             }
@@ -576,6 +647,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_selectedtaxEList == value) return;
+
                 _selectedtaxEList = value;
                 RaisePropertyChanged("selectedtaxEList");
             }
@@ -589,6 +662,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_TaxEvasionReportTobeUsedToSubmit == value) return;
+
                 _TaxEvasionReportTobeUsedToSubmit = value;
                 if (_TaxEvasionReportTobeUsedToSubmit != null)
                 {
@@ -605,6 +680,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_uploadedDocumentsList == value) return;
+
                 _uploadedDocumentsList = value;
                 RaisePropertyChanged("UploadedDocumentsList");
             }
@@ -618,6 +695,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_attachmentCount == value) return;
+
                 _attachmentCount = value;
                 RaisePropertyChanged("AttachmentCount");
             }
@@ -631,6 +710,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_uploadedDocumentsListObj == value) return;
+
                 _uploadedDocumentsListObj = value;
                 RaisePropertyChanged("UploadedDocumentsListObj");
             }
@@ -644,6 +725,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_latitude == value) return;
+
                 _latitude = value;
                 RaisePropertyChanged("Latitude");
             }
@@ -657,6 +740,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_longitude == value) return;
+
                 _longitude = value;
                 RaisePropertyChanged("Longitude");
             }
@@ -670,6 +755,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_attachmentName == value) return;
+
                 _attachmentName = value;
                 RaisePropertyChanged("AttachmentName");
             }
@@ -683,6 +770,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_dlistfacilityCompanyType == value) return;
+
                 _dlistfacilityCompanyType = value;
                 RaisePropertyChanged("DListFacilityCompanyType");
             }
@@ -696,6 +785,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_listfacilityCompanyType == value) return;
+
                 _listfacilityCompanyType = value;
                 RaisePropertyChanged("ListFacilityCompanyType");
             }
@@ -710,6 +801,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_reportTypes == value) return;
+
                 _reportTypes = value;
 
                 //if (_selectedTaxEvasionListItem != null)
@@ -729,6 +822,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             {
                 try
                 {
+                    if (_selectedReportTypeListItem == value) return;
+
                     _selectedReportTypeListItem = value;
 
                     if (_selectedReportTypeListItem != null)
@@ -757,6 +852,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }
@@ -771,6 +868,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_txtReporttype == value) return;
+
                 _txtReporttype = value;
                 RaisePropertyChanged("TxtReporttype");
             }
@@ -785,6 +884,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_categorySelected_Index == value) return;
+
                 _categorySelected_Index = value;
                 RaisePropertyChanged("CategorySelected_Index");
             }
@@ -798,6 +899,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             set
             {
+                if (_successResponse == value) return;
+
                 _successResponse = value;
                 RaisePropertyChanged("SuccessResponse");
             }
@@ -1033,6 +1136,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 catch (InternetException ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         //_dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -1137,7 +1242,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
         }
 
-        public async void NoInternetGoBack()
+        public void NoInternetGoBack()
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -1172,6 +1277,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1199,6 +1306,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 catch (InternetException ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     //Device.BeginInvokeOnMainThread(async () =>
                     //{
                     //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -1401,7 +1510,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     {
                         IsLoading = false;
                     });
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
                         _navigationService.NavigateTo(App.NewTaxEvasionFormSuccessPaveView);
                     });
@@ -1413,7 +1522,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                         IsLoading = false;
                     });
                    // _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2, " ");
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTEReportReportSuccessResponsep2));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTEReportReportSuccessResponsep2));
                 }
                 await Task.Run(() =>
                 {
@@ -1452,7 +1561,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     });
 
                     //_dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //viewModel._navigationService.GoBack();
                 });
             }
@@ -1471,163 +1580,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     });
 
                   //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                 });
             }
         }
 
 
-        public async Task UploadAttachment()
-        {
-            //imageArray = null;
-            //FileName = AppResources.NoFilechosen;
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await CrossMedia.Current.Initialize();
-
-                    try
-                    {
-                        if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
-                        {
-                            await _dialogService.ShowMessage("No Camera", "OK");
-                            return;
-                        }
-                        Device.BeginInvokeOnMainThread(async () =>
-                        ////await Task.Run(async () =>
-                        {
-                            var mediaOption = new Plugin.Media.Abstractions.StoreCameraMediaOptions
-                            {
-                                Name = "image.jpg",
-                                SaveToAlbum = false,
-                                CustomPhotoSize = 75,
-                                CompressionQuality = 50,
-                                PhotoSize = PhotoSize.Medium
-                            };
-                            var file = await CrossMedia.Current.TakePhotoAsync(mediaOption);
-                            if (file != null)
-                            {
-                                var filePath = await ReadFully(file.GetStream());
-                                //  UtilityManager.imagestring = Convert.ToBase64String(filePath);
-                            }
-                            if (file == null)
-                            {
-                                return;
-                            }
-
-                            if (file != null)
-                            {
-
-                                var imagePath = file.Path;
-                                var imageName = Path.GetFileName(imagePath);
-                                byte[] baseString = DependencyService.Get<IDeviceInfo>().GetImagePathByteArray(file.Path);
-                                //imageArray = System.Convert.FromBase64String(baseString);
-                                imageArray = baseString;
-                                FileName = imageName;
-
-                                if (AttachmentCount < 3)
-                                {
-                                    if (file != null)
-                                    {
-                                        attachment = baseString;
-
-                                        string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
-                                        AttachmentName = FileName;
-
-                                        float sizemb = (attachment.Length / 1024f) / 1024f;
-                                        AttachmentSize = AttachmentSize + (Decimal)sizemb;
-                                        if (FileName.Contains("."))
-                                        {
-                                            string Extention = FileName.Split('.')[1];//pdf
-                                            if ( Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
-                                            {
-                                                if (TotalAttachmentSize <= 30)
-                                                {
-                                                    AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
-                                                    decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
-                                                    if (Convert.ToDecimal(AttachmentSize) <= 10)
-                                                    {
-                                                        if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
-                                                        {
-                                                            bool isAttachmentexixt = false;
-
-                                                            try
-                                                            {
-                                                                UploadedDocumentsList a = new UploadedDocumentsList();
-                                                                a.FileNameWithExtension = AttachmentName;
-                                                                a.DocBinaryInBase64 = attachment;
-                                                                a.Size = AttachmentSize.ToString();
-
-                                                                string attachmentType = UtilityManager.GetContentType(Extention);
-                                                                //UploadedDocumentsList.DocBinaryInBase64 = base64String;
-                                                                //UploadedDocumentsList.FileNameWithExtension = AttachmentName;
-                                                                a.MimeType = attachmentType;
-                                                                foreach (UploadedDocumentsList ItemA in UploadedDocumentsListObj)
-                                                                {
-                                                                    if (AttachmentName == ItemA.FileNameWithExtension)
-                                                                    {
-                                                                        isAttachmentexixt = true;
-                                                                    }
-                                                                }
-                                                                if (isAttachmentexixt == false)
-                                                                {
-                                                                    UploadedDocumentsListObj.Add(a);
-                                                                    AttachmentCount++;
-                                                                    AttachmentName = string.Empty;
-                                                                    //MessagingCenter.Unsubscribe<object, string>(this, "OnCameraClicked");
-                                                                    //MessagingCenter.Unsubscribe<object, string>(this, "OnGalleryClicked");
-
-                                                                }
-                                                                else
-                                                                {
-                                                                    AttachmentName = string.Empty;
-                                                                    // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-                                                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
-                                                                }
-                                                                //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
-
-                                                            }
-                                                            catch (Exception ex)
-                                                            {
-                                                            }
-                                                        }
-                                                        else
-                                                        {
-                                                            AttachmentName = string.Empty;
-                                                            //  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                                                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                                // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
-                                            }
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof3attachmentscanbeuploaded));
-                                }
-                            }
-
-
-                        
-                        });
-                    }
-                    catch (Exception)
-                    {
-                    }
-
-                
-              
-            });
-        }
-
-
-        public async Task AddAttachment()
+        public void UploadAttachment()
         {
             //imageArray = null;
             //FileName = AppResources.NoFilechosen;
@@ -1637,7 +1596,159 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                 try
                 {
-                   
+                    if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                    {
+                        await _dialogService.ShowMessage("No Camera", "OK");
+                        return;
+                    }
+                    Device.BeginInvokeOnMainThread(async () =>
+                    ////await Task.Run(async () =>
+                    {
+                        var mediaOption = new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                        {
+                            Name = "image.jpg",
+                            SaveToAlbum = false,
+                            CustomPhotoSize = 75,
+                            CompressionQuality = 50,
+                            PhotoSize = PhotoSize.Medium
+                        };
+                        var file = await CrossMedia.Current.TakePhotoAsync(mediaOption);
+                        if (file != null)
+                        {
+                            var filePath = await ReadFully(file.GetStream());
+                                //  UtilityManager.imagestring = Convert.ToBase64String(filePath);
+                            }
+                        if (file == null)
+                        {
+                            return;
+                        }
+
+                        if (file != null)
+                        {
+
+                            var imagePath = file.Path;
+                            var imageName = Path.GetFileName(imagePath);
+                            byte[] baseString = DependencyService.Get<IDeviceInfo>().GetImagePathByteArray(file.Path);
+                                //imageArray = System.Convert.FromBase64String(baseString);
+                                imageArray = baseString;
+                            FileName = imageName;
+
+                            if (AttachmentCount < 3)
+                            {
+                                if (file != null)
+                                {
+                                    attachment = baseString;
+
+                                    string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
+                                    AttachmentName = FileName;
+
+                                    float sizemb = (attachment.Length / 1024f) / 1024f;
+                                    AttachmentSize = AttachmentSize + (Decimal)sizemb;
+                                    if (FileName.Contains("."))
+                                    {
+                                        string Extention = FileName.Split('.')[1];//pdf
+                                            if (Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
+                                        {
+                                            if (TotalAttachmentSize <= 30)
+                                            {
+                                                AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
+                                                decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
+                                                if (Convert.ToDecimal(AttachmentSize) <= 10)
+                                                {
+                                                    if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
+                                                    {
+                                                        bool isAttachmentexixt = false;
+
+                                                        try
+                                                        {
+                                                            UploadedDocumentsList a = new UploadedDocumentsList();
+                                                            a.FileNameWithExtension = AttachmentName;
+                                                            a.DocBinaryInBase64 = attachment;
+                                                            a.Size = AttachmentSize.ToString();
+
+                                                            string attachmentType = UtilityManager.GetContentType(Extention);
+                                                                //UploadedDocumentsList.DocBinaryInBase64 = base64String;
+                                                                //UploadedDocumentsList.FileNameWithExtension = AttachmentName;
+                                                                a.MimeType = attachmentType;
+                                                            foreach (UploadedDocumentsList ItemA in UploadedDocumentsListObj)
+                                                            {
+                                                                if (AttachmentName == ItemA.FileNameWithExtension)
+                                                                {
+                                                                    isAttachmentexixt = true;
+                                                                }
+                                                            }
+                                                            if (isAttachmentexixt == false)
+                                                            {
+                                                                UploadedDocumentsListObj.Add(a);
+                                                                AttachmentCount++;
+                                                                AttachmentName = string.Empty;
+                                                                    //MessagingCenter.Unsubscribe<object, string>(this, "OnCameraClicked");
+                                                                    //MessagingCenter.Unsubscribe<object, string>(this, "OnGalleryClicked");
+
+                                                                }
+                                                            else
+                                                            {
+                                                                AttachmentName = string.Empty;
+                                                                    // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+                                                            }
+                                                                //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
+
+                                                            }
+                                                        catch (Exception ex)
+                                                        {
+                                                            Console.Write(ex.ToString());
+                                                            Console.Write(ex.StackTrace.ToString());
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        AttachmentName = string.Empty;
+                                                            //  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                                // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof3attachmentscanbeuploaded));
+                            }
+                        }
+
+
+
+                    });
+                }
+                catch (Exception)
+                {
+                }
+
+
+
+            });
+        }
+
+
+        public void AddAttachment()
+        {
+            //imageArray = null;
+            //FileName = AppResources.NoFilechosen;
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await CrossMedia.Current.Initialize();
+
+                try
+                {
+
                     Device.BeginInvokeOnMainThread(async () =>
                     ////await Task.Run(async () =>
                     {
@@ -1741,7 +1852,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                                             {
                                                                 AttachmentName = string.Empty;
                                                                 // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-                                                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+                                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
                                                             }
                                                             //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
 
@@ -1754,7 +1865,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                                     {
                                                         AttachmentName = string.Empty;
                                                         //  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
                                                     }
                                                 }
                                             }
@@ -1762,14 +1873,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                         else
                                         {
                                             // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                                         }
                                     }
                                 }
                             }
                             else
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof3attachmentscanbeuploaded));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof3attachmentscanbeuploaded));
                             }
                         }
 

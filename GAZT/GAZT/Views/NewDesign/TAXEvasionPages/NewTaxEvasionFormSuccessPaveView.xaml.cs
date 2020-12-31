@@ -99,7 +99,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
            
         }

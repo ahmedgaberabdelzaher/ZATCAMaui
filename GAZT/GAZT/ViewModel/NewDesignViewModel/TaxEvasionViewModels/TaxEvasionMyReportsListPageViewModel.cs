@@ -29,6 +29,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_isLoading == value) return;
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -42,6 +43,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_selectedChipFilterItemList == value) return;
+
                 _selectedChipFilterItemList = value;
                 if (_selectedChipFilterItemList != null)
                 {
@@ -59,6 +62,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_tERListReportbymobno == value) return;
+
                 _tERListReportbymobno = value;
                 RaisePropertyChanged("TERListReportbymobno");
             }
@@ -72,6 +77,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_tERListReportbymobnoAll == value) return;
+
                 _tERListReportbymobnoAll = value;
                 RaisePropertyChanged("TERListReportbymobnoAll");
             }
@@ -85,6 +92,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_listToDisplay == value) return;
+
                 _listToDisplay = value;
                 if (_listToDisplay!=null)
                 {
@@ -110,6 +119,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_taxEvasionReportListClosed == value) return;
+
                 _taxEvasionReportListClosed = value;
                 RaisePropertyChanged("TERListReportbymobnoClosed");
             }
@@ -123,6 +134,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_chipDataFilterlist == value) return;
+
                 _chipDataFilterlist = value;
                 RaisePropertyChanged("ChipDataFilterlist");
             }
@@ -136,6 +149,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_isReportListVisible == value) return;
+
                 _isReportListVisible = value;
                 RaisePropertyChanged("IsReportListVisible");
             }
@@ -149,6 +164,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_IsNoReportLabelVisible == value) return;
+
                 _IsNoReportLabelVisible = value;
                 RaisePropertyChanged("IsNoReportLabelVisible");
             }
@@ -164,6 +181,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             {
                 try
                 {
+                    if (_selectedTaxEvasionListItem == value) return;
+
                     _selectedTaxEvasionListItem = value;
                     try
                     {
@@ -173,14 +192,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         }
                     }
                     catch (Exception ex)
-                    { 
-                    
+                    {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                     
                     RaisePropertyChanged("SelectedTaxEvasionListItem");
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }
@@ -205,8 +227,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             };
             }
             catch (Exception ex)
-            { 
-            
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             
         }
@@ -222,8 +245,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         ListToDisplay = new ObservableCollection<TaxEvasionReportDetails>(TERListReportbymobnoAll);
                     }
                     catch (Exception ex)
-                    { 
-                    
+                    {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                     
                     if (SelectedChipFilterItemList != null)
@@ -255,8 +279,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                 ListToDisplay = new ObservableCollection<TaxEvasionReportDetails>(list.OrderByDescending(c => c.TicketId));
                             }
                             catch (Exception ex)
-                            { 
-                            
+                            {
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
                             }
                             
 
@@ -367,6 +392,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Task.Run(() =>
@@ -397,7 +424,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

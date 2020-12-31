@@ -74,6 +74,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isInstructionChecked == value) return;
                 _isInstructionChecked = value;
 
 
@@ -90,6 +91,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isContactPersonEnabled == value) return;
+
                 _isContactPersonEnabled = value;
 
 
@@ -107,6 +110,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_currentStep == value) return;
+
                 _currentStep = value;
                 if (_currentStep != null)
                 {
@@ -128,6 +133,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_currentOpenedTab == value) return;
+
                 _currentOpenedTab = value;
                 RaisePropertyChanged("CurrentOpenedTab");
             }
@@ -144,6 +151,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_attachmentName == value) return;
+
                 _attachmentName = value;
                 RaisePropertyChanged("AttachmentName");
             }
@@ -158,6 +167,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isReasonViewEnabled == value) return;
+
                 _isReasonViewEnabled = value;
                 RaisePropertyChanged("IsReasonViewEnabled");
             }
@@ -172,6 +183,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isOutletViewEnabled == value) return;
+
                 _isOutletViewEnabled = value;
                 RaisePropertyChanged("IsOutletViewEnabled");
             }
@@ -186,6 +199,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isAttachmentsViewEnabled == value) return;
+
                 _isAttachmentsViewEnabled = value;
                 RaisePropertyChanged("IsAttachmentsViewEnabled");
             }
@@ -200,6 +215,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isDeclarationViewEnabled == value) return;
+
                 _isDeclarationViewEnabled = value;
                 RaisePropertyChanged("IsDeclarationViewEnabled");
             }
@@ -214,6 +231,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isReturnFilingViewEnabled == value) return;
+
                 _isReturnFilingViewEnabled = value;
                 RaisePropertyChanged("IsReturnFilingViewEnabled");
             }
@@ -227,6 +246,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isSummaryViewEnabled == value) return;
+
                 _isSummaryViewEnabled = value;
                 RaisePropertyChanged("IsSummaryViewEnabled");
             }
@@ -240,6 +261,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_titleText == value) return;
+
                 _titleText = value;
                 RaisePropertyChanged("TitleText");
             }
@@ -253,6 +276,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_reasonTitle == value) return;
+
                 _reasonTitle = value;
                 if (_reasonTitle != null)
                 {
@@ -285,6 +310,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_fileName == value) return;
+
                 _fileName = value;
                 RaisePropertyChanged("FileName");
             }
@@ -298,6 +325,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_attachmentTitle == value) return;
+
                 _attachmentTitle = value;
                 RaisePropertyChanged("AttachmentTitle");
             }
@@ -311,6 +340,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_frameIDError == value) return;
+
                 _frameIDError = value;
                 RaisePropertyChanged("FrameIDError");
             }
@@ -325,6 +356,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -339,6 +372,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_suspendedStartDate == value) return;
+
                 _suspendedStartDate = value;
                 RaisePropertyChanged("SuspendedStartDate");
             }
@@ -352,6 +387,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_suspendedEndDate == value) return;
+
                 _suspendedEndDate = value;
                 RaisePropertyChanged("SuspendedEndDate");
             }
@@ -363,6 +400,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -387,6 +426,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_maxIndex == value) return;
+
                 _maxIndex = value;
                 RaisePropertyChanged("MaxIndex");
             }
@@ -401,6 +442,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_nextFilingStartDate == value) return;
+
                 _nextFilingStartDate = value;
                 RaisePropertyChanged("NextFilingStartDate");
             }
@@ -414,6 +457,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_nextFilingEndDate == value) return;
+
                 _nextFilingEndDate = value;
                 RaisePropertyChanged("NextFilingEndDate");
             }
@@ -427,6 +472,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_nextFilingDueDate == value) return;
+
                 _nextFilingDueDate = value;
                 RaisePropertyChanged("NextFilingDueDate");
             }
@@ -440,6 +487,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsVisibleNextDueDate == value) return;
+
                 _IsVisibleNextDueDate = value;
                 RaisePropertyChanged("IsVisibleNextDueDate");
             }
@@ -453,6 +502,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_startDate == value) return;
+
                 _startDate = value;
                 RaisePropertyChanged("StartDate");
             }
@@ -466,6 +517,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_endDate == value) return;
+
                 _endDate = value;
                 RaisePropertyChanged("EndDate");
             }
@@ -479,6 +532,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_attachmentList == value) return;
+
                 _attachmentList = value;
                 RaisePropertyChanged("AttachmentList");
             }
@@ -492,6 +547,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vatAttachmentsListtofilter == value) return;
+
                 _vatAttachmentsListtofilter = value;
                 RaisePropertyChanged("VatAttachmentsListtofilter");
             }
@@ -507,6 +564,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_fromDate == value) return;
+
                 _fromDate = value;
                 RaisePropertyChanged("FromDate");
             }
@@ -520,6 +579,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_toDate == value) return;
+
                 _toDate = value;
                 RaisePropertyChanged("ToDate");
             }
@@ -534,6 +595,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_lastIcrDate == value) return;
+
                 _lastIcrDate = value;
                 RaisePropertyChanged("LastIcrDate");
             }
@@ -548,6 +611,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedOutletOptionIndex == value) return;
+
                 _selectedOutletOptionIndex = value;
                 RaisePropertyChanged("SelectedOutletOptionIndex");
             }
@@ -561,6 +626,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_txtIDNumber == value) return;
+
                 _txtIDNumber = value;
                 RaisePropertyChanged("TxtIDNumber");
             }
@@ -574,6 +641,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_iDType == value) return;
+
                 _iDType = value;
                 RaisePropertyChanged("IDType");
             }
@@ -587,6 +656,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_DOB == value) return;
+
                 _DOB = value;
                 RaisePropertyChanged("DOB");
             }
@@ -600,6 +671,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_Reason == value) return;
+
                 _Reason = value;
                 RaisePropertyChanged("Reason");
             }
@@ -613,6 +686,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_fileSize == value) return;
+
                 _fileSize = value;
                 RaisePropertyChanged("FileSize");
             }
@@ -626,6 +701,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_contactPersonName == value) return;
+
                 _contactPersonName = value;
                 RaisePropertyChanged("ContactPersonName");
             }
@@ -639,6 +716,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_OtherField == value) return;
+
                 _OtherField = value;
                 RaisePropertyChanged("OtherField");
             }
@@ -652,6 +731,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_pickerModel == value) return;
+
                 _pickerModel = value;
                 RaisePropertyChanged("PickerModel");
             }
@@ -665,6 +746,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_datepickerModel == value) return;
+
                 _datepickerModel = value;
                 RaisePropertyChanged("DatePickerModel");
             }
@@ -681,7 +764,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
-                if(value!=null)
+                if (outletDecisionOptions == value) return;
+
+                if (value!=null)
                 outletDecisionOptions = value;
                 RaisePropertyChanged("OutletDecisionOptions");
             }
@@ -696,6 +781,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (vatDeregistrationModel == value) return;
+
                 vatDeregistrationModel = value;
                 RaisePropertyChanged("VATDeregistrationModel");
             }
@@ -709,6 +796,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isDeclarationChecked == value) return;
+
                 _isDeclarationChecked = value;
 
                 if (_isDeclarationChecked)
@@ -732,6 +821,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_declarationContinueButtonnBackroundColor == value) return;
+
                 _declarationContinueButtonnBackroundColor = value;
                 RaisePropertyChanged("DeclarationContinueButtonnBackroundColor");
             }
@@ -745,6 +836,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_iSDeclarationContinueButtonEnabled == value) return;
+
                 _iSDeclarationContinueButtonEnabled = value;
                 if (_iSDeclarationContinueButtonEnabled)
                 {
@@ -783,8 +876,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_attachmentTypes == value) return;
 
-                if(value!=null)
+                if (value!=null)
                 _attachmentTypes = value;
                 RaisePropertyChanged("AttachmentTypes");
             }
@@ -800,6 +894,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (attachmentsListViewData == value) return;
 
                 if (value != null)
                     attachmentsListViewData = value;
@@ -817,6 +912,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_vatDeregistrationSummaryReasonData == value) return;
+
                 if (value != null)
                 {
                     _vatDeregistrationSummaryReasonData = value;
@@ -835,6 +932,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_attachmentSize == value) return;
+
                 _attachmentSize = value;
                 RaisePropertyChanged("AttachmentSize");
             }
@@ -848,6 +947,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_docTypeString == value) return;
+
                 _docTypeString = value;
                 RaisePropertyChanged("DocTypeString");
             }
@@ -863,6 +964,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_textCount == value) return;
+
                 _textCount = value;
                 RaisePropertyChanged("TextCount");
             }
@@ -878,6 +981,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_attachmentCount == value) return;
+
                 _attachmentCount = value;
                 RaisePropertyChanged("AttachmentCount");
             }
@@ -891,6 +996,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_attachmentSizeVisibility == value) return;
+
                 _attachmentSizeVisibility = value;
                 RaisePropertyChanged("AttachmentSizeVisibility");
             }
@@ -904,6 +1011,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATDeclarationDataForAttch == value) return;
+
                 _vATDeclarationDataForAttch = value;
                 RaisePropertyChanged("VATDeclarationDataForAttch");
             }
@@ -918,6 +1027,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_vatDeregistrationSummaryDeclarationData == value) return;
+
                 if (value != null)
                 {
                     _vatDeregistrationSummaryDeclarationData = value;
@@ -935,6 +1046,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedOutletOption == value) return;
+
                 _selectedOutletOption = value;
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
                 RaisePropertyChanged("SelectedOutletOption");
@@ -950,6 +1063,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATDeRegistrationDetailsData == value) return;
+
                 _vATDeRegistrationDetailsData = value;
                 RaisePropertyChanged("VATDeRegistrationDetailsData");
             }
@@ -964,6 +1079,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedDocumentOption == value) return;
+
                 _selectedDocumentOption = value;
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
                 RaisePropertyChanged("SelectedDocumentOption");
@@ -978,6 +1095,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_totalAttachmentSize == value) return;
+
                 _totalAttachmentSize = value;
                 RaisePropertyChanged("TotalAttachmentSize");
             }
@@ -1009,6 +1128,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_stepNumber == value) return;
+
                 _stepNumber = value;
                 RaisePropertyChanged("StepNumber");
             }
@@ -1022,6 +1143,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedAttachment == value) return;
+
                 _selectedAttachment = value;
                 RaisePropertyChanged("SelectedAttachment");
             }
@@ -1036,6 +1159,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isBackButtonVisible == value) return;
+
                 _isBackButtonVisible = value;
                 RaisePropertyChanged("IsBackButtonVisible");
             }
@@ -1050,7 +1175,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if(value!=null)
+                if (_fileAttachments == value) return;
+
+                if (value!=null)
                 _fileAttachments = value;
                 RaisePropertyChanged("FileAttachments");
             }
@@ -1065,6 +1192,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATDeRegistrationDetailsForAttach == value) return;
+
                 _vATDeRegistrationDetailsForAttach = value;
                 RaisePropertyChanged("VATDeRegistrationDetailsForAttach");
             }
@@ -1079,6 +1208,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isOthersEditorVisible == value) return;
+
                 _isOthersEditorVisible = value;
                 RaisePropertyChanged("IsOthersEditorVisible");
             }
@@ -1093,6 +1224,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isDOBEditorVisible == value) return;
+
                 _isDOBEditorVisible = value;
                 RaisePropertyChanged("IsDOBEditorVisible");
             }
@@ -1106,6 +1239,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_VoidIsVisible == value) return;
+
                 _VoidIsVisible = value;
                 RaisePropertyChanged("VoidIsVisible");
             }
@@ -1194,7 +1329,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 catch (Exception ex)
                 {
-                      
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
                 GetLastICRDate();
@@ -1322,6 +1458,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1375,9 +1513,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeregistrationLastICRDateRootObject obj = await WebServiceManager.GAZTGETVATDeregSuspensionDate(reqType);
                 LastIcrDate = obj.d.results[0].Lasticrdt;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1479,7 +1618,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1557,7 +1697,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             }catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1569,6 +1710,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
             }
             catch (InternetException ex)
@@ -1751,13 +1894,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     catch (Exception ex)
                     {
-
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 }
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
             }
 
@@ -1817,7 +1962,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1870,7 +2016,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1915,7 +2062,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1943,7 +2091,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1987,7 +2136,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 catch (Exception ex)
                 {
-
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
             IsBackButtonVisible = true;
@@ -2001,7 +2151,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 AddOutletDocumentOptions();
             }catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -2156,7 +2307,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         catch (Exception ex)
                         {
-
+                            Console.Write(ex.ToString());
+                            Console.Write(ex.StackTrace.ToString());
                         }
                     }
 
@@ -2194,7 +2346,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeregistrationSummaryReasonData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
             }catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -2237,6 +2390,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void setDocType()
@@ -2341,6 +2496,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                         }
                                                         catch (Exception ex)
                                                         {
+                                                            Console.Write(ex.ToString());
+                                                            Console.Write(ex.StackTrace.ToString());
                                                             await Task.Run(() =>
                                                             {
                                                                 IsLoading = false;
@@ -2473,6 +2630,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     //  return null;
                 }
             });
@@ -2503,7 +2662,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2788,6 +2948,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                         IsLoading = false;
                         return null;
                     }
@@ -2810,6 +2972,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 return response;
             }
         }
@@ -2869,6 +3033,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                         IsLoading = false;
                         return null;
                     }

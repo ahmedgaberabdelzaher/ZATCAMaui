@@ -164,10 +164,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            OnBillsButtonClicked = new Xamarin.Forms.Command(async () =>
+            OnBillsButtonClicked = new Xamarin.Forms.Command(() =>
             {
             });
-            OnAmendReturnButtonClicked = new Command(async () =>
+            OnAmendReturnButtonClicked = new Command(() =>
             {
                 try
                 {
@@ -176,6 +176,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             GoBackClick = new Command(async () =>
@@ -196,6 +198,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 }
                 catch(Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
 
@@ -208,6 +212,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             
@@ -424,6 +430,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
             }
             catch(Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -457,6 +465,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                         }
                             catch (Exception ex)
                             {
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
                             }
                         }
                         else
@@ -484,6 +494,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                         }
                             catch (Exception ex)
                             {
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
                             }
                         //Device.BeginInvokeOnMainThread(async () => {
                         //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
@@ -510,7 +522,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         });
                     }
                 });
@@ -520,7 +532,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 });
             }
             catch (Exception ex)
-            { 
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
       private ZakatReturnDetailsD GetUpdatedDataAfterAddingComma()

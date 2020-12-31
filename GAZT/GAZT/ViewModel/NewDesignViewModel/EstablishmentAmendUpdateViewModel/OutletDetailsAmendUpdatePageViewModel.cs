@@ -29,6 +29,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _listOutletTypes;
             set
             {
+                if (_listOutletTypes == value) return;
+
                 _listOutletTypes = value;
                 RaisePropertyChanged(nameof(ListOutletTypes));
             }
@@ -39,6 +41,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedOutletType;
             set
             {
+                if (_selectedOutletType == value) return;
+
                 _selectedOutletType = value;
                 RaisePropertyChanged(nameof(SelectedOutletType));
             }
@@ -57,6 +61,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _currentTab;
             set
             {
+                if (_currentTab == value) return;
+
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)value;
@@ -103,6 +109,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 //MarkComplete = _currenrIndex == MaxIndex;
@@ -117,6 +125,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedOutletTabText;
             private set
             {
+                if (_selectedOutletTabText == value) return;
+
                 _selectedOutletTabText = value;
                 RaisePropertyChanged(nameof(SelectedOutletTabText));
             }
@@ -128,6 +138,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _nxtButtonLabel;
             set
             {
+                if (_nxtButtonLabel == value) return;
+
                 _nxtButtonLabel = value;
                 RaisePropertyChanged(nameof(NxtButtonLabel));
             }
@@ -139,6 +151,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _outletName;
             set
             {
+                if (_outletName == value) return;
+
                 if (value != null)
                 {
                     _outletName = value;
@@ -152,6 +166,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _outletActNumber;
             set
             {
+                if (_outletActNumber == value) return;
+
                 if (value != null)
                 {
                     _outletActNumber = value;
@@ -167,6 +183,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _houseNumber;
             set
             {
+                if (_houseNumber == value) return;
+
                 if (value != null)
                 {
                     _houseNumber = value;
@@ -180,6 +198,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _buildingNumber;
             set
             {
+                if (_buildingNumber == value) return;
+
                 if (value != null)
                 {
                     _buildingNumber = value;
@@ -193,6 +213,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _floorNumber;
             set
             {
+                if (_floorNumber == value) return;
+
                 if (value != null)
                 {
                     _floorNumber = value;
@@ -206,6 +228,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _street;
             set
             {
+                if (_street == value) return;
+
                 if (value != null)
                 {
                     _street = value;
@@ -219,6 +243,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _quarter;
             set
             {
+                if (_quarter == value) return;
+
                 if (value != null)
                 {
                     _quarter = value;
@@ -232,6 +258,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _postalCode;
             set
             {
+                if (_postalCode == value) return;
+
                 if (value != null)
                 {
                     _postalCode = value;
@@ -245,6 +273,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _addNumber;
             set
             {
+                if (_addNumber == value) return;
+
                 if (value != null)
                 {
                     _addNumber = value;
@@ -258,6 +288,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _country;
             set
             {
+                if (_country == value) return;
+
                 if (value != null)
                 {
                     _country = value;
@@ -271,6 +303,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _provinance;
             set
             {
+                if (_provinance == value) return;
+
                 if (value != null)
                 {
                     _provinance = value;
@@ -284,6 +318,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _city;
             set
             {
+                if (_city == value) return;
+
                 if (value != null)
                 {
                     _city = value;
@@ -297,6 +333,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _postalAsPhysical;
             set
             {
+                if (_postalAsPhysical == value) return;
+
                 _postalAsPhysical = value;
                 RaisePropertyChanged(nameof(PostalAsPhysical));
                 if (value)
@@ -333,6 +371,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _houseNumberSame;
             set
             {
+                if (_houseNumberSame == value) return;
+
                 if (value != null)
                 {
                     _houseNumberSame = value;
@@ -346,6 +386,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _buildingNumberSame;
             set
             {
+                if (_buildingNumberSame == value) return;
+
                 if (value != null)
                 {
                     _buildingNumberSame = value;
@@ -359,6 +401,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _floorNumberSame;
             set
             {
+                if (_floorNumberSame == value) return;
+
                 if (value != null)
                 {
                     _floorNumberSame = value;
@@ -372,6 +416,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _streetSame;
             set
             {
+                if (_streetSame == value) return;
+
                 if (value != null)
                 {
                     _streetSame = value;
@@ -385,6 +431,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _quarterSame;
             set
             {
+                if (_quarterSame == value) return;
+
                 if (value != null)
                 {
                     _quarterSame = value;
@@ -398,6 +446,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _postalCodeSame;
             set
             {
+                if (_postalCodeSame == value) return;
+
                 if (value != null)
                 {
                     _postalCodeSame = value;
@@ -411,6 +461,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _addNumberSame;
             set
             {
+                if (_addNumberSame == value) return;
+
                 if (value != null)
                 {
                     _addNumberSame = value;
@@ -424,6 +476,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _countrySame;
             set
             {
+                if (_countrySame == value) return;
+
                 if (value != null)
                 {
                     _countrySame = value;
@@ -437,6 +491,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _provinanceSame;
             set
             {
+                if (_provinanceSame == value) return;
+
                 if (value != null)
                 {
                     _provinanceSame = value;
@@ -450,6 +506,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _citySame;
             set
             {
+                if (_citySame == value) return;
+
                 if (value != null)
                 {
                     _citySame = value;
@@ -466,6 +524,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_outletDropDowns == value) return;
+
                 _outletDropDowns = value;
                 RaisePropertyChanged(nameof(OutletDropDowns));
                 //}
@@ -477,6 +537,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _canExecute;
             set
             {
+                if (_canExecute == value) return;
+
                 _canExecute = value;
                 RaisePropertyChanged(nameof(CanExecute));
             }
@@ -1026,7 +1088,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         }
                     }catch(Exception ex)
                     {
-
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
@@ -1117,9 +1180,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     //activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {

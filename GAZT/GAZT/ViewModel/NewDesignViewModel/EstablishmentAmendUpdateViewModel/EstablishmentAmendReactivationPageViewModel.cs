@@ -42,6 +42,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _currentTab;
             set
             {
+                if (_currentTab == value) return;
                 if (_currentTab == value)
                 {
                     if (!IsNavigationCompletedToSuccessfulPage)
@@ -97,6 +98,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _tabList;
             set
             {
+                if (_tabList == value) return;
+
                 _tabList = value;
                 RaisePropertyChanged(nameof(TabList));
             }
@@ -120,6 +123,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 MarkComplete = _currenrIndex == MaxIndex;
@@ -133,6 +138,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedTabText;
             set
             {
+                if (_selectedTabText == value) return;
+
                 _selectedTabText = value;
                 RaisePropertyChanged(nameof(SelectedTabText));
             }
@@ -144,6 +151,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _nxtButtonLabel;
             set
             {
+                if (_nxtButtonLabel == value) return;
+
                 _nxtButtonLabel = value;
                 RaisePropertyChanged(nameof(NxtButtonLabel));
             }
@@ -157,6 +166,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedOwnRentOption;
             set
             {
+                if (_isClickedOwnRentOption == value) return;
+
                 _isClickedOwnRentOption = value;
                 RaisePropertyChanged("IsClickedOwnRentOption");
             }
@@ -168,6 +179,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedStayMoreThanKSAOption;
             set
             {
+                if (_isClickedStayMoreThanKSAOption == value) return;
+
                 _isClickedStayMoreThanKSAOption = value;
                 RaisePropertyChanged("IsClickedStayMoreThanKSAOption");
             }
@@ -180,6 +193,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedNoneOfTheAboveOption;
             set
             {
+                if (_isClickedNoneOfTheAboveOption == value) return;
+
                 _isClickedNoneOfTheAboveOption = value;
                 RaisePropertyChanged("IsClickedNoneOfTheAboveOption");
             }
@@ -192,6 +207,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedPermanentLegalEntity;
             set
             {
+                if (_isClickedNoneOfTheAboveOption == value) return;
+
                 _isClickedPermanentLegalEntity = value;
                 RaisePropertyChanged("IsClickedPermanentLegalEntity");
             }
@@ -204,6 +221,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedOtherTaxableIncomeLegalEntity;
             set
             {
+                if (_isClickedOtherTaxableIncomeLegalEntity == value) return;
+
                 _isClickedOtherTaxableIncomeLegalEntity = value;
                 RaisePropertyChanged("IsClickedOtherTaxableIncomeLegalEntity");
             }
@@ -218,6 +237,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedABranchOfNonResidentCompanyPE;
             set
             {
+                if (_isClickedABranchOfNonResidentCompanyPE == value) return;
+
                 _isClickedABranchOfNonResidentCompanyPE = value;
                 RaisePropertyChanged("IsClickedABranchOfNonResidentCompanyPE");
             }
@@ -231,6 +252,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedConstructionSitePE;
             set
             {
+                if (_isClickedConstructionSitePE == value) return;
+
                 _isClickedConstructionSitePE = value;
                 RaisePropertyChanged("IsClickedConstructionSitePE");
             }
@@ -243,6 +266,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedInstallationPE;
             set
             {
+                if (_isClickedInstallationPE == value) return;
+
                 _isClickedInstallationPE = value;
                 RaisePropertyChanged("IsClickedInstallationPE");
             }
@@ -255,6 +280,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedAFixedBasePE;
             set
             {
+                if (_isClickedAFixedBasePE == value) return;
+
                 _isClickedAFixedBasePE = value;
                 RaisePropertyChanged("IsClickedAFixedBasePE");
             }
@@ -266,6 +293,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedNonResidentPartnerPE;
             set
             {
+                if (_isClickedNonResidentPartnerPE == value) return;
+
                 _isClickedNonResidentPartnerPE = value;
                 RaisePropertyChanged("IsClickedNonResidentPartnerPE");
             }
@@ -277,6 +306,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedTpresidence;
             set
             {
+                if (_selectedTpresidence == value) return;
+
                 _selectedTpresidence = value;
                 RaisePropertyChanged(nameof(SelectedTpresidence));
             }
@@ -288,6 +319,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedOrgNonResident;
             set
             {
+                if (_selectedOrgNonResident == value) return;
+
                 _selectedOrgNonResident = value;
                 RaisePropertyChanged(nameof(SelectedOrgNonResident));
             }
@@ -299,6 +332,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedOrgNonResidentOptions;
             set
             {
+                if (_selectedOrgNonResidentOptions == value) return;
+
                 _selectedOrgNonResidentOptions = value;
                 RaisePropertyChanged(nameof(SelectedOrgNonResidentOptions));
             }
@@ -311,6 +346,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedOrgNonResidentActivity;
             set
             {
+                if (_selectedOrgNonResidentActivity == value) return;
+
                 _selectedOrgNonResidentActivity = value;
                 RaisePropertyChanged(nameof(SelectedOrgNonResidentActivity));
             }
@@ -333,6 +370,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_orgNonResidentActivityList == value) return;
+
                 if (value != null)
                 {
                     _orgNonResidentActivityList = value;
@@ -347,7 +386,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedOrgNonResidentActivityItem;
             set
             {
-                _selectedOrgNonResidentActivityItem = value;
+                if (_selectedOrgNonResidentActivityItem == value) return;
 
                 if (SelectedOrgNonResidentActivityItem != null)
                 {
@@ -366,6 +405,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_isAttachmentEnable == value) return;
+
                 _isAttachmentEnable = value;
                 RaisePropertyChanged("IsAttachmentEnable");
             }
@@ -377,6 +418,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedReportingBranch;
             set
             {
+                if (_selectedReportingBranch == value) return;
+
                 _selectedReportingBranch = value;
                 RaisePropertyChanged(nameof(SelectedReportingBranch));
             }
@@ -389,6 +432,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _reportingBranchList;
             set
             {
+                if (_reportingBranchList == value) return;
+
                 _reportingBranchList = value;
                 RaisePropertyChanged(nameof(ReportingBranchList));
             }
@@ -401,6 +446,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedEntityType;
             set
             {
+                if (_selectedEntityType == value) return;
+
                 _selectedEntityType = value;
                 RaisePropertyChanged(nameof(SelectedEntityType));
             }
@@ -412,6 +459,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedTaxPayerType;
             set
             {
+                if (_selectedTaxPayerType == value) return;
+
                 _selectedTaxPayerType = value;
                 RaisePropertyChanged(nameof(SelectedTaxPayerType));
             }
@@ -423,6 +472,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedRegNationalityType;
             set
             {
+                if (_selectedRegNationalityType == value) return;
+
                 _selectedRegNationalityType = value;
                 RaisePropertyChanged(nameof(SelectedRegNationalityType));
             }
@@ -435,6 +486,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isSaudi;
             set
             {
+                if (_isSaudi == value) return;
+
                 _isSaudi = value;
                 RaisePropertyChanged(nameof(IsSaudi));
             }
@@ -444,6 +497,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedLegalEntity;
             set
             {
+                if (_selectedLegalEntity == value) return;
+
                 _selectedLegalEntity = value;
                 RaisePropertyChanged(nameof(SelectedLegalEntity));
             }
@@ -458,6 +513,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_uploadedRentDocumentsList == value) return;
+
                 _uploadedRentDocumentsList = value;
                 if (UploadedRentDocumentsList.Count > 0)
                 {
@@ -474,6 +531,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isVisbleRentAttachmentmentList;
             set
             {
+                if (_isVisbleRentAttachmentmentList == value) return;
+
                 _isVisbleRentAttachmentmentList = value;
                 RaisePropertyChanged(nameof(IsVisbleRentAttachmentmentList));
             }
@@ -485,6 +544,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedRentFileName;
             set
             {
+                if (_selectedRentFileName == value) return;
+
                 _selectedRentFileName = value;
                 RaisePropertyChanged(nameof(SelectedRentFileName));
             }
@@ -500,6 +561,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _genderList;
             set
             {
+                if (_genderList == value) return;
+
                 if (value != null)
                 {
                     _genderList = value;
@@ -513,6 +576,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedGender;
             set
             {
+                if (_selectedGender == value) return;
+
                 _selectedGender = value;
                 RaisePropertyChanged(nameof(SelectedGender));
             }
@@ -535,6 +600,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _gCCIDType;
             set
             {
+                if (_gCCIDType == value) return;
+
                 _gCCIDType = value;
                 RaisePropertyChanged(nameof(GCCIDType));
             }
@@ -546,6 +613,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _gCCIDTypeIdNumberValue;
             set
             {
+                if (_gCCIDTypeIdNumberValue == value) return;
+
                 _gCCIDTypeIdNumberValue = value;
                 RaisePropertyChanged(nameof(GCCIDTypeIdNumberValue));
             }
@@ -571,6 +640,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedDOB;
             set
             {
+                if (_selectedDOB == value) return;
+
                 _selectedDOB = value;
                 RaisePropertyChanged(nameof(SelectedDOB));
             }
@@ -581,6 +652,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _displaySelectedDOB;
             set
             {
+                if (_displaySelectedDOB == value) return;
+
                 _displaySelectedDOB = value;
                 RaisePropertyChanged(nameof(DisplaySelectedDOB));
             }
@@ -594,6 +667,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_selectedDOBDate == value) return;
+
                 _selectedDOBDate = value;
                 RaisePropertyChanged(nameof(SelectedDOBDate));
             }
@@ -607,6 +682,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_selectedDOBHijiriDate == value) return;
+
                 _selectedDOBHijiriDate = value;
                 RaisePropertyChanged(nameof(SelectedDOBHijiriDate));
             }
@@ -617,6 +694,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _firstName;
             set
             {
+                if (_firstName == value) return;
+
                 _firstName = value;
                 RaisePropertyChanged(nameof(FirstName));
             }
@@ -628,6 +707,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _lastName;
             set
             {
+                if (_lastName == value) return;
+
                 _lastName = value;
                 RaisePropertyChanged(nameof(LastName));
             }
@@ -639,6 +720,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _fatherName;
             set
             {
+                if (_fatherName == value) return;
+
                 _fatherName = value;
                 RaisePropertyChanged(nameof(FatherName));
             }
@@ -650,6 +733,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _grandFatherName;
             set
             {
+                if (_grandFatherName == value) return;
+
                 _grandFatherName = value;
                 RaisePropertyChanged(nameof(GrandFatherName));
             }
@@ -661,6 +746,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _familyName;
             set
             {
+                if (_familyName == value) return;
+
                 _familyName = value;
                 RaisePropertyChanged(nameof(FamilyName));
             }
@@ -672,6 +759,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _initial;
             set
             {
+                if (_initial == value) return;
+
                 _initial = value;
                 RaisePropertyChanged(nameof(Initial));
             }
@@ -686,6 +775,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_datepickerModel == value) return;
+
                 _datepickerModel = value;
                 RaisePropertyChanged("DatePickerModel");
             }
@@ -696,6 +787,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _taxpayerFullNationlityList;
             set
             {
+                if (_taxpayerFullNationlityList == value) return;
+
                 _taxpayerFullNationlityList = value;
                 RaisePropertyChanged(nameof(TaxpayerFullNationlityList));
             }
@@ -707,6 +800,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _taxpayerPDNationlityList;
             set
             {
+                if (_taxpayerPDNationlityList == value) return;
+
                 _taxpayerPDNationlityList = value;
                 RaisePropertyChanged(nameof(TaxpayerPDNationlityList));
             }
@@ -718,6 +813,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedTaxpayerPDNationality;
             set
             {
+                if (_selectedTaxpayerPDNationality == value) return;
+
                 _selectedTaxpayerPDNationality = value;
                 RaisePropertyChanged(nameof(SelectedTaxpayerPDNationality));
             }
@@ -740,6 +837,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedCitizen;
             set
             {
+                if (_selectedCitizen == value) return;
+
                 _selectedCitizen = value;
                 RaisePropertyChanged(nameof(SelectedCitizen));
             }
@@ -762,6 +861,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedResidence;
             set
             {
+                if (_selectedResidence == value) return;
+
                 _selectedResidence = value;
                 RaisePropertyChanged(nameof(SelectedResidence));
             }
@@ -777,6 +878,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _passportNumber;
             set
             {
+                if (_passportNumber == value) return;
+
                 _passportNumber = value;
                 RaisePropertyChanged(nameof(PassportNumber));
             }
@@ -799,6 +902,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedPassportIssueCountry;
             set
             {
+                if (_selectedPassportIssueCountry == value) return;
+
                 _selectedPassportIssueCountry = value;
                 RaisePropertyChanged(nameof(SelectedPassportIssueCountry));
             }
@@ -813,6 +918,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_selectedPassportIssueDate == value) return;
+
                 _selectedPassportIssueDate = value;
                 RaisePropertyChanged(nameof(SelectedPassportIssueDate));
             }
@@ -826,6 +933,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_selectedPassportIssueHijiriDate == value) return;
+
                 _selectedPassportIssueHijiriDate = value;
                 RaisePropertyChanged(nameof(SelectedPassportIssueHijiriDate));
             }
@@ -836,6 +945,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _passportIssueDate;
             set
             {
+                if (_passportIssueDate == value) return;
+
                 _passportIssueDate = value;
                 RaisePropertyChanged(nameof(PassportIssueDate));
             }
@@ -846,6 +957,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _displayPassportIssueDate;
             set
             {
+                if (_displayPassportIssueDate == value) return;
+
                 _displayPassportIssueDate = value;
                 RaisePropertyChanged(nameof(DisplayPassportIssueDate));
             }
@@ -859,6 +972,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_selectedPassportExpireDate == value) return;
+
                 _selectedPassportExpireDate = value;
                 RaisePropertyChanged(nameof(SelectedPassportExpireDate));
             }
@@ -872,6 +987,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_selectedPassportExpireHijiriDate == value) return;
+
                 _selectedPassportExpireHijiriDate = value;
                 RaisePropertyChanged(nameof(SelectedPassportExpireHijiriDate));
             }
@@ -882,6 +999,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _passportExpireDate;
             set
             {
+                if (_passportExpireDate == value) return;
+
                 _passportExpireDate = value;
                 RaisePropertyChanged(nameof(PassportExpireDate));
             }
@@ -892,6 +1011,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _displayPassportExpireDate;
             set
             {
+                if (_displayPassportExpireDate == value) return;
+
                 _displayPassportExpireDate = value;
                 RaisePropertyChanged(nameof(DisplayPassportExpireDate));
             }
@@ -905,6 +1026,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_uploadedPassportDocumentsList == value) return;
+
                 _uploadedPassportDocumentsList = value;
 
                 if (UploadedPassportDocumentsList.Count > 0)
@@ -924,6 +1047,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_isVisbleAttachmentPassportList == value) return;
+
                 _isVisbleAttachmentPassportList = value;
                 RaisePropertyChanged("IsVisbleAttachmentPassportList");
             }
@@ -935,6 +1060,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _passportFileName;
             set
             {
+                if (_passportFileName == value) return;
+
                 _passportFileName = value;
                 RaisePropertyChanged(nameof(SelectedPassportFileName));
             }
@@ -948,6 +1075,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _searchText;
             set
             {
+                if (_searchText == value) return;
+
                 _searchText = value == null ? string.Empty : value;
                 SearchableOutletData?.Clear();
                 OutletData.Where(i => i.Actnm.StartsWith(_searchText)).ToList().ForEach(j =>
@@ -963,6 +1092,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _outletData;
             set
             {
+                if (_outletData == value) return;
+
                 if (value != null && value.Count > 0)
                 {
                     _outletData = value;
@@ -976,6 +1107,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _searchableOutletData;
             private set
             {
+                if (_searchableOutletData == value) return;
+
                 if (value != null && value.Count > 0)
                 {
                     _searchableOutletData = value;
@@ -1004,6 +1137,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _methodList;
             set
             {
+                if (_methodList == value) return;
+
                 if (value != null)
                 {
                     _methodList = value;
@@ -1017,6 +1152,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedMethod;
             set
             {
+                if (_selectedMethod == value) return;
+
                 if (value != null)
                 {
                     _selectedMethod = value;
@@ -1031,6 +1168,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _calendarTypeList;
             set
             {
+                if (_calendarTypeList == value) return;
+
                 if (value != null)
                 {
                     _calendarTypeList = value;
@@ -1044,6 +1183,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _calendarType;
             set
             {
+                if (_calendarType == value) return;
+
                 if (value != null)
                 {
                     _calendarType = value;
@@ -1059,6 +1200,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _fiscalMonth;
             set
             {
+                if (_fiscalMonth == value) return;
+
                 _fiscalMonth = value;
                 RaisePropertyChanged(nameof(FiscalMonth));
             }
@@ -1069,6 +1212,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _fiscalDay;
             set
             {
+                if (_fiscalDay == value) return;
+
                 _fiscalDay = value;
                 RaisePropertyChanged(nameof(FiscalDay));
             }
@@ -1079,6 +1224,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _commDate;
             set
             {
+                if (_commDate == value) return;
+
                 _commDate = value;
                 RaisePropertyChanged(nameof(CommDate));
             }
@@ -1089,6 +1236,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _taxDate;
             set
             {
+                if (_taxDate == value) return;
+
                 _taxDate = value;
                 RaisePropertyChanged(nameof(TaxDate));
             }
@@ -1102,6 +1251,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _summaryExpendedCard;
             set
             {
+                if (_summaryExpendedCard == value) return;
+
                 _summaryExpendedCard = value;
                 RaisePropertyChanged(nameof(SummaryExpendedCard));
             }
@@ -1112,6 +1263,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _outletList;
             set
             {
+                if (_outletList == value) return;
+
                 if (value != null)
                 {
                     _outletList = value;
@@ -1125,6 +1278,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isDeclarationBtnEnabled;
             set
             {
+                if (_isDeclarationBtnEnabled == value) return;
+
                 _isDeclarationBtnEnabled = value;
                 RaisePropertyChanged(nameof(IsDeclarationBtnEnabled));
             }
@@ -1135,6 +1290,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _eSTLedge;
             set
             {
+                if (_eSTLedge == value) return;
+
                 _eSTLedge = value;
                 IsDeclarationBtnEnabled = _eSTLedge;
                 RaisePropertyChanged(nameof(ESTLedge));
@@ -1156,6 +1313,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _canExecute;
             set
             {
+                if (_canExecute == value) return;
+
                 _canExecute = value;
                 RaisePropertyChanged(nameof(CanExecute));
             }
@@ -1433,7 +1592,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                 var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                 if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
                                 {
-                                    PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully"));
+                                    await PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully"));
                                 }
                             }
                         }
@@ -1757,9 +1916,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                 SetUIAvailability();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -2151,7 +2311,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         {
             try
             {
-                decimal TotalAttachmentSize = 0;
                 string[] filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
 
                 var fileData = await CrossFilePicker.Current.PickFile(filetypes);
@@ -2627,6 +2786,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 IsLoading = false;
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
@@ -2652,7 +2813,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         private void openEditOutlet(OutletItem item)
@@ -2790,11 +2952,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                 if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                 }
                 else
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                 }
                 Device.BeginInvokeOnMainThread(() => IsLoading = false);
                 return false;
