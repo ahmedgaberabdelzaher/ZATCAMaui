@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
 using EGAZT;
 using Foundation;
@@ -112,7 +111,8 @@ namespace GAZT.iOS.CustomRenderer
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -257,7 +257,8 @@ namespace GAZT.iOS.CustomRenderer
                                 }
                                 catch (Exception ex)
                                 {
-
+                                    Console.Write(ex.ToString());
+                                    Console.Write(ex.StackTrace.ToString());
                                 }
 
                                 App.LoginDataRetrieved = new LoginModel();
@@ -295,6 +296,8 @@ namespace GAZT.iOS.CustomRenderer
                 }
                 catch (GAZTInvalidDataException ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     IsError = true;
                     App.IsLoginCalled = false;
                     App.LoginDataRetrieved.ResponseStatusMessage = "error";
@@ -302,6 +305,8 @@ namespace GAZT.iOS.CustomRenderer
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     IsError = true;
                     App.IsLoginCalled = false;
                     App.LoginDataRetrieved.ResponseStatusMessage = "error";

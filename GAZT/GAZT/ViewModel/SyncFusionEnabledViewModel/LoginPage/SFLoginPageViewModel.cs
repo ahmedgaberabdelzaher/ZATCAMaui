@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-using Xamarin.Essentials;
 using GAZT.Helper;
 using AppDynamics.Agent;
 
@@ -130,7 +129,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             this.SocialMediaLoginCommand = new Command(this.SocialLoggedIn);
             this.HamburgerMenuClickedCommand = new Command(this.HamburgerMenuClicked);
 
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -215,6 +214,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_IsSAMLLoginEnabled == value) return;
                 RaisePropertyChanged("IsSAMLLoginEnabled");
             }
         }
@@ -227,6 +227,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_IsOldLoginHidden == value) return;
+
                 RaisePropertyChanged("IsOldLoginHidden");
             }
         }
@@ -239,6 +241,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_IsFocused == value) return;
+
                 _IsFocused = value;
                 if (_IsFocused == true)
                 {
@@ -300,6 +304,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 this.RaisePropertyChanged("IsLoading");
             }
@@ -313,6 +319,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_isLoginEnabled == value) return;
+
                 _isLoginEnabled = value;
                 RaisePropertyChanged("IsLoginEnabled");
             }
@@ -326,6 +334,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_tINIndex == value) return;
+
                 _tINIndex = value;
                 RaisePropertyChanged("TINIndex");
             }
@@ -339,6 +349,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_tINs == value) return;
+
                 _tINs = value;
                 RaisePropertyChanged("TINs");
             }
@@ -352,6 +364,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_selectedTinId == value) return;
+
                 _selectedTinId = value;
                 if (_selectedTinId != null)
                 {
@@ -371,6 +385,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_selectedTinIdPrev == value) return;
+
                 _selectedTinIdPrev = value;
                 RaisePropertyChanged("SelectedTinIdPrev");
             }
@@ -384,6 +400,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_passwordVisibility == value) return;
+
                 _passwordVisibility = value;
                 RaisePropertyChanged("PasswordVisibility");
             }
@@ -397,6 +415,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_isVisibleTinIds == value) return;
+
                 _isVisibleTinIds = value;
                 if (_isVisibleTinIds == true)
                 {
@@ -482,6 +502,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+
                 if (_NavigaateToThisService == value) return;
 
                 _NavigaateToThisService = value;
