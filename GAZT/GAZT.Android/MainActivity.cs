@@ -94,14 +94,37 @@ namespace GAZT.Droid
             //};
 
             //disconnectHandler = new Handler(new MyHandlerICallback(this));
-            //resetDisconnectTimer();
+            //resetDisconnectTimer();   
 
             //StartTimerForLoginRefresh(0,1,0);
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
             global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
              .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         }
 
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            var newExc = new System.Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as System.Exception);
+
+            LogUnhandledException(newExc);
+        }
+
+        internal static void LogUnhandledException(System.Exception exception)
+        {
+            try
+            {
+                const string errorFileName = "Fatal.log";
+                var libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal); 
+                var errorFilePath = Path.Combine(libraryPath, errorFileName);
+                File.WriteAllText(errorFilePath, JsonConvert.SerializeObject(exception));
+            }
+            catch
+            {
+                // just suppress any error logging exceptions
+            }
+        }
         public class MyHandlerICallback : Java.Lang.Object, Handler.ICallback
         {
             private MainActivity mainActivity;

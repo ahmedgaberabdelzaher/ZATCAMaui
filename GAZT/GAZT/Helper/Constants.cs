@@ -19,10 +19,12 @@ namespace GAZT.Helper
 
         public static string DevBaseUrlForODataServices = "https://tstdg1as1.mygazt.gov.sa:8080";
         public static string DevBaseUrlForAuthentication = "https://tstdp1as1.mygazt.gov.sa:50001";
-        public static string QABaseUrlForODataServices = "https://sapgatewayqa.gazt.gov.sa:443";
+        public static string QABaseUrlForODataServices = "https://sapgatewayqa.gazt.gov.sa";
         public static string QABaseUrlForAuthentication = "https://loginqa.gazt.gov.sa:443";
-        public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.gazt.gov.sa:443";
-        public static string PreProdBaseUrlForAuthentication = "https://logint.gazt.gov.sa:443";
+        public static string UatBaseUrlForODataServices = "https://sapgatewayuat.gazt.gov.sa";
+        public static string UatBaseUrlForAuthentication = "https://loginu.gazt.gov.sa";
+        public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.gazt.gov.sa";
+        public static string PreProdBaseUrlForAuthentication = "https://logint.gazt.gov.sa";
         public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
         public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
 
@@ -31,6 +33,7 @@ namespace GAZT.Helper
         public static string DevDomainForCookies = "tstdp1as1.mygazt.gov.sa";
         public static string QADomainForCookies = "loginqa.gazt.gov.sa";
         public static string PreprodDomainForCookies = "logint.gazt.gov.sa";
+        public static string UatDomainForCookies = "loginu.gazt.gov.sa";
         public static string ProdDomainForCookies = "login.gazt.gov.sa";
 
         public static string DevPartialDomainForCookies = ".mygazt.gov.sa";
@@ -49,6 +52,11 @@ namespace GAZT.Helper
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+
+        //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = UatDomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
         //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;

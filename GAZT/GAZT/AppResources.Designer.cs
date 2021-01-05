@@ -3544,6 +3544,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZZUpdateZakatDelete {
+            get {
+                return ResourceManager.GetString("ZZUpdateZakatDelete", resourceCulture);
+            }
+        }
+        
         public static string ZZFileWithTheSameNameAlreadyExists {
             get {
                 return ResourceManager.GetString("ZZFileWithTheSameNameAlreadyExists", resourceCulture);
@@ -10053,6 +10059,12 @@ namespace EGAZT {
         public static string NDEdit {
             get {
                 return ResourceManager.GetString("NDEdit", resourceCulture);
+            }
+        }
+        
+        public static string TinderegEdit {
+            get {
+                return ResourceManager.GetString("TinderegEdit", resourceCulture);
             }
         }
         

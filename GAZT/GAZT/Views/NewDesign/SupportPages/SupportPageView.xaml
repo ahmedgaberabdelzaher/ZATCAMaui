@@ -133,9 +133,8 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-
-                            <helper:MyWebView x:Name="ChatWebView" Grid.Row="0" Navigating="ChatWebView_Navigating" Navigated="ChatWebView_Navigated"/>
-
+                      
+                            <helper:MyWebView x:Name="ChatWebView"  Navigating="ChatWebView_Navigating" Navigated="ChatWebView_Navigated"/>
                         </Grid>
 
 

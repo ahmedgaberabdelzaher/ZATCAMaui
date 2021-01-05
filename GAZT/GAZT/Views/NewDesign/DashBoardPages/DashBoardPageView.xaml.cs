@@ -492,7 +492,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 PopupNavigation.Instance.PushAsync(new InfoPopUpPage());
             }
         }
-        private async void TappedOnMyBills(object sender, EventArgs e)
+        private void TappedOnMyBills(object sender, EventArgs e)
         {
                 viewModel.IsLoading = true;
             Device.BeginInvokeOnMainThread(() =>

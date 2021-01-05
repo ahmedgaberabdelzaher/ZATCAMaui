@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
@@ -10,6 +11,7 @@ using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -23,53 +25,59 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         public GAZTNewDesignMyBillsPageView(BillInfo billInfo = null)
         {
             InitializeComponent();
-            
-          //  App.DisplayProgressView();
 
+            //  App.DisplayProgressView();
+
+            if (viewModel != null) return;
             viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
             this.BindingContext = viewModel;
             try
             {
-                
+
                 viewModel.onPageLoad(billInfo);
                 viewModel.PopulateReturnTypeList();
                 viewModel.PopulateDataInChips();
                 viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
-                viewModel.SelectedChipFilterItem = null;
 
-                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[0];
-                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist[0];
 
                 if (billInfo != null)
                 {
                     if (billInfo.BillTypeName.Equals(AppResources.Paid))
                     {
                         viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.Paid)).FirstOrDefault();
-                       
+
                     }
                     if (billInfo.BillTypeName.Equals(AppResources.UnPaid))
                     {
-                      viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
-                       
+                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
+                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#AA0C19");
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#f6e6e8");
                     }
                     if (billInfo.BillTypeName.Equals(AppResources.PartiallyPaid))
                     {
                         viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.PartiallyPaid)).FirstOrDefault();
+                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#D99A29");
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#fbf4e9");
                         viewModel.FilterIfTypeAndStausFilterSelected();
                     }
                     ChipGroup_statusFilter.SelectedItem = viewModel.SelectedChipFilterItem;
                     viewModel.SelectionColor = Color.AliceBlue;
                 }
+                else
+                {
+                    ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[0];
+                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist[0];
+                }
 
             }
-            catch(Exception ex)
-            { 
-            
+            catch (Exception ex)
+            {
+
             }
-          SetPickerFont();
             ChangeAeroIcon();
             SetLTR();
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             Bills.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
@@ -78,50 +86,18 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
 
-          //  App.HideProgressView();
+            //  App.HideProgressView();
 
         }
-        public void SetPickerFont()
-        {
-            try
-            {
-                switch (Xamarin.Forms.Device.RuntimePlatform)
-                {
 
-                    case Xamarin.Forms.Device.iOS:
-                        {
-                          
-                                TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
-                                TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                                TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                                TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
-                        }
-                        break;
-                    case Xamarin.Forms.Device.Android:
-                        TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                TaxTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
-            }
-            else
-            {
-                TaxTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
-            }
+
+            // On<iOS>().SetUseSafeArea(true);
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
         }
         private void SetLTR()
         {
@@ -132,7 +108,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             }
             else
             {
-           
+
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
         }
@@ -152,44 +128,45 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
         private void btn_Clicked(object sender, System.EventArgs e)
         {
-            TaxTypePicker.IsOpen = true;
+            MessagingCenter.Subscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew", (a, arg) =>
+            {
+                viewModel.SelectedTaxTypeForFilter = arg;
+                MessagingCenter.Unsubscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew");
+            });
+            PopupNavigation.Instance.PushAsync(new NewPopupPageView(viewModel.TaxTypeForFilter, viewModel.SelectedTaxTypeForFilter), false);
         }
 
-        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            try
-            {
-                ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
-                TaxTypePicker.SelectedItem = selectedReturntype;
-                viewModel.SelectedTaxTypeForFilter = selectedReturntype;
-               // ChipGroup_statusFilter.SelectedItem = null;
-                //viewModel.SelectedChipFilterItem = null;          
-            }
-            catch(Exception ex)
-            { 
-            
-            }
-            
-        }
 
         private void chipgroup_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
         {
             try
             {
                 ChipModel selectedReturntype = (ChipModel)e.AddedItem;
-                ChipGroup_statusFilter.SelectedItem = selectedReturntype;
+                //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
+                Device.BeginInvokeOnMainThread(() => {
+                    if (selectedReturntype.Text == AppResources.UnPaid)
+                    {
+                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#AA0C19");
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#f6e6e8");
+                    }
+                    else if (selectedReturntype.Text == AppResources.Partiallynewui)
+                    {
+                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#D99A29");
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#fbf4e9");
+                    }
+                });
                 viewModel.SelectedChipFilterItem = selectedReturntype;
-                //viewModel.SelectionColor = Color.AliceBlue;
             }
             catch (Exception ex)
-            { 
-            
+            {
+
             }
-          //
+            //
         }
 
         private async void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
-        {try
+        {
+            try
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
@@ -239,10 +216,10 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 });
             }
             catch (Exception ex)
-            { 
-            
+            {
+
             }
-            
+
         }
     }
 }

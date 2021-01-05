@@ -886,6 +886,20 @@ namespace EGAZT.Models
             }
         }
 
+        [JsonIgnore]
+        private bool showPermit { get; set; }
+
+        [JsonIgnore]
+        public bool ShowPermit
+        {
+            get { return showPermit; }
+            set
+            {
+                showPermit = value;
+                OnPropertyRaised("ShowPermit");
+            }
+        }
+
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
@@ -1029,6 +1043,7 @@ namespace EGAZT.Models
             }
             set
             {
+                if (_permitTypes == value) return;
                 _permitTypes = value;
                 OnPropertyRaised("PermitTypes");
             }
@@ -1089,8 +1104,15 @@ namespace EGAZT.Models
         [JsonProperty("APermitMainnoTb")]
         public string APermitMainnoTb { get; set; }
 
+        private string _aPermitNm6Tb;
         [JsonProperty("APermitNm6Tb")]
-        public string APermitNm6Tb { get; set; }
+        public string APermitNm6Tb { get => _aPermitNm6Tb;
+            set
+            {
+                _aPermitNm6Tb = value;
+                OnPropertyRaised(nameof(APermitNm6Tb));
+            }
+        }
 
         [JsonProperty("APermitNoTb")]
         public string APermitNoTb { get; set; }
@@ -1116,11 +1138,25 @@ namespace EGAZT.Models
         [JsonProperty("APermitTitleTb")]
         public string APermitTitleTb { get; set; }
 
+        private string _aPermitNm5Tb;
         [JsonProperty("APermitNm5Tb")]
-        public string APermitNm5Tb { get; set; }
+        public string APermitNm5Tb { get => _aPermitNm5Tb;
+            set
+            {
+                _aPermitNm5Tb = value;
+                OnPropertyRaised(nameof(APermitNm5Tb));
+            }
+        }
 
+        private string _aPermitNm7Tb;
         [JsonProperty("APermitNm7Tb")]
-        public string APermitNm7Tb { get; set; }
+        public string APermitNm7Tb { get => _aPermitNm7Tb;
+            set
+            {
+                _aPermitNm7Tb = value;
+                OnPropertyRaised(nameof(APermitNm7Tb));
+            }
+        }
 
         [JsonProperty("APermitTypeTb")]
         public string APermitTypeTb { get; set; }
@@ -1156,7 +1192,7 @@ namespace EGAZT.Models
         }
 
         [JsonIgnore]
-        public bool aPermitIsReasonSelected { get; set; }
+        private bool aPermitIsReasonSelected { get; set; }
 
         [JsonIgnore]
         public bool APermitIsReasonSelected
@@ -1170,6 +1206,47 @@ namespace EGAZT.Models
         }
 
         [JsonIgnore]
+        private bool isHijiri { get; set; }
+
+        [JsonIgnore]
+        public bool IsHijiri
+        {
+            get { return isHijiri; }
+            set
+            {
+                if (isHijiri == value) return;
+                if (value)
+                    APermitDeregDisplayDate = UtilityManager.ConvertToHijri(APermitDeregDisplayDate);
+                else
+                    APermitDeregDisplayDate = UtilityManager.HijriToGreg(APermitDeregDisplayDate);
+                if (!string.IsNullOrEmpty(APermitDeregDisplayDate))
+                    APermitEffDtTb = UtilityManager.ConvertDateFormat(APermitDeregDisplayDate);
+                isHijiri = value;
+                OnPropertyRaised("IsHijiri");
+            }
+        }
+        [JsonIgnore]
+        private bool isDOBHijiri { get; set; }
+        
+        [JsonIgnore]
+        public bool IsDOBHijiri
+        {
+            get { return isDOBHijiri; }
+            set
+            {
+                if (isDOBHijiri == value) return;
+
+                if (value)
+                    APermitDeregDisplayDobDate = UtilityManager.ConvertToHijri(APermitDeregDisplayDobDate);
+                else
+                    APermitDeregDisplayDobDate = UtilityManager.HijriToGreg(APermitDeregDisplayDobDate);
+                if (!string.IsNullOrEmpty(APermitDeregDisplayDobDate))
+                APermitDobTb = UtilityManager.ConvertDateFormat(APermitDeregDisplayDobDate);
+                isDOBHijiri = value;
+                OnPropertyRaised("IsDOBHijiri");
+            }
+        }
+        [JsonIgnore]
         public string aPermitDeregDisplayDobDate { get; set; }
 
         [JsonIgnore]
@@ -1177,7 +1254,7 @@ namespace EGAZT.Models
         {
             get { return aPermitDeregDisplayDobDate; }
             set
-            { if (!string.IsNullOrEmpty(value)) { aPermitDeregDisplayDobDate = value; OnPropertyRaised("APermitDeregDisplayDobDate"); } }
+            { /*if (!string.IsNullOrEmpty(value)) {*/ aPermitDeregDisplayDobDate = value; OnPropertyRaised("APermitDeregDisplayDobDate"); /*}*/ }
         }
 
         [JsonIgnore]
@@ -1212,7 +1289,19 @@ namespace EGAZT.Models
                 {
                     aPermitDregRsnTb = value;
                     if (!String.IsNullOrEmpty(aPermitDregRsnTb))
+                    {
                         APermitIsReasonSelected = true;
+                        if(value == "1")
+                        {
+                            APermitDisplayReason = AppResources.TinDeregistrationClosed;
+                            ReasonDescription = AppResources.TinDeregistrationClosed;
+                        }
+                        else
+                        {
+                            APermitDisplayReason = AppResources.TinDeregistrationTransfer;
+                            ReasonDescription = AppResources.TinDeregistrationTransfer;
+                        }
+                    }
                     OnPropertyRaised("APermitDregRsnTb");
                 }
             }
@@ -1238,13 +1327,13 @@ namespace EGAZT.Models
             }
             set
             {
+                aPermitIdNoTb = value;
                 if (!string.IsNullOrEmpty(value))
                 {
-                    aPermitIdNoTb = value;
                     Task.Run(async () =>
                     {
 
-                            string resultData = await WebServiceManager.GAZTGetTInNumberData(aPermitIdNoTb);
+                            string resultData = await WebServiceManager.GAZTGetTInNumberData(value);
                         string _responseData = JObject.Parse(resultData)["d"].ToString();
                         VATSignUpD IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
                         if (_responseData != null)
@@ -1262,9 +1351,8 @@ namespace EGAZT.Models
                             }
                         
                     });
-
-                    OnPropertyRaised("APermitIdNoTb");
                 }
+                OnPropertyRaised("APermitIdNoTb");
             }
         }
 
@@ -1281,11 +1369,11 @@ namespace EGAZT.Models
             }
             set
             {
+                aPermitTransTinTb = value;
                 if (!string.IsNullOrEmpty(value.Trim()))
                 {
-                    aPermitTransTinTb = value;
                    
-                        if(aPermitTransTinTb.Length == 10)
+                        if(value?.Trim().Length == 10 && !string.IsNullOrWhiteSpace(aPermitIdNoTb))
                         {
                         Task.Run(async () =>
                         {
@@ -1307,10 +1395,10 @@ namespace EGAZT.Models
                             }
                         });
                     }
-                
 
-                    OnPropertyRaised("APermitTransTinTb");
+
                 }
+                OnPropertyRaised("APermitTransTinTb");
             }
         }
 
@@ -1361,39 +1449,82 @@ namespace EGAZT.Models
         [JsonIgnore]
             public string aPermitIdTypeTb;
             [JsonProperty("APermitIdTypeTb")]
-            public string APermitIdTypeTb { get { return aPermitIdTypeTb; } set { aPermitIdTypeTb = value;
+            public string APermitIdTypeTb { get {
+                return aPermitIdTypeTb;
+            } set { aPermitIdTypeTb = value;
 
                 if(aPermitIdTypeTb == "ZS0001")
                 {
                     PermitIdTypeName = AppResources.TinDeregistrationNationalID;
+                    APermitIsCompanyId = false;
                 }
                 else if(aPermitIdTypeTb == "ZS0005")
                 {
                     PermitIdTypeName = AppResources.TinDeregistrationCompanyID;
+                    APermitIsCompanyId = true;
                 }
                 else if(aPermitIdTypeTb == "ZS0002")
                 {
                     PermitIdTypeName = AppResources.TinDeregistrationIQAMANumber;
+                    APermitIsCompanyId = false;
                 }
-                else
+                else if(aPermitIdTypeTb == "ZS0003")
                 {
                     PermitIdTypeName = AppResources.TinDeregistrationGCCID;
+                    APermitIsCompanyId = false;
                 }
 
                 OnPropertyRaised("APermitIdTypeTb");
         } }
-    
+
+        private bool _aPermitEditable = false;
+        [JsonIgnore]
+        public bool APermitEditable
+        {
+            get => _aPermitEditable;
+            set
+            {
+                _aPermitEditable = value;
+                OnPropertyRaised(nameof(APermitEditable));
+            }
+        }
+
+        private bool _aPermitIsCompanyId = false;
+        [JsonIgnore]
+        public bool APermitIsCompanyId {
+            get => _aPermitIsCompanyId;
+            set
+            {
+                _aPermitIsCompanyId = value;
+                OnPropertyRaised(nameof(APermitIsCompanyId));
+            }
+        }
+
         [JsonProperty("APermitNm1Tb")]
         public string APermitNm1Tb { get; set; }
 
         [JsonProperty("APermitNm2Tb")]
         public string APermitNm2Tb { get; set; }
 
+        private string _aPermitNm3Tb;
         [JsonProperty("APermitNm3Tb")]
-        public string APermitNm3Tb { get; set; }
+        public string APermitNm3Tb { get => _aPermitNm3Tb;
+            set
+            {
+                _aPermitNm3Tb = value;
+                OnPropertyRaised(nameof(APermitNm3Tb));
+            }
+        }
 
+        private string _aPermitNm4Tb;
         [JsonProperty("APermitNm4Tb")]
-        public string APermitNm4Tb { get; set; }
+        public string APermitNm4Tb { get => _aPermitNm4Tb;
+            set
+            {
+                _aPermitNm4Tb = value;
+                OnPropertyRaised(nameof(APermitNm4Tb));
+            }
+        }
 
         [JsonProperty("APermitDobTb")]
         public string APermitDobTb { get; set; }

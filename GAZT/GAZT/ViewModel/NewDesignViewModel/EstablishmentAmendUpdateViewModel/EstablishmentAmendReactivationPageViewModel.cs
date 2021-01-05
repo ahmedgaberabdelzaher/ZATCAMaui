@@ -2635,17 +2635,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         }
         private async void bindingOutletList()
         {
-            var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
-            //if (_outletTempData.Count > 0)
-            //{
-            OutletData.Clear();
-            SearchableOutletData?.Clear();
-            _outletTempData.ForEach(_out =>
+            try
             {
-                OutletData.Add(_out);
-                SearchableOutletData.Add(_out);
-            });
-            //}
+                var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
+         
+                OutletData.Clear();
+                SearchableOutletData?.Clear();
+                _outletTempData.ForEach(_out =>
+                {
+                    OutletData.Add(_out);
+                    SearchableOutletData.Add(_out);
+                });
+            }
+            catch (GAZTErrorException ex)
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         private void openEditOutlet(OutletItem item)
         {

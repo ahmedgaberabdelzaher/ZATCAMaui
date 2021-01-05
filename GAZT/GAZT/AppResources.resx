@@ -2005,6 +2005,10 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
     <value>DELETE FILE</value>
     <comment>Estimated Zakat</comment>
   </data>
+         <data name="ZZUpdateZakatDelete" xml:space="preserve">
+    <value>Are you sure you want to delete </value>
+    <comment>Establishment Amend</comment>
+  </data>
   <data name="ZZFileWithTheSameNameAlreadyExists" xml:space="preserve">
     <value>File with the same name already exists </value>
     <comment>Estimated Zakat</comment>
@@ -5785,6 +5789,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="NDEdit" xml:space="preserve">
     <value>Edit</value>
   </data>
+         <data name="TinderegEdit" xml:space="preserve">
+        <value>Edit</value>
+    </data>
   <data name="NDLessThan5MinRegister" xml:space="preserve">
     <value>Please complete registration</value>
     <comment>Register now for Value Added Tax in less than 5 minutes</comment>

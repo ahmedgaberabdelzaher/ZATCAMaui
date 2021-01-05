@@ -196,7 +196,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         }
 
         public bool AddNewLicenseTapped = false;
-     
+
         private CityDropdownItem _cRIssueCity = null;
         public CityDropdownItem CRIssueCity
         {
@@ -594,14 +594,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             ActivityDetails = new ActivityDetails();
             LicenseDetails = new LicenseDetails();
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
-            OnPreButtonClick = new Command(() => {
+            OnPreButtonClick = new Command(() =>
+            {
 
-                if(CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails) {
+                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                {
 
                     CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
 
                 }
-                else {
+                else
+                {
 
                     _navigationService.GoBack();
                 }
@@ -881,7 +884,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         ActivityDetails.MainActivity = false;
                         ActivityDetails.IsMainActivityVisible = false;
                         ActivityDetails.CRCopy = true;
-                        ActivityDetails.DeleteCRcopy = false;
+                        ActivityDetails.DeleteCRcopy = true;
                         ActivityDetails.TransferCRCopy = false;
                         ActivityDetails.DeleteTransferCRCopy = false;
                         ActivityDetails.IsTransferCRCopyVisible = false;
@@ -897,7 +900,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         LicenseDetails.MainActivity = false;
                         LicenseDetails.IsMainActivityVisible = false;
                         LicenseDetails.LicenseCopy = true;
-                        LicenseDetails.DeleteLicenseCopy = false;
+                        LicenseDetails.DeleteLicenseCopy = true;
                         LicenseDetails.MainGroup = false;
                         LicenseDetails.SubGroup = false;
                         LicenseDetails.Activity = false;
@@ -1104,7 +1107,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         SetUIAvailability(true, PageType);
 
                     }
-                    else {
+                    else
+                    {
                         SetUIAvailability(false, PageType);
 
                     }
@@ -1128,11 +1132,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (CRData != null && CRData.Count > 0)
                 {
                     ActivityTitle = AppResources.ESTCommercialRegistration;
-                   
-                        SetUIAvailability(true, PageType);
+
+                    SetUIAvailability(true, PageType);
 
                 }
-                else {
+                else
+                {
                     SetUIAvailability(false, PageType);
 
                 }
@@ -1150,7 +1155,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //decimal TotalAttachmentSize = 0;
                 string[] filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
-
                 var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
                 if (fileData != null)
@@ -1479,6 +1483,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             CRsCopies = new ObservableCollection<Attachment>(list);
 
+
+            list.Clear();
             lists = taxPayerDetails.AttDetSet.results.Where(x =>
             {
                 var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);
@@ -1595,7 +1601,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 QuestionMark = "?";
             }
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " + item.Filename + QuestionMark);
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZUpdateZakatDelete + "   " + item.Filename + QuestionMark);
             confirmPopup.OnSelect = async (str) =>
             {
                 if (str == "Yes")
@@ -1662,17 +1668,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
                     return false;
                 }
-                else if (CRMainGroup == null)
+                else if (CRMainGroup == null && ActivityDetails.MainGroup == true)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
                     return false;
                 }
-                else if (CRSubGroup == null)
+                else if (CRSubGroup == null && ActivityDetails.SubGroup == true)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
                     return false;
                 }
-                else if (CRAcitivity == null)
+                else if (CRAcitivity == null && ActivityDetails.Activity == true)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateActivity));
                     return false;

@@ -44,6 +44,9 @@ namespace GAZT.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
+
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             ServicePointManager
             .ServerCertificateValidationCallback +=
@@ -123,9 +126,27 @@ namespace GAZT.iOS
             //}
 
 
+           
+
             return base.FinishedLaunching(app, options);
         }
 
+
+
+        #region unhandled exceptions
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            var newExc = new System.Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as System.Exception);
+
+            AppDynamics.Agent.Instrumentation.ReportError(newExc, ErrorSeverityLevel.CRITICAL);
+        }
+        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+        {
+            var newExc = new System.Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+
+            AppDynamics.Agent.Instrumentation.ReportError(newExc, ErrorSeverityLevel.CRITICAL);
+        }
+        #endregion
         public override void OnActivated(UIApplication application)
         {
             //App.IsAppRunningInBackground = false;

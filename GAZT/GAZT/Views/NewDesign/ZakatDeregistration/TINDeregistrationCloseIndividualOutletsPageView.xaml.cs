@@ -9,6 +9,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
+using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Pages;
@@ -49,6 +50,595 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+        private void CloseDeregDatePicker_Unfocused(object sender, FocusEventArgs e)
+        {
+            //ValidateIDNumber();
+
+            if (viewModel.IsHijriCal)
+            {
+
+                string month = (CloseDeregDatePickerHijri.SelectedItem as IList<object>)[1].ToString();
+                string day = (CloseDeregDatePickerHijri.SelectedItem as IList<object>)[0].ToString();
+                string year = (CloseDeregDatePickerHijri.SelectedItem as IList<object>)[2].ToString();
+                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                viewModel.SingleDeregistrationDate = date;
+
+
+            }
+            else
+            {
+                var selectedItem = CloseDeregDatePicker.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                string date = year + "/" + month + "/" + day;
+
+                viewModel.SingleDeregistrationDate = date;
+
+
+            }
+
+        }
+            
+     private void ClosePermitDeregDatePicker_Unfocused(object sender, FocusEventArgs e)
+            {
+
+
+            if (viewModel.IsHijriCal)
+            {
+
+                string month = (ClosePermitDOBPickerHijri.SelectedItem as IList<object>)[1].ToString();
+                string day = (ClosePermitDOBPickerHijri.SelectedItem as IList<object>)[0].ToString();
+                string year = (ClosePermitDOBPickerHijri.SelectedItem as IList<object>)[2].ToString();
+                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                viewModel.SingleOutletDeregistrationDate = Convert.ToDateTime(date);
+
+
+            }
+            else
+            {
+                var selectedItem = ClosePermitDOBPicker.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                string date = year + "/" + month + "/" + day;
+
+                viewModel.SingleOutletDeregistrationDate = Convert.ToDateTime(date);
+
+
+            }
+        }
+        private void ClosePermitDOBDatePicker_Unfocused(object sender, FocusEventArgs e)
+        {
+
+
+            if (viewModel.IsDOBHijriCal)
+            {
+
+                string month = (ClosePermitDeregDatePickerHijri.SelectedItem as IList<object>)[1].ToString();
+                string day = (ClosePermitDeregDatePickerHijri.SelectedItem as IList<object>)[0].ToString();
+                string year = (ClosePermitDeregDatePickerHijri.SelectedItem as IList<object>)[2].ToString();
+                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                viewModel.PermitDob = Convert.ToDateTime(date);
+
+
+            }
+            else
+            {
+                var selectedItem = ClosePermitDeregDatePicker.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                string date = year + "/" + month + "/" + day;
+
+                viewModel.PermitDob = Convert.ToDateTime(date);
+
+
+            }
+        }
+        public void OnDateEntryFocussed(object sender, EventArgs args)
+        {
+            if (viewModel.IsHijriCal)
+            {
+                CloseDeregDatePickerHijri.IsOpen = true;
+            }
+            else
+            {
+                CloseDeregDatePicker.IsOpen = true;
+            }
+
+        }
+        private void OnDOBClicked(object sender, EventArgs e)
+        {
+
+            if (!viewModel.IsHijriCal)
+            {
+                CloseDeregDatePicker.IsOpen = true;
+            }
+            else
+            {
+                CloseDeregDatePickerHijri.IsOpen = true;
+            }
+        }
+
+        private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (CloseDeregDatePickerHijri.SelectedItem != null && (CloseDeregDatePickerHijri.SelectedItem as IList<object>).Count == 3)
+                    {
+                        string month = (CloseDeregDatePickerHijri.SelectedItem as IList<object>)[1].ToString();
+                        string day = (CloseDeregDatePickerHijri.SelectedItem as IList<object>)[0].ToString();
+                        string year = (CloseDeregDatePickerHijri.SelectedItem as IList<object>)[2].ToString();
+                        viewModel.SingleDeregistrationDate = viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        //.SingleDeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                        viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO; //DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+
+
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerCloseAllDeregDateDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    if (CloseDeregDatePicker.SelectedItem != null && (CloseDeregDatePicker.SelectedItem as IList<object>).Count == 3)
+                    {
+                        string month = (CloseDeregDatePicker.SelectedItem as IList<object>)[1].ToString();
+                        string day = (CloseDeregDatePicker.SelectedItem as IList<object>)[0].ToString();
+                        string year = (CloseDeregDatePicker.SelectedItem as IList<object>)[2].ToString();
+                        viewModel.SingleDeregistrationDate = viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        //viewModel.SingleDeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                        viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerCloseAllDeregDateDisplay = string.Empty;
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void DeregDateEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+            {
+                FrmDBO.HasError = false;
+            }
+
+        }
+        private void CloseDeregDatePicker_Closed(object sender, EventArgs e)
+        {
+            bool isHIjri;
+            DateTime deregDate;
+            DateTime permitDate;
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (CloseDeregDatePickerHijri.SelectedItem != null && (CloseDeregDatePickerHijri.SelectedItem as IList<object>).Count == 3)
+                    {
+                        string month = (CloseDeregDatePickerHijri.SelectedItem as IList<object>)[1].ToString();
+                        string day = (CloseDeregDatePickerHijri.SelectedItem as IList<object>)[0].ToString();
+                        string year = (CloseDeregDatePickerHijri.SelectedItem as IList<object>)[2].ToString();
+                        var date = year + "/" + month + "/" + day;
+                        //if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
+                        //{
+                        //    viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                        //    viewModel.PickerDOBDateDisplay = "";
+                        //    viewModel.SelectedDob = "";
+                        //}
+
+                        viewModel.SingleDeregistrationDate = viewModel.PkrDBO = date;
+                        // viewModel.SingleDeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                        viewModel.PickerCloseAllDeregDateDisplay = date;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+
+                    }
+                    isHIjri = true;
+                }
+                else
+                {
+                    if (CloseDeregDatePicker.SelectedItem != null)
+                    {
+                        string month = (CloseDeregDatePicker.SelectedItem as IList<object>)[1].ToString();
+                        string day = (CloseDeregDatePicker.SelectedItem as IList<object>)[0].ToString();
+                        string year = (CloseDeregDatePicker.SelectedItem as IList<object>)[2].ToString();
+                        var date = year + "/" + month + "/" + day;
+                        //if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
+                        //{
+                        //    viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                        //    viewModel.PickerDOBDateDisplay = "";
+                        //    viewModel.SelectedDob = "";
+                        //}
+
+                        viewModel.SingleDeregistrationDate = viewModel.PkrDBO = date;
+                        //  viewModel.SingleDeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+                        viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO; //DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+
+                    }
+                    isHIjri = false;
+                }
+
+                //List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(viewModel.TinDeregistrationData.PermitSet.Results);
+                //string sortedDate = string.Empty;
+                //string datetype = string.Empty;
+                //foreach (PermitSetResult permitInfo in allPermitTypes)
+                //{
+                //    sortedDate = allPermitTypes.OrderBy(x => x.APermitValfrDtHTb).Select(x => x.APermitValfrDtHTb).FirstOrDefault();
+                //    datetype = permitInfo.APermitValfrDtCTb;
+                //}
+                //if (datetype.Contains("H"))
+                //{
+                //    string convertedSortedDate = UtilityManager.HijriToGreg(sortedDate);
+                //    permitDate = Convert.ToDateTime(convertedSortedDate);
+                //}
+                //else
+                //{
+                //    permitDate = Convert.ToDateTime(sortedDate);
+
+                //}
+
+                //if (isHIjri)
+                //{
+                //    string convertedDeregDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
+                //    deregDate = Convert.ToDateTime(convertedDeregDate);
+                //}
+                //else
+                //{
+                //    deregDate = Convert.ToDateTime(viewModel.PkrDBO);
+                //}
+
+
+                //if (deregDate < permitDate)
+                //{
+                //    viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                //}
+
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+
+
+        private void HijriCal2Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (TransferDeregDatePickerHijri.SelectedItem != null && (TransferDeregDatePickerHijri.SelectedItem as IList<object>).Count == 3)
+                    {
+                        string month = (TransferDeregDatePickerHijri.SelectedItem as IList<object>)[1].ToString();
+                        string day = (TransferDeregDatePickerHijri.SelectedItem as IList<object>)[0].ToString();
+                        string year = (TransferDeregDatePickerHijri.SelectedItem as IList<object>)[2].ToString();
+                        viewModel.SingleDeregistrationDate = viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        // viewModel.SingleDeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                        viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerCloseAllDeregDateDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    if (TransferDeregDatePicker.SelectedItem != null && (TransferDeregDatePicker.SelectedItem as IList<object>).Count == 3)
+                    {
+                        string month = (TransferDeregDatePicker.SelectedItem as IList<object>)[1].ToString();
+                        string day = (TransferDeregDatePicker.SelectedItem as IList<object>)[0].ToString();
+                        string year = (TransferDeregDatePicker.SelectedItem as IList<object>)[2].ToString();
+                        viewModel.SingleDeregistrationDate = viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        // viewModel.SingleDeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                        viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerCloseAllDeregDateDisplay = string.Empty;
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
+            }
+        }
+        private void HijriCal3Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsDOBHijriCal)
+                {
+                    if (TransferDOBPickerHijri.SelectedItem != null && (TransferDOBPickerHijri.SelectedItem as IList<object>).Count == 3)
+                    {
+                        string month = (TransferDOBPickerHijri.SelectedItem as IList<object>)[1].ToString();
+                        string day = (TransferDOBPickerHijri.SelectedItem as IList<object>)[0].ToString();
+                        string year = (TransferDOBPickerHijri.SelectedItem as IList<object>)[2].ToString();
+                        viewModel.SelectedDob = viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        //viewModel.SelectedDob = day + "/" + month + "/" + year;
+                        viewModel.TransferPickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.TransferPickerDOBDateDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    if (TransferDOBPicker.SelectedItem != null && (TransferDOBPicker.SelectedItem as IList<object>).Count == 3)
+                    {
+                        string month = (TransferDOBPicker.SelectedItem as IList<object>)[1].ToString();
+                        string day = (TransferDOBPicker.SelectedItem as IList<object>)[0].ToString();
+                        string year = (TransferDOBPicker.SelectedItem as IList<object>)[2].ToString();
+                        viewModel.SelectedDob = viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        //viewModel.SelectedDob = day + "/" + month + "/" + year;
+                        viewModel.TransferPickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDOBDateDisplay = string.Empty;
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                Device.BeginInvokeOnMainThread(() => HijriCalSwitch1.IsToggled = viewModel.IsDOBHijriCal);
+            }
+        }
+
+        private void ClosePermitDeregDatePicker_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+
+                var permitType = viewModel.SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitNoTb == viewModel.selectedCalPermitNo);
+                if (permitType == null) return;
+                var isHijiri = permitType.IsHijiri;
+
+                object tempCal =null;
+                if (isHijiri)
+                {
+                    if (ClosePermitDeregDatePickerHijri.SelectedItem != null && (ClosePermitDeregDatePickerHijri.SelectedItem as IList<object>).Count == 3)
+                    {
+                        tempCal = ClosePermitDeregDatePickerHijri.SelectedItem;
+                    }
+                }
+                else
+                {
+                    if (CloseDeregDatePicker.SelectedItem != null && (CloseDeregDatePicker.SelectedItem as IList<object>).Count == 3)
+                    {
+                        tempCal = CloseDeregDatePicker.SelectedItem;
+                    }
+                }
+                if (tempCal == null) return;
+                string month = (tempCal as IList<object>)[1].ToString();
+                string day = (tempCal as IList<object>)[0].ToString();
+                string year = (tempCal as IList<object>)[2].ToString();
+                permitType.APermitDeregDisplayDate= year + "/" + month + "/" + day;
+                permitType.APermitEffDtTb = viewModel.ConvertDateFormat(permitType.APermitDeregDisplayDate);
+                viewModel.SelectedOutletForCloseTranser.PermitTypes= viewModel.SelectedOutletForCloseTranser.PermitTypes.Select(x =>
+                {
+                   if (x.APermitNoTb == viewModel.selectedCalPermitNo)
+                   { x.APermitDeregDisplayDate = permitType.APermitDeregDisplayDate;
+                       x.APermitEffDtTb = permitType.APermitEffDtTb;
+                   }
+                   return x;
+                }
+               ).ToList();
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+
+        private void ClosePermitDOBPicker_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+
+                var permitType = viewModel.SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitNoTb == viewModel.selectedCalPermitNo);
+                if (permitType == null) return;
+                var isDOBHijiri = permitType.IsDOBHijiri;
+
+                object tempCal = null;
+                if (isDOBHijiri)
+                {
+                    if (ClosePermitDOBPickerHijri.SelectedItem != null && (ClosePermitDOBPickerHijri.SelectedItem as IList<object>).Count == 3)
+                    {
+                        tempCal = ClosePermitDOBPickerHijri.SelectedItem;
+                    }
+                }
+                else
+                {
+                    if (ClosePermitDOBPicker.SelectedItem != null && (ClosePermitDOBPicker.SelectedItem as IList<object>).Count == 3)
+                    {
+                        tempCal = ClosePermitDOBPicker.SelectedItem;
+                    }
+                }
+                if (tempCal == null) return;
+                string month = (tempCal as IList<object>)[1].ToString();
+                string day = (tempCal as IList<object>)[0].ToString();
+                string year = (tempCal as IList<object>)[2].ToString();
+                permitType.APermitDeregDisplayDobDate = year + "/" + month + "/" + day;
+                permitType.APermitDobTb = viewModel.ConvertDateFormat(permitType.APermitDeregDisplayDobDate);
+                viewModel.SelectedOutletForCloseTranser.PermitTypes = viewModel.SelectedOutletForCloseTranser.PermitTypes.Select(x =>
+                {
+                    if (x.APermitNoTb == viewModel.selectedCalPermitNo)
+                    {
+                        x.APermitDeregDisplayDobDate = permitType.APermitDeregDisplayDobDate;
+                        x.APermitDobTb = permitType.APermitEffDtTb;
+                    }
+                    return x;
+                }
+               ).ToList();
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+        private void TransferDOBPicker_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsDOBHijriCal)
+                {
+                    if (TransferDOBPickerHijri.SelectedItem != null && (TransferDOBPickerHijri.SelectedItem as IList<object>).Count == 3)
+                    {
+                        string month = (TransferDOBPickerHijri.SelectedItem as IList<object>)[1].ToString();
+                        string day = (TransferDOBPickerHijri.SelectedItem as IList<object>)[0].ToString();
+                        string year = (TransferDOBPickerHijri.SelectedItem as IList<object>)[2].ToString();
+                        var date = year + "/" + month + "/" + day;
+                        if (!string.IsNullOrEmpty(date) && viewModel.SingleDeregistrationDate != null && DateTime.Parse(date) > DateTime.Parse(viewModel.SingleDeregistrationDate))
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            return;
+                        }
+                        viewModel.PkrDBO = date;
+                        viewModel.SelectedDob = date;
+                        viewModel.TransferPickerDOBDateDisplay = viewModel.PkrDBO;
+
+                        viewModel.ValidateIDNumber();
+
+                    }
+                }
+                else
+                {
+                    if (TransferDOBPicker.SelectedItem != null && (TransferDOBPicker.SelectedItem as IList<object>).Count == 3)
+                    {
+                        string month = (TransferDOBPicker.SelectedItem as IList<object>)[1].ToString();
+                        string day = (TransferDOBPicker.SelectedItem as IList<object>)[0].ToString();
+                        string year = (TransferDOBPicker.SelectedItem as IList<object>)[2].ToString();
+                        var date = year + "/" + month + "/" + day;
+                        if (!string.IsNullOrEmpty(date) && viewModel.SingleDeregistrationDate != null && DateTime.Parse(date) > DateTime.Parse(viewModel.SingleDeregistrationDate))
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            return;
+                        }
+                        viewModel.PkrDBO = date;
+                        viewModel.SelectedDob = date;
+                        viewModel.TransferPickerDOBDateDisplay = viewModel.PkrDBO;
+                        viewModel.ValidateIDNumber();
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+
+        private void TransferDOBDatePicker_Unfocused(object sender, FocusEventArgs e)
+        {
+            //ValidateIDNumber();
+
+            if (viewModel.IsDOBHijriCal)
+            {
+                string month = (TransferDOBPickerHijri.SelectedItem as IList<object>)[1].ToString();
+                string day = (TransferDOBPickerHijri.SelectedItem as IList<object>)[0].ToString();
+                string year = (TransferDOBPickerHijri.SelectedItem as IList<object>)[2].ToString();
+                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                viewModel.SelectedDob = date;
+            }
+            else
+            {
+                string month = (TransferDOBPicker.SelectedItem as IList<object>)[1].ToString();
+                string day = (TransferDOBPicker.SelectedItem as IList<object>)[0].ToString();
+                string year = (TransferDOBPicker.SelectedItem as IList<object>)[2].ToString();
+                string date = year + "/" + month + "/" + day;
+                viewModel.SelectedDob = date;
+            }
+        }
+
+        private void TransferDOBDateEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+            {
+                FrmDBO.HasError = false;
+            }
+
+        }
+        public void OnTransferDOBDateEntryFocussed(object sender, EventArgs args)
+        {
+            if (viewModel.IsDOBHijriCal)
+            {
+                TransferDOBPickerHijri.IsOpen = true;
+            }
+            else
+            {
+                TransferDOBPicker.IsOpen = true;
+            }
+
+        }
+        private void OnTransferIDDOBClicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(idNumber.Text))
+            {
+                idNumber.Focus();
+                return;
+            }
+            if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID && viewModel.DobText.IsEditable == false)
+            {
+                return;
+            }
+            if (!viewModel.IsDOBHijriCal)
+            {
+                TransferDOBPicker.IsOpen = true;
+            }
+            else
+            {
+                TransferDOBPickerHijri.IsOpen = true;
+            }
+        }
         void GetSelectedDataTemplate()
         {
             var captionStyle = Resources["CaptionLabelBlack"] as Style;
@@ -65,16 +655,32 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 viewModel.outletEditIsVisible = true;
                 viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+                foreach (var items in viewModel.SelectedOutletForCloseTranser.PermitTypes)
+                {
+                    items.APermitDregRsnTb = "1";
+                    items.APermitDisplayReason = AppResources.TinDeregistrationClosed;
+                    items.ReasonDescription = AppResources.TinDeregistrationClosed;
+                    items.APermitDeregDisplayDate = string.Empty;
+                    items.APermitIdNoTb = string.Empty;
+                    items.APermitDeregDisplayDobDate = string.Empty;
+                }
             }
             else if (viewModel.SelectedPermitOutletOptionIndex == 1)
             {
                 viewModel.outletEditIsVisible = false;
                 viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
+                viewModel.SingleDeregistrationDate = string.Empty;
+                viewModel.SelectedIdNumber = string.Empty;
+                viewModel.SelectedIdtype = string.Empty;
+                viewModel.SelectedDob = string.Empty;
+                viewModel.TINNumber = string.Empty;
+                viewModel.IDTypeDataModel = new VATSignUpD();
             }
             else
             {
                 viewModel.outletEditIsVisible = false;
                 viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+                viewModel.SingleDeregistrationDate = string.Empty;
             }
 
             int index = Convert.ToInt16(viewModel.SelectedPermitOutletOptionIndex);
@@ -85,19 +691,25 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             base.OnAppearing();
 
+            SetDate();
+
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
                 viewModel.PickerModel = arg;
                 Console.WriteLine(arg);
             });
 
-            
+
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption", (arg) =>
             {
                 GetSelectedDataTemplate();
             });
         }
+        private void SetDate()
+        {
+            viewModel.SetDefaultDate();
 
+        }
         public void ChangeAeroIcon()
         {
             if (!App.IsArabic)
@@ -337,6 +949,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             viewModel.SelectedIdNumber = string.Empty;
                             //EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
                         }
+                        else
+                        {
+                            viewModel.FrameIDError = false;
+                            viewModel.ValidateIDNumberForIndiviualOutlets();
+                        }
                     }
 
                     if (viewModel.SelectedIdtype == AppResources.TinDeregistrationCompanyID)
@@ -397,14 +1014,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        void BorderlessEntryPermittype_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        async void BorderlessEntryPermittype_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
 
             PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
 
             var cell = outletsListView.Children.FirstOrDefault();
-            var entry = (Xamarin.Forms.Entry)cell.FindByName("EntryTINPermitType");
+            var entry = sender as GAZT.BorderlessEntry;
 
             if (!string.IsNullOrEmpty(entry.Text))
             {
@@ -436,13 +1053,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         popUp.FlowDirections = "LeftToRight";
                     }
 
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     entry.Text = string.Empty;
                 }
                 else
                 {
                     viewModel.FrameTinError = false;
-                    viewModel.ValidateIdNumberForPermitTypes(entry.Text);
+                    await viewModel.ValidateIdNumberForPermitTypes(entry.Text);
                 }
             }
             else
@@ -463,7 +1080,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     popUp.FlowDirections = "LeftToRight";
                 }
 
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 entry.Text = string.Empty;
             }
         }
@@ -730,6 +1347,299 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             }
 
+        }
+
+        void PermitIDNo_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            try
+            {
+                var permitIDNum = sender as GAZT.BorderlessEntry;
+                PopUp popUp = new PopUp();
+                StringBuilder Messages = new StringBuilder();
+
+                var selectedPermit = viewModel?.SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitNoTb == viewModel.tempIdTypePermitSetResult.APermitNoTb || x.APermitNoTb == viewModel.selectedAPermitReason);
+
+                if (!string.IsNullOrEmpty(selectedPermit?.PermitIdTypeName))
+                {
+                    if (selectedPermit?.PermitIdTypeName == AppResources.TinDeregistrationNationalID)
+                    {
+                        if (selectedPermit?.APermitIdNoTb.Substring(0, 1) != "1")
+                        {
+                            popUp.Message = AppResources.ZZNationalIDstartswith1;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                            //ZZPleaseenteravalidNationalID
+                        }
+                        else
+                        {
+                            if (selectedPermit?.APermitIdNoTb.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZNationalIDlengthis10digit);
+                            }
+                            if (Messages.Length > 0)
+                            {
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //viewModel.FrameIDError = true;
+                                permitIDNum.Text = string.Empty;
+                            }
+                            else
+                            {
+                                //viewModel.FrameIDError = false;
+                                if (!string.IsNullOrEmpty(selectedPermit?.APermitDeregDisplayDobDate))
+                                {
+                                    viewModel.ValidateIDNumberForIndiviualPermit();
+                                }
+                            }
+                        }
+                    }
+
+                    if (selectedPermit?.PermitIdTypeName == AppResources.TinDeregistrationIQAMANumber)
+                    {
+                        if (selectedPermit?.APermitIdNoTb.Substring(0, 1) != "2")
+                        {
+                            popUp.Message = AppResources.ZZIqamaIDstartswith2;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                        }
+                        else
+                        {
+                            if (selectedPermit?.APermitIdNoTb.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
+                            }
+
+                            if (Messages.Length > 0)
+                            {
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //FrmIDNumber.HasError = true;
+                                //viewModel.FrameIDError = true;
+                                permitIDNum.Text = string.Empty;
+                            }
+                            else
+                            {
+                                //FrmIDNumber.HasError = false;
+                                //viewModel.FrameIDError = false;
+                                if (!string.IsNullOrEmpty(selectedPermit.APermitDeregDisplayDobDate))
+                                {
+                                    viewModel.ValidateIDNumberForIndiviualPermit();
+                                }
+                            }
+                        }
+                    }
+
+                    if (selectedPermit?.PermitIdTypeName == AppResources.TinDeregistrationGCCID)
+                    {
+                        if (selectedPermit?.APermitIdNoTb.Substring(0, 1) == "0")
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                        }
+                        else if (!(selectedPermit?.APermitIdNoTb.Length <= 15 && selectedPermit?.APermitIdNoTb.Length >= 7))
+                        {
+                            popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                            //EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                        }
+                        else
+                        {
+                            //viewModel.FrameIDError = false;
+                            viewModel.ValidateIDNumberForIndiviualPermit();
+                        }
+                    }
+
+                    if (selectedPermit?.PermitIdTypeName == AppResources.TinDeregistrationCompanyID)
+                    {
+                        if (selectedPermit?.APermitIdNoTb.Substring(0, 1) != "7")
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.TinDeregistrationCompanyIDCheck;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                        }
+                        else if (selectedPermit.APermitIdNoTb.Length > 10)
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.CompanyIDlengthis10digit;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                        }
+                        else
+                        {
+                            //viewModel.FrameIDError = false;
+                            viewModel.ValidateIDNumberForIndiviualPermit();
+                        }
+                    }
+                }
+                //else
+                //{
+                //    viewModel.FrameIDError = true;
+                //}
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void OnClosePermitDeregDateClicked(System.Object sender, System.EventArgs e)
+        {
+                //if (!viewModel.IsHijriCal)
+                //{
+                //    CloseDeregDatePicker.IsOpen = true;
+                //}
+                //else
+                //{
+                //    CloseDeregDatePickerHijri.IsOpen = true;
+                //}
+        }
+         
+        void Button_Clicked(System.Object sender, System.EventArgs e)
+        {
+
+            
+            var permit = ((Button)sender).CommandParameter as PermitSetResult;
+            viewModel.selectedCalPermitNo = permit.APermitNoTb;
+            Device.BeginInvokeOnMainThread(() => { 
+                if( permit.IsHijiri)
+                {
+                        ClosePermitDeregDatePickerHijri.IsOpen = true;
+                }
+                else
+                {
+                        ClosePermitDeregDatePicker.IsOpen = true;
+                }
+            });
+        }
+
+        void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
+        {
+            if ((e as TappedEventArgs).Parameter != null)
+            {
+                var parameterVal = (e as TappedEventArgs).Parameter.ToString();
+                viewModel.OnOutletPermitTypeDeRegisrtationReasonDateTapped.Execute(parameterVal);
+            }
+
+        }
+        void OnClosePermitDOBDateClicked(System.Object sender, System.EventArgs e)
+        {
+            var permit = ((Button)sender).CommandParameter as PermitSetResult;
+            viewModel.selectedCalPermitNo = permit.APermitNoTb;
+
+            Device.BeginInvokeOnMainThread(() => {
+                if (permit.IsDOBHijiri)
+                {
+                    ClosePermitDOBPickerHijri.IsOpen = true;
+                }
+                else
+                {
+                    ClosePermitDOBPicker.IsOpen = true;
+                }
+            });
         }
     }
 }
