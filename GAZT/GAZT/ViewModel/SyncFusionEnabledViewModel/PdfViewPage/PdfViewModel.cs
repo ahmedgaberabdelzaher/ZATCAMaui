@@ -12,9 +12,11 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class PdfViewModel : ViewModelBase
     {
         #region Variable

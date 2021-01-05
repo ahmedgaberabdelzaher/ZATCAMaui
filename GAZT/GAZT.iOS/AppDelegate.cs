@@ -25,6 +25,7 @@ using Syncfusion.XForms.iOS.Buttons;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using GAZT.iOS.CustomRenderer;
 
 namespace GAZT.iOS
 {
@@ -67,7 +68,7 @@ namespace GAZT.iOS
             new SfBusyIndicatorRenderer();
             SfCardLayoutRenderer.Init();
             new Syncfusion.SfNavigationDrawer.XForms.iOS.SfNavigationDrawerRenderer();
-
+       
             new SfRotator();
             SfListViewRenderer.Init();
             SfEffectsViewRenderer.Init();  //Initialize only when effects view is added to Listview.
@@ -80,6 +81,13 @@ namespace GAZT.iOS
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
             Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
             SfMaskedEditRenderer.Init();
+
+            var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
+            config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+            AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
+            config.CollectorURL = "https://eum.gazt.gov.sa:443";
+            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
+
 
             // Add the below line if you are using SfLinearProgressBar.
             Syncfusion.XForms.iOS.ProgressBar.SfLinearProgressBarRenderer.Init();

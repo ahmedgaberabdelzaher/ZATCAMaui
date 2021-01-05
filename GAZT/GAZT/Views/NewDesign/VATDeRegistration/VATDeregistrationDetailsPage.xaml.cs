@@ -21,10 +21,12 @@ using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.XForms.TextInputLayout;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATDeRegistration
 {
+    [Preserve(AllMembers = true)]
     public partial class VATDeregistrationDetailsPage : ContentPage
     {
         VATDeRegistrationDetailsPageViewModel viewModel;

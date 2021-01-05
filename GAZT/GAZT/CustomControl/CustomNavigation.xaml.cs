@@ -1,7 +1,10 @@
 ﻿using Xamarin.Forms;
 using EGAZT.Enums;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public partial class CustomNavigation : NavigationPage
     {
 

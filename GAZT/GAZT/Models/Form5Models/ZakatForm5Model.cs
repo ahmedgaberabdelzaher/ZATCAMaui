@@ -1,28 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace ZakatForm5Model
 {
+    [Preserve(AllMembers = true)]
     public partial class ZakatForm5Data
     {
+        [Preserve(AllMembers = true)]
         public ZakatForm5DataResult d { get; set; }
     }
-
-
+    [Preserve(AllMembers = true)]
     public class Metadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata2
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result
     {
         public Metadata2 __metadata { get; set; }
@@ -46,19 +48,19 @@ namespace ZakatForm5Model
         public string MarkDel { get; set; }
         public string Delflag { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GP038Set
     {
         public List<Result> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata3
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results2
     {
         public Metadata3 __metadata { get; set; }
@@ -82,19 +84,19 @@ namespace ZakatForm5Model
         public string MarkDel { get; set; }
         public string Delflag { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GP037Set
     {
         public List<Results2> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata4
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results3
     {
         public Metadata4 __metadata { get; set; }
@@ -108,19 +110,19 @@ namespace ZakatForm5Model
         public string Amount { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class SCH200Set
     {
         public List<Results3> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata5
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results4
     {
         public Metadata5 __metadata { get; set; }
@@ -134,19 +136,19 @@ namespace ZakatForm5Model
         public string ZakatPaid { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class SCH800Set
     {
         public List<Results4> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata6
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results5
     {
         public Metadata6 __metadata { get; set; }
@@ -182,19 +184,19 @@ namespace ZakatForm5Model
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP07
     {
         public List<Results5> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata7
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results6
     {
         public Metadata7 __metadata { get; set; }
@@ -244,19 +246,19 @@ namespace ZakatForm5Model
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP06
     {
         public List<Results6> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata8
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results7
     {
         public Metadata8 __metadata { get; set; }
@@ -291,19 +293,19 @@ namespace ZakatForm5Model
         public string Waers { get; set; }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP05
     {
         public List<Results7> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata9
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results8
     {
         public Metadata9 __metadata { get; set; }
@@ -338,19 +340,19 @@ namespace ZakatForm5Model
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP04
     {
         public List<Results8> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata10
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results9
     {
         public Metadata10 __metadata { get; set; }
@@ -443,19 +445,19 @@ namespace ZakatForm5Model
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP03
     {
         public List<Results9> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata11
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results10
     {
         public Metadata11 __metadata { get; set; }
@@ -472,19 +474,19 @@ namespace ZakatForm5Model
         public string CapitalGain { get; set; }
         public string MaxCapital { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP3S2Set
     {
         public List<Results10> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata12
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results11
     {
         public Metadata12 __metadata { get; set; }
@@ -502,19 +504,19 @@ namespace ZakatForm5Model
         public string TotImpIntn { get; set; }
         public string CapitalGain { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP3S1Set
     {
         public List<Results11> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata13
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results12
     {
         public Metadata13 __metadata { get; set; }
@@ -538,16 +540,17 @@ namespace ZakatForm5Model
         public string MarkDel { get; set; }
         public string Delflag { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GP036Set
     {
         public List<Results12> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class AttDetSet
     {
         public List<object> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public class Metadata14
     {
@@ -555,7 +558,7 @@ namespace ZakatForm5Model
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results13
     {
         public Metadata14 __metadata { get; set; }
@@ -579,19 +582,19 @@ namespace ZakatForm5Model
         public string IncrCapital { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class SUBSCHCAPITALSet
     {
         public List<Results13> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata15
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Results14
     {
         public Metadata15 __metadata { get; set; }
@@ -612,19 +615,19 @@ namespace ZakatForm5Model
         public string Profit { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GP034Set
     {
         public List<Results14> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata16
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result15
     {
         public Metadata16 __metadata { get; set; }
@@ -643,19 +646,19 @@ namespace ZakatForm5Model
         public string Profit { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GP035Set
     {
         public List<Result15> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata17
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result16
     {
         public Metadata17 __metadata { get; set; }
@@ -674,19 +677,19 @@ namespace ZakatForm5Model
         public string PrfOfConrtact { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GP063Set
     {
         public List<Result16> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata18
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result17
     {
         public Metadata18 __metadata { get; set; }
@@ -707,19 +710,19 @@ namespace ZakatForm5Model
         public string Profit { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GP032Set
     {
         public List<Result17> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata19
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result18
     {
         public Metadata19 __metadata { get; set; }
@@ -744,19 +747,19 @@ namespace ZakatForm5Model
         public string PrfOfConrtact { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GP061Set
     {
         public List<Result18> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata20
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result19
     {
         public Metadata20 __metadata { get; set; }
@@ -784,19 +787,19 @@ namespace ZakatForm5Model
         public string PrfOfConrtact { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GP062Set
     {
         public List<Result19> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata21
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result20
     {
         public Metadata21 __metadata { get; set; }
@@ -817,19 +820,19 @@ namespace ZakatForm5Model
         public string Profit { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GP033Set
     {
         public List<Result20> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata22
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result21
     {
         public Metadata22 __metadata { get; set; }
@@ -860,24 +863,24 @@ namespace ZakatForm5Model
         public string RemnWrk { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class MAINACTIVITYSet
     {
         public List<Result21> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class LONGTEXTSet
     {
         public List<object> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata23
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result22
     {
         public Metadata23 __metadata { get; set; }
@@ -911,19 +914,19 @@ namespace ZakatForm5Model
         public int LineCnt { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP12
     {
         public List<Result22> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata24
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result23
     {
         public Metadata24 __metadata { get; set; }
@@ -957,19 +960,19 @@ namespace ZakatForm5Model
         public int LineCnt { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP11
     {
         public List<Result23> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata25
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result24
     {
         public Metadata25 __metadata { get; set; }
@@ -1003,19 +1006,19 @@ namespace ZakatForm5Model
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP10
     {
         public List<Result24> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata26
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result25
     {
         public Metadata26 __metadata { get; set; }
@@ -1049,19 +1052,19 @@ namespace ZakatForm5Model
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP09
     {
         public List<Result25> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata27
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result26
     {
         public Metadata27 __metadata { get; set; }
@@ -1108,19 +1111,19 @@ namespace ZakatForm5Model
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP08
     {
         public List<Result26> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata28
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result27
     {
         public Metadata28 __metadata { get; set; }
@@ -1152,19 +1155,19 @@ namespace ZakatForm5Model
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP02
     {
         public List<Result27> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata29
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result28
     {
         public Metadata29 __metadata { get; set; }
@@ -1205,19 +1208,19 @@ namespace ZakatForm5Model
         public bool IsApplicableVisible { get; set; }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SCHGP01
     {
         public List<Result28> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata30
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Result29
     {
         public Metadata30 __metadata { get; set; }
@@ -1236,12 +1239,12 @@ namespace ZakatForm5Model
         public string Amount { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class GENSUBSCH
     {
         public List<Result29> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ZakatForm5DataResult
     {
         public Metadata __metadata { get; set; }

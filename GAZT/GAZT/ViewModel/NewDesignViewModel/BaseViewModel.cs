@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class BaseViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

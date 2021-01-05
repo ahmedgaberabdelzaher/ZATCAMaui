@@ -16,6 +16,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridCustomWebViewRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
+    [Preserve(AllMembers = true)]
     public class HybridCustomWebViewRenderer: WkWebViewRenderer
     {
         //public HybridCustomWebViewRenderer()
@@ -75,6 +76,7 @@ namespace GAZT.iOS.CustomRenderer
         }
     }
 
+    [Preserve(AllMembers = true)]
     public class DisplayLinkWebViewDelegateNew : WKNavigationDelegate
     {
         private HybridWebView element;

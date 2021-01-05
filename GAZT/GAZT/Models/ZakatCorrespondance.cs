@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class Correspondance
     {
     }
+
+    [Preserve(AllMembers = true)]
     public class CorrespondenceMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class CorrespondenceResult
     {
         public CorrespondenceMetadata __metadata { get; set; }
@@ -44,10 +51,14 @@ namespace GAZT.Models
         public string CaseId { get; set; }
         public string LetterNum { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class CorrespondenceD
     {
         public List<CorrespondenceResult> results { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class CorrespondenceRootObject
     {
         public CorrespondenceD d { get; set; }

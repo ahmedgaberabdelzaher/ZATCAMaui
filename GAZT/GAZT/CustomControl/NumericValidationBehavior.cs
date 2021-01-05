@@ -2,8 +2,11 @@
 using System.Linq;
 using GAZT.Manager;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT
 {
+    [Preserve(AllMembers = true)]
     public class NumericValidationBehavior : Behavior<Entry>
     {
         protected override void OnAttachedTo(Entry entry)

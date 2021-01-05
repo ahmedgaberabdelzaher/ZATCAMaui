@@ -5,9 +5,11 @@ using GAZT.Models;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.DashBoardPages
 {
+    [Preserve(AllMembers = true)]
     public partial class QuickActionPopUpPageView :  PopupPage
     {
         QuickActionPopUpPageViewModel viewModel;

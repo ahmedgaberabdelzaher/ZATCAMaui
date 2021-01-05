@@ -1,10 +1,12 @@
 ﻿using System;
 using EGAZT.Models.AccountStatements;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.CustomControl
 {
-    public class AccountStatementsLVDataTemplateSelector: DataTemplateSelector
+	[Preserve(AllMembers = true)]
+	public class AccountStatementsLVDataTemplateSelector: DataTemplateSelector
     {
 		public DataTemplate TotalBalanceTemplate { get; set; }
 

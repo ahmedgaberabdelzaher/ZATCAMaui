@@ -4,10 +4,12 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using System;
 using System.Linq;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.AddNote
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddNotePageView : ContentPage
     {

@@ -4,9 +4,11 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class TaxEvasionModel
     {
         public TaxEvasionModel()

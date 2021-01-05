@@ -7,9 +7,11 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 {
+    [Preserve(AllMembers = true)]
     public class TaxManagementPageViewModel : BaseViewModel
     {
         public ICommand OnBackButtonClicked { get; set; }

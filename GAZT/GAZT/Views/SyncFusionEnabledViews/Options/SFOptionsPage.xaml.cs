@@ -9,6 +9,7 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage
 {
+    
     /// <summary>
     /// Page to show the setting.
     /// </summary>

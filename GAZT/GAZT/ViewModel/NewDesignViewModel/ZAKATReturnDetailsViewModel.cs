@@ -13,9 +13,11 @@ using GAZT.Manager;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ZAKATReturnDetailsViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;

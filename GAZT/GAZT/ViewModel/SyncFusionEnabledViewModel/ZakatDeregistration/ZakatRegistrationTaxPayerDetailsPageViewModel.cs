@@ -9,9 +9,11 @@ using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
+    [Preserve(AllMembers = true)]
     public class ZakatRegistrationTaxPayerDetailsPageViewModel : EstablishmentRegistrationPageViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }

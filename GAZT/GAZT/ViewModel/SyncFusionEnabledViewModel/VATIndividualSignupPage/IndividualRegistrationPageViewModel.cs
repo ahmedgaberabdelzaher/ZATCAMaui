@@ -22,9 +22,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
+    [Preserve(AllMembers = true)]
     public class IndividualRegistrationPageViewModel : ViewModelBase
     {
         public int DefaultMonth;

@@ -4,9 +4,11 @@ using System.Globalization;
 using System.Text;
 using EGAZT.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.NewDesignConverters
 {
+    [Preserve(AllMembers = true)]
     public class VATReturnUpdatedUITabEnumToVisibilityConverter : IValueConverter
     {
         private bool isVisible { get; set; } = false;

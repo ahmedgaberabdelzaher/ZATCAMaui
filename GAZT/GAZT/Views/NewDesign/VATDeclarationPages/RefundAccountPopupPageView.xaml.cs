@@ -10,10 +10,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RefundAccountPopupPageView : PopupPage
     {

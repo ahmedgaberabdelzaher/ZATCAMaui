@@ -1,9 +1,11 @@
 ﻿using System;
 using EGAZT.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Helper
 {
+	[Preserve(AllMembers = true)]
 	public class SelectedItemLVDataTemplateSelector : DataTemplateSelector
 	{
 		public DataTemplate SelectedItemTemplated { get; set; }

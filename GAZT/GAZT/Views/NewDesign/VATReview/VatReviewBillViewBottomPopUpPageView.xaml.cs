@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.VatReview
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VatReviewBillViewBottomPopUpPageView : PopupPage
     {

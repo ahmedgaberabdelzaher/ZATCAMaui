@@ -10,10 +10,12 @@ using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATRefunds
 {
+    [Preserve(AllMembers = true)]
     public partial class VATRefundsNewRequestPageView : ContentPage
     {
         VATRefundsNewRequestViewModel viewModel;

@@ -6,9 +6,11 @@ using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
+    [Preserve(AllMembers = true)]
     public class InternationalCodeSearchPageViewModel: ViewModelBase
     {
         public readonly INavigationService _navigationService;

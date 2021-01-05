@@ -14,6 +14,7 @@ using System.Resources;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
@@ -21,6 +22,7 @@ using Application = Xamarin.Forms.Application;
 using NavigationPage = Xamarin.Forms.NavigationPage;
 namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATLookupPageView : ContentPage
     {

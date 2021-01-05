@@ -1,8 +1,10 @@
 ﻿using EGAZT.Enums;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public class TransitionNavigationPage : NavigationPage
 	{
         public static readonly BindableProperty TransitionTypeProperty =

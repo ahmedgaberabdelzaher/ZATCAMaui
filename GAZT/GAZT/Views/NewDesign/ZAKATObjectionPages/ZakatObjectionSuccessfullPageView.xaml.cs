@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using NavigationPage = Xamarin.Forms.NavigationPage;
 
 namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatObjectionSuccessfullPageView : ContentPage
     { 

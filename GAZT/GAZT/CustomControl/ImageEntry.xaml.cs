@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public partial class ImageEntry : ContentView
     {
         public static BindableProperty TextProperty = BindableProperty.Create(nameof(Text),

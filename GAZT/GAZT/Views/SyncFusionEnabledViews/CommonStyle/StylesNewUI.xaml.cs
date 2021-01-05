@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.CommonStyle
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Preserve(AllMembers = true)]
     public partial class StylesNewUI
     {
         public StylesNewUI()

@@ -9,9 +9,11 @@ using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 {
+    [Preserve(AllMembers = true)]
     public class TaxEvasionVerifyMobileViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;

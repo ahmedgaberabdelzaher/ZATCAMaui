@@ -16,9 +16,11 @@ using Xamarin.Forms;
 using System.Timers;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
-{//TEST
+{
+    [Preserve(AllMembers = true)]
     public class GAZTNewDesignForgotPasswordPageViewModel : ViewModelBase
     {
         #region Variable

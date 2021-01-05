@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class PrivacyAndPolicyPageViewModel : ViewModelBase
     {
         #region Variable

@@ -4,9 +4,11 @@ using System.Windows.Input;
 using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.Common
 {
+    [Preserve(AllMembers = true)]
     public class GeneralServicesViewModel : BaseViewModel
     {
         public class GeneralServicesListModel

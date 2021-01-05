@@ -6,8 +6,11 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class SignUpTAndCPageViewModel : ViewModelBase
     {
         #region Veriables

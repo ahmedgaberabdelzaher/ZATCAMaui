@@ -1,9 +1,12 @@
 ﻿using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
+using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class MorePopUpPageViewModel : BaseViewModel
     {
         #region Properties

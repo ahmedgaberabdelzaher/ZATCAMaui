@@ -4,9 +4,11 @@ using System.Windows.Input;
 using EGAZT.Models.AccountStatements;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 {
+    [Preserve(AllMembers = true)]
     public class AccountStatementsFiltersPageViewModel: BaseViewModel
     {
         public ICommand SortAscendingTapped { get; set; }

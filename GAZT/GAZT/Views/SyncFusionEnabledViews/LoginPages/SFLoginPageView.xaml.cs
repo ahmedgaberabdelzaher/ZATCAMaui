@@ -381,7 +381,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                         }
                                     }
                                 }
-                                catch
+                                catch (Exception ex)
                                 {
                                     await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                                 }

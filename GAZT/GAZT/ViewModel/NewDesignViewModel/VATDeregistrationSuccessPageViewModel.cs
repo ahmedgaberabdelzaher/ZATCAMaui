@@ -6,9 +6,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class VATDeregistrationSuccessPageViewModel: ViewModelBase
     {
         #region Variable

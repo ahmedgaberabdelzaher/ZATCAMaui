@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT
 {
+    [Preserve(AllMembers = true)]
     public partial class EntryWithGaztStyle : ContentView
     {
         public EntryWithGaztStyle()

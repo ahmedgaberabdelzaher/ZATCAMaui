@@ -13,8 +13,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ZakatReturnListPageViewModel : ViewModelBase
     {
         #region Variable

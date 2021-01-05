@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.CustomControl
 {
-   public  class ArabicCharEnglishCharAndNumberNoSpclChar : Behavior<Entry>
+    [Preserve(AllMembers = true)]
+    public  class ArabicCharEnglishCharAndNumberNoSpclChar : Behavior<Entry>
     {
         protected override void OnAttachedTo(Entry entry)
         {

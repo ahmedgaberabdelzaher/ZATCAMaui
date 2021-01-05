@@ -4,9 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    
+    [Preserve(AllMembers = true)]
     public class NotesDescriptionPopUpPageViewModel : BaseViewModel
     {
         #region Variable

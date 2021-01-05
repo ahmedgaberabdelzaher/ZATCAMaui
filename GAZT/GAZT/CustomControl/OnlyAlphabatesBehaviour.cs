@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.CustomControl
 {
+
+    [Preserve(AllMembers = true)]
     public class OnlyAlphabatesBehaviour : Xamarin.Forms.Behavior<Entry>
     {
         protected override void OnAttachedTo(Entry entry)

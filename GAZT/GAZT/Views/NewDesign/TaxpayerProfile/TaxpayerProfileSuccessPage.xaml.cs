@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using GAZT.Manager;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.TaxpayerProfile
 {
+    [Preserve(AllMembers = true)]
     public partial class TaxpayerProfileSuccessPage : ContentPage
     {
         TaxpayerProfileSuccessViewModel viewModel;

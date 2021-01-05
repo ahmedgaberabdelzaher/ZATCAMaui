@@ -2,9 +2,11 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Helper
 {
+    [Preserve(AllMembers = true)]
     public class NumberToCurrencyConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

@@ -6,9 +6,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatReturnDetailsSuccessfullPageView : ContentPage
     {

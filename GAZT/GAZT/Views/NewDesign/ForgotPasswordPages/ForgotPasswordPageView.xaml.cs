@@ -4,9 +4,13 @@ using Xamarin.Forms.Xaml;
 using System;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZT.CustomControl;
+using MVP.FontIcons;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
-{//TEAST
+{
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignForgotPasswordPageView : ContentPage
     {

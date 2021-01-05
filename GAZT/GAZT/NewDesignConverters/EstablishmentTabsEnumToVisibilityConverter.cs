@@ -2,9 +2,11 @@
 using System.Globalization;
 using EGAZT.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.NewDesignConverters
 {
+    [Preserve(AllMembers = true)]
     public class EstablishmentTabsEnumToVisibilityConverter : IValueConverter
     {
         private bool isVisible { get; set; } = false;
@@ -27,6 +29,7 @@ namespace EGAZT.NewDesignConverters
         }
     }
 
+    [Preserve(AllMembers = true)]
     public class EstablishmentRegistrationOutletTabsEnumToVisibilityConverter : IValueConverter
     {
         private bool isVisible { get; set; } = false;
@@ -44,6 +47,7 @@ namespace EGAZT.NewDesignConverters
         }
     }
 
+    [Preserve(AllMembers = true)]
     public class EstablishmentRegistrationActivityTabsEnumToVisibilityConverter : IValueConverter
     {
         private bool isVisible { get; set; } = false;
@@ -61,6 +65,7 @@ namespace EGAZT.NewDesignConverters
         }
     }
 
+    [Preserve(AllMembers = true)]
     public class EstablishmentFinanicalMethodsToVisibilityConverter : IValueConverter
     {
         private bool isVisible { get; set; } = false;
@@ -76,6 +81,7 @@ namespace EGAZT.NewDesignConverters
         }
     }
 
+    [Preserve(AllMembers = true)]
     public class EstablishmentMainActivityToVisibilityConverter : IValueConverter
     {
         private bool isVisible { get; set; } = false;
@@ -91,6 +97,7 @@ namespace EGAZT.NewDesignConverters
         }
     }
 
+    [Preserve(AllMembers = true)]
     public class ESTresidentialStatusConverter : IValueConverter
     {
         private string status { get; set; } = AppResources.ESTNationalyStatusOptionTwoValue;

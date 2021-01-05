@@ -1,6 +1,9 @@
 ﻿using System;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Helper
 {
+    [Preserve(AllMembers = true)]
     public interface IDeviceInfo
     {
         double GetDeviceHeight();

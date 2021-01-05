@@ -4,10 +4,12 @@ using GAZT;
 using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(CustomButton), typeof(CustomButtonRenderer))]
 namespace GAZT
 {
+    [Preserve(AllMembers = true)]
     public class CustomButtonRenderer : ButtonRenderer
     {
         double fontSize;

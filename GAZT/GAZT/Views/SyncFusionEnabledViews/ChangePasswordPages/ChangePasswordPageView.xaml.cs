@@ -4,10 +4,12 @@ using EGAZT.Views.SyncFusionEnabledViews.OTPPage;
 using GAZT.Models;
 using System;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.ChangePassword
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangePasswordPageView : ContentPage
     {

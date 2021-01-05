@@ -8,12 +8,14 @@ using EGAZT.Models.VatReviewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using GAZT.Manager;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace EGAZT.Views.NewDesign.VatReview
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     public partial class VatReviewListPageView : ContentPage

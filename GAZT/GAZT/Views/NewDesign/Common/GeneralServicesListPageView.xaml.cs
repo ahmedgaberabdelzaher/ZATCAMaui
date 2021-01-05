@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.Common;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.Common
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Preserve(AllMembers = true)]
     public partial class GeneralServicesListPageView : ContentPage
     {
         private GeneralServicesViewModel _viewModel;

@@ -1,7 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT
 {
+    [Preserve(AllMembers = true)]
     public class NineDotTwoDecimalPlacesAndNoNegativeValue : Behavior<Entry>
     {
         static int decimalCount;

@@ -7,9 +7,11 @@ using Rg.Plugins.Popup.Services;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public  class TaxpayerCorrespondanceDetailPageViewModel : BaseViewModel
     {
         public ICommand OnBackButtonClicked { get; set; }

@@ -4,9 +4,11 @@ using System.Windows.Input;
 using EGAZT.Models.EstablishmentRegistration;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
+    [Preserve(AllMembers = true)]
     public class RegistrationSuccessfulViewModel: BaseViewModel
     {
         public TaxPayerDetails taxPayerDetails { get; set; } = null;

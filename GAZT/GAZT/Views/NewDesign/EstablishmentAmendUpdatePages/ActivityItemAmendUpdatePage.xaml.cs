@@ -5,10 +5,12 @@ using System.Linq;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ActivityItemAmendUpdatePage : ContentPage
     {

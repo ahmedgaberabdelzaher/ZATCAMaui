@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 namespace EGAZT.Views.SyncFusionEnabledViews.MyCertificate
 {
+    [Preserve(AllMembers = true)]
     public partial class MyCertificate : ContentPage
     {
         // ObservableCollection<String> Items = new ObservableCollection<String>();

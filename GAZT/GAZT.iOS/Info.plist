@@ -83,6 +83,8 @@
 	<key>CFBundleShortVersionString</key>
 	<string>3.2.2.7</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.143</string>
+	<string>1.0.140</string>
+	<key>CFBundleShortVersionString</key>
+	<string>3.2.2.4</string>
 </dict>
 </plist>

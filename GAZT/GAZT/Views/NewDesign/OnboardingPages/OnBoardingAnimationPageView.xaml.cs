@@ -7,10 +7,11 @@ using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.OnboardingPages
 {
+    [Preserve(AllMembers = true)]
     /// <summary>
     /// Page to display on-boarding gradient with animation
     /// </summary>
-    [Preserve(AllMembers = true)]
+    
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignOnBoardingAnimationPageView
     {

@@ -1,6 +1,9 @@
 ﻿using System;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.Models.InstalmentPlanModel
 {
+    [Preserve(AllMembers = true)]
     public class InstalmentPlanModel
     {
         public InstalmentPlanModel()

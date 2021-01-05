@@ -5,8 +5,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public class NavigationService : INavigationService
     {
         private readonly Dictionary<string, Type> _pagesByKey = new Dictionary<string, Type>();

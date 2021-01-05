@@ -8,8 +8,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondenceDetailsPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class CorrespondenceDetailsPageViewModel : ViewModelBase
     {
         #region Properties

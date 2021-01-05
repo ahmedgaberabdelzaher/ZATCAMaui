@@ -9,9 +9,11 @@ using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel
 {
+    [Preserve(AllMembers = true)]
     public class VATAmendReactivationSuccesssulPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

@@ -1,9 +1,11 @@
 ﻿using System;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class GAZTNewDesignRecoverPasswordPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;

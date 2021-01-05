@@ -14,9 +14,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace GAZT.Manager
 {
+    [Preserve(AllMembers = true)]
     public static class UtilityManager
     {
         #region variable

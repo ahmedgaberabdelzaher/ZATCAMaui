@@ -7,8 +7,11 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public class CustomDatePicker : Syncfusion.SfPicker.XForms.SfPicker
     {
         public Dictionary<string, string> months;

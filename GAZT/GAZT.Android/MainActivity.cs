@@ -15,15 +15,12 @@ using Plugin.Media;
 using Java.Lang;
 using System;
 using Xamarin.Forms;
-using System.Threading.Tasks;
-using Environment = System.Environment;
-using System.IO;
-using Newtonsoft.Json;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace GAZT.Droid
 {
     [Activity(Label = "GAZT E-Services", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         Handler handler;
@@ -49,6 +46,7 @@ namespace GAZT.Droid
             {
                 Window.Attributes.LayoutInDisplayCutoutMode = Android.Views.LayoutInDisplayCutoutMode.ShortEdges;
             }
+          
             // Xamarin.Essentials.Platform.Init(this, bundle);
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)
@@ -103,14 +101,7 @@ namespace GAZT.Droid
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
             global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
-           .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
-
-        }
-        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
-        {
-            var newExc = new System.Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
-
-            LogUnhandledException(newExc);
+             .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         }
 
         private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)

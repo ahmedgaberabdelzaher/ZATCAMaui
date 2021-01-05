@@ -1,11 +1,13 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VatInstalmentPlanBottomPopup : PopupPage
     {

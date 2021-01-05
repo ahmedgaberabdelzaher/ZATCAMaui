@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.AccountStatements
 {
+    [Preserve(AllMembers = true)]
     public partial class AccountStatementsFiltersPageView : PopupPage
     {
         AccountStatementsFiltersPageViewModel viewModel;

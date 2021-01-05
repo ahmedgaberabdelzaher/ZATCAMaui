@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.NewDesignConverters
 {
+    [Preserve(AllMembers = true)]
     class EstablishmentSignUPTabEnumToVisibilityConverters : IValueConverter
     {
         private bool isVisible { get; set; } = false;

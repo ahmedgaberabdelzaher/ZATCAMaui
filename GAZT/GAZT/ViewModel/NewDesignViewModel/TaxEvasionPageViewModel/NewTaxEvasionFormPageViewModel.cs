@@ -18,9 +18,11 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 {
+    [Preserve(AllMembers = true)]
     public class NewTaxEvasionFormPageViewModel : BaseViewModel
     {
         public  readonly INavigationService _navigationService;

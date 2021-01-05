@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.TAXEvasionPages
 {
-    
+    [Preserve(AllMembers = true)]
     public partial class NewTaxEvasionFormSuccessPaveView : ContentPage
     {
         NewTaxEvasionFormPageViewModel viewModel;

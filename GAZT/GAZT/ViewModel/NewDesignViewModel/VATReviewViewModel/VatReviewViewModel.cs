@@ -26,11 +26,13 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using static EGAZT.Models.VatReviewModel.VATObjectionSummaryInputModel;
 using Metadata = EGAZT.Models.VatReviewModel.Metadata;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 {
+    [Preserve(AllMembers = true)]
     public class VatReviewViewModel : ViewModelBase
     {
         #region Enums

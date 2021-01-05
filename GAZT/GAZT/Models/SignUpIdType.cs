@@ -1,6 +1,9 @@
 ﻿using System;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public class SignUpIdType
     {
         public string ID { get; set; }

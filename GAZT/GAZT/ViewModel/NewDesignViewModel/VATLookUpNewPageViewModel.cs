@@ -11,10 +11,12 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using ZXing.Net.Mobile.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class VATLookUpNewPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;

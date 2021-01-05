@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class ZakatReturns
     {
         public string IDNumber { get; set; }
@@ -13,11 +16,15 @@ namespace GAZT.Models
         public string StatusImage { get; set; } = "ic_Paid.png";
         public string BorderColour { get; set; } = "#bfbebe";
     }
+
+    [Preserve(AllMembers = true)]
     public class ZakatReturnStatus
     {
         public string key { get; set; }
         public int Value { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class SalesDetailsAttachments
     {
         public string Id { get; set; }

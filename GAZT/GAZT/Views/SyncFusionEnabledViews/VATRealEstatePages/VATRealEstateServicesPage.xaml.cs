@@ -4,10 +4,12 @@ using System.Threading.Tasks;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage;
 using GAZT.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
 {
+    [Preserve(AllMembers = true)]
     public partial class VATRealEstateServicesPage : ContentPage
     {
         VATRealEstateServicesPageViewModel viewModel;

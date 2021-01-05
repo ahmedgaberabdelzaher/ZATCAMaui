@@ -2,9 +2,14 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZT.Manager;
+using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
+    [Preserve(AllMembers = true)]
     public class NewZakatObjectionPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;

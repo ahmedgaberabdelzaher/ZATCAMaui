@@ -4,9 +4,11 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
+    [Preserve(AllMembers = true)]
     public class TaxpayerProfileSuccessViewModel : ViewModelBase
     {
         #region Variable

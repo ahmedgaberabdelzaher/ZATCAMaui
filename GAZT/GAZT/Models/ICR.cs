@@ -4,8 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class ICRListSet
     {
         public string Incotext { get; set; }//VATReturnForm
@@ -268,6 +271,7 @@ namespace GAZT.Models
             }
         }
     }
+    [Preserve(AllMembers = true)]
     public class ICR
     {
         public Metadata __metadata { get; set; }
@@ -297,6 +301,7 @@ namespace GAZT.Models
             ICR_STATUSSet = new List<ICRStatus>();
         }
     }
+    [Preserve(AllMembers = true)]
     public class ICRStatus
     {
         public Metadata __metadata { get; set; }

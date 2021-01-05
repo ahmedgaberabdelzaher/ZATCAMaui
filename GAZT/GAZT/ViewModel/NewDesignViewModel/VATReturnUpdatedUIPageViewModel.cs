@@ -14,9 +14,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
 using GAZT.Helper;
+using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class GAZTNewDesignVATReturnUpdatedUIPageViewModel : BaseViewModel
     {
 

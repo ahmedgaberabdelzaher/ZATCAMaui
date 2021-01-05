@@ -11,10 +11,12 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using static EGAZT.Models.ContractRelease.ContractReleaseSummaryModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 {
+    [Preserve(AllMembers = true)]
     public class ContractReleaseListViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

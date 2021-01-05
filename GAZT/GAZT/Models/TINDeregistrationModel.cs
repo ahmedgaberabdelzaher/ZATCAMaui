@@ -9,9 +9,11 @@ using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class TINDeregistrationModel
     {
         public TINDeregistrationModel()
@@ -23,7 +25,7 @@ namespace EGAZT.Models
         public string OutletOptionIndex { get; set; }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class TinDeregestrationAttachmentsModel : ViewModelBase
     {
         public TinDeregestrationAttachmentsModel()
@@ -112,7 +114,7 @@ namespace EGAZT.Models
         public string FieldTitle { get; set; }
         public string FieldSubTitle { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class TINDeregistrationSummaryModel
     {
         public TINDeregistrationSummaryModel()
@@ -124,21 +126,21 @@ namespace EGAZT.Models
         public bool IsEditVisible { get; set; }
     }
 
-    
 
+    [Preserve(AllMembers = true)]
     public class ZakatDeregistrationDetailsListModel
     {
         public string ZDTitle { get; set; }
         public string ZDImageSource { get; set; }
         public string ArrowImageSource { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class TinDeregistrationParentResponseModel
     {
         [JsonProperty("d")]
         public TinDeregistrationResponseModel D { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class TinDeregistrationResponseModel
     {
         [JsonProperty("__metadata")]
@@ -429,7 +431,7 @@ namespace EGAZT.Models
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public partial class TinDeregistrationSendResponseModel
     {
         [JsonProperty("__metadata")]
@@ -721,7 +723,7 @@ namespace EGAZT.Models
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public partial class AttachmentSet : INotifyPropertyChanged
     {
 
@@ -772,13 +774,13 @@ namespace EGAZT.Models
         }
 
     }
-
+    [Preserve(AllMembers = true)]
     public partial class PermitSet
     {
         [JsonProperty("results")]
         public PermitSetResult[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class AttDetSetResult
     {
         [JsonProperty("__metadata")]
@@ -841,7 +843,7 @@ namespace EGAZT.Models
        
     }
 
-
+    [Preserve(AllMembers = true)]
     public partial class Set : INotifyPropertyChanged
     {
 
@@ -871,7 +873,7 @@ namespace EGAZT.Models
             }
         }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OutletSetResult : INotifyPropertyChanged
     {
 
@@ -1064,7 +1066,7 @@ namespace EGAZT.Models
             }
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class PermitSetResult:INotifyPropertyChanged
     {
         public PermitSetResult()
@@ -1560,13 +1562,13 @@ namespace EGAZT.Models
             }
         }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class TinDeregistrationReasonSet
     {
         [JsonProperty("d")]
         public TinDeregistrationReasonSetDataModel D { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class TinDeregistrationReasonSetDataModel
     {
         [JsonProperty("__metadata")]
@@ -1584,25 +1586,25 @@ namespace EGAZT.Models
         [JsonProperty("REASONSet")]
         public TinDeregReasonSet ReasonSet { get; set; }
     }
-    
+    [Preserve(AllMembers = true)]
     public partial class OutletSet
     {
         [JsonProperty("__deferred")]
         public Deferred Deferred { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class Deferred
     {
         [JsonProperty("uri")]
         public Uri Uri { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class TinDeregReasonSet
     {
         [JsonProperty("results")]
         public TinDeregReasonSetResult[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class TinDeregReasonSetResult
     {
         [JsonProperty("__metadata")]
@@ -1614,7 +1616,7 @@ namespace EGAZT.Models
         [JsonProperty("ReasonDesc")]
         public string ReasonDesc { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class FieldValidations : INotifyPropertyChanged
     {
         

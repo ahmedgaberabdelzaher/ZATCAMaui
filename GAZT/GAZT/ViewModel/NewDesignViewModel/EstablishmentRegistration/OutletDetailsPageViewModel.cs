@@ -14,9 +14,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
+    [Preserve(AllMembers = true)]
     public class OutletDetailsPageViewModel : BaseViewModel
     {
         #region Variable
@@ -181,7 +183,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _buildingNumber = value;
-                    if(PostalAsPhysical)
+                    if (PostalAsPhysical)
                     {
                         BuildingNumberSame = _buildingNumber;
                     }
@@ -588,13 +590,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public OutletDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnNextButtonClick = new Command(() => {
+            OnNextButtonClick = new Command(() =>
+            {
                 navigateToNext();
             }, () =>
             {
                 return CanExecute;
             });
-            OnPreButtonClick = new Command(() => {
+            OnPreButtonClick = new Command(() =>
+            {
                 selectedOutletItem = null;
                 _navigationService.GoBack();
             });
@@ -863,7 +867,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             //editModeEnabled = true;
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                          //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         }
                     }
                     finally
@@ -936,9 +940,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
                     clearFormData();
-                    if (selectedOutletItem != null)
+                    if (selectedOutletItem != null && !string.IsNullOrEmpty(selectedOutletItem.Actno))
                     {
-                        newNumber = new OutletNumber() {
+                        newNumber = new OutletNumber()
+                        {
                             Actno = selectedOutletItem?.Actno
                         };
                         OutletName = selectedOutletItem?.Actnm;
@@ -947,7 +952,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         newNumber = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
                     }
-                    OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
+                    OutletActNumber = newNumber?.Actno == null ? newNumber?.Actno : "000";
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
                     if (OutletActNumber == "000")
                     {
@@ -1025,14 +1030,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             string crNumber = "";
                             string crType = "";/// taxPayerDetails.Nreg_ActivitySet
-                            foreach(var obj in taxPayerDetails.Nreg_ActivitySet.results)
+                            foreach (var obj in taxPayerDetails.Nreg_ActivitySet.results)
                             {
-                                if(obj.Type.Equals("BUP002"))
+                                if (obj.Type.Equals("BUP002"))
                                 {
                                     crNumber = obj.Idnumber;
                                     crType = obj.Type;
                                 }
-                                
+
 
                             }
                             List<OutletAddress> addressess = await WebServiceManager.ESTOutletAddress(crType, crNumber, App.LoginDataRetrieved.TIN);

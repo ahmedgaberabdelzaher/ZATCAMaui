@@ -8,9 +8,11 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumber
 {
+    [Preserve(AllMembers = true)]
     public class InternationalMobileNumberCodePagesViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

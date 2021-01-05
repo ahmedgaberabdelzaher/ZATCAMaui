@@ -10,9 +10,11 @@ using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
+    [Preserve(AllMembers = true)]
     public class ZakatReturnDetailsSuccessfullPageViewModel : ViewModelBase
     {
         #region Variable

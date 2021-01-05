@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class PopUp
     {
         public string Message { get; set; }
@@ -15,13 +18,13 @@ namespace GAZT.Models
         public bool isFontSet { get; set; }
         public string HeaderText { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class NewDesignPopUp
     {
         public String MainHeader { get; set; }
         public List<HeaderWithInfo> HeaderWithInfos { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class HeaderWithInfo
     {
         public string HeaderText { get; set; }
@@ -40,6 +43,7 @@ namespace GAZT.Models
         public bool isFontSet { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class ForPdfJs
     {
         public string Url { get; set; }

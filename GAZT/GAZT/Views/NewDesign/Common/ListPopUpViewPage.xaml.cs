@@ -4,10 +4,12 @@ using System.Linq;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.Common
 {
- 
+    [Preserve(AllMembers = true)]
+
     public partial class ListPopUpViewPage : PopupPage
     {
         public delegate void OnItemSelectDelegate(object item);

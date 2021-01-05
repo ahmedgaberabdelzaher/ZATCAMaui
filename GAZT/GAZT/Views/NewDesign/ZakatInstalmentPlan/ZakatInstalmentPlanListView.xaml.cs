@@ -11,6 +11,7 @@ using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 {
+    [Preserve(AllMembers = true)]
     public partial class ZakatInstalmentPlanListPageView : ContentPage
     {
 

@@ -17,19 +17,28 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using EGAZT.Views.NewDesign.ZakatDeregistration;
+using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
+using EGAZT.Views.NewDesign.VATDeRegistration;
+using EGAZT.Views.NewDesign.ZakatForm5;
+using EGAZT.Views.NewDesign.TAXEvasionPages;
+using EGAZT.Views.NewDesign.VATRefunds;
+//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
+using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using GAZT.Helper;
 using GAZT.Manager;
 using System.Linq;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using System.Diagnostics;
 using EGAZT.Views.NewDesign.DashBoardPages;
+using Xamarin.Forms.Internals;
 using System.IO;
 using AppDynamics.Agent;
 using Newtonsoft.Json;
 
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public partial class App : Application
     {
         #region new design views
@@ -759,10 +768,10 @@ namespace EGAZT
         {
             try
             {
-                MainThread.BeginInvokeOnMainThread( () =>
-                {
-                    PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
-                });
+                MainThread.BeginInvokeOnMainThread(() =>
+               {
+                   PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
+               });
             }
             catch (Exception ex)
             {

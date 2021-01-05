@@ -11,8 +11,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ReturnsListCountsByStatus
     {
         public int SubmittedZakatCount;
@@ -35,6 +38,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
             }
         }
     }
+
+    [Preserve(AllMembers = true)]
     public class ReturnsPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

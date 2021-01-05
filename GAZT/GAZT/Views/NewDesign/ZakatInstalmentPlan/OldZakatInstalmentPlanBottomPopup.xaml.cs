@@ -9,11 +9,13 @@ using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OldZakatInstalmentPlanBottomPopup : PopupPage
     {

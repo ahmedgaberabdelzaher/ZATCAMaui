@@ -5,12 +5,14 @@ using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.DisplayInstallmentAgreementSchedulePlan;
 
 namespace EGAZT.Views.NewDesign.InstalmentPlan
 {
+    [Preserve(AllMembers = true)]
     public partial class VatInstalmentPlanListPageView : ContentPage
     {
 
