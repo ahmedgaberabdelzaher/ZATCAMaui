@@ -5,10 +5,12 @@ using GAZT.Models;
 using System;
 using System.Linq;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails
 {
+    [Preserve(AllMembers = true)]
     public interface IBaseUrl { string Get(); }
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CorrespondenceDetailsPageView : ContentPage

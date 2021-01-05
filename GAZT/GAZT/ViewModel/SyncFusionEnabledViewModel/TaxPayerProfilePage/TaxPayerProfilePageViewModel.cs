@@ -11,8 +11,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class TaxPayerProfilePageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;

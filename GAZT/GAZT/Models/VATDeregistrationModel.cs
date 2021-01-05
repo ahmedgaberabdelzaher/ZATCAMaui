@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using Xamarin.Forms.Internals;
 using static Xamarin.Forms.Internals.Profile;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class VATDeregistrationModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -50,24 +52,29 @@ namespace EGAZT.Models
         public string ActiveOutletDocumentOptions { get; set; }
         public bool ActiveOutletDocumentOptionsIsSelected { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregistrationModelRootObject
     {
         public VATDeregistrationModelDetailD d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregistrationModelDetailD
     {
         public List<VATDeregistrationModelDetailsResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregistrationLastICRDateRootObject
     {
         public VATDeregistrationLastICRDateDetailD d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregistrationLastICRDateDetailD
     {
         [JsonProperty("results")]
 
         public List<VATDeregistrationLastICRDateDetailsResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregistrationLastICRDateDetailsResult
     {
         public __metadata __metadata { get; set; }
@@ -83,7 +90,7 @@ namespace EGAZT.Models
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class VATDeRegistrationAttachmentDropdownDetails
     {
         [JsonProperty("__metadata")]
@@ -93,20 +100,24 @@ namespace EGAZT.Models
         public VatDeregSubItemsSet VatDeregSubItemsSet { get; set; }
         //public VATDeregistrationAttachmentDetailD d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public partial class VatDeregSubItemsSet
     {
         [JsonProperty("results")]
         public ResultsAttachmentItemForElgblDocSet[] Results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregistrationSuspendedDateRootObject
     {
         public VATDeregSuspendedDateRootObjectDetailD d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregSuspendedDateRootObjectDetailD
     {
         [JsonProperty("results")]
         public List<VATDeregSuspendedDateRootObjectDetailsResult> dateResults { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregSuspendedDateRootObjectDetailsResult
     {
         public __metadata __metadata { get; set; }
@@ -122,6 +133,10 @@ namespace EGAZT.Models
 
     }
 
+
+
+
+    [Preserve(AllMembers = true)]
     public class VATDeregistrationModelDetailsResult
     {
         public __metadata __metadata { get; set; }
@@ -132,7 +147,7 @@ namespace EGAZT.Models
         public string Rdesc { get; set; }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class ResultsAttachmentItemForElgblDocSet
     {
         public __metadata __metadata { get; set; }
@@ -145,10 +160,12 @@ namespace EGAZT.Models
         public string EndDt { get; set; }
         public string Txt50 { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeRegistrationDetails
     {
         public vATDeRegistration d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class vATDeRegistration
     {
         public __metadata __metadata { get; set; }
@@ -229,14 +246,17 @@ namespace EGAZT.Models
         public AttdetSet AttdetSet { get; set; }
         public QuesListSet QuesListSet { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregAttachmentRootOject
     {
         public VATDeregAttachment d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class QuesListSet
     {
         public List<string> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ResultsItemSet
     {
         public __metadata __metadata { get; set; }
@@ -262,16 +282,19 @@ namespace EGAZT.Models
         public string Region { get; set; }
         public string RegionDesc { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public class AddressSet
     {
         public List<ResultsItemSet> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public class NotesSet
     {
         public List<VATDeregNote> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregNote
     {
         public Metadata2 __metadata { get; set; }
@@ -298,6 +321,7 @@ namespace EGAZT.Models
         public string Strtime { get; set; } //time
         public string Strline { get; set; }   //note
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregAttachment
     {
         public Metadata5 __metadata { get; set; }
@@ -322,6 +346,7 @@ namespace EGAZT.Models
         public string Visedit { get; set; }
         public string Visdel { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeregistrationAttachmentsModel
     {
         public VATDeregistrationAttachmentsModel()
@@ -334,11 +359,13 @@ namespace EGAZT.Models
 
         public bool IsAttachmentAttached { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public class AttdetSet
     {
         public List<Attachment> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public class VATDeregistrationSummaryModel
     {

@@ -3,9 +3,11 @@ using System.Linq;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 {
+    [Preserve(AllMembers = true)]
     public class UnlockAccountSuccessPageViewModel:ViewModelBase
     {
 

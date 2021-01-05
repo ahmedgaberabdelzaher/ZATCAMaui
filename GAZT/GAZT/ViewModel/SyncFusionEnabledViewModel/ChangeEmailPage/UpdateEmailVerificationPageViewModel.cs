@@ -11,9 +11,11 @@ using System.Threading;
 using Xamarin.Forms;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System.Linq;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
 {
+    [Preserve(AllMembers = true)]
     public class UpdateEmailVerificationPageViewModel : ViewModelBase
     {
         #region Variable

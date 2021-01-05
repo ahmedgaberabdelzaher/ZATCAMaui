@@ -4,9 +4,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.Common
 {
+    [Preserve(AllMembers = true)]
     public partial class PageIndicatorView : StackLayout
     {
         #region BindableProperties

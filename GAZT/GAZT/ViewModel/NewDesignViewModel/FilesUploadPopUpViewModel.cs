@@ -15,9 +15,11 @@ using Newtonsoft.Json;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
+    [Preserve(AllMembers = true)]
     public class FilesUploadPopUpViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;

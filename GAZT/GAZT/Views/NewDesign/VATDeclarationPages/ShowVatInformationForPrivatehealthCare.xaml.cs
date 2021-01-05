@@ -11,10 +11,12 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShowVatInformationForPrivatehealthCare : PopupPage
     {

@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.CustomControl
 {
-   public class MyDatePicker : DatePicker
+    [Preserve(AllMembers = true)]
+    public class MyDatePicker : DatePicker
     {
         private string _format = null;
         public static readonly BindableProperty NullableDateProperty = BindableProperty.Create<MyDatePicker, DateTime?>(p => p.NullableDate, null);

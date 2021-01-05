@@ -1,7 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.Models.EnumModels;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
-using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -13,21 +12,20 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 //MobileVerification = SummaryView
 //EmailVerificatiom =VerificationView
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
+    [Preserve(AllMembers = true)]
     public class SignUpForEstablishmentPageViewModel : BaseViewModel
     {
-
 
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -43,15 +41,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public VATSignUpCaseId SignUpCaseIdD { get; set; }
         #region Variable
 
-
-
-
         private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
         public EstablishmentSignUPTabEnum CurrentTab
         {
             get => _currentTab;
             set
             {
+                if (_currentTab == value) return;
                 _currentTab = value;
                 RaisePropertyChanged(nameof(CurrentTab));
                 CurrentIndex = (int)_currentTab;
@@ -67,6 +63,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtConfirmPassword == value) return;
+
                 _txtConfirmPassword = value;
                 RaisePropertyChanged("TxtConfirmPassword");
             }
@@ -84,6 +82,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -118,6 +118,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_chipDataFilterlist == value) return;
+
                 _chipDataFilterlist = value;
                 RaisePropertyChanged("ChipDataFilterlist");
             }
@@ -132,6 +134,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_maxDigids == value) return;
+
                 _maxDigids = value;
                 RaisePropertyChanged("MaxDigids");
             }
@@ -145,6 +149,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_PickerDobToDisplay == value) return;
+
                 _PickerDobToDisplay = value;
                 RaisePropertyChanged("PickerDobToDisplay");
             }
@@ -158,6 +164,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_IsNextButtonEnable == value) return;
+
                 _IsNextButtonEnable = value;
                 RaisePropertyChanged("IsNextButtonEnable");
             }
@@ -171,6 +179,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_EncriptedMobileNumberforOtpscreen == value) return;
+
                 _EncriptedMobileNumberforOtpscreen = value;
                 RaisePropertyChanged("EncriptedMobileNumberforOtpscreen");
             }
@@ -186,6 +196,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtLicenseNumber == value) return;
+
                 _txtLicenseNumber = value;
                 RaisePropertyChanged("TxtLicenseNumber");
             }
@@ -199,6 +211,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_issuedByTapped == value) return;
+
                 _issuedByTapped = value;
                 RaisePropertyChanged("IssuedByTapped");
             }
@@ -212,6 +226,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_issuedByCityTapped == value) return;
+
                 _issuedByCityTapped = value;
                 RaisePropertyChanged("IssuedByCityTapped");
             }
@@ -226,6 +242,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtLOrCIssuedBy == value) return;
+
                 _txtLOrCIssuedBy = value;
                 RaisePropertyChanged("TxtLOrCIssuedBy");
             }
@@ -240,6 +258,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectedIssuedBy == value) return;
+
                 _selectedIssuedBy = value;
                 if (_selectedIssuedBy != null)
                 {
@@ -257,6 +277,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectedIssuedByPrev == value) return;
+
                 _selectedIssuedByPrev = value;
                 RaisePropertyChanged("SelectedIssuedByPrev");
             }
@@ -271,6 +293,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectCityListPrev == value) return;
+
                 _selectCityListPrev = value;
                 RaisePropertyChanged("SelectCityListPrev");
             }
@@ -285,6 +309,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectCityList == value) return;
+
                 _selectCityList = value;
                 if (_selectCityList != null)
                 {
@@ -302,6 +328,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtLOrCIssuedByCity == value) return;
+
                 _txtLOrCIssuedByCity = value;
                 RaisePropertyChanged("TxtLOrCIssuedByCity");
             }
@@ -316,6 +344,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_pkrDBOPrev == value) return;
+
                 _pkrDBOPrev = value;
                 RaisePropertyChanged("PkrDBOPrev");
             }
@@ -330,6 +360,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_pkrDBO == value) return;
+
                 _pkrDBO = value;
                 RaisePropertyChanged("PkrDBO");
             }
@@ -343,6 +375,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isDeclarationCheckEnabled == value) return;
+
                 _isDeclarationCheckEnabled = value;
                 RaisePropertyChanged("IsDeclarationCheckEnabled");
             }
@@ -356,6 +390,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_IsHijriCal == value) return;
+
                 _IsHijriCal = value;
                 RaisePropertyChanged("IsHijriCal");
             }
@@ -369,6 +405,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isDeclarationCheckedForInstruction == value) return;
+
                 _isDeclarationCheckedForInstruction = value;
                 if (_isDeclarationCheckedForInstruction == true)
                 {
@@ -395,7 +433,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
-                
+                if (_isMainButtonEnabled == value) return;
+
                 _isMainButtonEnabled = value;
                 //OnStepButtonClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsMainButtonEnabled");
@@ -413,6 +452,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_PageTitle == value) return;
+
                 _PageTitle = value;
                 RaisePropertyChanged("PageTitle");
             }
@@ -427,6 +468,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_BodyText == value) return;
+
                 _BodyText = value;
                 RaisePropertyChanged("BodyText");
             }
@@ -441,6 +484,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_NextBTN == value) return;
+
                 _NextBTN = value;
                 RaisePropertyChanged("NextBTN");
             }
@@ -455,6 +500,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_ImgBackgroundYes == value) return;
+
                 _ImgBackgroundYes = value;
                 RaisePropertyChanged("ImgBackgroundYes");
             }
@@ -469,6 +516,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_ImgBackgroundNo == value) return;
+
                 _ImgBackgroundNo = value;
                 RaisePropertyChanged("ImgBackgroundNo");
             }
@@ -483,6 +532,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_ImgBackgroundCRNubmer == value) return;
+
                 _ImgBackgroundCRNubmer = value;
                 RaisePropertyChanged("ImgBackgroundCRNubmer");
             }
@@ -497,6 +548,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_ImgBackgroundLicenseNubmer == value) return;
+
                 _ImgBackgroundLicenseNubmer = value;
                 RaisePropertyChanged("ImgBackgroundLicenseNubmer");
             }
@@ -512,6 +565,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_oTPFirstDigit == value) return;
+
                 _oTPFirstDigit = value;
                 if (!string.IsNullOrEmpty(OTPFirstDigit))
                 {
@@ -535,6 +590,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_OTPSecondDigit == value) return;
+
                 _OTPSecondDigit = value;
                 if (!string.IsNullOrEmpty(OTPSecondDigit))
                 {
@@ -557,6 +614,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_OTPThirdDigit == value) return;
+
                 _OTPThirdDigit = value;
                 if (!string.IsNullOrEmpty(OTPThirdDigit))
                 {
@@ -579,6 +638,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_OTPFourthDigit == value) return;
+
                 _OTPFourthDigit = value;
                 if (!string.IsNullOrEmpty(OTPFourthDigit))
                 {
@@ -602,6 +663,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_mOTPFirstDigit == value) return;
+
                 _mOTPFirstDigit = value;
                 if (!string.IsNullOrEmpty(MOTPFirstDigit))
                 {
@@ -625,6 +688,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_mOTPSecondDigit == value) return;
+
                 _mOTPSecondDigit = value;
                 if (!string.IsNullOrEmpty(MOTPSecondDigit))
                 {
@@ -647,6 +712,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_mOTPThirdDigit == value) return;
+
                 _mOTPThirdDigit = value;
                 if (!string.IsNullOrEmpty(MOTPThirdDigit))
                 {
@@ -669,6 +736,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_mOTPFourthDigit == value) return;
+
                 _mOTPFourthDigit = value;
                 if (!string.IsNullOrEmpty(MOTPFourthDigit))
                 {
@@ -693,6 +762,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_lblCountDownTimer == value) return;
+
                 _lblCountDownTimer = value;
                 RaisePropertyChanged("LblCountDownTimer");
             }
@@ -706,6 +777,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isResendOTPEnabled == value) return;
+
                 _isResendOTPEnabled = value;
                 //if (_isResendOTPEnabled)
                 //{
@@ -727,6 +800,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isTimerCancel == value) return;
+
                 _isTimerCancel = value;
                 RaisePropertyChanged("IsTimerCancel");
             }
@@ -742,6 +817,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isPasswordEncripted == value) return;
+
                 _isPasswordEncripted = value;
                 RaisePropertyChanged("IsPasswordEncripted");
             }
@@ -755,6 +832,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isConfirmPasswordEncripted == value) return;
+
                 _isConfirmPasswordEncripted = value;
                 RaisePropertyChanged("IsConfirmPasswordEncripted");
             }
@@ -768,6 +847,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_DOB == value) return;
+
                 _DOB = value;
                 RaisePropertyChanged("DOB");
             }
@@ -782,6 +863,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectedSignUpUsing == value) return;
+
                 _selectedSignUpUsing = value;
                 if (_selectedSignUpUsing != null)
                 {
@@ -801,8 +884,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         }
                         TxtIDType = _selectedSignUpUsing.SUType;
                     }
-                    catch (Exception Ex)
+                    catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 }
                 RaisePropertyChanged("SelectedSignUpUsing");
@@ -818,6 +903,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtName == value) return;
+
                 _txtName = value;
                 RaisePropertyChanged("TxtName");
             }
@@ -832,6 +919,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectedIdType == value) return;
+
                 _selectedIdType = value;
                 if (_selectedIdType != null)
                 {
@@ -865,8 +954,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         }
                         TxtIDType = _selectedIdType.Name;
                     }
-                    catch (Exception Ex)
+                    catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 }
                 RaisePropertyChanged("SelectedIdType");
@@ -881,6 +972,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_maxLengthID == value) return;
+
                 _maxLengthID = value;
                 RaisePropertyChanged("MaxLengthID");
             }
@@ -894,6 +987,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_setStateListVisibility == value) return;
+
                 _setStateListVisibility = value;
                 RaisePropertyChanged("SetStateListVisibility");
             }
@@ -907,6 +1002,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_setCityListVisibility == value) return;
+
                 _setCityListVisibility = value;
                 RaisePropertyChanged("SetCityListVisibility");
             }
@@ -920,6 +1017,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_setCountryVisibility == value) return;
+
                 _setCountryVisibility = value;
                 RaisePropertyChanged("SetCountryVisibility");
             }
@@ -933,6 +1032,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_setGCCCountryVisibility == value) return;
+
                 _setGCCCountryVisibility = value;
                 RaisePropertyChanged("SetGCCCountryVisibility");
             }
@@ -946,6 +1047,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtIDType == value) return;
+
                 _txtIDType = value;
                 RaisePropertyChanged("TxtIDType");
             }
@@ -959,6 +1062,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectedGCCCountry == value) return;
+
                 _selectedGCCCountry = value;
 
                 RaisePropertyChanged("SelectedGCCCountry");
@@ -973,6 +1078,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_gelectedGCCCountryIndex == value) return;
+
                 _gelectedGCCCountryIndex = value;
                 RaisePropertyChanged("SelectedGCCCountryIndex");
             }
@@ -986,6 +1093,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_cityList == value) return;
+
                 _cityList = value;
                 RaisePropertyChanged("CityList");
             }
@@ -999,6 +1108,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_setEnabilityToCountryList == value) return;
+
                 _setEnabilityToCountryList = value;
                 RaisePropertyChanged("SetEnabilityToCountryList");
             }
@@ -1013,6 +1124,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isOTPEntryEnable == value) return;
+
                 _isOTPEntryEnable = value;
                 RaisePropertyChanged(() => IsOTPEntryEnable);
             }
@@ -1026,6 +1139,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_oTPValidDuration == value) return;
+
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
@@ -1050,6 +1165,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isVerifyOTPEnabled == value) return;
+
                 _isVerifyOTPEnabled = value;
                 RaisePropertyChanged("IsVerifyOTPEnabled");
             }
@@ -1063,6 +1180,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_verifybuttonDisableTextColor == value) return;
+
                 _verifybuttonDisableTextColor = value;
                 RaisePropertyChanged("VerifyButtonDisableTextColor");
             }
@@ -1076,6 +1195,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_buttonDisableTextColor == value) return;
+
                 _buttonDisableTextColor = value;
                 RaisePropertyChanged("ButtonDisableTextColor");
             }
@@ -1091,6 +1212,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_signUpFirstSubmitModel == value) return;
+
                 _signUpFirstSubmitModel = value;
                 RaisePropertyChanged("SignUpFirstSubmitModel");
             }
@@ -1104,6 +1227,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectedRegion == value) return;
+
                 _selectedRegion = value;
                 if (_selectedRegion != null)
                 {
@@ -1122,6 +1247,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectedCity == value) return;
+
                 _selectedCity = value;
 
                 RaisePropertyChanged("SelectedCity");
@@ -1137,6 +1264,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectedCityIndex == value) return;
+
                 _selectedCityIndex = value;
                 RaisePropertyChanged("SelectedCityIndex");
             }
@@ -1150,6 +1279,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtEmailAddress == value) return;
+
                 _txtEmailAddress = value;
                 RaisePropertyChanged("TxtEmailAddress");
             }
@@ -1164,6 +1295,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isTIN == value) return;
+
                 _isTIN = value;
                 if (_isTIN == true)
                 {
@@ -1187,6 +1320,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isTINVisible == value) return;
+
                 _isTINVisible = value;
                 RaisePropertyChanged("IsTINVisible");
             }
@@ -1200,6 +1335,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtPhoneNumber == value) return;
+
                 _txtPhoneNumber = value;
                 RaisePropertyChanged("TxtPhoneNumber");
             }
@@ -1213,6 +1350,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtMobileNumber == value) return;
+
                 _txtMobileNumber = value;
                 RaisePropertyChanged("TxtMobileNumber");
             }
@@ -1226,6 +1365,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtCountryCode == value) return;
 
                 _txtCountryCode = value;
                 if (_txtCountryCode != null)
@@ -1249,6 +1389,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtMobileNumberwithCountryCode == value) return;
+
                 _txtMobileNumberwithCountryCode = value;
                 RaisePropertyChanged("TxtMobileNumberwithCountryCode");
             }
@@ -1264,6 +1406,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_idNumber == value) return;
+
                 _idNumber = value;
                 RaisePropertyChanged("IdNumber");
             }
@@ -1277,6 +1421,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_name == value) return;
+
                 _name = value;
                 RaisePropertyChanged("Name");
             }
@@ -1290,6 +1436,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_mobileCountryCode == value) return;
+
                 _mobileCountryCode = value;
                 RaisePropertyChanged("MobileCountryCode");
             }
@@ -1303,6 +1451,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_buildingNumber == value) return;
+
                 _buildingNumber = value;
                 RaisePropertyChanged("BuildingNumber");
             }
@@ -1316,6 +1466,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_unitNumber == value) return;
+
                 _unitNumber = value;
                 RaisePropertyChanged("UnitNumber");
             }
@@ -1329,6 +1481,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_neighborhood == value) return;
+
                 _neighborhood = value;
                 RaisePropertyChanged("Neighborhood");
             }
@@ -1342,6 +1496,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_email == value) return;
+
                 _email = value;
                 RaisePropertyChanged("Email");
             }
@@ -1355,6 +1511,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_mobileNumber == value) return;
+
                 _mobileNumber = value;
                 if (_mobileNumber != null && _mobileNumber.Length > 1)
                 {
@@ -1377,6 +1535,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_encriptedMobileNumber == value) return;
+
                 _encriptedMobileNumber = value;
                 RaisePropertyChanged("EncriptedMobileNumber");
             }
@@ -1390,6 +1550,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_buttonDisableColor == value) return;
+
                 _buttonDisableColor = value;
                 RaisePropertyChanged("ButtonDisableColor");
             }
@@ -1403,6 +1565,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_verifybuttonDisableColor == value) return;
+
                 _verifybuttonDisableColor = value;
                 RaisePropertyChanged("VerifyButtonDisableColor");
             }
@@ -1416,6 +1580,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_todayDate == value) return;
+
                 _todayDate = value;
                 RaisePropertyChanged("TodayDate");
             }
@@ -1429,6 +1595,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_todayDateinHijri == value) return;
+
                 _todayDateinHijri = value;
                 RaisePropertyChanged("TodayDateinHijri");
             }
@@ -1442,6 +1610,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_newPassword == value) return;
+
                 _newPassword = value;
                 RaisePropertyChanged("NewPassword");
             }
@@ -1455,6 +1625,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_confirmPassword == value) return;
+
                 _confirmPassword = value;
                 RaisePropertyChanged("ConfirmPassword");
             }
@@ -1475,6 +1647,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_signUpUsingList == value) return;
+
                 _signUpUsingList = value;
                 RaisePropertyChanged("SignUpUsingList");
             }
@@ -1489,6 +1663,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_iDTypeIndex == value) return;
+
                 _iDTypeIndex = value;
                 RaisePropertyChanged("IDTypeIndex");
             }
@@ -1503,6 +1679,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_issuedByList == value) return;
+
                 _issuedByList = value;
                 RaisePropertyChanged("IssuedByList");
             }
@@ -1517,6 +1695,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isCRVisible == value) return;
+
                 _isCRVisible = value;
                 RaisePropertyChanged("IsCRVisible");
             }
@@ -1531,6 +1711,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isLicenseVisible == value) return;
+
                 _isLicenseVisible = value;
                 RaisePropertyChanged("IsLicenseVisible");
             }
@@ -1545,6 +1727,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isCRChecked == value) return;
+
                 _isCRChecked = value;
                 if (_isCRChecked == true)
                 {
@@ -1567,6 +1751,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_isLNChecked == value) return;
+
                 _isLNChecked = value;
                 if (_isLNChecked == true)
                 {
@@ -1589,6 +1775,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtTIN == value) return;
+
                 _txtTIN = value;
                 RaisePropertyChanged("TxtTIN");
             }
@@ -1603,6 +1791,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtIDNumber == value) return;
+
                 _txtIDNumber = value;
                 RaisePropertyChanged("TxtIDNumber");
             }
@@ -1619,6 +1809,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_selectedSignUpUsingSetForCancle == value) return;
+
                 _selectedSignUpUsingSetForCancle = value;
                 RaisePropertyChanged("SelectedSignUpUsingSetForCancle");
             }
@@ -1637,6 +1829,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             get { return _MinEight; }
             set
             {
+                if (_MinEight == value) return;
+
                 _MinEight = value;
                 RaisePropertyChanged("MinEight");
             }
@@ -1648,6 +1842,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             get { return _CapsSmall; }
             set
             {
+                if (_CapsSmall == value) return;
+
                 _CapsSmall = value;
                 RaisePropertyChanged("CapsSmall");
             }
@@ -1659,6 +1855,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             get { return _MaxSixteen; }
             set
             {
+                if (_MaxSixteen == value) return;
+
                 _MaxSixteen = value;
                 RaisePropertyChanged("MaxSixteen");
             }
@@ -1670,6 +1868,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             get { return _NumSymbol; }
             set
             {
+                if (_NumSymbol == value) return;
+
                 _NumSymbol = value;
                 RaisePropertyChanged("NumSymbol");
             }
@@ -2181,7 +2381,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                   //  _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+                                   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
                                 });
                             }
                             else
@@ -2189,7 +2389,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                    // _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou));
                                 });
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
                                 ButtonDisableTextColor = Color.Gray;
@@ -2210,7 +2410,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                // _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
                     });
@@ -2218,7 +2418,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 catch (InternetException ex)
                 {
                     //await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 }
             }
             
@@ -2280,6 +2480,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
                 // PkrDBO = null;
                 await Task.Run(() =>
@@ -2296,7 +2498,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         IsLoading = false;
                     });
                  //   _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
             }
@@ -2496,7 +2698,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         public async Task SetCityList()
         {
-            Device.BeginInvokeOnMainThread(async () =>
+            Device.BeginInvokeOnMainThread(() =>
             {
                 IsLoading = true;
 
@@ -2567,7 +2769,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     //_navigationService.GoBack();
                 });
             }
-            Device.BeginInvokeOnMainThread(async () =>
+            Device.BeginInvokeOnMainThread(() =>
             {
                 IsLoading = false;
 
@@ -2652,6 +2854,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtMobileNumberCode == value) return;
                 _txtMobileNumberCode = value;
                 RaisePropertyChanged("TxtMobileNumberCode");
             }
@@ -2665,6 +2868,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtPassword == value) return;
+
                 _txtPassword = value;
                 RaisePropertyChanged("TxtPassword");
             }
@@ -2678,6 +2883,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_signUpModelRootObjectM == value) return;
+
                 _signUpModelRootObjectM = value;
                 RaisePropertyChanged("SignUpModelRootObjectM");
             }
@@ -2691,6 +2898,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_txtEmailCode == value) return;
+
                 _txtEmailCode = value;
                 RaisePropertyChanged("TxtEmailCode");
             }
@@ -2743,7 +2952,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         });
                         SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                        // _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
-                      PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+                      await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
                         OTPFirstDigit = string.Empty;
                        OTPSecondDigit = string.Empty;
                         OTPThirdDigit = string.Empty;
@@ -2804,7 +3013,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
             catch (HttpRequestException ex)

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.ChageFillingPeriodModel
 {
+    [Preserve(AllMembers = true)]
     public class ChangeFillingPeriodModel
     {
         public ChangeFillingPeriodModel()
@@ -13,7 +15,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
         public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
     }
 
-
+    [Preserve(AllMembers = true)]
     public class InstalmentAgreementAttachmentsModel
     {
         public InstalmentAgreementAttachmentsModel()
@@ -27,7 +29,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
         public bool IsAttachmentAttached { get; set; }
     }
 
-
+    [Preserve(AllMembers = true)]
     public class MyRequestsListModel
     {
         public MyRequestsListModel()
@@ -44,27 +46,30 @@ namespace EGAZT.Models.ChageFillingPeriodModel
     }
 
     #region VATchangeFillingPeriodPostModel
+    
     public class VATchangeFillingPeriodPostModel
     {
+        [Preserve(AllMembers = true)]
         public RequestVATFillingPeriod d { get; set; }
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class UIBTNSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class QuesListSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class RequestVATFillingPeriod
         {
             public Metadata __metadata { get; set; }
@@ -124,12 +129,12 @@ namespace EGAZT.Models.ChageFillingPeriodModel
     }
     #endregion
 
-
+    [Preserve(AllMembers = true)]
     public class ATTTYPSet
     {
         public List<AttTypSetList> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class AttTypSetList
     {
         public Metadata __metadata { get; set; }
@@ -137,7 +142,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
         public string Txt50 { get; set; }
     }
 
-
+    [Preserve(AllMembers = true)]
     public partial class NotesSetResult
     {
         public Metadata Metadata { get; set; }
@@ -165,46 +170,50 @@ namespace EGAZT.Models.ChageFillingPeriodModel
         public string Strline { get; set; }
     }
     #region VATChangeFillingPeriodRequestModel
+  
     public class VATChangeFillingPeriodRequestModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
+        [Preserve(AllMembers = true)]
 
         public class EffDateSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class UIBTNSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class NOTESSet
         {
             public List<NotesSetResult> results { get; set; }
         }
+        [Preserve(AllMembers = true)]
 
-      
 
         public class ATTACHSet
         {
             public List<Attachment> results { get; set; }
         }
+        [Preserve(AllMembers = true)]
 
-       
 
         public class QuesListSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -262,24 +271,27 @@ namespace EGAZT.Models.ChageFillingPeriodModel
     }
     #endregion
     #region VATRefillingDropdownModel
+ 
     public class VATRefillingDropdownModel
     {
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
             public Metadata2 __metadata { get; set; }
@@ -290,19 +302,19 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string TransactionType { get; set; }
             public string UserTyp { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class UIBTNSet
         {
             public List<Result> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata3
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class EffDate
         {
             public Metadata3 __metadata { get; set; }
@@ -311,19 +323,19 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string Persl { get; set; }
             public string Txt50 { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class EffDateSet
         {
             public List<EffDate> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata4
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result3
         {
             public Metadata4 __metadata { get; set; }
@@ -336,12 +348,12 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public object EndDt { get; set; }
             public string Txt50 { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ATTTYPSet
         {
             public List<Result3> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -374,25 +386,27 @@ namespace EGAZT.Models.ChageFillingPeriodModel
     }
     #endregion
     #region VATRefillingWorkItemsModel
+   
     public class VATRefillingWorkItemsModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
             public Metadata2 __metadata { get; set; }
@@ -421,19 +435,19 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string WiPrio { get; set; }
             public string WiPrioDesc { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ASSLISTSet
         {
             public List<Result> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata3
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result2
         {
             public Metadata3 __metadata { get; set; }
@@ -445,19 +459,19 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string Txt30 { get; set; }
             public bool Ltext { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class STATUSSet
         {
             public List<Result2> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata4
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result3
         {
             public Metadata4 __metadata { get; set; }
@@ -467,12 +481,12 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string SysFlg { get; set; }
             public DateTime? Ldate { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class REQTYPSet
         {
             public List<Result3> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -512,12 +526,14 @@ namespace EGAZT.Models.ChageFillingPeriodModel
     #endregion
 
     #region ValidateIdNumber
+    [Preserve(AllMembers = true)]
     public class Metadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class D
     {
         public Metadata __metadata { get; set; }
@@ -564,9 +580,12 @@ namespace EGAZT.Models.ChageFillingPeriodModel
         public string BpkindDesc { get; set; }
         public string RegionDesc { get; set; }
     }
+    
     public class ValidateIDResponse
     {
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public string errorMessage { get; set; }
     }
     #endregion

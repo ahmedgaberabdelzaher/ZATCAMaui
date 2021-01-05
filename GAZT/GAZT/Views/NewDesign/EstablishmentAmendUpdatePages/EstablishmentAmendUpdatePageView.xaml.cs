@@ -20,9 +20,11 @@ using EGAZT.Views.NewDesign.Common;
 using GAZT.Manager;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EstablishmentAmendUpdatePageView : ContentPage
     {

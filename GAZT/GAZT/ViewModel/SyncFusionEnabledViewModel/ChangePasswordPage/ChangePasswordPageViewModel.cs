@@ -10,8 +10,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ChangePasswordPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;

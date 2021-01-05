@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public class VATSignUpData
     {
         public VATSignUpDataD d { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
     public class __VATSignUpDatametadata
     {
         public string id { get; set; }
@@ -15,7 +18,8 @@ namespace EGAZT
         public string type { get; set; }
 
     }
-   
+
+    [Preserve(AllMembers = true)]
     public class VATSignUpDataResults
     {
         public __metadata __metadata { get; set; }
@@ -40,6 +44,8 @@ namespace EGAZT
     //    public string type { get; set; }
 
     //}
+
+    [Preserve(AllMembers = true)]
     public class VATSignUpStateResults
     {
         public __metadata __metadata { get; set; }
@@ -49,12 +55,15 @@ namespace EGAZT
         public string Bezei { get; set; }
 
     }
+
+    [Preserve(AllMembers = true)]
     public class State_dropdownSet
     {
         public IList<VATSignUpStateResults> results { get; set; }
 
     }
-  
+
+    [Preserve(AllMembers = true)]
     public class VATSignUPCityResults
     {
         public __metadata __metadata { get; set; }
@@ -65,11 +74,15 @@ namespace EGAZT
         public string CityName { get; set; }
 
     }
+
+    [Preserve(AllMembers = true)]
     public class City_dropdownSet
     {
         public IList<VATSignUPCityResults> results { get; set; }
 
     }
+
+    [Preserve(AllMembers = true)]
     public class VATSignUpDataD
     {
         public __metadata __metadata { get; set; }

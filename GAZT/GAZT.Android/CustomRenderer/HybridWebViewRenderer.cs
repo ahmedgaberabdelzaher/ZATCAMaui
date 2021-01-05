@@ -388,7 +388,8 @@ namespace EGAZT.Droid.CustomRenderer
                     }
                     catch (System.Exception ex)
                     {
-                            
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 }
 
@@ -399,7 +400,8 @@ namespace EGAZT.Droid.CustomRenderer
                 }
                 catch (Exception ex)
                 {
-
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
                 App.LoginDataRetrieved = new LoginModel();

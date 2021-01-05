@@ -5,8 +5,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
+    [Preserve(AllMembers = true)]
     public class AccountCreatedSuccessfullyPageViewModel : ViewModelBase
     {
         #region Veriables
@@ -24,6 +27,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_tINnumber == value) return;
                 _tINnumber = value;
 
                 RaisePropertyChanged("TINnumber");
@@ -35,10 +39,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         {
             _navigationService = navigationService;
             _dialogService = dialogService;
-            //OnLoginPageLinkClicked = new Xamarin.Forms.Command(() =>
-            //{
-            //    _navigationService.NavigateTo(App.LogInPageView, App.SFLandingPageView);
-            //});
+          
         }
         #endregion
     }

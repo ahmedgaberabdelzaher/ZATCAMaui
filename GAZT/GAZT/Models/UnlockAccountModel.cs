@@ -1,8 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class UnlockAccountModel
     {
         [JsonProperty("Action")]
@@ -17,13 +19,13 @@ namespace EGAZT.Models
         [JsonProperty("Tin")]
         public string Tin { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class UnlockAccountModelOtp:UnlockAccountModel
     {
         [JsonProperty("Otp")]
         public string Otp { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class UnlockAccountModelChangePassword : UnlockAccountModel
     {
         [JsonProperty("NewPwd")]
@@ -32,13 +34,13 @@ namespace EGAZT.Models
         [JsonProperty("CnfPwd")]
         public string ConfirmPassword { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class UnlockAccountResponseModel
     {
         [JsonProperty("d")]
         public UnlockReponse_D D { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class UnlockReponse_D
     {
         [JsonProperty("__metadata")]
@@ -77,7 +79,7 @@ namespace EGAZT.Models
         [JsonProperty("Tin")]
         public string Tin { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class UnlockReponse_Metadata
     {
         [JsonProperty("id")]

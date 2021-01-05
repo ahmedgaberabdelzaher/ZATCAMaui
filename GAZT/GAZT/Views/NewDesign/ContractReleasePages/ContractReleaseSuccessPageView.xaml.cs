@@ -1,33 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
 using GAZT.Helper;
-using GAZT.Manager;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.ContractReleasePages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContractReleaseSuccessPageView : ContentPage
     {
         public ContractReleaseViewModel viewModel;
-
         public ContractReleaseSuccessPageView(ContractReleaseViewModel viewModel)
         {
             InitializeComponent();
             this.viewModel = viewModel;
-
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
             //viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
 
@@ -83,7 +77,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 }
             }
             viewModel._navigationService.NavigateTo(App.ContractReleaseListPageView);
-
         }
 
         private async void ReferenceNumberCopyTapped(object sender, EventArgs e)
@@ -92,22 +85,18 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
                 if (viewModel.ContractReleaseData.d.Fbnumz != null)
                 {
-
                     await Clipboard.SetTextAsync(viewModel.ContractReleaseData.d.Fbnumz);
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
                         await viewModel._dialogService.ShowMessageBox(AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
-
                     }
-
                 }
             }
             catch (Exception ex)
             {
-
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -115,21 +104,14 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         {
             if (viewModel.ContractReleaseData.d.Fbnumz != null)
             {
-
-
-
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     viewModel.IsLoading1 = true;
                 });
 
-
-
                 String downloadurl = Constants.CRDownloadAcknowledementFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
                 //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
-
-
 
                 Device.BeginInvokeOnMainThread(() =>
                 {
@@ -137,8 +119,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 });
             }
         }
-
-
 
         private void Download_AcknowledgementForm(object sender, EventArgs e)
         {
@@ -165,22 +145,18 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
                 if (viewModel.ContractReleaseData.d.AContNo != null)
                 {
-
                     await Clipboard.SetTextAsync(viewModel.ContractReleaseData.d.AContNo);
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
                         await viewModel._dialogService.ShowMessageBox(AppResources.CRContractingNumber + " " + text, AppResources.Copied);
-
                     }
-
                 }
             }
             catch (Exception ex)
             {
-
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

@@ -5,16 +5,15 @@ using GAZT.Helper;
 using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel
 {
+    [Preserve(AllMembers = true)]
     public class VATAmendReactivationSuccesssulPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
@@ -29,6 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageView
             }
             set
             {
+                if (_fBNumber == value) return;
                 _fBNumber = value;
                 RaisePropertyChanged("FBNumber");
             }
@@ -141,7 +141,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageView
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
             //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);

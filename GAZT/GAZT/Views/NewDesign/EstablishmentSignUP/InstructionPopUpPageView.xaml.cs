@@ -1,4 +1,4 @@
-﻿using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+﻿//using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
@@ -6,12 +6,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using EGAZT.Views.NewDesign.TaxpayerCorrespondancePages;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InstructionPopUpPageView : PopupPage
     {

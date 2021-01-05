@@ -4,16 +4,15 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-   public  class TaxpayerCorrespondanceDetailPageViewModel : BaseViewModel
+    [Preserve(AllMembers = true)]
+    public  class TaxpayerCorrespondanceDetailPageViewModel : BaseViewModel
     {
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
@@ -27,6 +26,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_correspondenceTitle == value) return;
                 _correspondenceTitle = value;
                 RaisePropertyChanged("CorrespondenceTitle");
             }
@@ -40,6 +40,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_correspondenceDateTime == value) return;
+
                 _correspondenceDateTime = value;
                 RaisePropertyChanged("CorrespondenceDateTime");
             }
@@ -53,6 +55,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_correspondenceTime == value) return;
+
                 _correspondenceTime = value;
                 RaisePropertyChanged("CorrespondenceTime");
             }
@@ -67,6 +71,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isFavoriteVisible == value) return;
+
                 _isFavoriteVisible = value;
                 RaisePropertyChanged("IsFavoriteVisible");
             }
@@ -80,6 +86,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_correspondenceD == value) return;
+
                 _correspondenceD = value;
                 RaisePropertyChanged("CorrespondenceD");
             }
@@ -93,6 +101,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_favIcon == value) return;
+
                 _favIcon = value;
                 RaisePropertyChanged("FavIcon");
             }
@@ -106,6 +116,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isAttachmentEnable == value) return;
+
                 _isAttachmentEnable = value;
                 RaisePropertyChanged("IsAttachmentEnabled");
             }

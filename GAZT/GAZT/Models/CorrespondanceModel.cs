@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class CorrespondanceModel
     {
         public string Title { get; set; }
@@ -26,6 +29,7 @@ namespace GAZT.Models
         public DateTime Cdate { get; set; }
         public string TaxtpFg { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CorrespondenceCollection : ObservableCollection<CorrespondanceModel>
     {
         public string MonthAndYear { get; set; }

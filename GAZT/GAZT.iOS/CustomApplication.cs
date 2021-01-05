@@ -4,6 +4,7 @@ using EGAZT;
 
 namespace GAZT.iOS
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class CustomApplication : UIKit.UIApplication
     {
         public CustomApplication() : base()

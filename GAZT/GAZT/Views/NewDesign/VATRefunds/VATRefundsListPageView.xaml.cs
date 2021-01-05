@@ -5,10 +5,12 @@ using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATRefunds
 {
+    [Preserve(AllMembers = true)]
     public partial class VATRefundsListPageView : ContentPage
     {
         VATRefundListPageViewModel viewModel;

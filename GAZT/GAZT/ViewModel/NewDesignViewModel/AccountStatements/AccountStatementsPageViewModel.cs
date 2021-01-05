@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.AccountStatements;
-using EGAZT.Views.NewDesign.AccountStatements;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
-using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 {
+    [Preserve(AllMembers = true)]
     public class AccountStatementsPageViewModel : BaseViewModel
     {
 
@@ -36,6 +34,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_fromDate == value) return;
                 _fromDate = value;
                 RaisePropertyChanged("FromDate");
             }
@@ -50,6 +49,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_FromDateDownloadPage == value) return;
+
                 _FromDateDownloadPage = value;
                 RaisePropertyChanged("FromDateDownloadPage");
             }
@@ -63,6 +64,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_ToDateDownloadPage == value) return;
+
                 _ToDateDownloadPage = value;
                 RaisePropertyChanged("ToDateDownloadPage");
             }
@@ -78,6 +81,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_asTaxpayerSelectedValues == value) return;
+
                 _asTaxpayerSelectedValues = value;
                 RaisePropertyChanged("ASTaxpayerSelectedValues");
             }
@@ -91,6 +96,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_toDate == value) return;
+
                 _toDate = value;
                 RaisePropertyChanged("ToDate");
             }
@@ -102,6 +109,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             get => _groupedStatements;
             set
             {
+                if (_groupedStatements == value) return;
+
                 _groupedStatements = value;
                 RaisePropertyChanged(nameof(GroupedStatements));
             }
@@ -116,6 +125,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_FlowDirect == value) return;
+
                 _FlowDirect = value;
                 RaisePropertyChanged("FlowDirect");
             }
@@ -131,6 +142,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_tabIdentification == value) return;
+
                 _tabIdentification = value;
                 RaisePropertyChanged("TabIdentification");
             }
@@ -145,6 +158,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_transactionTypeDropDownParent == value) return;
+
                 _transactionTypeDropDownParent = value;
                 RaisePropertyChanged("TransactionTypeDropDownParent");
             }
@@ -160,6 +175,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_TransactionDateFilterItem == value) return;
+
                 _TransactionDateFilterItem = value;
                 RaisePropertyChanged("TransactionDateFilterItem");
             }
@@ -173,6 +190,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_TaxTypeFilterItem == value) return;
+
                 _TaxTypeFilterItem = value;
                 RaisePropertyChanged("TaxTypeFilterItem");
             }
@@ -186,6 +205,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_FBNumFilterItem == value) return;
+
                 _FBNumFilterItem = value;
                 RaisePropertyChanged("FBNumFilterItem");
             }
@@ -201,6 +222,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_SadadBillNumberFilterItem == value) return;
+
                 _SadadBillNumberFilterItem = value;
                 RaisePropertyChanged("SadadBillNumberFilterItem");
             }
@@ -215,6 +238,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_TaxperiodFilterItem == value) return;
+
                 _TaxperiodFilterItem = value;
                 RaisePropertyChanged("TaxperiodFilterItem");
             }
@@ -230,6 +255,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_SearchBarListItemSource == value) return;
+
                 _SearchBarListItemSource = value;
                 RaisePropertyChanged("SearchBarListItemSource");
 
@@ -246,6 +273,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_IsVisible_SearchList == value) return;
+
                 _IsVisible_SearchList = value;
                 RaisePropertyChanged("IsVisible_SearchList");
             }
@@ -260,6 +289,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_DueDateFilterItem == value) return;
+
                 _DueDateFilterItem = value;
                 RaisePropertyChanged("DueDateFilterItem");
             }
@@ -273,6 +304,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_toDate == value) return;
+
                 _BillDescriptionFilterItem = value;
                 RaisePropertyChanged("BillDescriptionFilterItem");
             }
@@ -287,6 +320,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_BillAmountFilterItem == value) return;
+
                 _BillAmountFilterItem = value;
                 RaisePropertyChanged("BillAmountFilterItem");
             }
@@ -300,6 +335,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_StatusFilterItem == value) return;
+
                 _StatusFilterItem = value;
                 RaisePropertyChanged("StatusFilterItem");
             }
@@ -314,6 +351,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_accStmtnCreditAmount == value) return;
+
                 _accStmtnCreditAmount = value;
                 RaisePropertyChanged("AccStmtnCreditAmount");
             }
@@ -329,6 +368,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_headerSet == value) return;
+
                 _headerSet = value;
                 RaisePropertyChanged("HeaderSet");
             }
@@ -342,6 +383,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_TotalDebit == value) return;
+
                 _TotalDebit = value;
                 RaisePropertyChanged("TotalDebit");
             }
@@ -355,6 +398,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_TotalCredit == value) return;
+
                 _TotalCredit = value;
                 RaisePropertyChanged("TotalCredit");
             }
@@ -368,6 +413,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_TotalBalance == value) return;
+
                 _TotalBalance = value;
                 RaisePropertyChanged("TotalBalance");
             }
@@ -382,6 +429,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (isNotHaveStatements == value) return;
+
                 if (isNotHaveStatements != value)
                 {
                     isNotHaveStatements = value;
@@ -421,6 +470,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (groupedData == value) return;
+
                 if (groupedData != value)
                 {
                     groupedData = value;
@@ -439,8 +490,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
-                
-                    _GroupedDataForDownload = value;
+                if (_GroupedDataForDownload == value) return;
+
+                _GroupedDataForDownload = value;
                 
                 RaisePropertyChanged("GroupedDataForDownload");
             }
@@ -456,6 +508,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (isMonthWiseStatementsViewVisible == value) return;
+
                 if (isMonthWiseStatementsViewVisible != value)
                 {
 
@@ -476,6 +530,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (isNormalStatementsViewVisible == value) return;
+
                 if (isNormalStatementsViewVisible != value)
                 {
                     isNormalStatementsViewVisible = value;
@@ -494,8 +550,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
-                
-                    _statementsLineItemsDownloadPage = value;
+                if (_statementsLineItemsDownloadPage == value) return;
+
+                _statementsLineItemsDownloadPage = value;
 
                     RaisePropertyChanged("StatementsLineItemsDownloadPage");
                
@@ -510,6 +567,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_statementsLineItems == value) return;
+
                 if (_statementsLineItems != value)
                 {
                     if (value.Count > 0)
@@ -551,7 +610,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                             }
                             catch (Exception ex)
                             {
-
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
                                 agroupedData = Items.OrderBy(p => p.Bldat)
                               .GroupBy(p => UtilityManager.GetMonthName(p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("en"))))
                                 .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
@@ -604,6 +664,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_monthlyStatementsLineItems == value) return;
+
                 _monthlyStatementsLineItems = value;
                 RaisePropertyChanged("MonthlyStatementsLineItems");
             }
@@ -626,6 +688,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_yearValuesHeader == value) return;
+
                 _yearValuesHeader = value;
                 RaisePropertyChanged("YearValuesHeader");
             }
@@ -640,6 +704,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_TaxTypeForFilter == value) return;
+
                 _TaxTypeForFilter = value;
                 RaisePropertyChanged("TaxTypeForFilter");
             }
@@ -655,6 +721,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_allTransactionFilters == value) return;
+
                 _allTransactionFilters = value;
                 RaisePropertyChanged("AllTransactionFilters");
             }
@@ -669,6 +737,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_transactionTypeFilter == value) return;
+
                 if (value == null || value.Count == 0) return;
                 value = new ObservableCollection<TaxRelationSetResult>(value.OrderBy(temp => temp.DisplayId).ToList());
                 _transactionTypeFilter = value;
@@ -685,6 +755,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_chipDataFilterlist == value) return;
+
                 _chipDataFilterlist = value;
                 RaisePropertyChanged("ChipDataFilterlist");
             }
@@ -699,6 +771,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_chipDataFilterlistForYears == value) return;
+
                 _chipDataFilterlistForYears = value;
                 RaisePropertyChanged("ChipDataFilterlistForYears");
             }
@@ -713,6 +787,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_SelectedTaxTypeForFilter == value) return;
+
                 _SelectedTaxTypeForFilter = value;
 
                 if (_SelectedTaxTypeForFilter != null)
@@ -734,6 +810,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_selectedTransactionTypeFilter == value) return;
+
                 if (value == null) return;
                     _selectedTransactionTypeFilter = value;
 
@@ -770,6 +848,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_selectedTransactionType == value) return;
+
                 _selectedTransactionType = value;
 
                 RaisePropertyChanged("SelectedTransactionType");
@@ -784,6 +864,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_IsNormalListDownloadPage == value) return;
+
                 _IsNormalListDownloadPage = value;
 
                 RaisePropertyChanged("IsNormalListDownloadPage");
@@ -799,6 +881,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_isYearsChipVisible == value) return;
+
                 _isYearsChipVisible = value;
                 RaisePropertyChanged("IsYearsChipVisible");
             }
@@ -813,6 +897,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_isDownloadBtnVisile == value) return;
+
                 _isDownloadBtnVisile = value;
                 RaisePropertyChanged("IsDownloadBtnVisile");
             }
@@ -828,6 +914,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_isNoStatementsAvaiableVisible == value) return;
+
                 _isNoStatementsAvaiableVisible = value;
                 RaisePropertyChanged("IsNoStatementsAvaiableVisible");
             }
@@ -843,6 +931,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_selectedYear == value) return;
+
                 _selectedYear = value;
 
                 RaisePropertyChanged("SelectedYear");
@@ -858,6 +948,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_filterLabelText == value) return;
+
                 _filterLabelText = value;
 
                 RaisePropertyChanged("FilterLabelText");
@@ -874,6 +966,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             set
             {
+                if (_isOpeningBalanceVisible == value) return;
 
                 _isOpeningBalanceVisible = value;
                 RaisePropertyChanged("IsOpeningBalanceVisible");
@@ -890,6 +983,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             set
             {
+                if (_isSearchButtonVisible == value) return;
 
                 _isSearchButtonVisible = value;
                 RaisePropertyChanged("IsSearchButtonVisible");
@@ -906,6 +1000,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             set
             {
+                if (_isCloseButtonVisible == value) return;
+
 
                 _isCloseButtonVisible = value;
                 RaisePropertyChanged("IsCloseButtonVisible");
@@ -922,6 +1018,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             set
             {
+                if (_isSortByVisible == value) return;
 
                 _isSortByVisible = value;
                 RaisePropertyChanged("IsSortByVisible");
@@ -938,6 +1035,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_filterList == value) return;
+
                 _filterList = value;
                 RaisePropertyChanged("FilterList");
             }
@@ -1168,7 +1267,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1432,6 +1532,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1504,6 +1606,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;

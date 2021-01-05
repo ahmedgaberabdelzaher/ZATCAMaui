@@ -20,10 +20,12 @@ using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using static EGAZT.Models.ZakatObjectionsModel.ZakatObjectionWithdrawPostModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ZakatObjectionViewModel : BaseViewModel
     {
         #region Enums
@@ -97,6 +99,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _isBackVisible; }
             set
             {
+                if (_isBackVisible == value) return;
                 _isBackVisible = value;
                 RaisePropertyChanged("IsBackVisible");
             }
@@ -109,6 +112,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _isLoading; }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -121,6 +126,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _selectedFbNum; }
             set
             {
+                if (_selectedFbNum == value) return;
+
                 _selectedFbNum = value;
                 RaisePropertyChanged("SelectedFbNum");
             }
@@ -133,6 +140,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _selectedFbType; }
             set
             {
+                if (_selectedFbType == value) return;
+
                 _selectedFbType = value;
                 RaisePropertyChanged("SelectedFbNum");
             }
@@ -144,6 +153,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _isWithDrawEnable; }
             set
             {
+                if (_isWithDrawEnable == value) return;
+
                 _isWithDrawEnable = value;
                 WithdrawBackgroundColor = Color.FromHex(_isWithDrawEnable ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsWithDrawEnable");
@@ -189,6 +200,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_DetailDescriptionNote == value) return;
+
                 _DetailDescriptionNote = value;
                 RaisePropertyChanged("DetailDescriptionNote");
             }
@@ -203,6 +216,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_IsWithdrawAttachmentsVisible == value) return;
+
                 _IsWithdrawAttachmentsVisible = value;
                 RaisePropertyChanged("IsWithdrawAttachmentsVisible");
             }
@@ -217,6 +232,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_RemarkNote == value) return;
+
                 _RemarkNote = value;
                 RaisePropertyChanged("RemarkNote");
             }
@@ -229,6 +246,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _isSadadSecuritySelected; }
             set
             {
+                if (_isSadadSecuritySelected == value) return;
+
                 _isSadadSecuritySelected = value;
                 RaisePropertyChanged("IsSadadSecuritySelected");
             }
@@ -241,6 +260,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _isBankGurantSecuritySelected; }
             set
             {
+                if (_isBankGurantSecuritySelected == value) return;
+
                 _isBankGurantSecuritySelected = value;
                 RaisePropertyChanged("IsBankGurantSecuritySelected");
             }
@@ -253,6 +274,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _fiscalYear; }
             set
             {
+                if (_fiscalYear == value) return;
+
                 _fiscalYear = value;
                 RaisePropertyChanged("FiscalYear");
             }
@@ -265,6 +288,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _financialPeriod; }
             set
             {
+                if (_financialPeriod == value) return;
+
                 _financialPeriod = value;
                 RaisePropertyChanged("FinancialPeriod");
             }
@@ -277,6 +302,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _referenceNum; }
             set
             {
+                if (_referenceNum == value) return;
+
                 _referenceNum = value;
                 RaisePropertyChanged("ReferenceNum");
             }
@@ -289,6 +316,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _taxType; }
             set
             {
+                if (_referenceNum == value) return;
+
                 _taxType = value;
                 RaisePropertyChanged("TaxType");
             }
@@ -301,6 +330,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _assessmentAmountGAZT; }
             set
             {
+                if (_assessmentAmountGAZT == value) return;
+
                 _assessmentAmountGAZT = value;
                 RaisePropertyChanged("AssessmentAmountGAZT");
             }
@@ -313,6 +344,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _disputeAmount; }
             set
             {
+                if (_disputeAmount == value) return;
+
                 _disputeAmount = value;
                 RaisePropertyChanged("DisputeAmount");
             }
@@ -325,6 +358,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _revisedAmount; }
             set
             {
+                if (_revisedAmount == value) return;
+
                 _revisedAmount = value;
                 RaisePropertyChanged("RevisedAmount");
             }
@@ -337,6 +372,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _objectionReasons; }
             set
             {
+                if (_objectionReasons == value) return;
+
                 _objectionReasons = value;
                 RaisePropertyChanged("ObjectionReasons");
             }
@@ -349,6 +386,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _applicantName; }
             set
             {
+                if (_applicantName == value) return;
+
                 _applicantName = value;
                 RaisePropertyChanged("ApplicantName");
             }
@@ -361,6 +400,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _capacity; }
             set
             {
+                if (_capacity == value) return;
+
                 _capacity = value;
                 RaisePropertyChanged("Capacity");
             }
@@ -373,6 +414,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _repFullName; }
             set
             {
+                if (_repFullName == value) return;
+
                 _repFullName = value;
                 RaisePropertyChanged("RepFullName");
             }
@@ -385,6 +428,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _securityAmount; }
             set
             {
+                if (_securityAmount == value) return;
+
                 _securityAmount = value;
                 RaisePropertyChanged("SecurityAmount");
             }
@@ -397,6 +442,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _sADADNumber; }
             set
             {
+                if (_sADADNumber == value) return;
+
                 _sADADNumber = value;
                 RaisePropertyChanged("SADADNumber");
             }
@@ -409,6 +456,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _repPhoneNo; }
             set
             {
+                if (_repPhoneNo == value) return;
+
                 _repPhoneNo = value;
                 RaisePropertyChanged("RepPhoneNo");
             }
@@ -421,6 +470,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _repFaxNo; }
             set
             {
+                if (_repFaxNo == value) return;
+
                 _repFaxNo = value;
                 RaisePropertyChanged("RepFaxNo");
             }
@@ -433,6 +484,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _repElectronicMail; }
             set
             {
+                if (_repElectronicMail == value) return;
+
                 _repElectronicMail = value;
                 RaisePropertyChanged("RepElectronicMail");
             }
@@ -445,6 +498,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _repDesignation; }
             set
             {
+                if (_repDesignation == value) return;
+
                 _repDesignation = value;
                 RaisePropertyChanged("RepDesignation");
             }
@@ -457,6 +512,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _repBuildingName; }
             set
             {
+                if (_repBuildingName == value) return;
+
                 _repBuildingName = value;
                 RaisePropertyChanged("RepBuildingName");
             }
@@ -469,6 +526,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _repLevelStreetNumber; }
             set
             {
+                if (_repLevelStreetNumber == value) return;
+
                 _repLevelStreetNumber = value;
                 RaisePropertyChanged("RepLevelStreetNumber");
             }
@@ -481,6 +540,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _repCity; }
             set
             {
+                if (_repCity == value) return;
+
                 _repCity = value;
                 RaisePropertyChanged("RepCity");
             }
@@ -494,6 +555,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_vATReferanceNumber == value) return;
+
                 _vATReferanceNumber = value;
                 RaisePropertyChanged("VATReferanceNumber");
             }
@@ -507,6 +570,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_returnNumber == value) return;
+
                 _returnNumber = value;
                 RaisePropertyChanged("ReturnNumber");
             }
@@ -520,6 +585,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_ReferenceNumberOfAssessment == value) return;
+
                 _ReferenceNumberOfAssessment = value;
                 RaisePropertyChanged("ReferenceNumberOfAssessment");
             }
@@ -533,6 +600,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_AssessmentYear == value) return;
+
                 _AssessmentYear = value;
                 RaisePropertyChanged("AssessmentYear");
             }
@@ -546,6 +615,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_PeriodFrom == value) return;
+
                 _PeriodFrom = value;
                 RaisePropertyChanged("PeriodFrom");
             }
@@ -562,6 +633,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_PeriodTo == value) return;
+
                 _PeriodTo = value;
                 RaisePropertyChanged("PeriodTo");
             }
@@ -575,6 +648,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_DisplaTaxType == value) return;
+
                 _DisplaTaxType = value;
                 RaisePropertyChanged("DisplaTaxType");
             }
@@ -588,6 +663,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_Currency == value) return;
+
                 _Currency = value;
                 RaisePropertyChanged("Currency");
             }
@@ -601,6 +678,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_AssessmentAmount == value) return;
+
                 _AssessmentAmount = value;
                 RaisePropertyChanged("AssessmentAmount");
             }
@@ -614,6 +693,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_DisplayRevisedAmount == value) return;
+
                 _DisplayRevisedAmount = value;
                 RaisePropertyChanged("DisplayRevisedAmount");
             }
@@ -627,6 +708,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_DisplayDisputeAmount == value) return;
+
                 _DisplayDisputeAmount = value;
                 RaisePropertyChanged("DisplayDisputeAmount");
             }
@@ -640,6 +723,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_objRefNumber == value) return;
+
                 _objRefNumber = value;
                 RaisePropertyChanged("objRefNumber");
             }
@@ -763,9 +848,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
 
 
-            CloseClick = new Command(async () => { _navigationService.GoBack(); });
+            CloseClick = new Command(() => { _navigationService.GoBack(); });
 
-            GoBackClick = new Command(async () => { BackNavigations(); });
+            GoBackClick = new Command(() => { BackNavigations(); });
             BillContinueBtnTapped = new Command(async () =>
             {
                 //EnableDetailsView();
@@ -774,16 +859,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 EnableSummaryView();
             });
 
-            IsObjectionDetailsTapped = new Command(async () =>
+            IsObjectionDetailsTapped = new Command(() =>
             {
                 EnableSecurityPaymentsView();
             });
-            SecurityPaymentConBtnTapped = new Command(async () =>
+            SecurityPaymentConBtnTapped = new Command(() =>
             {
                 EnableAttachmentsView();
             });
 
-            AttachmentsContinueTapped = new Command(async () =>
+            AttachmentsContinueTapped = new Command(() =>
             {
 
                 EnableDeclarationView();
@@ -884,7 +969,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
             });
 
-            IsWithDrawDetailsTapped = new Command(async () =>
+            IsWithDrawDetailsTapped = new Command(() =>
             {
 
 
@@ -941,6 +1026,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _IsVATBillsViewEnabled; }
             set
             {
+                if (_IsVATBillsViewEnabled == value) return;
                 _IsVATBillsViewEnabled = value;
                 RaisePropertyChanged("IsVATBillsViewEnabled");
             }
@@ -952,6 +1038,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _IsObjectionDetailsEnabled; }
             set
             {
+                if (_IsObjectionDetailsEnabled == value) return;
+
                 _IsObjectionDetailsEnabled = value;
                 RaisePropertyChanged("IsObjectionDetailsEnabled");
             }
@@ -963,6 +1051,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _IsDeclarationViewEnabled; }
             set
             {
+                if (_IsDeclarationViewEnabled == value) return;
+
                 _IsDeclarationViewEnabled = value;
                 RaisePropertyChanged("IsDeclarationViewEnabled");
             }
@@ -974,6 +1064,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _IsAttachmentsViewEnabled; }
             set
             {
+                if (_IsAttachmentsViewEnabled == value) return;
+
                 _IsAttachmentsViewEnabled = value;
                 RaisePropertyChanged("IsAttachmentsViewEnabled");
             }
@@ -984,6 +1076,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _SummaryVisible; }
             set
             {
+                if (_SummaryVisible == value) return;
+
                 _SummaryVisible = value;
                 RaisePropertyChanged("SummaryVisible");
             }
@@ -998,6 +1092,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             set
             {
+                if (_successMessage == value) return;
+
                 _successMessage = value;
                 RaisePropertyChanged("SuccessMessage");
             }
@@ -1009,6 +1105,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _isSecurityPaymentsVisible; }
             set
             {
+                if (_isSecurityPaymentsVisible == value) return;
+
                 _isSecurityPaymentsVisible = value;
                 RaisePropertyChanged("IsSecurityPaymentsVisible");
             }
@@ -1019,6 +1117,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _isWithdrawDetailsEnabled; }
             set
             {
+                if (_isWithdrawDetailsEnabled == value) return;
+
                 _isWithdrawDetailsEnabled = value;
                 RaisePropertyChanged("IsWithdrawDetailsEnabled");
             }
@@ -1032,6 +1132,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _summaryData; }
             set
             {
+                if (_summaryData == value) return;
+
                 _summaryData = value;
                 RaisePropertyChanged("SummaryData");
             }
@@ -1044,6 +1146,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _zakatWithdrawlData; }
             set
             {
+                if (_zakatWithdrawlData == value) return;
+
                 _zakatWithdrawlData = value;
                 RaisePropertyChanged("ZakatWithdrawlData");
             }
@@ -1354,7 +1458,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         }
 
 
-        public async Task OnPageLoad()
+        public void OnPageLoad()
         {
 
             SelectedFbNum = Preferences.Get("ZakatObjectionSelectedValue", "");
@@ -1363,12 +1467,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             ZakatRequestObjectionSummary(SelectedFbNum);
 
 
-          
+
             EnableSummaryView();
 
             //EnableBillContinue();
 
-           // EnableSummaryView();
+            // EnableSummaryView();
 
 
 
@@ -1459,13 +1563,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1633,13 +1739,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1721,13 +1829,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2108,13 +2218,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2189,13 +2301,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2271,13 +2385,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2351,13 +2467,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2431,13 +2549,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2511,13 +2631,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2591,13 +2713,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2671,13 +2795,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2751,13 +2877,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2830,13 +2958,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2909,13 +3039,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2988,13 +3120,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3067,13 +3201,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3148,13 +3284,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3227,13 +3365,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3306,13 +3446,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3385,13 +3527,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3449,11 +3593,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 IsLoading = false;
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3511,11 +3657,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 IsLoading = false;
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }

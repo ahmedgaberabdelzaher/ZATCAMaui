@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATDeRegistration
 {
+    [Preserve(AllMembers = true)]
     public partial class VATDeregistrationInstructionsPage : PopupPage
     {
         VATDeRegistrationInstructionsPageViewModel viewModel;

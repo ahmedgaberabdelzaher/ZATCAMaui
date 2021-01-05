@@ -3,6 +3,7 @@ using Xamarin.Forms.Internals;
 
 namespace GAZT.Models
 {
+   
     /// <summary>
     /// Model for OnBoarding
     /// </summary>

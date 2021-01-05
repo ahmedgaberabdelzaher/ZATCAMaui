@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ZakatObjection
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ObjectionsSelectionPageView : ContentPage
     {

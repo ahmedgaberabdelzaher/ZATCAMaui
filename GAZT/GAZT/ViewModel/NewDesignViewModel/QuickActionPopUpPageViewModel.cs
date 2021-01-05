@@ -4,9 +4,11 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class QuickActionPopUpPageViewModel : ViewModelBase
     {
 

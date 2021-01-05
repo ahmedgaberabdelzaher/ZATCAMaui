@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public class DialogService: IDialogService
     {
  private Page _dialogPage;

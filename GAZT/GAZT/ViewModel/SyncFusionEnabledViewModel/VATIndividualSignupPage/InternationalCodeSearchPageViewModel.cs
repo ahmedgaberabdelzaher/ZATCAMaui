@@ -6,9 +6,11 @@ using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
+    [Preserve(AllMembers = true)]
     public class InternationalCodeSearchPageViewModel: ViewModelBase
     {
         public readonly INavigationService _navigationService;
@@ -25,6 +27,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
         set
         {
+                if (_mobileCodes == value) return;
             _mobileCodes = value;
             RaisePropertyChanged("MobileCodes");
         }
@@ -40,7 +43,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
         set
         {
-            _mobileCodesAllValues = value;
+                if (_mobileCodesAllValues == value) return;
+
+                _mobileCodesAllValues = value;
             RaisePropertyChanged("MobileCodesAllValues");
         }
     }
@@ -54,7 +59,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
         set
         {
-            _filteredItems = value;
+                if (_filteredItems == value) return;
+
+                _filteredItems = value;
             RaisePropertyChanged("FilteredItems");
         }
     }
@@ -67,7 +74,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
         set
         {
-            _ibanNumberText = value;
+                if (_ibanNumberText == value) return;
+
+                _ibanNumberText = value;
             RaisePropertyChanged("InternationalMobileCodeText");
         }
     }

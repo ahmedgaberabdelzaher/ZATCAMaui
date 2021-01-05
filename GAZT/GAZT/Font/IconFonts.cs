@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace MVP.FontIcons
 {
+	[Preserve(AllMembers = true)]
 	public static class IconFonts
 	{
 		public const string VectorSquare = "\U000f0001";

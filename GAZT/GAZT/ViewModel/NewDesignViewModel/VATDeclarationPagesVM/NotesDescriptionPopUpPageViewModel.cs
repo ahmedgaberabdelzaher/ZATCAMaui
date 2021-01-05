@@ -2,12 +2,14 @@
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    
+    [Preserve(AllMembers = true)]
     public class NotesDescriptionPopUpPageViewModel : BaseViewModel
     {
         #region Variable
@@ -26,6 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_noteList == value) return;
                 _noteList = value;
                 RaisePropertyChanged("NoteList");
             }
@@ -39,6 +42,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isNoDataLabelVisible == value) return;
+
                 _isNoDataLabelVisible = value;
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
@@ -52,6 +57,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isDisplayNoteVisible == value) return;
+
                 _isDisplayNoteVisible = value;
                 RaisePropertyChanged("IsDisplayNoteVisible");
             }

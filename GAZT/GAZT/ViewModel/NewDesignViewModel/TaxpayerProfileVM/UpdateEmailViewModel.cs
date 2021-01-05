@@ -2,15 +2,16 @@
 using System.Threading.Tasks;
 using EGAZT.Models.TPProfile;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
-using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
+    [Preserve(AllMembers = true)]
     public class UpdateEmailViewModel : ViewModelBase
     {
         #region Variable
@@ -25,6 +26,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _CurrentEmailText; }
             set
             {
+                if (_CurrentEmailText == value) return;
                 _CurrentEmailText = value;
                 RaisePropertyChanged("CurrentEmailText");
             }
@@ -36,6 +38,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _NewEmailText; }
             set
             {
+                if (_NewEmailText == value) return;
+
                 _NewEmailText = value;
                 RaisePropertyChanged("NewEmailText");
             }
@@ -47,6 +51,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _ConfirmEmailText; }
             set
             {
+                if (_ConfirmEmailText == value) return;
+
                 _ConfirmEmailText = value;
                 RaisePropertyChanged("ConfirmEmailText");
             }
@@ -61,6 +67,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_IsLoading == value) return;
+
                 _IsLoading = value;
                 RaisePropertyChanged(() => IsLoading);
             }
@@ -107,6 +115,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
                 ShowValidationPopup(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
             return TP;

@@ -11,6 +11,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(TransitionNavigationPage), typeof(TransitionNavigationPageRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class TransitionNavigationPageRenderer : NavigationRenderer
     {
         private TransitionType _transitionType = TransitionType.Default;

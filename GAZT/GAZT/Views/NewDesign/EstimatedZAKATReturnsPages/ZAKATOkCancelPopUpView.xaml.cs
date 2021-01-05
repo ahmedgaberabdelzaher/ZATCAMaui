@@ -4,9 +4,11 @@ using EGAZT.Views.NewDesign.VATDeclarationPages;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
+    [Preserve(AllMembers = true)]
     public partial class ZAKATOkCancelPopUpView : PopupPage
     {
         string _confirmationText = string.Empty;

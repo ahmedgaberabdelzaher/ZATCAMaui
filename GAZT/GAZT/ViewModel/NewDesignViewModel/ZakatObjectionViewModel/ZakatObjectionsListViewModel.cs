@@ -7,17 +7,16 @@ using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
+    [Preserve(AllMembers = true)]
     public class ZakatObjectionsListViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
@@ -49,7 +48,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             _dialogService = dialogService;
 
 
-            ReqInstalmentBtnTapped = new Command(this.ReqInstalmentBtnClickedAsync);
+            ReqInstalmentBtnTapped = new Command(this.ReqInstalmentBtnClicked);
             CloseClick = new Command(async () => { _navigationService.GoBack(); });
 
             GoBackClick = new Command(async () => { BackNavigations(); });
@@ -126,6 +125,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_CreateZakatInstalmentBtnVisible == value) return;
                 _CreateZakatInstalmentBtnVisible = value;
                 RaisePropertyChanged("CreateZakatInstalmentBtnVisible");
             }
@@ -139,6 +139,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_IsSummaryEnable == value) return;
+
                 _IsSummaryEnable = value;
                 RaisePropertyChanged("IsSummaryEnable");
             }
@@ -153,6 +155,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -167,6 +171,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_returnNumber == value) return;
+
                 _returnNumber = value;
                 RaisePropertyChanged("ReturnNumber");
             }
@@ -180,6 +186,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_ReferenceNumberOfAssessment == value) return;
+
                 _ReferenceNumberOfAssessment = value;
                 RaisePropertyChanged("ReferenceNumberOfAssessment");
             }
@@ -194,6 +202,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_AssessmentYear == value) return;
+
                 _AssessmentYear = value;
                 RaisePropertyChanged("AssessmentYear");
             }
@@ -207,6 +217,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_PeriodFrom == value) return;
+
                 _PeriodFrom = value;
                 RaisePropertyChanged("PeriodFrom");
             }
@@ -221,6 +233,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_PeriodTo == value) return;
+
                 _PeriodTo = value;
                 RaisePropertyChanged("PeriodTo");
             }
@@ -235,6 +249,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_DisplaTaxType == value) return;
+
                 _DisplaTaxType = value;
                 RaisePropertyChanged("DisplaTaxType");
             }
@@ -248,6 +264,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_Currency == value) return;
+
                 _Currency = value;
                 RaisePropertyChanged("Currency");
             }
@@ -261,6 +279,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_AssessmentAmount == value) return;
+
                 _AssessmentAmount = value;
                 RaisePropertyChanged("AssessmentAmount");
             }
@@ -274,6 +294,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_DisplayRevisedAmount == value) return;
+
                 _DisplayRevisedAmount = value;
                 RaisePropertyChanged("DisplayRevisedAmount");
             }
@@ -287,6 +309,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_DisplayDisputeAmount == value) return;
+
                 _DisplayDisputeAmount = value;
                 RaisePropertyChanged("DisplayDisputeAmount");
             }
@@ -300,6 +324,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_objRefNumber == value) return;
+
                 _objRefNumber = value;
                 RaisePropertyChanged("objRefNumber");
             }
@@ -313,6 +339,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_DisplayDetailDescription == value) return;
+
                 _DisplayDetailDescription = value;
                 RaisePropertyChanged("DisplayDetailDescription");
             }
@@ -327,6 +355,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_DisplayRemarks == value) return;
+
                 _DisplayRemarks = value;
                 RaisePropertyChanged("DisplayRemarks");
             }
@@ -341,6 +371,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_IsAttachmentsVisible == value) return;
+
                 _IsAttachmentsVisible = value;
                 RaisePropertyChanged("IsAttachmentsVisible");
             }
@@ -355,6 +387,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_objectionsCount == value) return;
+
                 _objectionsCount = value;
                 RaisePropertyChanged("ObjectionsCount");
             }
@@ -369,6 +403,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_objectionsList == value) return;
+
                 _objectionsList = value;
                 RaisePropertyChanged("ObjectionsList");
             }
@@ -381,6 +417,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             get { return _formattedObjectionDate; }
             set
             {
+                if (_formattedObjectionDate == value) return;
+
                 _formattedObjectionDate = value;
                 RaisePropertyChanged("FormattedObjectionDate");
             }
@@ -392,17 +430,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             {
                 return attachmentsListViewData;
             }
-
-
-
             set
             {
                 if (attachmentsListViewData == value)
                 {
                     return;
                 }
-
-
 
                 attachmentsListViewData = value;
                 RaisePropertyChanged("AttachmentsListViewData");
@@ -419,7 +452,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         }
 
 
-        public async void ReqInstalmentBtnClickedAsync()
+        public void ReqInstalmentBtnClicked()
         {
             _navigationService.NavigateTo(App.ZakatObjectionPageView);
         }
@@ -570,13 +603,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -669,13 +704,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -683,13 +720,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
         public async Task showRejectPopup()
         {
+            
             await Task.Run(() =>
             {
                 IsLoading = false;
             });
             Device.BeginInvokeOnMainThread(async () =>
             {
-                _dialogService.ShowMessage(AppResources.ZakatObjectionPortalMessage, AppResources.Information);
+                await _dialogService.ShowMessage(AppResources.ZakatObjectionPortalMessage, AppResources.Information);
             });
 
         }
@@ -761,13 +799,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -926,13 +966,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1009,13 +1051,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }

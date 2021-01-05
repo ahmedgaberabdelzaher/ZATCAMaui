@@ -1,19 +1,24 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
+
     public partial class AttachmentDocumentModel
     {
         [JsonProperty("d")]
         public DAttachmentDocumentModel D { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public partial class DAttachmentDocumentModel
     {
         [JsonProperty("results")]
         public AttachmentResult[] Results { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public partial class AttachmentResult
     {
@@ -68,6 +73,7 @@ namespace EGAZT.Models
         [JsonProperty("OutletRef")]
         public string OutletRef { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public partial class MetadataAttachment
     {

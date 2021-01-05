@@ -12,10 +12,12 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.TaxpayerProfile
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UpdateEmailPopUp : PopupPage
     {

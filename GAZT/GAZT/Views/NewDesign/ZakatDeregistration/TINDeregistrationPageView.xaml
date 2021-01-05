@@ -340,8 +340,6 @@
                                      HeaderBackgroundColor="#EAF7CC"
                                  SelectedItemTextColor="{StaticResource NeutralBlack}"
                                  BorderColor="Black"
-                                
-                                
 								ShowFooter="False"
 								 ShowColumnHeader="True"
                                  ColumnHeaderBackgroundColor="White"
@@ -355,7 +353,7 @@
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
                                  Closed="DpDbo_Closed"
-                                                      SelectionChanged="DpDbo_SelectionChanged"
+                                 SelectionChanged="DpDbo_SelectionChanged"
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
                                 CancelButtonClicked="DpDbo_CancelButtonClicked"
 								ItemHeight="40">
@@ -371,8 +369,8 @@
                                 OKButtonBackgroundColor="#EAF7CC"
                                 CancelButtonBackgroundColor="#EAF7CC"
                                      HeaderBackgroundColor="#EAF7CC"
-                    SelectedItemTextColor="{StaticResource NeutralBlack}"
-                    BorderColor="Black"
+                              SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                BorderColor="Black"
                                   SelectedItem="{Binding TodayDateinHijri}"                                  
 								ShowFooter="False"
 								 ShowColumnHeader="True"
@@ -386,10 +384,10 @@
                            
                             HorizontalOptions="FillAndExpand"
                                Closed="DpDbo_Closed"
-                                                      SelectionChanged="DpDbo_SelectionChanged"
-                                OkButtonClicked="DOBpicker_OkButtonClicked"
-                                CancelButtonClicked="DpDbo_CancelButtonClicked"
-								ItemHeight="40">
+                               SelectionChanged="DpDbo_SelectionChanged"
+                               OkButtonClicked="DOBpicker_OkButtonClicked"
+                               CancelButtonClicked="DpDbo_CancelButtonClicked"
+							    ItemHeight="40">
                                 </custom1:CustomHijriDatePicker>
                                 <!--SelectedItem="{Binding TodayDate}"-->
                                 <!--HijriDatePicker-->

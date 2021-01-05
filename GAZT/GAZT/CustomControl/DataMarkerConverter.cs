@@ -5,8 +5,11 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public class DataMarkerConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

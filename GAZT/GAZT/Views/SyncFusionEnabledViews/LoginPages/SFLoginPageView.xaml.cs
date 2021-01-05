@@ -109,7 +109,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             // ParentContainer.RaiseChild(BusyIndicator);
         }
@@ -189,7 +190,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             MessagingCenter.Unsubscribe<string>(this, "OnActivated");
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -325,6 +326,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 }
                                 catch (Exception ex)
                                 {
+                                    Console.Write(ex.ToString());
+                                    Console.Write(ex.StackTrace.ToString());
                                     GoBackToOnaboardingScreen();
                                 }
                             }
@@ -378,7 +381,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                         }
                                     }
                                 }
-                                catch
+                                catch (Exception ex)
                                 {
                                     await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                                 }
@@ -499,7 +502,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 }
                                 catch (Exception ex)
                                 {
-
+                                    Console.Write(ex.ToString());
+                                    Console.Write(ex.StackTrace.ToString());
                                 }
 
                                 viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
@@ -520,6 +524,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -574,7 +580,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
@@ -683,35 +690,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         private void onBackButtonClicked(object sender, EventArgs e)
         {
         }
-        //private void TINs_Clicked(object sender, System.EventArgs e)
-        //{
-        //    TinsPicker.IsOpen = true;
-        //}
-        //private void Email_UnFocused(object sender, Xamarin.Forms.FocusEventArgs e)
-        //{
-        //    bool isNumber = false;
-        //    bool isEmailValid = false;
-        //    isNumber = IsEnglishNumber(Email.Text);
-        //    if (!isNumber)
-        //    {
-        //        isEmailValid = CheckValidEmail(Email.Text);
-        //        if (!isEmailValid)
-        //        {
-        //            EmailInputLayout.HasError = true;
-        //            //EmailInputLayout.ShowHint = true;
-        //        }
-        //        else
-        //        {
-        //            EmailInputLayout.HasError = false;
-        //            viewModel.IsVisibleTinIds = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        EmailInputLayout.HasError = false;
-        //        //EmailInputLayout.ShowHint = false;
-        //    }
-        //}
+
         private static bool CheckValidEmail(string email)
         {
             bool isEmailValid = false;
@@ -777,7 +756,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             App.Current.Properties["IsSessionExpired"] = false;
 
             OnAppearing();
-            //Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
 
             App.ResetAndContinueSession();
         }

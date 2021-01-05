@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage
 {
+    [Preserve(AllMembers = true)]
     public class ContactUsPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

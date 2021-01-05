@@ -11,9 +11,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdjustmentPopupPageView : PopupPage
     {

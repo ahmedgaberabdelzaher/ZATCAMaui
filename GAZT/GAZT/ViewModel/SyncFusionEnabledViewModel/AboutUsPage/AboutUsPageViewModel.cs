@@ -2,8 +2,11 @@
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Windows.Input;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage
 {
+    [Preserve(AllMembers = true)]
     public class AboutUsPageViewModel : ViewModelBase
     {
         #region Variable

@@ -11,11 +11,13 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ZakatForm5
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatAcknowledgmentPageView : ContentPage
     {
@@ -65,7 +67,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             //    {
             //        viewModel.IsLoading = true;
             //    });
-               await viewModel.LoadZakatForm5_ACK_Data();
+                viewModel.LoadZakatForm5_ACK_Data();
             //    //Device.BeginInvokeOnMainThread(() => {
 
             //    //    ////App.HideProgressView();
@@ -94,7 +96,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
         {
             //try
             //{
-            await viewModel.LoadZakatForm5_ACK_Data();
+             viewModel.LoadZakatForm5_ACK_Data();
             //    if (viewModel.ZakatForm5DataResult != null)
             //    {
             //        // BPicker.SelectedIndex = 14;

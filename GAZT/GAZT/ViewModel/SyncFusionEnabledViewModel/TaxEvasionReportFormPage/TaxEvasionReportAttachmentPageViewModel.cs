@@ -13,9 +13,11 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
 {
+    [Preserve(AllMembers = true)]
     public class TaxEvasionReportAttachmentPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

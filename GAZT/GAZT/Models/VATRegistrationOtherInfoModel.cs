@@ -1,200 +1,154 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
     public class __metadataForVATREgistrationOtherInfo
     {
-
+        [DataMember]
         public string id { get; set; }
+        [DataMember]
         public string uri { get; set; }
+        [DataMember]
         public string type { get; set; }
     }
 
-
-
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
     public class ResultsItemForButton
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public __metadataForVATREgistrationOtherInfo __metadata { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Fbtyp { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Fbust { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Button { get; set; }
     }
 
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
     public class VR_UI_BTNSet
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public List<ResultsItemForButton> results { get; set; }
     }
 
-
-
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
     public class ResultsItemForDOCSet
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public __metadataForVATREgistrationOtherInfo __metadata { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Mandt { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Spras { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Fbtyp { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string TxnTp { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string DmsTp { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string StartDt { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string EndDt { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Txt50 { get; set; }
     }
 
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
     public class ELGBL_DOCSet
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public List<ResultsItemForElgblDocSet> results { get; set; }
-    }  
+    }
+
+   // [Serializable]
+    [Preserve(AllMembers = true)]
+    //[DataContract]
     public class ELGBL_DOCSetforsubmit
     {
-        /// <summary>
-        /// 
-        /// </summary>
+       // [DataMember]
         public List<ResultsItemForDOCSetforsubmit> results { get; set; }
     }
 
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
     public class VATRegistrationWithOtherInformation
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public __metadataForVATREgistrationOtherInfo __metadata { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Fbtypz { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Fbustz { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string EditFgz { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Mandt { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Fbnum { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string PortalUsr { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Lang { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Operation { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string StepNumber { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string ReturnId { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Officer { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Gpart { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Status { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string UserTyp { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string TxnTp { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public string Formproc { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public VR_UI_BTNSet VR_UI_BTNSet { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public ELGBL_DOCSet ELGBL_DOCSet { get; set; }
     }
 
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
     public class VATRegistrationOtherDetails
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        [DataMember]
         public VATRegistrationWithOtherInformation d { get; set; }
     }
 
-
-
-
-
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
     public class DataToPassTofinancialDetailAttachmentPopup
-        {
+    {
+        [DataMember]
         public VATRegistrationOtherDetails vatRegOthrDetailtoPopup { get; set; }
+        [DataMember]
         public VATRegistrationDetails VATRegistrationDetailsDatatoPopup { get; set; }
-}
+    }
 
 }

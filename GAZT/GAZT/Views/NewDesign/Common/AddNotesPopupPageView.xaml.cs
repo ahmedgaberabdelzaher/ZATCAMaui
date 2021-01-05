@@ -8,11 +8,13 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using NotesSet = EGAZT.Models.NotesSet;
 
 namespace EGAZT.Views.NewDesign.Common
 {
+    [Preserve(AllMembers = true)]
     public partial class AddNotesPopupPageView : PopupPage
     {
         AddNotePopUpViewModel viewModel;

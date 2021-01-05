@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public class ChipDataTemplateSelector : DataTemplateSelector
     {
         public DataTemplate HappyEmojiTemplate { get; set; }

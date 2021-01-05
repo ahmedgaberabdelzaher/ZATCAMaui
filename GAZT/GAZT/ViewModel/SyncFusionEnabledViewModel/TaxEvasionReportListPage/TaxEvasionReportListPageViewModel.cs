@@ -16,8 +16,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class TaxEvasionReportListPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

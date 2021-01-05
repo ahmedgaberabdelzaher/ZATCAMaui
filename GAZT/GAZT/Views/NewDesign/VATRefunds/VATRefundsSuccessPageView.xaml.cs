@@ -4,10 +4,12 @@ using System.Linq;
 using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATRefunds
 {
+    [Preserve(AllMembers = true)]
     public partial class VATRefundsSuccessPageView : ContentPage
     {
         VATRefundsSuccessPageViewModel viewModel;

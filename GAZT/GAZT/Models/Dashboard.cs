@@ -1,18 +1,23 @@
 ﻿using EGAZT;
 using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class Dashboard
     {
         public List<DashboardResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class DashboardMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class DashboardResult
     {
         public DashboardMetadata __metadata { get; set; }

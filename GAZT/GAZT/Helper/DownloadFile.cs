@@ -7,9 +7,11 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Helper
 {
+    [Preserve(AllMembers = true)]
     public class DownloadFile
     {
         public async System.Threading.Tasks.Task<bool> DownloadAcknowledgementAsync(string url, IDialogService _dialogService)

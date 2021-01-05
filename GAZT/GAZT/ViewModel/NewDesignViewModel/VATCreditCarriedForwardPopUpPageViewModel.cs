@@ -1,11 +1,12 @@
 ﻿using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
-using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class VATCreditCarriedForwardPopUpPageViewModel : BaseViewModel
     {
 
@@ -19,6 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_creditCarriedsList == value) return;
                 _creditCarriedsList = value;
                 RaisePropertyChanged("CreditCarriedsList");
             }
@@ -32,6 +34,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATDeclarationData == value) return;
+
                 _vATDeclarationData = value;
                 RaisePropertyChanged("VATDeclarationData");
             }
@@ -45,6 +49,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isNoDataLabelVisible == value) return;
+
                 _isNoDataLabelVisible = value;
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
@@ -58,6 +64,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isListViewVisible == value) return;
+
                 _isListViewVisible = value;
                 RaisePropertyChanged("IsListViewVisible");
             }

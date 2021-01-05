@@ -8,9 +8,11 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.Common
 {
+    [Preserve(AllMembers = true)]
     public class AddNotePopUpViewModel : ViewModelBase
     {
         #region Variable

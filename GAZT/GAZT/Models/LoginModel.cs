@@ -1,8 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms.Internals;
 
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public partial class LoginModel
     {
         public string token { get; set; }
@@ -85,6 +87,7 @@ namespace GAZT.Models
         public string ResponseStatusCode { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
     public partial class LoginMetadata
     {
         [JsonProperty("id")]
@@ -97,6 +100,7 @@ namespace GAZT.Models
         public string Type { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
     public class LoginParametersModel
     {
         public string userId { get; set; }

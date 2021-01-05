@@ -1,18 +1,15 @@
-﻿using EGAZT.Helper;
-using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel;
+﻿using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel;
 using GAZT.Helper;
-using GAZT.Manager;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     public partial class ZakatInstalmentPlanSuccessPage : ContentPage
@@ -64,7 +61,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             catch (Exception ex)
             {
 
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
             }
         }

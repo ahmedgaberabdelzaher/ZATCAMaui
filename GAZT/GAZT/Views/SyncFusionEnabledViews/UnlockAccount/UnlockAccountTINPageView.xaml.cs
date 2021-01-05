@@ -12,9 +12,11 @@ using GAZTeServicesApp.Controls;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
 {
+    [Preserve(AllMembers = true)]
     public partial class UnlockAccountTINPageView:PopupPage
     {
         UnlockAccountTINPageViewModel viewModel;

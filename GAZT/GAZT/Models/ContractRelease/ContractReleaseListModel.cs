@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.ContractRelease
 {
+  
     public class ContractReleaseListModel
     {
         public ContractReleaseListModel()
@@ -10,25 +12,27 @@ namespace EGAZT.Models.ContractRelease
         }
     }
 
-
+  
     public class ContractReleaseSummaryModel
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Attachment
         {
             public Metadata2 __metadata { get; set; }
@@ -50,12 +54,12 @@ namespace EGAZT.Models.ContractRelease
             public string Visedit { get; set; }
             public string Visdel { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class AttDetSet
         {
             public List<Attachment> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public partial class ZnotesSet
         {
             public Metadata __metadata { get; set; }
@@ -75,8 +79,8 @@ namespace EGAZT.Models.ContractRelease
             public string Tdline { get; set; }
         }
 
-       
 
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -149,12 +153,12 @@ namespace EGAZT.Models.ContractRelease
             public ZnotesSetResult znotesSet { get; set; }
 
         }
-
+        [Preserve(AllMembers = true)]
         public class ZnotesSetResult
         {
             public ZnotesSet[] results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ContractReleaseSummaryData
         {
 

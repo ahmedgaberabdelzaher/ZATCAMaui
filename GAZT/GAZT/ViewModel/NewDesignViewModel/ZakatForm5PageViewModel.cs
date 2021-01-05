@@ -1,25 +1,21 @@
 ﻿using EGAZT.Models;
 using EGAZT.Models.Form5Models;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using GAZT.Helper;
 using GAZT.Manager;
-using GAZT.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using ZakatForm5Model;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-     public class ZakatForm5PageViewModel : BaseViewModel
+    [Preserve(AllMembers = true)]
+    public class ZakatForm5PageViewModel : BaseViewModel
     {
 
         #region Variable
@@ -42,6 +38,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _currentTab;
             private set
             {
+                if (_currentTab == value) return;
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)_currentTab;
@@ -54,6 +51,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -78,6 +77,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isAdditionalVisible == value) return;
+
                 _isAdditionalVisible = value;
                 RaisePropertyChanged("isAdditionalVisible");
             }
@@ -92,6 +93,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsLoading == value) return;
+
                 _IsLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -106,6 +109,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isMineralVisible == value) return;
+
                 _isMineralVisible = value;
                 RaisePropertyChanged("isMineralVisible");
             }
@@ -120,6 +125,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isCarVisible == value) return;
+
                 _isCarVisible = value;
                 RaisePropertyChanged("isCarVisible");
             }
@@ -134,6 +141,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isPoultryVisible == value) return;
+
                 _isPoultryVisible = value;
                 RaisePropertyChanged("isPoultryVisible");
             }
@@ -148,6 +157,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isEducationVisible == value) return;
+
                 _isEducationVisible = value;
                 RaisePropertyChanged("isEducationVisible");
             }
@@ -162,6 +173,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isHotelVisible == value) return;
+
                 _isHotelVisible = value;
                 RaisePropertyChanged("isHotelVisible");
             }
@@ -176,6 +189,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isRealEstateVisible == value) return;
+
                 _isRealEstateVisible = value;
                 RaisePropertyChanged("isRealEstateVisible");
             }
@@ -190,6 +205,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isContractingVisible == value) return;
+
                 _isContractingVisible = value;
                 RaisePropertyChanged("isContractingVisible");
             }
@@ -204,6 +221,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isIndustryVisible == value) return;
+
                 _isIndustryVisible = value;
                 RaisePropertyChanged("isIndustryVisible");
             }
@@ -218,6 +237,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLabourOccupancyVisible == value) return;
+
                 _isLabourOccupancyVisible = value;
                 RaisePropertyChanged("isLabourOccupancyVisible");
             }
@@ -232,6 +253,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isBuyVisible == value) return;
+
                 _isBuyVisible = value;
                 RaisePropertyChanged("isBuyVisible");
             }
@@ -246,6 +269,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isProfessionalVisible == value) return;
+
                 _isProfessionalVisible = value;
                 RaisePropertyChanged("isProfessionalVisible");
             }
@@ -260,6 +285,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isCabVisible == value) return;
+
                 _isCabVisible = value;
                 RaisePropertyChanged("isCabVisible");
             }
@@ -274,6 +301,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_nextText == value) return;
+
                 _nextText = value;
                 RaisePropertyChanged("NextText");
             }
@@ -305,6 +334,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_zakatForm5DataResult == value) return;
+
                 _zakatForm5DataResult = value;
                 RaisePropertyChanged("ZakatForm5DataResult");
             }
@@ -319,6 +350,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isNoDataLableVisible == value) return;
+
                 _isNoDataLableVisible = value;
                 RaisePropertyChanged("isNoDataLableVisible");
             }
@@ -349,6 +382,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_fbguid == value) return;
+
                 _fbguid = value;
                 RaisePropertyChanged(() => Fbguid);
             }
@@ -363,6 +398,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_financialYear == value) return;
+
                 _financialYear = value;
                 RaisePropertyChanged(() => FinancialYear);
             }
@@ -378,6 +415,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_period == value) return;
+
                 _period = value;
                 RaisePropertyChanged(() => Period);
             }
@@ -390,6 +429,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_ZakatToDate == value) return;
+
                 _ZakatToDate = value;
                 RaisePropertyChanged(() => ZakatToDate);
             }
@@ -403,6 +444,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_ZakatFromDate == value) return;
+
                 _ZakatFromDate = value;
                 RaisePropertyChanged(() => ZakatFromDate);
             }
@@ -417,6 +460,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_taxpayer == value) return;
+
                 _taxpayer = value;
                 RaisePropertyChanged(() => Taxpayer);
             }
@@ -430,6 +475,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_branch == value) return;
+
                 _branch = value;
                 RaisePropertyChanged(() => Branch);
             }
@@ -443,6 +490,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+
                 var newAddress = value.Replace(@", ,", "");
                 newAddress = newAddress.Replace(@", ,", "");
                 newAddress = newAddress.Replace(@",,", "");
@@ -458,6 +506,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_userEmail == value) return;
+
                 _userEmail = value;
                 RaisePropertyChanged(() => UserEmail);
             }
@@ -470,6 +520,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_mobileNumber == value) return;
+
                 _mobileNumber = value;
                 RaisePropertyChanged(() => MobileNumber);
             }
@@ -484,6 +536,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_numberOfOutlet == value) return;
+
                 _numberOfOutlet = value;
                 RaisePropertyChanged(() => NumberOfOutlet);
             }
@@ -497,6 +551,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_residencyStatus == value) return;
+
                 _residencyStatus = value;
                 RaisePropertyChanged(() => Residency_Status);
             }
@@ -509,6 +565,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_mainOutlet == value) return;
+
                 _mainOutlet = value;
                 RaisePropertyChanged(() => MainOutlet);
             }
@@ -521,6 +579,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_accMethod == value) return;
+
                 _accMethod = value;
                 RaisePropertyChanged(() => AccountMethod);
             }
@@ -533,6 +593,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_financialPeriod == value) return;
+
                 _financialPeriod = value;
                 RaisePropertyChanged(() => FinancialPeriod);
             }
@@ -545,6 +607,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_calendarType == value) return;
+
                 _calendarType = value;
                 RaisePropertyChanged(() => Calendar_Type);
             }
@@ -558,6 +622,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_IsConditionRadio == value) return;
+
                 _IsConditionRadio = value;
                 RaisePropertyChanged(() => IsConditionRadio);
             }
@@ -578,6 +644,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsCabBtn == value) return;
+
                 _IsCabBtn = value;
                 RaisePropertyChanged("IsCabBtn");
             }
@@ -593,6 +661,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsProfessionBtn == value) return;
+
                 _IsProfessionBtn = value;
                 RaisePropertyChanged("IsProfessionBtn");
             }
@@ -607,6 +677,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsSellBtn == value) return;
+
                 _IsSellBtn = value;
                 RaisePropertyChanged("IsSellBtn");
             }
@@ -621,6 +693,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsLabourBtn == value) return;
+
                 _IsLabourBtn = value;
                 RaisePropertyChanged("IsLabourBtn");
             }
@@ -635,6 +709,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsIndustryBtn == value) return;
+
                 _IsIndustryBtn = value;
                 RaisePropertyChanged("IsIndustryBtn");
             }
@@ -649,6 +725,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsContractBtn == value) return;
+
                 _IsContractBtn = value;
                 RaisePropertyChanged("IsContractBtn");
             }
@@ -663,6 +741,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsInvestBtn == value) return;
+
                 _IsInvestBtn = value;
                 RaisePropertyChanged("IsInvestBtn");
             }
@@ -678,6 +758,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsHotelsBtn == value) return;
+
                 _IsHotelsBtn = value;
                 RaisePropertyChanged("IsHotelsBtn");
             }
@@ -693,6 +775,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsEduBtn == value) return;
+
                 _IsEduBtn = value;
                 RaisePropertyChanged("IsEduBtn");
             }
@@ -707,6 +791,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsPoultryBtn == value) return;
+
                 _IsPoultryBtn = value;
                 RaisePropertyChanged("IsPoultryBtn");
             }
@@ -722,6 +808,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsCarBtn == value) return;
+
                 _IsCarBtn = value;
                 RaisePropertyChanged("IsCarBtn");
             }
@@ -737,6 +825,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsMineralsBtn == value) return;
+
                 _IsMineralsBtn = value;
                 RaisePropertyChanged("IsMineralsBtn");
             }
@@ -751,6 +841,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsAddBtn == value) return;
+
                 _IsAddBtn = value;
                 RaisePropertyChanged("IsAddBtn");
             }
@@ -770,6 +862,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_noOfEntityList == value) return;
+
                 _noOfEntityList = value;
                 RaisePropertyChanged("NoOFEntityList");
             }
@@ -790,6 +884,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_cabsList == value) return;
+
                 _cabsList = value;
                 RaisePropertyChanged("Cabs");
             }
@@ -809,6 +905,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_professionalsList == value) return;
+
                 _professionalsList = value;
                 RaisePropertyChanged("Professionals");
             }
@@ -827,6 +925,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_sell_BuyList == value) return;
+
                 _sell_BuyList = value;
                 RaisePropertyChanged("Sell_Buy");
             }
@@ -845,6 +945,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_labourOccupList == value) return;
+
                 _labourOccupList = value;
                 RaisePropertyChanged("LabourOccup");
             }
@@ -863,6 +965,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_industryList == value) return;
+
                 _industryList = value;
                 RaisePropertyChanged("Industry");
             }
@@ -881,6 +985,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_contractingList == value) return;
+
                 _contractingList = value;
                 RaisePropertyChanged("Contracting");
             }
@@ -899,6 +1005,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_invstRealEstList == value) return;
+
                 _invstRealEstList = value;
                 RaisePropertyChanged("InvstRealEst");
             }
@@ -917,6 +1025,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_hotelsList == value) return;
+
                 _hotelsList = value;
                 RaisePropertyChanged("Hotels");
             }
@@ -935,6 +1045,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_edu_HealthList == value) return;
+
                 _edu_HealthList = value;
                 RaisePropertyChanged("Edu_Health");
             }
@@ -953,6 +1065,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_poultry_FishFarmList == value) return;
+
                 _poultry_FishFarmList = value;
                 RaisePropertyChanged("Poultry_FishFarm");
             }
@@ -971,6 +1085,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_carsList == value) return;
+
                 _carsList = value;
                 RaisePropertyChanged("Cars");
             }
@@ -989,6 +1105,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_mineralsList == value) return;
+
                 _mineralsList = value;
                 RaisePropertyChanged("Minerals");
             }
@@ -1024,6 +1142,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             
             set
             {
+                if (_isOtherComShareApp == value) return;
+
                 _isOtherComShareApp = value;
                 RaisePropertyChanged(() => IsOtherComShareApp);
             }
@@ -1040,6 +1160,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsOtherComShareAppVisible == value) return;
+
                 _IsOtherComShareAppVisible = value;
                 RaisePropertyChanged("IsOtherComShareAppVisible");
             }
@@ -1053,6 +1175,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_otherCompanyShare == value) return;
+
                 _otherCompanyShare = value;
                 RaisePropertyChanged(() => OtherCompanyShare);
             }
@@ -1066,6 +1190,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_zakatBase == value) return;
+
                 _zakatBase = value;
                 RaisePropertyChanged(() => ZakatBase);
             }
@@ -1082,6 +1208,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_noOfBranch == value) return;
+
                 _noOfBranch = value;
                 RaisePropertyChanged(() => NoOfBranch);
             }
@@ -1094,6 +1222,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_noofEmp == value) return;
+
                 _noofEmp = value;
                 RaisePropertyChanged(() => NoofEmp);
             }
@@ -1106,6 +1236,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_yearRent == value) return;
+
                 _yearRent = value;
                 RaisePropertyChanged(() => YearRent);
             }
@@ -1118,6 +1250,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_totalAnnualSalary == value) return;
+
                 _totalAnnualSalary = value;
                 RaisePropertyChanged(() => TotalAnnualSalary);
             }
@@ -1134,6 +1268,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_zakatable == value) return;
+
                 _zakatable = value;
                 RaisePropertyChanged(() => Zakatable);
             }
@@ -1146,6 +1282,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_zakat == value) return;
+
                 _zakat = value;
                 RaisePropertyChanged(() => Zakat);
             }
@@ -1158,6 +1296,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_zakatPaid == value) return;
+
                 _zakatPaid = value;
                 RaisePropertyChanged(() => ZakatPaid);
             }
@@ -1170,6 +1310,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_newTaxAmt == value) return;
+
                 _newTaxAmt = value;
                 RaisePropertyChanged(() => NewTaxAmt);
             }
@@ -1187,6 +1329,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_referenceNumber == value) return;
+
                 _referenceNumber = value;
                 RaisePropertyChanged(() => ReferenceNumber);
             }
@@ -1204,6 +1348,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_noOfZakatList == value) return;
+
                 _noOfZakatList = value;
                 RaisePropertyChanged("NoOFZakatList");
             }
@@ -1220,6 +1366,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_isZakatEstListVisible == value) return;
+
                 _isZakatEstListVisible = value;
                 RaisePropertyChanged(() => IsZakatEstListVisible);
             }
@@ -1238,6 +1386,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_cabsSummaryList == value) return;
+
                 _cabsSummaryList = value;
                 RaisePropertyChanged("CabsSummary");
             }
@@ -1255,6 +1405,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_cabsSummaryIsVisible == value) return;
+
                 _cabsSummaryIsVisible = value;
                 RaisePropertyChanged(() => CabsSummaryIsVisible);
             }
@@ -1273,6 +1425,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_professionalsSummaryList == value) return;
+
                 _professionalsSummaryList = value;
                 RaisePropertyChanged("ProfessionalsSummary");
             }
@@ -1290,6 +1444,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_professionalsSummaryIsVisible == value) return;
+
                 _professionalsSummaryIsVisible = value;
                 RaisePropertyChanged(() => ProfessionalsSummaryIsVisible);
             }
@@ -1309,6 +1465,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_sell_BuySummaryList == value) return;
+
                 _sell_BuySummaryList = value;
                 RaisePropertyChanged("Sell_BuySummary");
             }
@@ -1325,6 +1483,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_sell_BuySummaryIsVisible == value) return;
+
                 _sell_BuySummaryIsVisible = value;
                 RaisePropertyChanged(() => Sell_BuySummaryIsVisible);
             }
@@ -1343,6 +1503,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_labourOccupSummaryList == value) return;
+
                 _labourOccupSummaryList = value;
                 RaisePropertyChanged("LabourOccupSummary");
             }
@@ -1360,6 +1522,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_LabourOccupSummaryIsVisble == value) return;
+
                 _LabourOccupSummaryIsVisble = value;
                 RaisePropertyChanged(() => LabourOccupSummaryIsVisble);
             }
@@ -1379,6 +1543,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_industrySummaryList == value) return;
+
                 _industrySummaryList = value;
                 RaisePropertyChanged("IndustrySummary");
             }
@@ -1396,6 +1562,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_IndustrySummaryIsVisible == value) return;
+
                 _IndustrySummaryIsVisible = value;
                 RaisePropertyChanged(() => IndustrySummaryIsVisible);
             }
@@ -1414,6 +1582,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_contractingListSummary == value) return;
+
                 _contractingListSummary = value;
                 RaisePropertyChanged("ContractingSummary");
             }
@@ -1430,6 +1600,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ContractingSummaryIsVisible == value) return;
+
                 _ContractingSummaryIsVisible = value;
                 RaisePropertyChanged(() => ContractingSummaryIsVisible);
             }
@@ -1448,6 +1620,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_invstRealEstSummaryList == value) return;
+
                 _invstRealEstSummaryList = value;
                 RaisePropertyChanged("InvstRealEstSummary");
             }
@@ -1464,6 +1638,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_InvstRealEstSummaryIsVisible == value) return;
+
                 _InvstRealEstSummaryIsVisible = value;
                 RaisePropertyChanged(() => InvstRealEstSummaryIsVisible);
             }
@@ -1481,6 +1657,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_hotelsSummaryList == value) return;
+
                 _hotelsSummaryList = value;
                 RaisePropertyChanged("HotelsSummary");
             }
@@ -1497,6 +1675,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_HotelsSummaryIsVisible == value) return;
+
                 _HotelsSummaryIsVisible = value;
                 RaisePropertyChanged(() => HotelsSummaryIsVisible);
             }
@@ -1514,6 +1694,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_edu_HealthSummaryList == value) return;
+
                 _edu_HealthSummaryList = value;
                 RaisePropertyChanged("Edu_HealthSummary");
             }
@@ -1530,6 +1712,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_Edu_HealthSummaryIsVisible == value) return;
+
                 _Edu_HealthSummaryIsVisible = value;
                 RaisePropertyChanged(() => Edu_HealthSummaryIsVisible);
             }
@@ -1549,6 +1733,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_poultry_FishFarmSummaryList == value) return;
+
                 _poultry_FishFarmSummaryList = value;
                 RaisePropertyChanged("Poultry_FishFarmSummary");
             }
@@ -1566,6 +1752,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_Poultry_FishFarmSummaryIsVisible == value) return;
+
                 _Poultry_FishFarmSummaryIsVisible = value;
                 RaisePropertyChanged(() => Poultry_FishFarmSummaryIsVisible);
             }
@@ -1584,6 +1772,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_carsSummaryList == value) return;
+
                 _carsSummaryList = value;
                 RaisePropertyChanged("CarsSummary");
             }
@@ -1601,6 +1791,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_CarsSummaryIsVisible == value) return;
+
                 _CarsSummaryIsVisible = value;
                 RaisePropertyChanged(() => CarsSummaryIsVisible);
             }
@@ -1619,6 +1811,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_mineralsSummaryList == value) return;
+
                 _mineralsSummaryList = value;
                 RaisePropertyChanged("MineralsSummary");
             }
@@ -1636,6 +1830,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_MineralsSummaryIsVisible == value) return;
+
                 _MineralsSummaryIsVisible = value;
                 RaisePropertyChanged(() => MineralsSummaryIsVisible);
             }
@@ -1653,6 +1849,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_AknowledgementList == value) return;
+
                 _AknowledgementList = value;
                 RaisePropertyChanged("AknowledgementList");
             }
@@ -3001,7 +3199,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //IsLoading = false;
         }
 
-        public async Task PopToRootPage()
+        public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {

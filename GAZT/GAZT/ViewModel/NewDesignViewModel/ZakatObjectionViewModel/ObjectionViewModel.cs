@@ -6,9 +6,11 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ObjectionViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

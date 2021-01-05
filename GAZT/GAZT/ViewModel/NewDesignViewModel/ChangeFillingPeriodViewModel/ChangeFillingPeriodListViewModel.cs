@@ -12,9 +12,11 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ChangeFillingPeriodListViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
@@ -33,6 +35,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isBackVisible == value) return;
                 _isBackVisible = value;
                 RaisePropertyChanged("IsBackVisible");
             }
@@ -47,6 +50,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isDobVisible == value) return;
+
                 _isDobVisible = value;
                 RaisePropertyChanged("IsDobVisible");
             }
@@ -61,6 +66,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isMyRequestsViewEnabled == value) return;
+
                 _isMyRequestsViewEnabled = value;
                 RaisePropertyChanged("IsMyRequestsViewEnabled");
             }
@@ -75,6 +82,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isSummaryViewEnabled == value) return;
+
                 _isSummaryViewEnabled = value;
                 RaisePropertyChanged("IsSummaryViewEnabled");
             }
@@ -87,6 +96,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _contactPersonName; }
             set
             {
+                if (_contactPersonName == value) return;
+
                 _contactPersonName = value;
                 RaisePropertyChanged("ContactPersonName");
             }
@@ -101,6 +112,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_currentFrequency == value) return;
+
                 _currentFrequency = value;
                 RaisePropertyChanged("CurrentFrequency");
             }
@@ -115,6 +128,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_newFrequency == value) return;
+
                 _newFrequency = value;
                 RaisePropertyChanged("NewFrequency");
             }
@@ -127,6 +142,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _effectiveDatePicked; }
             set
             {
+                if (_effectiveDatePicked == value) return;
+
                 _effectiveDatePicked = value;
                 RaisePropertyChanged("EffectiveDatePicked");
             }
@@ -139,6 +156,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _idNumber; }
             set
             {
+                if (_idNumber == value) return;
+
                 _idNumber = value;
                 RaisePropertyChanged("IDNumber");
             }
@@ -151,6 +170,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _pickedDate; }
             set
             {
+                if (_pickedDate == value) return;
+
                 _pickedDate = value;
                 RaisePropertyChanged("PickedDate");
             }
@@ -163,6 +184,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _idType; }
             set
             {
+                if (_idType == value) return;
+
                 _idType = value;
                 RaisePropertyChanged("IDType");
             }
@@ -298,6 +321,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_vATChangeFillingSummaryData == value) return;
+
                 _vATChangeFillingSummaryData = value;
                 RaisePropertyChanged("vATChangingSummaryData");
             }
@@ -313,6 +338,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -380,7 +407,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
-
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                     catch (InternetException ex)
                     {
@@ -411,13 +439,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -518,13 +548,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }

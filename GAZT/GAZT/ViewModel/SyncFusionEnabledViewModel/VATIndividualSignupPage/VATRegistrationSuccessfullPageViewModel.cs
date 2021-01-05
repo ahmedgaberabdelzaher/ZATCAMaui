@@ -9,9 +9,11 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
+    [Preserve(AllMembers = true)]
     public class VATRegistrationSuccessfullPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
@@ -87,7 +89,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
             //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);

@@ -11,10 +11,12 @@ using GAZT.Models;
 using GAZTeServicesApp.Controls;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.TaxpayerProfile
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VerificationPageView : ContentPage
     {

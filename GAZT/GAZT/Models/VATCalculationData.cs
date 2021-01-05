@@ -1,34 +1,42 @@
 ﻿using EGAZT.Models;
 using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class VATCalculationData
     {
         public VATCalculationDataD d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATRateDataWithStringDateType
     {
         public string StartDate { get; set; }
         public string EndDate { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATRateDataWithDateType
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATCalculationDataDMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     //public class Metadata2
     //{
     //    public string id { get; set; }
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
+    
     public class ITUDSetResult
     {
         public Metadata2 __metadata { get; set; }
@@ -39,14 +47,17 @@ namespace GAZT.Models
         public string SourceFg { get; set; }
         public string UrlPortal { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ITUDSet
     {
         public List<ITUDSetResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATRSet
     {
         public List<VATCalculationDataVATRSet> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATCalculationDataVATRSet
     {
         public Metadata3 __metadata { get; set; }
@@ -57,6 +68,7 @@ namespace GAZT.Models
         public DateTime Begda { get; set; }
         public DateTime Endda { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATCalculationDataVTTHSet
     {
         public Metadata5 __metadata { get; set; }
@@ -75,6 +87,7 @@ namespace GAZT.Models
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
+    [Preserve(AllMembers = true)]
     public class IBANSetResult
     {
         public Metadata3 __metadata { get; set; }
@@ -82,10 +95,12 @@ namespace GAZT.Models
         public string Bkvid { get; set; }
         public string Iban { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATCalculationDataIBANSet
     {
         public List<IBANSetResult> results { get; set; }
     }
+
     //public class Metadata4
     //{
     //    public string id { get; set; }
@@ -109,6 +124,7 @@ namespace GAZT.Models
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
+    [Preserve(AllMembers = true)]
     public class VTTHSetResult
     {
         public Metadata5 __metadata { get; set; }
@@ -121,6 +137,7 @@ namespace GAZT.Models
         public string Currency { get; set; }
         public string Description { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VTTHSet
     {
         public List<VTTHSetResult> results { get; set; }
@@ -131,6 +148,7 @@ namespace GAZT.Models
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
+    [Preserve(AllMembers = true)]
     public class UIBTNSetResult
     {
         public Metadata6 __metadata { get; set; }
@@ -141,10 +159,12 @@ namespace GAZT.Models
         public string TransactionType { get; set; }
         public string UserTyp { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class UIBTNSet
     {
         public List<Result5> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATCalculationDataD
     {
         public Metadata __metadata { get; set; }
@@ -180,4 +200,5 @@ namespace GAZT.Models
         public VTTHSet VTTHSet { get; set; }
         public UIBTNSet UI_BTNSet { get; set; }
     }
+ 
 }

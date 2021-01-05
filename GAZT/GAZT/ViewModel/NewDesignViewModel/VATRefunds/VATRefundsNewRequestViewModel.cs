@@ -18,9 +18,11 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 {
+    [Preserve(AllMembers = true)]
     public class VATRefundsNewRequestViewModel: BaseViewModel
     {
         #region Commands
@@ -43,7 +45,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
-
+                if (_vatRefundsModel == value) return;
                 _vatRefundsModel = value;
                 RaisePropertyChanged("VATRefundsModel");
             }
@@ -59,6 +61,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatRefundsDisplayDataModel == value) return;
 
                 _vatRefundsDisplayDataModel = value;
                 RaisePropertyChanged("VatRefundsDisplayDataModel");
@@ -75,6 +78,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatNewReqSummaryData == value) return;
 
                 _vatNewReqSummaryData = value;
                 RaisePropertyChanged("VatNewReqSummaryData");
@@ -92,6 +96,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatRefundsIbanDataModel == value) return;
 
                 _vatRefundsIbanDataModel = value;
                 RaisePropertyChanged("VatRefundsIbanDataModel");
@@ -110,6 +115,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_selectedIdtype == value) return;
 
                 _selectedIdtype = value;
                 RaisePropertyChanged("SelectedIdtype");
@@ -126,6 +132,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_selectedIdNumber == value) return;
 
                 _selectedIdNumber = value;
                 RaisePropertyChanged("SelectedIdNumber");
@@ -142,6 +149,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_selectedIDTypeCode == value) return;
 
                 _selectedIDTypeCode = value;
                 RaisePropertyChanged("SelectedIDTypeCode");
@@ -156,7 +164,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 return _pickerModel;
             }   
             set
-            {   
+            {
+                if (_pickerModel == value) return;
+
                 _pickerModel = value;
 
                 try
@@ -197,6 +207,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_ibanData == value) return;
 
                 _ibanData = value;
                 RaisePropertyChanged("IbanData");
@@ -213,6 +224,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_selectedIbanData == value) return;
 
                 _selectedIbanData = value;
                 RaisePropertyChanged("SelectedIbanData");
@@ -229,6 +241,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_isAddAccountVisisble == value) return;
 
                 _isAddAccountVisisble = value;
                 RaisePropertyChanged("IsAddAccountVisisble");
@@ -245,6 +258,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_isVoidBtnVisible == value) return;
 
                 _isVoidBtnVisible = value;
                 RaisePropertyChanged("IsVoidBtnVisible");
@@ -260,6 +274,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             set
             {
+                if (_iBANTypesList == value) return;
+
                 _iBANTypesList = value; 
                 RaisePropertyChanged("IBANTypesList");
             }
@@ -274,6 +290,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             set
             {
+                if (_iBANIDNumberList == value) return;
+
                 _iBANIDNumberList = value;
                 RaisePropertyChanged("IBANIDNumberList");
             }
@@ -284,6 +302,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -308,6 +328,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             set
             {
+                if (_maxIndex == value) return;
+
                 _maxIndex = value;
                 RaisePropertyChanged("MaxIndex");
             }
@@ -321,6 +343,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             set
             {
+                if (_isNavigatedToSubmitted == value) return;
+
                 _isNavigatedToSubmitted = value;
                 RaisePropertyChanged("IsNavigatedToSubmitted");
             }
@@ -335,6 +359,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             set
             {
+                if (_ListOfActionButtonsApplicable == value) return;
+
                 _ListOfActionButtonsApplicable = value;
          
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
@@ -462,6 +488,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public async void VoidMsg()
@@ -545,7 +573,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         newDesignPopUp.HeaderWithInfos = headerWithInfos;
                         newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                         // _navigationService.GoBack();
 
@@ -591,7 +619,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
 
@@ -657,6 +686,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -713,6 +744,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch(Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 try
                 {
                     Device.BeginInvokeOnMainThread(async () =>
@@ -807,6 +840,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                      IsLoading = false;
@@ -863,6 +898,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 try
                 {
                     await Task.Run(() =>
@@ -1036,9 +1073,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1093,7 +1131,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             //OnSaveDraftClicked();
 
-            Device.BeginInvokeOnMainThread(async () =>
+            Device.BeginInvokeOnMainThread(() =>
             {
                 _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
             });
@@ -1135,6 +1173,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;

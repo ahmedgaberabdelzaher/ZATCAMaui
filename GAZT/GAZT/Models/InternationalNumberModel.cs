@@ -1,8 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class InternationalMobileData
     {
         public __metadata __metadata { get; set; }

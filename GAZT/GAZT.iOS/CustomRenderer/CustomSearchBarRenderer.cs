@@ -6,6 +6,7 @@ using XamarinFormsSearchBarIOS.iOS.CustomRenderers;
 [assembly: ExportRenderer(typeof(SearchBar), typeof(CustomSearchBarRenderer))]
 namespace XamarinFormsSearchBarIOS.iOS.CustomRenderers
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class CustomSearchBarRenderer : SearchBarRenderer
     {
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)

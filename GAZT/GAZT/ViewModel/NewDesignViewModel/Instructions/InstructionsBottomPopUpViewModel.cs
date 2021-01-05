@@ -3,9 +3,11 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
+    [Preserve(AllMembers = true)]
     public class InstructionsBottomPopUpViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;

@@ -13,9 +13,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class TaxEvasionFormPageViewModel : ViewModelBase
     {
         #region variable

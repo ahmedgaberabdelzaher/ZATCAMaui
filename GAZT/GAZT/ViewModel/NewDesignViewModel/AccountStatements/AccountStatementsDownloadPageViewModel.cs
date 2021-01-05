@@ -6,9 +6,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 {
+    [Preserve(AllMembers = true)]
     public class AccountStatementsDownloadPageViewModel: BaseViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
@@ -23,6 +25,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_fromDate == value) return;
+
                 _fromDate = value;
                 RaisePropertyChanged("FromDate");
             }
@@ -37,6 +41,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_toDate == value) return;
+
                 _toDate = value;
                 RaisePropertyChanged("ToDate");
             }
@@ -51,6 +57,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_asTaxpayerSelectedValues == value) return;
+
                 _asTaxpayerSelectedValues = value;
                 RaisePropertyChanged("ASTaxpayerSelectedValues");
             }

@@ -9,8 +9,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class CreateGaztAccountPageViewModel : ViewModelBase
     {
         #region Veriables

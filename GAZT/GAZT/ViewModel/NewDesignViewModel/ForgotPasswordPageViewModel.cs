@@ -16,9 +16,11 @@ using Xamarin.Forms;
 using System.Timers;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
-{//TEST
+{
+    [Preserve(AllMembers = true)]
     public class GAZTNewDesignForgotPasswordPageViewModel : ViewModelBase
     {
         #region Variable
@@ -66,7 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-
+                if (_iDNumber == value) return;
                 _iDNumber = value;
                 if (IsUserNameCardTapped == true && IDNumber.Length > MaximumUserNameCharacter)
                 {
@@ -91,7 +93,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     catch(Exception ex)
                     {
-
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                     
 
@@ -110,6 +113,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isValiedEmailAddress == value) return;
+
                 _isValiedEmailAddress = value;
                 RaisePropertyChanged("IsValiedEmailAddress");
             }
@@ -123,6 +128,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isTinDopDownVisible == value) return;
+
                 _isTinDopDownVisible = value;
                 RaisePropertyChanged("IsTinDopDownVisible");
             }
@@ -138,6 +145,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_email == value) return;
+
                 _email = value;
                 RaisePropertyChanged("Email");
             }
@@ -152,6 +161,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_userNameLabelText == value) return;
+
                 _userNameLabelText = value;
                 RaisePropertyChanged("UserNameLabelText");
             }
@@ -163,6 +174,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get { return _Enabled; }
             set
             {
+                if (_Enabled == value) return;
+
                 _Enabled = value;
                 RaisePropertyChanged("Enabled");
             }
@@ -177,6 +190,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_resendOTPTextColor == value) return;
+
                 _resendOTPTextColor = value;
                 RaisePropertyChanged("ResendOTPTextColor");
             }
@@ -193,6 +208,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_passwordLayoutVisibility == value) return;
+
                 _passwordLayoutVisibility = value;
                 RaisePropertyChanged("PasswordLayoutVisibility");
             }
@@ -208,6 +225,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_recoverUserNameLayout == value) return;
+
                 _recoverUserNameLayout = value;
                 RaisePropertyChanged("RecoverUserNameLayout");
             }
@@ -222,6 +241,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_recoverPasswordLayout == value) return;
+
                 _recoverPasswordLayout = value;
                 RaisePropertyChanged("RecoverPasswordLayout");
             }
@@ -238,6 +259,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_LblCountDownTimer == value) return;
+
                 _LblCountDownTimer = value;
                 RaisePropertyChanged("LblCountDownTimer");
             }
@@ -254,6 +277,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_verificationCodeVisibility == value) return;
+
                 _verificationCodeVisibility = value;
                 RaisePropertyChanged("VerificationCodeVisibility");
             }
@@ -268,6 +293,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_userIDLayoutVisibility == value) return;
+
                 _userIDLayoutVisibility = value;
                 RaisePropertyChanged("UserIDLayoutVisibility");
             }
@@ -283,6 +310,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_defaultCardLayoutVisibility == value) return;
+
                 _defaultCardLayoutVisibility = value;
                 RaisePropertyChanged("DefaultCardLayoutVisibility");
             }
@@ -299,6 +328,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged(() => IsLoading);
             }
@@ -315,6 +346,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_oTPFirstDigit == value) return;
+
                 _oTPFirstDigit = value;
                 if (!string.IsNullOrEmpty(OTPFirstDigit))
                 {
@@ -338,6 +371,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_OTPSecondDigit == value) return;
+
                 _OTPSecondDigit = value;
                 if (!string.IsNullOrEmpty(OTPSecondDigit))
                 {
@@ -360,6 +395,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_OTPThirdDigit == value) return;
+
                 _OTPThirdDigit = value;
                 if (!string.IsNullOrEmpty(OTPThirdDigit))
                 {
@@ -382,6 +419,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_OTPFourthDigit == value) return;
+
                 _OTPFourthDigit = value;
                 if (!string.IsNullOrEmpty(OTPFourthDigit))
                 {
@@ -405,6 +444,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get { return _MinEight; }
             set
             {
+                if (_MinEight == value) return;
+
                 _MinEight = value;
                 RaisePropertyChanged("MinEight");
             }
@@ -416,6 +457,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get { return _CapsSmall; }
             set
             {
+                if (_CapsSmall == value) return;
+
                 _CapsSmall = value;
                 RaisePropertyChanged("CapsSmall");
             }
@@ -427,6 +470,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get { return _MaxSixteen; }
             set
             {
+                if (_MaxSixteen == value) return;
+
                 _MaxSixteen = value;
                 RaisePropertyChanged("MaxSixteen");
             }
@@ -438,6 +483,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get { return _NumSymbol; }
             set
             {
+                if (_NumSymbol == value) return;
+
                 _NumSymbol = value;
                 RaisePropertyChanged("NumSymbol");
             }
@@ -454,6 +501,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_userNameLayoutVisibility == value) return;
+
                 _userNameLayoutVisibility = value;
                 if (_userNameLayoutVisibility)
                 {
@@ -476,6 +525,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_continueButtonEnability == value) return;
+
                 _continueButtonEnability = value;
 
                 RaisePropertyChanged(() => ContinueButtonEnability);
@@ -496,6 +547,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_newPassword == value) return;
+
                 _newPassword = value;
                 RaisePropertyChanged("NewPassword");
             }
@@ -509,6 +562,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_confirmPassword == value) return;
+
                 _confirmPassword = value;
                 RaisePropertyChanged("ConfirmPassword");
             }
@@ -523,6 +578,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_setIDNumberEnability == value) return;
+
                 _setIDNumberEnability = value;
                 RaisePropertyChanged("SetIDNumberEnability");
             }
@@ -541,6 +598,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_forgotUserNameCardLayoutVisibility == value) return;
+
                 _forgotUserNameCardLayoutVisibility = value;
                 RaisePropertyChanged("ForgotUserNameCardLayoutVisibility");
             }
@@ -556,6 +615,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_enteredOTP == value) return;
+
                 _enteredOTP = value;
                 RaisePropertyChanged("EnteredOTP");
             }
@@ -571,6 +632,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_continueORConfirmButtonText == value) return;
+
                 _continueORConfirmButtonText = value;
                 RaisePropertyChanged("ContinueORConfirmButtonText");
             }
@@ -585,6 +648,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isResendOTPEnabled == value) return;
+
                 _isResendOTPEnabled = value;
                 // OnResendOTPClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsResendOTPEnabled");
@@ -600,6 +665,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_userNameCardBackgroundImg == value) return;
+
                 _userNameCardBackgroundImg = value;
                 RaisePropertyChanged("UserNameCardBackgroundImg");
             }
@@ -614,6 +681,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_userIcon == value) return;
+
                 _userIcon = value;
                 RaisePropertyChanged("UserIcon");
             }
@@ -628,6 +697,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_passwordCardBackgroundImg == value) return;
+
                 _passwordCardBackgroundImg = value;
                 RaisePropertyChanged("PasswordCardBackgroundImg");
             }
@@ -642,6 +713,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_passwordIcon == value) return;
+
                 _passwordIcon = value;
                 RaisePropertyChanged("PasswordIcon");
             }
@@ -656,6 +729,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_userNameTextColor == value) return;
+
                 _userNameTextColor = value;
                 RaisePropertyChanged("UserNameTextColor");
             }
@@ -670,6 +745,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_passwordTextColor == value) return;
+
                 _passwordTextColor = value;
                 RaisePropertyChanged("PasswordTextColor");
             }
@@ -685,6 +762,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_oTPSentOnThisMobileNumber == value) return;
+
                 _oTPSentOnThisMobileNumber = value;
                 RaisePropertyChanged("OTPSentOnThisMobileNumber");
             }
@@ -705,6 +784,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isOTPEntryEnable == value) return;
+
                 _isOTPEntryEnable = value;
                 RaisePropertyChanged(() => IsOTPEntryEnable);
             }
@@ -718,6 +799,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedTaxPayerType == value) return;
+
                 _selectedTaxPayerType = value;
                 if (_selectedTaxPayerType != null)
                 {
@@ -739,6 +822,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedTaxPayerTypePrev == value) return;
+
                 _selectedTaxPayerTypePrev = value;
                 RaisePropertyChanged("SelectedTaxPayerTypePrev");
             }
@@ -752,6 +837,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_forgotTypeList == value) return;
+
                 _forgotTypeList = value;
                 RaisePropertyChanged("ForgotTypeList");
             }
@@ -765,6 +852,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_tINs == value) return;
+
                 _tINs = value;
                 if (_tINs != null)
                 {
@@ -794,6 +883,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_txtSelectedUsernameAndPassword == value) return;
+
                 _txtSelectedUsernameAndPassword = value;
                 RaisePropertyChanged("TxtSelectedUsernameAndPassword");
             }
@@ -807,6 +898,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_txtSelectTaxpayerType == value) return;
+
                 _txtSelectTaxpayerType = value;
                 RaisePropertyChanged("TxtSelectTaxpayerType");
             }
@@ -820,6 +913,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_txtTIN == value) return;
+
                 _txtTIN = value;
                 RaisePropertyChanged("TxtTIN");
             }
@@ -833,6 +928,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedTinId == value) return;
+
                 _selectedTinId = value;
                 if (_selectedTinId != null)
                 {
@@ -852,6 +949,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedTinIdPrev == value) return;
+
                 _selectedTinIdPrev = value;
                 RaisePropertyChanged("SelectedTinIdPrev");
             }
@@ -865,6 +964,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isVisibleTinIds == value) return;
+
                 _isVisibleTinIds = value;
                 RaisePropertyChanged("IsVisibleTinIds");
             }
@@ -878,6 +979,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedForgotType == value) return;
+
                 _selectedForgotType = value;
                 RaisePropertyChanged("_selectedForgotType");
                 if (SelectedForgotType != null)
@@ -902,6 +1005,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedForgotTypePrev == value) return;
+
                 _selectedForgotTypePrev = value;
                 RaisePropertyChanged("_selectedForgotTypePrev");
             }
@@ -915,6 +1020,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_forgotCredentialType == value) return;
+
                 _forgotCredentialType = value;
                 RaisePropertyChanged("ForgotCredentialType");
             }
@@ -928,6 +1035,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_taxpayerTypeList == value) return;
+
                 _taxpayerTypeList = value;
                 RaisePropertyChanged("TaxpayerTypeList");
             }
@@ -944,6 +1053,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_enteredCaptchaValue == value) return;
+
                 _enteredCaptchaValue = value;
                 RaisePropertyChanged("EnteredCaptchaValue");
             }
@@ -957,6 +1068,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_corporateID == value) return;
+
                 _corporateID = value;
                 RaisePropertyChanged("CorporateID");
             }
@@ -970,6 +1083,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_mobileNumber == value) return;
+
                 _mobileNumber = value;
                 RaisePropertyChanged("MobileNumber");
             }
@@ -983,6 +1098,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_oTPValidDuration == value) return;
+
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
@@ -1004,6 +1121,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_userName == value) return;
+
                 _userName = value;
                 RaisePropertyChanged("UserName");
             }
@@ -1017,6 +1136,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isForgotUserNameWithIndividual == value) return;
+
                 _isForgotUserNameWithIndividual = value;
                 RaisePropertyChanged("IsForgotUserName");
             }
@@ -1030,6 +1151,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isForgotUserNameWithCorporate == value) return;
+
                 _isForgotUserNameWithCorporate = value;
                 RaisePropertyChanged("IsForgotUserNameWithCorporate");
             }
@@ -1043,6 +1166,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isForgotPassword == value) return;
+
                 _isForgotPassword = value;
                 RaisePropertyChanged("IsForgotPassword");
             }
@@ -1056,6 +1181,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isTaxPayerTypeEnable == value) return;
+
                 _isTaxPayerTypeEnable = value;
                 RaisePropertyChanged("IsTaxPayerTypeEnable");
             }
@@ -1069,6 +1196,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_newPasswordLayoutVisibility == value) return;
+
                 _newPasswordLayoutVisibility = value;
                 RaisePropertyChanged("NewPasswordLayoutVisibility");
             }
@@ -1082,6 +1211,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_mainPageLayoutVisibility == value) return;
+
                 _mainPageLayoutVisibility = value;
                 RaisePropertyChanged("MainPageLayoutVisibility");
             }
@@ -1095,6 +1226,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_oTPLayoutVisibility == value) return;
+
                 _oTPLayoutVisibility = value;
                 RaisePropertyChanged("OTPLayoutVisibility");
             }
@@ -1108,6 +1241,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_navigateToLoginLinkVisibility == value) return;
+
                 _navigateToLoginLinkVisibility = value;
                 RaisePropertyChanged("NavigateToLoginLinkVisibility");
             }
@@ -1122,6 +1257,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_iDNumberOrCorporateIDOrUserName == value) return;
+
                 _iDNumberOrCorporateIDOrUserName = value;
                 RaisePropertyChanged("IDNumberOrCorporateIDOrUserName");
             }
@@ -1135,6 +1272,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_captcha == value) return;
+
                 _captcha = value;
                 RaisePropertyChanged("Captcha");
             }
@@ -1148,6 +1287,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_forgotPasswordUserNameChangedMessage == value) return;
+
                 _forgotPasswordUserNameChangedMessage = value;
                 RaisePropertyChanged("ForgotPasswordUserNameChangedMessage");
             }
@@ -1162,6 +1303,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isIDTypeVisible == value) return;
+
                 _isIDTypeVisible = value;
                 RaisePropertyChanged("IsIDTypeVisible");
             }
@@ -1175,6 +1318,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_newPasswordVisibility == value) return;
+
                 _newPasswordVisibility = value;
                 RaisePropertyChanged("NewPasswordVisibility");
             }
@@ -1188,6 +1333,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_buttonDisableColor == value) return;
+
                 _buttonDisableColor = value;
                 RaisePropertyChanged("ButtonDisableColor");
             }
@@ -1202,6 +1349,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_confirmPasswordVisibility == value) return;
+
                 _confirmPasswordVisibility = value;
                 RaisePropertyChanged("ConfirmPasswordVisibility");
             }
@@ -1215,6 +1364,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isSubmitEnabled == value) return;
+
                 _isSubmitEnabled = value;
                 RaisePropertyChanged("IsSubmitEnabled");
             }
@@ -1228,6 +1379,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_submitDisableButtonColor == value) return;
+
                 _submitDisableButtonColor = value;
                 RaisePropertyChanged("SubmitDisableButtonColor");
             }
@@ -1241,6 +1394,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_verifybuttonDisableColor == value) return;
+
                 _verifybuttonDisableColor = value;
                 RaisePropertyChanged("VerifyButtonDisableColor");
             }
@@ -1254,6 +1409,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isVerifyOTPEnabled == value) return;
+
                 _isVerifyOTPEnabled = value;
                 OnValidateOTPClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsVerifyOTPEnabled");
@@ -1268,6 +1425,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_maxChar == value) return;
+
                 _maxChar = value;
                 RaisePropertyChanged("MaxChar");
             }
@@ -1281,6 +1440,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_forgotTypeIndex == value) return;
+
                 _forgotTypeIndex = value;
                 if (_forgotTypeIndex == 0)
                 {
@@ -1304,6 +1465,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedTaxPayerTypeIndex == value) return;
+
                 _selectedTaxPayerTypeIndex = value;
                 RaisePropertyChanged("SelectedTaxPayerTypeIndex");
             }
@@ -1318,6 +1481,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_corporateCardBackgroundImg == value) return;
+
                 _corporateCardBackgroundImg = value;
                 RaisePropertyChanged(nameof(CorporateCardBackgroundImg));
             }
@@ -1332,6 +1497,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_individualOrPersonalBusinessCardBackgroundImg == value) return;
+
                 _individualOrPersonalBusinessCardBackgroundImg = value;
                 RaisePropertyChanged(nameof(IndividualOrPersonalBusinessCardBackgroundImg));
             }
@@ -1346,6 +1513,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_corporateTextColor == value) return;
+
                 _corporateTextColor = value;
                 RaisePropertyChanged(nameof(CorporateTextColor));
             }
@@ -1360,6 +1529,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_individualOrPersonalBusinessTextColor == value) return;
+
                 _individualOrPersonalBusinessTextColor = value;
                 RaisePropertyChanged(nameof(IndividualOrPersonalBusinessTextColor));
             }
@@ -1911,6 +2082,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 });
                 await Task.Run(() =>
@@ -2375,8 +2548,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IsLoading = false;
                             });
                         }
-                        catch (Exception e)
+                        catch (Exception ex)
                         {
+                            Console.Write(ex.ToString());
+                            Console.Write(ex.StackTrace.ToString());
                             IsAPICalledSuccessfully = false;
 
                             IsVisibleTinIds = false;
@@ -2537,7 +2712,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             return IsMandatoryFieldEntered;
         }
-        private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
+        private void ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
         {
             if (!IsMandatoryFieldEntered)
             {
@@ -2546,7 +2721,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsVisibleTinIds = false;
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZMandatorydatanotentered));
 
-                 //   await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Alerts);
+                    //   await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Alerts);
                     await Task.Run(() =>
                     {
                         IsLoading = false;

@@ -5,8 +5,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AddPopPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class AddPopPageViewModel : ViewModelBase
     {
         #region Variable

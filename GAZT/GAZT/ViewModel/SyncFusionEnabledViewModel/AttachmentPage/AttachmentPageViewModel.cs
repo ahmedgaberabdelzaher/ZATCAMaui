@@ -16,8 +16,11 @@ using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class AttachmentPageViewModel : ViewModelBase
     {
         #region Variable

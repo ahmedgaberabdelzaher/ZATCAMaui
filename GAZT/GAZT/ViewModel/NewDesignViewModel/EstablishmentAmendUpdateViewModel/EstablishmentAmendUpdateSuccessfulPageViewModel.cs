@@ -4,9 +4,11 @@ using System.Windows.Input;
 using EGAZT.Models.EstablishmentRegistration;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 {
+    [Preserve(AllMembers = true)]
     public class EstablishmentAmendUpdateSuccessfulPageViewModel : BaseViewModel
     {
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
@@ -16,6 +18,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _fbnumx;
             private set
             {
+                if (_fbnumx == value) return;
                 if (value != null)
                 {
                     _fbnumx = value;
@@ -29,6 +32,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _dateText;
             private set
             {
+                if (_dateText == value) return;
+
                 if (value != null)
                 {
                     _dateText = value;
@@ -42,6 +47,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _name;
             private set
             {
+                if (_name == value) return;
+
                 if (value != null)
                 {
                     _name = value;

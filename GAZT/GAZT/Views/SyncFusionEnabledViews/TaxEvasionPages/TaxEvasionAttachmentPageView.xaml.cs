@@ -10,9 +10,11 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.GoogleMaps;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
 {
+    [Preserve(AllMembers = true)]
     public partial class TaxEvasionAttachmentPageView : ContentPage
     {
         TaxEvasionReportAttachmentPageViewModel viewModel;

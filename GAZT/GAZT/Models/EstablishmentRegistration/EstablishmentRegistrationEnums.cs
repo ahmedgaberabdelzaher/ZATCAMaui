@@ -1,6 +1,9 @@
 ﻿using System;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public enum EstablishmentRegistrationTabsEnum
     {
         Unknown = -1,
@@ -11,20 +14,20 @@ namespace EGAZT.Models
         FinancialDetail = 5,
         Declaration = 6
     }
-
+    [Preserve(AllMembers = true)]
     public enum OrgResidenceNationalityEstablishmentRegistrationEnum
     {
         StayMoreThanKSA = 1,
         RentOwnhouseMoreThanThirtyDays = 2,
         NoneOfTheAbove = 3
     }
-
+    [Preserve(AllMembers = true)]
     public enum OrgNonResidentEstablishmentRegistrationEnum
     {
         PermanentEstablishment = 1,
         OtherTaxIncomeFromSourceWithInTheSKA = 2
     }
-
+    [Preserve(AllMembers = true)]
     public enum OrgNonResidentOptionsEstablishmentEnum
     {
         ABranchOfNonResidentCompanyPE = 1,
@@ -33,7 +36,7 @@ namespace EGAZT.Models
         AFixedBasePE = 4,
         NonResidentPartnerPE = 5
     }
-
+    [Preserve(AllMembers = true)]
     public enum EstablishmentRegistrationOutletTabsEnum
     {
         OutletDetail,
@@ -41,7 +44,7 @@ namespace EGAZT.Models
         AddressDetails ,
         NewOutlet 
     }
-
+    [Preserve(AllMembers = true)]
     public enum EstablishmentOutletActivitiesTabsEnum
     {
         CRDetails = 1,

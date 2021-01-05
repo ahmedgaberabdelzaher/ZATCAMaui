@@ -14,12 +14,15 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using static GAZT.ErrorMessage;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
+    [Preserve(AllMembers = true)]
     public class ZakatRegistrationDetailsListPageViewModel : BaseViewModel
     {
+      
         #region Variable
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand DeregisterTinTapped { get; set; }
@@ -48,6 +51,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
+                if (_zakatDeregResponseData == value) return;
                 _zakatDeregResponseData = value;
                 RaisePropertyChanged("ZakatDeregResponseData");
             }
@@ -63,6 +67,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
+                if (_zakatRegListData == value) return;
+
                 _zakatRegListData = value;
                 RaisePropertyChanged("ZakatRegListData");
             }
@@ -77,6 +83,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
+                if (_isArabic == value) return;
+
                 _isArabic = value;
                 RaisePropertyChanged("IsArabic");
             }
@@ -229,6 +237,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -343,6 +353,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 try
                 {
                     Device.BeginInvokeOnMainThread(async () =>

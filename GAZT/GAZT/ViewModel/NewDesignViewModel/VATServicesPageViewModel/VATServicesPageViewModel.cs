@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATServicesPageViewModel
 {
+    [Preserve(AllMembers = true)]
     public class VATServicesPageViewModel : BaseViewModel
     {
         public bool ShowVATRegisteredItems { get => App.LoginDataRetrieved.VtReg == "X" ? true : false; }

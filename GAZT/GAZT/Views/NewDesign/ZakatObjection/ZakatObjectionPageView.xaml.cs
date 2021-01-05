@@ -8,11 +8,13 @@ using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 using GAZT.Manager;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ZakatObjection
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatObjectionPageView : ContentPage
     {
@@ -32,11 +34,6 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             //viewModel.showInstructionsDialog();
             viewModel.ResetData();
             GetZakatObjectionsData();
-
-
-
-           
-           
 
         }
 
@@ -118,14 +115,15 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 });
                 await Task.Run(async () =>
                 {
-                    await viewModel.OnPageLoad();
+                    viewModel.OnPageLoad();
 
                 });
 
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -138,17 +136,14 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
 
 
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {
                 base.OnAppearing();
 
 
-
-
-
-                Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+                MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {
@@ -159,6 +154,8 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

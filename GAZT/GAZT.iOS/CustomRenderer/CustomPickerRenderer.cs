@@ -8,7 +8,8 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(CustomPickerRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
-     public class CustomPickerRenderer : PickerRenderer
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
+    public class CustomPickerRenderer : PickerRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Picker> e)
         {

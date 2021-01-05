@@ -20,6 +20,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class CustomNavigationRenderer: NavigationRenderer
     {
 

@@ -12,8 +12,11 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class TaxEvasionReportTypePageViewModel : ViewModelBase
     {
         #region Variable

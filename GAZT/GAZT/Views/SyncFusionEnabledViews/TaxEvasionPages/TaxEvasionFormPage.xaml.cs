@@ -19,9 +19,11 @@ using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewModel;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     public partial class TaxEvasionFormPage : ContentPage

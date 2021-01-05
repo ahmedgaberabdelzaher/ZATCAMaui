@@ -22,11 +22,13 @@ using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using static EGAZT.Models.ZakatInstalationModels.ZakatInstalmentPlanRequest;
 using static EGAZT.Models.ZakatInstalationModels.ZAKATRequestPlanModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 {
+    [Preserve(AllMembers = true)]
     public class OldZakatInstalmentPlanViewModel : ViewModelBase
     {
         #region Variable

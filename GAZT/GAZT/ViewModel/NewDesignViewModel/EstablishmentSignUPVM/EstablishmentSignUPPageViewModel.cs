@@ -3,9 +3,11 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class EstablishmentSignUPPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
@@ -18,6 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _currentTab;
             private set
             {
+                if (_currentTab == value) return;
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)_currentTab;
@@ -30,6 +33,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -54,6 +59,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -68,6 +75,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IndividualBackImg == value) return;
+
                 _IndividualBackImg = value;
                 RaisePropertyChanged("IndividualBackImg");
             }
@@ -82,6 +91,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_EstablishmentBackImg == value) return;
+
                 _EstablishmentBackImg = value;
                 RaisePropertyChanged("EstablishmentBackImg");
             }
@@ -95,6 +106,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_PageTitle == value) return;
+
                 _PageTitle = value;
                 RaisePropertyChanged("PageTitle");
             }
@@ -109,6 +122,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_BodyText == value) return;
+
                 _BodyText = value;
                 RaisePropertyChanged("BodyText");
             }

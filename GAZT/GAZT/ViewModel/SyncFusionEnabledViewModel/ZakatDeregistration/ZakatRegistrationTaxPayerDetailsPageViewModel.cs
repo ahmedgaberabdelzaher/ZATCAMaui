@@ -1,30 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
-using EGAZT.Models.EstablishmentRegistration;
-using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
-using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
+    [Preserve(AllMembers = true)]
     public class ZakatRegistrationTaxPayerDetailsPageViewModel : EstablishmentRegistrationPageViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
 
         public ZakatRegistrationTaxPayerDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackBtnTapped = new Command(async () =>
+            GoBackBtnTapped = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -39,6 +35,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
+                if (_isLoading == value) return;
                 _isLoading = value;
                 RaisePropertyChanged("isLoading");
             }

@@ -4,8 +4,11 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class SalesDetails : INotifyPropertyChanged
     {
         public string SalesType { get; set; }

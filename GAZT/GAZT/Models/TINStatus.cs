@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class ConsumerRegisteration
     {
         public string Actnm { get; set; }
@@ -14,10 +17,12 @@ namespace GAZT.Models
         public string Status { get; set; }
         public string StatusText { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ItemSet
     {
         public List<ConsumerRegisteration> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CheckTINStatus
     {
         public Metadata __metadata { get; set; }
@@ -29,6 +34,7 @@ namespace GAZT.Models
         public string StatusText { get; set; }
         public ItemSet ItemSet { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class TINStatus
     {
         public CheckTINStatus d { get; set; }

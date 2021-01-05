@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Net;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public class HybridWebView : WebView
     {
         public static readonly BindableProperty UrlProperty = BindableProperty.Create(

@@ -6,10 +6,12 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATDeRegistration
 {
+    [Preserve(AllMembers = true)]
     public partial class VATDeregistrationSuccessPage : ContentPage
     {
         VATDeregistrationSuccessPageViewModel viewModel;

@@ -15,6 +15,7 @@ using Xamarin.Forms.PlatformConfiguration;
 [assembly: ExportRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class GAZTBorderlessEntryRenderer : EntryRenderer
     {
         public static void Init() { }

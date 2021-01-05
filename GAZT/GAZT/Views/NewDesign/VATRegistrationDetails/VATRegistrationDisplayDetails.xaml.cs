@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATRegistrationDetails
 {
+    [Preserve(AllMembers = true)]
     public partial class VATRegistrationDisplayDetails : ContentPage
     {
         VATRegistrationDisplayDetailsPageViewModel viewModel;

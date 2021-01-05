@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Input;
 using EGAZT.Models.VATRefunds;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 {
+    [Preserve(AllMembers = true)]
     public class VATRefundsSuccessPageViewModel:ViewModelBase
     {
         #region Variable
@@ -26,7 +27,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
-
+                if (_vatNewReqSummaryData == value) return;
                 _vatNewReqSummaryData = value;
                 RaisePropertyChanged("VatNewReqSummaryData");
             }
@@ -50,7 +51,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             _dialogService = dialogService;
 
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });

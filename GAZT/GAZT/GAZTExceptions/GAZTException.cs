@@ -4,10 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using Xamarin.Forms.Internals;
 using static GAZT.ErrorMessage;
 
 namespace GAZTeServicesBusinessLibrary.GAZTExceptions
 {
+    [Preserve(AllMembers = true)]
     public class GAZTException : Exception
     {
         public GAZTException()
@@ -17,6 +19,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTInternetException : GAZTException
     {
         public GAZTInternetException()
@@ -26,12 +29,14 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTTokenExpiredException : GAZTException
     {
         public GAZTTokenExpiredException(string ExceptionMessage) : base(ExceptionMessage)
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTNetworkConnectivityIssueException : GAZTException
     {
         public GAZTNetworkConnectivityIssueException()
@@ -41,6 +46,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTUserDoesNotExistException : GAZTException
     {
         public GAZTUserDoesNotExistException()
@@ -50,6 +56,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTUserAuthenticationFailedException : GAZTException
     {
         public GAZTUserAuthenticationFailedException()
@@ -59,6 +66,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTPasswordLockedException : GAZTException
     {
         public GAZTPasswordLockedException()
@@ -68,12 +76,14 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTUserNotValidException : GAZTException
     {
         public GAZTUserNotValidException(string ExceptionMessage) : base(ExceptionMessage)
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTUserAccountLockedException : GAZTException
     {
         public GAZTUserAccountLockedException()
@@ -83,6 +93,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTPasswordIsLockedDueToInvalidAttemptsException : GAZTException
     {
         public GAZTPasswordIsLockedDueToInvalidAttemptsException()
@@ -92,6 +103,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTTaxpayersAccountNotActiveWithGAZTException : GAZTException
     {
         public GAZTTaxpayersAccountNotActiveWithGAZTException()
@@ -101,6 +113,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTWrongTINOrEmailException : GAZTException
     {
         public GAZTWrongTINOrEmailException()
@@ -110,6 +123,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTWrongPasswordException : GAZTException
     {
         public GAZTWrongPasswordException()
@@ -119,6 +133,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTAccountLockedFor60MinutesAfterLastLoginAttemptException : GAZTException
     {
         public GAZTAccountLockedFor60MinutesAfterLastLoginAttemptException()
@@ -128,6 +143,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTTaxpayersAccountInActiveWithGAZTException : GAZTException
     {
         public GAZTTaxpayersAccountInActiveWithGAZTException()
@@ -137,12 +153,14 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTNoTINsAvailableException : GAZTException
     {
         public GAZTNoTINsAvailableException(string ExceptionMessage) : base(ExceptionMessage)
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTSessionExpiredException : GAZTException
     {
         public GAZTSessionExpiredException()
@@ -164,6 +182,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
             }
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTTaxPayerProfileDataException : GAZTException
     {
         public GAZTTaxPayerProfileDataException()
@@ -173,6 +192,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTInvalidDataException : GAZTException
     {
         public GAZTInvalidDataException()
@@ -181,6 +201,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTUserCurrentlyInvalidException : GAZTException
     {
         public GAZTUserCurrentlyInvalidException()
@@ -189,6 +210,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTLoginDetailsException : GAZTException
     {
         public GAZTLoginDetailsException()
@@ -197,6 +219,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTUserNameIncorrectException : GAZTException
     {
         public GAZTUserNameIncorrectException()
@@ -205,6 +228,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTMobileNumberInProfileEmptyException : GAZTException
     {
         public GAZTMobileNumberInProfileEmptyException()
@@ -213,6 +237,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
     public class GAZTRegistrationPendingException : GAZTException
     {
         public GAZTRegistrationPendingException()
@@ -221,6 +246,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
 
     public class GAZTVATRegistrationInProcessException : GAZTException
     {
@@ -230,6 +256,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
 
     public class GAZTUnlockAccountException : GAZTException
     {
@@ -240,7 +267,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class GAZTErrorException : GAZTException
     {
         public GAZTErrorException()
@@ -250,7 +277,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class GAZTVATInstalmentException : GAZTException
     {
         public GAZTVATInstalmentException()
@@ -259,6 +286,8 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
+
     public class GAZTVATChangeFillingPeriodException : GAZTException
     {
         public GAZTVATChangeFillingPeriodException()
@@ -267,6 +296,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    [Preserve(AllMembers = true)]
 
     public class GAZTTinDeregistrationErrorException : GAZTException
     {

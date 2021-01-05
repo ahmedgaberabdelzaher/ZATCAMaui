@@ -4,11 +4,13 @@ using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using GAZT.Helper;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
+    [Preserve(AllMembers = true)]
     public partial class ChangeFillingPeriodListPageView : ContentPage
     {
 
@@ -37,11 +39,12 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {
@@ -97,7 +100,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
         }
 
-        private async void Download_Acknowledgement(object sender, EventArgs e)
+        private void Download_Acknowledgement(object sender, EventArgs e)
         {
 
             if (viewModel.vATChangingSummaryData.Fbnum != null)

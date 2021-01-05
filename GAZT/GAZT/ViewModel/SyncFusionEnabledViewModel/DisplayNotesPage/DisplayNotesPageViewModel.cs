@@ -5,8 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.DisplayNotesPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class DisplayNotesPageViewModel : ViewModelBase
     {
         #region Variable
