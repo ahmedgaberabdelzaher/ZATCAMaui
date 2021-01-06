@@ -16,6 +16,9 @@ using Java.Lang;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace GAZT.Droid
 {
@@ -103,7 +106,12 @@ namespace GAZT.Droid
             global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
              .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         }
+        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+        {
+            var newExc = new System.Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
 
+            LogUnhandledException(newExc);
+        }
         private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
         {
             var newExc = new System.Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as System.Exception);
@@ -116,7 +124,7 @@ namespace GAZT.Droid
             try
             {
                 const string errorFileName = "Fatal.log";
-                var libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal); 
+                var libraryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal); 
                 var errorFilePath = Path.Combine(libraryPath, errorFileName);
                 File.WriteAllText(errorFilePath, JsonConvert.SerializeObject(exception));
             }
