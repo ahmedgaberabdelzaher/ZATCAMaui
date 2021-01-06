@@ -1,10 +1,6 @@
-﻿using EGAZT.Views.NewDesign;
-using EGAZT.Views.NewDesign.OnboardingPages;
-using GalaSoft.MvvmLight;
+﻿using EGAZT.Views.NewDesign.OnboardingPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
-using Syncfusion.SfRotator.XForms;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -23,14 +19,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         #region Fields
 
         private ObservableCollection<Boarding> boardings;
-
         private string nextButtonText = AppResources.ZZNext;
-
         private string _LanguageText = "Set To English";// AppResources.ZZZSetToEnglish;
-
         private bool isSkipButtonVisible = true;
-
         private int selectedIndex;
+
+        public bool MarkComplete { get; private set; } = false;
+        public int MaxIndex { get; private set; } = 3;
 
         #endregion
 
@@ -177,7 +172,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
                 {
                     return;
                 }
-
+                if (this.selectedIndex == MaxIndex)
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
                 this.selectedIndex = value;
                 RaisePropertyChanged("SelectedIndex");
             }
@@ -309,7 +308,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 
             //Application.Current.MainPage.Navigation.PopAsync();
         }
-
 
         #endregion
     }

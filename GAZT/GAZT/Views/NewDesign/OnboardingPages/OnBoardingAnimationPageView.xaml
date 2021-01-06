@@ -3,6 +3,7 @@
     x:Class="EGAZT.Views.NewDesign.OnboardingPages.GAZTNewDesignOnBoardingAnimationPageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
     xmlns:behavior="clr-namespace:GAZT.SyncFusionEnabledBehaviors.Behaviors"
     xmlns:rotator="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
@@ -10,6 +11,7 @@
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:custom="clr-namespace:GAZT"
     ios:Page.UseSafeArea="False"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
@@ -21,17 +23,19 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid RowSpacing="0">
+        <Grid >
             <Grid.RowDefinitions>
                 <!--  Skip Button  -->
                 <RowDefinition Height="96" />
                 <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-                
+               <RowDefinition Height="Auto" />
+                               <RowDefinition Height="Auto" />
+
             </Grid.RowDefinitions>
 
-            <Image Grid.RowSpan="4" Aspect="AspectFill" Margin="0,-50,0,0"  BackgroundColor="Transparent" Source="partials_background.png" />
+            <Image Grid.RowSpan="5"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" BackgroundColor="Transparent"
+                   Source="partials_background.png" />
             
             <!--  Gradient view  -->
             <!--<gradient:SfGradientView Grid.RowSpan="4" Style="{StaticResource SfGradientStyleForOnbBoarding}" />-->
@@ -44,8 +48,7 @@
                 Margin="10"
                 BackgroundColor="Transparent"
                 Command="{Binding SkipCommand}"
-                CornerRadius="20"
-                   
+                CornerRadius="20"                  
                 FontFamily="{StaticResource SSTArBold}"
                 HorizontalOptions="Start"
                 IsVisible="{Binding IsSkipButtonVisible}"
@@ -67,45 +70,49 @@
                 Clicked="ChangeLangButton_Clicked" />
             </StackLayout>
 
-            <Image Source="centered.png" Aspect="AspectFit" Margin="{OnPlatform Android='0,-10,0,0'}" Grid.Row="1">
+            <Image Source="centered.png"  Aspect="AspectFit" Margin="{OnPlatform Android='0,-30,0,0', iOS='0,-45,0,0'}" Grid.Row="1">
             </Image>
 
             <!--  Rotator used to navigate the view  -->
-            <rotator:SfRotator
-               
+            <rotator:SfRotator             
                 Grid.Row="2"
-                Margin="{x:OnIdiom Phone='15,0,15,0',
-                                   Desktop='0',
-                                   Tablet='0'}"
+                
+                Margin="{OnPlatform Android='0,-10,0,0', iOS='0,10,0,0'}"
+               
                 BackgroundColor="Transparent"
-                DotPlacement="None"
+                SelectedDotColor="{StaticResource Yellow}"
+                DotsBorderColor="Transparent"
+                
                 EnableLooping="False"
                 EnableSwiping="True"
-                HorizontalOptions="CenterAndExpand"
+                HorizontalOptions="Start"
+                DotPlacement="None"                
                 ItemTemplate="{StaticResource ItemTemplate}"
                 ItemsSource="{Binding Boardings}"
+                NavigationStripPosition="Bottom"
                 NavigationDirection="Horizontal"
                 SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
                 VerticalOptions="CenterAndExpand"
-                WidthRequest="{core:OnPlatformOrientationDoubleValue Default=400,
-                                                                     AndroidPhonePortrait=400,
-                                                                     AndroidPhoneLandscape=200,
-                                                                     iOSPhonePortrait=400,
-                                                                     iOSPhoneLandscape=200}">
+              >
                 <rotator:SfRotator.Behaviors>
                     <behavior:SfRotatorBehavior />
                 </rotator:SfRotator.Behaviors>
                 
             </rotator:SfRotator>
-
+     
             <!--  Next button  -->
             <buttons:SfButton
-               Margin="10,0,10,35"
-                Grid.Row="3"
+
+               Margin="10,50,10,75"
+                Grid.Row="4"
                 Command="{Binding NextCommand}"
                 
                 Style="{StaticResource PrimaryButtonStyle}"
                 Text="{Binding NextButtonText}" />
+
+            <commonView:OnBoardingPageIndicator Grid.Row="3"  HorizontalOptions="Center" MaxNum="{Binding MaxIndex}"
+                                        MinNum="{Binding SelectedIndex}" DotSize="12"/>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

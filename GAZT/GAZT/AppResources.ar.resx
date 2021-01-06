@@ -2970,6 +2970,10 @@
     <value>تعيين إلى العربية</value>
     <comment>SynfusionUILabel</comment>
   </data>
+   <data name="ZZZSetToEn" xml:space="preserve">
+    <value>ع</value>
+    <comment>SynfusionUILabel</comment>
+  </data>  
    <data name="ZNoDataAvailable" xml:space="preserve">
     <value>لا توجد بيانات</value>
   </data>

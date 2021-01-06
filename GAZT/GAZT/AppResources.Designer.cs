@@ -5034,6 +5034,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZZZSetToEn {
+            get {
+                return ResourceManager.GetString("ZZZSetToEn", resourceCulture);
+            }
+        }
+        
         public static string ZNoDataAvailable {
             get {
                 return ResourceManager.GetString("ZNoDataAvailable", resourceCulture);
