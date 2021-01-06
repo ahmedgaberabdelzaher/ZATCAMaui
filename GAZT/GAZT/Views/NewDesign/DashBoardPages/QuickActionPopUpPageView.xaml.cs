@@ -24,12 +24,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             //GetSupport.IsVisible = false;
             //CloseIcon.IsVisible = false;
 
-            
-
-
-
-
-
 
             SetLTR();
         }

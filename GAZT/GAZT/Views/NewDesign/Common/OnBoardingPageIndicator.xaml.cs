@@ -76,16 +76,34 @@ namespace EGAZT.Views.NewDesign.Common
                 Children.Clear();
                 for (int i = 1; i <= MaxNum; i++)
                 {
-                    Children.Add(new BoxView()
+                    if (i == 1)
                     {
-                        ClassId = i.ToString(),
-                        BackgroundColor = Color.FromHex("#EBEBEB"),
-                        HeightRequest = DotSize,
-                        WidthRequest = DotSize,
-                        CornerRadius = DotSize / 2,
-                        HorizontalOptions = LayoutOptions.Center,
-                        VerticalOptions = LayoutOptions.Center
-                    });
+                        Children.Add(new BoxView()
+                        {
+                            ClassId = i.ToString(),
+
+                            BackgroundColor = Color.FromHex("#C9842B"),
+                            HeightRequest = DotSize,
+                            WidthRequest = DotSize,
+                            CornerRadius = DotSize / 2,
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.Center
+                        });
+                    }
+                    else
+                    {
+                        Children.Add(new BoxView()
+                        {
+                            ClassId = i.ToString(),
+
+                            BackgroundColor = Color.FromHex("#EBEBEB"),
+                            HeightRequest = DotSize,
+                            WidthRequest = DotSize,
+                            CornerRadius = DotSize / 2,
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.Center
+                        });
+                    }
                     Children.Add(new BoxView()
                     {
                         BackgroundColor = Color.Transparent,

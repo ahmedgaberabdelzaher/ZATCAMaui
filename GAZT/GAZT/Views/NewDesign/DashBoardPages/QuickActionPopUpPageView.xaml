@@ -9,9 +9,7 @@
                  xmlns:FontImage="clr-namespace:MVP.FontIcons"
                  BackgroundColor="Transparent"
                  xmlns:custom="clr-namespace:GAZT"
-                 xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-
->
+                 xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms">
 
     <pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -26,6 +24,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="60*"/>
                 <RowDefinition Height="40*"/>
+                <RowDefinition Height="Auto"/>
+
             </Grid.RowDefinitions>
 <Grid.ColumnDefinitions>
 <ColumnDefinition Width="10*"></ColumnDefinition>
@@ -38,39 +38,13 @@
                 <RowDefinition Height="100*"/>
             </Grid.RowDefinitions>
 
-           
-
-            <!--<Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  IsVisible="{Binding IsLoading}" Margin="-20">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70" 
-                                         
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                        TextColor="#006450"/>
-                    </StackLayout>
-                </StackLayout>
-            </Grid>-->
-
-
+        
         </Grid>
-     <StackLayout Padding="10" Spacing="10" Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalOptions="End">
+     <StackLayout Padding="24" Spacing="24" Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalOptions="End">
 
           <border:SfBorder x:Name="ZAKATReturn"  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
-                   <!--<Image Source="menu_return.png" VerticalOptions="Center">
-                       <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
-                                                    </Image.GestureRecognizers>
-                   </Image>-->
+            
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.QuickActionShowOverDueReturns}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center">
                        <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnOverdueReturnClicked"/>
@@ -86,22 +60,14 @@
          
               </border:SfBorder>             
         
-
-
-
           <border:SfBorder x:Name="ReadInbox"   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
-                   <!--<Image Source="menu_return.png" VerticalOptions="Center">
-                       <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
-                                                    </Image.GestureRecognizers>
-                   </Image>-->
+                 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.QuickActionShowCertificates}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}">
                        <custom:CustomLabel.GestureRecognizers>  
                                                         <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
                                                     </custom:CustomLabel.GestureRecognizers>
                    </custom:CustomLabel>
-                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnMyReturnsClicked}" BackgroundColor="White" TextColor="Black"  WidthRequest="150"/>-->
 
                 <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
@@ -112,17 +78,12 @@
 
  <border:SfBorder x:Name="GetSupport"   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
-                   <!--<Image Source="menu_return.png" VerticalOptions="Center">
-                       <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
-                                                    </Image.GestureRecognizers>
-                   </Image>-->
+                  
                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.GetSupport}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}">
                        <custom:CustomLabel.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnGetSupportClicked"/>
                                                     </custom:CustomLabel.GestureRecognizers>
                    </custom:CustomLabel>
-                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnMyReturnsClicked}" BackgroundColor="White" TextColor="Black"  WidthRequest="150"/>-->
 
                 <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnGetSupportClicked"/>
@@ -130,21 +91,16 @@
                  </StackLayout>
               </border:SfBorder>
 
-         <!--<StackLayout>
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZMyBillsTitle}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnMyBillsClicked}" />
-                    </StackLayout>
-
-                                    <StackLayout Grid.Row="2"  Padding="0,0,0,10" >
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZCorrespondenceTitle}"  Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnCorrespondanceClicked}" />
-                    </StackLayout>-->
-
-                <Image x:Name="CloseIcon" Source="ic_Close_Circle.png" HorizontalOptions="Center" >
+       
+            </StackLayout>
+             <StackLayout  Grid.Row="2" Grid.ColumnSpan="3">
+                      <Image x:Name="CloseIcon" HeightRequest="88" HorizontalOptions="FillAndExpand" Source="quick_actions.png">
                     
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnCloseTapped"/>
                     </Image.GestureRecognizers>
                 </Image>
-            </StackLayout>
+                   </StackLayout>
              </Grid>
        </yummy:PancakeView>
 </pages:PopupPage>
