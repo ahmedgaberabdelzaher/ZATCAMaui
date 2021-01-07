@@ -187,47 +187,39 @@
                 <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="10,30,10,0" Spacing="10">
                     <Image Source="ic_Gazt.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
 
-                    <Image Source="close" VerticalOptions="Start" HorizontalOptions="EndAndExpand">
+                    <Image Source="close" VerticalOptions="Center" HorizontalOptions="EndAndExpand">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="GoBackTapped" NumberOfTapsRequired="1"/>
                         </Image.GestureRecognizers>
                     </Image>
-                    <!--<StackLayout.Margin>
-                        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,50,0,0"/>
-                    </StackLayout.Margin>-->
+                    <StackLayout.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0,20,0,0"/>
+                            <On Platform="Android" Value="0,0,0,0"/>
+                        </OnPlatform>
+                    </StackLayout.Margin>
                 </StackLayout>
                 <Grid Grid.Row="1" Padding="15,15,0,0">
                     <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource SectionTitleWhiteBold}" FontSize="24" VerticalOptions="Center" />-->
                     <ScrollView Margin="0,20,0,0">
                         <StackLayout Spacing="20" Padding="0,0,0,10">
-                            <!--<StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image Source="ic_Version.png"></Image>
-                            <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.AppVersion}"/>
-                                        <Span Text="&#160;&#160;"/>
-                                        <Span  Text="{Binding AppVersion}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </custom:CustomLabel>
-                        </StackLayout>-->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.NDV}"/>
-                                        <Span Text="&#160;&#160;"/>
-                                        <Span  Text="{Binding AppVersion}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </custom:CustomLabel>
-
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource LoginMenuTitleWhite}" VerticalOptions="Center" HorizontalTextAlignment="Start"/>
-                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
+                            <StackLayout Spacing="5">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource LoginMenuTitleWhite}" VerticalOptions="Center" HorizontalTextAlignment="Start"/>
+                                <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDV}"/>
+                                            <Span Text="&#160;&#160;"/>
+                                            <Span  Text="{Binding AppVersion}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </custom:CustomLabel>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}"/>
+                            </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="password_key.png">
+                                <Image Source="password_key.png" Style="{StaticResource SmallIcon}"/>
 
-                                </Image>
+
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnVATRefundTapped" NumberOfTapsRequired="1"/>
@@ -238,9 +230,9 @@
 
 
                             <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="taxEvasion.png">
+                                <Image Source="taxEvasion.png" Style="{StaticResource SmallIcon}"/>
 
-                                </Image>
+
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnTaxEvasionTapped" NumberOfTapsRequired="1"/>
@@ -250,41 +242,15 @@
                             <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                             <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="customerService">
+                                <Image Source="customerService" Style="{StaticResource SmallIcon}"/>
 
-                                </Image>
+
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSupport}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnSupportTapped" NumberOfTapsRequired="1"/>
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <BoxView Style="{StaticResource WhiteLineSeperator}"/>
-
-                            <!--<StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="language">
-
-                                </Image>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ChangeLanguage_Tapped" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>-->
-
-                            <!--<StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image Source="ic_Version.png"></Image>
-                            <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.AppVersion}"/>
-                                        <Span Text="&#160;&#160;"/>
-                                        <Span  Text="{Binding AppVersion}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </custom:CustomLabel>
-                        </StackLayout>
-                        <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
-
                         </StackLayout>
                     </ScrollView>
                 </Grid>
@@ -301,7 +267,7 @@
                     </Grid.RowDefinitions>
                     <BoxView Style="{StaticResource WhiteLineSeperator}" HeightRequest="1" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0"/>
                     <StackLayout Orientation="Horizontal"  Grid.Row="1"  Grid.Column="0" Spacing="20" HorizontalOptions="Start" Padding="20">
-                        <Image Source="language" HorizontalOptions="Start"/>
+                        <Image Source="language" HorizontalOptions="Start" Style="{StaticResource SmallIcon}"/>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}" Style="{StaticResource ValueLabelWhiteBold}" 
                                                     VerticalOptions="Center" HorizontalTextAlignment="Start"/>
                         <StackLayout.GestureRecognizers>
@@ -310,7 +276,7 @@
                     </StackLayout>
                     <BoxView Style="{StaticResource VerticalWhiteLineSeperator}" WidthRequest="1" Grid.Row="1" Grid.Column="1"/>
                     <StackLayout Orientation="Horizontal" Spacing="20" Grid.Row="1" Grid.Column="2" HorizontalOptions="StartAndExpand" Padding="20">
-                        <Image Source="user_profile" HorizontalOptions="StartAndExpand"/>
+                        <Image Source="user_profile" HorizontalOptions="StartAndExpand" Style="{StaticResource SmallIcon}"/>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSwitchUser}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"
                                                     HorizontalTextAlignment="Start"/>
                         <StackLayout.GestureRecognizers>

@@ -631,7 +631,7 @@
                                 <StackLayout Spacing="20" Padding="0,0,0,10">
                                     <StackLayout x:Name="ifUserNotRegisteredtoZakatAndVAT" Spacing="20" IsVisible="{Binding IfnotRegInVATAndZakat}" >
                                         <StackLayout Orientation="Horizontal" Spacing="12">
-                                            <Image Source="individual_32White.png" HeightRequest="24" WidthRequest="24">
+                                            <Image Source="individual_32White.png" Style="{StaticResource SmallIcon}">
 
                                             </Image>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDNewProfile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -644,7 +644,7 @@
 
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="ic_Payments" HeightRequest="24" WidthRequest="24"/>
+                                            <Image Source="ic_Payments" Style="{StaticResource SmallIcon}"/>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBBills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Label_MyBills"/>
@@ -653,7 +653,7 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="menu_return" HeightRequest="24" WidthRequest="24"/>
+                                            <Image Source="menu_return" Style="{StaticResource SmallIcon}"/>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDReturns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped"/>
@@ -662,7 +662,7 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="ic_certificate.png" HeightRequest="24" WidthRequest="24"/>
+                                            <Image Source="ic_certificate.png" Style="{StaticResource SmallIcon}"/>
 
 
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDCertificates}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -689,7 +689,7 @@
                                     -->
                                     <StackLayout Spacing="20" IsVisible="{Binding IfnotRegInVATAndZakat}" >
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="installment_plan.png" HeightRequest="24" WidthRequest="24"/>
+                                            <Image Source="installment_plan.png" Style="{StaticResource SmallIcon}"/>
 
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.InstallmentPlans}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -707,7 +707,7 @@
                                         </StackLayout>
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                         <StackLayout Orientation="Horizontal" Spacing="20" x:Name="refundreqMenu" >
-                                            <Image Source="ic_RefundR.png" HeightRequest="24" WidthRequest="24"/>
+                                            <Image Source="ic_RefundR.png" Style="{StaticResource SmallIcon}"/>
 
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBRefundRequest}"
                                                                  Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -730,7 +730,7 @@
                                         -->
 
                                         <StackLayout Orientation="Horizontal" Spacing="20" x:Name="fillingMenu">
-                                            <Image Source="ic_vat_return.png" HeightRequest="24" WidthRequest="24"/>
+                                            <Image Source="ic_vat_return.png" Style="{StaticResource SmallIcon}"/>
 
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -741,7 +741,7 @@
                                         
                                         <StackLayout Orientation="Vertical" IsVisible="{Binding IfRegInZakat}">
                                         <StackLayout Orientation="Horizontal" Spacing="20" Margin="0,0,0,15" >
-                                                <Image Source="ic_menu_cr_w" HeightRequest="24" WidthRequest="24"/>
+                                                <Image Source="ic_menu_cr_w" Style="{StaticResource SmallIcon}"/>
 
                                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDContractRelease}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -789,7 +789,7 @@
                                         -->
 
                                         <StackLayout IsVisible="{Binding IfnotRegInVATAndZakat}" Orientation="Horizontal" Spacing="20">
-                                            <Image Source="ic_ReportTaxEvasion.png" HeightRequest="24" WidthRequest="24"/>
+                                            <Image Source="ic_ReportTaxEvasion.png" Style="{StaticResource SmallIcon}"/>
 
 
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -800,7 +800,7 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="refund" HeightRequest="24" WidthRequest="24"/>
+                                            <Image Source="refund" Style="{StaticResource SmallIcon}"/>
 
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -814,7 +814,7 @@
 
                                     <StackLayout Orientation="Vertical" IsVisible="{Binding IsVatRegistrationTileVisible}">
                                     <StackLayout Orientation="Horizontal" Spacing="20" >
-                                            <Image Source="details.png" HeightRequest="24" WidthRequest="24"/>
+                                            <Image Source="details.png" Style="{StaticResource SmallIcon}"/>
 
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VatRegistration}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
@@ -826,7 +826,7 @@
 
                                         </StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="ic_menu_Tax_check.png" HeightRequest="24" WidthRequest="24"/>
+                                        <Image Source="ic_menu_Tax_check.png" Style="{StaticResource SmallIcon}"/>
 
                                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBApplicationStatus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
@@ -835,7 +835,7 @@
                                     </StackLayout>
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                   <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="ic_vat_return.png" HeightRequest="24" WidthRequest="24"/>
+                                        <Image Source="ic_vat_return.png" Style="{StaticResource SmallIcon}"/>
 
                                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.GeneralServices}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
@@ -845,7 +845,7 @@
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                     
                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="language.png" HeightRequest="24" WidthRequest="24"/>
+                                        <Image Source="language.png" Style="{StaticResource SmallIcon}"/>
 
 
                                         <custom:CustomLabel Text="{Binding TranslateText}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -857,7 +857,7 @@
 
                                     <StackLayout Orientation="Horizontal" Spacing="20">
 
-                                        <Image Source="customerService.png" HeightRequest="24" WidthRequest="24"/>
+                                        <Image Source="customerService.png" Style="{StaticResource SmallIcon}"/>
 
 
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSupport}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -882,7 +882,7 @@
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
                                     
                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="log_out" HeightRequest="24" WidthRequest="24"/>
+                                        <Image Source="log_out" Style="{StaticResource SmallIcon}"/>
 
 
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DBLogOut}" Style="{StaticResource ButtonLabelWhiteBold}"/>

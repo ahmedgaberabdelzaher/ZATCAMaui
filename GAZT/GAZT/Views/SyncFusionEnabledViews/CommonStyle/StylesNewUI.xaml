@@ -578,7 +578,14 @@
 
     <!--#endregion-->
 
-   
+    <!--#region IconImage Styles-->
+    
+    <Style x:Key="SmallIcon" TargetType="custom:CustomLabel">
+        <Setter Property="HeightRequest" Value="24" />
+        <Setter Property="WidthRequest" Value="24" />
+    </Style>
+    
+    <!--#endregion-->
 
 
 </ResourceDictionary>

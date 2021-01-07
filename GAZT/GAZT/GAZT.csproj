@@ -10,6 +10,7 @@
 	<ItemGroup>
 	  <Compile Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
 	  <Compile Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
+	  <Compile Remove="Views\NewDesign\Template\NewFolder\**" />
 	  <Compile Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
 	  <Compile Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
 	  <Compile Remove="Views\SyncFusionEnabledViews\CorrespondancePages\**" />
@@ -24,6 +25,7 @@
 	  <Compile Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
 	  <EmbeddedResource Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
 	  <EmbeddedResource Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
+	  <EmbeddedResource Remove="Views\NewDesign\Template\NewFolder\**" />
 	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
 	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
 	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\CorrespondancePages\**" />
@@ -38,6 +40,7 @@
 	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
 	  <None Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
 	  <None Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
+	  <None Remove="Views\NewDesign\Template\NewFolder\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\CorrespondancePages\**" />
@@ -115,7 +118,6 @@
 		<Folder Include="SyncFusionEnabledBehaviors\" />
 		<Folder Include="Enums\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
-		<Folder Include="Views\NewDesign\Template\NewFolder\" />
 		<Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
 		<Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
@@ -304,9 +306,6 @@
 		<EmbeddedResource Update="Views\NewDesign\FormBundleStatusPages\FormBundleStatusPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Views\NewDesign\InstalmentPlan\TestPage.xaml">
-		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\MyBillsPages\MyBillsPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
@@ -352,7 +351,13 @@
 		<EmbeddedResource Update="Views\NewDesign\Template\SelectedItemTemplate.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\Template\SelectedItemTemplateNoIcon.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\Template\UnSelectedItemTemplate.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\Template\UnSelectedItemTemplateNoIcon.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\TestPage.xaml">

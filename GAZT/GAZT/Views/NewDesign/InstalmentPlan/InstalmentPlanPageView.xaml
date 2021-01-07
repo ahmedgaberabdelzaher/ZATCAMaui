@@ -21,8 +21,12 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ValueTypeToVisibilityConverter x:Key="valueTypeToVisibilityConverter" />
-            <templateSelector:LVUnselectedItemTemplateSelector x:Key="UnselectedItemTemplateSelector"/>
-            <templateSelector:LVSelectedItemTemplateSelector x:Key="SelectedIttemTemplateSelector"/>
+            <!--<templateSelector:LVUnselectedItemTemplateSelector x:Key="UnselectedItemTemplateSelector"/>
+            <templateSelector:LVSelectedItemTemplateSelector x:Key="SelectedIttemTemplateSelector"/>-->
+
+            <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector"/>
+            <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector"/>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -130,7 +134,7 @@
                                       ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  
                                       SelectionMode="Single" SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
                                       ItemTemplate="{StaticResource UnselectedItemTemplateSelector}"
-                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
+                                      SelectionBackgroundColor="Transparent" >
 
                                 <!--<listView:SfListView.ItemTemplate>
                            
