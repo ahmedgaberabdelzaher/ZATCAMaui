@@ -7,9 +7,11 @@ using Application = Xamarin.Forms.Application;
 using Xamarin.Essentials;
 using GAZT.Helper;
 using GAZT.Manager;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.VatReview
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VatReviewSuccessPageView : ContentPage
     {

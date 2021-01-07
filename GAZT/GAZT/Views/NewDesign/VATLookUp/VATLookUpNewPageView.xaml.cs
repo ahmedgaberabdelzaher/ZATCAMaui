@@ -8,11 +8,11 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
-
-
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.VATLookUp
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATLookUpNewPageView : ContentPage
     {

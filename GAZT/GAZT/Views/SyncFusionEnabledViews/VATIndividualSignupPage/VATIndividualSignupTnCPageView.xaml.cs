@@ -1,5 +1,6 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
-using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+using EGAZT.Views.NewDesign.TaxpayerCorrespondancePages;
+//using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,11 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATIndividualSignupTnCPageView : ContentPage
     {

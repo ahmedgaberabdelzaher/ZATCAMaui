@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class EstimatedZakatReturns
     {
         public EstimatedZakatReturnsD d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZakatReturnsMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZakatReturnsMetadata2
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZakatReturnsResult : INotifyPropertyChanged
     {
         public Metadata2 __metadata { get; set; }
@@ -184,10 +190,12 @@ namespace EGAZT.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
         }
     }
+    [Preserve(AllMembers = true)]
     public class ListSet
     {
         public List<EstimatedZakatReturnsResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZakatReturnsD
     {
         public Metadata __metadata { get; set; }
@@ -259,6 +267,7 @@ namespace EGAZT.Models
         public string CallServ { get; set; }
         public ListSet listSet { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ZAKATStatus
     {
         public string Key { get; set; }

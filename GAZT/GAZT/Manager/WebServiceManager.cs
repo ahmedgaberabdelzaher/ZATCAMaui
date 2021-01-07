@@ -46,9 +46,11 @@ using static EGAZT.Models.VatReviewModel.VATObjectionSummaryInputModel;
 using Xamarin.Essentials;
 using EGAZT.Models.AccountStatements;
 using Formatting = Newtonsoft.Json.Formatting;
+using Xamarin.Forms.Internals;
 
 namespace GAZT.Manager
 {
+    [Preserve(AllMembers = true)]
     public static class WebServiceManager
     {
         public static string ErrorMessage = string.Empty;
@@ -4025,7 +4027,7 @@ namespace GAZT.Manager
             }
         }
         #region SYNFUSION INTEGRATION
-        public static  Dashboard GAZTGetDashboardData(string lang, string TIN)
+        public static Dashboard GAZTGetDashboardData(string lang, string TIN)
         {
             Dashboard dashboardData = null;
             if (CrossConnectivity.Current.IsConnected)
@@ -4046,7 +4048,7 @@ namespace GAZT.Manager
                     {
                         GAZTGetDashboardResponse = client.GetAsync(uri).Result;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
 
                     }
@@ -5717,7 +5719,7 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -8332,7 +8334,7 @@ namespace GAZT.Manager
         }
 
 
-        public static string GAZTGenericDeleteAttachment(string fileName, string RetGuid, string aPiMethod, string doGuid="")//, string returnedFguid
+        public static string GAZTGenericDeleteAttachment(string fileName, string RetGuid, string aPiMethod, string doGuid = "")//, string returnedFguid
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -8344,7 +8346,7 @@ namespace GAZT.Manager
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                    String url = Constants.GAZTDeteleAttachmentNew +"RetGuid='" + RetGuid + "',Flag='N',Dotyp='',SchGuid='',Srno=1,Doguid='" + doGuid + "',AttBy='TP',OutletRef='')/$value";
+                    String url = Constants.GAZTDeteleAttachmentNew + "RetGuid='" + RetGuid + "',Flag='N',Dotyp='',SchGuid='',Srno=1,Doguid='" + doGuid + "',AttBy='TP',OutletRef='')/$value";
                     url = url.Replace("attachmentServiceurl", aPiMethod);
                     // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                     var uri = new Uri(url);
@@ -9532,7 +9534,7 @@ namespace GAZT.Manager
                             //App.IsSessionExpired = true;
                             return null;
                         }
-                       
+
                         var _zakatInstalmentRequestData = GAZTzakatInstalmentDataResponse.Content.ReadAsStringAsync().Result;
                         _ZakatInstalmentPlanRequestList = JsonConvert.DeserializeObject<OldZakatInstalmentPlanRequestListModel>(_zakatInstalmentRequestData);
 
@@ -11333,7 +11335,7 @@ namespace GAZT.Manager
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                 HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                 _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
-               // _submitRequestData = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(_contractReleasesubmitResponse);
+                // _submitRequestData = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(_contractReleasesubmitResponse);
 
                 if (!string.IsNullOrEmpty(_contractReleasesubmitResponse))
                 {
@@ -12384,14 +12386,14 @@ namespace GAZT.Manager
 
                 foreach (OutletSetResult outletInfo in AllOutlets)
                 {
-                    if (outletInfo.AOutletEffDtTb != null&& !outletInfo.AOutletEffDtTb.Contains("/Date("))
+                    if (outletInfo.AOutletEffDtTb != null && !outletInfo.AOutletEffDtTb.Contains("/Date("))
                         outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtTb));
                     outletInfo.AOutletEffDtCTb = "G";
                 }
                 foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
-                    
-                    if ((!string.IsNullOrEmpty(permitInfo.APermitEffDtTb)&& !permitInfo.APermitEffDtTb.Contains("/Date(")))
+                    permitInfo.APermitDobTb = null;
+                    if ((!string.IsNullOrEmpty(permitInfo.APermitEffDtTb) && !permitInfo.APermitEffDtTb.Contains("/Date(")))
                         permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
                     permitInfo.APermitEffDtCTb = "G";
                     if (!permitInfo.APermitValfrDtTb.Contains("/Date("))
@@ -14352,6 +14354,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
                         String __ZAKATObjectionListData = _ZAKATObjectionListResponse.Content.ReadAsStringAsync().Result;
+                        __ZAKATObjectionListData = JObject.Parse(__ZAKATObjectionListData).ToString();
                         _ZAKATObjectionList = JsonConvert.DeserializeObject<ZakatObjectionListModel>(__ZAKATObjectionListData);
                         if (!string.IsNullOrEmpty(__ZAKATObjectionListData))
                         {

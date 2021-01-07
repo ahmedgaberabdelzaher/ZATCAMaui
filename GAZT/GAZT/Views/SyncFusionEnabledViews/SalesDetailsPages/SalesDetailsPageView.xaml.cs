@@ -6,10 +6,12 @@ using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using System;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SalesDetailsPageView : ContentPage
     {

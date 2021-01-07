@@ -1,6 +1,9 @@
 ﻿using System;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.Enums
 {
+    [Preserve(AllMembers = true)]
     public enum TransitionType
     {
 		/// <summary>
@@ -48,6 +51,7 @@ namespace EGAZT.Enums
         /// </summary>
         SlideFromBottom = 7
     }
+    [Preserve(AllMembers = true)]
     public enum PageExecutionType
     {
         Amend=5,
@@ -55,6 +59,7 @@ namespace EGAZT.Enums
         Register,
         Update
     }
+    [Preserve(AllMembers = true)]
     public enum VATRegDetailsExecutionType
     {
         Amend = 5,

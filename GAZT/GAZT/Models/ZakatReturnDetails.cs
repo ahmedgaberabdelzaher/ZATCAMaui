@@ -1,12 +1,17 @@
 ﻿using EGAZT.Models;
 using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class ZakatReturnDetails
     {
         public ZakatReturnDetailsD d { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class ZakatReturnDetailsReason
     {
         public Metadata2 __metadata { get; set; }
@@ -15,6 +20,8 @@ namespace EGAZT.Models
         public string AmdSource { get; set; }
         public string Description { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class EstimateZakatAttachment
     {
       //  public Metadata3 __metadata { get; set; }
@@ -35,6 +42,9 @@ namespace EGAZT.Models
         public string DocUrl { get; set; }
         public string OutletRef { get; set; }
     }
+
+
+    [Preserve(AllMembers = true)]
     public class ZakatAttachment
     {
         //  public Metadata3 __metadata { get; set; }
@@ -58,14 +68,20 @@ namespace EGAZT.Models
         public string OutletRef { get; set; }
         public string UploadededDateToShow { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class ReasonSet
     {
         public List<ZakatReturnDetailsReason> results { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class AttachSet
     {
         public List<EstimateZakatAttachment> results { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class ZakatReturnDetailsInvoice
     {
         public Metadata3 __metadata { get; set; }
@@ -78,10 +94,14 @@ namespace EGAZT.Models
         public string Sdisamt { get; set; }
         public string Stotamt { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class InvoiceSet
     {
         public List<ZakatReturnDetailsInvoice> results { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class ZakatReturnDetailsThresholdSet
     {
         public Metadata4 __metadata { get; set; }
@@ -93,10 +113,14 @@ namespace EGAZT.Models
         public string Value { get; set; }
         public string Type { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class ThresholdSet
     {
         public List<ZakatReturnDetailsThresholdSet> results { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class ZakatReturnDetailsD
     {
         public Metadata __metadata { get; set; }

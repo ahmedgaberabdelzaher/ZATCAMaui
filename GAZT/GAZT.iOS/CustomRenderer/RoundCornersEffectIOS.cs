@@ -8,6 +8,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportEffect(typeof(RoundCornersEffectIOS), nameof(RoundCornersEffect))]
 namespace GAZT
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class RoundCornersEffectIOS  : PlatformEffect
     {
         protected override void OnAttached()

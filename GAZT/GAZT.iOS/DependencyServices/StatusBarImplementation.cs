@@ -5,6 +5,7 @@ using UIKit;
 [assembly: Xamarin.Forms.Dependency(typeof(StatusBarImplementation))]
 namespace GAZT.iOS.DependencyServices
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class StatusBarImplementation : IStatusBar
     {
         public StatusBarImplementation()

@@ -1,11 +1,15 @@
 ﻿using EGAZT.Models;
 using System;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class ValidateOTP
     {
         public ValidateOTPResponse d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ValidateOTPResponse
     {
         public Metadata __metadata { get; set; }

@@ -10,9 +10,12 @@ using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using pdfjs.Interfaces;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
+    [Preserve(AllMembers = true)]
+
     public class TINDeregestrationSuccessPageViewModel: ViewModelBase
     {
         #region Variable

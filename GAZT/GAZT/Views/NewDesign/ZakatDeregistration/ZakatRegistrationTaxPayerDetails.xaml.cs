@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.ZakatDeregistration
 {
+    [Preserve(AllMembers = true)]
     public partial class ZakatRegistrationTaxPayerDetails : ContentPage
     {
         ZakatRegistrationTaxPayerDetailsPageViewModel viewModel;

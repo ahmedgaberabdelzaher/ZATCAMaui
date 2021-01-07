@@ -5,9 +5,10 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel;
 using GAZT.Manager;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.VATRefunds
-{
+{ [Preserve(AllMembers = true)]
     public class VATRefundsModel
     {
         public VATRefundsModel()
@@ -29,7 +30,7 @@ namespace EGAZT.Models.VATRefunds
         public VATRefundsBankDetailsModel BankDetails { get; set; }
         public ObservableCollection<VATRefundsReturnsModel> VATReturns { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class VATRefundsBankDetailsModel
     {
         public string BankName { get; set; }
@@ -38,7 +39,7 @@ namespace EGAZT.Models.VATRefunds
         public string IBAN { get; set; }
         public string Icon { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class VATRefundsReturnsModel
     {
         public string ReturnPeriod { get; set; }
@@ -55,7 +56,7 @@ namespace EGAZT.Models.VATRefunds
     //    [JsonProperty("d")]
     //    public D D { get; set; }
     //}
-
+    [Preserve(AllMembers = true)]
     public partial class VatRefundsListResultModel
     {
         [JsonProperty("__metadata")]
@@ -210,7 +211,7 @@ namespace EGAZT.Models.VATRefunds
 
         public bool IsEditable { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class Metadata
     {
         [JsonProperty("id")]
@@ -222,13 +223,13 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("type")]
         public string Type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class StatusSet
     {
         [JsonProperty("results")]
         public StatusSetResult[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class StatusSetResult
     {
         [JsonProperty("__metadata")]
@@ -252,13 +253,13 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("Ltext")]
         public bool Ltext { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VatRefHeaderSet
     {
         [JsonProperty("results")]
         public VatRefHeaderSetResult[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VatRefHeaderSetResult : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -344,13 +345,13 @@ namespace EGAZT.Models.VATRefunds
             }
         }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VatRefSubItemsSet
     {
         [JsonProperty("results")]
         public VatRefSubItemsSetResult[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VatRefSubItemsSetResult
     {
         [JsonProperty("__metadata")]
@@ -406,13 +407,13 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("Waers")]
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class WiDtlSet
     {
         [JsonProperty("results")]
         public WiDtlSetResult[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class WiDtlSetResult
     {
         [JsonProperty("__metadata")]
@@ -493,13 +494,13 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("Stat")]
         public string Stat { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VatRefundDisplayDataResponseModel
     {
         [JsonProperty("d")]
         public VatRefundDisplayDataModel D { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VatRefundDisplayDataModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -696,13 +697,13 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("BankDtlSet")]
         public Set BankDtlSet { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class Set
     {
         [JsonProperty("results")]
         public Result[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class Result
     {
         [JsonProperty("__metadata")]
@@ -750,7 +751,7 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("Waers")]
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class MetadataDisplayModel
     {
         [JsonProperty("id")]
@@ -762,13 +763,13 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("type")]
         public string Type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VarRefundIbanDataResponseModel
     {
         [JsonProperty("d")]
         public VarRefundIbanDataModel D { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VarRefundIbanDataModel
     {
         [JsonProperty("__metadata")]
@@ -849,13 +850,13 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("IBANSet")]
         public NSet IbanSet { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class NSet
     {
         [JsonProperty("results")]
         public VarRefundIbanDataModelMetadataResult[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VarRefundIbanDataModelMetadataResult
     {
         [JsonProperty("__metadata")]
@@ -864,7 +865,7 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("Iban")]
         public string Iban { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VarRefundIbanDataModelMetadata
     {
         [JsonProperty("id")]
@@ -876,7 +877,7 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("type")]
         public string Type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VatRefundSaveDataModel
     {
         [JsonProperty("__metadata")]
@@ -1050,7 +1051,7 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("BankDtlSet")]
         public Array[] BankDtlSet { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class MetadataVatRefundSaveDataModel
     {
         [JsonProperty("id")]

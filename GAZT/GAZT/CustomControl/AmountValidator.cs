@@ -1,8 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace GAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public class AmountValidator : Behavior<Entry>
     {
         protected override void OnAttachedTo(Entry entry)

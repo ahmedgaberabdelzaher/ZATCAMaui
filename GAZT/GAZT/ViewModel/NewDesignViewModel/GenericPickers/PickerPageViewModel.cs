@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.GenericPickers
 {
+    [Preserve(AllMembers = true)]
     public class PickerPageViewModel:BaseViewModel
     {
         #region Constructor

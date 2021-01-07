@@ -3,9 +3,11 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ShowVatInformationConfirmationPageViewModel : BaseViewModel
     {
         private readonly INavigationService _navigationService;
@@ -35,6 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_headerWithInfoList == value) return;
                 _headerWithInfoList = value;
                 RaisePropertyChanged("HeaderWithInfoList");
             }
@@ -49,6 +52,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_mainString == value) return;
                 _mainString = value;
                 RaisePropertyChanged("MainString");
             }
@@ -63,6 +67,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_newDesignPopUp == value) return;
+
                 _newDesignPopUp = value;
                 RaisePropertyChanged("NewDesignPopUp");
             }
@@ -77,6 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_firstLink == value) return;
                 _firstLink = value;
                 RaisePropertyChanged("FirstLink");
             }
@@ -91,6 +98,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_firstLinkText == value) return;
                 _firstLinkText = value;
                 RaisePropertyChanged("FirstLinkText");
             }
@@ -105,6 +113,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_SecondLink == value) return;
+
                 _SecondLink = value;
                 RaisePropertyChanged("SecondLink");
             }
@@ -119,12 +129,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_SecondLinkText == value) return;
                 _SecondLinkText = value;
                 RaisePropertyChanged("SecondLinkText");
             }
         }
-
-
         #endregion
 
     }

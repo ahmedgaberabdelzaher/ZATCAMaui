@@ -7,10 +7,12 @@ using GAZT.iOS.CustomRenderer;
 using GAZT;
 using EGAZT;
 using System.Drawing;
+using Xamarin.Forms.Internals;
 
 [assembly: ExportRenderer(typeof(BorderlessEntry), typeof(BorderlessEntryRenderer))]
 namespace GAZT
 {
+    [Preserve(AllMembers = true)]
     public class BorderlessEntryRenderer : EntryRenderer
     {
         public static void Init() { }

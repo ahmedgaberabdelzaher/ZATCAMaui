@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Text;
 using Rg.Plugins.Popup.Services;
 using System.Windows.Input;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
+    [Preserve(AllMembers = true)]
     public class NewAccountPopUpPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

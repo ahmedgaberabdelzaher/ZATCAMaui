@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.TAXEvasionPages
 {
+    [Preserve(AllMembers = true)]
     public partial class TaxEvasionMyReportsListPageView : ContentPage
     {
         TaxEvasionMyReportsListPageViewModel viewModel;
@@ -51,6 +53,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = false;

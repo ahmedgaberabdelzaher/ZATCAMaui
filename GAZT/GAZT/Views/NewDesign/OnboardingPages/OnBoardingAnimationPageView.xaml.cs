@@ -7,10 +7,11 @@ using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.OnboardingPages
 {
+    [Preserve(AllMembers = true)]
     /// <summary>
     /// Page to display on-boarding gradient with animation
     /// </summary>
-    [Preserve(AllMembers = true)]
+    
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignOnBoardingAnimationPageView
     {
@@ -51,7 +52,8 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -62,13 +64,11 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             {
                 if (App.IsArabic)
                 {
-                   // App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
                     SetRTLDirection(); 
                 }
                 else
                 {
-                  //  App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
                     SetLTRDirection();
                 }
@@ -76,7 +76,8 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -88,17 +89,16 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
                 this.FlowDirection = FlowDirection.RightToLeft;
-                viewModel.LanguageText = "En";//AppResources.ZZZSetToEnglish;
+                viewModel.LanguageText = AppResources.ZZZSetToEn;
                 viewModel.test();
                 InitializeComponent();
                 
 
-                //viewModel._navigationService.GoBack();
-                //viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -110,17 +110,17 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
                 this.FlowDirection = FlowDirection.LeftToRight;
-                viewModel.LanguageText = "ع";// AppResources.ZZZSetToArabic;
+                viewModel.LanguageText = AppResources.ZZZSetToEn;
 
                 viewModel.test();
                 InitializeComponent();
                
-                //viewModel._navigationService.GoBack();
-                //viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+              
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

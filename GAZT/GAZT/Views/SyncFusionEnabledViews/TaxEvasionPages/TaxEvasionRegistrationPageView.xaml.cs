@@ -14,10 +14,12 @@ using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
 {
+    [Preserve(AllMembers = true)]
     public partial class TaxEvasionRegistrationPageView : ContentPage
     {
         TaxEvasionRegistrationViewModel viewModel;

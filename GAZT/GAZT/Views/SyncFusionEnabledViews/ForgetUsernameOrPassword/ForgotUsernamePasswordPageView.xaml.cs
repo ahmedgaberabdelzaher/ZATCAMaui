@@ -10,9 +10,11 @@ using System.Resources;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
 {
+    [Preserve(AllMembers = true)]
     public partial class ForgotUsernamePasswordPageView : ContentPage
     {
         ObservableCollection<String> Items = new ObservableCollection<String>();

@@ -5,9 +5,11 @@ using EGAZT.Models;
 using EGAZT.Models.VATInstalationModels;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.Common
 {
+    [Preserve(AllMembers = true)]
     public class ViewNotePopUpViewModel : BaseViewModel
     {
         #region Variable

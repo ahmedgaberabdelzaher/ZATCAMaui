@@ -1,6 +1,6 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
-using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+//using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
@@ -12,11 +12,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
 {
+    [Preserve(AllMembers = true)]
+    public interface IBaseUrl { string Get(); }
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxpayerCorrespondanceDetailPageView : ContentPage
     {

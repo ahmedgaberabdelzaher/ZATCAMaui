@@ -10,15 +10,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Shapes;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-    
+    [Preserve(AllMembers = true)]
+
     public class TaxpayerCorrespondancePageViewModel : BaseViewModel
     {
         #region Fields
@@ -39,6 +40,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_zakatCorres == value) return;
                 _zakatCorres = value;
                 RaisePropertyChanged("ZakatCorres");
             }
@@ -53,6 +55,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATCorres == value) return;
+
                 _vATCorres = value;
                 RaisePropertyChanged("VATCorres");
             }
@@ -67,6 +71,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_eTCorres == value) return;
+
                 _eTCorres = value;
                 RaisePropertyChanged("ETCorres");
             }
@@ -83,6 +89,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedChipFilterItemList == value) return;
+
                 _selectedChipFilterItemList = value;
                 if (_selectedChipFilterItemList != null)
                 {
@@ -100,6 +108,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_chipDataFilterlist == value) return;
+
                 _chipDataFilterlist = value;
                 RaisePropertyChanged("ChipDataFilterlist");
             }
@@ -114,6 +124,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_filterLabelText == value) return;
+
                 _filterLabelText = value;
                 RaisePropertyChanged("FilterLabelText");
             }
@@ -141,6 +153,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_listVATCorrespondance == value) return;
+
                 _listVATCorrespondance = value;
                 RaisePropertyChanged("ListVATCorrespondance");
             }
@@ -154,6 +168,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_CountLabel == value) return;
+
                 _CountLabel = value;
                 RaisePropertyChanged("CountLabel");
             }
@@ -167,6 +183,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_Count == value) return;
+
                 _Count = value;
                 RaisePropertyChanged("Count");
             }
@@ -180,6 +198,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_listAllCorrespondance == value) return;
+
                 _listAllCorrespondance = value;
                 RaisePropertyChanged("ListAllCorrespondance");
             }
@@ -193,6 +213,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_listZAKATCorrespondance == value) return;
+
                 _listZAKATCorrespondance = value;
                 RaisePropertyChanged("ListZAKATCorrespondance");
             }
@@ -206,6 +228,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_listETCorrespondance == value) return;
+
                 _listETCorrespondance = value;
                 RaisePropertyChanged("ListETCorrespondance");
             }
@@ -220,6 +244,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_filterTaxTypeLabelText == value) return;
+
                 _filterTaxTypeLabelText = value;
                 RaisePropertyChanged("FilterTaxTypeLabelText");
             }
@@ -237,6 +263,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedDropdownItem == value) return;
+
                 _selectedDropdownItem = value;
                 if (_selectedDropdownItem != null)
                 {
@@ -262,6 +290,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedTaxTypeDropdownItem == value) return;
+
                 _selectedTaxTypeDropdownItem = value;
                 if (_selectedTaxTypeDropdownItem != null)
                 {
@@ -282,6 +312,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -296,6 +328,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isVisibleFavourite == value) return;
+
                 _isVisibleFavourite = value;
                 RaisePropertyChanged("IsVisibleFavourite");
             }
@@ -311,6 +345,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isListVisible == value) return;
+
                 _isListVisible = value;
                 RaisePropertyChanged("IsListVisible");
             }
@@ -324,6 +360,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isNoDataLableVisible == value) return;
+
                 _isNoDataLableVisible = value;
                 RaisePropertyChanged("IsNoDataLableVisible");
             }
@@ -337,6 +375,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_filterListForDropDown == value) return;
+
                 _filterListForDropDown = value;
                 RaisePropertyChanged("FilterListForDropDown");
             }
@@ -352,6 +392,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_taxTypeListForDropDown == value) return;
+
                 _taxTypeListForDropDown = value;
                 RaisePropertyChanged("TaxTypeListForDropDown");
             }
@@ -366,6 +408,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_listToDisplay == value) return;
+
                 _listToDisplay = value;
                 Count = 0;
                 CountLabel = AppResources.NDCount + ": " + Count.ToString();
@@ -443,7 +487,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                  //   _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
         }
@@ -488,7 +532,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         catch(Exception ex)
                         {
-
+                            Console.Write(ex.ToString());
+                            Console.Write(ex.StackTrace.ToString());
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemZakat.Cdate != null)
@@ -708,7 +753,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         catch(Exception ex)
                         {
-
+                            Console.Write(ex.ToString());
+                            Console.Write(ex.StackTrace.ToString());
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemET.Cdate != null)
@@ -787,6 +833,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void PopulateFilterDropdownList()
@@ -804,7 +852,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void PopulateDataInChips()
@@ -956,7 +1005,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             
         }

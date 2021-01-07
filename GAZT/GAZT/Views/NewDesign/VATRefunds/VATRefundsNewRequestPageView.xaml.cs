@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.Models.VATRefunds;
@@ -12,10 +10,12 @@ using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATRefunds
 {
+    [Preserve(AllMembers = true)]
     public partial class VATRefundsNewRequestPageView : ContentPage
     {
         VATRefundsNewRequestViewModel viewModel;

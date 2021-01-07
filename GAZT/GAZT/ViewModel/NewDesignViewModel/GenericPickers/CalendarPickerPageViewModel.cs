@@ -3,9 +3,11 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel
 {
+    [Preserve(AllMembers = true)]
     public class CalendarPickerPageViewModel:BaseViewModel
     {
         #region Constructor

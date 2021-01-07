@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class NewAccountPopPageViewModel : BaseViewModel
     {
         private readonly INavigationService _navigationService;
@@ -35,6 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ibanNumberText == value) return;
                 _ibanNumberText = value;
                 RaisePropertyChanged("IbanNumberText");
             }
@@ -49,6 +52,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isIBANValid == value) return;
+
                 _isIBANValid = value;
                 RaisePropertyChanged("IsIBANValid");
             }
@@ -63,6 +68,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ibanPartOne == value) return;
+
                 _ibanPartOne = value;
                 RaisePropertyChanged("IbanPartOne");
             }
@@ -77,6 +84,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ibanPartTwo == value) return;
+
                 _ibanPartTwo = value;
                 RaisePropertyChanged("IbanPartTwo");
             }
@@ -91,6 +100,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ibanPartThree == value) return;
+
                 _ibanPartThree = value;
                 RaisePropertyChanged("IbanPartThree");
             }
@@ -105,6 +116,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ibanPartFour == value) return;
+
                 _ibanPartFour = value;
                 RaisePropertyChanged("IbanPartFour");
             }
@@ -119,6 +132,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ibanPartFive == value) return;
+
                 _ibanPartFive = value;
                 RaisePropertyChanged("IbanPartFive");
             }
@@ -133,6 +148,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_accountText == value) return;
+
                 _accountText = value;
                 RaisePropertyChanged("AccountText");
             }

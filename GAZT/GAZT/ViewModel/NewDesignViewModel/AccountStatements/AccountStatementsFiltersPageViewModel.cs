@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EGAZT.Models.AccountStatements;
-using EGAZT.Views.NewDesign.AccountStatements;
 using GalaSoft.MvvmLight.Views;
-using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 {
+    [Preserve(AllMembers = true)]
     public class AccountStatementsFiltersPageViewModel: BaseViewModel
     {
         public ICommand SortAscendingTapped { get; set; }
@@ -24,6 +23,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_filterList == value) return;
                 _filterList = value;
                 RaisePropertyChanged("FilterList");
             }

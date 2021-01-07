@@ -2,17 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class CorrespondenceDetailsModel
     {
     }
+    [Preserve(AllMembers = true)]
     public class CorrespondenceDetailsMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CorrespondenceDetailsResult
     {
         public Metadata __metadata { get; set; }
@@ -28,10 +33,12 @@ namespace GAZT.Models
         public string Tdline { get; set; }
         public string Cokey { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CorrespondenceDetailsD
     {
         public List<CorrespondenceDetailsResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CorrespondenceDetailsRootObject
     {
         public CorrespondenceDetailsD d { get; set; }

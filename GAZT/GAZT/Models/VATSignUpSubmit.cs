@@ -1,6 +1,9 @@
 ﻿using System;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class VATSignUpSubmit
     {
         public string Type { get; set; }
@@ -31,6 +34,7 @@ namespace EGAZT.Models
 
 
 
+    [Preserve(AllMembers = true)]
     public class Metadata1
     {
         public string id { get; set; }
@@ -38,6 +42,7 @@ namespace EGAZT.Models
         public string type { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
     public class D1
     {
         public Metadata1 __metadata { get; set; }
@@ -84,6 +89,7 @@ namespace EGAZT.Models
         public string Type { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
     public class VATSignUpSubmitResponse
     {
         public D1 d { get; set; }

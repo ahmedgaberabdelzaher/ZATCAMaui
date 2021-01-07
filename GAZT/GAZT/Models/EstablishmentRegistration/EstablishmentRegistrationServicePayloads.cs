@@ -6,9 +6,11 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.EstablishmentRegistration
 {
+    [Preserve(AllMembers = true)]
     public class JsonFieldListConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
@@ -56,19 +58,19 @@ namespace EGAZT.Models.EstablishmentRegistration
             throw new NotImplementedException();
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class HTTPBadRequestException : GAZTException
     {
         public HTTPBadRequestException(string expception) : base(expception) { }
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class BranchesDropDownModel
     {
         [JsonIgnore]
@@ -82,7 +84,7 @@ namespace EGAZT.Models.EstablishmentRegistration
             return Bez50;
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class Nreg_CpersonItem
     {
         [JsonIgnore]
@@ -110,12 +112,12 @@ namespace EGAZT.Models.EstablishmentRegistration
         public DateTime? Dobdt { get; set; }
         public string StartdtC { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class NregCpersonSet
     {
         public List<Nreg_CpersonItem> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Nreg_IdItem
     {
         [JsonIgnore]
@@ -140,16 +142,17 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string ValidDateFromC { get; set; } = string.Empty;
         public string ValidDateToC { get; set; } = string.Empty;
     }
-
+    [Preserve(AllMembers = true)]
     public class NregIdSet
     {
         public List<Nreg_IdItem> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class NregShareholderSet
     {
         public List<object> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class OutletItem
     {
         [JsonIgnore]
@@ -185,6 +188,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Actnm2 { get; set; }
         public string ChInd { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Nreg_OutletItem
     {
         public string Actnm { get; set; }
@@ -196,10 +200,12 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Oldmst { get; set; } = string.Empty;
         public string Outdocdreg { get; set; } = string.Empty;
     }
+    [Preserve(AllMembers = true)]
     public class NregOutletSet
     {
         public List<Nreg_OutletItem> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Nreg_ActivityItem : INotifyPropertyChanged
     {
         [JsonIgnore]
@@ -256,10 +262,12 @@ namespace EGAZT.Models.EstablishmentRegistration
         }
         #endregion
     }
+    [Preserve(AllMembers = true)]
     public class NregActivitySet
     {
         public List<Nreg_ActivityItem> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Nreg_AddressItem
     {
         [JsonIgnore]
@@ -291,16 +299,18 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string StdAddrnumber { get; set; } = string.Empty;
         public string CorAddrnumber { get; set; } = string.Empty;
     }
+    [Preserve(AllMembers = true)]
     public class NregAddressSet
     {
         public List<Nreg_AddressItem> results { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
     public class NregContactSet
     {
         public List<object> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class AttDetItem
     {
         [JsonIgnore]
@@ -326,12 +336,12 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string DocUrl { get; set; }
         public string OutletRef { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class AttDetSet
     {
         public List<AttDetItem> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class Nreg_BtnItem
     {
         [JsonIgnore]
@@ -343,13 +353,13 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Bpkind { get; set; }
         public string Button { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class NregBtnSet
     {
         public List<object> results { get; set; } = new List<object>();
     }
 
-
+    [Preserve(AllMembers = true)]
     public class NregFormEdit
     {
         [JsonIgnore]
@@ -360,6 +370,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Bpkind { get; set; }
         public bool EditFg { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class OffNotes
     {
         [JsonIgnore]
@@ -382,16 +393,19 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Tdformat { get; set; } = string.Empty;
         public string Tdline { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class OffNotesSet
     {
         public List<OffNotes> results { get; set; }
     }
 
+
+    [Preserve(AllMembers = true)]
     public class NregMSGSet
     {
         public List<object> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class   TaxPayerDetails
     {
         [JsonIgnore]
@@ -534,12 +548,12 @@ namespace EGAZT.Models.EstablishmentRegistration
         public NregMSGSet Nreg_MSGSet { get; set; }
     }
 
-
+    [Preserve(AllMembers = true)]
     public class TaxpayerNationality : TaxpayerNationalityLandx50
     {
         public override string ToString() => Landx50;
     }
-
+    [Preserve(AllMembers = true)]
     public class TaxpayerNationalityLandx50
     {
         [JsonIgnore]
@@ -555,7 +569,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string PrqSpregt { get; set; }
         public override string ToString() => Landx50;
     }
-
+    [Preserve(AllMembers = true)]
     public class OutletNumber
     {
         [JsonIgnore]
@@ -564,6 +578,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Gpart { get; set; }
         public string Actno { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ActivityGroupSubGroup
     {
         [JsonIgnore]
@@ -575,19 +590,22 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string TextShort { get; set; }
         public override string ToString() => Text;
     }
+    [Preserve(AllMembers = true)]
     public class ActSubgroupSet
     {
         public List<ActivityGroupSubGroup> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ActivitySet
     {
         public List<ActivityGroupSubGroup> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ActGroupSet
     {
         public List<ActivityGroupSubGroup> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ActivitySetsList
     {
         [JsonIgnore]
@@ -602,6 +620,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public ActSubgroupSet act_subgroupSet { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
     public class ValidateCR
     {
         [JsonIgnore]
@@ -625,7 +644,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Addresstypey { get; set; }
         public string AddressPhysicaly { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class CityDropdownItem
     {
         [JsonIgnore]
@@ -638,11 +657,13 @@ namespace EGAZT.Models.EstablishmentRegistration
         public override string ToString() => CityName;
     }
 
+    [Preserve(AllMembers = true)]
     public class CityDropdownSet
     {
         public List<CityDropdownItem> results { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
     public class StateDropdownItem
     {
         [JsonIgnore]
@@ -653,12 +674,12 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Bezei { get; set; }
         public override string ToString() => Bezei;
     }
-
+    [Preserve(AllMembers = true)]
     public class StateDropdownSet
     {
         public List<StateDropdownItem> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class CountryDropdownItem
     {
         [JsonIgnore]
@@ -672,11 +693,12 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string PrqSpregt { get; set; }
         public override string ToString() => Landx50;
     }
-
+    [Preserve(AllMembers = true)]
     public class CountryDropdownSet
     {
         public List<CountryDropdownItem> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class OutletDropDowns
     {
         [JsonIgnore]
@@ -689,6 +711,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public StateDropdownSet State_dropdownSet { get; set; }
         public CountryDropdownSet country_dropdownSet { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class OutletAddress
     {
         [JsonIgnore]
@@ -706,6 +729,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string StreetName { get; set; }
         public string CityName { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class FinancialDetail
     {
         [JsonIgnore]
@@ -719,6 +743,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string EIsldate { get; set; }
         public string EIslmedate { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class FinancialDetailRequest
     {
         public string ACaltype { get; set; } = "H";
@@ -726,6 +751,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public DateTime? ADateComm { get; set; }
         public string EIslmedate { get; set; } = string.Empty;
     }
+    [Preserve(AllMembers = true)]
     public class TaxPayerTypeAvailability : INotifyPropertyChanged
     {
         private bool _reportingBranch;
@@ -836,6 +862,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
 
     }
+    [Preserve(AllMembers = true)]
     public class TaxPayerPersonalDetailsAvailability : INotifyPropertyChanged
     {
         private bool _dob;
@@ -1018,6 +1045,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
 
     }
+    [Preserve(AllMembers = true)]
     public class PassportDetails : INotifyPropertyChanged
     {
         private bool _passportNo;
@@ -1077,6 +1105,8 @@ namespace EGAZT.Models.EstablishmentRegistration
         }
 
     }
+    [Preserve(AllMembers = true)]
+    
     public class OutletDetails : INotifyPropertyChanged
     {
         private bool _outletType;
@@ -1106,6 +1136,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         }
 
     }
+    [Preserve(AllMembers = true)]
     public class ActivityDetails : INotifyPropertyChanged
     {
         private bool _issueCountry;
@@ -1266,6 +1297,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         }
 
     }
+    [Preserve(AllMembers = true)]
     public class LicenseDetails : INotifyPropertyChanged
     {
         private bool _issueCountry;
@@ -1406,6 +1438,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         }
 
     }
+    [Preserve(AllMembers = true)]
     public class AddressDetails : INotifyPropertyChanged
     {
         private bool _houseNo;
@@ -1525,6 +1558,7 @@ namespace EGAZT.Models.EstablishmentRegistration
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+    [Preserve(AllMembers = true)]
     public class FinancialDetails : INotifyPropertyChanged
     {
         private bool _financialRecords;
@@ -1595,5 +1629,6 @@ namespace EGAZT.Models.EstablishmentRegistration
         }
 
     }
+    
 
 }

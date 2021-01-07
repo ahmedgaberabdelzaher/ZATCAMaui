@@ -3,14 +3,14 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class VATReturnSuccessfullPageViewModel : BaseViewModel
     {
         private readonly INavigationService _navigationService;
@@ -31,6 +31,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_returnReferenceNumber == value) return;
                 _returnReferenceNumber = value;
                 RaisePropertyChanged("ReturnReferenceNumber");
             }
@@ -45,6 +46,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_taxablePeriod == value) return;
+
                 _taxablePeriod = value;
                 RaisePropertyChanged("TaxablePeriod");
             }
@@ -59,6 +62,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_sadadNumber == value) return;
+
                 _sadadNumber = value;
                 RaisePropertyChanged("SadadNumber");
             }
@@ -72,6 +77,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_amountPayable == value) return;
+
                 _amountPayable = value;
                 RaisePropertyChanged("AmountPayable");
             }
@@ -86,6 +93,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isSadadNumberVisible == value) return;
+
                 _isSadadNumberVisible = value;
                 RaisePropertyChanged("IsSadadNumberVisible");
             }
@@ -102,6 +111,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATDeclarationData == value) return;
+
                 _vATDeclarationData = value;
                 RaisePropertyChanged("VATDeclarationData");
             }
@@ -115,6 +126,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isButtonVisible == value) return;
+
                 _isButtonVisible = value;
                 RaisePropertyChanged("IsButtonVisible");
             }
@@ -128,6 +141,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isCreditCarriedTextVisible == value) return;
+
                 _isCreditCarriedTextVisible = value;
                 RaisePropertyChanged("IsCreditCarriedTextVisible");
             }
@@ -143,6 +158,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isAcknowledgementButtonVisible == value) return;
+
                 _isAcknowledgementButtonVisible = value;
                 RaisePropertyChanged("IsAcknowledgementButtonVisible");
             }
@@ -157,6 +174,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isRefreshButtonVisible == value) return;
+
                 _isRefreshButtonVisible = value;
                 RaisePropertyChanged("IsRefreshButtonVisible");
             }
@@ -202,27 +221,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _navigationService.GoBack();
             });
         }
-        public async void ShowPdf(string pdfUrl)
+        public void ShowPdf(string pdfUrl)
         {
-            //if (Device.RuntimePlatform == Device.iOS)
-            //{
-            //    if (pdfUrl != null)
-            //    {
-            //        //Uri uri = new Uri(pdfUrl);
-            //        //Device.OpenUri(uri);
-            //        _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
-            //    }
-            //    else
-            //    {
-            //        //pop that certificate is not available
-            //        Device.BeginInvokeOnMainThread(async () =>
-            //        {
-            //            await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-            //        });
-            //    }
-            //}
-            //else
-            //{
+         
             if (pdfUrl != null)
             {
                 _navigationService.NavigateTo(App.PdfView, pdfUrl);
@@ -294,7 +295,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
         }

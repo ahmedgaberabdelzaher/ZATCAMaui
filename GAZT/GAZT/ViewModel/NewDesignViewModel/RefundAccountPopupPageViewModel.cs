@@ -9,13 +9,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-   public class RefundAccountPopupPageViewModel : BaseViewModel
+    [Preserve(AllMembers = true)]
+    public class RefundAccountPopupPageViewModel : BaseViewModel
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -44,6 +45,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATDeclarationDetails == value) return;
                 _vATDeclarationDetails = value;
                 RaisePropertyChanged("VATDeclarationDetails");
             }
@@ -57,6 +59,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_responseVATDeclarationD == value) return;
+
                 _responseVATDeclarationD = value;
                 RaisePropertyChanged("ResponseVATDeclarationD");
             }
@@ -70,6 +74,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATNewModelFor15Percent == value) return;
+
                 _vATNewModelFor15Percent = value;
                 RaisePropertyChanged("VATNewModelFor15Percent");
             }
@@ -83,6 +89,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATNewModelFor5Percent == value) return;
+
                 _vATNewModelFor5Percent = value;
                 RaisePropertyChanged("VATNewModelFor5Percent");
             }
@@ -96,6 +104,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_dummyaTTACHSetsList == value) return;
+
                 _dummyaTTACHSetsList = value;
                 RaisePropertyChanged("DummyATTACHSetsList");
             }
@@ -109,6 +119,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_aTTACHSetsList == value) return;
+
                 _aTTACHSetsList = value;
                 RaisePropertyChanged("ATTACHSetsList");
             }
@@ -122,6 +134,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedIBANType == value) return;
+
                 _selectedIBANType = value;
                 if (_selectedIBANType != null)
                 {
@@ -143,6 +157,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedIBANTypePrev == value) return;
+
                 _selectedIBANTypePrev = value;
                 //if (_selectedIBANType != null)
                 //{
@@ -164,6 +180,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_iBANIDNumberList == value) return;
+
                 _iBANIDNumberList = value;
                 //if (_iBANIDNumberList != null && _iBANIDNumberList.Count() != 0)
                 //{
@@ -192,6 +210,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedIBANIDNumber == value) return;
+
                 _selectedIBANIDNumber = value;
                 if (_selectedIBANIDNumber != null)
                 {
@@ -213,6 +233,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedIBANIDNumberPrev == value) return;
+
                 _selectedIBANIDNumberPrev = value;
                 //if (_selectedIBANIDNumber != null)
                 //{
@@ -230,6 +252,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_TxtSelectedIBANIDNumber == value) return;
+
                 _TxtSelectedIBANIDNumber = value;
                 RaisePropertyChanged("TxtSelectedIBANIDNumber");
             }
@@ -243,6 +267,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_txtSelectedIBANType == value) return;
+
                 _txtSelectedIBANType = value;
                 RaisePropertyChanged("TxtSelectedIBANType");
             }
@@ -269,6 +295,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isRefundVisible == value) return;
+
                 _isRefundVisible = value;
                 RaisePropertyChanged("IsRefundVisible");
             }
@@ -282,6 +310,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isVisibleDropdownForRefund == value) return;
+
                 _isVisibleDropdownForRefund = value;
                 RaisePropertyChanged("IsVisibleDropdownForRefund");
             }
@@ -295,6 +325,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_IsVisiblechkRefundDeclaration == value) return;
+
                 _IsVisiblechkRefundDeclaration = value;
                 RaisePropertyChanged("IsVisiblechkRefundDeclaration");
             }
@@ -308,6 +340,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isTextBoxVisibleForIban == value) return;
+
                 _isTextBoxVisibleForIban = value;
                 RaisePropertyChanged("IsTextBoxVisibleForIban");
             }
@@ -321,6 +355,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isDropdownVisibleForIban == value) return;
+
                 _isDropdownVisibleForIban = value;
                 RaisePropertyChanged("IsDropdownVisibleForIban");
             }
@@ -334,6 +370,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isDropdownVisibleForIban == value) return;
+
                 _isMainButtonEnabled = value;
                 RaisePropertyChanged("IsMainButtonEnabled");
             }

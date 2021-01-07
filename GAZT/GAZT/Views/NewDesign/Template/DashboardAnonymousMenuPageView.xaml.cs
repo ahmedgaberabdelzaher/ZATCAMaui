@@ -8,11 +8,13 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.Template
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DashboardAnonymousMenuPageView : ContentPage
     {
@@ -132,6 +134,11 @@ namespace EGAZT.Views.NewDesign.Template
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "PrivacyPolicy_Tapped", "Privacy Policy");
             viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
+        private void SwitchUser_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
         }
     }
 }

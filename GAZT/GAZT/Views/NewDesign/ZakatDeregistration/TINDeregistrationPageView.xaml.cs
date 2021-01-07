@@ -20,11 +20,13 @@ using Rg.Plugins.Popup.Services;
 using Syncfusion.ListView.XForms;
 using Syncfusion.XForms.Cards;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ZakatDeregistration
 {
+    [Preserve(AllMembers = true)]
     public partial class TINDeregistrationPageView : ContentPage
     {
         TINDeregistrationPageViewModel viewModel;

@@ -1,12 +1,11 @@
 ﻿using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 {
+    [Preserve(AllMembers = true)]
     public class TaxEvasionReportDetailPageViewModel : BaseViewModel
     {
         #region properties
@@ -20,6 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             set
             {
+                if (_SelectedTaxEvasionListItem == value) return;
                 _SelectedTaxEvasionListItem = value;
                 RaisePropertyChanged("SelectedTaxEvasionListItem");
             }

@@ -11,11 +11,13 @@ using EGAZT.Views.NewDesign.GenericPickers;
 using GAZT.Models;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ContractReleasePages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContractReleasePageView : ContentPage, ContractReleaseInterface
     {
@@ -37,7 +39,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
             viewModel.ResetData();
 
-
             Task.Run(async () =>
             {
                 viewModel.IsLoading1 = true;
@@ -48,13 +49,12 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
             viewModel.contractReleaseInterface = this;
 
-
             try
             {
 
                 Task.Run(async () =>
                 {
-                    await viewModel.PopulateDataInChips();
+                    viewModel.PopulateDataInChips();
 
                 });
                 ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType == AppResources.NDGregorian).FirstOrDefault();
@@ -77,7 +77,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         {
             try
             {
-                switch (Xamarin.Forms.Device.RuntimePlatform)
+                switch (Device.RuntimePlatform)
                 {
 
 
@@ -140,11 +140,9 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
             catch (Exception ex)
             {
-
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
-
 
 
         }
@@ -169,7 +167,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -196,7 +195,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 OnAppearing();
             });
 
-            Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+            MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
             {
                 if (arg != null)
                 {
@@ -275,6 +274,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -299,7 +300,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
             viewModel.MakeCalculations();
@@ -387,7 +389,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -407,7 +410,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -467,6 +471,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -502,6 +508,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

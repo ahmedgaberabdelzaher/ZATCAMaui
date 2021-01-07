@@ -1,4 +1,5 @@
-﻿using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+﻿//using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+using EGAZT.Views.NewDesign.TaxpayerCorrespondancePages;
 using GAZT.Droid;
 using Xamarin.Forms;
 [assembly: Dependency(typeof(BaseUrl_Android))]

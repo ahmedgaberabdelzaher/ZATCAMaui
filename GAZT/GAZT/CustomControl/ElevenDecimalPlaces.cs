@@ -1,7 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public class ElevenDotTwoDecimalPlacesAndNoNegativeValue : Behavior<Entry>
     {
         static int numberOfDigit = 17;

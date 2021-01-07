@@ -7,10 +7,14 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-    xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" >
+    xmlns:custom1="clr-namespace:GAZT.CustomControl" 
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:sfCardView="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+    xmlns:syncfusionListview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" >
 
     <!--#region Colors-->
-    
+
     <Color x:Key="Primary">#006450</Color>
     <Color x:Key="Secondary">#D99A29</Color>
     <Color x:Key="NeutralBlack">#232323</Color>
@@ -20,8 +24,10 @@
     <Color x:Key="ErrorColor">#AA0C19</Color>
     <Color x:Key="warningColor">#E39800</Color>
     <Color x:Key="NewDarkGreenColor">#006450</Color>
-     <Color x:Key="LightGreen">#e4f0ee</Color>
+    <Color x:Key="LightGreen">#e4f0ee</Color>
     <Color x:Key="NeturalInProgress">#fcf5e9</Color>
+    <Color x:Key="White">#FFFFFFF</Color>
+    <Color x:Key="Yellow">#C9842B</Color>
 
     <!--#endregion-->
 
@@ -84,10 +90,10 @@
 
 
     <!--#endregion-->
-    
+
 
     <!--#region Titles  Labels-->
-    
+
     <!--#region PageTitle-->
     <Style x:Key="PageTitleBlack" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
@@ -108,9 +114,20 @@
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
     <!--#endregion-->
+    
+    <!--#region Login Menu-->
+
+    <Style x:Key="LoginMenuTitleWhite" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="FontSize" Value="24" />
+    </Style>
+
+    <!--#endregion-->
 
     <!--#region Section Titles  Labels-->
-    <Style x:Key="SectionTitleBlack" TargetType="Label"><!--TODO-->
+    <Style x:Key="SectionTitleBlack" TargetType="Label">
+        <!--TODO-->
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
         <Setter Property="FontSize" Value="20" />
@@ -130,12 +147,14 @@
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
         <Setter Property="FontSize" Value="20" />
     </Style>
-    <Style x:Key="SectionTitleGrey" TargetType="Label"><!--TODO-->
+    <Style x:Key="SectionTitleGrey" TargetType="Label">
+        <!--TODO-->
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
         <Setter Property="FontSize" Value="20" />
     </Style>
-    <Style x:Key="SectionTitleSmallMediumBlack" TargetType="Label"> <!--TODO-->
+    <Style x:Key="SectionTitleSmallMediumBlack" TargetType="Label">
+        <!--TODO-->
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
         <Setter Property="FontSize" Value="16" />
@@ -159,7 +178,7 @@
         <Setter Property="FontSize" Value="16" />
     </Style>
     <!--#endregion-->
-    
+
     <!--#region Value  Labels-->
     <!--Changed the font from 16 to 14 : value label-->
     <Style x:Key="ValueLabelBlack" TargetType="Label">
@@ -210,7 +229,11 @@
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
         <Setter Property="FontSize" Value="16" />
     </Style>
-
+        <Style x:Key="BodyLabelWhite" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
     <!--#endregion-->
 
     <!--#region Captions  Labels-->
@@ -235,7 +258,7 @@
         <Setter Property="FontSize" Value="12" />
     </Style>
     <!--#endregion-->
-    
+
     <!--#endregion-->
 
 
@@ -261,8 +284,8 @@
     </OnPlatform>
 
     <!--Button-->
-    
-    
+
+
     <Style x:Key="InputTableGridStyle" TargetType="Grid">
         <Setter Property="Margin" Value="0,10,0,0" />
     </Style>
@@ -329,7 +352,7 @@
         <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontSize" Value="Small" />
-   
+
         <!--<Setter Property="FontAttributes" Value="Bold" />-->
         <!--<Commented as we are provideing inline fontfamily />-->
     </Style>
@@ -410,17 +433,22 @@
         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
     </Style>
 
-     <Style x:Key="DefaultEntry" TargetType="Entry">
-              <Setter Property="HorizontalTextAlignment" Value="Start" />
-              <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
-              <Setter Property="FontSize" Value="15" />
-              <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
-              <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
+    <Style x:Key="DefaultEntry" TargetType="Entry">
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
 
-         
-     </Style>
+
+    </Style>
     <Style x:Key="WhiteLineSeperator" TargetType="BoxView">
         <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Opacity" Value=".2" />
+    </Style>
+    <Style x:Key="VerticalWhiteLineSeperator" TargetType="BoxView">
+        <Setter Property="WidthRequest" Value="1" />
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="Opacity" Value=".2" />
     </Style>
@@ -444,11 +472,21 @@
 
     <Style x:Key="SfLabelStyleForOnboarding" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="FontSize" Value="28" />
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25,Default=-1}"/>
         <Setter Property="TextColor" Value="White"/>
     </Style>
 
+     <Style x:Key="SfLabelTextStyleForOnboarding" TargetType="Label">
+        <Setter Property="VerticalOptions" Value="Center"/>
+         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+              <Setter Property="FontSize" Value="16" />
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="LineHeight" Value="{OnPlatform Android=1.25,Default=-1}"/>
+        <Setter Property="TextColor" Value="White"/>
+    </Style>
     <Style x:Key="SfGradientStyleForOnbBoarding" TargetType="gradient:SfGradientView">
         <Setter Property="BackgroundBrush">
             <Setter.Value>
@@ -462,20 +500,31 @@
         </Setter>
     </Style>
 
-    <!--Styles for Onboarding-->
+     <Style x:Key="SFOnboardingCenterImage" TargetType="Image">
+ 
+         <Setter Property="WidthRequest" Value="288"/>
+         <Setter Property="HeightRequest" Value="318"/>
 
+    </Style>
+    <!--Styles for Onboarding-->
+         <Style x:Key="SFQuickActionsCloseImage" TargetType="Image">
+ 
+         <Setter Property="WidthRequest" Value="414"/>
+         <Setter Property="HeightRequest" Value="88"/>
+
+    </Style>
     <!--#Styles for New Design R2-->
 
-     <Style x:Key="SfStyleForZakatPlanGreen" TargetType="Frame">
-       
+    <Style x:Key="SfStyleForZakatPlanGreen" TargetType="Frame">
+
         <Setter Property="BackgroundColor" Value="{StaticResource LightGreen}"/>
 
-       </Style>
-     <Style x:Key="ValueLabelWhiteBold" TargetType="Label">
+    </Style>
+    <Style x:Key="ValueLabelWhiteBold" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource WhiteTextColor}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
         <Setter Property="FontSize" Value="16" />
-    </Style>    
+    </Style>
 
     <Style x:Key="SfStyleGreyBorderFrame" TargetType="border:SfBorder">
         <!--<Setter Property="Margin" Value="10,0,10,0" />
@@ -488,9 +537,55 @@
         <Setter Property="ShadowColor" Value="{StaticResource NeutralGreay}" />
     </Style>
 
+    <!--#region ListviewItem_Cardview-->
 
+    <Style x:Key="ListItemCardView" TargetType="sfCardView:SfCardView">
+        <!--<Setter Property="HeightRequest" Value="136" />
+        <Setter Property="WidthRequest" Value="171" />-->
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="Margin" Value="24" />
+        <Setter Property="HasShadow" Value="True" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <!--<Setter Property="HorizontalOptions" Value="FillAndExpand" />-->
+    </Style>
 
+    <Style x:Key="CardIcon" TargetType="Image">
+        <Setter Property="HeightRequest" Value="32" />
+        <Setter Property="WidthRequest" Value="32" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="VerticalOptions" Value="EndAndExpand" />
+        <Setter Property="Aspect" Value="Fill" />
+    </Style>
 
+    <Style x:Key="CardParentStacklayout" TargetType="StackLayout">
+        <!--<Setter Property="Margin" Value="5,0,5,0" />-->
+        <Setter Property="Margin" Value="20,0,20,5" />
+        <Setter Property="VerticalOptions" Value="EndAndExpand" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+    </Style>
+    <Style x:Key="CardLabelBlack" TargetType="custom:CustomLabel">
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+    </Style>
+    <Style x:Key="CardLabelWhite" TargetType="custom:CustomLabel">
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region IconImage Styles-->
+    
+    <Style x:Key="SmallIcon" TargetType="custom:CustomLabel">
+        <Setter Property="HeightRequest" Value="24" />
+        <Setter Property="WidthRequest" Value="24" />
+    </Style>
+    
+    <!--#endregion-->
 
 
 </ResourceDictionary>

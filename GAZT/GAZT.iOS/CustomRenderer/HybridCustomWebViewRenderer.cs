@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
 using EGAZT;
 using Foundation;
@@ -17,6 +16,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridCustomWebViewRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
+    [Preserve(AllMembers = true)]
     public class HybridCustomWebViewRenderer: WkWebViewRenderer
     {
         //public HybridCustomWebViewRenderer()
@@ -76,6 +76,7 @@ namespace GAZT.iOS.CustomRenderer
         }
     }
 
+    [Preserve(AllMembers = true)]
     public class DisplayLinkWebViewDelegateNew : WKNavigationDelegate
     {
         private HybridWebView element;
@@ -112,7 +113,8 @@ namespace GAZT.iOS.CustomRenderer
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -257,7 +259,8 @@ namespace GAZT.iOS.CustomRenderer
                                 }
                                 catch (Exception ex)
                                 {
-
+                                    Console.Write(ex.ToString());
+                                    Console.Write(ex.StackTrace.ToString());
                                 }
 
                                 App.LoginDataRetrieved = new LoginModel();
@@ -295,6 +298,8 @@ namespace GAZT.iOS.CustomRenderer
                 }
                 catch (GAZTInvalidDataException ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     IsError = true;
                     App.IsLoginCalled = false;
                     App.LoginDataRetrieved.ResponseStatusMessage = "error";
@@ -302,6 +307,8 @@ namespace GAZT.iOS.CustomRenderer
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     IsError = true;
                     App.IsLoginCalled = false;
                     App.LoginDataRetrieved.ResponseStatusMessage = "error";

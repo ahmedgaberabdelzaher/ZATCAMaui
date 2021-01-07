@@ -12,6 +12,7 @@ using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 
 namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 {
+    [Preserve(AllMembers = true)]
     public partial class OldZakatInstalmentPlanListPageView : ContentPage
     {
 

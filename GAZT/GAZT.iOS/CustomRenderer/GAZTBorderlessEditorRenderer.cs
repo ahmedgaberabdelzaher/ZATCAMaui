@@ -12,6 +12,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     class GAZTBorderlessEditorRenderer : EditorRenderer
     {
         double fontSize;

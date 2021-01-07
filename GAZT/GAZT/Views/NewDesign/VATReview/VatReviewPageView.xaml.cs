@@ -9,9 +9,11 @@ using Xamarin.Forms.Xaml;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.VatReview
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VatReviewPageView : ContentPage, VatReviewInterface
     {

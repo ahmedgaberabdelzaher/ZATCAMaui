@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using EGAZT.Models.TPProfile;
+using Xamarin.Forms.Internals;
 
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     //ideally it should be UserId, TIN etc. but based on API responsethe naming of variable has been matched 
     public class TaxPayerProfile
     {

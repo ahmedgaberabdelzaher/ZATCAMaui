@@ -11,6 +11,7 @@ using Xamarin.Forms.Xaml;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public class VATRealEstateServicesPageViewModel : ViewModelBase
     {

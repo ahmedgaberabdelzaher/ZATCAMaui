@@ -12,15 +12,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FileAttachmentPopUpPageView : PopupPage
     {
@@ -79,8 +79,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 }
                             }
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
+                            Console.Write(ex.ToString());
+                            Console.Write(ex.StackTrace.ToString());
                         }
 
                         viewModel.filterList();
@@ -201,6 +203,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                     catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     await Task.Run(() =>
                     {
                         viewModel.IsLoading = false;
@@ -253,11 +257,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             getYesForDeleteAttachment();
@@ -266,26 +271,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         
 
-        public async void getYesForDeleteAttachment()
+        public void getYesForDeleteAttachment()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "YesPressedToDeleteAttachment", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "YesPressedToDeleteAttachment", (sender, arg) =>
                 {
                     DeleteAttachmentForMessagingCenterCall();
                 });
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
-        public async void getNoForDeleteAttachment()
+        public void getNoForDeleteAttachment()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "NoPressedToDeleteAttachment", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "NoPressedToDeleteAttachment", (sender, arg) =>
                 {
 
 
@@ -293,7 +299,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -353,6 +360,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 viewModel.IsLoading = false;
             }
             await Task.Run(() =>

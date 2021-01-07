@@ -16,9 +16,11 @@ using GAZT.Manager;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ActivityItemAmendUpdatePageViewModel : BaseViewModel
     {
         #region variables
@@ -31,6 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _displayCompleteDetailsLabel;
             set
             {
+                if (_displayCompleteDetailsLabel == value) return;
                 _displayCompleteDetailsLabel = value;
                 RaisePropertyChanged(nameof(DisplayCompleteDetailsLabel));
             }
@@ -52,6 +55,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _currentTab;
             set
             {
+                if (_currentTab == value) return;
+
                 _currentTab = value;
                 RaisePropertyChanged(nameof(CurrentTab));
                 switch (value)
@@ -76,6 +81,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _activityTitle;
             private set
             {
+                if (_activityTitle == value) return;
+
                 _activityTitle = value;
                 RaisePropertyChanged(nameof(ActivityTitle));
             }
@@ -88,6 +95,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _licenseDetails;
             set
             {
+                if (_licenseDetails == value) return;
+
                 _licenseDetails = value;
                 RaisePropertyChanged(nameof(LicenseDetails));
             }
@@ -161,6 +170,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_cRIssueCountry == value) return;
                 _cRIssueCountry = value;
                 RaisePropertyChanged(nameof(CRIssueCountry));
                 //}
@@ -174,6 +184,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_cRIssueBy == value) return;
+
                 _cRIssueBy = value;
                 RaisePropertyChanged(nameof(CRIssueBy));
                 //}
@@ -187,6 +199,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_AddLicenseEnabled == value) return;
+
                 _AddLicenseEnabled = value;
                 RaisePropertyChanged(nameof(AddLicenseEnabled));
                 //}
@@ -203,6 +217,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_cRIssueCity == value) return;
+
                 _cRIssueCity = value;
                 RaisePropertyChanged(nameof(CRIssueCity));
                 //}
@@ -214,6 +230,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _cRNumber;
             set
             {
+                if (_cRNumber == value) return;
+
                 _cRNumber = value;
                 RaisePropertyChanged(nameof(CRNumber));
             }
@@ -224,6 +242,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _enableInputFields;
             set
             {
+                if (_enableInputFields == value) return;
+
                 _enableInputFields = value;
                 OnIssueCountrySelectButtonClick.ChangeCanExecute();
                 OnIssueCitySelectButtonClick.ChangeCanExecute();
@@ -236,6 +256,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _enableIssueByDropDown;
             set
             {
+                if (_enableIssueByDropDown == value) return;
+
                 _enableIssueByDropDown = value;
                 OnIssueBySelectButtonClick.ChangeCanExecute();
                 RaisePropertyChanged(nameof(EnableIssueByDropDown));
@@ -247,6 +269,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _enableCRInputField;
             private set
             {
+                if (_enableCRInputField == value) return;
+
                 _enableCRInputField = value;
                 RaisePropertyChanged(nameof(EnableCRInputField));
             }
@@ -259,6 +283,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_outletDropDowns == value) return;
+
                 _outletDropDowns = value;
                 RaisePropertyChanged(nameof(OutletDropDowns));
                 //}
@@ -273,6 +299,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_selectedCRValidFromDate == value) return;
+
                 _selectedCRValidFromDate = value;
                 RaisePropertyChanged(nameof(SelectedCRValidFromDate));
             }
@@ -286,6 +314,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_selectedCRValidFromHijiriDate == value) return;
+
                 _selectedCRValidFromHijiriDate = value;
                 RaisePropertyChanged(nameof(SelectedCRValidFromHijiriDate));
             }
@@ -296,6 +326,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _cRValidFrom;
             set
             {
+                if (_cRValidFrom == value) return;
+
                 _cRValidFrom = value;
                 RaisePropertyChanged(nameof(CRValidFrom));
             }
@@ -306,6 +338,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _displayCRValidFrom;
             set
             {
+                if (_displayCRValidFrom == value) return;
+
                 _displayCRValidFrom = value;
                 RaisePropertyChanged(nameof(DisplayCRValidFrom));
             }
@@ -319,6 +353,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_attachmentCount == value) return;
+
                 _attachmentCount = value;
                 RaisePropertyChanged(nameof(AttachmentCount));
             }
@@ -329,6 +365,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _mainActivity;
             set
             {
+                if (_mainActivity == value) return;
+
                 _mainActivity = value;
                 RaisePropertyChanged(nameof(MainActivity));
             }
@@ -339,6 +377,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _cRMainGroup;
             set
             {
+                if (_cRMainGroup == value) return;
+
                 if (value != null)
                 {
                     _cRMainGroup = value;
@@ -354,6 +394,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_cRSubGroup == value) return;
+
                 _cRSubGroup = value;
                 RaisePropertyChanged(nameof(CRSubGroup));
                 //}
@@ -367,6 +409,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_cRAcitivity == value) return;
+
                 _cRAcitivity = value;
                 RaisePropertyChanged(nameof(CRAcitivity));
                 //}
@@ -378,6 +422,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _cRsCopies;
             set
             {
+                if (_cRsCopies == value) return;
+
                 if (value != null)
                 {
                     _cRsCopies = value;
@@ -391,6 +437,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _transferCRsCopies;
             set
             {
+                if (_transferCRsCopies == value) return;
+
                 if (value != null)
                 {
                     _transferCRsCopies = value;
@@ -407,6 +455,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_selectedValidFromDate == value) return;
+
                 _selectedValidFromDate = value;
                 RaisePropertyChanged(nameof(SelectedValidFromDate));
             }
@@ -420,6 +470,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             set
             {
+                if (_selectedValidFromHijiriDate == value) return;
+
                 _selectedValidFromHijiriDate = value;
                 RaisePropertyChanged(nameof(SelectedValidFromHijiriDate));
             }
@@ -430,6 +482,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _validFrom;
             set
             {
+                if (_validFrom == value) return;
+
                 _validFrom = value;
                 RaisePropertyChanged(nameof(ValidFrom));
             }
@@ -440,6 +494,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _displayValidFrom;
             set
             {
+                if (_displayValidFrom == value) return;
+
                 _displayValidFrom = value;
                 RaisePropertyChanged(nameof(DisplayValidFrom));
             }
@@ -452,6 +508,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_licenseIssueCountry == value) return;
+
                 _licenseIssueCountry = value;
                 RaisePropertyChanged(nameof(LicenseIssueCountry));
                 //}
@@ -465,6 +523,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_licenseIssueBy == value) return;
+
                 _licenseIssueBy = value;
                 RaisePropertyChanged(nameof(LicenseIssueBy));
                 //}
@@ -478,6 +538,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_licenseIssueCity == value) return;
+
                 _licenseIssueCity = value;
                 RaisePropertyChanged(nameof(LicenseIssueCity));
                 //}
@@ -489,6 +551,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _licenseNumber;
             set
             {
+                if (_licenseNumber == value) return;
+
                 _licenseNumber = value;
                 RaisePropertyChanged(nameof(LicenseNumber));
             }
@@ -501,6 +565,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_licenseMainGroup == value) return;
+
                 _licenseMainGroup = value;
                 RaisePropertyChanged(nameof(LicenseMainGroup));
                 //}
@@ -514,6 +580,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_licenseSubGroup == value) return;
+
                 _licenseSubGroup = value;
                 RaisePropertyChanged(nameof(LicenseSubGroup));
                 //}
@@ -527,6 +595,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_licenseAcitivity == value) return;
+
                 _licenseAcitivity = value;
                 RaisePropertyChanged(nameof(LicenseAcitivity));
                 //}
@@ -540,6 +610,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //if (value != null)
                 //{
+                if (_licensesCopies == value) return;
+
                 _licensesCopies = value;
                 RaisePropertyChanged(nameof(LicensesCopies));
                 //}
@@ -551,6 +623,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _licenseData;
             private set
             {
+                if (_licenseData == value) return;
+
                 _licenseData = value;
                 RaisePropertyChanged(nameof(LicenseData));
             }
@@ -561,6 +635,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _canExecute;
             set
             {
+                if (_canExecute == value) return;
+
                 _canExecute = value;
                 RaisePropertyChanged(nameof(CanExecute));
             }
@@ -597,23 +673,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                 if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 {
-
                     CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
-
                 }
                 else
                 {
-
                     _navigationService.GoBack();
                 }
-
 
             });
 
 
             OnNewLicenseButtonClick = new Command(() =>
             {
-
                 AddNewLicenseTapped = true;
 
                 if (AddLicenseEnabled)
@@ -623,11 +694,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 else
                 {
-
                     CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
 
                 }
-
 
 
             });
@@ -1368,9 +1437,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {

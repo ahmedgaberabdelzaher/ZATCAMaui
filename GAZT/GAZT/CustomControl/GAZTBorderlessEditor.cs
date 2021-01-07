@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT
 {
-   public class GAZTBorderlessEditor:Editor
+    [Preserve(AllMembers = true)]
+    public class GAZTBorderlessEditor:Editor
     {
     }
 }

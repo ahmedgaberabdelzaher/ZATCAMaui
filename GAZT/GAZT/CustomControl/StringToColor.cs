@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Globalization;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public class StringToColor : IValueConverter
     {
        

@@ -14,8 +14,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class MyBillsViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
@@ -36,6 +39,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
             }
             set
             {
+                if (_colors == value) return;
                 _colors = value;
                 RaisePropertyChanged("Colors");
             }
@@ -49,6 +53,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
             }
             set
             {
+
+                if (_setNoDataLabelVisibilityALLList == value) return;
                 _setNoDataLabelVisibilityALLList = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityALLList");
             }
@@ -62,6 +68,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
             }
             set
             {
+                if (_setNoDataLabelVisibilityALL == value) return;
+
                 _setNoDataLabelVisibilityALL = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityALL");
             }
@@ -75,6 +83,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
             }
             set
             {
+                if (_setNoDataLabelVisibilityPAID == value) return;
+
                 _setNoDataLabelVisibilityPAID = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityPAID");
             }
@@ -88,6 +98,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
             }
             set
             {
+                if (_setNoDataLabelVisibilityPAIDList == value) return;
+
                 _setNoDataLabelVisibilityPAIDList = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityPAIDList");
             }

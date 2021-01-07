@@ -1,7 +1,10 @@
 ﻿using GAZT.Helper;
 using System;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.Models.TPProfile
 {
+    [Preserve(AllMembers = true)]
     public class TPProfileAPIRequest
     {
         public Metadata __metadata { get; set; }
@@ -118,7 +121,7 @@ namespace EGAZT.Models.TPProfile
             return TPProfileAPIRequestData;
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class TPProfileAPIRequestDataModel
     {
         public string NewMobile { get; set; } // Mobile

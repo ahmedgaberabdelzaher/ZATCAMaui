@@ -3,7 +3,8 @@
     x:Class="EGAZT.Views.NewDesign.OnboardingPages.WalkthroughItemPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms" xmlns:custom="clr-namespace:GAZT"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:custom="clr-namespace:GAZT"
     NavigationPage.HasNavigationBar="False">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -20,49 +21,39 @@
             
             <!--  Image for display svg image  -->
             <Image
+                HeightRequest="250"
                 BackgroundColor="Transparent"
-                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=300,
-                                                                      AndroidPhonePortrait=200,
-                                                                      AndroidPhoneLandscape=140,
-                                                                      iOSPhonePortrait=200,
-                                                                      iOSPhoneLandscape=140}"
-                Opacity="{OnPlatform Default=0,
-                                     UWP=1}"
+                Style="{StaticResource SFOnboardingCenterImage}"
+
+             Aspect="AspectFit"
                 Source="{Binding ImagePath}"
                 VerticalOptions="Center"
-                WidthRequest="{x:OnIdiom Phone=200,
-                                         Desktop=300,
-                                         Tablet=300}" />
+                 />
 
             <!--  Label to display header  -->
-            <custom:CustomLabel 
-                Margin="0,30,0,8"
-                FontFamily="{StaticResource SSTArabicMedium}"
-                FontSize="14"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Opacity="{OnPlatform Default=0,
-                                     UWP=1}"
+  
+            <custom:CustomLabel
+               FontSize="18.6"
+                HorizontalTextAlignment="Start"
+                                 Style="{StaticResource PageTitleWhite}"
+                                 HorizontalOptions="Center"  Margin="0,20,0,10"
+                                 VerticalOptions="Center"
                 StyleId="OnBoardText"
-                Style="{StaticResource SfLabelStyleForOnboarding}"
                 Text="{Binding Header}"
-                TranslationY="{OnPlatform Default=60,
-                                          UWP=0}"
-                VerticalTextAlignment="Center" />
+               
+                 />
 
             <!--  Label to display content  -->
-            <custom:CustomLabel 
-                FontFamily="{StaticResource SSTArabicMedium}"
-                FontSize="16"
+            <Label 
+                Margin="10,10,0,10"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
-                Opacity="{OnPlatform Default=0,
-                                     UWP=1}"
-                Style="{StaticResource SfLabelStyleForOnboarding}"
+               
+                Style="{StaticResource BodyLabelWhite}"
                   StyleId="OnBoardText"
 
                 Text="{Binding Content}"
-                TranslationY="{OnPlatform Default=60, UWP=0}" 
+                LineBreakMode="CharacterWrap"
                 LineHeight=".6"
                 VerticalTextAlignment="Center" 
                 />

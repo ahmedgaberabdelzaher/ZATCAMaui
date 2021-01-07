@@ -20,10 +20,12 @@ using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
 {
+    [Preserve(AllMembers = true)]
     public partial class VATDeclarationAttachmentPageView : PopupPage
     {
         VATDeclarationAttachmentPageViewModel viewModel;
@@ -321,7 +323,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                     if (attachment.Filename == tempAttachmentDocumentModel.Filename)
                     {
-                        var platform = DeviceInfo.Platform;
+                        var platform = Xamarin.Essentials.DeviceInfo.Platform;
                         if (Device.RuntimePlatform == Device.iOS)
                         {
                             downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);

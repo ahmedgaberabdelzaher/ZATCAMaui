@@ -15,9 +15,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
+    [Preserve(AllMembers = true)]
     public class VATRegistrationPageViewModel : ViewModelBase
     {
         string idnumber { get; set; }
@@ -46,6 +48,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -70,6 +73,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_continueButtonnBackroundColor == value) return;
+
                 _continueButtonnBackroundColor = value;
                 RaisePropertyChanged("ContinueButtonnBackroundColor");
             }
@@ -83,6 +88,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_answer1selectedcount == value) return;
+
                 _answer1selectedcount = value;
                 RaisePropertyChanged("answer1selectedcount");
             }
@@ -96,6 +103,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_ATTDETSetObject == value) return;
+
                 _ATTDETSetObject = value;
                 RaisePropertyChanged("ATTDETSetObject");
             }
@@ -109,6 +118,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_answer2selectedcount == value) return;
+
                 _answer2selectedcount = value;
                 RaisePropertyChanged("answer2selectedcount");
             }
@@ -136,6 +147,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_answer4selectedcount == value) return;
+
                 _answer4selectedcount = value;
                 RaisePropertyChanged("answer4selectedcount");
             }
@@ -150,6 +163,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isFDNameMobEmailEnable == value) return;
+
                 _isFDNameMobEmailEnable = value;
 
                 RaisePropertyChanged("IsFDNameMobEmailEnable");
@@ -164,6 +179,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_IsBackStepButtonVisible == value) return;
+
                 _IsBackStepButtonVisible = value;
 
                 RaisePropertyChanged("IsBackStepButtonVisible");
@@ -179,6 +196,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_iDNumberNonMandatoryVisibility == value) return;
+
                 _iDNumberNonMandatoryVisibility = value;
 
                 RaisePropertyChanged("IDNumberNonMandatoryVisibility");
@@ -194,6 +213,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_iDNumberMandatoryVisibility == value) return;
+
                 _iDNumberMandatoryVisibility = value;
                 if(_iDNumberMandatoryVisibility)
                 {
@@ -216,6 +237,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_iDNumberVisibility == value) return;
+
                 _iDNumberVisibility = value;
 
                 RaisePropertyChanged("IDNumberVisibility");
@@ -230,6 +253,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_dOBNonMandatoryVisibility == value) return;
+
                 _dOBNonMandatoryVisibility = value;
 
                 RaisePropertyChanged("DOBNonMandatoryVisibility");
@@ -245,6 +270,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_dOBMandatoryVisibility == value) return;
+
                 _dOBMandatoryVisibility = value;
 
                 RaisePropertyChanged("DOBMandatoryVisibility");
@@ -261,6 +288,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isAttachmentImporterExporterVisible == value) return;
+
                 _isAttachmentImporterExporterVisible = value;
 
                 RaisePropertyChanged("isAttachmentImporterExporterVisible");
@@ -276,6 +305,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isContinueButtonEnable == value) return;
+
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {
@@ -297,6 +328,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_startdateToshow == value) return;
+
                 _startdateToshow = value;
               
                 RaisePropertyChanged("StartdateToshow");
@@ -311,6 +344,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_quesTion3answerSelected == value) return;
+
                 _quesTion3answerSelected = value;
 
                 RaisePropertyChanged("quesTion3answerSelected");
@@ -325,6 +360,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_quesTion4answerSelected == value) return;
+
                 _quesTion4answerSelected = value;
 
                 RaisePropertyChanged("quesTion4answerSelected");
@@ -339,6 +376,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_todayDate == value) return;
+
                 _todayDate = value;
                 RaisePropertyChanged("TodayDate");
             }
@@ -352,6 +391,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_DOB == value) return;
+
                 _DOB = value;
                 RaisePropertyChanged("DOB");
             }
@@ -366,6 +407,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_contactDOB == value) return;
+
                 _contactDOB = value;
                 RaisePropertyChanged("ContactDOB");
             }
@@ -380,6 +423,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_maxLengthID == value) return;
                 _maxLengthID = value;
                 RaisePropertyChanged("MaxLengthID");
             }
@@ -393,6 +437,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_maxLengthIDSR == value) return;
                 _maxLengthIDSR = value;
                 RaisePropertyChanged("MaxLengthIDSR");
             }
@@ -406,6 +451,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_frameContactIDError == value) return;
+
                 _frameContactIDError = value;
                 RaisePropertyChanged("FrameContactIDError");
             }
@@ -420,6 +467,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_frameIDError == value) return;
+
                 _frameIDError = value;
                 RaisePropertyChanged("FrameIDError");
             }
@@ -433,6 +482,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_frameContactDOBError == value) return;
+
                 _frameContactDOBError = value;
                 RaisePropertyChanged("FrameContactDOBError");
             }
@@ -446,6 +497,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_frameDOBError == value) return;
+
                 _frameDOBError = value;
                 RaisePropertyChanged("FrameDOBError");
             }
@@ -459,6 +512,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isInstrunctionVisible == value) return;
+
                 _isInstrunctionVisible = value;
                 if (_isInstrunctionVisible)
                 {
@@ -481,6 +536,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isTaxPayersVisible == value) return;
+
                 _isTaxPayersVisible = value;
                 if (_isTaxPayersVisible)
                 {
@@ -498,6 +555,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isSalesVisible == value) return;
+
                 _isSalesVisible = value;
                 if (_isSalesVisible) 
                 { 
@@ -515,6 +574,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isExpensesVisible == value) return;
+
                 _isExpensesVisible = value;
                 RaisePropertyChanged("IsExpensesVisible");
             }
@@ -528,6 +589,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isFinancialVisible == value) return;
+
                 _isFinancialVisible = value;
                 if (_isFinancialVisible)
                 {
@@ -546,6 +609,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isSummaryVisible == value) return;
+
                 _isSummaryVisible = value;
                 if (_isSummaryVisible)
                 {
@@ -564,6 +629,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_currentStep == value) return;
+
                 _currentStep = value;
                 RaisePropertyChanged("CurrentStep");
             }
@@ -578,6 +645,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -592,6 +661,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_ListOfActionButtonsApplicableForRegistration == value) return;
+
                 _ListOfActionButtonsApplicableForRegistration = value;
                 if (_ListOfActionButtonsApplicableForRegistration != null && _ListOfActionButtonsApplicableForRegistration.Count() != 0)
                 {
@@ -614,6 +685,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_regTypeCode == value) return;
+
                 _regTypeCode = value;
                 RaisePropertyChanged("RegTypeCode");
             }
@@ -628,6 +701,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_vATRegistrationDetailsData == value) return;
+
                 _vATRegistrationDetailsData = value;
                 RaisePropertyChanged("VATRegistrationDetailsData");
             }
@@ -643,6 +718,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_minimumDisplayValueOfSlider1 == value) return;
+
                 _minimumDisplayValueOfSlider1 = value;
                 RaisePropertyChanged("MinimumDisplayValueOfSlider1");
             }
@@ -657,6 +734,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_maximumDisplayValueOfSlider1 == value) return;
+
                 _maximumDisplayValueOfSlider1 = value;
                 RaisePropertyChanged("MaximumDisplayValueOfSlider1");
             }
@@ -671,6 +750,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_maximumDisplayValueOfSlider2 == value) return;
+
                 _maximumDisplayValueOfSlider2 = value;
                 RaisePropertyChanged("MaximumDisplayValueOfSlider2");
             }
@@ -685,6 +766,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_minimumDisplayValueOfSlider2 == value) return;
+
                 _minimumDisplayValueOfSlider2 = value;
                 RaisePropertyChanged("MinimumDisplayValueOfSlider2");
             }
@@ -699,6 +782,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_maximumValueOfSlider2 == value) return;
+
                 _maximumValueOfSlider2 = value;
                 RaisePropertyChanged("MaximumValueOfSlider2");
             }
@@ -713,6 +798,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_maximumValueOfSlider1 == value) return;
+
                 _maximumValueOfSlider1 = value;
                 RaisePropertyChanged("MaximumValueOfSlider1");
             }
@@ -727,6 +814,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_sliderLable1EligibilityText == value) return;
+
                 _sliderLable1EligibilityText = value;
                 
                 RaisePropertyChanged("SliderLable1EligibilityText");
@@ -741,6 +830,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_sliderLable1 == value) return;
+
                 _sliderLable1 = value;
                 RaisePropertyChanged("SliderLable1");
             }
@@ -754,6 +845,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_sliderLable2 == value) return;
+
                 _sliderLable2 = value;
                 RaisePropertyChanged("SliderLable2");
             }
@@ -767,6 +860,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_sliderCurrentValue1 == value) return;
+
                 _sliderCurrentValue1 = value;
                 RaisePropertyChanged("SliderCurrentValue1");
             }
@@ -781,6 +876,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_sliderCurrentValue2 == value) return;
+
                 _sliderCurrentValue2 = value;
                 RaisePropertyChanged("SliderCurrentValue2");
             }
@@ -795,6 +892,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_minMaxRanges == value) return;
+
                 _minMaxRanges = value;
                 RaisePropertyChanged("MinMaxRanges");
             }
@@ -811,6 +910,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_vATRegistrationOtherDetails == value) return;
+
                 _vATRegistrationOtherDetails = value;
                 RaisePropertyChanged("VATRegistrationOtherDetails");
             }
@@ -825,9 +926,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isInstrunctionChecked == value) return;
+
                 _isInstrunctionChecked = value;
-                if (_isInstrunctionChecked != null)
-                { 
+            
                 if (_isInstrunctionChecked)
                 {
                     IsContinueButtonEnable = true;
@@ -836,7 +938,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     IsContinueButtonEnable = false;
                 }
-                }
+                
                 RaisePropertyChanged("IsInstrunctionChecked");
             }
         }
@@ -850,9 +952,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isDeclarationChecked == value) return;
+
                 _isDeclarationChecked = value;
-               if(_isDeclarationChecked!=null)
-                {  
+             
                 if (_isDeclarationChecked)
                 {
                     IsContinueButtonEnable = true;
@@ -861,7 +964,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     IsContinueButtonEnable = false;
                 }
-                }
+                
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }
@@ -875,6 +978,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isResident == value) return;
+
                 _isResident = value;
                 RaisePropertyChanged("IsResident");
             }
@@ -889,6 +994,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_attachments == value) return;
+
                 _attachments = value;
                 RaisePropertyChanged("Attachments");
             }
@@ -903,6 +1010,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_aDDRESSSetData == value) return;
+
                 _aDDRESSSetData = value;
                 RaisePropertyChanged("ADDRESSSetData");
             }
@@ -917,6 +1026,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_addressLineOne == value) return;
+
                 _addressLineOne = value;
                 RaisePropertyChanged("AddressLineOne");
             }
@@ -931,6 +1042,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_addressLineTwo == value) return;
+
                 _addressLineTwo = value;
                 RaisePropertyChanged("AddressLineTwo");
             }
@@ -945,6 +1058,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_vatEligibleStartDate == value) return;
+
                 _vatEligibleStartDate = value;
                 RaisePropertyChanged("VatEligibleStartDate");
             }
@@ -959,6 +1074,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_gpartFR == value) return;
+
                 _gpartFR = value;
                 RaisePropertyChanged("GpartFR");
             }
@@ -972,6 +1089,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_typeFR == value) return;
+
                 _typeFR = value;
                 RaisePropertyChanged("TypeFR");
             }
@@ -986,6 +1105,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_idnumberFR == value) return;
+
                 _idnumberFR = value;
                 RaisePropertyChanged("IdnumberFR");
             }
@@ -1000,6 +1121,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_firstnmFR == value) return;
+
                 _firstnmFR = value;
                 RaisePropertyChanged("FirstnmFR");
             }
@@ -1014,6 +1137,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_lastnmFR == value) return;
+
                 _lastnmFR = value;
                 RaisePropertyChanged("LastnmFR");
             }
@@ -1028,6 +1153,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_mobNumberFR == value) return;
+
                 _mobNumberFR = value;
                 RaisePropertyChanged("MobNumberFR");
             }
@@ -1042,6 +1169,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_idNumberSR == value) return;
+
                 _idNumberSR = value;
                 RaisePropertyChanged("IdNumberSR");
             }
@@ -1056,6 +1185,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_firstNameSR == value) return;
+
                 _firstNameSR = value;
                 RaisePropertyChanged("FirstNameSR");
             }
@@ -1070,6 +1201,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_smtpAddrFR == value) return;
+
                 _smtpAddrFR = value;
                 RaisePropertyChanged("SmtpAddrFR");
             }
@@ -1084,6 +1217,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_idTypeListFR == value) return;
+
                 _idTypeListFR = value;
                 RaisePropertyChanged("IdTypeListFR");
             }
@@ -1098,6 +1233,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_idTypeListSR == value) return;
+
                 _idTypeListSR = value;
                 RaisePropertyChanged("IdTypeListSR");
             }
@@ -1112,6 +1249,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_iDTypeIndexFR == value) return;
+
                 _iDTypeIndexFR = value;
                 RaisePropertyChanged("IDTypeIndexFR");
             }
@@ -1126,6 +1265,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_iDTypeIndexSR == value) return;
+
                 _iDTypeIndexSR = value;
                 RaisePropertyChanged("IDTypeIndexSR");
             }
@@ -1139,6 +1280,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_txtIDType == value) return;
+
                 _txtIDType = value;
                 RaisePropertyChanged("TxtIDType");
             }
@@ -1153,6 +1296,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_txtIDTypeFR == value) return;
+
                 _txtIDTypeFR = value;
                 RaisePropertyChanged("TxtIDTypeFR");
             }
@@ -1167,6 +1312,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_txtIDTypeSR == value) return;
+
                 _txtIDTypeSR = value;
                 RaisePropertyChanged("TxtIDTypeSR");
             }
@@ -1183,6 +1330,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_selectedIdTypeFR == value) return;
+
                 _selectedIdTypeFR = value;
                 if (_selectedIdTypeFR != null)
                 {
@@ -1209,8 +1358,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
                             TxtIDTypeFR = _selectedIdTypeFR.Name;
                     }
-                    catch (Exception Ex)
+                    catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
                 }
@@ -1227,6 +1378,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_selectedIdTypeSR == value) return;
+
                 _selectedIdTypeSR = value;
                 if (_selectedIdTypeSR != null)
                 {
@@ -1270,6 +1423,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_importerImageSource == value) return;
+
                 _importerImageSource = value;
                 RaisePropertyChanged("ImporterImageSource");
             }
@@ -1284,6 +1439,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_importerTextColor == value) return;
+
                 _importerTextColor = value;
                 RaisePropertyChanged("ImporterTextColor");
             }
@@ -1298,6 +1455,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_exporterTextColor == value) return;
+
                 _exporterTextColor = value;
                 RaisePropertyChanged("ExporterTextColor");
             }
@@ -1314,6 +1473,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_exporterImageSource == value) return;
+
                 _exporterImageSource = value;
                 RaisePropertyChanged("ExporterImageSource");
             }
@@ -1328,6 +1489,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_selectedIban == value) return;
+
                 _selectedIban = value;
                 RaisePropertyChanged("SelectedIban");
             }
@@ -1342,6 +1505,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_ibanList == value) return;
+
                 _ibanList = value;
                 RaisePropertyChanged("IbanList");
             }
@@ -1356,6 +1521,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isNewAccountClicked == value) return;
+
                 _isNewAccountClicked = value;
                 RaisePropertyChanged("IsNewAccountClicked");
             }
@@ -1371,6 +1538,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isNewAccountText == value) return;
+
                 _isNewAccountText = value;
                 RaisePropertyChanged("NewAccountText");
             }
@@ -1385,6 +1554,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_textQuestion3First == value) return;
+
                 _textQuestion3First = value;
                 RaisePropertyChanged("TextQuestion3First");
             }
@@ -1399,6 +1570,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_textQuestion3FirstTextColor == value) return;
+
                 _textQuestion3FirstTextColor = value;
                 RaisePropertyChanged("TextQuestion3FirstTextColor");
             }
@@ -1413,6 +1586,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_textQuestion4First == value) return;
+
                 _textQuestion4First = value;
                 RaisePropertyChanged("TextQuestion4First");
             }
@@ -1427,6 +1602,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_textQuestion4FirstTextColor == value) return;
+
                 _textQuestion4FirstTextColor = value;
                 RaisePropertyChanged("TextQuestion4FirstTextColor");
             }
@@ -1441,6 +1618,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_textQuestion3Second == value) return;
+
                 _textQuestion3Second = value;
                 RaisePropertyChanged("TextQuestion3Second");
             }
@@ -1455,6 +1634,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_textQuestion3SecondTextColor == value) return;
+
                 _textQuestion3SecondTextColor = value;
                 RaisePropertyChanged("TextQuestion3SecondTextColor");
             }
@@ -1469,6 +1650,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_textQuestion4Second == value) return;
+
                 _textQuestion4Second = value;
                 RaisePropertyChanged("TextQuestion4Second");
             }
@@ -1483,6 +1666,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_textQuestion4SecondTextColor == value) return;
+
                 _textQuestion4SecondTextColor = value;
                 RaisePropertyChanged("TextQuestion4SecondTextColor");
             }
@@ -1497,6 +1682,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_imageforTextQuestion3First == value) return;
+
                 _imageforTextQuestion3First = value;
                 RaisePropertyChanged("ImageforTextQuestion3First");
             }
@@ -1510,6 +1697,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_imageforTextQuestion3Second == value) return;
+
                 _imageforTextQuestion3Second = value;
                 RaisePropertyChanged("ImageforTextQuestion3Second");
             }
@@ -1523,6 +1712,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_imageforTextQuestion4First == value) return;
+
                 _imageforTextQuestion4First = value;
                 RaisePropertyChanged("ImageforTextQuestion4First");
             }
@@ -1537,6 +1728,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_imageforTextQuestion4Second == value) return;
+
                 _imageforTextQuestion4Second = value;
                 RaisePropertyChanged("ImageforTextQuestion4Second");
             }
@@ -1622,7 +1815,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1678,6 +1872,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                     catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                         IsLoading = false;
                         return null;
 
@@ -1701,6 +1897,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 return response;
             }
     }
@@ -2064,6 +2262,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2071,7 +2271,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     //_dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
             }
@@ -2140,12 +2340,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
 
-        public async Task SetDefaultDate()
+        public void SetDefaultDate()
         {
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
             //Select today dates

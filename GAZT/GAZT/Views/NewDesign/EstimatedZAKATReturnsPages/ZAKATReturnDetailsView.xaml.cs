@@ -3,10 +3,12 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
+    [Preserve(AllMembers = true)]
     public partial class ZAKATReturnDetailsView : ContentPage
     {
         ZAKATReturnDetailsViewModel viewModel;

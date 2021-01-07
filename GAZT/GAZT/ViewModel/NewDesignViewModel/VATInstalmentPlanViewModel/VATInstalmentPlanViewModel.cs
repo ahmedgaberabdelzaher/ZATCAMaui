@@ -12,8 +12,6 @@ using EGAZT.Models;
 using EGAZT.Models.VATInstalationModels;
 using EGAZT.Views.NewDesign;
 using EGAZT.Views.NewDesign.Common;
-using EGAZT.Views.NewDesign.GenericPickers;
-using EGAZT.Views.NewDesign.InstalmentPlan;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.NewDesign.VatInstalmentPlan;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
@@ -28,9 +26,11 @@ using pdfjs.Interfaces;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Metadata = EGAZT.Models.VATInstalationModels.Metadata;
-
+using Xamarin.Forms.Internals;
+ 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
-{
+{ 
+    [Preserve(AllMembers = true)]
     public class VATInstalmentPlanViewModel : ViewModelBase
     {
         #region Variable
@@ -47,6 +47,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isLoading == value) return;
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -60,6 +61,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_vATDueAmount == value) return;
+
                 _vATDueAmount = value;
                 RaisePropertyChanged("VATDueAmount");
             }
@@ -73,6 +76,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_secondTerms == value) return;
+
                 _secondTerms = value;
                 RaisePropertyChanged("SecondTerms");
             }
@@ -86,6 +91,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_vATPenalityAmount == value) return;
+
                 _vATPenalityAmount = value;
                 RaisePropertyChanged("VATPenalityAmount");
             }
@@ -99,6 +106,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_vATLiabilityAmount == value) return;
+
                 _vATLiabilityAmount = value;
                 RaisePropertyChanged("VATLiabilityAmount");
             }
@@ -112,6 +121,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_vATBillDueAmount == value) return;
+
                 _vATBillDueAmount = value;
                 RaisePropertyChanged("VATBillDueAmount");
             }
@@ -122,6 +133,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -146,6 +159,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_IsViewEnable == value) return;
+
                 _IsViewEnable = value;
                 RaisePropertyChanged("IsViewEnable");
             }
@@ -160,6 +175,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_IsDraftRecord == value) return;
+
                 _IsDraftRecord = value;
                 RaisePropertyChanged("IsDraftRecord");
             }
@@ -175,6 +192,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_billsListVATData == value) return;
                 _billsListVATData = value;
                 RaisePropertyChanged("BillsListVAT");
             }
@@ -188,6 +206,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_billsListVAT == value) return;
                 _billsListVAT = value;
                 RaisePropertyChanged("BillsListVAT");
             }
@@ -202,6 +221,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_statementList == value) return;
+
                 _statementList = value;
                 RaisePropertyChanged("StatementList");
             }
@@ -217,6 +238,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isNoDataLableVisible == value) return;
                 _isNoDataLableVisible = value;
                 RaisePropertyChanged("isNoDataLableVisible");
             }
@@ -291,6 +313,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isBackButtonVisible == value) return;
+
                 _isBackButtonVisible = value;
                 RaisePropertyChanged("IsBackButtonVisible");
             }
@@ -305,6 +329,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isSelectionViewEnabled == value) return;
+
                 _isSelectionViewEnabled = value;
                 RaisePropertyChanged("IsSelectionViewEnabled");
             }
@@ -320,6 +346,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_selectedOutletOptionIndex == value) return;
+
                 _selectedOutletOptionIndex = value;
                 RaisePropertyChanged("SelectedOutletOptionIndex");
             }
@@ -333,6 +361,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isAgreementViewEnabled == value) return;
+
                 _isAgreementViewEnabled = value;
                 RaisePropertyChanged("IsAgreementViewEnabled");
             }
@@ -347,6 +377,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isOutletViewEnabled == value) return;
                 _isOutletViewEnabled = value;
                 RaisePropertyChanged("IsOutletViewEnabled");
             }
@@ -360,6 +391,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isBillsViewEnabled == value) return;
                 _isBillsViewEnabled = value;
                 RaisePropertyChanged("IsBillsViewEnabled");
             }
@@ -373,6 +405,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isVATBillsViewEnabled == value) return;
                 _isVATBillsViewEnabled = value;
                 RaisePropertyChanged("IsVATBillsViewEnabled");
             }
@@ -387,6 +420,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isAttachmentsViewEnabled == value) return;
                 _isAttachmentsViewEnabled = value;
                 RaisePropertyChanged("IsAttachmentsViewEnabled");
             }
@@ -400,6 +434,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isStatementViewEnabled == value) return;
                 _isStatementViewEnabled = value;
                 RaisePropertyChanged("IsStatementViewEnabled");
             }
@@ -414,6 +449,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isSummaryViewEnabled == value) return;
                 _isSummaryViewEnabled = value;
                 RaisePropertyChanged("IsSummaryViewEnabled");
             }
@@ -439,11 +475,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             get { return _isBillContinueEnabled; }
             set
             {
+                if (_isBillContinueEnabled == value) return;
                 _isBillContinueEnabled = value;
                 IsBillContinueBackGroundColor = Color.FromHex(_isBillContinueEnabled ? "#d49504" : "#9EA4A9");
-
-
-
                 RaisePropertyChanged("IsBillContinueEnabled");
             }
         }
@@ -456,10 +490,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
-                if (_isBillContinueBackGroundColor == value)
-                {
-                    return;
-                }
+                if (_isBillContinueBackGroundColor == value) return;
                 _isBillContinueBackGroundColor = value;
                 RaisePropertyChanged("IsBillContinueBackGroundColor");
             }
@@ -476,6 +507,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_IsFirstCheckboxChecked == value) return;
+
                 _IsFirstCheckboxChecked = value;
                 IsSelectionContinueBackGroundColor = Color.FromHex(_IsFirstCheckboxChecked ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsFirstCheckboxChecked");
@@ -489,6 +522,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+               
                 if (_isSelectionContinueBackGroundColor == value)
                 {
                     return;
@@ -507,7 +541,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
-                _isSucessViewEnabled = value;
+                if (_isSucessViewEnabled == value) return;
+
+                    _isSucessViewEnabled = value;
                 RaisePropertyChanged("IsSucessViewEnabled");
             }
         }
@@ -516,6 +552,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (noOfInstalments == value) return;
+
                 if (noOfInstalments != value)
                 {
                     noOfInstalments = value;
@@ -532,6 +570,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (minInstalments == value) return;
+
                 if (minInstalments != value)
                 {
                     minInstalments = value;
@@ -548,6 +588,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (maxInstalments == value) return;
+
                 if (maxInstalments != value)
                 {
                     maxInstalments = value;
@@ -564,6 +606,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (downPaymentAmount == value) return;
+
                 if (downPaymentAmount != value)
                 {
                     downPaymentAmount = value;
@@ -580,6 +624,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (minAmount == value) return;
+
                 if (minAmount != value)
                 {
                     minAmount = value;
@@ -596,6 +642,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (maxAmount == value) return;
+
                 if (maxAmount != value)
                 {
                     maxAmount = value;
@@ -612,6 +660,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (totalAmountSAR == value) return;
+
                 if (totalAmountSAR != value)
                 {
                     totalAmountSAR = value;
@@ -629,6 +679,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (inputData == value) return;
+
                 if (inputData != value)
                 {
                     inputData = value;
@@ -650,6 +702,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isVATAmountVisible == value) return;
+
                 _isVATAmountVisible = value;
                 RaisePropertyChanged("IsVATAmountVisible");
             }
@@ -666,6 +720,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isZakatSelected == value) return;
+
                 _isZakatSelected = value;
                 RaisePropertyChanged("IsZakatSelected");
             }
@@ -681,6 +737,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isIncomeTaxViewEnabled == value) return;
+
                 _isIncomeTaxViewEnabled = value;
                 RaisePropertyChanged("IsIncomeTaxViewEnabled");
             }
@@ -695,6 +753,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isSubIncomeTaxViewEnabled == value) return;
+
                 _isSubIncomeTaxViewEnabled = value;
                 RaisePropertyChanged("IsSubIncomeTaxViewEnabled");
             }
@@ -710,6 +770,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_selectedFilterZakat == value) return;
+
                 _selectedFilterZakat = value;
                 if (_selectedFilterZakat != null)
                 {
@@ -755,6 +817,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_listZAKATCorrespondance == value) return;
+
                 _listZAKATCorrespondance = value;
                 RaisePropertyChanged("ListZAKATCorrespondance");
             }
@@ -769,6 +833,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_txtSelectedStatusZakat == value) return;
+
                 _txtSelectedStatusZakat = value;
                 RaisePropertyChanged("TxtSelectedStatusZakat");
             }
@@ -783,6 +849,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_vATReferanceNumber == value) return;
+
                 _vATReferanceNumber = value;
                 RaisePropertyChanged("VATReferanceNumber");
             }
@@ -797,6 +865,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_vATCustomerName == value) return;
+
                 _vATCustomerName = value;
                 RaisePropertyChanged("VATCustomerName");
             }
@@ -812,6 +882,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_selectedFilterZakatPrev == value) return;
+
                 _selectedFilterZakatPrev = value;
                 RaisePropertyChanged("SelectedFilterZakatPrev");
             }
@@ -828,6 +900,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         private List<CorrespondenceFiltersModel> _corresFilterZakat;
@@ -839,6 +913,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_corresFilterZakat == value) return;
+
                 _corresFilterZakat = value;
                 RaisePropertyChanged("CorresFilterZakat");
             }
@@ -853,6 +929,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_subSelectedFilterZakat == value) return;
+
                 _subSelectedFilterZakat = value;
                 if (_subSelectedFilterZakat != null)
                 {
@@ -898,6 +976,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_subListZAKATCorrespondance == value) return;
+
                 _subListZAKATCorrespondance = value;
                 RaisePropertyChanged("SubListZAKATCorrespondance");
             }
@@ -912,6 +992,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_subTxtSelectedStatusZakat == value) return;
+
                 _subTxtSelectedStatusZakat = value;
                 RaisePropertyChanged("SubTxtSelectedStatusZakat");
             }
@@ -927,6 +1009,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_subSelectedFilterZakatPrev == value) return;
+
                 _subSelectedFilterZakatPrev = value;
                 RaisePropertyChanged("SubSelectedFilterZakatPrev");
             }
@@ -955,6 +1039,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_subCorresFilterZakat == value) return;
+
                 _subCorresFilterZakat = value;
                 RaisePropertyChanged("SubCorresFilterZakat");
             }
@@ -969,6 +1055,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_subSetSelectedIndexZakat == value) return;
+
                 _subSetSelectedIndexZakat = value;
                 RaisePropertyChanged("SubSetSelectedIndexZakat");
             }
@@ -982,6 +1070,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_PathOfPdf == value) return;
                 _PathOfPdf = value;
                 RaisePropertyChanged("PathOfPdf");
             }
@@ -996,6 +1085,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_NotesText == value) return;
+
                 _NotesText = value;
                 RaisePropertyChanged("NotesText");
             }
@@ -1310,7 +1401,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
-                _ListOfActionButtonsApplicable = value;
+                if (_ListOfActionButtonsApplicable == value) return;
+
+                    _ListOfActionButtonsApplicable = value;
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
@@ -1326,6 +1419,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_selectedOutletOption == value) return;
+
                 _selectedOutletOption = value;
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
                 RaisePropertyChanged("SelectedOutletOption");
@@ -1342,6 +1437,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_vatInstalments == value) return;
+
                 _vatInstalments = value;
                 RaisePropertyChanged("VatInstalments");
             }
@@ -1356,6 +1453,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_vatInstalment == value) return;
                 _vatInstalment = value;
                 RaisePropertyChanged("VatInstalment");
             }
@@ -1370,6 +1468,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isInstrunctionChecked == value) return;
+
                 _isInstrunctionChecked = value;
                 if (_isInstrunctionChecked != null)
                 {
@@ -1395,6 +1495,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isVatTermsChecked == value) return;
+
                 _isVatTermsChecked = value;
                 RaisePropertyChanged("IsVatTermsChecked");
             }
@@ -1409,6 +1511,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isDeclarationChecked == value) return;
+
                 _isDeclarationChecked = value;
                 if (_isDeclarationChecked)
                 {
@@ -1428,6 +1532,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isAttachmentsListVisible == value) return;
+
                 _isAttachmentsListVisible = value;
                 RaisePropertyChanged("IsAttachmentsListVisible");
             }
@@ -1441,6 +1547,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isContinueButtonEnable == value) return;
+
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {
@@ -1459,6 +1567,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (_monthlyInstalment == value) return;
+
                 if (_monthlyInstalment != value)
                 {
                     _monthlyInstalment = value;
@@ -1478,6 +1588,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (maxInstalmentsTitle == value) return;
+
                 if (maxInstalmentsTitle != value)
                 {
                     maxInstalmentsTitle = value;
@@ -1496,6 +1608,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             set
             {
+                if (minInstalmentsTitle == value) return;
+
                 if (minInstalmentsTitle != value)
                 {
                     minInstalmentsTitle = value;
@@ -1516,6 +1630,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_StreamForDownloadURL == value) return;
+
                 _StreamForDownloadURL = value;
                 RaisePropertyChanged("StreamForDownloadURL");
             }
@@ -1530,6 +1646,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_continueButtonnBackroundColor == value) return;
+
                 _continueButtonnBackroundColor = value;
                 RaisePropertyChanged("ContinueButtonnBackroundColor");
             }
@@ -1560,8 +1678,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             case ArButtons.حفظكمسودة:
 
                                 OnSaveDraftClicked();
-
-
 
                                 break;
                             default:
@@ -1663,7 +1779,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                                 _navigationService.GoBack();
 
@@ -1692,7 +1808,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
@@ -1715,7 +1831,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                                     WebServiceManager.ErrorMessageForVAT = string.Empty;
                                 });
@@ -1795,7 +1911,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                 //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
@@ -1974,7 +2090,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             DownloadConfirmationTapped = new Command(this.DownloadConfirmationClicked);
             onMoreOptionClicked = new Command(async () =>
             {
-                PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
             });
             vatInstalmentPlanModel = new VATInstalmentPlanModel();
             SelectedOutletOption = new VATInstalmentPlanModel();
@@ -2433,7 +2549,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
             }
             catch (InternetException ex)
@@ -2465,7 +2582,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
 
             }
@@ -2560,7 +2678,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
 
 
-        public async void OutletContinueBtnClicked()
+        public void OutletContinueBtnClicked()
         {
             try
             {
@@ -2568,7 +2686,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -2580,7 +2699,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        public async void AttachmentsContinueBtnClicked()
+        public void AttachmentsContinueBtnClicked()
         {
             try
             {
@@ -2602,7 +2721,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
             }
         }
-        public async void StatementsContinueBtnClicked()
+        public void StatementsContinueBtnClicked()
         {
             try
             {
@@ -2611,9 +2730,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     AttachmentsListViewData = new ObservableCollection<Attachment>();
 
                 }
-
-
-
 
                 if (App.selectedVATItem != "")
                 {
@@ -2636,20 +2752,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                             }
 
-
                         AttachmentsListViewData = attch;
 
                     }
                   
                 }
 
-
                 EnableAttachmentsView();
 
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -2664,18 +2779,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         private async void showTermsPopUp()
         {
 
-
-
             VatInstalments.d.Operationz = "01";
             VatInstalments.d.Decflg = "1";
             if (SecondTerms)
             {
-                EnableSucessScreenAsync();
+                await EnableSucessScreenAsync();
             }
             else
             {
-               
-
 
                 if (App.selectedVATItem != "")
                 {
@@ -2706,7 +2817,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        public async void SummaryContinueBtnClicked()
+        public void SummaryContinueBtnClicked()
         {
             try
             {
@@ -2727,7 +2838,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
             }
         }
-        public async void OnZakatInstalmentReasonClicked()
+        public void OnZakatInstalmentReasonClicked()
         {
             try
             {
@@ -2780,20 +2891,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 Console.WriteLine(ex.Message);
             }
         }
-        public async void SummaryInstallmentDetailsBtnClicked()
+        public void SummaryInstallmentDetailsBtnClicked()
         {
             try
             {
                 //   await App.Current.MainPage.DisplayAlert("Alert", "Instalment details schedule is displayed here.", "OK");
 
-
-
             }
             catch (GAZTUnlockAccountException ex)
             {
-
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -2804,7 +2912,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
             }
         }
-        public async void SuccessGoToDashboardClicked()
+        public void SuccessGoToDashboardClicked()
         {
             try
             {
@@ -2831,7 +2939,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        public async void DownloadConfirmationClicked()
+        public void DownloadConfirmationClicked()
         {
             try
             {
@@ -2942,10 +3050,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                                 }
                             }
-
-
-                          
-
 
                         }
                         else
@@ -3119,13 +3223,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3189,7 +3295,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
 
@@ -3301,9 +3408,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     request.d.Noofinstallment = "00";
                 }
             }
-
-
-            
 
 
                 request.d.StepNumberz = VatInstalments.d.StepNumberz;
@@ -3527,12 +3631,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
-            
-
-
-
-
-
             for (int i = 0; i < selectedList.Count; i++)
             {
                 var dataItem = selectedList[i] as VATResults4;
@@ -3544,8 +3642,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
             }
-
-
 
 
             //if (selectedList.Contains(dataItem.SadadNo))
@@ -3628,22 +3724,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
 
 
-
             return request;
-
 
         }
 
         #endregion
 
-
-
-
-
         #region ApiIntegration
-
-
-
 
         public async Task<VatInstalmentPlanResponse> SubmitClicked()
         {
@@ -3711,6 +3798,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         IsLoading = false;
                         return null;
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
 
                     }
                 }
@@ -3731,6 +3820,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 return response;
             }
 
@@ -3778,8 +3869,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         localPath =
                       Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
                     //    using (var httpClient = new HttpClient())
@@ -3806,9 +3899,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                throw ex;
             }
         }
 

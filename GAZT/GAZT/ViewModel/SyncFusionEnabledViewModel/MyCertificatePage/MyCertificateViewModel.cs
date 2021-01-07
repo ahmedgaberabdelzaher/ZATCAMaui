@@ -15,8 +15,11 @@ using pdfjs.Interfaces;
 using System.IO;
 using System.Collections.Generic;
 using GAZT.Helper;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class MyCertificateViewModel : ViewModelBase
     {
         #region Variable

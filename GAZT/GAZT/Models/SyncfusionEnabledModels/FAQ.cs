@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models.SyncfusionEnabledModels
 {
+    [Preserve(AllMembers = true)]
     public class FAQ
     {
         #region Properties

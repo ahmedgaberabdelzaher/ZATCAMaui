@@ -22,10 +22,12 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Metadata = EGAZT.Models.ContractRelease.Metadata;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 {
+    [Preserve(AllMembers = true)]
     public class ContractReleaseViewModel : ViewModelBase
     {
         #region Enums
@@ -81,6 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _isBackButtonVisible; }
             set
             {
+                if (_isBackButtonVisible == value) return;
                 _isBackButtonVisible = value;
                 RaisePropertyChanged("IsBackButtonVisible");
             }
@@ -93,6 +96,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _isReleaseDetailsVisible; }
             set
             {
+                if (_isReleaseDetailsVisible == value) return;
+
                 _isReleaseDetailsVisible = value;
                 RaisePropertyChanged("IsReleaseDetailsVisible");
             }
@@ -106,6 +111,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _isLoading1; }
             set
             {
+                if (_isLoading1 == value) return;
+
                 _isLoading1 = value;
                 RaisePropertyChanged("IsLoading1");
             }
@@ -120,6 +127,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _attachmentsVisible; }
             set
             {
+                if (_attachmentsVisible == value) return;
+
                 _attachmentsVisible = value;
                 RaisePropertyChanged("AttachmentsVisible");
             }
@@ -132,6 +141,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _remarksAndDescVisible; }
             set
             {
+                if (_remarksAndDescVisible == value) return;
+
                 _remarksAndDescVisible = value;
                 RaisePropertyChanged("RemarksAndDescVisible");
             }
@@ -144,6 +155,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _declarationVisible; }
             set
             {
+                if (_declarationVisible == value) return;
+
                 _declarationVisible = value;
                 RaisePropertyChanged("DeclarationVisible");
             }
@@ -156,6 +169,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _isReleaseDetailsEnabled; }
             set
             {
+                if (_isReleaseDetailsEnabled == value) return;
+
                 _isReleaseDetailsEnabled = value;
                 ReleaseDetailsButtonBackGroundColor = Color.FromHex(_isReleaseDetailsEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsReleaseDetailsEnabled");
@@ -187,6 +202,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _isAttachmentsEnabled; }
             set
             {
+                if (_isAttachmentsEnabled == value) return;
+
                 _isAttachmentsEnabled = value;
                 AttachButtonBackGroundColor = Color.FromHex(_isAttachmentsEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsAttachmentsEnabled");
@@ -218,6 +235,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _isDeclarationEnabled; }
             set
             {
+                if (_isDeclarationEnabled == value) return;
+
                 _isDeclarationEnabled = value;
                 DeclarationButtonBackGroundColor = Color.FromHex(_isDeclarationEnabled ? "#d49504" : "#9EA4A9");
 
@@ -234,6 +253,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             set
             {
+                if (_charCountDetailDescription == value) return;
+
                 _charCountDetailDescription = value;
                 RaisePropertyChanged("charCountDetailDescription");
             }
@@ -248,6 +269,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             set
             {
+                if (_charCountRemarksText == value) return;
+
                 _charCountRemarksText = value;
                 RaisePropertyChanged("charCountRemarksText");
             }
@@ -279,6 +302,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _summaryVisible; }
             set
             {
+                if (_summaryVisible == value) return;
+
                 _summaryVisible = value;
                 RaisePropertyChanged("SummaryVisible");
             }
@@ -291,6 +316,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _infoTitle; }
             set
             {
+                if (_infoTitle == value) return;
+
                 _infoTitle = value;
                 RaisePropertyChanged("InfoTitle");
             }
@@ -303,6 +330,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _infoDesc; }
             set
             {
+                if (_infoDesc == value) return;
+
                 _infoDesc = value;
                 RaisePropertyChanged("InfoDesc");
             }
@@ -315,6 +344,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _pickedContract; }
             set
             {
+                if (_pickedContract == value) return;
+
                 _pickedContract = value;
                 RaisePropertyChanged("PickedContract");
             }
@@ -326,6 +357,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _pickedContractId; }
             set
             {
+                if (_pickedContractId == value) return;
+
                 _pickedContractId = value;
                 RaisePropertyChanged("PickedContractId");
             }
@@ -338,6 +371,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _contractTotalAmount; }
             set
             {
+                if (_contractTotalAmount == value) return;
+
                 _contractTotalAmount = value;
                 RaisePropertyChanged("ContractTotalAmount");
             }
@@ -350,6 +385,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _amountToRelease; }
             set
             {
+                if (_amountToRelease == value) return;
+
                 _amountToRelease = value;
                 RaisePropertyChanged("AmountToRelease");
             }
@@ -362,6 +399,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _contractTotalAmountText; }
             set
             {
+                if (_contractTotalAmountText == value) return;
+
                 _contractTotalAmountText = value;
                 RaisePropertyChanged("ContractTotalAmountText");
             }
@@ -374,6 +413,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _amountoReleaseTxt; }
             set
             {
+                if (_amountoReleaseTxt == value) return;
+
                 _amountoReleaseTxt = value;
                 RaisePropertyChanged("AmountoReleaseTxt");
             }
@@ -386,6 +427,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _pickedContractPercent; }
             set
             {
+                if (_pickedContractPercent == value) return;
+
                 _pickedContractPercent = value;
                 RaisePropertyChanged("PickedContractPercent");
             }
@@ -398,6 +441,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _profitEstimatedContract; }
             set
             {
+                if (_profitEstimatedContract == value) return;
+
                 _profitEstimatedContract = value;
                 RaisePropertyChanged("ProfitEstimatedContract");
             }
@@ -410,6 +455,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _estimatedProfitForZakatPercent; }
             set
             {
+                if (_estimatedProfitForZakatPercent == value) return;
+
                 _estimatedProfitForZakatPercent = value;
                 RaisePropertyChanged("EstimatedProfitForZakatPercent");
             }
@@ -422,6 +469,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _estimatedProfitForZakatAmount; }
             set
             {
+                if (_estimatedProfitForZakatAmount == value) return;
+
                 _estimatedProfitForZakatAmount = value;
                 RaisePropertyChanged("EstimatedProfitForZakatAmount");
             }
@@ -434,6 +483,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _estimatedProfitForTaxAmount; }
             set
             {
+                if (_estimatedProfitForTaxAmount == value) return;
+
                 _estimatedProfitForTaxAmount = value;
                 RaisePropertyChanged("EstimatedProfitForTaxAmount");
             }
@@ -446,6 +497,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _estimatedProfitForTaxPercent; }
             set
             {
+                if (_estimatedProfitForTaxPercent == value) return;
+
                 _estimatedProfitForTaxPercent = value;
                 RaisePropertyChanged("EstimatedProfitForTaxPercent");
             }
@@ -458,6 +511,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _zakatDues; }
             set
             {
+                if (_zakatDues == value) return;
+
                 _zakatDues = value;
                 RaisePropertyChanged("ZakatDues");
             }
@@ -470,6 +525,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _taxDues; }
             set
             {
+                if (_taxDues == value) return;
+
                 _taxDues = value;
                 RaisePropertyChanged("TaxDues");
             }
@@ -482,6 +539,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _totalDues; }
             set
             {
+                if (_totalDues == value) return;
+
                 _totalDues = value;
                 RaisePropertyChanged("TotalDues");
             }
@@ -494,6 +553,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _remarks; }
             set
             {
+                if (_remarks == value) return;
+
                 _remarks = value;
                 RaisePropertyChanged("Remarks");
             }
@@ -506,6 +567,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _detailDescription; }
             set
             {
+                if (_detailDescription == value) return;
+
                 _detailDescription = value;
                 RaisePropertyChanged("DetailDescription");
             }
@@ -518,6 +581,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _contactPersonName; }
             set
             {
+                if (_contactPersonName == value) return;
+
                 _contactPersonName = value;
                 RaisePropertyChanged("ContactPersonName");
             }
@@ -530,6 +595,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _designation; }
             set
             {
+                if (_designation == value) return;
+
                 _designation = value;
                 RaisePropertyChanged("Designation");
             }
@@ -542,6 +609,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _contractName; }
             set
             {
+                if (_contractName == value) return;
+
                 _contractName = value;
                 RaisePropertyChanged("ContractName");
             }
@@ -554,6 +623,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _contractNumber; }
             set
             {
+                if (_contractNumber == value) return;
+
                 _contractNumber = value;
                 RaisePropertyChanged("ContractNumber");
             }
@@ -567,6 +638,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             set
             {
+                if (_IsHijriCal == value) return;
+
                 _IsHijriCal = value;
                 RaisePropertyChanged("IsHijriCal");
             }
@@ -578,6 +651,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _fromDate; }
             set
             {
+                if (_fromDate == value) return;
+
                 _fromDate = value;
                 RaisePropertyChanged("FromDate");
             }
@@ -590,6 +665,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _toDate; }
             set
             {
+                if (_toDate == value) return;
+
                 _toDate = value;
                 RaisePropertyChanged("ToDate");
             }
@@ -602,6 +679,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _pickerModel; }
             set
             {
+                if (_pickerModel == value) return;
+
                 _pickerModel = value;
                 RaisePropertyChanged("PickerModel");
             }
@@ -614,6 +693,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -680,6 +761,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             get { return _contractReleaseData; }
             set
             {
+                if (_contractReleaseData == value) return;
+
                 _contractReleaseData = value;
                 RaisePropertyChanged("ContractReleaseData");
             }
@@ -972,12 +1055,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -991,6 +1076,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1047,6 +1134,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1070,6 +1159,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1089,6 +1180,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1112,6 +1205,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1187,6 +1282,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             set
             {
+                if (_todayDateStart == value) return;
                 _todayDateStart = value;
                 RaisePropertyChanged("TodayDateStart");
             }
@@ -1200,6 +1296,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             set
             {
+                if (_todayDateinHijriStart == value) return;
+
                 _todayDateinHijriStart = value;
                 RaisePropertyChanged("TodayDateinHijriStart");
             }
@@ -1213,6 +1311,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             set
             {
+                if (_todayDateEnd == value) return;
+
                 _todayDateEnd = value;
                 RaisePropertyChanged("TodayDateEnd");
             }
@@ -1226,6 +1326,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             set
             {
+                if (_todayDateinHijriEnd == value) return;
+
                 _todayDateinHijriEnd = value;
                 RaisePropertyChanged("TodayDateinHijriEnd");
             }
@@ -1240,12 +1342,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             set
             {
+                if (_chipDataFilterlist == value) return;
+
                 _chipDataFilterlist = value;
                 RaisePropertyChanged("ChipDataFilterlist");
             }
         }
 
-        public async Task PopulateDataInChips()
+        public void PopulateDataInChips()
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
@@ -1256,7 +1360,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         public int DefaultMonth;
         public int DefaultMonthHijri;
-        public async Task SetDefaultDate()
+        public void SetDefaultDate()
         {
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
             //Select today dates
@@ -1292,7 +1396,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
 
 
-            if(ContractReleaseData != null) {
+            if (ContractReleaseData != null)
+            {
 
 
                 if (ContractReleaseData.d.ACalTp == "H")
@@ -1300,7 +1405,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                     FromDate = HDateNow();
                     ToDate = HDateNow();
-                   // FromDate = (TodayDateinHijriStart[2] + "/" + TodayDateinHijriStart[1] + "/" + TodayDateinHijriStart[0]).ToString();
+                    // FromDate = (TodayDateinHijriStart[2] + "/" + TodayDateinHijriStart[1] + "/" + TodayDateinHijriStart[0]).ToString();
                     //ToDate = (TodayDateinHijriEnd[2] + "/" + TodayDateinHijriEnd[1] + "/" + TodayDateinHijriEnd[0]).ToString();
                 }
                 else
@@ -1312,7 +1417,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
 
 
-          
+
 
         }
 
@@ -1347,7 +1452,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (Exception ex)
             {
-               
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+
                 return "";
             }
         }
@@ -1613,7 +1720,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
 
@@ -1683,6 +1791,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 throw;
             }
             return true;
@@ -1807,7 +1917,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                             contractReleaseInterface.setDateFormatFirstTime();
 
 
-                            await SetDefaultDate();
+                            SetDefaultDate();
 
 
                             Device.BeginInvokeOnMainThread(() =>
@@ -1874,13 +1984,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading1 = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2103,9 +2215,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 EstimatedProfitForZakatPercent = Convert.ToDouble(ContractReleaseData.d.AZakatProfit);
                 EstimatedProfitForTaxPercent = Convert.ToDouble(ContractReleaseData.d.ATaxProfi);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

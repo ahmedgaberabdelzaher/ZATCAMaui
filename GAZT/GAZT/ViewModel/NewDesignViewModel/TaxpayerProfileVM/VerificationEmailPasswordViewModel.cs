@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Timers;
-using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Models.TPProfile;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
+    [Preserve(AllMembers = true)]
     public class VerificationEmailPasswordViewModel : ViewModelBase
     {
         #region Variable
@@ -36,6 +36,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_oTPFirstDigit == value) return;
                 _oTPFirstDigit = value;
 
                 if (!string.IsNullOrEmpty(OTPFirstDigit))
@@ -60,6 +61,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_OTPSecondDigit == value) return;
+
                 _OTPSecondDigit = value;
                 if (!string.IsNullOrEmpty(OTPSecondDigit))
                 {
@@ -82,6 +85,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_OTPThirdDigit == value) return;
+
                 _OTPThirdDigit = value;
                 if (!string.IsNullOrEmpty(OTPThirdDigit))
                 {
@@ -104,6 +109,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_OTPFourthDigit == value) return;
+
                 _OTPFourthDigit = value;
                 if (!string.IsNullOrEmpty(OTPFourthDigit))
                 {
@@ -126,6 +133,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_IsLoading == value) return;
+
                 _IsLoading = value;
                 RaisePropertyChanged(() => IsLoading);
             }
@@ -137,6 +146,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _BtnEnableFlag; }
             set
             {
+                if (_BtnEnableFlag == value) return;
+
                 _BtnEnableFlag = value;
                 RaisePropertyChanged("BtnEnableFlag");
             }
@@ -152,6 +163,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_LblCountDownTimer == value) return;
+
                 _LblCountDownTimer = value;
                 RaisePropertyChanged("LblCountDownTimer");
             }
@@ -166,6 +179,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_OTPSentOnThisMobileNumber == value) return;
+
                 _OTPSentOnThisMobileNumber = value;
                 RaisePropertyChanged("OTPSentOnThisMobileNumber");
             }
@@ -180,6 +195,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_CurrentPasswordEntry == value) return;
+
                 _CurrentPasswordEntry = value;
                 RaisePropertyChanged("CurrentPasswordEntry");
             }
@@ -194,6 +211,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_NewPasswordEntry == value) return;
+
                 _NewPasswordEntry = value;
 
                 BtnEnableFlag = false;
@@ -213,6 +232,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_ConfirmPasswordEntry == value) return;
+
                 _ConfirmPasswordEntry = value;
 
                 BtnEnableFlag = false;
@@ -307,6 +328,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
                 ShowValidationPopup(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
             return TP;
@@ -338,6 +361,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
                 ShowValidationPopup(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
             return TP;

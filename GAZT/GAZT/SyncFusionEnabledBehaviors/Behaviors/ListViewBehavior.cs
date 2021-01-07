@@ -6,8 +6,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.SyncFusionEnabledBehaviors.Behaviors
 {
+    [Preserve(AllMembers = true)]
     public class ListViewBehavior : Behavior<SfListView>
     {
         private SfListView listView;

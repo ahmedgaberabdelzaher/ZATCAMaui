@@ -15,8 +15,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class OTPPageViewModel : ViewModelBase
     {
         #region Variable

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.NewDesignConverters
 {
+    [Preserve(AllMembers = true)]
     public class ValueTypeToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -29,6 +31,10 @@ namespace EGAZT.NewDesignConverters
             else if (value.ToString() == "ZS0004")
             {
                 return AppResources.ZZLicenseNumber;
+            }
+            else if (string.IsNullOrEmpty(value.ToString()) || string.IsNullOrWhiteSpace(value.ToString()))
+            {
+                return true;
             }
             else return "";
         }

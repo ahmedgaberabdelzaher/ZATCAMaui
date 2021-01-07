@@ -10,9 +10,11 @@ using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
+    [Preserve(AllMembers = true)]
     public class ZakatReturnDetailsSuccessfullPageViewModel : ViewModelBase
     {
         #region Variable
@@ -36,6 +38,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_isLoading == value) return;
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -50,6 +53,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_estimatedZAKATSADADNumber == value) return;
+
                 _estimatedZAKATSADADNumber = value;
                 RaisePropertyChanged("EstimatedZAKATSADADNumber");
             }
@@ -65,6 +70,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_zAKATAmount == value) return;
+
                 _zAKATAmount = value;
                 RaisePropertyChanged("ZAKATAmount");
             }
@@ -80,6 +87,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_sADADNumber == value) return;
+
                 _sADADNumber = value;
                 RaisePropertyChanged("SADADNumber");
             }
@@ -94,6 +103,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_referenceNumber == value) return;
+
                 _referenceNumber = value;
                 RaisePropertyChanged("ReferenceNumber");
             }
@@ -108,6 +119,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_refreshIconImageSource == value) return;
+
                 _refreshIconImageSource = value;
                 RaisePropertyChanged("RefreshIconImageSource");
             }
@@ -122,6 +135,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_setSuccessMessageVisibility == value) return;
+
                 _setSuccessMessageVisibility = value;
                 RaisePropertyChanged("SetSuccessMessageVisibility");
             }
@@ -276,7 +291,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             ShowPdf(url);
         }
 
-        public async void ShowPdf(string pdfUrl)
+        public void ShowPdf(string pdfUrl)
         {
             if (pdfUrl != null)
             {
@@ -309,7 +324,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 }
                 catch (Exception ex)
                 {
-                    // Handle Exception
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }

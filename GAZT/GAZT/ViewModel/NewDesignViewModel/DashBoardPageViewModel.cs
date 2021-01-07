@@ -14,9 +14,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
     {
         #region Variable
@@ -26,6 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _currentTab;
             set
             {
+                if (_currentTab == value) return;
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)_currentTab;
@@ -38,6 +41,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 //if (_currenrIndex == MaxIndex)
@@ -96,6 +101,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_BillsAndReturnsCommitments == value) return;
+
                 if (value != null)
                 {
                     this._BillsAndReturnsCommitments = value;
@@ -112,8 +119,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_taxTypeFilter == value) return;
+
                 if (value != null)
                 {
+
                     value = new List<TaxRelationSetResult>(value.OrderBy(temp => temp.DisplayId).ToList());
                     _taxTypeFilter = value;
                     this.RaisePropertyChanged("TaxTypeFilter");
@@ -128,8 +138,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_MyBillsChartModels == value) return;
                 if (value != null)
                 {
+                   
+
                     this._MyBillsChartModels = value;
                     this.RaisePropertyChanged("MyBillsChartModels");
                 }
@@ -143,8 +156,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_Bills == value) return;
+
                 if (value != null)
                 {
+
                     this._Bills = value;
                     this.RaisePropertyChanged("Bills");
                 }
@@ -158,6 +174,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_SegregatedReturnTypesAndCorrepsondingCounts == value) return;
+
                 if (value != null)
                 {
                     this._SegregatedReturnTypesAndCorrepsondingCounts = value;
@@ -173,6 +191,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_Returns == value) return;
+
                 if (value != null)
                 {
                     this._Returns = value;
@@ -188,6 +208,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_eServices == value) return;
+
                 if (value != null)
                 {
                     this._eServices = value;
@@ -225,6 +247,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_appVersion == value) return;
+
                 _appVersion = value;
                 RaisePropertyChanged("AppVersion");
             }
@@ -239,6 +263,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_headerSet == value) return;
+
                 _headerSet = value;
                 RaisePropertyChanged("HeaderSet");
             }
@@ -253,6 +279,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_tabIdentification == value) return;
+
                 _tabIdentification = value;
                 RaisePropertyChanged("TabIdentification");
             }
@@ -267,6 +295,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_taxpayerName == value) return;
+
                 _taxpayerName = value;
                 RaisePropertyChanged("TaxpayerName");
             }
@@ -281,6 +311,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ifnotRegInVATAndZakat == value) return;
+
                 _ifnotRegInVATAndZakat = value;
                 RaisePropertyChanged("IfnotRegInVATAndZakat");
             }
@@ -295,6 +327,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ifRegInZakat == value) return;
+
                 _ifRegInZakat = value;
                 RaisePropertyChanged("IfRegInZakat");
             }
@@ -309,6 +343,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ifRegInVAT == value) return;
+
                 _ifRegInVAT = value;
                 RaisePropertyChanged("IfRegInVAT");
             }
@@ -323,6 +359,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ifSignUpnNotRegInVAT == value) return;
+
                 _ifSignUpnNotRegInVAT = value;
                 RaisePropertyChanged("IfSignUpnNotRegInVAT");
             }
@@ -337,6 +375,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ifSignUpnNotRegInVATShowVATServie == value) return;
+
                 _ifSignUpnNotRegInVATShowVATServie = value;
                 RaisePropertyChanged("IfSignUpnNotRegInVATShowVATServie");
             }
@@ -365,6 +405,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _debitAmountEndProgressBar;
             set
             {
+                if (_debitAmountEndProgressBar == value) return;
+
                 _debitAmountEndProgressBar = value;
                 RaisePropertyChanged(nameof(DebitAmountEndProgressBar));
             }
@@ -376,6 +418,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _creditAmountStartProgressBar;
             set
             {
+                if (_creditAmountStartProgressBar == value) return;
+
                 _creditAmountStartProgressBar = value;
                 RaisePropertyChanged(nameof(CreditAmountStartProgressBar));
             }
@@ -387,7 +431,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _totalAmountProgressBar;
             set
             {
-                _creditAmountStartProgressBar = value;
+                if (_totalAmountProgressBar == value) return;
+
+                _totalAmountProgressBar = value;
                 RaisePropertyChanged(nameof(_totalAmountProgressBar));
             }
         }
@@ -402,6 +448,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedTaxTypeForFilterValue == value) return;
 
                 _selectedTaxTypeForFilterValue = value;
                 PopulateStatements(_selectedTaxTypeForFilterValue.TaxType, _selectedTaxTypeForFilterValue.StatementFilter, string.Empty);
@@ -419,6 +466,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_SelectedTaxTypeForFilter == value) return;
 
                 _SelectedTaxTypeForFilter = value;
                 PopulateStatements(_SelectedTaxTypeForFilter.TaxType, _SelectedTaxTypeForFilter.StatementFilter, string.Empty);
@@ -436,6 +484,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_colors == value) return;
+
                 _colors = value;
                 RaisePropertyChanged("Colors");
             }
@@ -450,6 +500,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_welcomeText == value) return;
+
                 _welcomeText = value;
                 RaisePropertyChanged("WelcomeText");
             }
@@ -464,6 +516,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_rotation == value) return;
+
                 _rotation = value;
                 RaisePropertyChanged("Rotation");
             }
@@ -478,6 +532,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_translateText == value) return;
+
                 _translateText = value;
                 RaisePropertyChanged("TranslateText");
             }
@@ -493,6 +549,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_billCount == value) return;
+
                 this._billCount = value;
                 this.RaisePropertyChanged("BillCount");
             }
@@ -506,6 +564,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_paidbillCount == value) return;
+
                 this._paidbillCount = value;
                 this.RaisePropertyChanged("PaidBillCount");
             }
@@ -519,6 +579,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_partiallypaidbillCount == value) return;
+
                 this._partiallypaidbillCount = value;
                 this.RaisePropertyChanged("PartiallyPaidBillCount");
             }
@@ -532,6 +594,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_unPaidbillCount == value) return;
+
                 this._unPaidbillCount = value;
                 this.RaisePropertyChanged("UnPaidBillCount");
             }
@@ -546,6 +610,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_nDCommitments == value) return;
+
                 this._nDCommitments = value;
                 this.RaisePropertyChanged("NDCommitments");
             }
@@ -560,6 +626,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_zBills == value) return;
+
                 this._zBills = value;
                 this.RaisePropertyChanged("ZBills");
             }
@@ -574,6 +642,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_returns == value) return;
+
                 this._returns = value;
                 this.RaisePropertyChanged("Return");
             }
@@ -588,6 +658,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_aboutUs == value) return;
+
                 this._aboutUs = value;
                 this.RaisePropertyChanged("AboutUs");
             }
@@ -602,6 +674,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_contactus == value) return;
+
                 this._contactus = value;
                 this.RaisePropertyChanged("Contactus");
             }
@@ -616,6 +690,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_setMyCommitmentsCollectionVisibility == value) return;
+
                 this._setMyCommitmentsCollectionVisibility = value;
                 this.RaisePropertyChanged("SetMyCommitmentsCollectionVisibility");
             }
@@ -630,6 +706,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_setNoCommitmentsAvailableLabelVisibility == value) return;
+
                 this._setNoCommitmentsAvailableLabelVisibility = value;
                 this.RaisePropertyChanged("SetNoCommitmentsAvailableLabelVisibility");
             }
@@ -644,6 +722,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_privacyandPolicy == value) return;
+
                 this._privacyandPolicy = value;
                 this.RaisePropertyChanged("PrivacyandPolicy");
             }
@@ -658,6 +738,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_logout == value) return;
+
                 this._logout = value;
                 this.RaisePropertyChanged("Logout");
             }
@@ -672,6 +754,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_TaxPayerProfile == value) return;
+
                 this._TaxPayerProfile = value;
                 this.RaisePropertyChanged("TaxPayerProfile");
             }
@@ -686,6 +770,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isVatRegistrationTileVisible == value) return;
+
                 _isVatRegistrationTileVisible = value;
                 RaisePropertyChanged("IsVatRegistrationTileVisible");
             }
@@ -700,6 +786,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isRegistrationDetailsTileVisible == value) return;
+
                 _isRegistrationDetailsTileVisible = value;
                 RaisePropertyChanged("IsRegistrationDetailsTileVisible");
             }
@@ -714,6 +802,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isVatAmendmentTileVisible == value) return;
+
                 _isVatAmendmentTileVisible = value;
                 RaisePropertyChanged("IsVatAmendmentTileVisible");
             }
@@ -728,6 +818,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isEstablishmentRegistrationTileVisible == value) return;
+
                 _isEstablishmentRegistrationTileVisible = value;
                 RaisePropertyChanged("IsEstablishmentRegistrationTileVisible");
             }
@@ -740,6 +832,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_menuViewVisible == value) return;
+
                 this._menuViewVisible = value;
                 this.RaisePropertyChanged("MenuViewVisible");
             }
@@ -752,6 +846,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_homeViewVisible == value) return;
+
                 this._homeViewVisible = value;
                 if (_homeViewVisible != null)
                 {
@@ -774,6 +870,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_accountStatementVisible == value) return;
+
                 this._accountStatementVisible = value;
                 if (_accountStatementVisible != null)
                 {
@@ -797,16 +895,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                this._liveChatVisible = value;
-                if (_liveChatVisible != null)
-                {
+                if (_liveChatVisible == value) return;
+                _liveChatVisible = value;
                     if (_liveChatVisible)
                     {
                         _homeIndicatorColor = Color.FromHex("#005e4b");
                         MenuIndicatorColor = Color.White;
                     }
 
-                }
                 this.RaisePropertyChanged("LiveChatVisible");
             }
         }
@@ -819,6 +915,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_homeIndicatorColor == value) return;
+
                 this._homeIndicatorColor = value;
                 this.RaisePropertyChanged("HomeIndicatorColor");
             }
@@ -831,6 +929,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_menuIndicatorColor == value) return;
+
                 this._menuIndicatorColor = value;
                 this.RaisePropertyChanged("MenuIndicatorColor");
             }
@@ -843,6 +943,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_tabbarColor == value) return;
+
                 this._tabbarColor = value;
                 this.RaisePropertyChanged("TabbarColor");
             }
@@ -855,6 +957,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_stackMenuColor == value) return;
+
                 this._stackMenuColor = value;
                 this.RaisePropertyChanged("StackMenuColor");
             }
@@ -867,6 +971,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_NextCommitmentsString == value) return;
+
                 this._NextCommitmentsString = value;
                 this.RaisePropertyChanged("NextCommitmentsString");
             }
@@ -879,6 +985,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_ReturnString == value) return;
+
                 this._ReturnString = value;
                 this.RaisePropertyChanged("ReturnString");
             }
@@ -891,6 +999,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_PaidString == value) return;
+
                 this._PaidString = value;
                 this.RaisePropertyChanged("PaidString");
             }
@@ -903,6 +1013,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_PartiallyPaidString == value) return;
+
                 this._PartiallyPaidString = value;
                 this.RaisePropertyChanged("PartiallyPaidString");
             }
@@ -915,6 +1027,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_UnPaidString == value) return;
+
                 this._UnPaidString = value;
                 this.RaisePropertyChanged("UnPaidString");
             }
@@ -927,6 +1041,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_BillString == value) return;
+
                 this._BillString = value;
                 this.RaisePropertyChanged("BillString");
             }
@@ -939,6 +1055,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_TotalString == value) return;
+
                 this._TotalString = value;
                 this.RaisePropertyChanged("TotalString");
             }
@@ -953,12 +1071,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_accStmtnCreditAmount == value) return;
+
                 _accStmtnCreditAmount = value;
                 RaisePropertyChanged("AccStmtnCreditAmount");
             }
         }
         private string _selectedCommitmentFilterValue = null;
-
         public string SelectedCommitmentFilterValue
         {
             get
@@ -967,6 +1086,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedCommitmentFilterValue == value) return;
 
                 if (!string.IsNullOrEmpty(value))
                 {
@@ -980,7 +1100,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         private string _SelectedCommitmentFilterLabelValue = null;
-
         public string SelectedCommitmentFilterLabelValue
         {
             get
@@ -989,6 +1108,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_SelectedCommitmentFilterLabelValue == value) return;
 
                 if (!string.IsNullOrEmpty(value))
                 {
@@ -1042,11 +1162,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (App.TP.TypeChk == "X")
                 {
-                    TaxpayerName = AppResources.Hello + " " + App.TP.NameFirst + " " + App.TP.NameLast;
+                    TaxpayerName =  App.TP.NameFirst + " " + App.TP.NameLast;
                 }
                 else
                 {
-                    TaxpayerName = AppResources.Hello + " " + App.TP.NameOrg1;
+                    TaxpayerName =  App.TP.NameOrg1;
                 }
 
                 
@@ -1407,14 +1527,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PopToRootPage();
                 });
             }
-            catch (Exception ex)
+            catch 
             {
                 IsLoading = false;
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    //PopToRootPage();
-                });
             }
         }
         public class BillTypeCorrepsondingCountAndAmount
@@ -1585,6 +1700,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public class ReturnTypeAndCorrepsondingCount
@@ -1682,6 +1799,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void PopulateeServicesApplicableToTheTaxPayer()
@@ -1763,6 +1882,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             catch (Exception ex)
             {
                     IsLoading = false;
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1783,7 +1904,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             return amountWithComma;
         }
@@ -1808,9 +1930,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 await WebServiceManager.GAZTLogOff();
             }
-            catch
+            catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
                 //App.HideProgressView();
@@ -1838,7 +1961,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
             //_navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);

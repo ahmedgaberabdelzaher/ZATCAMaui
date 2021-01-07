@@ -2,39 +2,49 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class SignupCityModel
     {
     }
+    [Preserve(AllMembers = true)]
     public class SignupCityMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class SignupCityDeferred
     {
         public string uri { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class SignupCityCountryDropdownSet
     {
         public SignupCityDeferred __deferred { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class SignupCityDeferred2
     {
         public string uri { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class SignupCityStateDropdownSet
     {
         public SignupCityDeferred2 __deferred { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class SignupCityMetadata2
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class SignupCityResult
     {
         public Metadata2 __metadata { get; set; }
@@ -44,10 +54,12 @@ namespace GAZT.Models
         public string Region { get; set; }
         public string CityName { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class SignupCityDropdownSet
     {
         public List<SignupCityResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class SignupCityD
     {
         public Metadata __metadata { get; set; }
@@ -59,6 +71,7 @@ namespace GAZT.Models
         public SignupCityStateDropdownSet State_dropdownSet { get; set; }
         public SignupCityDropdownSet city_dropdownSet { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class SignupCityRootObject
     {
         public SignupCityD d { get; set; }

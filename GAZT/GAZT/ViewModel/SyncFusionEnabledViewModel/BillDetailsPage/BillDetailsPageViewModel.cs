@@ -11,8 +11,11 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.BillDetailsPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class BillDetailsPageViewModel : ViewModelBase
     {
         #region Variable

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.NewDesignConverters
 {
+    [Preserve(AllMembers = true)]
    public class BoolToVisibilityConverter : IValueConverter
     {
         private bool isInvertValue { get; set; } = false;
@@ -34,6 +36,7 @@ namespace EGAZT.NewDesignConverters
             return isInvertValue;
         }
     }
+    [Preserve(AllMembers = true)]
     public class ESTOutletDeleteActionVisibilityConverter : IValueConverter
     {
         private bool isVisible { get; set; } = false;

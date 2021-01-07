@@ -8,10 +8,12 @@ using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OutletDetailsAmendUpdatePageView : ContentPage
     {

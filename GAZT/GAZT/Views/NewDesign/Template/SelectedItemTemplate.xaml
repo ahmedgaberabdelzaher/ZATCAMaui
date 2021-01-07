@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:custom="clr-namespace:GAZT"
+          xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+          x:Class="EGAZT.Views.NewDesign.Template.SelectedItemTemplate">
+    <ViewCell.View >
+        <!--<cards:SfCardView  WidthRequest="171" HeightRequest="136" BackgroundColor="Red">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Red">
+                <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <StackLayout  Style="{DynamicResource CardParentStacklayout}">
+                    <Image Style="{DynamicResource CardIcon}" Source="{Binding SelectedCardIcon}" IsVisible="{Binding IsSelectedCardIcon}"/>
+                    <custom:CustomLabel Text="{Binding CardLabel}" Style="{DynamicResource CardLabelWhite}"/>
+                </StackLayout>
+            </Grid>
+        </cards:SfCardView>-->
+        
+        <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="136" WidthRequest="171">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="70*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Source="re_Tile_Background_S" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <StackLayout Style="{DynamicResource CardParentStacklayout}" Grid.Row="2" Spacing="0">
+                    <Image Style="{DynamicResource CardIcon}" Source="{Binding SelectedCardIcon}" IsVisible="{Binding IsSelectedCardIconVisible}" />
+                    <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                </StackLayout>
+            </Grid>
+        </cards:SfCardView>
+    </ViewCell.View>
+</ViewCell>

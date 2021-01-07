@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignRecoverPasswordPageView : ContentPage
     {

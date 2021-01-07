@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.Form5Models
 {
+    [Preserve(AllMembers = true)]
     public class ZakatForm5CityModel
     {
 
         public ZakatForm5CityDataResult d { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class __metadata
     {
         public string id { get; set; }
@@ -17,7 +19,8 @@ namespace EGAZT.Models.Form5Models
         public string type { get; set; }
 
     }
-   
+    [Preserve(AllMembers = true)]
+
     public class Results
     {
         public __metadata __metadata { get; set; }
@@ -27,12 +30,14 @@ namespace EGAZT.Models.Form5Models
         public string OldDescription { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class GOVCODESet
     {
-        public IList<Results> results { get; set; }
+        public List<Results> results { get; set; }
 
     }
- 
+    [Preserve(AllMembers = true)]
+
     public class Results11
     {
         public __metadata __metadata { get; set; }
@@ -45,12 +50,14 @@ namespace EGAZT.Models.Form5Models
         public string Msg { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class MSGSet
     {
-        public IList<Results11> results { get; set; }
+        public List<Results11> results { get; set; }
 
     }
-  
+    [Preserve(AllMembers = true)]
+
     public class Results12
     {
         public __metadata __metadata { get; set; }
@@ -60,12 +67,14 @@ namespace EGAZT.Models.Form5Models
         public string Text { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class Zsub_desc_ASet
     {
-        public IList<Results12> results { get; set; }
+        public List<Results12> results { get; set; }
 
     }
-   
+    [Preserve(AllMembers = true)]
+
     public class Results13
     {
         public __metadata __metadata { get; set; }
@@ -77,12 +86,14 @@ namespace EGAZT.Models.Form5Models
         public string Url { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class URLSet
     {
-        public IList<Results13> results { get; set; }
+        public List<Results13> results { get; set; }
 
     }
-   
+    [Preserve(AllMembers = true)]
+
     public class Results14
     {
         public __metadata __metadata { get; set; }
@@ -92,12 +103,13 @@ namespace EGAZT.Models.Form5Models
         public string Text { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class _Zsub_desc_ASet
     {
         public IList<Results14> results { get; set; }
 
     }
-   
+    [Preserve(AllMembers = true)]
     public class Results15
     {
         public __metadata __metadata { get; set; }
@@ -107,12 +119,13 @@ namespace EGAZT.Models.Form5Models
         public string Text { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class Zsub_desc_ASet2
     {
         public IList<Results15> results { get; set; }
 
     }
-  
+    [Preserve(AllMembers = true)]
     public class Results16
     {
         public __metadata __metadata { get; set; }
@@ -124,12 +137,13 @@ namespace EGAZT.Models.Form5Models
         public string Lstsch { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class Zmain_descSet
     {
-        public IList<Results16> results { get; set; }
+        public List<Results16> results { get; set; }
 
     }
-  
+    [Preserve(AllMembers = true)]
     public class Results17
     {
         public __metadata __metadata { get; set; }
@@ -143,11 +157,13 @@ namespace EGAZT.Models.Form5Models
         public string CityExt { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class ZcitySet
     {
-        public IList<Results17> results { get; set; }
+        public List<Results17> results { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class ZakatForm5CityDataResult
     {
         public __metadata __metadata { get; set; }

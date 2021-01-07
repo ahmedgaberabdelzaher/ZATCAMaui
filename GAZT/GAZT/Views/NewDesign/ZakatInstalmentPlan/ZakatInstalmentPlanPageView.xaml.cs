@@ -3,11 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel;
-using EGAZT.Views.NewDesign.VATDeclarationPages;
-using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
-using GAZT.Models;
-using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -16,6 +12,7 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 {
+    [Preserve(AllMembers = true)]
     public partial class ZakatInstalmentPlanPageView : ContentPage
     {
 
@@ -48,7 +45,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.IsZakat = Preferences.Get("isZakat", false);
                 viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
                 viewModel.showInstructionsDialog();
-                GetZakatInstalmentData();
+                 GetZakatInstalmentData();
                 outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0];
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
                 viewModel.setMoreOptioButtons();
@@ -83,7 +80,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -335,7 +333,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
 
-                Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+                MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {

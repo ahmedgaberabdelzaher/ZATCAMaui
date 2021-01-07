@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PropertyRegistrationPage : ContentPage
     {

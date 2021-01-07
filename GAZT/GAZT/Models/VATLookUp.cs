@@ -1,12 +1,16 @@
 ﻿using EGAZT.Models;
 using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class VATLookUp
     {
         public VATLookUpD d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATLookUpResult
     {
         public Metadata __metadata { get; set; }
@@ -25,6 +29,7 @@ namespace GAZT.Models
         public string Code { get; set; }
         public string Description { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATLookUpD
     {
         public List<VATLookUpResult> results { get; set; }

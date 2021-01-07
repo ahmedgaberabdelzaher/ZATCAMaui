@@ -11,17 +11,17 @@ using Rg.Plugins.Popup.Services;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Models.ZakatInstalationModels;
 using System.Linq;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
-   
+    [Preserve(AllMembers = true)]
     public class FinancialDetailAttachmentPopupPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
@@ -46,6 +46,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_docTypeString == value) return;
                 _docTypeString = value;
                 RaisePropertyChanged("DocTypeString");
             }
@@ -60,6 +61,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_attachmentHeaderTitle == value) return;
+
                 _attachmentHeaderTitle = value;
                 RaisePropertyChanged("AttachmentHeaderTitle");
             }
@@ -74,6 +77,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_titleIsVisible == value) return;
+
                 _titleIsVisible = value;
                 RaisePropertyChanged("TitleIsVisible");
             }
@@ -88,6 +93,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_regAttachmentTitle == value) return;
+
                 _regAttachmentTitle = value;
                 RaisePropertyChanged("RegAttachmentTitle");
             }
@@ -102,6 +109,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_IsAttachmentVisibile == value) return;
+
                 _IsAttachmentVisibile = value;
                 RaisePropertyChanged("IsAttachmentVisibile");
             }
@@ -115,6 +124,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_vATRegistrationDetailsForAttach == value) return;
+
                 _vATRegistrationDetailsForAttach = value;
                 RaisePropertyChanged("VATRegistrationDetailsForAttach");
             }
@@ -128,6 +139,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_VATRegistrationOtherDetails == value) return;
+
                 _VATRegistrationOtherDetails = value;
                 RaisePropertyChanged("VATRegistrationOtherDetails");
             }
@@ -141,6 +154,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_VATRegistrationDetailsData == value) return;
+
                 _VATRegistrationDetailsData = value;
                 RaisePropertyChanged("VATRegistrationDetailsData");
             }
@@ -155,6 +170,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_vATAttachmentObj == value) return;
+
                 _vATAttachmentObj = value;
                 RaisePropertyChanged("VATAttachmentObj");
             }
@@ -169,6 +186,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_selectedAttachmentType == value) return;
+
                 _selectedAttachmentType = value;
                 RaisePropertyChanged("SelectedAttachmentType");
             }
@@ -186,6 +205,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_resultsItemForDOCSet == value) return;
+
                 _resultsItemForDOCSet = value;
                 RaisePropertyChanged("ResultsItemForDOCSet");
             }
@@ -199,6 +220,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_selectedResultsItemForDOCSet == value) return;
+
                 _selectedResultsItemForDOCSet = value;
                 if (_selectedResultsItemForDOCSet != null)
                 {
@@ -221,6 +244,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_eLGBL_DOCSet == value) return;
+
                 _eLGBL_DOCSet = value;
                 RaisePropertyChanged("ELGBL_DOCSet");
             }
@@ -235,6 +260,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_docTypeString == value) return;
+
                 _attachmentTypeTxt = value;
                 RaisePropertyChanged("AttachmentTypeTxt");
             }
@@ -251,6 +278,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -264,6 +293,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_attachmentSizeVisibility == value) return;
+
                 _attachmentSizeVisibility = value;
                 RaisePropertyChanged("AttachmentSizeVisibility");
             }
@@ -277,6 +308,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_vATDeclarationDataForAttch == value) return;
+
                 _vATDeclarationDataForAttch = value;
                 RaisePropertyChanged("VATDeclarationDataForAttch");
             }
@@ -290,6 +323,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_dateSubmitted == value) return;
+
                 _dateSubmitted = value;
                 RaisePropertyChanged("DateSubmitted");
             }
@@ -303,6 +338,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_attachmentName == value) return;
+
                 _attachmentName = value;
                 RaisePropertyChanged("AttachmentName");
             }
@@ -318,6 +355,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_attachmentSize == value) return;
+
                 _attachmentSize = value;
                 RaisePropertyChanged("AttachmentSize");
             }
@@ -331,6 +370,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_totalAttachmentSize == value) return;
+
                 _totalAttachmentSize = value;
                 RaisePropertyChanged("TotalAttachmentSize");
             }
@@ -345,6 +386,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_attachmentCount == value) return;
+
                 _attachmentCount = value;
                 RaisePropertyChanged("AttachmentCount");
             }
@@ -358,6 +401,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isComeForWhichAttachment == value) return;
+
                 _isComeForWhichAttachment = value;
                 RaisePropertyChanged("IsComeForWhichAttachment");
             }
@@ -372,6 +417,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_vatAttachmentsList == value) return;
+
                 _vatAttachmentsList = value;
                 RaisePropertyChanged("VatAttachmentsList");
             }
@@ -386,6 +433,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_attachmentList == value) return;
+
                 _attachmentList = value;
                 if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                 {
@@ -437,6 +486,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isShowAttachmentButton == value) return;
+
                 _isShowAttachmentButton = value;
                 RaisePropertyChanged("IsShowAttachmentButton");
             }
@@ -451,6 +502,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_fileAttachments == value) return;
+
                 _fileAttachments = value;
                 RaisePropertyChanged("FileAttachments");
             }
@@ -620,8 +673,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                                                         }
                                                         catch (Exception ex)
-                                                        { 
-                                                        
+                                                        {
+                                                            Console.Write(ex.ToString());
+                                                            Console.Write(ex.StackTrace.ToString());
                                                         }
                                                         VATRegistrationDetailsForAttach.d.ATTDETSet.results.Add(_attachment.d);
                                                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
@@ -655,6 +709,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                             }
                                                             catch (Exception ex)
                                                             {
+                                                                Console.Write(ex.ToString());
+                                                                Console.Write(ex.StackTrace.ToString());
                                                             }
                                                         }
                                                         AttachmentCount++;
@@ -667,21 +723,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                     {
                                                         AttachmentName = string.Empty;
                                                         //_dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                                       await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                                                     }
                                                 }
                                                 else
                                                 {
                                                     AttachmentName = string.Empty;
                                                     //_dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-                                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
                                                 }
                                             }
                                             else
                                             {
                                                 AttachmentName = string.Empty;
                                                 //_dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
                                             }
                                         }
                                         else
@@ -690,12 +746,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                             //_dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
                                             if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                                             {
-                                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZVATAmendAttachmentNote));
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZVATAmendAttachmentNote));
 
                                             }
                                             else
                                             {
-                                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
                                             }
                                         }
                                     }
@@ -703,21 +759,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                     {
                                         AttachmentName = string.Empty;
                                         //_dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
-                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan300MB));
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan300MB));
                                     }
                                 }
                                 else
                                 {
                                     AttachmentName = string.Empty;
                                     //_dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                                 }
                             }
                             else
                             {
                                 AttachmentName = string.Empty;
                                 //_dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                             }
                         }
                     }
@@ -725,7 +781,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         AttachmentName = string.Empty;
                         //_dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
                     }
                 }
                 catch (InternetException ex)
@@ -733,7 +789,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         //_dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     });
                 }
             }
@@ -777,7 +833,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType, string Doctype)
@@ -829,6 +886,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     //  return null;
                 }
             });

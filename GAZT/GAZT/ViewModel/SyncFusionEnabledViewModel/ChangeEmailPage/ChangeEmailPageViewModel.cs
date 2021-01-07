@@ -10,8 +10,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ChangeEmailPageViewModel: ViewModelBase
     {
         private readonly INavigationService _navigationService;

@@ -8,6 +8,53 @@
 		<DebugSymbols>true</DebugSymbols>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Compile Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
+	  <Compile Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
+	  <Compile Remove="Views\NewDesign\Template\NewFolder\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\CorrespondancePages\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\CorrespondenceDetailsPages\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\MyBillsPages\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\MyCertificatePages\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\MyCommitmentsPage\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\MyReturnPagesNew\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\ReturnsPages\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\SigupPages\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\TaxEvasionPages\**" />
+	  <Compile Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
+	  <EmbeddedResource Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
+	  <EmbeddedResource Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
+	  <EmbeddedResource Remove="Views\NewDesign\Template\NewFolder\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\CorrespondancePages\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\CorrespondenceDetailsPages\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\MyBillsPages\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\MyCertificatePages\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\MyCommitmentsPage\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\MyReturnPagesNew\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\ReturnsPages\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\SigupPages\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\TaxEvasionPages\**" />
+	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
+	  <None Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
+	  <None Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
+	  <None Remove="Views\NewDesign\Template\NewFolder\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\CorrespondancePages\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\CorrespondenceDetailsPages\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\MyBillsPages\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\MyCertificatePages\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\MyCommitmentsPage\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\MyReturnPagesNew\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\ReturnsPages\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\SigupPages\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\TaxEvasionPages\**" />
+	  <None Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="MECalendar" Version="0.1.5" />
 		<PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.2.2" />
 		<PackageReference Include="NodaTime" Version="3.0.0" />
@@ -74,7 +121,6 @@
 		<Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
 		<Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
-		<Folder Include="Views\SyncFusionEnabledViews\VATLookUpPages\" />
 		<Folder Include="Views\SyncFusionEnabledViews\UnlockAccount\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\UnlockAccount\" />
 		<Folder Include="Views\NewDesign\ZakatDeregistration\" />
@@ -140,9 +186,6 @@
 		</Compile>
 		<Compile Update="Views\SyncFusionEnabledViews\Options\SFOptionsPage.xaml.cs">
 			<DependentUpon>SFOptionsPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\TaxEvasionPages\TaxEvasionReportMobilePageView.xaml.cs">
-			<DependentUpon>TaxEvasionReportMobilePageView.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml.cs">
 			<DependentUpon>FinancialDetailAttachmentPopupPageView.xaml</DependentUpon>
@@ -304,6 +347,21 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\Template\NewPublicMenuPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\Template\SelectedItemTemplate.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\Template\SelectedItemTemplateNoIcon.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\Template\UnSelectedItemTemplate.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\Template\UnSelectedItemTemplateNoIcon.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\TestPage.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\VATAmendReactivationPages\VATAmendReactivationPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>

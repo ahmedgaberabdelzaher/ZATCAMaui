@@ -6,10 +6,12 @@ using GalaSoft.MvvmLight;
 using GAZT.Manager;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using static EGAZT.ViewModel.NewDesignViewModel.AccountStatements.AccountStatementsPageViewModel;
 
 namespace EGAZT.Models.AccountStatements
 {
+    [Preserve(AllMembers = true)]
     public class AccountStatementsModel
     {
         public AccountStatementsModel()
@@ -17,7 +19,7 @@ namespace EGAZT.Models.AccountStatements
 
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class GroupedAccountStatements : List<ASResult>
     {
         public DateTime? Date { get; set; }
@@ -29,7 +31,7 @@ namespace EGAZT.Models.AccountStatements
             base.AddRange(groupingItems);
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class DataForDownloadPage
     {
         public  ASTaxpayerSelectedValues ASTaxpayerSelectedValues;
@@ -37,7 +39,7 @@ namespace EGAZT.Models.AccountStatements
         public ObservableCollection<ASResult> StatementsLineItems;
         public bool isNormalList;
     }
-    
+    [Preserve(AllMembers = true)]
     public class ASTaxpayerSelectedValues
     {
         public string TaxType { get; set; }
@@ -46,13 +48,13 @@ namespace EGAZT.Models.AccountStatements
         public string FromDate { get; set; }
         public string ToDate { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ASReturnTypes
     {
         public string TaxType { get; set; }
         public string Id { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ASChipModel
     {
         public string TemplateType { get; set; }
@@ -61,13 +63,13 @@ namespace EGAZT.Models.AccountStatements
 
         public ImageSource ImageSource { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASTabIdentification
     {
         [JsonProperty("d")]
         public ASTabIdentificationData D { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASTabIdentificationData
     {
         [JsonProperty("__metadata")]
@@ -85,7 +87,7 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("Indirect")]
         public string Indirect { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class MetadataAS
     {
         [JsonProperty("id")]
@@ -97,19 +99,19 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("type")]
         public string Type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASRevenueDropDownSet
     {
         [JsonProperty("d")]
         public ASRevenueDropDownSetData D { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASRevenueDropDownSetData
     {
         [JsonProperty("results")]
         public ASRevenueDropDownSetDataResults[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASRevenueDropDownSetDataResults
     {
         [JsonProperty("__metadata")]
@@ -133,13 +135,13 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("Txt30")]
         public string Txt30 { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASStatementHeaderSet
     {
         [JsonProperty("d")]
         public ASStatementHeaderSetData D { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASStatementHeaderSetData
     {
         [JsonProperty("__metadata")]
@@ -348,13 +350,13 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("TaxRelationSet")]
         public TaxRelationSet TaxRelationSet { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class StatmenetLineItemsSet
     {
         [JsonProperty("results")]
         public ASResult[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASResult:ViewModelBase
     {
         [JsonProperty("__metadata")]
@@ -563,13 +565,13 @@ namespace EGAZT.Models.AccountStatements
         public string ClosingBalance { get; set; }
         public string TotalBalance { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class TaxRelationSet
     {
         [JsonProperty("results")]
         public TaxRelationSetResult[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class TaxRelationSetResult
     {
         [JsonIgnore]
@@ -605,19 +607,19 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("ToDate")]
         public string ToDate { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASYearValuesHeader
     {
         [JsonProperty("d")]
         public ASYearValuesData D { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASYearValuesData
     {
         [JsonProperty("results")]
         public ASYearValuesResults[] Results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class ASYearValuesResults
     {
         [JsonProperty("__metadata")]
@@ -644,7 +646,7 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("Fguid")]
         public string Fguid { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ASFilters
     {
         public string FilterHeader { get; set; }

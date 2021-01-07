@@ -6,10 +6,12 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.ZakatDeregistration
 {
+    [Preserve(AllMembers = true)]
     public partial class TINDeregestrationSuccessPageView : ContentPage
     {
         TINDeregestrationSuccessPageViewModel viewModel;

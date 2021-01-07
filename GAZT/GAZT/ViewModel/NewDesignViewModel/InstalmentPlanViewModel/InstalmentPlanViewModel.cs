@@ -7,9 +7,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 {
+    [Preserve(AllMembers = true)]
     public class InstalmentPlanViewModel: ViewModelBase
     {
         #region Variable
@@ -245,7 +247,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
                 });
             }
 
-            if (App.LoginDataRetrieved.VtReg == "X") {
+            if (App.LoginDataRetrieved.VtReg == "X")
+            {
 
                 outletDecisionOptions.Add(new InstalmentPlanModel
                 {
@@ -255,8 +258,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
             }
 
 
-            
-           
+
+
 
             OutletDecisionOptions = outletDecisionOptions;
 
