@@ -630,8 +630,8 @@
 
                                 <StackLayout Spacing="20" Padding="0,0,0,10">
                                     <StackLayout x:Name="ifUserNotRegisteredtoZakatAndVAT" Spacing="20" IsVisible="{Binding IfnotRegInVATAndZakat}" >
-                                        <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="user_profile.png">
+                                        <StackLayout Orientation="Horizontal" Spacing="12">
+                                            <Image Source="individual_32White.png" HeightRequest="24" WidthRequest="24">
 
                                             </Image>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDNewProfile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -644,7 +644,7 @@
 
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="ic_Payments"></Image>
+                                            <Image Source="ic_Payments" HeightRequest="24" WidthRequest="24"/>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBBills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Label_MyBills"/>
@@ -653,7 +653,7 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="menu_return"></Image>
+                                            <Image Source="menu_return" HeightRequest="24" WidthRequest="24"/>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDReturns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped"/>
@@ -662,9 +662,9 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="ic_certificate.png">
+                                            <Image Source="ic_certificate.png" HeightRequest="24" WidthRequest="24"/>
 
-                                            </Image>
+
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDCertificates}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="TaxpayerCertificate_Tapped" />
@@ -689,8 +689,8 @@
                                     -->
                                     <StackLayout Spacing="20" IsVisible="{Binding IfnotRegInVATAndZakat}" >
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="installment_plan.png">
-                                            </Image>
+                                            <Image Source="installment_plan.png" HeightRequest="24" WidthRequest="24"/>
+
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.InstallmentPlans}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="ZakatInstalmentPlan_Tapped" />
@@ -707,8 +707,8 @@
                                         </StackLayout>
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                         <StackLayout Orientation="Horizontal" Spacing="20" x:Name="refundreqMenu" >
-                                            <Image Source="ic_RefundR.png">
-                                            </Image>
+                                            <Image Source="ic_RefundR.png" HeightRequest="24" WidthRequest="24"/>
+
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBRefundRequest}"
                                                                  Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -730,8 +730,8 @@
                                         -->
 
                                         <StackLayout Orientation="Horizontal" Spacing="20" x:Name="fillingMenu">
-                                            <Image Source="ic_vat_return.png">
-                                            </Image>
+                                            <Image Source="ic_vat_return.png" HeightRequest="24" WidthRequest="24"/>
+
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
@@ -741,9 +741,9 @@
                                         
                                         <StackLayout Orientation="Vertical" IsVisible="{Binding IfRegInZakat}">
                                         <StackLayout Orientation="Horizontal" Spacing="20" Margin="0,0,0,15" >
-                                            <Image Source="ic_menu_cr_w">
-                                            </Image>
-                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDContractRelease}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                                <Image Source="ic_menu_cr_w" HeightRequest="24" WidthRequest="24"/>
+
+                                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDContractRelease}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="ContractRelease_Tapped" />
                                             </StackLayout.GestureRecognizers>
@@ -789,9 +789,9 @@
                                         -->
 
                                         <StackLayout IsVisible="{Binding IfnotRegInVATAndZakat}" Orientation="Horizontal" Spacing="20">
-                                            <Image Source="ic_ReportTaxEvasion.png">
+                                            <Image Source="ic_ReportTaxEvasion.png" HeightRequest="24" WidthRequest="24"/>
 
-                                            </Image>
+
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
@@ -800,8 +800,8 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="refund">
-                                            </Image>
+                                            <Image Source="refund" HeightRequest="24" WidthRequest="24"/>
+
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
@@ -814,9 +814,9 @@
 
                                     <StackLayout Orientation="Vertical" IsVisible="{Binding IsVatRegistrationTileVisible}">
                                     <StackLayout Orientation="Horizontal" Spacing="20" >
-                                        <Image Source="details.png">
-                                        </Image>
-                                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VatRegistration}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <Image Source="details.png" HeightRequest="24" WidthRequest="24"/>
+
+                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VatRegistration}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="Vat_Registration_Tapped" />
                                         </StackLayout.GestureRecognizers>
@@ -826,8 +826,8 @@
 
                                         </StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="ic_menu_Tax_check.png">
-                                        </Image>
+                                        <Image Source="ic_menu_Tax_check.png" HeightRequest="24" WidthRequest="24"/>
+
                                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBApplicationStatus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped" />
@@ -835,8 +835,8 @@
                                     </StackLayout>
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                   <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="ic_vat_return.png">
-                                        </Image>
+                                        <Image Source="ic_vat_return.png" HeightRequest="24" WidthRequest="24"/>
+
                                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.GeneralServices}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="General_Services_Tapped" />
@@ -845,9 +845,9 @@
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                     
                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="language.png">
+                                        <Image Source="language.png" HeightRequest="24" WidthRequest="24"/>
 
-                                        </Image>
+
                                         <custom:CustomLabel Text="{Binding TranslateText}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="ChangeLanguage_Tapped"/>
@@ -857,9 +857,9 @@
 
                                     <StackLayout Orientation="Horizontal" Spacing="20">
 
-                                        <Image Source="customerService.png">
+                                        <Image Source="customerService.png" HeightRequest="24" WidthRequest="24"/>
 
-                                        </Image>
+
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSupport}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnSupportTapped"/>
@@ -882,9 +882,9 @@
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
                                     
                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="log_out">
+                                        <Image Source="log_out" HeightRequest="24" WidthRequest="24"/>
 
-                                        </Image>
+
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DBLogOut}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="Logout_Tapped"/>

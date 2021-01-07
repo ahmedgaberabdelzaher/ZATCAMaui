@@ -4652,7 +4652,9 @@
    <data name="VATDeregistrationDocumentType3" xml:space="preserve">
     <value>العقود الرسمية</value>
   </data>
-   <data name="NDEdit" xml:space="preserve">         <value>تعديل</value>     </data>
+   <data name="NDEdit" xml:space="preserve">
+        <value>تعديل</value>
+    </data>
        <data name="TinderegEdit" xml:space="preserve">
         <value>تعديل</value>
     </data>
@@ -5912,7 +5914,7 @@
     <value>خدمات</value>
   </data>
    <data name="NDSwitchUser" xml:space="preserve">
-    <value>Switch User</value>
+    <value>تغيير المستخدم</value>
   </data>
    <data name="NDVATLookUP" xml:space="preserve">
     <value>VAT LookUP</value>

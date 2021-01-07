@@ -32,6 +32,10 @@ namespace EGAZT.NewDesignConverters
             {
                 return AppResources.ZZLicenseNumber;
             }
+            else if (string.IsNullOrEmpty(value.ToString()) || string.IsNullOrWhiteSpace(value.ToString()))
+            {
+                return true;
+            }
             else return "";
         }
 

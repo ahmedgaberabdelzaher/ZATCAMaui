@@ -1162,11 +1162,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (App.TP.TypeChk == "X")
                 {
-                    TaxpayerName = AppResources.Hello + " " + App.TP.NameFirst + " " + App.TP.NameLast;
+                    TaxpayerName =  App.TP.NameFirst + " " + App.TP.NameLast;
                 }
                 else
                 {
-                    TaxpayerName = AppResources.Hello + " " + App.TP.NameOrg1;
+                    TaxpayerName =  App.TP.NameOrg1;
                 }
 
                 

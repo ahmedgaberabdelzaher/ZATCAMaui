@@ -135,5 +135,10 @@ namespace EGAZT.Views.NewDesign.Template
             viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
+
+        private void SwitchUser_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
+        }
     }
 }

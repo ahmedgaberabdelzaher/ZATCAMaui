@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+              xmlns:custom="clr-namespace:GAZT"
+             xmlns:local="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
+            xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             x:Class="EGAZT.Views.NewDesign.InstalmentPlan.TestPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:LVSelectedItemTemplateSelector x:Key="TemplateSelector"/>
+            <local:LVUnselectedItemTemplateSelector x:Key="TemplateSelector1"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <listView:SfListView x:Name="lvTest" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  
+                                 VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
+                                       SelectionMode="Single" SelectedItemTemplate="{StaticResource TemplateSelector1}"
+                                        ItemTemplate="{StaticResource TemplateSelector}"
+                                      SelectionBackgroundColor="Transparent">
+                
+                <!--<listView:SfListView.ItemTemplate>
+
+                    <DataTemplate>
+                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                    Margin="20,0,20,20"  HorizontalTextAlignment="Start" LineHeight="0.8">
+                                </custom:CustomLabel>
+                            </Grid>
+                        </cards:SfCardView>
+
+                    </DataTemplate>
+
+                </listView:SfListView.ItemTemplate>
+                <listView:SfListView.SelectedItemTemplate>
+
+                    <DataTemplate>
+                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                    Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                </custom:CustomLabel>
+                            </Grid>
+                        </cards:SfCardView>
+
+                    </DataTemplate>
+
+                </listView:SfListView.SelectedItemTemplate>-->
+                <listView:SfListView.LayoutManager>
+                    <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+                </listView:SfListView.LayoutManager>
+
+            </listView:SfListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

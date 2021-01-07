@@ -247,7 +247,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
                 });
             }
 
-            if (App.LoginDataRetrieved.VtReg == "X") {
+            if (App.LoginDataRetrieved.VtReg == "X")
+            {
 
                 outletDecisionOptions.Add(new InstalmentPlanModel
                 {
@@ -257,8 +258,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
             }
 
 
-            
-           
+
+
 
             OutletDecisionOptions = outletDecisionOptions;
 
