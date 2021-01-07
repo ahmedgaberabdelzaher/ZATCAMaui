@@ -204,7 +204,7 @@
                     <ScrollView Margin="0,20,0,0">
                         <StackLayout Spacing="20" Padding="0,0,0,10">
                             <StackLayout Spacing="5">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource LoginMenuTitleWhite}" VerticalOptions="Center" HorizontalTextAlignment="Start"/>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" HorizontalTextAlignment="Start"/>
                                 <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
                                     <Label.FormattedText>
                                         <FormattedString>
