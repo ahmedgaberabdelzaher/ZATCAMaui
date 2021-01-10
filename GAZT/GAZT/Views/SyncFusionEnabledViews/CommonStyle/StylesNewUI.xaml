@@ -234,6 +234,11 @@
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
         <Setter Property="FontSize" Value="16" />
     </Style>
+    <Style x:Key="BodyLabelSecondary" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Secondary}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
     <!--#endregion-->
 
     <!--#region Captions  Labels-->
