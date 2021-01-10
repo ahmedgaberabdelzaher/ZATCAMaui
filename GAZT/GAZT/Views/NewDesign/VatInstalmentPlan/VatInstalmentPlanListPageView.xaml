@@ -14,17 +14,27 @@
                                         xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
 
              mc:Ignorable="d" FlowDirection="RightToLeft"    
-              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
              x:Class="EGAZT.Views.NewDesign.InstalmentPlan.VatInstalmentPlanListPageView" 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
     <ContentPage.Resources>
         <ResourceDictionary>
                          <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+            <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector"/>
+            <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector"/>
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <!--<DataTemplate x:Key="BillStatusFilterTemplate">
                 <StackLayout>
@@ -41,7 +51,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid BackgroundColor="Transparent">
-                <Grid>
+                <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
@@ -58,7 +68,7 @@
                         Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
                     </yummy:PancakeView>
-                    <Grid Padding="0,10,0,10" Grid.Row="0">
+                    <Grid Padding="24,10,24,10" Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
@@ -67,17 +77,28 @@
                             <ColumnDefinition Width="60*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" />
-                        <Label Grid.Row="0" Grid.Column="0"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
-                        </Label>
-                        <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" TextColor="White" Text="{StaticResource Close}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" ></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
-                        </Label>
+                        <Label Grid.Column="1" Grid.Row="0"  Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" HorizontalOptions="CenterAndExpand"  VerticalOptions="Center" Style="{StaticResource SectionTitleWhiteBold}" />
+                        
+                        <Image Grid.Row="0" Grid.Column="0" 
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                               Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
+                               HeightRequest="24"
+                               WidthRequest="24">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        
+                        <Image  Grid.Row="0" Grid.Column="2"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                               Source="close" 
+                               HeightRequest="24"
+                               WidthRequest="24">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                       
                     </Grid>
                 </Grid>
             </Grid>
@@ -103,20 +124,23 @@
                             <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATCertificates}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource SectionTitleBlack}" />
+                                        Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentVatInstalmentPlan}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
+                        
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                     </Grid>
 
                     <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                        <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="StartAndExpand" AutoFitMode="Height" ItemSpacing="5"
+                        <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="StartAndExpand" AutoFitMode="Height" ItemSpacing="12"
                                       ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
+                                            SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
+                                      ItemTemplate="{StaticResource UnselectedItemTemplateSelector}"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
 
-                            <listView:SfListView.ItemTemplate>
+                          <!--  <listView:SfListView.ItemTemplate>
 
                                 <DataTemplate>
                                     <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
@@ -146,7 +170,7 @@
 
                                 </DataTemplate>
 
-                            </listView:SfListView.SelectedItemTemplate>
+                            </listView:SfListView.SelectedItemTemplate> -->
 
                             <listView:SfListView.LayoutManager>
 
@@ -175,9 +199,9 @@
                             <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATCertificates}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource SectionTitleBlack}" />
+                                        Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding NumberOfInstalmentPlans}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}"/>
+                                         Style="{StaticResource BodyLabelGrey}"/>
 
                     </Grid>
 
@@ -188,7 +212,7 @@
                             <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" >
+                        <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Padding="16" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" >
                             <Grid >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -197,8 +221,8 @@
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRequestInstalmentPlan}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" />
+                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" Margin="0"></Image>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRequestInstalmentPlan}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" />
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding RequestInstalmentButtonTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>
@@ -276,10 +300,10 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <custom:CustomLabel Grid.Row="0"  Text="{x:Static ResourceManager:AppResources.ZVatSummary}" HorizontalOptions="StartAndExpand"
-                                             Style="{StaticResource PageTitleBlack}" />
+                                             Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
 
                         <custom:CustomLabel  Grid.Row="1"  Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" HorizontalOptions="StartAndExpand"
-                                             Style="{StaticResource CaptionLabelGrey}" />
+                                              Style="{StaticResource BodyLabelGrey}" />
                         <BoxView Grid.Row="2"  Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                         <border:SfBorder Margin="0,16,0,10" Grid.Row="3" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -553,7 +577,7 @@
 
                             <StackLayout>
 
-                                <buttons:SfButton  Margin="0,16,0,16"  x:Name="SummarybtnContinue" IsVisible="False" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
+                                <buttons:SfButton  Margin="0,16,0,16"  WidthRequest="366" HeightRequest="48" x:Name="SummarybtnContinue" IsVisible="False" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}" Command="{Binding SummaryContinueBtnTapped}" />
 
                             </StackLayout>
@@ -579,9 +603,9 @@
                         </Grid.RowDefinitions>
                         
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATCertificates}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource SectionTitleBlack}" />
+                                        Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentDisplayInstalmentSchedule}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}"/>
+                                         Style="{StaticResource BodyLabelGrey}"/>
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                     </Grid>
@@ -690,7 +714,7 @@
                         </Grid.RowDefinitions>
                        
                         <custom:CustomLabel Grid.Row="0"  Text="{x:Static ResourceManager:AppResources.VATCertificates}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource SectionTitleBlack}" />
+                                         Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
                         <custom:CustomLabel Grid.Row="1"  Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentDisplayInstalmentSchedule}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
 

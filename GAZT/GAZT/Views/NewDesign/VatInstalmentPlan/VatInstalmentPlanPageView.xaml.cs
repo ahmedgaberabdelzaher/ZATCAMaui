@@ -11,6 +11,7 @@ using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using VATResults4 = EGAZT.Models.VATInstalationModels.VATResults4;
 
@@ -153,10 +154,12 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
@@ -315,6 +318,10 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 base.OnAppearing();
                 getYesCommand();
                 getNoCommand();
+
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
 
                 viewModel.FirstTerms = false;
                 viewModel.SecondTerms = false;

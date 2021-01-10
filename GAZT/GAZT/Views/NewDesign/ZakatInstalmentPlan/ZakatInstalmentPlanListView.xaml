@@ -67,7 +67,7 @@
                             <ColumnDefinition Width="60*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" />
+                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Style="{StaticResource SectionTitleWhiteBold}"  />
                         <Label Grid.Row="0" Grid.Column="0"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
@@ -103,9 +103,10 @@
                             <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectionType}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource SectionTitleBlack}" />
+                                        Style="{StaticResource SectionTitleBlackBold}" FontSize="28"/>
+                        
                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentPlanSubTitle}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}"/>
+                                         Style="{StaticResource BodyLabelGrey}"/>
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                     </Grid>
@@ -179,9 +180,9 @@
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodMyRequests}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource SectionTitleBlack}" />
+                                        Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding NumberOfInstalmentPlans}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}"/>
+                                         Style="{StaticResource BodyLabelGrey}"/>
                                             <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                                             <cards:SfCardView Margin="0,10,0,10" Grid.Row="3" Padding="12" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
@@ -307,9 +308,9 @@
 
                         <StackLayout Orientation="Vertical">
                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatSummary}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlackBold}" />
+                                            Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
+                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
                             <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                         </StackLayout>
@@ -564,8 +565,8 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ZVatNotes}" Style="{StaticResource SectionTitleBlack}" />
-                        <custom:CustomLabel Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevokNotes}" Style="{StaticResource BodyLabelGrey}"/>
+                        <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ZVatNotes}" Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
+                        <custom:CustomLabel Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevokNotes}"  Style="{StaticResource BodyLabelGrey}"/>
                         <BoxView Grid.Row="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" HeightRequest="1"/>
                     </Grid>
 
@@ -593,7 +594,7 @@
                     <Grid Grid.Row="0" Grid.Column="0" >
 
                         <StackLayout >
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VerificationCode}" Style="{StaticResource SectionTitleBlack}" />
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VerificationCode}" Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}" Style="{StaticResource BodyLabelGrey}"/>
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" HeightRequest="1"/>
 
@@ -768,7 +769,7 @@
                         </Grid.RowDefinitions>
 
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevok}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlackBold}" />
+                                             Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevokSubTitle}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
@@ -866,7 +867,7 @@
                         </Grid.RowDefinitions>
 
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueInvoices}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlackBold}" />
+                                             Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
                         <BoxView Grid.Row="1" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                     </Grid>

@@ -6,6 +6,7 @@ using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.DisplayInstallmentAgreementSchedulePlan;
@@ -62,6 +63,9 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             {
                 base.OnAppearing();
 
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
 
                 viewModel.EnableVATLandingPage();
                 viewModel.AddOutletDecisionOptions();
@@ -106,10 +110,12 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

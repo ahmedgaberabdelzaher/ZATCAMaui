@@ -10,7 +10,10 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 {
@@ -28,9 +31,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             viewModel = App.Locator.OldZakatInstalmentPlanPageView;
             this.BindingContext = viewModel;
 
-           
+
             viewModel.SuccessMessage = AppResources.VatInstalmentPlanSubmittedSuccess;
-            
+
         }
 
         private void SetLTR()
@@ -187,8 +190,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
         }
 
     }

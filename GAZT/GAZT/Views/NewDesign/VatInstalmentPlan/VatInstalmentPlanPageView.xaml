@@ -12,7 +12,6 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              xmlns:custom2="clr-namespace:EGAZT"
-
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              mc:Ignorable="d" FlowDirection="RightToLeft"    
               xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
@@ -45,7 +44,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid BackgroundColor="Transparent">
-                <Grid>
+                <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
@@ -53,7 +52,7 @@
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0"
                   Padding="0,0,0,0" x:Name="VATRMainGrid">
                             <Grid.RowDefinitions>
-                                <!--<RowDefinition Height="10*" />-->
+                              
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
                             <ContentPresenter VerticalOptions="FillAndExpand"
@@ -62,7 +61,7 @@
                         Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
                     </yummy:PancakeView>
-                    <Grid Padding="0,10,0,10" Grid.Row="0">
+                    <Grid Padding="24,10,24,10" Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
@@ -71,15 +70,19 @@
                             <ColumnDefinition Width="60*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
-                        </custom:CustomLabel>
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Style="{StaticResource SectionTitleWhiteBold}" MaxLines="1"/>
+                        <Image Grid.Row="0" Grid.Column="0" 
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                               Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
+                               HeightRequest="24"
+                               WidthRequest="24">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
 
                             <StackLayout  Grid.Row="0" Grid.Column="2">
-                            <StackLayout Spacing="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Rotation="90">
+                            <StackLayout Spacing="3" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Orientation="Horizontal" Rotation="90">
                                 <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
                                 <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
                                 <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
@@ -220,7 +223,7 @@
 
 
                             <buttons:SfButton Grid.Row="3" Grid.Column="0"
-                                          Margin="0,10,0,20" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                          Margin="0,10,0,20"  WidthRequest="366" HeightRequest="48" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding ReasonContinueBtnTapped}"
                                               BackgroundColor="{Binding IsSelectionContinueBackGroundColor}"
@@ -326,7 +329,7 @@
 
                             <Grid Grid.Row="1">
 
-                                <buttons:SfButton  Margin="0,16,0,16"  Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDetails}"
+                                <buttons:SfButton  Margin="0,16,0,16"  WidthRequest="366" HeightRequest="48" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDetails}"
                                               Style="{StaticResource PrimaryButtonStyle}" Command="{Binding AggrementContinueBtnTapped}"/>
 
                             </Grid>
@@ -466,7 +469,7 @@
                         </Grid>
                         <Grid Grid.Row="4" VerticalOptions="End" Grid.Column="0">
                             <StackLayout>
-                                <buttons:SfButton Margin="0,16,0,16" x:Name="btnAttachmentContinue"
+                                <buttons:SfButton Margin="0,16,0,16"  WidthRequest="366" HeightRequest="48" x:Name="btnAttachmentContinue"
                                               Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
                                               Style="{StaticResource PrimaryButtonStyle}"
                                               Command="{Binding AttachmentsContinueBtnTapped}" />
@@ -541,7 +544,7 @@
 
 
 
-                                                <buttons:SfButton  Margin="0,16,0,80" x:Name="btnVATBillsContinue"
+                                                <buttons:SfButton  Margin="0,16,0,80"  WidthRequest="366" HeightRequest="48" x:Name="btnVATBillsContinue"
                                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
                                                    Style="{StaticResource PrimaryButtonStyle}"
                                                    BackgroundColor="{Binding IsBillContinueBackGroundColor}"
@@ -729,7 +732,7 @@
 
                                                 <Grid Grid.Row="5" VerticalOptions="End" Grid.Column="0">
                                                     <StackLayout>
-                                                        <buttons:SfButton Margin="0,16,0,16" Command="{Binding StatementsContinueBtnTapped}"
+                                                        <buttons:SfButton Margin="0,16,0,16" WidthRequest="366" HeightRequest="48" Command="{Binding StatementsContinueBtnTapped}"
                                               Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
                                               Style="{StaticResource PrimaryButtonStyle}" />
                                                     </StackLayout>
@@ -1078,7 +1081,8 @@
 
                                 <StackLayout>
 
-                                    <buttons:SfButton  Margin="0,16,0,16"  x:Name="SummarybtnContinue" Text="{x:Static ResourceManager:AppResources.Submit}"
+                                    <buttons:SfButton  Margin="0,16,0,16"  WidthRequest="366" HeightRequest="48"
+                                                       x:Name="SummarybtnContinue" Text="{x:Static ResourceManager:AppResources.Submit}"
                                    Style="{StaticResource PrimaryButtonStyle}" Command="{Binding SummaryContinueBtnTapped}" />
 
                                 </StackLayout>

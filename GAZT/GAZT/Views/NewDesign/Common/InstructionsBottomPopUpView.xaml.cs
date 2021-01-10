@@ -7,6 +7,7 @@ using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -77,6 +78,9 @@ namespace EGAZT.Views.NewDesign
             {
                 base.OnAppearing();
 
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
 
                 if (isCheckboxchecked)
                 {

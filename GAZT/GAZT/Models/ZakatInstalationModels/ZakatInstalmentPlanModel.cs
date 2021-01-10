@@ -9,6 +9,7 @@ namespace EGAZT.Models.ZakatInstalationModels
     [Preserve(AllMembers = true)]
     public class ZakatInstalmentPlanModel
     {
+        public string CardLabel { get => ActiveOutletDecisionOptions; }
         public string ActiveOutletDecisionOptions { get; set; }
         public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
     }
@@ -16,7 +17,7 @@ namespace EGAZT.Models.ZakatInstalationModels
 
     public class InstalmentAgreementFrequencyModel
     {
-      
+        public string CardLabel { get => FrequencyOptions; }
         public string FrequencyOptions { get; set; }
         public bool IsSelected { get; set; }
     }

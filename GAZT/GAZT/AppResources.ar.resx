@@ -5086,7 +5086,7 @@
     <value>التعديل من قبل الهيئة العامة للزكاة والدخل</value>
   </data>
    <data name="ZakatInstallmentPageTitle" xml:space="preserve">
-    <value>طلب خطة التقسيط</value>
+    <value>خطة التقسيط</value>
     <comment>Title</comment>
   </data>
    <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">

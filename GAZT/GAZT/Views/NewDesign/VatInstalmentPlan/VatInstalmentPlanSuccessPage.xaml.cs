@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 {
@@ -48,7 +51,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
 
                     }
-                   
+
                 }
             }
             catch (Exception ex)
@@ -60,19 +63,19 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         }
 
 
-               
-        
+
+
         private void Instalment_plan_Tapped(object sender, EventArgs e)
         {
 
             Device.BeginInvokeOnMainThread(() =>
             {
 
-              
+
                 var _navigation = Application.Current.MainPage.Navigation;
 
 
-               
+
 
                 foreach (var item in _navigation.NavigationStack)
                 {
@@ -113,11 +116,11 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
             });
 
-          
-            
 
 
-         
+
+
+
 
 
 
@@ -169,13 +172,15 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             }
         }
 
-      
+
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
 
-          
         }
 
     }

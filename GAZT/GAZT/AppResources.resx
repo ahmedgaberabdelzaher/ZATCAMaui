@@ -2005,7 +2005,7 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
     <value>DELETE FILE</value>
     <comment>Estimated Zakat</comment>
   </data>
-         <data name="ZZUpdateZakatDelete" xml:space="preserve">
+  <data name="ZZUpdateZakatDelete" xml:space="preserve">
     <value>Are you sure you want to delete </value>
     <comment>Establishment Amend</comment>
   </data>
@@ -2970,11 +2970,10 @@ Should we require further information, we would be in contact.</value>
     <value>Set To English</value>
     <comment>SynfusionUILabel</comment>
   </data>
-      <data name="ZZZSetToEn" xml:space="preserve">
+  <data name="ZZZSetToEn" xml:space="preserve">
     <value>En</value>
     <comment>SynfusionUILabel</comment>
   </data>
-    
   <data name="ZNoDataAvailable" xml:space="preserve">
     <value>No data found</value>
   </data>
@@ -4088,8 +4087,8 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Financial Details</value>
     <comment>VATRegistrationPageView</comment>
   </data>
-    <data name="NAIBANDetails" xml:space="preserve">
-       <value>IBAN Details</value>
+  <data name="NAIBANDetails" xml:space="preserve">
+    <value>IBAN Details</value>
     <comment>VATRegistrationDisplayDetails</comment>
   </data>
   <data name="VATRGreaterThan" xml:space="preserve">
@@ -5144,7 +5143,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Amendment by GAZT</value>
   </data>
   <data name="ZakatInstallmentPageTitle" xml:space="preserve">
-    <value>Request Instalment Plan</value>
+    <value>Instalment Plan</value>
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
@@ -5253,7 +5252,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VATRefundsRequest" xml:space="preserve">
     <value>VAT Refunds Request</value>
   </data>
-   <data name="VATRefundTpParameter" xml:space="preserve">
+  <data name="VATRefundTpParameter" xml:space="preserve">
     <value>Refund Request</value>
   </data>
   <data name="VATRefundsReassesmentAmount" xml:space="preserve">
@@ -5794,9 +5793,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="NDEdit" xml:space="preserve">
     <value>Edit</value>
   </data>
-         <data name="TinderegEdit" xml:space="preserve">
-        <value>Edit</value>
-    </data>
+  <data name="TinderegEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="NDLessThan5MinRegister" xml:space="preserve">
     <value>Please complete registration</value>
     <comment>Register now for Value Added Tax in less than 5 minutes</comment>
@@ -8764,8 +8763,4 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="Therearenofinancialtransactions" xml:space="preserve">
     <value>There are no financial transactions</value>
   </data>
-    
-    
-    
-    
 </root>
