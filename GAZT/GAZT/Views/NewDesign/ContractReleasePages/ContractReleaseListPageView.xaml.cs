@@ -10,6 +10,7 @@ using GAZT.Manager;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using static EGAZT.Models.ContractRelease.ContractReleaseSummaryModel;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
@@ -38,6 +39,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 SetLTR();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
+
                 viewModel = App.Locator.ContractReleasePageListView;
 
                 this.BindingContext = viewModel;
@@ -52,6 +57,15 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         }
 
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // On<iOS>().SetUseSafeArea(true);
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+        }
 
         private void SetLTR()
         {

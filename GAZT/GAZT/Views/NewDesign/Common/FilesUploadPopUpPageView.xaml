@@ -27,17 +27,7 @@
     <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
         <Grid>
              <StackLayout Padding="0,0,0,0" Margin="10,0,10,0"> 
-                <!--<StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Spacing="0">-->
-                    
-                <!--<Image HorizontalOptions="EndAndExpand" Margin="15,15,15,1" >
-                    <Image.Source>
-                        <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                    </Image.Source>
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
-                    </Image.GestureRecognizers>
-                </Image>-->
-
+                
                 <border:SfBorder Margin="0,10,0,10" HasShadow="False" Padding="0"
                                  Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout Orientation="Vertical">
@@ -46,11 +36,9 @@
                         </Button>
                     </StackLayout>
                 </border:SfBorder>
-                
-                <Label HorizontalTextAlignment="Center" Text="{Binding TitleOne}" Margin="0,0,0,0" TextColor="#005e4b" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
-                <Label HorizontalTextAlignment="Start" Text="{Binding TitleTwo}" Margin="0,0,0,0" TextColor="#005e4b" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                <Label HorizontalTextAlignment="Start" Text="{Binding TitleOne}" Margin="0,0,0,0"  Style="{StaticResource CaptionLabelGrey}"/>
+                <Label HorizontalTextAlignment="Start" Text="{Binding TitleTwo}" Margin="0,0,0,0"  Style="{StaticResource CaptionLabelGrey}"/>
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
-
                 <ListView ItemsSource="{Binding AttachmentList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" x:Name="List" HeightRequest="300"  ItemTapped="Attachmentlist_ItemTapped" SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>

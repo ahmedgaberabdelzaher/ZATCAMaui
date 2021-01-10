@@ -34,9 +34,12 @@
                        HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
                        Source="Forget_ic_success" />
 
-                <Label Text="{x:Static ResourceManager:AppResources.ContractRelease}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text= "{x:Static ResourceManager:AppResources.CRYourContractisreleasedsuccessfully}" FontFamily="{StaticResource SSTArabicMedium}"
-                       TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                <Label Text="{x:Static ResourceManager:AppResources.ContractRelease}" HorizontalTextAlignment="Center" Style="{StaticResource PageTitleWhite}"/>
+                <Label Text= "{x:Static ResourceManager:AppResources.CRYourContractisreleasedsuccessfully}" 
+                        HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                       Margin="0,16,0,0"
+                       Style="{StaticResource BodyLabelWhite}"
+                       />
                 <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ContractRelease}" Margin="0,20,0,0"
                                     FontAttributes="Bold" FontSize="Large" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CRYourContractisreleasedsuccessfully}"
@@ -62,7 +65,7 @@
                                     </Grid.ColumnDefinitions>
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.CRReferenceNumber}"
-                                                    VerticalOptions="Center" Style="{StaticResource ValueLabelGrey}"
+                                                    VerticalOptions="Center" Style="{StaticResource CaptionLabelGrey}"
                                                     HorizontalOptions="Start" />
 
                                     <custom:CustomLabel x:Name="ReferenceNumberTxt" Grid.Row="0" Grid.Column="1"
@@ -92,7 +95,7 @@
                                     </Grid.ColumnDefinitions>
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.CRContractingNumber}"
-                                                    VerticalOptions="Center"  Style="{StaticResource ValueLabelGrey}"
+                                                    VerticalOptions="Center"  Style="{StaticResource CaptionLabelGrey}"
                                                     HorizontalOptions="StartAndExpand" />
 
                                     <custom:CustomLabel x:Name="ContractNumberTxt" Grid.Row="0" Grid.Column="1" FontSize="16"
@@ -118,18 +121,16 @@
                                 Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"
                             Clicked="Download_AcknowledgementForm"
                                 CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
-                                HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
+                                HeightRequest="48"
+                                WidthRequest="366"
+                                Margin="10,20,10,24" FontSize="15" Grid.ColumnSpan="2"
                                  BackgroundColor="#d49504" TextColor="White" />
 
-                            <buttons:SfButton x:Name="btnDashboard"
-                                          Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
-                                           Clicked="Download_Acknowledgement"
-                                          CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
-                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
-                                          BackgroundColor="#d49504" TextColor="White" />
+                            
                             <custom:CustomLabel Margin="10,0,10,15"
                                             Text="{x:Static ResourceManager:AppResources.ContractRelease}"
-                                            TextColor="#d49504" HorizontalOptions="Center"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
                                 <custom:CustomLabel.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Dashboard_Tapped" />

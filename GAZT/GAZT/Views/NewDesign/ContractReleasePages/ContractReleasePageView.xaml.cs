@@ -12,6 +12,7 @@ using GAZT.Models;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -33,6 +34,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             SetLTR();
             SetPickerFont();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
 
             viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
@@ -175,6 +180,11 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem",
                 (sender, arg) =>
                 {
