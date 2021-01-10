@@ -580,7 +580,7 @@
 
     <!--#region IconImage Styles-->
     
-    <Style x:Key="SmallIcon" TargetType="custom:CustomLabel">
+    <Style x:Key="SmallIcon" TargetType="Image">
         <Setter Property="HeightRequest" Value="24" />
         <Setter Property="WidthRequest" Value="24" />
     </Style>

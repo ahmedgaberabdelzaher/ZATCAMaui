@@ -526,7 +526,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
-
             }
         }
 

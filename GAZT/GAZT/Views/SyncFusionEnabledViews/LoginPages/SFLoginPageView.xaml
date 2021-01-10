@@ -16,7 +16,7 @@
     xmlns:custom2="clr-namespace:EGAZT"
     NavigationPage.HasNavigationBar="False"
     Title="Login"
-                 xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
     BackgroundColor="White">
     <!--Style="{StaticResource ContentPageStyle}"-->
     <ContentPage.Resources>
@@ -31,7 +31,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <Grid x:Name="loginGrid">
+            <Grid x:Name="loginGrid" Margin="0,-30,0,-30">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100*"></RowDefinition>
                 </Grid.RowDefinitions>
@@ -54,7 +54,7 @@
             </custom:CustomLabel>-->
 
 
-                <Image Source="ic_burger.png" x:Name="HamburgerMenu"
+                <Image Source="Burger" x:Name="HamburgerMenu" Style="{StaticResource SmallIcon}" 
                        VerticalOptions="Start"
                 HorizontalOptions="EndAndExpand"
                         Margin="10,30,10,0">
@@ -84,7 +84,7 @@
                     </StackLayout>
                 </Grid>
 
-                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}" Margin="0,-20,0,-20">
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">

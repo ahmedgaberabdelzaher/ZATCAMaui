@@ -254,7 +254,7 @@
                         </StackLayout>
                     </ScrollView>
                 </Grid>
-                <Grid VerticalOptions="EndAndExpand" Grid.Row="3" Margin="0,0,0,57" RowSpacing="0">
+                <Grid VerticalOptions="EndAndExpand" Grid.Row="3" Margin="0,0,0,57" RowSpacing="0" HeightRequest="73">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="auto"/>
