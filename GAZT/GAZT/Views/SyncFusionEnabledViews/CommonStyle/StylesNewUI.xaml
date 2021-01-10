@@ -250,6 +250,7 @@
     <Style x:Key="CaptionLabelGrey" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+        <Setter Property="HeightRequest" Value="16" />
         <Setter Property="FontSize" Value="12" />
     </Style>
     <Style x:Key="CaptionLabelWhite" TargetType="Label">
@@ -260,7 +261,12 @@
     <!--#endregion-->
 
     <!--#endregion-->
-
+    <!--Tax payer profile -->
+       <Style x:Key="TPProfileLabelBlackBold" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="FontSize" Value="18" />
+    </Style>
 
     <!--Account Statements-->
     <Color x:Key="BILLED">#FCE087</Color>
@@ -437,6 +443,8 @@
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
         <Setter Property="FontSize" Value="15" />
+        <Setter Property="HeightRequest" Value="48"/>
+        <Setter Property="WidthRequest" Value="366"/>
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
 
@@ -575,10 +583,13 @@
         <Setter Property="TextColor" Value="White" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
     </Style>
-
+       <Style x:Key="SFTaxPayerProfile" TargetType="Frame">
+        <Setter Property="HeightRequest" Value="80"/>
+    </Style>
     <!--#endregion-->
 
-    <!--#region IconImage Styles-->
+   
+      <!--#region IconImage Styles-->
     
     <Style x:Key="SmallIcon" TargetType="Image">
         <Setter Property="HeightRequest" Value="24" />
@@ -586,6 +597,5 @@
     </Style>
     
     <!--#endregion-->
-
 
 </ResourceDictionary>

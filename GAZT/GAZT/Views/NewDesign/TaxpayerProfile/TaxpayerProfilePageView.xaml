@@ -29,8 +29,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -38,7 +36,7 @@
             </Grid.RowDefinitions>
 
 
-            <Grid Padding="0,56,0,0" Grid.Row="0">
+            <Grid Padding="0,20,0,0" Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -48,8 +46,9 @@
                 <StackLayout Grid.Row="1" Padding="24" Orientation="Vertical" Spacing="0">
                     <custom:CustomLabel Text="{Binding TPProfileNameLbl}"
                                     HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource SectionTitleWhiteBold}"
-                                    FontSize="24"/>
+                                    Style="{StaticResource LoginMenuTitleWhite}"
+                                   />
+
                     <custom:CustomLabel Margin="0,0,0,0"
                                     Text="{Binding ResidenceText}"
                                     Style="{StaticResource BodyLabelBlack}"
@@ -57,7 +56,7 @@
                                     TextColor="White"/>
                 </StackLayout>
                 <ScrollView Grid.Row="2">
-                    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Padding="24,32,24,16">
+                    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Padding="24,32,24,200" >
                         <StackLayout>
                             <Frame BorderColor="{StaticResource NeutralLightGrey}" HasShadow="False" CornerRadius="16" Padding="16">
                                 <StackLayout Orientation="Horizontal">
@@ -82,18 +81,19 @@
 
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}"
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource ValueLabelBlackBold}"
+                                            Style="{StaticResource TPProfileLabelBlackBold}"
                                             Margin="0,16,0,0"/>
 
+                            <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                                    Style="{StaticResource CaptionLabelGrey}"/>
                                 <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnMobileEditTapped"/>
                                     </Image.GestureRecognizers>
                                 </Image>
                             </StackLayout>
-
                             <inputLayout:SfTextInputLayout
                             Margin="0,-10,0,0"
                             HorizontalOptions="FillAndExpand"
@@ -104,7 +104,7 @@
                             FocusedColor="#005e4b" ErrorColor="#B00020"
                             InputViewPadding="16,0,16,0" >
                                 <StackLayout Orientation="Horizontal"
-                                         Padding="0,8,0,8" >
+                                   >
                                     <!--<OnPlatform x:TypeArguments="View">
                                         <On Platform="iOS">
                                             <custom:CustomLabel Text="+966"
@@ -130,7 +130,12 @@
                                                          />
                                 </StackLayout>
                             </inputLayout:SfTextInputLayout>
+                            </StackLayout>
 
+                 <BoxView Style="{StaticResource lineSeperator}" BackgroundColor="Transparent"/>
+
+
+                       <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEmail}"
                                                 Style="{StaticResource CaptionLabelGrey}"/>
@@ -144,14 +149,17 @@
                                                         LeadingViewPosition="Inside" ContainerType="Outlined"
                                                         UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
                                                         FocusedColor="#005e4b" ErrorColor="#B00020"
-                                                        InputViewPadding="16,8,16,8">
+                                                        InputViewPadding="16,0,16,0">
 
                                 <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
                                                      Text="{Binding EmailEntry}"
                                                     IsReadOnly="True">
                                 </control:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
+                           </StackLayout>
+                                             <BoxView Style="{StaticResource lineSeperator}" BackgroundColor="Transparent"/>
 
+                             <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
                             <StackLayout Orientation="Horizontal">
                                 <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPUpdatePassword}"
                                                 Style="{StaticResource CaptionLabelGrey}"/>-->
@@ -166,7 +174,7 @@
                             <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand"
                                                         LeadingViewPosition="Inside" ContainerType="Outlined"
                                                         UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
-                                                        FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
+                                                        FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,0,16,0">
                                 <control:BorderlessEntry x:Name="Password"
                                                          Style="{StaticResource DefaultEntry}"
                                                          Text="{Binding PasswordEntry}"
@@ -175,9 +183,11 @@
                                 </control:BorderlessEntry>
 
                             </inputLayout:SfTextInputLayout>
+                        </StackLayout>
 
                         </StackLayout>
                     </yummy:PancakeView>
+
                 </ScrollView>
 
                 <Grid Padding="15,0,15,0"

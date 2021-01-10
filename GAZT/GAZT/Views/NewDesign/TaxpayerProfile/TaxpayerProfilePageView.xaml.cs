@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.TaxpayerProfile
@@ -27,12 +29,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         public TaxpayerProfilePageView()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-            
+            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+
             viewModel = App.Locator.TaxpayerProfilePageView;
             this.BindingContext = viewModel;
             ChangeAeroIcon();
-         
+
             TpProfileTaxpaayertypeRefresh();
             try
             {
@@ -42,7 +44,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
 
             }
-            
+
             // * Page content direction
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
@@ -67,21 +69,21 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
 
                 viewModel.IsLoading = true;
-            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(App.TP.Tin);
+                TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(App.TP.Tin);
 
-            if (TPProfile != null)
-            {
-                //if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
-                //{
-                //    throw new GAZTRegistrationPendingException();
-                //}
-                if (App.TP != null)
+                if (TPProfile != null)
                 {
-                    App.TP.TpType = TPProfile.TpType;
+                    //if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
+                    //{
+                    //    throw new GAZTRegistrationPendingException();
+                    //}
+                    if (App.TP != null)
+                    {
+                        App.TP.TpType = TPProfile.TpType;
                         viewModel.ResidenceText = App.TP.TpType;
                     }
-                
-            }
+
+                }
                 viewModel.IsLoading = false;
             }
             catch
@@ -96,7 +98,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             try
             {
-                if( mobileData == null )
+                if (mobileData == null)
                     mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
 
                 viewModel.IsLoading = false;
@@ -130,7 +132,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
             try
             {
 
@@ -162,7 +166,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     }
                     catch (Exception ex)
                     {
-
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
 
@@ -172,7 +177,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

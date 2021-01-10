@@ -288,7 +288,7 @@
     </Style>
 
     <Style TargetType="yummy:PancakeView" x:Key="CommonTopCurves">
-        <Setter Property="CornerRadius" Value="15,15,0,0"/>
+        <Setter Property="CornerRadius" Value="15,15,15,15"/>
         <Setter Property="BackgroundColor" Value="White"/>
         <Setter Property="Padding"  Value="20,20,20,20"/>
     </Style>
