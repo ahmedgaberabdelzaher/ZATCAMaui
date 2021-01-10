@@ -129,7 +129,7 @@
                             
                             <custom:CustomLabel Margin="10,0,10,15"
                                             Text="{x:Static ResourceManager:AppResources.ContractRelease}"
-                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Style="{StaticResource BodyLabelSecondary}"
                                             HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
                                 <custom:CustomLabel.GestureRecognizers>
