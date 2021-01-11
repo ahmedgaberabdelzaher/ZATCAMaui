@@ -898,7 +898,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.IsLoading = true;
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
+                try
+                {
+                    viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
+                }
+                catch(Exception ex)
+                {
+
+                }
 
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);

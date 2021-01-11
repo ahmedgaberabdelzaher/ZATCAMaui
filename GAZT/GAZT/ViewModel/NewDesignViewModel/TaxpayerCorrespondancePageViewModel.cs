@@ -24,10 +24,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     {
         #region Fields
         public ICommand OnBackButtonClicked { get; set; }
-        //CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
-        //CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
-        //CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
-
+      
         #endregion
         #region Properties
 
@@ -131,19 +128,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        //private Xamarin.Forms.Shapes.RotateTransform  _rotationForImageInArabic = 0;
-        //    public Xamarin.Forms.Shapes.RotateTransform RotationForImageInArabic
-        //{
-        //    get
-        //    {
-        //        return _rotationForImageInArabic;
-        //    }
-        //    set
-        //    {
-        //        _rotationForImageInArabic = value;
-        //        RaisePropertyChanged("RotationForImageInArabic");
-        //    }
-        //}
         private List<CorrespondanceModel> _listVATCorrespondance = null;
         public List<CorrespondanceModel> ListVATCorrespondance
         {
