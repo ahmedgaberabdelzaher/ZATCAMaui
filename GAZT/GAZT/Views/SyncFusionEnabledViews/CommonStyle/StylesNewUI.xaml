@@ -114,7 +114,7 @@
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
     <!--#endregion-->
-    
+
     <!--#region Login Menu-->
 
     <Style x:Key="LoginMenuTitleWhite" TargetType="Label">
@@ -229,7 +229,7 @@
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
         <Setter Property="FontSize" Value="16" />
     </Style>
-        <Style x:Key="BodyLabelWhite" TargetType="Label">
+    <Style x:Key="BodyLabelWhite" TargetType="Label">
         <Setter Property="TextColor" Value="White" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
         <Setter Property="FontSize" Value="16" />
@@ -504,10 +504,10 @@
         <Setter Property="TextColor" Value="White"/>
     </Style>
 
-     <Style x:Key="SfLabelTextStyleForOnboarding" TargetType="Label">
+    <Style x:Key="SfLabelTextStyleForOnboarding" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Center"/>
-         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
-              <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+        <Setter Property="FontSize" Value="16" />
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25,Default=-1}"/>
         <Setter Property="TextColor" Value="White"/>
@@ -525,17 +525,17 @@
         </Setter>
     </Style>
 
-     <Style x:Key="SFOnboardingCenterImage" TargetType="Image">
- 
-         <Setter Property="WidthRequest" Value="288"/>
-         <Setter Property="HeightRequest" Value="318"/>
+    <Style x:Key="SFOnboardingCenterImage" TargetType="Image">
+
+        <Setter Property="WidthRequest" Value="288"/>
+        <Setter Property="HeightRequest" Value="318"/>
 
     </Style>
     <!--Styles for Onboarding-->
-         <Style x:Key="SFQuickActionsCloseImage" TargetType="Image">
- 
-         <Setter Property="WidthRequest" Value="414"/>
-         <Setter Property="HeightRequest" Value="88"/>
+    <Style x:Key="SFQuickActionsCloseImage" TargetType="Image">
+
+        <Setter Property="WidthRequest" Value="414"/>
+        <Setter Property="HeightRequest" Value="88"/>
 
     </Style>
     <!--#Styles for New Design R2-->
@@ -612,7 +612,37 @@
         <Setter Property="HeightRequest" Value="24" />
         <Setter Property="WidthRequest" Value="24" />
     </Style>
-    
+
     <!--#endregion-->
+
+    <!--#region Chip Group Styles-->
+
+    <Style x:Key="ChipParentLayout" TargetType="StackLayout">
+        <!--<Setter Property="HeightRequest" Value="32" />-->
+        <!--<Setter Property="WidthRequest" Value="108" />-->
+        <Setter Property="Spacing" Value="8" />
+        <Setter Property="Margin" Value="4,0,4,0" />
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+
+    <Style x:Key="ChipIcon" TargetType="Image">
+        <Setter Property="HeightRequest" Value="16" />
+        <Setter Property="WidthRequest" Value="16" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+    <Style x:Key="ChipGroup" TargetType="buttons:SfChipGroup">
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HeightRequest" Value="32" />
+        <Setter Property="ChipBorderColor" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="ChipBorderWidth" Value="1"/>
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />        
+        <Setter Property="SelectedChipBackgroundColor" Value="#F9F0DF" />
+    </Style>
+
+    <!--#endregion-->
+
 
 </ResourceDictionary>

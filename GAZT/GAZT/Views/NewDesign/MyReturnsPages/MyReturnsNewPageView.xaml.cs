@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -78,7 +79,12 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 
         }
         protected async override void OnAppearing()
-        { 
+        {
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             try
             {
                 VATDeclarationAttachmentPageViewModel.isToBeFilled = true;

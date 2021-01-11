@@ -16,7 +16,8 @@
              mc:Ignorable="d"
              x:Class="EGAZT.Views.NewDesign.MyReturnsNewPages.GAZTNewDesignMyReturnsNewPageView"
              FlowDirection="RightToLeft"
-             NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="partials_background.png">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -117,17 +118,24 @@
                             </syncfusion:SfPicker>
                         </Grid>
 
-                        <ScrollView Orientation="Horizontal" HorizontalOptions="StartAndExpand" HorizontalScrollBarVisibility="Never">
+                        <ScrollView Orientation="Horizontal" HorizontalOptions="StartAndExpand" HorizontalScrollBarVisibility="Never" Margin="0,24,0,24">
 
-                            <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" ChipBackgroundColor="Transparent"  ItemsSource="{Binding ChipDataFilterlist}"   SelectionChanged="ChipGroup_statusFilter_SelectionChanged" HorizontalOptions="Start"  SelectedChipBackgroundColor="#F9F0DF" ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" Margin="0,10,0,0" >
+                            <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" 
+                                                 ChipBackgroundColor="Transparent"  ItemsSource="{Binding ChipDataFilterlist}"   
+                                                 SelectionChanged="ChipGroup_statusFilter_SelectionChanged" Style="{StaticResource ChipGroup}">
                                 <buttons:SfChipGroup.ItemTemplate>
                                     <DataTemplate >
-                                        <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
-                                            <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>
-                                            <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
+                                        <StackLayout Style="{StaticResource ChipParentLayout}">
+                                            <Image Source="{Binding ImageSource}"  Style="{StaticResource ChipIcon}" />
+                                            <custom:CustomLabel Text="{Binding Text}" Style="{StaticResource CaptionLabelBlack}" >
+                                                <custom:CustomLabel.Margin>
+                                                    <OnPlatform x:TypeArguments="Thickness">
+                                                        <On Platform="iOS" Value="0,-3,0,0"/>
+                                                        <On Platform="Android" Value="0,-6,0,0"/>
+                                                    </OnPlatform>
+                                                </custom:CustomLabel.Margin>
+                                            </custom:CustomLabel>
                                         </StackLayout>
-                                        <!--<buttons:SfChip  BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" "#F9F0DF"  "#E5EFED"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ImageSource="{Binding ImageSource}" ShowCloseButton="False" ImageAlignment="Left" ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue" ShowIcon="True" VerticalTextAlignment="Center" VerticalOptions="Center"/>-->
-
                                     </DataTemplate>
                                 </buttons:SfChipGroup.ItemTemplate>
                             </buttons:SfChipGroup>
