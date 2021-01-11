@@ -7,6 +7,8 @@ using GAZT.Models;
 using GAZT.CustomControl;
 using MVP.FontIcons;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {
@@ -22,8 +24,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         {
 
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, " ");
-
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
+           
             viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
             this.BindingContext = viewModel;
             viewModel.ClearData();
@@ -32,7 +34,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
             SetPickerFont();
             viewModel.StartPage = 1;
-
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+           
         }
 
         public void SetPickerFont()
@@ -306,6 +309,11 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
 
             if (Device.RuntimePlatform == Device.Android)
             {

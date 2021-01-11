@@ -10,7 +10,7 @@
              BackgroundImageSource="partials_background.png"
              x:Class="EGAZT.Views.NewDesign.ForgotPasswordPages.GAZTNewDesignRecoverUsernamePageView"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true">
+            >
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

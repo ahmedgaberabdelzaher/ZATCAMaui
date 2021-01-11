@@ -146,7 +146,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
 
         }
 
-
+      
         protected void OnSelectedTaxPAyerType(object sender, EventArgs e)  { }
         protected void OnSelectedForgetType(object sender, EventArgs e)
         {
@@ -258,6 +258,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
             try
             {
                 base.OnAppearing();
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
                 if (viewModel.OTPLayoutVisibility == true)
                 {
                     viewModel.TimerStart(viewModel.numberOfSeconds);
