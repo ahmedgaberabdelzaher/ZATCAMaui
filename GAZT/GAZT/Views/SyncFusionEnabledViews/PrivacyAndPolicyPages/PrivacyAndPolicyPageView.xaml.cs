@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy
@@ -24,6 +25,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy
             InitializeComponent();
             viewModel = App.Locator.PrivacyAndPolicyPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
             ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
@@ -73,6 +77,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+        }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
+
         }
         private void BackButtonClicked(object sender, EventArgs e)
         {

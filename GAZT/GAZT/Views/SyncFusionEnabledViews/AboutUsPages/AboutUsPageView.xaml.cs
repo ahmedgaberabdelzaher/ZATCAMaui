@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.AboutUs
@@ -25,7 +26,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AboutUs
             InitializeComponent();
             viewModel = App.Locator.AboutUsPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            ChangeAeroIcon();
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
+                ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
             if (Device.RuntimePlatform == Device.iOS)
@@ -61,6 +65,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AboutUs
         }
         #endregion
         #region Method
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
+           
+        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

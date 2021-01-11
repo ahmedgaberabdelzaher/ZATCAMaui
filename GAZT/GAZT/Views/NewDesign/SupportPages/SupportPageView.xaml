@@ -49,10 +49,10 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <!--Parent View Starts-->
-                    <ScrollView Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Parent}}">
-                        <StackLayout Spacing="16" Padding="0,24,0,0">
+                    <ScrollView Grid.Row="0" Padding="0,0,0,32" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Parent}}">
+                        <StackLayout Spacing="24" Padding="0,12,0,0">
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}" >
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="ic_logo_gazt.png" HeightRequest="25" WidthRequest="25"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZAboutUs}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
@@ -63,7 +63,7 @@
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="declaration.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZPrivacyandPolicy}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
@@ -73,7 +73,7 @@
                                     <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped"/>
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="faQs.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZFaq}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
@@ -84,7 +84,7 @@
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="ColorChat.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DBSMChat}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
@@ -95,7 +95,7 @@
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="customerServiceColor.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
@@ -129,7 +129,7 @@
                     <!--Chat View Ends-->
 
 
-                     <Grid IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Chat}}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="AliceBlue">
+                     <Grid Padding="0,0,0,0"  IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Chat}}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="AliceBlue">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
@@ -142,14 +142,14 @@
                     <!--Chat View Ends-->
 
                     <!--ContactUs View Starts-->
-                    <Grid IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.ContactUs}}">
+                    <Grid   IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.ContactUs}}">
                         <Grid x:Name="ContactUsMainPage">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never" >
-                            <StackLayout>
+                            <StackLayout >
                         <!--<WebView x:Name="ContactUsWebView" WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />-->
                                     <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZLandingPageTitle}" Style="{StaticResource PageTitleBlack}" />
                                     <!--<custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDHeadquaeterRiyadh}" Style="{StaticResource SectionTitleBlack}" />
@@ -269,7 +269,7 @@
                             </border:SfBorder>
                         </StackLayout>
                             </ScrollView>
-                            <StackLayout Grid.Row="1" BackgroundColor="White" Padding="0,8,0,10">
+                            <StackLayout Grid.Row="1" BackgroundColor="White" Padding="0,8,0,42">
                                 <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDSuggestionsandComplaints}" Style="{StaticResource PrimaryButtonStyle}" Clicked="SuggestionsandComplaintsClicked"/>
                             </StackLayout>
                         </Grid>
@@ -279,8 +279,8 @@
                     <!--ContactUs View End-->
 
                     <!--Branch Locator Starts-->
-                    <ScrollView Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.BranchLocator}}">
-                        <StackLayout>
+                    <ScrollView  Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.BranchLocator}}">
+                        <StackLayout Padding="0,0,0,32" >
                             <!--DropDown Starts-->
                             <Grid>
                                 <Grid.RowDefinitions>
