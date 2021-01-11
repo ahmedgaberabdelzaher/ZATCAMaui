@@ -9,6 +9,7 @@ using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using GAZT.Manager;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
@@ -30,6 +31,10 @@ namespace EGAZT.Views.NewDesign.VatReview
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             _viewModel = App.Locator.VatReviewListView;
 
             this.BindingContext = _viewModel;
@@ -42,6 +47,9 @@ namespace EGAZT.Views.NewDesign.VatReview
         {
             base.OnAppearing();
 
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
 
             _viewModel.VATObjectionList();
 
