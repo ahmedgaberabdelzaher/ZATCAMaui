@@ -106,7 +106,7 @@
                 </Grid>
 
             <!--</ScrollView>-->
-            <StackLayout Grid.Row="0" Padding="15,5,15,0" VerticalOptions="Center" BackgroundColor="White">
+            <StackLayout Grid.Row="0" Padding="15,45,15,0" VerticalOptions="Center" BackgroundColor="White">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
