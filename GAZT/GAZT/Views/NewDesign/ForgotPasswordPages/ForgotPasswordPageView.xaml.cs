@@ -229,7 +229,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
-
+            viewModel.OtpFilled();
         }
 
 

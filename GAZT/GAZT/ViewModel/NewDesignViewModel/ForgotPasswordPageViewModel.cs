@@ -43,7 +43,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnContinueClick { get; set; }
 
         public int currentAttempts = 0;
-        public int StartPage = 1;
+  
         public bool IsPasswordCardSelected = true;
         public bool IsAPICalledSuccessfully = true;
         int TotalSec;
@@ -57,7 +57,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Property
+        private int _StartPage = 1;
+        public int StartPage
+        {
+            get
+            {
+                return _StartPage;
+            }
+            set
+            {
 
+
+                _StartPage = value;
+                    if (_StartPage == 2)
+                    {
+                        IsContinueButtonVisibe = false;
+                    }
+                    else
+                    {
+                        IsContinueButtonVisibe = true;
+                    }
+                RaisePropertyChanged("StartPage");
+            }
+        }
         // New Property starts
         private string _iDNumber;
         public string IDNumber
@@ -103,7 +125,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IDNumber");
             }
         }
+        private bool _isContinueButtonVisibe = true;
+        public bool IsContinueButtonVisibe
+        {
+            get
+            {
+                return _isContinueButtonVisibe;
+            }
+            set
+            {
 
+
+                _isContinueButtonVisibe = value;
+                RaisePropertyChanged("IsContinueButtonVisibe");
+            }
+        }
         private bool _isValiedEmailAddress = false;
         public bool IsValiedEmailAddress
         {
@@ -1602,6 +1638,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //    }
             //});
 
+
+
+
             OnContinueClick = new Command(() =>
             {
                 if (StartPage == 2)
@@ -1797,7 +1836,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             UserNameLayoutVisibility = true;
 
         }
+        public void OtpFilled()
+        {
+            if (StartPage == 2)
+            {
+                SetOTP();
+            }
+            if (!string.IsNullOrEmpty(EnteredOTP))
+            {
+                ValidateOTP();
 
+            }
+            else
+            {
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
+
+                // _dialogService.ShowMessageBox(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber, AppResources.Information);
+
+            }
+        }
         public void SetUserNameCardVisibility()
         {
             IsPasswordCardSelected = false;
@@ -2190,6 +2247,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             Device.BeginInvokeOnMainThread(async () =>
                             {
+                                OTPFirstDigit = string.Empty;
+                                OTPSecondDigit = string.Empty;
+                                OTPThirdDigit = string.Empty;
+                                OTPFourthDigit = string.Empty;
                                 string messagefordialogue = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;
                                 if (!App.IsArabic)
                                 {
@@ -2227,6 +2288,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 // You have one remaining attaampt
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
+                                    OTPFirstDigit = string.Empty;
+                                    OTPSecondDigit = string.Empty;
+                                    OTPThirdDigit = string.Empty;
+                                    OTPFourthDigit = string.Empty;
                                     String message = String.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
 
@@ -2634,7 +2699,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    if (TotalSec == 0)
+                    if (TotalSec <= 0)
                     {
                         IsVerifyOTPEnabled = false;
                         return false;
@@ -2647,7 +2712,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     else
                     {
                     }
-                    if (TotalSec < 0)
+                    if (TotalSec <= 0)
                     {
                         OTPValidDuration = " 0:00";
                         ButtonDisableColor = Color.FromHex("#005e4b");
