@@ -38,7 +38,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZZZZMyCorrespondence}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZZCorrespondence}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource ImageReverse}" >
                             <Image.GestureRecognizers>
@@ -71,30 +71,6 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackLayout Spacing="-5" Grid.Row="0" Padding="15,15,15,0">
-                <!--<Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="30"/>
-                    </Grid.ColumnDefinitions>
-                    <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
-                    </custom:CustomLabel>
-                    --><!--<Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
-                    </Image>--><!--
-                    <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
-                    </custom:CustomButton>
-                    <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="CorrespondanceDownPicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
-                    ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
-                    ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding FilterListForDropDown}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
-                    PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
-                    FooterHeight="46" SelectionChanged="CorrespondanceDownPicker_SelectionChanged">
-                        <syncfusion:SfPicker.Behaviors>
-                            <custom1:SfPickerBehavior />
-                        </syncfusion:SfPicker.Behaviors>
-                    </syncfusion:SfPicker>
-                </Grid>-->
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -121,12 +97,12 @@
                     </syncfusion:SfPicker>
                 </Grid>
 
-                <custom:CustomLabel HorizontalOptions="StartAndExpand" Margin="5,0,5,0" Text="{Binding CountLabel}" Style="{StaticResource CaptionLabelGrey}">
+                <custom:CustomLabel HorizontalOptions="StartAndExpand" Margin="5,0,5,0" Text="{Binding CountLabel}" Style="{StaticResource TPCorrCaptionLabelGrey}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static ResourceManager:AppResources.NDCount}" Style="{StaticResource CaptionLabelGrey}"></Span>
-                            <Span Text=" : " Style="{StaticResource CaptionLabelGrey}"></Span>
-                            <Span Text="{Binding Count}" Style="{StaticResource CaptionLabelGrey}"></Span>
+                            <Span Text="{x:Static ResourceManager:AppResources.NDCount}" Style="{StaticResource TPCorrCaptionLabelGrey}"></Span>
+                            <Span Text=" : " Style="{StaticResource TPCorrCaptionLabelGrey}"></Span>
+                            <Span Text="{Binding Count}" Style="{StaticResource TPCorrCaptionLabelGrey}"></Span>
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
@@ -185,8 +161,8 @@
                                             </StackLayout>
                                             
                                             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                                                <Label Text="{Binding DateToDisplay}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start"/>
-                                                <Label Text="{Binding TimeToDisplay}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start"/>
+                                                <Label Text="{Binding DateToDisplay}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start"/>
+                                                <Label Text="{Binding TimeToDisplay}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start"/>
                                             </StackLayout>
                                             
                                         </Grid>

@@ -33,16 +33,16 @@
                        HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
                        Source="Forget_ic_success" />
 
+               <Label Text="{x:Static ResourceManager:AppResources.VRVatReviewRequest}" HorizontalTextAlignment="Center" Style="{StaticResource PageTitleWhite}"/>
+               
 
-                 <Label Text="{x:Static ResourceManager:AppResources.VRVatReviewRequest}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text= "{x:Static ResourceManager:AppResources.VRYourVATReviewissubmittedsuccessfully}" FontFamily="{StaticResource SSTArabicMedium}"
-                       TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                <Label Text= "{x:Static ResourceManager:AppResources.VRYourVATReviewissubmittedsuccessfully}" 
+                        HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                       Margin="0,16,0,0"
+                       Style="{StaticResource BodyLabelWhite}"
+                       />
 
-                <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRVatReviewRequest}" Margin="0,20,0,0"
-                                    FontSize="Large" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRYourVATReviewissubmittedsuccessfully}"
-                                    Margin="0,15,0,0"
-                                    TextColor="White" HorizontalOptions="Center" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
+                
             </StackLayout>
             <ScrollView>
                 <Grid>
@@ -64,11 +64,12 @@
                                     </Grid.ColumnDefinitions>
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRApplicationNumber}"
-                                                    VerticalOptions="Center" FontSize="12" TextColor="#909090"
+                                                    VerticalOptions="Center"
+                                                    Style="{StaticResource CaptionLabelGrey}"
                                                     HorizontalOptions="Start" />
 
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="1" FontSize="16"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Text="{Binding VATReferanceNumber}" />
+                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Text="{Binding VATReferanceNumber}" Style="{StaticResource ValueLabelBlack}"/>
 
                                     <Image Grid.Row="0" Grid.Column="2">
                                         <Image.Source>
@@ -88,12 +89,17 @@
                                           Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
                             Clicked="Download_Acknowledgement"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
-                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
-                                          BackgroundColor="#d49504" TextColor="White" />
+                                            HeightRequest="48"
+                                             WidthRequest="366"
+                                           Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
+                                          BackgroundColor="#d49504" TextColor="White"
+
+                                />
 
                             <custom:CustomLabel Margin="10,0,10,15"
                                             Text="{x:Static ResourceManager:AppResources.VatReview}"
-                                            TextColor="#d49504" HorizontalOptions="Center"
+                                                Style="{StaticResource BodyLabelSecondary}"
+                                                HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
                                 <custom:CustomLabel.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="VatReview_Tapped" />

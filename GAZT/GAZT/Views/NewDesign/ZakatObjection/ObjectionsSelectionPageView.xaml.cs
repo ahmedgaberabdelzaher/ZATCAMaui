@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -26,6 +27,9 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             SetLTR();
         
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
 
             _viewModel = App.Locator.ObjectionsSelectionPageView;
 
@@ -78,6 +82,10 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             try
             {
                 base.OnAppearing();
+
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
 
                 _viewModel.AddSelectionOptions();
 

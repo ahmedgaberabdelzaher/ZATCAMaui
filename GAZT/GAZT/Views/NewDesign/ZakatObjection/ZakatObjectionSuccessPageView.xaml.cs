@@ -10,6 +10,7 @@ using GAZT.Manager;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -29,9 +30,30 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             _viewModel = App.Locator.ZakatObjectionView;
 
             this.BindingContext = _viewModel;
+        }
+
+        protected override void OnAppearing()
+        {
+            try
+            {
+                base.OnAppearing();
+
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void SetLTR()

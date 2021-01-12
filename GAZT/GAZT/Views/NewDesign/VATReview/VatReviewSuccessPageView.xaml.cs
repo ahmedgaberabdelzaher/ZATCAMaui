@@ -8,6 +8,7 @@ using Xamarin.Essentials;
 using GAZT.Helper;
 using GAZT.Manager;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace EGAZT.Views.NewDesign.VatReview
 {
@@ -23,13 +24,26 @@ namespace EGAZT.Views.NewDesign.VatReview
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
 
             viewModel = App.Locator.VatReviewView;
 
             this.BindingContext = viewModel;
         }
-        
-        private void SetLTR()
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
+        }
+            private void SetLTR()
         {
             if (!App.IsArabic)
             {

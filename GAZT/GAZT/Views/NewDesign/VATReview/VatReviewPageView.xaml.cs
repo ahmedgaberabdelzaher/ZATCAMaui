@@ -10,6 +10,7 @@ using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace EGAZT.Views.NewDesign.VatReview
 {
@@ -31,6 +32,10 @@ namespace EGAZT.Views.NewDesign.VatReview
             viewModel = App.Locator.VatReviewView;
             this.BindingContext = viewModel;
             viewModel.vRInterface = this;
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
 
             viewModel.ResetData();
 
@@ -63,11 +68,17 @@ namespace EGAZT.Views.NewDesign.VatReview
         {
             base.OnAppearing();
 
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             getYesCommand();
             getNoCommand();
 
             MessagingCenter.Unsubscribe<object, int>(this, "draftRequest");
             MessagingCenter.Unsubscribe<object, int>(this, "draftSecurity");
+
+
 
             Xamarin.Forms.MessagingCenter.Subscribe<object, int>(this, "draftRequest", (sender, arg) =>
             {

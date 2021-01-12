@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -43,10 +44,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     case Xamarin.Forms.Device.iOS:
                         {
                       
-                                TaxTypeDownPicker.HeaderFontFamily = "SSTArabic-Medium";
-                                TaxTypeDownPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                                TaxTypeDownPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                                TaxTypeDownPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        TaxTypeDownPicker.HeaderFontFamily = "SSTArabic-Medium";
+                        TaxTypeDownPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                        TaxTypeDownPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                        TaxTypeDownPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
 
                  
                         }
@@ -61,7 +62,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -70,16 +72,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
-           //     ImageBackArrow.Rotation = 0;
 
-    
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
-              //  viewModel.RotationForImageInArabic = 180;
- 
-             //   ImageBackArrow.Rotation = 180;
 
             }
         }
@@ -100,8 +97,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                   
             }
             catch(Exception ex)
-            { 
-            
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -120,11 +118,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 {
                     viewModel.IsLoading = false;
                 });
-                //  viewModel.SetAllCorrespondancedata();
-                ;
+                
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 viewModel.IsLoading = true;
             }
         }
@@ -133,7 +132,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             try
             {
                 base.OnAppearing();
-
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
                 if (Device.RuntimePlatform == Device.Android)
                 {
                     TaxTypeDownPicker.BackgroundColor = Color.FromHex("#f7f7f7");
@@ -155,29 +156,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
         private void btn_Clicked(object sender, EventArgs e)
         {
-            //CorrespondanceDownPicker.IsOpen = true;
         }
 
-        //private void CorrespondanceDownPicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
-        //        CorrespondanceDownPicker.SelectedItem = selectedReturntype;//Fbnum
-        //        viewModel.SelectedDropdownItem = selectedReturntype;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //}
         public void PopulateReturnTypeList()
         {
             try
@@ -188,7 +175,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
                     new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
                     new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
-                   // new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
             };
                 viewModel.TaxTypeListForDropDown = new List<ReturnTypes>();
                 viewModel.TaxTypeListForDropDown = ReturnTypesList;
@@ -197,7 +183,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
 
@@ -213,7 +200,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -249,10 +237,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             {
                 viewModel.IsLoading = false;
             });
-            //List<ReturnTypes>  selectedReturntype = (ReturnTypes)e.NewValue;
-          
-            //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
-            //viewModel.SelectedChipFilterItem = selectedReturntype;
         }
 
         private void btn_TaxTypeClicked(object sender, EventArgs e)

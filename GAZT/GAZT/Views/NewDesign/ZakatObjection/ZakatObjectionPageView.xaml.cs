@@ -9,6 +9,7 @@ using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 using GAZT.Manager;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -28,7 +29,9 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
             viewModel = App.Locator.ZakatObjectionView;
             this.BindingContext = viewModel;
             //viewModel.showInstructionsDialog();
@@ -142,6 +145,9 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             {
                 base.OnAppearing();
 
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
 
                 MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
