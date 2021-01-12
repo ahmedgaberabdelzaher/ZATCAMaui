@@ -600,7 +600,7 @@
         <Setter Property="TextColor" Value="White" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
     </Style>
-       <Style x:Key="SFTaxPayerProfile" TargetType="Frame">
+       <Style x:Key="SFTaxPayerProfile" TargetType="StackLayout">
         <Setter Property="HeightRequest" Value="80"/>
     </Style>
     <!--#endregion-->
@@ -645,7 +645,7 @@
     <!--#endregion-->
        <!--#region Taxpayer Correspondence -->
 
-        <Style x:Key="TPCorrCaptionLabelGrey" TargetType="Span">
+        <Style x:Key="TPCorrCaptionLabelGrey" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
         <Setter Property="FontSize" Value="16" />

@@ -11,7 +11,7 @@
              NavigationPage.HasNavigationBar="False"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              BackgroundImageSource="partials_background.png"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.EstablishmentSignUPPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -46,13 +46,15 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Row="0" Grid.Column="0">
-                            <Image Source="{Binding IndividualBackImg}">
-                              
-                            </Image>
-                            
+         <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" >
+           
+                <Image Source="{Binding IndividualBackImg}" />
 
+         </cards:SfCardView>
+                        
                             <StackLayout VerticalOptions="End" Padding="15,0,16,16">
-                                <Image HorizontalOptions="Start" Source="individual_32White.png">
+
+                                <Image HorizontalOptions="Start"  Source="individual_32White.png">
                                     <Image.Triggers>
                                         <DataTrigger TargetType="Image" Binding="{Binding IndividualBackImg}" Value="FP_unselected_tile.png">
                                             <Setter Property="Source" Value="individual_32.png"/>
@@ -72,7 +74,12 @@
                             </Grid.GestureRecognizers>
                         </Grid>
                         <Grid Grid.Row="0" Grid.Column="1">
-                            <Image Source="{Binding EstablishmentBackImg}"/>
+                             <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" >
+           
+                <Image Source="{Binding EstablishmentBackImg}" />
+
+         </cards:SfCardView>
+
                             <StackLayout VerticalOptions="End" Padding="15,0,16,16">
                                 <Image HorizontalOptions="Start" Source="establishments_White.png">
                                     <Image.Triggers>
@@ -167,9 +174,7 @@
                             </Image>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,8,0,0">
-                            <!--<Image Source="closeGrey.png" HorizontalOptions="End">
 
-                        </Image>-->
                         </StackLayout>
                     </Grid>
 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -30,12 +31,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             base.OnAppearing();
 
-          
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
-              viewModel.IndividualBackImg=  "FP_unselected_tile.png";
-              viewModel.EstablishmentBackImg = "FP_unselected_tile.png";
+              viewModel.IndividualBackImg= "vat_tile_listofsignup_W.png";
+              viewModel.EstablishmentBackImg = "vat_tile_listofsignup_W.png";
             });
             if (App.IsArabic)
             {
