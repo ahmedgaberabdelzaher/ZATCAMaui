@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -63,10 +64,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     }
                     else
                     {
-                        //Attachment_Label.GestureRecognizers.Clear();
-                        //Attachment_Label.TextColor = Color.FromHex("#A9A9A9");
-                        //viewModel.IsAttachmentEnabled = false;
-                      //  viewModel.IsAttachmentEnabled = false;
                     }
                 }
                 PopToRootPage();
@@ -75,8 +72,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
             string HTMLContent = string.Empty;
@@ -87,9 +83,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 {
                     HTMLContent = HTMLContent + ItemC.Tdline;
                 }
-                //  string trim1 = HTMLContent.Replace("</body>", " ");
                 string newHTMLContent = HTMLContent.Replace("<img ", "<img src='ic_GAZT_Logo_Text.png' width='40%' ");
-                // string newHTMLForFonts= newHTMLContent.Replace("<body>", "<body style='font-size:200%;'>");
+
                 if (Device.RuntimePlatform == Device.iOS)
                 {
                     string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:40px;margin:15;'>");
@@ -120,6 +115,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     viewModel.FavIcon = "ic_star_border.png";
                 }
             }
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
         }
         private void SetLTR()
         {
