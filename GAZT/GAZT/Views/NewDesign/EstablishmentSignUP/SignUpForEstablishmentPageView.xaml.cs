@@ -813,8 +813,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-                    // FrmMobileNumber.HasError = true;
-                    FrmMobile.BorderColor = Color.DarkRed;
+                     FrmMobile.HasError = true;
                     viewModel.IsAllValidContactDataEnteredMobileNbr = false;
 
                     EntryMobileNumber.Text = string.Empty;
@@ -822,8 +821,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 else
                 {
                     viewModel.IsAllValidContactDataEnteredMobileNbr = true;
-                    // FrmMobileNumber.HasError = false;
-                    FrmMobile.BorderColor = Color.LightGray;
+                     FrmMobile.HasError = false;
                     viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryMobileNumber.Text;
                 }
             }
@@ -2552,7 +2550,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             bool flag = true;
             if (string.IsNullOrEmpty(viewModel.TxtMobileNumber))
             {
-                FrmMobile.BorderColor = Color.DarkRed;
+                FrmMobile.HasError = true;
                 flag = false;
             }
             if (string.IsNullOrEmpty(viewModel.TxtEmailAddress))

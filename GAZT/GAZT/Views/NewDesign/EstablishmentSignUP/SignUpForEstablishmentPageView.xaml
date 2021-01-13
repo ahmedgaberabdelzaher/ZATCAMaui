@@ -631,7 +631,7 @@
                             <StackLayout Orientation="Horizontal">
                      
                                 
-                            <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress" Style="{StaticResource InputTableTextInputLayoutStyle}" LeadingViewPosition="Inside" ContainerType="Outlined"
+                            <inputLayout:SfTextInputLayout x:Name="FrmMobile" Style="{StaticResource InputTableTextInputLayoutStyle}" LeadingViewPosition="Inside" ContainerType="Outlined"
                                                         UnfocusedColor="#B1B1B1" OutlineCornerRadius="9"
                                                         InputViewPadding="16,0,16,0"  Margin="0,-10,0,0">
                             <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
