@@ -1445,7 +1445,7 @@
                                                VerticalOptions="CenterAndExpand"
                                                Style="{StaticResource SectionTitleBlackBold}" />
                                     </StackLayout>
-                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="0,0">
                                         <Label 
                                                Text="{x:Static ResourceManager:AppResources.CREdit}"
                                                VerticalOptions="CenterAndExpand"
@@ -1645,7 +1645,7 @@
                                                VerticalOptions="CenterAndExpand"
                                                Style="{StaticResource SectionTitleBlackBold}" />
                                     </StackLayout>
-                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="0,0">
                                         <Label 
                                                Text="{x:Static ResourceManager:AppResources.CREdit}"
                                                VerticalOptions="CenterAndExpand"
@@ -1765,7 +1765,7 @@
                                                VerticalOptions="CenterAndExpand"
                                                Style="{StaticResource SectionTitleBlackBold}" />
                                     </StackLayout>
-                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="0,0">
                                         <Label 
                                                Text="{x:Static ResourceManager:AppResources.CREdit}"
                                                VerticalOptions="CenterAndExpand"
