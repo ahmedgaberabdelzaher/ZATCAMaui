@@ -11,7 +11,9 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContractReleaseInfoPopup : PopupPage
     {
-        public ContractReleaseInfoPopup(ContractReleaseViewModel viewModel)
+        private ContractReleaseViewModel viewModel;
+
+        public ContractReleaseInfoPopup(string Title, string Desc)
         {
             InitializeComponent();
 
@@ -24,6 +26,9 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
             viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
+
+            viewModel.InfoTitle = Title;
+            viewModel.InfoDesc = Desc;
         }
 
         private void SetLTR()

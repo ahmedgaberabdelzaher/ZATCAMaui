@@ -309,33 +309,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        private string _infoTitle = "";
 
+        private string _infoTitle = "";
         public string InfoTitle
         {
-            get { return _infoTitle; }
+            get
+            {
+                return _infoTitle;
+            }
             set
             {
-                if (_infoTitle == value) return;
-
                 _infoTitle = value;
                 RaisePropertyChanged("InfoTitle");
             }
         }
 
-        private string _infoDesc = "";
+       
 
+       
+
+        private string _infoDesc = "";
         public string InfoDesc
         {
-            get { return _infoDesc; }
+            get
+            {
+                return _infoDesc;
+            }
             set
             {
-                if (_infoDesc == value) return;
-
                 _infoDesc = value;
                 RaisePropertyChanged("InfoDesc");
             }
         }
+
+
+
+        //private string _infoDesc = "";
+
+        //public string InfoDesc
+        //{
+        //    get { return _infoDesc; }
+        //    set
+        //    {
+        //        if (_infoDesc == value) return;
+
+        //        _infoDesc = value;
+        //        RaisePropertyChanged("InfoDesc");
+        //    }
+        //}
 
         private string _pickedContract = "";
 
@@ -801,43 +822,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 InfoTitle = AppResources.CRContractprofitEstimatedRate;
                 InfoDesc = AppResources.CRContractprofitEstimatedRateDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(this));
+                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc:InfoDesc,Title:InfoTitle));
+
+
             });
             ProfitEstimatedContractCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CRProfitEstimatedForContract;
                 InfoDesc = AppResources.CRProfitEstimatedForContractDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(this));
+                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             EstimatedProfitZakatCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CREstimatedProfitforZakat;
                 InfoDesc = AppResources.CREstimatedProfitforZakatDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(this));
+                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             EstimatedProfitTaxCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CREstimatedProfitforTax;
                 InfoDesc = AppResources.CREstimatedProfitforTaxDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(this));
+                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             ValueofZakatDuesCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CRTheValueofZakatdues;
                 InfoDesc = AppResources.CRTheValueofZakatduesDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(this));
+                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             ValueofTaxDuesCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CRTheValueTaxDues;
                 InfoDesc = AppResources.CRTheValueTaxDuesDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(this));
+                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             TotalDuesCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CRTotalDues;
                 InfoDesc = AppResources.CRTotalDuesDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(this));
+                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
 
             ShowStartDatePicker = new Command(async () =>
