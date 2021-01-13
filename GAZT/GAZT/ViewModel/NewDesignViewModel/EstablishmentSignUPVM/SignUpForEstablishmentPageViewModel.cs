@@ -232,7 +232,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("IssuedByCityTapped");
             }
         }
+        private bool _LicenseOptionsVisible = false;
+        public bool LicenseOptionsVisible
+        {
+            get
+            {
+                return _LicenseOptionsVisible;
+            }
+            set
+            {
+                if (_LicenseOptionsVisible == value) return;
 
+                _LicenseOptionsVisible = value;
+                RaisePropertyChanged("LicenseOptionsVisible");
+            }
+        }
+        private bool _CROptionsVisible = true;
+        public bool CROptionsVisible
+        {
+            get
+            {
+                return _CROptionsVisible;
+            }
+            set
+            {
+                if (_CROptionsVisible == value) return;
+
+                _CROptionsVisible = value;
+                RaisePropertyChanged("CROptionsVisible");
+            }
+        }
         private string _txtLOrCIssuedBy = string.Empty;
         public string TxtLOrCIssuedBy
         {
@@ -491,7 +520,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-        public string _ImgBackgroundYes = "re_Property_Tile_Background_White";
+        public string _ImgBackgroundYes = "vat_tile_listofsignup_W";
         public string ImgBackgroundYes
         {
             get
@@ -539,7 +568,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-        public string _ImgBackgroundLicenseNubmer = "FP_unselected_tile";
+        public string _ImgBackgroundLicenseNubmer = "FP_selected_tile";
         public string ImgBackgroundLicenseNubmer
         {
             get

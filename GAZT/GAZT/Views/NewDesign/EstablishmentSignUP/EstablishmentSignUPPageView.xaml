@@ -46,24 +46,20 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Row="0" Grid.Column="0">
-         <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" >
            
-                <Image Source="{Binding IndividualBackImg}" />
-
-         </cards:SfCardView>
-                        
+                <Image Source="{Binding IndividualBackImg}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                             <StackLayout VerticalOptions="End" Padding="15,0,16,16">
 
                                 <Image HorizontalOptions="Start"  Source="individual_32White.png">
                                     <Image.Triggers>
-                                        <DataTrigger TargetType="Image" Binding="{Binding IndividualBackImg}" Value="FP_unselected_tile.png">
+                                        <DataTrigger TargetType="Image" Binding="{Binding IndividualBackImg}" Value="vat_tile_listofsignup_W.png">
                                             <Setter Property="Source" Value="individual_32.png"/>
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIndividuals}" Style="{StaticResource ValueLabelWhiteMedium}">
                                     <custom:CustomLabel.Triggers>
-                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IndividualBackImg}" Value="FP_unselected_tile.png">
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IndividualBackImg}" Value="vat_tile_listofsignup_W.png">
                                             <Setter Property="TextColor" Value="Black"/>
                                         </DataTrigger>
                                     </custom:CustomLabel.Triggers>
@@ -74,23 +70,22 @@
                             </Grid.GestureRecognizers>
                         </Grid>
                         <Grid Grid.Row="0" Grid.Column="1">
-                             <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" >
-           
-                <Image Source="{Binding EstablishmentBackImg}" />
 
-         </cards:SfCardView>
+                           <Image Source="{Binding EstablishmentBackImg}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
 
+
+        
                             <StackLayout VerticalOptions="End" Padding="15,0,16,16">
                                 <Image HorizontalOptions="Start" Source="establishments_White.png">
                                     <Image.Triggers>
-                                        <DataTrigger TargetType="Image" Binding="{Binding EstablishmentBackImg}" Value="FP_unselected_tile.png">
+                                        <DataTrigger TargetType="Image" Binding="{Binding EstablishmentBackImg}" Value="vat_tile_listofsignup_W.png">
                                             <Setter Property="Source" Value="establishments_BigGreen.png"/>
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEstablishments}" Style="{StaticResource ValueLabelWhiteMedium}">
                                     <custom:CustomLabel.Triggers>
-                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding EstablishmentBackImg}" Value="FP_unselected_tile.png">
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding EstablishmentBackImg}" Value="vat_tile_listofsignup_W.png">
                                             <Setter Property="TextColor" Value="Black"/>
                                         </DataTrigger>
                                     </custom:CustomLabel.Triggers>

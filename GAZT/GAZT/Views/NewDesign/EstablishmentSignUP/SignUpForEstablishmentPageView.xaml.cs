@@ -290,8 +290,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtMobileNumber = string.Empty;
             viewModel.TxtMobileNumberwithCountryCode = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
-            viewModel.ImgBackgroundCRNubmer = "FP_selected_tile";
-            viewModel.ImgBackgroundLicenseNubmer = "FP_unselected_tile";
+            viewModel.ImgBackgroundCRNubmer = "vat_tile_listofsignup_W";
+            viewModel.ImgBackgroundLicenseNubmer = "vat_tile_listofsignup_W";
             viewModel.IsCRChecked = true;
             viewModel.TxtLicenseNumber = string.Empty;
             //iewModel.IDTypeModelRootObject = null;
@@ -2124,7 +2124,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         private void OnYesTapped(object sender, EventArgs e)
         {
             viewModel.IsTIN = true;
-            viewModel.ImgBackgroundNo = "re_Property_Tile_Background_White";
+            viewModel.ImgBackgroundNo = "vat_tile_listofsignup_W";
             viewModel.ImgBackgroundYes = "re_Tile_Background";
             viewModel.TxtTIN = string.Empty;
             EntryTIN.Focus();
@@ -2136,7 +2136,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.IsTIN = false;
             viewModel.ImgBackgroundNo = "re_Tile_Background";
 
-            viewModel.ImgBackgroundYes = "re_Property_Tile_Background_White";
+            viewModel.ImgBackgroundYes = "vat_tile_listofsignup_W";
             EntryTIN.Text = string.Empty;
             viewModel.TxtTIN = string.Empty;
         }
@@ -2144,18 +2144,22 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         private void OnCRNumberTapped(object sender, EventArgs e)
         {
             viewModel.ImgBackgroundCRNubmer = "FP_selected_tile";
-            viewModel.ImgBackgroundLicenseNubmer = "FP_unselected_tile";
+            viewModel.ImgBackgroundLicenseNubmer = "vat_tile_listofsignup_W";
             viewModel.IsCRChecked = true;
             viewModel.TxtLicenseNumber = string.Empty;
+            viewModel.CROptionsVisible = true;
+            viewModel.LicenseOptionsVisible = false;
 
         }
 
         private void OnLicenseNumberTapped(object sender, EventArgs e)
         {
-            viewModel.ImgBackgroundCRNubmer = "FP_unselected_tile";
+            viewModel.ImgBackgroundCRNubmer = "vat_tile_listofsignup_W";
             viewModel.ImgBackgroundLicenseNubmer = "FP_selected_tile";
             viewModel.IsCRChecked = false;
             viewModel.TxtCRNumber = string.Empty;
+            viewModel.CROptionsVisible = false;
+            viewModel.LicenseOptionsVisible = true;
 
         }
         private void ImageSeeConfirmPassword_Tapped(object sender, EventArgs e)

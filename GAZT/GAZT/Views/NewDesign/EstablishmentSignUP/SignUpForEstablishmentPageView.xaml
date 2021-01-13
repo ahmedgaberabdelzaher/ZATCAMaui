@@ -59,6 +59,7 @@
 <!-- step 1 -->
 
                 <StackLayout Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}">
+
                         <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />
                         <StackLayout Orientation="Horizontal">
                         <!--terms and condition  CheckBox -->
@@ -107,12 +108,12 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                              <cards:SfCardView HasShadow="True" WidthRequest="366" HeightRequest="48" BackgroundColor="Transparent" CornerRadius="20" >
+                              <!--<cards:SfCardView HasShadow="True" WidthRequest="366" HeightRequest="48" BackgroundColor="Transparent" CornerRadius="20" >                              </cards:SfCardView>-->
+
            
                                 <Image Source="{Binding ImgBackgroundYes}">
 
                                 </Image>
-                              </cards:SfCardView>
                         
                                 
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZYesText}" Style="{StaticResource ButtonLabelBlackBold}" VerticalOptions="End" Margin="16,0,16,0" Padding="16,8,16,8">
@@ -127,10 +128,9 @@
                                 </Grid.GestureRecognizers>
                         </Grid>
                         <Grid Grid.Column="1">
-                              <cards:SfCardView HasShadow="True" WidthRequest="366" HeightRequest="48" BackgroundColor="Transparent" CornerRadius="20" >          
+         
                                 <Image x:Name="NoBackGroungImg" Source="{Binding ImgBackgroundNo}">
                                 </Image>
-                              </cards:SfCardView>
 
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZNoText}" Style="{StaticResource ButtonLabelBlackBold}" Margin="16,0,16,0" VerticalOptions="End" Padding="16,8,16,8">
                                 <custom:CustomLabel.Triggers>
@@ -145,9 +145,10 @@
                             </Grid>
                     </Grid>
 
-                        <StackLayout IsVisible="False">
+                        <StackLayout IsVisible="False" Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
                             
                             <!-- TIN -->
+
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
@@ -156,8 +157,11 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout x:Name="FrmTIN" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <control:BorderlessEntry  x:Name="EntryTIN" Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" VerticalTextAlignment="End"
+                                <inputLayout:SfTextInputLayout x:Name="FrmTIN" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside" ContainerType="Outlined"
+                                                        UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
+                                                        InputViewPadding="16,0,16,0">
+                                    <control:BorderlessEntry  x:Name="EntryTIN" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TIN}"
+                                                              VerticalTextAlignment="Center"
                                                            Keyboard="Numeric" MaxLength="10" TextChanged="EntryTIN_TextChanged" 
                                                           IsSpellCheckEnabled="False"  Text="{Binding TxtTIN}" FontSize="Small" 
                                                           Unfocused="EntryTIN_Unfocused" Focused="EntryTIN_focused">
@@ -172,8 +176,7 @@
                                 </DataTrigger>
                             </StackLayout.Triggers>
                         </StackLayout>
-
-                        <Grid RowSpacing="24">
+                        <Grid >
                         <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
@@ -227,7 +230,7 @@
                             </StackLayout>
                                            
                         <!-- ID Number -->
-                        <StackLayout Grid.Row="1" Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
+                        <StackLayout Grid.Row="1" Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}" Margin="0,14,0,0">
 
                             <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                 <custom:CustomLabel.FormattedText>
@@ -252,9 +255,8 @@
                   </StackLayout>
 
                         </Grid>
-         
                         <!-- DOB-->
-                        <StackLayout>
+                        <StackLayout Margin="0,14,0,0">
                             <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
@@ -362,7 +364,7 @@
                             </StackLayout>
                     <!-- Name -->
                         </StackLayout>
-                        <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
+                        <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}" >
                             <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
@@ -396,44 +398,47 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0" HorizontalOptions="StartAndExpand">
-                                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" >          
-                                <Image Source="{Binding ImgBackgroundCRNubmer}">
-                                </Image>
-                              </cards:SfCardView>
+ 
+                         <Grid Grid.Row="0" Grid.Column="0">
+           
+                <Image Source="{Binding ImgBackgroundCRNubmer}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                            <StackLayout VerticalOptions="End" Padding="15,0,16,16">
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" Style="{StaticResource ButtonLabelBlackBold}" VerticalOptions="End" Padding="16,8,16,8">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" Style="{StaticResource ButtonLabelBlackBold}">
                                     <custom:CustomLabel.Triggers>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding ImgBackgroundCRNubmer}" Value="FP_selected_tile">
                                             <Setter Property="TextColor" Value="White"/>
                                         </DataTrigger>
                                     </custom:CustomLabel.Triggers>
                                 </custom:CustomLabel>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnCRNumberTapped" NumberOfTapsRequired="1"/>
-                                </Grid.GestureRecognizers>
+                            </StackLayout>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnCRNumberTapped"/>
+                            </Grid.GestureRecognizers>
                         </Grid>
-                        <Grid Grid.Column="1" HorizontalOptions="StartAndExpand">
-                              <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" >          
-                                <Image Source="{Binding ImgBackgroundCRNubmer}">
-                                </Image>
-                              </cards:SfCardView>
+                        <Grid Grid.Row="0" Grid.Column="1">
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" Style="{StaticResource ButtonLabelBlackBold}" VerticalOptions="End" Padding="16,8,16,8">
+                           <Image Source="{Binding ImgBackgroundLicenseNubmer}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+
+                            <StackLayout VerticalOptions="End" Padding="15,0,16,16">
+
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" Style="{StaticResource ButtonLabelBlackBold}">
                                     <custom:CustomLabel.Triggers>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding ImgBackgroundLicenseNubmer}" Value="FP_selected_tile">
                                             <Setter Property="TextColor" Value="White"/>
                                         </DataTrigger>
                                     </custom:CustomLabel.Triggers>
                                 </custom:CustomLabel>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnLicenseNumberTapped" NumberOfTapsRequired="1"/>
-                                </Grid.GestureRecognizers>
+                            </StackLayout>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnLicenseNumberTapped"/>
+                            </Grid.GestureRecognizers>
                         </Grid>
                     </Grid>
                         
                         <!-- CR Number -->
-                            <StackLayout IsVisible="False" Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
+                            <StackLayout IsVisible="{Binding CROptionsVisible}">
+                              <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
 
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                     <custom:CustomLabel.FormattedText>
@@ -443,7 +448,8 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout x:Name="FrmCR" Style="{StaticResource InputTableTextInputLayoutStyle}" LeadingViewPosition="Inside" ContainerType="Outlined"
+                                <inputLayout:SfTextInputLayout x:Name="FrmCR" Style="{StaticResource InputTableTextInputLayoutStyle}"
+                                                               LeadingViewPosition="Inside" ContainerType="Outlined"
                                                         UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
                                                         InputViewPadding="16,0,16,0"  Margin="0,-10,0,0">
                                     <control:BorderlessEntry x:Name="EntryCRNumber" Style="{StaticResource DefaultEntry}"
@@ -456,14 +462,12 @@
                                     </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                             
-                            <StackLayout.Triggers>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding ImgBackgroundCRNubmer}" Value="FP_selected_tile">
-                                    <Setter Property="IsVisible" Value="True"/>
-                                </DataTrigger>
-                            </StackLayout.Triggers>
+                
                         </StackLayout>
-                            <StackLayout  Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
-                            <!-- Licence Number -->
+                                                    </StackLayout>
+
+                            <StackLayout  Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}" IsVisible="{Binding LicenseOptionsVisible}">
+                            <!-- License Number -->
 
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                     <custom:CustomLabel.FormattedText>
@@ -473,10 +477,12 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout x:Name="FrmLicenseNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" LeadingViewPosition="Inside" ContainerType="Outlined"
+                                <inputLayout:SfTextInputLayout x:Name="FrmLicenseNumber" Style="{StaticResource InputTableTextInputLayoutStyle}"
+                                                               LeadingViewPosition="Inside" ContainerType="Outlined"
                                                         UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
                                                         InputViewPadding="16,0,16,0"  Margin="0,-10,0,0" >
-                                    <control:BorderlessEntry x:Name="EntryLicenceNumber" Style="{StaticResource DefaultEntry}" Text="{Binding TxtLicenseNumber}"  MaxLength="20" Keyboard="Numeric"
+                                    <control:BorderlessEntry x:Name="EntryLicenceNumber" Style="{StaticResource DefaultEntry}"
+                                                             Text="{Binding TxtLicenseNumber}"  MaxLength="20" Keyboard="Numeric"
                                                          Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"
                                                      VerticalTextAlignment="Center" 
                                                      IsSpellCheckEnabled="False" Unfocused="EntryLicenceNumber_Unfocused">
@@ -487,8 +493,9 @@
                                     </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                                 </StackLayout>
-<!-- Licence number issued by -->
-                        <StackLayout  Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
+                           <!-- Licence number issued by -->
+
+                        <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}" IsVisible="{Binding LicenseOptionsVisible}" Margin="0,14,0,0">
 
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                     <custom:CustomLabel.FormattedText>
@@ -499,7 +506,8 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <Grid>
-                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" LeadingViewPosition="Inside" ContainerType="Outlined"
+                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}"
+                                                       LeadingViewPosition="Inside" ContainerType="Outlined"
                                                         UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
                                                         InputViewPadding="16,0,16,0"  Margin="0,-10,0,0" x:Name="FrmlicenceNumberIssuedbyframe"
                                                        >
@@ -513,23 +521,7 @@
                                         </inputLayout:SfTextInputLayout.TrailingView>
                                     </inputLayout:SfTextInputLayout>
                                 <Button Clicked="LIssuedBy_Clicked" BackgroundColor="Transparent"/>
-                                <!--<syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="ddlLIssuedBy" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
-                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
-                        ShowFooter="true" ItemHeight="40" Margin="10,0,10,0" 
-                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" 
-                        PickerWidth="300" HeaderFontSize="14" 
-                        OKButtonTextColor="#006450" CancelButtonTextColor="#006450" 
-                        ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
-                        ItemsSource="{Binding IssuedByList}" DisplayMemberPath="txt50"
-                        OkButtonClicked="ddlLIssuedBy_OkButtonClicked"
-                        CancelButtonClicked="ddlLIssuedBy_CancelButtonClicked"
-                        FooterHeight="46">
-                                <syncfusion:SfPicker.Behaviors>
-                                    <customcontrol:SfPickerBehavior />
-                                </syncfusion:SfPicker.Behaviors>
-                            </syncfusion:SfPicker>-->
-
-
+                         
                                 <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="ddlLIssuedBy" 
                                                          HeaderHeight="55"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
@@ -550,8 +542,7 @@
                             </Grid>
                             </StackLayout>
                             <!-- issuein city -->
-                        <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIssuingCity}" Style="{StaticResource CaptionLabelGrey}"/>-->
-                        <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
+                        <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}" IsVisible="{Binding LicenseOptionsVisible}" Margin="0,14,0,0">
 
                         <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                     <custom:CustomLabel.FormattedText>
@@ -596,13 +587,9 @@
 
 
                             </Grid>
-                            <StackLayout.Triggers>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding ImgBackgroundLicenseNubmer}" Value="FP_selected_tile">
-                                    <Setter Property="IsVisible" Value="True"/>
-                                </DataTrigger>
-                            </StackLayout.Triggers>
+       
                     </StackLayout>
-                    </StackLayout>
+                        </StackLayout>
                 </ScrollView>
                 <!--Step 4-->
                     <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
@@ -623,7 +610,7 @@
                                                         InputViewPadding="16,0,16,0"  Margin="0,-10,0,0">
                                 <control:BorderlessEntry x:Name="EntryEmail" Style="{StaticResource DefaultEntry}" 
                                                          Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="Center" Keyboard="Email" 
-                                Text="{Binding TxtEmailAddress}" Unfocused="EntryEmail_TextChanged">
+                                Text="{Binding TxtEmailAddress}" Unfocused="EntryEmail_TextChanged" >
                                     <control:BorderlessEntry.Behaviors>
                                         <custom:AlphaNumericValidatorBehaviour/>
                                     </control:BorderlessEntry.Behaviors>
@@ -631,6 +618,7 @@
                         </inputLayout:SfTextInputLayout>
                             </StackLayout>
 <!-- Mobile number-->
+                                                <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}" Margin="0,14,0,0">
 
                             <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                 <custom:CustomLabel.FormattedText>
@@ -643,9 +631,10 @@
                             <StackLayout Orientation="Horizontal">
                      
                                 
-                            <Frame BorderColor="LightGray" x:Name="FrmMobile"  HorizontalOptions="FillAndExpand" Padding="8"
-                                   HeightRequest="45" HasShadow="False" CornerRadius="8"  Margin="0,-6,0,0">
-                            <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
+                            <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress" Style="{StaticResource InputTableTextInputLayoutStyle}" LeadingViewPosition="Inside" ContainerType="Outlined"
+                                                        UnfocusedColor="#B1B1B1" OutlineCornerRadius="9"
+                                                        InputViewPadding="16,0,16,0"  Margin="0,-10,0,0">
+                            <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                         <Image HorizontalOptions="Start" Source="arrowDropdown.png" >
                                             
                                             <Image.GestureRecognizers>
@@ -657,21 +646,22 @@
                                                                  BackgroundColor="Transparent"  >
                                         </custom:CustomButton>
                                
-                                        <custom2:MyEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource DefaultEntry}"
-                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Text="{Binding TxtMobileNumber}" 
+                                        <control:BorderlessEntry x:Name="EntryMobileNumber"  Margin="5,-5,0,0"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource DefaultEntry}"
+                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="Center" Text="{Binding TxtMobileNumber}" 
                                                          Keyboard="Numeric" MaxLength="{Binding MaxDigids}" >
 
-                                            <custom2:MyEntry.Behaviors>
+                                            <control:BorderlessEntry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
-                                            </custom2:MyEntry.Behaviors>
-                                        </custom2:MyEntry>
+                                            </control:BorderlessEntry.Behaviors>
+                                        </control:BorderlessEntry>
                                  
 
                                     </StackLayout>
-                                </Frame>
+                                </inputLayout:SfTextInputLayout>
                             </StackLayout>
+                                                    </StackLayout>
 <!-- Phone Number -->
-                        <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
+                        <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}" Margin="0,14,0,0">
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" LeadingViewPosition="Inside" ContainerType="Outlined"
@@ -701,9 +691,9 @@
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>-->
 
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmationcodesenttoemailaddress}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmationcodesenttoemailaddress}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Center"/>
 
-                            <custom:CustomLabel Text="{Binding TxtEmailAddress}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
+                            <custom:CustomLabel Text="{Binding TxtEmailAddress}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Center"/>
 
                             <StackLayout>
                             <StackLayout Padding="0,0,0,0" >
@@ -857,8 +847,8 @@
 
                             
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmationcodesenttoMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
-                                <custom:CustomLabel  Text="{Binding EncriptedMobileNumberforOtpscreen}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center" FlowDirection="LeftToRight" HorizontalOptions="CenterAndExpand"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmationcodesenttoMobileNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Center"/>
+                                <custom:CustomLabel  Text="{Binding EncriptedMobileNumberforOtpscreen}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Center" FlowDirection="LeftToRight" HorizontalOptions="CenterAndExpand"/>
 
                                 <StackLayout>
                             <StackLayout Padding="0,0,0,0" >
@@ -991,7 +981,7 @@
                                 </Grid>
                             </StackLayout>
 
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,-30,0,0">
                                 <Image Source="clock">
                                 </Image>
 
@@ -1013,6 +1003,8 @@
                         
                         <!--Password Starts-->
                             <StackLayout>
+                       <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
+
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
@@ -1021,9 +1013,11 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" LeadingViewPosition="Inside" ContainerType="Outlined"
+                                                        UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
+                                                        InputViewPadding="16,0,16,0"  Margin="0,-10,0,0">
 
-                                <control:BorderlessEntry Text="{Binding TxtPassword}" TextColor="{StaticResource NeutralBlack}" TextChanged="EntryPass_TextChanged"  x:Name="EntryPass" IsPassword="{Binding IsPasswordEncripted}">
+                                <control:BorderlessEntry Text="{Binding TxtPassword}" Style="{StaticResource DefaultEntry}" TextColor="{StaticResource NeutralBlack}" TextChanged="EntryPass_TextChanged"  x:Name="EntryPass" IsPassword="{Binding IsPasswordEncripted}">
                                         <control:BorderlessEntry.Behaviors>
                                             <ResourceManager:PasswordTextBehaviour/>
                                         </control:BorderlessEntry.Behaviors>
@@ -1037,6 +1031,8 @@
                                 </Image>
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
+                           </StackLayout>
+                             <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
 
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
                                     <custom:CustomLabel.FormattedText>
@@ -1046,9 +1042,12 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" LeadingViewPosition="Inside" ContainerType="Outlined"
+                                                        UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
+                                                        InputViewPadding="16,0,16,0"  Margin="0,-10,0,0">
 
-                                    <control:BorderlessEntry TextChanged="EntryCfrmPass_TextChanged" TextColor="{StaticResource NeutralBlack}" Text="{Binding TxtConfirmPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}" x:Name="EntryCfrmPass">
+                                    <control:BorderlessEntry TextChanged="EntryCfrmPass_TextChanged" Style="{StaticResource DefaultEntry}" TextColor="{StaticResource NeutralBlack}"
+                                                             Text="{Binding TxtConfirmPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}" x:Name="EntryCfrmPass">
 
                                         <control:BorderlessEntry.Behaviors>
                                             <ResourceManager:PasswordTextBehaviour/>
@@ -1064,37 +1063,37 @@
 
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
+                        </StackLayout>
 
 
 
-
-                                <StackLayout x:Name="PasswordChecks" >
-                                    <StackLayout Orientation="Horizontal">
+                                <StackLayout x:Name="PasswordChecks" Margin="0,20,0,0" >
+                                    <StackLayout Orientation="Horizontal" Spacing="16">
                                         <Image Source="{Binding MinEight}">
 
                                         </Image>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDAtleast8character}" Style="{StaticResource CaptionLabelBlack}" Padding="5,0,0,0"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDAtleast8character}" Style="{StaticResource BodyLabelBlack}" Padding="5,-5,0,0"/>
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="16">
                                         <Image Source="{Binding CapsSmall}">
 
                                         </Image>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEnglishcapitalandsmallletters}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEnglishcapitalandsmallletters}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" Padding="5,-5,0,0"/>
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="16">
                                         <Image Source="{Binding MaxSixteen}">
 
                                         </Image>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNotexceed16characters}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNotexceed16characters}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" Padding="5,-5,0,0"/>
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="16">
                                         <Image Source="{Binding NumSymbol}">
 
                                         </Image>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDNumbersAndSymbols}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDNumbersAndSymbols}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" Padding="5,-5,0,0"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -1335,7 +1334,7 @@
                 
                 <StackLayout Grid.Row="1" Padding="0,15,0,8" BackgroundColor="White">
                     <commonView:PageIndicatorView MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" Completed="{Binding MarkComplete}"/>
-                    <custom:CustomLabel Text="{Binding PageTitle}" Style="{StaticResource PageTitleBlack}"/>
+                    <custom:CustomLabel Text="{Binding PageTitle}" Style="{StaticResource PageTitleBlack}" Margin="0,10,0,0"/>
                     <custom:CustomLabel Text="{Binding BodyText}" Style="{StaticResource BodyLabelGrey}" Padding="0,-10,0,8"/>
                     <BoxView Style="{StaticResource SeparatorStyle}" BackgroundColor="{StaticResource NeutralLightGrey}"
                                  HeightRequest="1" />

@@ -66,7 +66,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public string _IndividualBackImg = "FP_unselected_tile.png";
+        public string _IndividualBackImg = "vat_tile_listofsignup_W.png";
         public string IndividualBackImg
         {
             get
@@ -82,7 +82,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public string _EstablishmentBackImg = "FP_unselected_tile.png";
+        public string _EstablishmentBackImg = "vat_tile_listofsignup_W.png";
         public string EstablishmentBackImg
         {
             get
