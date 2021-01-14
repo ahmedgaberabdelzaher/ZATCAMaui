@@ -87,7 +87,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
             viewModel.IsUserNameCardTapped = false;
             viewModel.IsPasswordCardTapped = true;
-
+            
             viewModel.SetPasswordCardLayoutVisibility();
             viewModel.PasswordCardBackgroundImg = "FP_selected_tile";
             viewModel.UserNameCardBackgroundImg = "FP_unselected_tile";
@@ -115,7 +115,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
 
 
-
+            viewModel.IsContinueButtonVisibe = viewModel.ValidateFirstStep();
         }
 
 
@@ -142,6 +142,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.IDNumber = string.Empty;
             viewModel.UserNameLabelText = AppResources.IDNumber;
             viewModel.ContinueORConfirmButtonText = AppResources.Confirm;
+           viewModel.IsContinueButtonVisibe = viewModel.ValidateFirstStep();
 
 
         }

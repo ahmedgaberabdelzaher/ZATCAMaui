@@ -69,14 +69,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
                 _StartPage = value;
-                    if (_StartPage == 2)
-                    {
-                        IsContinueButtonVisibe = false;
-                    }
-                    else
-                    {
-                        IsContinueButtonVisibe = true;
-                    }
+                if (_StartPage == 2)
+                {
+                    IsContinueButtonVisibe = false;
+                }
+                else if (_StartPage==1)
+                {
+                    IsContinueButtonVisibe = ValidateFirstStep();
+                }
+                else
+                {
+                    IsContinueButtonVisibe = true;
+                }
                 RaisePropertyChanged("StartPage");
             }
         }
@@ -2793,6 +2797,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     });
                 });
             }
+        }
+        public bool ValidateFirstStep()
+        {
+            if (UserNameCardBackgroundImg == "FP_selected_tile")
+            { if (CorporateCardBackgroundImg == "FP_selected_tile" || IndividualOrPersonalBusinessCardBackgroundImg == "FP_selected_tile")
+                {
+                    return true;
+                }
+            }
+            if (PasswordCardBackgroundImg == "FP_selected_tile")
+            {
+                return true;    
+            }
+            return false;
         }
         //private async Task ShowNewPasswordAndOldPassowrdNotBeSameInformation()
         //{
