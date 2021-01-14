@@ -19,13 +19,13 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView  VerticalOptions="FillAndExpand"   >
+    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="10" >
+        
          <Grid VerticalOptions="FillAndExpand" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="60*"/>
                 <RowDefinition Height="40*"/>
                 <RowDefinition Height="Auto"/>
-
             </Grid.RowDefinitions>
 <Grid.ColumnDefinitions>
 <ColumnDefinition Width="10*"></ColumnDefinition>
@@ -33,12 +33,12 @@
 <ColumnDefinition Width="10*"></ColumnDefinition>
 
 </Grid.ColumnDefinitions>
-              <Grid VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3">
-            <Grid.RowDefinitions>
+              <Grid VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5" Grid.Row="0" Grid.Column="0" Grid.RowSpan="{x:OnPlatform iOS=2, Android=2, UWP=2}" Grid.ColumnSpan="3">
+                   
+                  <Grid.RowDefinitions>
                 <RowDefinition Height="100*"/>
             </Grid.RowDefinitions>
-
-        
+                
         </Grid>
      <StackLayout Padding="24" Spacing="24" Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalOptions="End">
 
@@ -70,13 +70,13 @@
                    </custom:CustomLabel>
 
                 <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
-                                                    </StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
+                </StackLayout.GestureRecognizers>
                  </StackLayout>
               </border:SfBorder>
 
 
- <border:SfBorder x:Name="GetSupport"   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
+ <border:SfBorder x:Name="GetSupport"  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
                   
                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.GetSupport}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}">
@@ -93,14 +93,31 @@
 
        
             </StackLayout>
-             <StackLayout  Grid.Row="2" Grid.ColumnSpan="3">
-                      <Image x:Name="CloseIcon" HeightRequest="88" HorizontalOptions="FillAndExpand" Source="quick_actions.png">
+             <Frame  Grid.Row="2" Grid.ColumnSpan="3" Opacity="0.2" CornerRadius="10" >
+                  <Frame.Margin>
+                   <OnPlatform x:TypeArguments="Thickness" >
+                       <On Platform="iOS" Value="2,-6,2,0"/>
+               <On Platform="Android" Value="2,-12,2,0"/>
+                    </OnPlatform>
+                      </Frame.Margin>
+                 <Frame.HeightRequest>
+                      <OnPlatform x:TypeArguments="x:Double" >
+                       <On Platform="iOS" Value="70"/>
+               <On Platform="Android" Value="45"/>
+                    </OnPlatform>
+                     </Frame.HeightRequest>
+            </Frame>
+                          
+      <StackLayout Grid.Row="2" Grid.ColumnSpan="3">
+
+             <Image x:Name="CloseIcon" Margin="0,6,0,0"  Source="quick_Actions_Close.png">
                     
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnCloseTapped"/>
                     </Image.GestureRecognizers>
                 </Image>
-                   </StackLayout>
+                              </StackLayout>
              </Grid>
+
        </yummy:PancakeView>
 </pages:PopupPage>

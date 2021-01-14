@@ -360,6 +360,9 @@
     <BundleResource Include="Resources\quick_actions%402x.png" />
     <BundleResource Include="Resources\quick_actions%403x.png" />
     <BundleResource Include="Resources\Burger.png" />
+    <BundleResource Include="Resources\quick_Actions_Close.png" />
+    <BundleResource Include="Resources\quick_Actions_Close%402x.png" />
+    <BundleResource Include="Resources\quick_Actions_Close%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
