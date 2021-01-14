@@ -35,21 +35,21 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-            viewModel.IsFavoriteVisible = false;
+           // viewModel.IsFavoriteVisible = false;
             CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
             if (CorrModel != null)
             {
                 viewModel.CorrespondenceTitle = CorrModel.Title;
                 viewModel.CorrespondenceDateTime = CorrModel.DateToDisplay;
                 viewModel.CorrespondenceTime = CorrModel.TimeToDisplay;
-                if (string.IsNullOrEmpty(CorrModel.TaxtpFg))
-                {
-                    viewModel.IsFavoriteVisible = true;
-                }
-                else
-                {
-                    viewModel.IsFavoriteVisible = false;
-                }
+                //if (string.IsNullOrEmpty(CorrModel.TaxtpFg))
+                //{
+                //    viewModel.IsFavoriteVisible = true;
+                //}
+                //else
+                //{
+                //    viewModel.IsFavoriteVisible = false;
+                //}
             }
             try
             {
