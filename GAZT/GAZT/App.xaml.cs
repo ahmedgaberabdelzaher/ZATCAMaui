@@ -642,15 +642,15 @@ namespace EGAZT
         }
         protected override void OnStart()
         {
-            IsJailBrokenDevice = false;
-            try
-            {
-                IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
-            }
-            catch (Exception ex)
-            {
+            //IsJailBrokenDevice = false;
+            //try
+            //{
+            //    IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
+            //}
+            //catch (Exception ex)
+            //{
 
-            }
+            //}
 
             //App.ResetAndContinueSession();
 
