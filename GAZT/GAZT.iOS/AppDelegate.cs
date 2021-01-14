@@ -48,9 +48,9 @@ namespace GAZT.iOS
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
 
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
-            ServicePointManager
-            .ServerCertificateValidationCallback +=
-            (sender, cert, chain, sslPolicyErrors) => true;
+            //ServicePointManager
+            //.ServerCertificateValidationCallback +=
+            //(sender, cert, chain, sslPolicyErrors) => true;
             Xamarin.FormsMaps.Init();
             Xamarin.Forms.Forms.Init();
             InitRoundedCornerView.Init();
