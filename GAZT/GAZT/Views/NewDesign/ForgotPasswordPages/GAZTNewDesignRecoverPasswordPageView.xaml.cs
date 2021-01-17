@@ -24,10 +24,10 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
         }
 
-        private void OnLogInClicked(object sender, EventArgs e)
+        private async  void OnLogInClicked(object sender, EventArgs e)
         {
-
-            viewModel._navigationService.GoBack();
+            await Application.Current.MainPage.Navigation.PopModalAsync(true);
+            //viewModel._navigationService.GoBack();
             //viewModel._navigationService.NavigateTo(App.SFLoginPageView);
 
             //for (int index = Navigation.NavigationStack.Count - 1 ; index > 1; index--)
@@ -40,8 +40,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-                Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                Navigation.RemovePage(pg);
+                //Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                //Navigation.RemovePage(pg);
         }
 
     }

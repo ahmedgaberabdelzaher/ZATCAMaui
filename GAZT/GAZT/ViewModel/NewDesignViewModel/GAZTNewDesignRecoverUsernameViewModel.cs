@@ -11,7 +11,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public Command OnLoginButtonClicked { get; set; }
         public GAZTNewDesignRecoverUsernameViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnLoginButtonClicked = new Command(() => { navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView); });
+            
+           OnLoginButtonClicked = new Command(async () => {
+              
+                   await Application.Current.MainPage.Navigation.PopModalAsync(true);
+              
+              
+              
+              // navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+});
         }
     }
 }

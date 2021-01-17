@@ -16,6 +16,7 @@ using Xamarin.Forms;
 using System.Timers;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.ForgotPasswordPages;
 using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -2385,9 +2386,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         //IsAPICalledSuccessfully = true;
                         //RecoverUserNameLayout = true;
-                        Device.BeginInvokeOnMainThread(() =>
+                        Device.BeginInvokeOnMainThread(async () =>
                         {
-                            _navigationService.NavigateTo(App.GAZTNewDesignRecoverUsername);
+                            //  _navigationService.NavigateTo(App.GAZTNewDesignRecoverUsername);
+                            await Application.Current.MainPage.Navigation.PopModalAsync(true);
+                            await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverUsernamePageView());
+                           
+                        //    await Navigation.PushModalAsync(new GAZTNewDesignRecoverUsername(), true);
+                            
+
                             //await _dialogService.ShowMessageBox(AppResources.Usernamehasbeensenttoregisteredmobilenumber, AppResources.Information);
                             // _navigationService.GoBack();
                             //MainPageLayoutVisibility = false;
@@ -2490,7 +2497,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 //  NavigateToLoginLinkVisibility = true;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    _navigationService.NavigateTo(App.GAZTNewDesignRecoverPasswordPageView);
+                                    await Application.Current.MainPage.Navigation.PopModalAsync(true);
+                                    await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverPasswordPageView());
+                                  //  _navigationService.NavigateTo(App.GAZTNewDesignRecoverPasswordPageView);
                                 });
 
                                 ForgotPasswordUserNameChangedMessage = AppResources.ZZYourPasswordhasbeenChangedsuccessfully;

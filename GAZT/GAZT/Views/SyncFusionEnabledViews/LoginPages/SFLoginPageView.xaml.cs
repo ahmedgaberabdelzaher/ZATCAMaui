@@ -1,5 +1,6 @@
 ﻿using EGAZT.Enums;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
+using EGAZT.Views.NewDesign.ForgotPasswordPages;
 using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -390,7 +391,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             if (data == "navigateToForgotUsernamePage")
                             {
                                 hybridWebView.Opacity = 0;
-                                viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
+                              //  viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
+                                await Navigation.PushModalAsync(new GAZTNewDesignForgotPasswordPageView(), true);
                                 //viewModel._navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
                             }
 

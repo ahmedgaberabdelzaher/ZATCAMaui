@@ -344,7 +344,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
         private void OnBackTapped(object sender, EventArgs e)
         {
-            viewModel._navigationService.GoBack();
+            Navigation.PopModalAsync(true);
+            //viewModel._navigationService.GoBack();
         }
     }
 }
