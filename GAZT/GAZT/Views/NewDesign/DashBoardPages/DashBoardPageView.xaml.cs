@@ -10,6 +10,8 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using static EGAZT.ViewModel.NewDesignViewModel.GAZTNewDesignDashBoardPageViewModel;
 
@@ -97,6 +99,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             getYesCommandToLogout();
             getNoCommandToLogout();
             SetPickerFont();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
             viewModel.PaidString = AppResources.Paid + " " + viewModel.PaidBillCount;
             viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;

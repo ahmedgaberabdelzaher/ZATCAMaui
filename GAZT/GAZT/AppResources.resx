@@ -3133,7 +3133,7 @@ Should we require further information, we would be in contact.</value>
     <value>Excise Tax Returns</value>
   </data>
   <data name="ZAKATReturns" xml:space="preserve">
-    <value>ZAKAT Returns</value>
+    <value>ZAKAT</value>
   </data>
   <data name="ZZZselectedserviceisnotavailable" xml:space="preserve">
     <value>The selected service is not available</value>
@@ -3165,13 +3165,13 @@ Should we require further information, we would be in contact.</value>
     <value>General Authority of Zakat and Income - All Rights Reserved © 2020</value>
   </data>
   <data name="ETReturns" xml:space="preserve">
-    <value>ET Returns</value>
+    <value>ET</value>
   </data>
   <data name="VatReturns" xml:space="preserve">
-    <value>VAT Returns</value>
+    <value>VAT</value>
   </data>
   <data name="WHTreturns" xml:space="preserve">
-    <value>WHT Returns</value>
+    <value>WHT</value>
   </data>
   <data name="ZOTPformobileverificationis" xml:space="preserve">
     <value>OTP for mobile verification is :{0}</value>
