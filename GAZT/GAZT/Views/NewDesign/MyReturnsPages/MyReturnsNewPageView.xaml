@@ -166,22 +166,22 @@
                                                             <custom:CustomLabel.Triggers>
                                                                 <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
                                                                 <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="ITAX">
-                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZAKATReturns}" />
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZAKATReturns1}" />
                                                                 </DataTrigger>
                                                                 <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="ZAKT">
-                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZAKATReturns}" />
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZAKATReturns1}" />
                                                                 </DataTrigger>
                                                                 <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="VATX">
-                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VatReturns}" />
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VatReturns1}" />
                                                                 </DataTrigger>
                                                                 <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="VTEP">
-                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VatReturns}" />
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VatReturns1}" />
                                                                 </DataTrigger>
                                                                 <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="ETAX">
-                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ETReturns}" />
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ETReturns1}" />
                                                                 </DataTrigger>
                                                                 <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="WHTX">
-                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.WHTreturns}" />
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.WHTreturns1}"/>
                                                                 </DataTrigger>
                                                             </custom:CustomLabel.Triggers>
                                                         </custom:CustomLabel>
