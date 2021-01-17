@@ -4225,6 +4225,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ET.
+        /// </summary>
+        public static string ETReturns1 {
+            get {
+                return ResourceManager.GetString("ETReturns1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EXCISE TAX.
         /// </summary>
         public static string ExciseCertificates {
@@ -11406,6 +11415,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT.
+        /// </summary>
+        public static string VatReturns1 {
+            get {
+                return ResourceManager.GetString("VatReturns1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Review.
         /// </summary>
         public static string VatReview {
@@ -13039,6 +13057,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WHT.
+        /// </summary>
+        public static string WHTreturns1 {
+            get {
+                return ResourceManager.GetString("WHTreturns1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your device does not pass the GAZT security check.
         /// </summary>
         public static string YourDeviceDoesNotPassTheGAZTSecurityCheck {
@@ -14237,6 +14264,15 @@ namespace EGAZT {
         public static string ZAKATReturns {
             get {
                 return ResourceManager.GetString("ZAKATReturns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ZAKAT.
+        /// </summary>
+        public static string ZAKATReturns1 {
+            get {
+                return ResourceManager.GetString("ZAKATReturns1", resourceCulture);
             }
         }
         

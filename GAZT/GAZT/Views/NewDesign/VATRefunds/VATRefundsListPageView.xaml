@@ -18,9 +18,13 @@
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
+                        <Setter Property="HeightRequest" Value="24" />
+                        <Setter Property="WidthRequest" Value="24" />
                     </Style>
                     <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="0" />
+                        <Setter Property="HeightRequest" Value="24" />
+                        <Setter Property="WidthRequest" Value="24" />
                     </Style>
                     <local:NegativeStringConverter x:Key="negativeStringConverter"/>
                 </ResourceDictionary>
@@ -51,19 +55,15 @@
                         </Image>
 
                         <StackLayout Spacing="15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2">
-                            <Image Source="search" IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}">
+                            <Image Source="search" Style="{StaticResource SmallIcon}" IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}">
                                <Image.GestureRecognizers>
-                                   <TapGestureRecognizer Tapped="SearchButton_Tapped">
-
-                                   </TapGestureRecognizer>
-                               </Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="SearchButton_Tapped"/>
+                                </Image.GestureRecognizers>
                             </Image>
-                            <Image Source="close" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
+                            <Image Source="close" Style="{StaticResource SmallIcon}" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
                                 <Image.GestureRecognizers>
-                                   <TapGestureRecognizer Tapped="CloseSearchButton_Tapped">
-
-                                   </TapGestureRecognizer>
-                               </Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CloseSearchButton_Tapped"/>
+                                </Image.GestureRecognizers>
                             </Image>
                             
                         </StackLayout>
@@ -91,18 +91,14 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackLayout Spacing="0" Grid.Row="0">
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefund}" Style="{StaticResource PageTitleBlack}" HorizontalOptions="StartAndExpand">
-                </custom:CustomLabel>
-                <Label Margin="2,-10,2,16" Text="{Binding TotalReassessmentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
-                <border:SfBorder  Margin="0,10,0,5" Style="{StaticResource GreyBorderFrameWithShadow}">
-                    <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
-                        <Image Source="add" HeightRequest="20" WidthRequest="20">
-                        </Image>
-                        <Label Margin="8,0,8,0" Text="{x:Static ResourceManager:AppResources.VATRefundsRequest}" Style="{StaticResource ValueLabelPrimary}" HorizontalOptions="Start"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefund}" Style="{StaticResource PageTitleBlack}" />
+                    <Label Margin="0,-10,0,32" Text="{Binding TotalReassessmentAmount}" Style="{StaticResource CaptionLabelGrey}" />
+                    <border:SfBorder Style="{StaticResource GreyBorderFrameButtonWithShadow}">
+                    <StackLayout Orientation="Horizontal">
+                            <Image Margin="16" Source="add" Style="{StaticResource SmallIcon}"/>
+                            <Label  Text="{x:Static ResourceManager:AppResources.VATRefundsRequest}" Style="{StaticResource BodyLabelPrimaryMedium}" HorizontalOptions="Start"/>
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="NewRefundRequest_Tapped">
-                                
-                            </TapGestureRecognizer>
+                                <TapGestureRecognizer Tapped="NewRefundRequest_Tapped"/>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </border:SfBorder >
@@ -181,7 +177,7 @@
                                             
                                             <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsReassesmentAmount}" HorizontalOptions="StartAndExpand"  Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
+                                            <Label  Style="{StaticResource BodyLabelBlackMedium}" HorizontalOptions="StartAndExpand">
                                                      <Label.FormattedText>
                                                         <FormattedString>
                                                         <Span Text="{Binding ReassessAmt,Converter={StaticResource commaSeparatorConverter}}"/>
@@ -193,7 +189,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsTotalOffset}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
+                                            <Label Style="{StaticResource BodyLabelBlackMedium}" HorizontalOptions="StartAndExpand">
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                         <Span Text="{Binding OffsetTot,Converter={StaticResource commaSeparatorConverter}}"/>
@@ -205,7 +201,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsNetCreditBalance}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
+                                            <Label Style="{StaticResource BodyLabelBlackMedium}" HorizontalOptions="StartAndExpand">
                                                      <Label.FormattedText>
                                                         <FormattedString>
                                                         <Span Text="{Binding NetCreditBal,Converter={StaticResource commaSeparatorConverter}}"/>
@@ -217,7 +213,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsRequestDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                            <Label Text="{Binding RefundReqDtString}" HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlack}" />
+                                            <Label Text="{Binding RefundReqDtString}" HorizontalOptions="StartAndExpand" Style="{StaticResource BodyLabelBlackMedium}" />
                                             </StackLayout>
                                         </Grid>
 

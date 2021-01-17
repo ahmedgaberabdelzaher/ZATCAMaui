@@ -8763,4 +8763,16 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="Therearenofinancialtransactions" xml:space="preserve">
     <value>There are no financial transactions</value>
   </data>
+<data name="ZAKATReturns1" xml:space="preserve">
+    <value>ZAKAT</value>
+  </data>
+  <data name="VatReturns1" xml:space="preserve">
+    <value>VAT</value>
+  </data>
+  <data name="ETReturns1" xml:space="preserve">
+    <value>ET</value>
+  </data>
+  <data name="WHTreturns1" xml:space="preserve">
+    <value>WHT</value>
+  </data>
 </root>

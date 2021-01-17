@@ -211,6 +211,7 @@
         <Setter Property="TextColor" Value="{StaticResource Primary}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
         <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
     </Style>
     <Style x:Key="ValueLabelGrey" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
@@ -220,6 +221,17 @@
     <!--#endregion-->
 
     <!--#region Body  Labels-->
+    <Style x:Key="BodyLabelPrimaryMedium" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="BodyLabelBlackMedium" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
     <Style x:Key="BodyLabelBlack" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
@@ -256,8 +268,15 @@
     <Style x:Key="CaptionLabelGrey" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+        <Setter Property="LineHeight" Value="16" />
         <Setter Property="FontSize" Value="12" />
     </Style>
+    <!--<Style x:Key="CaptionLabelGrey1" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="LineHeight" Value="16" />
+    </Style>-->
     <Style x:Key="CaptionLabelWhite" TargetType="Label">
         <Setter Property="TextColor" Value="White" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
@@ -267,7 +286,7 @@
 
     <!--#endregion-->
     <!--Tax payer profile -->
-       <Style x:Key="TPProfileLabelBlackBold" TargetType="Label">
+    <Style x:Key="TPProfileLabelBlackBold" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
         <Setter Property="FontSize" Value="18" />
@@ -310,22 +329,29 @@
     </Style>
     <Style x:Key="GreyBorderFrameWithShadow" TargetType="border:SfBorder">
         <!--<Setter Property="Margin" Value="10,0,10,0" />
-        <Setter Property="HorizontalOptions" Value="End" />
-        <Setter Property="VerticalOptions" Value="Center" />-->
+         <Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="HasShadow" Value="True" />
         <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
         <Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />
     </Style>
-      <Style x:Key="GreyBorderFrameWithShadowSupportPage" TargetType="border:SfBorder">
+    <Style x:Key="GreyBorderFrameButtonWithShadow" TargetType="border:SfBorder">
+        <Setter Property="HeightRequest" Value="56" />
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HasShadow" Value="True" />
+        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />
+    </Style>
+    <Style x:Key="GreyBorderFrameWithShadowSupportPage" TargetType="border:SfBorder">
         <!--<Setter Property="Margin" Value="10,0,10,0" />
         <Setter Property="HorizontalOptions" Value="End" />
         <Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="HasShadow" Value="True" />
-                 <Setter Property="HeightRequest" Value="56"/>
+        <Setter Property="HeightRequest" Value="56"/>
         <Setter Property="WidthRequest" Value="366"/>
         <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
         <Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />
@@ -605,9 +631,9 @@
     </Style>
     <!--#endregion-->
 
-   
-      <!--#region IconImage Styles-->
-    
+
+    <!--#region IconImage Styles-->
+
     <Style x:Key="SmallIcon" TargetType="Image">
         <Setter Property="HeightRequest" Value="24" />
         <Setter Property="WidthRequest" Value="24" />
@@ -638,7 +664,7 @@
         <Setter Property="ChipBorderColor" Value="{StaticResource NeutralLightGrey}" />
         <Setter Property="ChipBorderWidth" Value="1"/>
         <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="0" />        
+        <Setter Property="Padding" Value="0" />
         <Setter Property="SelectedChipBackgroundColor" Value="#F9F0DF" />
     </Style>
 
