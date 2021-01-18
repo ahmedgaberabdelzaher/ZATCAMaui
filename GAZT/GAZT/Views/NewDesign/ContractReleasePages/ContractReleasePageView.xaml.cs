@@ -24,6 +24,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
     {
         ContractReleaseViewModel viewModel;
 
+        //public object Loadingbar { get; private set; }
+
         public ContractReleasePageView()
         {
             InitializeComponent();
