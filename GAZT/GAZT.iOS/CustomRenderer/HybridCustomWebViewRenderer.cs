@@ -19,6 +19,10 @@ namespace GAZT.iOS.CustomRenderer
     [Preserve(AllMembers = true)]
     public class HybridCustomWebViewRenderer: WkWebViewRenderer
     {
+        //public HybridCustomWebViewRenderer()
+        //{
+        //}
+
         public HybridCustomWebViewRenderer() : this(new WKWebViewConfiguration())
         {
             if (Device.Idiom == TargetIdiom.Tablet)
@@ -166,7 +170,7 @@ namespace GAZT.iOS.CustomRenderer
             }
             else
             {
-                
+                //element.InvokeAction("displayLoadingIndicator");
             }
 
             //base.DidStartProvisionalNavigation(webView, navigation);
@@ -188,12 +192,43 @@ namespace GAZT.iOS.CustomRenderer
             {
                 try
                 {
+                    //NSObject htmlData = await webView.EvaluateJavaScriptAsync("document.documentElement.outerHTML.toString()").ConfigureAwait(false);
+                    //Console.WriteLine(htmlData.ToString());
+                    //App.LoginDataRetrieved = new LoginModel();
+
+                    //HtmlDocument document = new HtmlDocument();
+                    //document.LoadHtml(htmlData.ToString());
+
+
+                    //var htmlResponse = document.DocumentNode.InnerText;
+                    //var LoginConfirmation = htmlResponse.ToString();
+
+                    //Console.WriteLine(htmlData);
+                    //Console.WriteLine(htmlData.ToString());
+
                     if (cookies.Length > 0)
                     {
                         Uri url = webView.Url;
 
                         if (url.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.IsLoginCalled == true)
                         {
+
+                            //WebClient wc = new WebClient();
+                            //using (Stream st = wc.OpenRead(url.ToString()))
+                            //{
+                            //    using (StreamReader sr = new StreamReader(st, Encoding.UTF8))
+                            //    {
+                            //        string html = sr.ReadToEnd();
+                            //        Console.Write(html);
+                            //    }
+                            //}
+
+                            //if (!string.IsNullOrEmpty(LoginConfirmation))
+                            //{
+                            //    LoginConfirmation = JObject.Parse(LoginConfirmation)["d"].ToString();
+                            //    App.LoginDataRetrieved = JsonConvert.DeserializeObject<LoginModel>(LoginConfirmation.ToString());
+                            //}
+
                             if(isUserLogingApiCalled == false)
                             {
                                 isUserLogingApiCalled = true;
@@ -280,10 +315,13 @@ namespace GAZT.iOS.CustomRenderer
                     element.InvokeAction("error");
                 }
             });
+
+            //base.DidFinishNavigation(webView, navigation);
         }
 
         public override void DidFailNavigation(WKWebView webView, WKNavigation navigation, NSError error)
         {
+            //base.DidFailNavigation(webView, navigation, error);
             Console.WriteLine("DidFailNavigation");
         }
 

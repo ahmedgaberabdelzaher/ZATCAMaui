@@ -166,81 +166,203 @@
     <Compile Include="CustomRenderer\MyEntryRenderer.cs" />
     <BundleResource Include="Resources\UIFontIcons.ttf" />
     <BundleResource Include="Resources\SSTArabic-Roman.ttf" />
+    <BundleResource Include="Resources\sf_Tax_Evasion.png" />
+    <BundleResource Include="Resources\sf_Tax_Evasion%402x.png" />
     <BundleResource Include="Resources\sf_Tax_Evasion%403x.png" />
+    <BundleResource Include="Resources\sf_TIN_Status.png" />
+    <BundleResource Include="Resources\sf_TIN_Status%402x.png" />
     <BundleResource Include="Resources\sf_TIN_Status%403x.png" />
+    <BundleResource Include="Resources\sf_VAT_Lookup.png" />
+    <BundleResource Include="Resources\sf_VAT_Lookup%402x.png" />
     <BundleResource Include="Resources\sf_VAT_Lookup%403x.png" />
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%403x.png" />
+    <BundleResource Include="Resources\sf_Estimated_Zakat_Returns.png" />
+    <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%402x.png" />
     <Compile Include="DependencyServices\StatusBarImplementation.cs" />
     <BundleResource Include="Resources\GE_SS_Two_Light.otf" />
+    <BundleResource Include="Resources\ic_Delete_disabled.png" />
+    <BundleResource Include="Resources\ic_Delete_disabled%402x.png" />
     <BundleResource Include="Resources\ic_Delete_disabled%403x.png" />
     <Compile Include="CustomRenderer\HybridWebViewRenderer.cs" />
     <Compile Include="CustomRenderer\TransitionNavigationPageRenderer.cs" />
     <Compile Include="CustomRenderer\HybridCustomWebViewRenderer.cs" />
     <BundleResource Include="Resources\service_6%403x.png" />
+    <BundleResource Include="Resources\service_6.png" />
+    <BundleResource Include="Resources\service_6%402x.png" />
+    <BundleResource Include="Resources\sf_Cancel_payment.png" />
+    <BundleResource Include="Resources\sf_Cancel_payment%402x.png" />
     <BundleResource Include="Resources\sf_Cancel_payment%403x.png" />
+    <BundleResource Include="Resources\sf_Payment.png" />
+    <BundleResource Include="Resources\sf_Payment%402x.png" />
     <BundleResource Include="Resources\sf_Payment%403x.png" />
+    <BundleResource Include="Resources\sf_VerifyRequest.png" />
+    <BundleResource Include="Resources\sf_VerifyRequest%402x.png" />
     <BundleResource Include="Resources\sf_VerifyRequest%403x.png" />
+    <BundleResource Include="Resources\sf_Service_6.png" />
+    <BundleResource Include="Resources\sf_Service_6%402x.png" />
     <BundleResource Include="Resources\sf_Service_6%403x.png" />
+    <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\re_Property_Registration.png" />
+    <BundleResource Include="Resources\re_Property_Registration%402x.png" />
     <BundleResource Include="Resources\re_Property_Registration%403x.png" />
+    <BundleResource Include="Resources\re_Request_Verification.png" />
+    <BundleResource Include="Resources\re_Request_Verification%402x.png" />
     <BundleResource Include="Resources\re_Request_Verification%403x.png" />
+    <BundleResource Include="Resources\re_Termination_Request.png" />
+    <BundleResource Include="Resources\re_Termination_Request%402x.png" />
     <BundleResource Include="Resources\re_Termination_Request%403x.png" />
+    <BundleResource Include="Resources\re_Tile_Background_White.png" />
+    <BundleResource Include="Resources\re_Tile_Background_White%402x.png" />
     <BundleResource Include="Resources\re_Tile_Background_White%403x.png" />
+    <BundleResource Include="Resources\re_Tile_Background.png" />
+    <BundleResource Include="Resources\re_Tile_Background%402x.png" />
     <BundleResource Include="Resources\re_Tile_Background%403x.png" />
+    <BundleResource Include="Resources\vat_new_individual.png" />
+    <BundleResource Include="Resources\vat_new_individual_G%402x.png" />
     <BundleResource Include="Resources\vat_new_individual%403x.png" />
+    <BundleResource Include="Resources\vat_new_Establishment_G.png" />
+    <BundleResource Include="Resources\vat_new_Establishment_G%402x.png" />
     <BundleResource Include="Resources\vat_new_Establishment_G%403x.png" />
+    <BundleResource Include="Resources\vat_new_Establishment_W.png" />
+    <BundleResource Include="Resources\vat_new_Establishment_W%402x.png" />
     <BundleResource Include="Resources\vat_new_Establishment_W%403x.png" />
+    <BundleResource Include="Resources\vat_new_individual_G.png" />
     <BundleResource Include="Resources\vat_new_individual_G%403x.png" />
+    <BundleResource Include="Resources\vat_new_individual%402x.png" />
+    <BundleResource Include="Resources\re_Property_Registration_G.png" />
     <BundleResource Include="Resources\re_Property_Registration_G%403x.png" />
+    <BundleResource Include="Resources\re_Property_Registration_G%402x.png" />
+    <BundleResource Include="Resources\re_Termination_Request_W.png" />
+    <BundleResource Include="Resources\re_Termination_Request_W%402x.png" />
     <BundleResource Include="Resources\re_Termination_Request_W%403x.png" />
+    <BundleResource Include="Resources\re_Request_Verification_W.png" />
+    <BundleResource Include="Resources\re_Request_Verification_W%402x.png" />
     <BundleResource Include="Resources\re_Request_Verification_W%403x.png" />
+    <BundleResource Include="Resources\re_Property_Tile_Background_White.png" />
+    <BundleResource Include="Resources\re_Property_Tile_Background_White %402x.png" />
     <BundleResource Include="Resources\re_Property_Tile_Background_White%403x.png" />
+    <BundleResource Include="Resources\re_Tile_Background_S.png" />
     <BundleResource Include="Resources\re_Tile_Background_S%403x.png" />
+    <BundleResource Include="Resources\re_Tile_Background_S%402x.png" />
+    <BundleResource Include="Resources\unlockaccount_clock.png" />
+    <BundleResource Include="Resources\unlockaccount_clock%402x.png" />
     <BundleResource Include="Resources\unlockaccount_clock%403x.png" />
     <BundleResource Include="Resources\partials_background.png" />
+    <BundleResource Include="Resources\partials_background%402x.png" />
+    <BundleResource Include="Resources\partials_background%403x.png" />
+    <BundleResource Include="Resources\partials_background.png" />
+    <BundleResource Include="Resources\partials_background%402x.png" />
+    <BundleResource Include="Resources\partials_background%403x.png" />
+    <BundleResource Include="Resources\group_114.png" />
+    <BundleResource Include="Resources\group_114%402x.png" />
     <BundleResource Include="Resources\group_114%403x.png" />
     <Compile Include="CustomRenderer\AutoFillOtpEntryRenderer.cs" />
+    <BundleResource Include="Resources\establishments.png" />
+    <BundleResource Include="Resources\establishments%402x.png" />
     <BundleResource Include="Resources\establishments%403x.png" />
+    <BundleResource Include="Resources\information.png" />
+    <BundleResource Include="Resources\information%402x.png" />
     <BundleResource Include="Resources\information%403x.png" />
+    <BundleResource Include="Resources\details.png" />
+    <BundleResource Include="Resources\details%402x.png" />
     <BundleResource Include="Resources\details%403x.png" />
+    <BundleResource Include="Resources\declaration.png" />
+    <BundleResource Include="Resources\declaration%402x.png" />
     <BundleResource Include="Resources\declaration%403x.png" />
+    <BundleResource Include="Resources\deregistration.png" />
+    <BundleResource Include="Resources\deregistration%402x.png" />
     <BundleResource Include="Resources\deregistration%403x.png" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\add%402x.png" />
     <BundleResource Include="Resources\add%403x.png" />
+    <BundleResource Include="Resources\amount.png" />
+    <BundleResource Include="Resources\amount%402x.png" />
     <BundleResource Include="Resources\amount%403x.png" />
+    <BundleResource Include="Resources\Entry_DropDown.png" />
+    <BundleResource Include="Resources\Entry_DropDown%402x.png" />
     <BundleResource Include="Resources\Entry_DropDown%403x.png" />
+    <BundleResource Include="Resources\negative.png" />
+    <BundleResource Include="Resources\negative%402x.png" />
     <BundleResource Include="Resources\negative%403x.png" />
+    <BundleResource Include="Resources\positive.png" />
+    <BundleResource Include="Resources\positive%402x.png" />
     <BundleResource Include="Resources\positive%403x.png" />
     <BundleResource Include="Resources\ReSchedule.png" />
+    <BundleResource Include="Resources\return_vatRefunds.png" />
+    <BundleResource Include="Resources\return_vatRefunds%402x.png" />
     <BundleResource Include="Resources\return_vatRefunds%403x.png" />
+    <BundleResource Include="Resources\TermsAndConditionsARiOS.html" />
+    <BundleResource Include="Resources\TimeZone.png" />
+    <BundleResource Include="Resources\vat_new_individual._Wpng.png" />
+    <BundleResource Include="Resources\ViewMode.png" />
+    <BundleResource Include="Resources\unselected171x136.png" />
+    <BundleResource Include="Resources\unselected171x136%402x.png" />
     <BundleResource Include="Resources\unselected171x136%403x.png" />
+    <BundleResource Include="Resources\selected171x136.png" />
+    <BundleResource Include="Resources\selected171x136%402x.png" />
     <BundleResource Include="Resources\selected171x136%403x.png" />
+    <BundleResource Include="Resources\ic_reviewDetails.png" />
+    <BundleResource Include="Resources\ic_reviewDetails%402x.png" />
     <BundleResource Include="Resources\ic_reviewDetails%403x.png" />
     <Compile Include="CustomRenderer\CustomSearchBarRenderer.cs" />
     <Compile Include="Resources\VATDeregistrationDetailsPage.xaml.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <BundleResource Include="Resources\installment_plan.png" />
+    <BundleResource Include="Resources\installment_plan%402x.png" />
     <BundleResource Include="Resources\installment_plan%403x.png" />
+    <BundleResource Include="Resources\refund.png" />
+    <BundleResource Include="Resources\refund%402x.png" />
     <BundleResource Include="Resources\refund%403x.png" />
+    <BundleResource Include="Resources\Generic_attachment_icon.png" />
     <Compile Include="IOSDownloader.cs" />
+    <BundleResource Include="Resources\ic_Close_Circle.png" />
+    <BundleResource Include="Resources\ic_Close_Circle%402x.png" />
     <BundleResource Include="Resources\ic_Close_Circle%403x.png" />
+    <BundleResource Include="Resources\ic_menu_cr.png" />
+    <BundleResource Include="Resources\ic_menu_cr%402x.png" />
     <BundleResource Include="Resources\ic_menu_cr%403x.png" />
+    <BundleResource Include="Resources\ic_menu_vfp.png" />
     <BundleResource Include="Resources\ic_menu_vfp%402x.png" />
+    <BundleResource Include="Resources\ic_menu_vfp%403x.png" />
     <Compile Include="Main.cs" />
+    <BundleResource Include="Resources\finances.png" />
+    <BundleResource Include="Resources\finances%402x.png" />
     <BundleResource Include="Resources\finances%403x.png" />
     <Compile Include="CustomApplication.cs" />
+    <BundleResource Include="Resources\errorNew.png" />
+    <BundleResource Include="Resources\errorNew%402x.png" />
     <BundleResource Include="Resources\errorNew%403x.png" />
+    <BundleResource Include="Resources\centered.png" />
+    <BundleResource Include="Resources\centered%402x.png" />
     <BundleResource Include="Resources\centered%403x.png" />
+    <BundleResource Include="Resources\download.png" />
+    <BundleResource Include="Resources\download%402x.png" />
     <BundleResource Include="Resources\download%403x.png" />
+    <BundleResource Include="Resources\ArrowUp.png" />
+    <BundleResource Include="Resources\ArrowUp%402x.png" />
     <BundleResource Include="Resources\ArrowUp%403x.png" />
     <Compile Include="CustomRenderer\TransparentViewCellRenderer.cs" />
+    <BundleResource Include="Resources\password.png" />
+    <BundleResource Include="Resources\password%402x.png" />
     <BundleResource Include="Resources\password%403x.png" />
+    <BundleResource Include="Resources\requestVerification.png" />
+    <BundleResource Include="Resources\requestVerification%402x.png" />
     <BundleResource Include="Resources\requestVerification%403x.png" />
+    <BundleResource Include="Resources\taxEvasion_green.png" />
+    <BundleResource Include="Resources\taxEvasion_green%402x.png" />
     <BundleResource Include="Resources\taxEvasion_green%403x.png" />
+    <BundleResource Include="Resources\tax_evasion_green.png" />
+    <BundleResource Include="Resources\tax_evasion_green%402x.png" />
     <BundleResource Include="Resources\tax_evasion_green%403x.png" />
+    <BundleResource Include="Resources\request_verification.png" />
+    <BundleResource Include="Resources\request_verification%402x.png" />
     <BundleResource Include="Resources\request_verification%403x.png" />
+    <BundleResource Include="Resources\quick_actions.png" />
+    <BundleResource Include="Resources\quick_actions%402x.png" />
     <BundleResource Include="Resources\quick_actions%403x.png" />
     <BundleResource Include="Resources\Burger.png" />
     <BundleResource Include="Resources\quick_Actions_Close.png" />
     <BundleResource Include="Resources\quick_Actions_Close%402x.png" />
     <BundleResource Include="Resources\quick_Actions_Close%403x.png" />
-    <BundleResource Include="Resources\sf_ic_Partially_Paid%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -585,33 +707,83 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\public.jpeg" />
+    <BundleResource Include="Resources\ic_unsubmitted.png" />
+    <BundleResource Include="Resources\ic_unsubmitted%402x.png" />
     <BundleResource Include="Resources\ic_unsubmitted%403x.png" />
+    <BundleResource Include="Resources\ic_edit_gray.png" />
+    <BundleResource Include="Resources\ic_edit_gray%402x.png" />
     <BundleResource Include="Resources\ic_edit_gray%403x.png" />
+    <BundleResource Include="Resources\sadad_logo_ar.png" />
+    <BundleResource Include="Resources\sadad_logo_ar%402x.png" />
     <BundleResource Include="Resources\sadad_logo_ar%403x.png" />
+    <BundleResource Include="Resources\ic_Edit_red.png" />
+    <BundleResource Include="Resources\ic_Edit_red%402x.png" />
     <BundleResource Include="Resources\ic_Edit_red%403x.png" />
+    <BundleResource Include="Resources\ic_download.png" />
+    <BundleResource Include="Resources\ic_download%402x.png" />
     <BundleResource Include="Resources\ic_download%403x.png" />
+    <BundleResource Include="Resources\ic_refresh.png" />
+    <BundleResource Include="Resources\ic_refresh%402x.png" />
     <BundleResource Include="Resources\ic_refresh%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_home_selected.png" />
+    <BundleResource Include="Resources\ic_home_selected%402x.png" />
     <BundleResource Include="Resources\ic_home_selected%403x.png" />
+    <BundleResource Include="Resources\ic_language.png" />
+    <BundleResource Include="Resources\ic_language%402x.png" />
     <BundleResource Include="Resources\ic_language%403x.png" />
+    <BundleResource Include="Resources\check-mark.png" />
+    <BundleResource Include="Resources\check-mark%402x.png" />
     <BundleResource Include="Resources\check-mark%403x.png" />
+    <BundleResource Include="Resources\ic_check_circle.png" />
+    <BundleResource Include="Resources\ic_check_circle%402x.png" />
     <BundleResource Include="Resources\ic_check_circle%403x.png" />
+    <BundleResource Include="Resources\ic_loading.png" />
+    <BundleResource Include="Resources\ic_loading%402x.png" />
     <BundleResource Include="Resources\ic_loading%403x.png" />
+    <BundleResource Include="Resources\money.png" />
+    <BundleResource Include="Resources\money%402x.png" />
     <BundleResource Include="Resources\money%403x.png" />
+    <BundleResource Include="Resources\ic_money.png" />
+    <BundleResource Include="Resources\ic_money%402x.png" />
     <BundleResource Include="Resources\ic_money%403x.png" />
+    <BundleResource Include="Resources\file.png" />
+    <BundleResource Include="Resources\file%402x.png" />
     <BundleResource Include="Resources\file%403x.png" />
+    <BundleResource Include="Resources\ic_bg_green_full_big.png" />
+    <BundleResource Include="Resources\abc.png" />
+    <BundleResource Include="Resources\ic_envelop.png" />
+    <BundleResource Include="Resources\ic_envelop%402x.png" />
     <BundleResource Include="Resources\ic_envelop%403x.png" />
+    <BundleResource Include="Resources\ic_location.png" />
+    <BundleResource Include="Resources\ic_location%402x.png" />
     <BundleResource Include="Resources\ic_location%403x.png" />
+    <BundleResource Include="Resources\fa-brands-400.ttf" />
+    <BundleResource Include="Resources\Mada-Regular.ttf" />
+    <BundleResource Include="Resources\SST Arabic Bold.ttf" />
+    <BundleResource Include="Resources\SST Arabic Light.ttf" />
+    <BundleResource Include="Resources\SST Arabic Medium.ttf" />
     <BundleResource Include="Resources\SSTArabic-Bold.ttf" />
     <BundleResource Include="Resources\SSTArabic-Light.ttf" />
     <BundleResource Include="Resources\SSTArabic-Medium.ttf" />
+    <BundleResource Include="Resources\ic_pdf.png" />
+    <BundleResource Include="Resources\ic_pdf%402x.png" />
     <BundleResource Include="Resources\ic_pdf%403x.png" />
+    <BundleResource Include="Resources\ic_dropdownOne.png" />
+    <BundleResource Include="Resources\ic_dropdownOne%402x.png" />
     <BundleResource Include="Resources\ic_dropdownOne%403x.png" />
     <BundleResource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_Mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_Mark.png%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_Check_Mark.png%403x.png" />
@@ -620,43 +792,145 @@
     <BundleResource Include="Resources\non_submitted%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\overdue_Returns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\overdue_Returns%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\overdue_Returns%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\partiallay_paid_returns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\partiallay_paid_returns%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\partiallay_paid_returns%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\non_submitted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\non_submitted%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vatlookup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vatlookup%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vatlookup%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_attachment%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_attachment%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_attachment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_save_golden%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_save_golden%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_save_Gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_save_Gray%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_save_Gray%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_golden.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_golden%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_Check_golden%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_Gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_Gray%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_Check_Gray%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_Paid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Paid%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_Paid%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_save_golden.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_delete%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_file_download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_file_download%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_file_download%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_delete%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_close%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_close%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_star%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_star%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_star_border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_star_border%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_star_border%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_GAZT_Logo_Text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_Golden_TES.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_Golden_TES%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_Check_Golden_TES%403x.png" />
@@ -668,7 +942,19 @@
     <BundleResource Include="Resources\TermsAndConditionsEN.html" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_add1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\file_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\file_2%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\file_2%403x.png" />
@@ -677,31 +963,112 @@
     <BundleResource Include="Resources\date.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_bg_green_full_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Form_Bundle_Status.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Form_Bundle_Status%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\sf_Form_Bundle_Status%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Overdue_Returns_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Overdue_Returns_White%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_ic_Overdue_Returns_White%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Paid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Paid%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\sf_ic_Paid%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Partially_Paid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Partially_Paid%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Partially_Paid%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Submited_Returns_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Submited_Returns_White%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_ic_Submited_Returns_White%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unpaid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unpaid%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\sf_ic_Unpaid%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unsubmited_Returns_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unsubmited_Returns_White%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_ic_Unsubmited_Returns_White%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\sf_My_Bills.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\sf_My_Bills%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_My_Bills%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_My_Certificate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_My_Certificate%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_My_Certificate%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\sf_VAT_Declaration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_VAT_Declaration%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\sf_VAT_Declaration%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackground%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackground%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Sadad_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Sadad_logo%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_Sadad_logo%403x.png" />
@@ -722,79 +1089,283 @@
     <BundleResource Include="Resources\logo_gazt%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\logo_gazt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_gazt%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackgroundLand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackgroundLand%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackgroundLand%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unpaid_Commitments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unpaid_Commitments%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\sf_ic_Unpaid_Commitments%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Overdue_Returns_Commitments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Overdue_Returns_Commitments%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_ic_Overdue_Returns_Commitments%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_logo_Dashboard%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_logo_Dashboard%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_logo_Dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_check_circle_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_check_circle_24px%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_check_circle_24px%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_logo_gazt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_logo_gazt%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_logo_gazt%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_background%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vat_tile_background%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_success%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\vat_ic_success%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_individaualregistration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_individaualregistration%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vat_ic_individaualregistration%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_IbanCard_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_IbanCard_background%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\vat_tile_IbanCard_background%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_IbanCard_background_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_IbanCard_background_white%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vat_tile_IbanCard_background_white%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_IbanCard_backgroun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_IbanCard_backgroun%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\vat_tile_IbanCard_backgroun%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_taxpayerDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_taxpayerDetail%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vat_ic_taxpayerDetail%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\individual_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_listofsignup%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\vat_tile_listofsignup%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_listofsignup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_location%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vat_ic_location%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_phone%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\vat_ic_phone%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_listofsignup_W.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_listofsignup_W%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vat_tile_listofsignup_W%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ministryJustice%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ministryJustice%403x%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ministryJustice%403x%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\inbox_onboarding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\inbox_onboarding%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\inbox_onboarding%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\returnsubmission_onboarding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\returnsubmission_onboarding%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\returnsubmission_onboarding%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\paymentmethod_onboarding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\paymentmethod_onboarding%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\paymentmethod_onboarding%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\committments_onboarding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\committments_onboarding%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\committments_onboarding%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\Username_selected%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_selected%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_unselected%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_unselected%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_unselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_selected%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_selected%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_unselected%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\Password_unselected%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_unselected.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\check_oval%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\check_oval.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_oval%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\error%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\error%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Forget_ic_success%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Forget_ic_success%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\Forget_ic_success.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\clock%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clock%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\bell_notification.png" />
@@ -806,112 +1377,334 @@
     <BundleResource Include="Resources\bell_notification%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_burger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_burger%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_burger%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_arrow_right%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\circle_arrow_right%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\timeline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\timeline%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\timeline%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quick_action_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quick_action_2%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\quick_action_2%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\chat%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\chat%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\home%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\message.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\message%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\message%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Overdue_clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Overdue_clock%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Overdue_clock%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\Paid_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Paid_check%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\Paid_check%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\partially_clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\partially_clock%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\partially_clock%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\submited_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\submited_check%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\submited_check%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_unpaid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_unpaid%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_unpaid%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_unsubmitted_box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_unsubmitted_box%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_unsubmitted_box%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_bill%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\menu_bill%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\menu_bill.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\menu_calendar%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_calendar%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\menu_help%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\menu_help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_help%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\menu_individual%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_individual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_individual%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_installment_plan%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\menu_installment_plan%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\menu_installment_plan.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\log_out%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\log_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\log_out%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_manage_tax.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_manage_tax%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\menu_manage_tax%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\menu_objections.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_objections%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\menu_objections%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_refund.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_refund%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\menu_refund%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\menu_return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_return%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\menu_return%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_settings%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\menu_settings%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\submited.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\submited%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\submited%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clockNew%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\clockNew%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\clockNew.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\unsubmitted%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\unsubmitted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\unsubmitted%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\onboarding%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\onboarding%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\onboarding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quickAction2%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\quickAction2%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quickAction2.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_vat_return%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_vat_return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vat_return%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vat_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vat_info%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_vat_info%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vat_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vat_check%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_vat_check%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_vat_bill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vat_bill%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_vat_bill%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vat_amount.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vat_amount%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_vat_amount%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\arrowDropdown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowDropdown%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\arrowDropdown%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\search%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\filter%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\filter%403x.png" />
@@ -920,37 +1713,115 @@
     <BundleResource Include="Resources\arrowLeftwhite%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\arrowLeftwhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowLeftwhite%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowRight%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\arrowRight%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\calendar%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendar%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customerService.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customerService%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\customerService%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\language.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\language%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\language%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\RealStateVAT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\RealStateVAT%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\RealStateVAT%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\password_key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\password_key%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\password_key%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\taxEvasion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\taxEvasion%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\taxEvasion%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user_profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user_profile%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\user_profile%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\close%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newui_ic_pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newui_ic_pdf%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\newui_ic_pdf%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\zakat_details.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_details%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\zakat_details%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_manageTax.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_manageTax%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\zakat_manageTax%403x.png" />
@@ -959,34 +1830,106 @@
     <BundleResource Include="Resources\zakat_copy%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\zakat_copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_copy%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_user%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\vat_user%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_add_plus%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_add_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add_plus%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_location_Outline%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_location_Outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_location_Outline%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\closeGrey%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\closeGrey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\closeGrey%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_company%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_company.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_company%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\arrowLeft%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\arrowLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowLeft%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_selected_tile%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\FP_selected_tile%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_selected_tile.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\FP_unselected_tile%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\FP_unselected_tile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_unselected_tile%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Green_Key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Green_Key%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\Green_Key%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\showPassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\showPassword%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\showPassword%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hidePassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hidePassword%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\hidePassword%403x.png" />
@@ -995,10 +1938,34 @@
     <BundleResource Include="Resources\Whiteclock%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\Whiteclock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Whiteclock%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_Edit%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Edit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_White_info%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_White_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_White_info%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\WhiteCircle_arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\WhiteCircle_arrow_right%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\WhiteCircle_arrow_right%403x.png" />
@@ -1007,64 +1974,193 @@
     <BundleResource Include="Resources\individual_32%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\individual_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\other.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\other%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\other%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_White%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\establishments_White%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\establishments_White.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\location_Green%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location_Green%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\phone_Green%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\phone_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phone_Green%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\branchLocator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\branchLocator%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\branchLocator%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ColorChat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ColorChat%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ColorChat%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\customerServiceColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customerServiceColor%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\customerServiceColor%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\faQs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\faQs%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\faQs%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_Tax_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_Tax_check%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_menu_Tax_check%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\documents_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\documents_Green%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\documents_Green%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\documents_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\documents_White%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\documents_White%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Version.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Version%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_Version%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_certificate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_certificate%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_certificate%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Gazt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Gazt%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_Gazt%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_Installplan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Installplan%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_Installplan%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_PrivacyPolicy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_PrivacyPolicy%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_PrivacyPolicy%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_Payments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Payments%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_Payments%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_ReportTaxEvasion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_ReportTaxEvasion%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_ReportTaxEvasion%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_vatDe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vatDe%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_vatDe%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\amount_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\amount_white%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\amount_white%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Generic_attachment_icon%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Generic_attachment_icon%403x.png" />
@@ -1073,10 +2169,34 @@
     <BundleResource Include="Resources\individual_32White%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\establishments_BigGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_BigGreen%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\establishments_BigGreen%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\individual_32White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32White%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\grey_search%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\grey_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\grey_search%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Application_Status.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Application_Status%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_Application_Status%403x.png" />
@@ -1085,46 +2205,142 @@
     <BundleResource Include="Resources\ic_certificateColor%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_certificateColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_certificateColor%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VATservices.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VATservices%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_VATservices%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_FillingFrequency.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_FillingFrequency%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_FillingFrequency%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\installment_planColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\installment_planColor%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\installment_planColor%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_objectionsColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_objectionsColor%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\menu_objectionsColor%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_RegistrationDetails%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RegistrationDetails.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_RegistrationDetails%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RefundR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RefundR%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_RefundR%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\registration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\registration%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\registration%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Grey_message.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Grey_message%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Grey_message%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\Grey_phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Grey_phone%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\Grey_phone%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VAT_service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VAT_service%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_VAT_service%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_VAT_service_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VAT_service_w%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_VAT_service_w%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_cr_g.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_cr_g%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_menu_cr_g%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_cr_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_cr_w%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_menu_cr_w%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_VAT_reg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VAT_reg%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_VAT_reg%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VAT_reg_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VAT_reg_w%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_VAT_reg_w%403x.png" />
@@ -1133,7 +2349,19 @@
     <BundleResource Include="Resources\Flash%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\Flash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Flash%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bg_Bottom_nav%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\Bg_Bottom_nav%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bg_Bottom_nav.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

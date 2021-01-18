@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using EGAZT.Models.VATInstalationModels;
 using EGAZT.ViewModel.NewDesignViewModel.Common;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddNotePage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using NotesSet = EGAZT.Models.NotesSet;
 
 namespace EGAZT.Views.NewDesign.Common
 {

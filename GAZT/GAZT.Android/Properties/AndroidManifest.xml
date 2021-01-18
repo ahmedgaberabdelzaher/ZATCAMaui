@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.gazt.egazt" android:installLocation="preferExternal" android:versionName="3.2.2.6" android:versionCode="142">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.gazt.egazt" android:installLocation="preferExternal" android:versionName="3.2.2.6" android:versionCode="142">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
 	<uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -21,7 +21,7 @@
 	<application android:label="GAZT" android:supportsRtl="true" android:hardwareAccelerated="false" android:largeHeap="true" android:icon="@drawable/icon" android:requestLegacyExternalStorage="true">
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 		<uses-library android:name="org.apache.http.legacy" android:required="false" />
-		<meta-data tools:replace="android:value" android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBPiNAyWZbs1gGcT3PolpRFvjNJCk-Xbdk" />
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBPiNAyWZbs1gGcT3PolpRFvjNJCk-Xbdk" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.VATInstalationModels;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;

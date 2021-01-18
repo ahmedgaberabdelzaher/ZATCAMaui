@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:local="clr-namespace:GAZT"
+             xmlns:custom2="clr-namespace:EGAZT"
+             xmlns:GAZT="clr-namespace:GAZT" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             mc:Ignorable="d"
+                 xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView.SalesDetailsPageView"
+             FlowDirection="RightToLeft"
+             Title="{x:Static custom2:AppResources.ZSalesDetails}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static custom2:AppResources.ZSalesDetails}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                             />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+        <!--<ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" Padding="0">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="78*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Vertical" VerticalOptions="End" Padding="0" Margin="0" Grid.ColumnSpan="2">
+                    <BoxView  Grid.Row="0" Margin="0,0,0,5"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+                    <Grid BackgroundColor="White" Padding="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3">
+                        <ScrollView VerticalOptions="End">
+                            <Grid RowSpacing="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="90*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox x:Name="checkBox" Grid.Row="0" Grid.Column="0"  VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}" IsVisible="{Binding DesClaimerVisibility}"></CheckBox>
+                                <GAZT:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="{x:Static custom2:AppResources.ZZDeclarationText}" VerticalOptions="Start" IsVisible="{Binding DesClaimerVisibility}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></GAZT:CustomLabel>
+                                <buttons:SfButton Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.BillDetails}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
+                     FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
+                                <buttons:SfButton Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
+                     FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
+                                <buttons:SfButton Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.Submit}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Command="{Binding OnSubmitButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding SubmitButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
+                      FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
+                                <buttons:SfButton Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.Confirm}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Clicked="OnConfirmButtonClicked"   Style="{StaticResource SfButtonStyle}"  IsVisible="{Binding ConfirmButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
+                    FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
+                            </Grid>
+                        </ScrollView>
+                    </Grid>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Margin="0,5,0,5"></StackLayout>
+                <StackLayout Spacing="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                    <GAZT:CustomLabel      HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Margin="10,5,10,0"  FontSize="12">
+                    <!--Style="{StaticResource MicroGrayLabelStyleNewEn}"-->
+                    <GAZT:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static custom2:AppResources.FiscalYear}" TextColor="{StaticResource GoldLabelTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                            <Span Text=" " />
+                            <Span Text="{Binding Persl}"  TextColor="{StaticResource DashboardGrayTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"/>
+                            
+                            </FormattedString>
+                        </GAZT:CustomLabel.FormattedText>
+                    </GAZT:CustomLabel>
+                    <!--<Span Text="{x:Static custom2:AppResources.ZFinancialPeriodFrom}"  TextColor="{StaticResource GoldLabelTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                            <Span Text=" " />
+                            <Span Text="{Binding Abrzu}" TextColor="{StaticResource DashboardGrayTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"/>
+                            <Span Text="{x:Static x:Environment.NewLine}" />-->
+                    <StackLayout  Margin="0" 
+                                   Grid.Column="0" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+
+                        <GAZT:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Margin="10,0,10,0"
+                                                          >
+                            <GAZT:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    
+                                    <Span TextColor="{StaticResource GoldLabelTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.ZFinancialPeriodFrom}"  ></Span>
+                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" " ></Span>
+                                </FormattedString>
+                            </GAZT:CustomLabel.FormattedText>
+                        </GAZT:CustomLabel>
+                        <GAZT:CustomLabel
+                                   Text="{Binding Abrzu}" TextColor="{StaticResource DashboardGrayTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                          >
+                        </GAZT:CustomLabel>
+                    </StackLayout>
+                    <GAZT:CustomLabel      HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Margin="10,0,10,5"  FontSize="12">
+                        <!--Style="{StaticResource MicroGrayLabelStyleNewEn}"-->
+                        <GAZT:CustomLabel.FormattedText>
+                            <FormattedString>
+                                
+                                <Span Text="{x:Static custom2:AppResources.ZReturnReferenceNumber}" TextColor="{StaticResource GoldLabelTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                            <!--Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"-->
+                            <Span Text=" "/>
+                            <Span  Text="{Binding Fbnum}" TextColor="{StaticResource DashboardGrayTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"/>
+                        </FormattedString>
+                    </GAZT:CustomLabel.FormattedText>
+                </GAZT:CustomLabel>
+
+                </StackLayout>
+                <!--<ScrollView BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">-->
+                <Grid Grid.Row="1" Grid.Column="0" RowSpacing="0"  Grid.ColumnSpan="2" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="12*"/>
+                    </Grid.ColumnDefinitions>
+                    <BoxView  Grid.Row="0" Margin="0,0,0,2"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+                    <Label Text="{x:Static custom2:AppResources.ZEstimatedSales}"  Grid.Row="1" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="10,0,10,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                    <Label  Margin="0,0,0,0"  FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  VerticalTextAlignment="Center" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Estsl}"/>
+                                <Span Text=" "/>
+                                <Span Text="{x:Static custom2:AppResources.ZSAR}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <!--<Image Source="ic_info.png" Grid.Column="2" Grid.Row="8" HorizontalOptions="Start" VerticalOptions="End" Margin="5,0,5,-8">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                Tapped="OnEstmatedSalesInfoMessageClicked"
+                NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>-->
+                    <Label
+                       Grid.Column="2" Grid.Row="1"
+                        Margin="5,0,5,0"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}"
+                        HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnEstmatedSalesInfoMessageClicked" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <BoxView  Grid.Row="2" Margin="0,2,0,2"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+                    <ListView  x:Name="SalesDetails" 
+           ItemsSource="{Binding SalesDetailsList}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+           HasUnevenRows="True"
+                               SeparatorVisibility="None"
+                           BackgroundColor="White"
+                           SelectedItem="{Binding SelectedSalesDetails}"
+                      Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+            >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid  RowSpacing="0" ColumnSpacing="5" BackgroundColor="{Binding DisableItemBackgroundColor}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="48*"/>
+                                            <ColumnDefinition Width="40*"/>
+                                            <ColumnDefinition Width="12*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label  Text="{Binding SalesType}" Margin="10,0,10,0"  Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_BOLD}">
+                                        </Label>
+                                        <GAZT:CustomLabel  Text="{x:Static custom2:AppResources.ZInformationfromrelatedparties}" Margin="10,0,10,0"  Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Start"  Style="{StaticResource GAZTGreenLabelStyleForMicro}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
+                                        </GAZT:CustomLabel>
+                                        <Label  Text="{x:Static custom2:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource GAZTGreenLabelStyleForMicro}" IsVisible="{Binding InformationIconVisibility}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
+                                        </Label>
+                                        <Label Grid.Column="2" Grid.Row="0" Margin="5,10,5,10" Style="{StaticResource IconLabelStyleVAT}" TextColor="#005e4b" Text="{StaticResource Help}"  IsVisible="{Binding HelpIconVisibility}" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnInformationMessageClicked" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <GAZT:CustomLabel FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding InformationFromPartieToCompare}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                        <GAZT:CustomLabel FontFamily="{StaticResource SSTArabicMedium}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InformationIconVisibility}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding EstimateSales}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </GAZT:CustomLabel>
+                                        <Image Source="{Binding EditImageSource }" Grid.Column="2" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,5,5">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                Tapped="OnEditImageClicked"
+                NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" HeightRequest="0.5" BackgroundColor="Black" IsVisible="{Binding SeparatorVisibility}"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+                <!--</ScrollView>-->
+                <!--<StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="0,0,10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                </StackLayout>-->
+            </Grid>
+            <!-- Acticity indicator layout start -->
+            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                       
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#006450"/>
+                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <!-- Acticity indicator layout end -->
+        </Grid>
+        <!--</ScrollView>-->
+    </ContentPage.Content>
+</ContentPage>

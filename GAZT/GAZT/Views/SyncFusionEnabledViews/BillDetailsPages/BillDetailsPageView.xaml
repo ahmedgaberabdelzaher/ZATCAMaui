@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:custom2="clr-namespace:EGAZT"
+             xmlns:local1="clr-namespace:GAZT"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.BillDetails.BillDetailsPageView"
+             Title="{x:Static custom2:AppResources.ZBillDetails}"
+             FlowDirection="RightToLeft"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static custom2:AppResources.ZBillDetails}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                             />
+                    </controls:TitleView.LeadingView>
+                    <controls:TitleView.TrailingView>
+                        <buttons:SfButton
+                            x:Name="DownloadButton"
+                            Command="{TemplateBinding BindingContext.DowmoadForm}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource DownLoad}"
+                             />
+                    </controls:TitleView.TrailingView>
+                </controls:TitleView>
+                <ContentPresenter VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" IsVisible="{Binding IsMainGridVisble}">
+                <Grid BindingContext="{Binding EstimatedZAKATSADADNumber}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="90*"/>
+                        <RowDefinition Height="30*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Resolving issue of Bill Details displayed twice on page
+                        @Divya Jannapureddy Commented line number 98 to 102-->
+                        <!-- <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
+                        </Frame>
+                        <Label Text="{x:Static custom2:AppResources.ZBillDetails}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>-->
+                        <Image Grid.Column="0" Grid.Row="1" Source="sadad_logo_ar.png" Grid.ColumnSpan="2" HeightRequest="40" WidthRequest="40"></Image>
+                        <!--<Label Text="{x:Static custom2:AppResources.ZNoteYourcurrenttaxreturnnumberisunderprocessingandpleaseallowupto30minutestoreceiveyourSADADbillnumber}" Grid.Row="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}"/>-->
+                        <Label Text="{x:Static custom2:AppResources.SADADPaymentNumber}"  Grid.Row="3" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding InvoiceVisibility}"/>
+                        <Label Text="{Binding Sopbel}" FontFamily="{StaticResource SSTArBold}" Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}"/>
+                        <Label Text="{x:Static custom2:AppResources.ZSADADGAZTId}" Grid.Row="4" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding InvoiceVisibility}"/>
+                        <Label Text="{Binding Sadadid}" FontFamily="{StaticResource SSTArBold}" Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}"/>
+                        <Label Text="{x:Static custom2:AppResources.ZakatAmount}" Grid.Row="5" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding InvoiceVisibility}"/>
+                        <Label FontFamily="{StaticResource SSTArBold}" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}">
+                            <Label.FormattedText>
+                            <FormattedString>
+                                          <Span  Text="{Binding Stotamt}"  />
+                                        <Span Text=" " />
+                                        <Span Text="{x:Static custom2:AppResources.ZSAR}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                        </Label>
+                        <!--//@Divya Jannapureddy adding line number
+                        //Added below control below method-->
+                        <local1:CustomLabel  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"   IsVisible="{Binding InvoiceVisibility}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static custom2:AppResources.ZBillDetailsDisclaimer}"  FontFamily="{StaticResource SSTArBold}" FontSize="12"/>
+                                            <Span Text="&#10;"/>
+                                            <Span Text="{x:Static custom2:AppResources.ZBillDeatilsInfo1}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"/>
+                                            <Span Text="&#10;"/>
+                                            <Span Text="{x:Static custom2:AppResources.ZBillDeatilsInfo2}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                        </local1:CustomLabel>
+                        <!--//@Divya Jannapureddy adding line number
+                        //Added above control above method-->
+                        <!--<Button Text="{x:Static custom2:AppResources.CopySADADPaymentNumber}" IsEnabled="False" Command="{Binding OnCopySadadNumberButtonClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding InvoiceVisibility}"></Button>
+                        <Button Text="{x:Static custom2:AppResources.PayByMADA}" IsEnabled="False" Command="{Binding OnPayByMadaButtonClicked}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding InvoiceVisibility}"></Button>-->
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount}" Grid.Row="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <!--<Label Text="Total Amount" Grid.Row="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}"/>-->
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZTotalAmount}" Grid.Row="3"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZTotalUndisputedAmount}"  Grid.Row="4" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel  FontFamily="{StaticResource SSTArBold}" Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}">
+                             <Label.FormattedText>
+                            <FormattedString>
+                                          <Span  Text="{Binding Undisamt}"  />
+                                        <Span Text=" " />
+                                        <Span Text="{x:Static custom2:AppResources.ZSAR}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                        </local1:CustomLabel>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZTotaldisputedAmount}" Grid.Row="5" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel  FontFamily="{StaticResource SSTArBold}" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}">
+                             <Label.FormattedText>
+                            <FormattedString>
+                                          <Span  Text="{Binding Disamt}"  />
+                                        <Span Text=" " />
+                                        <Span Text="{x:Static custom2:AppResources.ZSAR}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                        </local1:CustomLabel>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZTotalAmount}" Grid.Row="6" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel  FontFamily="{StaticResource SSTArBold}" Grid.Row="6" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span  Text="{Binding Totamt}"  />
+                                </FormattedString>  
+                            </Label.FormattedText>
+                        </local1:CustomLabel>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZSADADBillDetails}" Grid.Row="7"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZSADADInvoiceNumber}"  Grid.Row="8" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel Text="{Binding Sopbel}" FontFamily="{StaticResource SSTArBold}" Grid.Row="8" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZSADADGAZTId}" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel Text="{Binding Sadadid}" FontFamily="{StaticResource SSTArBold}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZTheUndisputedAmount}" Grid.Row="10" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel FontFamily="{StaticResource SSTArBold}" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}">
+                            <Label.FormattedText>
+                                    <FormattedString>
+                                          <Span  Text="{Binding Undisamt}"  />
+                                        <Span Text=" " />
+                                        <Span Text="{x:Static custom2:AppResources.ZSAR}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                        </local1:CustomLabel>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZ25oftheDisputedAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"></local1:CustomLabel>
+                        <local1:CustomLabel  FontFamily="{StaticResource SSTArBold}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}">
+                            <Label.FormattedText>
+                                    <FormattedString>
+                                          <Span  Text="{Binding Sdisamt}"  />
+                                        <Span Text=" " />
+                                        <Span Text="{x:Static custom2:AppResources.ZSAR}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                        </local1:CustomLabel>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZTotalAmount}" Grid.Row="12" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                        <local1:CustomLabel  FontFamily="{StaticResource SSTArBold}" Grid.Row="12" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}">
+                             <Label.FormattedText>
+                            <FormattedString>
+                                          <Span  Text="{Binding Stotamt}"  />
+                                        <Span Text=" " />
+                                        <Span Text="{x:Static custom2:AppResources.ZSAR}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                        </local1:CustomLabel>
+                        <!--<Button Text="Refresh" Command="{Binding OnRefreshButtonClicked}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}" IsEnabled="True" Margin="10"></Button>-->
+                        <!--<Button Text="Invoice" Command="{Binding OnDownLoadInvoiceClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}" IsEnabled="True" Margin="10"></Button>-->
+                        <!--<StackLayout Orientation="Horizontal"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Padding="0" >
+                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button Text="Copy SADAD Payment Number" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                        <Button Text="Pay by MADA" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                    </Grid>
+                </StackLayout>-->
+                    </Grid>
+                    <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical" VerticalOptions="EndAndExpand" Spacing="1" Grid.ColumnSpan="2">
+                        <buttons:SfButton Text="{x:Static custom2:AppResources.CopySADADPaymentNumber}" Clicked="OnCopySadadNumberButtonClicked"  CornerRadius="0" Margin="0,0,0,0" Padding="0" HeightRequest="56" VerticalOptions="EndAndExpand" Grid.ColumnSpan="1" Style="{StaticResource SfButtonStyle}" IsVisible="{Binding ObjectionInvoiceVisibility}" BackgroundColor="#006450"
+                    ></buttons:SfButton>
+                        <!-- Resolving issue of Removing Pay By Mada button @Divya Jannapureddy Commented line number 238 to 243-->
+                        <!--<buttons:SfButton Text="{x:Static custom2:AppResources.PayByMADA}"
+                                          Command="{Binding OnPayByMadaButtonClicked}" IsEnabled="False" Grid.Row="1"
+                                          Margin="0,0,0,0" CornerRadius="0" Padding="0" HeightRequest="56"
+                                          VerticalOptions="EndAndExpand" Style="{StaticResource SfButtonStyle}"
+                                          IsVisible="False" BackgroundColor="#006450"
+                     Opacity="0.7"></buttons:SfButton>-->
+                        <buttons:SfButton Text="{x:Static custom2:AppResources.CopySADADPaymentNumber}"  Clicked="OnCopySadadNumberButtonClicked" CornerRadius="0" Margin="0,0,0,0" Padding="0" HeightRequest="56" VerticalOptions="EndAndExpand" Grid.ColumnSpan="1" Style="{StaticResource SfButtonStyle}" IsVisible="{Binding InvoiceVisibility}" BackgroundColor="#006450"
+                    ></buttons:SfButton>
+                        <!--<buttons:SfButton Text="{x:Static custom2:AppResources.PayByMADA}" IsEnabled="False" Command="{Binding OnPayByMadaButtonClicked}"  Margin="0,0,0,0" CornerRadius="0" Padding="0" HeightRequest="56" VerticalOptions="EndAndExpand"  Style="{StaticResource SfButtonStyle}" IsVisible="{Binding InvoiceVisibility}" BackgroundColor="#006450"
+                     Opacity="0.7"></buttons:SfButton>-->
+                    </StackLayout>
+                </Grid>
+                <!--Acticity indicator layout start-->
+                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                       
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#006450"/>
+                            <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+                <!--Acticity indicator layout End-->
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

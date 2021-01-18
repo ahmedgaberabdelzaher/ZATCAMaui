@@ -118,6 +118,8 @@
 		<Folder Include="SyncFusionEnabledBehaviors\" />
 		<Folder Include="Enums\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
+		<Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />
+		<Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
 		<Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
 		<Folder Include="Views\SyncFusionEnabledViews\UnlockAccount\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\UnlockAccount\" />
@@ -145,14 +147,6 @@
 		<Folder Include="ViewModel\NewDesignViewModel\AccountStatements\" />
 		<Folder Include="Models\AccountStatements\" />
 		<Folder Include="ViewModel\NewDesignViewModel\Common\" />
-		<Folder Include="ViewModel\SyncFusionEnabledViewModel\ZakatReturnListPage\" />
-		<Folder Include="ViewModel\SyncFusionEnabledViewModel\ZakatReturnDetailsPage\" />
-		<Folder Include="ViewModel\SyncFusionEnabledViewModel\AmendSalesDetailsPage\" />
-		<Folder Include="ViewModel\SyncFusionEnabledViewModel\BillDetailsPage\" />
-		<Folder Include="ViewModel\SyncFusionEnabledViewModel\AddNotePage\" />
-		<Folder Include="ViewModel\SyncFusionEnabledViewModel\VATReturnsPageEX\" />
-		<Folder Include="Views\SyncFusionEnabledViews\AttachmentPage\" />
-		<Folder Include="Font\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -190,8 +184,17 @@
 		<Compile Update="Views\NewDesign\OnboardingPages\OnBoardingAnimationPageView.xaml.cs">
 			<DependentUpon>OnBoardingAnimationPageView.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\Options\SFOptionsPage.xaml.cs">
+			<DependentUpon>SFOptionsPage.xaml</DependentUpon>
+		</Compile>
 		<Compile Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml.cs">
 			<DependentUpon>FinancialDetailAttachmentPopupPageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\VATRealEstateServicesPage.xaml.cs">
+			<DependentUpon>VATRealEstateServicesPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\PropertyRegistrationPage.xaml.cs">
+			<DependentUpon>PropertyRegistrationPage.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountTINPageView.xaml.cs">
 			<DependentUpon>UnlockAccountTINPageView.xaml</DependentUpon>
@@ -444,6 +447,9 @@
 		<EmbeddedResource Update="Views\SyncFusionEnabledViews\StylesTestUi\StyleTestUIPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATDeclarationPagesEX\VATReturnsPageViewEX.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\ConfirmationPopUpForVatRegistration.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
@@ -474,6 +480,9 @@
 		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationSuccessfullPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\ZAKATForm5\ZAKATForm05PageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\EstablishmentAmendUpdatePages\EstablishmentAmendUpdatePageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
@@ -483,6 +492,7 @@
 		<None Remove="Font\MyMaterialIcon.ttf" />
 	</ItemGroup>
 	<ItemGroup>
+		<EmbeddedResource Include="Font\MyMaterialIcon.ttf" />
 		<None Remove=".DS_Store" />
 	</ItemGroup>
 	<ItemGroup>
