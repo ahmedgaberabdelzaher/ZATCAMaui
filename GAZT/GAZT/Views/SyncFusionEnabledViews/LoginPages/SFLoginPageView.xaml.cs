@@ -30,7 +30,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
     public partial class SFLoginPageView
     {
         SFLoginPageViewModel viewModel;
-        private string strNavigaateToThisService;
+      
         private double width = 0;
         private double height = 0;
         HybridWebView hybridWebView;
@@ -53,7 +53,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 CheckFirstTimeorNot();
                 GetDeviceID();
                 viewModel.NavigateToThisService = strNavigateToThisService;
-                string lang = "AR";
+              
 
                 if (App.IsArabic)
                 {
@@ -64,7 +64,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 }
                 else
                 {
-                    lang = "EN";
+                   
 
                     this.FlowDirection = FlowDirection.LeftToRight;
                     CultureInfo.CurrentUICulture = new CultureInfo("en-US");

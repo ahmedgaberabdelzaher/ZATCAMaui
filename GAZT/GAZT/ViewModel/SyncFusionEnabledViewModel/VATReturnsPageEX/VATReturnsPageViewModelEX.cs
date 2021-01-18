@@ -4575,7 +4575,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 //await Task.Run(async () =>
                 //{
                 VATCalculationData vATCalculationData;
-                VTTHSetResult vTTHSetResult;
+              
                 string periodKey = VATDeclarationData.d.Periodkeyz;
                 string TxnTp = VATDeclarationData.d.TxnTpz;
                 string status = VATDeclarationData.d.Statusz;
@@ -4588,22 +4588,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 }
                 string FormBundleNumber = VATDeclarationData.d.Fbnum;
                 string Gpart = VATDeclarationData.d.Gpart;
-                string periodfrom;
-                string periodto;
+              
+            
                 TaxpayerPeriodFromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                 TaxpayerPeriodToDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                //if (App.IsArabic)
-                //{
-                //    periodfrom = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                //    periodto = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                //    TaxpayerPeriodFromDate = UtilityManager.ToArabicDate(periodfrom);
-                //    TaxpayerPeriodToDate = UtilityManager.ToArabicDate(periodto);
-                //}
-                //else
-                //{
-                //    TaxpayerPeriodFromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                //    TaxpayerPeriodToDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                //}
+                
                 if (VATDeclarationData.d.ATTACHSet.results != null && VATDeclarationData.d.ATTACHSet.results.Count != 0)
                 {
                     ATTACHSetsList = new List<Attachment>();
@@ -5531,7 +5520,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
             return TotalAmount;

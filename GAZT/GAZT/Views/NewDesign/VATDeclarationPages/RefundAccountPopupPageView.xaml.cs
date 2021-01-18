@@ -123,50 +123,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         }
         public void ValidationsForVATRefund()
         {
-            bool resultForBilledOrNot = false;
+          
            
 
 
 
-                //if (viewModel.IsVisibleDropdownForRefund == true)
-                //{
-                //    if (viewModel.IsCheckedRefund == true)
-                //    {
-                //        if (!string.IsNullOrEmpty(viewModel.IbanNumberText) && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsIBANValid == true)
-                //        {
-                //            if (!resultForBilledOrNot)
-                //            {
-                //                viewModel.IsMainButtonEnabled = true;
-                //            }
-                //            else
-                //            {
-                //                viewModel.IsMainButtonEnabled = false;
-                //            }
-                //        }
-                //        else
-                //        {
-                //            viewModel.IsMainButtonEnabled = false;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        if (!string.IsNullOrEmpty(viewModel.TxtSelectedIBAN) && !string.IsNullOrEmpty(viewModel.TxtSelectedIBANType) && !string.IsNullOrEmpty(viewModel.TxtSelectedIBANIDNumber))
-                //        {
-                //            if (!resultForBilledOrNot)
-                //            {
-                //                viewModel.IsMainButtonEnabled = true;
-                //            }
-                //            else
-                //            {
-                //                viewModel.IsMainButtonEnabled = false;
-                //            }
-                //        }
-                //        else
-                //        {
-                //            viewModel.IsMainButtonEnabled = false;
-                //        }
-                //    }
-                //}
+              
         }
         protected async override void OnAppearing()
         {

@@ -22,23 +22,19 @@ namespace GAZT
         {
             if (!string.IsNullOrEmpty(args.NewTextValue) && args.NewTextValue.Length <= 15)
             {
-                bool isValidNumber = false;//= UtilityManager.IsMobileNumberValidValid(args.NewTextValue);
+         
                 foreach (char letter in args.NewTextValue.ToCharArray())
                 {
                     if (letter >= 48 && letter <= 57)
                     {
-                        isValidNumber = true;
+                    
                     }
                     else
                     {
                         ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                     }
                 }
-                //if (!isValidNumber)
-                //    {
-                //        ((Entry)sender).Text = isValidNumber ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
-                //    }
-                //}
+              
             }
             else
             {

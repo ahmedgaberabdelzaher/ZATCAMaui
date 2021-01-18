@@ -60,7 +60,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
             catch (Exception gex)
             {
                 viewModel.TaxPayerProfile = App.TP;
-                int i = 0;
+                
             }
         }
         public async Task LoadDuesData()

@@ -59,7 +59,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AboutUs
                 }
             }
             }
-            catch(Exception ex)
+            catch(Exception )
             { 
             }
         }

@@ -32,7 +32,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
         int TotalSec;
         public bool StopTimer = false;
         public int currentAttempts = 0;
-        bool isValiedOTP = false;
+        
         public int numberOfSeconds = 120;
         #endregion
 
@@ -620,7 +620,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
                         await PopToRootPage();
                         if (response)
                         {
-                            bool IsNavigatingFromLogin = true;
+                            
                             ButtonDisableColor = Color.FromHex("#9EA4A9");
                             VerifyButtonDisableColor = Color.FromHex("#005e4b");
                             IsResendOTPEnabled = false;

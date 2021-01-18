@@ -30,7 +30,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
     public partial class VATDeregistrationDetailsPage : ContentPage
     {
         VATDeRegistrationDetailsPageViewModel viewModel;
-        bool isCalled = false;
+      
 
         public VATDeregistrationDetailsPage()
         {
@@ -152,7 +152,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
             {
-                isCalled = false;
+           
                 if (App.IsArabic)
                 {
                     if(arg.PickerId == "StartDateTypePicker")

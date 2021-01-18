@@ -991,7 +991,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("AttachmentName");
             }
         }
-        byte[] attachment;
+     
 
         private TinDeregestrationAttachmentsModel _selectedAttachment { get; set; }
         public TinDeregestrationAttachmentsModel SelectedAttachment

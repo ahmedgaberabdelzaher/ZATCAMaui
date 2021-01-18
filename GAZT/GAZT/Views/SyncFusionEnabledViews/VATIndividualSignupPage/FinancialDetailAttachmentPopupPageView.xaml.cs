@@ -182,7 +182,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
-                        int AttachmentCount = 0;
+                      
                         foreach (var item in viewModel.VatAttachmentsList)
                         {
                             if (item.Erfdt != null && item.Erftm != null)

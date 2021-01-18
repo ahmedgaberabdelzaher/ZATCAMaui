@@ -20,7 +20,7 @@ namespace GAZT
         }
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            bool isValidNumber = false;
+
             if (args.NewTextValue.Length <= 6)
             {
                 foreach (char letter in args.NewTextValue.ToCharArray())

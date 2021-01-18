@@ -676,7 +676,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         #endregion
 
-        ReqVatInstalmentPlanResponse reqVatInstalmentPlanResponse;
+        
         private ReqVatInstalmentPlanResponse _reqVatInstalmentPlanResponseList;
         public ReqVatInstalmentPlanResponse ReqVatInstalmentPlanResponseList
         {

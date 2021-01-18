@@ -921,7 +921,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
             try
             {
                 ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
-                bool IsPreviousValueChanged = false;
+                
                 for (int i = 0; i < SalesDetailsList.Count; i++)
                 {
                     if (SalesDetailsList[i].IsOldValueChanged)

@@ -58,7 +58,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 });
                 SetPickerFont();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -130,7 +130,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -190,7 +190,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 //          string DOB = year + month + day;
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -208,7 +208,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 //          string DOB = year + month + day;
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -294,7 +294,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     //                viewModel.IsNewAccountClicked = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -452,7 +452,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception )
             { 
             
             }

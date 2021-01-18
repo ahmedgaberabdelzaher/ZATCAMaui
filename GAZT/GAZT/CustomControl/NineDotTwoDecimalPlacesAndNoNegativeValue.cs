@@ -188,7 +188,7 @@ namespace GAZT
                     // message please remove extra decimal number
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }

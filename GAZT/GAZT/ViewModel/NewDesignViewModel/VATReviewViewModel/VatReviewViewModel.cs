@@ -2778,7 +2778,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         private Dictionary<string, string> VGPurchasesDictionary = null;
 
 
-        private bool _isDialog = true;
+    
         private bool _isBankGuranteeAttachments = false;
         private VATObjectionFormModel.ReviewReason selectedReviewReason;
         private VATObjectionFormModel.SubReason selectedSubReviewReason;

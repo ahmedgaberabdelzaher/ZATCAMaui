@@ -33,7 +33,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class IndividualRegistrationPageView : ContentPage
     {
-        private static int CurrentView;
+      
         IndividualRegistrationPageViewModel viewModel;
         ObservableCollection<InternationalMobileData> mobileData = null;
 
@@ -1122,71 +1122,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        //private void DOB_Closed(object sender, EventArgs e)
-        //{
-
-        //}
+       
         #endregion
         private async void btnContinue_Clicked(object sender, EventArgs e)
         {
-/*            if (CurrentView <= 6)
-            {
-                CurrentView++;
-            }
-            switch (CurrentView)
-            {
-                case 1:
-                    break;
-                case 2:
-                    NationalAddressView.IsVisible = true;
-                    IndividualRegistrationView.IsVisible = ContactInformationView.IsVisible = VerificationCodeView.IsVisible =
-                    SummeryView.IsVisible = PasswordView.IsVisible = false;
-                    await BoxTwo.TranslateTo(100, 0, 500, Easing.BounceOut);
-                    break;
-                case 3:
-                    ContactInformationView.IsVisible = true;
-                    IndividualRegistrationView.IsVisible = NationalAddressView.IsVisible = VerificationCodeView.IsVisible =
-                    SummeryView.IsVisible = PasswordView.IsVisible = false;
-                    await BoxThree.TranslateTo(100, 0, 500, Easing.BounceOut);
-                    break;
-                case 4:
-                    VerificationCodeView.IsVisible = true;
-                    IndividualRegistrationView.IsVisible = NationalAddressView.IsVisible = ContactInformationView.IsVisible =
-                    SummeryView.IsVisible = PasswordView.IsVisible = false;
-                    await BoxFour.TranslateTo(100, 0, 500, Easing.BounceOut);
-                    break;
-                case 5: 
-                    btnContinue.Text = "Confirm";
-                    
-                    SummeryView.IsVisible = true;
-                    IndividualRegistrationView.IsVisible =ContactInformationView.IsVisible= NationalAddressView.IsVisible =
-                        VerificationCodeView.IsVisible = PasswordView.IsVisible = false;
-                    await BoxFive.TranslateTo(100, 0, 500, Easing.BounceOut);
-                    break;
-                case 6:
-                    btnContinue.Text = "Continue";
-                    PasswordView.IsVisible = true;
-                    IndividualRegistrationView.IsVisible = ContactInformationView.IsVisible = NationalAddressView.IsVisible =
-                        VerificationCodeView.IsVisible = SummeryView.IsVisible = false;
-                   // await BoxFive.TranslateTo(100, 0, 500, Easing.BounceOut);
-                    break;
-                case 7:
-            viewModel._navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
-                    break;
-            }*/
+
         }
-        // protected override async void OnAppearing()
-        // {
-
-
-        ///*     BoxOne.BackgroundColor = Color.DarkGreen;
-        //     await BoxOne.TranslateTo(100,0,500,Easing.BounceOut);
-        //     BoxTwo.BackgroundColor = BoxThree.BackgroundColor = BoxFour.BackgroundColor = BoxFive.BackgroundColor = Color.LightGray;
-
-        //     NationalAddressView.IsVisible = ContactInformationView.IsVisible = VerificationCodeView.IsVisible =
-        //     SummeryView.IsVisible = PasswordView.IsVisible = false;
-        //     CurrentView = 1;*/
-        // }
+      
 
         protected override void OnAppearing()
         {

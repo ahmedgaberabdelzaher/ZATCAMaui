@@ -4522,7 +4522,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
 
-                var totalAmount = 0.0;
+              
                 var totalAmountDue = 0.0;
 
                 //ZakatInvoicesList = ZakatInstalments.d.Z_INVOICE_UI5Set.results;
@@ -5021,7 +5021,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                     IsLoading = true;
                     ZakatInstalments = null;
-                    ZakatInstalmentPlanResponse vATInstalment = null;
+                   
                     try
                     {
                         if (App.selectedZakatItem != "")

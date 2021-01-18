@@ -36,7 +36,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         public ICommand BackButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
 
-        private DateTime lastTapped;
+       
         #endregion
         #region ConstructorF
         /// <summary>
@@ -56,13 +56,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             this.LoginCommand = new Command(async () =>
             {
-                //Task LoginClickedTask = Task.Run(async () =>
-                //{
-                //    if (lastTapped < DateTime.Now.AddSeconds(-2))
-                //    {
-                //        await this.LoginClicked();
-                //    }
-                //});
+                
                 try
                 {
                    

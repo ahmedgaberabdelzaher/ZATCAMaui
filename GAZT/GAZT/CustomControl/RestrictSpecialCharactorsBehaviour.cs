@@ -24,23 +24,19 @@ namespace GAZT.CustomControl
         {
             if (!string.IsNullOrWhiteSpace(args.NewTextValue))
             {
-                bool isValidNumber = false;// = UtilityManager.IsUserNameValid(args.NewTextValue);
+   
                 foreach (char letter in args.NewTextValue.ToCharArray())
                 {
                     if ((letter >= 48 && letter <=57) || (letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122) || (letter ==127) || (letter == 8))
                     {
-                        isValidNumber = true;
+                      
                     }
                     else
                     {
                         ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                     }
                 }
-                //if (!isValidNumber)
-                //    {
-                //        ((Entry)sender).Text = isValidNumber ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
-                //    }
-                //}
+              
             }
         }
     }

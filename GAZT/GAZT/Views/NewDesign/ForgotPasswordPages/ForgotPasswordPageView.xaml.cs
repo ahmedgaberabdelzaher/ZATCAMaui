@@ -17,7 +17,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
     public partial class GAZTNewDesignForgotPasswordPageView : ContentPage
     {
 
-        private string _LblCountDownTimer;
+ 
 
         GAZTNewDesignForgotPasswordPageViewModel viewModel;
         public GAZTNewDesignForgotPasswordPageView()

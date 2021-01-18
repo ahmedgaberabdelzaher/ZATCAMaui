@@ -20,7 +20,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
     {
         TaxEvasionReportDetailPageViewModel viewModel;
         double Latitude = 24.774265;
-        double Logitude = 46.738586;
+       
         public TaxEvasionReportDetailPageView(TaxEvasionReportDetails SelectedTaxEvasionListItem)
         {
             InitializeComponent();

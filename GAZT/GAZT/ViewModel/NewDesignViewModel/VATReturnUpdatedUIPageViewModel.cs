@@ -46,7 +46,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-        int CurrentView;
+       
 
         #region Variable
 
@@ -2358,7 +2358,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #region Constructor
         public GAZTNewDesignVATReturnUpdatedUIPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            CurrentView = 0;
+           
 
          
             ContinueText = AppResources.ZZZZContinue;
@@ -2538,57 +2538,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
 
 
-                /*                    switch (CurrentView)
-                                    {
-                                        case 0:
-                                            IsInstrunctionView = false;
-                                            IsTaxpayerView = true;
-                                        innerFrame= Color.FromHex("#006450");
-                                        secBox = Color.FromHex("#006450");
-                                        break;
-                                        case 1:
-                                            IsTaxpayerView = false;
-                                            IsVATReturnsView = true;
-                                        secOuterFrame= Color.FromHex("#006450");
-                                        thirdBox = Color.FromHex("#006450");
-                                        break;
-                                        case 2:
-                                            IsVATReturnsView = false;
-                                            IsSaleView = true;
 
-                                        OuterFrame = Color.FromHex("#006450");
-                                        fourthBox = Color.FromHex("#006450");
-                                        break;
-
-                                        case 3:
-                                        IsPurchaseView = true;
-                                        IsSaleView = false;
-                                        fivebox= Color.FromHex("#006450");
-                                        BoxFiveFrame = Color.FromHex("#006450");
-                                        //ContinueText = "Confirm and Carry Forward";
-                                        //                            CreditDetailsText = "Confirm and Request Refund";
-                                        break;
-
-                                    case 4:IsTotalVatView = true;
-                                        IsPurchaseView = false;
-                                      sixbox= Color.FromHex("#006450");
-                                        BoxSixFrame= Color.FromHex("#006450");
-                                        isBtnVisible =  true;
-                                        CreditDetailsText = "Carried Credit Details";
-                                        break;
-                                    case 5: IsSummeryView = isCheckVisible = true;
-                                        IsTotalVatView = false;
-                                        sevenbox= Color.FromHex("#006450");
-                                        BoxSevenFrame= Color.FromHex("#006450");
-                                        CreditDetailsText = "Confrim and Generate SADAD Bill";
-                                        break;
-
-                                    case 6: navigationService.NavigateTo(App.VATReturnSuccessfullPageView);
-                                        break;
-                                }
-
-                                    if (CurrentView < 6)
-                                        CurrentView++;*/
 
             });
 
@@ -2620,52 +2570,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         break;
                 }
 
-                /*                if (CurrentView > 0)
-                                    CurrentView--;
-                                switch (CurrentView)
-                                {
-                                    case 5:
-                                        isCheckVisible = IsSummeryView = false;
-                                        IsTotalVatView = true;
-                                        sevenbox= Color.FromHex("#EBEBEB");
-                                        BoxSevenFrame= Color.Transparent;
-                                        CreditDetailsText = "Carried Credit Details";
-                                        break;
-                                    case 4:
-                                        isBtnVisible = IsTotalVatView = false;
-                                        IsPurchaseView = true;
-                                        sixbox= Color.FromHex("#EBEBEB");
-                                        BoxSixFrame= Color.Transparent;
-
-                                        break;
-                                    case 3:IsPurchaseView = false;
-                                        IsSaleView = true;
-                                        fivebox= Color.FromHex("#EBEBEB");
-                                        BoxFiveFrame=Color.Transparent;
-                                        break;
-                                    case 2:
-                                        IsSaleView = false;
-                                        IsVATReturnsView = true;
-                                             fourthBox= Color.FromHex("#EBEBEB");
-                                        OuterFrame = Color.Transparent;
-                                        break;
-                                    case 1: IsVATReturnsView = false;
-                                        IsTaxpayerView = true;
-                                        thirdBox = Color.FromHex("#EBEBEB");
-                                        secOuterFrame = Color.Transparent;
-                                        break;
-                                    case 0: IsTaxpayerView = false;
-                                        IsInstrunctionView = true;
-                                       secBox = Color.FromHex("#EBEBEB");
-                                        innerFrame=Color.Transparent ;
-                                        break;
-                //                    case 0: IsSaleView = false;
-                                        IsInstrunctionView = true;
-
-                                        break;
-                                    default: CurrentView = 0;
-                                        break;
-                                }*/
+                
             });
         }
 

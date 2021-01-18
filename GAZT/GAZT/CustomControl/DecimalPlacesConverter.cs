@@ -192,7 +192,7 @@ namespace GAZT.CustomControl
                     // message please remove extra decimal number
                 }
             }
-            catch(Exception ex)
+            catch(Exception )
             {
             }
         }

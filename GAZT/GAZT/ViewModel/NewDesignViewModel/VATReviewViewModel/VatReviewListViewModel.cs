@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand GoBackClick { get; set; }
         public ICommand NewRequestBtnTapped { get; set; }
         public ICommand CloseClick { get; set; }
-        private int selectedFilter = (int)FilterOptions.All;
+   
 
         enum FilterOptions
         {

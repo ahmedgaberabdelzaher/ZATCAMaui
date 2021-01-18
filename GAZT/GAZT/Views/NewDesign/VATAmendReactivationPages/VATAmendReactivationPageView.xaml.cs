@@ -446,7 +446,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         public async Task<bool> step4Validation()
         {
             bool flag = true;
-            var IDValidationResult = false;
+          
             if (viewModel.IsDeclarationChecked == true)
             {
                 if (viewModel.SelectedIdTypeFR == null || FrmIDType.HasError)
@@ -511,10 +511,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                 //viewModel.IsContinueButtonEnable = false;
             }
-            //if (!IDValidationResult)
-            //{
-            //    flag = false;
-            //}
+           
             return await Task.FromResult(flag);
         }
         public async void step5Validation()
@@ -3639,7 +3636,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3921,7 +3918,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         });
                     });
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
                 {
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 

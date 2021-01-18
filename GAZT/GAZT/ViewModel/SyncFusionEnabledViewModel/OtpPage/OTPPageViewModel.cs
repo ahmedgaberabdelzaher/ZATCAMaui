@@ -632,7 +632,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                             await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                             if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                             {
-                                bool IsNavigatingFromLogin = true;
+                               
                                 IsResendOTPEnabled = false;
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
                                 VerifyButtonDisableColor = Color.FromHex("#005e4b");
@@ -651,7 +651,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                             bool response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile,MobileCountry);
                             if (response)
                             {
-                                bool IsNavigatingFromLogin = true;
+                               
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
                                 VerifyButtonDisableColor = Color.FromHex("#005e4b");
                                 IsResendOTPEnabled = false;
@@ -670,7 +670,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                             await PopToRootPage();
                             if (response)
                             {
-                                bool IsNavigatingFromLogin = true;
+                             
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
                                 VerifyButtonDisableColor = Color.FromHex("#005e4b");
                                 IsResendOTPEnabled = false;

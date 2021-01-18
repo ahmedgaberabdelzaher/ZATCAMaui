@@ -35,7 +35,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 ChangeAeroIcon();
             }
-                catch(Exception ex)
+                catch(Exception )
             {
             }
         }

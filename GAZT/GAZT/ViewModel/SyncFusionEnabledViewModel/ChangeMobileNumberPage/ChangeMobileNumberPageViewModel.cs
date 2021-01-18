@@ -243,7 +243,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
                 }
                 await Task.Run(async () =>
                 {
-                    bool IsNavigatingFromLogin = false;
+                   
                     ComingToOTPVerificationScreenFrom NavigatingFromMobile = ComingToOTPVerificationScreenFrom.IsMobile;
                     String lang = "EN";
                     if (App.IsArabic == true)

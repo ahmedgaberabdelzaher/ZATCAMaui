@@ -17,7 +17,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
     {
         #region Variable
         SalesDetailsPageViewModel viewModel;
-        ZakatReturnDetailsD ZakatReturnDetail = null;
+ 
         string fbNum;
         int selectedIndex = -1;
         #endregion

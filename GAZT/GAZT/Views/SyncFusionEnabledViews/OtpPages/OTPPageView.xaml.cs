@@ -23,7 +23,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
         private double height = 0;
         double DeviceHeight;
         double DeviceWidth;
-        byte[] data;
+   
         #endregion
         #region Constructor
         public OTPPageView(ComingToOTPVerificationScreenFromAndNavigatingTo _ComingToOTPVerificationScreenFromAndNavigatingTo)
@@ -378,10 +378,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
         {
             try
             {
-                //var fileData = await CrossFilePicker.Current.PickFile();
-                //data = fileData.DataArray;
-                //lbl.Text = fileData.FileName;
-                //AttachmentRootOject _attachment =  await WebServiceManager.GAZTSaveVATDeclarationAttachment(data);
+        
             }
             catch (Exception ex)
             {

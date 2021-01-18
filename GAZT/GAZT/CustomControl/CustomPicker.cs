@@ -209,7 +209,7 @@ namespace GAZT
                         }
                         picker.Items.Add((actualValue ?? "").ToString());
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         //throw;
                     }
@@ -249,17 +249,11 @@ namespace GAZT
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
-        //public static readonly BindableProperty ImageProperty =
-        //    BindableProperty.Create(nameof(Image), typeof(string), typeof(CustomPicker), string.Empty);
-        //public string Image
-        //{
-        //    get { return (string)GetValue(ImageProperty); }
-        //    set { SetValue(ImageProperty, value); }
-        //}
+
         #endregion Methods
     }
 }

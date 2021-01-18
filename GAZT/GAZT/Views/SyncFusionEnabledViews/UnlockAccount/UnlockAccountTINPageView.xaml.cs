@@ -20,7 +20,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
     public partial class UnlockAccountTINPageView:PopupPage
     {
         UnlockAccountTINPageViewModel viewModel;
-        private bool isConfirmOtpCalled = false;
+      
 
         public UnlockAccountTINPageView()
         {
@@ -288,32 +288,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
                 OtpGAZTDarkGrayLabelStyleFourthEntry.Unfocus();
             }
 
-            //try
-            //{
-            //    if(e.NewTextValue != null)
-            //    {
-            //        if(e.NewTextValue.Length == 0)
-            //        {
-            //            isConfirmOtpCalled = false;
-            //        }
-            //    }
-
-            //    if(e.NewTextValue != null && e.OldTextValue != null)
-            //    {
-
-            //        if (e.NewTextValue.Length >= 1 && e.OldTextValue.Length == 0 && isConfirmOtpCalled == false)
-            //        {
-            //            isConfirmOtpCalled = true;
-            //            await viewModel.ConfirmOtpBtnCommand(null);
-            //        }
-            //    }
+           
 
 
-            //}
-            //catch(Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
+           
         }
 
         // * Password Validation

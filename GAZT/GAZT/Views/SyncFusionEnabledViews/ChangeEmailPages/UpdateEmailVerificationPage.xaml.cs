@@ -19,9 +19,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ChangeEmailPages
         UpdateEmailVerificationPageViewModel viewModel;
         private double width = 0;
         private double height = 0;
-        double DeviceHeight;
-        double DeviceWidth;
-        byte[] data;
+      
+      
+      
         #endregion
 
         public UpdateEmailVerificationPage(ComingToOTPVerificationScreenFromAndNavigatingTo _ComingToOTPVerificationScreenFromAndNavigatingTo)
@@ -187,10 +187,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ChangeEmailPages
         {
             try
             {
-                //var fileData = await CrossFilePicker.Current.PickFile();
-                //data = fileData.DataArray;
-                //lbl.Text = fileData.FileName;
-                //AttachmentRootOject _attachment =  await WebServiceManager.GAZTSaveVATDeclarationAttachment(data);
+              
             }
             catch (Exception ex)
             {

@@ -223,9 +223,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private void CloseDeregDatePicker_Closed(object sender, EventArgs e)
         {
-            bool isHIjri;
-            DateTime deregDate;
-            DateTime permitDate;
+           // bool isHIjri;
+         
             try
             {
                 if (viewModel.IsHijriCal)
@@ -248,7 +247,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PickerCloseAllDeregDateDisplay = date;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
-                    isHIjri = true;
+                   // isHIjri = true;
                 }
                 else
                 {
@@ -271,43 +270,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO; //DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
-                    isHIjri = false;
+                   // isHIjri = false;
                 }
 
-                //List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(viewModel.TinDeregistrationData.PermitSet.Results);
-                //string sortedDate = string.Empty;
-                //string datetype = string.Empty;
-                //foreach (PermitSetResult permitInfo in allPermitTypes)
-                //{
-                //    sortedDate = allPermitTypes.OrderBy(x => x.APermitValfrDtHTb).Select(x => x.APermitValfrDtHTb).FirstOrDefault();
-                //    datetype = permitInfo.APermitValfrDtCTb;
-                //}
-                //if (datetype.Contains("H"))
-                //{
-                //    string convertedSortedDate = UtilityManager.HijriToGreg(sortedDate);
-                //    permitDate = Convert.ToDateTime(convertedSortedDate);
-                //}
-                //else
-                //{
-                //    permitDate = Convert.ToDateTime(sortedDate);
-
-                //}
-
-                //if (isHIjri)
-                //{
-                //    string convertedDeregDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
-                //    deregDate = Convert.ToDateTime(convertedDeregDate);
-                //}
-                //else
-                //{
-                //    deregDate = Convert.ToDateTime(viewModel.PkrDBO);
-                //}
-
-
-                //if (deregDate < permitDate)
-                //{
-                //    viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
-                //}
 
             }
             catch (Exception ex)
