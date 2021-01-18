@@ -435,6 +435,14 @@ namespace EGAZT
                 navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
             }
 
+            var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
+            navigationService.Initialize(navigationPage);
+            _navigationService = navigationService;
+            var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
+            dialogService.Initialize(navigationPage);
+            _dialogService = dialogService;
+            MainPage = navigationPage;
+
             MessagingCenter.Subscribe<object, string>(this, "LogoutUserFromApp", async (sender, arg) =>
             {
                 if (App.DoesLoginNeedToBeRefreshed == true)
@@ -467,15 +475,10 @@ namespace EGAZT
                     //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
                 }
             });
-            var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
-            navigationService.Initialize(navigationPage);
-            _navigationService = navigationService;
-            var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
-            dialogService.Initialize(navigationPage);
-            _dialogService = dialogService;
+          
 
             InitializeAppDynamics();
-            DisplayCrashReport();
+            //DisplayCrashReport();
 
             ////Thread.Sleep(60000);
 
@@ -483,7 +486,6 @@ namespace EGAZT
             //var b = 0;
             //var c = a / b;
 
-            MainPage = navigationPage;
         }
 
 
