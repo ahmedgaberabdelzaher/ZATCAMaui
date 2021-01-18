@@ -16,12 +16,13 @@ using Xamarin.Forms.Xaml;
 using Rg.Plugins.Popup.Services;
 using GAZT.Manager;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ChangeFillingPeriodPageView : ContentPage,ChangeFillingInterface
+    public partial class ChangeFillingPeriodPageView : ContentPage, ChangeFillingInterface
     {
         #region Variable
 
@@ -69,16 +70,22 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
 
             getYesCommand();
             getNoCommand();
@@ -111,9 +118,9 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                                 // viewModel.VATViewAttachments();
                                 break;
                             case ArButtons.إلغاء:
-                                 viewModel.isDraftClicked = true;
-                                 viewModel.VoidMsg();
-                                 viewModel.isDraftClicked = false;
+                                viewModel.isDraftClicked = true;
+                                viewModel.VoidMsg();
+                                viewModel.isDraftClicked = false;
                                 break;
                             case ArButtons.عادةتعيين:
                                 //await viewModel.VATReturnResetAsync();
@@ -161,10 +168,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                                 // await viewModel.VATReturnAmendAsync();
                                 break;
                             case Buttons.SaveasDraft:
-                                     viewModel.isDraftClicked = true;
-                                     viewModel.OnSaveDraftClicked();
-                                     viewModel.isDraftClicked = false;
-                                
+                                viewModel.isDraftClicked = true;
+                                viewModel.OnSaveDraftClicked();
+                                viewModel.isDraftClicked = false;
+
                                 break;
                             default:
                                 break;

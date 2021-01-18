@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand GoBackClick { get; set; }
         public ICommand NewRequestBtnTapped { get; set; }
         public ICommand CloseClick { get; set; }
-   
+
 
         enum FilterOptions
         {
@@ -50,7 +50,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-        private bool _isBackButtonVisible = false;
+        private bool _isBackButtonVisible = true;
 
         public bool IsBackButtonVisible
         {
@@ -125,7 +125,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             public SelectionModel()
             {
             }
-
+            public string CardLabel { get => SelectionTitle; }
             public string SelectionTitle { get; set; }
             public bool IsSelected { get; set; }
         }
@@ -633,7 +633,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             _dialogService = dialogService;
 
-            GoBackClick = new Command(async () => { EnableListView(); });
+            GoBackClick = new Command(async () => {
+                if (IsVatListVisible)
+                {
+                    _navigationService.GoBack();
+                    return;
+                }
+                EnableListView();
+            });
 
             CloseClick = new Command(async () => { _navigationService.GoBack(); });
 
@@ -649,7 +656,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public void EnableListView()
         {
-            IsBackButtonVisible = false;
+            IsBackButtonVisible = true;
             SummaryVisible = false;
             IsVatListVisible = true;
         }
@@ -673,8 +680,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public void ResetListData()
         {
 
-            
-            VATobjListViewData = new ObservableCollection<VATObjectionListModel.Result3>(); 
+
+            VATobjListViewData = new ObservableCollection<VATObjectionListModel.Result3>();
             IsLoading = false;
             SetFilterOptions((int)FilterOptions.All);
             NumberOfObjAndReviews = "0 " + AppResources.VatReview;
@@ -1076,7 +1083,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             modelVATReviewsReturn.TotalTaxLiability = responseModel.d.SecurityDtl.Liaamt;
             modelVATReviewsReturn.TaxPaid = responseModel.d.SecurityDtl.Clramt;
-            
+
             modelVATReviewsReturn.RequestToReviewAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Amttp);
             modelVATReviewsReturn.ParticularAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Disamt);
             //for Dispute Details  Map the Strline

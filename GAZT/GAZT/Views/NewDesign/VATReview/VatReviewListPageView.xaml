@@ -60,7 +60,7 @@
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.VatReview}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
                        
-                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}"
+                         <Image Grid.Row="0" Grid.Column="0" 
                                VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
                                Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
                                HeightRequest="24"
@@ -128,12 +128,12 @@
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30"
+                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24"
                                        HorizontalOptions="Start" />
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1"
                                                     Text="{x:Static ResourceManager:AppResources.VRVatReviewRequest}"
                                                     HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource GAZTSmallGreenLabelStyle}" />
+                                                    Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding NewRequestBtnTapped}" />
                                     <!-- <TapGestureRecognizer Tapped="NewObjection" /> -->

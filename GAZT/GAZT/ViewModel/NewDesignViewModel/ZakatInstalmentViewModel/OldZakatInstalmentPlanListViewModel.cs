@@ -158,7 +158,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             });
 
-          
+
 
             ZDownloadForm = new Command(async () =>
             {
@@ -1250,8 +1250,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 for (int i = 0; i < RequestForInstalmentPlanList.Count; i++)
                 {
-                   // RequestForInstalmentPlanList[i].DpAmt = string.Format("{0:N2}", ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].DpAmt) + " " + AppResources.FORM5SAR;
-                   // RequestForInstalmentPlanList[i].TotAmt = string.Format("{0:N2}", ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].TotAmt) + " " + AppResources.FORM5SAR;
+                    // RequestForInstalmentPlanList[i].DpAmt = string.Format("{0:N2}", ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].DpAmt) + " " + AppResources.FORM5SAR;
+                    // RequestForInstalmentPlanList[i].TotAmt = string.Format("{0:N2}", ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].TotAmt) + " " + AppResources.FORM5SAR;
 
                     //string submitDate = "";
                     //if (RequestForInstalmentPlanList[i].SubmitDt != null)
@@ -1306,13 +1306,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     }
 
 
-                //}
+                    //}
 
 
 
 
 
-                zakatListData.Add(new OldZakatListModel()
+                    zakatListData.Add(new OldZakatListModel()
                     {
                         referanceNumber = RequestForInstalmentPlanList[i].Fbnum,
                         status = RequestForInstalmentPlanList[i].StatText,
@@ -1544,7 +1544,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             // SummarySelectedBillsList = summarySelectedBillsList;
 
 
-            
+
 
             Attachments = new ObservableCollection<Attachment>();
 
@@ -1595,7 +1595,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetMonthly;
             }
-            
+
 
 
         }
@@ -1766,11 +1766,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                         string callSer = "IPRF";
 
-                        if (IsZakat) {
+                        if (IsZakat)
+                        {
 
                             callSer = "IPRFZ";
                         }
-                        else {
+                        else
+                        {
                             callSer = "IPRFI";
                         }
 
@@ -1885,6 +1887,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("Enabled");
             }
         }
-      
+
     }
 }

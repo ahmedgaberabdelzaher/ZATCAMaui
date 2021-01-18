@@ -5,6 +5,7 @@ using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using GAZT.Helper;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
@@ -34,7 +35,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                 this.BindingContext = viewModel;
 
-              
+
 
             }
             catch (Exception ex)
@@ -49,6 +50,12 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             try
             {
                 base.OnAppearing();
+
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
+
+
                 viewModel.ResetData();
                 viewModel.GetVATChangeFillingList();
             }
@@ -70,10 +77,12 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
@@ -83,14 +92,16 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
 
 
-            if(item.Fbust == "E0018" || item.Fbust == "E0075" || item.Fbust == "E0074" || item.Fbust == "E0013") {
+            if (item.Fbust == "E0018" || item.Fbust == "E0075" || item.Fbust == "E0074" || item.Fbust == "E0013")
+            {
 
                 App.selectedVatFillingItem = item.Fbnum;
                 App.selectedVATItemFbust = item.Fbust;
                 viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
 
             }
-            else {
+            else
+            {
 
 
 

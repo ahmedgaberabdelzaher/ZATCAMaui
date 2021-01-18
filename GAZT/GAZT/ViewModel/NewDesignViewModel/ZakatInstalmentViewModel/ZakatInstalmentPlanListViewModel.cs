@@ -165,7 +165,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             ReqInstalmentBtnTapped = new Command(async () =>
             {
                 CheckDueInvoices();
-               // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
+                // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
             });
             SummaryContinueBtnTapped = new Command(async () =>
             {
@@ -185,7 +185,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             NoteContinueTapped = new Command(async () =>
             {
-               await ValidateNoteAndContinueAsync();
+                await ValidateNoteAndContinueAsync();
             });
 
             ZDownloadForm = new Command(async () =>
@@ -317,7 +317,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1331,18 +1331,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             if (ReqVatInstalmentPlanResponseList.d.WorklistSet.results != null)
             {
-                if(RequestForInstalmentPlanList != null) {
+                if (RequestForInstalmentPlanList != null)
+                {
 
                     RequestForInstalmentPlanList.Clear();
 
                 }
 
                 IsZakat = Preferences.Get("isZakat", false);
-                if (IsZakat) {
+                if (IsZakat)
+                {
 
                     RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NZ" || x.IptypeFg == "").ToList();
                 }
-                else {
+                else
+                {
                     RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NI" || x.IptypeFg == "").ToList();
 
 
@@ -1388,14 +1391,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         zakatbill = AppResources.ZakatInstalmetSelectTypeIncomeTax;
                     }
-                    else {
+                    else
+                    {
 
                         IsZakat = Preferences.Get("isZakat", false);
-                        if (IsZakat) {
+                        if (IsZakat)
+                        {
                             zakatbill = AppResources.ZakatInstalmetSelectTypeZakat;
 
                         }
-                        else {
+                        else
+                        {
                             zakatbill = AppResources.ZakatInstalmetSelectTypeIncomeTax;
 
                         }
@@ -1404,8 +1410,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
 
 
-                    
-                    
+
+
 
                     zakatListData.Add(new ZakatListModel()
                     {
@@ -1419,7 +1425,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         Fbtyp = zakatbill,
                         statusType = RequestForInstalmentPlanList[i].Fbust,
                         fbNum = RequestForInstalmentPlanList[i].Fbnum
-                        
+
 
                     });
 
@@ -1466,7 +1472,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
-             
+
                 if (summarySelectedBillsList == value) return;
 
                 summarySelectedBillsList = value;
@@ -1714,7 +1720,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public async Task GetSummaryDetailsClickedAsync(int index)
         {
-           // SummarySelectedBillsList = null;
+            // SummarySelectedBillsList = null;
 
             try
             {
@@ -1882,7 +1888,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             ZakatListData = new ObservableCollection<ZakatListModel>();
 
 
-                            
+
                             BindVatInstalments();
 
                         }
@@ -1946,7 +1952,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2114,7 +2120,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }

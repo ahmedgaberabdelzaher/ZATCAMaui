@@ -7012,7 +7012,7 @@
     <value>اسم جهة الاتصال</value>
   </data>
 	<data name="VRVatReviewRequest" xml:space="preserve">
-    <value>طلب مراجعة ضريبة القيمة المضافة</value>
+    <value>طلب اعتراض على ضريبة القيمة المضافة</value>
   </data>
 	<data name="VRNewObjectionorReview" xml:space="preserve">
     <value>طلب جديد للمراجعة أو الاعتراض</value>

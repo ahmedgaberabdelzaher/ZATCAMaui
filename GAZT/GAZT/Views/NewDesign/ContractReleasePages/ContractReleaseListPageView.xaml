@@ -93,7 +93,7 @@
            
             <Grid>
             
-              <Grid IsVisible="{Binding IsContractListsVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              <Grid IsVisible="{Binding IsContractListsVisible}" BackgroundColor="Transparent"  Margin="20,32,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -107,7 +107,7 @@
                             <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ContractRelease}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource PageTitleBlack}" />
+                                        Style="{StaticResource PageTitleBlack}" Padding="0" Margin="0"/>
                       
                     </Grid>
 
@@ -118,7 +118,7 @@
                             <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" >
+                        <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,10,0,0" HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" VerticalOptions="FillAndExpand">
                             <Grid >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -127,8 +127,8 @@
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.CRRequestContractRelease}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16"/>
+                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Image>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.CRRequestContractRelease}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding RequestContractReleaseBtnTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>

@@ -12,15 +12,19 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              mc:Ignorable="d" FlowDirection="RightToLeft"    
-              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"           
+              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png"
              x:Class="EGAZT.Views.NewDesign.ZakatObjection.ObjectionsSelectionPageView">
 
     <ContentPage.Resources>
         <ResourceDictionary>
+            <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector"/>
+            <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector"/>
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
             <!--<DataTemplate x:Key="BillStatusFilterTemplate">
                 <StackLayout>
@@ -110,9 +114,11 @@
 
                         <listView:SfListView HorizontalOptions="FillAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="StartAndExpand" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding SelectionOptions}" SelectedItem="{Binding SelectedOption, Mode=TwoWay}"  SelectionMode="Single"
-                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
+                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged"
+                                             SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
+                                      ItemTemplate="{StaticResource UnselectedItemTemplateSelector}">
 
-                            <listView:SfListView.ItemTemplate>
+                           <!-- <listView:SfListView.ItemTemplate>
 
                                 <DataTemplate>
                                     <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
@@ -142,7 +148,7 @@
 
                                 </DataTemplate>
 
-                            </listView:SfListView.SelectedItemTemplate>
+                            </listView:SfListView.SelectedItemTemplate>  -->
 
                             <listView:SfListView.LayoutManager>
 

@@ -4522,7 +4522,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
 
-              
+
                 var totalAmountDue = 0.0;
 
                 //ZakatInvoicesList = ZakatInstalments.d.Z_INVOICE_UI5Set.results;
@@ -4625,6 +4625,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
 
                 EnableVATBillView();
+
+                if (ZakatInvoicesList != null && ZakatInvoicesList.Count <= 0)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZakatNoInvoicesToBeAdded, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
                 //TotalAmountSAR = string.Format("{0:N2}", totalAmountDue);
                 //VATBillDueAmount = string.Format("{0:N2}", totalAmountDue);
 
@@ -5021,7 +5030,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                     IsLoading = true;
                     ZakatInstalments = null;
-                   
+
                     try
                     {
                         if (App.selectedZakatItem != "")

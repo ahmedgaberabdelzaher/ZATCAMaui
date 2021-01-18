@@ -6982,7 +6982,7 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Contact Person Name</value>
   </data>
   <data name="VRVatReviewRequest" xml:space="preserve">
-    <value>VAT Review Request</value>
+    <value>VAT Objection Request</value>
   </data>
   <data name="VRNewObjectionorReview" xml:space="preserve">
     <value>New Objection or Review</value>

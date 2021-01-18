@@ -235,10 +235,6 @@
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
-		<EmbeddedResource Update="AppResources.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
 		<EmbeddedResource Update="SyncfusionControl.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>SyncfusionControl.Designer.cs</LastGenOutput>

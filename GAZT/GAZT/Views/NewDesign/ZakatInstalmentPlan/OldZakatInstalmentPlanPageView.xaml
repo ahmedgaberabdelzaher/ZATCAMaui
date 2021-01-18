@@ -134,7 +134,7 @@
                         </Grid.RowDefinitions>
                         -->
                         <Grid Grid.Row="0">
-                            <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand"/>
+                            <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="16"/>
                         </Grid>
                         <Grid Grid.Row="1" Margin="0,5,0,10">
                             <Grid.RowDefinitions>
@@ -1180,7 +1180,7 @@
                             <ColumnDefinition Width="50*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Row="0">
-                            <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand"/>
+                            <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="16"/>
                         </Grid>
                         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                             <Grid.RowDefinitions>
@@ -1383,7 +1383,7 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand"/>
+                            <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="16"/>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
@@ -1663,7 +1663,7 @@
                                                     <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid Grid.Row="0">
-                                                    <commonView:PageIndicatorView Margin="10,15,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand"/>
+                                                    <commonView:PageIndicatorView Margin="10,15,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="16"/>
                                                 </Grid>
 
                                                 <custom:CustomLabel Grid.Row="1" Grid.ColumnSpan="3" Text="{x:Static ResourceManager:AppResources.ZakatSelectBillsPageViewSelectBills}" HorizontalOptions="StartAndExpand"
@@ -1841,7 +1841,7 @@
                                                     <RowDefinition Height="1"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid Grid.Row="0">
-                                                    <commonView:PageIndicatorView Margin="10,15,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand"/>
+                                                    <commonView:PageIndicatorView Margin="10,15,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="16"/>
                                                 </Grid>
                                                 <custom:CustomLabel Grid.Row="1"  Text="{x:Static ResourceManager:AppResources.VATRReviewInformation}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
@@ -1976,7 +1976,7 @@
                             <ColumnDefinition Width="50*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Row="0">
-                            <commonView:PageIndicatorView Margin="10,15,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand"/>
+                            <commonView:PageIndicatorView Margin="10,15,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="16"/>
                         </Grid>
                         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                             <Grid.RowDefinitions>

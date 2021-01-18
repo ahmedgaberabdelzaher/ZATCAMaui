@@ -175,7 +175,6 @@ using EGAZT.ViewModel.NewDesignViewModel.Common;
 using Xamarin.Forms.Internals;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_ViewModel;
 using EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword;
-using EGAZT.Views.SyncFusionEnabledViews.BillDetails;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.BillDetailsPage_ViewModel;
 
 namespace EGAZT
@@ -2571,11 +2570,8 @@ namespace EGAZT
             navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
             navigationService.Configure(App.ForgotUsernamePasswordPageView, typeof(ForgotUsernamePasswordPageView));
-            navigationService.Configure(App.BillDetailsPageView, typeof(BillDetailsPageView));
             navigationService.Configure(App.FormBundleStatusPageView, typeof(EGAZT.Views.NewDesign.FormBundleStatusPages.FormBundleStatusPageView));
-           
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-            
             navigationService.Configure(App.FAQPageView, typeof(FAQPageView));
             navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
             navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
