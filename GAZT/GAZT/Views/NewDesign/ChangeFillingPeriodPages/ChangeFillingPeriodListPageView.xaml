@@ -45,33 +45,38 @@
                                               Grid.Row="0" BackgroundColor="White" />
                         </Grid>
                     </yummy:PancakeView>
-                    <Grid Padding="0,10,0,10" Grid.Row="0">
+                    <Grid Padding="24,10,24,10" Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*" />
-                            <ColumnDefinition Width="60*" />
-                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Grid.Row="0"
-                               Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}"
-                               TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
-                               FontSize="Large" />
-                        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}"
-                               Text="{DynamicResource StyleReverseBack}" TextColor="White"
-                               IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" />
-                            </Label.GestureRecognizers>
-                        </Label>
-                        <Label Grid.Row="0" Grid.Column="2" Style="{StaticResource IconLabelStyle}" TextColor="White"
-                               Text="{StaticResource Close}" VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="EndAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" />
-                            </Label.GestureRecognizers>
-                        </Label>
+                       
+
+                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                               Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
+                               HeightRequest="24"
+                               WidthRequest="24">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                         <Image  Grid.Row="0" Grid.Column="2"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                               Source="close"
+                               HeightRequest="24"
+                               WidthRequest="24">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
                     </Grid>
                 </Grid>
             </Grid>
@@ -123,7 +128,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
-                                <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="12" />
+                                <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" />
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding MyRequestsButtonTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>

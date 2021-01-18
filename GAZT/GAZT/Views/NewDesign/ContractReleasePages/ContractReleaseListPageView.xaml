@@ -52,15 +52,15 @@
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*" />
-                            <ColumnDefinition Width="60*" />
-                            <ColumnDefinition Width="20*" />
+                            <!--<ColumnDefinition Width="20*" />-->
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Column="0" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
 
-                           <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}"
+                           <!--<Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}"
                                VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
                                Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
                                HeightRequest="24"
@@ -68,9 +68,9 @@
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
                             </Image.GestureRecognizers>
-                        </Image>
+                        </Image>-->
 
-                         <Image  Grid.Row="0" Grid.Column="2"
+                         <Image  Grid.Row="0" Grid.Column="1"
                                VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
                                Source="close"
                                HeightRequest="24"
@@ -128,7 +128,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.CRRequestContractRelease}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" />
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.CRRequestContractRelease}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding RequestContractReleaseBtnTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>

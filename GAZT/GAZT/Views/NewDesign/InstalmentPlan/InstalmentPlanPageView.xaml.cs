@@ -6,6 +6,7 @@ using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.InstalmentPlan
@@ -71,6 +72,9 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
             viewModel.AddOutletDecisionOptions();
             
         }
