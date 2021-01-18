@@ -8,9 +8,6 @@ using System.Net;
 using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -54,7 +51,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.ClearData();
                 if (vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
                     viewModel.NumberOfAttachmentComingFromServer = GAZTNewDesignMyReturnsNewPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.d.ATTACHSet.results.Count;
-                viewModel.TotalAttachmentSize = AttachmentPageViewModel.AttachmentUploadedSize;
+                viewModel.TotalAttachmentSize = 0;
                 viewModel.IsAmendClickedOnVAT = GAZTNewDesignVATReturnUpdatedUIPageViewModel.IsAmend;
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {

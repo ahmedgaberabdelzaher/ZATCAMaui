@@ -96,6 +96,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
                         if (gex is GAZTNetworkConnectivityIssueException)
                         {
                             MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                           
                         }
                         else if (gex is GAZTInternetException)
                         {

@@ -19,6 +19,7 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
+using Com.Labiba.Bot.Others;
 
 namespace GAZT.Droid
 {
@@ -103,6 +104,7 @@ namespace GAZT.Droid
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
+            Configuration.Connect(this);
             global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
              .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         }

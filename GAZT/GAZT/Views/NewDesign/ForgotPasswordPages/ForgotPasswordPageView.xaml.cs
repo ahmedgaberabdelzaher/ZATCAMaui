@@ -4,8 +4,6 @@ using Xamarin.Forms.Xaml;
 using System;
 using GAZT.Manager;
 using GAZT.Models;
-using GAZT.CustomControl;
-using MVP.FontIcons;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.PlatformConfiguration;
