@@ -129,7 +129,7 @@
                         <!--</StackLayout>-->
 
                     </StackLayout>
-                    <Image Grid.Row="0" Grid.Column="1" Margin="0,-30,0,0"  Source="{Binding FavIcon}"  VerticalOptions="Center">
+                    <Image Grid.Row="0" Grid.Column="1" Margin="0,-30,0,0"  Source="{Binding FavIcon}" IsVisible="{Binding IsFavoriteVisible}"   VerticalOptions="Center">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnFavClicked}"/>
                         </Image.GestureRecognizers>
