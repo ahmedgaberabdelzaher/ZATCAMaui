@@ -5333,7 +5333,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Please enter verification code sent to your mobile number</value>
   </data>
   <data name="NDAllcertificates" xml:space="preserve">
-    <value>All certificates</value>
+    <value>All Certificates</value>
   </data>
   <data name="NDCount" xml:space="preserve">
     <value>Count</value>
@@ -6917,7 +6917,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <comment>Register now for Zakat in less than 5 minutes</comment>
   </data>
   <data name="VatReview" xml:space="preserve">
-    <value>VAT Objections</value>
+    <value>VAT Review</value>
   </data>
   <data name="ZakatObjection" xml:space="preserve">
     <value>Zakat Objection</value>
