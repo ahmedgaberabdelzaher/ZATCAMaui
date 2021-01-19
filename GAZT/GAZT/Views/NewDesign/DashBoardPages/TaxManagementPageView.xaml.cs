@@ -3,11 +3,7 @@ using EGAZT.Views.NewDesign.VATDeRegistration;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -108,11 +104,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void TinRegistrationDetails_Tapped(object sender, EventArgs e)
         {
-            //await Task.Run(() =>
-            //{
-            //    viewModel.IsLoading = true;
-
-            //});
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.ZakatRegistrationDetailsListPageView);
@@ -121,11 +112,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void VATRefundRequest_Tapped(object sender, EventArgs e)
         {
-            //await Task.Run(() =>
-            //{
-            //    viewModel.IsLoading = true;
-
-            //});
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
@@ -143,11 +129,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void VATDeregistrationDetails_Tapped(object sender, EventArgs e)
         {
-            //await Task.Run(() =>
-            //{
-            //    viewModel.IsLoading = true;
-
-            //});
             Device.BeginInvokeOnMainThread(() =>
             {
                 PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
@@ -201,13 +182,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private void Aboutus_Tapped(object sender, EventArgs e)
         {
-            //       App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.AboutUsPageView);
         }
 
         private void PrivacyPolicy_Tapped(object sender, EventArgs e)
         {
-            //        App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
 
         }
@@ -216,7 +195,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             try
             {
-                //        App.DisplayProgressView();
                 if (App.IsArabic)
                 {
                     App.IsArabic = false;
@@ -251,8 +229,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private async void Logout_Tapped(System.Object sender, System.EventArgs e)
         {
-            //    App.DisplayProgressView();
-
             if (App.IsArabic)
             {
                 var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
@@ -272,114 +248,5 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 }
             }
         }
-        //private void OnRealStateTapped(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private async void OnTaxEvasionTapped(object sender, EventArgs e)
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        //viewModel.IsLoading = true;
-
-        //    });
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //        viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
-
-        //    });
-        //}
-
-        //private void OnFillingFrequencyTapped(object sender, EventArgs e)
-        //{
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //        viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
-
-        //    });
-        //}
-
-        //private void OnVATRegVerTapped(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void OnReqForRullingTapped(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private async void OnZakatTaxCertificateTapped(object sender, EventArgs e)
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        viewModel.IsLoading = true;
-
-        //    });
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //        viewModel._navigationService.NavigateTo(App.TaxpayersCertificatesPageView);
-
-        //    });
-        //}
-
-        //private void OnContractReleaseTapped(object sender, EventArgs e)
-        //{
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //        viewModel._navigationService.NavigateTo(App.ContractReleaseListPageView);
-
-        //    });
-        //}
-
-        //private async void OnVATRegDetailsTapped(object sender, EventArgs e)
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        //viewModel.IsLoading = true;
-
-        //    });
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //        viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
-
-        //    });
-        //}
-        //private async void OnVATCertificateTapped(object sender, EventArgs e)
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        viewModel.IsLoading = true;
-
-        //    });
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //        viewModel._navigationService.NavigateTo(App.TaxpayersCertificatesPageView);
-
-        //    });
-        //}
-
-        //private async void OnLogOutTapped(object sender, EventArgs e)
-        //{
-        //    if (App.IsArabic)
-        //    {
-        //        var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
-        //        if (!result)
-        //        {
-        //            App.TP = null;
-        //            await viewModel.LogOut();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
-        //        if (result)
-        //        {
-        //            App.TP = null;
-        //            await viewModel.LogOut();
-        //        }
-        //    }
-        //}
     }
 }

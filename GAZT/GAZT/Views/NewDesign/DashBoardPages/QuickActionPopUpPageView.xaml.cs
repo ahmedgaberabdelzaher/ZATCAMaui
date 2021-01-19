@@ -19,13 +19,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             InitializeComponent();
             viewModel = App.Locator.QuickActionPopUpPageView;
             this.BindingContext = viewModel;
-            //ZAKATReturn.IsVisible = false;
-            //VATReturn.IsVisible = false;
-            //ReadInbox.IsVisible = false;
-            //GetSupport.IsVisible = false;
-            //CloseIcon.IsVisible = false;
-
-
             SetLTR();
         }
 

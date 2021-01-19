@@ -5,7 +5,6 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
@@ -13,7 +12,7 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              ios:Page.UseSafeArea="true"
-              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
             BackgroundImageSource="partials_background" x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView">

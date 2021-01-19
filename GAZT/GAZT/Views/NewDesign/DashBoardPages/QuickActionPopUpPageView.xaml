@@ -4,9 +4,7 @@
                  x:Class="EGAZT.Views.NewDesign.DashBoardPages.QuickActionPopUpPageView"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:ResourceManager="clr-namespace:EGAZT"
-                 xmlns:FontImage="clr-namespace:MVP.FontIcons"
                  BackgroundColor="Transparent"
                  xmlns:custom="clr-namespace:GAZT"
                  xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms">
