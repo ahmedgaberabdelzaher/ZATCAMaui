@@ -1,6 +1,5 @@
 using EGAZT;
 using Foundation;
-using Microsoft.AppCenter.Distribute;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
 using Syncfusion.SfCalendar.XForms.iOS;
@@ -99,7 +98,7 @@ namespace GAZT.iOS
             SfButtonRenderer.Init();
             SfGradientViewRenderer.Init();
 
-            Distribute.DontCheckForUpdatesInDebug();
+            //Distribute.DontCheckForUpdatesInDebug();
             Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
 
             App.InitializeAppDynamics();
