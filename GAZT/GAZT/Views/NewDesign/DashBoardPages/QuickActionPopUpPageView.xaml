@@ -19,9 +19,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="10" >
+    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="20">
         
-         <Grid VerticalOptions="FillAndExpand" >
+         <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60*"/>
                 <RowDefinition Height="40*"/>
@@ -93,7 +93,7 @@
 
        
             </StackLayout>
-             <Frame  Grid.Row="2" Grid.ColumnSpan="3" Opacity="0.2" CornerRadius="10" >
+             <Frame  Grid.Row="2" Grid.ColumnSpan="3" Opacity="0.5" CornerRadius="10" >
                   <Frame.Margin>
                    <OnPlatform x:TypeArguments="Thickness" >
                        <On Platform="iOS" Value="2,-6,2,0"/>
@@ -102,7 +102,7 @@
                       </Frame.Margin>
                  <Frame.HeightRequest>
                       <OnPlatform x:TypeArguments="x:Double" >
-                       <On Platform="iOS" Value="70"/>
+                       <On Platform="iOS" Value="5"/>
                <On Platform="Android" Value="45"/>
                     </OnPlatform>
                      </Frame.HeightRequest>
@@ -110,7 +110,7 @@
                           
       <StackLayout Grid.Row="2" Grid.ColumnSpan="3">
 
-             <Image x:Name="CloseIcon" Margin="0,6,0,0"  Source="quick_Actions_Close.png">
+             <Image x:Name="CloseIcon"  Margin="0,8,0,0" Source="quick_Actions_Close.png">
                     
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnCloseTapped"/>

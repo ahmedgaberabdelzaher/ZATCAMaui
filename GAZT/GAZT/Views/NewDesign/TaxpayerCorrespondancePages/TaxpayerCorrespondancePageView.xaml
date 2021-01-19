@@ -82,7 +82,13 @@
                     </Grid.ColumnDefinitions>
                     <custom:CustomLabel Text="{Binding FilterTaxTypeLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                     </custom:CustomLabel>
-                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,-10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Start" VerticalOptions="Center">
+                               <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="5,-10,5,0"/>
+                            <On Platform="Android" Value="5,10,5,0"/>
+                        </OnPlatform>
+                    </Image.Margin>
                     </Image>
                     <custom:CustomButton x:Name="btnForTaxType" Grid.Column="0" Grid.Row="0"  Clicked="btn_TaxTypeClicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                     </custom:CustomButton>
