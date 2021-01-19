@@ -10,13 +10,8 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddNotePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddPopPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel;
-
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage;
-//using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewModel;
-//using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondenceDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.DisplayNotesPage_ViewModel;
@@ -63,14 +58,11 @@ using EGAZT.Views.NewDesign.MyReturnsNewPages;
 using EGAZT.Views.NewDesign.OnboardingPages;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.SyncFusionEnabledViews.AboutUs;
-//using EGAZT.Views.SyncFusionEnabledViews.AccountCreated;
 using EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails;
 using EGAZT.Views.SyncFusionEnabledViews.AddNote;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails;
 using EGAZT.Views.SyncFusionEnabledViews.AttachmentPage;
-using EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber;
-using EGAZT.Views.SyncFusionEnabledViews.ChangePassword;
 //using EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus;
 using EGAZT.Views.SyncFusionEnabledViews.ContactUsPage;
 //using EGAZT.Views.SyncFusionEnabledViews.Correspondance;
@@ -297,8 +289,6 @@ namespace EGAZT
             SimpleIoc.Default.Register<PdfViewModel>();
             SimpleIoc.Default.Register<MyBillsViewModel>();
             SimpleIoc.Default.Register<TaxPayerProfilePageViewModel>();
-            SimpleIoc.Default.Register<ChangeMobileNumberPageViewModel>();
-            SimpleIoc.Default.Register<ChangePasswordPageViewModel>();
             SimpleIoc.Default.Register<OTPPageViewModel>();
             SimpleIoc.Default.Register<VATLookupPageViewModel>();
             SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
@@ -1276,34 +1266,6 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<TaxPayerProfilePageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-        public ChangeMobileNumberPageViewModel ChangeMobileNumberPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<ChangeMobileNumberPageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-        public ChangePasswordPageViewModel ChangePasswordPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<ChangePasswordPageViewModel>();
                 }
                 catch (Exception )
                 {
@@ -2508,8 +2470,6 @@ namespace EGAZT
             //SYNCFUSION INTEGRATION
             navigationService.Configure(App.PdfView, typeof(PdfView));
             navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
-            navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
-            navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
             navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
             navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
             navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
