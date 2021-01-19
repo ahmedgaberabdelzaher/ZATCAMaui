@@ -853,16 +853,21 @@
                     Style="{StaticResource BodyLabelBlack}" LineSpacing="1" Padding="0"
                     HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
                         </StackLayout>
-                        
-                    <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0" ColumnSpacing="0" RowSpacing="0" HeightRequest="80" WidthRequest="171"  >
+
+
+                           
+
+                       
+
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0" HeightRequest="80" WidthRequest="171">
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
 
-                            <custom:CustomLabel Grid.Row="0" Margin="0" HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MiniNewGrayLabelStyle}">
+                           <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VFCIDType}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}" Margin="0" Padding="0">
+
                                 <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VFCIDType}"  />
@@ -871,12 +876,12 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                            <Frame Grid.Row="1" HasShadow="False"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                            <Frame Grid.Row="1" HasShadow="False"  Margin="0,5,0,0" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0"  >
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding IDType}"
-                                       FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                                    <Image Source="arrowDropdown.png" WidthRequest="20" HeightRequest="20" 
-                                           VerticalOptions="CenterAndExpand">
+                                       FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" MinimumHeightRequest="50"/>
+                                       <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
+
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding IdTypeSpinnerTapped}"/>
                                         </Image.GestureRecognizers>
@@ -886,15 +891,14 @@
 
                         </Grid>
 
-                        <Grid Grid.Row="3" Grid.Column="0"  Margin="0,25,0,0" HeightRequest="80" WidthRequest="171"  >
+                         <Grid Grid.Row="3" Grid.Column="0" ColumnSpacing="0" RowSpacing="0" HeightRequest="80" WidthRequest="171" >
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
 
-                            <custom:CustomLabel Grid.Row="0" Padding="0" HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MiniNewGrayLabelStyle}">
+                            <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VFCIDNumber}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}" Margin="0" Padding="0">
                                 <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VFCIDNumber}"  />
@@ -902,25 +906,25 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
+                              <Frame Grid.Row="1" HasShadow="False"  Margin="0,5,0,0" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0"  >
 
-                            <Frame Grid.Row="1"  HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand">
-                                    <custom:GAZTBorderlessEntry TextChanged="IdNumberTextChanged" Keyboard="Numeric" Text="{Binding IDNumber}" Unfocused="OnIDNumberFocusChanged" FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <custom:GAZTBorderlessEntry TextChanged="IdNumberTextChanged" Keyboard="Numeric" Text="{Binding IDNumber}" Unfocused="OnIDNumberFocusChanged" FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="50"/>
 
                                 </StackLayout>
                             </Frame>
 
                         </Grid>
 
-                        <Grid Grid.Row="3" IsVisible="{Binding IsDOBVisible}" Grid.Column="1"  Margin="0,25,0,0" HeightRequest="80" WidthRequest="171"  >
+                        <Grid Grid.Row="3" IsVisible="{Binding IsDOBVisible}" Grid.Column="1"  ColumnSpacing="0" RowSpacing="0" HeightRequest="80" WidthRequest="171"  >
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
 
-                            <custom:CustomLabel Grid.Row="0" Padding="0" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MiniNewGrayLabelStyle}">
+                             <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VFCDateofBirth}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}" Margin="0" Padding="0">
+
                                  <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VFCDateofBirth}"  />
@@ -929,11 +933,12 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                            <Frame Grid.Row="1" HasShadow="False"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                            <Frame Grid.Row="1" HasShadow="False"  Margin="0,5,0,0" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0"  >
+                              <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+
                                     <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}"
-                                                            FontAttributes="Bold" FontSize="Small" TextColor="Black"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" />
-                                    <Image Source="calendar.png" WidthRequest="20" HeightRequest="20"  VerticalOptions="CenterAndExpand">
+                                                            FontAttributes="Bold" FontSize="Small" TextColor="Black"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="50"/>
+                                    <Image Source="calendar.png" WidthRequest="24" HeightRequest="24"  VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding ShowDatePicker}"/>
                                         </Image.GestureRecognizers>
@@ -943,15 +948,15 @@
 
                         </Grid>
 
-                        <Grid Grid.Row="4" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0" Margin="0,25,0,0" HeightRequest="80" WidthRequest="171" >
+                    <Grid Grid.Row="4" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0" HeightRequest="80" WidthRequest="171">
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
 
-                            <custom:CustomLabel Grid.Row="0" Padding="0"  HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MiniNewGrayLabelStyle}">
+                           <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}" Margin="0" Padding="0">
+
                                 <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}"  />
@@ -960,10 +965,10 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                            <Frame Grid.Row="1" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+                            <Frame Grid.Row="1" HasShadow="False"  Margin="0,5,0,0" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0"  >
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:GAZTBorderlessEntry x:Name="ContactPersonEntry" Unfocused="ContactPersonTextUnFocus" Text="{Binding ContactPersonName}" IsEnabled="{Binding ContractPersonEditable}"
-                                                   FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                   FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="50"/>
                                 </StackLayout>
                             </Frame>
 

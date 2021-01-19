@@ -10,15 +10,8 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddNotePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddPopPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel;
-
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage;
-//using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewModel;
-//using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondenceDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.DisplayNotesPage_ViewModel;
@@ -65,16 +58,11 @@ using EGAZT.Views.NewDesign.MyReturnsNewPages;
 using EGAZT.Views.NewDesign.OnboardingPages;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.SyncFusionEnabledViews.AboutUs;
-//using EGAZT.Views.SyncFusionEnabledViews.AccountCreated;
 using EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails;
 using EGAZT.Views.SyncFusionEnabledViews.AddNote;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails;
 using EGAZT.Views.SyncFusionEnabledViews.AttachmentPage;
-using EGAZT.Views.SyncFusionEnabledViews.ChangeEmail;
-using EGAZT.Views.SyncFusionEnabledViews.ChangeEmailPages;
-using EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber;
-using EGAZT.Views.SyncFusionEnabledViews.ChangePassword;
 //using EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus;
 using EGAZT.Views.SyncFusionEnabledViews.ContactUsPage;
 //using EGAZT.Views.SyncFusionEnabledViews.Correspondance;
@@ -175,7 +163,6 @@ using EGAZT.ViewModel.NewDesignViewModel.Common;
 using Xamarin.Forms.Internals;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_ViewModel;
 using EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.BillDetailsPage_ViewModel;
 
 namespace EGAZT
 {
@@ -302,10 +289,6 @@ namespace EGAZT
             SimpleIoc.Default.Register<PdfViewModel>();
             SimpleIoc.Default.Register<MyBillsViewModel>();
             SimpleIoc.Default.Register<TaxPayerProfilePageViewModel>();
-            SimpleIoc.Default.Register<ChangeMobileNumberPageViewModel>();
-            SimpleIoc.Default.Register<ChangeEmailPageViewModel>();
-            SimpleIoc.Default.Register<UpdateEmailVerificationPageViewModel>();
-            SimpleIoc.Default.Register<ChangePasswordPageViewModel>();
             SimpleIoc.Default.Register<OTPPageViewModel>();
             SimpleIoc.Default.Register<VATLookupPageViewModel>();
             SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
@@ -1283,62 +1266,6 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<TaxPayerProfilePageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-        public ChangeMobileNumberPageViewModel ChangeMobileNumberPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<ChangeMobileNumberPageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-        public ChangeEmailPageViewModel ChangeEmailPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<ChangeEmailPageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-        public ChangePasswordPageViewModel ChangePasswordPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<ChangePasswordPageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-        public UpdateEmailVerificationPageViewModel UpdateEmailVerificationPage
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<UpdateEmailVerificationPageViewModel>();
                 }
                 catch (Exception )
                 {
@@ -2487,8 +2414,7 @@ namespace EGAZT
             navigationService.Configure(App.NotesPopUpPageView, typeof(NotesPopUpPageView));
             navigationService.Configure(App.NotesDescriptionPopUpPageView, typeof(NotesDescriptionPopUpPageView));
             navigationService.Configure(App.TaxManagementPageView, typeof(TaxManagementPageView));
-            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
-            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
+            
             navigationService.Configure(App.QuickActionPopUpPageView, typeof(QuickActionPopUpPageView));
             navigationService.Configure(App.VATAmendReactivationPageView, typeof(VATAmendReactivationPageView));
             navigationService.Configure(App.VATServicesPageView, typeof(Views.NewDesign.VATServices.VATServicesPageView));
@@ -2542,23 +2468,13 @@ namespace EGAZT
             //navigationService.Configure(App.OnBoardingAnimationPageView, typeof(OnBoardingAnimationPageView));
 
             //SYNCFUSION INTEGRATION
-            //navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.PdfView, typeof(PdfView));
-            //   navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
-            //navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
             navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
-            navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
-            navigationService.Configure(App.ChangeEmailPageView, typeof(ChangeEmailPageView));
-            navigationService.Configure(App.UpdateEmailVerificationPage, typeof(UpdateEmailVerificationPage));
-
-            navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
             navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
-            //navigationService.Configure(App.VATLookupPageView, typeof(VATLookupPageView));
             navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
             navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
             navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
             navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
-            //navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
             navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
             navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
             navigationService.Configure(App.VATReturnsPageViewEX, typeof(VATReturnsPageViewEX));
@@ -2724,21 +2640,7 @@ namespace EGAZT
                 }
             }
         }
-        public BillDetailsPageViewModel BillDetailsPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<BillDetailsPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
-     
+       
         public VATInstalmentPlanListViewModel VatInstalmentPlanListPageView
         {
             get

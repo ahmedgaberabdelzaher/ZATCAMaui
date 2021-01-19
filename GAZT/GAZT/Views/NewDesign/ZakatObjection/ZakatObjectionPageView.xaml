@@ -115,7 +115,7 @@
                 <Grid Grid.Row="0">
                     <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}"
                                                   MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}"
-                                                  VerticalOptions="CenterAndExpand" />
+                                                  VerticalOptions="CenterAndExpand" DotSize="16"/>
                 </Grid>
 
                 <Grid Grid.Row="1">
