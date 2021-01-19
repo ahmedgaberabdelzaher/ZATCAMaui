@@ -97,13 +97,13 @@
                   <Frame.Margin>
                    <OnPlatform x:TypeArguments="Thickness" >
                        <On Platform="iOS" Value="2,-6,2,0"/>
-               <On Platform="Android" Value="2,-12,2,0"/>
+               <On Platform="Android" Value="2,-6,2,0"/>
                     </OnPlatform>
                       </Frame.Margin>
                  <Frame.HeightRequest>
                       <OnPlatform x:TypeArguments="x:Double" >
                        <On Platform="iOS" Value="5"/>
-               <On Platform="Android" Value="45"/>
+               <On Platform="Android" Value="5"/>
                     </OnPlatform>
                      </Frame.HeightRequest>
             </Frame>
