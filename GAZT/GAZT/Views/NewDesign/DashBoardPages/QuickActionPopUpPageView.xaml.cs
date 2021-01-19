@@ -92,9 +92,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             await Task.Run(async () =>
             {
 
-                 ZAKATReturn.TranslateTo(0, 500, 600);
-                 ReadInbox.TranslateTo(0, 500, 600);
-                 GetSupport.TranslateTo(0, 500, 600);
+                 ZAKATReturn.TranslateTo(0, 500, 1200);
+                 ReadInbox.TranslateTo(0, 500, 1200);
+                 GetSupport.TranslateTo(0, 500, 1200);
             });
 
            
