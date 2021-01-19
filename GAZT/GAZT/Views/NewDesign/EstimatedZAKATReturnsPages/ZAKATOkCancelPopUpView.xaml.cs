@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
@@ -97,10 +96,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 return;
                 
             }
-            //MessagingCenter.Send<Object, string>(this, "NoReceived", "No");
-            //OnSelect?.Invoke("No");
             PopupNavigation.Instance.PopAsync();
-
         }
         private void SetLTR()
         {

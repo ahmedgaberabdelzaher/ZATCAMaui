@@ -55,13 +55,6 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
                             </Image.GestureRecognizers>
                         </Image>
-
-                        <!--<StackLayout Spacing="15" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2" >
-                            <Image Source="search">
-                            </Image>
-                            <Image Source="filter">
-                            </Image>
-                        </StackLayout>-->
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">

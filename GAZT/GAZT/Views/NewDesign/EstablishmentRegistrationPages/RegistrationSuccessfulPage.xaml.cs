@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using Xamarin.Forms;

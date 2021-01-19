@@ -204,8 +204,6 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             { 
             
             }
-            //viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
-            //viewModel.TxtFBnum = selectedfbnum.Fbnum;
         }
 
         private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
@@ -226,11 +224,6 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            //Device.BeginInvokeOnMainThread(async () =>
-            //{
-            //    viewModel.IsLoading = false;
-            //});
-
         }
     }
 }

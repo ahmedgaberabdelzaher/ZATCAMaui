@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Net.Http;
-using System.Resources;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using GAZT.Manager;
@@ -96,9 +93,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
                 }
                 catch (Exception ex) { }
-
-                //viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-
                 try
                 {
                     if(viewModel.TPProfileSuccessId == 1)
@@ -123,10 +117,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     viewModel._navigationService.GoBack();
                 }
                 catch (Exception ex) { }
-
-
-                /*}
-                else { viewModel._navigationService.GoBack(); }*/
             });
         }
     }

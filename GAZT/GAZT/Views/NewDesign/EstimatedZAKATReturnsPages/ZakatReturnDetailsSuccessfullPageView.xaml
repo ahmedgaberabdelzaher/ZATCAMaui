@@ -9,10 +9,9 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              mc:Ignorable="d"
-              NavigationPage.HasNavigationBar="False"
-            Title= "{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
+             NavigationPage.HasNavigationBar="False"
+             Title= "{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
-
              BackgroundImageSource="partials_background"
            x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.ZakatReturnDetailsSuccessfullPageView">
     <ContentPage.Resources>

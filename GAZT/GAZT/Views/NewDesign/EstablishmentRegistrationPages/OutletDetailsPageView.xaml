@@ -12,10 +12,7 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:customOne="clr-namespace:GAZT"
-                          xmlns:GAZTBehaviors="clr-namespace:EGAZT"
-
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"

@@ -105,24 +105,6 @@
                             InputViewPadding="16,0,16,0" >
                                 <StackLayout Orientation="Horizontal"
                                    >
-                                    <!--<OnPlatform x:TypeArguments="View">
-                                        <On Platform="iOS">
-                                            <custom:CustomLabel Text="+966"
-                                                            VerticalTextAlignment="Center"
-                                                            Style="{StaticResource BodyLabelGrey}" />
-                                        </On>
-                                        <On Platform="Android">
-                                            <control:BorderlessEntry Placeholder="+966"
-                                                                 VerticalTextAlignment="Center"
-                                                                 Style="{StaticResource DefaultEntry}"
-                                                                 IsReadOnly="True" />
-                                    </On>
-                                </OnPlatform>
-
-                                    <BoxView WidthRequest="1"
-                                         HeightRequest="1"
-                                         BackgroundColor="{StaticResource NeutralLightGrey}"/>-->
-
                                     <Entry x:Name="MobileNumberCodeEntry" FlowDirection="LeftToRight" VerticalTextAlignment="Center"
                                                          Style="{StaticResource DefaultEntry}"
                                                          IsReadOnly="True" TextColor="Black" HorizontalOptions="FillAndExpand"
@@ -161,8 +143,6 @@
 
                              <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
                             <StackLayout Orientation="Horizontal">
-                                <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPUpdatePassword}"
-                                                Style="{StaticResource CaptionLabelGrey}"/>-->
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Password}"
                                                 Style="{StaticResource CaptionLabelGrey}"/>
                                 <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">

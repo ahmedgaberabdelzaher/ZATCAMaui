@@ -4,7 +4,6 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-              xmlns:custom2="clr-namespace:GAZT.CustomControl"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
@@ -22,7 +21,6 @@
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"  
              BackgroundImageSource="partials_background.png"
-              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.SignUpForEstablishmentPageView">
     <ContentPage.Resources>
         <ResourceDictionary>

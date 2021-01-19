@@ -4,10 +4,8 @@
              x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.AttachmentInformationPopUp"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                  xmlns:FontImage="clr-namespace:MVP.FontIcons"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-                                    xmlns:ResourceManager="clr-namespace:EGAZT"
->
+                                    xmlns:ResourceManager="clr-namespace:EGAZT">
 
     <pages:PopupPage.Resources>
         <ResourceDictionary>
