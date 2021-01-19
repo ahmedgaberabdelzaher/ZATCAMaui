@@ -57,8 +57,8 @@
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="White" IsEnabled="{Binding IsIdTypeEnabled}">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
                     <Grid>
-                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" BackgroundColor="White">
-                                <control:BorderlessEntry   Text="{Binding TxtSelectedIBANType}"   Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="Text" VerticalTextAlignment="End"  Margin="10,0,10,0" Keyboard="Numeric" >
+                    <inputLayout:SfTextInputLayout InputViewPadding="16,0,16,0" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" BackgroundColor="White">
+                                <control:BorderlessEntry   Text="{Binding TxtSelectedIBANType}"   Style="{StaticResource DefaultEntry}" Placeholder="Text" VerticalTextAlignment="Center"  Margin="10,0,10,0" Keyboard="Numeric" >
 
                         </control:BorderlessEntry>
 
@@ -87,8 +87,8 @@
                     <StackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" IsEnabled="{Binding IsIdNumberEnabled}">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
                     <Grid>
-                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" BackgroundColor="White">
-                                <control:BorderlessEntry   Text="{Binding TxtSelectedIBANIDNumber}"  BackgroundColor="White"  Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="Text" VerticalTextAlignment="End"  Margin="10,0,10,0" >
+                    <inputLayout:SfTextInputLayout InputViewPadding="16,0,16,0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" BackgroundColor="White">
+                                <control:BorderlessEntry   Text="{Binding TxtSelectedIBANIDNumber}"  BackgroundColor="White"  Style="{StaticResource DefaultEntry}" Placeholder="Text" VerticalTextAlignment="Center"  Margin="10,0,10,0" >
 
                         </control:BorderlessEntry>
 

@@ -2669,7 +2669,7 @@
 
 
 
-            <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="FillAndExpand" Padding="0,0,0,10">
+            <StackLayout BackgroundColor="White" Grid.Row="1" Margin="15,0,15,0"  VerticalOptions="FillAndExpand" Padding="0,0,0,10">
 
                 <buttons:SfButton x:Name="btnamend"   VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
