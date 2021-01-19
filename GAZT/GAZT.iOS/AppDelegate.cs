@@ -13,18 +13,13 @@ using Syncfusion.XForms.iOS.MaskedEdit;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using Syncfusion.XForms.Pickers.iOS;
 using System.Net;
-using Tavant.XToolkit;
 using UIKit;
-using Xamarin;
-using Xamarin.Forms;
 using AppDynamics.Agent;
 using Syncfusion.SfRotator.XForms.iOS;
 using Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.XForms.iOS.Buttons;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
-using GAZT.iOS.CustomRenderer;
 
 namespace GAZT.iOS
 {
@@ -52,7 +47,6 @@ namespace GAZT.iOS
             (sender, cert, chain, sslPolicyErrors) => true;
             Xamarin.FormsMaps.Init();
             Xamarin.Forms.Forms.Init();
-            InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init();
             //  UINavigationBar.Appearance.TintColor = UIColor.Red;
             App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();

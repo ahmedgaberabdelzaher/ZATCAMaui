@@ -85,7 +85,6 @@
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
 		<PackageReference Include="modernhttpclient" Version="2.4.2" />
-		<PackageReference Include="Tavant.XToolkit.RoundedCornerView" Version="1.0.3" />
 		<PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
 		<PackageReference Include="Xamarin.Forms.Maps" Version="4.6.0.800" />
 		<PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
@@ -115,8 +114,6 @@
 		<Folder Include="SyncFusionEnabledBehaviors\" />
 		<Folder Include="Enums\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
-		<Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />
-		<Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
 		<Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
 		<Folder Include="Views\SyncFusionEnabledViews\UnlockAccount\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\UnlockAccount\" />
@@ -144,6 +141,8 @@
 		<Folder Include="ViewModel\NewDesignViewModel\AccountStatements\" />
 		<Folder Include="Models\AccountStatements\" />
 		<Folder Include="ViewModel\NewDesignViewModel\Common\" />
+		<Folder Include="ViewModel\SyncFusionEnabledViewModel\ChecKTINStatusPage\" />
+		<Folder Include="Views\SyncFusionEnabledViews\FormBundleStatusPage\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -181,17 +180,8 @@
 		<Compile Update="Views\NewDesign\OnboardingPages\OnBoardingAnimationPageView.xaml.cs">
 			<DependentUpon>OnBoardingAnimationPageView.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\Options\SFOptionsPage.xaml.cs">
-			<DependentUpon>SFOptionsPage.xaml</DependentUpon>
-		</Compile>
 		<Compile Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml.cs">
 			<DependentUpon>FinancialDetailAttachmentPopupPageView.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\VATRealEstateServicesPage.xaml.cs">
-			<DependentUpon>VATRealEstateServicesPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\PropertyRegistrationPage.xaml.cs">
-			<DependentUpon>PropertyRegistrationPage.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountTINPageView.xaml.cs">
 			<DependentUpon>UnlockAccountTINPageView.xaml</DependentUpon>

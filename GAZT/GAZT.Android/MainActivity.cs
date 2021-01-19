@@ -9,12 +9,10 @@ using Android.Views;
 using EGAZT;
 using Microsoft.AppCenter.Distribute;
 using Plugin.Permissions;
-using Tavant.XToolkit;
 using AppDynamics.Agent;
 using Plugin.Media;
 using Java.Lang;
 using System;
-using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using System.Threading.Tasks;
 using System.IO;
@@ -43,7 +41,6 @@ namespace GAZT.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
 
-            InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)
             {

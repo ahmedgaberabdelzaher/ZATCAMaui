@@ -5,30 +5,21 @@ using System.Windows.Input;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using EGAZT.Models;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using Newtonsoft.Json;
 using Plugin.FilePicker;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Xamarin.Forms.Internals;
- 
+
 namespace EGAZT
-{ 
+{
     [Preserve(AllMembers = true)]
     public class VATDeclarationAttachmentPageViewModel : ViewModelBase
     {

@@ -10,7 +10,6 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddNotePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddPopPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage_ViewModel;
@@ -20,10 +19,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumber;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_ViewModel;
@@ -31,7 +27,6 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.StylesTestUi;
@@ -42,11 +37,8 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_ViewMo
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
@@ -74,10 +66,8 @@ using EGAZT.Views.SyncFusionEnabledViews.FAQPage;
 using EGAZT.Views.SyncFusionEnabledViews.ICRList;
 using EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber;
 //using EGAZT.Views.SyncFusionEnabledViews.MyBillsView;
-//using EGAZT.Views.SyncFusionEnabledViews.MyCertificate;
 //using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 //using EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage;
-using EGAZT.Views.SyncFusionEnabledViews.OTPPage;
 using EGAZT.Views.SyncFusionEnabledViews.PdfView;
 using EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy;
 //using EGAZT.Views.SyncFusionEnabledViews.ReturnsPage;
@@ -85,7 +75,6 @@ using EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView;
 using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
 using EGAZT.Views.SyncFusionEnabledViews.SFLanding;
 using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
-using EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage;
 //using EGAZT.Views.SyncFusionEnabledViews.SignUpTAndC;
 using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
 //using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages;
@@ -93,13 +82,10 @@ using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
 //using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList;
 //using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 //using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType;
-using EGAZT.Views.SyncFusionEnabledViews.TaxPayerProfile_View;
 using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
 using EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 //using EGAZT.Views.SyncFusionEnabledViews.VATLookup;
-using EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages;
-using EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage;
 using EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View;
 using EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList;
 using GalaSoft.MvvmLight.Ioc;
@@ -283,21 +269,15 @@ namespace EGAZT
 
             SimpleIoc.Default.Register<SFLandingPageViewModel>();
             SimpleIoc.Default.Register<SFLoginPageViewModel>();
-            SimpleIoc.Default.Register<SFOptionsPageViewModel>();
             SimpleIoc.Default.Register<SFAnonymousLandingPageViewModel>();
-            SimpleIoc.Default.Register<MyCertificateViewModel>();
             SimpleIoc.Default.Register<PdfViewModel>();
             SimpleIoc.Default.Register<MyBillsViewModel>();
-            SimpleIoc.Default.Register<TaxPayerProfilePageViewModel>();
-            SimpleIoc.Default.Register<OTPPageViewModel>();
             SimpleIoc.Default.Register<VATLookupPageViewModel>();
             SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
             SimpleIoc.Default.Register<ZakatReturnDetailsPageViewModel>();
             SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
             SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
             SimpleIoc.Default.Register<ICRListPageViewModel>();
-            SimpleIoc.Default.Register<ChecKTINStatusViewModel>();
-            SimpleIoc.Default.Register<VATReturnsPageViewModel>();
             SimpleIoc.Default.Register<VATReturnsPageViewModelEX>();
             SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
             SimpleIoc.Default.Register<DisplayNotesPageViewModel>();
@@ -322,7 +302,6 @@ namespace EGAZT
             SimpleIoc.Default.Register<AboutUsPageViewModel>();
             SimpleIoc.Default.Register<PrivacyAndPolicyPageViewModel>();
             SimpleIoc.Default.Register<MyReturnsPageViewModel>();
-            SimpleIoc.Default.Register<MyCommitmentsPageViewModel>();
             SimpleIoc.Default.Register<ContactUsPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionFormPageViewModel>();
             SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
@@ -335,8 +314,6 @@ namespace EGAZT
             SimpleIoc.Default.Register<InternationalMobileNumberCodePagesViewModel>();
 
             //AttachmentPopupPageView
-            SimpleIoc.Default.Register<VATRealEstateServicesPageViewModel>();
-            SimpleIoc.Default.Register<PropertyRegistrationPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportAttachmentPageViewModel>();
             SimpleIoc.Default.Register<FileAttachmentPopUpPageViewModel>();
             SimpleIoc.Default.Register<VATIndividualSignupTnCPageViewModel>();
@@ -1231,20 +1208,6 @@ namespace EGAZT
         /// <summary>
         /// Returns the current instance of MyCertificateViewModel
         /// </summary>
-        public MyCertificateViewModel MyCertificate
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<MyCertificateViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
         public MyBillsViewModel MyBillsView
         {
             get
@@ -1259,63 +1222,7 @@ namespace EGAZT
                 }
             }
         }
-        public TaxPayerProfilePageViewModel TaxPayerProfilePageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<TaxPayerProfilePageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-        public OTPPageViewModel OTPPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<OTPPageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-        public VATRealEstateServicesPageViewModel VATRealEstateServicesPage
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<VATRealEstateServicesPageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-        public PropertyRegistrationPageViewModel PropertyRegistrationPage
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<PropertyRegistrationPageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-
+       
         public ForgotUsernamePasswordPageViewModel ForgotUsernamePasswordPageView
         {
             get
@@ -1402,20 +1309,7 @@ namespace EGAZT
                 }
             }
         }
-        public ChecKTINStatusViewModel CheckTINStatusPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<ChecKTINStatusViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
+       
         public ICRListPageViewModel ICRListPageView
         {
             get
@@ -1430,20 +1324,7 @@ namespace EGAZT
                 }
             }
         }
-        public VATReturnsPageViewModel VATReturnsPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<VATReturnsPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
+        
         public VATReturnsPageViewModelEX VATReturnsPageViewEX
         {
             get
@@ -1786,20 +1667,7 @@ namespace EGAZT
                 }
             }
         }
-        public SFOptionsPageViewModel OptionsPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<SFOptionsPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
+       
         public SFLoginPageViewModel SFLoginPageView
         {
             get
@@ -1891,20 +1759,6 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<MyReturnsPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
-        public MyCommitmentsPageViewModel MyCommitmentsPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<MyCommitmentsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -2462,21 +2316,17 @@ namespace EGAZT
             #region SYNCFUSION INTEGRATION
 
             navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
-            navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
             navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView));
             //navigationService.Configure(App.OnBoardingAnimationPageView, typeof(OnBoardingAnimationPageView));
 
             //SYNCFUSION INTEGRATION
             navigationService.Configure(App.PdfView, typeof(PdfView));
-            navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
-            navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
             navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
             navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
             navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
             navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
             navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
-            navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
             navigationService.Configure(App.VATReturnsPageViewEX, typeof(VATReturnsPageViewEX));
             navigationService.Configure(App.AAcknowledgementView, typeof(AAcknowledgementView));
             navigationService.Configure(App.AcknowledgementDetailsPageView, typeof(AcknowledgementDetailsPageView));
@@ -2499,9 +2349,6 @@ namespace EGAZT
             navigationService.Configure(App.VATRegistrationPageView, typeof(VATRegistrationPageView));
             navigationService.Configure(App.VATRegistrationSuccessfullPageView, typeof(VATRegistrationSuccessfullPageView));
             navigationService.Configure(App.VATAmendReactivationSuccessfulPageView, typeof(VATAmendReactivationSuccessfulPageView));
-
-            navigationService.Configure(App.VATRealEstateServicesPageView, typeof(VATRealEstateServicesPage));
-            navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
 
             navigationService.Configure(App.FileAttachmentPopUpPageView, typeof(FileAttachmentPopUpPageView));
           

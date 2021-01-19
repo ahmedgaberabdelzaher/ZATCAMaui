@@ -1,8 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
