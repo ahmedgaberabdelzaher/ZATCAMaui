@@ -5,13 +5,11 @@
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="EGAZT.Views.NewDesign.ChangeFillingPeriodPages.ChangeFillingPeriodListPageView"
-             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
     <ContentPage.Resources>

@@ -24,8 +24,6 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel;
@@ -65,27 +63,14 @@ using EGAZT.Views.SyncFusionEnabledViews.DisplayNotes;
 using EGAZT.Views.SyncFusionEnabledViews.FAQPage;
 using EGAZT.Views.SyncFusionEnabledViews.ICRList;
 using EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber;
-//using EGAZT.Views.SyncFusionEnabledViews.MyBillsView;
-//using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
-//using EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage;
 using EGAZT.Views.SyncFusionEnabledViews.PdfView;
 using EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy;
-//using EGAZT.Views.SyncFusionEnabledViews.ReturnsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView;
-using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
-using EGAZT.Views.SyncFusionEnabledViews.SFLanding;
 using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
-//using EGAZT.Views.SyncFusionEnabledViews.SignUpTAndC;
 using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
-//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages;
-//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm;
-//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList;
-//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
-//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType;
 using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
 using EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
-//using EGAZT.Views.SyncFusionEnabledViews.VATLookup;
 using EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View;
 using EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList;
 using GalaSoft.MvvmLight.Ioc;
@@ -147,8 +132,6 @@ using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.Common;
 using Xamarin.Forms.Internals;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_ViewModel;
-using EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword;
 
 namespace EGAZT
 {
@@ -179,8 +162,6 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATAmendReactivationSuccesssulPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionPageWebView>();
             // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
-
-
 
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
@@ -267,9 +248,7 @@ namespace EGAZT
 
             #region OldIOC
 
-            SimpleIoc.Default.Register<SFLandingPageViewModel>();
             SimpleIoc.Default.Register<SFLoginPageViewModel>();
-            SimpleIoc.Default.Register<SFAnonymousLandingPageViewModel>();
             SimpleIoc.Default.Register<PdfViewModel>();
             SimpleIoc.Default.Register<MyBillsViewModel>();
             SimpleIoc.Default.Register<VATLookupPageViewModel>();
@@ -285,8 +264,6 @@ namespace EGAZT
             SimpleIoc.Default.Register<AddNotePageViewModel>();
             SimpleIoc.Default.Register<AddPopPageViewModel>();
             SimpleIoc.Default.Register<CreditCarriedPageViewModel>();
-            // SimpleIoc.Default.Register<CorrespondancePageViewModel>();
-            //SimpleIoc.Default.Register<CorrespondenceDetailsPageViewModel>();
             SimpleIoc.Default.Register<FormBundleStatusPageViewModel>();
             SimpleIoc.Default.Register<SignUpTAndCPageViewModel>();
             SimpleIoc.Default.Register<SignUpFormPageViewModel>();
@@ -1223,21 +1200,6 @@ namespace EGAZT
             }
         }
        
-        public ForgotUsernamePasswordPageViewModel ForgotUsernamePasswordPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<ForgotUsernamePasswordPageViewModel>();
-                }
-                catch (Exception )
-                {
-                    return null;
-                }
-            }
-        }
-
         public VATLookupPageViewModel VATLookupPageView
         {
             get
@@ -1653,20 +1615,6 @@ namespace EGAZT
         #endregion
 
         #region OldSFViewModels
-        public SFLandingPageViewModel SFLandingPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<SFLandingPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
        
         public SFLoginPageViewModel SFLoginPageView
         {
@@ -1689,20 +1637,6 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ReturnsPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
-        public SFAnonymousLandingPageViewModel SFAnonymousLandingPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<SFAnonymousLandingPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -2314,11 +2248,7 @@ namespace EGAZT
 
 
             #region SYNCFUSION INTEGRATION
-
-            navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
-            navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView));
-            //navigationService.Configure(App.OnBoardingAnimationPageView, typeof(OnBoardingAnimationPageView));
 
             //SYNCFUSION INTEGRATION
             navigationService.Configure(App.PdfView, typeof(PdfView));
@@ -2335,7 +2265,6 @@ namespace EGAZT
             navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
             navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-            navigationService.Configure(App.ForgotUsernamePasswordPageView, typeof(ForgotUsernamePasswordPageView));
             navigationService.Configure(App.FormBundleStatusPageView, typeof(EGAZT.Views.NewDesign.FormBundleStatusPages.FormBundleStatusPageView));
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
             navigationService.Configure(App.FAQPageView, typeof(FAQPageView));

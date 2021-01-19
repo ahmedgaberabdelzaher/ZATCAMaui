@@ -1,15 +1,9 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.Views.NewDesign.GenericPickers;
-using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -348,14 +342,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                             viewModel.IsOthersAtachmentsVisible = true;
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            //if (viewModel.OtherAttachmentsListViewData == null)
-                            //{
-                            //    viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();
-                            //}
-                            //else
-                            //{
-                            //    viewModel.AttachmentsListViewData = viewModel.OtherAttachmentsListViewData;
-                            //}
                             return;
                         }
                 }
@@ -364,11 +350,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             {
             }
         }
-
-        /*private void SummarybtnContinue_Clicked(object sender, EventArgs e)
-        {
-            //Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
-        }*/
 
         private void OnIDNumberFocusChanged(object sender, FocusEventArgs focusEventArgs)
         {

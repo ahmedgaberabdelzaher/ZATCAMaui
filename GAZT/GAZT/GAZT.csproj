@@ -56,14 +56,12 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="MECalendar" Version="0.1.5" />
-		<PackageReference Include="NodaTime" Version="3.0.0" />
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.4" />
 		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.1.0.54" />
 		<PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.1.0.54" />
 		<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.1.0.55" />
 		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.1.0.54" />
 		<PackageReference Include="Syncfusion.Xamarin.SfChart" Version="18.1.0.54" />
-		<PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.54" />
 		<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.1.0.54" />
 		<PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.42" />
 		<PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.1.0.55" />
@@ -98,7 +96,6 @@
 		<PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.0" />
 		<PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
 		<PackageReference Include="AppDynamics.Agent" Version="2020.4.0" />
-		<PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="18.1.0.55" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="LogInView.cs" />
@@ -170,12 +167,6 @@
 		</Compile>
 		<Compile Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml.cs">
 			<DependentUpon>MorePopUpPageView.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFAnonymousLandingPageView.xaml.cs">
-			<DependentUpon>SFAnonymousLandingPageView.xamll</DependentUpon>
-		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFLandingPageView.xaml.cs">
-			<DependentUpon>SFLandingPageView.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Views\NewDesign\OnboardingPages\OnBoardingAnimationPageView.xaml.cs">
 			<DependentUpon>OnBoardingAnimationPageView.xaml</DependentUpon>
@@ -465,9 +456,6 @@
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationSuccessfullPageView.xaml">
-			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Views\SyncFusionEnabledViews\ZAKATForm5\ZAKATForm05PageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\EstablishmentAmendUpdatePages\EstablishmentAmendUpdatePageView.xaml">

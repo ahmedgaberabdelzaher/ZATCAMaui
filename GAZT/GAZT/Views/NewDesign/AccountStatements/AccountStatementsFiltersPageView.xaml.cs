@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
+﻿using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;

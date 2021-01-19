@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,7 +6,6 @@ using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.AccountStatements

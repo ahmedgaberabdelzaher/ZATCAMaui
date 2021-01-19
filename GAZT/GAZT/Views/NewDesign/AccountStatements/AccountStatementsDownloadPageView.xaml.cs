@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
@@ -11,7 +10,6 @@ using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-using Xamarin.Forms.Xaml;
 
 
 namespace EGAZT.Views.NewDesign.AccountStatements

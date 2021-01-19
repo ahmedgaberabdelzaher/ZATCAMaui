@@ -43,11 +43,6 @@ namespace EGAZT.CustomControl
                         ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                     }
                 }
-                //if (!isValidNumber)
-                //    {
-                //        ((Entry)sender).Text = isValidNumber ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
-                //    }
-                //}
             }
         }
     }
