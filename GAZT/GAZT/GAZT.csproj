@@ -139,7 +139,6 @@
 		<Folder Include="Models\AccountStatements\" />
 		<Folder Include="ViewModel\NewDesignViewModel\Common\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\ChecKTINStatusPage\" />
-		<Folder Include="Views\SyncFusionEnabledViews\FormBundleStatusPage\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
