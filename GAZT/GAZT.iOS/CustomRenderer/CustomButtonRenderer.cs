@@ -1,7 +1,6 @@
 ﻿using System;
 using EGAZT;
 using GAZT;
-using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;

@@ -16,10 +16,6 @@ namespace GAZT.iOS.CustomRenderer
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            /*base.OnElementPropertyChanged(sender, e);
-            Control.Layer.BorderWidth = 0;
-            Control.BorderStyle = UITextBorderStyle.None;*/
-
             base.OnElementPropertyChanged(sender, e);
             if (Control != null)
             {

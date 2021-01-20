@@ -1242,15 +1242,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     TaxTypeFilter = new List<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
                 if(TaxTypeFilter!=null && TaxTypeFilter.Count>0)
                 SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
-
-                    //foreach (TaxRelationSetResult aSReturnTypes in TaxTypeFilter)
-                    //{
-                    //    if (HeaderSet.D.TaxType == aSReturnTypes.TaxType)
-                    //    {
-                    //        SelectedTaxTypeForFilter = aSReturnTypes;
-                    //    }
-                    //}
-
+                   
                     double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
                     double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.CreditAmount.Replace("-", string.Empty)));
                     double totalBalance = tempEndProgressBar + startCreditProgressBar;
@@ -1265,8 +1257,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             try
             {
-                //await Task.Delay(2000);
-                //PopualateCommittmentsInformation();
+                
             }
             catch (AggregateException ae)
             {
@@ -1325,13 +1316,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             catch (Exception ex)
             {
                 IsLoading = false;
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    //PopToRootPage();
-                });
             }
-                IsLoading = false;
+
+            IsLoading = false;
             SelectedCommitmentFilterLabelValue = AppResources.ZZOverdueCommitments;
         }
 
@@ -1340,9 +1327,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-
-                //if (BillsAndReturnsCommitments == null)
-                //    BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
 
                 var BillsAndReturnsCommitmentsTemp = new List<OverduePaymentAndUnSubmittedReturn>();
                 // Create events
@@ -1466,14 +1450,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderByDescending(i => DateTime.Parse(i.DueDate)).ToList();
                     BillsAndReturnsCommitmentsTemp.Clear();
-                    //foreach (var item in BillsAndReturnsCommitmentsLocal)
-                    //{
-
-                    //    BillsAndReturnsCommitmentsTemp.Add(item);
-                    //}
                     BillsAndReturnsCommitments = BillsAndReturnsCommitmentsLocal;
                    
-                    // BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)BillsAndReturnsCommitmentsLocal);
                     if (BillsAndReturnsCommitments != null && BillsAndReturnsCommitments.Count > 0)
                     {
                         SetNoCommitmentsAvailableLabelVisibility = false;
@@ -1550,61 +1528,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (DashboardData.results != null && DashboardData.results.Count > 0)
                 {
-                    //Paid Bills
-                    //if (DashboardData.results[0] != null && DashboardData.results[0].PbillsTot != null)
-                    //{
-                    //    BillTypeCorrepsondingCountAndAmount PaidBillCountAndAmount = new BillTypeCorrepsondingCountAndAmount();
-
-                    //    PaidBillCountAndAmount.Status = BillType.PbillsTot;
-
-                    //    String PaidBillsstr = DashboardData.results[0].PbillsTot.TrimStart(new Char[] { '0' });
-                    //    String PaidBillsAmountstr = DashboardData.results[0].PbillsBetrw.TrimStart(new Char[] { '0' });
-
-                    //    if (string.IsNullOrEmpty(PaidBillsstr))
-                    //    {
-                    //        PaidBillsstr = "0";
-                    //    }
-                    //    else if (PaidBillsstr.Substring(0, 1) == ".")
-                    //    {
-                    //        PaidBillsstr = "0" + PaidBillsstr;
-                    //    }
-                    //    if (string.IsNullOrEmpty(PaidBillsAmountstr))
-                    //    {
-                    //        PaidBillsAmountstr = "0";
-                    //    }
-                    //    else if (PaidBillsAmountstr.Substring(0, 1) == ".")
-                    //    {
-                    //        PaidBillsAmountstr = "0" + PaidBillsAmountstr;
-                    //    }
-                    //    string TotalPaidAmount = PaidBillsAmountstr;
-                    //    try
-                    //    {
-
-
-                    //        PaidBillCountAndAmount.BillCount = Convert.ToInt32(PaidBillsstr);
-                    //        PaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
-                    //        PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
-
-                    //        SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
-                    //        MyBillsChartModels = new List<MyBillsChartModel>();
-
-                    //        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
-                    //        BillCount = PaidBillCountAndAmount.BillCount.ToString();
-
-                    //        BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
-                    //        ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
-
-                    //        iBillsCount = Convert.ToInt32(BillCount);
-                    //        PaidBillCount = BillCount;
-
-                    //    }
-                    //    catch (Exception ex)
-                    //    {
-
-                    //    }
-
-
-                    //}
                     //Partially Paid Bills
                     var MyBillsChartModelsTemp = new List<MyBillsChartModel>();
 
@@ -1639,12 +1562,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         MyBillsChartModelsTemp.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#E39800") });
                         BillCount = PartiallyPaidBillCountAndAmount.BillCount.ToString();
-                        // BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PartiallyPaidBillCountAndAmount.BillCount)).ToString();
                         ColorsChild.Add(System.Drawing.Color.FromArgb(227, 152, 0));
 
                         iBillsCount += Convert.ToInt32(BillCount);
                         PartiallyPaidBillCount = BillCount;
                     }
+
                     //Unpaid Bills
                     if (DashboardData.results[0] != null && DashboardData.results[0].UpbillsTot != null)
                     {
@@ -1677,7 +1600,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         MyBillsChartModelsTemp.Add(new MyBillsChartModel { BillCount = UnPaidBillCountAndAmount.BillCount, BillType = UnPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#EC0000") });
                         BillCount = UnPaidBillCountAndAmount.BillCount.ToString();
-                        // BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(UnPaidBillCountAndAmount.BillCount)).ToString();
                         ColorsChild.Add(System.Drawing.Color.FromArgb(236, 0, 0));
 
                         iBillsCount += Convert.ToInt32(BillCount);
@@ -1936,19 +1858,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 Console.Write(ex.StackTrace.ToString());
             }
 
-                //App.HideProgressView();
-                IsLoading = false;
-
-            //var _navigation = Application.Current.MainPage.Navigation;
-            //foreach (var item in _navigation.NavigationStack)
-            //{
-            //    if (item.GetType().Name == App.GAZTNewDesignOnBoardingAnimationPageView)
-            //    {
-            //        _navigation.RemovePage(item);
-            //        break;
-            //    }
-            //}
-
+            IsLoading = false;
             App.IsLogOut = true;
             App.IsLoginCalled = false;
             App.IsSamlApiCalledAndroid = false;
@@ -1964,11 +1874,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
-
-            //_navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-
-            // await _navigation.PopToRootAsync();
-            //_navigation.NavigationStack.ToList().Clear();
             _navigationService.GoBack();
         }
         #endregion

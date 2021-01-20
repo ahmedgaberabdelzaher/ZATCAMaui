@@ -1,6 +1,4 @@
-﻿using System;
-
-using GAZT.iOS.CustomRenderer;
+﻿using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -20,15 +18,10 @@ namespace GAZT.iOS.CustomRenderer
             UITableViewCell lCell = base.GetCell(pCell, pReusableCell, pTableView);
             if (lCell != null)
             {
-                //lCell.BackgroundColor = UIColor.Clear;
                 SetBackgroundColor(lCell, pCell, UIColor.White);
             }
             return lCell;
         }
-
-
-
     }
-
 }
 
