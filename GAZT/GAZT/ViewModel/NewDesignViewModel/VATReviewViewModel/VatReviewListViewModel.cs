@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand GoBackClick { get; set; }
         public ICommand NewRequestBtnTapped { get; set; }
         public ICommand CloseClick { get; set; }
-        private int selectedFilter = (int)FilterOptions.All;
+
 
         enum FilterOptions
         {
@@ -50,7 +50,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-        private bool _isBackButtonVisible = false;
+        private bool _isBackButtonVisible = true;
 
         public bool IsBackButtonVisible
         {
@@ -125,7 +125,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             public SelectionModel()
             {
             }
-
+            public string CardLabel { get => SelectionTitle; }
             public string SelectionTitle { get; set; }
             public bool IsSelected { get; set; }
         }
@@ -633,7 +633,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             _dialogService = dialogService;
 
-            GoBackClick = new Command(async () => { EnableListView(); });
+            GoBackClick = new Command(async () => {
+                if (IsVatListVisible)
+                {
+                    _navigationService.GoBack();
+                    return;
+                }
+                EnableListView();
+            });
 
             CloseClick = new Command(async () => { _navigationService.GoBack(); });
 
@@ -649,7 +656,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public void EnableListView()
         {
-            IsBackButtonVisible = false;
+            IsBackButtonVisible = true;
             SummaryVisible = false;
             IsVatListVisible = true;
         }
@@ -673,8 +680,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public void ResetListData()
         {
 
-            
-            VATobjListViewData = new ObservableCollection<VATObjectionListModel.Result3>(); 
+
+            VATobjListViewData = new ObservableCollection<VATObjectionListModel.Result3>();
             IsLoading = false;
             SetFilterOptions((int)FilterOptions.All);
             NumberOfObjAndReviews = "0 " + AppResources.VatReview;
@@ -721,27 +728,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 await Task.Run(async () =>
                 {
                     IsLoading = true;
-                    //VATReview = null;
 
 
                     try
                     {
-
-
                         var item = VATobjListViewData[index];
-
-
-
-                        // VATObjectionSummaryInputModel getFormGuid = new VATObjectionSummaryInputModel();
-                        //getFormGuid = await WebServiceManager.GAZTVATObjectionSummaryInputData(item.Fbnum, item.Fbust);
-
-
-
                         VATObjectionSummaryModel modelVATReview = new VATObjectionSummaryModel();
                         modelVATReviewsReturn = new VATObjectionFormModel.VATReviewsReturnModel();
-
-                        //if(getFormGuid != null && getFormGuid.d != null) {
-
 
                         modelVATReview = await WebServiceManager.GAZTGetVATObjectionSummary(item.Fbnum);
 
@@ -851,18 +844,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() => { IsLoading = false; });
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -898,19 +885,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void BindSummaryData(VATObjectionSummaryModel responseModel)
         {
-            /*
-            modelVATReviewsReturn.TIN = responseModel.d.Gpartx;
-            modelVATReviewsReturn.TaxPayerName = responseModel.d.FullName;
-            modelVATReviewsReturn.License = responseModel.d.CrNo + "-" + responseModel.d.Actnm;
-            modelVATReviewsReturn.Address = responseModel.d.AddressSet.results[0].BuildingNo + "," +
-                                            responseModel.d.AddressSet.results[0].Street + "," +
-                                            responseModel.d.AddressSet.results[0].Addrnumber + "," +
-                                            responseModel.d.AddressSet.results[0].RegionDesc + "," +
-                                            responseModel.d.AddressSet.results[0].City + "," +
-                                            responseModel.d.AddressSet.results[0].PostalCd;
-            */
-            //modelVATReviewsReturn.ListReviewReason lstReasons =new modelVATReviewsReturn.ListReviewReason;
-            // List<Dictionary<string, string>> reasonDDL = new List<Dictionary<string, string>>();
             List<VATObjectionFormModel.ReviewReason> reasonList =
                 new List<VATObjectionFormModel.ReviewReason>();
             if (responseModel.d.MainReasonSet.results.Count > 0)
@@ -1076,15 +1050,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             modelVATReviewsReturn.TotalTaxLiability = responseModel.d.SecurityDtl.Liaamt;
             modelVATReviewsReturn.TaxPaid = responseModel.d.SecurityDtl.Clramt;
-            
+
             modelVATReviewsReturn.RequestToReviewAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Amttp);
             modelVATReviewsReturn.ParticularAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Disamt);
-            //for Dispute Details  Map the Strline
-            //modelVATReviewsReturn.Corrections = responseModel.d.NotesSet.results;
-            //Step4 End
-
-            //Step 5 Security Payments
-
             SecurityAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Secamt);
 
             if (Double.Parse(SecurityAmount) == 0)
@@ -1097,15 +1065,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 IsSecurityAmountMorethanZero = true;
             }
-            //Security Type field If Value modelVATReview.d.SecurityDtl.Sectp=="C" then Sadad payment and B then Bank Guarantee
             modelVATReviewsReturn.MethodSubmitSecurity = responseModel.d.SecurityDtl.Sectp;
-            //Checkbox Value is "X"  checked  
             modelVATReviewsReturn.ChkSecurityPayment = responseModel.d.SecurityDtl.ChkCash;
             SADADNumber = responseModel.d.SecurityDtl.Sopbel;
-            //Step5 End
-
-            //Step6 Start Declaration
-
             modelVATReviewsReturn.ChkBankGuarantee = responseModel.d.SecurityDtl.ChkBank;
             modelVATReviewsReturn.ChkInfoCorrect = responseModel.d.DecFlg1;
             if (responseModel.d.IdType == "ZS0001")
@@ -1129,7 +1091,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             modelVATReviewsReturn.NameOfTaxPayer = responseModel.d.FullName;
             ContactPersonName = responseModel.d.FullName;
-            // modelVATReviewsReturn.ApplicationNo = modelVATReview.d.Fbnumx;
             modelVATReviewsReturn.ApplicationNo = responseModel.d.DecIdNo;
             modelVATReviewsReturn.Date = (responseModel.d.Declarationdt != null)
                 ? responseModel.d.Declarationdt.ToString()
@@ -1153,53 +1114,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             BankGuranteeAttachmentsListViewData = bankAttachments;
             AttachmentsListViewData = attachments;
-            // SADADNumber = modelVATReviewsReturn.SADADNumber;
-            // SecurityAmount = modelVATReviewsReturn.SecurityAmount;
-
-
-            /*
-               modelVATReviewsReturn.DecisionDate = (modelVATReview.d.DecDt != null)? modelVATReview.d.DecDt.ToString():"";
-                            //modelVATReviewsReturnModel.DecisionTaken = modelVATReview.d.NotesSet.results;
-                            //modelVATReviewsReturnModel.AttachmentName = modelVATReview.d.AttdetSet.results[0];
-                            modelVATReviewsReturn.TaxPeriodofCase = modelVATReview.d.SecurityDtl.Perslt;
-                             modelVATReviewsReturn.PeriodFrom = (modelVATReview.d.SecurityDtl.Abrzu!=null)? modelVATReview.d.SecurityDtl.Abrzu.ToString():"";
-                            modelVATReviewsReturn.PeriodTo = (modelVATReview.d.SecurityDtl.Abrzo!=null)? modelVATReview.d.SecurityDtl.Abrzo.ToString():"";
-                            modelVATReviewsReturn.TotalTaxLiability = modelVATReview.d.SecurityDtl.Liaamt;
-                            modelVATReviewsReturn.TaxPaid = modelVATReview.d.SecurityDtl.Clramt;
-                            modelVATReviewsReturn.RequestToReviewAmount = modelVATReview.d.SecurityDtl.Amttp;
-                            modelVATReviewsReturn.ParticularAmount = modelVATReview.d.SecurityDtl.Disamt;
-                            modelVATReviewsReturn.Corrections = modelVATReview.d.NotesSet.results;
-                            modelVATReviewsReturn.SecurityAmount = modelVATReview.d.SecurityDtl.Secamt;
-                            modelVATReviewsReturn.SADADNumber = modelVATReview.d.SecurityDtl.Sopbel;
-                            modelVATReviewsReturn.MethodSubmitSecurity = modelVATReview.d.SecurityDtl.Sectp;
-                            modelVATReviewsReturn.ChkSecurityPayment = modelVATReview.d.SecurityDtl.ChkCash;
-                            modelVATReviewsReturn.ChkBankGuarantee = modelVATReview.d.SecurityDtl.ChkBank;
-                            modelVATReviewsReturn.ChkInfoCorrect = modelVATReview.d.DecFlg1;
-                            modelVATReviewsReturn.NameOfTaxPayer = modelVATReview.d.FullName;
-                            modelVATReviewsReturn.ApplicationNo = modelVATReview.d.Fbnumx;
-                            modelVATReviewsReturn.Date =(modelVATReview.d.Declarationdt!=null)? modelVATReview.d.Declarationdt.ToString():"";
-             */
-            //Step6 End
-
-            /*SadadNumber = modelVATReviewsReturn.SADADNumber;
-            TaxPeriodCase = modelVATReviewsReturn.TaxPeriodofCase;
-            PeriodFrom = modelVATReviewsReturn.PeriodFrom;
-            PeriodTo = modelVATReviewsReturn.PeriodTo;
-            DecisionDate = modelVATReviewsReturn.DecisionDate;
-            //Attachment = modelVATReviewsReturn.AttachmentList;
-            SecurityAmount = modelVATReviewsReturn.SecurityAmount;
-            //ReferenceNumber = modelVATReviewsReturn.SummaryReferenceNumber;
-            //ReviewReason = modelVATReviewsReturn.SelectedReason;
-            //SubReason = modelVATReviewsReturn.SelectedSubreason;*/
-            //var Attachments = new ObservableCollection<Attachment>();
-            //foreach (var attach in responseModel.d.AttdetSet.results)
-            //{
-            //    Attachments.Add(attach);
-            //}
-
-            // VatReviewAttachments = Attachments;
-
-            // ReferenceNumber= modelVATReviewsReturn.;
         }
 
         public static DateTime ConvertJsonToDateTime(string jsonDate)

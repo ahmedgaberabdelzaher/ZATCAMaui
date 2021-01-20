@@ -7,11 +7,10 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              NavigationPage.HasNavigationBar="False"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              BackgroundImageSource="partials_background.png"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
              x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.EstablishmentSignUPPageView">
     <ContentPage.Resources>
         <ResourceDictionary>

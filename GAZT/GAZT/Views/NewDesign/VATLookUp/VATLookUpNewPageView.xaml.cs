@@ -16,7 +16,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATLookUpNewPageView : ContentPage
     {
-        bool isMandatoryDataEntered = true;
+ 
         VATLookUpNewPageViewModel viewModel;
         public VATLookUpNewPageView()
         {

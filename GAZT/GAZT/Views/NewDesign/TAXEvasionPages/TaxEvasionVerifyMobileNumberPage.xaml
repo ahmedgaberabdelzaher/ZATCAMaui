@@ -7,13 +7,12 @@
                  NavigationPage.HasNavigationBar="False"
                  BackgroundImageSource="partials_background.png"
                  FlowDirection="LeftToRight"
-                 
                  xmlns:custom="clr-namespace:GAZT"
                  xmlns:local="clr-namespace:EGAZT.CustomControl"
                  xmlns:FontImage="clr-namespace:MVP.FontIcons"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-                 xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+                  xmlns:custom1="clr-namespace:GAZT.CustomControl"  xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionVerifyMobileNumberPage">
         <ContentPage.Resources>
             <ResourceDictionary>

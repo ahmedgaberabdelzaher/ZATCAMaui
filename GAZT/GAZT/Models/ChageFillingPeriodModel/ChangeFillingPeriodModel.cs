@@ -10,7 +10,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
         public ChangeFillingPeriodModel()
         {
         }
-
+        public string CardLabel { get => ActiveOutletDecisionOptions; }
         public string ActiveOutletDecisionOptions { get; set; }
         public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
     }

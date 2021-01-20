@@ -19,13 +19,7 @@ namespace GAZT.CustomControl
         public ObservableCollection<object> Day;
         public ObservableCollection<object> Month;
         public ObservableCollection<object> Year;
-        //public ObservableCollection<object> Time { get; set; }
-        //public ObservableCollection<object> Minute;
-        //public ObservableCollection<object> Hour;
-        //public ObservableCollection<object> Format;
-        // Resolving Issue of Date of Birth to prevent selecting future date
-        // @Divya Jannapureddy added line number 28
-        private String selectedYear;
+
         public ObservableCollection<string> Headers { get; set; }
 
 

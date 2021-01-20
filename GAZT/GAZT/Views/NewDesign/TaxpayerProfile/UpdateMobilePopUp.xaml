@@ -67,9 +67,6 @@
                                         Keyboard="Telephone"
                                         IsReadOnly="True"
                                         TextColor="{StaticResource NeutralBlack}" HorizontalOptions="FillAndExpand">
-                                    <!--<Entry.Behaviors>
-                                        <custom1:OnlyNumericValuesBehaviour/>
-                                    </Entry.Behaviors>-->
                                 </Entry>
                             </inputLayout:SfTextInputLayout>
 
@@ -77,15 +74,6 @@
                             
                             <Frame BorderColor="LightGray"   Padding="8" HeightRequest="45" HasShadow="False" CornerRadius="8" Grid.Row="2" Grid.Column="0" Margin="0,-6,0,12">
                                 <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
-                                    <!--<Image HorizontalOptions="Start" Rotation="270" >
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="Black" Size="18"
-                                                                         Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                        </Image.Source>
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                                        </Image.GestureRecognizers>
-                                    </Image>-->
                                     <Image Source="arrowDropdown.png" HorizontalOptions="Start">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>

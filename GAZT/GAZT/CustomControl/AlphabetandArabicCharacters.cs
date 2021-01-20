@@ -24,7 +24,7 @@ namespace GAZT.CustomControl
         {
             if (!string.IsNullOrEmpty(args.NewTextValue))
             {
-                bool isValidNumber = false;// = UtilityManager.IsUserNameValid(args.NewTextValue);
+
                 foreach (char letter in args.NewTextValue.ToCharArray())
                 {
                     if ((letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122) || (letter == 127) || (letter == 8) || (letter == 32) || (letter >= 1536 && letter <= 1791))
@@ -35,7 +35,7 @@ namespace GAZT.CustomControl
                         }
                         else
                         {
-                            isValidNumber = true;
+                       
                         }
                         
                     }
@@ -44,11 +44,6 @@ namespace GAZT.CustomControl
                         ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                     }
                 }
-                //if (!isValidNumber)
-                //    {
-                //        ((Entry)sender).Text = isValidNumber ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
-                //    }
-                //}
             }
         }
     }

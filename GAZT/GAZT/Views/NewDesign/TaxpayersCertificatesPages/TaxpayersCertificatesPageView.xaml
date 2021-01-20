@@ -96,8 +96,13 @@
                     <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                     </custom:CustomLabel>
 
-                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
-
+                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Start" VerticalOptions="Center">
+                    <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="5,-10,5,0"/>
+                            <On Platform="Android" Value="5,15,5,0"/>
+                        </OnPlatform>
+                    </Image.Margin>
                     </Image>
                     <!--                    <Label Grid.Row="0" Grid.Column="1" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"
                            Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="270"/>-->
@@ -113,21 +118,6 @@
                     </syncfusion:SfPicker>
                 </Grid>
                 <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
-                <!--<StackLayout Margin="0,8,0,8" HorizontalOptions="Center" Spacing="2">
-                    --><!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">--><!--
-                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                    
-                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{Binding SelectionColor}" SelectionChanged="chipgroup_SelectionChanged" VerticalOptions="Center">
-                        <buttons:SfChipGroup.ItemTemplate>
-                            <DataTemplate >
-                                <StackLayout Margin="0" Padding="0" Spacing="2">
-                                    <buttons:SfChip HorizontalOptions="Start" HeightRequest="32"  BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{Binding Text}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" TextColor="{StaticResource NeutralBlack}"  BackgroundColor="White"  ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True" CornerRadius="20" VerticalTextAlignment="Center" VerticalOptions="Center"/>
-                                </StackLayout>
-                            </DataTemplate>
-                        </buttons:SfChipGroup.ItemTemplate>
-                    </buttons:SfChipGroup>
-                    --><!--</ScrollView>--><!--
-
-                </StackLayout>-->
             </StackLayout>
             <StackLayout Grid.Row="1">
                 <!-- My Bills template UI Starts -->
@@ -183,7 +173,6 @@
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                         TextColor="#D99A29"/>
-                    <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                 </StackLayout>
             </StackLayout>
         </Grid>

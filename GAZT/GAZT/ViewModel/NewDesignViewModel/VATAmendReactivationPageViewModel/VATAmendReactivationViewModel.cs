@@ -2544,7 +2544,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                 if (IsChangeEmailChecked)
                 {
-                    bool checkDuplicate = false;
+                   
 
                     ResultsItemForContact contact = new ResultsItemForContact();
 
@@ -2567,27 +2567,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
 
 
-                    //foreach (var item in VATRegistrationDetailsData.d.CONTACTDTSet.results)
-                    //{
-                    //    checkDuplicate = JsonCompare(item, contact);
-                    //    if (checkDuplicate)
-                    //        break;
-                    //}
+                   
                     VATRegistrationDetailsData.d.CONTACTDTSet.results.Add(contact);
 
                     var updatedContactList = VATRegistrationDetailsData.d.CONTACTDTSet.results.GroupBy(x => x.MobNumber).Select(x => x.First()).ToList();
                     VATRegistrationDetailsData.d.CONTACTDTSet.results = updatedContactList;
                 }
-                //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
-                //if (SelectedIdTypeFR != null)
-                //    VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
-                //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Idnumber = IdnumberFR;
-                //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Firstnm = FirstnmFR;
-                //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Lastnm = LastnmFR;
-                //VATRegistrationDetailsData.d.CONTACTDTSet.results[0].MobNumber = MobNumberFR;
-                //VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = SmtpAddrFR;
-
-                //Step 5
+                
                 if (IsDeclarationChecked)
                 {
                     VATRegistrationDetailsData.d.Decfg = "1";

@@ -56,15 +56,12 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="MECalendar" Version="0.1.5" />
-		<PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.2.2" />
-		<PackageReference Include="NodaTime" Version="3.0.0" />
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.4" />
 		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.1.0.54" />
 		<PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.1.0.54" />
 		<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.1.0.55" />
 		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.1.0.54" />
 		<PackageReference Include="Syncfusion.Xamarin.SfChart" Version="18.1.0.54" />
-		<PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.54" />
 		<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.1.0.54" />
 		<PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.42" />
 		<PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.1.0.55" />
@@ -79,8 +76,6 @@
 		<PackageReference Include="Xam.Plugins.Forms.DeviceOrientation" Version="1.0.1" />
 		<PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
 		<PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
-		<PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.3" />
-		<PackageReference Include="SkiaSharp" Version="1.68.3" />
 		<PackageReference Include="CardsView" Version="2.6.1" />
 		<PackageReference Include="MvvmLight" Version="5.4.1.1" />
 		<PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
@@ -88,7 +83,6 @@
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
 		<PackageReference Include="modernhttpclient" Version="2.4.2" />
-		<PackageReference Include="Tavant.XToolkit.RoundedCornerView" Version="1.0.3" />
 		<PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
 		<PackageReference Include="Xamarin.Forms.Maps" Version="4.6.0.800" />
 		<PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
@@ -102,7 +96,6 @@
 		<PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.0" />
 		<PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
 		<PackageReference Include="AppDynamics.Agent" Version="2020.4.0" />
-		<PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="18.1.0.55" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="LogInView.cs" />
@@ -118,8 +111,6 @@
 		<Folder Include="SyncFusionEnabledBehaviors\" />
 		<Folder Include="Enums\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
-		<Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />
-		<Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
 		<Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
 		<Folder Include="Views\SyncFusionEnabledViews\UnlockAccount\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\UnlockAccount\" />
@@ -147,6 +138,7 @@
 		<Folder Include="ViewModel\NewDesignViewModel\AccountStatements\" />
 		<Folder Include="Models\AccountStatements\" />
 		<Folder Include="ViewModel\NewDesignViewModel\Common\" />
+		<Folder Include="ViewModel\SyncFusionEnabledViewModel\ChecKTINStatusPage\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -175,26 +167,11 @@
 		<Compile Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml.cs">
 			<DependentUpon>MorePopUpPageView.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFAnonymousLandingPageView.xaml.cs">
-			<DependentUpon>SFAnonymousLandingPageView.xamll</DependentUpon>
-		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFLandingPageView.xaml.cs">
-			<DependentUpon>SFLandingPageView.xaml</DependentUpon>
-		</Compile>
 		<Compile Update="Views\NewDesign\OnboardingPages\OnBoardingAnimationPageView.xaml.cs">
 			<DependentUpon>OnBoardingAnimationPageView.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\Options\SFOptionsPage.xaml.cs">
-			<DependentUpon>SFOptionsPage.xaml</DependentUpon>
-		</Compile>
 		<Compile Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml.cs">
 			<DependentUpon>FinancialDetailAttachmentPopupPageView.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\VATRealEstateServicesPage.xaml.cs">
-			<DependentUpon>VATRealEstateServicesPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\PropertyRegistrationPage.xaml.cs">
-			<DependentUpon>PropertyRegistrationPage.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountTINPageView.xaml.cs">
 			<DependentUpon>UnlockAccountTINPageView.xaml</DependentUpon>
@@ -478,9 +455,6 @@
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationSuccessfullPageView.xaml">
-			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Views\SyncFusionEnabledViews\ZAKATForm5\ZAKATForm05PageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\EstablishmentAmendUpdatePages\EstablishmentAmendUpdatePageView.xaml">

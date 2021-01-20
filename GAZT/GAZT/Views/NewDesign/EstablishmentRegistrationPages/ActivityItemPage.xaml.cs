@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using EGAZT.Models;
-using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
-using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
-using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 

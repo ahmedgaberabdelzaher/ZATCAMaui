@@ -3,22 +3,15 @@
     x:Class="EGAZT.Views.SyncFusionEnabledViews.SFLogin.SFLoginPageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local2="clr-namespace:EGAZT.Views.SyncFusionEnabledViews.EmailEntry"
-    xmlns:local1="clr-namespace:EGAZT;assembly:GAZT"
     xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:custom="clr-namespace:GAZT"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
-    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:egazt="clr-namespace:EGAZT"
     FlowDirection="RightToLeft"
     xmlns:custom2="clr-namespace:EGAZT"
     NavigationPage.HasNavigationBar="False"
     Title="Login"
-    xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
     BackgroundColor="White">
-    <!--Style="{StaticResource ContentPageStyle}"-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -38,22 +31,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-
-                <!--<egazt:HybridWebView Grid.Row="0" Opacity="0" x:Name="hybridWebView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
-                <!--<custom:CustomLabel Grid.Row="0"
-                x:Name="BackLabel"
-                       VerticalOptions="Start"
-                HorizontalOptions="Start"
-                        Margin="10,30,10,0"
-                        Style="{StaticResource IconLabelStyle}"
-                         TextColor="#ffffff"
-                        Text="{DynamicResource StyleReverseBack}">
-                <custom:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding BackButtonClicked}"></TapGestureRecognizer>
-                </custom:CustomLabel.GestureRecognizers>
-            </custom:CustomLabel>-->
-
-
+           
                 <Image Source="Burger" x:Name="HamburgerMenu" Style="{StaticResource SmallIcon}" 
                        VerticalOptions="Start"
                 HorizontalOptions="EndAndExpand"
@@ -62,25 +40,12 @@
                         <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1"/>
                     </Image.GestureRecognizers>
                 </Image>
-                <!--<custom:CustomLabel Grid.Row="0"
-                x:Name="HamburgerMenu"
-                       VerticalOptions="Start"
-                HorizontalOptions="EndAndExpand"
-                        Margin="10,30,10,0"
-                        Style="{StaticResource IconLabelStyle}"
-                         TextColor="#ffffff"
-                        Text="{DynamicResource StyleReverseBack}">
-                <custom:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}"></TapGestureRecognizer>
-                </custom:CustomLabel.GestureRecognizers>
-            </custom:CustomLabel>-->
 
                 <Grid Grid.Row="0" Grid.Column="0" IsVisible="false">
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
 
-                        <!--Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </Grid>
 
@@ -101,10 +66,8 @@
                                        ViewBoxHeight="70" 
                                        TextColor="#d99a29"/>
                         </StackLayout>
-                        <!--Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </Grid>
-                <!-- Acticity indicator layout end -->
             </Grid>
             <StackLayout x:Name="sessionExpiredView" IsVisible="false" Margin="0" BackgroundColor="Transparent" >
                 <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">

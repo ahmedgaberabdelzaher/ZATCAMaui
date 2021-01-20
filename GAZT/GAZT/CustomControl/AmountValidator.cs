@@ -31,11 +31,6 @@ namespace GAZT.CustomControl
                         (sender as Entry).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                     }
                 }
-                //if (!isValidNumber)
-                //    {
-                //        ((Entry)sender).Text = isValidNumber ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
-                //    }
-                //}
             }
         }
     }

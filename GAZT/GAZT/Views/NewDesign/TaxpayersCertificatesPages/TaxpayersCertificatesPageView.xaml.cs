@@ -1,13 +1,9 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -97,6 +93,11 @@ namespace EGAZT.Views.NewDesign.TaxpayersCertificatesPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             if (Device.RuntimePlatform == Device.Android)
             {
                 TaxTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");

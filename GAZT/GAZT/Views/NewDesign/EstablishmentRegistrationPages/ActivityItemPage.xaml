@@ -8,22 +8,19 @@
              xmlns:models="clr-namespace:EGAZT.Models"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:customOne="clr-namespace:GAZT"
-               xmlns:GAZTBehaviors="clr-namespace:EGAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:syncfusiondatepicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             
              x:Name="ESTActivityItemPage">
     <ContentPage.Resources>
         <ResourceDictionary>

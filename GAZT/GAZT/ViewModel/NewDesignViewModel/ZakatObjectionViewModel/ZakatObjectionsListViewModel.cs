@@ -444,7 +444,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
         public void ResetData()
         {
-            ObjectionsList = new ObservableCollection<ZakatObjectionListModel.Result>(); 
+            ObjectionsList = new ObservableCollection<ZakatObjectionListModel.Result>();
             ObjectionsCount = 0 + " " + AppResources.ZakatObjection;
             AttachmentsListViewData = null;
 
@@ -720,7 +720,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
         public async Task showRejectPopup()
         {
-            
+
             await Task.Run(() =>
             {
                 IsLoading = false;
@@ -731,7 +731,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             });
 
         }
-            public async Task GetWithdrawReviewReasonTP10(string SelectedFbNum)
+        public async Task GetWithdrawReviewReasonTP10(string SelectedFbNum)
         {
             try
             {
@@ -751,7 +751,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
                         if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
                         {
-              
+
                         }
                         else
                         {
@@ -1000,7 +1000,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
                         if (_ZakatObjectionRequestSummary != null && _ZakatObjectionRequestSummary.d != null)
                         {
-                            
+
 
                             BindSummaryData(_ZakatObjectionRequestSummary);
                         }

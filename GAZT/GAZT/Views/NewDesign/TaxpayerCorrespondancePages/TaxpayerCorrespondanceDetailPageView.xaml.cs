@@ -1,16 +1,10 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
-//using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
@@ -35,21 +29,21 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-           // viewModel.IsFavoriteVisible = false;
+            viewModel.IsFavoriteVisible = false;
             CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
             if (CorrModel != null)
             {
                 viewModel.CorrespondenceTitle = CorrModel.Title;
                 viewModel.CorrespondenceDateTime = CorrModel.DateToDisplay;
                 viewModel.CorrespondenceTime = CorrModel.TimeToDisplay;
-                //if (string.IsNullOrEmpty(CorrModel.TaxtpFg))
-                //{
-                //    viewModel.IsFavoriteVisible = true;
-                //}
-                //else
-                //{
-                //    viewModel.IsFavoriteVisible = false;
-                //}
+                if (string.IsNullOrEmpty(CorrModel.TaxtpFg))
+                {
+                    viewModel.IsFavoriteVisible = true;
+                }
+                else
+                {
+                    viewModel.IsFavoriteVisible = false;
+                }
             }
             try
             {

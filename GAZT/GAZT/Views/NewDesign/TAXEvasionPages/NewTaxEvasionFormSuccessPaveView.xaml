@@ -5,11 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"             
-            xmlns:local="clr-namespace:EGAZT" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-           x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormSuccessPaveView"
+            xmlns:local="clr-namespace:EGAZT" 
+            x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormSuccessPaveView"
              BackgroundImageSource="partials_background">
     <ContentPage.Resources>
         <ResourceDictionary>

@@ -2,15 +2,13 @@
 using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
- 
+
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-    
+
     [Preserve(AllMembers = true)]
     public class NotesPopUpPageViewModel : BaseViewModel
     {

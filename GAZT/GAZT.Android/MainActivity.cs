@@ -7,14 +7,11 @@ using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Views;
 using EGAZT;
-using Microsoft.AppCenter.Distribute;
 using Plugin.Permissions;
-using Tavant.XToolkit;
 using AppDynamics.Agent;
 using Plugin.Media;
 using Java.Lang;
 using System;
-using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using System.Threading.Tasks;
 using System.IO;
@@ -43,7 +40,6 @@ namespace GAZT.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
 
-            InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)
             {
@@ -79,27 +75,8 @@ namespace GAZT.Droid
             App.AppVersion = info.VersionName;
             App app = new App();
             App.appObj = app;
-            Distribute.SetEnabledForDebuggableBuild(true);
-
-            //rohith - login
-            //handler = new Handler();
-            //r = new Runnable(() =>
-            //{
-            //    App.HandleSessionTimeout();
-            //    startHandler();
-            //});
-            //startHandler();
-
-            //action = () =>
-            //{
-            //    App.HandleSessionTimeout();
-            //    resetDisconnectTimer();
-            //};
-
-            //disconnectHandler = new Handler(new MyHandlerICallback(this));
-            //resetDisconnectTimer();   
-
-            //StartTimerForLoginRefresh(0,1,0);
+            //Distribute.SetEnabledForDebuggableBuild(true);
+           
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
@@ -228,22 +205,8 @@ namespace GAZT.Droid
                 {
                     global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
                 }
-
-                //else
-                //{
-                //    Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-                //    AlertDialog alert = dialog.Create();
-                //    alert.SetTitle("Alert");
-                //    alert.SetMessage("Kindly Grant Camera Permission");
-                //    alert.SetButton("OK", (c, ev) =>
-                //    {
-                //        // Ok button click task  
-                //    });
-                //    alert.Show();
-                //}
             }
 
-            //global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }

@@ -151,7 +151,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -204,7 +204,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
                     viewModel.PreviousSelectedICRStatus = selectedICRStatus;
                     viewModel.GetFilteredZAKATICRList(selectedICRStatus);
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                 }
             }

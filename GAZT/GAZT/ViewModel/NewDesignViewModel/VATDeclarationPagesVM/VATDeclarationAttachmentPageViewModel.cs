@@ -5,30 +5,21 @@ using System.Windows.Input;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using EGAZT.Models;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using Newtonsoft.Json;
 using Plugin.FilePicker;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Xamarin.Forms.Internals;
- 
+
 namespace EGAZT
-{ 
+{
     [Preserve(AllMembers = true)]
     public class VATDeclarationAttachmentPageViewModel : ViewModelBase
     {
@@ -222,12 +213,7 @@ namespace EGAZT
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            //=======================start==================================================
-            //OnInvoiceClicked = new Xamarin.Forms.Command(() =>
-            //{
-            //    OnDownLoadInvoiceClicked();
-            //});
-
+           
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
@@ -256,27 +242,6 @@ namespace EGAZT
                         string[] filetypes;
 
                         filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
-
-                        //                if (Device.RuntimePlatform == Device.iOS)
-                        //                {
-                        //                    filetypes = new string[] {
-                        ////            UTType.PDF,
-                        ////            "org.openxmlformats.wordprocessingml.document",
-                        ////            "com.microsoft.word.doc",
-                        ////"org.openxmlformats.spreadsheetml.sheet",
-                        ////"org.openxmlformats.presentationml.presentation",
-                        ////            UTType.JPEG,
-                        ////            UTType.PNG,
-                        ////            UTType.GIF,
-                        ////            "com.microsoft.excel.xls",
-                        ////            "com.microsoft.powerpoint.​ppt",
-                        ////             UTType.Text
-                        //                        };
-                        //                }
-                        //                else
-                        //                {
-                        //                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
-                        //                }
                         var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {
@@ -336,8 +301,6 @@ namespace EGAZT
                                                                 {
                                                                     if (item.Erfdt != null)
                                                                     {
-                                                                        //item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                                        //item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                                                         item.Erfdt = item.Erfdt;
                                                                     }
                                                                 }
@@ -356,7 +319,6 @@ namespace EGAZT
                                                         }
                                                         AttachmentCount++;
                                                         CloneAttachmentList(VatAttachmentsList);
-                                                        // TotalAttachmentSize += AttachmentSize;
                                                         AttachmentName = string.Empty;
                                                     }
                                                     else
@@ -364,7 +326,6 @@ namespace EGAZT
                                                         AttachmentName = string.Empty;
                                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
-                                                     //   _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                                     }
                                                 }
                                                 else
@@ -372,7 +333,6 @@ namespace EGAZT
                                                     AttachmentName = string.Empty;
                                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
 
-                                                 //   _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
                                                 }
                                             }
                                             else
@@ -380,7 +340,6 @@ namespace EGAZT
                                                 AttachmentName = string.Empty;
                                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
-                                              //  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                             }
                                         }
                                         else
@@ -388,7 +347,6 @@ namespace EGAZT
                                             AttachmentName = string.Empty;
                                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
 
-                                          //  _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
                                         }
                                     }
                                     else
@@ -396,15 +354,12 @@ namespace EGAZT
                                         AttachmentName = string.Empty;
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan300MB));
 
-                                      //  _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
                                     }
                                 }
                                 else
                                 {
                                     AttachmentName = string.Empty;
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
-
-                                  //  _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                 }
                             }
                             else
@@ -412,7 +367,6 @@ namespace EGAZT
                                 AttachmentName = string.Empty;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
-                              //  _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
                         }
                     }
@@ -421,7 +375,6 @@ namespace EGAZT
                         AttachmentName = string.Empty;
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
 
-                       // _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
                     }
                 }
                 catch (InternetException ex)
@@ -430,7 +383,6 @@ namespace EGAZT
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                      //  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
                 }
             }
@@ -476,41 +428,6 @@ namespace EGAZT
             });
             return _attachment;
         }
-        //public async void ShowPdf(string pdfUrl, String Doguid)
-        //{
-        //    if (Device.RuntimePlatform == Device.iOS)
-        //    {
-        //        if (pdfUrl != null)
-        //        {
-        //            //Uri uri = new Uri(pdfUrl);
-        //            //Device.OpenUri(uri);
-        //            _navigationService.NavigateTo(App.PdfiOSView, "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + Doguid + "',Cotyp='VTA0')/$value?saml2=disabled");
-        //        }
-        //        else
-        //        {
-        //            //pop that certificate is not available
-        //            Device.BeginInvokeOnMainThread(async () =>
-        //            {
-        //                await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-        //            });
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (pdfUrl != null)
-        //        {
-        //            _navigationService.NavigateTo(App.PdfView, pdfUrl);
-        //        }
-        //        else
-        //        {
-        //            //pop that certificate is not available
-        //            Device.BeginInvokeOnMainThread(async () =>
-        //            {
-        //                await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-        //            });
-        //        }
-        //    }
-        //}
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)

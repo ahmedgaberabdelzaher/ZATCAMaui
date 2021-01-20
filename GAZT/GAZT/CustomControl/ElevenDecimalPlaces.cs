@@ -7,7 +7,7 @@ namespace EGAZT
     [Preserve(AllMembers = true)]
     public class ElevenDotTwoDecimalPlacesAndNoNegativeValue : Behavior<Entry>
     {
-        static int numberOfDigit = 17;
+     
         static int decimalCount;
         public static bool iSValiedNumber = true;
         public bool isNegativeEnable { get; set; } 
@@ -140,7 +140,7 @@ namespace EGAZT
                     // message please remove extra decimal number
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -181,7 +181,7 @@ namespace EGAZT
                     //amountWithComma = amount;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }

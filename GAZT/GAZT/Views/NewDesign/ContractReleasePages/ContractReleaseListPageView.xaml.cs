@@ -1,19 +1,16 @@
 ﻿using System;
 using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using EGAZT.Models.ContractRelease;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
 using GAZT.Helper;
-using GAZT.Manager;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using static EGAZT.Models.ContractRelease.ContractReleaseSummaryModel;
-using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace EGAZT.Views.NewDesign.ContractReleasePages
 {

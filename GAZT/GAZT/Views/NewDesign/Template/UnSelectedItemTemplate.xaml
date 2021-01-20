@@ -1,19 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-          xmlns:custom="clr-namespace:GAZT"
           xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
           x:Class="EGAZT.Views.NewDesign.Template.UnSelectedItemTemplate">
     <ViewCell.View>
-        <!--<cards:SfCardView  WidthRequest="171" HeightRequest="136" BackgroundColor="Red" >
-            <Grid WidthRequest="171" HeightRequest="136">
-                <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                <StackLayout  Style="{DynamicResource CardParentStacklayout}">
-                    <Image Style="{DynamicResource CardIcon}" Source="{Binding UnSelectedCardIcon}" IsVisible="{Binding IsUnSelectedCardIcon}" />
-                    <custom:CustomLabel Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}"/>
-                </StackLayout>
-            </Grid>
-        </cards:SfCardView>-->
         <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="136" WidthRequest="171">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>

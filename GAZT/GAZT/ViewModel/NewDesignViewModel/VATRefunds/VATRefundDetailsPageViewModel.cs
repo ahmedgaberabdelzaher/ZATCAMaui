@@ -12,7 +12,7 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
- 
+
 namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 { 
     [Preserve(AllMembers = true)]
@@ -227,23 +227,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>();
             VatRefundsDisplayDataModel = new VatRefundDisplayDataModel();
             VatNewReqSummaryData = new VatRefundDisplayDataModel();
-
-            //GoBackBtnTapped = new Command(this.GoBackBtnClicked);
-            //ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
-            //OutletContinueBtnTapped = new Command(this.OutletContinueBtnClicked);
-            //AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
-            //DeclarationContinueBtnTapped = new Command(this.DeclarationContinueBtnClicked);
-            //SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
-            //OnTinRegisrtationReasonDateTapped = new Command(this.OnTinRegisrtationReasonDateClicked);
-            //OnTinRegistrationReasonTapped = new Command(this.OnTinRegisrtationReasonClicked);
-            //TinDeregistrationModel = new TINDeregistrationModel();
-            //SelectedOutletOption = new TINDeregistrationModel();
-
-            //AddOutletDecisionOptions();
-            //PopulateAttachmentsListViewTemplate();
-            //PopulateSummaryReasonData();
-            //PopulateSummaryDeclarationData();
-            //EnableReasonView();
         }
 
         public async void ReloadData(VatRefundsListResultModel vATRefundsModel)
@@ -327,8 +310,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 {
                     IsLoading = true;
                 });
-
-                // VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(VATRefundsHeaderSet.RefundFbnum);
                 SelectedIbanTypeFromList();
 
                 IBANType selectedIdType = IBANTypesList.Where(m => m.key == VatNewReqSummaryData.IdType).FirstOrDefault();
@@ -370,20 +351,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 });
             }
         }
-
-        //private void ConvertAllAmountsToCommaSeperated()
-        //{
-        //    VATRefundsHeaderSet.RequestedAmt = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.RequestedAmt);
-        //    VATRefundsHeaderSet.ReassessAmt = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.ReassessAmt);
-        //    VATRefundsHeaderSet.OffsetTot = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.OffsetTot);
-        //    VATRefundsHeaderSet.NetCreditBal = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.OffsetTot);
-
-        //}
-
-        //private void RemoveCommaSeperatedValues()
-        //{
-        //}
-
         public void SelectedIbanTypeFromList()
         {
             IBANTypesList = new ObservableCollection<IBANType>();

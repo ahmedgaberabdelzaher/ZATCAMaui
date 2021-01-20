@@ -90,15 +90,6 @@
                                             <Label Text="{Binding ZDTitle}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" VerticalOptions="Center" />
                                         </StackLayout>
                                         <Image Grid.Row="0" Grid.Column="2" Source="{Binding ArrowImageSource}"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
-
-                                             <!--<Image.Triggers>
-                                                 <DataTrigger TargetType="Image" Binding="{Binding IsArabic}" Value="false">
-                                                    <Setter Property="Rotation" Value="180" />
-                                                </DataTrigger>
-                                                 <DataTrigger TargetType="Image" Binding="{Binding IsArabic}" Value="true">
-                                                    <Setter Property="Rotation" Value="0" />
-                                                </DataTrigger>
-                                            </Image.Triggers>-->
                                         </Image>
                                     </Grid>
                                 </border:SfBorder>

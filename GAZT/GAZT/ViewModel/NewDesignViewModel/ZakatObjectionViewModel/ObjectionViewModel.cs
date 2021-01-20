@@ -23,7 +23,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             public SelectionModel()
             {
             }
-
+            public string CardLabel { get => SelectionTitle; }
             public string SelectionTitle { get; set; }
             public bool IsSelected { get; set; }
         }

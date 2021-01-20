@@ -1,8 +1,6 @@
 ﻿using CalendarView;
 using EGAZT.Models;
-using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
-using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;

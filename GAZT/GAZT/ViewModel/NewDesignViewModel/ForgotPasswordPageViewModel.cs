@@ -73,14 +73,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_StartPage == 2)
                 {
                     IsContinueButtonVisibe = false;
+                    ForgotPwHeadingVisibility = false;
+
                 }
-                else if (_StartPage==1)
+                else if (_StartPage == 3)
+                {
+                    IsContinueButtonVisibe = true;
+                    ForgotPwHeadingVisibility = false;
+                }
+                else if (_StartPage == 1)
                 {
                     IsContinueButtonVisibe = ValidateFirstStep();
+                    ForgotPwHeadingVisibility = true;
                 }
                 else
                 {
                     IsContinueButtonVisibe = true;
+                    ForgotPwHeadingVisibility = true;
                 }
                 RaisePropertyChanged("StartPage");
             }
@@ -307,7 +316,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _ForgotPwHeadingVisibility = true;
+        public bool ForgotPwHeadingVisibility
+        {
+            get
+            {
+                return _ForgotPwHeadingVisibility;
+            }
+            set
+            {
+                if (_ForgotPwHeadingVisibility == value) return;
 
+                _ForgotPwHeadingVisibility = value;
+                RaisePropertyChanged("ForgotPwHeadingVisibility");
+            }
+        }
 
         private bool _verificationCodeVisibility = false;
         public bool VerificationCodeVisibility
@@ -321,6 +344,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_verificationCodeVisibility == value) return;
 
                 _verificationCodeVisibility = value;
+                if (_verificationCodeVisibility)
+                {
+                    ForgotPwHeadingVisibility = false;
+                }
+                else
+                {
+                    ForgotPwHeadingVisibility = false;
+                }
                 RaisePropertyChanged("VerificationCodeVisibility");
             }
         }

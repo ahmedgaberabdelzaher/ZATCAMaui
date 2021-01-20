@@ -35,7 +35,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         public bool StopTimer = false;
         public int totalAttempts = 0;
 
-        bool isValiedOTP = false;
+      
         public int numberOfSeconds = 120;
 
         public readonly INavigationService _navigationService;

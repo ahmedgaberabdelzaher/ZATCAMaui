@@ -25,7 +25,7 @@ namespace GAZT.CustomControl
         //public ObservableCollection<object> Format;
         // Resolving Issue of Date of Birth to prevent selecting future date
         // @Divya Jannapureddy added line number 28
-        private String selectedYear;
+     
         public ObservableCollection<string> Headers { get; set; }
 
 

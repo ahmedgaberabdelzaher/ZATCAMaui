@@ -21,7 +21,7 @@ namespace EGAZT
         {
             if (!string.IsNullOrEmpty(args.NewTextValue))
             {
-                bool isValidNumber = false;// = UtilityManager.IsUserNameValid(args.NewTextValue);
+               
                 char[] textValue = args.NewTextValue.ToCharArray();
                 for (int i = 0; i < textValue.Length; i++)
                 {

@@ -372,10 +372,10 @@
     </Style>
 
     <Style x:Key="InputTableTextInputLayoutStyle" TargetType="inputLayout:SfTextInputLayout">
-        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="Margin" Value="10,-6,10,-6" />
         <Setter Property="ContainerType" Value="Outlined" />
         <Setter Property="UnfocusedColor" Value="#B1B1B1" />
-        <Setter Property="OutlineCornerRadius" Value="8" />
+        <Setter Property="OutlineCornerRadius" Value="14" />
         <Setter Property="FocusedColor" Value="#005e4b" />
         <Setter Property="ErrorColor" Value="#B00020" />
         <Setter Property="HasError" Value="False" />

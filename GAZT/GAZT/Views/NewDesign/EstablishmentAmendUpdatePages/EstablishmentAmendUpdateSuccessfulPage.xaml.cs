@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
-using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;

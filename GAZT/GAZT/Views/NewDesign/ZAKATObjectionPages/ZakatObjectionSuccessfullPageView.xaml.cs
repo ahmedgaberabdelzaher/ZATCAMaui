@@ -74,7 +74,7 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
                     // put Mesage already latest SADADID available
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -110,7 +110,7 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
                     // put Mesage already latest SADADID available
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }

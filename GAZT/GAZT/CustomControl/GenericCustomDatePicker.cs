@@ -21,9 +21,7 @@ namespace EGAZT.CustomControl
         public ObservableCollection<object> Minute;
         public ObservableCollection<object> Hour;
         public ObservableCollection<object> Format;
-        // Resolving Issue of Date of Birth to prevent selecting future date
-        // @Divya Jannapureddy added line number 28
-        private String selectedYear;
+       
         public ObservableCollection<string> Headers { get; set; }
 
         public GenericCustomDatePicker()
@@ -296,7 +294,7 @@ namespace EGAZT.CustomControl
                 Date.Add(Month);
                 Date.Add(Year);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }

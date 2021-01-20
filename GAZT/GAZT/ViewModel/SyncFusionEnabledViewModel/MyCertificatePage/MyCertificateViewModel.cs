@@ -370,7 +370,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
             _dialogService = dialogService;
             OnLoginButtonClicked = new RelayCommand(async () =>
             {
-                bool IsComingFromSearch = true;
+               
                 // _navigationService.NavigateTo(App.LoginView);
             });
             //OnVATCertificateClicked = new RelayCommand(async () =>

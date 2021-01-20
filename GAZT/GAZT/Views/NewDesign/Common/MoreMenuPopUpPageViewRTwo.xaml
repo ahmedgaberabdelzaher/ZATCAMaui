@@ -5,8 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:custom="clr-namespace:GAZT"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
-                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="EGAZT.Views.NewDesign.Common.MoreMenuPopUpPageViewRTwo">
     <pages:PopupPage.Resources>
@@ -19,16 +18,6 @@
     </pages:PopupPage.Resources>
     <yummy:PancakeView CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
         <StackLayout HorizontalOptions="CenterAndExpand">
-
-
-            <!--                <Image HorizontalOptions="EndAndExpand" Margin="15,15,15,1" >
-                    <Image.Source>
-                        <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                    </Image.Source>
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnClose"/>
-                    </Image.GestureRecognizers>
-                </Image>-->
             <ListView  x:Name="btnList"
                            Grid.Row="1"
            ItemsSource="{Binding VatReturnUIButtons}"

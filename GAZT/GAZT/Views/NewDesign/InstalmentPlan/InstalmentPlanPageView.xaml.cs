@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.InstalmentPlan
@@ -13,15 +12,9 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
     [Preserve(AllMembers = true)]
     public partial class InstalmentPlanPageView : ContentPage
     {
-
-
-
         #region Variable
         InstalmentPlanViewModel viewModel;
-
-     
         #endregion
-
         public InstalmentPlanPageView()
         {
             try
@@ -46,8 +39,6 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             }
 
         }
-
-
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -71,10 +62,11 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
             viewModel.AddOutletDecisionOptions();
-            
         }
-
 
         public async void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
@@ -96,21 +88,13 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
                 viewModel.IsIncomeTaxViewEnabled = true;
                 Preferences.Set("isZakat", false);
                 viewModel.IncomeTaxBtnClicked();
-
-
             }
             else
-            //if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 2)
             {
                 viewModel.IsZakatSelected = false;
                 viewModel.IsIncomeTaxViewEnabled = false;
                 viewModel.VatBtnClicked();
-                //PopupNavigation.Instance.PushAsync(new ZakatInstalmentPlanBottomPopup());
             }
-
-
-
         }
-
     }
 }

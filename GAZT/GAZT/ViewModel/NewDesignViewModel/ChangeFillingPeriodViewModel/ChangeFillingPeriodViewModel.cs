@@ -22,7 +22,6 @@ using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
 using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
-using static EGAZT.Models.ChageFillingPeriodModel.VATChangeFillingPeriodRequestModel;
 using System.Text.RegularExpressions;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.VATDeclarationPages;

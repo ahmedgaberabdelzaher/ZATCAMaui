@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
@@ -23,6 +21,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
     public partial class ContractReleasePageView : ContentPage, ContractReleaseInterface
     {
         ContractReleaseViewModel viewModel;
+
+        //public object Loadingbar { get; private set; }
 
         public ContractReleasePageView()
         {

@@ -464,24 +464,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.MenuIndicatorColor = Color.White;
             viewModel.TabbarColor = Color.DarkGray;
             viewModel.StackMenuColor = Color.White;
-
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-
-            //MenuView.IsVisible = false;
-            //HomeView.IsVisible = true;
-            //HomeIndicator.BackgroundColor = Color.DarkGreen;
-            //MenuIndicator.BackgroundColor = Color.White;
-            //Tabbar.BorderColor = Color.DarkGray;
-            //stackMenu.BackgroundColor = Color.White;
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            //if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
             if (true)
             {
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnMenuTapped", AppResources.ZZZMenu + " Page");
-
-                //viewModel._navigationService.NavigateTo(App.TaxManagementPageView);
                 viewModel.MenuViewVisible = true;
                 viewModel.HomeViewVisible = false;
                 viewModel.AccountStatementVisible = false;
@@ -518,7 +507,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void TappedOnMyReturns(object sender, EventArgs e)
         {
-            //App.DisplayProgressView();
                 viewModel.IsLoading = true;
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -531,8 +519,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void TappedOnSignleReturns(object sender, EventArgs e)
         {
-            // App.DisplayProgressView();
-
             string controltype = sender.GetType().ToString();
 
             Syncfusion.XForms.Cards.SfCardView arrowImage = sender as Syncfusion.XForms.Cards.SfCardView;

@@ -1,27 +1,22 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.Views.NewDesign.GenericPickers;
-using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Rg.Plugins.Popup.Services;
 using GAZT.Manager;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ChangeFillingPeriodPageView : ContentPage,ChangeFillingInterface
+    public partial class ChangeFillingPeriodPageView : ContentPage, ChangeFillingInterface
     {
         #region Variable
 
@@ -69,16 +64,22 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
 
             getYesCommand();
             getNoCommand();
@@ -111,9 +112,9 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                                 // viewModel.VATViewAttachments();
                                 break;
                             case ArButtons.إلغاء:
-                                 viewModel.isDraftClicked = true;
-                                 viewModel.VoidMsg();
-                                 viewModel.isDraftClicked = false;
+                                viewModel.isDraftClicked = true;
+                                viewModel.VoidMsg();
+                                viewModel.isDraftClicked = false;
                                 break;
                             case ArButtons.عادةتعيين:
                                 //await viewModel.VATReturnResetAsync();
@@ -161,10 +162,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                                 // await viewModel.VATReturnAmendAsync();
                                 break;
                             case Buttons.SaveasDraft:
-                                     viewModel.isDraftClicked = true;
-                                     viewModel.OnSaveDraftClicked();
-                                     viewModel.isDraftClicked = false;
-                                
+                                viewModel.isDraftClicked = true;
+                                viewModel.OnSaveDraftClicked();
+                                viewModel.isDraftClicked = false;
+
                                 break;
                             default:
                                 break;
@@ -341,14 +342,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                             viewModel.IsOthersAtachmentsVisible = true;
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            //if (viewModel.OtherAttachmentsListViewData == null)
-                            //{
-                            //    viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();
-                            //}
-                            //else
-                            //{
-                            //    viewModel.AttachmentsListViewData = viewModel.OtherAttachmentsListViewData;
-                            //}
                             return;
                         }
                 }
@@ -357,11 +350,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             {
             }
         }
-
-        /*private void SummarybtnContinue_Clicked(object sender, EventArgs e)
-        {
-            //Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
-        }*/
 
         private void OnIDNumberFocusChanged(object sender, FocusEventArgs focusEventArgs)
         {

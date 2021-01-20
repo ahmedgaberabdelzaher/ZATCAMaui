@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;

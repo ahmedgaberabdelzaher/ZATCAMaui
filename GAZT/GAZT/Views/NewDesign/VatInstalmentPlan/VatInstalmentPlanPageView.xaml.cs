@@ -26,7 +26,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         #region Variable
         VATInstalmentPlanViewModel viewModel;
 
-        double totalAmount = 0.0;
+        
         #endregion
 
         public VatInstalmentPlanPageView()
@@ -234,7 +234,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             }
             var dataItem = e.ItemData as VATResults4;
 
-            totalAmount = 0.0;
+           
 
             try
             {
@@ -242,7 +242,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 {
                     if (viewModel.selectedList.Contains(dataItem))
                     {
-                        // totalAmount -= Convert.ToDouble(dataItem.Betrh);
+                  
                         viewModel.selectedList.Remove(dataItem);
                     }
                     else

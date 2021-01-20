@@ -122,16 +122,16 @@ namespace GAZT.Manager
         }
         public static bool IsUserNameValid(string userName)
         {
-            bool isCorrectUserName = false;
+            
             foreach (char letter in userName.ToCharArray())
             {
                 if (letter <= 127)
                 {
-                    isCorrectUserName = true;
+                   
                 }
                 else
                 {
-                    isCorrectUserName = false;
+                   
                 }
             }
             Match UserNameMatch = Regex.Match(userName, EnglishString);
@@ -422,7 +422,7 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                     throw new InvalidDataException();
                 }
@@ -1012,7 +1012,7 @@ namespace GAZT.Manager
                     amountWithComma = _testDueAmount;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
             return amountWithComma;
@@ -1060,7 +1060,7 @@ namespace GAZT.Manager
 
         public static int FindTheAnswerIndexBasedOntheAnswerId(string QuestionNumber, string AnswerId, QUESCONFIG_MSet qUESCONFIG_MSet)
         {
-            int AnswerIndexInTheQuestionSet = -1;
+        
 
             IEnumerable<IGrouping<string, QuestionsetWithMinMax>> QuestionsGroupedByQuestionNo = GetQuestionsGroupedByQuestionNo(qUESCONFIG_MSet);
 

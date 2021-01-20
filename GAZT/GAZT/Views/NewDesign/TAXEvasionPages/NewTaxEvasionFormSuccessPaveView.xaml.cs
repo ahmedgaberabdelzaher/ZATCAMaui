@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -35,24 +33,6 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //try
-            //{
-            //    var existingPages = Navigation.NavigationStack.ToList();
-
-            //    foreach (var page in existingPages)
-            //    {
-            //        if (page.GetType().Name != App.NewTaxEvasionFormPageView)
-            //        {
-            //            Navigation.RemovePage(page);
-
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
-
         }
         private void SetLTR()
         {

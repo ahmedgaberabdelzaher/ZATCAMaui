@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Models;
 using Rg.Plugins.Popup.Pages;
@@ -18,29 +19,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             InitializeComponent();
             viewModel = App.Locator.QuickActionPopUpPageView;
             this.BindingContext = viewModel;
-            //ZAKATReturn.IsVisible = false;
-            //VATReturn.IsVisible = false;
-            //ReadInbox.IsVisible = false;
-            //GetSupport.IsVisible = false;
-            //CloseIcon.IsVisible = false;
-
-
             SetLTR();
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //ZAKATReturn.IsVisible = true;
-            //await ZAKATReturn.TranslateTo(0, -100, 2000);
-            //VATReturn.IsVisible = true;
-            //await VATReturn.TranslateTo(0, -100, 2000);
-            //ReadInbox.IsVisible = true;
-            //await ReadInbox.TranslateTo(0, -100, 2000);
-            //GetSupport.IsVisible = true;
-            //await GetSupport.TranslateTo(0, -100, 2000);
-            //CloseIcon.IsVisible = true;
-            //await CloseIcon.TranslateTo(0, -100, 2000);
+            
+             await    ZAKATReturn.TranslateTo(0, 500, 10);
+                await ReadInbox.TranslateTo(0, 500, 10);
+                await GetSupport.TranslateTo(0, 500, 10);
+         
+            ZAKATReturn.TranslateTo(0, 0, 800);
+            ReadInbox.TranslateTo(0, 0, 1000);
+            GetSupport.TranslateTo(0, 0, 1200);
 
 
         }
@@ -88,8 +80,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         }
 
-        private void OnCloseTapped(object sender, EventArgs e)
+        private async  void OnCloseTapped(object sender, EventArgs e)
         {
+            await Task.Run(async () =>
+            {
+
+                 ZAKATReturn.TranslateTo(0, 500, 1200);
+                 ReadInbox.TranslateTo(0, 500, 1200);
+                 GetSupport.TranslateTo(0, 500, 1200);
+            });
+
+           
+            
+            
             PopupNavigation.Instance.PopAsync();
         }
 

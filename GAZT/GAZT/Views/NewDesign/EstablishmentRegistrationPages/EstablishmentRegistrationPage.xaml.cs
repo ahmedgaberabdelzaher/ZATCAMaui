@@ -1,17 +1,10 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using EGAZT.Models;
-using EGAZT.ViewModel.NewDesignViewModel;
-using EGAZT.Views.NewDesign.GenericPickers;
-using GAZT.Helper;
-using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Linq;
-using GAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using System.Collections.ObjectModel;
 using System.Globalization;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.GenericPickers;
 using Rg.Plugins.Popup.Pages;

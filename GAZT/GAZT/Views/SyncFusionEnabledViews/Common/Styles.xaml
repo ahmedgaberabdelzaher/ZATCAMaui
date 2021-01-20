@@ -311,7 +311,7 @@
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="TextColor" Value="{DynamicResource Gray-700}"/>
     </Style>
-    <Style x:Key="ComboBoxStyle" TargetType="combobox:SfComboBox">
+    <!--<Style x:Key="ComboBoxStyle" TargetType="combobox:SfComboBox">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_REGULAR}"/>
         <Setter Property="TextSize" Value="16"/>
         <Setter Property="TextColor" Value="{DynamicResource Gray-700}"/>
@@ -319,7 +319,7 @@
         <Setter Property="WatermarkColor" Value="{DynamicResource Gray-700}"/>
         <Setter Property="Margin" Value="8,0"/>
         <Setter Property="HeightRequest" Value="40"/>
-    </Style>
+    </Style>-->
     <Style x:Key="EntryTextBoxStyle" TargetType="control:BorderlessEntry">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_REGULAR}"/>
         <Setter Property="FontSize" Value="16"/>

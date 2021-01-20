@@ -1774,7 +1774,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         {
 
                             SummaryData = _ZakatObjectionRequestSummary;
-                            
+
 
                             BindData(_ZakatObjectionRequestSummary);
 
@@ -1849,7 +1849,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
             var billsModel = new BillsModel();
 
-          
+
             billsModel.ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
 
             if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results != null && zakatObjectionRequestSummary.d.ZNOB_ObjSet.results.Count > 0)
@@ -1974,7 +1974,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         ZakatObjectionWithdrawPostModel.Metadata metaData = new ZakatObjectionWithdrawPostModel.Metadata();
 
 
-                        metaData.uri = result.d.__metadata.uri.Replace(SelectedFbNum ,"");
+                        metaData.uri = result.d.__metadata.uri.Replace(SelectedFbNum, "");
                         metaData.type = result.d.__metadata.type;
                         metaData.id = result.d.__metadata.id.Replace(SelectedFbNum, "");
 
@@ -2033,7 +2033,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         string mins = curr.ToString("mm");
                         string sec = curr.ToString("ss");
 
-                        string ATime = "PT" + hours + "H" + mins + "M"+ sec + "S";
+                        string ATime = "PT" + hours + "H" + mins + "M" + sec + "S";
 
                         postData.AAgreeTm = ATime;
 
@@ -2043,7 +2043,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
 
 
-                        
+
                         foreach (var item in ZakatWithdrawlData.d.results)
                         {
                             ZakatObjectionWithdrawPostModel.Metadata3 metaData1 = new ZakatObjectionWithdrawPostModel.Metadata3();
@@ -2803,7 +2803,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3047,7 +3047,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
