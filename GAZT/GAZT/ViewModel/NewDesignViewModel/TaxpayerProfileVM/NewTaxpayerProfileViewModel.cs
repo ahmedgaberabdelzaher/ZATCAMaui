@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using EGAZT.Models.TPProfile;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
@@ -228,9 +227,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                             break;
                         }
                     }
-                    //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-                    //_navigation.NavigationStack.ToList().Clear();
-
                     _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                     _navigation.NavigationStack.ToList().Clear();
                 });

@@ -394,24 +394,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             PickerModel = new GenericPickerModel();
             CreateIBANType();
-
-            //ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
-            //OutletContinueBtnTapped = new Command(this.OutletContinueBtnClicked);
-            //AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
-            //DeclarationContinueBtnTapped = new Command(this.DeclarationContinueBtnClicked);
-            //SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
-            //OnTinRegisrtationReasonDateTapped = new Command(this.OnTinRegisrtationReasonDateClicked);
-            //OnTinRegistrationReasonTapped = new Command(this.OnTinRegisrtationReasonClicked);
-            //TinDeregistrationModel = new TINDeregistrationModel();
-            //SelectedOutletOption = new TINDeregistrationModel();
-
-            //AddOutletDecisionOptions();
-            //PopulateAttachmentsListViewTemplate();
-            //PopulateSummaryReasonData();
-            //PopulateSummaryDeclarationData();
-
-            //EnableReasonView();
-
             OnMoreClicked = new Command(async () =>
             {
 
@@ -494,9 +476,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         }
         public async void VoidMsg()
         {
-            //var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
-            //if (answer)
-
 
             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -539,7 +518,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         VatNewReqSummaryData.Confirmfg = "";
             VatNewReqSummaryData.TcFg = "X";
 
-            //VatRefundsDisplayDataModel.Statusx = "E0013";
             VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
 
             try
@@ -553,7 +531,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 if (VatNewReqSummaryData.Operationx.Equals("05"))
                 {
-                    //  string number = response.d.Fbnumz;
                     App.selectedVATItem = VatNewReqSummaryData.Fbnumx;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -575,9 +552,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                         await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-                        // _navigationService.GoBack();
 
-                        //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
                     });
 
                     await Task.Run(() =>
@@ -585,8 +560,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         IsLoading = false;
                     });
 
-                    //string displayMessage = AppResources.VATRSaveasdraftMessage;
-                    //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                 }
 
 
@@ -826,7 +799,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 {
                     VarRefundIbanDataModelMetadataResult varRefundIbanDataModelMetadataResult = IbanData.FirstOrDefault();
                     IsAddAccountVisisble = false;
-                    //SelectedIbanData.Iban = varRefundIbanDataModelMetadataResult.Iban;
                     if (varRefundIbanDataModelMetadataResult.Iban == string.Empty)
                     {
                         IsAddAccountVisisble = true;
@@ -1128,9 +1100,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     VatNewReqSummaryData.RefundTp = "Refund Request";
                 }
             }
-
-            //OnSaveDraftClicked();
-
             Device.BeginInvokeOnMainThread(() =>
             {
                 _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
@@ -1144,10 +1113,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatRefundsDisplayDataModel.Operationx = "04";
             VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
             VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
-
             VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundTpParameter;
-
-            //VatRefundsDisplayDataModel.Statusx = "E0013";
             VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
 
             try

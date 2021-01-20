@@ -9,7 +9,6 @@ using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
-using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;

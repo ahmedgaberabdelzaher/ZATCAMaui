@@ -5,7 +5,6 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using EGAZT.Models;
 using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.Models.VATInstalmentModels;
 using EGAZT.Models.ZakatInstalationModels;
@@ -15,18 +14,16 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
-using PanCardView.Extensions;
 using Xamarin.Forms;
-using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlan;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.DisplayInstallmentAgreementSchedulePlan;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.VATInstalmentScheduleDetailsModel;
 using Application = Xamarin.Forms.Application;
 using Xamarin.Forms.Internals;
- 
+
 namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 {
-   
+
     [Preserve(AllMembers = true)]
     public class VATInstalmentPlanListViewModel : ViewModelBase
     {

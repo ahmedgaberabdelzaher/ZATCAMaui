@@ -1,8 +1,6 @@
 ﻿using EGAZT.Models.EnumModels;
 using GalaSoft.MvvmLight.Views;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel

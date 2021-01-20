@@ -793,22 +793,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     if (!string.IsNullOrEmpty(validateCR?.Crname) || PreLoadedLicenseItem != null)
                     {
                         CanExecute = true;
-                        //_navigationService.NavigateTo(App.ActivityItemAmendUpdatePage, new ActivityNavigationModels()
-                        //{
-                        //    openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,
-                        //    taxPayerDetails = taxPayerDetails,
-                        //    nextNumber = newNumber,
-                        //    validateCR = validateCR,
-                        //   // SelectedOutlet = selectedOutletItem,
-                        //    validateLicense = PreLoadedLicenseItem,
-                        //    //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
-                        //    //newActivityItems = activityItems,
-                        //    goBackAction = (List<Nreg_ActivityItem> list) =>
-                        //    {
-                        //        addActivities(list);
-                        //        currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
-                        //    }
-                        //});
                         currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
                     }
                     else
@@ -888,21 +872,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         outletItem.Oldmst = oldMstFlasg;
                         
                         outletItem.Actcat = SelectedOutletType == AppResources.MainOutlet ? "M" : SelectedOutletType == AppResources.SubOutlet ? "S" : "";
-                        // outletItem.Actcat = OutletActNumber == "000" ? "M" : "S";
-                        //outletItem.Conatt = "X";
                         taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
                         taxPayerDetails.StepNumberx = "03";
                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                         taxPayerDetails.UserTypx = "TP";
-
-                        //added to check null issue
-                        //OffNotes note = new OffNotes()
-                        //{
-                        //    Tdline = "",
-                        //    ByGpartz = App.LoginDataRetrieved.TIN
-                        //};
-                        //taxPayerDetails.off_notesSet = new OffNotesSet();
-                        //taxPayerDetails.off_notesSet.results = new List<OffNotes>();
 
                         taxPayerDetails.off_notesSet = new OffNotesSet(); // .results.Add(note);
                         taxPayerDetails.off_notesSet.results = new List<OffNotes>();
@@ -933,10 +906,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             SetUIAvailability();
             CanExecute = true;
-            //else
-            //{
-            //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-            //}
         }
         private async void addActivities(List<Nreg_ActivityItem> list)
         {
@@ -945,24 +914,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
                 var newList = new List<Nreg_ActivityItem>();
-                //newList.Insert(0, new Nreg_ActivityItem()
-                //{
-                //    ValidDateType = "X"
-                //});
                 newList.AddRange(list);
-                //newList.Insert(2, new Nreg_ActivityItem()
-                //{
-                //    Type = "ZS0007",
-                //    ValidDateType = "X",
-                //    Actno = OutletActNumber,
-                //    Actcat = "M"
-                //});
                 taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
-                // var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
-
                 var _taxPayerDetails = await WebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
                      );
-
                 taxPayerDetails?.AttDetSet.results?.Clear();
                 taxPayerDetails?.AttDetSet.results?.AddRange(_taxPayerDetails?.AttDetSet.results);
             }
@@ -1013,16 +968,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         });
                         ListOutlets = _outletTempData;
                         ListOutletTypes.Clear();
-
-                        //if (isMainOutletExists)
-                        //{
-                        //    ListOutletTypes.Add(AppResources.SubOutlet);
-                        //}
-                        //else
-                        //{
                         ListOutletTypes.Add(AppResources.ESTMainOutlet);
                         ListOutletTypes.Add(AppResources.ESTSubOutlet);
-                        // }
                         if (isMainOutletExists)
                             SelectedOutletType = AppResources.ESTSubOutlet;
                         else
@@ -1221,12 +1168,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
             {
-                //if (string.IsNullOrWhiteSpace(HouseNumber))
-                //{
-                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddHouseNumber));
-                //    return false;
-                //}
-                //else
+                
                 if (AddressDetails.BuildinNo && string.IsNullOrWhiteSpace(BuildingNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddBuildingNumber));
@@ -1262,11 +1204,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTInValidPostalCode));
                     return false;
                 }
-                //else if (string.IsNullOrWhiteSpace(AddNumber))
-                //{
-                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddAdditional));
-                //    return false;
-                //}
                 else if (AddressDetails.Country && Country == null)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCountry));
@@ -1282,11 +1219,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCity));
                     return false;
                 }
-                //if (string.IsNullOrWhiteSpace(HouseNumberSame))
-                //{
-                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddHouseNumber));
-                //    return false;
-                //}
                 if (AddressDetails.CBSameAsPhysical)
                 {
                     if (string.IsNullOrWhiteSpace(BuildingNumberSame))
@@ -1324,11 +1256,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("12345 is invalid postal's postal codes"));
                         return false;
                     }
-                    //else if (string.IsNullOrWhiteSpace(AddNumberSame))
-                    //{
-                    //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddAdditional));
-                    //    return false;
-                    //}
                     else if (CountrySame == null)
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCountry));
@@ -1353,11 +1280,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOutletName));
                     return false;
                 }
-                //else if (string.IsNullOrWhiteSpace(SelectedOutletType))
-                //{
-                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOutletType));
-                //    return false;
-                //}
             }
             return true;
         }

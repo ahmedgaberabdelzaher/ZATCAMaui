@@ -217,20 +217,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
                 await Task.Run(async () =>
                 {
-
-
-
                     IsLoading = true;
-
-
-
                     try
                     {
-                        //PopToRootPage();
-
                         GetZakatInstalmentPlanList();
 
-                        //result = await WebServiceManager.GAZTGetZakatInstalmentValidateNewReq();
                         IsLoading = false;
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
@@ -324,7 +315,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         {
             IsLoading = true;
 
-            // result = await WebServiceManager.GAZTGetZakatInstalmentValidateNewReq();
             DueInvoicesList = null;
             DueInvoicesListSet12 = null;
 
@@ -1338,25 +1328,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 NumberOfInstalmentPlans = ZakatListData.Count + " " + AppResources.ZakatInstalmetPlan;
             }
         }
-
-
-        //public ObservableCollection<ZakatRevokeList.Result> _revokList { get; set; }
-        //public ObservableCollection<ZakatRevokeList.Result> RevokList
-        //{
-        //    get
-        //    {
-        //        return _revokList;
-        //    }
-        //    set
-        //    {
-        //        if (_revokList == value)
-        //        {
-        //            return;
-        //        }
-        //        _revokList = value;
-        //        RaisePropertyChanged("RevokList");
-        //    }
-        //}
         public ObservableCollection<OldZakatSelectBillModel> summarySelectedBillsList { get; set; }
         public ObservableCollection<OldZakatSelectBillModel> SummarySelectedBillsList
         {

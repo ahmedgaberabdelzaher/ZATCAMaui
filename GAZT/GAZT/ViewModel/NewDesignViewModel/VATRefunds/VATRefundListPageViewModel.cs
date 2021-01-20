@@ -256,25 +256,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             IsSearchButtonVisible = true;
             IsCloseButtonVisible = false;
-
-            //PopulateVATRefundsList();
-
-            //GoBackBtnTapped = new Command(this.GoBackBtnClicked);
-            //ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
-            //OutletContinueBtnTapped = new Command(this.OutletContinueBtnClicked);
-            //AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
-            //DeclarationContinueBtnTapped = new Command(this.DeclarationContinueBtnClicked);
-            //SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
-            //OnTinRegisrtationReasonDateTapped = new Command(this.OnTinRegisrtationReasonDateClicked);
-            //OnTinRegistrationReasonTapped = new Command(this.OnTinRegisrtationReasonClicked);
-            //TinDeregistrationModel = new TINDeregistrationModel();
-            //SelectedOutletOption = new TINDeregistrationModel();
-
-            //AddOutletDecisionOptions();
-            //PopulateAttachmentsListViewTemplate();
-            //PopulateSummaryReasonData();
-            //PopulateSummaryDeclarationData();
-            //EnableReasonView();
         }
 
         public async void PopulateVATRefundsList()
