@@ -945,7 +945,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.ZakatRegistrationDetailsListPageView);
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-
         }
 
         private void VatRegistrationTile_Tapped(object sender, EventArgs e)

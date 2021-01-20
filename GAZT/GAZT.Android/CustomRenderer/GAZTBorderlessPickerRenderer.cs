@@ -18,6 +18,10 @@ namespace GAZT.Droid.CustomRenderer
 {
     public class GAZTBorderlessPickerRenderer: PickerRenderer
     {
+        public GAZTBorderlessPickerRenderer(Context context):base(context)
+        {
+
+        }
         public static void Init() { }
         protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)
         {

@@ -20,7 +20,6 @@ namespace GAZT.iOS.CustomRenderer
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Picker> e)
         {
             base.OnElementChanged(e);
-            // var fontSize = 10;// Device.GetNamedSize(NamedSize.Small, typeof(Label));
             if (Control != null)
             {
                 this.Control.BackgroundColor = UIColor.White;
@@ -29,13 +28,7 @@ namespace GAZT.iOS.CustomRenderer
                     this.Control.Font = UIFont.FromName("GE_SS_Two_Medium", 12);
                 else
                     this.Control.Font = UIFont.FromName("GE_SS_Two_Medium", 12);
-                // var element = (CustomPicker)this.Element;
-                //if (this.Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
-                //{
-                //    var downarrow = UIImage.FromBundle(element.Image);
-                //    Control.RightViewMode = UITextFieldViewMode.Always;
-                //    Control.RightView = new UIImageView(downarrow);
-                //}
+
                 if (App.IsArabic)
                 {
                     Control.TextAlignment = UITextAlignment.Right;

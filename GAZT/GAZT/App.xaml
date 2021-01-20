@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EGAZT.App"  
              xmlns:themes = "clr-namespace:GAZTeServicesApp.Themes;assembly=GAZT"
+             xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
                xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms">
     <Application.Resources>
         <ResourceDictionary>
@@ -24,6 +25,7 @@
             <!--SYNCFUSION INTEGRATION-->
             <Color x:Key="WhiteTextColor">#FFFFFF</Color>
             <Color x:Key="GrayTextColor">#c7c7c7</Color>
+            <Color x:Key="GrayLineBarColor">#EBEBEB</Color>
             <Color x:Key="DarkGrayTextColor">#909090</Color>
 
             <Color x:Key="DashboardGrayTextColor">#717171</Color>
@@ -88,7 +90,7 @@
             </OnPlatform>-->
             <Style x:Key="lineSeperator" TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="1"/>
-                <Setter Property="BackgroundColor" Value="{StaticResource GrayTextColor}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource GrayLineBarColor}"/>
             </Style>
             <Style x:Key="MiniGoldLabelStyle" x:Name="MiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
@@ -861,9 +863,12 @@
 
             <Style x:Key="GAZTEntry" TargetType="Entry">
               <Setter Property="HorizontalTextAlignment" Value="Start" />
+              <Setter Property="VerticalTextAlignment" Value="Center" />
               <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
               <Setter Property="FontSize" Value="Small" />
               <Setter Property="TextColor" Value="{DynamicResource VATRegistrationEntryTextColor}" />
+                <Setter Property="HeightRequest" Value="48" />
+                <Setter Property="WidthRequest" Value="171" />
             </Style>
 
 
@@ -912,8 +917,13 @@
                 <Setter Property="HasShadow" Value="False" />
 
             </Style>
-            
-           <!--Button Style-->
+
+            <Style x:Key="TextInputLayout" x:Name="TextInputLayout" TargetType="textInputLayout:SfTextInputLayout">
+                <Setter Property="OutlineCornerRadius" Value="14" />
+
+            </Style>
+
+            <!--Button Style-->
             
             <!--<Style x:Key="PrimaryButtonStyle" TargetType="buttons:SfButton">
                 <Setter Property="TextColor" Value="White" />
