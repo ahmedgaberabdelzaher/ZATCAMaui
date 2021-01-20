@@ -98,7 +98,7 @@
     <Style x:Key="PageTitleBlack" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
-         <Setter Property="LineHeight" Value="{OnPlatform Android=1.4,Default=.7}"/>
+        <!--<Setter Property="LineHeight" Value="{OnPlatform Android=1.4,Default=.7}"/>-->
         <Setter Property="FontSize" Value="28" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
@@ -610,7 +610,7 @@
 
     <Style x:Key="CardParentStacklayout" TargetType="StackLayout">
         <!--<Setter Property="Margin" Value="5,0,5,0" />-->
-        <Setter Property="Margin" Value="20,0,20,5" />
+        <Setter Property="Margin" Value="20,0,20,15" />
         <Setter Property="VerticalOptions" Value="EndAndExpand" />
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
     </Style>
@@ -626,7 +626,7 @@
         <Setter Property="TextColor" Value="White" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
     </Style>
-       <Style x:Key="SFTaxPayerProfile" TargetType="StackLayout">
+    <Style x:Key="SFTaxPayerProfile" TargetType="StackLayout">
         <Setter Property="HeightRequest" Value="80"/>
     </Style>
     <!--#endregion-->
@@ -637,6 +637,14 @@
     <Style x:Key="SmallIcon" TargetType="Image">
         <Setter Property="HeightRequest" Value="24" />
         <Setter Property="WidthRequest" Value="24" />
+    </Style>
+    <Style x:Key="ComponentIconSummaryPage" TargetType="Image">
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="WidthRequest" Value="48" />
+    </Style>
+    <Style x:Key="ComponentBoxIconSummaryPage" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="WidthRequest" Value="48" />
     </Style>
 
     <!--#endregion-->
@@ -669,14 +677,45 @@
     </Style>
 
     <!--#endregion-->
-       <!--#region Taxpayer Correspondence -->
+    <!--#region Taxpayer Correspondence -->
 
-        <Style x:Key="TPCorrCaptionLabelGrey" TargetType="Label">
+    <Style x:Key="TPCorrCaptionLabelGrey" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
         <Setter Property="FontSize" Value="16" />
     </Style>
-        <!--#endregion-->
+    <!--#endregion-->
 
+    <!--#region Component Styles -->
+
+    <Style x:Key="ComponentHeaderBlackBold" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+    <Style x:Key="ComponentTextBox" TargetType="custom:GAZTBorderlessEntry">
+        <Setter Property="HeightRequest" Value="80" />
+        <Setter Property="WidthRequest" Value="171" />
+    </Style>
+    <Style x:Key="ComponentGrayFrame" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#E2EFED" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HeightRequest" Value="56" />
+        <Setter Property="WidthRequest" Value="366" />
+
+    </Style>
+    <Style x:Key="ComponentFrameWithRadius14" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+    </Style>
+    <Style x:Key="ComponentStackWithHeight80" TargetType="StackLayout">
+        <Setter Property="HeightRequest" Value="80" />
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+
+    <!--#endregion-->
 
 </ResourceDictionary>

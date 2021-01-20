@@ -1,4 +1,5 @@
-﻿using GAZT.Manager;
+﻿using EGAZT.Models.Template;
+using GAZT.Manager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

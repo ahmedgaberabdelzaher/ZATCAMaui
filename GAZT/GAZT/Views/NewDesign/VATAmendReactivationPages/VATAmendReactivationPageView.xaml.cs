@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using EGAZT.Models.Template;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.Views.NewDesign.Common;
@@ -23,6 +24,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -44,6 +46,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
                 this.BindingContext = viewModel;
+                //importerExporterLV.ItemsSource = new List<ListViewCardTemplateModel> {
+                //new ListViewCardTemplateModel(){ CardLabel=AppResources.VATRImporter,},
+                //new ListViewCardTemplateModel(){CardLabel=AppResources.VATRExporter } };
+
                 ChangeAeroIcon();
                 clearDATA();
                 viewModel.SetVisibility();
@@ -53,23 +59,22 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsNewAccountClicked = false;
                 viewModel.IsInstrunctionChecked = false;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                //if (App.VATType == Enums.PageExecutionType.Amend)
+                //    lblPageTitle.Text = AppResources.ZZZZVatRegistrationAmendmentTile;
+                //else if (App.VATType == Enums.PageExecutionType.Reactivation)
+                //    lblPageTitle.Text = AppResources.ZZZZVatRegistrationReactivationTile;
+                //else if (App.VATType == Enums.PageExecutionType.Register)
+                //    lblPageTitle.Text = AppResources.ZZZZVatRegistrationTile;
                 // App.IsArabic = false;
                 // App.IsArabic = false;
                 viewModel.SetDefaultDate();
                 SetLTR();
-
                 Task.Run(async () =>
                 {
                     try
                     {
                         viewModel.IsLoading = true;
                         await GetVatRegistrationData();
-                        if (App.VATType == Enums.PageExecutionType.Amend)
-                            viewModel.PageTitle = AppResources.ZZZZVatRegistrationAmendmentTile;
-                        else if (App.VATType == Enums.PageExecutionType.Reactivation)
-                            viewModel.PageTitle = AppResources.ZZZZVatRegistrationReactivationTile;
-                        else if (App.VATType == Enums.PageExecutionType.Register)
-                            viewModel.PageTitle = AppResources.ZZZZVatRegistrationTile;
                         NewFRDOBField.IsVisible = false;
                         viewModel.SetUIAvailability();
                         if (!viewModel.IsChangeEmailChecked)
@@ -94,8 +99,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                     }
                 });
-
-
             }
             catch (Exception ex)
             {
@@ -555,7 +558,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
                     if (App.VATType == Enums.PageExecutionType.Amend)
                     {
-                        if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked&&!viewModel.IsChangeEmailChecked)
+                        if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
                         {
                             PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage));
                             return;
@@ -1185,6 +1188,9 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             try
             {
                 base.OnAppearing();
+                //var safeInsets = On<iOS>().SafeAreaInsets();
+                //safeInsets.Bottom = -10;
+                //this.Padding = safeInsets;
 
                 if (Device.RuntimePlatform == Device.Android)
                 {
@@ -1193,7 +1199,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 else
                 {
-                    Xamarin.Forms.NavigationPage.SetBackButtonTitle(this,"");
+                    Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                     //Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
                     DDlIDType.BackgroundColor = Color.FromHex("#FFFFFF");
                     DDlContactIDType.BackgroundColor = Color.FromHex("#FFFFFF");
@@ -1291,7 +1297,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         }
         public void setIban()
         {
-            if(viewModel.VATRegistrationDetailsData != null)
+            if (viewModel.VATRegistrationDetailsData != null)
             {
                 if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.OptIban))
                 {
@@ -1840,12 +1846,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
                 {
+                    //Resources["CardLabelDynamic"] = Resources["CardLabelBlack"];
                     viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
                     viewModel.ImporterTextColor = Color.Black;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
                 else
                 {
+                    //Resources["CardLabelDynamic"] = Resources["CardLabelWhite"];
                     viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
                     viewModel.ImporterTextColor = Color.White;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
@@ -1876,12 +1884,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
                 {
+                    //Resources["CardLabelDynamic"] = Resources["CardLabelBlack"];
                     viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
                     viewModel.ExporterTextColor = Color.Black;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
                 else
                 {
+                    // Resources["CardLabelDynamic"] = Resources["CardLabelWhite"];
                     viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
                     viewModel.ExporterTextColor = Color.White;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "1";
@@ -2078,7 +2088,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-                            if (viewModel.IsFDChangeSectionChecked || viewModel.IsAddAdditionalInfoChecked || viewModel.IsAddNewRepresentativeChecked||viewModel.IsChangeEmailChecked)
+                            if (viewModel.IsFDChangeSectionChecked || viewModel.IsAddAdditionalInfoChecked || viewModel.IsAddNewRepresentativeChecked || viewModel.IsChangeEmailChecked)
                             {
                                 //var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
                                 //if (result)
@@ -3164,9 +3174,9 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void btnDate_Clicked(object sender, EventArgs e)
         {
-           
-                SignUpDOB.IsOpen = true;
-         
+
+            SignUpDOB.IsOpen = true;
+
 
         }
 
@@ -4617,15 +4627,15 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         private void EntryEmail_Unfocused(object sender, FocusEventArgs e)
         {
             if (viewModel.VATRegistrationDetailsData.d.CONTACTDTSet.results != null)
-            {   
+            {
                 bool flag1 = IsValid(viewModel.ListFinanceRepresenatives[0].SmtpAddrFR);
                 bool flag = IsValid(viewModel.SmtpAddrFR);
-                if (!flag1|| (viewModel.IsAddNewRepresentativeChecked && !flag))
+                if (!flag1 || (viewModel.IsAddNewRepresentativeChecked && !flag))
                 {
                     ShowValidationPopup(AppResources.ZZPleaseenteravalidEmailAddress);
                     return;
                 }
-                
+
             }
         }
         public void ShowValidationPopup(string sourceString)
@@ -4761,7 +4771,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
 
         }
-        
+
         private void GoBackToTaxPayerDetails(object sender, EventArgs e)
         {
             viewModel.CurrentIndex = 2;
@@ -4815,7 +4825,48 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 SetfourthBoxColor();
                 if (viewModel.CurrentIndex == 3)
                     viewModel.CurrentIndex++;
-            }   
+            }
+        }
+
+        private void importerExporterLV_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            var selectedItem = e.AddedItems[0] as ListViewCardTemplateModel;
+            if (selectedItem.SelectedCardIcon == "vat_tile_IbanCard_background" && selectedItem.CardLabel == AppResources.VATRImporter)
+            {
+                viewModel.VATRegistrationDetailsData.d.ImFg = "1";
+            }
+            else if (selectedItem.SelectedCardIcon == "vat_tile_IbanCard_background" && selectedItem.CardLabel == AppResources.VATRExporter)
+            {
+                viewModel.VATRegistrationDetailsData.d.ExFg = "1";
+            }
+            else if (selectedItem.SelectedCardIcon == "vat_tile_IbanCard_background_white" && selectedItem.CardLabel == AppResources.VATRImporter)
+            {
+                viewModel.VATRegistrationDetailsData.d.ImFg = "0";
+            }
+            else if (selectedItem.SelectedCardIcon == "vat_tile_IbanCard_background_white" && selectedItem.CardLabel == AppResources.VATRExporter)
+            {
+                viewModel.VATRegistrationDetailsData.d.ExFg = "0";
+            }
+        }
+
+        private void SfCheckBox_StateChanged(object sender, Syncfusion.XForms.Buttons.StateChangedEventArgs e)
+        {
+            viewModel.IsFDChangeSectionEnabled = e.IsChecked == true ? true : false;
+        }
+
+        private void AddAdditionalInfo_StateChanged(object sender, Syncfusion.XForms.Buttons.StateChangedEventArgs e)
+        {
+            viewModel.IsTaxPayerIBANEnabled = e.IsChecked == true ? true : false;
+            viewModel.IsTaxPayerEligDateEnabled = e.IsChecked == true ? true : false;
+            // viewModel.IsAddAdditionalInfoChecked = true;
         }
     }
+    //public class ImporterExporter
+    //{
+    //    public string CardLabel { get; set; }
+    //    public string UnSelectedCardIcon { get; set; }
+    //    public string SelectedCardIcon { get; set; }
+    //    public bool IsSelectedCardIconVisible { get => !string.IsNullOrEmpty(SelectedCardIcon) && !string.IsNullOrWhiteSpace(SelectedCardIcon); }
+    //    public bool IsUnSelectedCardIconVisible { get => !string.IsNullOrEmpty(UnSelectedCardIcon) && !string.IsNullOrWhiteSpace(UnSelectedCardIcon); }
+    //}
 }
