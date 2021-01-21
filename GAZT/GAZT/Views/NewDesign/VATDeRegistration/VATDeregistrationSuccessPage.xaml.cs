@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
-using Newtonsoft.Json;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATDeRegistration
@@ -36,7 +34,15 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
             }
         }
-        private void SetLTR()
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+        }
+            private void SetLTR()
         {
             if (!App.IsArabic)
             {
@@ -61,12 +67,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
             if (Label_ApplicationNumber != null)
             {
-                Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+                await Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
                 if (Clipboard.HasText)
                 {
                     var text = await Clipboard.GetTextAsync();
                     var displayText = AppResources.VATRSAppNumber + " " + text;
-                    viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                    await viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
                 }
             }
 
@@ -83,7 +89,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -96,7 +103,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

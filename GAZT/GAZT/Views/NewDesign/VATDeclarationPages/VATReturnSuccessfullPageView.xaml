@@ -72,7 +72,7 @@
             </StackLayout>
             </ScrollView>
 
-            <yummy:PancakeView Grid.Row="2" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" Padding="0,10,0,0">
+            <yummy:PancakeView Grid.Row="2" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" Padding="0,10,0,40">
 
                 <Grid HorizontalOptions="FillAndExpand"
                       VerticalOptions="FillAndExpand" Padding="20,0,20,0">

@@ -59,14 +59,26 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="90*"/>
+                            <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Grid.Row="0" x:Name="lblPageTitle" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0" x:Name="lblPageTitle" Text="{Binding BindingContext.PageTitle,Source={x:Reference VATRegistration}}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center">
+                            <!--<Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding PageTitle}" Value="Amendment of VAT Registration">
+                                    <Setter Property="Text" Value="{x:Static custom2:AppResources.ZZZZVatRegistrationAmendmentTile}" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding PageType}" Value="7">
+                                    <Setter Property="Text" Value="{x:Static custom2:AppResources.ZZZZVatRegistrationReactivationTile}" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding PageType}" Value="8">
+                                    <Setter Property="Text" Value="{x:Static custom2:AppResources.ZZZZVatRegistrationTile}" />
+                                </DataTrigger>
+                            </Label.Triggers>-->
+                        </Label>
 
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
-                               Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource BackButtonArrow}" >
+                               Source="arrowLeftwhite"  Style="{DynamicResource BackButtonArrow}" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnBackTapped" />
                             </Image.GestureRecognizers>
@@ -228,7 +240,12 @@
                                                             </DataTrigger>
                                                         </CheckBox.Triggers>
                                                     </CheckBox>-->
-                                                    <buttons:SfCheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding InstAndCondition.CBAgreeCondition}" IsChecked="{Binding IsInstrunctionChecked}"/>
+                                                    <!--<buttons:SfCheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" 
+                                                                        IsEnabled="{Binding InstAndCondition.CBAgreeCondition}" 
+                                                                        IsChecked="{Binding IsInstrunctionChecked}"/>-->
+                                                    <custom1:CheckboxCustom  IsEnabled="{Binding InstAndCondition.CBAgreeCondition}" 
+                                                                        IsChecked="{Binding IsInstrunctionChecked}" Style="{StaticResource CheckboxHeightWidth32}"
+                                                                             x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" />
                                                     <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
@@ -383,14 +400,15 @@
 
 
                                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding BindingContext.TaxPayerDetails.AddInformationCBVisible,Source={x:Reference VATRegistration} }"  IsEnabled="{Binding BindingContext.TaxPayerDetails.AddInformationCB,Source={x:Reference VATRegistration} }">
-                                                        <!--<CheckBox   VerticalOptions="CenterAndExpand" IsEnabled="{Binding BindingContext.AddAdditionalInfoCheckBoxEnabled,Source={x:Reference VATRegistration}}" IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" CheckedChanged="AddAdditionalInfo_CheckedChanged">
-                                                            <CheckBox.Triggers>
-                                                                <DataTrigger TargetType="CheckBox"  Value="false">
-                                                                    <Setter Property="Color" Value="#ff0000" />
-                                                                </DataTrigger>
-                                                            </CheckBox.Triggers>
-                                                        </CheckBox>-->
-                                                        <buttons:SfCheckBox VerticalOptions="CenterAndExpand" IsEnabled="{Binding BindingContext.AddAdditionalInfoCheckBoxEnabled,Source={x:Reference VATRegistration}}" IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" StateChanged="AddAdditionalInfo_StateChanged"/>
+                                                        <custom1:CheckboxCustom   VerticalOptions="CenterAndExpand" Style="{StaticResource CheckboxHeightWidth32}"
+                                                                    IsEnabled="{Binding BindingContext.AddAdditionalInfoCheckBoxEnabled,Source={x:Reference VATRegistration}}" 
+                                                                    IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" 
+                                                                    CheckChanged="AddAdditionalInfo_CheckedChanged"/>
+
+                                                        <!--<buttons:SfCheckBox VerticalOptions="CenterAndExpand" 
+                                                                            IsEnabled="{Binding BindingContext.AddAdditionalInfoCheckBoxEnabled,Source={x:Reference VATRegistration}}" 
+                                                                            IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" 
+                                                                            StateChanged="AddAdditionalInfo_StateChanged"/>-->
 
                                                         <custom:CustomLabel   Style="{StaticResource ComponentHeaderBlackBold}">
                                                             <custom:CustomLabel.FormattedText>
@@ -1557,7 +1575,8 @@
                                                             </DataTrigger>
                                                         </CheckBox.Triggers>
                                                     </CheckBox>-->
-                                                    <buttons:SfCheckBox  VerticalOptions="CenterAndExpand"  IsChecked="{Binding IsFDChangeSectionChecked}" StateChanged="SfCheckBox_StateChanged"/>
+                                                    <custom1:CheckboxCustom VerticalOptions="CenterAndExpand"  IsChecked="{Binding IsFDChangeSectionChecked}" 
+                                                                         CheckChanged="FD_CheckedCanged" Style="{StaticResource CheckboxHeightWidth32}"/>
 
 
 
@@ -1957,9 +1976,9 @@
                                                                         </DataTrigger>
                                                                     </CheckBox.Triggers>
                                                                 </CheckBox>-->
-                                                                <buttons:SfCheckBox x:Name="cbChangeEmail"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding BindingContext.IsChangeEmailCheckBoxEnabled,Source={x:Reference VATRegistration}}" IsChecked="{Binding IsChangeEmailChecked}"/>
-                                                                <!--<Button HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
-                                                                    Clicked="ChangeMobileNumber_Tapped"/>-->
+                                                                <custom1:CheckboxCustom x:Name="cbChangeEmail"  HorizontalOptions="CenterAndExpand" Style="{StaticResource CheckboxHeightWidth32}"
+                                                                                        VerticalOptions="CenterAndExpand" IsEnabled="{Binding BindingContext.IsChangeEmailCheckBoxEnabled,Source={x:Reference VATRegistration}}" 
+                                                                                        IsChecked="{Binding IsChangeEmailChecked}"/>
                                                             </Grid>
                                                             <custom:CustomLabel   Style="{StaticResource ComponentHeaderBlackBold}" VerticalOptions="CenterAndExpand">
                                                                 <custom:CustomLabel.FormattedText>
@@ -1978,9 +1997,11 @@
                                                                         </DataTrigger>
                                                                     </CheckBox.Triggers>
                                                                 </CheckBox>-->
-                                                                <CheckBox x:Name="cbAddRepresentative" IsEnabled="{Binding  BindingContext.IsAddFinancialRepresentativeCheckBoxEnabled,Source={x:Reference VATRegistration}}" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsAddNewRepresentativeChecked}"/>
+                                                                <custom1:CheckboxCustom x:Name="cbAddRepresentative" Style="{StaticResource CheckboxHeightWidth32}"
+                                                                                        IsEnabled="{Binding  BindingContext.IsAddFinancialRepresentativeCheckBoxEnabled,Source={x:Reference VATRegistration}}" 
+                                                                                        HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsAddNewRepresentativeChecked}"/>
 
-                                                                <Button IsEnabled="{Binding  BindingContext.IsAddFinancialRepButtonEnabled,Source={x:Reference VATRegistration}}" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
+                                                                <Button  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
                                                                     Clicked="AddNewRepresentative_Tapped"/>
                                                             </Grid>
                                                             <custom:CustomLabel   Style="{StaticResource ComponentHeaderBlackBold}" VerticalOptions="CenterAndExpand">
@@ -2747,7 +2768,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             </Frame>
                                             <StackLayout>
                                                 <StackLayout Margin="0,20,0,0" Orientation="Horizontal">
-                                                    <buttons:SfCheckBox VerticalOptions="Start" IsChecked="{Binding IsDeclarationChecked}" IsEnabled="{Binding Declaration.AcknowledgementCB}"/>
+                                                    <custom1:CheckboxCustom VerticalOptions="Start" IsChecked="{Binding IsDeclarationChecked}" 
+                                                                            IsEnabled="{Binding Declaration.AcknowledgementCB}" Style="{StaticResource CheckboxHeightWidth32}"/>
                                                     <Label  Text="{x:Static custom2:AppResources.ZZZVATRDR1}" FontFamily="{StaticResource GAZTSmallGrayLblMediumFont}"/>
                                                 </StackLayout>
                                                 <Label Margin="0,20,0,15" Text="{x:Static custom2:AppResources.ZZZVATRDR2}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>

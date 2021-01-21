@@ -33,7 +33,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public static IsComeFromForAttachment IsComeFromForAttachment;
-        public string PageTitle { get; set; }
+        public string _pageTitle;
+        public string PageTitle
+        {
+            get => _pageTitle;
+            set
+            {
+                _pageTitle = value;
+                RaisePropertyChanged("PageTitle");
+            }
+        }
+        public int PageType { get; set; }
 
         #region Variable
 
@@ -1015,7 +1025,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             get
             {
                 return _isInstrunctionChecked;
-            }
+            } 
             set
             {
                 if (_isInstrunctionChecked == value) return;
@@ -2411,6 +2421,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
             _dialogService = dialogService;
 
+            if (App.VATType == Enums.PageExecutionType.Amend)
+            {
+                PageTitle = AppResources.ZZZZVatRegistrationAmendmentTile;
+                PageType = (int)Enums.PageExecutionType.Amend;
+            }
+            else if (App.VATType == Enums.PageExecutionType.Reactivation)
+            {
+                PageTitle = AppResources.ZZZZVatRegistrationReactivationTile;
+                PageType = (int)Enums.PageExecutionType.Reactivation;
+            }
+            else if (App.VATType == Enums.PageExecutionType.Register)
+            {
+                PageTitle = AppResources.ZZZZVatRegistrationTile;
+                PageType = (int)Enums.PageExecutionType.Register;
+            }
+
         }
 
         #region Method
@@ -2544,7 +2570,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                 if (IsChangeEmailChecked)
                 {
-                   
+
 
                     ResultsItemForContact contact = new ResultsItemForContact();
 
@@ -2567,13 +2593,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
 
 
-                   
+
                     VATRegistrationDetailsData.d.CONTACTDTSet.results.Add(contact);
 
                     var updatedContactList = VATRegistrationDetailsData.d.CONTACTDTSet.results.GroupBy(x => x.MobNumber).Select(x => x.First()).ToList();
                     VATRegistrationDetailsData.d.CONTACTDTSet.results = updatedContactList;
                 }
-                
+
                 if (IsDeclarationChecked)
                 {
                     VATRegistrationDetailsData.d.Decfg = "1";
