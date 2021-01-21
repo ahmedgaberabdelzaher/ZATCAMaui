@@ -5,6 +5,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:custom2="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
+              xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:models="clr-namespace:EGAZT.Models"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
@@ -82,7 +84,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <yummy:PancakeView Grid.Row="1" BackgroundColor="White" CornerRadius="15,15,0,0" Padding="0,0,0,0">
-                    <Grid RowSpacing="0" Padding="0,0,0,30">
+                    <Grid RowSpacing="0" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="*"/>
@@ -295,13 +297,14 @@
                     </CheckBox.Triggers>
                 </CheckBox>-->
                             <StackLayout Orientation="Horizontal">
-                                <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
-                                    <CheckBox.Triggers>
+
+                                <custom1:CheckboxCustom  x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
+                                    <!--<custom1:CheckboxCustom.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
                                             <Setter Property="Color" Value="#ff0000" />
                                         </DataTrigger>
-                                    </CheckBox.Triggers>
-                                </CheckBox>
+                                    </custom1:CheckboxCustom.Triggers>-->
+                                </custom1:CheckboxCustom >
 
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
                                     <custom:CustomLabel.FormattedText>
@@ -2086,9 +2089,13 @@
                             <StackLayout Spacing="-5">
                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" Style="{StaticResource CaptionLabelGrey}" />
 
-                                <StackLayout HorizontalOptions="Start" WidthRequest="150"  VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchVisible}">
-                                     <syncfusion:SfCheckBox x:Name="checkBox" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" CheckedColor="{StaticResource Primary}" UncheckedColor="{StaticResource Primary}"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" />
-                                    <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource BodyLabelBlack}"  Margin="0,5,0,5" Padding="0"/>
+                                <StackLayout HorizontalOptions="Start" WidthRequest="150"  Padding="0,5,0,5" VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchVisible}">
+                                     <!--<syncfusion:SfCheckBox x:Name="checkBox" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" CheckedColor="{StaticResource Primary}" UncheckedColor="{StaticResource Primary}"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" />-->
+                                    <custom1:CheckboxCustom  IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Style="{StaticResource CheckboxHeightWidth32}"
+                                                                               VerticalOptions="CenterAndExpand" />
+                                     
+
+                                    <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource CaptionLabelBlack}"  Margin="0,5,0,5" Padding="0"/>
 
                                     <!--<Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Margin="0,5,0,5"  />-->
                                    
@@ -2634,13 +2641,13 @@
                             <!--VAT On Total End-->
 
                             <StackLayout Orientation="Horizontal">
-                                <CheckBox x:Name="chkForDeclarationSummary" VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsSummaryCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForSummary}">
-                                    <CheckBox.Triggers>
+                                 <custom1:CheckboxCustom x:Name="chkForDeclarationSummary" VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsSummaryCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForSummary}">
+                                    <!--<custom1:CheckboxCustom.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkForDeclarationSummary}, Path=IsChecked}" Value="false">
                                             <Setter Property="Color" Value="#ff0000" />
                                         </DataTrigger>
-                                    </CheckBox.Triggers>
-                                </CheckBox>
+                                    </custom1:CheckboxCustom.Triggers>-->
+                                </custom1:CheckboxCustom>
                                 <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
@@ -2676,17 +2683,17 @@
 
 
 
-            <StackLayout BackgroundColor="White" Grid.Row="1" Margin="15,0,15,0"  VerticalOptions="FillAndExpand" Padding="0,0,0,10">
+            <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="FillAndExpand" Padding="0,0,0,40">
 
-                <buttons:SfButton x:Name="btnamend"   VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
+                <buttons:SfButton  x:Name="btnamend"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
-                <buttons:SfButton x:Name="btnprimary"   VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
+                <buttons:SfButton x:Name="btnprimary"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
-                <buttons:SfButton Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
+                <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
 
-                <buttons:SfButton Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
+                <buttons:SfButton  Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
 
-                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
+                <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
             </StackLayout>
 
         </Grid>
