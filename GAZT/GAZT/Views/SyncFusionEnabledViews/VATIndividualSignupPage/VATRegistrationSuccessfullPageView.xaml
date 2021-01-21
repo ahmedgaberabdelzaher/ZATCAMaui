@@ -15,6 +15,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="10"/>
@@ -39,8 +40,8 @@
                                          Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
                     </Image.Source>
                 </Image>-->
-                
-                <Image Source="vat_ic_success.png"   Aspect="AspectFit"/>
+
+                <Image Source="Forget_ic_success"   Aspect="AspectFit"/>
                 <Label Text="{x:Static custom2:AppResources.VATRSRegistrationSuccessful}" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
                 <Label Text="{x:Static custom2:AppResources.VATRSRegisteredToVATService}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
@@ -51,14 +52,14 @@
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
                         <StackLayout Orientation="Horizontal" Padding="10" >
                                 <Label Text="{x:Static custom2:AppResources.VATRSName}"  VerticalOptions="Center" FontSize="12" TextColor="#909090"  HorizontalOptions="StartAndExpand"/>
-                                <Label x:Name="Label_Name"   FontSize="16" TextColor="#010101" VerticalOptions="Center"  HorizontalOptions="EndAndExpand"/>
+                                <Label x:Name="Label_Name"   FontSize="16"  VerticalOptions="Center"  HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}"/>
                         </StackLayout>
                     </Frame>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
                         <StackLayout Orientation="Horizontal" Padding="10">
                                 <Label Text="{x:Static custom2:AppResources.VATRSAppNumber}" VerticalOptions="Center" FontSize="12" TextColor="#909090"   HorizontalOptions="StartAndExpand"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                    <Label x:Name="Label_ApplicationNumber" Text="" FontSize="16" VerticalOptions="Center" TextColor="#010101" />
+                                    <Label x:Name="Label_ApplicationNumber" Text="" FontSize="16" VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
                                 <Image>
                                     <Image.Source>
                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
@@ -74,7 +75,7 @@
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,10" HasShadow="False">
                         <StackLayout Orientation="Horizontal" Padding="10">
                                 <Label Text="{x:Static custom2:AppResources.Date}" VerticalOptions="Center" FontSize="12" TextColor="#909090"   HorizontalOptions="StartAndExpand"/>
-                                <Label x:Name="Label_Date"  FontSize="16" TextColor="#010101" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                                <Label x:Name="Label_Date"  FontSize="16" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}"/>
                         </StackLayout>
                     </Frame>
                         <!--VATRgotologinpage-->

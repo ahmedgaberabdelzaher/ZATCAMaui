@@ -110,7 +110,7 @@
             <Grid>
 
                 <!--Selection Page-->
-                <Grid IsVisible="{Binding IsVATLandingPageVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsVATLandingPageVisible}" BackgroundColor="Transparent"  Margin="20,0,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -185,7 +185,7 @@
 
 
                 <!--VAT Instalment Plan Page-->
-                <Grid IsVisible="{Binding IsVATInstalmentPlanVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsVATInstalmentPlanVisible}" BackgroundColor="Transparent"  Margin="20,0,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -279,7 +279,7 @@
 
                 <!--Summary View-->
 
-                                <Grid IsVisible="{Binding IsInstalmentSchedulePlanVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Grid IsVisible="{Binding IsInstalmentSchedulePlanVisible}" BackgroundColor="Transparent"  Margin="20,0,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -588,7 +588,7 @@
 
                 <!--DisplayPageList-->
 
-                <Grid IsVisible="{Binding IsDisplayListVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsDisplayListVisible}" BackgroundColor="Transparent"  Margin="20,0,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -695,7 +695,7 @@
 
                 <!-- Display Details Page-->
 
-                <Grid IsVisible="{Binding IsDisplayDetailsVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsDisplayDetailsVisible}" BackgroundColor="Transparent"  Margin="20,0,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
