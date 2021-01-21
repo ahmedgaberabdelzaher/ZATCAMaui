@@ -9,7 +9,6 @@ using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
-using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -852,21 +851,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsDeclarationContinueButtonEnabled");
             }
         }
-        //public ObservableCollection<VATDeregistrationModel> outletDocumentOptions { get; set; }
-        //public ObservableCollection<VATDeregistrationModel> OutletDocumentOptions
-        //{
-        //    get
-        //    {
-        //        return outletDocumentOptions;
-        //    }
 
-        //    set
-        //    {
-
-        //        outletDocumentOptions = value;
-        //        RaisePropertyChanged("OutletDocumentOptions");
-        //    }
-        //}
 
         public ObservableCollection<ResultsAttachmentItemForElgblDocSet> _attachmentTypes { get; set; }
         public ObservableCollection<ResultsAttachmentItemForElgblDocSet> AttachmentTypes
@@ -2089,6 +2074,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (response != null)
                 {
                     _navigationService.NavigateTo(App.VATDeregistrationSuccessPage, response);
+
                 }
             }
             catch (GAZTUnlockAccountException ex)

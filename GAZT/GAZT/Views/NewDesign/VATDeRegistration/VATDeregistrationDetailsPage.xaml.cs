@@ -22,6 +22,7 @@ using Rg.Plugins.Popup.Services;
 using Syncfusion.XForms.TextInputLayout;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATDeRegistration
@@ -257,6 +258,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             ChangeArrowDirection();
             MessagingCenterCallBacks();
 
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
             if (viewModel.VATDeRegistrationDetailsData != null)
             {
                 if (viewModel.VATDeRegistrationDetailsData.d != null)
@@ -1413,34 +1417,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             viewModel.EnableDeclarationView();
         }
 
-        //async void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (viewModel.VatAttachmentsList != null)
-        //        {
-        //            await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(viewModel.VatAttachmentsList.ToList(), Models.ZakatInstalationModels.WhichAttachment.VATDeregistration, viewModel.VATDeRegistrationDetailsForAttach.d.ReturnIdx));
-        //            // await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(AttachmentsListViewData.ToList(), Models.ZakatInstalationModels.WhichAttachment.VATInstalment, VatInstalments.d.ReturnIdz));
-        //        }
-        //    }
-        //    catch (GAZTUnlockAccountException ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //    catch (InternetException ex)
-        //    {
-        //        Device.BeginInvokeOnMainThread(async () =>
-        //        {
-        //            //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-        //            //_navigationService.GoBack();
-        //        });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //    // viewModel.AddAttachmentEx();
-        //}
 
         async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
         {

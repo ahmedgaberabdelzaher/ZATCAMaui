@@ -4720,7 +4720,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Attachments-Audited Reports</value>
   </data>
   <data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
-    <value>New Attachment(Optional)</value>
+    <value>New Attachment (Optional)</value>
   </data>
   <data name="VatDeregAttachmentInputsize" xml:space="preserve">
     <value>20MB</value>
