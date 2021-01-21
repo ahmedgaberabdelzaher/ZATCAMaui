@@ -172,7 +172,6 @@
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%403x.png" />
     <Compile Include="DependencyServices\StatusBarImplementation.cs" />
     <BundleResource Include="Resources\ic_Delete_disabled%403x.png" />
-    <Compile Include="CustomRenderer\HybridWebViewRenderer.cs" />
     <Compile Include="CustomRenderer\TransitionNavigationPageRenderer.cs" />
     <Compile Include="CustomRenderer\HybridCustomWebViewRenderer.cs" />
     <BundleResource Include="Resources\service_6%403x.png" />
@@ -445,7 +444,6 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="Xamarin.iOS" />
     <Reference Include="Syncfusion.SfRotator.iOS">
       <HintPath>..\GAZT\GAZTDLL\iOS\Syncfusion.SfRotator.iOS.dll</HintPath>
     </Reference>

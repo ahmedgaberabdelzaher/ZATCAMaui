@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using GAZT.iOS.CustomRenderer;
+﻿using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;

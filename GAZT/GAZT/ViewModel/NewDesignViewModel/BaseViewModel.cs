@@ -27,10 +27,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-
-        
-
-
         public BaseViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -60,9 +56,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             break;
                         }
                     }
-                    //_navigationService.NavigateTo(App.SFLoginPageView);
-                    //_navigation.NavigationStack.ToList().Clear();
-
                     _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                     _navigation.NavigationStack.ToList().Clear();
                 });

@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using EGAZT;
-using Foundation;
 using GAZT;
-using GAZT.CustomControl;
 using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using Xamarin.Forms.PlatformConfiguration;
 [assembly: ExportRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {

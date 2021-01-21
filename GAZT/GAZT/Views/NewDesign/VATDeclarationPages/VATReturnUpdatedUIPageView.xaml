@@ -18,6 +18,7 @@
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
+                 xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
              FlowDirection="RightToLeft"
              x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.GAZTNewDesignVATReturnUpdatedUIPageView"
              BackgroundImageSource="partials_background.png">
@@ -48,7 +49,7 @@
 
             <Style TargetType="Frame" x:Key="circleFrame">
                 <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}"/>
-                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="CornerRadius" Value="25"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="Padding" Value="10"/>
                 <Setter Property="HeightRequest" Value="25"/>
@@ -1306,7 +1307,7 @@
                         <custom:CustomLabel Text="Adjustment" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="1" ></custom:CustomLabel>
                         <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="1" ></custom:CustomLabel>-->
 
-                                        <yummy:PancakeView  Grid.Row="21" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ADD8E6" Padding="0,0,0,0"  Margin="0,0,0,0">
+                                        <yummy:PancakeView  Grid.Row="21" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#E7EFED" Padding="0,0,0,0"  Margin="0,0,0,0">
                                             <StackLayout  Padding="0,0,0,8" Margin="10,0,10,0">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZVATAmount}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
                                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
@@ -2009,7 +2010,7 @@
                         <custom:CustomLabel Text="Adjustment" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="1" ></custom:CustomLabel>
                         <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="1" ></custom:CustomLabel>-->
 
-                                    <yummy:PancakeView  Grid.Row="27" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ADD8E6" Padding="0,0,0,0"  Margin="0,0,0,0">
+                                    <yummy:PancakeView  Grid.Row="27" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#E7EFED" Padding="0,0,0,0"  Margin="0,0,0,0">
                                         <StackLayout  Padding="0,0,0,8" Margin="10,0,10,0">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVatAmountonPurchase}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
                                             <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
@@ -2083,8 +2084,11 @@
                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" Style="{StaticResource CaptionLabelGrey}" />
 
                                 <StackLayout HorizontalOptions="Start" WidthRequest="150"  VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchVisible}">
+                                     <syncfusion:SfCheckBox x:Name="checkBox" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" CheckedColor="{StaticResource Primary}" UncheckedColor="{StaticResource Primary}"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" />
                                     <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}"  Margin="0,5,0,5" Padding="0"/>
-                                    <Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Margin="0,5,0,5"  />
+
+                                    <!--<Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Margin="0,5,0,5"  />-->
+                                   
                                 </StackLayout>
 
                                 <inputLayout:SfTextInputLayout  InputViewPadding="16,0,16,0" Style="{StaticResource InputTableTextInputLayoutStyle}" UnfocusedColor="#B1B1B1" x:Name="EntryPreperiodcorrFrame" ErrorColor="#B00020" HasError="False" Margin="0">
@@ -2114,7 +2118,7 @@
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
-                            <Frame  BackgroundColor="LightBlue" Padding="10" HasShadow="False" CornerRadius="15" Margin="0">
+                            <Frame  BackgroundColor="#E7EFED" Padding="10" HasShadow="False" CornerRadius="15" Margin="0">
                                 <Grid Padding="5,0,5,0" ColumnSpacing="0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>

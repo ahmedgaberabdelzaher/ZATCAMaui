@@ -853,7 +853,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             GoBackClick = new Command(() => { BackNavigations(); });
             BillContinueBtnTapped = new Command(async () =>
             {
-                //EnableDetailsView();
                 await GetWithdrawFBNums();
                 VATReferanceNumber = SelectedFbNum;
                 EnableSummaryView();
@@ -891,21 +890,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (VATReferanceNumber != null)
                 {
                     String downloadurl = Constants.ZOdownloadAckLetter + "'" + VATReferanceNumber + "')/$value";
-                    //await WebServiceManager.FileDownload(downloadurl, "pdf");
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
-
-
-
 
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
-
-
-
             });
             ZDownloadForm = new Command(async () =>
             {
@@ -915,8 +907,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 });
                 if (VATReferanceNumber != null)
                 {
-                    String downloadurl = Constants.ZOdownloadCoverFormFile + "'" + VATReferanceNumber + "')/$value";
-                    //await WebServiceManager.FileDownload(downloadurl, "pdf");
+                    string downloadurl = Constants.ZOdownloadCoverFormFile + "'" + VATReferanceNumber + "')/$value";
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
@@ -924,13 +915,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 {
                     IsLoading = false;
                 });
-
-
-
             });
-
-
-
 
             WithdrawBtnTapped = new Command(async () =>
             {
@@ -939,25 +924,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (IsWithDrawEnable)
                 {
 
-
-
                     await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.CRContinue,
                 _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                     .Instructions));
 
-
-
-
-                    //GAZTGetZakatWithDrawDDData
                     await GetWithdrawReviewReason();
                     EnableWithdrawObjectionDetails();
-                }
-                else
-                {
-
-                    /*
-                                        VATReferanceNumber = SelectedFbNum;
-                                        await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());*/
                 }
             });
 
@@ -971,21 +943,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
             IsWithDrawDetailsTapped = new Command(() =>
             {
-
-
                 EnableWithdrawAttachments();
-                // await WithdrawSubmitClicked();
-
-
             });
 
 
             WithdrawAttachmentTapped = new Command(this.WithdrawAttachmentTappedAsync);
             WithdrawAttachmentTappedTwo = new Command(this.WithdrawAttachmentTappedAsyncTwo);
             WithdrAttachmentsContinueTapped = new Command(SubmitClicked);
-
-
-
         }
 
         private void BackNavigations()
@@ -1009,8 +973,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     EnableAttachmentsView();
                     break;
                 case (int)PagesEnum.Summary:
-                    //EnableDeclarationView();
-                    //EnableBillContinue();
                     _navigationService.GoBack();
                     break;
                 case (int)PagesEnum.WithdrawObjectiondetails:
@@ -1460,22 +1422,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
         public void OnPageLoad()
         {
-
             SelectedFbNum = Preferences.Get("ZakatObjectionSelectedValue", "");
             SelectedFbType = Preferences.Get("ZakatObjectionSelectedType", "");
-
             ZakatRequestObjectionSummary(SelectedFbNum);
-
-
-
-            EnableSummaryView();
-
-            //EnableBillContinue();
-
-            // EnableSummaryView();
-
-
-
         }
 
 
@@ -1511,10 +1460,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                                 IsSubmitEnable = true;
                                 IsWithDrawEnable = false;
                             }
-
-
-
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
 
                         else
@@ -1539,9 +1484,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -1551,9 +1493,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -1592,9 +1531,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZakatObjectionWDDropdownModel _ZAKATObjectionWithDraw = new ZakatObjectionWDDropdownModel();
                     try
                     {
-
-
-
                         //Data binding for withdraw objection details
                         _ZAKATObjectionWithDraw = await WebServiceManager.GAZTGetZakatWithDrawDDData(SelectedFbNum);
 
@@ -1673,7 +1609,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             }
                             PeriodFrom = formatedDate1;
                             PeriodTo = formatedDate11;
-                            //DisplaTaxType = _ZAKATObjectionWithDraw.d.results[0].ATaxTy;
 
                             if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ITAX"))
                             {
@@ -1688,7 +1623,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             AssessmentAmount = _ZAKATObjectionWithDraw.d.results[0].AAssnmtAmt;
                             DisplayRevisedAmount = _ZAKATObjectionWithDraw.d.results[0].ARevAmt;
                             DisplayDisputeAmount = _ZAKATObjectionWithDraw.d.results[0].ADisputeAmt;
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
 
 
@@ -1715,9 +1649,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -1727,9 +1658,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -1805,9 +1733,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -1817,9 +1742,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -1865,7 +1787,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 {
                     billsModel.TaxType = AppResources.FORM5Zakat;
                 }
-                // billsModel.TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
                 billsModel.AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
 
                 bills.Add(billsModel);
@@ -1885,7 +1806,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom);
                 }
                 ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
-                //TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
 
                 if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
                 {
@@ -2048,11 +1968,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         {
                             ZakatObjectionWithdrawPostModel.Metadata3 metaData1 = new ZakatObjectionWithdrawPostModel.Metadata3();
                             ZobjItemsSet obj1 = new ZobjItemsSet();
-                            //metaData1.uri = item.__metadata.uri;
-                            //metaData1.type = item.__metadata.type;
-                            //metaData1.id = item.__metadata.id;
-                            //obj1.__metadata = metaData1;
-
                             obj1.ASel = "1";
                             obj1.ACurr = "SAR";
                             obj1.ARefNo = item.ARefNo;
@@ -2069,7 +1984,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             {
                                 DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
                             };
-                            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                             var jsonDateTime1 = JsonConvert.SerializeObject(dt1.Date, microsoftDateFormatSettings2);
                             string[] dateList1 = jsonDateTime1.Split('+');
                             jsonDateTime1 = Regex.Replace(dateList1[0], "[@,\\.\";'\\\\]", string.Empty);
@@ -2083,7 +1997,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             {
                                 DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
                             };
-                            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                             var jsonDateTime2 = JsonConvert.SerializeObject(dt2.Date, microsoftDateFormatSettings1);
                             string[] dateList2 = jsonDateTime2.Split('+');
                             jsonDateTime2 = Regex.Replace(dateList2[0], "[@,\\.\";'\\\\]", string.Empty);
@@ -2144,10 +2057,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         {
                             DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
                         };
-                        //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                         var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
                         string[] dateList = jsonDateTime.Split('+');
-                        //jsonDateTime = dateList[0].Replace("\"\\", "").Replace("\\/\"", "");
                         jsonDateTime = Regex.Replace(dateList[0], "[@,\\.\";'\\\\]", string.Empty);
 
                         postData.AReceiveDt = jsonDateTime;
@@ -2194,9 +2105,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -2206,9 +2114,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2252,9 +2157,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZAKATObjectionCreateNew != null && _ZAKATObjectionCreateNew.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
-                        }
 
+                        }
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2277,9 +2181,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -2289,9 +2190,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2336,9 +2234,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZAKATObjectionDetailsByReferenceNumber != null && _ZAKATObjectionDetailsByReferenceNumber.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
-                        }
 
+                        }
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2361,9 +2258,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -2373,9 +2267,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2418,9 +2309,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZAKATObjectionDetailsToAmendReturn != null && _ZAKATObjectionDetailsToAmendReturn.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
-                        }
 
+                        }
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2443,9 +2333,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -2455,9 +2342,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2500,9 +2384,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZAKATObjectionAmendReturnAndClose != null && _ZAKATObjectionAmendReturnAndClose.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
-                        }
 
+                        }
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2525,9 +2408,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -2537,9 +2417,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2582,9 +2459,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZAKATObjectionOnPaymentMethodSelection != null && _ZAKATObjectionOnPaymentMethodSelection.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2607,9 +2482,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -2619,9 +2491,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2664,9 +2533,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZAKATObjectionApplicationDetailsIfStatusIP017 != null && _ZAKATObjectionApplicationDetailsIfStatusIP017.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2689,9 +2556,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -2701,9 +2565,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2746,9 +2607,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZAKATObjectionGenerateSADADNumber != null && _ZAKATObjectionGenerateSADADNumber.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2771,9 +2630,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -2783,9 +2639,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2828,9 +2681,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZAKATObjectionBusyIndicator != null && _ZAKATObjectionBusyIndicator.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2853,9 +2704,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -2865,9 +2713,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2934,9 +2779,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -2946,9 +2788,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2990,9 +2829,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_IntialLoadData != null && _IntialLoadData.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3015,9 +2852,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -3027,9 +2861,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -3071,9 +2902,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZakatRemoveObjection != null && _ZakatRemoveObjection.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3096,9 +2925,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -3108,9 +2934,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -3152,9 +2975,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZakatRemoveObjectionACK != null && _ZakatRemoveObjectionACK.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3177,9 +2998,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -3189,9 +3007,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -3235,9 +3050,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZakatWithdrawMainData != null && _ZakatWithdrawMainData.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3260,9 +3073,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -3272,9 +3082,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -3316,9 +3123,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZakatObjectionWithDrawList != null && _ZakatObjectionWithDrawList.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3341,9 +3146,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -3353,9 +3155,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -3397,9 +3196,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_ZakatObjectionWDDropdown != null && _ZakatObjectionWDDropdown.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3422,9 +3219,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -3434,9 +3228,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -3478,9 +3269,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         if (_Attachment != null && _Attachment.d != null)
                         {
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3503,9 +3292,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
                 await Task.Run(() =>
@@ -3515,9 +3301,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;

@@ -1,5 +1,4 @@
-﻿using System;
-using EGAZT.CustomControl;
+﻿using EGAZT.CustomControl;
 using Xamarin.Forms.Internals;
 using GAZT.iOS.CustomRenderer;
 using UIKit;

@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using Foundation;
 using UIKit;
-using CoreGraphics;
 using GAZT.iOS.CustomRenderer;
 using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(Page), typeof(KeyboardRender))]

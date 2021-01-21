@@ -12,6 +12,15 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
                  x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.FileAttachmentPopUpPageView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+                <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
         <Grid>
             <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
@@ -55,8 +64,8 @@
                     </Label>
                 </Grid>
 
-                <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="0,0,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="0,0,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="5,10,5,0" Style="{StaticResource BodyLabelGrey}" FontSize="12"/>
+                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="5,0,5,0" Style="{StaticResource BodyLabelGrey}" FontSize="12"/>
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
 
                 <ListView ItemsSource="{Binding AttachmentList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" x:Name="List" HeightRequest="300"  ItemTapped="Attachmentlist_ItemTapped" SeparatorVisibility="None">
