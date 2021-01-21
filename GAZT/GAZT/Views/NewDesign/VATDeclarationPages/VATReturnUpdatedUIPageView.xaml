@@ -75,12 +75,14 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid >
+                
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <yummy:PancakeView Grid.Row="1" BackgroundColor="White" CornerRadius="15,15,0,0" Padding="0,0,0,0">
-                    <Grid RowSpacing="0">
+                    <Grid RowSpacing="0" Padding="0,0,0,30">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="*"/>
@@ -155,6 +157,7 @@
                     </Grid>
                 </yummy:PancakeView>
                 <Grid Padding="15,10,15,10" Grid.Row="0">
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
@@ -2085,7 +2088,7 @@
 
                                 <StackLayout HorizontalOptions="Start" WidthRequest="150"  VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchVisible}">
                                      <syncfusion:SfCheckBox x:Name="checkBox" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" CheckedColor="{StaticResource Primary}" UncheckedColor="{StaticResource Primary}"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" />
-                                    <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}"  Margin="0,5,0,5" Padding="0"/>
+                                    <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource BodyLabelBlack}"  Margin="0,5,0,5" Padding="0"/>
 
                                     <!--<Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Margin="0,5,0,5"  />-->
                                    
@@ -2615,7 +2618,7 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Preperiodcorr}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
                                     </StackLayout>
-                                    <StackLayout BackgroundColor="LightBlue" Orientation="Horizontal" Padding="10">
+                                    <StackLayout BackgroundColor="#E7EFED" Orientation="Horizontal" Padding="10">
                                         <Label   VerticalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>

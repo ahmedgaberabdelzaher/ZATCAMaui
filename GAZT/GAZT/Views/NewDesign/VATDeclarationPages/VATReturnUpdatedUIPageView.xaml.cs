@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -34,7 +35,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 InitializeComponent();
                 viewModel = App.Locator.GAZTNewDesignVATReturnUpdatedUIPageView;
                 this.BindingContext = viewModel;
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+              //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
                 SetLTR();
                
@@ -991,6 +992,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         protected async override void OnAppearing()
         {
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = 0;
+          
+            this.Padding = safeInsets;
             if (Device.RuntimePlatform == Device.iOS)
             {
                 viewModel.IsSwitchVisible = true;
