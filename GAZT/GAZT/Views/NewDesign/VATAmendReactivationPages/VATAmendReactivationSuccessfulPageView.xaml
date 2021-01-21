@@ -60,12 +60,7 @@
                                 <Label Text="{x:Static custom2:AppResources.VATRSAppNumber}" VerticalOptions="Center" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand"/>
                                 <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                     <Label x:Name="Label_ApplicationNumber" Text="" VerticalOptions="Center" Style="{StaticResource BodyLabelBlackMedium}" />
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
-                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
-                                        </Image.Source>
-                                    </Image>
+                                    <Image Source="MainGrayCopy" Style="{StaticResource SmallIcon}"/>
                                 </StackLayout>
                             </StackLayout>
                             <Frame.GestureRecognizers>

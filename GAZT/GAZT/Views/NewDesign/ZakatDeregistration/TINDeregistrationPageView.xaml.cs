@@ -21,6 +21,7 @@ using Syncfusion.ListView.XForms;
 using Syncfusion.XForms.Cards;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -118,6 +119,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
             ChangeArrowDirection();
 
             SetDate();
@@ -436,7 +440,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 return x;
             }).ToList();
 
-            GetSelectedDataTemplate(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
+            //GetSelectedDataTemplate(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
         }
         void GetSelectedDataTemplate(bool isIndex1 = false)
         {

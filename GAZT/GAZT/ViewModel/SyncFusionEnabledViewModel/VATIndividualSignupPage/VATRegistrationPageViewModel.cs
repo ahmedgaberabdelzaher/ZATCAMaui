@@ -1795,14 +1795,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = SmtpAddrFR;
                 
                 //Step 5
-                if (IsDeclarationChecked)
-                {
+               /* if (IsDeclarationChecked)
+                {*/
                     VATRegistrationDetailsData.d.Decfg = "1";
-                }
+                /*}
                 else
                 {
                     VATRegistrationDetailsData.d.Decfg = "0";
-                }
+                }*/
                 if (SelectedIdTypeSR != null)
                 {
                     VATRegistrationDetailsData.d.DecidTy = SelectedIdTypeSR.ID;
@@ -2084,15 +2084,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                             //Step 5
                             
-                            if (vATRegistration.d.Decfg == "1")
-                            {
+                           /* if (vATRegistration.d.Decfg == "1")
+                            {*/
                                 IsDeclarationChecked = true;
                                 //VATRegistrationDetailsData.d.Decfg = "1";
-                            }
+                            /*}
                             else if (vATRegistration.d.Decfg == "0")
                             {
                                 IsDeclarationChecked = false;
-                            }
+                            }*/
                             if (vATRegistration.d.AgrFg != null)
                             {
                                 if (vATRegistration.d.AgrFg == "1")
