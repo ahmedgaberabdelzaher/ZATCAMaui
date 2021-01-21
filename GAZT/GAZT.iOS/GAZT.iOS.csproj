@@ -1087,4 +1087,19 @@
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MainGrayCopy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MainGrayCopy%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MainGrayCopy%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\unchecked_box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\checked_box.png" />
+  </ItemGroup>
 </Project>

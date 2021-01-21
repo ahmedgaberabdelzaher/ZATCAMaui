@@ -23,6 +23,12 @@ namespace EGAZT.Models
         public string ActiveOutletDecisionOptions { get; set; }
         public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
         public string OutletOptionIndex { get; set; }
+        [JsonIgnore]
+        public string CardLabel { get => ActiveOutletDecisionOptions; }
+        [JsonIgnore]
+        public string UnSelectedCardIcon { get; set; } = "vat_tile_IbanCard_background_white";
+        [JsonIgnore]
+        public string SelectedCardIcon { get; set; } = "vat_tile_IbanCard_background";
 
     }
     [Preserve(AllMembers = true)]
@@ -315,8 +321,11 @@ namespace EGAZT.Models
         public string ADeregSelectedReasonValue { get; set; }
 
         [JsonProperty("ADregOpt")]
-        public string ADregOpt { get;
-            set; }
+        public string ADregOpt
+        {
+            get;
+            set;
+        }
 
         [JsonProperty("ADocumnt9")]
         public string ADocumnt9 { get; set; }
@@ -476,7 +485,7 @@ namespace EGAZT.Models
         [JsonProperty("PeriodKeyz")]
         public string PeriodKeyz { get; set; }
 
-       
+
 
         [JsonProperty("OfficerUidz")]
         public string OfficerUidz { get; set; }
@@ -840,7 +849,7 @@ namespace EGAZT.Models
         [JsonProperty("Visdel")]
         public string Visdel { get; set; }
 
-       
+
     }
 
     [Preserve(AllMembers = true)]
@@ -856,7 +865,7 @@ namespace EGAZT.Models
             }
         }
 
-         [JsonIgnore]
+        [JsonIgnore]
         public OutletSetResult[] _results { get; set; }
 
         [JsonProperty("results")]
@@ -1067,7 +1076,7 @@ namespace EGAZT.Models
         }
     }
     [Preserve(AllMembers = true)]
-    public class PermitSetResult:INotifyPropertyChanged
+    public class PermitSetResult : INotifyPropertyChanged
     {
         public PermitSetResult()
         {
@@ -1106,7 +1115,9 @@ namespace EGAZT.Models
 
         private string _aPermitNm6Tb;
         [JsonProperty("APermitNm6Tb")]
-        public string APermitNm6Tb { get => _aPermitNm6Tb;
+        public string APermitNm6Tb
+        {
+            get => _aPermitNm6Tb;
             set
             {
                 _aPermitNm6Tb = value;
@@ -1140,7 +1151,9 @@ namespace EGAZT.Models
 
         private string _aPermitNm5Tb;
         [JsonProperty("APermitNm5Tb")]
-        public string APermitNm5Tb { get => _aPermitNm5Tb;
+        public string APermitNm5Tb
+        {
+            get => _aPermitNm5Tb;
             set
             {
                 _aPermitNm5Tb = value;
@@ -1150,7 +1163,9 @@ namespace EGAZT.Models
 
         private string _aPermitNm7Tb;
         [JsonProperty("APermitNm7Tb")]
-        public string APermitNm7Tb { get => _aPermitNm7Tb;
+        public string APermitNm7Tb
+        {
+            get => _aPermitNm7Tb;
             set
             {
                 _aPermitNm7Tb = value;
@@ -1174,8 +1189,12 @@ namespace EGAZT.Models
         public string aPermitEffDtTb;
 
         [JsonProperty("APermitEffDtTb")]
-        public string APermitEffDtTb { get { return aPermitEffDtTb; } set
-            { if (!string.IsNullOrEmpty(value)) { aPermitEffDtTb = value; OnPropertyRaised("APermitEffDtTb"); } } }
+        public string APermitEffDtTb
+        {
+            get { return aPermitEffDtTb; }
+            set
+            { if (!string.IsNullOrEmpty(value)) { aPermitEffDtTb = value; OnPropertyRaised("APermitEffDtTb"); } }
+        }
 
         [JsonProperty("APermitEffDtHTb")]
         public string APermitEffDtHTb { get; set; }
@@ -1227,7 +1246,7 @@ namespace EGAZT.Models
         }
         [JsonIgnore]
         private bool isDOBHijiri { get; set; }
-        
+
         [JsonIgnore]
         public bool IsDOBHijiri
         {
@@ -1241,7 +1260,7 @@ namespace EGAZT.Models
                 else
                     APermitDeregDisplayDobDate = UtilityManager.HijriToGreg(APermitDeregDisplayDobDate);
                 if (!string.IsNullOrEmpty(APermitDeregDisplayDobDate))
-                APermitDobTb = UtilityManager.ConvertDateFormat(APermitDeregDisplayDobDate);
+                    APermitDobTb = UtilityManager.ConvertDateFormat(APermitDeregDisplayDobDate);
                 isDOBHijiri = value;
                 OnPropertyRaised("IsDOBHijiri");
             }
@@ -1276,12 +1295,12 @@ namespace EGAZT.Models
         {
             get
             {
-                if(aPermitDregRsnTb == null)
+                if (aPermitDregRsnTb == null)
                 {
                     return string.Empty;
                 }
                 else
-                return aPermitDregRsnTb;
+                    return aPermitDregRsnTb;
             }
             set
             {
@@ -1291,7 +1310,7 @@ namespace EGAZT.Models
                     if (!String.IsNullOrEmpty(aPermitDregRsnTb))
                     {
                         APermitIsReasonSelected = true;
-                        if(value == "1")
+                        if (value == "1")
                         {
                             APermitDisplayReason = AppResources.TinDeregistrationClosed;
                             ReasonDescription = AppResources.TinDeregistrationClosed;
@@ -1318,7 +1337,7 @@ namespace EGAZT.Models
         {
             get
             {
-                if(aPermitIdNoTb == null)
+                if (aPermitIdNoTb == null)
                 {
                     return string.Empty;
                 }
@@ -1333,23 +1352,23 @@ namespace EGAZT.Models
                     Task.Run(async () =>
                     {
 
-                            string resultData = await WebServiceManager.GAZTGetTInNumberData(value);
+                        string resultData = await WebServiceManager.GAZTGetTInNumberData(value);
                         string _responseData = JObject.Parse(resultData)["d"].ToString();
                         VATSignUpD IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
                         if (_responseData != null)
+                        {
+
+
+                            IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
+                            if (idType != null)
                             {
-                                
-
-                                IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
-                                if (idType != null)
-                                {
-                                    APermitDobHTb = IDTypeDataModel.TaxpDob;
-                                    APermitIdTypeTb = idType.key;
-                                    APermitTransTinTb = IDTypeDataModel.Tin;
-                                }
-
+                                APermitDobHTb = IDTypeDataModel.TaxpDob;
+                                APermitIdTypeTb = idType.key;
+                                APermitTransTinTb = IDTypeDataModel.Tin;
                             }
-                        
+
+                        }
+
                     });
                 }
                 OnPropertyRaised("APermitIdNoTb");
@@ -1357,7 +1376,7 @@ namespace EGAZT.Models
         }
 
         [JsonIgnore]
-        private string aPermitTransTinTb=string.Empty;
+        private string aPermitTransTinTb = string.Empty;
 
         [JsonProperty("APermitTransTinTb")]
         public string APermitTransTinTb
@@ -1372,15 +1391,16 @@ namespace EGAZT.Models
                 aPermitTransTinTb = value;
                 if (!string.IsNullOrEmpty(value.Trim()))
                 {
-                   
-                        if(value?.Trim().Length == 10 && !string.IsNullOrWhiteSpace(aPermitIdNoTb))
-                        {
+
+                    if (value?.Trim().Length == 10 && !string.IsNullOrWhiteSpace(aPermitIdNoTb))
+                    {
                         Task.Run(async () =>
                         {
                             string resultData = await WebServiceManager.GAZTGetTInNumberData(aPermitIdNoTb);
                             string _responseData = JObject.Parse(resultData)["d"].ToString();
                             VATSignUpD IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
-                            if (_responseData != null) { 
+                            if (_responseData != null)
+                            {
                                 //VATSignUpD IDTypeDataModel = new VATSignUpD();
                                 //IDTypeDataModel = resultData.d;
 
@@ -1414,7 +1434,7 @@ namespace EGAZT.Models
             set
             {
                 _iBANTypesList = value;
-               
+
                 OnPropertyRaised("IBANTypesList");
             }
         }
@@ -1447,35 +1467,42 @@ namespace EGAZT.Models
         }
 
         [JsonIgnore]
-            public string aPermitIdTypeTb;
-            [JsonProperty("APermitIdTypeTb")]
-            public string APermitIdTypeTb { get {
+        public string aPermitIdTypeTb;
+        [JsonProperty("APermitIdTypeTb")]
+        public string APermitIdTypeTb
+        {
+            get
+            {
                 return aPermitIdTypeTb;
-            } set { aPermitIdTypeTb = value;
+            }
+            set
+            {
+                aPermitIdTypeTb = value;
 
-                if(aPermitIdTypeTb == "ZS0001")
+                if (aPermitIdTypeTb == "ZS0001")
                 {
                     PermitIdTypeName = AppResources.TinDeregistrationNationalID;
                     APermitIsCompanyId = false;
                 }
-                else if(aPermitIdTypeTb == "ZS0005")
+                else if (aPermitIdTypeTb == "ZS0005")
                 {
                     PermitIdTypeName = AppResources.TinDeregistrationCompanyID;
                     APermitIsCompanyId = true;
                 }
-                else if(aPermitIdTypeTb == "ZS0002")
+                else if (aPermitIdTypeTb == "ZS0002")
                 {
                     PermitIdTypeName = AppResources.TinDeregistrationIQAMANumber;
                     APermitIsCompanyId = false;
                 }
-                else if(aPermitIdTypeTb == "ZS0003")
+                else if (aPermitIdTypeTb == "ZS0003")
                 {
                     PermitIdTypeName = AppResources.TinDeregistrationGCCID;
                     APermitIsCompanyId = false;
                 }
 
                 OnPropertyRaised("APermitIdTypeTb");
-        } }
+            }
+        }
 
         private bool _aPermitEditable = false;
         [JsonIgnore]
@@ -1491,7 +1518,8 @@ namespace EGAZT.Models
 
         private bool _aPermitIsCompanyId = false;
         [JsonIgnore]
-        public bool APermitIsCompanyId {
+        public bool APermitIsCompanyId
+        {
             get => _aPermitIsCompanyId;
             set
             {
@@ -1508,7 +1536,9 @@ namespace EGAZT.Models
 
         private string _aPermitNm3Tb;
         [JsonProperty("APermitNm3Tb")]
-        public string APermitNm3Tb { get => _aPermitNm3Tb;
+        public string APermitNm3Tb
+        {
+            get => _aPermitNm3Tb;
             set
             {
                 _aPermitNm3Tb = value;
@@ -1518,7 +1548,9 @@ namespace EGAZT.Models
 
         private string _aPermitNm4Tb;
         [JsonProperty("APermitNm4Tb")]
-        public string APermitNm4Tb { get => _aPermitNm4Tb;
+        public string APermitNm4Tb
+        {
+            get => _aPermitNm4Tb;
             set
             {
                 _aPermitNm4Tb = value;
@@ -1539,12 +1571,16 @@ namespace EGAZT.Models
         private string permitIdTypeName;
         [JsonIgnore]
         public string PermitIdTypeName
-        { get { return permitIdTypeName; } set {
+        {
+            get { return permitIdTypeName; }
+            set
+            {
 
                 permitIdTypeName = value;
                 OnPropertyRaised("PermitIdTypeName");
 
-            } }
+            }
+        }
 
         [JsonIgnore]
         private string _reasonDescription { get; set; }
@@ -1619,7 +1655,7 @@ namespace EGAZT.Models
     [Preserve(AllMembers = true)]
     public partial class FieldValidations : INotifyPropertyChanged
     {
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyRaised(string propertyname)
         {

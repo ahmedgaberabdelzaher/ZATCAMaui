@@ -44,11 +44,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 viewModel = App.Locator.VATAmendReactivationPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-
                 this.BindingContext = viewModel;
-                //importerExporterLV.ItemsSource = new List<ListViewCardTemplateModel> {
-                //new ListViewCardTemplateModel(){ CardLabel=AppResources.VATRImporter,},
-                //new ListViewCardTemplateModel(){CardLabel=AppResources.VATRExporter } };
+
 
                 ChangeAeroIcon();
                 clearDATA();
@@ -59,14 +56,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsNewAccountClicked = false;
                 viewModel.IsInstrunctionChecked = false;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
-                //if (App.VATType == Enums.PageExecutionType.Amend)
-                //    lblPageTitle.Text = AppResources.ZZZZVatRegistrationAmendmentTile;
-                //else if (App.VATType == Enums.PageExecutionType.Reactivation)
-                //    lblPageTitle.Text = AppResources.ZZZZVatRegistrationReactivationTile;
-                //else if (App.VATType == Enums.PageExecutionType.Register)
-                //    lblPageTitle.Text = AppResources.ZZZZVatRegistrationTile;
-                // App.IsArabic = false;
-                // App.IsArabic = false;
                 viewModel.SetDefaultDate();
                 SetLTR();
                 Task.Run(async () =>
@@ -449,7 +438,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         public async Task<bool> step4Validation()
         {
             bool flag = true;
-          
+
             if (viewModel.IsDeclarationChecked == true)
             {
                 if (viewModel.SelectedIdTypeFR == null || FrmIDType.HasError)
@@ -514,7 +503,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                 //viewModel.IsContinueButtonEnable = false;
             }
-           
+
             return await Task.FromResult(flag);
         }
         public async void step5Validation()
@@ -1185,9 +1174,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             try
             {
                 base.OnAppearing();
-                //var safeInsets = On<iOS>().SafeAreaInsets();
-                //safeInsets.Bottom = -10;
-                //this.Padding = safeInsets;
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
+
+                App.IsArabic = false;
 
                 if (Device.RuntimePlatform == Device.Android)
                 {
@@ -3646,7 +3637,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3928,7 +3919,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         });
                     });
                 }
-                catch (HttpRequestException )
+                catch (HttpRequestException)
                 {
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -4562,12 +4553,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         }
 
-        private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
-            viewModel.IsTaxPayerEligDateEnabled = ((CheckBox)sender).IsChecked;
-            // viewModel.IsAddAdditionalInfoChecked = true;
-        }
+        //private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        //{
+        //    viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
+        //    viewModel.IsTaxPayerEligDateEnabled = ((CheckBox)sender).IsChecked;
+        //    // viewModel.IsAddAdditionalInfoChecked = true;
+        //}
 
         private void FDChangeSection_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
@@ -4856,6 +4847,23 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             viewModel.IsTaxPayerIBANEnabled = e.IsChecked == true ? true : false;
             viewModel.IsTaxPayerEligDateEnabled = e.IsChecked == true ? true : false;
             // viewModel.IsAddAdditionalInfoChecked = true;
+        }
+
+        private void AddAdditionalInfo_CheckedChanged(object sender, bool e)
+        {
+            viewModel.IsTaxPayerIBANEnabled = e;
+            viewModel.IsTaxPayerEligDateEnabled = e;
+            // viewModel.IsAddAdditionalInfoChecked = true;
+        }
+
+        private void SfCheckBox_StateChanged(object sender, bool e)
+        {
+
+        }
+
+        private void FD_CheckedCanged(object sender, bool e)
+        {
+            viewModel.IsFDChangeSectionEnabled = e;
         }
     }
     //public class ImporterExporter

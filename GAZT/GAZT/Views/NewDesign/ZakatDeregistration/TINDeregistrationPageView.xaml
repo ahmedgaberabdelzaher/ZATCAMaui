@@ -9,6 +9,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:local="clr-namespace:EGAZT.Helper"
+             xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
              xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
@@ -22,6 +23,8 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
                 <Setter Property="FontSize" Value="12" />
             </Style>
+            <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector"/>
+            <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector"/>
             <converters:ValueTypeToVisibilityConverter x:Key="valueTypeToVisibilityConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -160,8 +163,9 @@
                                       IsScrollingEnabled="False" AutoFitMode="Height"  VerticalOptions="Center"
                                       Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemSpacing="5" IsVisible="{Binding IsOutletDecisionOptionsLVVisible}"
                                       ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption}"  SelectionMode="Single"
-                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
-                        <listView:SfListView.ItemTemplate>
+                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" 
+                                         ItemTemplate="{StaticResource UnselectedItemTemplateSelector}" SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}">
+                        <!--<listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid  BackgroundColor="Transparent"  HeightRequest="100">
                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
@@ -172,7 +176,7 @@
                                     </Grid>
                                 </Grid>
                             </DataTemplate>
-                        </listView:SfListView.ItemTemplate>
+                        </listView:SfListView.ItemTemplate>-->
                         <!--<listView:SfListView.SelectedItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView HasShadow="True" BackgroundColor="Green" CornerRadius="20" HeightRequest="100">
@@ -288,7 +292,7 @@
                         </Grid>
 
                     </StackLayout>
-                   
+
 
                     <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption2Visible}">
 
@@ -433,15 +437,15 @@
                             </StackLayout>
 
                             <StackLayout >
-                                      <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZIDType}"/>
-                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
-                         
+                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZZIDType}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
@@ -462,16 +466,16 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding IdNumberText.IsVisible}">
-                                      <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.IDNumber}"/>
-                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
-                         
-                                
+                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.IDNumber}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
@@ -615,15 +619,15 @@
                         <StackLayout>
 
                             <StackLayout IsVisible="{Binding FirstNameText.IsVisible}">
-                              <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"/>
-                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
-                         
+                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
@@ -639,15 +643,15 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding SurnameText.IsVisible}">
-                                     <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}"/>
-                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
-                
+                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
@@ -917,7 +921,7 @@
                                                                 <StackLayout Grid.Row="4" Grid.Column="0" Spacing="-5">
                                                                     <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5" > 
+                                                                <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5" >
                                                                     <Label Text="{Binding APermitDeregDisplayDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                                 </StackLayout>
                                                                 <StackLayout Grid.Row="5" Grid.Column="0" Spacing="-5">
@@ -1251,7 +1255,7 @@
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
             </Grid>
-          
+
 
             <ScrollView IsVisible="{Binding IsDeclarationViewEnabled}">
                 <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -1400,7 +1404,7 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZSummary}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlack}" />
+                                            Style="{StaticResource PageTitleBlack}" />
                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />

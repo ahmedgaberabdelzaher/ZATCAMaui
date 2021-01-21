@@ -718,4 +718,13 @@
 
     <!--#endregion-->
 
+    <!--#region Checkbox -->
+
+    <Style x:Key="CheckboxHeightWidth32" TargetType="ContentView">
+        <Setter Property="HeightRequest" Value="32" />
+        <Setter Property="WidthRequest" Value="32" />
+    </Style>
+
+    <!--#endregion-->
+
 </ResourceDictionary>
