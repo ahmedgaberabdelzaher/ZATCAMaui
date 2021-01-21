@@ -2205,6 +2205,12 @@
                                             </Image>
                                         </Frame>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}" Style="{StaticResource SectionTitleBlack}"/>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="2" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsControlEnabled}" VerticalTextAlignment="Center" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}"/>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
+
                                     </StackLayout>
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -2245,7 +2251,7 @@
                                             <custom:CustomLabel Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}" Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                         </Grid>
                                     </StackLayout>
-                                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                                    <!--<BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
                                     <custom:CustomLabel HorizontalOptions="Start" Padding="10" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -2256,16 +2262,14 @@
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistationFirstNote}"></Span>
                                                 <Span Text="&#160;"/>
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZZZChageOfRegistration}" TextColor="{StaticResource Primary}" >
-                                                    <!--<Span.GestureRecognizers>
-                                                        <TapGestureRecognizer  Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}" />
-                                                    </Span.GestureRecognizers>-->
+                                                  
                                                 </Span>
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                         <custom:CustomLabel.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}"/>
                                         </custom:CustomLabel.GestureRecognizers>
-                                    </custom:CustomLabel>
+                                    </custom:CustomLabel>-->
                                 </StackLayout>
 
                             </border:SfBorder>
