@@ -41,6 +41,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             try
             {
                 InitializeComponent();
+                Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsAddAdditionalInfoCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsFDChangeSectionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsChangeEmailCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 viewModel = App.Locator.VATAmendReactivationPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
@@ -1192,8 +1198,49 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     DDlIDType.BackgroundColor = Color.FromHex("#FFFFFF");
                     DDlContactIDType.BackgroundColor = Color.FromHex("#FFFFFF");
                 }
-
                 string message = string.Empty;
+                MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
+                {
+                    if (res)
+                        Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    else
+                        Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                });
+                MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsDeclarationChecked", (obj, res) =>
+                {
+                    if (res)
+                        Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    else
+                        Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                });
+                MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsAddAdditionalInfoChecked", (obj, res) =>
+                {
+                    if (res)
+                        Resources["IsAddAdditionalInfoCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    else
+                        Resources["IsAddAdditionalInfoCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                });
+                MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsFDChangeSectionChecked", (obj, res) =>
+                {
+                    if (res)
+                        Resources["IsFDChangeSectionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    else
+                        Resources["IsFDChangeSectionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                });
+                MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", (obj, res) =>
+                {
+                    if (res)
+                        Resources["IsChangeEmailCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    else
+                        Resources["IsChangeEmailCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                });
+                MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsAddNewRepresentativeChecked", (obj, res) =>
+                {
+                    if (res)
+                        Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    else
+                        Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                });
                 MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) => { PopupNavigation.Instance.PopAsync(); });
                 MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
                 {
@@ -4713,6 +4760,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.MobNumberSum =
                     viewModel.SmtpAddrSum = string.Empty;
                     viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.FirstOrDefault()?.Name;
+                    Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
                 }
                 else
                 {
@@ -4736,6 +4784,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.MobNumberSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].MobNumber;
                     viewModel.SmtpAddrSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].SmtpAddr;
                     viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
+                    Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 }
             }
         }
@@ -4866,12 +4915,4 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             viewModel.IsFDChangeSectionEnabled = e;
         }
     }
-    //public class ImporterExporter
-    //{
-    //    public string CardLabel { get; set; }
-    //    public string UnSelectedCardIcon { get; set; }
-    //    public string SelectedCardIcon { get; set; }
-    //    public bool IsSelectedCardIconVisible { get => !string.IsNullOrEmpty(SelectedCardIcon) && !string.IsNullOrWhiteSpace(SelectedCardIcon); }
-    //    public bool IsUnSelectedCardIconVisible { get => !string.IsNullOrEmpty(UnSelectedCardIcon) && !string.IsNullOrWhiteSpace(UnSelectedCardIcon); }
-    //}
 }

@@ -243,10 +243,10 @@
                                                     <!--<buttons:SfCheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" 
                                                                         IsEnabled="{Binding InstAndCondition.CBAgreeCondition}" 
                                                                         IsChecked="{Binding IsInstrunctionChecked}"/>-->
-                                                    <custom1:CheckboxCustom  IsEnabled="{Binding InstAndCondition.CBAgreeCondition}" 
+                                                    <custom1:CheckboxCustom  IsEnabled="{Binding InstAndCondition.CBAgreeCondition}"
                                                                         IsChecked="{Binding IsInstrunctionChecked}" Style="{StaticResource CheckboxHeightWidth32}"
-                                                                             x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" />
-                                                    <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                                                                        x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand"/>
+                                                    <custom:CustomLabel   Style="{DynamicResource IsInstrunctionCheckedStyle}">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
                                                                 <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}"  />
@@ -410,10 +410,10 @@
                                                                             IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" 
                                                                             StateChanged="AddAdditionalInfo_StateChanged"/>-->
 
-                                                        <custom:CustomLabel   Style="{StaticResource ComponentHeaderBlackBold}">
+                                                        <custom:CustomLabel  Style="{DynamicResource IsAddAdditionalInfoCheckedStyle}">
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{x:Static custom2:AppResources.VATRTPDetailsAdditionalInformation}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"  />
+                                                                    <Span Text="{x:Static custom2:AppResources.VATRTPDetailsAdditionalInformation}" />
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
                                                         </custom:CustomLabel>
@@ -1580,10 +1580,10 @@
 
 
 
-                                                    <custom:CustomLabel   Style="{StaticResource ComponentHeaderBlackBold}">
+                                                    <custom:CustomLabel  Style="{DynamicResource IsFDChangeSectionCheckedStyle}">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{x:Static custom2:AppResources.VATAmendRegistrationFinancialDetailsChangeSection}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"  />
+                                                                <Span Text="{x:Static custom2:AppResources.VATAmendRegistrationFinancialDetailsChangeSection}" />
                                                             </FormattedString>
                                                         </custom:CustomLabel.FormattedText>
                                                     </custom:CustomLabel>
@@ -1980,7 +1980,7 @@
                                                                                         VerticalOptions="CenterAndExpand" IsEnabled="{Binding BindingContext.IsChangeEmailCheckBoxEnabled,Source={x:Reference VATRegistration}}" 
                                                                                         IsChecked="{Binding IsChangeEmailChecked}"/>
                                                             </Grid>
-                                                            <custom:CustomLabel   Style="{StaticResource ComponentHeaderBlackBold}" VerticalOptions="CenterAndExpand">
+                                                            <custom:CustomLabel Style="{DynamicResource IsChangeEmailCheckedStyle}" VerticalOptions="CenterAndExpand">
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static custom2:AppResources.ZZZAmendFinancialRepCheck}"  />
@@ -2004,7 +2004,7 @@
                                                                 <Button  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
                                                                     Clicked="AddNewRepresentative_Tapped"/>
                                                             </Grid>
-                                                            <custom:CustomLabel   Style="{StaticResource ComponentHeaderBlackBold}" VerticalOptions="CenterAndExpand">
+                                                            <custom:CustomLabel Style="{DynamicResource IsAddNewRepresentativeCheckedStyle}" VerticalOptions="CenterAndExpand">
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static custom2:AppResources.VATChangeRegistrationAddFinancialRepresentative}"  />
@@ -2283,9 +2283,6 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                         </custom:BorderlessEntry>
                                                                     </inputLayout:SfTextInputLayout>
                                                                 </StackLayout>
-                                                                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="2"
-                                                                         Grid.Row="8"
-                                                         Margin="0,10,0,0"/>
                                                             </Grid>
                                                             <!--</ViewCell>-->
                                                         </DataTemplate>
@@ -2766,12 +2763,18 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                     </StackLayout>
                                                 </StackLayout>
                                             </Frame>
+                                            <Grid Margin="0,24,0,0" ColumnSpacing="10" ColumnDefinitions="1*,2*,7*" HeightRequest="32" WidthRequest="32">
+                                                <custom1:CheckboxCustom  Grid.Row="0" Grid.Column="0" IsChecked="{Binding IsDeclarationChecked}" 
+                                                                             Style="{StaticResource CheckboxHeightWidth32}"/>
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Style="{DynamicResource IsDeclarationCheckedStyle}" VerticalOptions="CenterAndExpand">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRDR1}"  />
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+                                            </Grid>
                                             <StackLayout>
-                                                <StackLayout Margin="0,20,0,0" Orientation="Horizontal">
-                                                    <custom1:CheckboxCustom VerticalOptions="Start" IsChecked="{Binding IsDeclarationChecked}" 
-                                                                            IsEnabled="{Binding Declaration.AcknowledgementCB}" Style="{StaticResource CheckboxHeightWidth32}"/>
-                                                    <Label  Text="{x:Static custom2:AppResources.ZZZVATRDR1}" FontFamily="{StaticResource GAZTSmallGrayLblMediumFont}"/>
-                                                </StackLayout>
                                                 <Label Margin="0,20,0,15" Text="{x:Static custom2:AppResources.ZZZVATRDR2}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
                                                 <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                               ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">

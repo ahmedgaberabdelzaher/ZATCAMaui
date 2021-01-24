@@ -631,7 +631,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             get => _isNewFinancialRepVisible;
             set
             {
-                if (_isFinancialVisible == value) return;
+                // if (_isFinancialVisible == value) return;
 
                 _isNewFinancialRepVisible = value;
                 RaisePropertyChanged(nameof(IsNewFinancialRepVisible));
@@ -1025,9 +1025,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             get
             {
                 return _isInstrunctionChecked;
-            } 
+            }
             set
             {
+                MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsInstrunctionChecked", value);
                 if (_isInstrunctionChecked == value) return;
 
                 _isInstrunctionChecked = value;
@@ -1054,6 +1055,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
             set
             {
+                MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsDeclarationChecked", value);
                 if (_isDeclarationChecked == value) return;
 
                 _isDeclarationChecked = value;
@@ -1079,6 +1081,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
             set
             {
+                MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsAddAdditionalInfoChecked", value);
                 if (_isAddAdditionalInfoChecked == value) return;
 
                 _isAddAdditionalInfoChecked = value;
@@ -1125,6 +1128,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
             set
             {
+                MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsFDChangeSectionChecked", value);
                 if (_isFDChangeSectionChecked == value) return;
 
                 _isFDChangeSectionChecked = value;
@@ -1149,7 +1153,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
             set
             {
-                if (_isAddNewRepresentativeChecked == value) return;
+                // if (_isAddNewRepresentativeChecked == value) return;
 
                 _isAddNewRepresentativeChecked = value;
                 IsNewFinancialRepVisible = value;
@@ -1166,6 +1170,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
             set
             {
+                MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", value);
                 if (_IsChangeEmailChecked == value) return;
 
                 _IsChangeEmailChecked = value;
@@ -1533,7 +1538,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                 _primarymobNumberFR = value;
                 MobNumberSum = value;
-
+                _mobNumberFR = value;
                 RaisePropertyChanged("MobNumberFR");
             }
         }
