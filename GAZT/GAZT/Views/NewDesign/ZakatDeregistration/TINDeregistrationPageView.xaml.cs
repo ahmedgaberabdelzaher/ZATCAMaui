@@ -35,7 +35,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         public TINDeregistrationPageView(TinDeregistrationResponseModel tinDeregistrationResponseModel)
         {
             InitializeComponent();
-            
+            Resources["IsOutletCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+            Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
             viewModel = App.Locator.TINDeregistrationPageView;
 
             ChangeAeroIcon();
@@ -130,7 +131,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 btnOutletContinue.IsEnabled = args;
             });
-
+            MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "IsOutletChecked", (sender, args) =>
+            {
+                if (args)
+                    Resources["IsOutletCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                else
+                    Resources["IsOutletCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+            });
+            MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "IsDeclarationChecked", (sender, args) =>
+            {
+                if (args)
+                    Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                else
+                    Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+            });
             // viewModel.EnableOutletDetaislView();
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
@@ -440,29 +454,29 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 return x;
             }).ToList();
 
-            //GetSelectedDataTemplate(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
+            GetSelectedDataTemplate(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
         }
         void GetSelectedDataTemplate(bool isIndex1 = false)
         {
-            var captionStyle = Resources["CaptionLabelBlack"] as Style;
-            Grid cardView = new Grid() { HeightRequest = 100 };
-            Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
-            Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
-            Label label = new Label()
-            {
-                HorizontalOptions = LayoutOptions.StartAndExpand,
-                VerticalOptions = LayoutOptions.EndAndExpand,
-                Style = captionStyle,
-                Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions,
-                Margin = new Thickness(20, 0, 20, 20),
-                TextColor = Color.White,
-                HorizontalTextAlignment = TextAlignment.Start
-            };
-            grid.Children.Add(image);
-            grid.Children.Add(label);
+            //var captionStyle = Resources["CaptionLabelBlack"] as Style;
+            //Grid cardView = new Grid() { HeightRequest = 100 };
+            //Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
+            //Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
+            //Label label = new Label()
+            //{
+            //    HorizontalOptions = LayoutOptions.StartAndExpand,
+            //    VerticalOptions = LayoutOptions.EndAndExpand,
+            //    Style = captionStyle,
+            //    Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions,
+            //    Margin = new Thickness(20, 0, 20, 20),
+            //    TextColor = Color.White,
+            //    HorizontalTextAlignment = TextAlignment.Start
+            //};
+            //grid.Children.Add(image);
+            //grid.Children.Add(label);
 
-            cardView.Children.Add(grid);
-            outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
+            //cardView.Children.Add(grid);
+            //outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
             if (viewModel.SelectedOutletOptionIndex == 2)
             {
                 viewModel.outletEditIsVisible = true;
