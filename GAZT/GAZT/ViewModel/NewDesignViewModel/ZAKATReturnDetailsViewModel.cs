@@ -124,7 +124,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SetAmendButtonVisibility");
             }
         }
-        
+
 
         private ZakatReturnDetailsD _zakatReturnDetail;
         public ZakatReturnDetailsD ZakatReturnDetail
@@ -517,7 +517,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _zAKATReturnsPagName =AppResources.FORM5ReturnDetails;
+        private string _zAKATReturnsPagName = AppResources.FORM5ReturnDetails;
         public string ZAKATReturnsPagName
         {
             get
@@ -614,7 +614,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
         #endregion
 
         #region Constructor
@@ -647,22 +647,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             AddAttachmetToPostData();
                         }
 
-                        if(ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
                             SubmitReturn();
                         }
                         else
                         {
-                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                         }
 
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () => {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
 
-                           // await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                            // await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
                         });
                     }
 
@@ -673,7 +674,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNochangesmadeFormcannotbesubmitted));
 
-                       // await _dialogService.ShowMessageBox(AppResources.ZZNochangesmadeFormcannotbesubmitted, AppResources.Alerts);
+                        // await _dialogService.ShowMessageBox(AppResources.ZZNochangesmadeFormcannotbesubmitted, AppResources.Alerts);
                     });
                 }
 
@@ -795,7 +796,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         string CalenderType = ZakatReturnDetail.Incotyp.Substring(0, 1);
                         if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
                         {
-                            FromDate =UtilityManager.Converthijri(fromDate);// fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            FromDate = UtilityManager.Converthijri(fromDate);// fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                             ToDate = UtilityManager.Converthijri(toDate);// " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         }
                         else
@@ -815,8 +816,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                       SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
-                         isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales(ZakatReturnDetails.d.TvtslI);
+                        SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
+                        isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales(ZakatReturnDetails.d.TvtslI);
                         if (isThresholdValueLessThanTotalVATSales)
                         {
                             SetReadOnlyToOtherThanTotalVATSales = true;
@@ -840,7 +841,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
-                            //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                 _navigationService.GoBack();
                             });
                         }
@@ -855,7 +856,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended));
 
-                                       // await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
+                                        // await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
                                         _navigationService.GoBack();
                                         WebServiceManager.ErrorMessage = string.Empty;
                                     }
@@ -863,7 +864,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
 
-                                     //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                        //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                                         _navigationService.GoBack();
                                         WebServiceManager.ErrorMessage = string.Empty;
                                     }
@@ -883,7 +884,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                  //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
                 await Task.Run(() =>
                 {
@@ -920,7 +921,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     await ReleaseEstimateZakatReturn();
 
                 }
-                else if(ZakatReturnDetails.d.Statusz.Equals("IP014"))// E002 means Tax officer has released the return
+                else if (ZakatReturnDetails.d.Statusz.Equals("IP014"))// E002 means Tax officer has released the return
                 {
                     //IsAmendButtonPressed = true;
                     //_navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
@@ -1000,7 +1001,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                             }
                         });
                     });
@@ -1018,7 +1019,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                             }
                         });
                     });
@@ -1048,7 +1049,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         //  GetUpdatedDataAfterRemovingComma();
                         WebServiceManager.ErrorMessage = string.Empty;
-                          ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+                        ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
 
                         ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, "59");
                         if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
@@ -1063,7 +1064,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZReleasedSuccessfully));
-                                   // await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZNotification);
+                                    // await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZNotification);
                                 });
 
                             }
@@ -1089,7 +1090,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     //{
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
 
-                                 //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                    //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                                     _navigationService.GoBack();
                                     WebServiceManager.ErrorMessage = string.Empty;
                                     IsLoading = false;
@@ -1106,7 +1107,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //    _navigationService.GoBack();
                             //});
                         }
-                        if(string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
                         {
                             ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
                             PopToRootPage();
@@ -1122,7 +1123,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                             }
                         }
-                        
+
                     }
                     catch (InternetException ex)
                     {
@@ -1130,7 +1131,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                           // _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            // _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         });
                     }
                 });
@@ -1178,7 +1179,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason));
 
-                              //  await _dialogService.ShowMessageBox(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason, AppResources.Information);
+                                //  await _dialogService.ShowMessageBox(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason, AppResources.Information);
                             });
 
                         }
@@ -1201,7 +1202,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
-                         //   await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                            //   await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                             WebServiceManager.ErrorMessage = string.Empty;
                         }
@@ -1271,7 +1272,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
-                           // await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                            // await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                             WebServiceManager.ErrorMessage = string.Empty;
                         }
@@ -1279,7 +1280,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
 
-                           // await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                            // await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                             _navigationService.GoBack();
                             WebServiceManager.ErrorMessage = string.Empty;
                         }
@@ -1437,7 +1438,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void SetEditImage()
         {
-            if(isThresholdValueLessThanTotalVATSales)
+            if (isThresholdValueLessThanTotalVATSales)
             {
                 CapitalAmountEditImageSource = "";//"ic_Edit_red.png";
                 PurchaseValueEditImageSource = "";
@@ -1459,7 +1460,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 AverageNumberOfLabourEditImageSource = "ic_edit_gray.png";
                 TotalVATSalesEditImageSource = "";
             }
-           
+
 
         }
 
@@ -1527,25 +1528,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private void GetDataAfterAddingComma()
         {
-            
-            ZakatReturnDetail.TvtslI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.TvtslI); 
+
+            ZakatReturnDetail.TvtslI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.TvtslI);
             ZakatReturnDetail.TvtslE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.TvtslE);
             ZakatReturnDetail.LabnoI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.LabnoI);
             ZakatReturnDetail.LabnoE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.LabnoE);
-            ZakatReturnDetail.ImpvalI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ImpvalI); 
-            ZakatReturnDetail.ImpvalE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ImpvalE); 
-            ZakatReturnDetail.PtoslI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PtoslI); 
-            ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt); 
-            ZakatReturnDetail.EtimadI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.EtimadI);
-            ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt); 
-            ZakatReturnDetail.ExamtI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ExamtI); 
+            ZakatReturnDetail.ImpvalI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ImpvalI);
+            ZakatReturnDetail.ImpvalE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ImpvalE);
+            ZakatReturnDetail.PtoslI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PtoslI);
             ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt);
-            ZakatReturnDetail.PramtI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PramtI); 
-            ZakatReturnDetail.PramtE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PramtE); 
-            ZakatReturnDetail.Cpamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Cpamt); 
-            ZakatReturnDetail.Estsl = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Estsl); 
-            ZakatReturnDetail.Zbamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zbamt); 
-            ZakatReturnDetail.Zkamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zkamt); 
+            ZakatReturnDetail.EtimadI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.EtimadI);
+            ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt);
+            ZakatReturnDetail.ExamtI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ExamtI);
+            ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt);
+            ZakatReturnDetail.PramtI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PramtI);
+            ZakatReturnDetail.PramtE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PramtE);
+            ZakatReturnDetail.Cpamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Cpamt);
+            ZakatReturnDetail.Estsl = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Estsl);
+            ZakatReturnDetail.Zbamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zbamt);
+            ZakatReturnDetail.Zkamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zkamt);
         }
 
         // Method to remove the comma while comparing the changed value
@@ -1708,7 +1709,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsEditTextVisible = true;
             SetSubmitButtonVisibility = false;
             SetConfirmButtonVisibility = true;
-         //   ConfirmAndGenerateSADADBillLabelVisibility = true;
+            //   ConfirmAndGenerateSADADBillLabelVisibility = true;
             ChangeFromEstimateTAccountringBasisButtonVisibility = false;
         }
 
@@ -1733,10 +1734,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetAmendButtonVisibility = false;
             isThresholdValueLessThanTotalVATSales = false;
             DesClaimerVisibility = false;
-            if(ZakatReturnDetail != null)
+            if (ZakatReturnDetail != null)
             {
 
-                ZakatReturnDetail.TvtslI = string.Empty; 
+                ZakatReturnDetail.TvtslI = string.Empty;
                 ZakatReturnDetail.TvtslE = string.Empty;
                 ZakatReturnDetail.LabnoI = string.Empty;
                 ZakatReturnDetail.LabnoE = string.Empty;
@@ -1760,7 +1761,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 FromDate = string.Empty;
                 ToDate = string.Empty;
-                
+
 
                 //       ZakatReturnDetailsD obj = new ZakatReturnDetailsD();
                 //       Metadata metadata = new Metadata();
@@ -1800,7 +1801,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public bool IsThresholdValueLessThanTotalVATSales(string TotalVATSales)
         {
-            string TotalVatSalesAmount = string.Empty ;
+            string TotalVatSalesAmount = string.Empty;
             if (ZakatReturnDetails.d.TvtslI.Contains(","))
             {
                 TotalVatSalesAmount = TotalVATSales.Replace(",", "");
@@ -1809,7 +1810,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 TotalVatSalesAmount = ZakatReturnDetails.d.TvtslI;
             }
-           double totalVatSalesAmount = Convert.ToDouble(TotalVatSalesAmount);
+            double totalVatSalesAmount = Convert.ToDouble(TotalVatSalesAmount);
             if (totalVatSalesAmount > Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value))
             {
                 return true;
@@ -1985,7 +1986,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
 
-       public void  SetLayoutVisibilityAfterTappingOnAmendButton()
+        public void SetLayoutVisibilityAfterTappingOnAmendButton()
         {
             isEditVisible = true;
             isLabelVisible = false;
@@ -2030,14 +2031,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             var day = calendar.GetDayOfMonth(FormatedFaedn);
             var year = calendar.GetYear(FormatedFaedn);
             var month = calendar.GetMonth(FormatedFaedn);
-          string hijriDate =   UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
+            string hijriDate = UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
             return hijriDate;
 
         }
 
         private void SetLabelsText()
         {
-            if(isThresholdValueLessThanTotalVATSales)
+            if (isThresholdValueLessThanTotalVATSales)
             {
                 LabnoE = AppResources.ZNA;
                 ImpvalE = AppResources.ZNA;

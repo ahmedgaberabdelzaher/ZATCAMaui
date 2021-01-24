@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -31,7 +32,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 this.BindingContext = viewModel;
                 SetLTR();
                 ChangeAeroIcon();
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+              //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     viewModel.SadadNumber = string.Empty;
@@ -134,6 +135,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
 
             }
+        }
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+
         }
         public void ChangeAeroIcon()
         {
