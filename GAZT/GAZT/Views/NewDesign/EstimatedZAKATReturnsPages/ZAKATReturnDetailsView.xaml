@@ -76,12 +76,14 @@
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" >
                                 <StackLayout >
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
-                                        <Grid>
-                                            <Frame Grid.Row="0"  HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                HasShadow="False">
-                                            </Frame>
-                                            <Image Grid.Row="0" Source="ic_vat_return"  HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" ></Image>
-                                        </Grid>
+
+                                        <Frame   HeightRequest="25" WidthRequest="25" CornerRadius="50"  VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource OpacityPrimary}"
+                                                HasShadow="False" Padding="10">
+
+                                            <Image Margin="0" Source="ic_vat_return"/>
+                                        </Frame>
+                                           
+                                        
 
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlackBold}" VerticalOptions="Center"/>
                                     </StackLayout>
@@ -125,12 +127,13 @@
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
-                                        <Grid>
-                                            <Frame Grid.Row="0"  HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                HasShadow="False">
+                                       
+                                             <Frame   HeightRequest="25" WidthRequest="25" CornerRadius="50"  VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource OpacityPrimary}"
+                                                HasShadow="False" Padding="10">
+                                                <Image  Source="zakat_manageTax"></Image>
                                             </Frame>
-                                            <Image Grid.Row="0" Source="zakat_manageTax"  HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" ></Image>
-                                        </Grid>
+                                            
+                                       
 
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDZakatCalculation}" Style="{StaticResource SectionTitleBlackBold}" VerticalOptions="Center"/>
                                     </StackLayout>
@@ -244,13 +247,13 @@
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
-                                        <Grid>
-                                            <Frame Grid.Row="0"  HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                HasShadow="False">
+                                        
+                                            <Frame   HeightRequest="25" WidthRequest="25" CornerRadius="50"  VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource OpacityPrimary}"
+                                                HasShadow="False" Padding="10">
+                                                <Image Source="zakat_details"  ></Image>
                                             </Frame>
-                                            <Image Grid.Row="0" Source="zakat_details"  HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" ></Image>
-                                        </Grid>
-
+                                            
+                                       
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSalesDetails}" Style="{StaticResource SectionTitleBlackBold}" VerticalOptions="Center"/>
                                         <!--{ Binding IsEditTextVisible}-->
 
