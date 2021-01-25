@@ -434,6 +434,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
+                MessagingCenter.Send<TINDeregistrationPageViewModel, bool>(this, "IsDeclarationChecked", value);
                 if (_isDeclarationChecked == value) return;
 
                 _isDeclarationChecked = value;
@@ -463,6 +464,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
+                MessagingCenter.Send<TINDeregistrationPageViewModel, bool>(this, "IsOutletChecked", value);
                 if (_isOutletChecked == value) return;
 
                 if (value == _isOutletChecked) return;

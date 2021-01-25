@@ -162,33 +162,44 @@
                     <listView:SfListView BackgroundColor="Transparent" x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False"
                                       IsScrollingEnabled="False" AutoFitMode="Height"  VerticalOptions="Center"
                                       Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemSpacing="5" IsVisible="{Binding IsOutletDecisionOptionsLVVisible}"
-                                      ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption}"  SelectionMode="Single"
-                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" 
-                                         ItemTemplate="{StaticResource UnselectedItemTemplateSelector}" SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}">
-                        <!--<listView:SfListView.ItemTemplate>
+                                      ItemsSource="{Binding OutletDecisionOptions}"   SelectionMode="Single"
+                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
+                        <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <Grid  BackgroundColor="Transparent"  HeightRequest="100">
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                        <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                        <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
-                                                                    Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start">
-                                        </Label>
-                                    </Grid>
-                                </Grid>
-                            </DataTemplate>
-                        </listView:SfListView.ItemTemplate>-->
-                        <!--<listView:SfListView.SelectedItemTemplate>
-                            <DataTemplate>
-                                <cards:SfCardView HasShadow="True" BackgroundColor="Green" CornerRadius="20" HeightRequest="100">
-                                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                        <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                        <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
-                                                                    Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start">
-                                        </Label>
+                                <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="104"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                        <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                            <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                        </StackLayout>
                                     </Grid>
                                 </cards:SfCardView>
                             </DataTemplate>
-                        </listView:SfListView.SelectedItemTemplate>-->
+                        </listView:SfListView.ItemTemplate>
+                        <listView:SfListView.SelectedItemTemplate>
+                            <DataTemplate>
+                                <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="104"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="re_Tile_Background_S" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                        <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                            <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </cards:SfCardView>
+                            </DataTemplate>
+                        </listView:SfListView.SelectedItemTemplate>
                         <listView:SfListView.LayoutManager>
                             <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                         </listView:SfListView.LayoutManager>
@@ -944,22 +955,18 @@
                     </StackLayout>
 
                     <!--</Grid>-->
-                    <StackLayout Orientation="Horizontal">
-                        <CheckBox x:Name="outletDeclaration" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsOutletChecked}">
-                            <CheckBox.Triggers>
-                                <DataTrigger TargetType="CheckBox"  Value="false">
-                                    <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
-                                </DataTrigger>
-                            </CheckBox.Triggers>
-                        </CheckBox>
-                        <custom:CustomLabel Margin="5,10,0,15"  Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                    <Grid RowSpacing="10" ColumnDefinitions="1*,2*,7*">
+                        <custom1:CheckboxCustom x:Name="outletDeclaration" Grid.Row="0" Grid.Column="0"   VerticalOptions="CenterAndExpand" 
+                                                IsChecked="{Binding IsOutletChecked}" Style="{StaticResource CheckboxHeightWidth32}"/>
+
+                        <custom:CustomLabel Margin="5,10,0,15" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Style="{DynamicResource IsOutletCheckedStyle}">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding OutletCheckboxTitle}"  />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                    </StackLayout>
+                    </Grid>
 
                     <buttons:SfButton  Margin="0,16,0,16" 
                                        BackgroundColor="{Binding OutletContinueButtonnBackroundColor}"
@@ -1363,14 +1370,8 @@
                                 </border:SfBorder >
                             </StackLayout>
                             <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                                <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsDeclarationChecked}">
-                                    <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox"  Value="false">
-                                            <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
-                                        </DataTrigger>
-                                    </CheckBox.Triggers>
-                                </CheckBox>
-                                <custom:CustomLabel Margin="5,10,0,15"  Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                                <custom1:CheckboxCustom x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsDeclarationChecked}" Style="{StaticResource CheckboxHeightWidth32}"/>
+                                <custom:CustomLabel Margin="5,10,0,15"  Style="{DynamicResource IsDeclarationCheckedStyle}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDeclarationCheck}"  />
