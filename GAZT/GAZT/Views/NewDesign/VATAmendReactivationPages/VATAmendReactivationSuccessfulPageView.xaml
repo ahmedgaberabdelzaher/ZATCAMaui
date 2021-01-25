@@ -32,15 +32,6 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand">
-                <!--<Image Source="confirmnew.jpg" BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="100" HorizontalOptions="CenterAndExpand"></Image>-->
-
-                <!--<Image x:Name="imgCheck" HorizontalOptions="CenterAndExpand">
-                    <Image.Source>
-                        <FontImageSource FontFamily="UserIconFont" Color="White" Size="100"
-                                         Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
-                    </Image.Source>
-                </Image>-->
-
                 <Image Source="Forget_ic_success.png" HeightRequest="120" WidthRequest="120"   Aspect="AspectFit"/>
                 <Label x:Name="lblSuccessMessage" Text="{x:Static custom2:AppResources.ZVatAcknowledgment}" Style="{StaticResource PageTitleWhite}" HorizontalTextAlignment="Center" />
                 <Label Text="{x:Static custom2:AppResources.VATAmendReactivationSuccessfulAkwdg}" Style="{StaticResource BodyLabelWhite}"
@@ -73,8 +64,7 @@
                                 <Label x:Name="Label_Date" Style="{StaticResource BodyLabelBlackMedium}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </Frame>
-                        <!--VATRgotologinpage-->
-                                 <buttons:SfButton Text="{x:Static custom2:AppResources.VatInstalmentDownload}"
+                        <buttons:SfButton Text="{x:Static custom2:AppResources.VatInstalmentDownload}"
                                            VerticalOptions="End" FontAttributes="Bold"
                                          Margin="10,20,10,20"  Grid.ColumnSpan="2"
                                           Clicked="SfButton_Clicked"
