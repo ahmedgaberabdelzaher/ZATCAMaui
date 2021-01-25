@@ -57,7 +57,20 @@ namespace GAZT.Manager
         public static string ErrorMessageForVAT = string.Empty;
         public static string NumberOfValiedAttempts = string.Empty;
         public static string ErrorMessageForUnlockAccount = string.Empty;
-
+        private static char GetLangZParameter()
+        {
+            if (App.IsArabic)
+                return 'A';
+            else
+                return 'E';
+        }
+        private static String GetLangZParameterAREN()
+        {
+            if (App.IsArabic)
+                return "AR";
+            else
+                return "EN";
+        }
         private static HttpWebRequest CreateGAZTSOAPWebRequestForAuthenticationService()
         {
             //Making Web Request  
@@ -74,8 +87,7 @@ namespace GAZT.Manager
         }
 
         //<Summary>
-        //Handling Internet Exception for the Login URL loaded in the webview
-        public static async Task<bool> GAZTCheckConnectivity()
+         public static async Task<bool> GAZTCheckConnectivity()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -344,7 +356,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
         public static async Task<String> GAZTSendAndReceiveOTP(String Lang, String UserId, string currentAttempts)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -468,8 +479,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
-        public static async Task<TaxPayerProfile> GAZTValidateOTPForMobileNumber(String Lang, String OTP, String Tin, string CurrentMobileNumber, string NewMobileNumber, string mobileCountry)
+       public static async Task<TaxPayerProfile> GAZTValidateOTPForMobileNumber(String Lang, String OTP, String Tin, string CurrentMobileNumber, string NewMobileNumber, string mobileCountry)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -543,8 +553,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
-        public static async Task<bool> GAZTValidateMobileNumber(String Lang, String Tin, string CurrentMobileNumber, string NewMobileNumber, string mobileCountry)
+         public static async Task<bool> GAZTValidateMobileNumber(String Lang, String Tin, string CurrentMobileNumber, string NewMobileNumber, string mobileCountry)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -631,7 +640,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
         public static async Task<bool> GAZTValidateAndChangePassword(String Lang, String Tin, string CurrentPassword, string NewPassword)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -760,7 +768,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
         public static ObservableCollection<MyBills> GAZTGetMyBills(String Tin, string lang)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -835,7 +842,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
         public static ICR GAZTGetICRs(String Tin, string lang)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -919,7 +925,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
         public static async Task<string> GAZTGetTaxPayerProfile(String Tin, String Lang)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -996,7 +1001,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
         public static async Task<bool> GAZTGetOTPForEmail(String Lang, String Tin, string CurrentEmail, string NewEmail)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -1073,7 +1077,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
         public static async Task<TaxPayerProfile> GAZTValidateOTPForEmail(String Lang, String OTP, String Tin, string CurrentEmail, string NewEmail, string CurrentPassword, string NewPassword)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -1146,8 +1149,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
-        public static async Task<string> GAZTZakatGetPdfUrl(String Lang, String Tin)
+       public static async Task<string> GAZTZakatGetPdfUrl(String Lang, String Tin)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -1199,7 +1201,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //done internet exception handling
         public static AllCertificate GAZTGetAllCertificate(String Lang, String Tin)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -1595,20 +1596,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        private static char GetLangZParameter()
-        {
-            if (App.IsArabic)
-                return 'A';
-            else
-                return 'E';
-        }
-        private static String GetLangZParameterAREN()
-        {
-            if (App.IsArabic)
-                return "AR";
-            else
-                return "EN";
-        }
+       
         public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration)
         {
             VATDeclaration RequestVATDeclaration = new VATDeclaration();
@@ -6927,7 +6915,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static string GAZTDeleteVATDeRegistrationAttachment(string fileName, string RetGuid, string Dotyp)//, string returnedFguid
+        public static string GAZTDeleteVATDeRegistrationAttachment(string fileName, string RetGuid, string Dotyp)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -7796,11 +7784,9 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
-                    // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                    String url = Constants.GAZTDeteleAttachmentNew + "RetGuid='" + RetGuid + "',Flag='N',Dotyp='',SchGuid='',Srno=1,Doguid='" + doGuid + "',AttBy='TP',OutletRef='')/$value";
+                   String url = Constants.GAZTDeteleAttachmentNew + "RetGuid='" + RetGuid + "',Flag='N',Dotyp='',SchGuid='',Srno=1,Doguid='" + doGuid + "',AttBy='TP',OutletRef='')/$value";
                     url = url.Replace("attachmentServiceurl", aPiMethod);
-                    // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
-                    var uri = new Uri(url);
+                   var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -7838,8 +7824,7 @@ namespace GAZT.Manager
 
         #region VATInstalationPlan
 
-        //Request To VAT Installment Plan
-        public static async Task<ReqVatInstalmentPlanResponse> GetRequestToVATInstalmentData()
+         public static async Task<ReqVatInstalmentPlanResponse> GetRequestToVATInstalmentData()
         {
             ReqVatInstalmentPlanResponse _requestVATInstalmentPlan = new ReqVatInstalmentPlanResponse();
 
@@ -7855,12 +7840,6 @@ namespace GAZT.Manager
                     String url = Constants.GetReqVATInstalmentdata + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',UserTin='" + "')?&$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
-
-                    //var serilized = JsonConvert.SerializeObject(_requestVATInstalmentPlanresponse);
-                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    //HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    //var detailJson = res.Content.ReadAsStringAsync().Result;
-
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
                     _requestVATInstalmentPlan = JsonConvert.DeserializeObject<ReqVatInstalmentPlanResponse>(detailJson);
 
@@ -7879,7 +7858,6 @@ namespace GAZT.Manager
             return _requestVATInstalmentPlan;
         }
 
-        //Get FBGuid for VAT plan details
         public async static Task<VATInstalmentDetailsInputModel> GAZTGetFbGuidDetailsInputData(string fbguid, string fbnum, string gpart, string Status, string type)
         {
             VATInstalmentDetailsInputModel _InstalmentDetailsInputs = new VATInstalmentDetailsInputModel();
@@ -7894,12 +7872,6 @@ namespace GAZT.Manager
 
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet
-                    //    (Euser1 = '', Fbguid = '005056B1F8FB1EEAB8D6D063DAB19A0C', Fbnum = '86000000664', Fbtyp = 'VTIA', Gpart = '3102288776', Lang = 'EN', Persl = '', Status = 'E0045', Dispflag = '')
-                    //    ?=&$format = json
-
                     String url = Constants.VATGetFormGUIDURL + "Euser1='" + "',Fbguid='" + fbguid + "',Fbnum='" + fbnum + "',Fbtyp='" + fbtyp + "'," +
                      "Gpart='" + gpart + "',Lang='" + lang + "',Persl='" + "',Status='" + Status + "',Dispflag='" + "')?=&$format=json";
                     var uri = new Uri(url);
@@ -7945,7 +7917,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -7981,26 +7952,14 @@ namespace GAZT.Manager
                     string LangZAREN = GetLangZParameterAREN();
                     char LangZ = GetLangZParameter();
                     string lang = UtilityManager.GetLanguageParameter();
-                    //Input Parameters
                     string Euser = euser;
                     string FormGuid = formGuid;
-
-                    //End
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    //FormGuid = '005056B1F8FB1EDAB7B1293EB7E27171',Euser = '00000000001008317083',Gpartz = '',Langz = 'E',Officerz = '',PortalUsrz = '',TxnTpz = '')
-                    //?$expand = VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet &$format = json
-
                     String url = Constants.GetRequestToVATInstalmentPlanById
                         + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpartz=''," +
                         "Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?&$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
-
-                    //var serilized = JsonConvert.SerializeObject(_requestVATInstalmentPlanresponse);
-                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    //HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    //var detailJson = res.Content.ReadAsStringAsync().Result;
-
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
                     _requestToVATInstallmentPlanDetails = JsonConvert.DeserializeObject<RequestToVATInstallmentPlanDetails>(detailJson);
 
@@ -8014,7 +7973,6 @@ namespace GAZT.Manager
                             errorMessage += errorMesg.error.innererror.errordetails[1].message;
                             String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
-                            //ErrorMessageForVAT
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
                     }
@@ -8047,26 +8005,14 @@ namespace GAZT.Manager
                     string LangZAREN = GetLangZParameterAREN();
                     char LangZ = GetLangZParameter();
                     string lang = UtilityManager.GetLanguageParameter();
-                    //Input Parameters
                     string Euser = "";
                     string FormGuid = formGuid;
-
-                    //End
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    //  FormGuid = '005056B1F8FB1EDAB7B1669470197223',Euser = '00000010000008316968',Gpart = '',Langz = 'E',Opbel = '')
-                    //?$expand = VTIA_IADTSet,VTIA_IAHDSet &$format = json
-
                     String url = Constants.GetDisplayInstallmentAgreementSchedule
                         + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpart=''," +
                         "Langz='" + lang + "',Opbel='" + "')?&$expand=VTIA_IADTSet,VTIA_IAHDSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
-
-                    //var serilized = JsonConvert.SerializeObject(_requestVATInstalmentPlanresponse);
-                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    //HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    //var detailJson = res.Content.ReadAsStringAsync().Result;
-
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
 
                     _displayInstallmentAgreementSchedulePlan = JsonConvert.DeserializeObject<DisplayInstallmentAgreementSchedulePlan>(detailJson);
@@ -8081,7 +8027,6 @@ namespace GAZT.Manager
                             errorMessage += errorMesg.error.innererror.errordetails[1].message;
                             String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
-                            //ErrorMessageForVAT
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
                     }
@@ -8114,28 +8059,15 @@ namespace GAZT.Manager
                     string LangZAREN = GetLangZParameterAREN();
                     char LangZ = GetLangZParameter();
                     string lang = UtilityManager.GetLanguageParameter();
-                    //Input Parameters
                     string Euser = eUser;
                     string FormGuid = fromGuid;
                     string Opbel = opbel;
-
-                    //End
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    //(FormGuid = '005056B1F8FB1EDAB7B1669470197223', Euser = '00000010000008316968', Gpart = '', Langz = 'E', Opbel = '8000003828') 
-                    //  ?$expand = VTIA_IADTSet,VTIA_IAHDSet &$format = json
-
                     String url = Constants.GetInstallmentSchedule
                         + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpart=''," +
                         "Langz='E',Opbel='" + Opbel + "')?$expand=VTIA_IADTSet,VTIA_IAHDSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
-
-                    //var serilized = JsonConvert.SerializeObject(_requestVATInstalmentPlanresponse);
-                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    //HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    //var detailJson = res.Content.ReadAsStringAsync().Result;
-
-
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
 
                     _vATInstalmentScheduleDetailsModel = JsonConvert.DeserializeObject<VATInstalmentScheduleDetailsModel>(detailJson);
@@ -8150,8 +8082,7 @@ namespace GAZT.Manager
                             errorMessage += errorMesg.error.innererror.errordetails[1].message;
                             String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
-                            //ErrorMessageForVAT
-                            throw new GAZTVATRegistrationInProcessException(errorMessage);
+                             throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
                     }
                 }
@@ -8180,9 +8111,6 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    // String url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
-
-
                     String url = "";
 
                     if (formGuid == "")
@@ -8197,12 +8125,6 @@ namespace GAZT.Manager
                         url = Constants.GetVATInstalmentdata + "FormGuid='" + formGuid + "',Euser='" + euser + "',Gpartz='" + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
 
                     }
-
-
-
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATInstalmentDataResponse = await client.GetAsync(uri);
                     if (GAZTVATInstalmentDataResponse != null)
@@ -8240,8 +8162,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                               throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
@@ -8273,8 +8194,6 @@ namespace GAZT.Manager
 
                     VatInstalmentPlanResponse _vatResponseObject = new VatInstalmentPlanResponse();
                     string LangZ = GetLangZParameterAREN();
-                    // String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
-
                     String url = Constants.SaveVATInstalmentdata;
 
                     var uri = new Uri(url);
@@ -8357,9 +8276,6 @@ namespace GAZT.Manager
         public async static Task<ZakatInstalmentInvListModel> GAZTGetZakatInstalmentInvData(string fbNum)
         {
             ZakatInstalmentInvListModel _zakatInstalmentInvListModel = new ZakatInstalmentInvListModel();
-
-
-
             if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
@@ -8367,19 +8283,8 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-
-                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/invDtlsSet?$filter=Tin eq '3102434622'and Fbnum eq '85000000701' and Langz eq 'EN' and InstReqFor  eq '01'&$format=json
-
-
-
-
                     String url = Constants.ZakatInstalmentInvoiceURL + "Tin eq'" + App.LoginDataRetrieved.TIN + "' " +
                         "and Fbnum eq '" + fbNum + "' and Langz eq '" + lang + "' and InstReqFor eq '01'&$format=json";
-
-
-
                     var uri = new Uri(url);
                     HttpResponseMessage _zakatInstalmentInvListResponse = await client.GetAsync(uri);
                     if (_zakatInstalmentInvListResponse != null)
@@ -8417,7 +8322,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -8452,21 +8356,8 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-
-
-
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-
-                    //  https://sapgatewayqa.gazt.gov.sa/sap/opu/odata//SAP/ZDP_IPRF_WI_SRV/HdrSet(CallServ='IPRA',HostName='',Zuser='3102227536',Bpnum='',
-                    //     Auditor = 'null',Lang = 'E',Euser1 = 'null',Euser2 = 'null',Euser3 = 'null',Euser4 = 'null',Euser5 = 'null',
-                    //Fbguid = '005056B1F8FB1EEABCCF9C96A93FD2E0',UserTin = '',Fbnum = '',UserTyp = 'TP')?$expand = WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet &$format = json
-
-
-
-
                     String url = Constants.ZakatInstalmentValidateNewRequestURL + "CallServ='IPRA',HostName='" + "',Zuser='" + App.LoginDataRetrieved.TIN + "',Bpnum='" + App.LoginDataRetrieved.TIN + "'," +
                      "Auditor='null',Lang='" + lang + "',Euser1='" + "',Euser2='null',Euser3='null',Euser4='null',Euser5='null'" +
                      ",Fbguid='" + "',UserTin='" + "',Fbnum='" + "',UserTyp='TP')?$expand=WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet&$format=json";
@@ -8507,7 +8398,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -8549,14 +8439,7 @@ namespace GAZT.Manager
                     {
                         formMode = "S";
                     }
-
-
-
-                    // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(Tin='3102206579',Euser='',Fbguid='',Fbnum='',FormMode='N',Langz='EN')?&$format=json
                     String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + fbnum + "',FormMode='" + formMode + "',Langz='" + lang + "')?$expand=AttachSet%2cNotesSet%2cFnDtlSet&$format=json";
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTZakatInstalmentDataResponse = await client.GetAsync(uri);
                     if (GAZTZakatInstalmentDataResponse != null)
@@ -8594,8 +8477,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                               throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
@@ -8640,9 +8522,6 @@ namespace GAZT.Manager
                         url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + fbnum + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "02" + "'&$format=json";
                     }
                     url = System.Web.HttpUtility.UrlPathEncode(url);
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTZakatInvoiceDataResponse = await client.GetAsync(uri);
                     if (GAZTZakatInvoiceDataResponse != null)
@@ -8680,7 +8559,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -8780,11 +8658,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     string formMode = "S";
-                    // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(Tin='3102206579',Euser='',Fbguid='',Fbnum='',FormMode='N',Langz='EN')?&$format=json
                     String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + FBnum + "',FormMode='" + formMode + "',Langz='" + lang + "')?&$format=json";
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTZakatInstalmentDataResponse = await client.GetAsync(uri);
                     if (GAZTZakatInstalmentDataResponse != null)
@@ -8822,7 +8696,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -8859,33 +8732,6 @@ namespace GAZT.Manager
                     String url = Constants.GetZAKATPostdata;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //if (_zakatInstalmentDetails.d.Savez == "X")
-                    //{
-
-                    //    var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails.d);
-                    //    client.DefaultRequestHeaders.Add("Token", "123");
-                    //    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    //    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //    client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-                    //    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    //    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    //    var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
-                    //    _zakatResponseObject = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
-                    //    if (_zakatResponseObject == null || _zakatResponseObject.d == null)
-                    //    {
-                    //        ErrorMessage = string.Empty;
-                    //        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
-                    //        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                    //        {
-                    //            ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
-                    //        }
-                    //    }
-                    //    return _zakatResponseObject;
-                    //}
-                    //else
-                    //{
                     var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails);
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -8960,15 +8806,6 @@ namespace GAZT.Manager
 
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-
-                    /// sap / opu / odata / SAP / ZDP_IPRF_WI_SRV / HdrSet(CallServ = 'IPRA', HostName = '', Zuser = 'ABURAKAN1385@GMAIL.COM', Bpnum = '', 
-                    //Auditor = 'null', Lang = 'E', Euser1 = '00000000001008320632', Euser2 = 'null', Euser3 = 'null', Euser4 = 'null', Euser5 = 'null',
-                    //Fbguid = '005056B1F8FB1EEAB9BB446F7D6CB7D2', 
-                    //UserTin = '', Fbnum = '', UserTyp = 'TP') ?$expand = WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet &$format = json
-
-
                     String url = Constants.ZakatOldInstalmentsListUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
                        "Auditor='" + auditor + "'," +
                      "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
@@ -8982,7 +8819,6 @@ namespace GAZT.Manager
                     {
                         if (GAZTzakatInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
                         {
-                            //App.IsSessionExpired = true;
                             return null;
                         }
 
@@ -8999,7 +8835,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -9012,7 +8847,6 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    //App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -9033,38 +8867,11 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-
-
-
                     var summaryInputs = await GAZTGetOldZakatSummaryInputData(fbnum, status);
-
-
-
                     string euser = "00000000000000000000";
                     string fbguid = summaryInputs.d.Fbguid;
-                    // string fbguid = "005056B1F8FB1EDABAF675538BB331C8";
-
-
-
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-
-                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet
-                    //    (Auditorz = '', Taxpayerz = '', Fbnumz = '', PeriodKeyz = '', Langz = 'E', Euser = '00000000000000000000',
-                    //Fbguid = '005056B1F8FB1EEAB9D3137F3DD4F7DA', Submitz = '', Savez = '', UserTin = '')
-                    //    ?&$expand = Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet
-
-
-
-                    /* String url = Constants.ZakatRequestDisplayUrl + "Auditorz='" + "'," +
-                 "Taxpayerz='" + "',Fbnumz='" + "',PeriodKeyz='" + "',Langz='" + lang + "'," +
-                 "Euser='" + euser + "',Fbguid='" + fbguid + "',Submitz='" + "',Savez='" + "',UserTin='" + "')?&$expand=Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet&$format=json";*/
-
-
-
-
                     String url = Constants.ZakatOldInstalmentsSummarytUrl + "Auditorz='',Taxpayerz='',PeriodKeyz='',Euser='00000000000000000000',Langz='" + lang + "',Fbguid='" + fbguid + "'," +
                         "Fbnumz='',Submitz='',Savez='',UserTin='')?$expand=Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet&$format=json";
                     var uri = new Uri(url);
@@ -9111,7 +8918,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -9147,14 +8953,6 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-
-                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/invDtlsSet?$filter=Tin eq '3102434622'and Fbnum eq '85000000701' and Langz eq 'EN' and InstReqFor  eq '01'&$format=json
-
-
-
-
                     String url = Constants.ZakatInstalmentInvoiceURL + "Tin eq'" + App.LoginDataRetrieved.TIN + "' " +
                         "and Fbnum eq '" + fbNum + "' and Langz eq '" + lang + "' and InstReqFor eq '01'&$format=json";
 
@@ -9197,8 +8995,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
@@ -9229,9 +9026,6 @@ namespace GAZT.Manager
 
             if (CrossConnectivity.Current.IsConnected)
             {
-
-
-
                 string NewToken = string.Empty;
 
                 string Newfbnum = fbnum;
@@ -9251,16 +9045,6 @@ namespace GAZT.Manager
 
                     string lang = WebServiceManager.GetLangZParameterAREN();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-
-                    /*https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/UserFillSet(Euser1='00000000000000000000',Fbguid='',Fbnum='010001119386',Fbtyp='IPRF',
-                     Gpart = '3100000567',Lang = 'EN',Persl = '',Status = 'IP014',TaxOffUid = '')?$format = json*/
-
-
-
-
-
                     String url = Constants.GetOldZAKATSummaryInputURL + "Euser1='00000000000000000000',Fbguid='" + "',Fbnum='" + Newfbnum + "',Fbtyp='" + fbtyp + "'," +
                      "Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?$format=json";
                     var uri = new Uri(url);
@@ -9309,7 +9093,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -9369,16 +9152,11 @@ namespace GAZT.Manager
                             errorMessage += errorMesg.error.innererror.errordetails[1].message;
                             String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
-                            //ErrorMessageForVAT
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
 
                     }
                     return _zakatResponseObject;
-                    //  }
-
-
-
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
@@ -9415,8 +9193,6 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format("{0}?&$format=json&$filter=Spras eq '{1}'", Constants.ESTBranchesDropDown, lang));
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
@@ -9487,8 +9263,6 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format("{0}(Euser='',Fbguid='',Gpartx='{1}',Langx='{2}',Operationx='',PortalUsrx='{3}',Srcidentifyx='{4}',StepNumberx='{5}',Fbnumx='{6}',Fbstax='',Fbustx='')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,Nreg_FormEdit,Nreg_BtnSet,off_notesSet,AttDetSet,Nreg_MSGSet&$format=json",
                         Constants.ESTTaxPayerDetails, TIN, lang, emailID, srcidentify, step, Fbnum));
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
@@ -9515,7 +9289,6 @@ namespace GAZT.Manager
 
                                 String WithReplacedString = errorMsg.Replace("An exception was raised", string.Empty);
                                 errorMsg = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTErrorException(errorMsg);
                             }
                         }
@@ -9595,16 +9368,7 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //  https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_HeaderSet(Gpartx='3102462394',Langx='',Operationx='',PortalUsrx='A5068535@GMAIL.COM',Srcidentifyx='O000',StepNumberx='03',Euser='',Fbguid='',Fbnumx='10001159118',Fbstax='IP011',Fbustx='E0001')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,AttDetSet,Nreg_MSGSet
-
                     var uri = Constants.ESTTaxPayerDetails + "(" + "Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='" + lang + "',Operationx='" + "',PortalUsrx='" + emailID + "',Srcidentifyx='" + srcidentify + "',StepNumberx='" + step + "',Euser='" + "',Fbguid='" + "',Fbnumx='" + Fbnum + "',Fbstax='" + Fbstax + "',Fbustx='" + Fbustx + "')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,AttDetSet,Nreg_MSGSet&$format=json";
-
-
-
-                    // var uri = new Uri(string.Format("{0}(Euser='',Fbguid='',Gpartx='{1}',Langx='{2}',Operationx='',PortalUsrx='{3}',Srcidentifyx='{4}',StepNumberx='{5}',Fbnumx='{6}',Fbstax='',Fbustx='')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,Nreg_FormEdit,Nreg_BtnSet,off_notesSet,AttDetSet,Nreg_MSGSet&$format=json",
-                    //   Constants.ESTTaxPayerDetails, TIN, lang, emailID, srcidentify, step, Fbnum, "IP001", "E0001"));
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
@@ -9629,7 +9393,6 @@ namespace GAZT.Manager
 
                                 String WithReplacedString = errorMsg.Replace("An exception was raised", string.Empty);
                                 errorMsg = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTErrorException(errorMsg);
                             }
                         }
@@ -9697,7 +9460,7 @@ namespace GAZT.Manager
             return taxPayer;
         }
 
-        public static async Task<TaxPayerDetails> ESTTaxPayerDetailPostService(TaxPayerDetails taxPayer) //Rentatt =X , Passatt=X
+        public static async Task<TaxPayerDetails> ESTTaxPayerDetailPostService(TaxPayerDetails taxPayer) 
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -9810,8 +9573,6 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format("{0}?&$format=json&$filter=ANationality eq '{1}' and Spras eq '{2}'",
                         Constants.ESTTaxPayerNationality, nationality, lang));
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
@@ -9883,7 +9644,6 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", fileName);
                     client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
 
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
@@ -9918,15 +9678,12 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", fileName);
                     client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
 
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
 
                     HttpResponseMessage response = client.DeleteAsync(uri).Result;
                     var responsestr = response.Content.ReadAsStringAsync().Result;
-                    //responsestr = JObject.Parse(responsestr)["d"].ToString();
-                    //Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
                     if (response != null)
                     {
                         HttpHeaders headers = response.Headers;
@@ -9961,8 +9718,6 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format("{0}(Fbnum='{1}',Gpart='')?&$format=json",
                         Constants.ESTOutletNumber, Fbnum));
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
@@ -10030,8 +9785,6 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format("{0}(Fbnum='{1}',Gpart='{2}')?&$format=json",
                         Constants.ESTOutletNumber, Fbnum, tin));
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
@@ -10100,8 +9853,6 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format("{0}(Spras='{1}',Land1='',Bland='',Cityc='')?&$expand=country_dropdownSet,State_dropdownSet,city_dropdownSet&$format=json",
                         Constants.ESTOutletCityStateCountryDropDown, lang));
 
@@ -10172,8 +9923,6 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format("{0}(Spras='{1}',IndSector='{2}')?&$expand=act_groupSet,act_subgroupSet,activitySet&$format=json",
                         Constants.ESTActiivtyGroupSubGroupList, lang, indSector));
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
@@ -10925,7 +10674,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATChangeFillingPeriodException(errorMessage);
                             }
                         }
@@ -11128,7 +10876,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATChangeFillingPeriodException(errorMessage);
                             }
                         }
@@ -11169,12 +10916,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
                     String Url = Constants.GAZTVATSignUpValidateId + "(Tin='" + tin + "',Idtype='" + string.Empty + "',Idnum='" + string.Empty + "',Country='',PassExpDt='',TaxpDob='" + string.Empty + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
-                    //                     (Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
-
-                    /*String Url = string.Empty;
-                    Url = Constants.VATChangeFillingPeriodValidateIDnumberURL + "Tin='" + tin + "',Idtype='" + idType + "',Idnum='" + idnum + "',Country='" + country + "'" +
-                          ",PassExpDt = '" + passExpdt + "', TaxpDob = '" + taxpDOB + "')";*/
-                    var uri = new Uri(Url);
+                     var uri = new Uri(Url);
                     HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
                     if (VATSignUpIdValidateObject != null)
                     {
@@ -11199,25 +10941,8 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
                         SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
-
-                        //_validateIDResponse = JsonConvert.DeserializeObject<VATSignUp>(SignUpCityList);
-                        //if (!string.IsNullOrEmpty(SignUpCityList) && _validateIDResponse.d == null)
-                        //{
-                        //    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(SignUpCityList);
-                        //    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                        //    {
-                        //        string errorMessage = string.Empty;
-                        //        errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        //        errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                        //        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                        //        errorMessage = WithReplacedString;
-                        //        //_validateIDResponse.errorMessage = errorMessage;
-                        //        //ErrorMessageForVAT
-                        //        //throw new GAZTVATChangeFillingPeriodException(errorMessage);
-                        //    }
-                        //}
                     }
-                    return SignUpCityList;// tINStatus;
+                    return SignUpCityList;
                 }
                 catch (JsonReaderException ex)
                 {
@@ -11239,10 +10964,6 @@ namespace GAZT.Manager
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
-                //catch (Exception ex)
-                //{
-                //    return null;
-                //}
             }
             else
             {
@@ -11268,12 +10989,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
                     String Url = Constants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + idType + "',Idnum='" + idnum + "',Country='',PassExpDt='',TaxpDob='" + taxpDOB + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
-                    //                     (Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
-
-                    /*String Url = string.Empty;
-                    Url = Constants.VATChangeFillingPeriodValidateIDnumberURL + "Tin='" + tin + "',Idtype='" + idType + "',Idnum='" + idnum + "',Country='" + country + "'" +
-                          ",PassExpDt = '" + passExpdt + "', TaxpDob = '" + taxpDOB + "')";*/
-                    var uri = new Uri(Url);
+                   var uri = new Uri(Url);
                     HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
                     if (VATSignUpIdValidateObject != null)
                     {
@@ -11310,12 +11026,10 @@ namespace GAZT.Manager
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
                                 _validateIDResponse.errorMessage = errorMessage;
-                                //ErrorMessageForVAT
-                                //throw new GAZTVATChangeFillingPeriodException(errorMessage);
-                            }
+                             }
                         }
                     }
-                    return _validateIDResponse;// tINStatus;
+                    return _validateIDResponse;
                 }
                 catch (JsonReaderException ex)
                 {
@@ -11354,8 +11068,6 @@ namespace GAZT.Manager
             {
                 try
                 {
-
-                    //  / sap / opu / odata / SAP / Z_GET_ACK_LETTER_SRV / Ack_letterSet(Fbnum = '81000000501') /$value
                     String Url = string.Empty;
                     Url = Constants.VATChangeFillingPeriodAcknowledgementdownloadURL + "Fbnum='" + fbnum + "')/$value";
 
@@ -11387,10 +11099,6 @@ namespace GAZT.Manager
 
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //  https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(TaxType='VT',AudTin='',
-                    //Gpart = '3100088087',Lang = 'E',UserTin = '')?= &$expand = ASSLISTSet,STATUSSet,REQTYPSet &$format = json
-
                     String url = Constants.VATChangeFillingListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + gpart + "',Lang='" + lang + "'," +
                       "UserTin='" + "')?&$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
                     var uri = new Uri(url);
@@ -11434,8 +11142,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                                 throw new GAZTVATChangeFillingPeriodException(errorMessage);
                             }
                         }
                     }
@@ -11470,12 +11177,6 @@ namespace GAZT.Manager
                     string NewToken = string.Empty;
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VAT_TPCV_SRV/UI_HDRSet
-                    //  (Fbnumz = '', PortalUsrz = '', Langz = 'E', Operationz = '', Gpartz = '', Euser = '00001000000008322132',
-                    //UserTypz = '', Fbguid = '005056B1F8FB1EDAB9F82A3E64053352')
-                    //   ?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json
-
                     String url = Constants.VATChangeFillingSummaryURL + "Fbnumz='" + fbnum + "',PortalUsrz='" + "',Langz='" + lang + "'," +
                       "Operationz='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',UserTypz='" + "',Fbguid='" + "')?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
                     var uri = new Uri(url);
@@ -11519,7 +11220,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATChangeFillingPeriodException(errorMessage);
                             }
                         }
@@ -11554,14 +11254,8 @@ namespace GAZT.Manager
                 {
 
                     string fbtyp = "TPCV";
-                    // eUser = "00001000000008322132";
-
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    /// sap / opu / odata / SAP / ZDP_ITAP_SRV / TPFILLSet(Euser1 = '00000001000008323131',
-                    //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
-
                     String url = Constants.VATChangeFillingSummaryInputsURL + "Euser1='',Fbguid='',Fbnum='" + fbnum + "'," +
                       "Fbtyp='" + fbtyp + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?&$format=json";
                     var uri = new Uri(url);
@@ -11605,8 +11299,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                              throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
@@ -11643,15 +11336,9 @@ namespace GAZT.Manager
                 {
 
                     string fbtyp = "TPCV";
-                    // eUser = "00001000000008322132";
-
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    /// sap / opu / odata / SAP / ZDP_ITAP_SRV / TPFILLSet(Euser1 = '00000001000008323131',
-                    //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
                     String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
-                    //String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
@@ -11703,8 +11390,7 @@ namespace GAZT.Manager
 
                                 String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForUnlockAccount = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTErrorException(ErrorMessageForUnlockAccount);
+                               throw new GAZTErrorException(ErrorMessageForUnlockAccount);
                             }
                         }
                         else if (!string.IsNullOrEmpty(_responseData))
@@ -11743,11 +11429,7 @@ namespace GAZT.Manager
         private static String ConvertDateFormat(DateTime newDate)
         {
             string ConvertedDate = string.Empty;
-            //DateTime newDate = Convert.ToDateTime(date);
-            //DateTime currentDate = DateTime.Now.ToLocalTime();
             long ticks = newDate.Ticks - new DateTime(1970, 1, 1).Ticks;
-
-            //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
             TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
             string unixTime = span.TotalSeconds.ToString("N0");
             unixTime = unixTime.Replace(",", "");
@@ -11758,14 +11440,6 @@ namespace GAZT.Manager
             unixTimestamp = unixTimestamp * 1000;
 
             ConvertedDate = "" + "/Date(" + unixTimestamp + ")/";
-
-            //var dateTime = new DateTime(newDate.Year, newDate.Month, newDate.Day, newDate.Hour, newDate.Minute, newDate.Second, DateTimeKind.Local);
-            //var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            //var unixDateTime = (dateTime.ToUniversalTime() - epoch).TotalSeconds;
-            //string unixTimeNEw = span.TotalSeconds.ToString("N0");
-
-            //ConvertedDate = "" + "/Date(" + unixDateTime + ")/";
-
             return ConvertedDate;
         }
 
@@ -11774,12 +11448,6 @@ namespace GAZT.Manager
         {
             string TinDeregResponseJson = string.Empty;
             TinDeregistrationSendResponseModel tinDeregistrationSendResponseModel = new TinDeregistrationSendResponseModel();
-
-            //tinDeregistrationResponseModel.AEffectiveDtC = "G";
-            //tinDeregistrationResponseModel.ASubmissionDateC = "G";
-            //tinDeregistrationResponseModel.ADecDateC = "G";
-            //tinDeregistrationResponseModel.ADobC = "G";
-
             try
             {
                 ObservableCollection<OutletSetResult> AllOutlets = new ObservableCollection<OutletSetResult>(tinDeregistrationResponseModel.OutletSet.Results);
@@ -11984,42 +11652,6 @@ namespace GAZT.Manager
 
                         TinDeregResponseJson = tinDeregResponse.Content.ReadAsStringAsync().Result;
 
-                        //if (tinDeregResponse.StatusCode == HttpStatusCode.BadRequest)
-                        //{
-                        //    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(TinDeregResponseJson);
-                        //    try
-                        //    {
-                        //        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                        //        {
-                        //            ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-                        //            String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-                        //            ErrorMessageForUnlockAccount = WithReplacedString;
-                        //            //ErrorMessageForVAT
-                        //            throw new GAZTErrorException(ErrorMessageForUnlockAccount);
-                        //        }
-
-                        //    }
-                        //    catch (Exception ex)
-                        //    {
-                        //        if (errorMesg != null && errorMesg.error != null)
-                        //        {
-                        //            throw new GAZTErrorException(errorMesg.error.message.value);
-                        //        }
-                        //    }
-                        //}
-                        //else if (!string.IsNullOrEmpty(TinDeregResponseJson))
-                        //{
-                        //    TinDeregResponseJson = JObject.Parse(TinDeregResponseJson)["d"].ToString();
-                        //    _newRequestSummaryDataResponse = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregResponseJson);
-                        //    if (_newRequestSummaryDataResponse == null)
-                        //    {
-                        //        throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
-                        //}
                     }
                     return TinDeregResponseJson;
                 }
@@ -12050,16 +11682,9 @@ namespace GAZT.Manager
 
                 string NewToken = string.Empty;
                 try
-                {
-                    // eUser = "00001000000008322132";
-
-                    Char lang = WebServiceManager.GetLangZParameter();
+                { Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-
-                    /// sap / opu / odata / SAP / ZDP_ITAP_SRV / TPFILLSet(Euser1 = '00000001000008323131',
-                    //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
-                    ////https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_DREGRESN_SRV/ZDS_DETSet(Partner='3000363416',Spars='E')?&$expand=REASONSet
                     String url = Constants.TinDeregistrationReasonSetUrl + "Partner='" + App.LoginDataRetrieved.TIN + "',Spars='" + lang + "')?&$expand=REASONSet&$format=json";
                     var uri = new Uri(url);
 
@@ -12100,8 +11725,7 @@ namespace GAZT.Manager
 
                                 String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForUnlockAccount = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTErrorException(ErrorMessageForUnlockAccount);
+                               throw new GAZTErrorException(ErrorMessageForUnlockAccount);
                             }
                         }
                         else if (!string.IsNullOrEmpty(_responseData))
@@ -12162,15 +11786,6 @@ namespace GAZT.Manager
 
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-
-                    /// sap / opu / odata / SAP / ZDP_IPRF_WI_SRV / HdrSet(CallServ = 'IPRA', HostName = '', Zuser = 'ABURAKAN1385@GMAIL.COM', Bpnum = '', 
-                    //Auditor = 'null', Lang = 'E', Euser1 = '00000000001008320632', Euser2 = 'null', Euser3 = 'null', Euser4 = 'null', Euser5 = 'null',
-                    //Fbguid = '005056B1F8FB1EEAB9BB446F7D6CB7D2', 
-                    //UserTin = '', Fbnum = '', UserTyp = 'TP') ?$expand = WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet &$format = json
-
-
                     String url = Constants.ZakatListOfInstalmentplanRequestUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
                        "Auditor='" + auditor + "'," +
                      "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
@@ -12216,7 +11831,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -12264,14 +11878,6 @@ namespace GAZT.Manager
 
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-                    //     / sap / opu / odata / SAP / ZDP_IPRF_WI_SRV / HdrSet(CallServ = 'IPRR', HostName = '',
-                    //Zuser = 'ABURAKAN1385@GMAIL.COM', Bpnum = '', Auditor = 'null', Lang = 'E', Euser1 = '00001000000008320614', Euser2 = 'null', Euser3 = 'null',
-                    //Euser4 = 'null', Euser5 = 'null', Fbguid = '005056B1F8FB1EEAB9BBAD0725EE38FF', UserTin = '', Fbnum = '', UserTyp = 'TP')
-                    // ?$expand = WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet &$format = json
-
-                    //
                     String url = Constants.ZakatRevokeRequestListUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
                        "Auditor='" + auditor + "'," +
                      "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
@@ -12318,8 +11924,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                               throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
@@ -12345,47 +11950,16 @@ namespace GAZT.Manager
 
         public async static Task<SummaryDisplayModel> GAZTGetZakatRequestDisplayData(string fbnum, string status)
         {
-
-
-
             if (CrossConnectivity.Current.IsConnected)
             {
                 SummaryDisplayModel _zakatRequestDisplayModel = new SummaryDisplayModel();
                 string NewToken = string.Empty;
                 try
-                {
-
-
-
-                    var summaryInputs = await GAZTGetZakatSummaryInputData(fbnum, status);
-
-
-
+                { var summaryInputs = await GAZTGetZakatSummaryInputData(fbnum, status);
                     string euser = "00000000000000000000";
                     string fbguid = summaryInputs.d.Fbguid;
-                    // string fbguid = "005056B1F8FB1EDABAF675538BB331C8";
-
-
-
-                    Char lang = WebServiceManager.GetLangZParameter();
+                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-
-                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet
-                    //    (Auditorz = '', Taxpayerz = '', Fbnumz = '', PeriodKeyz = '', Langz = 'E', Euser = '00000000000000000000',
-                    //Fbguid = '005056B1F8FB1EEAB9D3137F3DD4F7DA', Submitz = '', Savez = '', UserTin = '')
-                    //    ?&$expand = Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet
-
-
-
-                    /* String url = Constants.ZakatRequestDisplayUrl + "Auditorz='" + "'," +
-                 "Taxpayerz='" + "',Fbnumz='" + "',PeriodKeyz='" + "',Langz='" + lang + "'," +
-                 "Euser='" + euser + "',Fbguid='" + fbguid + "',Submitz='" + "',Savez='" + "',UserTin='" + "')?&$expand=Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet&$format=json";*/
-
-
-
-
                     String url = Constants.ZakatRequestDisplayUrl + "Tin='',Euser='00000000000000000000',Langz='EN',Fbguid='" + fbguid + "'," +
                         "Fbnum='" + fbnum + "',FormMode='S')?$expand=AttachSet,NotesSet,FnDtlSet&$format=json";
                     var uri = new Uri(url);
@@ -12432,8 +12006,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                               throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
@@ -12454,40 +12027,17 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-
-        // public static string GetZAKATSummaryInputURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/UserFillSet(";
-
-
         public async static Task<ZakatSummaryInputModel> GAZTGetZakatSummaryInputData(string fbnum, string status)
         {
             ZakatSummaryInputModel _zakatSummaryInputModel = new ZakatSummaryInputModel();
-
-
-
             if (CrossConnectivity.Current.IsConnected)
             {
-
-
-
                 string NewToken = string.Empty;
                 try
                 {
                     string fbtyp = "IPRF";
-
-
-
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
-
-                    /*https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/UserFillSet(Euser1='00000000000000000000',Fbguid='',Fbnum='010001119386',Fbtyp='IPRF',
-                     Gpart = '3100000567',Lang = 'EN',Persl = '',Status = 'IP014',TaxOffUid = '')?$format = json*/
-
-
-
-
-
                     String url = Constants.GetZAKATSummaryInputURL + "Euser1='00000000000000000000',Fbguid='" + "',Fbnum='" + fbnum + "',Fbtyp='" + fbtyp + "'," +
                      "Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',TaxOffUid='" + "')?$format=json";
                     var uri = new Uri(url);
@@ -12536,7 +12086,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -12575,7 +12124,6 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    //   / sap / opu / odata / SAP / ZDP_IPRF_M_SRV / RevChkSet(Fbnum = '85000000679')
                     String url = Constants.ZakatValidateRevokeListUrl + "Fbnum='" + fbnum + "')?&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _zakatRevokeValidateResponse = await client.GetAsync(uri);
@@ -12615,8 +12163,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                               throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
@@ -12639,8 +12186,7 @@ namespace GAZT.Manager
             }
 
         }
-        //Send OTP and Validate OTP both are same.return model also same but different values.
-        public static async Task<ZakatRevokeSendSMSModel> GAZTZakatRevokeSendOTP(string fbNum, string code)
+         public static async Task<ZakatRevokeSendSMSModel> GAZTZakatRevokeSendOTP(string fbNum, string code)
         {
             ZakatRevokeSendSMSModel _zakatRevokeSendSMSModel = new ZakatRevokeSendSMSModel();
             if (CrossConnectivity.Current.IsConnected)
@@ -12691,7 +12237,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
@@ -12728,12 +12273,6 @@ namespace GAZT.Manager
                     string taxType = "VT";
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(TaxType='VT',AudTin='',Gpart='3060200042',Lang='E',UserTin='')
-                    //  ?= &$expand = ASSLISTSet,STATUSSet,REQTYPSet &$format = json
-
-                    // String url = Constants.GetVATObjectionListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "'," +"UserTin='" + "')?$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
-
                     String url = Constants.GetVATObjectionListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "'," + "UserTin='" + "')?$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
 
                     var uri = new Uri(url);
@@ -12773,8 +12312,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                               throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
@@ -13010,7 +12548,6 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
