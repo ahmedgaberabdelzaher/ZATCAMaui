@@ -631,7 +631,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             get => _isNewFinancialRepVisible;
             set
             {
-                // if (_isFinancialVisible == value) return;
+                 //if (_isFinancialVisible == value) return;
 
                 _isNewFinancialRepVisible = value;
                 RaisePropertyChanged(nameof(IsNewFinancialRepVisible));

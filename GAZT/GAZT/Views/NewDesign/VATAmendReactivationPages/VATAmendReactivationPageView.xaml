@@ -1848,6 +1848,6 @@ SelectionChanged="DDlIDTypeSR_OkayButtonClicked" OkButtonClicked="DDlIDTypeSR_Ok
                     </StackLayout>
                 </StackLayout>
             </Grid>
-        </Grid>s
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

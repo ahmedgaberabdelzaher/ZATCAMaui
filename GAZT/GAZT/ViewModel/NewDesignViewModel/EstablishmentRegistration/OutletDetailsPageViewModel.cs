@@ -37,7 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _currentTab;
             set
             {
-                if (_currentTab == value) return;
+              //  if (_currentTab == value) return;
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)value;
