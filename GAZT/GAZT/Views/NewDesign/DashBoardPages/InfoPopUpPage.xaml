@@ -29,23 +29,16 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
-                <!--<ColumnDefinition Width="auto"/>-->
             </Grid.ColumnDefinitions>
             <Image x:Name="VATInfoImg" Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="StartAndExpand">
             </Image>
 
-            <custom:CustomLabel x:Name="VATTitle" Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.ZZZZRegisterinVATNow}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
-
-            <!--<Image Grid.Row="0" Grid.Column="2" Source="WhiteCircle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnVATNowTapped" NumberOfTapsRequired="1"/>
-                </Image.GestureRecognizers>
-            </Image>-->
-
+                <custom:CustomLabel x:Name="VATTitle" Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.ZZZZRegisterinVATNow}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
                 <custom:CustomLabel x:Name="VATDecp" Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDLessThan5MinRegister}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
             </Grid>
 
             <!--Zakat Starts-->
+            
             <Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsEstablishmentRegistrationTileVisible}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -60,15 +53,9 @@
                 </Image>
 
                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.NDRegisterZAKAT}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
-
-                <!--<Image Grid.Row="0" Grid.Column="2" Source="WhiteCircle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnZakatNowTapped" NumberOfTapsRequired="1"/>
-                    </Image.GestureRecognizers>
-                </Image>-->
-
                 <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDRegZakatin5mins}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
             </Grid>
+            
             <!--Zakat Ends-->
 
             <buttons:SfButton x:Name="btnLogout" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static ResourceManager:AppResources.ZLogout}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 

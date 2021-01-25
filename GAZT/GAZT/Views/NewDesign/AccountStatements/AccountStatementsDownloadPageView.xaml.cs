@@ -17,23 +17,18 @@ namespace EGAZT.Views.NewDesign.AccountStatements
     [Preserve(AllMembers = true)]
     public partial class AccountStatementsDownloadPageView : ContentPage
     {
-        //AccountStatementsDownloadPageViewModel viewModel;
-
-
         AccountStatementsPageViewModel viewModel;
         public AccountStatementsDownloadPageView(DataForDownloadPage Data)
         {
             InitializeComponent();
-
-
             viewModel = App.Locator.AccountStatementsPageView;
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
 
-            viewModel.GroupedDataForDownload = Data.GroupedDataForDownload  ;
-            viewModel. ASTaxpayerSelectedValues = new ASTaxpayerSelectedValues();
+            viewModel.GroupedDataForDownload = Data.GroupedDataForDownload;
+            viewModel.ASTaxpayerSelectedValues = new ASTaxpayerSelectedValues();
             viewModel.ASTaxpayerSelectedValues = Data.ASTaxpayerSelectedValues;
             viewModel.IsNormalListDownloadPage = Data.isNormalList;
             viewModel.StatementsLineItemsDownloadPage = Data.StatementsLineItems;
@@ -45,9 +40,6 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-           
-
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
             {
                 if (App.IsArabic)
@@ -60,7 +52,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     else if (arg.PickerId == "EndDateTypePicker")
                     {
                         viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue).ToShortDateString();
-                        viewModel.ToDateDownloadPage  = Convert.ToDateTime(arg.SelectedValue);
+                        viewModel.ToDateDownloadPage = Convert.ToDateTime(arg.SelectedValue);
                     }
                 }
                 else
@@ -127,8 +119,6 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                    // await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
             }
@@ -154,15 +144,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                    //await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
             }
-
-
         }
-
-        
     }
 }

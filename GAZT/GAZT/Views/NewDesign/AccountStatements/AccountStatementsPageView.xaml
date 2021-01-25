@@ -32,116 +32,32 @@
 
                 </ResourceDictionary>
                 <ResourceDictionary>
-                <DataTemplate x:Key="otherDataTemplate">
-                    <ViewCell>
-                    <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Padding="0" Spacing="0">
-                            <Grid  Padding="15" RowSpacing="0">
-                                <Grid.RowDefinitions>   
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                    <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                    <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
-                                </StackLayout>
-                                 <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                    <yummy:PancakeView.Triggers>
-                                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
-                                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                            </DataTrigger>
-                                        </yummy:PancakeView.Triggers>
-                                 </yummy:PancakeView>
-                                <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
-                                        <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}" TextColor="{StaticResource Secondary}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                            <Label.Triggers>
-                                                <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
-                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
-                                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                    <DataTemplate x:Key="otherDataTemplate">
+                        <ViewCell>
+                            <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Padding="0" Spacing="0">
+                                    <Grid  Padding="15" RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                            <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                            <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
+                                        </StackLayout>
+                                        <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                            <yummy:PancakeView.Triggers>
+                                                <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                                                 </DataTrigger>
-                                            </Label.Triggers>
-                                        </Label>
-                                </StackLayout>
-                            </Grid>
-                            <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                            <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2.5*"/>
-                                    <ColumnDefinition Width="1.5*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASBillAmount}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                    <custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding Betrh}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}" >
-                                    </custom:CustomLabel>
-                                </StackLayout>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
-                                    <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                    <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
-                                            <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Bldat,StringFormat='{0:dd MMM yyyy}'}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5" >
-                                    <Label Text="{x:Static ResourceManager:AppResources.ASDueDate}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                    <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
-                                       <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding PeriodEndDt,StringFormat='{0:dd MMM yyyy}'}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>           
-                                <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                    <Label Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                   
-                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
-                                            <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding PeriodTxt}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </custom:CustomLabel>
-                                    
-                                    
-                                </StackLayout>
-                            </Grid>
-
-                        </StackLayout>
-                    </border:SfBorder >
-                    </ViewCell>
-                </DataTemplate>
-                <DataTemplate x:Key="totalBalances">
-                    <ViewCell>
-                        <StackLayout>
-                           <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                             <StackLayout Padding="0" Spacing="0">
-                                <Grid  Padding="15" RowSpacing="0">
-                                    <Grid.RowDefinitions>   
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                        <Label  Text="Total Debit" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                    </StackLayout>
-                                    <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                    </yummy:PancakeView>
-                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
-                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding HeaderSet.D.DebitAmount}" TextColor="{StaticResource NewDarkGreenColor}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                            </yummy:PancakeView.Triggers>
+                                        </yummy:PancakeView>
+                                        <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
+                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}" TextColor="{StaticResource Secondary}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
                                                         <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
@@ -149,121 +65,196 @@
                                                     </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
-                                    </StackLayout>
+                                        </StackLayout>
+                                    </Grid>
+                                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                                    <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="1.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASBillAmount}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                            <custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding Betrh}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}" >
+                                            </custom:CustomLabel>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                            <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Bldat,StringFormat='{0:dd MMM yyyy}'}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5" >
+                                            <Label Text="{x:Static ResourceManager:AppResources.ASDueDate}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                            <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding PeriodEndDt,StringFormat='{0:dd MMM yyyy}'}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                            <Label Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
 
-                                </Grid>
-                              </StackLayout>
-                         </border:SfBorder>
-                         <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                             <StackLayout Padding="0" Spacing="0">
-                                <Grid  Padding="15" RowSpacing="0">
-                                    <Grid.RowDefinitions>   
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                        <Label  Text="Total Credit" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding PeriodTxt}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </custom:CustomLabel>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </border:SfBorder >
+                        </ViewCell>
+                    </DataTemplate>
+                    <DataTemplate x:Key="totalBalances">
+                        <ViewCell>
+                            <StackLayout>
+                                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout Padding="0" Spacing="0">
+                                        <Grid  Padding="15" RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                <Label  Text="Total Debit" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                            </StackLayout>
+                                            <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                            </yummy:PancakeView>
+                                            <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
+                                                <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding HeaderSet.D.DebitAmount}" TextColor="{StaticResource NewDarkGreenColor}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
+                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </StackLayout>
+                                        </Grid>
                                     </StackLayout>
-                                    <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource ErrorColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                    <yummy:PancakeView.Triggers>
-                                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
-                                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                            </DataTrigger>
-                                        </yummy:PancakeView.Triggers>
-                                    </yummy:PancakeView>
-                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
-                                    <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding HeaderSet.D.CreditAmount}" TextColor="{StaticResource ErrorColor}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                        <Label.Triggers>
-                                            <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
-                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
-                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
+                                </border:SfBorder>
+                                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout Padding="0" Spacing="0">
+                                        <Grid  Padding="15" RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                <Label  Text="Total Credit" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                            </StackLayout>
+                                            <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource ErrorColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                                <yummy:PancakeView.Triggers>
+                                                    <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                    </DataTrigger>
+                                                </yummy:PancakeView.Triggers>
+                                            </yummy:PancakeView>
+                                            <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
+                                                <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding HeaderSet.D.CreditAmount}" TextColor="{StaticResource ErrorColor}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
+                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </StackLayout>
+                                        </Grid>
                                     </StackLayout>
-
-                                </Grid>
-                              </StackLayout>
-                         </border:SfBorder>
-                       <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                             <StackLayout Padding="0" Spacing="0">
-                                <Grid  Padding="15" RowSpacing="0">
-                                    <Grid.RowDefinitions>   
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                        <Label  Text="Total Balance" VerticalOptions="CenterAndExpand" Style="{StaticResource BodyLabelBlack}"/>
+                                </border:SfBorder>
+                                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout Padding="0" Spacing="0">
+                                        <Grid  Padding="15" RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                <Label  Text="Total Balance" VerticalOptions="CenterAndExpand" Style="{StaticResource BodyLabelBlack}"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
+                                                <Label Style="{StaticResource SectionTitleBlackBold}" Text="{Binding HeaderSet.D.Close}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
+                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </StackLayout>
+                                        </Grid>
                                     </StackLayout>
-                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
-                                    <Label Style="{StaticResource SectionTitleBlackBold}" Text="{Binding HeaderSet.D.Close}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                        <Label.Triggers>
-                                            <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
-                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
-                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                    </StackLayout>
-
-                                </Grid>
-                              </StackLayout>
-                         </border:SfBorder>
-                        </StackLayout>
-
-                    </ViewCell>
-                </DataTemplate>
-                <local:AccountStatementsLVDataTemplateSelector x:Key="lvDataTemplateSelector"
-                    TotalBalanceTemplate="{StaticResource totalBalances}"
-                   />
-                     <!--OtherDataTemplate="{StaticResource otherDataTemplate}"-->
-        </ResourceDictionary>
+                                </border:SfBorder>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                    <local:AccountStatementsLVDataTemplateSelector x:Key="lvDataTemplateSelector"
+                    TotalBalanceTemplate="{StaticResource totalBalances}" />
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
-    <ControlTemplate>
-        <Grid>
-            <StackLayout>
-                <Grid Padding="15,5,15,5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="60*"/>
-                        <ColumnDefinition Width="20*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
-                    <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <StackLayout Spacing="15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2">
-                        <Image Source="search" IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}">
+        <ControlTemplate>
+            <Grid>
+                <StackLayout>
+                    <Grid Padding="15,5,15,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="searchButtonTapped"/>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
                             </Image.GestureRecognizers>
                         </Image>
-                        <Image Source="filter">
-                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="filterButtonTapped"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                                     Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"> 
-                    <SearchBar  BackgroundColor="White" custom:RoundCornersEffect.CornerRadius="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" TextChanged="SearchBar_TextChanged" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
-                    </SearchBar>
+                        <StackLayout Spacing="15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2">
+                            <Image Source="search" IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="searchButtonTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="filter">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="filterButtonTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                     Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+                            <SearchBar  BackgroundColor="White" custom:RoundCornersEffect.CornerRadius="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" TextChanged="SearchBar_TextChanged" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
+                            </SearchBar>
                             <Image Source="close" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CloseSearchButton_Tapped">
@@ -271,29 +262,24 @@
                                 </Image.GestureRecognizers>
                             </Image>
                         </StackLayout>
-                </Grid>
-                <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100*" />
-                        </Grid.RowDefinitions>
-                        <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" BackgroundColor="White"/>
                     </Grid>
-                </yummy:PancakeView>
-            </StackLayout>
-        </Grid>
-    </ControlTemplate>
-</ContentPage.ControlTemplate>
+                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" BackgroundColor="White"/>
+                        </Grid>
+                    </yummy:PancakeView>
+                </StackLayout>
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
     <ContentPage.Content>
-<Grid  >
-   
-        <StackLayout Padding="15" Orientation="Vertical"  >
-            <!--<Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>-->
-            
-            <ListView x:Name="LvwContacts"
+        <Grid  >
+
+            <StackLayout Padding="15" Orientation="Vertical">
+                <ListView x:Name="LvwContacts"
                       Margin="5"
                       BackgroundColor="White"
                       SeparatorVisibility="None"
@@ -302,315 +288,260 @@
                       GroupDisplayBinding="{Binding Key}"        
                       ItemsSource="{Binding GroupedData}"  
                       ItemTapped="LvwContacts_ItemTapped"
-                      HasUnevenRows="True">  
-                <ListView.ItemTemplate>  
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <StackLayout>
-
-                        <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Padding="0" Spacing="0" >
-                            <Grid  Padding="15" RowSpacing="0" >
-                                <Grid.RowDefinitions>   
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                    <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
-                                    <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
-                                </StackLayout>
-                                 <Frame Grid.Row="0" Grid.Column="1"
+                      HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout>
+                                        <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <StackLayout Padding="0" Spacing="0" >
+                                                <Grid  Padding="15" RowSpacing="0" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                        <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
+                                                        <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    </StackLayout>
+                                                    <Frame Grid.Row="0" Grid.Column="1"
                                                     BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"
                                                     Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"
                                                     HeightRequest="20" Opacity=".2"
                                         HasShadow="False"   
                                                     VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                    <!--<yummy:PancakeView.Triggers>
-                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="1">
-                                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="2">
-                                                <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
-                                            </DataTrigger>
-                                        </yummy:PancakeView.Triggers>-->
-                                 </Frame>
-                                <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
-                                        <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}"
+                                                    </Frame>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
+                                                        <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}"
                                                TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                            <!--<Label.Triggers>
-                                                 <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="1">
-                                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                </DataTrigger>
-                                                 <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="2">
-                                                    <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
-                                                </DataTrigger>
-                                            </Label.Triggers>-->
-                                        </Label>
-                                </StackLayout>
-                            </Grid>
-                            <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                            <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-5">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASBillAmount}"
-                                                      
+                                                        </Label>
+                                                    </StackLayout>
+                                                </Grid>
+                                                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                                                <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="5">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-5">
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASBillAmount}"                                                      
                                                         Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-
-                                    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="StartAndExpand" >
-                                            <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" 
+                                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="StartAndExpand" >
+                                                            <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" 
                                                                  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding BetrhAmount}"></Span>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-
-                                            <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-                                    </StackLayout>
-
-                                    <!--<custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding BetrhAmount}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}" >
-                                    </custom:CustomLabel>-->
-                                </StackLayout>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
-                                    <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                    <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
-                                            <Label.FormattedText>
-                                            <FormattedString>
-                                                <!--<Span Text="{Binding Bldat,StringFormat='{0:dd MMM yyyy}'}"/>-->
-                                                      <Span Text="{Binding FormattedBldat}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5" >
-                                    <Label Text="{x:Static ResourceManager:AppResources.ASDueDate}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                    <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
-                                       <Label.FormattedText>
-                                            <FormattedString>
-                                                <!--<Span Text="{Binding PeriodEndDt,StringFormat='{0:dd MMM yyyy}'}"/>-->
-                                                 <Span Text="{Binding FormattedBldat2}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>           
-                                <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                    <Label Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                   
-                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
-                                            <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding PeriodTxt}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </custom:CustomLabel>
-                                    
-                                    
-                                </StackLayout>
-                                  <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5" >
-                                        <Label Text="{x:Static ResourceManager:AppResources.ASFBNum}"
+                                                                <custom:CustomLabel.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding BetrhAmount}"></Span>
+                                                                    </FormattedString>
+                                                                </custom:CustomLabel.FormattedText>
+                                                            </custom:CustomLabel>
+                                                            <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                                <custom:CustomLabel.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
+                                                                    </FormattedString>
+                                                                </custom:CustomLabel.FormattedText>
+                                                            </custom:CustomLabel>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                                        <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding FormattedBldat}"/>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5" >
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ASDueDate}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                                        <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding FormattedBldat2}"/>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding PeriodTxt}" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </custom:CustomLabel>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5" >
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ASFBNum}"
                                                 IsVisible= "{Binding Fbnum,
                                     Converter={StaticResource IntToBoolConverter}}"
                                                Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                        <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand" x:Name="entry1">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-
-                                                    <Span Text="{Binding Fbnum}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}"
-                                               IsVisible= "{Binding Vtre2,
-                                    Converter={StaticResource IntToBoolConverter}}"
-                                               Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-
-                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"
+                                                        <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand" x:Name="entry1">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding Fbnum}"/>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}"
+                                                                IsVisible= "{Binding Vtre2,
+                                                                Converter={StaticResource IntToBoolConverter}}"
+                                                                Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"
                                                             x:Name="entry2"
                                                             HorizontalOptions="Start" HorizontalTextAlignment="Start">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding Vtre2}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </custom:CustomLabel>
-
-
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding Vtre2}" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </custom:CustomLabel>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </border:SfBorder >
                                     </StackLayout>
-                            </Grid>
-
-                        </StackLayout>
-                    </border:SfBorder >
-                        </StackLayout>
                                 </ViewCell.View>
                             </ViewCell>
-                    </DataTemplate>  
-                </ListView.ItemTemplate>
-                  <ListView.GroupHeaderTemplate>
-                      <DataTemplate>
-                          <ViewCell>
-                              <ViewCell.View>
-                                  <Grid>
-                                      <custom:CustomLabel Text="{Binding Key}"  Style="{StaticResource SectionTitleBlack}">
-                          
-                                      </custom:CustomLabel>
-
-                                  </Grid>
-                              </ViewCell.View>
-                          </ViewCell>
-                      </DataTemplate>
-                  </ListView.GroupHeaderTemplate>
-
-                <ListView.Footer>
-        
-                        <Grid>
-            
-                            <StackLayout Orientation="Vertical">
-                            <StackLayout  IsVisible="{Binding IsNotHaveStatements}">
-                                <custom:CustomLabel Margin="0,50,0,0"  Text="{x:Static ResourceManager:AppResources.ASNoFinancialTransactions}"
-                                                    Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                            </StackLayout>
-                         <ListView Margin="5"   IsVisible="{Binding IsNormalStatementsViewVisible}" 
-                      SeparatorVisibility="None"
-                      VerticalScrollBarVisibility="Never"
-                      ItemsSource="{Binding StatementsLineItems}"  
-                      HasUnevenRows="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">  
-                    <ListView.ItemTemplate>  
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.GroupHeaderTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
-                                    <StackLayout>
-                            <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                            <StackLayout Padding="0" Spacing="0">
-                                <Grid  Padding="15" RowSpacing="0">
-                                    <Grid.RowDefinitions>   
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                        <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
-                                        <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
-                                    </StackLayout>
-                                     <!--<yummy:PancakeView Grid.Row="0" Grid.Column="1" Padding="10,10,10,10"  
-                                                        CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"
-                                                        VerticalOptions="CenterAndExpand" HorizontalOptions="End"
-                                                        BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}">
-                                       
-                                     </yummy:PancakeView>-->
+                                    <Grid>
+                                        <custom:CustomLabel Text="{Binding Key}"  Style="{StaticResource SectionTitleBlack}" />
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
+                    <ListView.Footer>
+                        <Grid>
+                            <StackLayout Orientation="Vertical">
+                                <StackLayout  IsVisible="{Binding IsNotHaveStatements}">
+                                    <custom:CustomLabel Margin="0,50,0,0"  Text="{x:Static ResourceManager:AppResources.ASNoFinancialTransactions}"
+                                                    Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <ListView Margin="5"   IsVisible="{Binding IsNormalStatementsViewVisible}" 
+                                          SeparatorVisibility="None"
+                                          VerticalScrollBarVisibility="Never"
+                                          ItemsSource="{Binding StatementsLineItems}"  
+                                          HasUnevenRows="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <ViewCell.View>
+                                                    <StackLayout>
+                                                        <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                            <StackLayout Padding="0" Spacing="0">
+                                                                <Grid  Padding="15" RowSpacing="0">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="auto"/>
+                                                                        <RowDefinition Height="auto"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                        <ColumnDefinition Width="auto"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                                        <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
+                                                                        <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                                    </StackLayout>
+                                                                    <Frame Grid.Row="0" Grid.Column="1"
+                                                                            BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"
+                                                                            Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"
+                                                                            HeightRequest="20" Opacity=".2"
+                                                                            HasShadow="False"   
+                                                                            VerticalOptions="CenterAndExpand" HorizontalOptions="End" />
+                                                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
+                                                                        <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}"
+                                                                                TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 
-                                     <Frame Grid.Row="0" Grid.Column="1"
-                                                    BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"
-                                                    Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"
-                                                    HeightRequest="20" Opacity=".2"
-                                        HasShadow="False"   
-                                                    VerticalOptions="CenterAndExpand" HorizontalOptions="End" />
-                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
-                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}"
-                                                   TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                               
-                                            </Label>
-                                    </StackLayout>
-                                </Grid>
-                                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                                <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="5">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2.5*"/>
-                                        <ColumnDefinition Width="1.5*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-5">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASBillAmount}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="StartAndExpand" >
-                                                <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}"
+                                                                        </Label>
+                                                                    </StackLayout>
+                                                                </Grid>
+                                                                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                                                                <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="5">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="auto"/>
+                                                                        <RowDefinition Height="auto"/>
+                                                                        <RowDefinition Height="auto"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="2.5*"/>
+                                                                        <ColumnDefinition Width="1.5*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-5">
+                                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASBillAmount}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="StartAndExpand" >
+                                                                            <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}"
                                                                      HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
-                                                <custom:CustomLabel.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding BetrhAmount}"></Span>
-                                                    </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-                                                <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
-                                                <custom:CustomLabel.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
-                                                    </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-                                        </StackLayout>
-                                        <!--<custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding BetrhAmount}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}" >
-                                        </custom:CustomLabel>-->
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                        <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
-                                                <Label.FormattedText>
-                                                <FormattedString>
-                                                    <!--<Span Text="{Binding Bldat,StringFormat='{0:dd MMM yyyy}'}"/>-->
-                                                          <Span Text="{Binding FormattedBldat}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5" >
-                                        <Label Text="{x:Static ResourceManager:AppResources.ASDueDate}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                        <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
-                                           <Label.FormattedText>
-                                                <FormattedString>
-                                                    <!--<Span Text="{Binding PeriodEndDt,StringFormat='{0:dd MMM yyyy}'}"/>-->
-                                                     <Span Text="{Binding FormattedBldat2}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </StackLayout>           
-                                    <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                       
-                                            <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
-                                                <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding PeriodTxt}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </custom:CustomLabel>
-                        
-                        
-                                    </StackLayout>
-
+                                                                                <custom:CustomLabel.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding BetrhAmount}"></Span>
+                                                                                    </FormattedString>
+                                                                                </custom:CustomLabel.FormattedText>
+                                                                            </custom:CustomLabel>
+                                                                            <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                                                <custom:CustomLabel.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
+                                                                                    </FormattedString>
+                                                                                </custom:CustomLabel.FormattedText>
+                                                                            </custom:CustomLabel>
+                                                                        </StackLayout>
+                                                                    </StackLayout>
+                                                                    <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                                                        <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                                                        <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Text="{Binding FormattedBldat}"/>
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                        </Label>
+                                                                    </StackLayout>
+                                                                    <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5" >
+                                                                        <Label Text="{x:Static ResourceManager:AppResources.ASDueDate}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                                                        <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Text="{Binding FormattedBldat2}"/>
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                        </Label>
+                                                                    </StackLayout>
+                                                                    <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                                                        <Label Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Text="{Binding PeriodTxt}" />
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                        </custom:CustomLabel>
+                                                                    </StackLayout>
                                                                     <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5" >
                                                                         <Label Text="{x:Static ResourceManager:AppResources.ASFBNum}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
                                                                         <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-
                                                                                     <Span Text="{Binding Fbnum}"/>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
@@ -618,7 +549,6 @@
                                                                     </StackLayout>
                                                                     <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
                                                                         <Label Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-
                                                                         <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -626,69 +556,54 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </custom:CustomLabel>
-
-
                                                                     </StackLayout>
                                                                 </Grid>
+                                                            </StackLayout>
+                                                        </border:SfBorder >
+                                                    </StackLayout>
+                                                </ViewCell.View>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </StackLayout>
-                        </border:SfBorder >
-                            </StackLayout>
-                                    </ViewCell.View>
-                                </ViewCell>
-                        </DataTemplate>  
-                    </ListView.ItemTemplate>
-    
-                </ListView>
-                                </StackLayout>
-                            </Grid>
-    </ListView.Footer>
-                <ListView.Header >
-
-
-
-                     
+                        </Grid>
+                    </ListView.Footer>
+                    <ListView.Header >
                         <StackLayout Orientation="Vertical" Spacing="-5" Grid.Row="0" FlowDirection="RightToLeft">
-
-                           <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Vertical" Margin="0,0,0,10"
                                          HorizontalOptions="StartAndExpand" Spacing="-5">
-
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASAccountStatementTaxType}"
                                                         Style="{StaticResource PageTitleBlack}" HorizontalOptions="StartAndExpand">
                                     </custom:CustomLabel>
-                                   
                                 </StackLayout>
-
-
-                            
                             </StackLayout>
-                            
-                       <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                        <custom:CustomLabel Text="{Binding SelectedTransactionTypeFilter.Txt30, Mode=OneWay}"  Style="{StaticResource SectionTitleBlack}">
-                            <custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked"/> 
-                            </custom:CustomLabel.GestureRecognizers>
-                         </custom:CustomLabel>
-                                                  
-                        <Image Source="arrowDropdown"   Margin="0,5,0,0" 
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                <custom:CustomLabel Text="{Binding SelectedTransactionTypeFilter.Txt30, Mode=OneWay}"  Style="{StaticResource SectionTitleBlack}">
+                                    <custom:CustomLabel.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked"/>
+                                    </custom:CustomLabel.GestureRecognizers>
+                                </custom:CustomLabel>
+
+                                <Image Source="arrowDropdown"   Margin="0,5,0,0" 
                                 HorizontalOptions="Start" VerticalOptions="Center">
 
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked">
-                                </TapGestureRecognizer>
-                            </Image.GestureRecognizers>
-                            
-                        </Image>
-                        <Image Source="download" IsVisible="{Binding IsDownloadBtnVisile}"  Margin="5,5,5,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding DownloadBtnTapped}">
-                                </TapGestureRecognizer>
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </StackLayout>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked">
+                                        </TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
 
-                    <syncfusion:SfPicker  x:Name="TransactionTypePicker"  HeaderHeight="55"
+                                </Image>
+                                <Image Source="download" IsVisible="{Binding IsDownloadBtnVisile}"  Margin="5,5,5,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DownloadBtnTapped}">
+                                        </TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+
+                            <syncfusion:SfPicker  x:Name="TransactionTypePicker"  HeaderHeight="55"
                                          HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46"
                                          PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black"
@@ -699,507 +614,339 @@
                                          Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450"
                                          CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"
                                          CancelButtonBackgroundColor="#EAF7CC" SelectedItem="{Binding SelectedTransactionTypeFilter}" >
-                        <syncfusion:SfPicker.Behaviors>
-                            <customcontrol:SfPickerBehavior />
-                        </syncfusion:SfPicker.Behaviors>
-                    </syncfusion:SfPicker>
-                    
-                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" IsVisible="{Binding IsYearsChipVisible}" HorizontalOptions="Start">
-                    <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_Years" Type="Choice" HorizontalOptions="Start"   ChipBackgroundColor="Transparent"
+                                <syncfusion:SfPicker.Behaviors>
+                                    <customcontrol:SfPickerBehavior />
+                                </syncfusion:SfPicker.Behaviors>
+                            </syncfusion:SfPicker>
+
+                            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" IsVisible="{Binding IsYearsChipVisible}" HorizontalOptions="Start">
+                                <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_Years" Type="Choice" HorizontalOptions="Start"   ChipBackgroundColor="Transparent"
                                          ItemsSource="{Binding ChipDataFilterlistForYears}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"
                                          ChipBorderWidth="1" VerticalOptions="Center" SelectionChanged="yearChipGroup_SelectionChanged">
-                        <buttons:SfChipGroup.ItemTemplate>
-                            <DataTemplate > 
-                                <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
-                                    <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"></Image>
-                                    <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
-                                </StackLayout>
-                            </DataTemplate>
-                        </buttons:SfChipGroup.ItemTemplate>
-                    </buttons:SfChipGroup>
-                </ScrollView>
+                                    <buttons:SfChipGroup.ItemTemplate>
+                                        <DataTemplate >
+                                            <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
+                                                <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"></Image>
+                                                <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </buttons:SfChipGroup.ItemTemplate>
+                                </buttons:SfChipGroup>
+                            </ScrollView>
 
-               <Grid x:Name="SortByStackLayout"
+                            <Grid x:Name="SortByStackLayout"
                             ColumnSpacing="25" RowSpacing="0" IsVisible="{Binding IsSortByVisible}" Margin="0,15,0,0">
-                   <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                 
-
-                   <!--PressedBackgroundColor="AliceBlue"  AppResources.TaxType-->
-                   <ScrollView Grid.Column="1" HorizontalOptions="StartAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never"  >
-                          <!--<buttons:SfChipGroup Margin="0,0,0,0" x:Name="ChipGroup_Filters" Type="Choice" HorizontalOptions="Start"  ChipBackgroundColor="Transparent" ItemsSource="{Binding FilterList}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" VerticalOptions="Center" >
-                            <buttons:SfChipGroup.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="0"  >
-                                        
-                                        <custom:CustomLabel Text="{Binding FilterHeader}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </buttons:SfChipGroup.ItemTemplate>
-                        </buttons:SfChipGroup>-->
-                    <StackLayout Orientation="Horizontal">
-                    <buttons:SfButton x:Name="Button_TransactionTypeFilter" Clicked="Button_TransactionTypeFilter_Clicked" HorizontalTextAlignment="Start" Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
-                        <buttons:SfButton.Triggers>
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="">
-                                                            <Setter Property="ImageSource" Value="" />
-                                                            <Setter Property="BackgroundColor" Value="White" />
-                                                               <Setter Property="ShowIcon" Value="False" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="ascending">
-                                                            <Setter Property="ImageSource" Value="ArrowUp" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="descending">
-                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            </buttons:SfButton.Triggers>
-                    </buttons:SfButton>
-                    <!--<buttons:SfButton x:Name="Button_TaxTypeFilter" Clicked="Button_TaxTypeFilter_Clicked"  HorizontalTextAlignment="Start"   Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.TaxType}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
-                    <!--<buttons:SfButton x:Name="Button_FBNumFilter" Clicked="Button_FBNumFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASFBNum}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>
-                    <buttons:SfButton x:Name="Button_SadadBillNumFilter" Clicked="Button_SadadBillNumFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
-                    <buttons:SfButton x:Name="Button_TaxPeriodFilter" Clicked="Button_TaxPeriodFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
-                        <buttons:SfButton.Triggers>
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="">
-                                                            <Setter Property="ImageSource" Value="" />
-                                                            <Setter Property="BackgroundColor" Value="White" />
-                                                               <Setter Property="ShowIcon" Value="False" />
-                                                            
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="ascending">
-                                                            <Setter Property="ImageSource" Value="ArrowUp" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="descending">
-                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            </buttons:SfButton.Triggers>
-                    </buttons:SfButton>
-                    <buttons:SfButton  x:Name="Button_DueDateFilter" Clicked="Button_DueDateFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASDueDate}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
-                           <buttons:SfButton.Triggers>
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="">
-                                                            <Setter Property="ImageSource" Value="" />
-                                                            <Setter Property="BackgroundColor" Value="White" />
-                                                               <Setter Property="ShowIcon" Value="False" />
-                                                            
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="ascending">
-                                                            <Setter Property="ImageSource" Value="ArrowUp" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="descending">
-                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            </buttons:SfButton.Triggers>
-                    </buttons:SfButton>
-                    <buttons:SfButton x:Name="Button_BillDiscriptionFilter"  Clicked="Button_BillDiscriptionFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASBillDescription}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
-                          <buttons:SfButton.Triggers>
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="">
-                                                            <Setter Property="ImageSource" Value="" />
-                                                            <Setter Property="BackgroundColor" Value="White" />
-                                                               <Setter Property="ShowIcon" Value="False" />
-                                                            
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="ascending">
-                                                            <Setter Property="ImageSource" Value="ArrowUp" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="descending">
-                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            </buttons:SfButton.Triggers>
-                    </buttons:SfButton>
-                    <buttons:SfButton x:Name="Button_BillAmountFilter" Clicked="Button_BillAmountFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASBillAmount}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
-                          <buttons:SfButton.Triggers>
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="">
-                                                            <Setter Property="ImageSource" Value="" />
-                                                            <Setter Property="BackgroundColor" Value="White" />
-                                                               <Setter Property="ShowIcon" Value="False" />
-                                                            
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="ascending">
-                                                            <Setter Property="ImageSource" Value="ArrowUp" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="descending">
-                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            </buttons:SfButton.Triggers>
-                    </buttons:SfButton>
-                    <!--<buttons:SfButton  x:Name="Button_BillStatusFilter" Clicked="Button_BillStatusFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ZStatus}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
-                           </StackLayout>
-                    </ScrollView>
-                      <!--<Image>
-                                            <Image.Source>
-                                                <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Arrow}"/>
-                                            </Image.Source>
-                                        </Image>-->
-                   <StackLayout Grid.Column="0" BackgroundColor="White" HorizontalOptions="Start">
-                    <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
-                        <custom:CustomLabel.FormattedText>
-                            <FormattedString>
-                                <Span Text="{x:Static ResourceManager:AppResources.SortBy}"/>
-                                <Span Text=":"></Span>
-                            </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
-                   </StackLayout>
-               </Grid>
-
-                <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
-
-                 <StackLayout Margin="10">
-                     <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="false">
-                             <StackLayout Padding="0" Spacing="0">
-                                <Grid  Padding="15" RowSpacing="0">
-                                    <Grid.RowDefinitions>   
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                        <Label  Text="{x:Static ResourceManager:AppResources.TotalOpeningBalance}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                    </StackLayout>
-
-                                    <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Primary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                         <yummy:PancakeView.Triggers>
-                                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding IsOpeningBalancePositive}" Value="true">
-                                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                            </DataTrigger>
-                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding IsOpeningBalancePositive}" Value="false">
-                                                <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
-                                            </DataTrigger>
-                                        </yummy:PancakeView.Triggers>
-                                    </yummy:PancakeView>
-                                     <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" >
-                                            <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}"  Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding HeaderSet.D.OpeningAmount}"></Span>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                            <custom:CustomLabel.Triggers>
-                                                 <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsOpeningBalancePositive}" Value="true">
-                                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                </DataTrigger>
-                                                 <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsOpeningBalancePositive}" Value="false">
-                                                    <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
-                                                </DataTrigger>
-                                            </custom:CustomLabel.Triggers>
-                                            </custom:CustomLabel>
-
-                                            <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                             <custom:CustomLabel.Triggers>
-                                                 <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsOpeningBalancePositive}" Value="true">
-                                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                </DataTrigger>
-                                                 <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsOpeningBalancePositive}" Value="false">
-                                                    <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
-                                                </DataTrigger>
-                                            </custom:CustomLabel.Triggers>
-                                            </custom:CustomLabel>
-                                         
-                                    </StackLayout>
-
-                                </Grid>
-                              </StackLayout>
-                         </border:SfBorder>
-                           <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                             <StackLayout Padding="0" Spacing="0">
-                                <Grid  Padding="15" RowSpacing="0">
-                                    <Grid.RowDefinitions>   
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                        <Label  Text="{x:Static ResourceManager:AppResources.ASAccountStatementDebit}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                    </StackLayout>
-                                    <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource ErrorColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                    </yummy:PancakeView>
-                                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" >
-                                            <custom:CustomLabel  TextColor="{StaticResource  ErrorColor}"  Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding HeaderSet.D.DebitAmount}"></Span>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-
-                                            <custom:CustomLabel  TextColor="{StaticResource ErrorColor}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-                                    </StackLayout>
-                                </Grid>
-                              </StackLayout>
-                         </border:SfBorder>
-                         <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                             <StackLayout Padding="0" Spacing="0">
-                                <Grid  Padding="15" RowSpacing="0">
-                                    <Grid.RowDefinitions>   
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                        <Label  Text="{x:Static ResourceManager:AppResources.ASAccountStatementCredit}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                    </StackLayout>
-                                    <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Primary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                    <yummy:PancakeView.Triggers>
-                                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
-                                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                            </DataTrigger>
-                                        </yummy:PancakeView.Triggers>
-                                    </yummy:PancakeView>
-                                     <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" >
-                                            <custom:CustomLabel  TextColor="{StaticResource Primary}"  Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding AccStmtnCreditAmount}"></Span>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-
-                                            <custom:CustomLabel  TextColor="{StaticResource Primary}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-                                    </StackLayout>
-                                </Grid>
-                              </StackLayout>
-                         </border:SfBorder>
-                       <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                             <StackLayout Padding="0" Spacing="0">
-                                <Grid  Padding="15" RowSpacing="0">
-                                    <Grid.RowDefinitions>   
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                                <Label  Text="{x:Static ResourceManager:AppResources.ASAccountStatementTheBalances}" VerticalOptions="CenterAndExpand" Style="{StaticResource BodyLabelBlack}"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
-                                    <Label Style="{StaticResource SectionTitleBlackBold}" Text="{Binding HeaderSet.D.CloseAmount}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                        <Label.Triggers>
-                                            <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
-                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
-                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                    </StackLayout>
-
-                                </Grid>
-                              </StackLayout>
-                         </border:SfBorder>
-                        </StackLayout>
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                    <!--<Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60*"/>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="10*"/>
-                    </Grid.ColumnDefinitions>-->
-
-               
-
-                </StackLayout>
-                
-                <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
-
-                <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" >
-                    <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start" SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
-                                         ChipBackgroundColor="Transparent" ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF"
-                                         ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" VerticalOptions="Center" >
-                        <buttons:SfChipGroup.ItemTemplate>
-                            <DataTemplate >
-                                <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
-                                    <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>
-                                    <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
-                                </StackLayout>
-                            </DataTemplate>
-                        </buttons:SfChipGroup.ItemTemplate>
-                    </buttons:SfChipGroup>
-                </ScrollView>-->
-
-               
-            </StackLayout>
-    
-                </ListView.Header>  
-                
-            </ListView>   
-            
-
-                <!--<CollectionView x:Name="dummySearchList" ItemsSource="{Binding SearchBarListItemSource}" IsVisible="{Binding IsCloseButtonVisible}" SelectionMode="None" HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand" BackgroundColor="White" >
-                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical"
-                                           ItemSpacing="50" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.EmptyView>
-                        <StackLayout>
-                           <custom:CustomLabel Margin="0,50,0,0"  Text="{x:Static ResourceManager:AppResources.ASNoFinancialTransactions}"
-                                               Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                        </StackLayout>
-                    </CollectionView.EmptyView>
-                    <CollectionView.ItemTemplate>
-                   <DataTemplate >
-                    <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Padding="0" Spacing="0">
-                            <Grid  Padding="15" RowSpacing="0">
-                                <Grid.RowDefinitions>   
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                    <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
-                                    <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
-                                </StackLayout>
-                                 <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                    <yummy:PancakeView.Triggers>
-                                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="1">
-                                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="2">
-                                                <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
-                                            </DataTrigger>
-                                        </yummy:PancakeView.Triggers>
-                                 </yummy:PancakeView>
-                                <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
-                                        <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}" TextColor="{StaticResource Secondary}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                            <Label.Triggers>
-                                                <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="1">
-                                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                <ScrollView Grid.Column="1" HorizontalOptions="StartAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never"  >
+                                    <StackLayout Orientation="Horizontal">
+                                        <buttons:SfButton x:Name="Button_TransactionTypeFilter" Clicked="Button_TransactionTypeFilter_Clicked" HorizontalTextAlignment="Start" Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                                            <buttons:SfButton.Triggers>
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="">
+                                                    <Setter Property="ImageSource" Value="" />
+                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                    <Setter Property="ShowIcon" Value="False" />
                                                 </DataTrigger>
-                                                 <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="2">
-                                                    <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="ascending">
+                                                    <Setter Property="ImageSource" Value="ArrowUp" />
+                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
-                                            </Label.Triggers>
-                                        </Label>
-                                </StackLayout>
-                            </Grid>
-                            <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                            <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2.5*"/>
-                                    <ColumnDefinition Width="1.5*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-5">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASBillAmount}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                    <custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding Betrh}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}" >
+
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="descending">
+                                                    <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="ShowIcon" Value="True" />
+                                                </DataTrigger>
+                                            </buttons:SfButton.Triggers>
+                                        </buttons:SfButton>
+                                        <buttons:SfButton x:Name="Button_TaxPeriodFilter" Clicked="Button_TaxPeriodFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                                            <buttons:SfButton.Triggers>
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="">
+                                                    <Setter Property="ImageSource" Value="" />
+                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                    <Setter Property="ShowIcon" Value="False" />
+
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="ascending">
+                                                    <Setter Property="ImageSource" Value="ArrowUp" />
+                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="ShowIcon" Value="True" />
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="descending">
+                                                    <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="ShowIcon" Value="True" />
+                                                </DataTrigger>
+                                            </buttons:SfButton.Triggers>
+                                        </buttons:SfButton>
+                                        <buttons:SfButton  x:Name="Button_DueDateFilter" Clicked="Button_DueDateFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASDueDate}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                                            <buttons:SfButton.Triggers>
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="">
+                                                    <Setter Property="ImageSource" Value="" />
+                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                    <Setter Property="ShowIcon" Value="False" />
+
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="ascending">
+                                                    <Setter Property="ImageSource" Value="ArrowUp" />
+                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="ShowIcon" Value="True" />
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="descending">
+                                                    <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="ShowIcon" Value="True" />
+                                                </DataTrigger>
+                                            </buttons:SfButton.Triggers>
+                                        </buttons:SfButton>
+                                        <buttons:SfButton x:Name="Button_BillDiscriptionFilter"  Clicked="Button_BillDiscriptionFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASBillDescription}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                                            <buttons:SfButton.Triggers>
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="">
+                                                    <Setter Property="ImageSource" Value="" />
+                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                    <Setter Property="ShowIcon" Value="False" />
+
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="ascending">
+                                                    <Setter Property="ImageSource" Value="ArrowUp" />
+                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="ShowIcon" Value="True" />
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="descending">
+                                                    <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="ShowIcon" Value="True" />
+                                                </DataTrigger>
+                                            </buttons:SfButton.Triggers>
+                                        </buttons:SfButton>
+                                        <buttons:SfButton x:Name="Button_BillAmountFilter" Clicked="Button_BillAmountFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASBillAmount}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                                            <buttons:SfButton.Triggers>
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="">
+                                                    <Setter Property="ImageSource" Value="" />
+                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                    <Setter Property="ShowIcon" Value="False" />
+
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="ascending">
+                                                    <Setter Property="ImageSource" Value="ArrowUp" />
+                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="ShowIcon" Value="True" />
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="descending">
+                                                    <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="ShowIcon" Value="True" />
+                                                </DataTrigger>
+                                            </buttons:SfButton.Triggers>
+                                        </buttons:SfButton>
+                                    </StackLayout>
+                                </ScrollView>
+                                <StackLayout Grid.Column="0" BackgroundColor="White" HorizontalOptions="Start">
+                                    <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.SortBy}"/>
+                                                <Span Text=":"></Span>
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                </StackLayout>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
-                                    <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                    <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
-                                            <Label.FormattedText>
-                                            <FormattedString>
-                                                ~1~<Span Text="{Binding Bldat,StringFormat='{0:dd MMM yyyy}'}"/>@1@
-                                                      <Span Text="{Binding FormattedBldat}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5" >
-                                    <Label Text="{x:Static ResourceManager:AppResources.ASDueDate}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                    <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
-                                       <Label.FormattedText>
-                                            <FormattedString>
-                                                ~1~<Span Text="{Binding PeriodEndDt,StringFormat='{0:dd MMM yyyy}'}"/>@1@
-                                                 <Span Text="{Binding FormattedPeriodEndDate}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>           
-                                <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                    <Label Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                   
-                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
-                                            <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding PeriodTxt}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </custom:CustomLabel>
-                                    
-                                    
                                 </StackLayout>
                             </Grid>
 
+                            <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
+
+                            <StackLayout Margin="10">
+                                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="false">
+                                    <StackLayout Padding="0" Spacing="0">
+                                        <Grid  Padding="15" RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                <Label  Text="{x:Static ResourceManager:AppResources.TotalOpeningBalance}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                            </StackLayout>
+
+                                            <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Primary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                                <yummy:PancakeView.Triggers>
+                                                    <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding IsOpeningBalancePositive}" Value="true">
+                                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding IsOpeningBalancePositive}" Value="false">
+                                                        <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
+                                                    </DataTrigger>
+                                                </yummy:PancakeView.Triggers>
+                                            </yummy:PancakeView>
+                                            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" >
+                                                <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}"  Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding HeaderSet.D.OpeningAmount}"></Span>
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                    <custom:CustomLabel.Triggers>
+                                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsOpeningBalancePositive}" Value="true">
+                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsOpeningBalancePositive}" Value="false">
+                                                            <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                                                        </DataTrigger>
+                                                    </custom:CustomLabel.Triggers>
+                                                </custom:CustomLabel>
+
+                                                <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                    <custom:CustomLabel.Triggers>
+                                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsOpeningBalancePositive}" Value="true">
+                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsOpeningBalancePositive}" Value="false">
+                                                            <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                                                        </DataTrigger>
+                                                    </custom:CustomLabel.Triggers>
+                                                </custom:CustomLabel>
+
+                                            </StackLayout>
+
+                                        </Grid>
+                                    </StackLayout>
+                                </border:SfBorder>
+                                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout Padding="0" Spacing="0">
+                                        <Grid  Padding="15" RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                <Label  Text="{x:Static ResourceManager:AppResources.ASAccountStatementDebit}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                            </StackLayout>
+                                            <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource ErrorColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                            </yummy:PancakeView>
+                                            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" >
+                                                <custom:CustomLabel  TextColor="{StaticResource  ErrorColor}"  Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding HeaderSet.D.DebitAmount}"></Span>
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+
+                                                <custom:CustomLabel  TextColor="{StaticResource ErrorColor}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </border:SfBorder>
+                                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout Padding="0" Spacing="0">
+                                        <Grid  Padding="15" RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                <Label  Text="{x:Static ResourceManager:AppResources.ASAccountStatementCredit}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                            </StackLayout>
+                                            <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Primary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                                <yummy:PancakeView.Triggers>
+                                                    <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                    </DataTrigger>
+                                                </yummy:PancakeView.Triggers>
+                                            </yummy:PancakeView>
+                                            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" >
+                                                <custom:CustomLabel  TextColor="{StaticResource Primary}"  Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding AccStmtnCreditAmount}"></Span>
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+
+                                                <custom:CustomLabel  TextColor="{StaticResource Primary}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </border:SfBorder>
+                                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout Padding="0" Spacing="0">
+                                        <Grid  Padding="15" RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                <Label  Text="{x:Static ResourceManager:AppResources.ASAccountStatementTheBalances}" VerticalOptions="CenterAndExpand" Style="{StaticResource BodyLabelBlack}"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
+                                                <Label Style="{StaticResource SectionTitleBlackBold}" Text="{Binding HeaderSet.D.CloseAmount}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
+                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </StackLayout>
+
+                                        </Grid>
+                                    </StackLayout>
+                                </border:SfBorder>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            </StackLayout>
+                            <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
                         </StackLayout>
-                    </border:SfBorder >
-                </DataTemplate>
-                 </CollectionView.ItemTemplate> 
-                </CollectionView>-->
+                    </ListView.Header>
+                </ListView>
+            </StackLayout>
 
-       
-              
-        </StackLayout>
-
-          <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -1218,6 +965,6 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-    </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

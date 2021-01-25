@@ -16,6 +16,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
         private string _appVersion = App.AppVersion;
         #region Property
+
         public string AppVersion
         {
             get
@@ -28,9 +29,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 RaisePropertyChanged("AppVersion");
             }
         }
+
         #endregion
 
         #region Constructor
+
         public TaxManagementPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
@@ -38,10 +41,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 _navigationService.GoBack();
             });
         }
+
         #endregion
 
 
         #region Methods
+
         public async Task LogOut()
         {
             await Task.Run(() =>
@@ -91,6 +96,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
             _navigationService.GoBack();
         }
+
         #endregion
     }
 }
