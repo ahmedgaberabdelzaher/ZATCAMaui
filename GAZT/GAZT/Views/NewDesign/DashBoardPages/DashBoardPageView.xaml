@@ -625,6 +625,14 @@
                                             <TapGestureRecognizer Tapped="OnSupportTapped"/>
                                         </StackLayout.GestureRecognizers>
                                     </StackLayout>
+                                    <!--<BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                    <StackLayout Orientation="Horizontal" Spacing="20">
+                                        <Image Source="log_out" Style="{StaticResource SmallIcon}"/>
+                                        <custom:CustomLabel Text="Internal UI Page" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="InternalUITesting_Tapped"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>-->
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                     <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="log_out" Style="{StaticResource SmallIcon}"/>

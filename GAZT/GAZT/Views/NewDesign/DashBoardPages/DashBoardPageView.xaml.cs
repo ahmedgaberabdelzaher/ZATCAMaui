@@ -1024,5 +1024,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.SelectedCommitmentFilterLabelValue = viewModel.SelectedCommitmentFilterValue = e.NewValue.ToString();
 
         }
+
+        private async void InternalUITesting_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new TestPage());
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+        }
     }
 }
