@@ -31,8 +31,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 InitializeComponent();
 
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-
-                //App.IsArabic = true;
                 ChangeAeroIcon();
                 SetLTR();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -41,9 +39,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 this.BindingContext = viewModel;
                 viewModel.cFInterface = this;
                 viewModel.ResetData();
-
-                //viewModel.showInstructionDialog();
-
                 viewModel.GetVATChangeFillingData();
             }
             catch (Exception ex)
@@ -89,9 +84,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 if (arg != null)
                 {
                     string message = arg;
-
-
-
                     if (App.IsArabic)
                     {
                         ArButtons buttonId = ArButtons.None;
@@ -103,13 +95,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                         switch (buttonId)
                         {
                             case ArButtons.إضافةملاحظات:
-                                //viewModel.VATReturnAddNote();
                                 break;
                             case ArButtons.عرضملاحظات:
-                                //  viewModel.VATReturnGetNotes();
                                 break;
                             case ArButtons.المرفقات:
-                                // viewModel.VATViewAttachments();
                                 break;
                             case ArButtons.إلغاء:
                                 viewModel.isDraftClicked = true;
@@ -117,10 +106,8 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                                 viewModel.isDraftClicked = false;
                                 break;
                             case ArButtons.عادةتعيين:
-                                //await viewModel.VATReturnResetAsync();
                                 break;
                             case ArButtons.تعديل:
-                                // await viewModel.VATReturnAmendAsync();
                                 break;
                             case ArButtons.حفظكمسودة:
                                 viewModel.isDraftClicked = true;
@@ -142,13 +129,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                         switch (buttonId)
                         {
                             case Buttons.CreateNotes:
-                                //viewModel.VATReturnAddNote();
                                 break;
                             case Buttons.DisplayNotes:
-                                //viewModel.VATReturnGetNotes();
                                 break;
                             case Buttons.Attachments:
-                                // viewModel.VATViewAttachments();
                                 break;
                             case Buttons.Void:
                                 viewModel.isDraftClicked = true;
@@ -156,24 +140,18 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                                 viewModel.isDraftClicked = false;
                                 break;
                             case Buttons.Reset:
-                                //await viewModel.VATReturnResetAsync();
                                 break;
                             case Buttons.Amend:
-                                // await viewModel.VATReturnAmendAsync();
                                 break;
                             case Buttons.SaveasDraft:
                                 viewModel.isDraftClicked = true;
                                 viewModel.OnSaveDraftClicked();
                                 viewModel.isDraftClicked = false;
-
                                 break;
                             default:
                                 break;
                         }
                     }
-
-
-
                 }
             });
 
@@ -185,9 +163,8 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                     viewModel.ValidateIdNumber();
                 });
 
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
-                //viewModel.PickerModel = arg;
-                //viewModel.updatePicker();
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            {
                 if (viewModel.selectedPicker == ChangeFillingPeriodViewModel.PickerEnum.EffectiveDate)
                 {
                     viewModel.EffectiveDatePickerModel = arg;
@@ -240,20 +217,12 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                             await PopupNavigation.Instance.PopAsync();
                         }
                     }
-
-
-
                 });
             }
             catch (Exception ex)
             {
-
-
-
             }
         }
-
-
 
         public async void getNoCommand()
         {
@@ -272,27 +241,17 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                             await PopupNavigation.Instance.PopAsync();
                         }
                     }
-
-
-
-                    //await PopupNavigation.Instance.PopAsync();
-                    // await viewModel.VATSetReturnVoidAsync();
                 });
             }
             catch (Exception ex)
             {
-
-
-
             }
         }
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender,
             Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             ChangeFillingPeriodModel selectedItem = e.AddedItems[0] as ChangeFillingPeriodModel;
-
             viewModel.ShowAttachments = true;
-
             try
             {
                 switch (viewModel.OutletDecisionOptions.IndexOf(selectedItem))
@@ -304,16 +263,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                             viewModel.IsOthersAtachmentsVisible = false;
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-
-
-                            //if (viewModel.YearsattachmentsListViewData == null)
-                            //{
-                            //    viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();
-                            //}
-                            //else
-                            //{
-                            //    viewModel.AttachmentsListViewData = viewModel.YearsattachmentsListViewData;
-                            //}
                             return;
                         }
                     case 1:
@@ -324,15 +273,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                             viewModel.IsOthersAtachmentsVisible = false;
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-
-                            //if (viewModel.MonthsattachmentsListViewData == null)
-                            //{
-                            //    viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();
-                            //}
-                            //else
-                            //{
-                            //    viewModel.AttachmentsListViewData = viewModel.MonthsattachmentsListViewData;
-                            //}
                             return;
                         }
                     case 2:

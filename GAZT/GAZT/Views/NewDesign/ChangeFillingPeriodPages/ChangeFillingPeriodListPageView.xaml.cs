@@ -15,7 +15,9 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
     {
 
         #region Variable
+
         ChangeFillingPeriodListViewModel viewModel;
+
         #endregion
 
         public ChangeFillingPeriodListPageView()
@@ -25,17 +27,11 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 InitializeComponent();
 
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-
                 ChangeAeroIcon();
                 SetLTR();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
                 viewModel = App.Locator.ChangeFillingPeriodListPageView;
-
                 this.BindingContext = viewModel;
-
-
-
             }
             catch (Exception ex)
             {
@@ -53,8 +49,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 var safeInsets = On<iOS>().SafeAreaInsets();
                 safeInsets.Bottom = -10;
                 this.Padding = safeInsets;
-
-
                 viewModel.ResetData();
                 viewModel.GetVATChangeFillingList();
             }
@@ -88,22 +82,14 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
         private void Request_Item_Tapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.ItemData as VATChangeFillingListModel.ChangeFillingFrequency;
-
-
-
             if (item.Fbust == "E0018" || item.Fbust == "E0075" || item.Fbust == "E0074" || item.Fbust == "E0013")
             {
-
                 App.selectedVatFillingItem = item.Fbnum;
                 App.selectedVATItemFbust = item.Fbust;
                 viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
-
             }
             else
             {
-
-
-
                 viewModel.GetVATChangeFillingSummary(item);
                 viewModel.EnableSummaryView();
             }
@@ -117,12 +103,8 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             {
 
                 String downloadurl = Constants.downloadFile + "'" + viewModel.vATChangingSummaryData.Fbnum + "')/$value";
-                //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
-
             }
         }
-
-
     }
 }

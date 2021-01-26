@@ -324,10 +324,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-       
-
-       
-
         private string _infoDesc = "";
         public string InfoDesc
         {
@@ -341,22 +337,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 RaisePropertyChanged("InfoDesc");
             }
         }
-
-
-
-        //private string _infoDesc = "";
-
-        //public string InfoDesc
-        //{
-        //    get { return _infoDesc; }
-        //    set
-        //    {
-        //        if (_infoDesc == value) return;
-
-        //        _infoDesc = value;
-        //        RaisePropertyChanged("InfoDesc");
-        //    }
-        //}
 
         private string _pickedContract = "";
 
@@ -412,9 +392,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 RaisePropertyChanged("AmountToRelease");
             }
         }
-        
 
-       private double _contractTotalAmountText = 0.0;
+
+        private double _contractTotalAmountText = 0.0;
         public double ContractTotalAmountText
         {
             get { return _contractTotalAmountText; }
@@ -822,7 +802,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 InfoTitle = AppResources.CRContractprofitEstimatedRate;
                 InfoDesc = AppResources.CRContractprofitEstimatedRateDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc:InfoDesc,Title:InfoTitle));
+                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
 
 
             });
@@ -1085,7 +1065,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1249,13 +1229,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                 if (!isSubmitted)
                 {
-                   await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+                    await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
                     isSubmitted = true;
                     await SubmitClicked();
                 }
 
             }
-            catch(GAZTErrorException ex)
+            catch (GAZTErrorException ex)
             {
                 if (PopupNavigation.Instance.PopupStack.Count > 0)
                     await PopupNavigation.Instance.PopAsync(false);
@@ -1281,7 +1261,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     _navigationService.GoBack();
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (PopupNavigation.Instance.PopupStack.Count > 0)
                     await PopupNavigation.Instance.PopAsync(false);
@@ -1290,7 +1270,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             finally
             {
                 if (PopupNavigation.Instance.PopupStack.Count > 0)
-                   await PopupNavigation.Instance.PopAsync(false);
+                    await PopupNavigation.Instance.PopAsync(false);
             }
         }
 
@@ -1416,8 +1396,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
             TodayDateinHijriStart = todaycollectionHijri;
             TodayDateinHijriEnd = todaycollectionHijri;
-            //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
-
 
             if (ContractReleaseData != null)
             {
@@ -1428,8 +1406,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                     FromDate = HDateNow();
                     ToDate = HDateNow();
-                    // FromDate = (TodayDateinHijriStart[2] + "/" + TodayDateinHijriStart[1] + "/" + TodayDateinHijriStart[0]).ToString();
-                    //ToDate = (TodayDateinHijriEnd[2] + "/" + TodayDateinHijriEnd[1] + "/" + TodayDateinHijriEnd[0]).ToString();
                 }
                 else
                 {
@@ -1438,10 +1414,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 }
 
             }
-
-
-
-
         }
 
 
@@ -1462,15 +1434,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     {
                         calCul = new CultureInfo("en-US");
                     }
-
-
                 }
-                else {
+                else
+                {
 
                     calCul = new CultureInfo("en-US");
                 }
-
-            
                 return DateTime.Now.ToString("yyyy/MM/dd", calCul.DateTimeFormat);
             }
             catch (Exception ex)
@@ -1539,13 +1508,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.ADueZakat = ZakatDues.ToString();
                 request.d.AReqAmt = AmountToRelease.ToString();
                 request.d.ATaxProfi = ContractReleaseData.d.ATaxProfi;
-                //    request.d.ATaxProfi = EstimatedProfitForTaxAmount.ToString();
-                // request.d.ATaxProfitPer = EstimatedProfitForTaxPercent.ToString();
                 request.d.ATaxProfitPer = EstimatedProfitForTaxAmount.ToString();
                 request.d.ATotalAmt = ContractTotalAmount.ToString();
                 request.d.AZakatProfit = ContractReleaseData.d.AZakatProfit;
-                //    request.d.AZakatProfit = EstimatedProfitForZakatAmount.ToString();
-                //     request.d.AZakatProfitPer = EstimatedProfitForZakatPercent.ToString();
                 request.d.AZakatProfitPer = EstimatedProfitForZakatAmount.ToString();
                 request.d.AComments = Remarks.ToString();
                 request.d.ARemark = Remarks.ToString();
@@ -1568,9 +1533,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     notes.Tdline = "";
 
                 }
-
-
-
                 Metadata _metdata = new Metadata();
                 _metdata.uri = Constants.ContractReleaseRequestUrl + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotesSet(1)";
                 _metdata.type = "Z_TP_NOTES_TP11_SRV.znotes";
@@ -1593,29 +1555,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 notes.XObsoletez = "";
                 request.d.znotesSet = new ZnotesSet[1];
                 request.d.znotesSet[0] = notes;
-
-
-
-
-
-                //  request.d.znotesSet = ContractReleaseData.d.znotesSet.results;
                 request.d.AttDetSet = ContractReleaseData.d.AttDetSet.results;
-
-                // var fromDate = (FromDate.Year + "/" + FromDate.Month + "/" + FromDate.Day).ToString();
-                //var toDate = (ToDate.Year + "/" + ToDate.Month + "/" + ToDate.Day).ToString();
-
-
-
-
                 var todayDate = DateTime.Now.ToString();
 
                 DateTime dt2 = Convert.ToDateTime(todayDate);
                 JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-
                 };
-                //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                 var jsonDateTime2 = JsonConvert.SerializeObject(dt2, microsoftDateFormatSettings2);
                 string[] dateList2 = jsonDateTime2.Split('+');
                 jsonDateTime2 = dateList2[0].Replace("\"\\", "");
@@ -1623,12 +1570,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 var convretedTodayate = jsonDateTime2;
 
                 request.d.AReceiveDt = convretedTodayate;
-
-
                 CultureInfo calCul;
 
-
-                  if (IsHijriCal)
+                if (IsHijriCal)
                 {
                     calCul = new CultureInfo("ar-SA");
                 }
@@ -1642,20 +1586,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
                 };
-                //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                 var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                 string[] dateList = jsonDateTime.Split('+');
                 jsonDateTime = dateList[0].Replace("\"\\", "");
                 jsonDateTime = jsonDateTime + ")/";
                 var convretedFromDate = jsonDateTime;
 
-
                 DateTime dt1 = DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul);
                 JsonSerializerSettings microsoftDateFormatSettings1 = new JsonSerializerSettings
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
                 };
-                //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                 var jsonDateTime1 = JsonConvert.SerializeObject(dt1, microsoftDateFormatSettings);
                 string[] dateList1 = jsonDateTime1.Split('+');
                 jsonDateTime1 = dateList1[0].Replace("\"\\", "");
@@ -1663,25 +1604,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 var convretedToDate = jsonDateTime1;
                 request.d.AContDt = convretedFromDate;
                 request.d.AContEndDt = convretedToDate;
-                //request.d.AContEndDtCh = ToDate.ToString("yyyy/MM/dd");
-
-
-                //request.d.AContEndDtCh = (ToDate.Year + "/" + ToDate.Month. + "/" + ToDate.Day).ToString();
-                //request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd");
-
                 request.d.AContEndDtCh = ToDate;
                 request.d.AContDt1 = FromDate;
 
                 if (ContractReleaseData.d.ACalTp == "H")
                 {
-                    if (IsHijriCal) {
-
+                    if (IsHijriCal)
+                    {
                         request.d.AContEndDtCh = ToDate;
                         request.d.AContDt1 = FromDate;
                     }
-                    else {
-
-
+                    else
+                    {
                         CultureInfo arCI = new CultureInfo("en-US");
 
                         DateTime tempDate = DateTime.ParseExact(ToDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
@@ -1689,15 +1623,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                         CultureInfo arCI1 = new CultureInfo("ar-SA");
 
-                        string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat); ;
-                        string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat); ;
-
-
+                        string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
+                        string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
                         request.d.AContEndDtCh = convertedDae1;
-                        request.d.AContDt1 = convertedDae2; 
+                        request.d.AContDt1 = convertedDae2;
                     }
-
-
                 }
                 else
                 {
@@ -1709,48 +1639,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     }
                     else
                     {
-
-
                         CultureInfo arCI1 = new CultureInfo("en-US");
                         CultureInfo arCI = new CultureInfo("ar-SA");
-
-
                         DateTime tempDate = DateTime.ParseExact(ToDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                         DateTime tempDate1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-
-
-                        string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat); ;
-                        string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat); ;
-
-
+                        string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
+                        string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
                         request.d.AContEndDtCh = convertedDae1;
                         request.d.AContDt1 = convertedDae2;
                     }
-
-
                 }
-
-
-                // request.d.AContEndDtCh = DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul).ToString("yyyy/MM/dd");
-                // request.d.AContDt1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul).ToString("yyyy/MM/dd");
-
-
                 request.d.Savez = "X";
                 request.d.Submitz = "X";
-
-
             }
-
             catch (Exception ex)
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
-
-
             return request;
-
-
         }
 
         private static string GetLangZParameter()
@@ -1766,8 +1673,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             ContractReleaseFormResponse response = new ContractReleaseFormResponse();
 
             ContractReleaseFormRequest request = new ContractReleaseFormRequest();
-
-
             try
             {
                 request = BuildRequestObject();
@@ -1804,8 +1709,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     }
 
                 }
-
-
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -1921,33 +1824,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     try
                     {
                         ContractReleaseData = await WebServiceManager.GAZTGetContractReleaseRequestData();
-
-                        //PopToRootPage();
-
                         if (ContractReleaseData != null && ContractReleaseData.d != null)
                         {
                             bindDataToUI();
 
-                            if (ContractReleaseData.d.ACalTp == "H") {
+                            if (ContractReleaseData.d.ACalTp == "H")
+                            {
 
                                 IsHijriCal = true;
                             }
-                            else {
+                            else
+                            {
 
                                 IsHijriCal = false;
                             }
-
                             contractReleaseInterface.setDateFormatFirstTime();
-
-
                             SetDefaultDate();
-
-
                             Device.BeginInvokeOnMainThread(() =>
                             {
                                 IsLoading1 = false;
                             });
-
                         }
                         else
                         {
@@ -1958,8 +1854,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                                 _navigationService.GoBack();
                             });
                         }
-
-                        
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
@@ -1974,12 +1868,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                           
+
                             _navigationService.GoBack();
                         });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
                     }
                 });
 
@@ -1990,13 +1881,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    
+
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
@@ -2153,8 +2040,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 {
                     IsAttachmentsEnabled = true;
                 }
-
-
             }
 
         }

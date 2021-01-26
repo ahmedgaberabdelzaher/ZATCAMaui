@@ -202,7 +202,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 {
                     return;
                 }
-
                 _myRequestsListViewData = value;
                 RaisePropertyChanged("MyRequestsListViewData");
             }
@@ -283,7 +282,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
 
             _dialogService = dialogService;
-          
+
 
             CloseClick = new Command(async () =>
             {
@@ -582,7 +581,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     othersAttachmentsListViewData.Add(attachment);
                 }
 
-               
+
             }
 
             YearsattachmentsListViewData = yearsAttachmentsListViewData;

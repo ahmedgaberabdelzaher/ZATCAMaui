@@ -24,15 +24,16 @@
 
     </ContentPage.Resources>
     <ContentPage.Content>
-        
+
         <StackLayout>
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
 
                 <Image HeightRequest="120" WidthRequest="120"
                        HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
-                       Source="Forget_ic_success" />
-                     <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                     <Label Text= "{x:Static ResourceManager:AppResources.VFCSuccessDesc}" FontFamily="{StaticResource SSTArabicMedium}"
+                       Source="Forget_ic_success" >
+                </Image>
+                <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text= "{x:Static ResourceManager:AppResources.VFCSuccessDesc}" FontFamily="{StaticResource SSTArabicMedium}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <ScrollView>
@@ -70,7 +71,7 @@
                                 </Grid.GestureRecognizers>
                             </Grid>
                         </Frame>
-                        
+
                         <buttons:SfButton 
                                           Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
                                           Clicked="Download_Acknowledgement"
@@ -90,6 +91,6 @@
                 </yummy:PancakeView>
             </ScrollView>
         </StackLayout>
-        
+
     </ContentPage.Content>
 </ContentPage>

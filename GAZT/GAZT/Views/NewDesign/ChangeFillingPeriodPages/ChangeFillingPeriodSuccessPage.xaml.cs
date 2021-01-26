@@ -23,12 +23,8 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
             viewModel = App.Locator.ChangeFillingPeriodPageView;
-
             this.BindingContext = viewModel;
-
-            // ReferenceNumberTxt.Text = viewModel.ChangeFillingResponse.d.Fbnumz;
         }
 
         private void SetLTR()
@@ -80,7 +76,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                     break;
                 }
             }
-
             viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
         }
 
@@ -90,7 +85,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             {
                 if (viewModel.ChangeFillingResponse.d.Fbnumz != null)
                 {
-
                     await Clipboard.SetTextAsync(viewModel.ChangeFillingResponse.d.Fbnumz);
                     if (Clipboard.HasText)
                     {
@@ -98,7 +92,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                         await viewModel._dialogService.ShowMessageBox(
                             AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
                     }
-
                 }
             }
             catch (Exception ex)
@@ -109,9 +102,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
         {
             if (viewModel.ChangeFillingResponse.d.Fbnumz != null)
             {
-
                 String downloadurl = Constants.downloadFile + "'" + viewModel.ChangeFillingResponse.d.Fbnumz + "')/$value";
-                //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
             }
