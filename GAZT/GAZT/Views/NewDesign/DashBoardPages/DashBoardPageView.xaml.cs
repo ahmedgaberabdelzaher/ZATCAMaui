@@ -333,6 +333,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             MessagingCenter.Unsubscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard");
             MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
             MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
+            MessagingCenter.Unsubscribe<Object>(this, "UpdateProgressBar");
             isTimerOff = true;
         }
         private async Task LoadData()

@@ -356,10 +356,6 @@
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <!--<Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>-->
                                         <Grid x:Name="ABranchNonResidentCompanyGrid"  Grid.Row="0" Grid.Column="0">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"></RowDefinition>
@@ -386,7 +382,7 @@
                                         <Grid x:Name="ConstructionSiteGrid"   Grid.Row="1" Grid.Column="0" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>   
+                                            </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ConstructionSitePEClick}"/>
                                             </Grid.GestureRecognizers>
@@ -492,13 +488,11 @@
                                             <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
                                                                     FontFamily="{StaticResource SSTArabicMedium}"
                                                                       HorizontalOptions="Start"  Padding="20" 
-                                                                VerticalOptions="End" HorizontalTextAlignment="Start"
-                                                                />
+                                                                VerticalOptions="End" HorizontalTextAlignment="Start"/>
                                         </Grid>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
-                            <!--</StackLayout>-->
                         </Grid>
                     </ScrollView>
                 </StackLayout>
@@ -559,14 +553,6 @@
 
                                         </StackLayout>
                                     </border:SfBorder >
-                                    <!--<syncfusion:SfDatePicker x:Name="dobPicker"
-                                                             FlowDirection="RightToLeft"
-                                                             ShowHeader="False"
-                                                             Format="yyyy_MM_dd"
-                                                             HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
-                                                             PickerMode="Dialog"
-                                                             IsOpen="False"
-                                                             DateSelected="dobPicker_DateSelected" />-->
                                     <custom1:CustomDatePicker
                                                         FlowDirection="RightToLeft"
 								                        ShowHeader="False"
@@ -634,7 +620,7 @@
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
                                         <Entry VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="Center" HeightRequest="48"
+                                               VerticalOptions="Center" HeightRequest="48" 
                                                PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}"
                                                FontFamily="{StaticResource SSTArRoman}" FontSize="16"
                                                Text="{Binding FirstName}" IsSpellCheckEnabled="false"/>
@@ -804,7 +790,6 @@
                 <StackLayout x:Name="PassportDetailsTabMainGrid"  Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}}">
                     <ScrollView   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                         <Grid x:Name="PassportDetailsTab"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <!--IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">-->
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
@@ -895,14 +880,6 @@
 
                                     </StackLayout>
                                 </border:SfBorder >
-
-                                <!--<syncfusion:SfDatePicker x:Name="PassportIssueDatePicker" IsOpen="False"
-                                                         FlowDirection="RightToLeft"
-                                                         Format="yyyy_MM_dd"
-                                                         HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
-                                                         ShowHeader="False"  
-                                                         PickerMode="Dialog"
-                                                         DateSelected="PassportIssueDatePicker_DateSelected"/>-->
                                 <custom1:CustomDatePicker
                                                         FlowDirection="RightToLeft"
 								                        ShowHeader="False"
@@ -926,11 +903,11 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         Closed="passportIssuePicker_Closed"
 								                        ItemHeight="40">
-                                        <custom1:CustomDatePicker.Behaviors>
-                                            <custom1:SfPickerBehavior />
-                                        </custom1:CustomDatePicker.Behaviors>
-                                    </custom1:CustomDatePicker>
-                                    <custom1:CustomHijriDatePicker
+                                    <custom1:CustomDatePicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                    </custom1:CustomDatePicker.Behaviors>
+                                </custom1:CustomDatePicker>
+                                <custom1:CustomHijriDatePicker
                                                         FlowDirection="RightToLeft"
 								                        ShowHeader="False"
 								                        Margin="10,0,10,0" 
@@ -953,7 +930,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         Closed="passportIssuePicker_Closed"
 								                        ItemHeight="40">
-                                    </custom1:CustomHijriDatePicker>
+                                </custom1:CustomHijriDatePicker>
                             </StackLayout>
                             <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand">
                                 <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
@@ -984,12 +961,6 @@
 
                                     </StackLayout>
                                 </border:SfBorder >
-                                <!--<syncfusion:SfDatePicker x:Name="PassportExpiryDatePicker" ShowHeader="False"
-                                                         FlowDirection="RightToLeft"
-                                                             Format="yyyy_MM_dd"
-                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
-                                                             PickerMode="Dialog"                                                            
-                                                             DateSelected="PassportExpiryDatePicker_DateSelected"/>-->
                                 <custom1:CustomDatePicker
                                                         FlowDirection="RightToLeft"
 								                        ShowHeader="False"
@@ -1014,11 +985,11 @@
                                                         Closed="passportExpiryPicker_Closed"
                                                         FutureDay="True"
 								                        ItemHeight="40">
-                                        <custom1:CustomDatePicker.Behaviors>
-                                            <custom1:SfPickerBehavior />
-                                        </custom1:CustomDatePicker.Behaviors>
-                                    </custom1:CustomDatePicker>
-                                    <custom1:CustomHijriDatePicker
+                                    <custom1:CustomDatePicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                    </custom1:CustomDatePicker.Behaviors>
+                                </custom1:CustomDatePicker>
+                                <custom1:CustomHijriDatePicker
                                                         FlowDirection="RightToLeft"
 								                        ShowHeader="False"
 								                        Margin="10,0,10,0" 
@@ -1042,7 +1013,7 @@
                                                         Closed="passportExpiryPicker_Closed"
                                                         FutureDay="True"
 								                        ItemHeight="40">
-                                    </custom1:CustomHijriDatePicker>
+                                </custom1:CustomHijriDatePicker>
                             </StackLayout>
 
                             <StackLayout x:Name="PassportAttachmentsMainLayout"  Orientation="Vertical" Grid.Row="5" Margin="0,0,0,10">
@@ -1269,7 +1240,6 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
-                                            <!--<RowDefinition Height="auto"/>-->
                                         </Grid.RowDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTReportBranchQuestionLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="{Binding SelectedReportingBranch}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
@@ -1281,8 +1251,6 @@
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="{Binding SelectedRegNationalityType}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="{x:Static ResourceManager:AppResources.ESTResidencyStatus}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="{Binding SelectedTpresidence, Converter={StaticResource residentialStatusConverter}}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <!--<buttons:SfChip Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" ShowIcon="True" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Transparent" 
-                                                        ImageSource="Generic_attachment_icon.png" Text="File1.pdf" ImageAlignment="End" ImageWidth="24" TextColor="{StaticResource NeutralBlack}" />-->
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
@@ -1561,9 +1529,6 @@
                         <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" Source="arrowLeft.png" Style="{DynamicResource BackButtonArrow}">
-                        <!--<Image.Source>
-                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="48" Glyph="{x:Static FontImage:IconFonts.ChevronLeft}"/>
-                        </Image.Source>-->
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1"/>
                         </Image.GestureRecognizers>
@@ -1580,18 +1545,6 @@
                             <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" NumberOfTapsRequired="1" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <!-- Need to replace icon-->
-                    <!--
-                    <Image Grid.Column="2" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Center">
-                        <Image.Source>
-                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.DotsVertical}"/>
-                        </Image.Source>
-                        <Image.GestureRecognizers>
-                    
-                            <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" NumberOfTapsRequired="1" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                    -->
                 </Grid>
                 <commonView:PageIndicatorView MarkSize="24" DotSize="12" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" />
                 <custom:CustomLabel Text="{Binding SelectedTabText}" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,-5,0,-10" Style="{StaticResource SectionTitleBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="28"/>
@@ -1599,18 +1552,6 @@
                 <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" x:Name="TabScrollView">
                     <buttons:SfChipGroup Type="Choice"  x:Name="TabSfChipGroup" SelectedItem="{Binding SelectedTabText}"  ItemsSource="{x:Binding TabList}" SelectionChanged="SfChipGroup_SelectionChanged" SelectionChanging="SfChipGroup_SelectionChanging"  ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1">
-                        <!--<buttons:SfChipGroup.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Registration/Taxpayer type</x:String>
-                                <x:String>Taxpayer Personal Details</x:String>
-                                <x:String>Passport Details</x:String>
-                                <x:String>Outlets</x:String>
-                                <x:String>Financial Details</x:String>
-                                <x:String>Summary</x:String>
-                            </x:Array>
-                        </buttons:SfChipGroup.ItemsSource>-->
-
-                      
                     </buttons:SfChipGroup>
                 </ScrollView>
             </StackLayout>
