@@ -379,6 +379,8 @@
         <Setter Property="FocusedColor" Value="#005e4b" />
         <Setter Property="ErrorColor" Value="#B00020" />
         <Setter Property="HasError" Value="False" />
+         <Setter Property="HeightRequest" Value="48" />
+                <Setter Property="WidthRequest" Value="171" />
     </Style>
 
     <Style x:Key="InputTableEntryLayoutStyle"  TargetType="Entry">
@@ -487,7 +489,7 @@
         <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="HeightRequest" Value="48"/>
-        <Setter Property="WidthRequest" Value="366"/>
+        <Setter Property="WidthRequest" Value="171"/>
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
 
