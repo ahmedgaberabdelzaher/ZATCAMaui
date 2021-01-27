@@ -162,8 +162,8 @@
                     <listView:SfListView BackgroundColor="Transparent" x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False"
                                       IsScrollingEnabled="False" AutoFitMode="Height"  VerticalOptions="Center"
                                       Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemSpacing="5" IsVisible="{Binding IsOutletDecisionOptionsLVVisible}"
-                                      ItemsSource="{Binding OutletDecisionOptions}"   SelectionMode="Single"
-                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
+                                      ItemsSource="{Binding OutletDecisionOptions}"   SelectionMode="Single" SelectedItem="{Binding SelectedOutletOption}"
+                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">

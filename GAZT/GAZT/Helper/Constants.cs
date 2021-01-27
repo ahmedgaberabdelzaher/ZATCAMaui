@@ -53,6 +53,7 @@ namespace GAZT.Helper
         public static string DomainUrlForCookies = QADomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
+
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;

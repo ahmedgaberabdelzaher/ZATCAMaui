@@ -10,7 +10,6 @@ namespace EGAZT.Views.NewDesign.AccountStatements
     public partial class AccountStatementsFiltersPageView : PopupPage
     {
         AccountStatementsFiltersPageViewModel viewModel;
-
         public AccountStatementsFiltersPageView()
         {
             InitializeComponent();

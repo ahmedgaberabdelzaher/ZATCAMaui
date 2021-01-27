@@ -29,12 +29,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public OutletNumber newNumber { get; set; } = null;
         public ValidateCR validateCR { get; set; } = null;
         public Nreg_ActivityItem validateLicense { get; set; } = null;
-        //public bool editModeEnabled { get; set; } = false;
         public List<Nreg_ActivityItem> NregActivityList = new List<Nreg_ActivityItem>();
         private Nreg_ActivityItem SelectedLicenseItem = null;
         private Nreg_ActivityItem SelectedCRItem = null;
         public ActicityListDelegate goBackAction = null;
-        
+
         private EstablishmentOutletActivitiesTabsEnum _currentTab = EstablishmentOutletActivitiesTabsEnum.CRDetails;
         public EstablishmentOutletActivitiesTabsEnum CurrentTab
         {
@@ -138,12 +137,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _cRIssueCountry;
             set
             {
-                //if (value != null)
-                //{
                 if (_cRIssueCountry == value) return;
                 _cRIssueCountry = value;
                 RaisePropertyChanged(nameof(CRIssueCountry));
-                //}
             }
         }
         private string _cRIssueBy = null;
@@ -152,13 +148,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _cRIssueBy;
             set
             {
-                //if (value != null)
-                //{
                 if (_cRIssueBy == value) return;
 
                 _cRIssueBy = value;
                 RaisePropertyChanged(nameof(CRIssueBy));
-                //}
             }
         }
         private CityDropdownItem _cRIssueCity = null;
@@ -167,13 +160,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _cRIssueCity;
             set
             {
-                //if (value != null)
-                //{
                 if (_cRIssueCity == value) return;
 
                 _cRIssueCity = value;
                 RaisePropertyChanged(nameof(CRIssueCity));
-                //}
             }
         }
         private string _cRNumber = string.Empty;
@@ -233,13 +223,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _outletDropDowns;
             set
             {
-                //if (value != null)
-                //{
                 if (_outletDropDowns == value) return;
 
                 _outletDropDowns = value;
                 RaisePropertyChanged(nameof(OutletDropDowns));
-                //}
             }
         }
         private ObservableCollection<object> _selectedCRValidFromDate;
@@ -344,13 +331,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _cRSubGroup;
             set
             {
-                //if (value != null)
-                //{
                 if (_cRSubGroup == value) return;
 
                 _cRSubGroup = value;
                 RaisePropertyChanged(nameof(CRSubGroup));
-                //}
             }
         }
         private ActivityGroupSubGroup _cRAcitivity;
@@ -359,13 +343,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _cRAcitivity;
             set
             {
-                //if (value != null)
-                //{
                 if (_cRAcitivity == value) return;
 
                 _cRAcitivity = value;
                 RaisePropertyChanged(nameof(CRAcitivity));
-                //}
             }
         }
         private ObservableCollection<Attachment> _cRsCopies = new ObservableCollection<Attachment>();
@@ -458,13 +439,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _licenseIssueCountry;
             set
             {
-                //if (value != null)
-                //{
                 if (_licenseIssueCountry == value) return;
 
                 _licenseIssueCountry = value;
                 RaisePropertyChanged(nameof(LicenseIssueCountry));
-                //}
             }
         }
         private string _licenseIssueBy = null;
@@ -473,13 +451,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _licenseIssueBy;
             set
             {
-                //if (value != null)
-                //{
                 if (_licenseIssueBy == value) return;
 
                 _licenseIssueBy = value;
                 RaisePropertyChanged(nameof(LicenseIssueBy));
-                //}
             }
         }
         private CityDropdownItem _licenseIssueCity = null;
@@ -488,13 +463,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _licenseIssueCity;
             set
             {
-                //if (value != null)
-                //{
                 if (_licenseIssueCity == value) return;
 
                 _licenseIssueCity = value;
                 RaisePropertyChanged(nameof(LicenseIssueCity));
-                //}
             }
         }
         private string _licenseNumber = string.Empty;
@@ -515,13 +487,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _licenseMainGroup;
             set
             {
-                //if (value != null)
-                //{
                 if (_licenseMainGroup == value) return;
 
                 _licenseMainGroup = value;
                 RaisePropertyChanged(nameof(LicenseMainGroup));
-                //}
             }
         }
         private ActivityGroupSubGroup _licenseSubGroup = null;
@@ -530,13 +499,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _licenseSubGroup;
             set
             {
-                //if (value != null)
-                //{
                 if (_licenseSubGroup == value) return;
 
                 _licenseSubGroup = value;
                 RaisePropertyChanged(nameof(LicenseSubGroup));
-                //}
             }
         }
         private ActivityGroupSubGroup _licenseAcitivity;
@@ -545,13 +511,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _licenseAcitivity;
             set
             {
-                //if (value != null)
-                //{
                 if (_licenseAcitivity == value) return;
 
                 _licenseAcitivity = value;
                 RaisePropertyChanged(nameof(LicenseAcitivity));
-                //}
             }
         }
         private ObservableCollection<Attachment> _licensesCopies = new ObservableCollection<Attachment>();
@@ -560,13 +523,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _licensesCopies;
             set
             {
-                //if (value != null)
-                //{
                 if (_licensesCopies == value) return;
 
                 _licensesCopies = value;
                 RaisePropertyChanged(nameof(LicensesCopies));
-                //}
             }
         }
         private List<Nreg_ActivityItem> _licenseData = new List<Nreg_ActivityItem>();
@@ -722,8 +682,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (TransferCRsCopies.Count == 5 || CRsCopies.Count == 5)
                 {
-                   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
-                  //  await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
                 }
 
             });
@@ -735,9 +694,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else
                 {
-                   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
-
-                  //  await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
                 }
             });
 
@@ -818,7 +775,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             CRAcitivity = item as ActivityGroupSubGroup;
                             CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0, 2))).FirstOrDefault();
-                            CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0,4))).FirstOrDefault();
+                            CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0, 4))).FirstOrDefault();
                         }
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                         {
@@ -860,11 +817,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (await ValidateForm())
                 {
-                    //if(editModeEnabled == true && CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-                    //{
-                    //    RemoveCRFromList();
-                    //}
-
                     if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails || CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
                     {
                         DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime crIssueDate);
@@ -897,11 +849,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
 
                         CanExecute = true;
-                        if(SelectedCRItem != null) {
+                        if (SelectedCRItem != null)
+                        {
                             NregActivityList.Remove(SelectedCRItem);
                             SelectedCRItem = null;
                         }
-                        if (SelectedLicenseItem != null) {
+                        if (SelectedLicenseItem != null)
+                        {
                             NregActivityList.Remove(SelectedLicenseItem);
                             SelectedLicenseItem = null;
                         }
@@ -916,10 +870,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         _navigationService.GoBack();
                     }
                 }
-                //else
-                //{
-                //    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                //}
             }
             catch (Exception e)
             {
@@ -930,29 +880,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 CanExecute = true;
             }
         }
-        public void OnAppearing()
-        {
-            //fetchTabDataAndBind();
-        }
-        public void OnDisappearing()
-        {
-        }
         private async Task AddAttachment(string docType)
         {
             try
             {
-                //decimal TotalAttachmentSize = 0;
                 string[] filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
 
                 var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
                 if (fileData != null)
-                    {
-                        var attachmentByte = fileData.DataArray;
+                {
+                    var attachmentByte = fileData.DataArray;
 
-                        string base64String = Convert.ToBase64String(attachmentByte, 0, attachmentByte.Length);
-                        var attachmentName = fileData.FileName;
-                        bool isFileAlreayUploaded = IsFileAlreadyAttached(docType, attachmentName);
+                    string base64String = Convert.ToBase64String(attachmentByte, 0, attachmentByte.Length);
+                    var attachmentName = fileData.FileName;
+                    bool isFileAlreayUploaded = IsFileAlreadyAttached(docType, attachmentName);
                     if (!isFileAlreayUploaded)
                     {
                         float sizemb = (attachmentByte.Length / 1024f) / 1024f;
@@ -985,21 +927,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                     {
                                         attachmentName = string.Empty;
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
-
-                                       // await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                     }
                                 }
                                 else
                                 {
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTAttachmentSizeNotfication));
-                                  //  await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
                                 }
 
                             }
                             else
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
-                               // await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
                         }
                     }
@@ -1008,26 +946,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
-
-                            //await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
                             IsLoading = false;
                         });
                     }
-                        
-                    }
-               
+
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
             }
         }
-        //private async void updateActivityList(string indSector)
-        //{
-        //    IsLoading = true;
-        //    activityList = await WebServiceManager.ESTOutletGetActivitySetsList(indSector);
-        //    IsLoading = false;
-        //}
         private async void fetchTabDataAndBind()
         {
             try
@@ -1058,10 +987,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     };
                     CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     EnableCRInputField = string.IsNullOrEmpty(validateCR?.Crname);
-                    //if (editModeEnabled == true)
-                    //{
-                        //RemoveCRFromList();
-                        SelectedCRItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "BUP002");
+                    SelectedCRItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "BUP002");
                     if (SelectedCRItem != null)
                     {
                         EnableIssueByDropDown = false;
@@ -1084,14 +1010,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             MainActivity = false;
                         }
-                        //updateActivityList(SelectedCRItem?.Activity);
                         CRAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedCRItem?.Activity).FirstOrDefault();
                         CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActMgrp).FirstOrDefault();
                         CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActSgrp).FirstOrDefault();
                         updateCRAttachments();
                     }
-                    //}
-                    if(!string.IsNullOrEmpty(CRNumber))
+                    if (!string.IsNullOrEmpty(CRNumber))
                         validateCRNumber();
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
@@ -1101,7 +1025,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     if ((/*editModeEnabled == true &&*/ SelectedLicenseItem != null) || validateLicense != null)
                     {
-                        if(SelectedLicenseItem == null && validateLicense != null)
+                        if (SelectedLicenseItem == null && validateLicense != null)
                         {
                             SelectedLicenseItem = validateLicense;
                         }
@@ -1123,8 +1047,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             MainActivity = false;
                         }
-                        //updateActivityList(SelectedLicenseItem?.Activity);
-                        //var a = activityList;
                         LicenseAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedLicenseItem?.Activity).FirstOrDefault();
                         LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActMgrp).FirstOrDefault();
                         LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActSgrp).FirstOrDefault();
@@ -1192,7 +1114,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedCRValidFromDate = _selectedDOBDate;
-                    if(!string.IsNullOrWhiteSpace(CRValidFrom))
+                    if (!string.IsNullOrWhiteSpace(CRValidFrom))
                         DisplayCRValidFrom = _crValidFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
@@ -1208,13 +1130,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedValidFromDate = _selectedDOBDate;
-                    if(!string.IsNullOrWhiteSpace(ValidFrom))
+                    if (!string.IsNullOrWhiteSpace(ValidFrom))
                         DisplayValidFrom = HijriDateString(_validFrom);
                 }
                 else
                 {
                     SelectedValidFromHijiriDate = _selectedDOBDate;
-                    if(!string.IsNullOrWhiteSpace(ValidFrom))
+                    if (!string.IsNullOrWhiteSpace(ValidFrom))
                         DisplayValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
             }
@@ -1228,7 +1150,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             if (validateCR?.NotFound == "X")
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCRNumberInValid));
-             //   await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
                 return;
             }
             if (validateCR?.Excption == "X")
@@ -1378,8 +1299,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
 
             var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + item.Filename + QuestionMark);
-
-           // var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
             confirmPopup.OnSelect = async (str) =>
             {
                 if (str == "Yes")
@@ -1427,17 +1346,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueBy));
                     return false;
                 }
-                else if(CRIssueCity == null)
+                else if (CRIssueCity == null)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCity));
                     return false;
                 }
-                else if(string.IsNullOrWhiteSpace(CRNumber))
+                else if (string.IsNullOrWhiteSpace(CRNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRNumber));
                     return false;
                 }
-                else if(string.IsNullOrWhiteSpace(CRValidFrom))
+                else if (string.IsNullOrWhiteSpace(CRValidFrom))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRValidFrom));
                     return false;
@@ -1524,37 +1443,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private void ShowAlertPopup(string _message)
         {
-             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(_message));
-           // _dialogService.ShowError(_message, AppResources.Information, "Ok", null);
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(_message));
         }
 
 
         public void OpenLicenseFormInEditMode(Nreg_ActivityItem LicenseData)
         {
-            //if (editModeEnabled == true)
-            //{
-                CurrentTab = EstablishmentOutletActivitiesTabsEnum.LicenseDetails;
-                SelectedLicenseItem = LicenseData;
-            //}
+            CurrentTab = EstablishmentOutletActivitiesTabsEnum.LicenseDetails;
+            SelectedLicenseItem = LicenseData;
         }
-
-        //private void PopulateExistingCR(Nreg_ActivityItem CRItem)
-        //{
-
-
-        //}
-
-        //private void RemoveCRFromList()
-        //{
-        //    foreach (var obj in NregActivityList)
-        //    {
-        //        if (obj.Type.Equals("BUP002"))
-        //        {
-        //            NregActivityList.Remove(obj);
-        //        }
-        //    }
-        //}
-
         private bool IsFileAlreadyAttached(string doctype, string FileName)
         {
             bool isFileAlreadyAttached = false;
@@ -1618,6 +1515,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }
         }
+
         #endregion
     }
 }

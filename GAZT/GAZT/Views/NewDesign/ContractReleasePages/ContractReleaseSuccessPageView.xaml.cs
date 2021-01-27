@@ -27,7 +27,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
-            //viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
 
             ReferenceNumberTxt.Text = viewModel.ContractReleaseData.d.Fbnumz;
@@ -108,8 +107,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            // On<iOS>().SetUseSafeArea(true);
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
@@ -125,7 +122,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 });
 
                 String downloadurl = Constants.CRDownloadAcknowledementFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
-                //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 Device.BeginInvokeOnMainThread(() =>
@@ -144,7 +140,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     viewModel.IsLoading1 = true;
                 });
                 String downloadurl = Constants.CRDownloadCoverFormFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
-                //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 Device.BeginInvokeOnMainThread(() =>

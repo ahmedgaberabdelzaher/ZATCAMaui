@@ -9,7 +9,7 @@ using Xamarin.Forms.Internals;
 namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 {
     [Preserve(AllMembers = true)]
-    public class AccountStatementsFiltersPageViewModel: BaseViewModel
+    public class AccountStatementsFiltersPageViewModel : BaseViewModel
     {
         public ICommand SortAscendingTapped { get; set; }
         public ICommand SortDescendingTapped { get; set; }
@@ -37,44 +37,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         private void SortDescendingClicked(object obj)
         {
-            
+
         }
 
         private void SortAscendingCliked(object obj)
         {
-            
+
         }
 
         public void PopulateFiltersData()
         {
             List<ASFilters> filters = new List<ASFilters>();
-            filters.Add(new ASFilters {
-
+            filters.Add(new ASFilters
+            {
                 FilterHeader = AppResources.ASTransactionDate
             });
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.TaxType
             });
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.ASFBNum
             });
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.ASSadadBillNumber
             });
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.ASTaxperiod
             });
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.ASDueDate
             });
             filters.Add(new ASFilters
@@ -89,7 +84,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 FilterHeader = AppResources.ZStatus
             });
-
             FilterList = new ObservableCollection<ASFilters>(filters);
         }
     }

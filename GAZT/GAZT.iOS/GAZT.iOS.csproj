@@ -236,6 +236,10 @@
     <BundleResource Include="Resources\Burger.png" />
     <BundleResource Include="Resources\quick_Actions_Close%403x.png" />
     <BundleResource Include="Resources\ic_VAT_reg_w%403x.png" />
+    <BundleResource Include="Resources\vat_new_Iconawesomephonealt%403x.png" />
+    <BundleResource Include="Resources\vat_new_Iconmetrolocation%403x.png" />
+    <BundleResource Include="Resources\vat_user_summary%403x.png" />
+    <BundleResource Include="Resources\ChartBar%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

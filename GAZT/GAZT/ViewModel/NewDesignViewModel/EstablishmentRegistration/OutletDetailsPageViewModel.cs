@@ -22,9 +22,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class OutletDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        //public List<Nreg_ActivityItem> activityItems = new List<Nreg_ActivityItem>();
+
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
-        //public bool editModeEnabled { get; set; } = false;
         private OutletNumber newNumber = null;
         public Nreg_IdItem idItem { get; set; } = null;
         private ValidateCR validateCR = null;
@@ -37,7 +36,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _currentTab;
             set
             {
-                if (_currentTab == value) return;
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)value;
@@ -89,8 +87,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
-                //MarkComplete = _currenrIndex == MaxIndex;
-                //RaisePropertyChanged(nameof(MarkComplete));
             }
         }
 
@@ -555,13 +551,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _outletDropDowns;
             set
             {
-                //if (value != null)
-                //{
                 if (_outletDropDowns == value) return;
 
                 _outletDropDowns = value;
                 RaisePropertyChanged(nameof(OutletDropDowns));
-                //}
             }
         }
         private bool _canExecute = true;
@@ -602,7 +595,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 selectedOutletItem = null;
                 _navigationService.GoBack();
             });
-            //editModeEnabled = false;
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
             OnCountrySelectButtonClick = new Command((str) =>
             {
@@ -723,24 +715,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
         {
             Console.WriteLine(_enum);
-
-            //if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-            //{
-            //    var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "BUP002").ToList();
-
-            //    if (mainactivity.Count() == 1 && editModeEnabled == false)
-            //    {
-            //        return;
-            //    }
-            //}
             if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
             {
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "ZS0004").ToList();
-                //if (mainactivity.Count() == 4 && editModeEnabled == false)
-                //{
-                //    return;
-                //}
-                if (/*editModeEnabled == true ||*/ mainactivity.Count > 0)
+                if ( mainactivity.Count > 0)
                 {
                     _enum = EstablishmentOutletActivitiesTabsEnum.ActivityList;
                 }
@@ -752,8 +730,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 openedTab = _enum,
                 taxPayerDetails = taxPayerDetails,
                 nextNumber = newNumber,
-                //EditEnabledMode = editModeEnabled,
-                //newActivityItems = activityItems,
                 goBackAction = (List<Nreg_ActivityItem> list) =>
                 {
                     addActivities(list);
@@ -778,8 +754,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             nextNumber = newNumber,
                             validateCR = validateCR,
                             validateLicense = PreLoadedLicenseItem,
-                            //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
-                            //newActivityItems = activityItems,
                             goBackAction = (List<Nreg_ActivityItem> list) =>
                             {
                                 addActivities(list);
@@ -848,7 +822,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         outletItem.Actno = OutletActNumber;
                         outletItem.Caltp = taxPayerDetails?.Caltp;
                         outletItem.Actcat = OutletActNumber == "000" ? "M" : "S";
-                        //outletItem.Conatt = "X";
                         taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
                         taxPayerDetails.StepNumberx = "03";
                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
@@ -865,9 +838,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         Console.WriteLine(ex.StackTrace);
                         if (ex is HTTPBadRequestException)
                         {
-                            //editModeEnabled = true;
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                            //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         }
                     }
                     finally
@@ -877,10 +848,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
             CanExecute = true;
-            //else
-            //{
-            //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-            //}
         }
         private async void addActivities(List<Nreg_ActivityItem> list)
         {
@@ -889,18 +856,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
                 var newList = new List<Nreg_ActivityItem>();
-                //newList.Insert(0, new Nreg_ActivityItem()
-                //{
-                //    ValidDateType = "X"
-                //});
                 newList.AddRange(list);
-                //newList.Insert(2, new Nreg_ActivityItem()
-                //{
-                //    Type = "ZS0007",
-                //    ValidDateType = "X",
-                //    Actno = OutletActNumber,
-                //    Actcat = "M"
-                //});
                 taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
                 var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
                 taxPayerDetails?.AttDetSet.results?.Clear();
@@ -1063,10 +1019,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
                     }
                 }
-                else
-                {
-                    //activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
-                }
             }
             catch (Exception e)
             {
@@ -1105,12 +1057,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
             {
-                //if (string.IsNullOrWhiteSpace(HouseNumber))
-                //{
-                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddHouseNumber));
-                //    return false;
-                //}
-                //else
                 if (string.IsNullOrWhiteSpace(BuildingNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddBuildingNumber));
@@ -1146,11 +1092,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTInValidPostalCode));
                     return false;
                 }
-                //else if (string.IsNullOrWhiteSpace(AddNumber))
-                //{
-                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddAdditional));
-                //    return false;
-                //}
                 else if (Country == null)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCountry));
@@ -1166,11 +1107,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCity));
                     return false;
                 }
-                //if (string.IsNullOrWhiteSpace(HouseNumberSame))
-                //{
-                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddHouseNumber));
-                //    return false;
-                //}
                 else
                 if (string.IsNullOrWhiteSpace(BuildingNumberSame))
                 {
@@ -1207,11 +1143,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("12345 is invalid postal's postal codes"));
                     return false;
                 }
-                //else if (string.IsNullOrWhiteSpace(AddNumberSame))
-                //{
-                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddAdditional));
-                //    return false;
-                //}
                 else if (CountrySame == null)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCountry));
