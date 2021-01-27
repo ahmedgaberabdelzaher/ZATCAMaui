@@ -9,6 +9,8 @@ using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -34,7 +36,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
             if (viewModel.currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
             {
                 viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
