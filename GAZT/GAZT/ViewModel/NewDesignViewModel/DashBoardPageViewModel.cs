@@ -1753,8 +1753,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                IsLoading = true;
-
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
 
                 double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
@@ -1801,7 +1799,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public async Task LogOut()
         {
-            IsLoading = true;
             if (App.TP != null)
                 App.TP = null;
             if (App.PreviousIsArabic)
