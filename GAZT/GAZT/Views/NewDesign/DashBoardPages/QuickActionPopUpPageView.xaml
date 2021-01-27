@@ -91,7 +91,7 @@
 
 
             </StackLayout>
-            <Frame  Grid.Row="2" Grid.ColumnSpan="3" Opacity="0.5" CornerRadius="10" >
+            <Frame  Grid.Row="2" Grid.ColumnSpan="3" Opacity="0.5" CornerRadius="10">
                 <Frame.Margin>
                     <OnPlatform x:TypeArguments="Thickness" >
                         <On Platform="iOS" Value="2,-6,2,0"/>
@@ -106,7 +106,7 @@
                 </Frame.HeightRequest>
             </Frame>
 
-            <StackLayout Grid.Row="2" Grid.ColumnSpan="3">
+            <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Padding="0,0,0,12" >
 
                 <Image x:Name="CloseIcon"  Margin="0,8,0,0" Source="quick_Actions_Close.png">
 

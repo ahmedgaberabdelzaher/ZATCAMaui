@@ -45,7 +45,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
 
-        <Grid RowSpacing="0" BackgroundColor="Transparent">
+        <Grid RowSpacing="0" BackgroundColor="Transparent" Margin="0,0,0,-16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
@@ -672,7 +672,7 @@
             
             <!--Menu Ends-->
 
-            <Grid x:Name="ButtomTab" VerticalOptions="EndAndExpand" Grid.Row="1" Margin="0,-3,0,0" BackgroundColor="White">
+            <Grid x:Name="ButtomTab" VerticalOptions="EndAndExpand" Grid.Row="1" Margin="0,-3,0,0" BackgroundColor="White" Padding="0,0,0,26">
                 <Image Source="Bg_Bottom_nav.png" Aspect="Fill" BackgroundColor="Transparent"/>
                 <yummy:PancakeView Padding="20,0,20,8" BackgroundColor="Transparent" >
                     <Grid BackgroundColor="Transparent">

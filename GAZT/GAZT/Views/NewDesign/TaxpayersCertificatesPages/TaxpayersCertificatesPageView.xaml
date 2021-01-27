@@ -99,7 +99,7 @@
                     <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Start" VerticalOptions="Center">
                     <Image.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="iOS" Value="5,-10,5,0"/>
+                            <On Platform="iOS" Value="5,10,5,0"/>
                             <On Platform="Android" Value="5,15,5,0"/>
                         </OnPlatform>
                     </Image.Margin>
