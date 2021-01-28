@@ -170,55 +170,55 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             switch (BTNno)
             {
                 case 1:
-                    Cabsbtn.BackgroundColor = Color.AliceBlue;
+                    Cabsbtn.BackgroundColor = Color.FromHex("#E5EFED");
                     Cabsbtn.TextColor = Color.Green;
                     break;
                 case 2:
-                    ProfessionalBtn.BackgroundColor = Color.AliceBlue;
+                    ProfessionalBtn.BackgroundColor = Color.FromHex("#E5EFED");
                     ProfessionalBtn.TextColor = Color.Green;
                     break;
                 case 3:
-                    SellBtn.BackgroundColor = Color.AliceBlue;
+                    SellBtn.BackgroundColor = Color.FromHex("#E5EFED");
                     SellBtn.TextColor = Color.Green;
                     break;
                 case 4:
-                    LabourBtn.BackgroundColor = Color.AliceBlue;
+                    LabourBtn.BackgroundColor = Color.FromHex("#E5EFED");
                     LabourBtn.TextColor = Color.Green;
                     break;
                 case 5:
-                    IndustryBtn.BackgroundColor = Color.AliceBlue;
+                    IndustryBtn.BackgroundColor = Color.FromHex("#E5EFED");
                     IndustryBtn.TextColor = Color.Green;
                     break;
                 case 6:
-                    ContractingBtn.BackgroundColor = Color.AliceBlue;
+                    ContractingBtn.BackgroundColor = Color.FromHex("#E5EFED");
                     ContractingBtn.TextColor = Color.Green;
                     break;
                 case 7:
-                    InvestBtn.BackgroundColor = Color.AliceBlue;
+                    InvestBtn.BackgroundColor = Color.FromHex("#E5EFED");
                     InvestBtn.TextColor = Color.Green;
                     break;
                 case 8:
-                    Hotelsbtn.BackgroundColor = Color.AliceBlue;
+                    Hotelsbtn.BackgroundColor = Color.FromHex("#E5EFED");
                     Hotelsbtn.TextColor = Color.Green;
                     break;
                 case 9:
-                    EducationBtn.BackgroundColor = Color.AliceBlue;
+                    EducationBtn.BackgroundColor = Color.FromHex("#E5EFED");
                     EducationBtn.TextColor = Color.Green;
                     break;
                 case 10:
-                    Poultrybtn.BackgroundColor = Color.AliceBlue;
+                    Poultrybtn.BackgroundColor = Color.FromHex("#E5EFED");
                     Poultrybtn.TextColor = Color.Green;
                     break;
                 case 11:
-                    Carsbtn.BackgroundColor = Color.AliceBlue;
+                    Carsbtn.BackgroundColor = Color.FromHex("#E5EFED");
                     Carsbtn.TextColor = Color.Green;
                     break;
                 case 12:
-                    Mineralsbtn.BackgroundColor = Color.AliceBlue;
+                    Mineralsbtn.BackgroundColor = Color.FromHex("#E5EFED");
                     Mineralsbtn.TextColor = Color.Green;
                     break;
                 case 13:
-                    Additionalbtn.BackgroundColor = Color.AliceBlue;
+                    Additionalbtn.BackgroundColor = Color.FromHex("#E5EFED");
                     Additionalbtn.TextColor = Color.Green;
                     break;
             }
@@ -255,7 +255,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Poultrybtn.BackgroundColor = Color.White;
             Carsbtn.BackgroundColor = Color.White;
             Mineralsbtn.BackgroundColor = Color.White;
-            Additionalbtn.BackgroundColor = Color.AliceBlue;
+            Additionalbtn.BackgroundColor = Color.FromHex("#E5EFED");
 
             Cabsbtn.TextColor = Color.Black;
             ProfessionalBtn.TextColor = Color.Black;
@@ -305,7 +305,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             EducationBtn.BackgroundColor = Color.White;
             Poultrybtn.BackgroundColor = Color.White;
             Carsbtn.BackgroundColor = Color.White;
-            Mineralsbtn.BackgroundColor = Color.AliceBlue;
+            Mineralsbtn.BackgroundColor = Color.FromHex("#E5EFED");
             Additionalbtn.BackgroundColor = Color.White;
 
             Cabsbtn.TextColor = Color.Black;
@@ -353,7 +353,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Hotelsbtn.BackgroundColor = Color.White;
             EducationBtn.BackgroundColor = Color.White;
             Poultrybtn.BackgroundColor = Color.White;
-            Carsbtn.BackgroundColor = Color.AliceBlue;
+            Carsbtn.BackgroundColor = Color.FromHex("#E5EFED");
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
 
@@ -401,7 +401,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             InvestBtn.BackgroundColor = Color.White;
             Hotelsbtn.BackgroundColor = Color.White;
             EducationBtn.BackgroundColor = Color.White;
-            Poultrybtn.BackgroundColor = Color.AliceBlue;
+            Poultrybtn.BackgroundColor = Color.FromHex("#E5EFED");
             Carsbtn.BackgroundColor = Color.White;
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
@@ -449,7 +449,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             ContractingBtn.BackgroundColor = Color.White;
             InvestBtn.BackgroundColor = Color.White;
             Hotelsbtn.BackgroundColor = Color.White;
-            EducationBtn.BackgroundColor = Color.AliceBlue;
+            EducationBtn.BackgroundColor = Color.FromHex("#E5EFED");
             Poultrybtn.BackgroundColor = Color.White;
             Carsbtn.BackgroundColor = Color.White;
             Mineralsbtn.BackgroundColor = Color.White;
@@ -497,7 +497,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             IndustryBtn.BackgroundColor = Color.White;
             ContractingBtn.BackgroundColor = Color.White;
             InvestBtn.BackgroundColor = Color.White;
-            Hotelsbtn.BackgroundColor = Color.AliceBlue;
+            Hotelsbtn.BackgroundColor = Color.FromHex("#E5EFED");
             EducationBtn.BackgroundColor = Color.White;
             Poultrybtn.BackgroundColor = Color.White;
             Carsbtn.BackgroundColor = Color.White;
@@ -546,7 +546,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             LabourBtn.BackgroundColor = Color.White;
             IndustryBtn.BackgroundColor = Color.White;
             ContractingBtn.BackgroundColor = Color.White;
-            InvestBtn.BackgroundColor = Color.AliceBlue;
+            InvestBtn.BackgroundColor = Color.FromHex("#E5EFED");
             Hotelsbtn.BackgroundColor = Color.White;
             EducationBtn.BackgroundColor = Color.White;
             Poultrybtn.BackgroundColor = Color.White;
@@ -596,7 +596,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             SellBtn.BackgroundColor = Color.White;
             LabourBtn.BackgroundColor = Color.White;
             IndustryBtn.BackgroundColor = Color.White;
-            ContractingBtn.BackgroundColor = Color.AliceBlue;
+            ContractingBtn.BackgroundColor = Color.FromHex("#E5EFED");
             InvestBtn.BackgroundColor = Color.White;
             Hotelsbtn.BackgroundColor = Color.White;
             EducationBtn.BackgroundColor = Color.White;
@@ -644,7 +644,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             ProfessionalBtn.BackgroundColor = Color.White;
             SellBtn.BackgroundColor = Color.White;
             LabourBtn.BackgroundColor = Color.White;
-            IndustryBtn.BackgroundColor = Color.AliceBlue;
+            IndustryBtn.BackgroundColor = Color.FromHex("#E5EFED");
             ContractingBtn.BackgroundColor = Color.White;
             InvestBtn.BackgroundColor = Color.White;
             Hotelsbtn.BackgroundColor = Color.White;
@@ -694,7 +694,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Cabsbtn.BackgroundColor = Color.White;
             ProfessionalBtn.BackgroundColor = Color.White;
             SellBtn.BackgroundColor = Color.White;
-            LabourBtn.BackgroundColor = Color.AliceBlue;
+            LabourBtn.BackgroundColor = Color.FromHex("#E5EFED");
             IndustryBtn.BackgroundColor = Color.White;
             ContractingBtn.BackgroundColor = Color.White;
             InvestBtn.BackgroundColor = Color.White;
@@ -742,7 +742,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
 
             Cabsbtn.BackgroundColor = Color.White;
             ProfessionalBtn.BackgroundColor = Color.White;
-            SellBtn.BackgroundColor = Color.AliceBlue;
+            SellBtn.BackgroundColor = Color.FromHex("#E5EFED");
             LabourBtn.BackgroundColor = Color.White;
             IndustryBtn.BackgroundColor = Color.White;
             ContractingBtn.BackgroundColor = Color.White;
@@ -790,7 +790,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isCabVisible = false;
 
             Cabsbtn.BackgroundColor = Color.White;
-            ProfessionalBtn.BackgroundColor = Color.AliceBlue;
+            ProfessionalBtn.BackgroundColor = Color.FromHex("#E5EFED");
             SellBtn.BackgroundColor = Color.White;
             LabourBtn.BackgroundColor = Color.White;
             IndustryBtn.BackgroundColor = Color.White;
@@ -839,7 +839,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isMineralVisible = false;
             viewModel.isAdditionalVisible = false;
 
-            Cabsbtn.BackgroundColor = Color.AliceBlue;
+            Cabsbtn.BackgroundColor = Color.FromHex("#E5EFED");
             ProfessionalBtn.BackgroundColor = Color.White;
             SellBtn.BackgroundColor = Color.White;
             LabourBtn.BackgroundColor = Color.White;

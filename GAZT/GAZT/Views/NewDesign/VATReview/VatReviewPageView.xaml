@@ -166,34 +166,20 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                            <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  
-                                             Style="{StaticResource GreyBorderFrame}" MinimumHeightRequest="50" VerticalOptions="FillAndExpand">
-                                <Grid VerticalOptions="FillAndExpand">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                        Text="{Binding ReviewReason}"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Style="{StaticResource BodyLabelBlack}" Padding="10" VerticalOptions="FillAndExpand"/>
 
-
-                                    <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
-                                                             Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
-                                        </Image.Source>
+                            <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding ReviewReason}" 
+                                                    PlaceholderColor="Gray"  FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding ReviewReasonCommand}" />
+                                            <TapGestureRecognizer Command="{Binding ReviewReasonCommand}"/>
                                         </Image.GestureRecognizers>
                                     </Image>
+                                </StackLayout>
+                            </Frame>
 
-                                </Grid>
-                            </border:SfBorder>
+                           
 
                         </Grid>
                         <Grid Grid.Row="2" Margin="0,10,0,10"  WidthRequest="171">
@@ -213,34 +199,19 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                            <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"
-                                             Style="{StaticResource GreyBorderFrame}" MinimumHeightRequest="50" VerticalOptions="FillAndExpand">
-                                <Grid VerticalOptions="FillAndExpand">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SubReviewReason}"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Style="{StaticResource BodyLabelBlack}" Padding="10" VerticalOptions="FillAndExpand"/>
-
-
-                                    <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
-                                                             Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
-                                        </Image.Source>
+                            <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding SubReviewReason}" 
+                                                    PlaceholderColor="Gray"  FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding SubReviewReasonCommand}" />
+                                            <TapGestureRecognizer Command="{Binding SubReviewReasonCommand}"/>
                                         </Image.GestureRecognizers>
                                     </Image>
+                                </StackLayout>
+                            </Frame>
 
-                                </Grid>
-                            </border:SfBorder>
-
+                          
                         </Grid>
 
                         <Grid Grid.Row="3" Margin="0,10,0,10" WidthRequest="171">
@@ -259,34 +230,18 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                            <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" 
-                                             Style="{StaticResource GreyBorderFrame}" MinimumHeightRequest="50" VerticalOptions="FillAndExpand">
-                                <Grid VerticalOptions="FillAndExpand">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                        Text="{Binding ApplicationRefNumber}"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Style="{StaticResource BodyLabelBlack}" Padding="10" VerticalOptions="FillAndExpand"/>
-
-
-                                    <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
-                                                             Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
-                                        </Image.Source>
+                            <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding ApplicationRefNumber}" 
+                                                    PlaceholderColor="Gray"  FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding ApplicationNumRefCommand}" />
+                                            <TapGestureRecognizer Command="{Binding ApplicationNumRefCommand}"/>
                                         </Image.GestureRecognizers>
                                     </Image>
+                                </StackLayout>
+                            </Frame>
 
-                                </Grid>
-                            </border:SfBorder>
 
                         </Grid>
                         <Grid Grid.Row="4" Margin="0,10,0,10"  WidthRequest="171">
@@ -299,17 +254,14 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
-                            <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" 
-                                             Style="{StaticResource GreyBorderFrame}" MinimumHeightRequest="50" VerticalOptions="FillAndExpand">
-                                <Grid VerticalOptions="FillAndExpand">
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                        Text="{Binding FormattedRequestDate}"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Style="{StaticResource BodyLabelBlack}" Padding="10" VerticalOptions="FillAndExpand"/>
-
-                                </Grid>
-                            </border:SfBorder>
-
+                            <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding FormattedRequestDate}" 
+                                                    PlaceholderColor="Gray"  FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                  
+                                </StackLayout>
+                            </Frame>
+                           
                         </Grid>
                         <buttons:SfButton Grid.Row="5" Margin="0,16,0,16"
                                           BackgroundColor="{Binding ReviewReasonButtonBackGroundColor}"

@@ -630,7 +630,7 @@
                                             ContainerType="Outlined" x:Name="FrmEStartDate" UnfocusedColor= "#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <custom:BorderlessEntry  x:Name="DateEntry" Focused="DateEntry_Focused"  TextChanged="DateEntry_TextChanged_1" IsEnabled="False" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Unfocused="DateEntry_Unfocused"   Placeholder="DD/MM/YYYY" Style="{StaticResource GAZTEntry}" >
+                                                                <custom:BorderlessEntry  x:Name="DateEntry" Focused="DateEntry_Focused"  TextChanged="DateEntry_TextChanged_1" IsEnabled="False" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Unfocused="DateEntry_Unfocused"   Placeholder="DD/MM/YYYY" Style="{StaticResource GAZTEntry}" FontSize="16" FontFamily="{StaticResource SSTArRoman}">
                                                                 </custom:BorderlessEntry>
                                                                 <Image HorizontalOptions="EndAndExpand">
                                                                     <Image.Source>
@@ -2334,28 +2334,30 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                     </StackLayout>
                                                 </StackLayout>
                                             </border:SfBorder>
-                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" Padding="0" Margin="0,10,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                                <StackLayout >
-                                                    <StackLayout Orientation="Horizontal" Padding="10,3,10,3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" Padding="0" Margin="0,10,0,0" >
+                                                <StackLayout>
+                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                         <Frame   HeightRequest="25" WidthRequest="25" CornerRadius="50"  VerticalOptions="CenterAndExpand" BackgroundColor="#E5EFED"
                                                 HasShadow="False" Padding="10">
                                                             <Image Source="finances">
                                                             </Image>
                                                         </Frame>
-                                                        
+
+
                                                         <Label Text="{x:Static custom2:AppResources.VATRExpensesDetails}"   Style="{StaticResource SectionTitleBlackBold}"/>
-                                                       
                                                     </StackLayout>
                                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray"/>
-                                                    <StackLayout Padding="10,5,10,5">
-                                                        <!--quesTion4answerSelected-->
+                                                    <StackLayout Padding="10,5,10,20">
+                                                        <!--SliderLable1-->
                                                         <Label Text="{x:Static custom2:AppResources.VATRSummeryofExpenseDetailsComming12Months}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion3answerSelected}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Text="{x:Static custom2:AppResources.VATRSummeryOfExpenseDetailsLast12Months}" Margin="0,20,0,0"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Text="{x:Static custom2:AppResources.VATRSummeryOfExpenseDetailsLast12Months}" Margin="0,0,0,0"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion4answerSelected}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                     </StackLayout>
                                                 </StackLayout>
                                             </border:SfBorder>
+                                           
                                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" Padding="0" Margin="0,10,0,0" >
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
