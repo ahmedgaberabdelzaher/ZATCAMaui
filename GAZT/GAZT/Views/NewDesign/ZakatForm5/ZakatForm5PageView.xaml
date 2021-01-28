@@ -2307,16 +2307,16 @@
 
                         <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                             <StackLayout Orientation="Horizontal" Padding="10">
-                                <buttons:SfButton x:Name="Cabsbtn" FontFamily="{StaticResource SSTArBold}" TextColor="{StaticResource Primary}" BackgroundColor="AliceBlue"  CornerRadius="20" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{x:Static ResourceManager:AppResources.FORM5Cabs}" Clicked="Cabs_Clicked" IsVisible="{Binding IsCabBtn}">
+                                <buttons:SfButton x:Name="Cabsbtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" TextColor="{StaticResource Primary}" BackgroundColor="{StaticResource OpacityPrimary}" CornerRadius="20" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{x:Static ResourceManager:AppResources.FORM5Cabs}" Clicked="Cabs_Clicked" IsVisible="{Binding IsCabBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isCabVisible}" Value="true">
-                                            <Setter Property="BackgroundColor"  Value="AliceBlue" />
+                                            <Setter Property="BackgroundColor"  Value="{StaticResource OpacityPrimary}" />
                                             <Setter Property="TextColor"  Value="Green" />
                                         </DataTrigger>
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
 
-                                <buttons:SfButton x:Name="ProfessionalBtn" FontFamily="{StaticResource SSTArBold}" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5Professionals}" Clicked="Professional_Clicked" IsVisible="{Binding IsProfessionBtn}">
+                                <buttons:SfButton x:Name="ProfessionalBtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5Professionals}" Clicked="Professional_Clicked" IsVisible="{Binding IsProfessionBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isProfessionalVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2325,7 +2325,7 @@
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
 
-                                <buttons:SfButton x:Name="SellBtn" FontFamily="{StaticResource SSTArBold}" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5SellAndBuy}" Clicked="Sell_Clicked" IsVisible="{Binding IsSellBtn}">
+                                <buttons:SfButton x:Name="SellBtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5SellAndBuy}" Clicked="Sell_Clicked" IsVisible="{Binding IsSellBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isBuyVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2333,7 +2333,7 @@
                                         </DataTrigger>
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
-                                <buttons:SfButton x:Name="LabourBtn" FontFamily="{StaticResource SSTArBold}" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5LabourOccupancy}" Clicked="Labour_Clicked" IsVisible="{Binding IsLabourBtn}">
+                                <buttons:SfButton x:Name="LabourBtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5LabourOccupancy}" Clicked="Labour_Clicked" IsVisible="{Binding IsLabourBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isLabourOccupancyVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2341,7 +2341,7 @@
                                         </DataTrigger>
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
-                                <buttons:SfButton x:Name="IndustryBtn" FontFamily="{StaticResource SSTArBold}" Text="{x:Static ResourceManager:AppResources.FORM5Industry}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Industry_Clicked" IsVisible="{Binding IsIndustryBtn}">
+                                <buttons:SfButton x:Name="IndustryBtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5Industry}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Industry_Clicked" IsVisible="{Binding IsIndustryBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isIndustryVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2349,7 +2349,7 @@
                                         </DataTrigger>
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
-                                <buttons:SfButton x:Name="ContractingBtn" FontFamily="{StaticResource SSTArBold}" Text="{x:Static ResourceManager:AppResources.FORM5ContractingCo}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Contracting_Clicked" IsVisible="{Binding IsContractBtn}">
+                                <buttons:SfButton x:Name="ContractingBtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5ContractingCo}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Contracting_Clicked" IsVisible="{Binding IsContractBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isContractingVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2358,7 +2358,7 @@
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
 
-                                <buttons:SfButton x:Name="InvestBtn" FontFamily="{StaticResource SSTArBold}" Text="{x:Static ResourceManager:AppResources.FORM5InvestAndRealEst}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Invest_Clicked" IsVisible="{Binding IsInvestBtn}">
+                                <buttons:SfButton x:Name="InvestBtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5InvestAndRealEst}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Invest_Clicked" IsVisible="{Binding IsInvestBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isRealEstateVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2367,7 +2367,7 @@
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
 
-                                <buttons:SfButton x:Name="Hotelsbtn" FontFamily="{StaticResource SSTArBold}" Text="{x:Static ResourceManager:AppResources.FORM5Hotels}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Hotels_Clicked" IsVisible="{Binding IsHotelsBtn}">
+                                <buttons:SfButton x:Name="Hotelsbtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5Hotels}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Hotels_Clicked" IsVisible="{Binding IsHotelsBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isHotelVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2376,7 +2376,7 @@
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
 
-                                <buttons:SfButton x:Name="EducationBtn" FontFamily="{StaticResource SSTArBold}" Text="{x:Static ResourceManager:AppResources.FORM5EduAndHealth}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Education_Clicked" IsVisible="{Binding IsEduBtn}">
+                                <buttons:SfButton x:Name="EducationBtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5EduAndHealth}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Education_Clicked" IsVisible="{Binding IsEduBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isEducationVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2385,7 +2385,7 @@
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
 
-                                <buttons:SfButton x:Name="Poultrybtn" FontFamily="{StaticResource SSTArBold}" Text="{x:Static ResourceManager:AppResources.FORM5PoultryAndFish}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Poultry_Clicked" IsVisible="{Binding IsPoultryBtn}">
+                                <buttons:SfButton x:Name="Poultrybtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5PoultryAndFish}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Poultry_Clicked" IsVisible="{Binding IsPoultryBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isPoultryVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2393,7 +2393,7 @@
                                         </DataTrigger>
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
-                                <buttons:SfButton x:Name="Carsbtn" FontFamily="{StaticResource SSTArBold}" Text="{x:Static ResourceManager:AppResources.FORM5Cars}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Cars_Clicked" IsVisible="{Binding IsCarBtn}">
+                                <buttons:SfButton x:Name="Carsbtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5Cars}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Cars_Clicked" IsVisible="{Binding IsCarBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isCarVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2402,7 +2402,7 @@
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
 
-                                <buttons:SfButton x:Name="Mineralsbtn" FontFamily="{StaticResource SSTArBold}" Text="{x:Static ResourceManager:AppResources.FORM5Minerals}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Minerals_Clicked" IsVisible="{Binding IsMineralsBtn}">
+                                <buttons:SfButton x:Name="Mineralsbtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5Minerals}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Minerals_Clicked" IsVisible="{Binding IsMineralsBtn}" Padding="12,8,12,8">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isMineralVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
@@ -2411,7 +2411,7 @@
                                     </buttons:SfButton.Triggers>
                                 </buttons:SfButton>
 
-                                <buttons:SfButton x:Name="Additionalbtn" FontFamily="{StaticResource SSTArBold}" Text="{x:Static ResourceManager:AppResources.FORM5AdditionalInfo}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Additional_Clicked" IsVisible="{Binding IsAddBtn}">
+                                <buttons:SfButton x:Name="Additionalbtn" FontFamily="{StaticResource ValueLabelBlackLight}" FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5AdditionalInfo}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Additional_Clicked" IsVisible="{Binding IsAddBtn}">
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger TargetType="buttons:SfButton" Binding="{Binding isAdditionalVisible}" Value="true">
                                             <Setter Property="BackgroundColor"  Value="AliceBlue" />
