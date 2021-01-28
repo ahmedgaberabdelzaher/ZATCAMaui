@@ -220,7 +220,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding Country}"  Command="{Binding OnCountrySelectButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding Country}" FontFamily="{StaticResource SSTArBold}" FontSize="16"  Command="{Binding OnCountrySelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -231,7 +231,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding Provinance}" Command="{Binding OnProvinanceSelectButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding Provinance}" FontFamily="{StaticResource SSTArBold}" FontSize="16" Command="{Binding OnProvinanceSelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -242,7 +242,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding City}" Command="{Binding OnCitySelectButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding City}" FontFamily="{StaticResource SSTArBold}" FontSize="16" Command="{Binding OnCitySelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTPostalAddress}" Margin="0,10,0,0" Style="{StaticResource ValueLabelBlackBold}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
@@ -348,7 +348,7 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                            <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding ProvinanceSame}"  Command="{Binding OnProvinanceSelectButtonClick}" CommandParameter="same"
+                            <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding ProvinanceSame}" FontFamily="{StaticResource SSTArBold}" FontSize="16"  Command="{Binding OnProvinanceSelectButtonClick}" CommandParameter="same"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -359,7 +359,7 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                            <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CitySame}"  Command="{Binding OnCitySelectButtonClick}" CommandParameter="same"
+                            <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png"  FontFamily="{StaticResource SSTArBold}" FontSize="16" ImageAlignment="End" Text="{Binding CitySame}"  Command="{Binding OnCitySelectButtonClick}" CommandParameter="same"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         </StackLayout>

@@ -28,9 +28,23 @@
                     <LinearItemsLayout Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
+                    
                     <DataTemplate>
-                        <custom:CustomLabel Text="{Binding .}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" Padding="10"
+                        <StackLayout>
+                            <custom:CustomLabel Text="{Binding .}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" Padding="10"
+
                                             FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup>
+                                    <VisualState x:Name="Selected">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </StackLayout>
+                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

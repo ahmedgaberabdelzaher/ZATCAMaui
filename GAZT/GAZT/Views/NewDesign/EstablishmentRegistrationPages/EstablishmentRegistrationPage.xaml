@@ -506,7 +506,7 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <StackLayout x:Name="IdentificationDetailsSL"    Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
-                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTIdentificationDetailsLabel}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTIdentificationDetailsLabel}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="20" />
                                 <Grid HorizontalOptions="FillAndExpand"  >
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>
@@ -518,9 +518,9 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZIDType}" TextColor="Gray" FontFamily="{StaticResource SSTArBold}"  />
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZIDType}" Style="{StaticResource CaptionLabelGrey}"  />
                                     <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding GCCIDType}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}"/>
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.IDNumber}" TextColor="Gray" FontFamily="{StaticResource SSTArBold}"  />
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.IDNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                                     <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding GCCIDTypeIdNumberValue}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" />
                                 </Grid>
                                 <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand">
@@ -844,8 +844,8 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <StackLayout>
-                                    <buttons:SfButton Text="{Binding SelectedPassportIssueCountry}" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End"
-                                                      Command="{Binding OnPassportIssueCountryButtonClick}"
+                                    <buttons:SfButton Text="{Binding SelectedPassportIssueCountry}" ShowIcon="True"  ImageSource="arrowDropdown.png" ImageAlignment="End"
+                                                      Command="{Binding OnPassportIssueCountryButtonClick}" FontFamily="{StaticResource SSTArBold}" FontSize="16"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                 </StackLayout>

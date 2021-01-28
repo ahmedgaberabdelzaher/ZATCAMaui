@@ -626,44 +626,34 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                            <StackLayout Orientation="Horizontal">
-                     
-                                
-                          
-                                   <inputLayout:SfTextInputLayout x:Name="FrmMobile"
-                            Margin="0,-10,0,0"
-                            HorizontalOptions="FillAndExpand"
-                            LeadingViewPosition="Inside"
-                            ContainerType="Outlined"
-                            UnfocusedColor="#B1B1B1"
-                            OutlineCornerRadius="8"
-                            FocusedColor="#005e4b" ErrorColor="#B00020"
-                            InputViewPadding="16,0,16,0" >
-                            <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                                        <Image HorizontalOptions="Start" Source="arrowDropdown.png" >
-                                            
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="CountryCodeTapped"/>
-                                            </Image.GestureRecognizers>
-                                        </Image>
-                                        <custom:CustomButton  HorizontalOptions="Start"  TextColor="Black"
-                                                                 Text="{Binding TxtCountryCode}" x:Name="IntnlCodes" Clicked="CountryCodeTapped"
-                                                                 BackgroundColor="Transparent"  >
-                                        </custom:CustomButton>
-                               
-                                        <control:BorderlessEntry x:Name="EntryMobileNumber"   Margin="5,-5,0,0"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource DefaultEntry}"
-                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="Center" Text="{Binding TxtMobileNumber}" 
-                                                         Keyboard="Numeric" MaxLength="{Binding MaxDigids}" >
 
-                                            <control:BorderlessEntry.Behaviors>
-                                                <custom1:OnlyNumericValuesBehaviour/>
-                                            </control:BorderlessEntry.Behaviors>
-                                        </control:BorderlessEntry>
-                                 
+                                                        <Frame BorderColor="LightGray"  Padding="18,0,18,6" HasShadow="False" CornerRadius="8" Grid.Row="2" Grid.Column="0" Margin="0,-6,0,12">
+                                                            <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Spacing="0">
+                                                                <Image HorizontalOptions="Start" Source="arrowDropdown.png" >
+                                                                  <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CountryCodeTapped"/>
+                                        </Image.GestureRecognizers>   
+                                                                       
+                                                                </Image>
+                                                                <custom:CustomButton HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" 
+                                                                 Text="{Binding TxtCountryCode}" x:Name="IntnlCodes"
+                                                                 Clicked="CountryCodeTapped"
+                                                                 BackgroundColor="Transparent"/>
+                                                                <custom:GAZTBorderlessEntry x:Name="EntryMobileNumber"
+                                                             MaxLength="{Binding MaxDigids}"
+                                                             Text="{Binding TxtMobileNumber}"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             IsSpellCheckEnabled="False"
+                                                             Keyboard="Telephone" TextColor="Black"
+                                                            Style="{StaticResource DefaultEntry}"
+                                                             Unfocused="EntryMobileNumber_Unfocused">
 
-                                    </StackLayout>
-                           </inputLayout:SfTextInputLayout>
-                            </StackLayout>
+                                                                  
+                                                                </custom:GAZTBorderlessEntry>
+
+                                                            </StackLayout>
+                                                                </Frame>
+
                                                     </StackLayout>
 <!-- Phone Number -->
                         <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}" Margin="0,14,0,0">
