@@ -1007,12 +1007,17 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                 <Button  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
                                                                     Clicked="AddNewRepresentative_Tapped"/>
                                                             </Grid>
-                                                            <custom:CustomLabel Style="{DynamicResource IsAddNewRepresentativeCheckedStyle}" VerticalOptions="CenterAndExpand">
+                                                            <custom:CustomLabel  VerticalOptions="CenterAndExpand">
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static custom2:AppResources.VATChangeRegistrationAddFinancialRepresentative}"  />
                                                                     </FormattedString>
                                                                 </custom:CustomLabel.FormattedText>
+                                                                <custom:CustomLabel.Triggers>
+                                                                     <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference entry},Path=Text.Length}" Value="0">
+            <Setter Property="IsEnabled" Value="False" />
+        </DataTrigger>
+                                                                </custom:CustomLabel.Triggers>
                                                             </custom:CustomLabel>
                                                         </StackLayout>
                                                     </StackLayout>
