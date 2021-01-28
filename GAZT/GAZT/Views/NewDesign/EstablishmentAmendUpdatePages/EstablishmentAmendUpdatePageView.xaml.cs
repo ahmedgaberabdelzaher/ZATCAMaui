@@ -27,7 +27,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.IsNavigationCompletedToSuccessfulPage = false;
-            //  viewModel.IsExceptionPopupVisible = false;
             BindingContext = viewModel;
             if (App.ZAKATType == Enums.PageExecutionType.Amend || App.ZAKATType == Enums.PageExecutionType.Update)
             {
@@ -57,12 +56,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            //if (viewModel.currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
-            //{
-            //    viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
-            //    viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
-            //}
             viewModel?.OnAppearing();
         }
 
@@ -93,12 +86,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         {
             if (App.IsArabic)
             {
-                //Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
-                //Resources["StyleReverseBack"] = App.Current.Resources["Back"];
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
@@ -137,15 +128,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             {
                 passportExpiryHijiriPicker.IsOpen = true;
             }
-
-            //if (viewModel?.taxPayerDetails?.Caltp == "G")
-            //{
-            //    passportIssuePicker.IsOpen = true;
-            //}
-            //else
-            //{
-            //    passportIssueHijiriPicker.IsOpen = true;
-            //}
         }
 
         void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
@@ -176,8 +158,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             {
                 if (str == "Yes")
                 {
-                    //var item = sender as Image;
-                    //var data = item.BindingContext as Attachment;
                     viewModel.OnRentAttachmentDeleteButtonTapped(data);
                 }
             };
@@ -202,28 +182,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             {
                 if (str == "Yes")
                 {
-                    //var item = sender as Image;
-                    //var data = item.BindingContext as Attachment;
                     viewModel.OnPassportAttachmentDeleteButtonTapped(data);
                 }
             };
             await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
-
-        //private void dobPicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
-        //{
-        //    viewModel.SelectedDOB = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        //}
-
-        //private void PassportIssueDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
-        //{
-        //    viewModel.PassportIssueDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        //}
-
-        //private void PassportExpiryDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
-        //{
-        //    viewModel.PassportExpireDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        //}
 
         void SfChipGroup_SelectionChanging(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
         {

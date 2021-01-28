@@ -19,12 +19,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
     [Preserve(AllMembers = true)]
     public class AccountStatementsPageViewModel : BaseViewModel
     {
-
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand FiltersTapped { get; set; }
         public ICommand DownloadBtnTapped { get; set; }
         public ICommand DownloadBtnTappedDownloadPage { get; set; }
-
         private string _fromDate = AppResources.ASAccountStatementFrom;
         public string FromDate
         {
@@ -40,7 +38,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        private DateTime _FromDateDownloadPage ;
+        private DateTime _FromDateDownloadPage;
         public DateTime FromDateDownloadPage
         {
             get
@@ -165,7 +163,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        //Filter Item properties start
         public string _TransactionDateFilterItem = string.Empty;
         public string TransactionDateFilterItem
         {
@@ -246,7 +243,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         }
 
         public ObservableCollection<ASResult> _SearchBarListItemSource = null;
-
         public ObservableCollection<ASResult> SearchBarListItemSource
         {
             get
@@ -259,9 +255,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 _SearchBarListItemSource = value;
                 RaisePropertyChanged("SearchBarListItemSource");
-
             }
-
         }
 
         public bool _IsVisible_SearchList = false;
@@ -341,7 +335,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 RaisePropertyChanged("StatusFilterItem");
             }
         }
-        
+
         private string _accStmtnCreditAmount { get; set; }
         public string AccStmtnCreditAmount
         {
@@ -357,8 +351,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 RaisePropertyChanged("AccStmtnCreditAmount");
             }
         }
-        
-        //Filter Item properties  end
+
         public ASStatementHeaderSet _headerSet = null;
         public ASStatementHeaderSet HeaderSet
         {
@@ -444,7 +437,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         };
 
-
         public class ObservableGroupCollection<S, T> : ObservableCollection<T>
         {
             private readonly S _key;
@@ -480,7 +472,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        private List<ObservableGroupCollection<string, ASResult>> _GroupedDataForDownload ;
+        private List<ObservableGroupCollection<string, ASResult>> _GroupedDataForDownload;
 
         public List<ObservableGroupCollection<string, ASResult>> GroupedDataForDownload
         {
@@ -493,7 +485,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (_GroupedDataForDownload == value) return;
 
                 _GroupedDataForDownload = value;
-                
                 RaisePropertyChanged("GroupedDataForDownload");
             }
         }
@@ -512,7 +503,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 if (isMonthWiseStatementsViewVisible != value)
                 {
-
                     isMonthWiseStatementsViewVisible = value;
                     IsNormalStatementsViewVisible = !value;
                     RaisePropertyChanged("IsMonthWiseStatementsViewVisible");
@@ -535,7 +525,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (isNormalStatementsViewVisible != value)
                 {
                     isNormalStatementsViewVisible = value;
-
                     RaisePropertyChanged("IsNormalStatementsViewVisible");
                 }
             }
@@ -553,9 +542,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (_statementsLineItemsDownloadPage == value) return;
 
                 _statementsLineItemsDownloadPage = value;
-
-                    RaisePropertyChanged("StatementsLineItemsDownloadPage");
-               
+                RaisePropertyChanged("StatementsLineItemsDownloadPage");
             }
         }
         public ObservableCollection<ASResult> _statementsLineItems = null;
@@ -568,18 +555,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             set
             {
                 if (_statementsLineItems == value) return;
-
                 if (_statementsLineItems != value)
                 {
                     if (value.Count > 0)
                     {
                         IsNotHaveStatements = false;
-
                     }
                     else
                     {
                         IsNotHaveStatements = true;
-                        //_dialogService.ShowMessage(AppResources.ASNoFinancialTransactions, AppResources.ZError);
                     }
                     if (IsNormalStatementsViewVisible)
                     {
@@ -588,7 +572,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     else
                     {
                         Items = value.ToList();
-
                         List<ObservableGroupCollection<string, ASResult>> agroupedData;
                         if (App.IsArabic)
                         {
@@ -606,7 +589,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                   .GroupBy(p => p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("ar")))
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                                 }
-
                             }
                             catch (Exception ex)
                             {
@@ -616,9 +598,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                               .GroupBy(p => UtilityManager.GetMonthName(p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("en"))))
                                 .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                             }
-                            
-                            
-                            
                         }
                         else
                         {
@@ -628,15 +607,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                 {
                                     agroupedData = Items.OrderBy(p => p.Bldat)
                                         .GroupBy(p => p.Bldat?.ToString("MMMM"))
-                                        .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList(); 
+                                        .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                                 }
                                 else
                                 {
                                     agroupedData = Items.OrderBy(p => p.Bldat)
-                                  .GroupBy(p => UtilityManager.GetMonthNameHijri(p.Bldat?.ToString("MM", System.Globalization.CultureInfo.GetCultureInfo("ar"))) )
+                                  .GroupBy(p => UtilityManager.GetMonthNameHijri(p.Bldat?.ToString("MM", System.Globalization.CultureInfo.GetCultureInfo("ar"))))
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                                 }
-
                             }
                             catch (Exception ex)
                             {
@@ -644,9 +622,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                     .GroupBy(p => p.Bldat?.ToString("MMMM"))
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                             }
-
                         }
-
                         GroupedData = agroupedData;
                     }
                     _statementsLineItems = value;
@@ -675,7 +651,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
 
             public string monthName { get; set; }
-
             public ObservableCollection<ASResult> StatementsLineItems { get; set; }
         }
 
@@ -790,13 +765,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (_SelectedTaxTypeForFilter == value) return;
 
                 _SelectedTaxTypeForFilter = value;
-
                 if (_SelectedTaxTypeForFilter != null)
                 {
                     FilterLabelText = _SelectedTaxTypeForFilter.TaxType;
                     FilterOnTaxType(SelectedTaxTypeForFilter.Id);
                 }
-
                 RaisePropertyChanged("SelectedTaxTypeForFilter");
             }
         }
@@ -813,29 +786,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (_selectedTransactionTypeFilter == value) return;
 
                 if (value == null) return;
-                    _selectedTransactionTypeFilter = value;
-
-                    if (_selectedTransactionTypeFilter.StatementFilter != null)
+                _selectedTransactionTypeFilter = value;
+                if (_selectedTransactionTypeFilter.StatementFilter != null)
+                {
+                    IsYearsChipVisible = true;
+                }
+                else
+                {
+                    IsYearsChipVisible = false;
+                }
+                RaisePropertyChanged("SelectedTransactionTypeFilter");
+                if (_selectedTransactionTypeFilter.StatementFilter != null)
+                {
+                    Task.Run(async () =>
                     {
-                        IsYearsChipVisible = true;
-                    }
-                    else
-                    {
-                        IsYearsChipVisible = false;
-                    }
-
-                    RaisePropertyChanged("SelectedTransactionTypeFilter");
-
-                    if (_selectedTransactionTypeFilter.StatementFilter != null)
-                    {
-                        Task.Run(async () =>
-                        {
-                            await PopulateDataInChipsForYears(SelectedTransactionTypeFilter.TaxType, SelectedTransactionTypeFilter.StatementFilter);
-                            StatementsLineItems = new ObservableCollection<ASResult>();
-                        });
-                    }
-
-                
+                        await PopulateDataInChipsForYears(SelectedTransactionTypeFilter.TaxType, SelectedTransactionTypeFilter.StatementFilter);
+                        StatementsLineItems = new ObservableCollection<ASResult>();
+                    });
+                }
             }
         }
 
@@ -851,7 +819,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (_selectedTransactionType == value) return;
 
                 _selectedTransactionType = value;
-
                 RaisePropertyChanged("SelectedTransactionType");
             }
         }
@@ -867,7 +834,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (_IsNormalListDownloadPage == value) return;
 
                 _IsNormalListDownloadPage = value;
-
                 RaisePropertyChanged("IsNormalListDownloadPage");
             }
         }
@@ -934,7 +900,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (_selectedYear == value) return;
 
                 _selectedYear = value;
-
                 RaisePropertyChanged("SelectedYear");
             }
         }
@@ -951,7 +916,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (_filterLabelText == value) return;
 
                 _filterLabelText = value;
-
                 RaisePropertyChanged("FilterLabelText");
             }
         }
@@ -1002,7 +966,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 if (_isCloseButtonVisible == value) return;
 
-
                 _isCloseButtonVisible = value;
                 RaisePropertyChanged("IsCloseButtonVisible");
             }
@@ -1025,7 +988,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        //IsSortByVisible
         public ObservableCollection<ASFilters> _filterList = null;
         public ObservableCollection<ASFilters> FilterList
         {
@@ -1083,14 +1045,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             IsSortByVisible = !IsSortByVisible;
             IsMonthWiseStatementsViewVisible = !IsMonthWiseStatementsViewVisible;
-            //await PopupNavigation.Instance.PushAsync(new AccountStatementsFiltersPageView());
         }
 
         public void DownloadBtnClicked()
         {
             String pdfUrl = Constants.AccountStatementDownloadPdf + "Fguid='" + App.LoginDataRetrieved.FbGuid + "'" + ",Taxtype='" + SelectedTaxTypeForFilter.Id + "',FiscalYear='" + SelectedYear.Text + "',StatementFilter='" + SelectedTransactionTypeFilter.StatementFilter + "',FromDt=datetime'2020-1-1T00:00:00',ToDt=datetime'2020-11-6T00:00:00',Langz='" + GetLangZParameter() + "')/$value";
             ShowPdf(pdfUrl);
-            //await WebServiceManager.GAZTGetAccountStatementDownloadPdf(SelectedTransactionTypeFilter.StatementFilter, SelectedTaxTypeForFilter.Id, SelectedYear.Text, string.Empty, string.Empty);
         }
 
         private static char GetLangZParameter()
@@ -1112,12 +1072,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             else
             {
                 var temp = (dateTimeTo - dateTimeFrom).TotalDays;
-
                 if (temp > 365)
                 {
                     _dialogService.ShowMessage(AppResources.ASViewStatementForOnlyOneYear, AppResources.Information);
                 }
-                
                 else
                 {
                     int year;
@@ -1127,8 +1085,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                     else
                     {
-                        string[]  tempyear = UtilityManager.HijriToGreg("01 / 01 /"+ASTaxpayerSelectedValues.Year).Split('/');
-
+                        string[] tempyear = UtilityManager.HijriToGreg("01 / 01 /" + ASTaxpayerSelectedValues.Year).Split('/');
                         year = Int32.Parse(tempyear[0]);
                     }
                     if (year >= dateTimeFrom.Year && year <= dateTimeTo.Year)
@@ -1147,7 +1104,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                             {
                                 _dialogService.ShowMessage(AppResources.Therearenofinancialtransactions, AppResources.Information);
                             }
-
                         }
                         else
                         {
@@ -1164,22 +1120,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                 _dialogService.ShowMessage(AppResources.Therearenofinancialtransactions, AppResources.Information);
                             }
                         }
-                        
-                        
-
                     }
                     else
                     {
                         _dialogService.ShowMessage(AppResources.ASViewStatementForOnlyOneYear, AppResources.Information);
                     }
-
-
                 }
             }
 
         }
-
-
 
         public void ShowPdf1(string pdfUrl)
         {
@@ -1287,22 +1236,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     statementFilter = "08";
                 }
 
-                    IsLoading = true;
-
+                IsLoading = true;
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
-
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
-
                 if (StatementsLineItems == null)
                 {
                     StatementsLineItems = new ObservableCollection<ASResult>();
                 }
-
                 if (GroupedStatements == null)
                 {
                     GroupedStatements = new List<GroupedAccountStatements>();
                 }
-
                 StatementsLineItems.Clear();
                 GroupedStatements.Clear();
 
@@ -1310,7 +1254,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     IsLoading = false;
                 });
-
             }
             catch (Exception)
             {
@@ -1319,16 +1262,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     IsLoading = false;
                 });
             }
-
-            // TransactionTypeFilter = new ObservableCollection<ASRevenueDropDownSetDataResults>(AllTransactionFilters.Where(x => x.TaxType.Equals(taxType)).ToList());
-            // SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
         }
 
         public async Task PopulateDataForTransactionTypes(string taxType)
         {
             var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
-
-
             foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.D.Results)
             {
                 aSRevenueDropDownSetDataResults.TaxType = taxType;
@@ -1342,15 +1280,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 IsLoading = true;
                 YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
-
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
-
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
-
                 var chipDataFilterlistForYears = new List<ASChipModel>();
                 ChipDataFilterlistForYears = new List<ASChipModel>();
-
-
                 if (YearValuesHeader != null && YearValuesHeader.D != null)
                 {
                     foreach (ASYearValuesResults aSYearValuesResults in YearValuesHeader.D.Results)
@@ -1367,13 +1300,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2019", TemplateType = AppResources.Paid });
                 }
                 var desc = chipDataFilterlistForYears.OrderByDescending(item => item.Text);
-
                 foreach (ASChipModel aSChipModel in desc)
                 {
                     ChipDataFilterlistForYears.Add(aSChipModel);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -1389,47 +1321,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             try
             {
                 IsLoading = true;
-
                 TransactionTypeDropDownParent = new ASRevenueDropDownSet();
-
-
-
                 if (AllTransactionFilters == null)
                 {
                     AllTransactionFilters = new ObservableCollection<ASRevenueDropDownSetDataResults>();
                 }
-
                 AllTransactionFilters.Clear();
-
                 ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
                 defautlVal.Txt30 = AppResources.ASTransactionType;
                 defautlVal.TaxType = "D";
-
                 AllTransactionFilters.Insert(0, defautlVal);
-
                 ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
                 defautlValIndirectTax.Txt30 = AppResources.ASTransactionType;
                 defautlValIndirectTax.TaxType = "I";
-
                 AllTransactionFilters.Insert(1, defautlValIndirectTax);
-
                 if (TabIdentification.D.Direct == "X")
                 {
                     await PopulateDataForTransactionTypes("D");
                 }
-
                 if (TabIdentification.D.Indirect == "X")
                 {
                     await PopulateDataForTransactionTypes("I");
                 }
-
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
                     (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType);
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
-
                 IsOpeningBalanceVisible = false;
                 IsDownloadBtnVisile = false;
-
                 foreach (ASReturnTypes aSReturnTypes in TaxTypeForFilter)
                 {
                     if (HeaderSet.D.TaxType == aSReturnTypes.Id)
@@ -1441,10 +1359,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
                     }
                 }
-
-                //TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.ToList());
-
-
                 foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
                 {
                     if (TabIdentification.D.Direct == "X")
@@ -1453,65 +1367,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         {
                             taxRelationSetResult.DisplayId = 01;
                         }
-
                         if (taxRelationSetResult.StatementFilter == "02")
                         {
                             taxRelationSetResult.DisplayId = 02;
                         }
-
                         if (taxRelationSetResult.StatementFilter == "03")
                         {
                             taxRelationSetResult.DisplayId = 03;
                         }
                     }
-
                     if (TabIdentification.D.Indirect == "X")
                     {
                         if (taxRelationSetResult.StatementFilter == "06")
                         {
                             taxRelationSetResult.DisplayId = 06;
                         }
-
                         if (taxRelationSetResult.StatementFilter == "07")
                         {
                             taxRelationSetResult.DisplayId = 07;
                         }
-
                         if (taxRelationSetResult.StatementFilter == "09")
                         {
                             taxRelationSetResult.DisplayId = 09;
                         }
                     }
                 }
-
                 if (TransactionTypeFilter == null)
                 {
                     TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
                 }
-
                 TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
                 SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
-
-                /*if (HeaderSet.D.TaxType == "D")
-                {
-                    FilterOnTaxType("D");
-                }
-                else if (HeaderSet.D.TaxType == "I")
-                {
-                    FilterOnTaxType("I");
-                }*/
 
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
-                //if (HeaderSet != null && HeaderSet.D != null)
-                //{
-                //    TotalDebit = HeaderSet.D.DebitAmount;
-                //    TotalCredit = HeaderSet.D.CreditAmount;
-                //    TotalBalance = HeaderSet.D.CloseAmount;
-
-                //}
             }
             catch (GAZTErrorException ex)
             {
@@ -1523,12 +1414,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (InternetException ex)
             {
-                
-                    IsLoading = false;
-               
+                IsLoading = false;
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
-              
             }
             catch (Exception ex)
             {
@@ -1545,12 +1433,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             try
             {
-                    IsLoading = true;
-
+                IsLoading = true;
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
-
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
-
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {
                     if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
@@ -1558,40 +1443,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         IsDownloadBtnVisile = true;
                         IsNoStatementsAvaiableVisible = false;
                         StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
-
-                        //StatementsLineItems.OrderByDescending(p => DateTime.Parse(p.FormattedBldat));
-
-                        //List<GroupedAccountStatements> list = new List<GroupedAccountStatements>();
-                        //foreach (var item in StatementsLineItems)
-                        //{
-                        //    CultureInfo calCul;
-
-                        //    if (App.IsArabic == true)
-                        //    {
-                        //        calCul = new CultureInfo("ar-SA");
-                        //    }
-                        //    else
-                        //    {
-                        //        calCul = new CultureInfo("en-US");
-                        //    }
-
-                        //    var test = DateTime.Parse(item.FormattedBldat);
-
-                        //    var innerList = StatementsLineItems.Where(p => p.FormattedBldat == item.FormattedBldat).ToList();
-
-                        //    if (!list.Any(p => p.Date.ToString("MMMM",calCul) == DateTime.Parse(item.FormattedBldat, calCul).ToString("MMMM")))
-                        //    {
-                        //        list.Add(new GroupedAccountStatements(item, innerList));
-                        //    }
-                        //}
-
-                        //GroupedStatements = new List<GroupedAccountStatements>(list);
                     }
                     else
                     {
                         IsDownloadBtnVisile = false;
                         IsNoStatementsAvaiableVisible = true;
-
                         StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
                         GroupedStatements = new List<GroupedAccountStatements>();
                     }
@@ -1601,8 +1457,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     IsDownloadBtnVisile = false;
                     IsNoStatementsAvaiableVisible = true;
                 }
-
-                    IsLoading = false;
+                IsLoading = false;
             }
             catch (Exception ex)
             {
@@ -1614,69 +1469,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 });
             }
         }
-
         public static string GetMonthName(string Month)
         {
             if (Month == "01" || Month == "1" || Month == "يناير")
             {
                 Month = "January";
-                // Month = "January";
             }
             else if (Month == "02" || Month == "2" || Month == "فبراير")
             {
                 Month = "February";
-                //  Month = "February";
             }
             else if (Month == "03" || Month == "3" || Month == "مارس")
             {
                 Month = "March";
-                // Month = "March";
             }
             else if (Month == "04" || Month == "4" || Month == "أبريل")
             {
                 Month = "April";
-                // Month = "April";
             }
             else if (Month == "05" || Month == "5" || Month == "مايو")
             {
                 Month = "May";
-                // Month = "May";
             }
             else if (Month == "06" || Month == "6" || Month == "يونيو")
             {
                 Month = "June";
-                //  Month = "June";
             }
             else if (Month == "07" || Month == "7" || Month == "يوليو")
             {
                 Month = "July";
-                //Month = "July";
             }
             else if (Month == "08" || Month == "8" || Month == "أغسطس")
             {
-
                 Month = "August";
-                //  Month = "August";
             }
             else if (Month == "09" || Month == "9" || Month == "سبتمبر")
             {
                 Month = "September";
-                //  Month = "September";
             }
             else if (Month == "10" || Month == "أكتوبر")
             {
                 Month = "October";
-                //Month = "October";
             }
             else if (Month == "11" || Month == "نوفمبر")
             {
                 Month = "November";
-                // Month = "November";
             }
             else if (Month == "12" || Month == "ديسمبر")
             {
                 Month = "December";
-                //   Month = "December";
             }
             return Month;
         }
@@ -1686,17 +1527,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             List<ASFilters> filters = new List<ASFilters>();
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.ASTransactionDate
             });
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.TaxType
             });
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.ASFBNum
             });
             filters.Add(new ASFilters
@@ -1705,12 +1543,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             });
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.ASTaxperiod
             });
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.ASDueDate
             });
             filters.Add(new ASFilters
@@ -1725,51 +1561,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 FilterHeader = AppResources.ZStatus
             });
-
             FilterList = new ObservableCollection<ASFilters>(filters);
         }
-
-        //public async Task PopToRootPage()
-        //{
-        //    try
-        //    {
-        //        if (App.IsSessionExpired)
-        //        {
-        //            Device.BeginInvokeOnMainThread(async () =>
-        //            {
-        //                if (App.TP != null)
-        //                    App.TP = null;
-        //                if (App.PreviousIsArabic)
-        //                {
-        //                    String langName = "ar-SA";
-        //                    AppResources.Culture = new CultureInfo(langName);
-        //                }
-        //                else
-        //                {
-        //                    String langName = "en-US";
-        //                    AppResources.Culture = new CultureInfo(langName);
-        //                }
-        //                var _navigation = Application.Current.MainPage.Navigation;
-        //                foreach (var item in _navigation.NavigationStack)
-        //                {
-        //                    if (item.GetType().Name == App.SFLoginPageView)
-        //                    {
-        //                        _navigation.RemovePage(item);
-        //                        break;
-        //                    }
-        //                }
-        //                // _navigationService.NavigateTo(App.SFLoginPageView);
-        //                _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-        //                _navigation.NavigationStack.ToList().Clear();
-        //            });
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //}
-
     }
 }

@@ -16,11 +16,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InfoPopUpPage : PopupPage
     {
-
         GAZTNewDesignDashBoardPageViewModel viewModel;
         public InfoPopUpPage()
         {
-
             viewModel = App.Locator.InfoPopUpPage;
             this.BindingContext = viewModel;
             SetLTR();
@@ -53,7 +51,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         }
 
-        private async  void btnLogout_Clicked(object sender, EventArgs e)
+        private async void btnLogout_Clicked(object sender, EventArgs e)
         {
             if (App.IsArabic)
             {
@@ -66,7 +64,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         await PopupNavigation.Instance.PopAsync();
                         await LogOutFromPopup();
                     });
-             
                 }
             }
             else
@@ -80,12 +77,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         await PopupNavigation.Instance.PopAsync();
                         await LogOutFromPopup();
                     });
-
-
-
                 }
             }
-        }//  viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+        }
 
         public async Task LogOutFromPopup()
         {
@@ -120,16 +114,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 App.HideProgressView();
             });
 
-            //var _navigation = Application.Current.MainPage.Navigation;
-            //foreach (var item in _navigation.NavigationStack)
-            //{
-            //    if (item.GetType().Name == App.GAZTNewDesignOnBoardingAnimationPageView)
-            //    {
-            //        _navigation.RemovePage(item);
-            //        break;
-            //    }
-            //}
-
             App.IsLogOut = true;
             App.IsLoginCalled = false;
             App.IsSamlApiCalledAndroid = false;
@@ -144,14 +128,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
 
             }
-
-            //_navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-
-            // await _navigation.PopToRootAsync();
-            //_navigation.NavigationStack.ToList().Clear();
-          //  viewModel._navigationService.GoBack();
-         // viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-           viewModel._navigationService.GoBack();
+            viewModel._navigationService.GoBack();
 
         }
 

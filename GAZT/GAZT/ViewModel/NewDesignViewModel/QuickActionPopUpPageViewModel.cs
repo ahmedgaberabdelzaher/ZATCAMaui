@@ -14,12 +14,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        //============================start===================================================
         public ICommand OnMyReturnsClickedForZAKAT { get; set; }
         public ICommand OnMyBillsClicked { get; set; }
         public ICommand OnCorrespondanceClicked { get; set; }
 
         #region Property
+
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -33,9 +33,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
+
         #endregion
 
         #region Constructor
+
         public QuickActionPopUpPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -49,29 +51,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             _dialogService = dialogService;
 
-            OnMyReturnsClickedForZAKAT = new Xamarin.Forms.Command(async() =>
+            OnMyReturnsClickedForZAKAT = new Xamarin.Forms.Command(async () =>
             {
                 await PopupNavigation.Instance.PopAsync();
                 _navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 5);
 
             });
-            OnMyBillsClicked = new Xamarin.Forms.Command(async() =>
+            OnMyBillsClicked = new Xamarin.Forms.Command(async () =>
             {
                 BillInfo billInfo = new BillInfo();
                 billInfo.BillTypeName = AppResources.All;
                 await PopupNavigation.Instance.PopAsync();
                 _navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
             });
-            OnCorrespondanceClicked = new Xamarin.Forms.Command(async() =>
+            OnCorrespondanceClicked = new Xamarin.Forms.Command(async () =>
             {
                 await PopupNavigation.Instance.PopAsync();
                 _navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
 
             });
         }
-        #endregion
 
-        #region Method
         #endregion
     }
 }

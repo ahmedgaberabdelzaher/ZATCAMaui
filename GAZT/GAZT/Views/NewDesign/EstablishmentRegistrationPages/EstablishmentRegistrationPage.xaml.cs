@@ -9,6 +9,8 @@ using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -23,7 +25,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             InitializeComponent();
             ChangeAeroIcon();
             SetLTR();
-            
+
             viewModel = App.Locator.EstablishmentRegistrationPage;
             BindingContext = viewModel;
             viewModel.IsNavigationCompletedToSuccessfulPage = false;
@@ -34,13 +36,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
             if (viewModel.currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
             {
                 viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
                 viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
             }
-
             viewModel?.OnAppearing();
         }
 
@@ -65,12 +68,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             if (App.IsArabic)
             {
-                //Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
-                //Resources["StyleReverseBack"] = App.Current.Resources["Back"];
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
@@ -141,8 +142,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             {
                 if (str == "Yes")
                 {
-                    //var item = sender as Image;
-                    //var data = item.BindingContext as Attachment;
                     viewModel.OnRentAttachmentDeleteButtonTapped(data);
                 }
             };
@@ -168,28 +167,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             {
                 if (str == "Yes")
                 {
-                    //var item = sender as Image;
-                    //var data = item.BindingContext as Attachment;
                     viewModel.OnPassportAttachmentDeleteButtonTapped(data);
                 }
             };
             await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
-
-        //private void dobPicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
-        //{
-        //    viewModel.SelectedDOB = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        //}
-
-        //private void PassportIssueDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
-        //{
-        //    viewModel.PassportIssueDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        //}
-
-        //private void PassportExpiryDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
-        //{
-        //    viewModel.PassportExpireDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        //}
 
         void SfChipGroup_SelectionChanging(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
         {
@@ -205,12 +187,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 {
                     viewModel.currentTab = newselectedTab;
                 }
-            }catch(Exception){ }
+            }
+            catch (Exception) { }
         }
 
         private EstablishmentRegistrationTabsEnum getEnumFromChipsLabel(string label)
         {
-            if (label.Equals(AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel)){
+            if (label.Equals(AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel))
+            {
                 return EstablishmentRegistrationTabsEnum.TaxpayerDetail;
             }
             if (label.Equals(AppResources.ESTPassportDetailsTabTitleLabel))

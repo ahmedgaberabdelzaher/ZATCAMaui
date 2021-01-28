@@ -379,6 +379,7 @@
         <Setter Property="FocusedColor" Value="#005e4b" />
         <Setter Property="ErrorColor" Value="#B00020" />
         <Setter Property="HasError" Value="False" />
+
     </Style>
 
     <Style x:Key="InputTableEntryLayoutStyle"  TargetType="Entry">
@@ -723,6 +724,17 @@
     <Style x:Key="CheckboxHeightWidth32" TargetType="ContentView">
         <Setter Property="HeightRequest" Value="32" />
         <Setter Property="WidthRequest" Value="32" />
+    </Style>
+
+       <Style x:Key="ButtonBlackBold16" TargetType="buttons:SfButton">
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
     </Style>
 
     <!--#endregion-->

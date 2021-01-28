@@ -11,11 +11,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
     public partial class OutletDetailsPageView : ContentPage
     {
         private OutletDetailsPageViewModel viewModel;
-        //private OutletNavigationModels _outletNavigation;
         public OutletDetailsPageView(OutletNavigationModels outletNavigation)
         {
             InitializeComponent();
-            //_outletNavigation = outletNavigation;
             viewModel = App.Locator.OutletDetailsPageView;
             viewModel.ClearData();
             viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
@@ -43,12 +41,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             if (App.IsArabic)
             {
-                //Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
-                //Resources["StyleReverseBack"] = App.Current.Resources["Back"];
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }

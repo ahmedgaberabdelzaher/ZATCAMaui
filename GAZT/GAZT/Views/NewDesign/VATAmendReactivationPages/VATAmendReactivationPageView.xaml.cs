@@ -117,7 +117,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             EntryEmail.Text = string.Empty;
             EntryPhoneNumber.Text = string.Empty;
             EntryIDNo.Text = string.Empty;
-
         }
 
         private void SetLTR()

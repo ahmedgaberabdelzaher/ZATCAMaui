@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:custom="clr-namespace:GAZTeServicesApp.Controls" 
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             x:Class="EGAZT.TestPage" 
+             xmlns:styles="clr-namespace:EGAZT.Views.SyncFusionEnabledViews.CommonStyle"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <styles:StylesNewUI/>
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Attachment"  Padding="0,0,0,0" Style="{StaticResource ComponentHeaderBlackBold}"/>
+            <StackLayout  Padding="20" VerticalOptions="Center"  HorizontalOptions="Center">
+                <inputLayout:SfTextInputLayout Padding="0" HeightRequest="100"
+                          ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
+                           OutlineCornerRadius="14" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False"  >
+                    <StackLayout>
+                        <custom:BorderlessEntry Style="{StaticResource DefaultEntry}" x:Name="AttachmentOptional"  Placeholder="Attachments" >
+                        </custom:BorderlessEntry>
+                    </StackLayout>
+                </inputLayout:SfTextInputLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

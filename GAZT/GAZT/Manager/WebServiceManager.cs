@@ -47,6 +47,7 @@ using Xamarin.Essentials;
 using EGAZT.Models.AccountStatements;
 using Formatting = Newtonsoft.Json.Formatting;
 using Xamarin.Forms.Internals;
+using EGAZT.Manager;
 
 namespace GAZT.Manager
 {
@@ -93,10 +94,8 @@ namespace GAZT.Manager
             {
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.BaseUrlOfODataServices;
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTGetTINsResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTGetTINsResponse = await GetServiceManager.MakeGetAPICall(url,false,string.Empty);
                     return true;
                 }
                 catch (Exception ex)
@@ -320,10 +319,8 @@ namespace GAZT.Manager
                 List<TIN> TINs = null;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetAllTin + Username;
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTGetTINsResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTGetTINsResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTGetTINsResponse != null)
                     {
                         GAZTGetTINsResponseResult = GAZTGetTINsResponse.Content.ReadAsStringAsync().Result;
@@ -366,13 +363,8 @@ namespace GAZT.Manager
                 {
                     string otp = "";
                     string _language = "EN";
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='" + "',CurrAttmps=" + currentAttempts + ")?&saml2=enabled&sap-" + "language='" + _language + "" + "'" + "&$format=json"; //)?&saml2=disabled&$format=json";
-                                                                                                                                                                                                                                   //  https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/_P_USRLOGIN_OTP_SRV/HEADERSet(Langz='E',Userid='',Otp='34455',CurrAttmps=1)?&saml2=disabled&sap-language='EN'&$format=xml
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
-
-
+                    String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='" + "',CurrAttmps=" + currentAttempts + ")?&saml2=enabled&sap-" + "language='" + _language + "" + "'" + "&$format=json"; 
+                    HttpResponseMessage GAZTSendAndReceiveOTPResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTSendAndReceiveOTPResponse != null)
                     {
                         HttpHeaders headers = GAZTSendAndReceiveOTPResponse.Headers;
@@ -407,21 +399,9 @@ namespace GAZT.Manager
             {
                 try
                 {
-                    string lang = "";
-                    if (App.IsArabic)
-                    {
-                        lang = "A";
-                    }
-                    else
-                    {
-                        lang = "E";
-                    }
-
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    char lang = WebServiceManager.GetLangZParameter();
                     String url = Constants.GAZTSendAndReceiveOTP + lang + "',Userid='" + UserId + "',Otp='" + OTP + "',CurrAttmps=" + currentAttempts + ")?&saml2=enabled&sap-" + "language='" + Lang + "" + "'" + "&$format=json"; //)?&saml2=disabled&$format=json";Constants.GAZTValidateOTP + Lang + "',Userid='" + UserId + "',Otp='" + OTP + "')?&saml2=disabled&$format=json";
-                    var uri = new Uri(url);
-                  
-                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url,false,string.Empty);
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -490,12 +470,8 @@ namespace GAZT.Manager
                     NewMobileNumber = NewMobileNumber.Replace("+", "");
                     CurrentMobileNumber = CurrentMobileNumber.Replace("+", "");
                     NewMobileNumber = "00" + NewMobileNumber;
-                    //CurrentMobileNumber = "00" + CurrentMobileNumber;
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTValidateOTPForMobile + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',MobileCountry='" + mobileCountry + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
-                    var uri = new Uri(url);
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
-                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url,false,string.Empty);
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -561,21 +537,12 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     NewMobileNumber = NewMobileNumber.Replace("+", "");
                     CurrentMobileNumber = CurrentMobileNumber.Replace("+", "");
                     NewMobileNumber = "00" + NewMobileNumber;
-                    // CurrentMobileNumber = "00" + CurrentMobileNumber;
                     String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',MobileCountry='" + mobileCountry + "',CurrMobile='" + CurrentMobileNumber +
                         "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
-                    var uri = new Uri(url);
-
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-                    client.DefaultRequestHeaders.Add("Token", "123");
-
-                    HttpResponseMessage GAZTValidateMobileNumberResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateMobileNumberResponse = await GetServiceManager.MakeGetAPICall(url, true, "123");
                     if (GAZTValidateMobileNumberResponse != null)
                     {
                         if (GAZTValidateMobileNumberResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -648,11 +615,8 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTValidateAndChangePassword + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',MobileCountry='" + "" + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=enabled&sap-language=" + Lang;
-                    var uri = new Uri(url);
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
-                    HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateAndChangePasswordResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTValidateAndChangePasswordResponse != null)
                     {
                         if (GAZTValidateAndChangePasswordResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -730,10 +694,8 @@ namespace GAZT.Manager
                 string currentDate = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "T" + dt.Hour.ToString() + ":" + dt.Minute.ToString();
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'" + "" + "'&saml2=enabled&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateAndChangePasswordResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTValidateAndChangePasswordResponse != null)
                     {
                         String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
@@ -934,13 +896,8 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetTP + "='" + Tin + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=enabled&$format=json";
-
-                    client.DefaultRequestHeaders.Add("Token", App.Token);
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateAndChangePasswordResponse = await GetServiceManager.MakeGetAPICall(url, true, App.Token);
                     if (GAZTValidateAndChangePasswordResponse != null)
                     {
                         if (GAZTValidateAndChangePasswordResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -1009,10 +966,8 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',MobileCountry='" + "" + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -1085,10 +1040,8 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',MobileCountry='" + "" + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=enabled&sap-language=" + Lang;
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -1160,11 +1113,8 @@ namespace GAZT.Manager
                 string currentDate = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "T" + dt.Hour.ToString() + ":" + dt.Minute.ToString();
                 try
                 {
-                 
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&saml2=enabled&$format=json";
-                    var uri = new Uri(ZakatURL);
-                    HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateAndChangePasswordResponse = await GetServiceManager.MakeGetAPICall(ZakatURL, false, string.Empty);
                     if (GAZTValidateAndChangePasswordResponse != null)
                     {
                         String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
@@ -1274,9 +1224,8 @@ namespace GAZT.Manager
                     {
 
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + lang + "'" + ")?saml2=enabled&$format=json";
-                    HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await GetServiceManager.MakeGetAPICall(uri, false, string.Empty);
                     if (GAZTFogotPasswordSendOTPResponse != null)
                     {
                         HttpHeaders headers = GAZTFogotPasswordSendOTPResponse.Headers;
@@ -1417,15 +1366,9 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    string _language = null;
-                    if (App.IsArabic)
-                        _language = "A";
-                    else
-                        _language = "E";
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    char _language = WebServiceManager.GetLangZParameter();
                     String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=enabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTTinStatus = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTTinStatus = await GetServiceManager.MakeGetAPICall(url,false,string.Empty); 
                     if (GAZTTinStatus != null)
                     {
                         if (GAZTTinStatus.StatusCode == HttpStatusCode.Unauthorized)
@@ -1486,7 +1429,7 @@ namespace GAZT.Manager
 
                     String url = Constants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTVATLookUp = await  client.GetAsync(uri);
                     if (GAZTVATLookUp != null)
                     {
                         if (GAZTVATLookUp.StatusCode == HttpStatusCode.Unauthorized)
@@ -1553,11 +1496,8 @@ namespace GAZT.Manager
                     VATDeclaration _vATDeclaration = new VATDeclaration();
                     char LangZ = GetLangZParameter();
                     String Lang = UtilityManager.GetLanguageParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet,VATPERITEMSet&$format=json";
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTVATReturnStatus = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTVATReturnStatus = await GetServiceManager.MakeGetAPICall(url, true, "123");
                     if (GAZTVATReturnStatus != null)
                     {
                         if (GAZTVATReturnStatus.StatusCode == HttpStatusCode.Unauthorized)
@@ -1726,10 +1666,8 @@ namespace GAZT.Manager
             try
             {
                 VATDeclarationD vATLookUp = new VATDeclarationD();
-                HttpClient client = new HttpClient(App.httpClientHandler);
                 String url = Constants.SaveVATDeclarationData;
-                var uri = new Uri(url);
-                HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
+                HttpResponseMessage GAZTVATLookUp = await GetServiceManager.MakeGetAPICall(url,false,string.Empty);
                 if (GAZTVATLookUp != null)
                 {
                     if (GAZTVATLookUp.StatusCode == HttpStatusCode.Unauthorized)
@@ -1851,10 +1789,8 @@ namespace GAZT.Manager
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                   String url = Constants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'" + "&saml2=enabled&sap-langauge='" + lang + "'&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                   String url = Constants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'" + "&saml2=enabled&sap-langauge='" + lang + "'&$format=json";
+                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -1911,7 +1847,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                    String url = Constants.GAZTCheckIBANNumber + IBAN + "')" + "?saml2=enabled&sap-langauge=" + lang + "&$format=json";
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTValidateOTPResponse = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTValidateOTPResponse =  client.GetAsync(uri).Result;
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -1970,11 +1906,9 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = GetLangZParameter();// "E";
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                   String url = Constants.GAZTGetVATDeclarationCalculationDataUrl + "'" + FormBundleNumber + "'" + ",Lang='" + lang + "'" + ",Operation='" + "'" + ",Gpart='" + Gpart + "'" + ",Status='" + status + "'" + ",TxnTp='" + TxnTp + "'" + ",Formproc='" + "'" + ",Periodkey='" + periodKey + "'" + ")?saml2=enabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    char lang = GetLangZParameter();
+                   String url = Constants.GAZTGetVATDeclarationCalculationDataUrl + "'" + FormBundleNumber + "'" + ",Lang='" + lang + "'" + ",Operation='" + "'" + ",Gpart='" + Gpart + "'" + ",Status='" + status + "'" + ",TxnTp='" + TxnTp + "'" + ",Formproc='" + "'" + ",Periodkey='" + periodKey + "'" + ")?saml2=enabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
+                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url,false,string.Empty); 
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -2144,10 +2078,7 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     string lang = UtilityManager.GetLanguageParameter();
                     String url = Constants.GAZTGetSADADNumber + lang + "'" + "&$format=json&$filter=Langu eq'" + LangZ + "'and Fbnum eq '" + FormBundleID + "'" + "";
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(url);
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    var response = await client.GetAsync(url);
+                    var response = await GetServiceManager.MakeGetAPICall(url,true, "123");
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     sadadNumber = JsonConvert.DeserializeObject<SadadNumber>(responsestr);
                     return sadadNumber;
@@ -2171,11 +2102,8 @@ namespace GAZT.Manager
                 try
                 {
                     string _language = UtilityManager.GetLanguageParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetZakatReturnList + App.TP.Userid + "'" + ",Auditor='" + "'" + ",Lang='" + _language + "'" + ",UserTin='" + App.TP.Userid + "'" + ")?saml2=enabled&sap-language='" + _language + "'" + "&$expand=listSet&$format=json";
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTEstimateZakatReturnList = await GetServiceManager.MakeGetAPICall(url,true, "123");
                     if (GAZTEstimateZakatReturnList != null)
                     {
                         if (GAZTEstimateZakatReturnList.StatusCode == HttpStatusCode.Unauthorized)
@@ -2273,8 +2201,6 @@ namespace GAZT.Manager
                 try
                 {
                     char lang = GetLangZParameter();// "E";
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Token", "123");
                     String url = "";
                     if (App.IsZakatLoadingFromMyReturns == true)
                     {
@@ -2284,9 +2210,7 @@ namespace GAZT.Manager
                     {
                         url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
                     }
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url,true, "123");
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -2398,8 +2322,8 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation='" + Operation + "'," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey='" + PeriodKey + "'" + ")?saml2=enabled&$expand=UI_BTNSet,IGRTSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage ApplicableButtonsResponse = await client.GetAsync(uri);
+
+                    HttpResponseMessage ApplicableButtonsResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (ApplicableButtonsResponse != null)
                     {
                         if (ApplicableButtonsResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -2445,58 +2369,6 @@ namespace GAZT.Manager
                     Enum.TryParse(button.Button, out button.buttonEnumId);
                 }
                 return VATApplicableButtons;
-            }
-            else
-            {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
-            }
-        }
-        public static async Task<EsimatedZAKATReturnsButtonSets> GAZTGetZAKATReturnButtonSet()
-        {
-            EsimatedZAKATReturnsButtonSets ZAKATReturnApplicableButtons = new EsimatedZAKATReturnsButtonSets();
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                TaxPayerProfile TP = null;
-                string NewToken = string.Empty;
-                try
-                {
-                    char lang = GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = "";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
-                    if (GAZTValidateOTPResponse != null)
-                    {
-                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
-                        {
-                            App.IsSessionExpired = true;
-                            return null;
-                        }
-
-                        HttpHeaders headers = GAZTValidateOTPResponse.Headers;
-                        IEnumerable<string> values;
-                        if (headers.TryGetValues("token", out values))
-                        {
-                            NewToken = values.First();
-                        }
-                        if ((!string.IsNullOrEmpty(NewToken)))
-                        {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
-                            {
-                                App.IsSessionExpired = true;
-                                return null;
-                            }
-                            App.Token = NewToken;
-                        }
-                        String _esimatedZAKATReturnsButtonSets = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
-                        ZAKATReturnApplicableButtons = JsonConvert.DeserializeObject<EsimatedZAKATReturnsButtonSets>(_esimatedZAKATReturnsButtonSets);
-                    }
-                    return ZAKATReturnApplicableButtons;
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
             }
             else
             {
@@ -2560,7 +2432,7 @@ namespace GAZT.Manager
                     }
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTEstimateZakatReturnList = await GetServiceManager.MakeGetAPICall(url, true, "123");
                     if (GAZTEstimateZakatReturnList != null)
                     {
                         if (GAZTEstimateZakatReturnList.StatusCode == HttpStatusCode.Unauthorized)
@@ -2608,7 +2480,7 @@ namespace GAZT.Manager
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 String url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='00000000000000000000'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=enabled&$expand=InvoiceSet";
                 var uri = new Uri(url);
-                HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
+                HttpResponseMessage GAZTEstimateZakatReturnList = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                 if (GAZTEstimateZakatReturnList != null)
                 {
                     if (GAZTEstimateZakatReturnList.StatusCode == HttpStatusCode.Unauthorized)
@@ -2697,7 +2569,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='FZ01')/$value?saml2=enabled";
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTEstimateZakatReturnList = await  GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTEstimateZakatReturnList != null)
                     {
                         if (GAZTEstimateZakatReturnList.StatusCode == HttpStatusCode.Unauthorized)
@@ -2983,10 +2855,8 @@ namespace GAZT.Manager
                 try
                 {
                     char lang = GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetFormBundleModel + " '" + lang + "' and Gpart eq '" + App.TP.Tin + "'";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTFormBundleList = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTFormBundleList =  await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTFormBundleList != null)
                     {
                         if (GAZTFormBundleList.StatusCode == HttpStatusCode.Unauthorized)
@@ -3033,10 +2903,8 @@ namespace GAZT.Manager
                 try
                 {
                     char lang = GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetFormBunleAccountNumberModel + "'" + lang + "' and Gpart eq '" + App.TP.Tin + "' and Fbtyp eq '" + ApplicationNumber + "'";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTFormBundleList = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTFormBundleList =  await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTFormBundleList != null)
                     {
                         if (GAZTFormBundleList.StatusCode == HttpStatusCode.Unauthorized)
@@ -3883,9 +3751,8 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                    string uri = Constants.GAZTGetReturnList + TIN + "' and Lang eq '" + lang + "'&saml2=enabled&$format=json";
-                    HttpResponseMessage GAZTGetDashboardResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTGetDashboardResponse = await GetServiceManager.MakeGetAPICall(uri, false, string.Empty);
                     if (GAZTGetDashboardResponse != null)
                     {
                         if (GAZTGetDashboardResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -4026,7 +3893,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", "123");
                     string uri = Constants.GAZTGetUnSubmittedReturnSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
-                    HttpResponseMessage GAZTGetUnSubmittedReturnSetResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTGetUnSubmittedReturnSetResponse = await GetServiceManager.MakeGetAPICall(uri, true, "123");
                     if (GAZTGetUnSubmittedReturnSetResponse != null)
                     {
                         if (GAZTGetUnSubmittedReturnSetResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -4093,10 +3960,8 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Token", "123");
                     string uri = Constants.GAZTGetPaymentOverdueSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
-                    HttpResponseMessage GAZTGetPaymentOverdueSetResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTGetPaymentOverdueSetResponse = await GetServiceManager.MakeGetAPICall(uri, true, "123");
                     if (GAZTGetPaymentOverdueSetResponse != null)
                     {
                         if (GAZTGetPaymentOverdueSetResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -4617,12 +4482,8 @@ namespace GAZT.Manager
                 String GAZTGetLogoffResponseResult = String.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTSAMLLogoutService;
-
-                    var uri = new Uri(url);
-
-                    HttpResponseMessage GAZTLogOffResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTLogOffResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     App.LoginCookiesRetrieved = null;
 
                     App.CreateClientHandler();
@@ -4782,9 +4643,7 @@ namespace GAZT.Manager
                try
                 {
                      string url = "http://10.50.11.203/ZPService/SMSAPI.asmx/SendSingleSMS?userName=" + userName + "&password=" + password + "&tagName=" + tagName + "&recepientNumber=" + recepientNumber + "&message=" + message + "&sendDateTime=0";
-                    var uri = new Uri(url);
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    HttpResponseMessage res = await client.GetAsync(uri);
+                    HttpResponseMessage res = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var response = await res.Content.ReadAsStringAsync();
                     XElement xmlroot = XElement.Parse(response);
                     string statuscode = xmlroot.Value;
@@ -4824,11 +4683,8 @@ namespace GAZT.Manager
                 AttachmentDocumentModel attachmentDocumentModel = null;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Token", "123");
                     string url = Constants.GAZTGetAllAttachments + fbNum + "'" + " and RetGuid eq '" + retGuid + "'" + "&saml2=enabled&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTGetAllAttachmentsResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTGetAllAttachmentsResponse = await GetServiceManager.MakeGetAPICall(url, true, "123");
                     if (GAZTGetAllAttachmentsResponse != null)
                     {
                         GAZTAttachmentsResponseResult = GAZTGetAllAttachmentsResponse.Content.ReadAsStringAsync().Result;
@@ -6652,23 +6508,9 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    char lang = GetLangZParameter();
-                    string Lang = "";
-                    if (App.IsArabic == true)
-                    {
-                        Lang = "A";
-                    }
-                    else
-                    {
-                        Lang = "E";
-                    }
+                    char Lang = GetLangZParameter();
                     string url = Constants.Z_RET_F05_ZKTE + "(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='" + Lang + "',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='" + App.TP.Userid + "',Fbguid='" + Fbguid + "')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
-
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTZakatForm5Response = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTZakatForm5Response = await GetServiceManager.MakeGetAPICall(url,false,"");
                     if (GAZTZakatForm5Response != null)
                     {
                         if (GAZTZakatForm5Response.StatusCode == HttpStatusCode.Unauthorized)
@@ -6733,23 +6575,10 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     char lang = GetLangZParameter();
-                    string Lang = "";
-                    if (App.IsArabic == true)
-                    {
-                        Lang = "AR";
-                    }
-                    else
-                    {
-                        Lang = "EN";
-                    }
+                    string Lang = GetLangZParameterAREN();
                     string url = Constants.Z_RET_F05_City + "(Langu='" + Lang + "',Country='SA')?&$expand=zcitySet,zmain_descSet,zsub_desc_A60Set,zsub_desc_A61Set,zsub_desc_A62Set,URLSet,MSGSet,GOVCODESet";
-
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTZakatForm5CityResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTZakatForm5CityResponse = await GetServiceManager.MakeGetAPICall(url,false,"");
                     if (GAZTZakatForm5CityResponse != null)
                     {
                         if (GAZTZakatForm5CityResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -6815,12 +6644,8 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     string url = Constants.Z_ZKTE_SUMMARY + "(Fbnum='" + Fbnum + "',Flag='X')?$expand=headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";
-                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTZakatForm5SummaryResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTZakatForm5SummaryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (GAZTZakatForm5SummaryResponse != null)
                     {
                         if (GAZTZakatForm5SummaryResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -7199,6 +7024,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var uri = new Uri(url);
+                    HttpResponseMessage Response= await GetServiceManager.MakeGetAPICall(url, false, "");
                     HttpResponseMessage GAZTVATDeregreasonDataResponse = client.GetAsync(uri).Result;
                     if (GAZTVATDeregreasonDataResponse != null)
                     {
@@ -7836,10 +7662,8 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     string lang = UtilityManager.GetLanguageParameter();
                     string taxType = "VT";
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetReqVATInstalmentdata + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',UserTin='" + "')?&$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
+                    HttpResponseMessage _requestVATInstalmentPlanresponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
                     _requestVATInstalmentPlan = JsonConvert.DeserializeObject<ReqVatInstalmentPlanResponse>(detailJson);
 
@@ -7871,11 +7695,9 @@ namespace GAZT.Manager
                     string fbtyp = type;
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.VATGetFormGUIDURL + "Euser1='" + "',Fbguid='" + fbguid + "',Fbnum='" + fbnum + "',Fbtyp='" + fbtyp + "'," +
                      "Gpart='" + gpart + "',Lang='" + lang + "',Persl='" + "',Status='" + Status + "',Dispflag='" + "')?=&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vATRefillingGetDropdownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vATRefillingGetDropdownResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -7954,12 +7776,10 @@ namespace GAZT.Manager
                     string lang = UtilityManager.GetLanguageParameter();
                     string Euser = euser;
                     string FormGuid = formGuid;
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetRequestToVATInstalmentPlanById
                         + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpartz=''," +
                         "Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?&$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
+                    HttpResponseMessage _requestVATInstalmentPlanresponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
                     _requestToVATInstallmentPlanDetails = JsonConvert.DeserializeObject<RequestToVATInstallmentPlanDetails>(detailJson);
 
@@ -8007,12 +7827,10 @@ namespace GAZT.Manager
                     string lang = UtilityManager.GetLanguageParameter();
                     string Euser = "";
                     string FormGuid = formGuid;
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetDisplayInstallmentAgreementSchedule
                         + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpart=''," +
                         "Langz='" + lang + "',Opbel='" + "')?&$expand=VTIA_IADTSet,VTIA_IAHDSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
+                    HttpResponseMessage _requestVATInstalmentPlanresponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
 
                     _displayInstallmentAgreementSchedulePlan = JsonConvert.DeserializeObject<DisplayInstallmentAgreementSchedulePlan>(detailJson);
@@ -8062,12 +7880,10 @@ namespace GAZT.Manager
                     string Euser = eUser;
                     string FormGuid = fromGuid;
                     string Opbel = opbel;
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetInstallmentSchedule
                         + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpart=''," +
                         "Langz='E',Opbel='" + Opbel + "')?$expand=VTIA_IADTSet,VTIA_IAHDSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
+                    HttpResponseMessage _requestVATInstalmentPlanresponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
 
                     _vATInstalmentScheduleDetailsModel = JsonConvert.DeserializeObject<VATInstalmentScheduleDetailsModel>(detailJson);
@@ -8110,7 +7926,6 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = "";
 
                     if (formGuid == "")
@@ -8125,8 +7940,7 @@ namespace GAZT.Manager
                         url = Constants.GetVATInstalmentdata + "FormGuid='" + formGuid + "',Euser='" + euser + "',Gpartz='" + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
 
                     }
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTVATInstalmentDataResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTVATInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (GAZTVATInstalmentDataResponse != null)
                     {
                         if (GAZTVATInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -8282,11 +8096,9 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatInstalmentInvoiceURL + "Tin eq'" + App.LoginDataRetrieved.TIN + "' " +
                         "and Fbnum eq '" + fbNum + "' and Langz eq '" + lang + "' and InstReqFor eq '01'&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _zakatInstalmentInvListResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _zakatInstalmentInvListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatInstalmentInvListResponse != null)
                     {
                         if (_zakatInstalmentInvListResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -8357,12 +8169,10 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatInstalmentValidateNewRequestURL + "CallServ='IPRA',HostName='" + "',Zuser='" + App.LoginDataRetrieved.TIN + "',Bpnum='" + App.LoginDataRetrieved.TIN + "'," +
                      "Auditor='null',Lang='" + lang + "',Euser1='" + "',Euser2='null',Euser3='null',Euser4='null',Euser5='null'" +
                      ",Fbguid='" + "',UserTin='" + "',Fbnum='" + "',UserTyp='TP')?$expand=WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage zakatInstalmentValidateNewRequestResponse = await client.GetAsync(uri);
+                    HttpResponseMessage zakatInstalmentValidateNewRequestResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (zakatInstalmentValidateNewRequestResponse != null)
                     {
                         if (zakatInstalmentValidateNewRequestResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -8428,8 +8238,6 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
                     string formMode = "N";
                     if (fbnum == "")
                     {
@@ -8440,8 +8248,7 @@ namespace GAZT.Manager
                         formMode = "S";
                     }
                     String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + fbnum + "',FormMode='" + formMode + "',Langz='" + lang + "')?$expand=AttachSet%2cNotesSet%2cFnDtlSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTZakatInstalmentDataResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTZakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (GAZTZakatInstalmentDataResponse != null)
                     {
                         if (GAZTZakatInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -8509,9 +8316,6 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
-
                     String url = "";
                     if (IsZakat)
                     {
@@ -8522,8 +8326,7 @@ namespace GAZT.Manager
                         url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + fbnum + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "02" + "'&$format=json";
                     }
                     url = System.Web.HttpUtility.UrlPathEncode(url);
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTZakatInvoiceDataResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTZakatInvoiceDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (GAZTZakatInvoiceDataResponse != null)
                     {
                         if (GAZTZakatInvoiceDataResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -8655,12 +8458,9 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
                     string formMode = "S";
                     String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + FBnum + "',FormMode='" + formMode + "',Langz='" + lang + "')?&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTZakatInstalmentDataResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTZakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (GAZTZakatInstalmentDataResponse != null)
                     {
                         if (GAZTZakatInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -8805,13 +8605,11 @@ namespace GAZT.Manager
                     string userTyp = "TP";
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatOldInstalmentsListUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
                        "Auditor='" + auditor + "'," +
                      "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
                      "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "')?$expand=ListSet,AuthServSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -8871,15 +8669,9 @@ namespace GAZT.Manager
                     string euser = "00000000000000000000";
                     string fbguid = summaryInputs.d.Fbguid;
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatOldInstalmentsSummarytUrl + "Auditorz='',Taxpayerz='',PeriodKeyz='',Euser='00000000000000000000',Langz='" + lang + "',Fbguid='" + fbguid + "'," +
                         "Fbnumz='',Submitz='',Savez='',UserTin='')?$expand=Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTzakatDisplayResponse = await client.GetAsync(uri);
-
-
-
-
+                    HttpResponseMessage GAZTzakatDisplayResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (GAZTzakatDisplayResponse != null)
                     {
                         if (GAZTzakatDisplayResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -8952,14 +8744,9 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatInstalmentInvoiceURL + "Tin eq'" + App.LoginDataRetrieved.TIN + "' " +
                         "and Fbnum eq '" + fbNum + "' and Langz eq '" + lang + "' and InstReqFor eq '01'&$format=json";
-
-
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage _zakatInstalmentInvListResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _zakatInstalmentInvListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatInstalmentInvListResponse != null)
                     {
                         if (_zakatInstalmentInvListResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -9044,15 +8831,9 @@ namespace GAZT.Manager
 
 
                     string lang = WebServiceManager.GetLangZParameterAREN();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetOldZAKATSummaryInputURL + "Euser1='00000000000000000000',Fbguid='" + "',Fbnum='" + Newfbnum + "',Fbtyp='" + fbtyp + "'," +
                      "Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _zakatSumamryInputResponse = await client.GetAsync(uri);
-
-
-
-
+                    HttpResponseMessage _zakatSumamryInputResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatSumamryInputResponse != null)
                     {
                         if (_zakatSumamryInputResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -9192,9 +8973,7 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(string.Format("{0}?&$format=json&$filter=Spras eq '{1}'", Constants.ESTBranchesDropDown, lang));
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}?&$format=json&$filter=Spras eq '{1}'", Constants.ESTBranchesDropDown, lang), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -9262,10 +9041,8 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(string.Format("{0}(Euser='',Fbguid='',Gpartx='{1}',Langx='{2}',Operationx='',PortalUsrx='{3}',Srcidentifyx='{4}',StepNumberx='{5}',Fbnumx='{6}',Fbstax='',Fbustx='')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,Nreg_FormEdit,Nreg_BtnSet,off_notesSet,AttDetSet,Nreg_MSGSet&$format=json",
-                        Constants.ESTTaxPayerDetails, TIN, lang, emailID, srcidentify, step, Fbnum));
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Euser='',Fbguid='',Gpartx='{1}',Langx='{2}',Operationx='',PortalUsrx='{3}',Srcidentifyx='{4}',StepNumberx='{5}',Fbnumx='{6}',Fbstax='',Fbustx='')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,Nreg_FormEdit,Nreg_BtnSet,off_notesSet,AttDetSet,Nreg_MSGSet&$format=json",
+                        Constants.ESTTaxPayerDetails, TIN, lang, emailID, srcidentify, step, Fbnum), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
@@ -9367,9 +9144,8 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     var uri = Constants.ESTTaxPayerDetails + "(" + "Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='" + lang + "',Operationx='" + "',PortalUsrx='" + emailID + "',Srcidentifyx='" + srcidentify + "',StepNumberx='" + step + "',Euser='" + "',Fbguid='" + "',Fbnumx='" + Fbnum + "',Fbstax='" + Fbstax + "',Fbustx='" + Fbustx + "')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,AttDetSet,Nreg_MSGSet&$format=json";
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(uri, false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
@@ -9572,10 +9348,8 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(string.Format("{0}?&$format=json&$filter=ANationality eq '{1}' and Spras eq '{2}'",
-                        Constants.ESTTaxPayerNationality, nationality, lang));
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                     HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}?&$format=json&$filter=ANationality eq '{1}' and Spras eq '{2}'",
+                        Constants.ESTTaxPayerNationality, nationality, lang), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -9717,10 +9491,8 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(string.Format("{0}(Fbnum='{1}',Gpart='')?&$format=json",
-                        Constants.ESTOutletNumber, Fbnum));
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Fbnum='{1}',Gpart='')?&$format=json",
+                        Constants.ESTOutletNumber, Fbnum), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -9784,10 +9556,8 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(string.Format("{0}(Fbnum='{1}',Gpart='{2}')?&$format=json",
-                        Constants.ESTOutletNumber, Fbnum, tin));
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Fbnum='{1}',Gpart='{2}')?&$format=json",
+                        Constants.ESTOutletNumber, Fbnum, tin), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -9852,11 +9622,9 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(string.Format("{0}(Spras='{1}',Land1='',Bland='',Cityc='')?&$expand=country_dropdownSet,State_dropdownSet,city_dropdownSet&$format=json",
-                        Constants.ESTOutletCityStateCountryDropDown, lang));
 
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Spras='{1}',Land1='',Bland='',Cityc='')?&$expand=country_dropdownSet,State_dropdownSet,city_dropdownSet&$format=json",
+                        Constants.ESTOutletCityStateCountryDropDown, lang), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -9922,10 +9690,8 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(string.Format("{0}(Spras='{1}',IndSector='{2}')?&$expand=act_groupSet,act_subgroupSet,activitySet&$format=json",
-                        Constants.ESTActiivtyGroupSubGroupList, lang, indSector));
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Spras='{1}',IndSector='{2}')?&$expand=act_groupSet,act_subgroupSet,activitySet&$format=json",
+                        Constants.ESTActiivtyGroupSubGroupList, lang, indSector), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -9989,10 +9755,8 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(string.Format("{0}(Crnum='{1}')?$format=json",
-                        Constants.ESTValidateCRNum, cr));
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Crnum='{1}')?$format=json",
+                        Constants.ESTValidateCRNum, cr), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -10059,7 +9823,8 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var uri = new Uri(string.Format("{0}/?&$format=json&$filter=PortalUsrx eq '{1}' and Gpartx eq '{2}' and Fbnumx eq '{3}' and Actno eq ''",
                         Constants.ESTOutletList, email, gpart, fbnum));
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}/?&$format=json&$filter=PortalUsrx eq '{1}' and Gpartx eq '{2}' and Fbnumx eq '{3}' and Actno eq ''",
+                        Constants.ESTOutletList, email, gpart, fbnum), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -10147,10 +9912,8 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(string.Format("{0}?$format=json&$filter=IdType eq '{1}' and IdNumber eq '{2}' and Tin eq '{3}' and TpType eq 'I'",
-                        Constants.ESTOutletAddressFetch, idType, IdNumber, tin));
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}?$format=json&$filter=IdType eq '{1}' and IdNumber eq '{2}' and Tin eq '{3}' and TpType eq 'I'",
+                        Constants.ESTOutletAddressFetch, idType, IdNumber, tin), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -10342,16 +10105,11 @@ namespace GAZT.Manager
 
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ContractReleaseApplicationFormUrl + "CallServ='DCON',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
                        "Auditor='" + "'," +
                      "Lang='" + lang + "',Euser1='" + "''" + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
                      "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + "')?$expand=ListSet,AuthServSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await client.GetAsync(uri);
-
-
-
+                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (GAZTzakatInstalmentDataResponse != null)
                     {
                         if (GAZTzakatInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -10422,12 +10180,10 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ContractReleaseRequestUrl + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
                       "Savez='" + "',Fbnumz='" + "',Langz='" + lang + "',PeriodKeyz='" + "'," +
                       "UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _contractReleaseRequestResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _contractReleaseRequestResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -10546,12 +10302,10 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ContractReleaseSummaryData + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
                       "Savez='" + "',Fbnumz='" + fbnumz + "',Langz='" + lang + "',PeriodKeyz='" + "'," +
                       "UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _contractReleasesummaryResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _contractReleasesummaryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
                     if (_contractReleasesummaryResponse != null)
                     {
@@ -10626,15 +10380,10 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-
-
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
                      String url = Constants.VATChangeFillingPeriodGetURL + "Fbnumz='" + fbNum + "',PortalUsrz='" + "',Langz='" + lang + "',Operationz='" + "'," +
                    "Gpartz='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',UserTypz='" + "',Fbguid='" + "')?$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vATChangeFillingPeriodGetResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vATChangeFillingPeriodGetResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -10753,11 +10502,9 @@ namespace GAZT.Manager
                 {
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.VATChangeFillingPeriodGetDropdownURL + "Fbtypz='" + "',UserTypz='" + "',TransactionTypez='" + "',Lang='" + lang + "'," +
                      "Gpart='" + gpart + "',Status='" + "')?$expand=UI_BTNSet,ATT_TYPSet,EffDateSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vATRefillingGetDropdownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vATRefillingGetDropdownResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -10832,11 +10579,9 @@ namespace GAZT.Manager
                 {
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.VATChangeFillingPeriodWorkItemsURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + gpart + "',Lang='" + lang + "'," +
                      "UserTin='" + "')?$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vATChangeFillingGetDropdownResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vATChangeFillingGetDropdownResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -11098,11 +10843,9 @@ namespace GAZT.Manager
                     string taxType = "VT";
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.VATChangeFillingListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + gpart + "',Lang='" + lang + "'," +
                       "UserTin='" + "')?&$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vatChangeFillingListResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vatChangeFillingListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -11176,11 +10919,9 @@ namespace GAZT.Manager
                 {
                     string NewToken = string.Empty;
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.VATChangeFillingSummaryURL + "Fbnumz='" + fbnum + "',PortalUsrz='" + "',Langz='" + lang + "'," +
                       "Operationz='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',UserTypz='" + "',Fbguid='" + "')?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vatChangeFillingSumamryResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vatChangeFillingSumamryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -11255,11 +10996,9 @@ namespace GAZT.Manager
 
                     string fbtyp = "TPCV";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.VATChangeFillingSummaryInputsURL + "Euser1='',Fbguid='',Fbnum='" + fbnum + "'," +
                       "Fbtyp='" + fbtyp + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vatChangeFillingSumamryInputResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vatChangeFillingSumamryInputResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -11785,13 +11524,11 @@ namespace GAZT.Manager
                     string userTyp = "TP";
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatListOfInstalmentplanRequestUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
                        "Auditor='" + auditor + "'," +
                      "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
                      "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "',UserTin='" + "',Fbnum='" + "',UserTyp='" + userTyp + "')?$expand=WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -11877,14 +11614,11 @@ namespace GAZT.Manager
 
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatRevokeRequestListUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
                        "Auditor='" + auditor + "'," +
                      "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
                      "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "',UserTin='" + "',Fbnum='" + "',UserTyp='" + userTyp + "')?$expand=WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet&$format=json";
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTzakatRevokeInstalmentDataResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTzakatRevokeInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
                     if (GAZTzakatRevokeInstalmentDataResponse != null)
@@ -11959,11 +11693,9 @@ namespace GAZT.Manager
                     string euser = "00000000000000000000";
                     string fbguid = summaryInputs.d.Fbguid;
                      Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatRequestDisplayUrl + "Tin='',Euser='00000000000000000000',Langz='EN',Fbguid='" + fbguid + "'," +
                         "Fbnum='" + fbnum + "',FormMode='S')?$expand=AttachSet,NotesSet,FnDtlSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTzakatDisplayResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTzakatDisplayResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -12123,10 +11855,8 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatValidateRevokeListUrl + "Fbnum='" + fbnum + "')?&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _zakatRevokeValidateResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _zakatRevokeValidateResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatRevokeValidateResponse != null)
                     {
                         if (_zakatRevokeValidateResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -12196,11 +11926,8 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakateRevokeSendOTPUrl + "Fbnum eq'" + fbNum + "'and Code eq'" + code + "'and  Tin eq '" + App.LoginDataRetrieved.TIN + "'&$format=json";
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage _zakatRevokeSendSMSResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _zakatRevokeSendSMSResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatRevokeSendSMSResponse != null)
                     {
                         if (_zakatRevokeSendSMSResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -12272,11 +11999,8 @@ namespace GAZT.Manager
                 {
                     string taxType = "VT";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATObjectionListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "'," + "UserTin='" + "')?$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage vATObjectionListResponse = await client.GetAsync(uri);
+                    HttpResponseMessage vATObjectionListResponse =  await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (vATObjectionListResponse != null)
                     {
                         if (vATObjectionListResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -12345,8 +12069,6 @@ namespace GAZT.Manager
                 {
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
                     String url = "";
                     if (string.IsNullOrEmpty(FBGuid))
                     {
@@ -12359,10 +12081,7 @@ namespace GAZT.Manager
                         url = Constants.GetVATObjectionSummaryURL + "FormGuid='" + "',Fbnumx='" + FBGuid + "',Gpartx='" + "',Langx='" + lang + "'," +
                     "Officerx='" + "',PortalUsrx='" + "',Euserx='00000000000000000000',Appfg='" + "')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
                     }
-
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage vATObjectionSummaryResponse = await client.GetAsync(uri);
+                    HttpResponseMessage vATObjectionSummaryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (vATObjectionSummaryResponse != null)
                     {
                         if (vATObjectionSummaryResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -12433,12 +12152,9 @@ namespace GAZT.Manager
                     string formProc = "ZTAX_VT_REV";
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATObjectionButtonFormModeURL + "Fbnum='" + "',Lang='" + lang + "',Officer='" + "',Gpart='" + "'," +
                      "Status='" + status + "',TxnTp='" + "',Formproc='" + formProc + "')?&$expand=VR_UI_BTNSet,ELGBL_DOCSet,ReasonSet&$format=json";
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage vATObjectionButtonFormResponse = await client.GetAsync(uri);
+                    HttpResponseMessage vATObjectionButtonFormResponse =  await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (vATObjectionButtonFormResponse != null)
                     {
                         if (vATObjectionButtonFormResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -12508,11 +12224,9 @@ namespace GAZT.Manager
                     UserTypx = "TP";
                     string formprocx = "ZTAX_VT_REV";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATObjectionRejectedFormURL + "Langx='" + lang + "',Gpartx='" + App.LoginDataRetrieved.TIN + "',TxnTpx='" + "',Fbustx='" + fbustx + "'," +
                      "Fbstax='" + "',UserTypx='" + UserTypx + "',RvRsn='" + RvRsn + "',RvSubRsn='" + rvSubRsn + "',Fbnumx='" + fbnumx + "',Sopbel='" + sopbel + "',Formprocx='" + formprocx + "')?$expand=RejectedFormSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage vATObjectionRejectedFormResponse = await client.GetAsync(uri);
+                    HttpResponseMessage vATObjectionRejectedFormResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (vATObjectionRejectedFormResponse != null)
                     {
                         if (vATObjectionRejectedFormResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -12621,10 +12335,8 @@ namespace GAZT.Manager
                 {
                     string amttp = "P";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATObjectionSecurityURL + "Disamt=" + disamt + "m,Liaamt=" + liaamt + "m,Clramt=" + clramt + "m,Amttp='" + amttp + "')?$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage vATObjectionSecurityAmountResponse = await client.GetAsync(uri);
+                    HttpResponseMessage vATObjectionSecurityAmountResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (vATObjectionSecurityAmountResponse != null)
                     {
                         if (vATObjectionSecurityAmountResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -12692,12 +12404,9 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATObjectionEnableSubmitURL + "Fbnumx='" + "',Gpartx='" + App.LoginDataRetrieved.TIN + "',Statusx='" + statusx + "'" +
                         ",RvRsn='" + rvRsn + "',RvSubRsn='" + rvSubRsn + "',RejFb='" + rejFb + "')?$format=json";
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vATObjectionEnableSubmitResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vATObjectionEnableSubmitResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_vATObjectionEnableSubmitResponse != null)
                     {
                         if (_vATObjectionEnableSubmitResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -12767,12 +12476,9 @@ namespace GAZT.Manager
 
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATObjectionValidateTaxPayerNameURL + "Tin='" + "',Idtype='" + idtype + "',Idnum='" + idnum + "'" +
                         ",Country='" + "',PassExpDt='" + passExpDt + "',TaxpDob='" + taxpDob + "')?$format=json";
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vATObjectionValidateTaxpayerResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vATObjectionValidateTaxpayerResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_vATObjectionValidateTaxpayerResponse != null)
                     {
                         if (_vATObjectionValidateTaxpayerResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -12863,7 +12569,6 @@ namespace GAZT.Manager
                 {
 
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = "";
                     if (isFlagenable)
                     {
@@ -12876,9 +12581,7 @@ namespace GAZT.Manager
                         url = Constants.GetVATObjectionGenrateorRefreshSADADURL + "Fbnum='" + fbnum + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Disamt=" + Disamt + "" +
                        "m,Liaamt=" + Liaamt + "m,Sectp='C',Abrzu=datetime'" + Abrzu + "',Abrzo=datetime'" + Abrzo + "',Flag=false,Secamt=" + Secamt + "m,Security='" + Security + "',Persl='" + Persl + "')?$format=json";
                     }
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vATObjectionGenrateSadadResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vATObjectionGenrateSadadResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_vATObjectionGenrateSadadResponse != null)
                     {
                         if (_vATObjectionGenrateSadadResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -12946,12 +12649,9 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     vtre2 = App.LoginDataRetrieved.TIN;
                     String url = Constants.GetVATObjectionViewBillURL + "Opbel eq'" + opbel + "' and Vtre2 eq'" + vtre2 + "'&$format=json";
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage _vATObjectionViewbillResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vATObjectionViewbillResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_vATObjectionViewbillResponse != null)
                     {
                         if (_vATObjectionViewbillResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13080,13 +12780,9 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.VATObjectionSummaryInputURL + "Euser1='00000000000000000000',Fbguid='undefined',Fbnum='" + fbNum + "'," +
                         "Fbtyp='" + fbtyp + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?&$format=json";
-                    var uri = new Uri(url);
-
-
-                    HttpResponseMessage _vATObjectionSummaryInputResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _vATObjectionSummaryInputResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_vATObjectionSummaryInputResponse != null)
                     {
                         if (_vATObjectionSummaryInputResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13166,7 +12862,6 @@ namespace GAZT.Manager
                     string strEuser4 = "";
                     string strEuser5 = "";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetZAKATObjectionListURL + "" +
                         "CallServ='" + strCallService + "'," +
                         "HostName='" + "'," +
@@ -13180,8 +12875,7 @@ namespace GAZT.Manager
                         "Euser4='" + strEuser4 + "'," +
                         "Euser5='" + strEuser5 + "'," +
                      "Fbguid='" + "')?$expand=ListSet&$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _ZAKATObjectionListResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _ZAKATObjectionListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_ZAKATObjectionListResponse != null)
                     {
                         if (_ZAKATObjectionListResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13249,13 +12943,9 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetZakatObjectionDataURL + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
                         "Savez='" + "',Fbnumz='" + fbnum + "',Langz='" + lang + "',UserTin='" + "')?$expand=znotesSet,AttDetSet,zobj_itemsSet&$format=json";
-                    var uri = new Uri(url);
-
-
-                    HttpResponseMessage _ZAKATObjectionDataResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _ZAKATObjectionDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_ZAKATObjectionDataResponse != null)
                     {
                         if (_ZAKATObjectionDataResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13326,7 +13016,6 @@ namespace GAZT.Manager
                     string strGpart = "3311647874";
                     string strLang = "EN";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetZAKATObjectionCreateNewURL + "" +
                         "Euser1='" + strEuser1 + "'," +
                         "Fbguid='" + "'," +
@@ -13337,8 +13026,7 @@ namespace GAZT.Manager
                         "Persl='" + "'," +
                         "Status='" + "'," +
                      "Dispflag='" + "')?$format=json";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _ZAKATObjectionCreateNewResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _ZAKATObjectionCreateNewResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_ZAKATObjectionCreateNewResponse != null)
                     {
                         if (_ZAKATObjectionCreateNewResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13411,15 +13099,13 @@ namespace GAZT.Manager
                     string strSectp = "C";
                     string strAud = "X";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetZAKATObjectionDetailsByReferenceNumberURL + "" +
                         "Taxpayerz='" + strTaxPayer + "'," +
                         "Fbnumz='" + strFbnumz + "'," +
                         "Euser='" + strEuser + "'," +
                         "Aud='" + strAud + "'," +
                         "Sectp='" + strSectp + "')";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _ZAKATObjectionDetailsByReferenceNumberResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _ZAKATObjectionDetailsByReferenceNumberResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_ZAKATObjectionDetailsByReferenceNumberResponse != null)
                     {
                         if (_ZAKATObjectionDetailsByReferenceNumberResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13489,12 +13175,10 @@ namespace GAZT.Manager
                     string strFbnum = "27000008586";
                     string strRefnum = "26000004637";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetZAKATObjectionDetailsToAmendReturnURL + "" +
                         "Fbnum='" + strFbnum + "'," +
                         "Refnum='" + strRefnum + "')";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _ZAKATObjectionDetailsToAmendReturnResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _ZAKATObjectionDetailsToAmendReturnResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_ZAKATObjectionDetailsToAmendReturnResponse != null)
                     {
                         if (_ZAKATObjectionDetailsToAmendReturnResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13565,13 +13249,11 @@ namespace GAZT.Manager
                     string strSectp = "C";
                     string strBetrw = "65000.00d";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetZAKATObjectionAmendReturnAndCloseURL + "" +
                         "Fbnum='" + strFbnum + "'," +
                         "Sectp='" + strSectp + "'," +
                         "Betrw='" + strBetrw + "')";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _ZAKATObjectionAmendReturnAndCloseResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _ZAKATObjectionAmendReturnAndCloseResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_ZAKATObjectionAmendReturnAndCloseResponse != null)
                     {
                         if (_ZAKATObjectionAmendReturnAndCloseResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13643,14 +13325,12 @@ namespace GAZT.Manager
                     string strRevam = "20000.00d";
                     string strDisam = "30000.00d";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetZAKATObjectionOnPaymentMethodSelectionURL + "" +
                         "Revam='" + strRevam + "'," +
                         "Fbnum='" + strFbnum + "'," +
                         "Disam='" + strDisam + "'," +
                         "Sectp='" + strSectp + "')";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _ZAKATObjectionOnPaymentMethodSelectionResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _ZAKATObjectionOnPaymentMethodSelectionResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_ZAKATObjectionOnPaymentMethodSelectionResponse != null)
                     {
                         if (_ZAKATObjectionOnPaymentMethodSelectionResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13720,12 +13400,10 @@ namespace GAZT.Manager
                     string strFbnum = "26000004533";
                     string strEuser = "00000000000000000000";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetZAKATObjectionApplicationDetailsIfStatusIP017URL + "" +
                         "Fbnum='" + strFbnum + "'," +
                         "Euser='" + strEuser + "')";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _ZAKATObjectionApplicationDetailsIfStatusIP017Response = await client.GetAsync(uri);
+                    HttpResponseMessage _ZAKATObjectionApplicationDetailsIfStatusIP017Response = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_ZAKATObjectionApplicationDetailsIfStatusIP017Response != null)
                     {
                         if (_ZAKATObjectionApplicationDetailsIfStatusIP017Response.StatusCode == HttpStatusCode.Unauthorized)
@@ -13795,11 +13473,9 @@ namespace GAZT.Manager
                 {
                     string strFbnum = "26000004533";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetZAKATObjectionGenerateSADADNumberURL + "" +
                         "Fbnum='" + strFbnum + "')";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _ZAKATObjectionGenerateSADADNumberResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _ZAKATObjectionGenerateSADADNumberResponse =  await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_ZAKATObjectionGenerateSADADNumberResponse != null)
                     {
                         if (_ZAKATObjectionGenerateSADADNumberResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13869,11 +13545,9 @@ namespace GAZT.Manager
                 {
                     string strPartner = "3311626033";
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetZAKATObjectionBusyIndicatorURL + "" +
                         "Partner='" + strPartner + "')";
-                    var uri = new Uri(url);
-                    HttpResponseMessage _ZAKATObjectionBusyIndicatorResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _ZAKATObjectionBusyIndicatorResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_ZAKATObjectionBusyIndicatorResponse != null)
                     {
                         if (_ZAKATObjectionBusyIndicatorResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -13940,13 +13614,8 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
                     String url = Constants.ZakatObjectionLoadBankListURL;
-                    var uri = new Uri(url);
-
-
-                    HttpResponseMessage _zakatBankListResponse = await client.GetAsync(uri);
+                   HttpResponseMessage _zakatBankListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatBankListResponse != null)
                     {
                         if (_zakatBankListResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -14013,13 +13682,9 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatObjectionIntialLoadURL + "Taxpayerz='" + "',Fbnumz='" + "',Langz='" + "'," +
 "Auditorz='" + "',Euser='" + 00000000000000000000 + "',Fbguid='" + fbguid + "')?&$expand=ZNOB_ObjSet,Off_notesSet,AttDetSet&$format=json";
-                    var uri = new Uri(url);
-
-
-                    HttpResponseMessage _zakatBankListResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _zakatBankListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatBankListResponse != null)
                     {
                         if (_zakatBankListResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -14085,12 +13750,8 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatObjectionRemoveobjectionURL + "RetFbnum='" + retFbnum + "',ObjFbnum='" + objFbnum + "')?$format=json";
-                    var uri = new Uri(url);
-
-
-                    HttpResponseMessage _zakatBankListResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _zakatBankListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatBankListResponse != null)
                     {
                         if (_zakatBankListResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -14156,12 +13817,8 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.ZakatObjectionRemoveObjAckURL + "RetFbnum='" + retFbnum + "',ObjFbnum='" + objFbnum + "')?$format=json";
-                    var uri = new Uri(url);
-
-
-                    HttpResponseMessage _zakatBankListResponse = await client.GetAsync(uri);
+                   String url = Constants.ZakatObjectionRemoveObjAckURL + "RetFbnum='" + retFbnum + "',ObjFbnum='" + objFbnum + "')?$format=json";
+                    HttpResponseMessage _zakatBankListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatBankListResponse != null)
                     {
                         if (_zakatBankListResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -14232,13 +13889,9 @@ namespace GAZT.Manager
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.ZakatObjectionWDMaindataRL + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "'," +
                         "Submitz='" + "',Fbnumz='" + "',Langz='" + lang + "',UserTin='" + "')?$expand=znotesSet,AttDetSet,zobj_itemsSet&$format=json";
-                    var uri = new Uri(url);
-
-
-                    HttpResponseMessage _zakatWithdrawMainDataResponse = await client.GetAsync(uri);
+                  HttpResponseMessage _zakatWithdrawMainDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatWithdrawMainDataResponse != null)
                     {
                         if (_zakatWithdrawMainDataResponse.StatusCode == HttpStatusCode.Unauthorized)

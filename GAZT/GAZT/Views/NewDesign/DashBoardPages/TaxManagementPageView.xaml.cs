@@ -42,8 +42,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void Label_MyProfile_Tapped(object sender, EventArgs e)
         {
-            //         App.DisplayProgressView();
-
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.TaxpayerProfilePageView);
@@ -52,38 +50,27 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void Label_MyBills(object sender, EventArgs e)
         {
-            //     App.DisplayProgressView();
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
-
             });
             Device.BeginInvokeOnMainThread(() =>
             {
-
                 BillInfo billInfo = new BillInfo();
                 billInfo.BillTypeName = AppResources.All;
                 viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
-
             });
-
         }
 
         private async void Label_MyRetuns_Tapped(object sender, EventArgs e)
         {
-            //       App.DisplayProgressView();   await Task.Run(() =>
-
-
-
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
-
             });
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
-
             });
         }
 
@@ -203,7 +190,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     var vUpdatedPage = new TaxManagementPageView();
                     Navigation.InsertPageBefore(vUpdatedPage, this);
                     Navigation.PopAsync();
-                 
+
                     App.HasToRefreshLoaderOnDashboard = true;
                 }
                 else
@@ -214,7 +201,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     var vUpdatedPage = new TaxManagementPageView();
                     Navigation.InsertPageBefore(vUpdatedPage, this);
                     Navigation.PopAsync();
-                 
+
                     App.HasToRefreshLoaderOnDashboard = true;
                 }
             }

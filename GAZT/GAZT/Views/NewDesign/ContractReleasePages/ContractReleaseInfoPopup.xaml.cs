@@ -16,17 +16,12 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         public ContractReleaseInfoPopup(string Title, string Desc)
         {
             InitializeComponent();
-
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-
-            //App.IsArabic = false;
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
             viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
-
             viewModel.InfoTitle = Title;
             viewModel.InfoDesc = Desc;
         }

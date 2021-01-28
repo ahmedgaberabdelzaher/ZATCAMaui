@@ -223,6 +223,9 @@
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>SyncfusionControl.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+		<EmbeddedResource Update="TestPage.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\MyBillsView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>

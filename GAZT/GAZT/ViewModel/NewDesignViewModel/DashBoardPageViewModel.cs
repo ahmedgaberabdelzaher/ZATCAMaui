@@ -22,6 +22,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
     {
         #region Variable
+
         private DashBoardModelTabEnum _currentTab = DashBoardModelTabEnum.DashBoard;
         public DashBoardModelTabEnum currentTab
         {
@@ -45,11 +46,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
-                //if (_currenrIndex == MaxIndex)
-                //{
-                //    MarkComplete = true;
-                //    RaisePropertyChanged(nameof(MarkComplete));
-                //}
             }
         }
         #endregion
@@ -82,6 +78,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
         #region Lists
+
         private List<OverduePaymentAndUnSubmittedReturn> _BillsAndReturnsCommitments = null;
         private List<OverduePaymentAndUnSubmittedReturn> _Bills = null;
         private List<ReturnTypeAndCorrepsondingCount> _SegregatedReturnTypesAndCorrepsondingCounts = null;
@@ -89,7 +86,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private List<eServiceInfo> _eServices = null;
         private List<TaxRelationSetResult> Tax = null;
         private List<TaxRelationSetResult> _taxTypeFilter = null;
-        //private List<string> _CommitmentsListFilter = null;
         private List<MyBillsChartModel> _MyBillsChartModels = null;
 
 
@@ -108,7 +104,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     this._BillsAndReturnsCommitments = value;
                     RaisePropertyChanged("BillsAndReturnsCommitments");
                 }
-
             }
         }
         public List<TaxRelationSetResult> TaxTypeFilter
@@ -123,7 +118,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 if (value != null)
                 {
-
                     value = new List<TaxRelationSetResult>(value.OrderBy(temp => temp.DisplayId).ToList());
                     _taxTypeFilter = value;
                     this.RaisePropertyChanged("TaxTypeFilter");
@@ -141,8 +135,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_MyBillsChartModels == value) return;
                 if (value != null)
                 {
-                   
-
                     this._MyBillsChartModels = value;
                     this.RaisePropertyChanged("MyBillsChartModels");
                 }
@@ -160,7 +152,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 if (value != null)
                 {
-
                     this._Bills = value;
                     this.RaisePropertyChanged("Bills");
                 }
@@ -223,14 +214,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 return new List<string> { AppResources.ZZOverdueCommitments, AppResources.ZZUpcomingCommitments };
             }
-            //set
-            //{
-            //    if (value != null)
-            //    {
-            //        _CommitmentsListFilter = value;
-            //        this.RaisePropertyChanged("CommitmentsListFilter");
-            //    }
-            //}
         }
         #endregion
 
@@ -745,7 +728,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
         public GAZT.Models.TaxPayerProfile TaxPayerProfile
         {
             get
@@ -897,11 +880,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (_liveChatVisible == value) return;
                 _liveChatVisible = value;
-                    if (_liveChatVisible)
-                    {
-                        _homeIndicatorColor = Color.FromHex("#005e4b");
-                        MenuIndicatorColor = Color.White;
-                    }
+                if (_liveChatVisible)
+                {
+                    _homeIndicatorColor = Color.FromHex("#005e4b");
+                    MenuIndicatorColor = Color.White;
+                }
 
                 this.RaisePropertyChanged("LiveChatVisible");
             }
@@ -1120,10 +1103,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
         #endregion
 
         #region Constructor
+
         public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             MenuViewVisible = false;
@@ -1133,131 +1117,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             HomeViewVisible = true;
             IsVatRegistrationTileVisible = false;
             if (App.TP != null)
-                 TaxPayerProfile = App.TP;
+                TaxPayerProfile = App.TP;
 
             if (App.IsArabic)
             {
-                //  TranslateText = AppResources.ZZZSetLanguageText; ;
-                 TranslateText = AppResources.ZZZChangetoLanguage;
+                TranslateText = AppResources.ZZZChangetoLanguage;
             }
             else
             {
-                //  TranslateText = AppResources.ZZZSetLanguageText;
-                 TranslateText = AppResources.ZZZChangetoLanguage;
+                TranslateText = AppResources.ZZZChangetoLanguage;
             }
 
-             MenuViewVisible = false;
-             HomeViewVisible = true;
-
-
+            MenuViewVisible = false;
+            HomeViewVisible = true;
         }
         #endregion
 
         #region Method
         public async Task LoadDashboardData()
         {
-            //CommitmentsListFilter = new List<string> { AppResources.ZZOverdueCommitments, AppResources.ZZUpcomingCommitments };
-
-            if (App.TP != null)
-            {
-                if (App.TP.TypeChk == "X")
-                {
-                    TaxpayerName =  App.TP.NameFirst + " " + App.TP.NameLast;
-                }
-                else
-                {
-                    TaxpayerName =  App.TP.NameOrg1;
-                }
-
-                
-                    DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-                
-
-                    var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
-                    List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-
-                    foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
-                    {
-                        temp1.Add(ee);
-                    }
-
-                    Bills = temp1;
-                    //Bills = new List<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempBills);
-                    System.Diagnostics.Debug.WriteLine("Bills " + Bills.Count);
-
-                    var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
-                    List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                    foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
-                    {
-                        temp2.Add(ee);
-                    }
-                    Returns = temp2;
-
-                    //Returns = new List<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempReturns);
-                    System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
-                    TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-                    HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
-
-                    foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
-                    {
-                        if (TabIdentification.D?.Direct == "X")
-                        {
-                            if (taxRelationSetResult.StatementFilter == "01")
-                            {
-                                taxRelationSetResult.DisplayId = 01;
-                            }
-
-                            if (taxRelationSetResult.StatementFilter == "02")
-                            {
-                                taxRelationSetResult.DisplayId = 02;
-                            }
-
-                            if (taxRelationSetResult.StatementFilter == "03")
-                            {
-                                taxRelationSetResult.DisplayId = 03;
-                            }
-                        }
-
-                        if (TabIdentification.D?.Indirect == "X")
-                        {
-                            if (taxRelationSetResult.StatementFilter == "06")
-                            {
-                                taxRelationSetResult.DisplayId = 06;
-                            }
-
-                            if (taxRelationSetResult.StatementFilter == "07")
-                            {
-                                taxRelationSetResult.DisplayId = 07;
-                            }
-
-                            if (taxRelationSetResult.StatementFilter == "09")
-                            {
-                                taxRelationSetResult.DisplayId = 09;
-                            }
-                        }
-                    }
-
-                        TaxTypeFilter = new List<TaxRelationSetResult>();
-
-                    TaxTypeFilter = new List<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
-                if(TaxTypeFilter!=null && TaxTypeFilter.Count>0)
-                SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
-                   
-                    double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
-                    double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.CreditAmount.Replace("-", string.Empty)));
-                    double totalBalance = tempEndProgressBar + startCreditProgressBar;
-
-                    AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
-
-                    DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
-                    CreditAmountStartProgressBar = (startCreditProgressBar / totalBalance) * 100;
-
-                    TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
-                    MessagingCenter.Send<Object>(this, "UpdateProgressBar");
-            }
             try
             {
-                
+                if (App.TP != null)
+                {
+                    if (App.TP.TypeChk == "X")
+                    {
+                        TaxpayerName = App.TP.NameFirst + " " + App.TP.NameLast;
+                    }
+                    else
+                    {
+                        TaxpayerName = App.TP.NameOrg1;
+                    }
+                }
+                DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                _ = Task.Run(GetAccountStatments);
+                _ = Task.Run(GetBillsAndReturns);
             }
             catch (AggregateException ae)
             {
@@ -1298,7 +1192,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                         });
                     }
-                    // Rethrow any other exception.
                     else
                     {
                         throw;
@@ -1322,6 +1215,94 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SelectedCommitmentFilterLabelValue = AppResources.ZZOverdueCommitments;
         }
 
+        private async Task GetAccountStatments()
+        {
+            TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
+            HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
+                {
+                    if (TabIdentification.D?.Direct == "X")
+                    {
+                        if (taxRelationSetResult.StatementFilter == "01")
+                        {
+                            taxRelationSetResult.DisplayId = 01;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "02")
+                        {
+                            taxRelationSetResult.DisplayId = 02;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "03")
+                        {
+                            taxRelationSetResult.DisplayId = 03;
+                        }
+                    }
+
+                    if (TabIdentification.D?.Indirect == "X")
+                    {
+                        if (taxRelationSetResult.StatementFilter == "06")
+                        {
+                            taxRelationSetResult.DisplayId = 06;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "07")
+                        {
+                            taxRelationSetResult.DisplayId = 07;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "09")
+                        {
+                            taxRelationSetResult.DisplayId = 09;
+                        }
+                    }
+                }
+
+                TaxTypeFilter = new List<TaxRelationSetResult>();
+
+                TaxTypeFilter = new List<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
+                if (TaxTypeFilter != null && TaxTypeFilter.Count > 0)
+                    SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
+
+                double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
+                double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.CreditAmount.Replace("-", string.Empty)));
+                double totalBalance = tempEndProgressBar + startCreditProgressBar;
+
+                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
+
+                DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
+                CreditAmountStartProgressBar = (startCreditProgressBar / totalBalance) * 100;
+
+                TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
+                MessagingCenter.Send<Object>(this, "UpdateProgressBar");
+            });
+        }
+
+        private async Task GetBillsAndReturns()
+        {
+            var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
+            List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+
+            foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
+            {
+                temp1.Add(ee);
+            }
+            Device.BeginInvokeOnMainThread(() => Bills = temp1);
+            System.Diagnostics.Debug.WriteLine("Bills " + Bills.Count);
+
+            var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
+            List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+            System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
+            foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
+            {
+                temp2.Add(ee);
+            }
+            Device.BeginInvokeOnMainThread(() => Returns = temp2);
+
+        }
 
         public void PopualateCommittmentsInformation()
         {
@@ -1345,7 +1326,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     UnsubmittedReturn.ColorCode = Color.FromHex("#5D6770");
                     BillsAndReturnsCommitmentsTemp.Add(UnsubmittedReturn);
                 }
-                
+
                 if (BillsAndReturnsCommitments != null)
                 {
                     DateTime Today = DateTime.Now;
@@ -1357,41 +1338,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     try
                     {
-                            /*foreach (var item in CommitmentsListFilter)
-                            {*/
+                        if (SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
+                        {
+                            BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) <= 0).ToList();
 
-                            if (SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
+                            foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
                             {
-                                BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) <= 0).ToList();
-                               
-                                foreach(var item in BillsAndReturnsCommitmentsOverdurItems)
+                                var date = Convert.ToDateTime(item.DueDate);
+                                if (date.Year != Today.Year)
                                 {
-                                    var date = Convert.ToDateTime(item.DueDate);
-                                    if (date.Year != Today.Year)
+                                    if (App.IsArabic)
                                     {
-                                        if (App.IsArabic)
-                                        {
-                                            item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
-                                        }
-                                        else
-                                        {
-                                            item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
-                                        }
-
-                                        item.Month = date.Year.ToString();
- 
+                                        item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
                                     }
-  
+                                    else
+                                    {
+                                        item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
+                                    }
+                                    item.Month = date.Year.ToString();
                                 }
-
                             }
-                            else if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
-                            {
-                                BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) > 0).ToList();
-
-                            }
-                            // }
-
+                        }
+                        else if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
+                        {
+                            BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) > 0).ToList();
+                        }
                         if (BillsAndReturnsCommitmentsOverdurItems != null && BillsAndReturnsCommitmentsOverdurItems.Count > 0)
                         {
                             foreach (OverduePaymentAndUnSubmittedReturn temp in BillsAndReturnsCommitmentsOverdurItems)
@@ -1451,7 +1422,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderByDescending(i => DateTime.Parse(i.DueDate)).ToList();
                     BillsAndReturnsCommitmentsTemp.Clear();
                     BillsAndReturnsCommitments = BillsAndReturnsCommitmentsLocal;
-                   
+
                     if (BillsAndReturnsCommitments != null && BillsAndReturnsCommitments.Count > 0)
                     {
                         SetNoCommitmentsAvailableLabelVisibility = false;
@@ -1505,7 +1476,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PopToRootPage();
                 });
             }
-            catch 
+            catch
             {
                 IsLoading = false;
             }
@@ -1709,9 +1680,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             SegregatedReturnTypeAndCorrepsondingCount.Add(UnSubmittedReturnTypeAndCorrepsondingCount);
                         }
-
-
-
                         if (SegregatedReturnTypesAndCorrepsondingCounts != null)
                             SegregatedReturnTypesAndCorrepsondingCounts.Clear();
 
@@ -1785,8 +1753,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                    IsLoading = true;
-
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
 
                 double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
@@ -1799,11 +1765,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100);
                 MessagingCenter.Send<Object>(this, "UpdateProgressBar");
 
-                    IsLoading = false;
+                IsLoading = false;
             }
             catch (Exception ex)
             {
-                    IsLoading = false;
+                IsLoading = false;
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
@@ -1833,8 +1799,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public async Task LogOut()
         {
-                // App.DisplayProgressView();
-                IsLoading = true;
             if (App.TP != null)
                 App.TP = null;
             if (App.PreviousIsArabic)
@@ -1852,7 +1816,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 await WebServiceManager.GAZTLogOff();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
@@ -1876,6 +1840,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             _navigationService.GoBack();
         }
+
         #endregion
     }
 }

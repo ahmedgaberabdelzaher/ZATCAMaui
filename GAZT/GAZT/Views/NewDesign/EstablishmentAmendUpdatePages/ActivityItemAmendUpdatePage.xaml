@@ -140,14 +140,6 @@
                                 </buttons:SfButton.ImageSource>
                             </buttons:SfButton>
                         </StackLayout>
-                        <!--<syncfusiondatepicker:SfDatePicker x:Name="crValidFromPicker"
-                                                           FlowDirection="RightToLeft"
-                                                             ShowHeader="False"
-                                                             Format="yyyy_MM_dd"
-                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTValidFrom}"
-                                                             PickerMode="Dialog"
-                                                             IsOpen="False"
-                                                             DateSelected="crValidFromPicker_DateSelected" />-->
                         <custom1:CustomDatePicker
                                                 FlowDirection="RightToLeft"
 								                ShowHeader="False"
@@ -445,14 +437,6 @@
                                 </buttons:SfButton.ImageSource>
                             </buttons:SfButton>
                         </StackLayout>
-                        <!--<syncfusiondatepicker:SfDatePicker x:Name="validFromPicker"
-                                                             ShowHeader="False"
-                                                           FlowDirection="RightToLeft"
-                                                             Format="yyyy_MM_dd"
-                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTValidFrom}"
-                                                             PickerMode="Dialog"
-                                                             IsOpen="False"
-                                                             DateSelected="validFromPicker_DateSelected" />-->
                         <custom1:CustomDatePicker
                                                 FlowDirection="RightToLeft"
 								                ShowHeader="False"
@@ -616,22 +600,11 @@
                         <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Source="arrowLeft" Style="{DynamicResource BackButtonArrow}">
-                        <!--<Image.Source>
-                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="48" Glyph="{x:Static FontImage:IconFonts.ChevronLeft}"/>
-                        </Image.Source>-->
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1"/>
                         </Image.GestureRecognizers>
                     </Image>
                     <Image Grid.Column="1" Grid.Row="0" Source="ic_logo_gazt.png" HeightRequest="27" WidthRequest="27" />
-                    <!--<Image Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image.Source>
-                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.DotsVertical}"/>
-                        </Image.Source>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" />
-                        </Image.GestureRecognizers>
-                    </Image>-->
                 </Grid>
                 <custom:CustomLabel Text="{Binding ActivityTitle}" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,-5,0,-10" Style="{StaticResource SectionTitleBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="28"/>
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" IsVisible="{Binding DisplayCompleteDetailsLabel}"/>
