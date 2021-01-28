@@ -110,6 +110,32 @@
                                 </StackLayout>
                             <!--</Frame>-->
                         </inputLayout:SfTextInputLayout>
+                                    <Frame BorderColor="LightGray"  Padding="18,0,18,6" HasShadow="False" CornerRadius="8" Grid.Row="2" Grid.Column="0" Margin="0,-6,0,12">
+                            <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Spacing="0">
+                                <Image HorizontalOptions="Start" Source="arrowDropdown.png" >
+                                                                    
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                        </Image.GestureRecognizers>                                  
+                                </Image>
+                                <custom:CustomButton HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" 
+                                    Text="{Binding CountryCode}" x:Name="Label_InternationalnoCode"
+                                    Clicked="TapGestureRecognizer_Tapped"
+                                    BackgroundColor="Transparent"/>
+                                <custom:GAZTBorderlessEntry x:Name="Mobile_entry"
+                                MaxLength="{Binding MaxDigids}"
+                                Text="{Binding NewMobileNumberEntryText}"
+                                HorizontalOptions="FillAndExpand"
+                                IsSpellCheckEnabled="False"
+                                Keyboard="Telephone" TextColor="Black"
+                            Style="{StaticResource DefaultEntry}"
+                                Unfocused="Mobile_entry_Unfocused">
+
+                                                                  
+                                </custom:GAZTBorderlessEntry>
+
+                            </StackLayout>
+                                </Frame>
                         </StackLayout>
                     </StackLayout>
 
