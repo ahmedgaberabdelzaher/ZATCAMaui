@@ -9,9 +9,11 @@ using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -53,7 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _currentTab;
             set
             {
-                if (_currentTab == value) return;
+               // if (_currentTab == value) return;
 
                 _currentTab = value;
                 RaisePropertyChanged(nameof(CurrentTab));
@@ -597,6 +599,101 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 RaisePropertyChanged(nameof(CanExecute));
             }
         }
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get
+            {
+                return _pickerModel;
+            }
+            set
+            {
+                if (_pickerModel == value) return;
+                _pickerModel = value;
+                try
+                {
+                    if (PickerModel != null && !string.IsNullOrEmpty(PickerModel.SelectedValue))
+                    {
+
+                            if (PickerModel.PickerId == "MainGroupPicker")
+                            {
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                                    CRMainGroup = activityList?.act_groupSet?.results?.Where(i => i.Text == PickerModel.SelectedValue).FirstOrDefault(); ;
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                                    LicenseMainGroup = activityList?.act_groupSet?.results?.Where(i => i.Text == PickerModel.SelectedValue).FirstOrDefault(); 
+                            }
+
+                            if (PickerModel.PickerId == "SubGroupPicker")
+                            {
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                                    CRSubGroup = activityList?.act_subgroupSet?.results?.Where(i => i.Text == PickerModel.SelectedValue).FirstOrDefault(); ;
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                                    LicenseSubGroup = activityList?.act_subgroupSet?.results?.Where(i => i.Text == PickerModel.SelectedValue).FirstOrDefault(); 
+
+                            }
+                            if (PickerModel.PickerId == "ActivityPicker")
+                            {
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                                {
+                                    CRAcitivity = activityList?.activitySet.results?.Where(i => i.Text == PickerModel.SelectedValue).FirstOrDefault(); ;
+                                }
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                                {
+                                    LicenseAcitivity = activityList?.activitySet.results?.Where(i => i.Text == PickerModel.SelectedValue).FirstOrDefault(); ;
+
+                                }
+                            }
+                            if (PickerModel.PickerId == "LicenseCountryPicker")
+                            {
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                                {
+                                    CRIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
+
+                                    if (App.IsArabic)
+                                    {
+                                        CRIssueBy = CRIssueCountry.Land1 == "SA" ? ArIssueBy["90702"] : ArIssueBy["90718"];
+                                    }
+                                    else
+                                    {
+                                        CRIssueBy = CRIssueCountry.Land1 == "SA" ? EnIssueBy["90702"] : EnIssueBy["90718"];
+                                    }
+                                    CRIssueCity = null;
+                                }
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                                {
+                                    LicenseIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
+
+                                    LicenseIssueCity = null;
+                                }
+                            }
+                            if (PickerModel.PickerId == "LicenseIssueByPicker")
+                            {
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                                    CRIssueBy = PickerModel.SelectedValue;
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                                    LicenseIssueBy = PickerModel.SelectedValue;
+                            }
+                            if (PickerModel.PickerId == "LicenseCityPicker")
+                            {
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                                CRIssueCity = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityName == PickerModel.SelectedValue).FirstOrDefault();
+
+                                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                                LicenseIssueCity = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityName == PickerModel.SelectedValue).FirstOrDefault();
+                            }
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
+                RaisePropertyChanged("PickerModel");
+            }
+        }
+
         #endregion
 
         #region commands
@@ -654,56 +751,144 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             });
             OnIssueCountrySelectButtonClick = new Command((object o) =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
-                poupWindow.OnItemSelect = (item) =>
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
+                //poupWindow.OnItemSelect = (item) =>
+                //{
+                //    try
+                //    {
+                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                //        {
+                //            CRIssueCountry = item as CountryDropdownItem;
+                //            if (App.IsArabic)
+                //            {
+                //                CRIssueBy = CRIssueCountry.Land1 == "SA" ? ArIssueBy["90702"] : ArIssueBy["90718"];
+                //            }
+                //            else
+                //            {
+                //                CRIssueBy = CRIssueCountry.Land1 == "SA" ? EnIssueBy["90702"] : EnIssueBy["90718"];
+                //            }
+                //            CRIssueCity = null;
+                //        }
+                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                //        {
+                //            LicenseIssueCountry = item as CountryDropdownItem;
+                //            LicenseIssueCity = null;
+                //        }
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Console.WriteLine(e.StackTrace);
+                //    }
+                //};
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+                try
                 {
-                    try
+                    List<string> countryDropdownData = new List<string>();
+
+                    foreach (CountryDropdownItem reportingBranch in OutletDropDowns?.country_dropdownSet?.results)
                     {
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                        if (!string.IsNullOrEmpty(reportingBranch.Landx50) && !string.IsNullOrWhiteSpace(reportingBranch.Landx50))
                         {
-                            CRIssueCountry = item as CountryDropdownItem;
-                            if (App.IsArabic)
-                            {
-                                CRIssueBy = CRIssueCountry.Land1 == "SA" ? ArIssueBy["90702"] : ArIssueBy["90718"];
-                            }
-                            else
-                            {
-                                CRIssueBy = CRIssueCountry.Land1 == "SA" ? EnIssueBy["90702"] : EnIssueBy["90718"];
-                            }
-                            CRIssueCity = null;
-                        }
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
-                        {
-                            LicenseIssueCountry = item as CountryDropdownItem;
-                            LicenseIssueCity = null;
+                            countryDropdownData.Add(reportingBranch.Landx50);
+
                         }
                     }
-                    catch (Exception e)
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = countryDropdownData;
+                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                    genericPickerModel.PickerId = "LicenseCountryPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Console.WriteLine(e.StackTrace);
-                    }
-                };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
             }, CanExecuteClickCommand);
             OnIssueBySelectButtonClick = new Command((object o) =>
             {
 
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(App.IsArabic ? ArIssueBy.Values : EnIssueBy.Values);
-                poupWindow.OnItemSelect = (item) =>
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(App.IsArabic ? ArIssueBy.Values : EnIssueBy.Values);
+                //poupWindow.OnItemSelect = (item) =>
+                //{
+                //    try
+                //    {
+                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                //            CRIssueBy = item as string;
+                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                //            LicenseIssueBy = item as string;
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Console.WriteLine(e.StackTrace);
+                //    }
+                //};
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+                try
                 {
-                    try
+                    List<string> countryDropdownData = new List<string>();
+                    if(App.IsArabic)
                     {
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-                            CRIssueBy = item as string;
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
-                            LicenseIssueBy = item as string;
+                        foreach (string reportingBranch in ArIssueBy.Values)
+                        {
+                            if (!string.IsNullOrEmpty(reportingBranch) && !string.IsNullOrWhiteSpace(reportingBranch))
+                            {
+                                countryDropdownData.Add(reportingBranch);
+
+                            }
+                        }
                     }
-                    catch (Exception e)
+                    else
                     {
-                        Console.WriteLine(e.StackTrace);
+                        foreach (string reportingBranch in EnIssueBy.Values)
+                        {
+                            if (!string.IsNullOrEmpty(reportingBranch) && !string.IsNullOrWhiteSpace(reportingBranch))
+                            {
+                                countryDropdownData.Add(reportingBranch);
+
+                            }
+                        }
                     }
-                };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+               
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = countryDropdownData;
+                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                    genericPickerModel.PickerId = "LicenseIssueByPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
             }, CanIssueByExecuteClickCommand);
             OnIssueCitySelectButtonClick = new Command((object o) =>
             {
@@ -720,23 +905,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }).ToList();
                 if (filterCities.Count > 0)
                 {
-                    ListPopUpViewPage poupWindow = new ListPopUpViewPage(filterCities);
+                    //ListPopUpViewPage poupWindow = new ListPopUpViewPage(filterCities);
 
-                    poupWindow.OnItemSelect = (item) =>
+                    //poupWindow.OnItemSelect = (item) =>
+                    //{
+                    //    try
+                    //    {
+                    //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                    //            CRIssueCity = item as CityDropdownItem;
+                    //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                    //            LicenseIssueCity = item as CityDropdownItem;
+                    //    }
+                    //    catch (Exception e)
+                    //    {
+                    //        Console.WriteLine(e.StackTrace);
+                    //    }
+                    //};
+                    //PopupNavigation.Instance.PushAsync(poupWindow);
+                    try
                     {
-                        try
+                        List<string> countryDropdownData = new List<string>();
+                 
+                            foreach (CityDropdownItem reportingBranch in filterCities)
+                            {
+                                if (!string.IsNullOrEmpty(reportingBranch.CityName) && !string.IsNullOrWhiteSpace(reportingBranch.CityName))
+                                {
+                                    countryDropdownData.Add(reportingBranch.CityName);
+
+                                }
+                            }
+                        GenericPickerModel genericPickerModel = new GenericPickerModel();
+                        genericPickerModel.PickerData = countryDropdownData;
+                        //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                        genericPickerModel.PickerId = "LicenseCityPicker";
+
+                        PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    }
+                    catch (GAZTUnlockAccountException ex)
+                    {
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
                         {
-                            if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-                                CRIssueCity = item as CityDropdownItem;
-                            if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
-                                LicenseIssueCity = item as CityDropdownItem;
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e.StackTrace);
-                        }
-                    };
-                    PopupNavigation.Instance.PushAsync(poupWindow);
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                    }
+
                 }
             }, CanExecuteClickCommand);
             OnTransferCopyOfCRChoiceButtonClick = new Command(async (type) =>
@@ -773,95 +994,210 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             OnMainGroupSelectButtonClick = new Command(() =>
             {
                 var dropDownData = activityList?.act_groupSet?.results?.ToList();
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(dropDownData);
-                poupWindow.OnItemSelect = (item) =>
-                {
-                    try
-                    {
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-                        {
-                            CRMainGroup = item as ActivityGroupSubGroup;
-                            CRSubGroup = null;
-                            CRAcitivity = null;
-                        }
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
-                        {
-                            LicenseMainGroup = item as ActivityGroupSubGroup;
-                            LicenseSubGroup = null;
-                            LicenseAcitivity = null;
-                        }
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(dropDownData);
+                //poupWindow.OnItemSelect = (item) =>
+                //{
+                //    try
+                //    {
+                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                //        {
+                //            CRMainGroup = item as ActivityGroupSubGroup;
+                //            CRSubGroup = null;
+                //            CRAcitivity = null;
+                //        }
+                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                //        {
+                //            LicenseMainGroup = item as ActivityGroupSubGroup;
+                //            LicenseSubGroup = null;
+                //            LicenseAcitivity = null;
+                //        }
 
-                    }
-                    catch (Exception e)
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Console.WriteLine(e.StackTrace);
+                //    }
+                //};
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+                try
+                {
+                    List<string> reportingBranchData = new List<string>();
+                
+                        foreach (ActivityGroupSubGroup reportingBranch in activityList?.act_groupSet?.results?.ToList())
+                        {
+                            if (!string.IsNullOrEmpty(reportingBranch.Text) && !string.IsNullOrWhiteSpace(reportingBranch.Text))
+                            {
+                                reportingBranchData.Add(reportingBranch.Text);
+
+                            }
+                        }
+                    
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = reportingBranchData;
+                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                    genericPickerModel.PickerId = "MainGroupPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Console.WriteLine(e.StackTrace);
-                    }
-                };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
             });
             OnSubGroupSelectButtonClick = new Command(() =>
             {
+                List <ActivityGroupSubGroup> subGroupList = new List<ActivityGroupSubGroup>();
                 var dropDownData = new List<ActivityGroupSubGroup>();
                 if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-                    dropDownData = activityList?.act_subgroupSet?.results?.Where(i => i.IndSector.StartsWith(CRMainGroup?.IndSector)).ToList();
+                    subGroupList = activityList?.act_subgroupSet?.results?.Where(i => i.IndSector.StartsWith(CRMainGroup?.IndSector)).ToList();
                 if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
-                    dropDownData = activityList?.act_subgroupSet?.results?.Where(i => i.IndSector.StartsWith(LicenseMainGroup?.IndSector)).ToList();
+                    subGroupList = activityList?.act_subgroupSet?.results?.Where(i => i.IndSector.StartsWith(LicenseMainGroup?.IndSector)).ToList();
 
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(dropDownData);
-                poupWindow.OnItemSelect = (item) =>
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(dropDownData);
+                //poupWindow.OnItemSelect = (item) =>
+                //{
+                //    try
+                //    {
+                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                //        {
+                //            CRSubGroup = item as ActivityGroupSubGroup;
+                //            CRAcitivity = null;
+                //        }
+                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                //        {
+                //            LicenseSubGroup = item as ActivityGroupSubGroup;
+                //            LicenseAcitivity = null;
+                //        }
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Console.WriteLine(e.StackTrace);
+                //    }
+                //};
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+
+                try
                 {
-                    try
+                    List<string> reportingBranchData = new List<string>();
+
+                    foreach (ActivityGroupSubGroup reportingBranch in subGroupList)
                     {
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                        if (!string.IsNullOrEmpty(reportingBranch.Text) && !string.IsNullOrWhiteSpace(reportingBranch.Text))
                         {
-                            CRSubGroup = item as ActivityGroupSubGroup;
-                            CRAcitivity = null;
-                        }
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
-                        {
-                            LicenseSubGroup = item as ActivityGroupSubGroup;
-                            LicenseAcitivity = null;
+                            reportingBranchData.Add(reportingBranch.Text);
+
                         }
                     }
-                    catch (Exception e)
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = reportingBranchData;
+                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                    genericPickerModel.PickerId = "SubGroupPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Console.WriteLine(e.StackTrace);
-                    }
-                };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
             });
             OnAcitivitySelectButtonClick = new Command(() =>
             {
+                List<ActivityGroupSubGroup> subGroupList = new List<ActivityGroupSubGroup>();
+
                 var dropDownData = new List<ActivityGroupSubGroup>();
                 if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-                    dropDownData = activityList?.activitySet?.results?.Where(i => i.IndSector.StartsWith(CRSubGroup?.IndSector)).ToList();
+                    subGroupList = activityList?.activitySet?.results?.Where(i => i.IndSector.StartsWith(CRSubGroup?.IndSector)).ToList();
                 if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
-                    dropDownData = activityList?.activitySet?.results?.Where(i => i.IndSector.StartsWith(LicenseSubGroup?.IndSector)).ToList();
+                    subGroupList = activityList?.activitySet?.results?.Where(i => i.IndSector.StartsWith(LicenseSubGroup?.IndSector)).ToList();
 
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(dropDownData);
-                poupWindow.OnItemSelect = (item) =>
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(dropDownData);
+                //poupWindow.OnItemSelect = (item) =>
+                //{
+                //    try
+                //    {
+                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                //        {
+                //            CRAcitivity = item as ActivityGroupSubGroup;
+                //            CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0, 2))).FirstOrDefault();
+                //            CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0, 4))).FirstOrDefault();
+                //        }
+                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                //        {
+                //            LicenseAcitivity = item as ActivityGroupSubGroup;
+                //            LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector.StartsWith(LicenseAcitivity?.IndSector?.Substring(0, 2))).FirstOrDefault();
+                //            LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(LicenseAcitivity?.IndSector?.Substring(0, 4))).FirstOrDefault();
+                //        }
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Console.WriteLine(e.StackTrace);
+                //    }
+                //};
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+                try
                 {
-                    try
+                    List<string> reportingBranchData = new List<string>();
+
+                    foreach (ActivityGroupSubGroup reportingBranch in subGroupList)
                     {
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                        if (!string.IsNullOrEmpty(reportingBranch.Text) && !string.IsNullOrWhiteSpace(reportingBranch.Text))
                         {
-                            CRAcitivity = item as ActivityGroupSubGroup;
-                            CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0, 2))).FirstOrDefault();
-                            CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0, 4))).FirstOrDefault();
-                        }
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
-                        {
-                            LicenseAcitivity = item as ActivityGroupSubGroup;
-                            LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector.StartsWith(LicenseAcitivity?.IndSector?.Substring(0, 2))).FirstOrDefault();
-                            LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(LicenseAcitivity?.IndSector?.Substring(0, 4))).FirstOrDefault();
+                            reportingBranchData.Add(reportingBranch.Text);
+
                         }
                     }
-                    catch (Exception e)
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = reportingBranchData;
+                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                    genericPickerModel.PickerId = "ActivityPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Console.WriteLine(e.StackTrace);
-                    }
-                };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
             });
 
             TappedOnAttachmentInformationIcon = new Command(() =>
