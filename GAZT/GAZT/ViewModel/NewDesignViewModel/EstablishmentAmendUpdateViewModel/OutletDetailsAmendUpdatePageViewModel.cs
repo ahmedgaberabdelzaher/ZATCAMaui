@@ -10,8 +10,11 @@ using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -540,7 +543,85 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 RaisePropertyChanged(nameof(CanExecute));
             }
         }
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get
+            {
+                return _pickerModel;
+            }
+            set
+            {
+                if (_pickerModel == value) return;
+                _pickerModel = value;
+                try
+                {
+                    if (PickerModel != null && !string.IsNullOrEmpty(PickerModel.SelectedValue))
+                    {
 
+             
+                        if (PickerModel.PickerId == "AddressCountryPicker")
+                        {
+                            if (PickerModel.PickerExtraData != null && PickerModel.PickerExtraData.ToString().Equals("same"))
+                            {
+                                CountrySame = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
+
+                                //CountrySame = item as CountryDropdownItem;
+                            }
+                            else
+                            {
+                                Country = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
+
+                                //Country = item as CountryDropdownItem;
+                            }
+                        }
+                        if (PickerModel.PickerId == "AddressStatePicker")
+                        {
+                            List<StateDropdownItem> states = OutletDropDowns?.State_dropdownSet?.results;
+
+                            if (PickerModel.PickerExtraData != null && PickerModel.PickerExtraData.ToString().Equals("same"))
+                            {
+                                ProvinanceSame = states.Where(i => i.Bezei == PickerModel.SelectedValue).FirstOrDefault();
+
+                                //CountrySame = item as CountryDropdownItem;
+                            }
+                            else
+                            {
+                                Provinance = states.Where(i => i.Bezei == PickerModel.SelectedValue).FirstOrDefault();
+
+                                //Country = item as CountryDropdownItem;
+                            }
+                        }
+                        if (PickerModel.PickerId == "AddressCityPicker")
+                        {
+                            if (PickerModel.PickerExtraData != null && PickerModel.PickerExtraData.ToString().Equals("same"))
+                            {
+                                CitySame = OutletDropDowns?.city_dropdownSet?.results.Where(i =>  i.CityName == PickerModel.SelectedValue).FirstOrDefault();
+
+
+                                //CountrySame = item as CountryDropdownItem;
+                            }
+                            else
+                            {
+                                CitySame = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityName == PickerModel.SelectedValue).FirstOrDefault();
+
+                                //Country = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Land1 == PickerModel.SelectedValue).FirstOrDefault();
+
+                                //Country = item as CountryDropdownItem;
+                            }
+                        }
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
+                RaisePropertyChanged("PickerModel");
+            }
+        }
         public OutletDetails OutletDetails { get; set; }
         public AddressDetails AddressDetails { get; set; }
 
@@ -577,26 +658,65 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
             OnCountrySelectButtonClick = new Command((str) =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
-                poupWindow.OnItemSelect = (item) =>
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
+                //poupWindow.OnItemSelect = (item) =>
+                //{
+                //    try
+                //    {
+                //        if (str != null && str.ToString().Equals("same"))
+                //        {
+                //            CountrySame = item as CountryDropdownItem;
+                //        }
+                //        else
+                //        {
+                //            Country = item as CountryDropdownItem;
+                //        }
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Console.WriteLine(e.StackTrace);
+                //    }
+                //};
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+                try
                 {
-                    try
+                    List<string> countryDropdownData = new List<string>();
+
+                    foreach (CountryDropdownItem reportingBranch in OutletDropDowns?.country_dropdownSet?.results)
                     {
-                        if (str != null && str.ToString().Equals("same"))
+                        if (!string.IsNullOrEmpty(reportingBranch.Landx50) && !string.IsNullOrWhiteSpace(reportingBranch.Landx50))
                         {
-                            CountrySame = item as CountryDropdownItem;
-                        }
-                        else
-                        {
-                            Country = item as CountryDropdownItem;
+                            countryDropdownData.Add(reportingBranch.Landx50);
+
                         }
                     }
-                    catch (Exception e)
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = countryDropdownData;
+                    if (str != null)
                     {
-                        Console.WriteLine(e.StackTrace);
+                        genericPickerModel.PickerExtraData = str.ToString();
                     }
-                };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                    genericPickerModel.PickerId = "AddressCountryPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
             });
             OnProvinanceSelectButtonClick = new Command((str) =>
             {
@@ -619,26 +739,66 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 if (states?.Count > 0)
                 {
-                    ListPopUpViewPage poupWindow = new ListPopUpViewPage(states);
-                    poupWindow.OnItemSelect = (item) =>
+                    //ListPopUpViewPage poupWindow = new ListPopUpViewPage(states);
+                    //poupWindow.OnItemSelect = (item) =>
+                    //{
+                    //    try
+                    //    {
+                    //        if (str != null && str.ToString().Equals("same"))
+                    //        {
+                    //            ProvinanceSame = item as StateDropdownItem;
+                    //        }
+                    //        else
+                    //        {
+                    //            Provinance = item as StateDropdownItem;
+                    //        }
+                    //    }
+                    //    catch (Exception e)
+                    //    {
+                    //        Console.WriteLine(e.StackTrace);
+                    //    }
+                    //};
+                    //PopupNavigation.Instance.PushAsync(poupWindow);
+                    try
                     {
-                        try
+                        List<string> countryDropdownData = new List<string>();
+
+                        foreach (StateDropdownItem reportingBranch in states)
                         {
-                            if (str != null && str.ToString().Equals("same"))
+                            if (!string.IsNullOrEmpty(reportingBranch.Bezei) && !string.IsNullOrWhiteSpace(reportingBranch.Bezei))
                             {
-                                ProvinanceSame = item as StateDropdownItem;
-                            }
-                            else
-                            {
-                                Provinance = item as StateDropdownItem;
+                                countryDropdownData.Add(reportingBranch.Bezei);
+
                             }
                         }
-                        catch (Exception e)
+
+                        GenericPickerModel genericPickerModel = new GenericPickerModel();
+                        genericPickerModel.PickerData = countryDropdownData;
+                        if (str != null)
                         {
-                            Console.WriteLine(e.StackTrace);
+                            genericPickerModel.PickerExtraData = str.ToString();
                         }
-                    };
-                    PopupNavigation.Instance.PushAsync(poupWindow);
+                        genericPickerModel.PickerId = "AddressStatePicker";
+
+                        PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    }
+                    catch (GAZTUnlockAccountException ex)
+                    {
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                    }
+
                 }
             });
             OnCitySelectButtonClick = new Command((str) =>
@@ -662,26 +822,66 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 if (cities?.Count > 0)
                 {
-                    ListPopUpViewPage poupWindow = new ListPopUpViewPage(cities);
-                    poupWindow.OnItemSelect = (item) =>
+                    //ListPopUpViewPage poupWindow = new ListPopUpViewPage(cities);
+                    //poupWindow.OnItemSelect = (item) =>
+                    //{
+                    //    try
+                    //    {
+                    //        if (str != null && str.ToString().Equals("same"))
+                    //        {
+                    //            CitySame = item as CityDropdownItem;
+                    //        }
+                    //        else
+                    //        {
+                    //            City = item as CityDropdownItem;
+                    //        }
+                    //    }
+                    //    catch (Exception e)
+                    //    {
+                    //        Console.WriteLine(e.StackTrace);
+                    //    }
+                    //};
+                    //PopupNavigation.Instance.PushAsync(poupWindow);
+                    try
                     {
-                        try
+                        List<string> countryDropdownData = new List<string>();
+
+                        foreach (CityDropdownItem reportingBranch in cities)
                         {
-                            if (str != null && str.ToString().Equals("same"))
+                            if (!string.IsNullOrEmpty(reportingBranch.CityName) && !string.IsNullOrWhiteSpace(reportingBranch.CityName))
                             {
-                                CitySame = item as CityDropdownItem;
-                            }
-                            else
-                            {
-                                City = item as CityDropdownItem;
+                                countryDropdownData.Add(reportingBranch.CityName);
+
                             }
                         }
-                        catch (Exception e)
+
+                        GenericPickerModel genericPickerModel = new GenericPickerModel();
+                        genericPickerModel.PickerData = countryDropdownData;
+                        if (str != null)
                         {
-                            Console.WriteLine(e.StackTrace);
+                            genericPickerModel.PickerExtraData = str.ToString();
                         }
-                    };
-                    PopupNavigation.Instance.PushAsync(poupWindow);
+                        genericPickerModel.PickerId = "AddressCityPicker";
+
+                        PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    }
+                    catch (GAZTUnlockAccountException ex)
+                    {
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                    }
+
                 }
             });
         }

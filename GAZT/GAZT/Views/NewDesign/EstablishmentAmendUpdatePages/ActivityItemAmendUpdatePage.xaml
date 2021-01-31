@@ -613,13 +613,13 @@
             <Grid Grid.Row="2" Padding="20,15" Margin="0,20,0,0" BackgroundColor="White">
                 <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{x:Static ResourceManager:AppResources.ZZNext}" Command="{Binding OnNextButtonClick}" />
             </Grid>
-            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"
+            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.8"
                Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 <busyindicator:SfBusyIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
 	                        EnableAnimation="True" 
 	                        AnimationType="SingleCircle" 
 	                        IsBusy="True" 
-	                        TextColor="#006450"
+	                        TextColor="#D99A29"
 	                        ViewBoxWidth="70"
                             ViewBoxHeight="70"
                             TitlePlacement="Bottom" />

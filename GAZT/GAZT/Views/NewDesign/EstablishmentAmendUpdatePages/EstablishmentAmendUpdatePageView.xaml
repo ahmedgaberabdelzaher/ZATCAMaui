@@ -779,9 +779,14 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
                                         <Entry VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="Center" HeightRequest="48"
+                                               VerticalOptions="Center" HeightRequest="48" Style="{StaticResource DefaultEntry}" 
                                                PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}"
                                                FontFamily="{StaticResource SSTArRoman}" FontSize="16"
                                                Text="{Binding FirstName}" IsSpellCheckEnabled="false"
@@ -796,9 +801,14 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
                                         <Entry  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
+                                               VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" Style="{StaticResource DefaultEntry}"
                                                TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"
                                                 Text="{Binding LastName}" IsSpellCheckEnabled="false"/>
                                     </inputLayout:SfTextInputLayout>
@@ -811,10 +821,15 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
                                         <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10"
                                                HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48"
-                                               PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}"
+                                               PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" Style="{StaticResource DefaultEntry}"
                                                FontFamily="{StaticResource SSTArRoman}" IsSpellCheckEnabled="false" FontSize="16" Text="{Binding FatherName}" 
                                                IsEnabled="{Binding TaxPayerDetailsAvailability.FathersName}"/>
                                     </inputLayout:SfTextInputLayout>
@@ -827,9 +842,14 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
                                         <Entry  Text="{Binding GrandFatherName}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
+                                                VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" Style="{StaticResource DefaultEntry}"
                                                 TextColor="{StaticResource NeutralBlack}" IsSpellCheckEnabled="false" FontFamily="{StaticResource SSTArRoman}" FontSize="16"
                                                 IsEnabled="{Binding TaxPayerDetailsAvailability.GrandFathersName}"/>
                                     </inputLayout:SfTextInputLayout>
@@ -843,9 +863,14 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
                                         <Entry Text="{Binding FamilyName}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" 
-                                               IsEnabled="{Binding TaxPayerDetailsAvailability.FamilyName}"/>
+                                               IsEnabled="{Binding TaxPayerDetailsAvailability.FamilyName}" Style="{StaticResource DefaultEntry}" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"  
@@ -857,9 +882,14 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
                                         <Entry Text="{Binding Initial}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" 
-                                               IsEnabled="{Binding TaxPayerDetailsAvailability.Initial}"/>
+                                               IsEnabled="{Binding TaxPayerDetailsAvailability.Initial}" Style="{StaticResource DefaultEntry}" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"  
@@ -1025,10 +1055,15 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
                                     <custom:GAZTBorderlessEntry Text="{Binding PassportNumber}" MaxLength="15" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start"
                                                               Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center"
-                                                              HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
+                                                              HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" Style="{StaticResource DefaultEntry}"
                                                               TextColor="{StaticResource NeutralBlack}"
                                                               IsSpellCheckEnabled="false"
                                                               FontFamily="{StaticResource SSTArRoman}" FontSize="16" 
@@ -1795,14 +1830,14 @@
                                 </StackLayout>
                             </StackLayout>
                         </cards:SfCardView>
-                        <Grid ColumnDefinitions="1*,4*,4*,1*">
+                        <Grid ColumnDefinitions="1*,4*,4*,1*" >
                             <custom1:CheckboxCustom x:Name="CBAcknowledment" Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand"  IsChecked="{Binding ESTLedge}" Style="{StaticResource CheckboxHeightWidth32}"/>
-                            <custom:CustomLabel Margin="5,0,0,0" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="StartAndExpand" 
+                            <custom:CustomLabel Margin="5,0,0,0" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="CenterAndExpand" 
                                                 VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" 
                                                 Style="{DynamicResource IsInstrunctionCheckedStyle}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span LineHeight="1.5"  Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}"/>
+                                        <Span LineHeight="0.8"  Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -1836,7 +1871,7 @@
                     </StackLayout>
                 </Grid>
                 <commonView:PageIndicatorView MarkSize="24" DotSize="12" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" />
-                <custom:CustomLabel Text="{Binding SelectedTabText}" HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource PageTitleBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="28"/>
+                <custom:CustomLabel Text="{Binding SelectedTabText}" Margin="0,10,0,0" HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource PageTitleBlack}" FontFamily="{StaticResource SSTArBold}" />
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource BodyLabelGrey}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"/>
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,15" />
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" x:Name="TabScrollView">
@@ -1844,10 +1879,10 @@
                     </buttons:SfChipGroup>
                 </ScrollView>
             </StackLayout>
-            <Grid Grid.Row="2" Padding="20,15" BackgroundColor="White">
+            <Grid Grid.Row="2" Padding="20,15" BackgroundColor="White" Margin="0,0,0,20">
                 <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{Binding NxtButtonLabel}" Command="{Binding OnNextButtonClick}" />
             </Grid>
-            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"
+            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.8"
                Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 <busyindicator:SfBusyIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
 	                        EnableAnimation="True" 

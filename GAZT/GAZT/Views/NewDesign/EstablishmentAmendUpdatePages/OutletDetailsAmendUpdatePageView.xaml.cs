@@ -6,6 +6,7 @@ using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.GenericPickers;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -35,6 +36,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             ChangeAeroIcon();
             SetLTR();
             viewModel.SetUIAvailability();
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            {
+
+                viewModel.PickerModel = arg;
+            });
         }
         private void SetLTR()
         {
