@@ -6446,7 +6446,7 @@
     <value>المرفقات - بيانات الجواز</value>
   </data>
 	<data name="ESTRegTaxTabTitleLabel" xml:space="preserve">
-    <value>التسجيل / نوع المكلف</value>
+    <value>نوع المكلف</value>
   </data>
 	<data name="ESTTaxpayerPersonalDetailsTabTitleLabel" xml:space="preserve">
     <value>بيانات المكلف الشخصية</value>

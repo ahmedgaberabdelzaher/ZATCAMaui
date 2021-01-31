@@ -10,6 +10,11 @@ using System.Globalization;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.Views.NewDesign.Common;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Syncfusion.XForms.Cards;
+using System.Collections.Generic;
+using EGAZT.Views.NewDesign.GenericPickers;
 
 namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 {
@@ -18,6 +23,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
     public partial class EstablishmentAmendUpdatePageView : ContentPage
     {
         EstablishmentAmendUpdatePageViewModel viewModel;
+        List<Grid> NationalityTileGrids = null;
         public EstablishmentAmendUpdatePageView()
         {
             InitializeComponent();
@@ -43,20 +49,35 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 PopupNavigation.Instance.PopAsync();
                 viewModel._navigationService.GoBack();
             });
-            MessagingCenter.Subscribe<Application>(this, "BackButtonPressed", (args) =>
-             {
-                 if (viewModel.IsExceptionPopupVisible)
-                 {
-                     Navigation.PopAsync();
-                 }
-             });
+            MessagingCenter.Subscribe<Xamarin.Forms.Application>(this, "BackButtonPressed", (args) =>
+            {
+                if (viewModel.IsExceptionPopupVisible)
+                {
+                    Navigation.PopAsync();
+                }
+            });
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            {
+
+                viewModel.PickerModel = arg;
+            });
 
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
             viewModel?.OnAppearing();
+            MessagingCenter.Subscribe<EstablishmentAmendUpdatePageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
+            {
+                if (res)
+                    Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                else
+                    Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+            });
         }
 
         protected override void OnDisappearing()
@@ -64,6 +85,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse");
             MessagingCenter.Unsubscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupBackgroundClickedResponse");
+            MessagingCenter.Unsubscribe<EstablishmentAmendUpdatePageViewModel, bool>(this, "IsInstrunctionChecked");
         }
         protected override bool OnBackButtonPressed()
         {

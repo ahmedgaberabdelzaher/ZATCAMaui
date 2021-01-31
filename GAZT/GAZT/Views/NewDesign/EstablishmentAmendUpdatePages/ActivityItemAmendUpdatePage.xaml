@@ -68,8 +68,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding ActivityDetails.IssueCountry}">
                             <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRIssueCountry}"  Command="{Binding OnIssueCountrySelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" 
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" 
                                           IsEnabled="{Binding ActivityDetails.IssueCountry}"/>
                         </StackLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -82,8 +82,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding ActivityDetails.IssueBy}">
                             <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRIssueBy}" Command="{Binding OnIssueBySelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" 
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" 
                                           IsEnabled="{Binding ActivityDetails.IssueBy}"/>
                         </StackLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -96,8 +96,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding ActivityDetails.IssueCity}">
                             <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRIssueCity}" Command="{Binding OnIssueCitySelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5"
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" Padding="5"
                                           Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.IssueCity}"/>
                         </StackLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -109,7 +109,7 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding ActivityDetails.CRNo}">
-                            <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="10,0,10,0">
+                            <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  OutlineCornerRadius="14" Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="10,0,10,0">
                                 <custom:GAZTBorderlessEntry Text="{Binding CRNumber}" MaxLength="10" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" 
                                                         Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" 
                                                         PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}"
@@ -131,8 +131,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding ActivityDetails.ValidFrom}">
                             <buttons:SfButton ShowIcon="True" ImageAlignment="End" Text="{Binding DisplayCRValidFrom}" Clicked="crValidFromButtonClick"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" 
                                           Padding="5" Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.ValidFrom}">
                                 <buttons:SfButton.ImageSource>
                                     <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
@@ -215,9 +215,9 @@
                         <StackLayout Padding="0" IsEnabled="{Binding ActivityDetails.CRCopy}">
                             <buttons:SfButton ShowIcon="True" ImageSource="ic_attachment" ImageAlignment="End"
                                           Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG01"
-                                          Style="{StaticResource NoBackgroundButtonStyle}" FontSize="14"
+                                          Style="{StaticResource ButtonBlackBold16}" FontSize="14"
                                           Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                          BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10"
+                                          BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14"
                                           TextColor="{StaticResource NeutralGreay}" HorizontalTextAlignment="Start" Padding="5"
                                           Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.CRCopy}"/>
                         </StackLayout>
@@ -225,7 +225,7 @@
                         <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding CRsCopies}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="10">
+                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="14">
                                         <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="auto"/>
@@ -249,8 +249,8 @@
                                              IsVisible="{Binding ActivityDetails.IsTransferCRCopyVisible}"/>
                         <buttons:SfButton ShowIcon="True" ImageSource="ic_attachment" ImageAlignment="End"
                                           Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG12"
-                                          Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}"
-                                          BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralGreay}" FontSize="14"
+                                          Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}"
+                                          BorderWidth="1" CornerRadius="14" TextColor="{StaticResource NeutralGreay}" FontSize="14"
                                           Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
                                           HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0"
                                           IsVisible="{Binding ActivityDetails.IsTransferCRCopyVisible}"/>
@@ -258,7 +258,7 @@
                         <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding TransferCRsCopies}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="10">
+                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="14">
                                         <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="auto"/>
@@ -289,8 +289,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsVisible="{Binding ActivityDetails.MainGroup}" IsEnabled="{Binding ActivityDetails.MainGroup}" >
                             <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRMainGroup}" Command="{Binding OnMainGroupSelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start"
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start"
                                           Padding="5" Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.MainGroup}" />
                         </StackLayout>
                         <custom:CustomLabel IsVisible="{Binding ActivityDetails.SubGroup}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -303,8 +303,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsVisible="{Binding ActivityDetails.SubGroup}" IsEnabled="{Binding ActivityDetails.SubGroup}">
                             <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRSubGroup}" Command="{Binding OnSubGroupSelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" 
                                            Padding="5" Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.SubGroup}"/>
                         </StackLayout>
                         <custom:CustomLabel IsVisible="{Binding ActivityDetails.Activity}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -317,14 +317,14 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsVisible="{Binding ActivityDetails.Activity}" IsEnabled="{Binding ActivityDetails.Activity}">
                             <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRAcitivity}" Command="{Binding OnAcitivitySelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start"
+                                                Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                HorizontalTextAlignment="Start"
                                            Padding="5" Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.Activity}"/>
                         </StackLayout>
                     </StackLayout>
                 </ScrollView>
                 <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentOutletActivitiesTabsEnum.ActivityList}}">
-                    <buttons:SfButton IsEnabled="{Binding AddLicenseEnabled}" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddLicense}" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewLicenseButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
+                    <buttons:SfButton IsEnabled="{Binding AddLicenseEnabled}" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddLicense}" ImageSource="ic_add_plus.png" Style="{StaticResource ButtonBlackBold16}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" Command="{Binding OnNewLicenseButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
                     <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding LicenseData}" AutoFitMode="Height" SelectionBackgroundColor="Transparent" ItemSpacing="5" SelectionMode="Single" Margin="0,15" IsScrollBarVisible="False" SelectedItem="{Binding SelectedLicense}">
                         <listView:SfListView.LayoutManager>
                             <listView:LinearLayout />
@@ -363,8 +363,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding LicenseDetails.IssueCountry}">
                             <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseIssueCountry}"  Command="{Binding OnIssueCountrySelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5"
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" Padding="5"
                                            Margin="0,5,0,0" />
                         </StackLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -377,8 +377,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding LicenseDetails.IssueBy}">
                             <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseIssueBy}"  Command="{Binding OnIssueBySelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" 
                                            Padding="5" Margin="0,5,0,0" IsEnabled="{Binding LicenseDetails.IssueBy}"/>
                         </StackLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -391,8 +391,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding LicenseDetails.IssueCity}">
                             <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseIssueCity}"  Command="{Binding OnIssueCitySelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start"
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start"
                                            Padding="5" Margin="0,5,0,0" IsEnabled="{Binding LicenseDetails.IssueCity}"/>
                         </StackLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -427,8 +427,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding LicenseDetails.ValidFrom}">
                             <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding DisplayValidFrom}" Clicked="validFromButtonClick"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" 
                                            Padding="5" Margin="0,5,0,0" IsEnabled="{Binding LicenseDetails.ValidFrom}">
 
                                 <buttons:SfButton.ImageSource>
@@ -512,7 +512,7 @@
                         <StackLayout Padding="0" IsEnabled="{Binding LicenseDetails.LicenseCopy}">
                             <buttons:SfButton ShowIcon="True"  ImageSource="ic_attachment"  ImageAlignment="End" Command="{Binding OnTransferCopyOfLicenseChoiceButtonClick}"
                                           CommandParameter="RG02"  Style="{StaticResource NoBackgroundButtonStyle}"
-                                          BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10"
+                                          BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14"
                                           TextColor="{StaticResource NeutralGreay}"
                                           FontSize="14"
                                           Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
@@ -524,7 +524,7 @@
                         <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding LicensesCopies}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="10">
+                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="14">
                                         <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="auto"/>
@@ -557,8 +557,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding LicenseDetails.MainGroup}">
                             <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseMainGroup}" Command="{Binding OnMainGroupSelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" 
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" 
                                           IsEnabled="{Binding LicenseDetails.MainGroup}"/>
                         </StackLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -571,8 +571,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding LicenseDetails.SubGroup}">
                             <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseSubGroup}" Command="{Binding OnSubGroupSelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" 
                                           Padding="5" Margin="0,5,0,0" IsEnabled="{Binding LicenseDetails.SubGroup}"/>
                         </StackLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -585,8 +585,8 @@
                         </custom:CustomLabel>
                         <StackLayout Padding="0" IsEnabled="{Binding LicenseDetails.Activity}">
                             <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseAcitivity}" Command="{Binding OnAcitivitySelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                                       Style="{StaticResource ButtonBlackBold16}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="14" 
+                                                       HorizontalTextAlignment="Start" 
                                           Padding="5" Margin="0,5,0,0" IsEnabled="{Binding LicenseDetails.Activity}"/>
                         </StackLayout>
                     </StackLayout>

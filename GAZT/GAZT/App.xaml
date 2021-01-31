@@ -4,16 +4,15 @@
              xmlns:themes = "clr-namespace:GAZTeServicesApp.Themes;assembly=GAZT"
              xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:customControls1="clr-namespace:GAZT.CustomControl"
+              xmlns:custom="clr-namespace:GAZT"
                xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms">
     <Application.Resources>
         <ResourceDictionary>
             <!--SYNCFUSION INTEGRATION-->
 
             <ResourceDictionary.MergedDictionaries>
-
                 <themes:LightTheme />
             </ResourceDictionary.MergedDictionaries >
-
             <!--Vat New UI-->
             <Color x:Key="Primary">#006450</Color>
             <Color x:Key="Secondary">#D99A29</Color>
@@ -979,6 +978,18 @@
                 <Setter Property="BorderColor" Value="{StaticResource Secondary}" />
             </Style>-->
             <!--Button Style-->
+            <Style x:Key="CardLabelBlack" TargetType="custom:CustomLabel">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+            </Style>
+            <Style x:Key="CardLabelWhite" TargetType="custom:CustomLabel">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

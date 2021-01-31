@@ -201,7 +201,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _isClickedPermanentLegalEntity;
             set
             {
-                if (_isClickedNoneOfTheAboveOption == value) return;
+                //if (_isClickedNoneOfTheAboveOption == value) return;
 
                 _isClickedPermanentLegalEntity = value;
                 RaisePropertyChanged("IsClickedPermanentLegalEntity");
@@ -1233,6 +1233,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _eSTLedge;
             set
             {
+                MessagingCenter.Send<EstablishmentAmendUpdatePageViewModel, bool>(this, "IsInstrunctionChecked", value);
                 if (_eSTLedge == value) return;
 
                 _eSTLedge = value;

@@ -6614,7 +6614,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Attachment - passport details</value>
   </data>
   <data name="ESTRegTaxTabTitleLabel" xml:space="preserve">
-    <value>Registration/Taxpayer type</value>
+    <value>Taxpayer type</value>
   </data>
   <data name="ESTTaxpayerPersonalDetailsTabTitleLabel" xml:space="preserve">
     <value>Taxpayer Personal Details</value>
