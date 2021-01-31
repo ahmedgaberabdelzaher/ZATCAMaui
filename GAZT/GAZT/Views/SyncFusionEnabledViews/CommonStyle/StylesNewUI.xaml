@@ -109,7 +109,7 @@
     <Style x:Key="PageTitleBlack" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
-        <!--<Setter Property="LineHeight" Value="{OnPlatform Android=1.4,Default=.7}"/>-->
+       <Setter Property="LineHeight" Value="{OnPlatform Android=1.4,Default=.7}"/>
         <Setter Property="FontSize" Value="28" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
