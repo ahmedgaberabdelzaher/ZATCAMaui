@@ -3738,6 +3738,89 @@ namespace GAZT.Manager
             }
             return dashboardData;
         }
+
+        public static DashboardInstalmentplan GAZTGetDashboardInstalmentPlanData(string lang, string TIN)
+        {
+            DashboardInstalmentplan dashboardInstalmentData = null;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DateTime currentDate = DateTime.Now;
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String uri = Constants.GetDashboardInstalmentPlanData + "='" + TIN + "',Lang='" + lang + "')" + "?$expand=INST_PLAN_itemSet&$format=json";
+
+                    HttpResponseMessage GAZTGetDashboardInstalmentResponse = new HttpResponseMessage();
+                    try
+                    {
+                        GAZTGetDashboardInstalmentResponse = client.GetAsync(uri).Result;
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    if (GAZTGetDashboardInstalmentResponse != null)
+                    {
+                        if (GAZTGetDashboardInstalmentResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+
+                        HttpHeaders headers = GAZTGetDashboardInstalmentResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string GAZTGetDashboardInstalmentResponseJSON = GAZTGetDashboardInstalmentResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTGetDashboardInstalmentResponseJSON))
+                        {
+                            GAZTGetDashboardInstalmentResponseJSON = JObject.Parse(GAZTGetDashboardInstalmentResponseJSON)["d"].ToString();
+                            dashboardInstalmentData = JsonConvert.DeserializeObject<DashboardInstalmentplan>(GAZTGetDashboardInstalmentResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return dashboardInstalmentData;
+        }
+
         public static async Task<MyReturnsRootObject> GAZTGetReturnData(string lang, string TIN)
         {
             MyReturnsRootObject ReturnsdData = null;

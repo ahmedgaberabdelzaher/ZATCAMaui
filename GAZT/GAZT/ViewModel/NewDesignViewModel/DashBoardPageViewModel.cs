@@ -269,6 +269,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public DashboardInstalmentplan _instalmentResponse = null;
+        public DashboardInstalmentplan InstalmentResponse
+        {
+            get
+            {
+                return _instalmentResponse;
+            }
+            set
+            {
+                if (_instalmentResponse == value) return;
+
+                _instalmentResponse = value;
+                RaisePropertyChanged("InstalmentResponse");
+            }
+        }
+
         private String _taxpayerName;
         public String TaxpayerName
         {
@@ -330,6 +346,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _ifRegInVAT = value;
                 RaisePropertyChanged("IfRegInVAT");
+            }
+        }
+
+        private bool _isInstalmentPlanVisible=false;
+        public bool IsInstalmentPlanVisible
+        {
+            get
+            {
+                return _isInstalmentPlanVisible;
+            }
+            set
+            {
+                if (_isInstalmentPlanVisible == value) return;
+
+                _isInstalmentPlanVisible = value;
+                RaisePropertyChanged("IsInstalmentPlanVisible");
             }
         }
 
@@ -1116,6 +1148,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             TaxpayerName = string.Empty;
             HomeViewVisible = true;
             IsVatRegistrationTileVisible = false;
+            IsInstalmentPlanVisible = false;
             if (App.TP != null)
                 TaxPayerProfile = App.TP;
 
@@ -1150,8 +1183,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
                 DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-                _ = Task.Run(GetAccountStatments);
-                _ = Task.Run(GetBillsAndReturns);
+                //_ = Task.Run(GetAccountStatments);
+                //_ = Task.Run(GetBillsAndReturns);
+                if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null) {
+
+                    if(DashboardData.results[0].InsActFlg == "X") {
+                        IsInstalmentPlanVisible = true;
+                        _ = Task.Run(getDashboardInstalmentPlan);
+                    }
+                    else {
+
+                        IsInstalmentPlanVisible = false;
+                    }
+
+                }
+
+                    
+
+
             }
             catch (AggregateException ae)
             {
@@ -1301,6 +1350,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 temp2.Add(ee);
             }
             Device.BeginInvokeOnMainThread(() => Returns = temp2);
+
+        }
+        private async Task getDashboardInstalmentPlan()
+        {
+
+            InstalmentResponse =  WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.TP.Userid);
+
+            
 
         }
 

@@ -513,9 +513,11 @@
                     </ScrollView>
                 </yummy:PancakeView>
 
-                <StackLayout Grid.Row="0" Margin="15,0,15,0">
-                   
-                    <border:SfBorder  Grid.Row="0"  Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" HorizontalOptions="StartAndExpand" CornerRadius="20" HasShadow="False" BorderWidth="0"
+                <StackLayout Grid.Row="0" Margin="15,0,15,15">
+
+                    <custom:CustomLabel Text="{Binding TaxpayerName}"  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,3,0,10" VerticalOptions="Center" StyleId="SingleLabel"/>
+
+                    <border:SfBorder  Grid.Row="0"  Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" HorizontalOptions="StartAndExpand" CornerRadius="10" HasShadow="False" BorderWidth="0"
                                            VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Vertical" Padding="10,3,10,3" Spacing="0">
                                         <Label Text="{x:Static ResourceManager:AppResources.DashBoardMyTaxObligations}"  Style="{StaticResource ValueLabelWhiteMedium}" Padding="0" Margin="0"></Label>
@@ -524,7 +526,6 @@
                                     </StackLayout>
                                 </border:SfBorder>
 
-                    <custom:CustomLabel Text="{Binding TaxpayerName}"  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,3,0,10" VerticalOptions="Center" StyleId="SingleLabel"/>
                 </StackLayout>
             </Grid>
 

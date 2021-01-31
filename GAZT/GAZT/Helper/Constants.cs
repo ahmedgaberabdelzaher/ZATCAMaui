@@ -43,15 +43,15 @@ namespace GAZT.Helper
 
         #endregion
 
-        //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = DevDomainForCookies;
-        //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
+        public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
+        public static string DomainUrlForCookies = DevDomainForCookies;
+        public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-        public static string DomainUrlForCookies = QADomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = QADomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
@@ -142,6 +142,7 @@ namespace GAZT.Helper
         #region NEW DASHBOARD
         //Dashboard - get the set of Unpaid Amounts
         public static string GetDashboardData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '";
+        public static string GetDashboardInstalmentPlanData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INST_PLAN_NEW_MOBILE_SRV/HeaderSet(Taxpayer";
         public static string GAZTGetTheSetOfUnpaidAmounts = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/PaymentOverdueSet?$filter=Langz eq ";
         public static string GAZTGetTheSetOfUnsubmittedReturns = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq ";
         public static string GAZTGetUnSubmittedReturnSetForDashboard = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq '";
