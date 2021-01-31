@@ -1007,18 +1007,30 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                 <Button  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
                                                                     Clicked="AddNewRepresentative_Tapped"/>
                                                             </Grid>
-                                                            <custom:CustomLabel  VerticalOptions="CenterAndExpand">
+                                                            <!--<custom:CustomLabel  VerticalOptions="CenterAndExpand">
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static custom2:AppResources.VATChangeRegistrationAddFinancialRepresentative}"  />
                                                                     </FormattedString>
                                                                 </custom:CustomLabel.FormattedText>
                                                                 <custom:CustomLabel.Triggers>
-                                                                     <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference entry},Path=Text.Length}" Value="0">
-            <Setter Property="IsEnabled" Value="False" />
-        </DataTrigger>
-                                                                </custom:CustomLabel.Triggers>
+                                                                  <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding  BindingContext.IsAddFinancialRepresentativeCheckBoxEnabled,Source={x:Reference VATRegistration}}" Value="True">
+                                                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
+                                                                     </DataTrigger>
+                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding  BindingContext.IsAddFinancialRepresentativeCheckBoxEnabled,Source={x:Reference VATRegistration}}" Value="False">
+                                                                         <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
+                                                                     </DataTrigger></custom:CustomLabel.Triggers>
+
+
+                                                            </custom:CustomLabel>-->
+                                                                <custom:CustomLabel Style="{DynamicResource IsAddNewRepresentativeCheckedStyle}" VerticalOptions="CenterAndExpand">
+                                                                <custom:CustomLabel.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{x:Static custom2:AppResources.VATChangeRegistrationAddFinancialRepresentative}"  />
+                                                                    </FormattedString>
+                                                                </custom:CustomLabel.FormattedText>
                                                             </custom:CustomLabel>
+                                                        
                                                         </StackLayout>
                                                     </StackLayout>
                                                     <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
