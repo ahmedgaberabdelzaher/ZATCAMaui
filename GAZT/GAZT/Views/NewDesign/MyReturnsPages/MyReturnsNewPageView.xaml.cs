@@ -1,5 +1,8 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.DashBoardPages;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -156,6 +159,46 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             {
 
             }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                {
+                    Console.WriteLine("Card Payment Clicked");
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
+                {
+                    Console.WriteLine("Applea pay Clicked");
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
+                {
+
+                    Console.WriteLine("SADAD Clicked");
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private void SetLTR()
@@ -224,6 +267,11 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+        }
+
+        private async void payNow_Tapped(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true,false));
         }
     }
 }

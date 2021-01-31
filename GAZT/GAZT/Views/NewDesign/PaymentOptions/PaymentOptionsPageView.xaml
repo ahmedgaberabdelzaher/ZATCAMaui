@@ -1,0 +1,51 @@
+﻿<pages:PopupPage
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    mc:Ignorable="d"
+    xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    x:Class="EGAZT.Views.NewDesign.PaymentOptions.PaymentOptionsPageView">
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector"/>
+            <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector"/>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" BackgroundColor="White">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Spacing="0" Grid.Row="0">
+                <Label Margin="10" Text="Payment Method" Style="{StaticResource BodyLabelBlack}"/>
+            </StackLayout>
+            <Grid Grid.Row="1">
+                <listView:SfListView x:Name="paymentItemsListView" HorizontalOptions="EndAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                      VerticalOptions="Center"  AutoFitMode="DynamicHeight" ItemSpacing="12"
+                                      SelectionMode="Single" SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
+                                      ItemTemplate="{StaticResource UnselectedItemTemplateSelector}"
+                                      SelectionBackgroundColor="Transparent" SelectionChanged="paymentItemSelectionChanged">
+                    
+                   
+                    <listView:SfListView.LayoutManager>
+
+                        <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+
+                    </listView:SfListView.LayoutManager>
+
+                </listView:SfListView>
+            </Grid>
+        </Grid>
+    </yummy:PancakeView>
+</pages:PopupPage>

@@ -56,7 +56,6 @@
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"
                               Padding="0,0,0,0">
                             <Grid.RowDefinitions>
-                                <!--<RowDefinition Height="10*" />-->
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
                             <ContentPresenter VerticalOptions="FillAndExpand"
@@ -137,10 +136,6 @@
 
                                 </yummy:PancakeView>
                             </Grid>
-                           
-                          
-                        
-                            
 
 
                             <StackLayout Orientation="Horizontal" Margin="15,15,15,0" IsVisible="true">

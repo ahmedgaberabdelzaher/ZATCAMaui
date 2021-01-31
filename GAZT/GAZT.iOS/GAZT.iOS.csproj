@@ -1104,4 +1104,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\checked_box.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_iconpay.png" />
+  </ItemGroup>
 </Project>
