@@ -2047,6 +2047,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Tax Obligations.
+        /// </summary>
+        public static string DashBoardMyTaxObligations {
+            get {
+                return ResourceManager.GetString("DashBoardMyTaxObligations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home Page.
         /// </summary>
         public static string Dashoboard {
@@ -10100,7 +10109,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Attachment(Optional).
+        ///   Looks up a localized string similar to New Attachment (Optional).
         /// </summary>
         public static string VatDeregAttachmentInputTitle2 {
             get {

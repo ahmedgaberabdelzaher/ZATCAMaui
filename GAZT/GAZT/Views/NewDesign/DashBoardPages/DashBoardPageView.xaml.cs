@@ -3,6 +3,7 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.VATDeRegistration;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.XForms.Border;
 using Syncfusion.XForms.ProgressBar;
 using System;
 using System.Collections.Generic;
@@ -112,6 +113,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             isTimerOff = false;
             StartTimer();
             viewModel.IsLoading = false;
+
+
+            var part = GetTemplateChild("frameToolbar") as SfBorder;
+            await part.FadeTo(0, 0);
+            await btn_frameToolbar.FadeTo(1, 0);
         }
 
         public void SetPickerFont()
@@ -1037,5 +1043,26 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 Console.Write(ex.StackTrace.ToString());
             }
         }
+
+        private double previousScrollPosition = 0;
+
+        private async void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
+        {
+            Console.WriteLine("Scrollposition: " + previousScrollPosition);
+
+            previousScrollPosition = e.ScrollY;
+            var part = GetTemplateChild("frameToolbar") as SfBorder;
+            if (e.ScrollY > 70)
+            {
+                await part.FadeTo(1, 900);
+                await btn_frameToolbar.FadeTo(0, 900);
+            }
+            else
+            {
+                await part.FadeTo(0, 900);
+                await btn_frameToolbar.FadeTo(1,900);
+            }
+        }
+
     }
 }
