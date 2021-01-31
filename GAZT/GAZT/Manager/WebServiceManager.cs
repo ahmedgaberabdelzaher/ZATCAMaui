@@ -15636,6 +15636,11 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    if (!string.IsNullOrEmpty(statementFilter) && statementFilter == "10") {
+                        client.DefaultRequestHeaders.Add("Load", "X");
+
+                    }
+
 
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
@@ -15795,5 +15800,92 @@ namespace GAZT.Manager
 
 
         #endregion
+
+        #region
+
+            public static DashboardInstalmentplan GAZTValidatePayment(string fbNum, string TIN, string devicetype)
+            {
+                DashboardInstalmentplan dashboardInstalmentData = null;
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    DateTime currentDate = DateTime.Now;
+                    string NewToken = string.Empty;
+                    try
+                    {
+                        if (false == CrossConnectivity.Current.IsConnected)
+                        {
+                            throw new GAZTInternetException();
+                        }
+                        HttpClient client = new HttpClient(App.httpClientHandler);
+                        String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='"+devicetype+"')" + "?$format=json";
+
+                        HttpResponseMessage GAZTGetDashboardInstalmentResponse = new HttpResponseMessage();
+                        try
+                        {
+                            GAZTGetDashboardInstalmentResponse = client.GetAsync(uri).Result;
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        if (GAZTGetDashboardInstalmentResponse != null)
+                        {
+                            if (GAZTGetDashboardInstalmentResponse.StatusCode == HttpStatusCode.Unauthorized)
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+
+                            HttpHeaders headers = GAZTGetDashboardInstalmentResponse.Headers;
+                            IEnumerable<string> values = null;
+                            if (headers.TryGetValues("token", out values))
+                            {
+                                NewToken = values.First();
+                            }
+                            if ((!string.IsNullOrEmpty(NewToken)))
+                            {
+                                if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                                {
+                                    throw new GAZTSessionExpiredException();
+                                }
+                                App.Token = NewToken;
+                            }
+                            string GAZTGetDashboardInstalmentResponseJSON = GAZTGetDashboardInstalmentResponse.Content.ReadAsStringAsync().Result;
+                            if (!string.IsNullOrEmpty(GAZTGetDashboardInstalmentResponseJSON))
+                            {
+                                GAZTGetDashboardInstalmentResponseJSON = JObject.Parse(GAZTGetDashboardInstalmentResponseJSON)["d"].ToString();
+                                dashboardInstalmentData = JsonConvert.DeserializeObject<DashboardInstalmentplan>(GAZTGetDashboardInstalmentResponseJSON);
+                            }
+                        }
+                    }
+                    catch (JsonReaderException ex)
+                    {
+                        throw new GAZTInvalidDataException();
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (GAZTSessionExpiredException gex)
+                    {
+                        throw gex;
+                    }
+                    catch (GAZTException gex)
+                    {
+                        throw gex;
+                    }
+                    catch (Exception)
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+                }
+                else
+                {
+                    throw new GAZTInternetException();
+                }
+                return dashboardInstalmentData;
+            }
+
+        #endregion
+
     }
 }

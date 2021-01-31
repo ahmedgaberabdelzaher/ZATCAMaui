@@ -1183,7 +1183,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
                 DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-                //_ = Task.Run(GetAccountStatments);
+                _ = Task.Run(GetAccountStatments);
                 //_ = Task.Run(GetBillsAndReturns);
                 if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null) {
 
@@ -1267,67 +1267,67 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private async Task GetAccountStatments()
         {
             TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-            HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
+            HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A");
 
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
-                {
-                    if (TabIdentification.D?.Direct == "X")
-                    {
-                        if (taxRelationSetResult.StatementFilter == "01")
-                        {
-                            taxRelationSetResult.DisplayId = 01;
-                        }
+            //Device.BeginInvokeOnMainThread(() =>
+            //{
+            //    foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
+            //    {
+            //        if (TabIdentification.D?.Direct == "X")
+            //        {
+            //            if (taxRelationSetResult.StatementFilter == "01")
+            //            {
+            //                taxRelationSetResult.DisplayId = 01;
+            //            }
 
-                        if (taxRelationSetResult.StatementFilter == "02")
-                        {
-                            taxRelationSetResult.DisplayId = 02;
-                        }
+            //            if (taxRelationSetResult.StatementFilter == "02")
+            //            {
+            //                taxRelationSetResult.DisplayId = 02;
+            //            }
 
-                        if (taxRelationSetResult.StatementFilter == "03")
-                        {
-                            taxRelationSetResult.DisplayId = 03;
-                        }
-                    }
+            //            if (taxRelationSetResult.StatementFilter == "03")
+            //            {
+            //                taxRelationSetResult.DisplayId = 03;
+            //            }
+            //        }
 
-                    if (TabIdentification.D?.Indirect == "X")
-                    {
-                        if (taxRelationSetResult.StatementFilter == "06")
-                        {
-                            taxRelationSetResult.DisplayId = 06;
-                        }
+            //        if (TabIdentification.D?.Indirect == "X")
+            //        {
+            //            if (taxRelationSetResult.StatementFilter == "06")
+            //            {
+            //                taxRelationSetResult.DisplayId = 06;
+            //            }
 
-                        if (taxRelationSetResult.StatementFilter == "07")
-                        {
-                            taxRelationSetResult.DisplayId = 07;
-                        }
+            //            if (taxRelationSetResult.StatementFilter == "07")
+            //            {
+            //                taxRelationSetResult.DisplayId = 07;
+            //            }
 
-                        if (taxRelationSetResult.StatementFilter == "09")
-                        {
-                            taxRelationSetResult.DisplayId = 09;
-                        }
-                    }
-                }
+            //            if (taxRelationSetResult.StatementFilter == "09")
+            //            {
+            //                taxRelationSetResult.DisplayId = 09;
+            //            }
+            //        }
+            //    }
 
-                TaxTypeFilter = new List<TaxRelationSetResult>();
+            //    TaxTypeFilter = new List<TaxRelationSetResult>();
 
-                TaxTypeFilter = new List<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
-                if (TaxTypeFilter != null && TaxTypeFilter.Count > 0)
-                    SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
+            //    TaxTypeFilter = new List<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
+            //    if (TaxTypeFilter != null && TaxTypeFilter.Count > 0)
+            //        SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
 
-                double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
-                double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.CreditAmount.Replace("-", string.Empty)));
-                double totalBalance = tempEndProgressBar + startCreditProgressBar;
+            //    double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
+            //    double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.CreditAmount.Replace("-", string.Empty)));
+            //    double totalBalance = tempEndProgressBar + startCreditProgressBar;
 
-                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
+            //    AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
 
-                DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
-                CreditAmountStartProgressBar = (startCreditProgressBar / totalBalance) * 100;
+            //    DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
+            //    CreditAmountStartProgressBar = (startCreditProgressBar / totalBalance) * 100;
 
-                TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
-                MessagingCenter.Send<Object>(this, "UpdateProgressBar");
-            });
+            //    TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
+            //    MessagingCenter.Send<Object>(this, "UpdateProgressBar");
+            //});
         }
 
         private async Task GetBillsAndReturns()

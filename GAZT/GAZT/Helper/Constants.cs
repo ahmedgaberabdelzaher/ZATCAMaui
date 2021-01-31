@@ -418,6 +418,15 @@ namespace GAZT.Helper
 
         #endregion
 
+
+        #region Payment Integration
+
+        public static string ValidatePaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMADA_CALL_SRV/HeaderSet(Fbnum=";
+
+
+
+        #endregion
+
         public static string GAZTChatPartialUrl = "I3root/ChatingPage.html#";
     }
 }
