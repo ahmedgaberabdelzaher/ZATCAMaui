@@ -10,6 +10,7 @@ using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -41,7 +42,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _currentTab;
             set
             {
-                if (_currentTab == value) return;
+               /// if (_currentTab == value) return;
                 if (_currentTab == value)
                 {
                     if (!IsNavigationCompletedToSuccessfulPage)
@@ -1185,6 +1186,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 RaisePropertyChanged(nameof(TaxDate));
             }
         }
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get
+            {
+                return _pickerModel;
+            }
+            set
+            {
+                if (_pickerModel == value) return;
+
+                _pickerModel = value;
+
+                try
+                {
+                    if (PickerModel != null && !string.IsNullOrEmpty(PickerModel.SelectedValue))
+                    {
+                        if (PickerModel.PickerId == "nationalityPicker")
+                        {
+                            SelectedTaxpayerPDNationality = TaxpayerFullNationlityList?.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
+                     
+                        }
+                        if (PickerModel.PickerId == "citizenPicker")
+                        {
+                            SelectedCitizen = TaxpayerFullNationlityList?.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
+
+                        }
+                        if (PickerModel.PickerId == "residencyPicker")
+                        {
+                            SelectedResidence = TaxpayerFullNationlityList?.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
+
+                        }
+                        if (PickerModel.PickerId == "passportIssueCountryPicker")
+                        {
+                            SelectedPassportIssueCountry = TaxpayerFullNationlityList?.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
+
+                        }
+                        
+                        if (PickerModel.PickerId == "reportingBranchPicker")
+                        {
+                            SelectedReportingBranch = ReportingBranchList?.Where(i => i.Augrp == PickerModel.SelectedValue).FirstOrDefault();
+
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
+                RaisePropertyChanged("PickerModel");
+            }
+        }
+
         #endregion
 
         #region Summary Tabs variables
@@ -1233,6 +1289,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _eSTLedge;
             set
             {
+                MessagingCenter.Send<EstablishmentAmendUpdatePageViewModel, bool>(this, "IsInstrunctionChecked", value);
                 if (_eSTLedge == value) return;
 
                 _eSTLedge = value;
@@ -1384,12 +1441,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
             OnReportingBranchSelectButtonClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(ReportingBranchList);
-                poupWindow.OnItemSelect = (item) =>
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(ReportingBranchList);
+                //poupWindow.OnItemSelect = (item) =>
+                //{
+                //    SelectedReportingBranch = (item as BranchesDropDownModel);
+                //};
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+                try
                 {
-                    SelectedReportingBranch = (item as BranchesDropDownModel);
-                };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                    List<string> reportingBranchData = new List<string>();
+
+                    foreach (BranchesDropDownModel reportingBranch in ReportingBranchList)
+                    {
+                        if (!string.IsNullOrEmpty(reportingBranch.Augrp) && !string.IsNullOrWhiteSpace(reportingBranch.Augrp))
+                        {
+                            reportingBranchData.Add(reportingBranch.Augrp);
+
+                        }
+                    }
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = reportingBranchData;
+                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                    genericPickerModel.PickerId = "reportingBranchPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
+
             });
 
             #endregion
@@ -1400,23 +1495,135 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
             OnPDNatinalitySelectButtonClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
-                poupWindow.OnItemSelect = (item) => SelectedTaxpayerPDNationality = item as TaxpayerNationality;
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
+                //poupWindow.OnItemSelect = (item) => SelectedTaxpayerPDNationality = item as TaxpayerNationality;
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+
+                try
+                {
+                    List<string> nationalityData = new List<string>();
+
+                    foreach (TaxpayerNationality nationality in TaxpayerFullNationlityList)
+                    {
+                        if (!string.IsNullOrEmpty(nationality.Landx50) && !string.IsNullOrWhiteSpace(nationality.Landx50))
+                        {
+                            nationalityData.Add(nationality.Landx50);
+
+                        }
+                    }
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = nationalityData;
+                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                    genericPickerModel.PickerId = "nationalityPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
             });
 
             OnPDCitizenSelectButtonClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
-                poupWindow.OnItemSelect = (item) => SelectedCitizen = item as TaxpayerNationalityLandx50;
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
+                //poupWindow.OnItemSelect = (item) => SelectedCitizen = item as TaxpayerNationalityLandx50;
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+
+                try
+                {
+                    List<string> citizenData = new List<string>();
+
+                    foreach (TaxpayerNationalityLandx50 citizen in TaxpayerPDNationlityList)
+                    {
+                        if (!string.IsNullOrEmpty(citizen.Landx50) && !string.IsNullOrWhiteSpace(citizen.Landx50))
+                        {
+                            citizenData.Add(citizen.Landx50);
+
+                        }
+                    }
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = citizenData;
+                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                    genericPickerModel.PickerId = "citizenPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
             });
 
             OnPDResidenceSelectButtonClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
-                poupWindow.OnItemSelect = (item) => SelectedResidence = item as TaxpayerNationalityLandx50;
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
+                //poupWindow.OnItemSelect = (item) => SelectedResidence = item as TaxpayerNationalityLandx50;
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+                try
+                {
+                    List<string> residenceData = new List<string>();
+
+                    foreach (TaxpayerNationalityLandx50 residence in TaxpayerPDNationlityList)
+                    {
+                        if (!string.IsNullOrEmpty(residence.Landx50) && !string.IsNullOrWhiteSpace(residence.Landx50))
+                        {
+                            residenceData.Add(residence.Landx50);
+
+                        }
+                    }
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = residenceData;
+                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                    genericPickerModel.PickerId = "residencyPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
             });
             #endregion
 
@@ -1424,9 +1631,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
             OnPassportIssueCountryButtonClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
-                poupWindow.OnItemSelect = (item) => SelectedPassportIssueCountry = item as TaxpayerNationality;
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
+                //poupWindow.OnItemSelect = (item) => SelectedPassportIssueCountry = item as TaxpayerNationality;
+                //PopupNavigation.Instance.PushAsync(poupWindow);
+                try
+                {
+                    List<string> passportIssueCountryData = new List<string>();
+
+                    foreach (TaxpayerNationality issueCountry in TaxpayerFullNationlityList)
+                    {
+                        if (!string.IsNullOrEmpty(issueCountry.Landx50) && !string.IsNullOrWhiteSpace(issueCountry.Landx50))
+                        {
+                            passportIssueCountryData.Add(issueCountry.Landx50);
+
+                        }
+                    }
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = passportIssueCountryData;
+                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                    genericPickerModel.PickerId = "passportIssueCountryPicker";
+
+                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                }
+
             });
 
             OnPassportAttachmentTapped = new Command(() => OnPassportAddAttachmentButtonTapped());

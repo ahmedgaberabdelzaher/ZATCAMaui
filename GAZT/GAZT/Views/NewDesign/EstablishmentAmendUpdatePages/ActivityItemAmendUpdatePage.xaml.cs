@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
+using EGAZT.Views.NewDesign.GenericPickers;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -42,6 +43,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
             }
             viewModel.SetUIAvailability();
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            {
+
+                viewModel.PickerModel = arg;
+            });
         }
         private void SetLTR()
         {
