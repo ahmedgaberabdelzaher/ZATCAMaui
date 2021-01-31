@@ -37,18 +37,18 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             }
             if (Device.RuntimePlatform == Device.iOS)
             {
-                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "email.png", UnSelectedCardIcon = "email", CardLabel = "Apple Pay" });
+                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo", CardLabel = "Apple Pay" });
             }
             paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_add1.png", UnSelectedCardIcon = "ic_add1", CardLabel = "SADAD"});
             paymentItemsListView.ItemsSource = paymentOptions;
 
             if (paymentOptions.Count > 2)
             {
-                paymentItemsListView.HeightRequest = 280;
+                paymentItemsListView.HeightRequest = 210;
             }
             else
             {
-                paymentItemsListView.HeightRequest = 140;
+                paymentItemsListView.HeightRequest = 110;
             }
         }
 
@@ -76,20 +76,20 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             if (selectedItem.CardLabel == "Card Payment")
             {
                 MessagingCenter.Send<Object, string>(this, "Card_Payment", "Yes");
-                OnSelect?.Invoke("Card_Payment");
+                //OnSelect?.Invoke("Card_Payment");
                 await PopupNavigation.Instance.PopAsync();
 
             }
             else if (selectedItem.CardLabel == "Apple Pay")
             {
                 MessagingCenter.Send<Object, string>(this, "Apple_Pay", "Yes");
-                OnSelect?.Invoke("Apple Pay");
+                //OnSelect?.Invoke("Apple Pay");
                 await PopupNavigation.Instance.PopAsync();
             }
             else
             {
                 MessagingCenter.Send<Object, string>(this, "SADAD", "Yes");
-                OnSelect?.Invoke("SADAD");
+                //OnSelect?.Invoke("SADAD");
                 await PopupNavigation.Instance.PopAsync();
             }
 

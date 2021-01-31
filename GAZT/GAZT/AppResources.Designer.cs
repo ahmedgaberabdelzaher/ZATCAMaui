@@ -7981,6 +7981,42 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment Method.
+        /// </summary>
+        public static string PaymentMethod {
+            get {
+                return ResourceManager.GetString("PaymentMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apple Pay.
+        /// </summary>
+        public static string PaymentMethodApplePay {
+            get {
+                return ResourceManager.GetString("PaymentMethodApplePay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Card Payment.
+        /// </summary>
+        public static string PaymentMethodCardPayment {
+            get {
+                return ResourceManager.GetString("PaymentMethodCardPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pay Now.
+        /// </summary>
+        public static string PaymentMethodPayNow {
+            get {
+                return ResourceManager.GetString("PaymentMethodPayNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payment number.
         /// </summary>
         public static string PaymentNumber {

@@ -117,7 +117,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
-                    Console.WriteLine("Applea pay Clicked");
+                    Console.WriteLine("Apple pay Clicked");
                 });
             }
             catch (Exception ex)

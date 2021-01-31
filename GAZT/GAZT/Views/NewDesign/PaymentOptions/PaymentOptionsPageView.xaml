@@ -7,12 +7,12 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:custom="clr-namespace:GAZT"
     mc:Ignorable="d"
-    xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:ResourceManager="clr-namespace:EGAZT"  xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
     x:Class="EGAZT.Views.NewDesign.PaymentOptions.PaymentOptionsPageView">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
-            <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector"/>
-            <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector"/>
+            <templateSelector:LVUnselectedItemTemplateSelector x:Key="UnselectedItemTemplateSelector"/>
+            <templateSelector:LVSelectedItemTemplateSelector x:Key="SelectedIttemTemplateSelector"/>
             
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -28,7 +28,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackLayout Spacing="0" Grid.Row="0">
-                <Label Margin="10" Text="Payment Method" Style="{StaticResource BodyLabelBlack}"/>
+                <Label Margin="10" Text="{x:Static ResourceManager:AppResources.PaymentMethod}"  Style="{StaticResource BodyLabelBlack}"/>
             </StackLayout>
             <Grid Grid.Row="1">
                 <listView:SfListView x:Name="paymentItemsListView" HorizontalOptions="EndAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"
