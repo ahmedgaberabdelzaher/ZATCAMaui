@@ -1,4 +1,5 @@
 ﻿using EGAZT;
+using EGAZT.Models;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms.Internals;
@@ -46,5 +47,41 @@ namespace GAZT.Models
         public string UpbillsBetrw { get; set; }
         public string PrbillsTot { get; set; }
         public string PrbillsBetrw { get; set; }
+        public string InsActFlg { get; set; }
+        
     }
+
+
+   
+
+    public class InstalmentPlanResult
+    {
+        public Metadata __metadata { get; set; }
+        public string TaxType { get; set; }
+        public string TaxTypeDes { get; set; }
+        public string TotalInstAmt { get; set; }
+        public string NextInstAmt { get; set; }
+        public DateTime Bldat { get; set; }
+        public string Waers { get; set; }
+        public string DayMonth { get; set; }
+        public string TotalInst { get; set; }
+        public string TotalInstPaid { get; set; }
+        public string TotalInstUnpaid { get; set; }
+    }
+
+    public class INSTPLANItemSet
+    {
+        public List<InstalmentPlanResult> results { get; set; }
+    }
+
+    public class DashboardInstalmentplan
+    {
+        public Metadata __metadata { get; set; }
+        public string Taxpayer { get; set; }
+        public string Lang { get; set; }
+        public string Inpch { get; set; }
+        public INSTPLANItemSet INST_PLAN_itemSet { get; set; }
+    }
+
+
 }
