@@ -926,6 +926,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                MessagingCenter.Send<VATRegistrationPageViewModel, bool>(this, "IsInstrunctionChecked", value);
+
                 if (_isInstrunctionChecked == value) return;
 
                 _isInstrunctionChecked = value;

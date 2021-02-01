@@ -35,6 +35,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 InitializeComponent();
+                Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+
                 viewModel = App.Locator.VATRegistrationPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel;
@@ -1095,6 +1097,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     DDlContactIDType.BackgroundColor = Color.FromHex("#FFFFFF");
                 }
 
+                MessagingCenter.Subscribe<VATRegistrationPageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
+                {
+                    if (res)
+                        Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    else
+                        Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                });
                 string message = string.Empty;
                 Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
                 {
