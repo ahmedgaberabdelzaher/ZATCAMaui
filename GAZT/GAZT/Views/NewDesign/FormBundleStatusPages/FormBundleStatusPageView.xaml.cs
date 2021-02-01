@@ -4,6 +4,8 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.FormBundleStatusPages
@@ -28,6 +30,10 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             if (Device.RuntimePlatform == Device.Android)
             {
                 BundleType.BackgroundColor = Color.FromHex("#f7f7f7");

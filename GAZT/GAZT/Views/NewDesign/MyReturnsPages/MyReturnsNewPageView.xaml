@@ -90,7 +90,7 @@
                             <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                             </custom:CustomLabel>
 
-                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Center" VerticalOptions="Center">
 
                             </Image>
 

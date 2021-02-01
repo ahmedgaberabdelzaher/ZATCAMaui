@@ -685,13 +685,17 @@ namespace EGAZT
             //config.EnableAggregateExceptionReporting = true;
             //config.CollectorURL = "https://eum.gazt.gov.sa";
             //AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
+
+            
         }
 
-        public static async void DisplayProgressView()
+        
+
+        public static void DisplayProgressView()
         {
             try
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(() =>
                {
                    PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
                });
@@ -907,7 +911,7 @@ namespace EGAZT
 
         public static void HideProgressView()
         {
-            MainThread.BeginInvokeOnMainThread(() =>
+            Device.BeginInvokeOnMainThread(() =>
             {
                 if (PopupNavigation.Instance.PopupStack.Count > 0)
                     PopupNavigation.Instance.PopAsync(true);
