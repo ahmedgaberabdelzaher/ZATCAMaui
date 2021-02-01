@@ -120,7 +120,7 @@
                                             <custom:CustomLabel Text="{Binding Text}" Style="{StaticResource CaptionLabelBlack}" >
                                                 <custom:CustomLabel.Margin>
                                                     <OnPlatform x:TypeArguments="Thickness">
-                                                        <On Platform="iOS" Value="0,-3,0,0"/>
+                                                        <On Platform="iOS" Value="0,-6,0,0"/>
                                                         <On Platform="Android" Value="0,-6,0,0"/>
                                                     </OnPlatform>
                                                 </custom:CustomLabel.Margin>
