@@ -23,13 +23,12 @@ namespace EGAZT.Views.NewDesign.Common
             _viewModel = App.Locator.GeneralServicesListView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
-
+            _viewModel.PopulateGeneralServicesListData();
         }
-        
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.PopulateGeneralServicesListData();
         }
 
         private void SetLTR()
@@ -50,13 +49,11 @@ namespace EGAZT.Views.NewDesign.Common
             {
                 if (App.IsArabic)
                 {
-                    Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-                    Resources["ImageReverse"] = Resources["ArrowImageForArabicStyle"];
+                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
                 }
                 else
                 {
-                    Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-                    Resources["ImageReverse"] = Resources["ArrowImageForEnglishStyle"];
+                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
                 }
 
             }

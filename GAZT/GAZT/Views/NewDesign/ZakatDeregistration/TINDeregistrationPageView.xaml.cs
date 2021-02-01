@@ -108,14 +108,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-            }
         }
         protected override void OnAppearing()
         {
@@ -179,7 +171,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
                 Console.WriteLine(arg);
-              
+
             });
 
             MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
@@ -290,7 +282,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         private void SetDate()
         {
-             viewModel.SetDefaultDate();
+            viewModel.SetDefaultDate();
 
         }
 
@@ -324,12 +316,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             if (App.IsArabic)
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
@@ -364,7 +354,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //{
             //    viewModel.NationalTypeSelected();
             //}
-            if(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+            if (selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
                 viewModel.NationalTypeSelected();
                 Device.BeginInvokeOnMainThread(() => viewModel.IsDobVisible = true);
@@ -432,7 +422,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 else
                 {
-                    Device.BeginInvokeOnMainThread(() => {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         viewModel.IDTypeDataModel.Name1 = string.Empty;
                         viewModel.IDTypeDataModel.Name2 = string.Empty;
                         viewModel.IDTypeDataModel.FatherName = string.Empty;
@@ -445,9 +436,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 //viewModel.TodayDateinHijri = new ObservableCollection<object>();
             }
 
-            viewModel.AllOutlets = viewModel.AllOutlets.Select(x=>
+            viewModel.AllOutlets = viewModel.AllOutlets.Select(x =>
             {
-                x.PermitTypes = x.PermitTypes.Select(y=> {
+                x.PermitTypes = x.PermitTypes.Select(y =>
+                {
                     y.APermitDeregDisplayDate = null;
                     return y;
                 }).ToList();
@@ -827,7 +819,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (viewModel.IsHijriCal)
                 {
-                    if (DpDboHijri.SelectedItem != null&&(DpDboHijri.SelectedItem as IList<object>).Count==3)
+                    if (DpDboHijri.SelectedItem != null && (DpDboHijri.SelectedItem as IList<object>).Count == 3)
                     {
                         string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
                         string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
@@ -940,7 +932,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string month = (DpDboHijri3.SelectedItem as IList<object>)[1].ToString();
                         string day = (DpDboHijri3.SelectedItem as IList<object>)[0].ToString();
                         string year = (DpDboHijri3.SelectedItem as IList<object>)[2].ToString();
-                        viewModel.SelectedDob =viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.SelectedDob = viewModel.PkrDBO = year + "/" + month + "/" + day;
                         //viewModel.SelectedDob = day + "/" + month + "/" + year;
                         viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
@@ -961,7 +953,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string month = (DpDbo3.SelectedItem as IList<object>)[1].ToString();
                         string day = (DpDbo3.SelectedItem as IList<object>)[0].ToString();
                         string year = (DpDbo3.SelectedItem as IList<object>)[2].ToString();
-                        viewModel.SelectedDob =viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.SelectedDob = viewModel.PkrDBO = year + "/" + month + "/" + day;
                         //viewModel.SelectedDob = day + "/" + month + "/" + year;
                         viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
@@ -1002,7 +994,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private void OnDOBClicked(object sender, EventArgs e)
         {
-            
+
             if (!viewModel.IsHijriCal)
             {
                 DpDbo.IsOpen = true;
@@ -1015,12 +1007,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         private void OnIDDOBClicked(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(idNumber.Text))
+            if (string.IsNullOrEmpty(idNumber.Text))
             {
                 idNumber.Focus();
                 return;
             }
-            if(viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID && viewModel.DobText.IsEditable == false)
+            if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID && viewModel.DobText.IsEditable == false)
             {
                 return;
             }
@@ -1066,10 +1058,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     if (DpDbo.SelectedItem != null)
                     {
-                            string month = (DpDbo.SelectedItem as IList<object>)[1].ToString();
-                            string day = (DpDbo.SelectedItem as IList<object>)[0].ToString();
-                            string year = (DpDbo.SelectedItem as IList<object>)[2].ToString();
-                            var date = year + "/" + month + "/" + day;
+                        string month = (DpDbo.SelectedItem as IList<object>)[1].ToString();
+                        string day = (DpDbo.SelectedItem as IList<object>)[0].ToString();
+                        string year = (DpDbo.SelectedItem as IList<object>)[2].ToString();
+                        var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
                             viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
@@ -1271,7 +1263,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             else
             {
-               // viewModel.FrameTinError = true;
+                // viewModel.FrameTinError = true;
                 //Messages.Append(AppResources.ZZPleasefillallthemandatoryfields);
 
                 popUp.Message = Messages.ToString();
@@ -1287,7 +1279,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     popUp.FlowDirections = "LeftToRight";
                 }
 
-              //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 EntryTIN.Text = string.Empty;
             }
 
@@ -1320,11 +1312,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             if (viewModel.IsHijriCal)
             {
-                
-                    string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
-                    string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
-                    string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
-                    string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+
+                string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
+                string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
+                string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
+                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
                 viewModel.DeregistrationDate = Convert.ToDateTime(date);
 
 

@@ -47,16 +47,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             }
             else
             {
-
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
 
@@ -79,13 +70,13 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         public void ChangeAeroIcon()
         {
-            if (!App.IsArabic)
+            if (App.IsArabic)
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

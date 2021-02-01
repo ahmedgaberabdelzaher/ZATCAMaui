@@ -234,18 +234,20 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}">
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
+                               HeightRequest="24" WidthRequest="24">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
                             </Image.GestureRecognizers>
                         </Image>
                         <StackLayout Spacing="15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2">
-                            <Image Source="search" IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}">
+                            <Image Source="search" Style="{StaticResource SmallIcon}" IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="searchButtonTapped"/>
                                 </Image.GestureRecognizers>
                             </Image>
-                            <Image Source="filter">
+                            <Image Source="filter" Style="{StaticResource SmallIcon}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="filterButtonTapped"/>
                                 </Image.GestureRecognizers>
@@ -306,7 +308,7 @@
                                                         <ColumnDefinition Width="auto"/>
                                                     </Grid.ColumnDefinitions>
                                                     <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                                        <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
+                                                        <Label Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
                                                         <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
                                                     </StackLayout>
                                                     <Frame Grid.Row="0" Grid.Column="1"

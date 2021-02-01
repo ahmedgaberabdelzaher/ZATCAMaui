@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -1133,6 +1134,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
+
             if (Device.RuntimePlatform == Device.Android)
             {
                 DDlIDType.BackgroundColor = Color.FromHex("#f7f7f7");
@@ -1147,6 +1153,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 Picker_Region.BackgroundColor = Color.FromHex("#FFFFFF");
                 Picker_City.BackgroundColor = Color.FromHex("#FFFFFF");
             }
+
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
                 IntnlCodes.Text = arg;

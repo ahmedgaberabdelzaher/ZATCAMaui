@@ -147,15 +147,13 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
         }
         public void ChangeAeroIcon()
         {
-            if (!App.IsArabic)
+            if (App.IsArabic)
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-                Image_backArrow.Rotation = 0;
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-                Image_backArrow.Rotation = 180; 
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

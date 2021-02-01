@@ -57,7 +57,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTOutletsTabTitleLabel}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="true" Source="arrowLeftwhite"  Style="{DynamicResource ImageReverse}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="true" Source="arrowLeftwhite"  Style="{DynamicResource BackButtonArrow}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>

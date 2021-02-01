@@ -1222,7 +1222,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
+                foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet?.D?.TaxRelationSet?.Results)
                 {
                     if (TabIdentification.D?.Direct == "X")
                     {

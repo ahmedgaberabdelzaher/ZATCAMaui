@@ -64,7 +64,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VATRFinancialDetails}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="true" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"  Style="{DynamicResource ImageReverse}">
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="true" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"  Style="{DynamicResource BackButtonArrow}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>

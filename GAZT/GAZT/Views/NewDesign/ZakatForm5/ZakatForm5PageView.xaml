@@ -36,7 +36,7 @@
             </Style>
             <Style TargetType="Image">
                 <Setter Property="Margin" Value="0,5,0,0"/>
-                
+
             </Style>
             <Style TargetType="buttons:SfButton" x:Name="SelectedBtn">
                 <Setter Property="BackgroundColor" Value="AliceBlue"/>
@@ -51,12 +51,18 @@
                 <Setter Property="HeightRequest" Value="25"/>
                 <Setter Property="WidthRequest" Value="25"/>
                 <Setter Property="HasShadow" Value="False"/>
-                
+
+            </Style>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-       
+
 
         <yummy:PancakeView Grid.Row="0" CornerRadius="15,15,0,0"  HasShadow="True" BackgroundColor="White">
             <Grid RowSpacing="0">
@@ -2465,7 +2471,7 @@
 
                                 <StackLayout Padding="10" Spacing="-5">
 
-                                  
+
 
                                     <StackLayout  Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Dear}" Style="{StaticResource ValueLabelGrey}"/>
@@ -2476,13 +2482,13 @@
 
 
 
-                                 
+
                                     <StackLayout >
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" Padding="0,-10,0,0" />
                                     </StackLayout>
 
-                                 
+
 
                                     <StackLayout >
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ForPeriod}" Style="{StaticResource ValueLabelGrey}"/>
@@ -2490,12 +2496,14 @@
                                         <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
                                     </StackLayout>
 
-                                 
+
 
                                     <!--<StackLayout  Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5From}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
-                                        --><!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>--><!--
+                                        -->
+                                    <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                    <!--
                                         <custom:CustomLabel Text="{Binding ZakatFromDate}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight"/>
                                     </StackLayout>
 
@@ -2505,7 +2513,9 @@
                                     <StackLayout  Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5To}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
-                                        --><!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>--><!--
+                                        -->
+                                    <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                    <!--
                                         <custom:CustomLabel Text="{Binding ZakatToDate}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight"/>
                                     </StackLayout>-->
                                     <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding Period}" FlowDirection="LeftToRight" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"></custom:CustomLabel>-->
@@ -3206,7 +3216,9 @@
                         </Grid.ColumnDefinitions>
                         <Image Grid.Row="0" Grid.Column="1" Source="ic_logo_gazt.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center"/>
 
-                        <Image Grid.Row="0" Grid.Column="0" x:Name="Image_backArrow" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeft">
+                        <Image Grid.Row="0" Grid.Column="0" x:Name="Image_backArrow" IsVisible="{Binding IsBackStepButtonVisible}" 
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeft"
+                               Style="{StaticResource BackButtonArrow}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnBackButtonClick}"/>
                             </Image.GestureRecognizers>
@@ -3220,7 +3232,7 @@
                         </custom:CustomLabel>-->
 
                         <!--<Image Grid.Row="0" Source="closeGrey.png" Grid.Column="2" HorizontalOptions="EndAndExpand" >-->
-                            <!--<Image.Source>
+                        <!--<Image.Source>
                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                             </Image.Source>-->
                         <!--</Image>-->
@@ -3254,9 +3266,9 @@
 
             </Grid>
         </yummy:PancakeView>
-            
 
-            
 
-        </ContentPage.Content>
+
+
+    </ContentPage.Content>
 </ContentPage>

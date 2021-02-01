@@ -40,7 +40,7 @@
 
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZZCorrespondence}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource ImageReverse}" >
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource BackButtonArrow}" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
                             </Image.GestureRecognizers>

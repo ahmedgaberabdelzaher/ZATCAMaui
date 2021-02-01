@@ -21,7 +21,13 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-        <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
+            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -73,10 +79,10 @@
                             </Label.GestureRecognizers>
                         </Label>-->
 
-                          <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatIncomeTaxObjection}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatIncomeTaxObjection}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
-                       
-                         <Image Grid.Row="0" Grid.Column="0"
+
+                        <Image Grid.Row="0" Grid.Column="0"
                                VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
                                Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
                                HeightRequest="24"
@@ -85,7 +91,7 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
                             </Image.GestureRecognizers>
                         </Image>
-                         <Image  Grid.Row="0" Grid.Column="2"
+                        <Image  Grid.Row="0" Grid.Column="2"
                                VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
                                Source="close"
                                HeightRequest="24"
@@ -165,28 +171,28 @@
                                                 <ColumnDefinition Width="50*"/>
                                                 <ColumnDefinition Width="50*"/>
                                             </Grid.ColumnDefinitions>
-                                            
+
                                             <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical">
                                                 <custom:CustomLabel    Text="{x:Static ResourceManager:AppResources.NDZakatObjection}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource SectionTitleBlack}" Margin="0" />
 
- 
+
 
                                                 <Label  Text="{Binding Fbnum}" Style="{StaticResource ValueLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" 
                                                HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
                                             </StackLayout>
                                             <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
 
- 
+
 
                                                 <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="#E5EFED"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
 
- 
+
 
                                                     <Label Style="{StaticResource CaptionLabelBlack}" TextColor="DarkGoldenrod" Text="{Binding StatText}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <Label.Triggers>
 
- 
+
 
                                                             <DataTrigger TargetType="Label" Binding="{Binding StatText}" Value="{x:Static ResourceManager:AppResources.Submitted}">
                                                                 <Setter Property="Text" Value="Submitted" />
@@ -194,13 +200,13 @@
                                                                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                                                             </DataTrigger>
 
- 
+
 
                                                         </Label.Triggers>
                                                     </Label>
                                                 </yummy:PancakeView>
                                             </StackLayout>
-                                            
+
                                             <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                                             <StackLayout Grid.Row="2" Grid.Column="0">
@@ -212,20 +218,20 @@
                                                 <Label Text="{Binding Erfdate}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             </StackLayout>
 
- 
+
 
                                         </Grid>
                                     </border:SfBorder>
                                 </DataTemplate>
                             </listView:SfListView.ItemTemplate>
 
- 
+
 
                         </listView:SfListView>
                     </Grid>
 
                 </StackLayout>
-                
+
                 <Grid IsVisible="{Binding IsSummaryEnable}" BackgroundColor="Transparent" Margin="20,10,20,0"
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
@@ -261,7 +267,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto" />
                                         <ColumnDefinition Width="*" />
-                                        
+
                                     </Grid.ColumnDefinitions>
 
                                     <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
@@ -336,7 +342,7 @@
 
                         </border:SfBorder>
 
-                       
+
 
                         <border:SfBorder IsVisible="{Binding IsAttachmentsVisible}" Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
                                          Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -423,7 +429,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOWithdrawlRemarks}" Style="{StaticResource ValueLabelGrey}"/>
-                               
+
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding DisplayRemarks}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Center" HorizontalTextAlignment="End"/>
 
                                 <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOWithdrawlDetailDescription}" Style="{StaticResource ValueLabelGrey}"/>
@@ -434,7 +440,7 @@
 
                         </border:SfBorder>
 
-    
+
                         <buttons:SfButton  Margin="0,16,0,16"
                                           Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}"
                                           Style="{StaticResource PrimaryButtonStyle}"
@@ -445,7 +451,7 @@
                                           Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding ZDownloadForm}" />
- 
+
 
 
 
@@ -454,13 +460,13 @@
                     </StackLayout>
                 </Grid>
 
-                    <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
-                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
+                <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
                                      Opacity="0.4" VerticalOptions="FillAndExpand" />
-                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
                                      Opacity="0.8" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Padding="15,15">
-                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                                <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
                                                                EnableAnimation="True"
                                                                AnimationType="SingleCircle"
                                                                HorizontalOptions="CenterAndExpand"
@@ -470,11 +476,11 @@
                                                                TitlePlacement="Bottom"
                                                                ViewBoxHeight="70"
                                                                TextColor="#D99A29" />
-                                <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
-                            </StackLayout>
+                            <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                         </StackLayout>
-                    </Grid>
-               
+                    </StackLayout>
+                </Grid>
+
             </Grid>
         </ScrollView>
     </ContentPage.Content>

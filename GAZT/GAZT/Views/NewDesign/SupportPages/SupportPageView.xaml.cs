@@ -25,6 +25,7 @@ namespace EGAZT.Views.NewDesign
         SupportPageViewModel viewModel;
         public SupportPageView()
         {
+            SetLTR();
             InitializeComponent();
             viewModel = App.Locator.SupportPageView;
             BindingContext = viewModel;
@@ -32,7 +33,18 @@ namespace EGAZT.Views.NewDesign
             Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
             SetPickerFont();
         }
+        private void SetLTR()
+        {
 
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+        }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
@@ -53,15 +65,15 @@ namespace EGAZT.Views.NewDesign
 
           
 
-            if (App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
+            //if (App.IsArabic)
+            //{
+            //    this.FlowDirection = FlowDirection.RightToLeft;
+            //    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            //}
+            //else
+            //{
+            //    this.FlowDirection = FlowDirection.LeftToRight;
+            //}
 
             SetLocationToMap();
 

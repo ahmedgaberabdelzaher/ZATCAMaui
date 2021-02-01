@@ -84,15 +84,13 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             {
                 if (App.IsArabic)
                 {
-                    Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-                    Resources["ImageReverse"] = Resources["ArrowImageForArabicStyle"];
+                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
                 }
                 else
                 {
-                    Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-                    Resources["ImageReverse"] = Resources["ArrowImageForEnglishStyle"];
+                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
                 }
-                  
+
             }
             catch(Exception ex)
             {
