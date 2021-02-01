@@ -9,7 +9,7 @@
 
              xmlns:custom="clr-namespace:GAZT"
               xmlns:custom2="clr-namespace:EGAZT"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
              Title="{x:Static custom2:AppResources.ZVatTermsAndConditions}"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.VATIndividualSignupTnCPageView"
              NavigationPage.HasNavigationBar="False">
@@ -83,8 +83,10 @@
                     <custom:CustomLabel Text="{x:Static custom2:AppResources.ZZIagreeontermsAndconditions}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>-->
                     <StackLayout BackgroundColor="White" HeightRequest="70" Margin="0,0,0,0" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="Center">
                         <!--<buttons:SfCheckBox x:Name="checkBox"  VerticalOptions="Center" IsChecked="{Binding IschkTAndC}" LineBreakMode="WordWrap" Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />-->
-                        <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
-                        </CheckBox>
+                        <!--<CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
+                        </CheckBox>-->
+                        <custom1:CheckboxCustom  IsChecked="{Binding IschkTAndC}" Style="{StaticResource CheckboxHeightWidth32}"
+                                                                        x:Name="chkTAndC"  VerticalOptions="CenterAndExpand"/>
                         <custom:CustomLabel Text="{x:Static custom2:AppResources.ZZIagreeontermsAndconditions}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Start" HorizontalTextAlignment="Center" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
                     </StackLayout>
                     <buttons:SfButton x:Name="MainButtonName" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource SSTArabicMedium}"   Margin="0"

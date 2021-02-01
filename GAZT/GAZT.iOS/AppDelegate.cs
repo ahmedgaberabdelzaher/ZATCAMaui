@@ -9,7 +9,7 @@ using Syncfusion.XForms.Cards;
 using Syncfusion.XForms.Graphics;
 using Syncfusion.XForms.iOS.Cards;
 using Syncfusion.XForms.iOS.EffectsView;
-using Syncfusion.XForms.iOS.MaskedEdit;
+//using Syncfusion.XForms.iOS.MaskedEdit;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using Syncfusion.XForms.Pickers.iOS;
 using System.Net;
@@ -72,7 +72,7 @@ namespace GAZT.iOS
             Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
             Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
-            SfMaskedEditRenderer.Init();
+            //SfMaskedEditRenderer.Init();
 
             var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
             config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
@@ -170,144 +170,6 @@ namespace GAZT.iOS
         {
             Console.WriteLine("App is terminating.");
         }
-
-        //rohith-login
-        //private CancellationTokenSource idleTimerCancellationTokenSource;
-        //public void ResetIdleTimer()
-        //{
-        //    //use, then gid rid of the old CancellationTokenSource
-        //    if (idleTimerCancellationTokenSource != null)
-        //    {
-        //        idleTimerCancellationTokenSource.Cancel();
-        //        idleTimerCancellationTokenSource.Dispose();
-        //        idleTimerCancellationTokenSource = null;
-        //    }
-        //    // Restart the timer with a new CancellationTokenSource
-        //    StartIdleTimer(new CancellationTokenSource());
-        //}
-
-        //public void StopIdleTimer()
-        //{
-        //    // use, then get rid of the CancellationTokenSource
-        //    if (idleTimerCancellationTokenSource != null)
-        //    {
-        //        idleTimerCancellationTokenSource.Cancel();
-        //        idleTimerCancellationTokenSource.Dispose();
-        //        idleTimerCancellationTokenSource = null;
-        //    }
-        //}
-
-        // async void, since we want to just start and forget about this thread
-        //public async void StartIdleTimer(CancellationTokenSource tokenSource)
-        //{
-        //    try
-        //    {
-        //        //maintain a reference to the token so we can cancel when needed
-        //        idleTimerCancellationTokenSource = tokenSource;
-
-        //        Console.WriteLine("Idle Timer Thread Started");
-        //        await Task.Delay(TimeSpan.FromSeconds(App.IdleTimeToLogout), tokenSource.Token);
-
-        //        Console.WriteLine("Idle Timeout Detected, Do Stuff!");
-        //        //Do something here, like show a screensaver or something
-        //        InvokeOnMainThread(() =>
-        //        {
-        //            if (App.IsLoginPageVisible() == true)
-        //            {
-        //                App.IsLoginPageRefreshed = true;
-        //                MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");
-        //            }
-        //            else
-        //            {
-        //                App.DoesLoginNeedToBeRefreshed = true;
-        //                MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
-        //            }
-        //        });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //if we cancel/reset, this catch block gets called
-        //        Console.WriteLine("Idle Timer Thread Cancelled");
-        //    }
-        //    // if we reach here, this timer has stopped
-        //    Console.WriteLine("Idle Timer Thread Complete");
-        //}
-
-        //Code for PUSH notification
-        //public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
-        //{
-        //    new UIAlertView("Error whie registering for Push Notifications", error.LocalizedDescription, null, "Ok", null).Show();
-        //}
-        //public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
-        //{
-        //    String DeviceToken = deviceToken.Description;
-        //    if (!String.IsNullOrWhiteSpace(DeviceToken))
-        //    {
-        //        DeviceToken = DeviceToken.Trim('<').Trim('>');
-        //    }
-        //    Console.WriteLine("Device Token: " + DeviceToken);
-        //    NSUserDefaults.StandardUserDefaults.SetString(DeviceToken, "PushDeviceToken");
-        //}
-        //public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
-        //{
-        //    NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
-        //    String alert = string.Empty;
-        //    if (aps.ContainsKey(new NSString("alert")))
-        //        alert = (aps[new NSString("alert")] as NSString).ToString();
-        //    Console.WriteLine(userInfo);
-        //    //show alert
-        //    if (!string.IsNullOrEmpty(alert))
-        //    {
-        //        UIAlertView avAlert = new UIAlertView("Notification", alert, null, "OK", null);
-        //        avAlert.Show();
-        //    }
-        //}
-
-        //        BOOL isJailbroken()
-        //        {
-        //#if !(TARGET_IPHONE_SIMULATOR)
-
-        //            if ([[NSFileManager defaultManager] fileExistsAtPath: @"/Applications/Cydia.app"] ||
-
-        //                 [[NSFileManager defaultManager] fileExistsAtPath: @"/Library/MobileSubstrate/MobileSubstrate.dylib"] ||
-
-        //                  [[NSFileManager defaultManager] fileExistsAtPath: @"/bin/bash"] ||
-
-        //                   [[NSFileManager defaultManager] fileExistsAtPath: @"/usr/sbin/sshd"] ||
-
-        //                    [[NSFileManager defaultManager] fileExistsAtPath: @"/etc/apt"] ||
-
-        //                     [[NSFileManager defaultManager] fileExistsAtPath: @"/private/var/lib/apt/"] ||
-
-        //                      [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"cydia://package/com.example.package"]])  {
-        //                return YES;
-        //            }
-
-        //            FILE* f = NULL;
-        //            if ((f = fopen("/bin/bash", "r")) ||
-        //               (f = fopen("/Applications/Cydia.app", "r")) ||
-        //               (f = fopen("/Library/MobileSubstrate/MobileSubstrate.dylib", "r")) ||
-        //               (f = fopen("/usr/sbin/sshd", "r")) ||
-        //               (f = fopen("/etc/apt", "r")))
-        //            {
-        //                fclose(f);
-        //                return YES;
-        //            }
-        //            fclose(f);
-
-        //            NSError* error;
-        //            NSString* stringToBeWritten = @"This is a test.";
-        //            [stringToBeWritten writeToFile:@"/private/jailbreak.txt" atomically: YES encoding:NSUTF8StringEncoding error:&error];
-        //            [[NSFileManager defaultManager] removeItemAtPath: @"/private/jailbreak.txt" error: nil];
-        //            if (error == nil)
-        //            {
-        //                return YES;
-        //            }
-
-        //#endif
-
-        //            return NO;
-        //        }
 
         private static void InitArabicCalendarCrashFix()
         {

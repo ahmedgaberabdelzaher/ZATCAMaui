@@ -85,7 +85,7 @@
                             <TapGestureRecognizer Tapped="btn_Clicked"/>
                         </custom:CustomLabel.GestureRecognizers>
                     </custom:CustomLabel>
-                    <Image Source="arrowDropdown"  Margin="0,8,0,0" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                    <Image Source="arrowDropdown"   HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="btn_Clicked"/>
                         </Image.GestureRecognizers>

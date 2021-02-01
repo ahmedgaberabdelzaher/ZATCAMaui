@@ -287,21 +287,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isLoading=false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
+        //private bool _isLoading=false;
+        //public new bool IsLoading
+        //{
+        //    get
+        //    {
+        //        return _isLoading;
+        //    }
+        //    set
+        //    {
+        //        if (_isLoading == value) return;
 
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        //        _isLoading = value;
+        //        RaisePropertyChanged("IsLoading");
+        //    }
+        //}
 
         private bool _isVisibleFavourite = false;
         public bool IsVisibleFavourite
@@ -328,7 +328,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 return _isListVisible;
             }
             set
-            {
+            {       
                 if (_isListVisible == value) return;
 
                 _isListVisible = value;
@@ -344,7 +344,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_isNoDataLableVisible == value) return;
+                //if (_isNoDataLableVisible == value) return;
 
                 _isNoDataLableVisible = value;
                 RaisePropertyChanged("IsNoDataLableVisible");
@@ -446,10 +446,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ListToDisplay = new ObservableCollection<CorrespondanceModel>();
             try
             {
-                await Task.Run(() =>
-                {
                     IsLoading = true;
-                });
                 await Task.Run(() =>
                 {
                     ZakatCorres = new CorrespondenceRootObject();
@@ -461,10 +458,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     ETCorres = WebServiceManager.GAZTGetETCorrespondece();
                     PopToRootPage();
                 });
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
             }
             catch (InternetException ex)
             {
@@ -955,9 +949,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 IsLoading = true;
             });
-            await Task.Run(async () =>
+            await Task.Run( () =>
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     _navigationService.NavigateTo(App.TaxpayerCorrespondanceDetailPageView, CorresModel);
                 });
@@ -965,7 +959,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
             await Task.Run(() =>
             {
-                IsLoading = true;
+                IsLoading = false;
             });
         }
         public void FilterOnbasisOfChipSelectedItem()

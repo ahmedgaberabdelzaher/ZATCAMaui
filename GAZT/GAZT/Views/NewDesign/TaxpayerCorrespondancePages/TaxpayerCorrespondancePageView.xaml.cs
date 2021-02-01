@@ -31,6 +31,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             SetPickerFont();
+            PageLoad();
         }
         public void SetPickerFont()
         {
@@ -104,26 +105,20 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
 
             try
             {
-                await Task.Run(() =>
-                {
                     viewModel.IsLoading = true;
-                });
                 await viewModel.onPageLoad();
                 viewModel.SetData();
-                await Task.Run(() =>
-                {
                     viewModel.IsLoading = false;
-                });
                 
             }
             catch (Exception ex)
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
-                viewModel.IsLoading = true;
+                viewModel.IsLoading = false;
             }
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {
@@ -140,7 +135,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     TaxTypeDownPicker.BackgroundColor = Color.FromHex("#FFFFFF");
                 }
 
-                await PageLoad();
+                
                 if (TaxTypeDownPicker.SelectedItem != null)
                 {
                     viewModel.SelectedTaxTypeDropdownItem = (ReturnTypes)TaxTypeDownPicker.SelectedItem;

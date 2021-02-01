@@ -22,7 +22,6 @@
              xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:custom2="clr-namespace:EGAZT"            
              xmlns:local1="clr-namespace:GAZT"
-             xmlns:syncfusion1="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
              FlowDirection="RightToLeft"

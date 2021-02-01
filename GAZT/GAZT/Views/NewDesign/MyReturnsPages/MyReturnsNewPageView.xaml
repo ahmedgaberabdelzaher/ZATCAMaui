@@ -90,7 +90,7 @@
                             <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                             </custom:CustomLabel>
 
-                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Center" VerticalOptions="Center">
 
                             </Image>
 
@@ -120,7 +120,7 @@
                                             <custom:CustomLabel Text="{Binding Text}" Style="{StaticResource CaptionLabelBlack}" >
                                                 <custom:CustomLabel.Margin>
                                                     <OnPlatform x:TypeArguments="Thickness">
-                                                        <On Platform="iOS" Value="0,-3,0,0"/>
+                                                        <On Platform="iOS" Value="0,-6,0,0"/>
                                                         <On Platform="Android" Value="0,-6,0,0"/>
                                                     </OnPlatform>
                                                 </custom:CustomLabel.Margin>
