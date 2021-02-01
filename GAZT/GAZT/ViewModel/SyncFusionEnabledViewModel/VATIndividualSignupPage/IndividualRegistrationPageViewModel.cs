@@ -1,4 +1,4 @@
-﻿using CalendarView;
+﻿//using CalendarView;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
@@ -33,7 +33,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public ICommand OnContinueButtonClick { get; set; }
         public ICommand OnBackButtonClick { get; set; }
         public ICommand OnResendButtonClick { get; set; }
-        public ICommand DateSelectedCommand { get; set; }
+        //public ICommand DateSelectedCommand { get; set; }
         public ICommand GoButtonClick { get; set; }
         public int currentStep { get; set; }
         public VATSignUpData vATSignUpData { get; set; }
@@ -1579,7 +1579,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 throw new ArgumentNullException("dialogService");
             }
 
-            this.DateSelectedCommand = new Command<DateSelectionArgs>(this.HandleDateSelected);
+            //this.DateSelectedCommand = new Command<DateSelectionArgs>(this.HandleDateSelected);
 
             OnContinueButtonClick = new Xamarin.Forms.Command(async () =>
             {
@@ -1627,12 +1627,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 new ChipModel(){Text =AppResources.NDHijri, TemplateType = AppResources.NDHijri,ImageSource = "partially_clock.png"},
             };
         }
-        private void HandleDateSelected(DateSelectionArgs obj)
-        {
-            var obj1 = obj.SelectedDate;
-            DOBddyymm = obj.SelectedDate.ToString();
-            // App.Current.MainPage.DisplayAlert("Date Selected", "Selected Date = " + dateselected, "Ok");
-        }
+        //private void HandleDateSelected(DateSelectionArgs obj)
+        //{
+        //    var obj1 = obj.SelectedDate;
+        //    DOBddyymm = obj.SelectedDate.ToString();
+        //    // App.Current.MainPage.DisplayAlert("Date Selected", "Selected Date = " + dateselected, "Ok");
+        //}
         public void ClearData()
         {
             SetDefaultDate();

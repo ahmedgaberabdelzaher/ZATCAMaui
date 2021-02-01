@@ -1507,11 +1507,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void HijriCal_OnDateSelected(object sender, CalendarView.DateSelectionArgs e)
-        {
+        //private void HijriCal_OnDateSelected(object sender, CalendarView.DateSelectionArgs e)
+        //{
             //var date = HijriCal.DateSelected;
             //Console.WriteLine("Hi Your Hijri Date : " + date);
-        }
+        //}
 
         private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)
         {

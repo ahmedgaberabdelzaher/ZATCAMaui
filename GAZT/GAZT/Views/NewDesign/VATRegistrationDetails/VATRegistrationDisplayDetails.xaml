@@ -21,7 +21,6 @@
              NavigationPage.BackButtonTitle = ""
               Title="{x:Static custom2:AppResources.VATRegistrationDetails}"
              xmlns:local1="clr-namespace:GAZT"
-             xmlns:syncfusion1="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              x:Class="EGAZT.Views.NewDesign.VATRegistrationDetails.VATRegistrationDisplayDetails">
    <ContentPage.Resources>

@@ -22,7 +22,6 @@
              NavigationPage.BackButtonTitle = ""
               Title="{x:Static custom2:AppResources.ZZZZVatRegistrationTile}"
              xmlns:local1="clr-namespace:GAZT"
-             xmlns:syncfusion1="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              FlowDirection="RightToLeft"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.VATRegistrationPageView"

@@ -9,7 +9,7 @@ using Syncfusion.XForms.Cards;
 using Syncfusion.XForms.Graphics;
 using Syncfusion.XForms.iOS.Cards;
 using Syncfusion.XForms.iOS.EffectsView;
-using Syncfusion.XForms.iOS.MaskedEdit;
+//using Syncfusion.XForms.iOS.MaskedEdit;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using Syncfusion.XForms.Pickers.iOS;
 using System.Net;
@@ -72,7 +72,7 @@ namespace GAZT.iOS
             Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
             Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
-            SfMaskedEditRenderer.Init();
+            //SfMaskedEditRenderer.Init();
 
             var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
             config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
