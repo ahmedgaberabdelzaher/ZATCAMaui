@@ -881,6 +881,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to عربي.
+        /// </summary>
+        public static string ChangeLanguage {
+            get {
+                return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Mobile Number.
         /// </summary>
         public static string ChangeMobileNumber {
@@ -3550,7 +3559,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registration/Taxpayer type.
+        ///   Looks up a localized string similar to Taxpayer type.
         /// </summary>
         public static string ESTRegTaxTabTitleLabel {
             get {
@@ -10100,7 +10109,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Attachment(Optional).
+        ///   Looks up a localized string similar to New Attachment (Optional).
         /// </summary>
         public static string VatDeregAttachmentInputTitle2 {
             get {

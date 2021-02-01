@@ -196,7 +196,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 App.IsComingFromSleepMode = false;
 
 
-                await LoadData();
+                LoadData();
                 try
                 {
                     if (App.LoginDataRetrieved != null)
@@ -336,37 +336,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             MessagingCenter.Unsubscribe<Object>(this, "UpdateProgressBar");
             isTimerOff = true;
         }
-        private async Task LoadData()
+        private void LoadData()
         {
             try
             {
                 viewModel.IsLoading = true;
-                await viewModel.LoadDashboardData();
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.BillCount = string.Empty;
-                    viewModel.BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
-                    viewModel.PopulateBillsInformation();
-                    viewModel.PopulateReturnsInformation();
-                    viewModel.PopualateCommittmentsInformation();
-                    try
-                    {
-                        if (viewModel.BillsAndReturnsCommitments != null)
-                        {
-                            if (viewModel.BillsAndReturnsCommitments.Count > 0)
-                            {
-                                CollectionView_Commitment.ScrollTo(0);
-                            }
+                viewModel.LoadDashboardData();
 
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
-                    }
-                    viewModel.IsLoading = false;
-                });
+
             }
             catch (Exception ex)
             {
@@ -374,6 +351,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 Console.Write(ex.StackTrace.ToString());
                 viewModel.IsLoading = false;
             }
+            finally { viewModel.IsLoading = false; }
         }
 
         private void SetLTR()
@@ -652,7 +630,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
-                    SetLTRDirection();
                     var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
                     viewModel.SelectedCommitmentFilterValue = null;
                     Navigation.InsertPageBefore(vUpdatedPage, this);
@@ -666,7 +643,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
                     viewModel.Logout = AppResources.ZLogout;
                     App.HasToRefreshLoaderOnDashboard = true;
-
+                    SetLTRDirection();
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 else
@@ -675,7 +652,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                     App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
-                    SetRTLDirection();
                     var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
                     viewModel.SelectedCommitmentFilterValue = null;
                     Navigation.InsertPageBefore(vUpdatedPage, this);
@@ -689,6 +665,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
                     viewModel.Logout = AppResources.ZLogout;
                     App.HasToRefreshLoaderOnDashboard = true;
+                    SetRTLDirection();
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
 
@@ -720,7 +697,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 String langName = "ar-AE";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
-                this.FlowDirection = FlowDirection.RightToLeft;
+               // this.FlowDirection = FlowDirection.RightToLeft;
                 viewModel.TranslateText = "English";
 
                 viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
@@ -747,7 +724,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 String langName = "en-US";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
-                this.FlowDirection = FlowDirection.LeftToRight;
+               // this.FlowDirection = FlowDirection.LeftToRight;
                 viewModel.TranslateText = "عربي";
 
                 viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;

@@ -3351,7 +3351,7 @@ namespace GAZT.Manager
             }
         }
         #region SYNFUSION INTEGRATION
-        public static Dashboard GAZTGetDashboardData(string lang, string TIN)
+        public static async Task<Dashboard> GAZTGetDashboardData(string lang, string TIN)
         {
             Dashboard dashboardData = null;
             if (CrossConnectivity.Current.IsConnected)
@@ -3369,7 +3369,7 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTGetDashboardResponse = new HttpResponseMessage();
                     try
                     {
-                        GAZTGetDashboardResponse = client.GetAsync(uri).Result;
+                        GAZTGetDashboardResponse =await client.GetAsync(uri);
                     }
                     catch (Exception ex)
                     {
@@ -3396,7 +3396,7 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
-                        string GAZTGetDashboardResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
+                        string GAZTGetDashboardResponseJSON =await GAZTGetDashboardResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(GAZTGetDashboardResponseJSON))
                         {
                             GAZTGetDashboardResponseJSON = JObject.Parse(GAZTGetDashboardResponseJSON)["d"].ToString();

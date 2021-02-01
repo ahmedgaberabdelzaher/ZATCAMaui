@@ -65,9 +65,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
             Task GetDashboardDataTask = null;
             if (App.TP != null)
             {
-                GetDashboardDataTask = Task.Run(() =>
+                GetDashboardDataTask = Task.Run(async() =>
                 {
-                    DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                    DashboardData = await  WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
                 });
 
                 Task GetUnsubmittedReturnDataTask = Task.Run(async () =>
