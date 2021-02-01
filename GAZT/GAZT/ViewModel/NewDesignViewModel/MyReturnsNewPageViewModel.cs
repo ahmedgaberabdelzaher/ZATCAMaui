@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -27,6 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public MyReturnsRootObject MyReturns { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
+
 
         public static int numberOfAttachmentComingFromServer = 0;
         #region Property
@@ -260,6 +262,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ChipDataFilterlist");
             }
         }
+
+        public ValidatePaymentResponse _paymentData = null;
+        public ValidatePaymentResponse PaymentData
+        {
+            get
+            {
+                return _paymentData;
+            }
+            set
+            {
+                if (_paymentData == value) return;
+
+                _paymentData = value;
+                RaisePropertyChanged("PaymentData");
+            }
+        }
+
+
+        
         public string _filterLabelText;
         public string FilterLabelText
         {
@@ -513,6 +534,74 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
+
+
+        public async Task DoValidatePayment(string fbNum)
+        {
+            try
+            {
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
+
+
+                    await Task.Run(async () =>
+                    {
+                        var platform = "";
+
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            platform = "C4";
+                        }
+                        else if (Device.RuntimePlatform == Device.Android)
+                        {
+                            platform = "C3";
+                        }
+                        PaymentData = WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+
+
+                    });
+
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                           await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
         public bool isStatusNotValid(MyReturnsResult SelectedReturnsVAT)
         {
             bool isValid = true;

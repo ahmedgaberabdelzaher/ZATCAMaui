@@ -305,4 +305,14 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         public GAZTTinDeregistrationErrorException(string errorCode, string errorMessage)
         { }
     }
+
+    public class GAZTValidatePaymentInProcessException : GAZTException
+    {
+        public GAZTValidatePaymentInProcessException()
+        { }
+        public GAZTValidatePaymentInProcessException(string ExceptionMessage) : base(ExceptionMessage)
+        {
+        }
+    }
+    
 }

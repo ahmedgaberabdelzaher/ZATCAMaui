@@ -271,7 +271,12 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 
         private async void payNow_Tapped(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true,false));
+            
+            MyReturnsResult SelectedItem = (MyReturnsResult)viewModel.ListToDisplay[0];
+
+            await viewModel.DoValidatePayment(SelectedItem.Fbnum);
+
+            //await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true,false));
         }
     }
 }

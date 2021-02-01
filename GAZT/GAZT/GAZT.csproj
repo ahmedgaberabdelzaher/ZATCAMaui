@@ -10,7 +10,6 @@
 	<ItemGroup>
 	  <Compile Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
 	  <Compile Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
-	  <Compile Remove="Views\NewDesign\NewFolder1\**" />
 	  <Compile Remove="Views\NewDesign\Template\NewFolder\**" />
 	  <Compile Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
 	  <Compile Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
@@ -26,7 +25,6 @@
 	  <Compile Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
 	  <EmbeddedResource Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
 	  <EmbeddedResource Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
-	  <EmbeddedResource Remove="Views\NewDesign\NewFolder1\**" />
 	  <EmbeddedResource Remove="Views\NewDesign\Template\NewFolder\**" />
 	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
 	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
@@ -42,7 +40,6 @@
 	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
 	  <None Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
 	  <None Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
-	  <None Remove="Views\NewDesign\NewFolder1\**" />
 	  <None Remove="Views\NewDesign\Template\NewFolder\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
@@ -297,9 +294,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\MyReturnsPages\MyReturnsNewPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Views\NewDesign\PaymentOptions\PaymentOptionsPageView.xaml">
-		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\SupportPages\SupportPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>

@@ -16,4 +16,20 @@ namespace EGAZT.Models.PaymentModel
         public bool IsUnSelectedCardIconVisible { get => true; }
 
     }
+
+
+    public class D
+    {
+        public Metadata __metadata { get; set; }
+        public string Fbnum { get; set; }
+        public string Link { get; set; }
+        public string Srcid { get; set; }
+        public string Guid { get; set; }
+        public string Tin { get; set; }
+    }
+
+    public class ValidatePaymentResponse
+    {
+        public D d { get; set; }
+    }
 }

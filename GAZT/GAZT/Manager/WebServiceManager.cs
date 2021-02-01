@@ -48,6 +48,7 @@ using EGAZT.Models.AccountStatements;
 using Formatting = Newtonsoft.Json.Formatting;
 using Xamarin.Forms.Internals;
 using EGAZT.Manager;
+using EGAZT.Models.PaymentModel;
 
 namespace GAZT.Manager
 {
@@ -15632,18 +15633,21 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     String Lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='" + statementFilter + "',FiscalYear='" + fiscalYear + "',TaxType='" + taxType + "',Lang='" + LangZ + "')?&$expand=StatmenetLineItemsSet,TaxRelationSet&$format=json";
+                    String isLoad = "";
+                    if (!string.IsNullOrEmpty(statementFilter) && statementFilter == "10")
+                    {
+                        isLoad = "X";
+
+                    }
+                    String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='" + statementFilter + "',FiscalYear='" + fiscalYear + "',TaxType='" + taxType + "',Lang='" + LangZ + "',Load='" + isLoad + "')?&$expand=StatmenetLineItemsSet,TaxRelationSet&$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    if (!string.IsNullOrEmpty(statementFilter) && statementFilter == "10") {
-                        client.DefaultRequestHeaders.Add("Load", "X");
-
-                    }
+                   
 
 
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
+                     HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
 
                     if (GAZTASTabIdentificationStatus != null)
                     {
@@ -15803,9 +15807,9 @@ namespace GAZT.Manager
 
         #region
 
-            public static DashboardInstalmentplan GAZTValidatePayment(string fbNum, string TIN, string devicetype)
+            public static ValidatePaymentResponse GAZTValidatePayment(string fbNum, string TIN, string devicetype)
             {
-                DashboardInstalmentplan dashboardInstalmentData = null;
+            ValidatePaymentResponse paymentResponse = null;
                 if (CrossConnectivity.Current.IsConnected)
                 {
                     DateTime currentDate = DateTime.Now;
@@ -15819,23 +15823,23 @@ namespace GAZT.Manager
                         HttpClient client = new HttpClient(App.httpClientHandler);
                         String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='"+devicetype+"')" + "?$format=json";
 
-                        HttpResponseMessage GAZTGetDashboardInstalmentResponse = new HttpResponseMessage();
+                        HttpResponseMessage GAZTValidatePaymentResponse = new HttpResponseMessage();
                         try
                         {
-                            GAZTGetDashboardInstalmentResponse = client.GetAsync(uri).Result;
+                        GAZTValidatePaymentResponse = client.GetAsync(uri).Result;
                         }
                         catch (Exception ex)
                         {
 
                         }
-                        if (GAZTGetDashboardInstalmentResponse != null)
+                        if (GAZTValidatePaymentResponse != null)
                         {
-                            if (GAZTGetDashboardInstalmentResponse.StatusCode == HttpStatusCode.Unauthorized)
+                            if (GAZTValidatePaymentResponse.StatusCode == HttpStatusCode.Unauthorized)
                             {
                                 throw new GAZTSessionExpiredException();
                             }
 
-                            HttpHeaders headers = GAZTGetDashboardInstalmentResponse.Headers;
+                            HttpHeaders headers = GAZTValidatePaymentResponse.Headers;
                             IEnumerable<string> values = null;
                             if (headers.TryGetValues("token", out values))
                             {
@@ -15849,12 +15853,23 @@ namespace GAZT.Manager
                                 }
                                 App.Token = NewToken;
                             }
-                            string GAZTGetDashboardInstalmentResponseJSON = GAZTGetDashboardInstalmentResponse.Content.ReadAsStringAsync().Result;
-                            if (!string.IsNullOrEmpty(GAZTGetDashboardInstalmentResponseJSON))
+
+                        String paymentData = GAZTValidatePaymentResponse.Content.ReadAsStringAsync().Result;
+                        paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(paymentData);
+                        if (!string.IsNullOrEmpty(paymentData) && paymentResponse.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(paymentData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
-                                GAZTGetDashboardInstalmentResponseJSON = JObject.Parse(GAZTGetDashboardInstalmentResponseJSON)["d"].ToString();
-                                dashboardInstalmentData = JsonConvert.DeserializeObject<DashboardInstalmentplan>(GAZTGetDashboardInstalmentResponseJSON);
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                throw new GAZTValidatePaymentInProcessException(errorMessage);
                             }
+                        }
+                           
                         }
                     }
                     catch (JsonReaderException ex)
@@ -15882,7 +15897,7 @@ namespace GAZT.Manager
                 {
                     throw new GAZTInternetException();
                 }
-                return dashboardInstalmentData;
+                return paymentResponse;
             }
 
         #endregion
