@@ -1879,7 +1879,13 @@
                     </buttons:SfChipGroup>
                 </ScrollView>
             </StackLayout>
-            <Grid Grid.Row="2" Padding="20,15" BackgroundColor="White" Margin="0,0,0,20">
+            <Grid Grid.Row="2" Padding="20,15" BackgroundColor="White" >
+                  <Grid.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" >
+                        <On Platform="iOS" Value="0,0,0,20"/>
+                        <On Platform="Android" Value="0"/>
+                    </OnPlatform>
+                </Grid.Margin>
                 <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{Binding NxtButtonLabel}" Command="{Binding OnNextButtonClick}" />
             </Grid>
             <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.8"
