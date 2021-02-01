@@ -13,13 +13,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         ZakatRegistrationFinancialDetailsPageViewModel viewModel;
         public ZakatRegistrationFinancialDetails()
         {
+            SetLTR();
             InitializeComponent();
             ChangeAeroIcon();
-            SetLTR();
+
             viewModel = App.Locator.ZakatRegistrationFinancialDetailsPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            this.FlowDirection = FlowDirection.LeftToRight;
+            //  this.FlowDirection = FlowDirection.LeftToRight;
         }
 
         private void SetLTR()
@@ -41,13 +42,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (App.IsArabic)
                 {
-                    Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-                    Resources["ImageReverse"] = Resources["ArrowImageForArabicStyle"];
+                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
                 }
                 else
                 {
-                    Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-                    Resources["ImageReverse"] = Resources["ArrowImageForEnglishStyle"];
+                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
                 }
 
             }

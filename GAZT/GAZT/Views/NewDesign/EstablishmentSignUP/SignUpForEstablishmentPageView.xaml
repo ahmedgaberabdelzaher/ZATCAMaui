@@ -40,6 +40,12 @@
                 <Setter Property="WidthRequest" Value="25"/>
                 <Setter Property="HasShadow" Value="False"/>
             </Style>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -1346,7 +1352,7 @@
                         <ColumnDefinition Width="20*"/>
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Column="0" Padding="0,8,0,0">
-                        <Image Source="arrowLeft.png" x:Name="Image_backArrow" HorizontalOptions="Start">
+                            <Image Source="arrowLeft.png" x:Name="Image_backArrow" Style="{StaticResource BackButtonArrow}" HorizontalOptions="Start">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnBackButtonClick}"/>
                             </Image.GestureRecognizers>

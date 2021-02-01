@@ -18,22 +18,20 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
             <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector"/>
             <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector"/>
-            
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
-            <!--<DataTemplate x:Key="BillStatusFilterTemplate">
-                <StackLayout>
-                    <buttons:SfChip HeightRequest="40" WidthRequest="120" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ShowIcon="True" ImageSource="{Binding ImageSource}"  ShowCloseButton="False" ShowSelectionIndicator="False" ImageAlignment="Left" />
-                </StackLayout>
-            </DataTemplate>
-            <local1:ChipDataTemplateSelector x:Key="selector" 
-                                          
-                                            SadEmojiTemplate = "{StaticResource BillStatusFilterTemplate}"/>-->
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -77,7 +75,7 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
                             </Image.GestureRecognizers>
                         </Image>
-                        
+
                     </Grid>
                 </Grid>
             </Grid>
@@ -118,7 +116,7 @@
                                              SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
                                       ItemTemplate="{StaticResource UnselectedItemTemplateSelector}">
 
-                           <!-- <listView:SfListView.ItemTemplate>
+                            <!-- <listView:SfListView.ItemTemplate>
 
                                 <DataTemplate>
                                     <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">

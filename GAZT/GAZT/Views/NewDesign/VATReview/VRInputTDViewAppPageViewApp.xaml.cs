@@ -21,7 +21,7 @@ namespace EGAZT.Views.NewDesign.VATReview
         public VRInputTDViewAppPageViewApp()
         {
             InitializeComponent();
-            
+
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
             ChangeAeroIcon();
@@ -56,11 +56,11 @@ namespace EGAZT.Views.NewDesign.VATReview
         {
             if (App.IsArabic)
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

@@ -50,7 +50,7 @@ namespace EGAZT.Views.NewDesign.Template
             {
                 App.IsArabic = false;
                 App.changeFontFamily(App.appObj);
-                SetLTRDirection();
+                //SetLTRDirection();
                 var vUpdatedPage = new DashboardAnonymousMenuPageView();
                 Navigation.InsertPageBefore(vUpdatedPage, this);
                 Navigation.PopAsync();
