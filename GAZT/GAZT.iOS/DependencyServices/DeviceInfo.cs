@@ -15,14 +15,6 @@ namespace GAZT.iOS.DependencyServices
     [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class DeviceInfo : IDeviceInfo
     {
-        //public int ScreenHeight => throw new NotImplementedException();
-
-        //public int ScreenWidth => throw new NotImplementedException();
-
-       // public string DeviceId => throw new NotImplementedException();
-
-        //public string Manufacturer => throw new NotImplementedException();
-
         public string Model => throw new NotImplementedException();
 
         public string OperatingSystem => throw new NotImplementedException();
@@ -118,7 +110,7 @@ namespace GAZT.iOS.DependencyServices
             {
                 return UIDevice.CurrentDevice.IdentifierForVendor.AsString();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return "";
             }
@@ -156,8 +148,6 @@ namespace GAZT.iOS.DependencyServices
 
         bool IDeviceInfo.IsJailBreakDetected()
         {
-            //get
-            //{
             try
             {
                 var paths = new[]
@@ -177,30 +167,26 @@ namespace GAZT.iOS.DependencyServices
                 return paths.Any(System.IO.File.Exists);
                 //return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
-                
-            //}
         }
 
         public byte[] GetImagePathByteArray(string filePath)
         {
             byte[] base64Image = null;
+
             try
             {
                 base64Image = System.IO.File.ReadAllBytes(filePath);
-                //base64Image = Convert.ToBase64String(imageArray);
-
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
+                base64Image = null;
             }
+
             return base64Image;
         }
-
-
     }
 }

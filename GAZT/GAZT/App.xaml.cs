@@ -24,6 +24,7 @@ using Xamarin.Forms.Internals;
 using System.IO;
 using AppDynamics.Agent;
 using Newtonsoft.Json;
+using GAZT.Helper;
 
 namespace EGAZT
 {
@@ -335,7 +336,7 @@ namespace EGAZT
             App.Current.Properties["timeOut"] = DateTime.Now;
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
-            Xamarin.Forms.Device.SetFlags(new[] { "Expander_Experimental" });
+            Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;
             bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
 
@@ -384,25 +385,20 @@ namespace EGAZT
             {
                 CreateClientHandler();
                 ResetAndContinueSession();
-
-                //MessagingCenter.Subscribe<object, string>(this, "ResetAndContinueSession", async (sender, arg) =>
-                //{
-                //    ResetAndContinueSession();
-                //});
             }
             catch (Exception ex)
             {
 
             }
 
-            switch (Xamarin.Forms.Device.RuntimePlatform)
+            switch (Device.RuntimePlatform)
             {
-                case Xamarin.Forms.Device.Android:
+                case Device.Android:
                     {
                         IncomingChannel = "241";
                     }
                     break;
-                case Xamarin.Forms.Device.iOS:
+                case Device.iOS:
                     {
                         IncomingChannel = "242";
                     }
@@ -436,7 +432,7 @@ namespace EGAZT
             {
                 if (App.DoesLoginNeedToBeRefreshed == true)
                 {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
                         try
                         {
@@ -459,13 +455,9 @@ namespace EGAZT
 
                         }
                     });
-
-                    //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-                    //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
                 }
             });
           
-
             InitializeAppDynamics();
             //DisplayCrashReport();
 
@@ -474,7 +466,6 @@ namespace EGAZT
             //var a = 10;
             //var b = 0;
             //var c = a / b;
-
         }
 
 
@@ -538,15 +529,15 @@ namespace EGAZT
             }
             if (PreviousIsArabic)
             {
-                switch (Xamarin.Forms.Device.RuntimePlatform)
+                switch (Device.RuntimePlatform)
                 {
-                    case Xamarin.Forms.Device.iOS:
+                    case Device.iOS:
                         fontFamilyBold = "GE_SS_Two_Bold";
                         fontFamilyMedium = "GE_SS_Two_Medium";
                         fontFamilyLight = "GE_SS_Two_Light";
                         fontFamilyRoman = "SSTArabic-Roman";
                         break;
-                    case Xamarin.Forms.Device.Android:
+                    case Device.Android:
                         fontFamilyBold = "GE_SS_Two_Bold.ttf#GE_SS_Two_Bold";
                         fontFamilyMedium = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         fontFamilyLight = "GE_SS_Two_Light.ttf#GE_SS_Two_Light";
@@ -556,15 +547,15 @@ namespace EGAZT
             }
             else
             {
-                switch (Xamarin.Forms.Device.RuntimePlatform)
+                switch (Device.RuntimePlatform)
                 {
-                    case Xamarin.Forms.Device.iOS:
+                    case Device.iOS:
                         fontFamilyBold = "SSTArabic-Bold";
                         fontFamilyMedium = "SSTArabic-Medium";
                         fontFamilyLight = "SSTArabic-Light";
                         fontFamilyRoman = "SSTArabic-Roman";
                         break;
-                    case Xamarin.Forms.Device.Android:
+                    case Device.Android:
                         fontFamilyBold = "SSTArabic-Bold.ttf#SSTArabic-Bold";
                         fontFamilyMedium = "SSTArabic-Medium.ttf#SSTArabic-Medium";
                         fontFamilyLight = "SSTArabic-Light.ttf#SSTArabic-Light";
@@ -608,54 +599,35 @@ namespace EGAZT
             //SYNCFUSION INTEGRATION
             if (App.IsArabic)
             {
-                //if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
-                //{
-                //    Application.Current.Resources["LargeLabelTest"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
-                //    Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_English_FONT_BOLD"];
-                //    Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_English_FONT_MEDIUM"];
-                //    Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
-                //}
-                //else
-                //{
-                Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_Arabic_FONT_BOLD"];
-                Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_Arabic_FONT_MEDIUM"];
-                Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_Arabic_FONT_REGULAR"];
-                //}
+                Current.Resources["GAZT_FONT_BOLD"] = Current.Resources["GAZT_Arabic_FONT_BOLD"];
+                Current.Resources["GAZT_FONT_MEDIUM"] = Current.Resources["GAZT_Arabic_FONT_MEDIUM"];
+                Current.Resources["GAZT_FONT_REGULAR"] = Current.Resources["GAZT_Arabic_FONT_REGULAR"];
             }
             else
             {
-                Application.Current.Resources["LargeLabelTest"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
-                Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_English_FONT_BOLD"];
-                Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_English_FONT_MEDIUM"];
-                Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
+                Current.Resources["LargeLabelTest"] = Current.Resources["GAZT_English_FONT_REGULAR"];
+                Current.Resources["GAZT_FONT_BOLD"] = Current.Resources["GAZT_English_FONT_BOLD"];
+                Current.Resources["GAZT_FONT_MEDIUM"] = Current.Resources["GAZT_English_FONT_MEDIUM"];
+                Current.Resources["GAZT_FONT_REGULAR"] = Current.Resources["GAZT_English_FONT_REGULAR"];
             }
             //SYNCFUSION INTEGRATION
         }
         protected override void OnStart()
         {
-            //IsJailBrokenDevice = false;
-            //try
-            //{
-            //    IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
-
-            //App.ResetAndContinueSession();
-
-            //Distribute.ReleaseAvailable = OnReleaseAvailable;
-            //// Handle when your app starts
-            //AppCenter.Start("ios=eb11c7c9-cb42-4806-b01e-9b78bf433259" +
-            //      "uwp={Your UWP App secret here};" +
-            //      "android=138974d9-a5ae-4afa-b7b3-13ff660d8421",
-            //      typeof(Distribute));
+            IsJailBrokenDevice = false;
+            try
+            {
+                IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
+            }
+            catch (Exception ex)
+            {
+               
+            }
         }
 
         public static Task ResetAndContinueSession()
         {
-            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 2), () =>
+            Device.StartTimer(new TimeSpan(0, 0, 2), () =>
             {
                 // Logic for logging out if the device is inactive for a period of time.
                 int timeSpan = defaultTimespan;
@@ -664,14 +636,14 @@ namespace EGAZT
                     timeSpan = defaultTimespanForLogin;
                 }
 
-                idleTime = Application.Current.Properties["timeOut"].ToString();
+                idleTime = Current.Properties["timeOut"].ToString();
                 idleTimeSpan = DateTime.Now.Subtract(DateTime.Parse(idleTime)).TotalMinutes;
 
                 if (idleTimeSpan >= timeSpan)
                 {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
-                        Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
+                        Application.Current.Properties["timeOut"] = DateTime.Now;
                         HandleSessionTimeout();
                     });
 
@@ -679,50 +651,10 @@ namespace EGAZT
                 }
 
                 return true;
-
                 // Always return true as to keep our device timer running.
-                //return IsAppRunningInBackground ? false : true;
             });
             return null;
-        }
-
-        //bool OnReleaseAvailable(ReleaseDetails releaseDetails)
-        //{
-        //    // Look at releaseDetails public properties to get version information, release notes text or release notes URL
-        //    string versionName = releaseDetails.ShortVersion;
-        //    string versionCodeOrBuildNumber = releaseDetails.Version;
-        //    string releaseNotes = releaseDetails.ReleaseNotes;
-        //    Uri releaseNotesUrl = releaseDetails.ReleaseNotesUrl;
-        //    // custom dialog
-        //    var title = "Version " + versionName + " available!";
-        //    Task answer;
-        //    // On mandatory update, user cannot postpone
-        //    if (releaseDetails.MandatoryUpdate)
-        //    {
-        //        answer = Current.MainPage.DisplayAlert(title, releaseNotes, "Download and Install");
-        //    }
-        //    else
-        //    {
-        //        answer = Current.MainPage.DisplayAlert(title, releaseNotes, "Download and Install", "Maybe tomorrow...");
-        //    }
-        //    answer.ContinueWith((task) =>
-        //    {
-        //        // If mandatory or if answer was positive
-        //        if (releaseDetails.MandatoryUpdate || (task as Task<bool>).Result)
-        //        {
-        //            // Notify SDK that user selected update
-        //            Distribute.NotifyUpdateAction(UpdateAction.Update);
-        //        }
-        //        else
-        //        {
-        //            // Notify SDK that user selected postpone (for 1 day)
-        //            // Note that this method call is ignored by the SDK if the update is mandatory
-        //            Distribute.NotifyUpdateAction(UpdateAction.Postpone);
-        //        }
-        //    });
-        //    // Return true if you are using your own dialog, false otherwise
-        //    return true;
-        //}
+        }       
 
         protected override void OnSleep()
         {
@@ -803,7 +735,7 @@ namespace EGAZT
             int hour = h;
             int mins = m;
             int counter = sec;
-            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
                 //if (IsTimerCancel)
                 //{
@@ -811,7 +743,7 @@ namespace EGAZT
                 //}
                 //else
                 //{
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     counter = counter - 1;
                     if (counter < 0)
@@ -858,7 +790,7 @@ namespace EGAZT
             int mins = m;
             int counter = sec;
 
-            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
                 //if (IsTimerCancel)
                 //{
@@ -866,7 +798,7 @@ namespace EGAZT
                 //}
                 //else
                 //{
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     counter = counter - 1;
                     if (counter < 0)
@@ -917,7 +849,7 @@ namespace EGAZT
             int mins = m;
             int counter = sec;
 
-            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
                 //if (IsTimerCancel)
                 //{
@@ -925,7 +857,7 @@ namespace EGAZT
                 //}
                 //else
                 //{
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     counter = counter - 1;
                     if (counter < 0)
@@ -991,14 +923,14 @@ namespace EGAZT
                 {
                     App.IsLoginPageRefreshed = true;
                     Preferences.Set("SessionAction", "RefreshLoginPage");
-                    MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");
+                    MessagingCenter.Send<Object, string>(Application.Current, "RefreshLoginPage", "RefreshLoginPage");
                     App.ResetAndContinueSession();
                 }
                 else if (IsUserLoggedIn)
                 {
                     Preferences.Set("SessionAction", "LogoutUserFromApp");
                     App.DoesLoginNeedToBeRefreshed = true;
-                    MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
+                    MessagingCenter.Send<Object, string>(Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
                 }
             }
         }
@@ -1015,7 +947,7 @@ namespace EGAZT
         private static void DisplayCrashReport()
         {
             const string errorFilename = "Fatal.log";
-            var libraryPath = Environment.GetFolderPath(Xamarin.Forms.Device.RuntimePlatform==Xamarin.Forms.Device.iOS? Environment.SpecialFolder.Resources: Environment.SpecialFolder.Personal);
+            var libraryPath = Environment.GetFolderPath(Device.RuntimePlatform==Device.iOS? Environment.SpecialFolder.Resources: Environment.SpecialFolder.Personal);
             var errorFilePath = Path.Combine(libraryPath, errorFilename);
 
             if (!File.Exists(errorFilePath))
