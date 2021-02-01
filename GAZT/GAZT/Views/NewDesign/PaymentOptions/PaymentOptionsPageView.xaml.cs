@@ -33,22 +33,22 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             List<PaymentOptionsModel> paymentOptions = new List<PaymentOptionsModel>();
             if (isModaPaymentAvailable)
             {
-                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_iconpay", UnSelectedCardIcon = "ic_iconpay", CardLabel = "Card Payment" });
+                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_iconpay", UnSelectedCardIcon = "ic_iconpay", CardLabel = AppResources.PaymentMethodCardPayment});
             }
             if (Device.RuntimePlatform == Device.iOS)
             {
-                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo", CardLabel = "Apple Pay" });
+                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo", CardLabel =AppResources.PaymentMethodApplePay });
             }
-            paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_add1.png", UnSelectedCardIcon = "ic_add1", CardLabel = "SADAD"});
+            paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_add1.png", UnSelectedCardIcon = "ic_add1", CardLabel =AppResources.Sadad});
             paymentItemsListView.ItemsSource = paymentOptions;
 
             if (paymentOptions.Count > 2)
             {
-                paymentItemsListView.HeightRequest = 210;
+                paymentItemsListView.HeightRequest = 260;
             }
             else
             {
-                paymentItemsListView.HeightRequest = 110;
+                paymentItemsListView.HeightRequest = 140;
             }
         }
 
@@ -76,20 +76,20 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             if (selectedItem.CardLabel == "Card Payment")
             {
                 MessagingCenter.Send<Object, string>(this, "Card_Payment", "Yes");
-                //OnSelect?.Invoke("Card_Payment");
+                OnSelect?.Invoke("Card_Payment");
                 await PopupNavigation.Instance.PopAsync();
 
             }
             else if (selectedItem.CardLabel == "Apple Pay")
             {
                 MessagingCenter.Send<Object, string>(this, "Apple_Pay", "Yes");
-                //OnSelect?.Invoke("Apple Pay");
+                OnSelect?.Invoke("Apple Pay");
                 await PopupNavigation.Instance.PopAsync();
             }
             else
             {
                 MessagingCenter.Send<Object, string>(this, "SADAD", "Yes");
-                //OnSelect?.Invoke("SADAD");
+                OnSelect?.Invoke("SADAD");
                 await PopupNavigation.Instance.PopAsync();
             }
 

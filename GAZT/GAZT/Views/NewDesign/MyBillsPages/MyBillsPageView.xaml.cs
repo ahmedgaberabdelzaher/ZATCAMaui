@@ -5,6 +5,7 @@ using EGAZT.Views.NewDesign.PaymentOptions;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.XForms.Border;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -249,7 +250,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
 
 
-                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                 }
                 Device.BeginInvokeOnMainThread(() =>
                 {

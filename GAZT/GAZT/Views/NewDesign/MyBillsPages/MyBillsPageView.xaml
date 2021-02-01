@@ -163,10 +163,10 @@
                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                                                     <Image Source="ic_iconpay" HeightRequest="16" WidthRequest="16" 
                                                                    Margin="0,0,5,0" VerticalOptions="CenterAndExpand"/>
-                                                    <custom:CustomLabel FontFamily="{StaticResource SSTArRoman}" Text="Pay Now" FontSize="12" TextColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand"/>
+                                                    <custom:CustomLabel FontFamily="{StaticResource SSTArRoman}" Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" FontSize="12" TextColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand"/>
                                                 </StackLayout>
                                                 <border:SfBorder.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="payNow_Tapped"/>
+                                                    <TapGestureRecognizer Tapped="payNow_Tapped" />
                                                 </border:SfBorder.GestureRecognizers>
                                             </border:SfBorder>
                                             <!--</StackLayout>-->
