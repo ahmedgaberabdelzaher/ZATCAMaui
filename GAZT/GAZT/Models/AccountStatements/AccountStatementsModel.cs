@@ -454,21 +454,29 @@ namespace EGAZT.Models.AccountStatements
             }
         }
 
-        //[JsonIgnore]
-        //private Color _StatusBG  = Color.FromHex("#D99A29");
-        //[JsonIgnore]
-        //public Color StatusBG
-        //{
-        //    get
-        //    {
-        //        return _StatusBG;
-        //    }
-        //    set
-        //    {
-        //        _StatusBG = value;
-        //        RaisePropertyChanged("StatusBG");
-        //    }
-        //}
+        [JsonIgnore]
+        private Color _StatusBG  = Color.FromHex("#E5EFED");
+        [JsonIgnore]
+        public Color StatusBG
+        {
+            get
+            {
+                if (Betrh != null && Double.Parse(Betrh) < 0)
+                {
+                    _StatusBG = Color.Transparent;
+                    return _StatusBG;
+                }
+               
+                return _StatusBG;
+            }
+            set
+            {
+                
+                _StatusBG = value;
+
+                RaisePropertyChanged("StatusBG");
+            }
+        }
 
 
 
@@ -652,5 +660,12 @@ namespace EGAZT.Models.AccountStatements
         public string FilterHeader { get; set; }
         public string SortAscending { get; set; }
         public string SortDescending { get; set; }
+    }
+
+    public class AccountStatementsListItem
+    {
+        public string taxType { get; set; }
+        public string lastDate { get; set; }
+        public string amount { get; set; }
     }
 }

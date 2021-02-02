@@ -108,7 +108,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 RangeColorCollection rangeColors = new RangeColorCollection();
                 rangeColors.Add(new RangeColor() { Color = Color.FromHex("006450"), IsGradient = false, Start = 0, End = viewModel.CreditAmountStartProgressBar });
                 rangeColors.Add(new RangeColor() { Color = Color.FromHex("AA0C19"), IsGradient = false, Start = viewModel.CreditAmountStartProgressBar, End = 100 });
-                Device.BeginInvokeOnMainThread(() => TaxBalanceProgress.RangeColors = rangeColors);
+                //         Device.BeginInvokeOnMainThread(() => TaxBalanceProgress.RangeColors = rangeColors);
             });
             isTimerOff = false;
             StartTimer();
@@ -129,10 +129,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                     case Xamarin.Forms.Device.iOS:
                         {
-                            TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
-                            TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            /*                            TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
+                                                        TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                                        TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                                        TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy*/
 
                             CommitmentsPicker.HeaderFontFamily = "SSTArabic-Medium";
                             CommitmentsPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
@@ -143,11 +143,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     case Xamarin.Forms.Device.Android:
                         {
 
-                            TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
-
+                            /*  TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                              TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                              TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                              TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+  */
                             CommitmentsPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                             CommitmentsPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                             CommitmentsPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
@@ -355,22 +355,22 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.PopulateBillsInformation();
                     viewModel.PopulateReturnsInformation();
                     viewModel.PopualateCommittmentsInformation();
-                    try
-                    {
-                        if (viewModel.BillsAndReturnsCommitments != null)
-                        {
-                            if (viewModel.BillsAndReturnsCommitments.Count > 0)
-                            {
-                                CollectionView_Commitment.ScrollTo(0);
-                            }
+                    /*  try
+                      {
+                          if (viewModel.BillsAndReturnsCommitments != null)
+                          {
+                              if (viewModel.BillsAndReturnsCommitments.Count > 0)
+                              {
+                                  CollectionView_Commitment.ScrollTo(0);
+                              }
 
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
-                    }
+                          }
+                      }
+                      catch (Exception ex)
+                      {
+                          Console.Write(ex.ToString());
+                          Console.Write(ex.StackTrace.ToString());
+                      }*/
                     viewModel.IsLoading = false;
                 });
             }
@@ -403,6 +403,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.MenuIndicatorColor = Color.White;
             viewModel.TabbarColor = Color.DarkGray;
             viewModel.StackMenuColor = Color.White;
+            viewModel.IsToolbarTaxVisible = true;
+
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -418,6 +420,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.MenuIndicatorColor = Color.FromHex("#006450");
                 viewModel.StackMenuColor = Color.Transparent;
                 viewModel.TabbarColor = Color.Transparent;
+                viewModel.IsToolbarTaxVisible = false;
+
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
             else
@@ -447,7 +451,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             });
         }
-        private void TappedOnSignleReturns(object sender, EventArgs e)
+       /* private void TappedOnSignleReturns(object sender, EventArgs e)
         {
             string controltype = sender.GetType().ToString();
 
@@ -487,6 +491,39 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             }
 
+        }*/
+
+        private void TappedOnUnSubmitted(object sender, EventArgs e)
+        {
+            viewModel.IsLoading = true;
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Unsubmitted Return from Dashboard");
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 1);
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+            });
+        }
+        private void TappedOnSubmitted(object sender, EventArgs e)
+        {
+            viewModel.IsLoading = true;
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Submitted Return from Dashboard");
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 0);
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+            });
+        }
+        private void TappedOnOverDue(object sender, EventArgs e)
+        {
+            viewModel.IsLoading = true;
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Overdue Return from Dashboard");
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 2);
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+            });
         }
         private void paidClicked(object sender, EventArgs e)
         {
@@ -524,6 +561,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.HomeViewVisible = false;
                 viewModel.AccountStatementVisible = true;
                 viewModel.LiveChatVisible = false;
+                viewModel.IsToolbarTaxVisible = false;
 
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "AccountStatements_Tapped", "Account Statements eService");
                 viewModel._navigationService.NavigateTo(App.AccountStatementsPageView);
@@ -544,6 +582,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.HomeViewVisible = false;
                 viewModel.AccountStatementVisible = false;
                 viewModel.LiveChatVisible = true;
+                viewModel.IsToolbarTaxVisible = false;
 
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnSupportTapped", "Support");
                 viewModel._navigationService.NavigateTo(App.SupportPageView);
@@ -1020,10 +1059,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
         }
 
-        private void btnTaxTypePickerClicked(object sender, System.EventArgs e)
-        {
-            TaxTypePicker.IsOpen = true;
-        }
+        /*        private void btnTaxTypePickerClicked(object sender, System.EventArgs e)
+                {
+                    TaxTypePicker.IsOpen = true;
+                }*/
 
         void CommitmentsPicker_SelectionChanged(System.Object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -1044,23 +1083,21 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
         }
 
-        private double previousScrollPosition = 0;
-
         private async void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
         {
-            Console.WriteLine("Scrollposition: " + previousScrollPosition);
+            Console.WriteLine("Scrollposition: " + btn_frameToolbar.IsFocused);
 
-            previousScrollPosition = e.ScrollY;
             var part = GetTemplateChild("frameToolbar") as SfBorder;
-            if (e.ScrollY > 70)
+            if (e.ScrollY > 120)
             {
-                await part.FadeTo(1, 900);
-                await btn_frameToolbar.FadeTo(0, 900);
+                await part.FadeTo(1, 600);
+                await btn_frameToolbar.FadeTo(0, 600);
+
             }
             else
             {
-                await part.FadeTo(0, 900);
-                await btn_frameToolbar.FadeTo(1,900);
+                await part.FadeTo(0, 600);
+                await btn_frameToolbar.FadeTo(1, 600);
             }
         }
 

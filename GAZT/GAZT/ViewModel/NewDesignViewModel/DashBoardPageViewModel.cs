@@ -8,6 +8,7 @@ using Syncfusion.SfCalendar.XForms;
 using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -58,6 +59,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private bool _menuViewVisible = false;
         private bool _homeViewVisible = true;
         private bool _accountStatementVisible = false;
+        private bool _IsToolbarTaxVisible = true;
         private bool _liveChatVisible = false;
         private Color _homeIndicatorColor = Color.FromHex("#005e4b");
         private Color _menuIndicatorColor = Color.White;
@@ -88,7 +90,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private List<TaxRelationSetResult> _taxTypeFilter = null;
         private List<MyBillsChartModel> _MyBillsChartModels = null;
 
-
         public List<OverduePaymentAndUnSubmittedReturn> BillsAndReturnsCommitments
         {
             get
@@ -106,6 +107,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             }
         }
+
+        private ObservableCollection<ASResult> _AccountStatementsList { get; set; }
+
+        public ObservableCollection<ASResult> AccountStatementsList
+        {
+            get
+            {
+                return this._AccountStatementsList;
+            }
+            set
+            {
+                if (_AccountStatementsList == value) return;
+
+                if (value != null)
+                {
+                    this._AccountStatementsList = value;
+                    RaisePropertyChanged("AccountStatementsList");
+                }
+            }
+        }
+
         public List<TaxRelationSetResult> TaxTypeFilter
         {
             get
@@ -349,7 +371,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isInstalmentPlanVisible=false;
+        private bool _isInstalmentPlanVisible = false;
         public bool IsInstalmentPlanVisible
         {
             get
@@ -1135,6 +1157,100 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public bool IsToolbarTaxVisible
+        {
+            get
+            {
+                return _IsToolbarTaxVisible;
+            }
+            set
+            {
+                if (_IsToolbarTaxVisible == value) return;
+
+                this._IsToolbarTaxVisible = value;
+
+                this.RaisePropertyChanged("IsToolbarTaxVisible");
+            }
+        }
+
+        //Single Line 74
+        private int _LastTransactionsListHeight = 220;
+        public int LastTransactionsListHeight
+        {
+            get
+            {
+                return _LastTransactionsListHeight;
+            }
+            set
+            {
+                _LastTransactionsListHeight = value;
+                RaisePropertyChanged("LastTransactionsListHeight");
+            }
+        }
+
+        private string _SubmittedCount = null;
+        public string SubmittedCount
+        {
+            get
+            {
+                return _SubmittedCount;
+            }
+            set
+            {
+                if (_SubmittedCount == value) return;
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _SubmittedCount = value;
+                    RaisePropertyChanged("SubmittedCount");
+
+                }
+
+            }
+        }
+
+        private string _UnSubmittedCount = null;
+        public string UnSubmittedCount
+        {
+            get
+            {
+                return _UnSubmittedCount;
+            }
+            set
+            {
+                if (_UnSubmittedCount == value) return;
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _UnSubmittedCount = value;
+                    RaisePropertyChanged("UnSubmittedCount");
+
+                }
+
+            }
+        }
+
+        private string _OverDueCount = null;
+        public string OverDueCount
+        {
+            get
+            {
+                return _OverDueCount;
+            }
+            set
+            {
+                if (_OverDueCount == value) return;
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _OverDueCount = value;
+                    RaisePropertyChanged("OverDue");
+
+                }
+
+            }
+        }
+
 
         #endregion
 
@@ -1145,6 +1261,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             MenuViewVisible = false;
             LiveChatVisible = false;
             AccountStatementVisible = false;
+            IsToolbarTaxVisible = true;
+
             TaxpayerName = string.Empty;
             HomeViewVisible = true;
             IsVatRegistrationTileVisible = false;
@@ -1163,6 +1281,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             MenuViewVisible = false;
             HomeViewVisible = true;
+
         }
         #endregion
 
@@ -1185,20 +1304,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
                 _ = Task.Run(GetAccountStatments);
                 //_ = Task.Run(GetBillsAndReturns);
-                if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null) {
+                if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null)
+                {
 
-                    if(DashboardData.results[0].InsActFlg == "X") {
+                    if (DashboardData.results[0].InsActFlg == "X")
+                    {
                         IsInstalmentPlanVisible = true;
                         _ = Task.Run(getDashboardInstalmentPlan);
                     }
-                    else {
+                    else
+                    {
 
                         IsInstalmentPlanVisible = false;
                     }
 
                 }
 
-                    
+
 
 
             }
@@ -1269,6 +1391,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
             HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A");
 
+            var items = new ObservableCollection<ASResult>();
+            foreach (ASResult singleItem in HeaderSet.D.StatmenetLineItemsSet.Results)
+            {
+                items.Add(singleItem);
+            }
+            AccountStatementsList = items;
+            if (AccountStatementsList.Count > 2)
+            {
+                LastTransactionsListHeight = 220;
+            }else if(AccountStatementsList.Count>1)
+            {
+                LastTransactionsListHeight = 150;
+            }
+            else
+            {
+                LastTransactionsListHeight = 75;
+            }
             //Device.BeginInvokeOnMainThread(() =>
             //{
             //    foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
@@ -1355,11 +1494,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private async Task getDashboardInstalmentPlan()
         {
 
-            InstalmentResponse =  WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.TP.Userid);
+            InstalmentResponse = WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.TP.Userid);
 
-            
+
 
         }
+
 
         public void PopualateCommittmentsInformation()
         {
@@ -1692,7 +1832,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             SubmittedReturnTypeAndCorrepsondingCount.ReturnCount = RtnTotstr;
                             SubmittedReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.Submitted;
-
+                            SubmittedCount = RtnTotstr;
                             SegregatedReturnTypeAndCorrepsondingCount.Add(SubmittedReturnTypeAndCorrepsondingCount);
                         }
 
@@ -1713,6 +1853,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             OverdueReturnTypeAndCorrepsondingCount.ReturnCount = DueIcrstr;
                             OverdueReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.OverDue;
+                            OverDueCount = DueIcrstr;
 
                             SegregatedReturnTypeAndCorrepsondingCount.Add(OverdueReturnTypeAndCorrepsondingCount);
                         }
@@ -1734,6 +1875,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             UnSubmittedReturnTypeAndCorrepsondingCount.ReturnCount = NrtnTotstr;
                             UnSubmittedReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.UnSubmitted;
+                            UnSubmittedCount = NrtnTotstr;
 
                             SegregatedReturnTypeAndCorrepsondingCount.Add(UnSubmittedReturnTypeAndCorrepsondingCount);
                         }
