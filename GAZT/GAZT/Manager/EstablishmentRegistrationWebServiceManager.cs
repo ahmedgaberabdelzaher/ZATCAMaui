@@ -66,7 +66,7 @@ namespace EGAZT.Manager
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -78,7 +78,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -157,7 +157,7 @@ namespace EGAZT.Manager
                             {
                                 ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
 
                             }
@@ -169,7 +169,7 @@ namespace EGAZT.Manager
                 {
                     throw ex;
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -181,7 +181,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }

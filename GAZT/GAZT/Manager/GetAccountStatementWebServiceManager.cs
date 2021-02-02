@@ -65,7 +65,7 @@ namespace EGAZT.Manager
                     }
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -123,7 +123,7 @@ namespace EGAZT.Manager
 
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -184,7 +184,7 @@ namespace EGAZT.Manager
 
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -240,7 +240,7 @@ namespace EGAZT.Manager
 
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
