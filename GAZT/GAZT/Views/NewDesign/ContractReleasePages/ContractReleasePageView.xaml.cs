@@ -57,7 +57,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             try
             {
 
-                Task.Run(async () =>
+                Task.Run(() =>
                 {
                     viewModel.PopulateDataInChips();
 
@@ -68,7 +68,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
 

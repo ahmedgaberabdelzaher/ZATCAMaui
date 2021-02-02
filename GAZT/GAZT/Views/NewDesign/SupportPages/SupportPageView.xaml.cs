@@ -45,7 +45,7 @@ namespace EGAZT.Views.NewDesign
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -107,13 +107,13 @@ namespace EGAZT.Views.NewDesign
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
 
         }
-        private async void SetLocationToMap()
+        private void SetLocationToMap()
         {
             try
             {
@@ -133,24 +133,24 @@ namespace EGAZT.Views.NewDesign
                     };
                     mapView.Pins.Add(pin);
                 }
-            catch (FeatureNotSupportedException fnsEx)
+            catch (FeatureNotSupportedException)
             {
                 // Handle not supported on device exception
             }
-            catch (FeatureNotEnabledException fneEx)
+            catch (FeatureNotEnabledException)
             {
                 // Handle not enabled on device exception
             }
-            catch (PermissionException pEx)
+            catch (PermissionException)
             {
                 // Handle permission exception
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Unable to get location
             }
             }
-            catch(Exception e)
+            catch(Exception)
             {
 
             }
@@ -299,7 +299,7 @@ namespace EGAZT.Views.NewDesign
             viewModel.PageTitle = AppResources.NDGAZT;
             //  ContactUsWebView.IsVisible = true;
             Uri uri = new Uri("https://twitter.com/GAZT_KSA");
-            Device.OpenUri(uri);
+            Launcher.OpenAsync(uri);
             //   ContactUsWebView.Source = "https://twitter.com/GAZT_KSA";
 
         }
@@ -309,7 +309,7 @@ namespace EGAZT.Views.NewDesign
             viewModel.PageTitle = AppResources.ZakatInstalmetSelectTypeVAT;
             //ContactUsWebView.IsVisible = true;
             Uri uri = new Uri("https://twitter.com/saudivat");
-            Device.OpenUri(uri);
+            Launcher.OpenAsync(uri);
             // ContactUsWebView.Source = "https://twitter.com/saudivat";
 
 
@@ -330,11 +330,11 @@ namespace EGAZT.Views.NewDesign
                 //await Email.ComposeAsync(message);
                 await Xamarin.Essentials.Email.ComposeAsync("", "", Email.Text);
             }
-            catch (FeatureNotSupportedException fbsEx)
+            catch (FeatureNotSupportedException)
             {
                 // Email is not supported on this device
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Some other exception occurred
             }
@@ -346,15 +346,15 @@ namespace EGAZT.Views.NewDesign
             {
                 PhoneDialer.Open(InternationalPhone.Text);
             }
-            catch (ArgumentNullException anEx)
+            catch (ArgumentNullException)
             {
                 // Number was null or white space
             }
-            catch (FeatureNotSupportedException ex)
+            catch (FeatureNotSupportedException)
             {
                 // Phone Dialer is not supported on this device.
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Other error has occurred.
             }
@@ -366,15 +366,15 @@ namespace EGAZT.Views.NewDesign
             {
                 PhoneDialer.Open(LocalPhone.Text);
             }
-            catch (ArgumentNullException anEx)
+            catch (ArgumentNullException)
             {
                 // Number was null or white space
             }
-            catch (FeatureNotSupportedException ex)
+            catch (FeatureNotSupportedException)
             {
                 // Phone Dialer is not supported on this device.
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Other error has occurred.
             }

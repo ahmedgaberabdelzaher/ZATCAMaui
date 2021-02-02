@@ -56,7 +56,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 viewModel.setMoreOptioButtons();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -135,7 +135,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -276,7 +276,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 viewModel.EnableBillsContinue();
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -309,7 +309,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
 
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {
@@ -349,7 +349,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 });
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "TermsContinueSecond", (sender, arg) =>
                 {
-                    if (arg != null && arg == true)
+                    if (arg == true)
                     {
                         viewModel.SecondTerms = true;
                     }
@@ -357,7 +357,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "InstructionsContinue", (sender, arg) =>
                 {
-                    if (arg != null && arg == true)
+                    if (arg == true)
                     {
                         viewModel.FirstTerms = true;
                     }
@@ -365,10 +365,10 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "TermsContinue", (sender, arg) =>
                 {
-                    if (arg != null)
-                    {
+                    //if (arg != null)
+                    //{
                         //viewModel.EnableSucessScreenAsync();
-                    }
+                    //}
                 });
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "Notes", (sender, arg) =>
@@ -484,12 +484,12 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
 
-        public async void getYesCommand()
+        public  void getYesCommand()
         {
             try
             {
@@ -510,13 +510,13 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
 
-        public async void getNoCommand()
+        public  void getNoCommand()
         {
             try
             {
@@ -538,7 +538,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }

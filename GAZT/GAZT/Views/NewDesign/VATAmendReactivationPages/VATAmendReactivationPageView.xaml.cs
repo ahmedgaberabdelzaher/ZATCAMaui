@@ -22,7 +22,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
@@ -89,13 +89,13 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -150,7 +150,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string year = selectedItem[2].ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -166,7 +166,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string year = selectedItem[2].ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -233,7 +233,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -392,7 +392,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -500,7 +500,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     {
                         if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
                         {
-                            PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage));
+                            await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage));
                             return;
                         }
                     }
@@ -515,7 +515,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 else
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                 }
 
             }
@@ -810,7 +810,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await Task.Run(() =>
                     {
@@ -878,7 +878,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await Task.Run(() =>
                     {
@@ -952,7 +952,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1016,7 +1016,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1039,7 +1039,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             MessagingCenter.Unsubscribe<VATAmendReactivationPageViewModel, bool>(this, "IsAddNewRepresentativeChecked");
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {
@@ -1143,7 +1143,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 triggerIban(message);
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                         }
@@ -1168,7 +1168,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 });
                 viewModel.IsNewFinancialRepVisible = viewModel.IsAddNewRepresentativeChecked;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1180,7 +1180,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 await viewModel.onPageLoad();
                 setIban();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1214,7 +1214,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
         }
 
-        private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
+        private async void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
         {
             try
             {
@@ -1242,7 +1242,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
                             viewModel.FrameIDError = true;
                             viewModel.IdnumberFR = string.Empty;
                         }
@@ -1269,7 +1269,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                                 viewModel.FrameIDError = true;
                                 viewModel.IdnumberFR = string.Empty;
                             }
@@ -1278,7 +1278,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(viewModel.DOB))
                                 {
-                                    ValidateIDNumber();
+                                    await ValidateIDNumber();
                                 }
                             }
                         }
@@ -1298,7 +1298,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
                             viewModel.FrameIDError = true;
                             viewModel.IdnumberFR = string.Empty;
                         }
@@ -1325,7 +1325,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                                 viewModel.FrameIDError = true;
                                 viewModel.IdnumberFR = string.Empty;
                             }
@@ -1334,7 +1334,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(viewModel.DOB))
                                 {
-                                    ValidateIDNumber();
+                                    await ValidateIDNumber();
                                 }
                             }
                         }
@@ -1355,7 +1355,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
                             viewModel.FrameIDError = true;
                             viewModel.IdnumberFR = string.Empty;
                         }
@@ -1372,13 +1372,13 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
                             viewModel.FrameIDError = true;
                             viewModel.IdnumberFR = string.Empty;
                         }
                         else
                         {
-                            ValidateIDNumber();
+                            await ValidateIDNumber();
                         }
                     }
                 }
@@ -1387,7 +1387,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.FrameIDError = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1474,7 +1474,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1586,11 +1586,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 if (App.IsArabic)
                 {
 
-                    Device.OpenUri(new Uri("https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx"));
+                    Launcher.OpenAsync(new Uri("https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx"));
                 }
                 else
                 {
-                    Device.OpenUri(new Uri("https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx"));
+                    Launcher.OpenAsync(new Uri("https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx"));
 
                 }
             }
@@ -1608,7 +1608,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 sendtoPopup.vatRegOthrDetailtoPopup = viewModel.VATRegistrationOtherDetails;
                 await PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView(sendtoPopup, Models.ZakatInstalationModels.WhichAttachment.VATAmendRegistration));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1631,7 +1631,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 setAttachmentImporterExporterVisibility();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1667,7 +1667,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 setAttachmentImporterExporterVisibility();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1742,7 +1742,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             viewModel.VATRegistrationDetailsData.d.Operationz = OperationCode;
@@ -1867,7 +1867,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     lblDOB.IsVisible = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1915,7 +1915,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1957,7 +1957,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData, Models.ZakatInstalationModels.WhichAttachment.VATAmendRegistration, isImporter));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1970,7 +1970,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 ((Xamarin.Forms.CollectionView)sender).SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -2018,12 +2018,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -2058,12 +2058,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2098,14 +2098,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2114,7 +2114,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2141,12 +2141,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -2176,12 +2176,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2216,14 +2216,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2232,7 +2232,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2269,12 +2269,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -2314,12 +2314,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2354,14 +2354,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2370,7 +2370,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2415,12 +2415,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -2438,12 +2438,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2478,14 +2478,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2494,7 +2494,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2522,12 +2522,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -2545,12 +2545,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2585,14 +2585,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2601,7 +2601,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2633,12 +2633,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -2670,12 +2670,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2710,14 +2710,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2726,7 +2726,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2752,7 +2752,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             SignUpDOB.IsOpen = true;
         }
 
-        private void DOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private async void DOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             try
             {
@@ -2770,9 +2770,9 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     viewModel.FrameDOBError = false;
                 }
-                ValidateIDNumber();
+                await ValidateIDNumber();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3044,7 +3044,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string DOB = year + month + day;
                 ValidateIDNumberContact();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3082,12 +3082,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameContactIDError = true;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameContactIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -3106,12 +3106,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             {
                                 viewModel.FrameContactIDError = true;
                                 viewModel.IdNumberSR = string.Empty;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameContactIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -3146,14 +3146,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3190,12 +3190,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             {
                                 viewModel.FrameContactIDError = true;
                                 viewModel.IdNumberSR = string.Empty;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameContactIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -3214,12 +3214,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             {
                                 viewModel.FrameContactIDError = true;
                                 viewModel.IdNumberSR = string.Empty;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameContactIDError = false;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -3254,14 +3254,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3270,7 +3270,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3392,7 +3392,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                         await Task.Run(() =>
                         {
                             viewModel.IsLoading = false;
@@ -3408,7 +3408,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3501,7 +3501,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
@@ -3577,7 +3577,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3914,12 +3914,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
                 viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
 
-        private void SignUpDOB_Closed(object sender, EventArgs e)
+        private async void SignUpDOB_Closed(object sender, EventArgs e)
         {
             try
             {
@@ -3937,9 +3937,9 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     viewModel.FrameDOBError = true;
                 }
-                ValidateIDNumber();
+                await ValidateIDNumber();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3957,7 +3957,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string DOB = year + month + day;
                 ValidateIDNumberContact();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3986,7 +3986,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     var ssd = App.Locator.CalendarPickerPageView.SelectedDate;
                     await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTUnlockAccountException)
                 {
 
                 }

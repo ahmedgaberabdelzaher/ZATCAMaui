@@ -39,7 +39,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.Fbguid = Fbguid;
             //viewModel.z = true;
             //viewModel.IsNoDataLabelVisible = false;
-            viewModel.LoadZakatForm5Data();
+            _ = viewModel.LoadZakatForm5Data();
 
            // IntialiseAsync();
           //  ZakatEstimationList.IsVisible = viewModel.IsZakatEstListVisible;
@@ -60,7 +60,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                
             }
 
-            Task.Run(async () =>
+            Task.Run( () =>
             {
                // await LoadData();
 
@@ -101,7 +101,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 //}
               
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
@@ -110,7 +110,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 // App.HideProgressView();
             }
         }
-        public async Task IntialiseAsync()
+        public void IntialiseAsync()
         {
             //try
             //{

@@ -62,7 +62,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
                 viewModel._navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -80,7 +80,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
                 viewModel._navigationService.GoBack();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }

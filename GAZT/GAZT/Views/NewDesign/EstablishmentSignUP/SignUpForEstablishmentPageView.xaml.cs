@@ -54,7 +54,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             ChangeAeroIcon();
             SetLTR();
             ClearFields();
-            loadPageData();
+            _ = loadPageData();
             SetPickerFont();
             viewModel.TxtLOrCIssuedBy = string.Empty;
             viewModel.TxtCountryCode = "+966";
@@ -171,7 +171,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -199,7 +199,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.IsHijriCal = false;
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
 
             }
@@ -536,7 +536,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             return false;
                         }
                     }
-                    catch (InternetException ex)
+                    catch (InternetException)
                     {
 
                         //  viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
@@ -616,7 +616,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             }
                         }
                     }
-                    catch (InternetException ex)
+                    catch (InternetException )
                     {
                         //viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                         PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
@@ -1142,14 +1142,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = false;
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -1165,13 +1165,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 if (string.IsNullOrEmpty(SignupIsIDTypeValid.d.Tin))
                                 {
                                     viewModel.TxtTIN = string.Empty;
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
                                 }
                                 else
                                 {
                                     if (string.IsNullOrEmpty(viewModel.TxtTIN))
                                     {
-                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
                                     }
                                 }
 
@@ -1190,14 +1190,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
                                 //   viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
                                 //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -1236,14 +1236,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1256,7 +1256,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1289,14 +1289,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
                                 //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -1310,13 +1310,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 if (string.IsNullOrEmpty(SignupIsIDTypeValid.d.Tin))
                                 {
                                     viewModel.TxtTIN = string.Empty;
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
                                 }
                                 else
                                 {
                                     if (string.IsNullOrEmpty(viewModel.TxtTIN))
                                     {
-                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
                                     }
                                 }
 
@@ -1335,14 +1335,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = false;
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -1380,14 +1380,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1400,7 +1400,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1433,14 +1433,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
                                 //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -1454,13 +1454,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 if (string.IsNullOrEmpty(SignupIsIDTypeValid.d.Tin))
                                 {
                                     viewModel.TxtTIN = string.Empty;
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
                                 }
                                 else
                                 {
                                     if (string.IsNullOrEmpty(viewModel.TxtTIN))
                                     {
-                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
                                     }
                                 }
 
@@ -1479,14 +1479,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = false;
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -1524,14 +1524,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1544,7 +1544,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1653,7 +1653,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
             if (!string.IsNullOrEmpty(viewModel.PkrDBO))
@@ -1665,7 +1665,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             }
         }
-        private async void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private  void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
             {
@@ -1891,7 +1891,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     //  TxtIDType = _selectedSignUpUsing.SUType;
                 }
-                catch (Exception Ex)
+                catch (Exception )
                 {
                 }
                 viewModel.SelectedSignUpUsingSetForCancle = viewModel.SelectedSignUpUsing;
@@ -1907,7 +1907,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
         }
 
-        private void CRDuplicateCheck()
+        private async void CRDuplicateCheck()
         {
             CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
             SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
@@ -1982,7 +1982,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     SiguupModel.ACommId = "";
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                 }
                 //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -2031,11 +2031,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                 }
                 //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
             }
             else
             {
-                NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                 //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
             }
         }
@@ -2104,7 +2104,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.MobileVerification)
                 {
                     //viewModel.TimerStart(viewModel.numberOfSeconds);
-                    EstablishmentSignUpDataAsync();
+                    await EstablishmentSignUpDataAsync();
                 }
                 else
                 {
@@ -2438,11 +2438,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             try
             {
 
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     viewModel.IsLoading = false;
-
-
                 });
                 // viewModel.otpTimer.Stop();
                 viewModel.StartOTPTimer();
@@ -2571,7 +2569,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                             }
                                             SiguupModel.ACommId = "";
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
                                         }
                                         //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -2627,13 +2625,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                             }
                                         }
                                         // viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                                     }
                                     else
                                     {
 
 
-                                        NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                        await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
 
                                     }
                                 }
@@ -2687,7 +2685,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 else
                                 {
                                     // viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
                                 }
                             }
 
@@ -2721,7 +2719,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     viewModel._navigationService.GoBack();
                                 });
                             }
-                            catch (HttpRequestException ex)
+                            catch (HttpRequestException )
                             {
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2740,11 +2738,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 });
                             }
-                            catch (Exception ex)
+                            catch (Exception )
                             {
 
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2842,7 +2840,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         SiguupModel.ACommId = "";
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception )
                                     {
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -2898,12 +2896,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                     }
                                     // viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                                 }
                                 else
                                 {
 
-                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                    await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
 
                                     //  viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
@@ -2947,10 +2945,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     //  viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 });
                             }
-                            catch (HttpRequestException ex)
+                            catch (HttpRequestException )
                             {
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2963,7 +2961,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     //_navigationService.GoBack();
                                 });
                             }
-                            catch (Exception ex)
+                            catch (Exception )
                             {
 
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2981,7 +2979,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     else
                     {
                         //   viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
                     }
                 }
                 catch (GAZTException gex)
@@ -3019,10 +3017,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     });
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
                 {
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3035,7 +3033,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         viewModel._navigationService.GoBack();
                     });
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
 
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3138,7 +3136,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         SiguupModel.ACommId = "";
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -3194,11 +3192,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                     }
                                     //   viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                                 }
                                 else
                                 {
-                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                    await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                     //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
                             }
@@ -3252,7 +3250,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             else
                             {
                                 //   viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
                             }
                         }
                         catch (GAZTException gex)
@@ -3290,10 +3288,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3306,7 +3304,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3399,7 +3397,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     }
                                     SiguupModel.ACommId = "";
                                 }
-                                catch (Exception ex)
+                                catch (Exception )
                                 {
                                 }
                                 //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -3455,11 +3453,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     }
                                 }
                                 //viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                             }
                             else
                             {
-                                NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                 //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                             }
                         }
@@ -3498,10 +3496,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3514,7 +3512,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3532,7 +3530,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 else
                 {
                     // viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
                 }
             }
             if (viewModel.SelectedSignUpUsing.ID == 3)
@@ -3624,7 +3622,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         SiguupModel.ACommId = "";
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception )
                                     {
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -3682,11 +3680,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                     }
                                     //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                                 }
                                 else
                                 {
-                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                    await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                     // viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
                             }
@@ -3776,10 +3774,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 //  viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3792,7 +3790,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3885,7 +3883,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     }
                                     SiguupModel.ACommId = "";
                                 }
-                                catch (Exception ex)
+                                catch (Exception )
                                 {
                                 }
                             }
@@ -3939,17 +3937,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     }
                                 }
                                 //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                             }
                             else
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                Device.BeginInvokeOnMainThread( () =>
                                 {
                                     viewModel.IsLoading = true;
 
 
                                 });
-                                NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                 //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                             }
                         }
@@ -3988,10 +3986,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -4004,7 +4002,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -4024,7 +4022,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     });
                 }
             }
@@ -4197,7 +4195,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4281,7 +4279,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

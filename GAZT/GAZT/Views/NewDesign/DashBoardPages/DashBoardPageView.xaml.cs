@@ -84,10 +84,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         #region Method
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            await OnDataLoad();
+            OnDataLoad();
             RefreshDashboardCommand();
             getYesCommandToLogout();
             getNoCommandToLogout();
@@ -179,7 +179,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "NoPressedToLogout", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "NoPressedToLogout", (sender, arg) =>
                 {
                 });
             }
@@ -189,7 +189,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 Console.Write(ex.StackTrace.ToString());
             }
         }
-        private async Task OnDataLoad()
+        private void OnDataLoad()
         {
             if (App.HasToRefreshLoaderOnDashboard == true)
             {
@@ -379,23 +379,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            if (true)
-            {
-                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnMenuTapped", AppResources.ZZZMenu + " Page");
-                viewModel.MenuViewVisible = true;
-                viewModel.HomeViewVisible = false;
-                viewModel.AccountStatementVisible = false;
-                viewModel.LiveChatVisible = false;
-                viewModel.HomeIndicatorColor = Color.White;
-                viewModel.MenuIndicatorColor = Color.FromHex("#006450");
-                viewModel.StackMenuColor = Color.Transparent;
-                viewModel.TabbarColor = Color.Transparent;
-                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-            }
-            else
-            {
-                PopupNavigation.Instance.PushAsync(new InfoPopUpPage());
-            }
+            
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnMenuTapped", AppResources.ZZZMenu + " Page");
+            viewModel.MenuViewVisible = true;
+            viewModel.HomeViewVisible = false;
+            viewModel.AccountStatementVisible = false;
+            viewModel.LiveChatVisible = false;
+            viewModel.HomeIndicatorColor = Color.White;
+            viewModel.MenuIndicatorColor = Color.FromHex("#006450");
+            viewModel.StackMenuColor = Color.Transparent;
+            viewModel.TabbarColor = Color.Transparent;
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+            
         }
         private void TappedOnMyBills(object sender, EventArgs e)
         {
@@ -755,7 +750,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 {
                     viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }

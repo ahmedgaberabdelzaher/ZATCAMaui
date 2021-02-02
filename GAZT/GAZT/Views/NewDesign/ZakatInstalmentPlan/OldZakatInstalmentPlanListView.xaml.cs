@@ -44,7 +44,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                // viewModel.onPageLoad();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -79,7 +79,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 0)
             {
                 viewModel.EnableCreateZakatInstalment();
-                viewModel.GetZakatInstalmentPlanList();
+                await viewModel.GetZakatInstalmentPlanList();
 
             }
             else if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 1)
@@ -102,18 +102,18 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 viewModel.ResetData();
                 viewModel.EnableCreateZakatInstalment();
-                viewModel.GetZakatInstalmentPlanList();
+                await viewModel.GetZakatInstalmentPlanList();
 
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
         }
 
 
-        private void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private async void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var item = e.ItemData as OldZakatListModel;
             if (item != null)
@@ -138,7 +138,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     viewModel.SelectedFbNum = item.fbNum;
                     var index = viewModel.ZakatListData.IndexOf(item);
 
-                    viewModel.GetSummaryDetailsClickedAsync(index);
+                    await viewModel.GetSummaryDetailsClickedAsync(index);
                     viewModel.EnableZakatInstalmentSummary();
                 }
             }

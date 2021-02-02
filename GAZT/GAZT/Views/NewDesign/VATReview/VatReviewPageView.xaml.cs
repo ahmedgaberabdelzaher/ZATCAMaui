@@ -39,7 +39,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
             viewModel.ResetData();
 
-            viewModel.VatReviewReasonDropDownData();
+            _ = viewModel.VatReviewReasonDropDownData();
 
 
             viewModel.setMoreOptioButtons();
@@ -82,16 +82,13 @@ namespace EGAZT.Views.NewDesign.VatReview
 
             Xamarin.Forms.MessagingCenter.Subscribe<object, int>(this, "draftRequest", (sender, arg) =>
             {
-                if (arg != null)
-                {
                     DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[arg];
-                }
+                
             });
 
             Xamarin.Forms.MessagingCenter.Subscribe<object, int>(this, "draftSecurity", (sender, arg) =>
             {
-                if (arg != null)
-                {
+                
                     securityTypeListView.SelectedItem = viewModel.SecurityPaymentOptions[arg];
                     if (arg == 0)
                     {
@@ -102,7 +99,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                         viewModel.EnablebankGuranteeSecurityView();
                     }
                     viewModel.EnableSecurityPaymentsConButton();
-                }
+                
             });
 
 
@@ -221,7 +218,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
         }
 
-        public async void getYesCommand()
+        public void getYesCommand()
         {
             try
             {
@@ -242,13 +239,13 @@ namespace EGAZT.Views.NewDesign.VatReview
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
 
-        public async void getNoCommand()
+        public void getNoCommand()
         {
             try
             {
@@ -270,7 +267,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

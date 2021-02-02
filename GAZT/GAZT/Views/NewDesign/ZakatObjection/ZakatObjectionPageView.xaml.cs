@@ -37,7 +37,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             this.BindingContext = viewModel;
             //viewModel.showInstructionsDialog();
             viewModel.ResetData();
-            GetZakatObjectionsData();
+            _ = GetZakatObjectionsData();
 
         }
 
@@ -82,7 +82,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             });
             var attachment = e.ItemData as Attachment;
 
-            if (attachment.Filename.Contains(".")) ;
+            //if (attachment.Filename.Contains(".")) ;
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
@@ -117,7 +117,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                     //                    viewModel.IsLoading = true;
 
                 });
-                await Task.Run(async () =>
+                await Task.Run( () =>
                 {
                     viewModel.OnPageLoad();
 

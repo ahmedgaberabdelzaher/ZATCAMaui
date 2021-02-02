@@ -76,7 +76,7 @@ namespace EGAZT.Views.NewDesign.Template
                 // InitializeComponent();
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
@@ -95,7 +95,7 @@ namespace EGAZT.Views.NewDesign.Template
                 this.FlowDirection = FlowDirection.LeftToRight;
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }

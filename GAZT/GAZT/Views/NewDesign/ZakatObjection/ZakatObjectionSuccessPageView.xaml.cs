@@ -50,7 +50,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 this.Padding = safeInsets;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -93,7 +93,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                    
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
 

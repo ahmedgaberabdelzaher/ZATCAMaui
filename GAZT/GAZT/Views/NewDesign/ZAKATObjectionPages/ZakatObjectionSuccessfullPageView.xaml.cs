@@ -31,14 +31,14 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             ChangeAeroIcon();
 
             viewModel.ClearData();
-            viewModel.OnPageLoad(ZakatReturnDetail);
+            _ = viewModel.OnPageLoad(ZakatReturnDetail);
             this._zakatReturnDetail = ZakatReturnDetail;
 
             ToolbarItem Refresh = new ToolbarItem
             {
                 Order = ToolbarItemOrder.Primary,
                 Priority = 1,
-                Command = new Command(async () =>
+                Command = new Command( () =>
                 {
                    // await OnRefreshButtonClicked();
                     // viewModel._navigationService.NavigateTo(App.VATLookupPageView);

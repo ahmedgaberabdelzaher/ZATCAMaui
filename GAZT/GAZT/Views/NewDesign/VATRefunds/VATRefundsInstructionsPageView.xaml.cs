@@ -24,10 +24,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             SetLTR();
         }
 
-        protected override void OnAppearingAnimationEnd()
+        protected override async void OnAppearingAnimationEnd()
         {
             base.OnAppearingAnimationEnd();
-            viewModel.ReloadData();
+            await viewModel.ReloadData();
         }
 
         private void SetLTR()

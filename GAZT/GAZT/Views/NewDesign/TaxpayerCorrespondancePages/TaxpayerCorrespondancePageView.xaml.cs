@@ -31,7 +31,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             SetPickerFont();
-            PageLoad();
+            _ = PageLoad();
         }
         public void SetPickerFont()
         {

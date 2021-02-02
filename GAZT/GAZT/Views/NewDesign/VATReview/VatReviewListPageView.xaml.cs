@@ -44,7 +44,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
@@ -52,7 +52,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
-            _viewModel.VATObjectionList();
+            await _viewModel.VATObjectionList();
 
         }
 
@@ -75,7 +75,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             }
         }
 
-        private void Reviews_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void Reviews_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             //string formguid = "005056B1F8FB1EDABC99B9AFD7873DBB"; //string.Empty;
             //string euser = "00000010000008327086"; //string.Empty;
@@ -95,7 +95,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
                 var index = _viewModel.VATobjListViewData.IndexOf(item);
                 _viewModel.EnableSummaryView();
-                _viewModel.OnPageLoad1(index);
+                await _viewModel.OnPageLoad1(index);
 
             }
 
@@ -109,7 +109,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                 _viewModel.IsLoading = true;
             });
             var attachment = e.ItemData as Attachment;
-            if (attachment.Filename.Contains(".")) ;
+            //if (attachment.Filename.Contains(".")) ;
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
@@ -140,7 +140,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             });
             var attachment = e.ItemData as Attachment;
 
-            if (attachment.Filename.Contains(".")) ;
+            //if (attachment.Filename.Contains(".")) ;
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {

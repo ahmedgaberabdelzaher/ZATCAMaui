@@ -32,7 +32,7 @@ namespace EGAZT.Views.NewDesign.Common
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -56,7 +56,7 @@ namespace EGAZT.Views.NewDesign.Common
         }
 
 
-        private async void SelectButton(object sender, SelectedItemChangedEventArgs e)
+        private void SelectButton(object sender, SelectedItemChangedEventArgs e)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace EGAZT.Views.NewDesign.Common
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

@@ -35,7 +35,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 viewModel.OnPageLoad();
                 SetLTR();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -49,7 +49,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
-        public async void getYesCommandToDeleteTheAttachment()
+        public void getYesCommandToDeleteTheAttachment()
         {
             try
             {
@@ -62,7 +62,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     //  await viewModel.OnReleaseOrBillsClicked();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -95,7 +95,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 await PopupNavigation.Instance.PopAsync();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -147,7 +147,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 viewModel.IsLoading = true;
             });
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 try
                 {
@@ -184,7 +184,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     });
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             });
@@ -199,7 +199,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
             ZakatAttachment attachment = (ZakatAttachment)Document.SelectedItem;
             //attachment.DocUrl;
-            if (attachment.Filename.Contains(".")) ;
+            //if (attachment.Filename.Contains(".")) ;
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
@@ -230,7 +230,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             
         }
-        private async void OnObjectionReasonUnFocused(object sender, FocusEventArgs e)
+        private void OnObjectionReasonUnFocused(object sender, FocusEventArgs e)
         {
             //await PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
            //    await PopupNavigation.Instance.PopAsync();

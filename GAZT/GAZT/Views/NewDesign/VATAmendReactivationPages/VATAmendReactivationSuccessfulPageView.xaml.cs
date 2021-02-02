@@ -80,7 +80,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private async void Image_Copy_Tapped(object sender, EventArgs e)
         {
-            Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+            await Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
@@ -103,7 +103,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                 newDesignPopUp.MainHeader = AppResources.Copied;
-                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
 
@@ -115,7 +115,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                 viewModel.downloadConfirmation();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

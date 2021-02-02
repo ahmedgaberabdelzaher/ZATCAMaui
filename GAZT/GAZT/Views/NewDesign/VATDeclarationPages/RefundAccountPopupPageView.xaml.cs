@@ -62,7 +62,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -106,7 +106,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -130,7 +130,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
               
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             if (Device.RuntimePlatform == Device.Android)
             {
@@ -153,7 +153,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             MessagingCenter.Unsubscribe<object, string>(this, "YesReceivedForRefundMsg");
             MessagingCenter.Unsubscribe<object, string>(this, "NoReceivedForRefundMsg");
         }
-        public async void getIban()
+        public void getIban()
         {
             try
             {
@@ -189,7 +189,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -253,7 +253,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //                viewModel.IsNewAccountClicked = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -393,7 +393,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -625,7 +625,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.TxtSelectedIBANIDNumber = string.Empty;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -679,7 +679,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.TxtSelectedIBANIDNumber = selectedIBANIDNumber.Idnumber;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -699,13 +699,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     await viewModel.SetIBANIdNumber();
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
         }
 
-        public async void getYesRefundMsgCommand()
+        public void getYesRefundMsgCommand()
         {
             try
             {
@@ -718,12 +718,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
         }
-        public async void getNoRefundMsgCommand()
+        public void getNoRefundMsgCommand()
         {
             try
             {
@@ -737,7 +737,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -785,7 +785,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         newDesignPopUp.HeaderWithInfos = headerWithInfos;
                         newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                         //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                         //SelectedIndex = 2;
@@ -824,7 +824,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        private async void Confirm_RefundClicked(object sender, EventArgs e)
+        private void Confirm_RefundClicked(object sender, EventArgs e)
         {
             
             if (CheckValidationsForSubmitButtonWithMsg())
@@ -863,16 +863,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        private async void IbanChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        private  void IbanChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            try
-            {
-              
-            }
-            catch (Exception ex)
-            {
-
-            }
         }
 
         private async void OnRefundInCTapped(object sender, EventArgs e)

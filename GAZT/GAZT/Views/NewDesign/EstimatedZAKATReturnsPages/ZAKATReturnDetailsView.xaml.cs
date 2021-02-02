@@ -45,7 +45,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToReleaseTheReturn");
                 MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToAmendheReturn");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 scrollView.ScrollToAsync(0, 500, true);
 
@@ -296,7 +296,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
-        public async void getYesCommandToReleaseTheReturn()
+        public  void getYesCommandToReleaseTheReturn()
         {
             try
             {
@@ -305,13 +305,13 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     await viewModel.OnReleaseOrBillsClicked();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
 
-        public async void getYesCommandToAmendTheReturn()
+        public  void getYesCommandToAmendTheReturn()
         {
             try
             {
@@ -322,24 +322,24 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
 
-        public async void getNoCommand()
+        public  void getNoCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "NoReceived",  (sender, arg) =>
                 {
                     //await PopupNavigation.Instance.PopAsync();
                     //await viewModel.VATSetReturnVoidAsync();
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -545,7 +545,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     TotalVATSales.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -564,7 +564,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     TotalVATSales.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -584,7 +584,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     AverageNumberOfLabour.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -603,7 +603,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     AverageNumberOfLabour.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -626,7 +626,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     ImportValue.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -645,7 +645,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     ImportValue.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -671,7 +671,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     SalesFromPointOfSales.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -690,7 +690,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     SalesFromPointOfSales.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -709,7 +709,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     ContractFromETIMADSystem.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -728,7 +728,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     ContractFromETIMADSystem.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -747,7 +747,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     ExportValue.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -766,7 +766,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     ExportValue.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -785,7 +785,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     PurchaseValue.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -804,7 +804,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     PurchaseValue.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -823,7 +823,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     CapitalAmount.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -842,7 +842,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     CapitalAmount.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }

@@ -39,9 +39,9 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 this.BindingContext = viewModel;
                 viewModel.cFInterface = this;
                 viewModel.ResetData();
-                viewModel.GetVATChangeFillingData();
+                _ = viewModel.GetVATChangeFillingData();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -197,7 +197,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
         }
 
-        public async void getYesCommand()
+        public void getYesCommand()
         {
             try
             {
@@ -217,12 +217,12 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
 
-        public async void getNoCommand()
+        public void getNoCommand()
         {
             try
             {
@@ -241,7 +241,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -284,7 +284,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                         }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

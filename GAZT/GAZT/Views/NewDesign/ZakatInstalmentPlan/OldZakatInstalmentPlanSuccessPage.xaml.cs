@@ -61,7 +61,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
 

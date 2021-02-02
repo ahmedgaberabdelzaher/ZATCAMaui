@@ -68,7 +68,7 @@ namespace EGAZT.Views.NewDesign
 
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {
@@ -101,7 +101,7 @@ namespace EGAZT.Views.NewDesign
 
 
             }
-            catch (Exception e) { }
+            catch (Exception) { }
         }
 
 

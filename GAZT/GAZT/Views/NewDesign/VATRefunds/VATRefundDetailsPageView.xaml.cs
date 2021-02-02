@@ -185,7 +185,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 YesButtonText = AppResources.VATRefundRequestConfirmSubmitButtonText;
             else
                 YesButtonText = AppResources.AcceptButton;
-            PopupNavigation.PushAsync(new YesNoAlertPopupView(YesButtonText, AppResources.ZZCancel, AppResources.VATRefundReturnSubmitConfirmation));
+            PopupNavigation.Instance.PushAsync(new YesNoAlertPopupView(YesButtonText, AppResources.ZZCancel, AppResources.VATRefundReturnSubmitConfirmation));
         }
 
         public async void VoidButton_Tapped(System.Object sender, System.EventArgs e)
@@ -311,7 +311,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 CBTermsAndConditions.IsChecked = false;
                 isTandCChecked = false;
-                PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundRequestTermsAndConditions));
+                PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundRequestTermsAndConditions));
             }
             else if (isTandCChecked && !CBTermsAndConditions.IsChecked)
                 isTandCChecked = false;
@@ -319,7 +319,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         private void TermsAndConditions_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundRequestTermsAndConditions));
+            PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundRequestTermsAndConditions));
         }
     }
 }

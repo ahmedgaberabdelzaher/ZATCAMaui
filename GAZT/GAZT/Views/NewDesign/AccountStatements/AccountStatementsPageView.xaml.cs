@@ -32,7 +32,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     await viewModel.PopulateASFilterData();
                     viewModel.PopulateFiltersData();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -125,7 +125,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     || c.FormattedBldat2.ToLower().Contains(keyword.ToLower()) || c.FormattedBldat.ToLower().Contains(keyword.ToLower())).ToList();
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(suggestion);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -151,7 +151,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 viewModel.IsOpeningBalanceVisible = true;
                 viewModel.PopulateStatements(viewModel.SelectedTransactionTypeFilter.TaxType, viewModel.SelectedTransactionTypeFilter.StatementFilter, viewModel.SelectedYear.Text);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

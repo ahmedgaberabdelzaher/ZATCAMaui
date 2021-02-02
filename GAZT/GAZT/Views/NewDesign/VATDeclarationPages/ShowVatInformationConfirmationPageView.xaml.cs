@@ -40,7 +40,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 SetMargin();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -105,7 +105,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -141,7 +141,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }

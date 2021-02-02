@@ -60,7 +60,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         }
 
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             string message = string.Empty;
@@ -101,7 +101,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                                 break;
                             case ArButtons.إلغاء:
                                 viewModel.isDraftClicked = true;
-                                VoidMsg();
+                                await VoidMsg();
                                 viewModel.isDraftClicked = false;
                                 break;
                             case ArButtons.عادةتعيين:
@@ -140,7 +140,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                                 break;
                             case Buttons.Void:
                                 viewModel.isDraftClicked = true;
-                                VoidMsg();
+                                await VoidMsg();
                                 //viewModel.OnVoidBtnClicked();
                                 viewModel.isDraftClicked = false;
                                 break;
@@ -168,7 +168,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 if(DraftsRequestDataModel == null)
                 {
-                    viewModel.ReloadData();
+                    await viewModel.ReloadData();
                     if (viewModel.VatRefundsDisplayDataModel.Fbnumx != string.Empty)
                     {
                         
@@ -176,7 +176,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 }
                 else
                 {
-                    viewModel.LoadDraftsData(DraftsRequestDataModel);
+                    await viewModel.LoadDraftsData(DraftsRequestDataModel);
                 }
             }
             catch(GAZTErrorException ex)

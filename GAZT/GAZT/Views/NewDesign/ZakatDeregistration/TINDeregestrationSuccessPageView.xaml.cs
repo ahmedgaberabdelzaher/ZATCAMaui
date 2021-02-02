@@ -74,12 +74,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             if (Label_ApplicationNumber != null)
             {
-                Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+                await Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
                 if (Clipboard.HasText)
                 {
                     var text = await Clipboard.GetTextAsync();
                     var displayText = AppResources.VATRSAppNumber + " " + text;
-                    viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                    await viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
                 }
             }
 
@@ -104,7 +104,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel._navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -116,7 +116,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel.downloadConfirmation();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -129,7 +129,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel.downloadConfirmation();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

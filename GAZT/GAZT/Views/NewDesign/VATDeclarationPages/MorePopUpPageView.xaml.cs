@@ -42,7 +42,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (sender is ListView lv) lv.SelectedItem = null;
                 };
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -71,7 +71,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         }
 
-        private async void SelectButton(object sender, SelectedItemChangedEventArgs e)
+        private void SelectButton(object sender, SelectedItemChangedEventArgs e)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }

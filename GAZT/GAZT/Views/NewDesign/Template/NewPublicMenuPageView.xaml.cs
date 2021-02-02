@@ -63,7 +63,7 @@ namespace EGAZT.Views.NewDesign.Template
                 // InitializeComponent();
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
