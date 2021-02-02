@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using GalaSoft.MvvmLight.Views;
@@ -1026,7 +1027,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             APiMethod = "Z_SAVE_ATTACH_SRV";
                         }
 
-                        string results = WebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, returnIdz, APiMethod, attachment.Doguid);
+                        string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, returnIdz, APiMethod, attachment.Doguid);
                         PopToRootPage();
                         if (results == "X")
                         {
@@ -1162,7 +1163,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     {
                         APiMethod = "Z_SAVE_ATTACH_SRV";
                     }
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTGenericSaveAttachment(attachmentByteData, AttachmentName, returnIdz, Doctype, contentType, APiMethod);
+                    AttachmentRootOject attachment = await UploadAttachementsWebServiceManager.GAZTGenericSaveAttachment(attachmentByteData, AttachmentName, returnIdz, Doctype, contentType, APiMethod);
 
                     if (attachment != null && attachment.d != null)
                     {

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.Models.ZakatObjectionsModel;
@@ -1442,7 +1443,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZakatObjectionWithDrawListModel _ZAKATObjectionWithDraw = new ZakatObjectionWithDrawListModel();
                     try
                     {
-                        _ZAKATObjectionWithDraw = await WebServiceManager.GAZTGetZakatWithDrawList();
+                        _ZAKATObjectionWithDraw = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawList();
 
                         if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
                         {
@@ -1532,7 +1533,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     try
                     {
                         //Data binding for withdraw objection details
-                        _ZAKATObjectionWithDraw = await WebServiceManager.GAZTGetZakatWithDrawDDData(SelectedFbNum);
+                        _ZAKATObjectionWithDraw = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawDDData(SelectedFbNum);
 
                         ZakatWithdrawlData = _ZAKATObjectionWithDraw;
 
@@ -1696,7 +1697,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel _ZAKATObjectionReviewReturn = new ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel();
                     try
                     {
-                        _ZakatObjectionRequestSummary = await WebServiceManager.GAZTGetZakatRequestObjectionSummary(fbnum);
+                        _ZakatObjectionRequestSummary = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatRequestObjectionSummary(fbnum);
 
                         if (_ZakatObjectionRequestSummary != null && _ZakatObjectionRequestSummary.d != null)
                         {
@@ -1887,7 +1888,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZakatObjectionWithdrawPostResponceModel _withdrawSubmitted = new ZakatObjectionWithdrawPostResponceModel();
                     try
                     {
-                        var result = await WebServiceManager.GAZTGetZakatObjectionSummary(SelectedFbNum);
+                        var result = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatObjectionSummary(SelectedFbNum);
 
 
                         ZakatObjectionWithdrawPostModel.Root postData = new ZakatObjectionWithdrawPostModel.Root();
@@ -2066,7 +2067,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
 
 
-                        _withdrawSubmitted = await WebServiceManager.GAZTSaveZakatObjectionWithDrawData(postData);
+                        _withdrawSubmitted = await ZAKATWithdrawObjectionsWebServiceManager.GAZTSaveZakatObjectionWithDrawData(postData);
 
                         if (_withdrawSubmitted != null && _withdrawSubmitted.d != null)
                         {
@@ -2153,7 +2154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZAKATObjectionCreateNewModel _ZAKATObjectionCreateNew = new ZAKATObjectionCreateNewModel();
                     try
                     {
-                        _ZAKATObjectionCreateNew = await WebServiceManager.GAZTGetZAKATObjectionCreateNew();
+                        _ZAKATObjectionCreateNew = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionCreateNew();
 
                         if (_ZAKATObjectionCreateNew != null && _ZAKATObjectionCreateNew.d != null)
                         {
@@ -2230,7 +2231,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZAKATObjectionDetailsByReferenceNumberModel _ZAKATObjectionDetailsByReferenceNumber = new ZAKATObjectionDetailsByReferenceNumberModel();
                     try
                     {
-                        _ZAKATObjectionDetailsByReferenceNumber = await WebServiceManager.GAZTGetZAKATObjectionDetailsByReferenceNumber("");
+                        _ZAKATObjectionDetailsByReferenceNumber = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionDetailsByReferenceNumber("");
 
                         if (_ZAKATObjectionDetailsByReferenceNumber != null && _ZAKATObjectionDetailsByReferenceNumber.d != null)
                         {
@@ -2305,7 +2306,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZAKATObjectionDetailsToAmendReturnModel _ZAKATObjectionDetailsToAmendReturn = new ZAKATObjectionDetailsToAmendReturnModel();
                     try
                     {
-                        _ZAKATObjectionDetailsToAmendReturn = await WebServiceManager.GAZTGetZAKATObjectionDetailsToAmendReturn();
+                        _ZAKATObjectionDetailsToAmendReturn = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionDetailsToAmendReturn();
 
                         if (_ZAKATObjectionDetailsToAmendReturn != null && _ZAKATObjectionDetailsToAmendReturn.d != null)
                         {
@@ -2380,7 +2381,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZAKATObjectionAmendReturnAndCloseModel _ZAKATObjectionAmendReturnAndClose = new ZAKATObjectionAmendReturnAndCloseModel();
                     try
                     {
-                        _ZAKATObjectionAmendReturnAndClose = await WebServiceManager.GAZTGetZAKATObjectionAmendReturnAndClose();
+                        _ZAKATObjectionAmendReturnAndClose = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionAmendReturnAndClose();
 
                         if (_ZAKATObjectionAmendReturnAndClose != null && _ZAKATObjectionAmendReturnAndClose.d != null)
                         {
@@ -2455,7 +2456,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZAKATObjectionOnPaymentMethodSelectionModel _ZAKATObjectionOnPaymentMethodSelection = new ZAKATObjectionOnPaymentMethodSelectionModel();
                     try
                     {
-                        _ZAKATObjectionOnPaymentMethodSelection = await WebServiceManager.GAZTGetZAKATObjectionOnPaymentMethodSelection();
+                        _ZAKATObjectionOnPaymentMethodSelection = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionOnPaymentMethodSelection();
 
                         if (_ZAKATObjectionOnPaymentMethodSelection != null && _ZAKATObjectionOnPaymentMethodSelection.d != null)
                         {
@@ -2529,7 +2530,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZAKATObjectionApplicationDetailsIfStatusIP017Model _ZAKATObjectionApplicationDetailsIfStatusIP017 = new ZAKATObjectionApplicationDetailsIfStatusIP017Model();
                     try
                     {
-                        _ZAKATObjectionApplicationDetailsIfStatusIP017 = await WebServiceManager.GAZTGetZAKATObjectionApplicationDetailsIfStatusIP017();
+                        _ZAKATObjectionApplicationDetailsIfStatusIP017 = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionApplicationDetailsIfStatusIP017();
 
                         if (_ZAKATObjectionApplicationDetailsIfStatusIP017 != null && _ZAKATObjectionApplicationDetailsIfStatusIP017.d != null)
                         {
@@ -2603,7 +2604,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZAKATObjectionGenerateSADADNumberModel _ZAKATObjectionGenerateSADADNumber = new ZAKATObjectionGenerateSADADNumberModel();
                     try
                     {
-                        _ZAKATObjectionGenerateSADADNumber = await WebServiceManager.GAZTGetZAKATObjectionGenerateSADADNumber();
+                        _ZAKATObjectionGenerateSADADNumber = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionGenerateSADADNumber();
 
                         if (_ZAKATObjectionGenerateSADADNumber != null && _ZAKATObjectionGenerateSADADNumber.d != null)
                         {
@@ -2677,7 +2678,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZAKATObjectionBusyIndicatorModel _ZAKATObjectionBusyIndicator = new ZAKATObjectionBusyIndicatorModel();
                     try
                     {
-                        _ZAKATObjectionBusyIndicator = await WebServiceManager.GAZTGetZAKATObjectionBusyIndicator();
+                        _ZAKATObjectionBusyIndicator = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionBusyIndicator();
 
                         if (_ZAKATObjectionBusyIndicator != null && _ZAKATObjectionBusyIndicator.d != null)
                         {
@@ -2750,7 +2751,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZakatBankListModel _ZakatBankList = new ZakatBankListModel();
                     try
                     {
-                        _ZakatBankList = await WebServiceManager.GAZTGetBankList();
+                        _ZakatBankList = await ZAKATObjectionsWebServiceManager.GAZTGetBankList();
 
                         if (_ZakatBankList != null && _ZakatBankList.d != null)
                         {
@@ -2825,7 +2826,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZakatBankListModel _IntialLoadData = new ZakatBankListModel();
                     try
                     {
-                        _IntialLoadData = await WebServiceManager.GAZTGetIntialLoadData(fbguid);
+                        _IntialLoadData = await ZAKATObjectionsWebServiceManager.GAZTGetIntialLoadData(fbguid);
 
                         if (_IntialLoadData != null && _IntialLoadData.d != null)
                         {
@@ -2898,7 +2899,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZakatBankListModel _ZakatRemoveObjection = new ZakatBankListModel();
                     try
                     {
-                        _ZakatRemoveObjection = await WebServiceManager.GAZTGetZakatRemoveObjection(retFbnum, objFbnum);
+                        _ZakatRemoveObjection = await ZAKATObjectionsWebServiceManager.GAZTGetZakatRemoveObjection(retFbnum, objFbnum);
 
                         if (_ZakatRemoveObjection != null && _ZakatRemoveObjection.d != null)
                         {
@@ -2971,7 +2972,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZakatBankListModel _ZakatRemoveObjectionACK = new ZakatBankListModel();
                     try
                     {
-                        _ZakatRemoveObjectionACK = await WebServiceManager.GAZTGetZakatRemoveObjectionACK(retFbnum, objFbnum);
+                        _ZakatRemoveObjectionACK = await ZAKATObjectionsWebServiceManager.GAZTGetZakatRemoveObjectionACK(retFbnum, objFbnum);
 
                         if (_ZakatRemoveObjectionACK != null && _ZakatRemoveObjectionACK.d != null)
                         {
@@ -3046,7 +3047,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZakatWithdrawMainDataModel _ZakatWithdrawMainData = new ZakatWithdrawMainDataModel();
                     try
                     {
-                        _ZakatWithdrawMainData = await WebServiceManager.GAZTGetZakatWithDrawMainData();
+                        _ZakatWithdrawMainData = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawMainData();
 
                         if (_ZakatWithdrawMainData != null && _ZakatWithdrawMainData.d != null)
                         {
@@ -3119,7 +3120,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZakatObjectionWithDrawListModel _ZakatObjectionWithDrawList = new ZakatObjectionWithDrawListModel();
                     try
                     {
-                        _ZakatObjectionWithDrawList = await WebServiceManager.GAZTGetZakatWithDrawList();
+                        _ZakatObjectionWithDrawList = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawList();
 
                         if (_ZakatObjectionWithDrawList != null && _ZakatObjectionWithDrawList.d != null)
                         {
@@ -3192,7 +3193,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     ZakatObjectionWDDropdownModel _ZakatObjectionWDDropdown = new ZakatObjectionWDDropdownModel();
                     try
                     {
-                        _ZakatObjectionWDDropdown = await WebServiceManager.GAZTGetZakatWithDrawDDData(objFbnum);
+                        _ZakatObjectionWDDropdown = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawDDData(objFbnum);
 
                         if (_ZakatObjectionWDDropdown != null && _ZakatObjectionWDDropdown.d != null)
                         {
@@ -3265,7 +3266,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     AttachmentRootOject _Attachment = new AttachmentRootOject();
                     try
                     {
-                        _Attachment = await WebServiceManager.GAZTSaveZakatObjectionWDAttachment(AttachmentByte, fileName, RetGuid, Dotyp, contentType);
+                        _Attachment = await ZAKATWithdrawObjectionsWebServiceManager.GAZTSaveZakatObjectionWDAttachment(AttachmentByte, fileName, RetGuid, Dotyp, contentType);
 
                         if (_Attachment != null && _Attachment.d != null)
                         {
@@ -3332,7 +3333,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 string strACK = null;
                 try
                 {
-                    strACK = WebServiceManager.GAZTZakatObjectonWDDownloadacknowledgement(fbnum);
+                    strACK = ZAKATWithdrawObjectionsWebServiceManager.GAZTZakatObjectonWDDownloadacknowledgement(fbnum);
 
                     if (!string.IsNullOrEmpty(strACK))
                     {
@@ -3396,7 +3397,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 string strACK = null;
                 try
                 {
-                    strACK = WebServiceManager.GAZTZakatObjectionWDDownloadForm(fbnum);
+                    strACK = ZAKATWithdrawObjectionsWebServiceManager.GAZTZakatObjectionWDDownloadForm(fbnum);
 
                     if (!string.IsNullOrEmpty(strACK))
                     {

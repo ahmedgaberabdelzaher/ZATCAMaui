@@ -1,4 +1,5 @@
-﻿using EGAZT.Models.AccountStatements;
+﻿using EGAZT.Manager;
+using EGAZT.Models.AccountStatements;
 using EGAZT.Models.EnumModels;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
@@ -1217,8 +1218,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private async Task GetAccountStatments()
         {
-            TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-            HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
+            TabIdentification = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementsTabIdentification();
+            HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
 
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -1753,7 +1754,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
+                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
 
                 double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
                 double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.Credit.Replace("-", string.Empty)));

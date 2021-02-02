@@ -1,4 +1,5 @@
-﻿using EGAZT.Models;
+﻿using EGAZT.Manager;
+using EGAZT.Models;
 using EGAZT.Models.Template;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
@@ -2007,7 +2008,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     try
                     {
 
-                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdnumberFR, dob);
+                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdnumberFR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -2130,7 +2131,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     try
                     {
-                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdnumberFR, dob);
+                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdnumberFR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -2251,7 +2252,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         string Result = string.Empty;
                         await Task.Run(async () =>
                         {
-                            Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0003", viewModel.IdnumberFR, dob);
+                            Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0003", viewModel.IdnumberFR, dob);
                         });
                         VATSignUp vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (string.IsNullOrEmpty(Result) || vATSignUpData == null)
@@ -2405,7 +2406,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     try
                     {
-                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdNumberSR, dob);
+                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdNumberSR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -2512,7 +2513,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     try
                     {
-                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdNumberSR, dob);
+                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdNumberSR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -2622,7 +2623,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         string Result = string.Empty;
                         await Task.Run(async () =>
                         {
-                            Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0003", viewModel.IdNumberSR, dob);
+                            Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0003", viewModel.IdNumberSR, dob);
                         });
 
                         VATSignUp vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
@@ -3072,7 +3073,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     try
                     {
 
-                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdNumberSR, dob);
+                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdNumberSR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -3179,7 +3180,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     try
                     {
-                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdNumberSR, dob);
+                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdNumberSR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -3299,7 +3300,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.IsLoading = false;
                 });
 
-                string Result = await WebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
+                string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
                 VATSignUp vATSignUpData = new VATSignUp();
                 vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                 if (vATSignUpData.d == null)
@@ -3345,7 +3346,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 try
                 {
-                    string Result = await WebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
+                    string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
                     IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                     if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                     {

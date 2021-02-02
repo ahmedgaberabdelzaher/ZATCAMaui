@@ -153,7 +153,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
             }
             catch (Exception )
             {
-
+                //TODO BPicker would be null
             }
 
         }
@@ -204,7 +204,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
                     viewModel.PreviousSelectedICRStatus = selectedICRStatus;
                     viewModel.GetFilteredZAKATICRList(selectedICRStatus);
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
             }

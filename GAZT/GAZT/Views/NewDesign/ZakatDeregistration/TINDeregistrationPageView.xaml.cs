@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 
 using System.Threading.Tasks;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
@@ -1722,7 +1723,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 list = new List<Attachment>(list);
                 // viewModel.PopulateAttachments(viewModel.AttachmentTypeList);
                 //   viewModel.AttachmentsListViewData = JsonConvert.DeserializeObject<List<TinDeregestrationAttachmentsModel>>(viewModel.attachmentsListViewDataString);
-                string results = WebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, viewModel.TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
+                string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, viewModel.TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
                 if (results == "X")
                 {
                     foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in viewModel.AttachmentsListViewData)

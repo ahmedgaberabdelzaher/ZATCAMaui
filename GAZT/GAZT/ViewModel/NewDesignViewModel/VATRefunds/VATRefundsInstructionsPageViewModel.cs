@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models.VATRefunds;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -139,7 +140,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 App.DisplayProgressView();
 
-                VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
+                VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
 
                 App.HideProgressView();
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models.ContractRelease;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -548,7 +549,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                       
                            
 
-                        cRApplicationFormData = await WebServiceManager.GetContractReleaseList();
+                        cRApplicationFormData = await ContractReleaseWebServiceManager.GetContractReleaseList();
 
                         //cRApplicationFormData = await WebServiceManager.GAZTGetCRApplicationFormData("", App.LoginDataRetrieved.Euser, 
                         //    App.LoginDataRetrieved.FbGuid, App.LoginDataRetrieved.Euser);
@@ -645,7 +646,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     {
                         ContractReLeaseSummaryData = new ContractReleaseSummaryModel.ContractReleaseSummaryData();
 
-                        var resultData = await WebServiceManager.GAZTGetContractReleaseSummaryData("", selectedItem.Fbnum);
+                        var resultData = await ContractReleaseWebServiceManager.GAZTGetContractReleaseSummaryData("", selectedItem.Fbnum);
 
                         ContractReLeaseSummaryData.RequestNumber = resultData.d.Fbnumz;
                         ContractReLeaseSummaryData.TaxpayerName = resultData.d.ATpNm;

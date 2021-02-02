@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.VATRefunds;
 using EGAZT.Views.NewDesign.Common;
@@ -527,7 +528,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     IsLoading = true;
                 });
 
-                VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+                VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
 
                 if (VatNewReqSummaryData.Operationx.Equals("05"))
                 {
@@ -622,9 +623,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     IsLoading = true;
                 });
 
-                VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
+                VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
                
-                VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
+                VatRefundsIbanDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundGetIbanData("");
                 IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
                 VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
 
@@ -744,7 +745,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     IsLoading = true;
                 });
 
-                VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(draftsData.WiDtlSet.Results[0].Fbguid);
+                VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(draftsData.WiDtlSet.Results[0].Fbguid);
                 VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-",string.Empty);
 
                 if (VatRefundsDisplayDataModel.Idnumber != null && VatRefundsDisplayDataModel.Idnumber != string.Empty)
@@ -788,7 +789,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     IsVoidBtnVisible = true;
                 }
 
-                VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
+                VatRefundsIbanDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundGetIbanData("");
                 IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
 
                 if (IbanData == null || IbanData.Count == 0)
@@ -1087,7 +1088,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 return;
             }
-            VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+            VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
             if (string.IsNullOrEmpty(VatRefundsDisplayDataModel.RefundTp))
             {
                 if (App.IsArabic)
@@ -1125,7 +1126,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     IsLoading = true;
                 });
 
-                VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+                VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
                 if (VatNewReqSummaryData != null)
                 {
 

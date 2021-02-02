@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -246,7 +247,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
                 TaxEvasionReportTobeUsedToSubmit.Longitude = _longitude.ToString();
 
                 TaxEvasionCreateReportResponseModel response = new TaxEvasionCreateReportResponseModel();
-                response = await WebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
+                response = await TaxEvasionWebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
 
                 if (response != null && response.Status == true)
                 {

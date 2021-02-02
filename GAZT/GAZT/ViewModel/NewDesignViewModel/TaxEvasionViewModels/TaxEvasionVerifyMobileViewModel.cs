@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
@@ -471,7 +472,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         IsLoading = true;
                     });
 
-                    TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
+                    TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await TaxEvasionWebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
 
                     await Task.Run(() =>
                     {
@@ -656,7 +657,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     taxEvasionVerifySmsModel.key = App.TaxEvasionUserData.LoginKey;
                     taxEvasionVerifySmsModel.code = EnteredOTP;
                     var mobilenumberWithcode = "+966" + MobileNumber;
-                    taxEvasionVerifySmsResponseModel = await WebServiceManager.GAZTTaxEvasionVerifySms(taxEvasionVerifySmsModel, mobilenumberWithcode);
+                    taxEvasionVerifySmsResponseModel = await TaxEvasionWebServiceManager.GAZTTaxEvasionVerifySms(taxEvasionVerifySmsModel, mobilenumberWithcode);
 
                     if (taxEvasionVerifySmsResponseModel.Status == true)
                     {
@@ -665,7 +666,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
                         try
                         {
-                            TaxEvasionUserRegistrationResponseModel taxEvasionUserRegistrationResponseModel = await WebServiceManager.GAZTTaxEvasionGetUserByMobile(taxEvasionSendSmsModel);
+                            TaxEvasionUserRegistrationResponseModel taxEvasionUserRegistrationResponseModel = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetUserByMobile(taxEvasionSendSmsModel);
                             App.TaxEvasionUserData = taxEvasionUserRegistrationResponseModel.Data;
 
                             if (taxEvasionUserRegistrationResponseModel.Status == true)

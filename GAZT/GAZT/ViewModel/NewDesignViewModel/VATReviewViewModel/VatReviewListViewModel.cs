@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.VatReviewModel;
 using EGAZT.Views.NewDesign.VatReview;
@@ -736,7 +737,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         VATObjectionSummaryModel modelVATReview = new VATObjectionSummaryModel();
                         modelVATReviewsReturn = new VATObjectionFormModel.VATReviewsReturnModel();
 
-                        modelVATReview = await WebServiceManager.GAZTGetVATObjectionSummary(item.Fbnum);
+                        modelVATReview = await VATObjectionWebServiceManager.GAZTGetVATObjectionSummary(item.Fbnum);
 
                         if (modelVATReview != null && modelVATReview.d != null)
                         {
@@ -808,7 +809,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     VATObjectionListModel _VATObjectionList = new VATObjectionListModel();
                     try
                     {
-                        _VATObjectionList = await WebServiceManager.GAZTGetVATObjectionList();
+                        _VATObjectionList = await VATObjectionWebServiceManager.GAZTGetVATObjectionList();
 
                         if (_VATObjectionList != null && _VATObjectionList.d != null)
                         {

@@ -26,6 +26,7 @@ using System.Text.RegularExpressions;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using Xamarin.Forms.Internals;
+using EGAZT.Manager;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
@@ -1955,7 +1956,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 request = BuildRequestObject();
 
-                response = await WebServiceManager.GAZTPostVATChangeFillingPeriodData(request);
+                response = await VATChangeFillingWebServiceManager.GAZTPostVATChangeFillingPeriodData(request);
                 PopToRootPage();
                 if (response != null && response.d != null)
                 {
@@ -2126,7 +2127,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     IsLoading = true;
                     try
                     {
-                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingPeriodRequestData(App.selectedVatFillingItem);
+                        var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingPeriodRequestData(App.selectedVatFillingItem);
                         if (resultData != null && resultData.d != null)
                         {
                             ChangeFillingResponse = resultData;
@@ -2225,7 +2226,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     IsLoading = true;
                     try
                     {
-                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingPeriodDropdownData(App.LoginDataRetrieved.TIN);
+                        var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingPeriodDropdownData(App.LoginDataRetrieved.TIN);
                         if (resultData != null && resultData.d != null)
                         {
                             EffectiveDateResponse = resultData;
@@ -2305,7 +2306,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     IsLoading = true;
                     try
                     {
-                        var resultData = await WebServiceManager.GAZTVATChangeFillingPeriodValidateIDnumber(App.LoginDataRetrieved.TIN, idType, IDNumber, "", "", PickedDate.Replace("/", ""));
+                        var resultData = await VATChangeFillingWebServiceManager.GAZTVATChangeFillingPeriodValidateIDnumber(App.LoginDataRetrieved.TIN, idType, IDNumber, "", "", PickedDate.Replace("/", ""));
                         if (resultData != null && resultData.d != null)
                         {
                             IsIDVerified = true;

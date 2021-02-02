@@ -1,4 +1,5 @@
 ﻿//using CalendarView;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
@@ -1704,7 +1705,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             try
             {
-                SignUpCaseIdD = await WebServiceManager.GAZTGetVATSignUpCaseId();// working
+                SignUpCaseIdD = await TaxEvasionWebServiceManager.GAZTGetVATSignUpCaseId();// working
 
 
                 //string aaa = await WebServiceManager.GAZTVATSignUpValidateIDTypes("ZS0015", "1048089609", "19650224");
@@ -1976,7 +1977,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                                 try
                                 {
-                                    vATSignUpData = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
+                                    vATSignUpData = await TaxEvasionWebServiceManager.GAZTGetVATSignUpCityListForSignup();
 
 
                                     //string aaa = await WebServiceManager.GAZTVATSignUpValidateIDTypes("ZS0015", "1048089609", "19650224");
@@ -2227,7 +2228,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             try
             {
                 string dob = DOB.Replace("/", "");
-                string resposne = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(IdTypeList[IDTypeIndex].ID, IdNumber, dob);
+                string resposne = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(IdTypeList[IDTypeIndex].ID, IdNumber, dob);
                 return resposne;
             }
             catch (Exception ex)
@@ -2241,7 +2242,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             try
             {
                 string dob = DOB.Replace("/", "");
-                _VATSignUp = await WebServiceManager.GAZTVATSignUpValidateIDTypes(IdTypeList[IDTypeIndex].ID, IdNumber, dob);
+                _VATSignUp = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypes(IdTypeList[IDTypeIndex].ID, IdNumber, dob);
                 if (_VATSignUp != null && _VATSignUp.d != null)
                 {
                     return true;
@@ -2505,7 +2506,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 };
 
                 //VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
-                string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
+                string response = await TaxEvasionWebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
 
                 VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
                 VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
@@ -2685,7 +2686,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 };
 
-                string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
+                string response = await TaxEvasionWebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
                 if (response != null)
                 {
                     int timeToExpireOTP = 120;

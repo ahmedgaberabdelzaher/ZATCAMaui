@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
@@ -92,7 +93,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             }
             else
             {
-                await WebServiceManager.email(attachment.Doguid, attachment);
+                await GetVATReviewWebServiceManager.email(attachment.Doguid, attachment);
             }
 
 

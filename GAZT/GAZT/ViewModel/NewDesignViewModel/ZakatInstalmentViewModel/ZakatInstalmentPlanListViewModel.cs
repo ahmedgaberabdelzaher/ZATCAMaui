@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.Models.ZakatInstalmentModels;
@@ -258,7 +259,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
-                        result = await WebServiceManager.GAZTGetZakatInstalmentValidateNewReq();
+                        result = await ZakatInstallmentPlanWebServiceManager.GAZTGetZakatInstalmentValidateNewReq();
                         IsLoading = false;
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
@@ -1737,7 +1738,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         var item = zakatListData[index];
 
-                        SeletedZakatForm = await WebServiceManager.GAZTGetZakatRequestDisplayData(item.referanceNumber, item.Fbtyp);
+                        SeletedZakatForm = await ZakatWebServiceManager.GAZTGetZakatRequestDisplayData(item.referanceNumber, item.Fbtyp);
 
 
                         PopToRootPage();
@@ -1746,7 +1747,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         if (SeletedZakatForm != null && SeletedZakatForm.d != null)
                         {
 
-                            var invoiceResult = await WebServiceManager.GAZTGetZakatInstalmentInvData(SeletedZakatForm.d.Fbnum);
+                            var invoiceResult = await ZakatInstallmentPlanWebServiceManager.GAZTGetZakatInstalmentInvData(SeletedZakatForm.d.Fbnum);
 
                             if (RequestForRevokeList != null && RequestForRevokeList.Count != 0)
                             {
@@ -1877,7 +1878,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                     try
                     {
-                        rEQVatInstalmentPlanResponse = await WebServiceManager.GAZTGetZakatInstalmentPlanRequestList("", "", "");
+                        rEQVatInstalmentPlanResponse = await ZakatWebServiceManager.GAZTGetZakatInstalmentPlanRequestList("", "", "");
                         ReqVatInstalmentPlanResponseList = rEQVatInstalmentPlanResponse;
 
 
@@ -1977,7 +1978,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     try
                     {
 
-                        ZakatInstalmentPlanRequestListModel revokResult = await WebServiceManager.GAZTGetZakatRevokeList("", "", "");
+                        ZakatInstalmentPlanRequestListModel revokResult = await ZakatWebServiceManager.GAZTGetZakatRevokeList("", "", "");
 
                         PopToRootPage();
 
@@ -2244,7 +2245,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     ZakatInstalments = null;
                     try
                     {
-                        ZakatInstalments = await WebServiceManager.GetZakatInstalmentRevokePostData(SelectedFbNum);
+                        ZakatInstalments = await ZakatInstallmentPlanWebServiceManager.GetZakatInstalmentRevokePostData(SelectedFbNum);
 
 
                         if (ZakatInstalments != null)
@@ -2435,7 +2436,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 noteset[0] = notes;
                 request.NotesSet = noteset;
 
-                response = await WebServiceManager.SaveZakatInstalmentRevokeData(request);
+                response = await ZakatInstallmentPlanWebServiceManager.SaveZakatInstalmentRevokeData(request);
                 PopToRootPage();
                 if (response != null)
                 {

@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.VatReviewModel;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
@@ -4816,7 +4817,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             else
             {
-                await WebServiceManager.email(attachment.Doguid, attachment);
+                await GetVATReviewWebServiceManager.email(attachment.Doguid, attachment);
             }
 
             await Task.Run(() =>
@@ -5038,7 +5039,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     IsLoading = true;
                     try
                     {
-                        var resultData = await WebServiceManager.GAZTVATChangeFillingPeriodValidateIDnumber(
+                        var resultData = await VATChangeFillingWebServiceManager.GAZTVATChangeFillingPeriodValidateIDnumber(
                             App.LoginDataRetrieved.TIN, idType, IDNumber, "", "", PickedDate.Replace("/", ""));
                         if (resultData != null && resultData.d != null)
                         {
@@ -5113,12 +5114,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         if (App.selectedVATItem != "")
                         {
 
-                            modelVATReview = await WebServiceManager.GAZTGetVATObjectionSummary(App.selectedVATItem);
+                            modelVATReview = await VATObjectionWebServiceManager.GAZTGetVATObjectionSummary(App.selectedVATItem);
 
                         }
                         else
                         {
-                            modelVATReview = await WebServiceManager.GAZTGetVATObjectionSummary("");
+                            modelVATReview = await VATObjectionWebServiceManager.GAZTGetVATObjectionSummary("");
 
                         }
 
@@ -5244,7 +5245,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 rvSubRsn = null;
                 rejFb = null;
                 VATObjectionEnableSubmitModel _VATObjectionEnableSubmit = new VATObjectionEnableSubmitModel();
-                _VATObjectionEnableSubmit = await WebServiceManager.GAZTGetVATObjectionEnableSubmit(statusx, rvRsn, rvSubRsn, rejFb);
+                _VATObjectionEnableSubmit = await VATObjectionWebServiceManager.GAZTGetVATObjectionEnableSubmit(statusx, rvRsn, rvSubRsn, rejFb);
 
                 if (_VATObjectionEnableSubmit != null && _VATObjectionEnableSubmit.d != null)
                 {
@@ -5295,7 +5296,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 fbnum = null;
                 string strACK = null;
-                strACK = WebServiceManager.GetVATObjectionDownloadAck(fbnum);
+                strACK = VATObjectionWebServiceManager.GetVATObjectionDownloadAck(fbnum);
 
                 if (strACK != null)
                 {
@@ -5330,7 +5331,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
                 //VATObjectionRejectedFormModel _VATObjectionRejected = new VATObjectionRejectedFormModel();
 
-                _VATObjectionRejected = await WebServiceManager.GAZTGetVATObjectionFormRejected(fbustx, RvRsn, rvSubRsn, UserTypx, fbnumx, sopbel);
+                _VATObjectionRejected = await VATObjectionWebServiceManager.GAZTGetVATObjectionFormRejected(fbustx, RvRsn, rvSubRsn, UserTypx, fbnumx, sopbel);
                 if (_VATObjectionRejected != null && _VATObjectionRejected.d != null)
                 {
                     setApplicationRefPickerModel(_VATObjectionRejected.d.RejectedFormSet.results);
@@ -5385,7 +5386,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
 
                 VATObjectionGenrateSadadModel _VATObjectionGenrateSadad = new VATObjectionGenrateSadadModel();
-                _VATObjectionGenrateSadad = await WebServiceManager.GAZTGetVATObjectionGenrateorRefreshSADAD(fbnum, Disamt, Liaamt, Abrzu, Abrzo, Secamt, Security, Persl, isFlagenable);
+                _VATObjectionGenrateSadad = await VATObjectionWebServiceManager.GAZTGetVATObjectionGenrateorRefreshSADAD(fbnum, Disamt, Liaamt, Abrzu, Abrzo, Secamt, Security, Persl, isFlagenable);
 
                 if (_VATObjectionGenrateSadad != null && _VATObjectionGenrateSadad.d != null)
                 {
@@ -5472,7 +5473,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
 
                 VATObjectionSecurityAmountModel _VATObjectionSecurityAmount = new VATObjectionSecurityAmountModel();
-                _VATObjectionSecurityAmount = await WebServiceManager.GAZTGetVATObjectionSecurityAmount(disamt, liaamt, clramt);
+                _VATObjectionSecurityAmount = await VATObjectionWebServiceManager.GAZTGetVATObjectionSecurityAmount(disamt, liaamt, clramt);
 
                 if (_VATObjectionSecurityAmount != null && _VATObjectionSecurityAmount.d != null)
                 {
@@ -5549,7 +5550,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 passExpDt = null;
                 taxpDob = null;
                 VATObjectionValidateTaxpayerModel _VATObjectionValidateTaxpayer = new VATObjectionValidateTaxpayerModel();
-                _VATObjectionValidateTaxpayer = await WebServiceManager.GAZTGetVATObjectionValidateTaxPayer(idnum, idtype, passExpDt, taxpDob);
+                _VATObjectionValidateTaxpayer = await VATObjectionWebServiceManager.GAZTGetVATObjectionValidateTaxPayer(idnum, idtype, passExpDt, taxpDob);
 
                 if (_VATObjectionValidateTaxpayer != null && _VATObjectionValidateTaxpayer.d != null)
                 {
@@ -5609,7 +5610,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     VATObjectionFormViewBillModel billFormModel = new VATObjectionFormViewBillModel();
                     try
                     {
-                        billModelResult = await WebServiceManager.GAZTGetVATObjectionViewBill(opbel, vtre2);
+                        billModelResult = await VATObjectionWebServiceManager.GAZTGetVATObjectionViewBill(opbel, vtre2);
 
                         if (billModelResult != null && billModelResult.d != null)
                         {
@@ -6267,7 +6268,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
 
-                response = await WebServiceManager.SaveVatReviewObjection(request);
+                response = await VATObjectionWebServiceManager.SaveVatReviewObjection(request);
 
 
 
@@ -6451,7 +6452,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                     try
                     {
-                        vATRegistration = await WebServiceManager.GAZTGetVATRegistrationDisplayDetailsData();
+                        vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDisplayDetailsData();
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                         if (vATRegistration != null && vATRegistration.d != null)
@@ -6599,7 +6600,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                     try
                     {
-                        vATDeRegistration = await WebServiceManager.GAZTGetVATDeRegistrationData();
+                        vATDeRegistration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
 
 
                         if (vATDeRegistration != null && vATDeRegistration.d != null)
@@ -6691,13 +6692,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     VATReviewRequestTPFVReturnModel _VATReviewRequestTPFVReturn = new VATReviewRequestTPFVReturnModel();
                     try
                     {
-                        var vatReviewFBguid = await WebServiceManager.GAZTVATObjectionSummaryInputData(selectedApplicationRef.Fbnum, "", "TPFV");
+                        var vatReviewFBguid = await VATObjectionWebServiceManager.GAZTVATObjectionSummaryInputData(selectedApplicationRef.Fbnum, "", "TPFV");
 
                         if (vatReviewFBguid != null && vatReviewFBguid.d != null)
                         {
 
 
-                            _VATReviewRequestTPFV = await WebServiceManager.GAZTGetVATReviewRequestTPFV(strOfficerz, strGpartz, strEuser, vatReviewFBguid.d.Fbguid, strReviewFg);
+                            _VATReviewRequestTPFV = await GetVATReviewWebServiceManager.GAZTGetVATReviewRequestTPFV(strOfficerz, strGpartz, strEuser, vatReviewFBguid.d.Fbguid, strReviewFg);
 
                             if (_VATReviewRequestTPFV != null && _VATReviewRequestTPFV.d != null)
                             {
@@ -6807,13 +6808,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     try
                     {
                         //Please pass the fbtype is "DGVT"
-                        var _dregInputResult = await WebServiceManager.GAZTVATObjectionSummaryInputData(selectedApplicationRef.Fbnum, "", "DGVT");
+                        var _dregInputResult = await VATObjectionWebServiceManager.GAZTVATObjectionSummaryInputData(selectedApplicationRef.Fbnum, "", "DGVT");
 
                         if (_dregInputResult != null && _dregInputResult.d != null)
                         {
 
-                            var dregresult = await WebServiceManager.GAZTGetVATReviewDREGViewApplication(_dregInputResult.d.Fbguid);
-                            var dregReasonset = await WebServiceManager.GAZTGetVATReviewDREGReasonSet("VT_DREG");
+                            var dregresult = await GetVATReviewWebServiceManager.GAZTGetVATReviewDREGViewApplication(_dregInputResult.d.Fbguid);
+                            var dregReasonset = await GetVATReviewWebServiceManager.GAZTGetVATReviewDREGReasonSet("VT_DREG");
 
                             if (dregresult != null && dregresult.d != null)
                             {
@@ -6920,7 +6921,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     VATReviewRequestVTGRReturnModel _VATReviewRequestVTGRReturn = new VATReviewRequestVTGRReturnModel();
                     try
                     {
-                        _VATReviewRequestVTGR = await WebServiceManager.GAZTGetVATReviewRequestVTGR(strEuser, strFbguid, strGpart, strTxnTpz, strFBNum);
+                        _VATReviewRequestVTGR = await GetVATReviewWebServiceManager.GAZTGetVATReviewRequestVTGR(strEuser, strFbguid, strGpart, strTxnTpz, strFBNum);
                         if (_VATReviewRequestVTGR != null && _VATReviewRequestVTGR.d != null)
                         {
                             VRVGEffectivedate = _VATReviewRequestVTGR.d.EFFDATESet.results.Where(x => x.Persl == _VATReviewRequestVTGR.d.Persl).FirstOrDefault().Txt50
@@ -7028,13 +7029,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     try
                     {
                         //Please pass the fbtype is "DGVT"
-                        var _dregInputResult = await WebServiceManager.GAZTVATObjectionSummaryInputData(selectedApplicationRef.Fbnum, "", "DGVT");
+                        var _dregInputResult = await VATObjectionWebServiceManager.GAZTVATObjectionSummaryInputData(selectedApplicationRef.Fbnum, "", "DGVT");
 
                         if (_dregInputResult != null && _dregInputResult.d != null)
                         {
 
-                            var dregresult = await WebServiceManager.GAZTGetVATReviewDREGViewApplication(_dregInputResult.d.Fbguid);
-                            var dregReasonset = await WebServiceManager.GAZTGetVATReviewDREGReasonSet("VT_SUSP");
+                            var dregresult = await GetVATReviewWebServiceManager.GAZTGetVATReviewDREGViewApplication(_dregInputResult.d.Fbguid);
+                            var dregReasonset = await GetVATReviewWebServiceManager.GAZTGetVATReviewDREGReasonSet("VT_SUSP");
 
                             if (dregresult != null && dregresult.d != null)
                             {
@@ -7090,7 +7091,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 {
 
 
-                                    var _suspensionResult = await WebServiceManager.GAZTGetVATReviewDREGSuspensionDetailSet(startDate, endDate);
+                                    var _suspensionResult = await GetVATReviewWebServiceManager.GAZTGetVATReviewDREGSuspensionDetailSet(startDate, endDate);
                                     if (_suspensionResult != null & _suspensionResult.d.results.Count > 0)
                                     {
                                         if (_suspensionResult.d.results[0].StartDate != null)

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models.AccountStatements;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
@@ -1195,7 +1196,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             try
             {
 
-                TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
+                TabIdentification = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementsTabIdentification();
                 TaxTypeForFilter = new ObservableCollection<ASReturnTypes>();
 
                 StatementsLineItems = new ObservableCollection<ASResult>();
@@ -1237,7 +1238,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 }
 
                 IsLoading = true;
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 if (StatementsLineItems == null)
                 {
@@ -1266,7 +1267,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         public async Task PopulateDataForTransactionTypes(string taxType)
         {
-            var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
+            var tempValues = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
             foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.D.Results)
             {
                 aSRevenueDropDownSetDataResults.TaxType = taxType;
@@ -1279,8 +1280,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             try
             {
                 IsLoading = true;
-                YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                YearValuesHeader = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
+                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 var chipDataFilterlistForYears = new List<ASChipModel>();
                 ChipDataFilterlistForYears = new List<ASChipModel>();
@@ -1343,7 +1344,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     await PopulateDataForTransactionTypes("I");
                 }
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
+                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet
                     (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType);
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 IsOpeningBalanceVisible = false;
@@ -1434,7 +1435,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             try
             {
                 IsLoading = true;
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
+                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {

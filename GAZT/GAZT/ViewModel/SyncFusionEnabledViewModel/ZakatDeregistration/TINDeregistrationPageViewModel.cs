@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
@@ -2530,7 +2531,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //    App.DisplayProgressView();
                 //});
 
-                TinDeregistrationReasonSetData = await WebServiceManager.GaztTinDeregistrationReasonData();
+                TinDeregistrationReasonSetData = await TINDeregistrationWebServiceManager.GaztTinDeregistrationReasonData();
                 if (TinDeregistrationReasonSetData != null)
                 {
                     TinDeregReasons = TinDeregistrationReasonSetData.ReasonSet.Results.ToList();
@@ -2824,7 +2825,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
 
 
-                    string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, SelectedIdNumber, dob);
+                    string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, SelectedIdNumber, dob);
 
                     if (IDTypeDataModel == null)
                     {
@@ -3015,7 +3016,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
 
 
-                    string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, SelectedIdNumber, dob);
+                    string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, SelectedIdNumber, dob);
 
                     if (IDTypeDataModel == null)
                     {
@@ -3184,7 +3185,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
 
 
-                    string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, selectedPermit?.APermitIdNoTb, dob);
+                    string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, selectedPermit?.APermitIdNoTb, dob);
 
                     string _responseData = JObject.Parse(Result)["d"].ToString();
                     var IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
@@ -3351,7 +3352,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     IsLoading = true;
                     try
                     {
-                        string resultData = await WebServiceManager.GAZTGetTInNumberData(tinNumber);
+                        string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(tinNumber);
 
                         SelectedDob = string.Empty;
                         if (IDTypeDataModel == null)
@@ -3527,7 +3528,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     IsLoading = true;
                     try
                     {
-                        string resultData = await WebServiceManager.GAZTGetTInNumberData(tinNumber);
+                        string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(tinNumber);
 
                         SelectedDob = string.Empty;
                         if (IDTypeDataModel == null)
@@ -3968,7 +3969,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             {
                                 foreach (Attachment selectedAttachment in TinDeregistrationData.AttDetSet.Results)
                                 {
-                                    string results = WebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
+                                    string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
                                     if (results == "X")
                                     {
                                         foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
@@ -5629,7 +5630,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 List<Attachment> AttachmentsCopy = new List<Attachment>(TinDeregistrationData.AttDetSet.Results);
                 try
                 {
-                    string TinDeregistrationDataResponse = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
+                    string TinDeregistrationDataResponse = await TINDeregistrationWebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
                     TinDeregistrationParentResponseModel obj = JsonConvert.DeserializeObject<TinDeregistrationParentResponseModel>(TinDeregistrationDataResponse);
 
                     if (obj.D == null)

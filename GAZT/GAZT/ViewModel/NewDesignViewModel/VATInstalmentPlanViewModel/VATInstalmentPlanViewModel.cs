@@ -27,7 +27,8 @@ using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Metadata = EGAZT.Models.VATInstalationModels.Metadata;
 using Xamarin.Forms.Internals;
- 
+using EGAZT.Manager;
+
 namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 { 
     [Preserve(AllMembers = true)]
@@ -3006,13 +3007,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018") { 
                             IsViewEnable = false;
                         }
-                        var selectedItemFormID = await WebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, App.selectedVATItem, App.LoginDataRetrieved.TIN, "E0045", "VTIA");
+                        var selectedItemFormID = await VATInstalationPlanWebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, App.selectedVATItem, App.LoginDataRetrieved.TIN, "E0045", "VTIA");
                         //vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData();
                         //VatInstalments = vATInstalment;
                         if (selectedItemFormID.d != null)
                         {
 
-                            vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData(selectedItemFormID.d.Fbguid, selectedItemFormID.d.Euser);
+                            vATInstalment = await VATInstalationPlanWebServiceManager.GAZTGetVATInstalmentData(selectedItemFormID.d.Fbguid, selectedItemFormID.d.Euser);
                             if(vATInstalment != null)
                             {
                                 if(vATInstalment.d.NotesSet != null && vATInstalment.d.NotesSet.results.Count > 0)
@@ -3028,7 +3029,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                     else
                     {
-                        vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData("", "");
+                        vATInstalment = await VATInstalationPlanWebServiceManager.GAZTGetVATInstalmentData("", "");
                         VatInstalments = vATInstalment;
                     }
 
@@ -3758,7 +3759,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 //vatInstalments1.Noofinstallment = "4";
                 //vatInstalments1.Operationz = "10";
 
-                response = await WebServiceManager.SaveVATInstalmentData(request);
+                response = await VATInstalationPlanWebServiceManager.SaveVATInstalmentData(request);
                 PopToRootPage();
                 if (response != null && response.d != null)
                 {

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
@@ -1334,7 +1335,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     try
                     {
-                        vATDeRegistration = await WebServiceManager.GAZTGetVATDeRegistrationData();
+                        vATDeRegistration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
 
 
                         if (vATDeRegistration != null && vATDeRegistration.d != null)
@@ -1497,7 +1498,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             try
             {
-                VATDeregistrationLastICRDateRootObject obj = await WebServiceManager.GAZTGETVATDeregSuspensionDate(reqType);
+                VATDeregistrationLastICRDateRootObject obj = await VATDeregistrationWebServiceManager.GAZTGETVATDeregSuspensionDate(reqType);
                 LastIcrDate = obj.d.results[0].Lasticrdt;
             }
             catch (Exception ex)
@@ -1648,7 +1649,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             try
             {
-                 reasonList = WebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
+                 reasonList = VATDeregistrationWebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
                 if (reasonList != null)
                 {
                     for (int i = 0; i < reasonList.d.results.Count; i++)
@@ -1758,7 +1759,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     DateTime startDateTime = Convert.ToDateTime(FromDate);
                     DateTime toDateTime = Convert.ToDateTime(ToDate);
-                    string validateSuspendedDate = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
+                    string validateSuspendedDate = VATDeregistrationWebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
                     VATDeregistrationSuspendedDateRootObject obj = JsonConvert.DeserializeObject<VATDeregistrationSuspendedDateRootObject>(validateSuspendedDate);
                     if (obj.d != null)
                     {
@@ -1851,7 +1852,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     try
                     {
 
-                        VATDeRegistrationAttachmentDropdownDetails reasonList = await WebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType).ConfigureAwait(true);
+                        VATDeRegistrationAttachmentDropdownDetails reasonList = await VATDeregistrationWebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType).ConfigureAwait(true);
                         if (reasonList != null) { 
                         List<ResultsAttachmentItemForElgblDocSet> tempAttachmentList = reasonList.VatDeregSubItemsSet.Results.Where(m => m.Txt50 != string.Empty).ToList();
                         AttachmentTypes = new ObservableCollection<ResultsAttachmentItemForElgblDocSet>(tempAttachmentList);
@@ -2596,7 +2597,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeregAttachment(attachmentByteData, AttachmentName, VATDeRegistrationDetailsForAttach.d.ReturnIdx, Doctype, contentType);
+                    AttachmentRootOject attachment = await VATDeregistrationWebServiceManager.GAZTSaveVATDeregAttachment(attachmentByteData, AttachmentName, VATDeRegistrationDetailsForAttach.d.ReturnIdx, Doctype, contentType);
 
                     if (attachment != null && attachment.d != null)
                     {
@@ -2899,7 +2900,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
 
                 VATDeRegistrationDetails vATDeRegistrationDetails = new VATDeRegistrationDetails();
-                response = await WebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
+                response = await VatRegistrationWebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
                 // PopToRootPage();
                 if (response != null && response.d != null)
                 {
@@ -2977,7 +2978,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 setDATA("01");
                 VATDeRegistrationDetails vATDeRegistrationDetails = new VATDeRegistrationDetails();
-                response = await WebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
+                response = await VatRegistrationWebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
 
                 // PopToRootPage();
                 if (response != null && response.d != null)

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -177,7 +178,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 {
                     IsLoading = true;
                 });
-                TaxEvasionCategoriesModel rootObject = await WebServiceManager.GAZTTaxEvasionGetCategories();
+                TaxEvasionCategoriesModel rootObject = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetCategories();
                 PopToRootPage();
                 if (rootObject != null)
                 {

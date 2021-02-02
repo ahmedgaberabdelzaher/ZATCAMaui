@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models.VATRefunds;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -269,7 +270,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             try
             {
-                VatRefundsListResultModel = await WebServiceManager.GAZTGetVAtRefundList();
+                VatRefundsListResultModel = await VATDeregistrationWebServiceManager.GAZTGetVAtRefundList();
                 VATRefundsSet = new ObservableCollection<VatRefHeaderSetResult>(VatRefundsListResultModel.VatRefHeaderSet.Results);
                 VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet.Results);
 
@@ -342,9 +343,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     IsLoading = true;
                 });
 
-                VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
+                VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
 
-                VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
+                VatRefundsIbanDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundGetIbanData("");
                 IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
 
                 await Task.Run(() =>

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.ChageFillingPeriodModel;
 using GalaSoft.MvvmLight.Views;
@@ -378,7 +379,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     try
                     {
 
-                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingList(App.LoginDataRetrieved.TIN);
+                        var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingList(App.LoginDataRetrieved.TIN);
                         if (resultData != null)
                         {
                             var changeFilingFrequencyDataList = resultData.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "TPCV".ToUpper()).ToList();
@@ -468,7 +469,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     {
 
 
-                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingSummary(item.Fbnum, item.Fbust);
+                        var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingSummary(item.Fbnum, item.Fbust);
                         if (resultData != null && resultData.d != null)
                         {
                             vATChangingSummaryData = new VATChangeFillingSummaryModel.VATChangingSummaryData();

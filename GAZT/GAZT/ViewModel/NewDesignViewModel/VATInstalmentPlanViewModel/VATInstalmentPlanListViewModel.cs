@@ -20,6 +20,7 @@ using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.VATInstalmentScheduleDetailsModel;
 using Application = Xamarin.Forms.Application;
 using Xamarin.Forms.Internals;
+using EGAZT.Manager;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 {
@@ -754,7 +755,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     try
                     {
 
-                        rEQVatInstalmentPlanResponse = await WebServiceManager.GetRequestToVATInstalmentData();
+                        rEQVatInstalmentPlanResponse = await VATInstalationPlanWebServiceManager.GetRequestToVATInstalmentData();
                         ReqVatInstalmentPlanResponseList = rEQVatInstalmentPlanResponse;
 
                         // If seesion Expired it will navigate to Dashboard page
@@ -945,14 +946,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         var selectedItem = RequestForInstalmentPlanList[index];
 
 
-                        var selectedItemFormID = await WebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, selectedItem.Fbnum, App.LoginDataRetrieved.TIN, selectedItem.Fbust, "VTIA");
+                        var selectedItemFormID = await VATInstalationPlanWebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, selectedItem.Fbnum, App.LoginDataRetrieved.TIN, selectedItem.Fbust, "VTIA");
                         //vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData();
                         //VatInstalments = vATInstalment;
 
                         if (selectedItemFormID.d != null)
                         {
 
-                            var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", selectedItemFormID.d.Fbguid);
+                            var itemDetails = await VATInstalationPlanWebServiceManager.GetRequestToVATInstalmentPlanDetails("", selectedItemFormID.d.Fbguid);
 
                             if (itemDetails != null && itemDetails.d != null)
                             {
@@ -1048,7 +1049,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
 
 
-                        var getFormID = await WebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, "", App.LoginDataRetrieved.TIN, "E0045", "VTIA");
+                        var getFormID = await VATInstalationPlanWebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, "", App.LoginDataRetrieved.TIN, "E0045", "VTIA");
 
 
                         if (getFormID.d != null)
@@ -1056,7 +1057,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             FormGuidValue = getFormID.d.Fbguid;
 
 
-                            DisplayInstallmentAgreementSchedulePlan itemDetails = await WebServiceManager.GetDisplayInstallmentAgreementSchedulePlan(formGuid: FormGuidValue);
+                            DisplayInstallmentAgreementSchedulePlan itemDetails = await VATInstalationPlanWebServiceManager.GetDisplayInstallmentAgreementSchedulePlan(formGuid: FormGuidValue);
                             // var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", getFormID.d.Fbguid);
 
                             if (itemDetails != null && itemDetails.d != null)
@@ -1152,7 +1153,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         var selectedItem = RequestForScheduleList[index];
 
 
-                        var itemDetails = await WebServiceManager.GetDisplayInstallmentScheduleDetails(selectedItem.Opbel, FormGuidValue, "");
+                        var itemDetails = await VATInstalationPlanWebServiceManager.GetDisplayInstallmentScheduleDetails(selectedItem.Opbel, FormGuidValue, "");
                         // var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", getFormID.d.Fbguid);
 
                         if (itemDetails != null && itemDetails.d != null)

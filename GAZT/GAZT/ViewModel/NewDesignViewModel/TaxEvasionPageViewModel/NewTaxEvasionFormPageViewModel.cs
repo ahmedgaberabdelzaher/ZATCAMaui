@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.EnumModels;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -1116,7 +1117,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 try
                 {
                     TaxEvasionRegionsCityModel regionlist = new TaxEvasionRegionsCityModel();
-                    regionlist = await WebServiceManager.GAZTTaxEvasionGetAllRegions();
+                    regionlist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllRegions();
 
                     if (regionlist != null && regionlist.Data.Count() != 0)
                     {
@@ -1165,7 +1166,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 {
                     IsLoading = true;
                 });
-                TaxEvasionCategoriesModel rootObject = await WebServiceManager.GAZTTaxEvasionGetCategories();
+                TaxEvasionCategoriesModel rootObject = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetCategories();
                 PopToRootPage();
                 if (rootObject != null)
                 {
@@ -1296,7 +1297,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     if (SelectedTaxEvasionRegion != null && SelectedTaxEvasionRegion.Id != null)
                     {
                         TaxEvasionRegionsCityModel citylist = new TaxEvasionRegionsCityModel();
-                        citylist = await WebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
+                        citylist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
                         PopToRootPage();
                         CList = citylist.Data;
                     }
@@ -1486,7 +1487,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 TaxEvasionReportTobeUsedToSubmit.Longitude = _longitude.ToString();
 
                 TaxEvasionCreateReportResponseModel response = new TaxEvasionCreateReportResponseModel();
-                response = await WebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
+                response = await TaxEvasionWebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
 
                 if (response != null && response.Status == true)
                 {

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using EGAZT.Manager;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -488,7 +489,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     try
                     {
-                        vATRegistration = await WebServiceManager.GAZTGetVATRegistrationDisplayDetailsData();
+                        vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDisplayDetailsData();
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                         if (vATRegistration != null && vATRegistration.d != null)

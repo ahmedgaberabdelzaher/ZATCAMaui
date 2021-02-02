@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
@@ -825,7 +826,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 UnlockAccountModel.Tin = TxtTIN;
                 //Action for validating TIN and sending OTP
                 UnlockAccountModel.Action = "01";
-                UnlockAccountModelResponse = await WebServiceManager.GaztUnlockAccount(UnlockAccountModel);
+                UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccount(UnlockAccountModel);
                 totalAttempts = Convert.ToInt16(UnlockAccountModelResponse.D.Attempts);
                 numberOfSeconds = 120;
 
@@ -910,7 +911,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         UnlockAccountModelOtp.Tin = UnlockAccountModel.Tin;
                         UnlockAccountModelOtp.Action = "02";
                         UnlockAccountModelOtp.Otp = otp;
-                        UnlockAccountModelResponse = await WebServiceManager.GaztUnlockAccountOtp(UnlockAccountModelOtp);
+                        UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccountOtp(UnlockAccountModelOtp);
                         App.HideProgressView();
 
                         OtpFirstDigit = string.Empty;
@@ -1094,7 +1095,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     UnlockAccountModelChangePassword.Action = "03";
                     UnlockAccountModelChangePassword.NewPassword = Password;
                     UnlockAccountModelChangePassword.ConfirmPassword = ConfirmPassword;
-                    UnlockAccountModelResponse = await WebServiceManager.GaztUnlockAccountChangePassword(UnlockAccountModelChangePassword);
+                    UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccountChangePassword(UnlockAccountModelChangePassword);
                     PasswordChangedSuccessfully = AppResources.UnlockAccountPasswordChangedSuccessfully;
                     PasswordChangedSuccessfully = PasswordChangedSuccessfully.Replace("xxxxxx", UnlockAccountModelChangePassword.Tin);
 

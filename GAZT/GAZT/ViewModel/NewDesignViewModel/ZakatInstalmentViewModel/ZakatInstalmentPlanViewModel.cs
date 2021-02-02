@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.Views.NewDesign;
@@ -4229,7 +4230,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                     try
                     {
-                        invoiceList = await WebServiceManager.GetZakatInvoicesList(IsZakat, App.selectedZakatItem);
+                        invoiceList = await ZakatInstallmentPlanWebServiceManager.GetZakatInvoicesList(IsZakat, App.selectedZakatItem);
 
                         if (invoiceList != null && invoiceList.d != null)
                         {
@@ -4431,7 +4432,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     ZakatInstalments = null;
                     try
                     {
-                        ZakatInstalments = await WebServiceManager.GetZakatInstalmentPostData(App.selectedZakatItem);
+                        ZakatInstalments = await ZakatInstallmentPlanWebServiceManager.GetZakatInstalmentPostData(App.selectedZakatItem);
 
                         if (ZakatInstalments != null)
                         {
@@ -4785,7 +4786,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                 request = BuildRequestObject();
 
-                response = await WebServiceManager.SaveZakatInstalmentData(request);
+                response = await ZakatInstallmentPlanWebServiceManager.SaveZakatInstalmentData(request);
                 PopToRootPage();
                 if (response != null)
                 {

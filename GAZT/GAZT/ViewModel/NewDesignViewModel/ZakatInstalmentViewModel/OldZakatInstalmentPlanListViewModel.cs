@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.Models.ZakatInstalationModels;
@@ -1595,7 +1596,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     {
                         var item = zakatListData[index];
 
-                        SeletedZakatForm = await WebServiceManager.GAZTGetOldZakatRequestDisplayData(item.referanceNumber, item.statusType);
+                        SeletedZakatForm = await OldZakatInstallmentWebServiceManager.GAZTGetOldZakatRequestDisplayData(item.referanceNumber, item.statusType);
 
                         PopToRootPage();
 
@@ -1749,7 +1750,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
 
-                        rEQVatInstalmentPlanResponse = await WebServiceManager.GAZTGetOldZakatInstalmentPlanRequestList(callSer, "", "");
+                        rEQVatInstalmentPlanResponse = await OldZakatInstallmentWebServiceManager.GAZTGetOldZakatInstalmentPlanRequestList(callSer, "", "");
                         ReqVatInstalmentPlanResponseList = rEQVatInstalmentPlanResponse;
 
 

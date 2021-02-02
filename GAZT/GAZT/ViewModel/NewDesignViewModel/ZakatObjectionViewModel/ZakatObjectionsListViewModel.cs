@@ -1,4 +1,5 @@
-﻿using EGAZT.Models;
+﻿using EGAZT.Manager;
+using EGAZT.Models;
 using EGAZT.Models.ZakatObjectionsModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -487,7 +488,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     ZakatObjectionListModel _ZAKATObjectionList = new ZakatObjectionListModel();
                     try
                     {
-                        _ZAKATObjectionList = await WebServiceManager.GAZTGetZAKATObjectionList();
+                        _ZAKATObjectionList = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionList();
 
                         var objectionsList = new ObservableCollection<ZakatObjectionListModel.Result>();
                         if (_ZAKATObjectionList != null && _ZAKATObjectionList.d != null)
@@ -673,7 +674,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     {
                         //EnableSummaryView();
                         //Data binding for withdraw objection details
-                        _ZAKATObjectionWithDraw = await WebServiceManager.GAZTGetZakatObjectionSummaryTP10(SelectedFbNum);
+                        _ZAKATObjectionWithDraw = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatObjectionSummaryTP10(SelectedFbNum);
 
                         if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
                         {
@@ -752,7 +753,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     {
                         EnableSummaryView();
                         //Data binding for withdraw objection details
-                        _ZAKATObjectionWithDraw = await WebServiceManager.GAZTGetZakatWithDrawDDData(SelectedFbNum);
+                        _ZAKATObjectionWithDraw = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawDDData(SelectedFbNum);
 
                         if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
                         {
@@ -912,7 +913,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel _ZAKATObjectionReviewReturn = new ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel();
                     try
                     {
-                        _ZakatObjectionRequestSummary = await WebServiceManager.GAZTGetZakatRequestObjectionSummary(fbnum);
+                        _ZakatObjectionRequestSummary = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatRequestObjectionSummary(fbnum);
 
                         if (_ZakatObjectionRequestSummary != null && _ZakatObjectionRequestSummary.d != null)
                         {

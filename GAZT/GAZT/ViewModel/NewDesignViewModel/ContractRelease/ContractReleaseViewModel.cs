@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.ContractRelease;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
@@ -1676,7 +1677,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             try
             {
                 request = BuildRequestObject();
-                string ContractReleaseResponse = await WebServiceManager.GAZTSubmitContractReleaseRequestData(request);
+                string ContractReleaseResponse = await ContractReleaseWebServiceManager.GAZTSubmitContractReleaseRequestData(request);
                 ContractReleaseFormResponse releaseFormResponse = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(ContractReleaseResponse);
 
                 if (releaseFormResponse.d == null)
@@ -1823,7 +1824,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     ContractReleaseData = null;
                     try
                     {
-                        ContractReleaseData = await WebServiceManager.GAZTGetContractReleaseRequestData();
+                        ContractReleaseData = await ContractReleaseWebServiceManager.GAZTGetContractReleaseRequestData();
                         if (ContractReleaseData != null && ContractReleaseData.d != null)
                         {
                             bindDataToUI();

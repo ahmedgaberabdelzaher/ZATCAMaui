@@ -1014,6 +1014,7 @@ namespace GAZT.Manager
             }
             catch (Exception )
             {
+                return string.Empty;
             }
             return amountWithComma;
         }

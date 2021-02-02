@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
@@ -1563,7 +1564,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         private async void updateActivityList(string indSector)
         {
             IsLoading = true;
-            activityList = await WebServiceManager.ESTOutletGetActivitySetsList(indSector);
+            activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList(indSector);
             IsLoading = false;
         }
         private async void fetchTabDataAndBind()
@@ -1576,8 +1577,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 resetForm();
                 if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
                 {
-                    OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
-                    activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
+                    OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
+                    activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
                     EnableIssueByDropDown = false;
                     CRNumber = validateCR?.Crnum;
                     CRIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == "SA").FirstOrDefault();
@@ -1630,8 +1631,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 {
-                    OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
-                    activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
+                    OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
+                    activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
 
                     if ((/*editModeEnabled == true &&*/ SelectedLicenseItem != null) || validateLicense != null)
                     {
@@ -1765,7 +1766,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         public async void validateCRNumber()
         {
             IsLoading = true;
-            validateCR = await WebServiceManager.ESTValidateCRNum(CRNumber);
+            validateCR = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(CRNumber);
             IsLoading = false;
             updateCRAttachments();
             if (validateCR?.NotFound == "X")
@@ -1894,7 +1895,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     string outletref = $"{Int16.Parse(newNumber?.Actno):000-}" + CRLicenseNo;
 
 
-                    Attachment dd = await WebServiceManager.ESTAttachment(attachmentByteData, fileName, taxPayerDetails?.ReturnIdx, docType, contentType, outletref);
+                    Attachment dd = await EstablishmentRegistrationWebServiceManager.ESTAttachment(attachmentByteData, fileName, taxPayerDetails?.ReturnIdx, docType, contentType, outletref);
 
                     if (docType == "RG01")
                     {
@@ -1936,7 +1937,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (str == "Yes")
                 {
                     IsLoading = true;
-                    var delete = WebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
+                    var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
                     if (!string.IsNullOrEmpty(delete) && delete == "delete")
                     {
                         if (docType == "RG01")

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -208,7 +209,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                     //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
 
                     TaxEvasionRegionsCityModel regionlist = new TaxEvasionRegionsCityModel();
-                    regionlist = await WebServiceManager.GAZTTaxEvasionGetAllRegions();
+                    regionlist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllRegions();
 
                     if (regionlist != null && regionlist.Data.Count() != 0)
                     {
@@ -278,7 +279,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                 taxEvasionRegisterUserModel.City = TxtReportDetailCity;
 
                 TaxEvasionUserRegistrationResponseModel taxEvasionUserRegistrationResponseModel = new TaxEvasionUserRegistrationResponseModel();
-                taxEvasionUserRegistrationResponseModel = await WebServiceManager.GAZTTaxEvasionRegisterUser(taxEvasionRegisterUserModel);
+                taxEvasionUserRegistrationResponseModel = await TaxEvasionWebServiceManager.GAZTTaxEvasionRegisterUser(taxEvasionRegisterUserModel);
 
                 IsLoading = false;
                 if(taxEvasionUserRegistrationResponseModel.Status == true)

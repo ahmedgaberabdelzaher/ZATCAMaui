@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.VatReviewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
@@ -121,7 +122,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             {
 
                 
-                await WebServiceManager.email(attachment.Doguid, attachment);
+                await GetVATReviewWebServiceManager.email(attachment.Doguid, attachment);
             }
 
             await Task.Run(() =>
@@ -151,7 +152,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             else
             {
                
-                await WebServiceManager.email(attachment.Doguid, attachment);
+                await GetVATReviewWebServiceManager.email(attachment.Doguid, attachment);
             }
 
 

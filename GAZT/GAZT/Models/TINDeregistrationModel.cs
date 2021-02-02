@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using EGAZT.Manager;
 using GalaSoft.MvvmLight;
 using GAZT.Manager;
 using GAZT.Models;
@@ -1352,7 +1353,7 @@ namespace EGAZT.Models
                     Task.Run(async () =>
                     {
 
-                        string resultData = await WebServiceManager.GAZTGetTInNumberData(value);
+                        string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(value);
                         string _responseData = JObject.Parse(resultData)["d"].ToString();
                         VATSignUpD IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
                         if (_responseData != null)
@@ -1396,7 +1397,7 @@ namespace EGAZT.Models
                     {
                         Task.Run(async () =>
                         {
-                            string resultData = await WebServiceManager.GAZTGetTInNumberData(aPermitIdNoTb);
+                            string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(aPermitIdNoTb);
                             string _responseData = JObject.Parse(resultData)["d"].ToString();
                             VATSignUpD IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
                             if (_responseData != null)

@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
@@ -1055,7 +1056,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         taxPayerDetails.Nreg_BtnSet = new NregBtnSet();
 
                         taxPayerDetails.Nreg_BtnSet.results = new List<object>();
-                        await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                        await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
 
                         selectedOutletItem = null;
@@ -1088,7 +1089,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 var newList = new List<Nreg_ActivityItem>();
                 newList.AddRange(list);
                 taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
-                var _taxPayerDetails = await WebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
+                var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
                      );
                 taxPayerDetails?.AttDetSet.results?.Clear();
                 taxPayerDetails?.AttDetSet.results?.AddRange(_taxPayerDetails?.AttDetSet.results);
@@ -1128,7 +1129,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     clearFormData();
                     try
                     {
-                        var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
+                        var _outletTempData = await EstablishmentRegistrationWebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
                         _outletTempData.ForEach(_out =>
                         {
                             if (_out.Actcat == "M")
@@ -1162,10 +1163,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         }
                         else
                         {
-                            newNumber = await WebServiceManager.ESTOutletNumberESAmendUpdate(taxPayerDetails?.Fbnumx, App.LoginDataRetrieved.TIN);
+                            newNumber = await EstablishmentRegistrationWebServiceManager.ESTOutletNumberESAmendUpdate(taxPayerDetails?.Fbnumx, App.LoginDataRetrieved.TIN);
                         }
                         OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
-                        taxPayerDetails = await WebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
+                        taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
                          );
 
                         if (OutletActNumber == "000")
@@ -1176,7 +1177,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                 var preLoadedItem = preLoadedItems.FirstOrDefault();
                                 if (preLoadedItem?.Type == "BUP002")
                                 {
-                                    validateCR = await WebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
+                                    validateCR = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
                                     if (!string.IsNullOrEmpty(validateCR?.Crname))
                                     {
                                         OutletName = validateCR?.Crname;
@@ -1210,7 +1211,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
-                    OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
+                    OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
                     List<CountryDropdownItem> countries = OutletDropDowns?.country_dropdownSet?.results;
                     List<StateDropdownItem> states = OutletDropDowns?.State_dropdownSet?.results;
 
@@ -1263,7 +1264,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     {
                         if (idItem != null)
                         {
-                            List<OutletAddress> addressess = await WebServiceManager.ESTOutletAddress(idItem?.Type, idItem?.Idnumber, App.LoginDataRetrieved.TIN);
+                            List<OutletAddress> addressess = await EstablishmentRegistrationWebServiceManager.ESTOutletAddress(idItem?.Type, idItem?.Idnumber, App.LoginDataRetrieved.TIN);
                             if (addressess.Count > 0)
                             {
                                 if (addressess.Count == 1)

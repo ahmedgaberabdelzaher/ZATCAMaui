@@ -1,4 +1,5 @@
-﻿using EGAZT.Models;
+﻿using EGAZT.Manager;
+using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -924,7 +925,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                     try
                     {
                         TaxEvasionRegionsCityModel regionlist = new TaxEvasionRegionsCityModel();
-                        regionlist = await WebServiceManager.GAZTTaxEvasionGetAllRegions();
+                        regionlist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllRegions();
 
                         if (regionlist != null && regionlist.Data.Count() != 0)
                         {
@@ -985,7 +986,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                     if (SelectedTaxEvasionRegion != null && SelectedTaxEvasionRegion.Id != null)
                     {
                         TaxEvasionRegionsCityModel citylist = new TaxEvasionRegionsCityModel();
-                        citylist = await WebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
+                        citylist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
                         PopToRootPage();
                         CList = citylist.Data;
                     }

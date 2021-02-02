@@ -1,4 +1,5 @@
-﻿using EGAZT.Models;
+﻿using EGAZT.Manager;
+using EGAZT.Models;
 using EGAZT.Models.Form5Models;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
@@ -1882,7 +1883,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     ZakatForm5DataResult = null;
 
-                    ZakatForm5CityDataResult ZakatForm5CityDataResults = await WebServiceManager.GAZTZakatForm5CityData();
+                    ZakatForm5CityDataResult ZakatForm5CityDataResults = await ZakatForm5WebServiceManager.GAZTZakatForm5CityData();
 
                     if (ZakatForm5CityDataResults != null)
                     {
@@ -1891,7 +1892,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-                        ZakatForm5DataResult ZakatForm5DataResult = await WebServiceManager.GAZTZakatForm5Data(Fbguid);
+                        ZakatForm5DataResult ZakatForm5DataResult = await ZakatForm5WebServiceManager.GAZTZakatForm5Data(Fbguid);
 
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -2901,7 +2902,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             // Zakat Estimation API Call
 
 
-                            ZakatForm5SummaryResult ZakatForm5SummaryDataResult = await WebServiceManager.GAZTZakatForm5DataSummary(ZakatForm5DataResult.Fbnum);
+                            ZakatForm5SummaryResult ZakatForm5SummaryDataResult = await ZakatForm5WebServiceManager.GAZTZakatForm5DataSummary(ZakatForm5DataResult.Fbnum);
 
                             if (ZakatForm5SummaryDataResult != null)
                             {

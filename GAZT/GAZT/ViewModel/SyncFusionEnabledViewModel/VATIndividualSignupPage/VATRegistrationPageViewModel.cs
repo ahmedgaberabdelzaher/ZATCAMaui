@@ -1,4 +1,5 @@
-﻿using EGAZT.Models;
+﻿using EGAZT.Manager;
+using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -1835,7 +1836,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 ATTDETSet ATTDETSetnew = new ATTDETSet();
                 ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
                 //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
-                response = await WebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
+                response = await VatRegistrationWebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
                 PopToRootPage();
                 if (response != null && response.d != null)
                 {
@@ -1915,7 +1916,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             await Task.Run(async () =>
             {
-                VATRegistrationOtherDetails vATRegistrationOther = await WebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
+                VATRegistrationOtherDetails vATRegistrationOther = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
 
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -2059,7 +2060,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     VATRegistrationOtherDetails vATRegistrationOther = null;
                     try
                     {
-                        vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData();
+                        vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationData();
 
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -2199,7 +2200,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 answer4selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").Count();
                             }
 
-                            vATRegistrationOther = await WebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
+                            vATRegistrationOther = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
                             PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                             if (vATRegistrationOther != null && vATRegistrationOther.d != null)
                             {

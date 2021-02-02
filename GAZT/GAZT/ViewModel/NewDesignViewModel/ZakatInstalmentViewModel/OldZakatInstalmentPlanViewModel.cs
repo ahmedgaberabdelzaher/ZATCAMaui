@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.Views.NewDesign;
@@ -4779,13 +4780,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         if (App.selectedZakatItem != "")
                         {
 
-                            ZakatInstalments = await WebServiceManager.GAZTGetOldZakatRequestDisplayData(App.selectedZakatItem, "IP017");
+                            ZakatInstalments = await OldZakatInstallmentWebServiceManager.GAZTGetOldZakatRequestDisplayData(App.selectedZakatItem, "IP017");
 
                         }
                         else
                         {
 
-                            ZakatInstalments = await WebServiceManager.GAZTGetOldZakatRequestDisplayData(App.selectedZakatItem, "");
+                            ZakatInstalments = await OldZakatInstallmentWebServiceManager.GAZTGetOldZakatRequestDisplayData(App.selectedZakatItem, "");
 
                         }
 
@@ -5334,7 +5335,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 ZakatInstalments.d.ADeb3yrTbFg = "1";
 
                 request = BuildRequestObject();
-                response = await WebServiceManager.SaveOldZakatInstalmentData(request);
+                response = await OldZakatInstallmentWebServiceManager.SaveOldZakatInstalmentData(request);
                 PopToRootPage();
                 if (response != null)
                 {
