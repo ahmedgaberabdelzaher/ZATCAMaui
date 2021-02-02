@@ -139,7 +139,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             });
-            OnFavClicked = new Xamarin.Forms.Command(async () =>
+            OnFavClicked = new Xamarin.Forms.Command(() =>
             {
                 if (CorrespondenceD.IsFav == false)
                 {

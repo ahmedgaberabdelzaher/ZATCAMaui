@@ -19,8 +19,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class TaxpayersCertificatesPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
  
 
@@ -46,21 +44,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     FilterCertificateOnBasisOfType();
                 }
                 RaisePropertyChanged("SelectedTaxTypeForFilter");
-            }
-        }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
             }
         }
         private Result _selectedCertificate;
@@ -258,12 +241,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();

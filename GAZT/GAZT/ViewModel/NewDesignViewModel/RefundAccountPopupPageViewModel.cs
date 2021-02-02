@@ -18,8 +18,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class RefundAccountPopupPageViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
 
         public RefundAccountPopupPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
@@ -27,12 +25,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
         }
 
         #region Properties
@@ -837,7 +833,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                     //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -868,7 +864,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                 // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -940,7 +936,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                 // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -965,7 +961,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                               //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
                                 //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
@@ -979,7 +975,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                // MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
             }
@@ -1112,7 +1108,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             newDesignPopUp.HeaderWithInfos = headerWithInfos;
                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                             //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -1138,7 +1134,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             newDesignPopUp.HeaderWithInfos = headerWithInfos;
                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                             //MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
 
                             //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
@@ -1150,7 +1146,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
               //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
                 result = false;
@@ -1250,7 +1246,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //    ResponseVATDeclarationD = VATDeclarationData.d;
                             //    SetData();
                             //}
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread(() =>
                             {
                                 //ManageEnabledProperty(true);
                             });
@@ -1258,14 +1254,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                        // await SetButtons(VATDeclarationData);
                         return response;
                     }
-                    catch (Exception ex)
+                    catch (Exception )
                     {
                         return null;
                     }
                 }
                 return response;
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }

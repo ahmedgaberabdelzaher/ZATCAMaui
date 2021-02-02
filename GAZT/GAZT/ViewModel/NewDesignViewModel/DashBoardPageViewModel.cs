@@ -833,14 +833,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_homeViewVisible == value) return;
 
                 this._homeViewVisible = value;
-                if (_homeViewVisible != null)
+                if (_homeViewVisible)
                 {
-                    if (_homeViewVisible)
-                    {
-                        _homeIndicatorColor = Color.FromHex("#005e4b");
-                        MenuIndicatorColor = Color.White;
-                    }
-
+                    _homeIndicatorColor = Color.FromHex("#005e4b");
+                    MenuIndicatorColor = Color.White;
                 }
                 this.RaisePropertyChanged("HomeViewVisible");
             }
@@ -857,15 +853,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_accountStatementVisible == value) return;
 
                 this._accountStatementVisible = value;
-                if (_accountStatementVisible != null)
+                if (_accountStatementVisible)
                 {
-                    if (_accountStatementVisible)
-                    {
-                        _homeIndicatorColor = Color.FromHex("#005e4b");
-                        MenuIndicatorColor = Color.White;
-                    }
-
+                    _homeIndicatorColor = Color.FromHex("#005e4b");
+                    MenuIndicatorColor = Color.White;
                 }
+
                 this.RaisePropertyChanged("AccountStatementVisible");
             }
         }
@@ -1157,7 +1150,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         GetAccountStatments();
                         GetBillsAndReturns();
                     }
-                    catch(Exception ex)
+                    catch(Exception)
                     {
 
                     }
@@ -1216,7 +1209,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PopToRootPage();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
             }
@@ -1287,7 +1280,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
                 MessagingCenter.Send<Object>(this, "UpdateProgressBar");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1321,7 +1314,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 PopulateReturnsInformation();
                 PopualateCommittmentsInformation();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -1491,7 +1484,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (GAZTSessionExpiredException ex)
+            catch (GAZTSessionExpiredException)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
