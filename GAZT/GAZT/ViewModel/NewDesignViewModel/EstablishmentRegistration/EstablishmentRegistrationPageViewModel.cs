@@ -1660,7 +1660,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
@@ -2404,7 +2404,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             CloseWhenBackgroundIsClicked = false
                         };
 
-                        someThingWhentWrong.OnDone = async () =>
+                        someThingWhentWrong.OnDone = () =>
                         {
 
                             currentTab = EstablishmentRegistrationTabsEnum.Unknown;
@@ -2670,7 +2670,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));

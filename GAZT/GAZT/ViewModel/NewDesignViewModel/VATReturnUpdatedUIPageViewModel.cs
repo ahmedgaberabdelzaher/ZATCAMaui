@@ -2665,7 +2665,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         var res = await SaveReturnAndGetReturnAndSetButtons();
                         if (res != null && res.d != null && response != null)
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread( () =>
                             {
                                 ManageEnabledProperty(false);
                                 IsVoidClicked = true;
@@ -2898,7 +2898,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsNewLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Device.BeginInvokeOnMainThread(async () => {
 
@@ -2979,7 +2979,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
 
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
                             ManageEnabledProperty(false);
                             IsResetClicked = true;
@@ -3168,7 +3168,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 var res = await SaveReturnAndGetReturnAndSetButtons();
                 if (res != null && res.d != null)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
                         ManageEnabledProperty(true);
                         IsMainButtonVisible = true;
@@ -3695,7 +3695,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //    ResponseVATDeclarationD = VATDeclarationData.d;
                             //    SetData();
                             //}
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread(() =>
                             {
                                 ManageEnabledProperty(true);
                             });
@@ -3758,7 +3758,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                   //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -3789,7 +3789,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -3809,7 +3809,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     var res = await SaveReturnAndGetReturnAndSetButtons();
                     if (res != null && res.d != null)
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
                             ManageEnabledProperty(false);
                             IsGetSadadNumberEnabled = false;
@@ -3966,7 +3966,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (resNew.d.SubmitFg == "" || resNew.d.SubmitFg == string.Empty)
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread(() =>
                             {
                                 ManageEnabledProperty(false);
                                 IsGetSadadNumberEnabled = false;
@@ -4067,7 +4067,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 result = false;
                 return result;
@@ -4591,7 +4591,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
         }

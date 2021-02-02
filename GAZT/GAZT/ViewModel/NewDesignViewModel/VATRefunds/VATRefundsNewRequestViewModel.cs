@@ -180,7 +180,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                             IBANType idType = IBANTypesList.Where(m => m.Text == PickerModel.SelectedValue).FirstOrDefault();
                             SelectedIDTypeCode = idType.key;
                             SelectedIdNumber = AppResources.IDNumber;
-                            SetIBANIdNumber(idType.key);
+                            _ = SetIBANIdNumber(idType.key);
                         }
                         else
                         {
@@ -381,7 +381,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 throw new ArgumentNullException("dialogService");
             }
 
-            GoBackBtnTapped = new Command(async () =>
+            GoBackBtnTapped = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -565,7 +565,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
 
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
                 await Task.Run(() =>
                 {
@@ -761,7 +761,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         IBANType idType = IBANTypesList.Where(m => m.key == SelectedIDTypeCode).FirstOrDefault();
                         SelectedIdtype = idType.Text;
                     }
-                    catch(Exception ex)
+                    catch(Exception)
                     {
                         Console.WriteLine("No ID type");
                     }

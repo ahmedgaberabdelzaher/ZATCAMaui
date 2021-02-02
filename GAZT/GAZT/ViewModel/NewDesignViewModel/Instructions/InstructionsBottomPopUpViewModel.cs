@@ -10,9 +10,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
     [Preserve(AllMembers = true)]
     public class InstructionsBottomPopUpViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-
         public enum DialogType
         {
             Instructions,
@@ -189,13 +186,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
 
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
 
             TermsContinueClick = new Command(async () =>
             {

@@ -17,9 +17,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
     [Preserve(AllMembers = true)]
     public class TaxEvasionVerifyMobileViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-
         public ICommand SendOTPCommand { get; set; }
         public ICommand ResendOTPCommand { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
@@ -39,21 +36,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_ResendOtpButtonColor == value) return;
                 _ResendOtpButtonColor = value;
                 RaisePropertyChanged("ResendOtpButtonColor");
-            }
-        }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
             }
         }
         private bool _isShowMobileInput = false;
@@ -352,12 +334,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
 
             IsShowMobileInput = true;
             IsShowOTPInput = false;
@@ -371,14 +351,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         {
                             App.HasToRefreshLoaderOnDashboard = true;
                         });
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
                             _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                         });   
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
                             _navigationService.GoBack();
                         });
@@ -387,7 +367,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 }
                 else
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
                         _navigationService.GoBack();
                     });

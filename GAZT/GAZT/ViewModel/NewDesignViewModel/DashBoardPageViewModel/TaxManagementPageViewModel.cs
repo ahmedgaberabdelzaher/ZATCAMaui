@@ -90,7 +90,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                 App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

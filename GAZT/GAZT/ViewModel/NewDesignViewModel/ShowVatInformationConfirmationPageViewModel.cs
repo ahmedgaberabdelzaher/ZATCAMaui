@@ -10,8 +10,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class ShowVatInformationConfirmationPageViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
  
         public ShowVatInformationConfirmationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
@@ -19,12 +17,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
         }
 
         #region Properties

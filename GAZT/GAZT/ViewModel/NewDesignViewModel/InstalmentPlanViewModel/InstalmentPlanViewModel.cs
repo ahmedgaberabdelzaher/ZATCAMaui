@@ -32,7 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -58,13 +58,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 
         #region Button Actions
 
-        public async void ZakatBtnClicked()
+        public void ZakatBtnClicked()
         {
             try
             {
                 _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
 
 
@@ -80,14 +80,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
             }
         }
 
-        public async void IncomeTaxBtnClicked()
+        public void IncomeTaxBtnClicked()
         {
             try
             {
                 _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
 
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
 
 
@@ -103,13 +103,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
             }
         }
 
-        public async void VatBtnClicked()
+        public void VatBtnClicked()
         {
             try
             {
                 _navigationService.NavigateTo(App.VatInstalmentPlanListPageView);
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
 
 

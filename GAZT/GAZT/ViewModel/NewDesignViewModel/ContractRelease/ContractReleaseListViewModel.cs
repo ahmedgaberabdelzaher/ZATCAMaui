@@ -395,15 +395,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             _navigationService = navigationService;
             _dialogService = dialogService;
 
-            CloseClick = new Command(async () =>
+            CloseClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 EnableContractListView();
             });
-            RequestContractReleaseBtnTapped = new Command(async () =>
+            RequestContractReleaseBtnTapped = new Command(() =>
             {
                 _navigationService.NavigateTo(App.ContractReleasePageView);
             });
@@ -475,13 +475,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             DetailDescription = ContractReLeaseSummaryData.DetaiiledDesc;
             ContractPeriod = ContractReLeaseSummaryData.ContractDate + " - " + ContractReLeaseSummaryData.ContractEnddate;
 
-
-            //ContractReLeaseSummaryData.ContractprofitEstimatedRate = resultData.d.AContProfitPer;
-            //ContractReLeaseSummaryData.ProfitEstimatedforContract = resultData.d.AContProfit;
-            //ContractReLeaseSummaryData.EstimatedProfitforZakat = resultData.d.AZakatProfit;
-            //ContractReLeaseSummaryData.EstimatedProfitforTax = resultData.d.ATaxProfitPer;
-            //ContractReLeaseSummaryData.TheValueofZakatdues = resultData.d.ADueZakat;
-            //ContractReLeaseSummaryData.TheValueofTaxdues = resultData.d.ADueTax;
             ZakatDues = UtilityManager.GetCommaSeparatedAmount(ContractReLeaseSummaryData.TheValueofZakatdues);
             TaxDues = UtilityManager.GetCommaSeparatedAmount(ContractReLeaseSummaryData.TheValueofTaxdues);
             TotalDues = UtilityManager.GetCommaSeparatedAmount(ContractReLeaseSummaryData.TotalDues);
@@ -551,22 +544,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                         cRApplicationFormData = await ContractReleaseWebServiceManager.GetContractReleaseList();
 
-                        //cRApplicationFormData = await WebServiceManager.GAZTGetCRApplicationFormData("", App.LoginDataRetrieved.Euser, 
-                        //    App.LoginDataRetrieved.FbGuid, App.LoginDataRetrieved.Euser);
                         if (cRApplicationFormData != null && cRApplicationFormData.d != null)
                         {
                             ContractReLeaseListSet = cRApplicationFormData.d.ListSet;
-
-                            //await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
-                            //_dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
-                            //    .Instructions));
-
-                            // BindVATSelectionView();
-                            //BindBillsListView();
-
-
                             UpdateDataToUI();
-
                         }
                         else
                         {
@@ -601,10 +582,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -715,10 +692,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;

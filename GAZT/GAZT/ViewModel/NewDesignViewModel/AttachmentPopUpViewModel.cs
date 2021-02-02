@@ -220,8 +220,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         if (attachment.Length < 5242880)
                                         {
-                                            if (true)//ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count < 5
-                                            {
+                                            
                                                 AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, ZakatReturnDetail.ReturnId, "Z12L", ContentType);
                                                 PopToRootPage();
                                                 if (_attachment != null && _attachment.d != null)
@@ -267,18 +266,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                         IsLoading = false;
                                                     });
                                                 }
-                                            }
-                                            else
-                                            {
-                                                Device.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                    AttachmentName = string.Empty;
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoucannotuploadmorethan5attachment));
-
-                                                   // await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
-                                                    IsLoading = false;
-                                                });
-                                            }
+                                            
                                         }
                                         else
                                         {
@@ -359,7 +347,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
 
@@ -529,7 +517,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     _zakatAttachment.UploadededDateToShow = uploadedDate;
                     _estimateZakatAttachment.Add(_zakatAttachment);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }

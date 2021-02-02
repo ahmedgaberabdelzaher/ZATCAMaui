@@ -135,7 +135,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
 
-            ReqInstalmentBtnTapped = new Command(async () =>
+            ReqInstalmentBtnTapped = new Command(() =>
             {
                 //CheckDueInvoices();
 
@@ -143,7 +143,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 _navigationService.NavigateTo(App.OldZakatInstalmentPlanPageView);
             });
-            SummaryContinueBtnTapped = new Command(async () =>
+            SummaryContinueBtnTapped = new Command(() =>
             {
                 //EnableOTPPage();
             });
@@ -221,7 +221,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     IsLoading = true;
                     try
                     {
-                        GetZakatInstalmentPlanList();
+                        await GetZakatInstalmentPlanList();
 
                         IsLoading = false;
                     }
@@ -271,7 +271,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
@@ -279,7 +279,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1211,7 +1211,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         }
 
 
-        public async void BindVatInstalments()
+        public void BindVatInstalments()
         {
             if (ReqVatInstalmentPlanResponseList.d.ListSet.results != null)
             {
@@ -1701,7 +1701,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
@@ -1709,7 +1709,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1811,7 +1811,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
@@ -1819,7 +1819,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }

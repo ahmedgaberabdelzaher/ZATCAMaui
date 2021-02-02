@@ -12,8 +12,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
     public class ViewNotePopUpViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         // public ICommand OnSubmitClicked { get; set; }
         #endregion
@@ -65,13 +63,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });

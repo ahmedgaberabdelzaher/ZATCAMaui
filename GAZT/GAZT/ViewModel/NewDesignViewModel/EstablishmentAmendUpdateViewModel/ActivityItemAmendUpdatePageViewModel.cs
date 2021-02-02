@@ -1522,7 +1522,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
                                         }
                                     }
@@ -1669,14 +1669,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         {
                             foreach (AttDetItem attDetItem in lists)
                             {
-                                var obj = new Attachment();
-                                obj.Filename = attDetItem.Filename;
-                                obj.FileExtn = attDetItem.FileExtn;
-                                obj.Mimetype = attDetItem.Mimetype;
-                                obj.RetGuid = attDetItem.RetGuid;
-                                obj.DocUrl = attDetItem.DocUrl;
-                                obj.Dotyp = attDetItem.Dotyp;
-                                obj.Doguid = attDetItem.Doguid;
+                                Attachment obj = new Attachment
+                                {
+                                    Filename = attDetItem.Filename,
+                                    FileExtn = attDetItem.FileExtn,
+                                    Mimetype = attDetItem.Mimetype,
+                                    RetGuid = attDetItem.RetGuid,
+                                    DocUrl = attDetItem.DocUrl,
+                                    Dotyp = attDetItem.Dotyp,
+                                    Doguid = attDetItem.Doguid
+                                };
                                 list.Add(obj);
                             }
 

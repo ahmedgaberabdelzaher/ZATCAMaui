@@ -67,8 +67,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _currentTab;
             set
             {
-               // if (_currentTab == value) return;
-
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)value;
@@ -566,14 +564,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             if (PickerModel.PickerExtraData != null && PickerModel.PickerExtraData.ToString().Equals("same"))
                             {
                                 CountrySame = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
-
-                                //CountrySame = item as CountryDropdownItem;
                             }
                             else
                             {
                                 Country = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
-
-                                //Country = item as CountryDropdownItem;
                             }
                         }
                         if (PickerModel.PickerId == "AddressStatePicker")
@@ -583,14 +577,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             if (PickerModel.PickerExtraData != null && PickerModel.PickerExtraData.ToString().Equals("same"))
                             {
                                 ProvinanceSame = states.Where(i => i.Bezei == PickerModel.SelectedValue).FirstOrDefault();
-
-                                //CountrySame = item as CountryDropdownItem;
                             }
                             else
                             {
                                 Provinance = states.Where(i => i.Bezei == PickerModel.SelectedValue).FirstOrDefault();
-
-                                //Country = item as CountryDropdownItem;
                             }
                         }
                         if (PickerModel.PickerId == "AddressCityPicker")
@@ -598,17 +588,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             if (PickerModel.PickerExtraData != null && PickerModel.PickerExtraData.ToString().Equals("same"))
                             {
                                 CitySame = OutletDropDowns?.city_dropdownSet?.results.Where(i =>  i.CityName == PickerModel.SelectedValue).FirstOrDefault();
-
-
-                                //CountrySame = item as CountryDropdownItem;
                             }
                             else
                             {
                                 CitySame = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityName == PickerModel.SelectedValue).FirstOrDefault();
-
-                                //Country = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Land1 == PickerModel.SelectedValue).FirstOrDefault();
-
-                                //Country = item as CountryDropdownItem;
                             }
                         }
 
@@ -659,26 +642,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
             OnCountrySelectButtonClick = new Command((str) =>
             {
-                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
-                //poupWindow.OnItemSelect = (item) =>
-                //{
-                //    try
-                //    {
-                //        if (str != null && str.ToString().Equals("same"))
-                //        {
-                //            CountrySame = item as CountryDropdownItem;
-                //        }
-                //        else
-                //        {
-                //            Country = item as CountryDropdownItem;
-                //        }
-                //    }
-                //    catch (Exception e)
-                //    {
-                //        Console.WriteLine(e.StackTrace);
-                //    }
-                //};
-                //PopupNavigation.Instance.PushAsync(poupWindow);
                 try
                 {
                     List<string> countryDropdownData = new List<string>();
@@ -740,26 +703,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 if (states?.Count > 0)
                 {
-                    //ListPopUpViewPage poupWindow = new ListPopUpViewPage(states);
-                    //poupWindow.OnItemSelect = (item) =>
-                    //{
-                    //    try
-                    //    {
-                    //        if (str != null && str.ToString().Equals("same"))
-                    //        {
-                    //            ProvinanceSame = item as StateDropdownItem;
-                    //        }
-                    //        else
-                    //        {
-                    //            Provinance = item as StateDropdownItem;
-                    //        }
-                    //    }
-                    //    catch (Exception e)
-                    //    {
-                    //        Console.WriteLine(e.StackTrace);
-                    //    }
-                    //};
-                    //PopupNavigation.Instance.PushAsync(poupWindow);
                     try
                     {
                         List<string> countryDropdownData = new List<string>();
@@ -823,26 +766,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 if (cities?.Count > 0)
                 {
-                    //ListPopUpViewPage poupWindow = new ListPopUpViewPage(cities);
-                    //poupWindow.OnItemSelect = (item) =>
-                    //{
-                    //    try
-                    //    {
-                    //        if (str != null && str.ToString().Equals("same"))
-                    //        {
-                    //            CitySame = item as CityDropdownItem;
-                    //        }
-                    //        else
-                    //        {
-                    //            City = item as CityDropdownItem;
-                    //        }
-                    //    }
-                    //    catch (Exception e)
-                    //    {
-                    //        Console.WriteLine(e.StackTrace);
-                    //    }
-                    //};
-                    //PopupNavigation.Instance.PushAsync(poupWindow);
                     try
                     {
                         List<string> countryDropdownData = new List<string>();

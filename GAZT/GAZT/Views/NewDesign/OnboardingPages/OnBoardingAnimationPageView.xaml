@@ -16,18 +16,18 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
-           
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid >
+        <Grid ColumnSpacing="0" RowSpacing="5">
             <Grid.RowDefinitions>
                 <!--  Skip Button  -->
                 <RowDefinition Height="96" />
                 <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
-               <RowDefinition Height="Auto" />
-                               <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
 
             </Grid.RowDefinitions>
 
@@ -89,16 +89,15 @@
                 <rotator:SfRotator.Behaviors>
                     <behavior:SfRotatorBehavior />
                 </rotator:SfRotator.Behaviors>
-                
+
             </rotator:SfRotator>
-     
+
             <!--  Next button  -->
             <buttons:SfButton
 
-               Margin="10,50,10,75"
+               Margin="40,40,40,50"
                 Grid.Row="4"
                 Command="{Binding NextCommand}"
-                
                 Style="{StaticResource PrimaryButtonStyle}"
                 Text="{Binding NextButtonText}" />
 

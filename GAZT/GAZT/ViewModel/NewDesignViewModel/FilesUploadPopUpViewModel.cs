@@ -23,8 +23,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
     [Preserve(AllMembers = true)]
     public class FilesUploadPopUpViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnAttachmentClick { get; set; }
         public ICommand GoButtonClick { get; set; }
 
@@ -35,19 +33,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         byte[] attachment;
         public int NumberOfAttachmentComingFromServer = 0;
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
 
         private bool _isImpoterAndExporter = false;
         public bool IsImpoterAndExporter
@@ -362,8 +347,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
@@ -570,7 +553,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                             _attachment.d.Dotyp = DocTypeString;
                                                             AttachmentsList.results.Add(_attachment.d);
                                                             ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(AttachmentsList.results);
-                                                            Device.BeginInvokeOnMainThread(async () =>
+                                                            Device.BeginInvokeOnMainThread(() =>
                                                             {
                                                                 VatAttachmentsList = myCollection;
 
@@ -598,7 +581,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                                         }
                                                                     }
                                                                 }
-                                                                catch (Exception ex)
+                                                                catch (Exception)
                                                                 {
                                                                     await Task.Run(() =>
                                                                     {
@@ -688,7 +671,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                             _attachment.d.Dotyp = DocTypeString;
                                                             AttachmentsList.results.Add(_attachment.d);
                                                             ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(AttachmentsList.results);
-                                                            Device.BeginInvokeOnMainThread(async () =>
+                                                            Device.BeginInvokeOnMainThread(() =>
                                                             {
                                                                 VatAttachmentsList = myCollection;
                                                             });
@@ -715,7 +698,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                                         }
                                                                     }
                                                                 }
-                                                                catch (Exception ex)
+                                                                catch (Exception)
                                                                 {
                                                                     await Task.Run(() =>
                                                                     {
@@ -811,7 +794,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                             _attachment.d.Dotyp = DocTypeString;
                                                             AttachmentsList.results.Add(_attachment.d);
                                                             ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(AttachmentsList.results);
-                                                            Device.BeginInvokeOnMainThread(async () =>
+                                                            Device.BeginInvokeOnMainThread(() =>
                                                             {
                                                                 VatAttachmentsList = myCollection;
 
@@ -839,7 +822,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                                         }
                                                                     }
                                                                 }
-                                                                catch (Exception ex)
+                                                                catch (Exception)
                                                                 {
                                                                     await Task.Run(() =>
                                                                     {
@@ -948,7 +931,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
@@ -1068,7 +1051,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
             }
@@ -1096,7 +1079,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     // VatAttachmentsListtofilter= new ObservableCollection<Attachment>(attachmentsList); ;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1183,7 +1166,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         _attachment = null;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     //  return null;
                 }
@@ -1251,18 +1234,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(AttachmentsList.results as List<Attachment>);
                         VatAttachmentsList = myCollection;
                     }
-            }
-        }
-
-        public void PopToRootPage()
-        {
-            if (App.IsSessionExpired)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    //await _navigation.PopToRootAsync();
-                });
             }
         }
     }

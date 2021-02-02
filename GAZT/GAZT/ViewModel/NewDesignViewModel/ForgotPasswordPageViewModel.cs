@@ -1677,7 +1677,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-            OnContinueClick = new Command(() =>
+            OnContinueClick = new Command(async() =>
             {
                 if (StartPage == 2)
                 {
@@ -1694,11 +1694,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (!string.IsNullOrEmpty(IDNumber))
                             {
-                                SendOTPToRegisterMobileNumber();
+                                await SendOTPToRegisterMobileNumber();
                             }
                             else
                             {
-                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
+                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
 
                              //   _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
                             }
@@ -1713,7 +1713,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     if (TINs != null && TINs.Count > 0)
                                     {
                                         IDNumber = SelectedTinId.Tin;
-                                        SendOTPToRegisterMobileNumber();
+                                        await SendOTPToRegisterMobileNumber();
                                     }
                                 }
                                 else
@@ -1726,11 +1726,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IDNumber = Email;
                                 if (!string.IsNullOrEmpty(Email))
                                 {
-                                    SendOTPToRegisterMobileNumber();
+                                    await SendOTPToRegisterMobileNumber();
                                 }
                                 else
                                 {
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TypeYourUserName));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TypeYourUserName));
 
                                  //   _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
 
@@ -1745,12 +1745,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (!string.IsNullOrEmpty(EnteredOTP))
                         {
-                            ValidateOTP();
+                            await ValidateOTP();
 
                         }
                         else
                         {
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
 
                            // _dialogService.ShowMessageBox(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber, AppResources.Information);
 
@@ -1762,11 +1762,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (NewPassword.Equals(ConfirmPassword))
                             {
-                                ChangePassword();
+                                await ChangePassword();
                             }
                             else
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch));
 
                               //  _dialogService.ShowMessageBox(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch, AppResources.Information);
                             }
@@ -1774,7 +1774,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PasswordValidationMesseg));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PasswordValidationMesseg));
 
                        //     _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
 
@@ -1786,11 +1786,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     if (!string.IsNullOrEmpty(IDNumber))
                     {
-                        SendUserNameToRegidteredEmail();
+                        await SendUserNameToRegidteredEmail();
                     }
                     else
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
 
                     //    _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
                     }
@@ -1799,7 +1799,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else if (IsUserNameCardTapped == false && IsPasswordCardTapped == false)
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZPleaseSelect));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZPleaseSelect));
 
                   //  _dialogService.ShowMessageBox(AppResources.ZZZZPleaseSelect, AppResources.Information);
 
@@ -1847,12 +1847,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-            OnResendOTPClicked = new Command(() =>
+            OnResendOTPClicked = new Command(async () =>
             {
                 if (IsResendOTPEnabled)
                 {
                     StartPage = 2;
-                    SendOTPToRegisterMobileNumber();
+                    await SendOTPToRegisterMobileNumber();
                 }
 
             });
@@ -1872,7 +1872,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             UserNameLayoutVisibility = true;
 
         }
-        public void OtpFilled()
+        public async void OtpFilled()
         {
             if (StartPage == 2)
             {
@@ -1880,12 +1880,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             if (!string.IsNullOrEmpty(EnteredOTP))
             {
-                ValidateOTP();
+                await ValidateOTP();
 
             }
             else
             {
-                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
 
                 // _dialogService.ShowMessageBox(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber, AppResources.Information);
 
@@ -2107,7 +2107,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         string idNumber = GetTinId();
                         string lang = UtilityManager.GetLanguageParameter();
                         forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, idNumber);
-                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
                         {
                             ContinueButtonEnability = true;
@@ -2253,7 +2253,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         d.Hyperlink = "";
                         forgotPassword.d = d;
                         forgotPassword = await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
-                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                         if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("01"))
                         {
@@ -2412,7 +2412,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     d.Hyperlink = "";
                     forgotPassword.d = d;
                     forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
-                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                     if (forgotPassword.d != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                     {
                         //IsAPICalledSuccessfully = true;
@@ -2447,7 +2447,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         });
                     }
                 });
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
@@ -2457,7 +2457,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
              //   await _dialogService.ShowMessageBox(ex.Message, AppResources.ZError);
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
@@ -2517,7 +2517,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (NewPassword.Equals(ConfirmPassword))
                         {
                             forgotPassword = await WebServiceManager.GAZTChangePassword(forgotPassword);
-                            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                            PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                             if (forgotPassword != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                             {
                                 StartPage = StartPage + 1;
@@ -2582,11 +2582,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
-        public async Task PopToRootPage()
+        public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)

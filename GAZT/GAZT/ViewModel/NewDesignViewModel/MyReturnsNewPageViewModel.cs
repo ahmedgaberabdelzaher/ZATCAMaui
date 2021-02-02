@@ -108,7 +108,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
               
                     Task.Run(async () =>
                     {
-                        await Task.Run(async () =>
+                        await Task.Run(() =>
                         {
                             IsLoading = true;
                         });
@@ -144,7 +144,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
-                                            await Task.Run(async () =>
+                                            await Task.Run(() =>
                                             {
                                                 IsLoading = false;
                                             });
@@ -164,7 +164,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     //ET
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        await Task.Run(async () =>
+                                        await Task.Run(() =>
                                         {
                                             IsLoading = false;
                                         });
@@ -178,7 +178,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     //WT
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        await Task.Run(async () =>
+                                        await Task.Run(() =>
                                         {
                                             IsLoading = false;
                                         });
@@ -192,7 +192,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await Task.Run(async () =>
+                                    await Task.Run(() =>
                                     {
                                         IsLoading = false;
                                     });
@@ -493,7 +493,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
                 }
-                catch (InternetException ex)
+                catch (InternetException)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -503,7 +503,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     });
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -526,7 +526,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)

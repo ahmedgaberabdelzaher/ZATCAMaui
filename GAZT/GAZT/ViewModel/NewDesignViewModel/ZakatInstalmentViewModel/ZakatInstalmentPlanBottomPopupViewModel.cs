@@ -34,7 +34,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -49,7 +49,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 await PopupNavigation.Instance.PopAsync();
                 // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }

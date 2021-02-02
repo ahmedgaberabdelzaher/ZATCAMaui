@@ -85,22 +85,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool _IsLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _IsLoading;
-            }
-            set
-            {
-                if (_IsLoading == value) return;
-
-                _IsLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
         public bool _isMineralVisible = false;
         public bool isMineralVisible
         {
@@ -3193,18 +3177,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             });
 
-            await Task.Run(async() =>
+            await Task.Run(() =>
             {
                 IsLoading = false;
             });
             //IsLoading = false;
         }
 
-        public void PopToRootPage()
+        public new void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     if (App.TP != null)
                         App.TP = null;
