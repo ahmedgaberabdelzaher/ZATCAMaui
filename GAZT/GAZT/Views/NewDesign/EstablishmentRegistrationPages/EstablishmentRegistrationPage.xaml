@@ -297,18 +297,24 @@
                                         </Grid.ColumnDefinitions>
                                         <Grid x:Name="PermanentEstablishmentGrid" Grid.Row="0" Grid.Column="0" >
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="136"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding PermanentEstablishmentLegalEntityClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <StackLayout HeightRequest="136">
+                                                 <Image HeightRequest="136" Grid.Row="0" Grid.Column="0" Source="unselected171x136.png"  IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            </StackLayout>
+                                           
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0"  Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" 
                                                                 IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" Style="{StaticResource ValueLabelBlackMedium}"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedPermanentLegalEntity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <StackLayout HeightRequest="136">
+                                                <Image HeightRequest="136" Grid.Row="0" Grid.Column="0" Source="re_Tile_Background_S.png"   IsVisible="{Binding IsClickedPermanentLegalEntity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            </StackLayout>
+                                            
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" 
                                                                 IsVisible="{Binding IsClickedPermanentLegalEntity}" 
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" Style="{StaticResource ValueLabelBlackMedium}"
@@ -317,18 +323,24 @@
                                         </Grid>
                                         <Grid x:Name="OtherTaxableIncomeGrid" Grid.Row="0" Grid.Column="1">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="136"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OtherTaxableIncomeLegalEntityClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <StackLayout HeightRequest="136">
+                                                <Image HeightRequest="136" Grid.Row="0" Grid.Column="0" Source="unselected171x136.png"  IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            </StackLayout>
+                                            
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" 
                                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" Style="{StaticResource ValueLabelBlackMedium}"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <StackLayout HeightRequest="136">
+                                                 <Image HeightRequest="136" Grid.Row="0" Grid.Column="0" Source="re_Tile_Background_S.png"   IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            </StackLayout>
+                                           
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}"  
                                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}"
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" Style="{StaticResource ValueLabelBlackMedium}"
@@ -609,7 +621,7 @@
                             <StackLayout x:Name="PersonalDetails" Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZZPersonalInformation}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
 
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,0,0,10">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -618,7 +630,7 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="16,0,16,0">
                                         <Entry VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
                                                VerticalOptions="Center" HeightRequest="48" 
                                                PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}"
@@ -626,7 +638,7 @@
                                                Text="{Binding FirstName}" IsSpellCheckEnabled="false"/>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,0,0,10" >
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -634,14 +646,14 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="16,0,16,0" >
                                         <Entry  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
                                                VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
                                                TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"
                                                 Text="{Binding LastName}" IsSpellCheckEnabled="false"/>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,0,0,10">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -649,14 +661,14 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="16,0,16,0">
                                         <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10"
                                                HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48"
                                                PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}"
                                                FontFamily="{StaticResource SSTArRoman}" IsSpellCheckEnabled="false" FontSize="16" Text="{Binding FatherName}" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,0,0,10">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -664,13 +676,13 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="16,0,16,0" HorizontalOptions="FillAndExpand">
                                         <Entry  Text="{Binding GrandFatherName}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
                                                 TextColor="{StaticResource NeutralBlack}" IsSpellCheckEnabled="false" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,0,0,10">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -678,11 +690,11 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="16,0,16,0">
                                         <Entry Text="{Binding FamilyName}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,0,0,10">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -690,11 +702,11 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="16,0,16,0">
                                         <Entry Text="{Binding Initial}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,0,0,10">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -819,7 +831,7 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="16,0,16,0">
                                     <custom:GAZTBorderlessEntry Text="{Binding PassportNumber}" MaxLength="15" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start"
                                                               Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center"
                                                               HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
@@ -1086,7 +1098,7 @@
                 <StackLayout x:Name="OutletsTabMainLayout"
                              Orientation="Vertical" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
                     <buttons:SfButton ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewOutletButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
-                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="16,0,16,0">
                         <Entry Placeholder="{x:Static ResourceManager:AppResources.SearchText}" Text="{Binding SearchText}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                         <inputLayout:SfTextInputLayout.TrailingView>
                             <Image Source="grey_search.png"/>
