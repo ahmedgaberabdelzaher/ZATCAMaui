@@ -1225,10 +1225,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private async void GetAccountStatments()
         {
-
             try {
-                TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
+                TabIdentification = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementsTabIdentification();
+                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
 
 
                 foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet?.D?.TaxRelationSet?.Results)
