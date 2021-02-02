@@ -233,6 +233,48 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
             getNoCommand();
 
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                {
+                    Console.WriteLine("Card Payment Clicked");
+                    await viewModel.MadaPaymentSelected();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
+                {
+                    Console.WriteLine("Apple pay Clicked");
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
+                {
+
+                    Console.WriteLine("SADAD Clicked");
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
         }
 
         private void SetLTR()

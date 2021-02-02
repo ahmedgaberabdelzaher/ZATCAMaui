@@ -264,21 +264,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public ValidatePaymentResponse _paymentData = null;
-        public ValidatePaymentResponse PaymentData
-        {
-            get
-            {
-                return _paymentData;
-            }
-            set
-            {
-                if (_paymentData == value) return;
-
-                _paymentData = value;
-                RaisePropertyChanged("PaymentData");
-            }
-        }
+       
 
 
         
@@ -537,104 +523,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        public async Task DoValidatePayment(string fbNum)
-        {
-            try
-            {
-                try
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = true;
-                    });
-
-
-                    await Task.Run(async () =>
-                    {
-                        var platform = "";
-
-                        if (Device.RuntimePlatform == Device.iOS)
-                        {
-                            platform = "C4";
-                        }
-                        else if (Device.RuntimePlatform == Device.Android)
-                        {
-                            platform = "C3";
-                        }
-                        PaymentData = WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
-
-
-                        if(PaymentData != null && PaymentData.d != null) {
-
-                            if(PaymentData.d.Guid != null) {
-
-                                App.PaymentGuid = PaymentData.d.Guid;
-
-                            }
-
-
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true,false));
-                        }
-
-
-
-                    });
-
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-
-
-
-                }
-                catch (GAZTValidatePaymentInProcessException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                           await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-                }
-                catch (InternetException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
-                    });
-                }
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    _navigationService.GoBack();
-                });
-            }
-        }
-
-        public async Task MadaPaymentSelected()
-        {
-
-             _navigationService.NavigateTo(App.PaymentProcessWebview);
-
-        }
-
-        public async Task ApplePaySelected()
-        {
-
-
-        }
-
-        public async Task SadadPaymentSelected()
-        {
-
-
-        }
+        
 
 
 

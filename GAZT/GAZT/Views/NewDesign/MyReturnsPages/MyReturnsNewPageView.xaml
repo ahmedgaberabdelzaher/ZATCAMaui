@@ -175,12 +175,12 @@
                                                                 </DataTrigger>
                                                             </custom:CustomLabel.Triggers>
                                                         </custom:CustomLabel>
-                                                        <!--<custom:CustomLabel  Text="{Binding FbtText}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />-->
+                                                        <custom:CustomLabel  Text="{Binding FbtText}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />
                                                         <custom:CustomLabel  Text="{Binding RetStatTxt}" Style="{StaticResource 
                                                             CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />
                                                     </StackLayout>
-                                                    <!--StatusTxt-->
-                                                    <border:SfBorder Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" 
+                                                    <!--Pay now button-->
+                                                    <!--<border:SfBorder Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" 
                                                                      VerticalOptions="CenterAndExpand" Padding="12,0,12,0" 
                                                                      CornerRadius="20" HeightRequest="32" BorderColor="{StaticResource Primary}" BorderWidth="1">
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
@@ -191,7 +191,7 @@
                                                         <border:SfBorder.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="payNow_Tapped"/>
                                                         </border:SfBorder.GestureRecognizers>
-                                                    </border:SfBorder>
+                                                    </border:SfBorder>-->
                                                 </Grid>
                                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1"
                                                          BackgroundColor="LightGray" />
