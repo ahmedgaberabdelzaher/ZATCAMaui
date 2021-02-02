@@ -20,7 +20,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
         public DashboardAnonymousMenuPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 

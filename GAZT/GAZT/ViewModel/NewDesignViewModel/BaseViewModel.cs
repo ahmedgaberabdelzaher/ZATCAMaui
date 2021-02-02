@@ -13,7 +13,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 
-        private bool _isLoading = true;
+        private bool _isLoading = false;
         public bool IsLoading
         {
             get

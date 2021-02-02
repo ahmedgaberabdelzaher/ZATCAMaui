@@ -119,8 +119,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-
-
         private bool _attachmentsVisible = false;
 
         public bool AttachmentsVisible
@@ -784,8 +782,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             _dialogService = dialogService;
 
 
-
-
             CloseClick = new Command(async () =>
             {
                 _navigationService.GoBack();
@@ -804,8 +800,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 InfoTitle = AppResources.CRContractprofitEstimatedRate;
                 InfoDesc = AppResources.CRContractprofitEstimatedRateDesc;
                 await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
-
-
             });
             ProfitEstimatedContractCommand = new Command(async () =>
             {

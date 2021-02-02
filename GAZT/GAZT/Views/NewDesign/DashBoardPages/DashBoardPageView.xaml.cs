@@ -619,13 +619,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             try
             {
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
+
                 if (App.IsArabic)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ChangeLanguage_Tapped", "Language Changed to English");
 
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
+                   
                     var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
+                    vUpdatedPage.Padding = safeInsets;
+
                     viewModel.SelectedCommitmentFilterValue = null;
                     Navigation.InsertPageBefore(vUpdatedPage, this);
                     Navigation.PopAsync();
@@ -648,6 +655,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
                     var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
+                    vUpdatedPage.Padding = safeInsets;
+
                     viewModel.SelectedCommitmentFilterValue = null;
                     Navigation.InsertPageBefore(vUpdatedPage, this);
                     Navigation.PopAsync();

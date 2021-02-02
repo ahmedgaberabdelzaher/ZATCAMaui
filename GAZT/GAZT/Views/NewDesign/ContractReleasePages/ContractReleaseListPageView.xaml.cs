@@ -47,7 +47,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 viewModel.ResetData();
                 _ = viewModel.OnPageLoad();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -75,11 +75,11 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         {
             if (App.IsArabic)
             {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
             }
             else
             {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
 
