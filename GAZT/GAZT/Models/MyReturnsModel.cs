@@ -111,7 +111,7 @@ namespace GAZT.Models
                     }
                 }
     
-                catch(Exception ex)
+                catch(Exception)
                 {
 
                 }
