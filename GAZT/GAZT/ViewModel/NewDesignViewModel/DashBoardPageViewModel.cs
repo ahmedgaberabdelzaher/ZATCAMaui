@@ -516,7 +516,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_translateText == value) return;
+                // if (_translateText == value) return;
 
                 _translateText = value;
                 RaisePropertyChanged("TranslateText");
@@ -722,7 +722,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_logout == value) return;
+                //if (_logout == value) return;
 
                 this._logout = value;
                 this.RaisePropertyChanged("Logout");
@@ -1135,7 +1135,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Method
-        public async Task LoadDashboardData()
+        public void LoadDashboardData()
         {
             try
             {
@@ -1150,9 +1150,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         TaxpayerName = App.TP.NameOrg1;
                     }
                 }
-                DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-                _ = Task.Run(GetAccountStatments);
-                _ = Task.Run(GetBillsAndReturns);
+                Task.Run(async()=> {
+                    try
+                    {
+                        DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                        GetAccountStatments();
+                        GetBillsAndReturns();
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
+                });
             }
             catch (AggregateException ae)
             {
@@ -1211,18 +1220,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 IsLoading = false;
             }
-
-            IsLoading = false;
             SelectedCommitmentFilterLabelValue = AppResources.ZZOverdueCommitments;
         }
 
-        private async Task GetAccountStatments()
+        private async void GetAccountStatments()
         {
-            TabIdentification = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementsTabIdentification();
-            HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
 
-            Device.BeginInvokeOnMainThread(() =>
-            {
+            try {
+                TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
+
+
                 foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet?.D?.TaxRelationSet?.Results)
                 {
                     if (TabIdentification.D?.Direct == "X")
@@ -1279,30 +1287,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
                 MessagingCenter.Send<Object>(this, "UpdateProgressBar");
-            });
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
-        private async Task GetBillsAndReturns()
+        private async void GetBillsAndReturns()
         {
-            var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
-            List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-
-            foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
+            try
             {
-                temp1.Add(ee);
-            }
-            Device.BeginInvokeOnMainThread(() => Bills = temp1);
-            System.Diagnostics.Debug.WriteLine("Bills " + Bills.Count);
+                var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
+                List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
 
-            var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
-            List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
-            foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
+                foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
+                {
+                    temp1.Add(ee);
+                }
+                Bills = temp1;
+
+                var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
+                List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
+                {
+                    temp2.Add(ee);
+                }
+                Returns = temp2;
+
+
+                BillCount = string.Empty;
+                BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
+                PopulateBillsInformation();
+                PopulateReturnsInformation();
+                PopualateCommittmentsInformation();
+            }
+            catch(Exception ex)
             {
-                temp2.Add(ee);
-            }
-            Device.BeginInvokeOnMainThread(() => Returns = temp2);
 
+            }
         }
 
         public void PopualateCommittmentsInformation()

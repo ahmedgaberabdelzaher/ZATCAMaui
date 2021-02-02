@@ -476,6 +476,7 @@
             </Grid>
 
             <!--Menu Starts-->
+            
             <Grid x:Name="OldMenu" Grid.Row="0" IsVisible="{Binding MenuViewVisible}">
                 <ScrollView>
                     <Grid >
@@ -620,7 +621,7 @@
                                     <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="language.png" Style="{StaticResource SmallIcon}"/>
 
-                                        <custom:CustomLabel Text="{Binding TranslateText}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ChangeLanguage}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="ChangeLanguage_Tapped"/>
                                         </StackLayout.GestureRecognizers>

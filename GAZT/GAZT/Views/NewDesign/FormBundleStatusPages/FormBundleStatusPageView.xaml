@@ -51,8 +51,15 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <Grid>
-                            <inputLayout:SfTextInputLayout x:Name="txtBundleType" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="{Binding TxtFBtype}" Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" VerticalTextAlignment="End" IsReadOnly="True"   TextColor="{StaticResource NeutralBlack}">
+                            <inputLayout:SfTextInputLayout x:Name="txtBundleType"
+                                                            Margin="0,-6,0,-6" 
+                                     ContainerType="Outlined"   UnfocusedColor="#B1B1B1"
+                                                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020"                                                                       
+                                                            HorizontalOptions="FillAndExpand"
+                                                            LeadingViewPosition="Inside"
+                                                            Style="{StaticResource TextInputLayout}"
+                                                            InputViewPadding="16,0,16,0">
+                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="{Binding TxtFBtype}" Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" VerticalTextAlignment="Center" IsReadOnly="True"   TextColor="{StaticResource NeutralBlack}">
                                 </control:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Source="arrowDropdown.png"/>
@@ -90,8 +97,15 @@ SelectedIndex="{Binding IDTypeIndex}"  OkButtonClicked="BundleType_OkButtonClick
                         </custom:CustomLabel>
                         
                         <Grid>
-                            <inputLayout:SfTextInputLayout x:Name="txtBundleNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="{Binding TxtFBnum}" Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}" VerticalTextAlignment="End" IsReadOnly="True"   TextColor="{StaticResource NeutralBlack}">
+                            <inputLayout:SfTextInputLayout x:Name="txtBundleNumber"
+                                                            Margin="0,-6,0,-6" 
+                                     ContainerType="Outlined"   UnfocusedColor="#B1B1B1"
+                                                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020"                                                                       
+                                                            HorizontalOptions="FillAndExpand"
+                                                            LeadingViewPosition="Inside"
+                                                            Style="{StaticResource TextInputLayout}"
+                                                            InputViewPadding="16,0,16,0">
+                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="{Binding TxtFBnum}" Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}" VerticalTextAlignment="Center" IsReadOnly="True"   TextColor="{StaticResource NeutralBlack}">
                                 </control:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Source="arrowDropdown.png"/>

@@ -8778,4 +8778,7 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="ZAKATCamelCase" xml:space="preserve">
     <value />
   </data>
+<data name="ChangeLanguage" xml:space="preserve">
+    <value>عربي</value>
+  </data>
 </root>

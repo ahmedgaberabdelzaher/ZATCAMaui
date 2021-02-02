@@ -22,6 +22,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLoading == value) return;
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }

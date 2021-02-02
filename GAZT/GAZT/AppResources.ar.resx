@@ -7254,7 +7254,7 @@
     <value>ضريبة الدخل</value>
     <comment>My Return </comment>
   </data>
-   <data name="ZZZZMyCorrespondence" xml:space="preserve">
+	<data name="ZZZZMyCorrespondence" xml:space="preserve">
     <value>المراسلات</value>
   </data>
 	<data name="ZakatInstalmetPlan" xml:space="preserve">
@@ -8710,5 +8710,8 @@ info@gazt.gov.sa</value>
   </data>
 	<data name="WHTreturns1" xml:space="preserve">
     <value>إقرارات ضريبة الاستقطاع</value>
+  </data>
+	<data name="ChangeLanguage" xml:space="preserve">
+    <value>English</value>
   </data>
 </root>
