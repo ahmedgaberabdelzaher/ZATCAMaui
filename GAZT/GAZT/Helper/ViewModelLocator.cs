@@ -132,6 +132,7 @@ using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.Common;
 using Xamarin.Forms.Internals;
+using EGAZT.Views.NewDesign.PaymentOptions;
 
 namespace EGAZT
 {
@@ -243,6 +244,11 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATRegistrationDisplayDetailsPageViewModel>();
 
 
+
+            #endregion
+
+            #region PaymentImplementation
+            SimpleIoc.Default.Register<PaymnetProcessWebviewViewModel>();
 
             #endregion
 
@@ -980,6 +986,25 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<TaxpayerProfileSuccessViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        #endregion
+
+
+        #region Payment Implementations
+
+        public PaymnetProcessWebviewViewModel PaymentProcessWebview
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<PaymnetProcessWebviewViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2246,6 +2271,11 @@ namespace EGAZT
             navigationService.Configure(App.VRVatGroupPageView, typeof(VRVatGroupPageView));
             #endregion
 
+            #region Payment Implementatoin
+
+            navigationService.Configure(App.PaymentProcessWebview, typeof(PaymentProcessWebview));
+
+            #endregion
 
             #region SYNCFUSION INTEGRATION
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));

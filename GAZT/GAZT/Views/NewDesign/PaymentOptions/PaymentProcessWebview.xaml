@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.PaymentOptions.PaymentProcessWebview"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    FlowDirection="RightToLeft"
+    xmlns:custom2="clr-namespace:EGAZT"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            
+        
+               <Grid x:Name="WebviewGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+                   <!--<Grid Grid.Row="0" Grid.Column="0">
+                       <StackLayout  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+                    <WebView x:Name="WebView" VerticalOptions="FillAndExpand" Navigated="OnNavigated"/>
+
+                    </StackLayout>
+                       </Grid>-->
+
+                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                       
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#d99a29"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+           
+          
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

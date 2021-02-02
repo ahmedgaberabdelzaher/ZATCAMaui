@@ -153,6 +153,11 @@ namespace EGAZT
 
         #endregion
 
+        #region Payment Implementation
+        public static string PaymentProcessWebview = "PaymentProcessWebview";
+
+        #endregion
+
         #region old view strings
         public static string SFLandingPageView = "SFLandingPageView";
         public static string SFOptionsPageView = "SFOptionsPageView";
@@ -300,6 +305,7 @@ namespace EGAZT
         //HttpClientHandlerForSSL Certificate Issue
         public static string IncomingChannel = string.Empty;
         public static bool DoesLoginNeedToBeRefreshed;
+        public static string PaymentGuid = string.Empty;
 
         //in Seconds
         public static int IdleTimeToLogout = 100;

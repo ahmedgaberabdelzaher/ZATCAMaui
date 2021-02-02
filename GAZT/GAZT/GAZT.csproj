@@ -139,6 +139,8 @@
 		<Folder Include="Models\AccountStatements\" />
 		<Folder Include="ViewModel\NewDesignViewModel\Common\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\ChecKTINStatusPage\" />
+		<Folder Include="ViewModel\NewDesignViewModel\PaymnetOptions\" />
+		<Folder Include="EGAZT\ViewModel\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

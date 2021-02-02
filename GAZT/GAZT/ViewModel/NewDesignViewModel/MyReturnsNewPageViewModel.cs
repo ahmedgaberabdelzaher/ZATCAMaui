@@ -1,6 +1,7 @@
 ﻿using EGAZT.Models;
 using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -563,6 +564,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         PaymentData = WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
 
 
+                        if(PaymentData != null && PaymentData.d != null) {
+
+                            if(PaymentData.d.Guid != null) {
+
+                                App.PaymentGuid = PaymentData.d.Guid;
+
+                            }
+
+
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true,false));
+                        }
+
+
+
                     });
 
                     await Task.Run(() =>
@@ -601,6 +616,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
+
+        public async Task MadaPaymentSelected()
+        {
+
+             _navigationService.NavigateTo(App.PaymentProcessWebview);
+
+        }
+
+        public async Task ApplePaySelected()
+        {
+
+
+        }
+
+        public async Task SadadPaymentSelected()
+        {
+
+
+        }
+
+
 
         public bool isStatusNotValid(MyReturnsResult SelectedReturnsVAT)
         {

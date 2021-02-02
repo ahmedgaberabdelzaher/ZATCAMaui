@@ -165,6 +165,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                 MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
                     Console.WriteLine("Card Payment Clicked");
+                    await viewModel.MadaPaymentSelected();
                 });
             }
             catch (Exception ex)
@@ -276,7 +277,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 
             await viewModel.DoValidatePayment(SelectedItem.Fbnum);
 
-            //await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true,false));
+            
         }
     }
 }
