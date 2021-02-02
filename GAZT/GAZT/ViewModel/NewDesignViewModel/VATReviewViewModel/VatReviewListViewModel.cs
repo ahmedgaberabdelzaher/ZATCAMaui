@@ -22,9 +22,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
     [Preserve(AllMembers = true)]
     public class VatReviewListViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-
         public ICommand SelectionGoBackClick { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand NewRequestBtnTapped { get; set; }
@@ -38,18 +35,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             VatReviews
         }
 
-        private bool _isLoading = false;
-
-        public bool IsLoading
-        {
-            get { return _isLoading; }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
 
         private bool _isBackButtonVisible = true;
 
@@ -626,15 +611,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 throw new ArgumentNullException("navigationService");
             }
 
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
 
-            _dialogService = dialogService;
 
-            GoBackClick = new Command(async () => {
+            GoBackClick = new Command(() => {
                 if (IsVatListVisible)
                 {
                     _navigationService.GoBack();
@@ -643,9 +626,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 EnableListView();
             });
 
-            CloseClick = new Command(async () => { _navigationService.GoBack(); });
+            CloseClick = new Command(() => { _navigationService.GoBack(); });
 
-            NewRequestBtnTapped = new Command(async () => { ShowVatReviewPage(); });
+            NewRequestBtnTapped = new Command(() => { ShowVatReviewPage(); });
         }
 
         public void EnableSummaryView()

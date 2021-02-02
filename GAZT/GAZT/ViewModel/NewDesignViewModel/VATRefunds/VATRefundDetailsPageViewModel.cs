@@ -219,7 +219,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             _dialogService = dialogService;
 
-            GoBackBtnTapped = new Command(async () =>
+            GoBackBtnTapped = new Command(() =>
             {
                 _navigationService.GoBack();
             });

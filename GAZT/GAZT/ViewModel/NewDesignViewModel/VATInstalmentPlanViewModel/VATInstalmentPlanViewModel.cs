@@ -1027,7 +1027,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 3, Filter = "Other Reason" });
                 SubCorresFilterZakat = FiltersZAKAT;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1472,16 +1472,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isInstrunctionChecked == value) return;
 
                 _isInstrunctionChecked = value;
-                if (_isInstrunctionChecked != null)
+                if (_isInstrunctionChecked)
                 {
-                    if (_isInstrunctionChecked)
-                    {
-                        IsContinueButtonEnable = true;
-                    }
-                    else
-                    {
-                        IsContinueButtonEnable = false;
-                    }
+                    IsContinueButtonEnable = true;
+                }
+                else
+                {
+                    IsContinueButtonEnable = false;
                 }
                 RaisePropertyChanged("IsInstrunctionChecked");
             }
@@ -1711,7 +1708,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1851,7 +1848,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1961,7 +1958,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -2038,12 +2035,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 Backnavigations();
             });
 
-            CloseClick = new Command(async () =>
+            CloseClick = new Command(() =>
             {
 
                 //await Application.Current.MainPage.Navigation.PushAsync(new VatInstalmentPlanListPageView());
@@ -2052,15 +2049,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 //EnableSlectionView();
             });
-            GoBackToBills = new Command(async () =>
+            GoBackToBills = new Command(() =>
             {
                 EnableVATBillView();
             });
-            GoBackToAggrement = new Command(async () =>
+            GoBackToAggrement = new Command(() =>
             {
                 EnableAgreementView();
             });
-            GoBackToAttachments = new Command(async () =>
+            GoBackToAttachments = new Command(() =>
             {
                 EnableAttachmentsView();
             });
@@ -2508,7 +2505,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                      .Instructions));
                 // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -2709,7 +2706,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 EnableSummaryView();
                 PopulateSummaryReasonData();
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -2826,7 +2823,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 //Display Success Screen
                 //EnableSucessScreenAsync();
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -3699,7 +3696,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         {
                             ValidDate = DateTime.ParseExact(DateAsString, dateformat, provider);
                         }
-                        catch (Exception e)
+                        catch (Exception )
                         {
                             ValidDate = DateTime.ParseExact(DateAsString, dateformat.Replace("MM", "M"), provider);
                         }
@@ -3798,10 +3795,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     catch (Exception ex)
                     {
                         IsLoading = false;
-                        return null;
                         Console.Write(ex.ToString());
                         Console.Write(ex.StackTrace.ToString());
-
+                        return null;
                     }
                 }
                 IsLoading = false;

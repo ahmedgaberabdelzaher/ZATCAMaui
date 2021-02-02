@@ -214,11 +214,11 @@ namespace EGAZT
             }
             _dialogService = dialogService;
            
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -287,7 +287,7 @@ namespace EGAZT
                                                         _attachment.d.Erfdt = uploadedDate;
                                                         VATDeclarationDataForAttch.d.ATTACHSet.results.Add(_attachment.d);
                                                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
-                                                        Device.BeginInvokeOnMainThread(async () =>
+                                                        Device.BeginInvokeOnMainThread(() =>
                                                         {
                                                             VatAttachmentsList = myCollection;
 
@@ -313,7 +313,7 @@ namespace EGAZT
                                                                     }
                                                                 }
                                                             }
-                                                            catch (Exception ex)
+                                                            catch (Exception )
                                                             {
                                                             }
                                                         }
@@ -386,7 +386,7 @@ namespace EGAZT
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -417,7 +417,7 @@ namespace EGAZT
                         _attachment = null;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     //  return null;
                 }
@@ -476,7 +476,7 @@ namespace EGAZT
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

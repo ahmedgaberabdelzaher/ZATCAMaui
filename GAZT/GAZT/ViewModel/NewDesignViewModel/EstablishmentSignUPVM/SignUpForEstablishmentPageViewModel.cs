@@ -1257,7 +1257,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 _selectedRegion = value;
                 if (_selectedRegion != null)
                 {
-                    SetCityList();
+                    _ = SetCityList();
                 }
 
                 RaisePropertyChanged("SelectedRegion");
@@ -1915,7 +1915,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             OnNextButtonClick = new Command(() => navigateToNext());
             OnBackButtonClick = new Command(() => navigateBack());
-            OnResendOTPClicked = new Command(() => ResendOTPAsync());
+            OnResendOTPClicked = new Command(async () => await ResendOTPAsync());
         }
 
 
@@ -2056,7 +2056,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         else
                         {
                        //     _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                     }
                     
                     break;
@@ -2076,7 +2076,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         else
                         {
                            // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                         }
                     }
                     //License Number Validation
@@ -2100,7 +2100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         }
                         else {
 //                            //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                         }
                         
                     }
@@ -2127,7 +2127,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     else
                     {
                        // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                     }
 
                     break;
@@ -2173,7 +2173,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         otpTimer.Stop();
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     { 
                     
                     }
@@ -2255,7 +2255,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             ConfirmPassword = string.Empty;
         }
 
-        public async Task SetDefaultDate()
+        public void SetDefaultDate()
         {
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
             //Select today dates
@@ -2646,7 +2646,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 });
             }
 
-            catch (HttpRequestException ex)
+            catch (HttpRequestException )
             {
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2657,7 +2657,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2723,7 +2723,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
-            catch (HttpRequestException ex)
+            catch (HttpRequestException)
             {
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2733,7 +2733,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2985,7 +2985,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
-            catch (HttpRequestException ex)
+            catch (HttpRequestException )
             {
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2996,7 +2996,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;

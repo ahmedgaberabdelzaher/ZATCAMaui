@@ -2694,12 +2694,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetnew;
                             VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetObject;
                             //Set data after api call 
-                            setDataAfterSubmitAPIAsync(response);
+                            await setDataAfterSubmitAPIAsync(response);
                         }
                         IsLoading = false;
                         return response;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         return null;

@@ -46,21 +46,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Propetry
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
 
         public string _IndividualBackImg = "vat_tile_listofsignup_W.png";
         public string IndividualBackImg

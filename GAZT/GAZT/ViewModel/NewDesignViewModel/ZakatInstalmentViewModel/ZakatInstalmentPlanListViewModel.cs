@@ -135,16 +135,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
-            OnContinueClick = new Command(() =>
+            OnContinueClick = new Command(async () =>
             {
                 SetOTP();
                 if (!string.IsNullOrEmpty(EnteredOTP) && EnteredOTP.Length > 0)
                 {
-                    ValidateOTPAsync();
+                    await ValidateOTPAsync();
                 }
                 else
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
 
                     // _dialogService.ShowMessageBox(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber, AppResources.Information);
 
@@ -163,12 +163,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             });
 
 
-            ReqInstalmentBtnTapped = new Command(async () =>
+            ReqInstalmentBtnTapped = new Command(() =>
             {
                 CheckDueInvoices();
                 // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
             });
-            SummaryContinueBtnTapped = new Command(async () =>
+            SummaryContinueBtnTapped = new Command(() =>
             {
                 //EnableOTPPage();
             });
@@ -2448,7 +2448,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         return response;
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         return null;

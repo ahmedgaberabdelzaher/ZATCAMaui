@@ -2271,29 +2271,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
 
             _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 Backnavigations();
             });
             onMoreOptionClicked = new Command(async () =>
             {
-                PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
             });
 
-            CloseClick = new Command(async () =>
+            CloseClick = new Command(() =>
             {
                 CurrentIndex = 1;
                 EnableSlectionView();
             });
-            GoBackToBills = new Command(async () =>
+            GoBackToBills = new Command(() =>
             {
                 EnableVATBillView();
             });
-            GoBackToAggrement = new Command(async () =>
+            GoBackToAggrement = new Command(() =>
             {
                 EnableAgreementView();
             });
-            GoBackToAttachments = new Command(async () =>
+            GoBackToAttachments = new Command(() =>
             {
                 EnableAttachmentsView();
             });
@@ -2402,14 +2402,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         public Dictionary<string, string> IDTypeDictionary = null;
 
-        public async void showInstructionsDialog()
+        public void showInstructionsDialog()
         {
             try
             {
 
                 EnableSlectionView();
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -3046,7 +3046,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -3122,7 +3122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -3507,7 +3507,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                     //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
@@ -4545,7 +4545,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 {
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }

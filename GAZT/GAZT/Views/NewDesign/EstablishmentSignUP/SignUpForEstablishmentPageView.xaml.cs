@@ -186,7 +186,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         public async Task loadPageData()
         {
 
-            await viewModel.SetDefaultDate();
+            viewModel.SetDefaultDate();
             //ClearFields();
             await viewModel.OnPageLoad();
             await viewModel.SetIssueIdList();
