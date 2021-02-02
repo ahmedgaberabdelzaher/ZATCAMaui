@@ -64,7 +64,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
 
         public GeneralServicesViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackBtnTapped = new Command(async () =>
+            GoBackBtnTapped = new Command(() =>
             {
                 _navigationService.GoBack();
             });

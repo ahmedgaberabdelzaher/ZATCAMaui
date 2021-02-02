@@ -573,7 +573,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
             });
 
-            CloseClick = new Command(async () =>
+            CloseClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
