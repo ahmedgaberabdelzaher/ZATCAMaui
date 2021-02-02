@@ -13,7 +13,7 @@
              ios:Page.UseSafeArea="true"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              mc:Ignorable="d" FlowDirection="RightToLeft"    
-              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"   xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
+              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"   xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector" xmlns:custom1="clr-namespace:GAZT.CustomControl"
              x:Class="EGAZT.Views.NewDesign.ChangeFillingPeriodPages.ChangeFillingPeriodPageView" 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
@@ -214,7 +214,7 @@
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}"
+                                <!--<CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}"
                                           VerticalOptions="CenterAndExpand" CheckedChanged="OnFrequechCheckChanged"
                                           IsChecked="{Binding IsFrequencyDetailsChecked}">
                                     <CheckBox.Triggers>
@@ -226,7 +226,31 @@
                                 <custom:CustomLabel Grid.Column="1"
                                                     Text="{x:Static ResourceManager:AppResources.VFCFrequencyDetailsCheckBoxString}"
                                                     Style="{StaticResource ValueLabelBlack}"
-                                                    HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
+                                                    HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />-->
+                                <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2">
+                                                    <custom1:CheckboxCustom  
+                                                                       Style="{StaticResource CheckboxHeightWidth32}"
+                                                                         VerticalOptions="CenterAndExpand"  CheckChanged="OnFrequechCheckChanged" IsChecked="{Binding IsFrequencyDetailsChecked}"/>
+                                                    <custom:CustomLabel   >
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span    Text="{x:Static ResourceManager:AppResources.VFCFrequencyDetailsCheckBoxString}" />
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                        <custom:CustomLabel.Triggers>
+                                                                     <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsFrequencyDetailsChecked}" Value="True">
+                                                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
+                                                                     </DataTrigger>
+                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsFrequencyDetailsChecked}" Value="False">
+                                                                         <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
+                                                                     </DataTrigger>
+                                                       </custom:CustomLabel.Triggers>
+                                                    </custom:CustomLabel>
+                                </StackLayout>
+
+
+
+
                             </Grid>
                         </StackLayout>
 
@@ -550,7 +574,7 @@
                         <StackLayout Grid.Row="1" Margin="0,25,0,10"  Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"
                                      >
 
-                            <CheckBox Color="{StaticResource NewDarkGreenColor}"
+                            <!--<CheckBox Color="{StaticResource NewDarkGreenColor}"
                                       IsChecked="{Binding IsCheckboxChecked}" CheckedChanged="CheckBox_CheckedChanged">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Value="false">
@@ -562,7 +586,31 @@
                             <custom:CustomLabel Grid.Column="1"
                     Text="{x:Static ResourceManager:AppResources.CFPDeclarationCheckbox}"
                     Style="{StaticResource BodyLabelBlack}" LineSpacing="1" Padding="0"
-                    HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
+                    HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />-->
+
+
+
+                            <StackLayout Orientation="Horizontal" >
+                                                    <custom1:CheckboxCustom  
+                                                                       Style="{StaticResource CheckboxHeightWidth32}"
+                                                                         VerticalOptions="CenterAndExpand" CheckChanged="CheckBox_CheckedChanged"  IsChecked="{Binding IsCheckboxChecked}"/>
+                                                    <custom:CustomLabel   >
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span    Text="{x:Static ResourceManager:AppResources.CFPDeclarationCheckbox}" />
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                        <custom:CustomLabel.Triggers>
+                                                                     <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsCheckboxChecked}" Value="True">
+                                                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
+                                                                     </DataTrigger>
+                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsCheckboxChecked}" Value="False">
+                                                                         <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
+                                                                     </DataTrigger>
+                                                       </custom:CustomLabel.Triggers>
+                                                    </custom:CustomLabel>
+                                </StackLayout>
+
                         </StackLayout>
                         <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0" HeightRequest="80" WidthRequest="171">
 
@@ -595,8 +643,9 @@
                             </Frame>
 
                         </Grid>
+                        <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
 
-                        <Grid Grid.Row="3" Grid.Column="0" ColumnSpacing="0" RowSpacing="0" HeightRequest="80" WidthRequest="171" >
+                                                    <Grid   HeightRequest="80" WidthRequest="366" >
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"></RowDefinition>
@@ -622,7 +671,7 @@
 
                         </Grid>
 
-                        <Grid Grid.Row="3" IsVisible="{Binding IsDOBVisible}" Grid.Column="1"  ColumnSpacing="0" RowSpacing="0" HeightRequest="80" WidthRequest="171"  >
+                        <Grid  IsVisible="{Binding IsDOBVisible}"  HeightRequest="80" WidthRequest="366"  >
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"></RowDefinition>
@@ -655,6 +704,13 @@
 
                         </Grid>
 
+
+
+                        </StackLayout>
+
+                        <Grid>
+                            
+                        </Grid>
                         <Grid Grid.Row="4" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0" HeightRequest="80" WidthRequest="171">
 
                             <Grid.RowDefinitions>

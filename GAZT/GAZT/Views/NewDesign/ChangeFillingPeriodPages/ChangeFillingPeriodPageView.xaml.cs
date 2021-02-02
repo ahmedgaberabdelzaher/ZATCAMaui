@@ -299,10 +299,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             viewModel._idNumber = e.NewTextValue;
         }
 
-        private void OnFrequechCheckChanged(object sender, CheckedChangedEventArgs e)
-        {
-            viewModel.EnableFrequencyDetails();
-        }
+        //private void OnFrequechCheckChanged(object sender, CheckedChangedEventArgs e)
+        //{
+        //    viewModel.EnableFrequencyDetails();
+        //}
 
         private void ContactPersonTextUnFocus(object sender, FocusEventArgs e)
         {
@@ -310,13 +310,18 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             viewModel.EnableDeclaration();
         }
 
-        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void CheckBox_CheckedChanged(System.Object sender, System.Boolean e)
         {
             viewModel.EnableDeclaration();
         }
         public void SelectDefaultAttachOption(int index)
         {
             AttachmentTypeOption.SelectedItem = viewModel.OutletDecisionOptions[index];
+        }
+
+        void OnFrequechCheckChanged(System.Object sender, System.Boolean e)
+        {
+            viewModel.EnableFrequencyDetails();
         }
     }
 
