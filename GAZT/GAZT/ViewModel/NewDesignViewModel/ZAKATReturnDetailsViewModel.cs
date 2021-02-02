@@ -1005,7 +1005,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
-                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                            //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+                            await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
                         }
                         else
                         {
@@ -1158,7 +1160,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public async Task SadadPaymentSelected()
         {
 
-
+            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
         }
 
         public async Task ReleaseEstimateZakatReturn()
