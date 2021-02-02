@@ -13,8 +13,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Image Source="re_Tile_Background_S" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                    <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                <StackLayout Style="{DynamicResource CardParentStacklayout}"  HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                    <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.6"/>
                 </StackLayout>
             </Grid>
         </cards:SfCardView>

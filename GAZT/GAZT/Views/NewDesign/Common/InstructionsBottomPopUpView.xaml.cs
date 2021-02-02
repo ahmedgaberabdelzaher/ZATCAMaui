@@ -124,9 +124,11 @@ namespace EGAZT.Views.NewDesign
 
         }
 
-        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void CheckBox_CheckedChanged(object sender, Boolean e)
         {
             _viewModel.EnableCheckboxContinue();
         }
+
+       
     }
 }
