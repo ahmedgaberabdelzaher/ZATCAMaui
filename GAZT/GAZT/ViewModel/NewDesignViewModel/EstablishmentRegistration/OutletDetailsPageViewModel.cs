@@ -1021,7 +1021,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
