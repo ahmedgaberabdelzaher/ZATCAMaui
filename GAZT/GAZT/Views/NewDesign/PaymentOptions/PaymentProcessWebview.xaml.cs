@@ -99,13 +99,16 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             webView.Source = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
             webView.Cookies = App.httpClientHandler.CookieContainer;
             webView.Navigated += OnNavigated;
+             
 
 
           
             //Content = webView;
 
-            WebviewGrid.Children.Add(webView, 0, 0);
-            WebviewGrid.LowerChild(webView);
+            WebviewGrid.Children.Add(webView);
+            //WebviewGrid.LowerChild(webView);
+
+          
 
 
 

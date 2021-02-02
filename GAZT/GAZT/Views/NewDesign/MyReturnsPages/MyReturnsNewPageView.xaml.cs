@@ -160,46 +160,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 
             }
 
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
-                {
-                    Console.WriteLine("Card Payment Clicked");
-                    await viewModel.MadaPaymentSelected();
-                });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
-                {
-                    Console.WriteLine("Applea pay Clicked");
-                });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
-                {
-
-                    Console.WriteLine("SADAD Clicked");
-                });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
+            
         }
 
         private void SetLTR()
@@ -275,7 +236,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             
             MyReturnsResult SelectedItem = (MyReturnsResult)viewModel.ListToDisplay[0];
 
-            await viewModel.DoValidatePayment(SelectedItem.Fbnum);
+            //await viewModel.DoValidatePayment(SelectedItem.Fbnum);
 
             
         }

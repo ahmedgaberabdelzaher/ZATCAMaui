@@ -5,11 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -614,6 +617,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public ValidatePaymentResponse _paymentData = null;
+        public ValidatePaymentResponse PaymentData
+        {
+            get
+            {
+                return _paymentData;
+            }
+            set
+            {
+                if (_paymentData == value) return;
+
+                _paymentData = value;
+                RaisePropertyChanged("PaymentData");
+            }
+        }
+
 
         #endregion
 
@@ -949,7 +968,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
-                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+                            //Bill details Navigation
+                            //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+
+                            await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
+
                         }
                         else
                         {
@@ -1031,6 +1056,107 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 IsLoading = false;
             });
+
+
+        }
+
+        public async Task DoValidatePayment(string fbNum)
+        {
+            try
+            {
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
+
+
+                    await Task.Run(async () =>
+                    {
+                        var platform = "";
+
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            platform = "C4";
+                        }
+                        else if (Device.RuntimePlatform == Device.Android)
+                        {
+                            platform = "C3";
+                        }
+                        PaymentData = WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+
+
+                        if (PaymentData != null && PaymentData.d != null)
+                        {
+
+                            if (PaymentData.d.Guid != null)
+                            {
+
+                                App.PaymentGuid = PaymentData.d.Guid;
+
+                            }
+
+
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false));
+                        }
+
+
+
+                    });
+
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task MadaPaymentSelected()
+        {
+
+            _navigationService.NavigateTo(App.PaymentProcessWebview);
+
+        }
+
+        public async Task ApplePaySelected()
+        {
+
+
+        }
+
+        public async Task SadadPaymentSelected()
+        {
 
 
         }
@@ -1370,7 +1496,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetEditImage();
                     isLabelVisible = false;
                     IsEditTextVisible = false;
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals("E0002"))// E0002 if return  released by GAZT officer 
                 {
@@ -1381,7 +1507,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetAmendButtonVisibility = true;
                     UnSetEditImage();
                     SetConfirmButtonVisibility = false;
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals("E0003"))//E0003 The return is Paid OR Partially paid 
                 {
@@ -1393,7 +1519,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     SetAmendButtonVisibility = true;
                     SetConfirmButtonVisibility = false;
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//When the Return is already Amended by Taxpayer(E0004),
                 {
@@ -1405,7 +1531,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetConfirmButtonVisibility = false;
                     SetAmendButtonVisibility = false;
 
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals("E0005"))//In Processing
                 {
@@ -1416,7 +1542,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetSubmitButtonVisibility = false;
                     SetConfirmButtonVisibility = false;
                     SetAmendButtonVisibility = false;
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals("E0011"))// In Paid state 
                 {
@@ -1424,7 +1550,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetEditImage();
                     isLabelVisible = false;
                     IsEditTextVisible = false;
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals(""))//In Processing
                 {
