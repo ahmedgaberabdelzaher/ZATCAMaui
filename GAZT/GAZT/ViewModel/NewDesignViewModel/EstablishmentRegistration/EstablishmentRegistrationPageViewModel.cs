@@ -2278,7 +2278,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             finally
             {
                 IsLoading = false;
-                Device.BeginInvokeOnMainThread(() => updateDatePickers(_enum));
+                updateDatePickers(_enum);
             }
         }
 
@@ -2366,7 +2366,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             finally
             {
                 IsLoading = false;
-                Device.BeginInvokeOnMainThread(() => updateDatePickers(_enum));
+                updateDatePickers(_enum);
             }
 
             return true;
@@ -2510,74 +2510,82 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             finally
             {
                 IsLoading = false;
-                Device.BeginInvokeOnMainThread(() => updateDatePickers(_enum));
+                updateDatePickers(_enum);
             }
         }
 
         private void updateDatePickers(EstablishmentRegistrationTabsEnum _enum)
         {
-            DateTime dob = DateTime.Now;
-            ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
-            if (taxPayerDetails?.Caltp == "G")
+            try
             {
-                _selectedDOBDate?.Clear();
-                _selectedDOBDate.Add($"{dob.Day:00}");
-                _selectedDOBDate.Add($"{dob.Month:00}");
-                _selectedDOBDate.Add(dob.Year.ToString());
-            }
-            else
-            {
-                _selectedDOBDate?.Clear();
-                var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
-                var arr = hijiriDate.Split('/');
-                _selectedDOBDate.Add(arr[2]);
-                _selectedDOBDate.Add(arr[1]);
-                _selectedDOBDate.Add(arr[0]);
-            }
-            if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
-            {
-                DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _dob);
+                DateTime dob = DateTime.Now;
+                ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
                 if (taxPayerDetails?.Caltp == "G")
                 {
-                    SelectedDOBDate = _selectedDOBDate;
-                    if (!string.IsNullOrWhiteSpace(SelectedDOB))
-                        DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    _selectedDOBDate?.Clear();
+                    _selectedDOBDate.Add($"{dob.Day:00}");
+                    _selectedDOBDate.Add($"{dob.Month:00}");
+                    _selectedDOBDate.Add(dob.Year.ToString());
                 }
                 else
                 {
-                    SelectedDOBHijiriDate = _selectedDOBDate;
-                    if (!string.IsNullOrWhiteSpace(SelectedDOB))
-                        DisplaySelectedDOB = HijriDateString(_dob);
+                    _selectedDOBDate?.Clear();
+                    var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                    var arr = hijiriDate.Split('/');
+                    _selectedDOBDate.Add(arr[2]);
+                    _selectedDOBDate.Add(arr[1]);
+                    _selectedDOBDate.Add(arr[0]);
+                }
+                if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
+                {
+                    DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _dob);
+                    if (taxPayerDetails?.Caltp == "G")
+                    {
+                        SelectedDOBDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(SelectedDOB))
+                            DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    }
+                    else
+                    {
+                        SelectedDOBHijiriDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(SelectedDOB))
+                            DisplaySelectedDOB = HijriDateString(_dob);
+                    }
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
+                {
+                    DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _issueDate);
+                    DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _expiryDate);
+                    if (taxPayerDetails?.Caltp == "G")
+                    {
+                        SelectedPassportIssueDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(PassportIssueDate))
+                            DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    }
+                    else
+                    {
+                        SelectedPassportIssueHijiriDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(PassportIssueDate))
+                            DisplayPassportIssueDate = HijriDateString(_issueDate);
+                    }
+                    if (taxPayerDetails?.Caltp == "G")
+                    {
+                        SelectedPassportExpireDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(PassportExpireDate))
+                            DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    }
+                    else
+                    {
+                        SelectedPassportExpireHijiriDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(PassportExpireDate))
+                            DisplayPassportExpireDate = HijriDateString(_expiryDate);
+                    }
                 }
             }
-            else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
+            catch(Exception e)
             {
-                DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _issueDate);
-                DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _expiryDate);
-                if (taxPayerDetails?.Caltp == "G")
-                {
-                    SelectedPassportIssueDate = _selectedDOBDate;
-                    if (!string.IsNullOrWhiteSpace(PassportIssueDate))
-                        DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                }
-                else
-                {
-                    SelectedPassportIssueHijiriDate = _selectedDOBDate;
-                    if (!string.IsNullOrWhiteSpace(PassportIssueDate))
-                        DisplayPassportIssueDate = HijriDateString(_issueDate);
-                }
-                if (taxPayerDetails?.Caltp == "G")
-                {
-                    SelectedPassportExpireDate = _selectedDOBDate;
-                    if (!string.IsNullOrWhiteSpace(PassportExpireDate))
-                        DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                }
-                else
-                {
-                    SelectedPassportExpireHijiriDate = _selectedDOBDate;
-                    if (!string.IsNullOrWhiteSpace(PassportExpireDate))
-                        DisplayPassportExpireDate = HijriDateString(_expiryDate);
-                }
+                Console.WriteLine(e.StackTrace);
+                //TODO error : Not a valid calendar for the given culture.
             }
         }
         private async void udpdateDates(string selectedDate = null)

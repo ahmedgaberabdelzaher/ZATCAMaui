@@ -102,9 +102,9 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <commonView:PageIndicatorView HeightRequest="16" Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="12" />
-                </Grid>
+                <!--<Grid Grid.Row="0" >-->
+                <commonView:PageIndicatorView HeightRequest="16" Margin="24,32,24,0"  MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="12" />
+                <!--</Grid>-->
 
                 <Grid Grid.Row="1">
 
@@ -214,41 +214,25 @@
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <!--<CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}"
-                                          VerticalOptions="CenterAndExpand" CheckedChanged="OnFrequechCheckChanged"
-                                          IsChecked="{Binding IsFrequencyDetailsChecked}">
-                                    <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Value="false">
-                                            <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
-                                        </DataTrigger>
-                                    </CheckBox.Triggers>
-                                </CheckBox>
-                                <custom:CustomLabel Grid.Column="1"
-                                                    Text="{x:Static ResourceManager:AppResources.VFCFrequencyDetailsCheckBoxString}"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />-->
-                                <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2">
-                                                    <custom1:CheckboxCustom  
+
+                                <custom1:CheckboxCustom  Grid.Row="0" Grid.Column="0"
                                                                        Style="{StaticResource CheckboxHeightWidth32}"
                                                                          VerticalOptions="CenterAndExpand"  CheckChanged="OnFrequechCheckChanged" IsChecked="{Binding IsFrequencyDetailsChecked}"/>
-                                                    <custom:CustomLabel   >
-                                                        <custom:CustomLabel.FormattedText>
-                                                            <FormattedString>
-                                                                <Span    Text="{x:Static ResourceManager:AppResources.VFCFrequencyDetailsCheckBoxString}" />
-                                                            </FormattedString>
-                                                        </custom:CustomLabel.FormattedText>
-                                                        <custom:CustomLabel.Triggers>
-                                                                     <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsFrequencyDetailsChecked}" Value="True">
-                                                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
-                                                                     </DataTrigger>
-                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsFrequencyDetailsChecked}" Value="False">
-                                                                         <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
-                                                                     </DataTrigger>
-                                                       </custom:CustomLabel.Triggers>
-                                                    </custom:CustomLabel>
-                                </StackLayout>
-
-
+                                <custom:CustomLabel  Grid.Row="0" Grid.Column="1" >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span    Text="{x:Static ResourceManager:AppResources.VFCFrequencyDetailsCheckBoxString}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                    <custom:CustomLabel.Triggers>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsFrequencyDetailsChecked}" Value="True">
+                                            <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsFrequencyDetailsChecked}" Value="False">
+                                            <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
+                                        </DataTrigger>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
 
 
                             </Grid>
