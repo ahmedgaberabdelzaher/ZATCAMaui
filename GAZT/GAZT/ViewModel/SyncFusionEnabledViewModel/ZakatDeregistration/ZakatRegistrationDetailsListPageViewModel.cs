@@ -23,7 +23,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
     [Preserve(AllMembers = true)]
     public class ZakatRegistrationDetailsListPageViewModel : BaseViewModel
     {
-      
+
         #region Variable
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand DeregisterTinTapped { get; set; }
@@ -99,7 +99,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             List<ZakatDeregistrationDetailsListModel> tempZakatRegListData = new List<ZakatDeregistrationDetailsListModel>();
             string fileImage = string.Empty;
-            if(App.IsArabic)
+            if (App.IsArabic)
             {
                 fileImage = "arrowLeft.png";
             }
@@ -109,39 +109,40 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             }
 
-            
-            if (App.LoginDataRetrieved.ZkReg == "X"||App.LoginDataRetrieved.VtReg == "X")
-            {   
-                    if (App.LoginDataRetrieved.ZkReg == "X") {
+
+            if (App.LoginDataRetrieved.ZkReg == "X" || App.LoginDataRetrieved.VtReg == "X")
+            {
+                if (App.LoginDataRetrieved.ZkReg == "X")
+                {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
                         ZDTitle = AppResources.DBSMTaxpayerDetails,
                         ZDImageSource = "vat_ic_taxpayerDetail",
                         ArrowImageSource = fileImage
                     });
-                    }
+                }
 
-                    if (App.LoginDataRetrieved.ZkReg == "X")
+                if (App.LoginDataRetrieved.ZkReg == "X")
+                {
+                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
-                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                        {
-                            ZDTitle = AppResources.DBSMOutlets,
-                            ZDImageSource = "establishments",
-                            ArrowImageSource = fileImage
-                        });
-                    }
+                        ZDTitle = AppResources.DBSMOutlets,
+                        ZDImageSource = "establishments",
+                        ArrowImageSource = fileImage
+                    });
+                }
 
-                    if (App.LoginDataRetrieved.ZkReg == "X")
+                if (App.LoginDataRetrieved.ZkReg == "X")
+                {
+                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
-                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                        {
-                            ZDTitle = AppResources.DBSMFinancialDetails,
-                            ZDImageSource = "details",
-                            ArrowImageSource = fileImage
-                        });
-                    }
+                        ZDTitle = AppResources.DBSMFinancialDetails,
+                        ZDImageSource = "details",
+                        ArrowImageSource = fileImage
+                    });
+                }
 
-                    if (App.LoginDataRetrieved.VtReg == "X")
+                if (App.LoginDataRetrieved.VtReg == "X")
                 {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
