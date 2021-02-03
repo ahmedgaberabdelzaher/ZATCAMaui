@@ -14,20 +14,19 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
     public partial class ZakatReturnNewSuccessPageView : ContentPage
     {
         ZakatReturnNewSuccessViewModel viewModel;
-        ZakatReturnDetailsD _zakatReturnDetail;
-        public ZakatReturnNewSuccessPageView(ZakatReturnDetailsD ZakatReturnDetail)
+        public ZakatReturnNewSuccessPageView(string CaseGuild)
         {
             InitializeComponent();
             viewModel = App.Locator.ZakatReturnNewSuccessView;
 
             // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
-            this._zakatReturnDetail = ZakatReturnDetail;
+           
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetLTR();
             ChangeAeroIcon();
 
-            viewModel.OnPageLoad(ZakatReturnDetail);
+            viewModel.ReferenceNumber = CaseGuild;
 
             ToolbarItem Refresh = new ToolbarItem
             {
@@ -55,22 +54,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         }
         private async void OnRefreshButtonClicked(object sender, EventArgs e)
         {
-            try
-            {
-                if (viewModel.IsrefreshEnabled)
-                {
-                    await viewModel.OnPageLoad(_zakatReturnDetail);
-                }
-                else
-                {
-                    // put Mesage already latest SADADID available
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-
+            
         }
 
 

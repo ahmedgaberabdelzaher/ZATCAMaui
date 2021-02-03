@@ -33,11 +33,11 @@
                 </Grid.ColumnDefinitions>
 
 
-                   <Grid Grid.Row="0" Grid.Column="0">
+                   <!--<Grid Grid.Row="0" Grid.Column="0">
                        <StackLayout  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
                     <WebView x:Name="WebView" VerticalOptions="FillAndExpand" Navigated="OnNavigated"/>
                     </StackLayout>
-                       </Grid>
+                       </Grid>-->
 
 
                 <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">

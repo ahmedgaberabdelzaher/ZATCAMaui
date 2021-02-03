@@ -35,6 +35,23 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             this.BindingContext = viewModel;
             SetLTR();
 
+           
+            //WebviewGrid.LowerChild(webView);
+
+
+
+        }
+
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+          
+
+            
+
+
             webView = new WebView();
 
             CookieContainer cookieContainer = new CookieContainer();
@@ -98,19 +115,10 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
             webView.Cookies = App.httpClientHandler.CookieContainer;
             webView.Navigated += OnNavigated;
+            webView.Navigating += OnNavigating;
 
             WebviewGrid.Children.Add(webView, 0, 0);
-            //WebviewGrid.LowerChild(webView);
-
-        }
-
-
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-
+            WebviewGrid.LowerChild(webView);
             //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
 
 
@@ -120,35 +128,31 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         {
             viewModel.IsLoading = false;
         }
-        protected void OnNavigating(object sender, WebNavigatingEventArgs e)
+        protected async void OnNavigating(object sender, WebNavigatingEventArgs e)
         {
             Console.WriteLine("WebViewURL: " + e.Url);
 
-            //Payment Successful
-            if (e.Url == "http://bank/?IsPmtSts=" + App.PaymentGuid)
+
+            if (e.Url.Contains("http://bank/?IsPmtSts"))
             {
-                Console.WriteLine("Payment Successful:" + e.Url);
-                webView.IsVisible = false;
-                viewModel.IsLoading = true;
-                //Service call and navigate to Success Page
-                //...
-                //Or
-                //Close WebView Activity 
-                Device.BeginInvokeOnMainThread(() =>
+                var splitString = e.Url.Split('=');
+                if (splitString.Length > 0)
                 {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
-                    {
-                        if (item.GetType().Name == App.PaymentProcessWebview)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
-                    }
-                    viewModel._navigationService.GoBack();
-                });
+                    var responseGUID = splitString[1];
+                    Console.WriteLine("Payment Successful:" + e.Url);
+
+                    //webView.IsVisible = false;
+                    viewModel.IsLoading = true;
+
+                    await viewModel.UpdateMadaPaymentDetails(responseGUID);
+
+
+                  
+
+                }
 
             }
+            
             viewModel.IsLoading = false;
         }
 

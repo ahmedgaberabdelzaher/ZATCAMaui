@@ -423,6 +423,7 @@ namespace GAZT.Helper
 
         public static string ValidatePaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMADA_CALL_SRV/HeaderSet(Fbnum=";
         public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=100&sap-ui-language=EN&sap-ui-xx-devmode=true&guid=";
+        public static string UpdateMadaPaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_PAYMENT_STATUS_SRV/PaymentStatSet(CaseGuid=";
 
 
 

@@ -32,4 +32,46 @@ namespace EGAZT.Models.PaymentModel
     {
         public D d { get; set; }
     }
+
+
+    public class MadaPayment
+    {
+        public Metadata __metadata { get; set; }
+        public string Mandt { get; set; }
+        public string CaseGuid { get; set; }
+        public string Epaytransid { get; set; }
+        public string Vtre2 { get; set; }
+        public string Abtyp { get; set; }
+        public string Fbtyp { get; set; }
+        public string Gpart { get; set; }
+        public string Vkont { get; set; }
+        public string Vtref { get; set; }
+        public string Fbnum { get; set; }
+        public string Persl { get; set; }
+        public string Amtmd { get; set; }
+        public string Oamtmd { get; set; }
+        public string Mamtmd { get; set; }
+        public string Waers { get; set; }
+        public string Messageid { get; set; }
+        public string CancelRes { get; set; }
+        public DateTime TimestampCr { get; set; }
+        public string PayStat { get; set; }
+        public string FinalStat { get; set; }
+        public string Keyz1 { get; set; }
+        public string InStatus { get; set; }
+        public object PayDate { get; set; }
+        public string PayAmount { get; set; }
+        public string PayRef { get; set; }
+        public string PymntProcFg { get; set; }
+        public string Srcid { get; set; }
+        public string Zbranch { get; set; }
+    }
+
+    public class MadaPaymentResponse
+    {
+        public MadaPayment d { get; set; }
+    }
+
+
+
 }
