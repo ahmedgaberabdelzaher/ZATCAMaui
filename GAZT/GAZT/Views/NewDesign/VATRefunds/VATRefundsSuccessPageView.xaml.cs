@@ -18,7 +18,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             InitializeComponent();
 
             viewModel = App.Locator.VATRefundsSuccessPageView;
-            ChangeAeroIcon();
+            // ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
@@ -80,7 +80,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
                 viewModel._navigationService.GoBack();
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }

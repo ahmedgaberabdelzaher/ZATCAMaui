@@ -535,10 +535,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                         string attachmentType = UtilityManager.GetContentType(Extention);
                                                         AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType, DocTypeString);
 
-                                                        // await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
-
-                                                        PopToRootPage();
-
                                                         if (_attachment != null && _attachment.d != null)
                                                         {
                                                             AttachmentName = string.Empty;
@@ -655,8 +651,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     {
                                                         string attachmentType = UtilityManager.GetContentType(Extention);
                                                         AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType, DocTypeString);
-                                                        // await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
-                                                        PopToRootPage();
                                                         if (_attachment != null && _attachment.d != null)
                                                         {
                                                             AttachmentName = string.Empty;
@@ -775,10 +769,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     {
                                                         string attachmentType = UtilityManager.GetContentType(Extention);
                                                         AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType, DocTypeString);
-
-                                                        // await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
-
-                                                        PopToRootPage();
 
                                                         if (_attachment != null && _attachment.d != null)
                                                         {
@@ -1011,7 +1001,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         }
 
                         string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, returnIdz, APiMethod, attachment.Doguid);
-                        PopToRootPage();
                         if (results == "X")
                         {
                             Attachment listitem = (from itm in VatAttachmentsList
