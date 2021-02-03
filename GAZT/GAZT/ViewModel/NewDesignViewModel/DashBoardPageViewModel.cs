@@ -128,6 +128,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private ObservableCollection<InstalmentPlanResult> _InstalmentPlanList { get; set; }
+
+        public ObservableCollection<InstalmentPlanResult> InstalmentPlanList
+        {
+            get
+            {
+                return this._InstalmentPlanList;
+            }
+            set
+            {
+                if (_InstalmentPlanList == value) return;
+
+                if (value != null)
+                {
+                    this._InstalmentPlanList = value;
+                    RaisePropertyChanged("InstalmentPlanList ");
+                }
+            }
+        }
+
         public List<TaxRelationSetResult> TaxTypeFilter
         {
             get
@@ -1515,6 +1535,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             InstalmentResponse = WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.TP.Userid);
 
+            var items = new ObservableCollection<InstalmentPlanResult>();
+            foreach (InstalmentPlanResult singleItem in InstalmentResponse.INST_PLAN_itemSet.results)
+            {
+                items.Add(singleItem);
+            }
+            InstalmentPlanList = items;
+
+            
             Console.WriteLine();
 
         }

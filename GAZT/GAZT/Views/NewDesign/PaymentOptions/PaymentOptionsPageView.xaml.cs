@@ -40,7 +40,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             if (Device.RuntimePlatform == Device.iOS)
             {
 
-                if (!isAlreadyPaid)
+                if (!isAlreadyPaid && !isAmountLess)
                 {
                     paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo", CardLabel = AppResources.PaymentMethodApplePay });
 
