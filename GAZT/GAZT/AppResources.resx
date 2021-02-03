@@ -8796,4 +8796,7 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="DashboardLastTransaction" xml:space="preserve">
     <value>Last Transaction</value>
   </data>
+  <data name="NDZakatReturnSubmittedSuccessMessage" xml:space="preserve">
+    <value>The payment of your Zakat Return has been completed successfully</value>
+  </data>
 </root>

@@ -7615,6 +7615,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The payment of your Zakat Return has been completed successfully.
+        /// </summary>
+        public static string NDZakatReturnSubmittedSuccessMessage {
+            get {
+                return ResourceManager.GetString("NDZakatReturnSubmittedSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zakat Services.
         /// </summary>
         public static string NDZakatServices {

@@ -88,7 +88,9 @@ namespace EGAZT
         //test
         public static string AttachmentPopupPageView = "AttachmentPopupPageView";
         public static string VATReturnSuccessfullPageView = "VATReturnSuccessfullPageView";
+        public static string VatReturnNewSuccessPageView = "VatReturnNewSuccessPageView";
         public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
+        public static string ZakatReturnNewSuccessPageView = "ZakatReturnNewSuccessPageView";
         public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
         public static string AttachmentPopUp = "AttachmentPopUp";
         public static string ZakatObjectionSuccessfullPageView = "ZakatObjectionSuccessfullPageView";
