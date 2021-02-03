@@ -43,15 +43,10 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         }
 
 
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
-          
-
-            
-
-
+        
             webView = new WebView();
 
             CookieContainer cookieContainer = new CookieContainer();
@@ -132,6 +127,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         {
             Console.WriteLine("WebViewURL: " + e.Url);
 
+            //viewModel.pushSomething();
 
             if (e.Url.Contains("http://bank/?IsPmtSts"))
             {

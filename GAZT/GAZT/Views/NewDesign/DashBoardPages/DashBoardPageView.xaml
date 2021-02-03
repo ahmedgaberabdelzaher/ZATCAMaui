@@ -214,7 +214,7 @@
                                                                         <Label 
                                                                         VerticalOptions="CenterAndExpand" 
                                                                        Style="{StaticResource 
-                                                                        CaptionLabelBlack}">
+                                                                        CaptionLabelBlack}" TextColor="{Binding AmountTextColor}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
                                                                                     <Span  Text="{Binding Betrh,Converter={StaticResource 
@@ -939,7 +939,7 @@
                         <StackLayout Grid.Column="1" BackgroundColor="Transparent" Grid.Row="0" >
                             
 
-                            <Image Source="details.png" VerticalOptions="CenterAndExpand">
+                            <Image Source="timeline.png" VerticalOptions="CenterAndExpand">
                             </Image>
                            <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>

@@ -560,13 +560,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void OnAccountStatementsClicked(object sender, EventArgs e)
         {
             try
-            {
+            {/*
                 viewModel.MenuViewVisible = false;
                 viewModel.HomeViewVisible = false;
                 viewModel.AccountStatementVisible = true;
                 viewModel.LiveChatVisible = false;
                 viewModel.IsToolbarTaxVisible = false;
-
+*/
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "AccountStatements_Tapped", "Account Statements eService");
                 viewModel._navigationService.NavigateTo(App.AccountStatementsPageView);
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
@@ -582,11 +582,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             try
             {
-                viewModel.MenuViewVisible = false;
+               /* viewModel.MenuViewVisible = false;
                 viewModel.HomeViewVisible = false;
                 viewModel.AccountStatementVisible = false;
                 viewModel.LiveChatVisible = true;
-                viewModel.IsToolbarTaxVisible = false;
+                viewModel.IsToolbarTaxVisible = false;*/
 
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnSupportTapped", "Support");
                 viewModel._navigationService.NavigateTo(App.SupportPageView);
@@ -1096,13 +1096,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 await part.FadeTo(1, 600);
                 await btn_frameToolbar.FadeTo(0, 600);
-                await btn_frameToolbar.TranslateTo(100, 0, 200, Easing.CubicInOut);
+              //  await btn_frameToolbar.TranslateTo(100, 0, 200, Easing.CubicInOut);
             }
             else
             {
                 await part.FadeTo(0, 600);
                 await btn_frameToolbar.FadeTo(1, 600);
-                await btn_frameToolbar.TranslateTo(0, 0, 200, Easing.CubicInOut);
+                //await btn_frameToolbar.TranslateTo(0, 0, 200, Easing.CubicInOut);
             }
         }
 

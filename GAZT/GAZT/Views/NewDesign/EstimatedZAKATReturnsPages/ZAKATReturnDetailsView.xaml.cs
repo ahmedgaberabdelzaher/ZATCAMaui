@@ -44,6 +44,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToReleaseTheReturn");
                 MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToAmendheReturn");
+                MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
+                MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
+                MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
+                
             }
             catch (Exception ex)
             {
@@ -238,10 +242,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
-                    Console.WriteLine("Card Payment Clicked");
-                  
-                         viewModel.MadaPaymentSelected();
-                    
+                    viewModel.MadaPaymentSelected();
                 });
             }
             catch (Exception ex)
@@ -267,8 +268,6 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
                 {
-
-                    Console.WriteLine("SADAD Clicked");
                     viewModel.gotoSuccessPage();
                 });
             }

@@ -478,6 +478,30 @@ namespace EGAZT.Models.AccountStatements
             }
         }
 
+        [JsonIgnore]
+        private Color _AmountTextColor = Color.FromHex("#006450");
+        [JsonIgnore]
+        public Color AmountTextColor
+        {
+            get
+            {
+                if (Betrh != null && Double.Parse(Betrh) < 0)
+                {
+                    _AmountTextColor = Color.Black;
+                    return _AmountTextColor;
+                }
+
+                return _AmountTextColor;
+            }
+            set
+            {
+
+                _AmountTextColor = value;
+
+                RaisePropertyChanged("AmountTextColor");
+            }
+        }
+
 
 
         [JsonIgnore]

@@ -2,15 +2,16 @@
 <ContentPage
     x:Class="EGAZT.Views.NewDesign.PaymentOptions.PaymentProcessWebview"
     xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     FlowDirection="RightToLeft"
-    xmlns:custom2="clr-namespace:EGAZT"
+    xmlns:custom2="clr-namespace:EGAZT" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     NavigationPage.HasNavigationBar="False"
-    BackgroundColor="White">
+    BackgroundImageSource="partials_background.png">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -20,6 +21,46 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid BackgroundColor="Transparent">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="Black" CornerRadius="15,15,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0"
+                  Padding="0,0,0,0" x:Name="VATRMainGrid">
+                            <Grid.RowDefinitions>
+                                <!--<RowDefinition Height="10*" />-->
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="0" BackgroundColor="White"/>
+                        </Grid>
+                    </yummy:PancakeView>
+                    <Grid Padding="20,10,24,10" Grid.Row="0">
+                       
+                        <Image Grid.Row="0"  
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                               Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
+                               HeightRequest="24"
+                               WidthRequest="24">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+
+
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    
     <ContentPage.Content>
         <Grid>
             

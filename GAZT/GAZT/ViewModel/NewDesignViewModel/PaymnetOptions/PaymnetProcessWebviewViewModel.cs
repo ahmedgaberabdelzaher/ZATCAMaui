@@ -9,6 +9,7 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -17,6 +18,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class PaymnetProcessWebviewViewModel : ViewModelBase
     {
+        public ICommand GoBackClick { get; set; }
+
+
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 
@@ -62,7 +66,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            
+
+            GoBackClick = new Command(async () =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    _navigationService.GoBack();
+                });
+            });
 
         }
 
@@ -129,7 +140,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         _navigationService.GoBack();
                     });
                 }
@@ -146,5 +158,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
            
         }
 
+       /* public async void pushSomething()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                _navigationService.GoBack();
+            });
+        }
+*/
     }
 }
