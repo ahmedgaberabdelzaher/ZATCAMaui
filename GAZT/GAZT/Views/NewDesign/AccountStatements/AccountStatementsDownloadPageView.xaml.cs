@@ -110,7 +110,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             {
                 await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
 
             }
@@ -135,7 +135,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             {
                 await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
 
             }

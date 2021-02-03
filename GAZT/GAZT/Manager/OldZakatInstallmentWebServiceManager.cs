@@ -40,8 +40,6 @@ namespace EGAZT.Manager
                     string euser4 = "null";
                     string euser5 = "null";
                     fbguid = "";
-                    string userTyp = "TP";
-
                     Char lang = WebServiceManager.GetLangZParameter();
                     String url = Constants.ZakatOldInstalmentsListUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
                        "Auditor='" + auditor + "'," +
@@ -81,7 +79,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -158,7 +156,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;

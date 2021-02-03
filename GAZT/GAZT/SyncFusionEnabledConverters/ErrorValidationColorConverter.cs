@@ -95,7 +95,6 @@ namespace GAZTeServicesApp.Converters
             {
                 return true;
             }
-            return true;
         }
         public static bool IsEnglishNumber(String arText)
         {

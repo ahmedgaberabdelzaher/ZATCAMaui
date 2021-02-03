@@ -10,6 +10,7 @@ using GAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms.Internals;
+using Xamarin.Essentials;
 
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
 {
@@ -104,19 +105,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
             }
-            catch (Exception gec)
+            catch (Exception)
             {
             }
         }
 
         private void FirstLinkClicked(object sender, EventArgs e)
         {
-            Device.OpenUri(new Uri(viewModel.FirstLink));
+            Launcher.OpenAsync(new Uri(viewModel.FirstLink));
         }
 
         private void SecondLinkClicked(object sender, EventArgs e)
         {
-            Device.OpenUri(new Uri(viewModel.SecondLink));
+            Launcher.OpenAsync(new Uri(viewModel.SecondLink));
         }
 
         private void DoneButtonClicked(object sender, EventArgs e)

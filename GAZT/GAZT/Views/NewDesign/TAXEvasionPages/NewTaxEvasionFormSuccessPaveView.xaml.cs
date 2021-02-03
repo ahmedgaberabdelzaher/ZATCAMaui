@@ -30,7 +30,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             else
                 btnDashboard.Text = AppResources.NDBacktoLoginnew;
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
         }

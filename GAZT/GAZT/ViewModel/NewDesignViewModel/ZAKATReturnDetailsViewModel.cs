@@ -633,7 +633,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //=======================start==================================================
 
 
-            OnSubmitClicked = new Xamarin.Forms.Command(() =>
+            OnSubmitClicked = new Xamarin.Forms.Command(async () =>
             {
                 bool IsValueChange = GetEstimatedZAKATValueChangeStatus();
                 if (IsValueChange)
@@ -649,11 +649,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
-                            SubmitReturn();
+                            await SubmitReturn();
                         }
                         else
                         {
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                         }
 
                     }
@@ -689,7 +689,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             OnEditClicked = new Xamarin.Forms.Command(() =>
             {
 
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     isLabelVisible = false;
                     isEditVisible = true;
@@ -714,7 +714,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     //  await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             });
@@ -933,7 +933,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                     }
 
 
@@ -945,7 +945,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     isLabelVisible = false;
                     IsEditTextVisible = false;
                     IsBillsButtonTapped = true;
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
@@ -991,7 +991,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0005"))// In Processing
                 {
                     IsBillsButtonTapped = true;
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -1011,17 +1011,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
-                            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
-                            {
-                                _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
-                            }
-                            else
-                            {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
-                            }
-                        });
+                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                        }
+                        else
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                        }
                     });
                 }
             });
@@ -1068,7 +1065,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 });
 
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                             }
                         }
@@ -1099,7 +1096,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 });
                                 //}
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                             }
                             //Device.BeginInvokeOnMainThread(async () => {
@@ -1140,7 +1137,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
             }
@@ -1249,7 +1246,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     DesClaimerVisibility = false;
                     if (PostOperation.Equals(ConfirmPostOperationWithoutObjection))
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
                             _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
 
@@ -1257,7 +1254,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
                             _navigationService.NavigateTo(App.ZakatObjectionSuccessfullPageView, ZakatReturnDetail);
                         });
@@ -1316,7 +1313,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
@@ -1430,7 +1427,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

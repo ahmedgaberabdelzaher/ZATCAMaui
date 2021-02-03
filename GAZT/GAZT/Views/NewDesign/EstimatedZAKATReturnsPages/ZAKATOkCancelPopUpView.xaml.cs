@@ -83,7 +83,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 MessagingCenter.Send<Object, string>(this, "YesPressedToAmendheReturn", "Yes");
             }
             OnSelect?.Invoke("Yes");
-            PopupNavigation.Instance.PopAsync();
+            await PopupNavigation.Instance.PopAsync();
 
         }
 
@@ -96,7 +96,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 return;
                 
             }
-            PopupNavigation.Instance.PopAsync();
+            await PopupNavigation.Instance.PopAsync();
         }
         private void SetLTR()
         {

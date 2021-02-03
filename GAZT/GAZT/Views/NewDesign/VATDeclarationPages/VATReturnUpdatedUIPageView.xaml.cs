@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
@@ -66,9 +66,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.IsResetClicked = false;
                 checkNewFormorOld();
                 
-                IntilizeAsync();
+                _ = IntilizeAsync();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -173,7 +173,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -193,7 +193,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -561,7 +561,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         }
 
-        public async void getYesCommand()
+        public void getYesCommand()
         {
             try
             {
@@ -580,29 +580,29 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             viewModel.IsRefundNoMsgDisplayed = false;
                             await PopupNavigation.Instance.PopAsync();
                             viewModel.SetDataForRefundPopup();
-                            PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(viewModel.VATDeclarationData));
+                            await PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(viewModel.VATDeclarationData));
                         }
                     }
                
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
         }
 
-        public async void getSubmittedFromRefundCommand()
+        public void getSubmittedFromRefundCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "Refundsubmitted", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "Refundsubmitted", (sender, arg) =>
                 {
                     if (arg != null)
                     {
                       //  viewModel.IsNavigatedToBilled = true;
 
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread( () =>
                         {
                             viewModel.ManageEnabledProperty(false);
                             viewModel.IsGetSadadNumberEnabled = false;
@@ -626,7 +626,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -637,16 +637,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 PopupNavigation.Instance.PushAsync(new VATDeclarationAttachmentPageView(viewModel.VATDeclarationData));
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
         }
-        public async void getRefundClickedCommand()
+        public  void getRefundClickedCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "RefundClicked", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "RefundClicked",  (sender, arg) =>
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
@@ -654,16 +654,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     });
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
-        public async void getRefundClickedForStopLoaderCommand()
+        public  void getRefundClickedForStopLoaderCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "RefundClickedForStop", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "RefundClickedForStop",  (sender, arg) =>
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
@@ -671,43 +671,43 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     });
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
 
-        public async void getAddNoteCommand()
+        public  void getAddNoteCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "AddNoteForVATDeclaration", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "AddNoteForVATDeclaration",  (sender, arg) =>
                 {
                     AddNote();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
 
-        public async void getClearNoteCommand()
+        public  void getClearNoteCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "ClearNoteForVATDeclaration", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "ClearNoteForVATDeclaration",  (sender, arg) =>
                 {
                     AddNote();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
 
-        public async void getNoCommand()
+        public  void getNoCommand()
         {
             try
             {
@@ -729,13 +729,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
 
-        public async void getActionCommand()
+        public  void getActionCommand()
         {
             try
             {
@@ -805,7 +805,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                             newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                            // await viewModel._dialogService.ShowMessage(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields, AppResources.Information);
@@ -877,7 +877,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                             newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                                             //await viewModel._dialogService.ShowMessage(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields, AppResources.Information);
                                         });
@@ -892,13 +892,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 });
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
         }
 
-        public async void getRefundYesMsgCommand()
+        public  void getRefundYesMsgCommand()
         {
             try
             {
@@ -911,12 +911,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
-        public async void getRefundNoMsgCommand()
+        public  void getRefundNoMsgCommand()
         {
             try
             {
@@ -930,7 +930,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -942,7 +942,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 PopupNavigation.Instance.PushAsync(new NotesPopUpPageView(viewModel.VATDeclarationData));
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -954,7 +954,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 PopupNavigation.Instance.PushAsync(new NotesDescriptionPopUpPageView(viewModel.VATDeclarationData));
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -984,13 +984,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsNewLoading = false;
                 });
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = 0;
@@ -1147,7 +1147,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     NotesPopUpPageViewModel.NoteString = string.Empty;
                 }
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -1198,7 +1198,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NotesPopUpPageViewModel.IsComingFromNotePage = false;
                 //AddNotePageViewModel.NoteString = string.Empty;
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -1258,7 +1258,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NotesPopUpPageViewModel.IsComingFromNotePage = false;
                 //AddNotePageViewModel.NoteString = string.Empty;
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -1302,7 +1302,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     SetEnabledProperty();
                     //viewModel.IsMainButtonVisible = true;
                 }
-                catch(Exception ex)
+                catch(Exception )
                 {
 
                 }
@@ -1324,27 +1324,30 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 FaqUrl = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
             }
-            Device.OpenUri(new Uri(FaqUrl));
+            Launcher.OpenAsync(new Uri(FaqUrl));
         }
         public async Task onPageLoadCalculation()
         {
-            viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
-            viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
-            viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
-            viewModel.TotalsalesVat = viewModel.ResponseVATDeclarationD.StdsalesVat;
-            viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
-            viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
-            viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
-            if (viewModel.ResponseVATDeclarationD.TpregFg == "X")
+            await Task.Run(() =>
             {
-                viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
-            }
-            else
-            {
-                viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
-            }
-            viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
-            viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
+                viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
+                viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                viewModel.TotalsalesVat = viewModel.ResponseVATDeclarationD.StdsalesVat;
+                viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
+                viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                if (viewModel.ResponseVATDeclarationD.TpregFg == "X")
+                {
+                    viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
+                }
+                else
+                {
+                    viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
+                }
+                viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
+                viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
+            });
         }
 
         private void SetLTR()
@@ -1446,7 +1449,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1741,7 +1744,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return IsAllEntered;
@@ -1799,7 +1802,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return IsAllEntered;
@@ -1938,7 +1941,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
         }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return IsAllEntered;
@@ -2109,7 +2112,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //  BtnNextStep.IsEnabled = true;
                 }
             }
-            catch (Exception e)
+            catch (Exception )
             {
 
             }
@@ -2588,7 +2591,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //  BtnNextStep.IsEnabled = true;
                 }
             }
-            catch (Exception e)
+            catch (Exception )
             {
 
             }
@@ -2734,7 +2737,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return IsAllEntered;
@@ -3036,7 +3039,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //  BtnNextStep.IsEnabled = true;
                 }
             }
-            catch (Exception e)
+            catch (Exception )
             {
 
             }
@@ -3116,7 +3119,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 EntryImportsaccAdj5.Text = "0.00";
                 EntryImportsaccVat5.Text = "0.00";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3180,7 +3183,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 EntryImportsaccAdj5.Text = string.Empty;
                 EntryImportsaccVat5.Text = "0.00";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3216,7 +3219,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryVatAmount.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3247,7 +3250,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     CheckSalesMandetoryFields();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3304,7 +3307,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3340,7 +3343,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryVatAdjustmentWithSAR.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3366,7 +3369,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntrySalesGccAmt.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3390,7 +3393,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntrySalesGccAdj.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3414,7 +3417,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryZerosalesAmt.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3438,7 +3441,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryZerosalesAdj.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3462,7 +3465,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryExportsAmt.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3486,7 +3489,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryExportsAdj.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3510,7 +3513,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryExemptsalesAmt.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3578,7 +3581,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryStdpurchaseAmt.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3598,7 +3601,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryStdpurchaseAdj.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3618,7 +3621,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryZVatAmountWithSAR.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3638,7 +3641,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryImportspaidAdj.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3658,7 +3661,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryImportsaccAmt.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3678,7 +3681,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryImportsaccAdj.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3698,7 +3701,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryZeropurchaseAmt.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3718,7 +3721,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryZeropurchaseAdj.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3738,7 +3741,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryExemptpurchaseAmt.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3758,7 +3761,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryExemptpurchaseAdj.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3778,7 +3781,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryPreperiodcorr.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3805,7 +3808,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     CheckSalesMandetoryFields();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3901,7 +3904,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     CheckSalesMandetoryFields();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -3927,7 +3930,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     CheckSalesMandetoryFields();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4007,7 +4010,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4078,7 +4081,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4105,7 +4108,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4246,7 +4249,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4296,7 +4299,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4444,7 +4447,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4499,7 +4502,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4660,7 +4663,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4687,7 +4690,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4799,7 +4802,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4826,7 +4829,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4898,7 +4901,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4925,7 +4928,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4998,7 +5001,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5025,7 +5028,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5095,7 +5098,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5122,7 +5125,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5317,7 +5320,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryVatAmount15.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5337,7 +5340,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryVatAdjustmentWithSAR15.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -5371,7 +5374,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5399,7 +5402,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5478,7 +5481,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5503,7 +5506,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryVatAmount5.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5535,7 +5538,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5560,7 +5563,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryVatAdjustmentWithSAR5.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -5593,7 +5596,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5614,7 +5617,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryStdpurchaseAmt15.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5635,7 +5638,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryStdpurchaseAdj15.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5680,7 +5683,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5708,7 +5711,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5729,7 +5732,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryStdpurchaseAmt5.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5769,7 +5772,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5790,7 +5793,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryStdpurchaseAdj5.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5823,7 +5826,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5844,7 +5847,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryZVatAmountWithSAR15.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5877,7 +5880,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5898,7 +5901,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryImportspaidAdj15.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5931,7 +5934,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5952,7 +5955,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryZVatAmountWithSAR5.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -5985,7 +5988,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6006,7 +6009,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryImportspaidAdj5.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6039,7 +6042,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6060,7 +6063,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryImportsaccAmt15.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6093,7 +6096,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6114,7 +6117,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryImportsaccAdj15.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6147,7 +6150,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6168,7 +6171,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryImportsaccAmt5.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6201,7 +6204,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6222,7 +6225,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryImportsaccAdj5.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6255,7 +6258,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6330,7 +6333,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6399,7 +6402,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6468,7 +6471,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6557,7 +6560,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -6647,7 +6650,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                    }
                }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -6728,7 +6731,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6808,7 +6811,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6828,7 +6831,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -6849,7 +6852,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -6924,7 +6927,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -6998,7 +7001,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -7043,7 +7046,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -7104,7 +7107,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             //   viewModel.ResponseVATDeclarationD.ImportspaidVat=viewModel.
@@ -7156,7 +7159,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -7219,7 +7222,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -7284,7 +7287,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -7356,7 +7359,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -7377,7 +7380,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     EntryExemptsalesAdj.TextColor = Color.Black;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -7421,7 +7424,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -7485,7 +7488,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -7554,7 +7557,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -7611,7 +7614,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //PopupNavigation.Instance.PushAsync(new ShowVatInformationForPrivatehealthCare());
                 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -7671,7 +7674,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -7732,7 +7735,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -7791,7 +7794,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -7850,7 +7853,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -7908,7 +7911,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -7965,7 +7968,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -8024,7 +8027,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -8082,7 +8085,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -8139,7 +8142,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -8197,7 +8200,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -8255,7 +8258,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -8312,7 +8315,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -8370,7 +8373,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -8428,7 +8431,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -8463,7 +8466,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -8502,7 +8505,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -8537,7 +8540,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -8582,7 +8585,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                     //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     //SelectedIndex = 2;
@@ -8616,7 +8619,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        private async void OnContinueButtonClicked(object sender, EventArgs e)
+        private void OnContinueButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -8757,7 +8760,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                   }
                 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -8869,7 +8872,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 await viewModel.VATReturnAmendAsync();
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }

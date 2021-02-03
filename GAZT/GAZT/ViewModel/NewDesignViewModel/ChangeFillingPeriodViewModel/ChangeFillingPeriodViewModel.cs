@@ -548,23 +548,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 throw new ArgumentNullException("dialogService");
             }
 
-            ShowDatePicker = new Command(async () =>
+            ShowDatePicker = new Command(() =>
             {
                 showDatePickerDialog();
             });
 
-            EffectiveDateSpinnerClicked = new Command(async () =>
+            EffectiveDateSpinnerClicked = new Command(() =>
             {
                 showEffectiveDatePickerDialog();
             });
 
-            IdTypeSpinnerTapped = new Command(async () =>
+            IdTypeSpinnerTapped = new Command(() =>
             {
                 showIdTypePickerDialog();
             });
 
             _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 Backnavigations();
             });
@@ -573,7 +573,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
             });
 
-            CloseClick = new Command(async () =>
+            CloseClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -948,7 +948,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         }
 
 
-        public void ValidateIdNumber()
+        public async void ValidateIdNumber()
         {
             try
             {
@@ -973,7 +973,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                         }
                         else
@@ -999,7 +999,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                                 IDNumber = string.Empty;
                             }
                             else
@@ -1007,7 +1007,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                                 if (!string.IsNullOrEmpty(PickedDate))
                                 {
-                                    ValidateIdNumberFromApi("ZS0001");
+                                    await ValidateIdNumberFromApi("ZS0001");
                                 }
                             }
                         }
@@ -1027,7 +1027,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                         }
                         else
@@ -1053,14 +1053,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                                 IDNumber = string.Empty;
                             }
                             else
                             {
                                 if (!string.IsNullOrEmpty(PickedDate))
                                 {
-                                    ValidateIdNumberFromApi("ZS0002");
+                                    await ValidateIdNumberFromApi("ZS0002");
                                 }
                             }
                         }
@@ -1082,7 +1082,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                         }
                         else if (!(IDNumber.Length <= 15 && IDNumber.Length >= 7))
@@ -1098,7 +1098,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                         }
                         else
@@ -1156,7 +1156,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
             }
             catch (InternetException ex)
@@ -1200,7 +1200,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 selectedPicker = PickerEnum.IdType;
                 await PopupNavigation.Instance.PushAsync(new PickerPageView(IDTypePickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
             }
             catch (InternetException ex)
@@ -1637,7 +1637,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        public async void FrequencyContinueBtnClicked()
+        public void FrequencyContinueBtnClicked()
         {
             try
             {
@@ -2156,7 +2156,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 IsAtachmentsVisible = true;
                                 IsDecCheckBoxVisible = true;
                             }
-                            GetEffectiveDateList();
+                            await GetEffectiveDateList();
                         }
                         else
                         {

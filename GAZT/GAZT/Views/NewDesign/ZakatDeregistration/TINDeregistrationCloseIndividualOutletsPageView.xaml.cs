@@ -209,7 +209,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -276,7 +276,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -331,7 +331,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally
@@ -385,7 +385,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally
@@ -434,7 +434,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                ).ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -482,7 +482,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                ).ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -536,7 +536,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -976,7 +976,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.FrameIDError = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1132,25 +1132,21 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     datepickermessagecenter();
                     await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTUnlockAccountException)
                 {
 
                 }
-                catch (InternetException ex)
+                catch (InternetException )
                 {
 
                 }
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-
-                });
             }
         }
 
@@ -1212,25 +1208,21 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     datepickermessagecenter();
                     await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTUnlockAccountException )
                 {
 
                 }
-                catch (InternetException ex)
+                catch (InternetException )
                 {
 
                 }
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-
-                });
             }
         }
 
@@ -1259,7 +1251,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 Console.WriteLine(ex.Message);
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
 
             }
@@ -1310,7 +1302,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 datepickermessagecenter();
                 await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
 
             }
@@ -1548,7 +1540,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 //    viewModel.FrameIDError = true;
                 //}
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

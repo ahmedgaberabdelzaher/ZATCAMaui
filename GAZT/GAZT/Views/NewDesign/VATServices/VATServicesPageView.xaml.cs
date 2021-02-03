@@ -62,7 +62,7 @@ namespace EGAZT.Views.NewDesign.VATServices
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
-        private async void VATRefundRequest_Tapped(object sender, EventArgs e)
+        private void VATRefundRequest_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATRefundRequest_Tapped", "VAT Refund Request eService");
             Device.BeginInvokeOnMainThread(() =>
@@ -72,7 +72,7 @@ namespace EGAZT.Views.NewDesign.VATServices
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
-        private async void ChnageFillingPeriod_Tapped(object sender, EventArgs e)
+        private void ChnageFillingPeriod_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "ChangeFilingPeriod_Tapped", "Change Filing Period eService");
             Device.BeginInvokeOnMainThread(() =>
@@ -83,7 +83,7 @@ namespace EGAZT.Views.NewDesign.VATServices
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
-        private async void VATDeregistrationDetails_Tapped(object sender, EventArgs e)
+        private  void VATDeregistrationDetails_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration Request eService");
             Device.BeginInvokeOnMainThread(() =>

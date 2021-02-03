@@ -72,7 +72,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -152,7 +152,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     viewModel.IsLoading = false;
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -198,7 +198,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                 viewModel.SelectedReturnTypeForFilter = selectedReturntype;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             { 
             
             }
@@ -212,7 +212,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                 ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
                 viewModel.SelectedChipFilterItem = selectedReturntype;
             }
-            catch (Exception ex)
+            catch (Exception)
             { 
             
             }

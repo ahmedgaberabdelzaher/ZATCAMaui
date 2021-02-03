@@ -33,8 +33,6 @@ namespace EGAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-
-                    string fbtyp = "TPCV";
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
@@ -113,7 +111,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTErrorException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -360,7 +358,7 @@ namespace EGAZT.Manager
                     throw new GAZTErrorException(ex.Message);
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }
@@ -449,7 +447,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTErrorException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;

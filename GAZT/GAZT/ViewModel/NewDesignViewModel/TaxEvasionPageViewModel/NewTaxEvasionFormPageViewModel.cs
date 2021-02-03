@@ -25,8 +25,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
     [Preserve(AllMembers = true)]
     public class NewTaxEvasionFormPageViewModel : BaseViewModel
     {
-        public  readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         private bool _IsTnameHasError  = false;
         public byte[] imageArray;
         public string FileName;
@@ -147,22 +145,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                 _IsReportDetailHasError = value;
                 RaisePropertyChanged("IsReportDetailHasError");
-            }
-        }
-        //IsLoading
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
             }
         }
         #region Variable
@@ -594,7 +576,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 _selectedTaxEvasionRegion = value;
                 if (_selectedTaxEvasionRegion != null)
                 {
-                    onSelectedTaxEvasionRegion();
+                    _ = onSelectedTaxEvasionRegion();
                     if (App.IsArabic)
                     {
                         TxtReportDetailRegion = _selectedTaxEvasionRegion.Name;
@@ -924,16 +906,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
 
-            OnContinueClicked = new Command(() => navigateToNextAsync());
+            OnContinueClicked = new Command(async () => await navigateToNextAsync());
             OnBackStepClicked = new Command(() => navigateToBack());
-            OnAttachmentClick = new Xamarin.Forms.Command(async () =>
+            OnAttachmentClick = new Xamarin.Forms.Command(() =>
             {
                 // AddAttachment();
             });
@@ -1148,7 +1128,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 Device.BeginInvokeOnMainThread(() =>
@@ -1227,7 +1207,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -1294,7 +1274,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             {
                 try
                 {
-                    if (SelectedTaxEvasionRegion != null && SelectedTaxEvasionRegion.Id != null)
+                    if (SelectedTaxEvasionRegion != null)
                     {
                         TaxEvasionRegionsCityModel citylist = new TaxEvasionRegionsCityModel();
                         citylist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
@@ -1859,7 +1839,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                                             //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
 
                                                         }
-                                                        catch (Exception ex)
+                                                        catch (Exception)
                                                         {
                                                         }
                                                     }

@@ -61,7 +61,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
             _dialogService = dialogService;
 
-            GoBackClick = new Command(async () => { _navigationService.GoBack(); });
+            GoBackClick = new Command(() => { _navigationService.GoBack(); });
         }
 
         public void AddSelectionOptions()

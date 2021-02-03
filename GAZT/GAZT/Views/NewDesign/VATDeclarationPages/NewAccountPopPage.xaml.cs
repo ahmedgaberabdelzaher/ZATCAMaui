@@ -50,7 +50,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 SetLTR();
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -82,7 +82,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                                await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
                             });
                         }
                     }
@@ -91,16 +91,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 viewModel.IsIBANValid = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                    await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
                 });
             }
         }
@@ -124,7 +124,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
             }
-            catch (Exception gec)
+            catch (Exception )
             {
             }
         }
@@ -157,7 +157,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     IbanTwo.Focus();
                 }
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -181,7 +181,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //    IbanOne.Focus();
                 //}
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -204,7 +204,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //    IbanTwo.Focus();
                 //}
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -227,7 +227,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //    IbanThree.Focus();
                 //}
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -250,7 +250,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //    IbanFour.Focus();
                 //}
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -262,7 +262,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
               //  SetFocus();
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -274,7 +274,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                // SetFocus();
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -286,7 +286,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 //SetFocus();
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -298,7 +298,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                // SetFocus();
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -310,7 +310,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
               //  SetFocus();
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -338,7 +338,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     IbanFour.Focus();
                 }
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }

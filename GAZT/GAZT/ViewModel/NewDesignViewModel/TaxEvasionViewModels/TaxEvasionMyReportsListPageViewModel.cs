@@ -22,20 +22,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
     {
         #region Properties
         public ICommand OnBackButtonClicked { get; set; }
-        private bool _isLoading=false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
         public List<ChipModel> _selectedChipFilterItemList = null;
         public List<ChipModel> SelectedChipFilterItemList
         {
@@ -408,11 +394,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
         }
        
-        public async Task passSelectedTaxEvasionItem(TaxEvasionReportDetails SelectedTaxEvasionReport)
+        public void passSelectedTaxEvasionItem(TaxEvasionReportDetails SelectedTaxEvasionReport)
         {
             try
             {
-                await Task.Run(() =>
+                Task.Run(() =>
                 {
                    IsLoading = true;
 

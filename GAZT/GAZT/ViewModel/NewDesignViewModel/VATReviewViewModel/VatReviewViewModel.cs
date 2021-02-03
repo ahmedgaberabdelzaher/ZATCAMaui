@@ -3255,7 +3255,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
             }
             catch (InternetException ex)
@@ -3555,7 +3555,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-        public async void FetchSecurityAmount()
+        public void FetchSecurityAmount()
         {
             if (RequestedReviewAmount == "" || RequestedReviewAmount == "0")
             {
@@ -3614,7 +3614,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                         }
 
-                        VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu?.ToString("yyyy-MM-dd'T'HH:mm:ss"), selectedApplicationRef.Abrzo?.ToString("yyyy-MM-dd'T'HH:mm:ss"), SecamtValue, SecurityNumber, selectedApplicationRef.Persl, false);
+                        await VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu?.ToString("yyyy-MM-dd'T'HH:mm:ss"), selectedApplicationRef.Abrzo?.ToString("yyyy-MM-dd'T'HH:mm:ss"), SecamtValue, SecurityNumber, selectedApplicationRef.Persl, false);
 
                     }
                 }
@@ -3769,7 +3769,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 }
 
 
-                VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu?.ToString("yyyy-MM-dd'T'HH:mm:ss"), selectedApplicationRef.Abrzo?.ToString("yyyy-MM-dd'T'HH:mm:ss"), SecamtValue, SecurityNumber, selectedApplicationRef.Persl, true);
+                await VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu?.ToString("yyyy-MM-dd'T'HH:mm:ss"), selectedApplicationRef.Abrzo?.ToString("yyyy-MM-dd'T'HH:mm:ss"), SecamtValue, SecurityNumber, selectedApplicationRef.Persl, true);
 
 
 
@@ -4062,7 +4062,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-        public void updatePickerData(GenericPickerModel genericPickerModel)
+        public async void updatePickerData(GenericPickerModel genericPickerModel)
         {
             if (genericPickerModel.PickerId == PickerEnum.IDType.ToString())
             {
@@ -4081,7 +4081,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 ReviewSubReasonPickerModel = genericPickerModel;
                 SubReviewReason = ReviewSubReasonPickerModel.SelectedValue;
                 ResetDataAfterSubReviewReasonPicked();
-                fetchApplicationRefNums(ReviewSubReasonPickerModel.SelectedValue, "", "");
+                await fetchApplicationRefNums(ReviewSubReasonPickerModel.SelectedValue, "", "");
             }
             else if (genericPickerModel.PickerId == PickerEnum.ApplicationReferenceNumber.ToString())
             {
@@ -4413,7 +4413,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ValidateIdNumber();
         }
 
-        public void ValidateIdNumber()
+        public async void ValidateIdNumber()
         {
             try
             {
@@ -4439,7 +4439,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                             //ZZPleaseenteravalidNationalID
                         }
@@ -4469,7 +4469,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     popUp.FlowDirections = "LeftToRight";
                                 }
 
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                                 IDNumber = string.Empty;
                             }
                             else
@@ -4477,7 +4477,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                                 if (!string.IsNullOrEmpty(PickedDate))
                                 {
-                                    ValidateIdNumberFromApi("ZS0001");
+                                    await ValidateIdNumberFromApi("ZS0001");
                                 }
 
 
@@ -4503,7 +4503,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                         }
                         else
@@ -4532,14 +4532,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     popUp.FlowDirections = "LeftToRight";
                                 }
 
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                                 IDNumber = string.Empty;
                             }
                             else
                             {
                                 if (!string.IsNullOrEmpty(PickedDate))
                                 {
-                                    ValidateIdNumberFromApi("ZS0002");
+                                    await ValidateIdNumberFromApi("ZS0002");
                                 }
                             }
                         }
@@ -4565,7 +4565,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                         }
                         else if (!(IDNumber.Length <= 15 && IDNumber.Length >= 7))
@@ -4582,7 +4582,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                             // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
                         }
@@ -4806,7 +4806,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 IsLoading = true;
             });
-            if (attachment.Filename.Contains(".")) ;
+            //if (attachment.Filename.Contains("."))
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
@@ -5375,7 +5375,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-        public async void VATObjectionGenrateorRefreshSADAD(string fbnum, decimal Disamt, decimal Liaamt, string Abrzu, string Abrzo, decimal Secamt, string Security, string Persl, bool isFlagenable)
+        public async Task VATObjectionGenrateorRefreshSADAD(string fbnum, decimal Disamt, decimal Liaamt, string Abrzu, string Abrzo, decimal Secamt, string Security, string Persl, bool isFlagenable)
         {
 
             try
@@ -6546,9 +6546,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     {
                         throw ex;
                     }
-                    catch (InternetException ex)
+                    catch (InternetException)
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
                             IsLoading = false;
                         });

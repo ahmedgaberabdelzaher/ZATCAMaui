@@ -89,7 +89,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         }
 
-        private async void TinRegistrationDetails_Tapped(object sender, EventArgs e)
+        private  void TinRegistrationDetails_Tapped(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -97,7 +97,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
-        private async void VATRefundRequest_Tapped(object sender, EventArgs e)
+        private  void VATRefundRequest_Tapped(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -105,7 +105,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
-        private async void ChnageFillingPeriod_Tapped(object sender, EventArgs e)
+        private  void ChnageFillingPeriod_Tapped(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -114,7 +114,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
-        private async void VATDeregistrationDetails_Tapped(object sender, EventArgs e)
+        private  void VATDeregistrationDetails_Tapped(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -122,7 +122,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
-        private async void ZakatInstalmentPlan_Tapped(object sender, EventArgs e)
+        private  void ZakatInstalmentPlan_Tapped(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -131,7 +131,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
-        private async void Vat_Review_Tapped(object sender, EventArgs e)
+        private  void Vat_Review_Tapped(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -139,7 +139,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
-        private async void ContractRelease_Tapped(object sender, EventArgs e)
+        private  void ContractRelease_Tapped(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -205,7 +205,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.HasToRefreshLoaderOnDashboard = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

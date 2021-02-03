@@ -14,8 +14,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     {
 
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public static string NoteString = string.Empty;
         public static bool ClearNoteClicked = false;
         public static int NoteCount = 0;
@@ -81,9 +79,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });

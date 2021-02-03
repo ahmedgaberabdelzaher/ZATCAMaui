@@ -76,7 +76,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
 
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {
@@ -89,7 +89,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 _viewModel.AddSelectionOptions();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

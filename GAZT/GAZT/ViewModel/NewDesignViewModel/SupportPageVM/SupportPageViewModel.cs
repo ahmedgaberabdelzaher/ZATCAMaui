@@ -8,9 +8,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class SupportPageViewModel: BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-
         #region Variable
         private SupportTabEnum _currentTab = SupportTabEnum.Parent;
         public SupportTabEnum currentTab
@@ -48,7 +45,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
         private bool _IsLoading = false;
-        public bool IsLoading
+        public new bool IsLoading
         {
             get
             {
@@ -87,12 +84,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
         }
         #endregion
 

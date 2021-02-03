@@ -49,7 +49,7 @@ namespace EGAZT.Views.NewDesign.Common
              
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
 
@@ -76,7 +76,7 @@ namespace EGAZT.Views.NewDesign.Common
             {
                 await PopupNavigation.Instance.PopAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

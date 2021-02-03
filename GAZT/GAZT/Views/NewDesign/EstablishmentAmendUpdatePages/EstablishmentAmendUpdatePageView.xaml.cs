@@ -252,7 +252,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             }
             return EstablishmentRegistrationTabsEnum.RegistrationType;
         }
-        void dobPicker_Closed(System.Object sender, System.EventArgs e)
+        async void dobPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
             if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
@@ -269,7 +269,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.SelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             var dob = viewModel.SelectedDOB.Replace("/", "");
-            viewModel.ValidateIDAndDOB(viewModel.idItem?.Type, viewModel.GCCIDTypeIdNumberValue, dob);
+            await viewModel.ValidateIDAndDOB(viewModel.idItem?.Type, viewModel.GCCIDTypeIdNumberValue, dob);
         }
 
         void passportIssuePicker_Closed(System.Object sender, System.EventArgs e)

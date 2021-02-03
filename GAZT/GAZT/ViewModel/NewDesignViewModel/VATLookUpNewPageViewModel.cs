@@ -19,8 +19,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class VATLookUpNewPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         bool isMandatoryDataEntered = true;
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnSearchButtonClicked { get; set; }
@@ -73,19 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsTooltipEnableVisible");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private string _parameter;
         public string Parameter
         {
@@ -211,12 +197,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 ResetFormData();
@@ -230,7 +214,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = true;
                 });
 
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
                     if (!string.IsNullOrEmpty(Name))
                     {
@@ -251,7 +235,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = false;
                 });
             });
-            OnScanButtonClicked = new Xamarin.Forms.Command(async () =>
+            OnScanButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 //try
                 //{
@@ -284,7 +268,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //};
             });
 
-            MessagingCenter.Subscribe<VATLookUpNewPageViewModel, string>(this, "ScanData", async (sender, arg) =>
+            MessagingCenter.Subscribe<VATLookUpNewPageViewModel, string>(this, "ScanData", (sender, arg) =>
             {
                 SelectedParameterType = ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
                 LookupNumber = arg;
@@ -315,7 +299,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 ParameterTypeList = VATParameterList;
                 SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -429,7 +413,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     return;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
                 isMandatoryDataEntered = false;
@@ -565,7 +549,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //viewModel._navigationService.GoBack();
                     });
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException)
                 {
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                     Device.BeginInvokeOnMainThread(async () =>
@@ -577,7 +561,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //  viewModel._navigationService.GoBack();
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                     Device.BeginInvokeOnMainThread(async () =>

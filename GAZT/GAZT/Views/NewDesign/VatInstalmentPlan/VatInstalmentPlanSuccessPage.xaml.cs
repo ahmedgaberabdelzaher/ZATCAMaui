@@ -54,7 +54,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
 

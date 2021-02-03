@@ -70,7 +70,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -155,7 +155,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 });
                 viewModel.SelectedChipFilterItem = selectedReturntype;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -206,14 +206,14 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
 
 
-                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                 }
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

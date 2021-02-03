@@ -45,13 +45,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.IsZakat = Preferences.Get("isZakat", false);
                 viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
                 viewModel.showInstructionsDialog();
-                 GetZakatInstalmentData();
+                _ = GetZakatInstalmentData();
                 outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0];
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
                 viewModel.setMoreOptioButtons();
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
 
@@ -292,7 +292,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                 viewModel.MinAmountTitle = AppResources.ZakatMin + " " + viewModel.MinAmount;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -318,7 +318,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
         }
-        protected async override void OnAppearing()
+        protected  override void OnAppearing()
         {
             try
             {
@@ -363,7 +363,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, bool>(this, "InvoiceBillsLoaded", (sender, arg) =>
                 {
-                    if (arg != null && viewModel.ZakatInvoicesList != null)
+                    if (viewModel.ZakatInvoicesList != null)
                     {
                         totalAmountDue = 0;
                         for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
@@ -491,7 +491,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception )
                             {
 
                             }
@@ -564,7 +564,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -595,7 +595,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     downPaymentSlider.Value = viewModel.DownPaymentAmount;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -625,7 +625,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -644,7 +644,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             viewModel.calculateYear3Data();
         }
 
-        public async void getActionCommand()
+        public void getActionCommand()
         {
             try
             {
@@ -740,13 +740,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
 
-        public async void getYesCommand()
+        public  void getYesCommand()
         {
             try
             {
@@ -767,13 +767,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
         }
 
-        public async void getNoCommand()
+        public  void getNoCommand()
         {
             try
             {
@@ -795,7 +795,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }

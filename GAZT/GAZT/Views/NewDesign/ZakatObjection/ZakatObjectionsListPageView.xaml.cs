@@ -31,7 +31,7 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             viewModel = App.Locator.ZakatObjectionListView;
             this.BindingContext = viewModel;
             viewModel.ResetData();
-            viewModel.ZAKATObjectionList();
+            _ = viewModel.ZAKATObjectionList();
 
 
         }
@@ -47,7 +47,7 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
                 this.Padding = safeInsets;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                
             }
@@ -72,7 +72,7 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             }
         }
 
-        public void Objection_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        public async void Objection_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             //string formguid = "005056B1F8FB1EDABC99B9AFD7873DBB"; //string.Empty;
             //string euser = "00000010000008327086"; //string.Empty;
@@ -88,15 +88,15 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
 
                 if (item.Fbtyp == "TP09")
                 {
-                    viewModel.GetWithdrawReviewReason(item.Fbnum);
+                    await viewModel.GetWithdrawReviewReason(item.Fbnum);
                 }
                 else if (item.Fbtyp == "TP10")
                 {
-                    viewModel.GetWithdrawReviewReasonTP10(item.Fbnum);
+                    await viewModel.GetWithdrawReviewReasonTP10(item.Fbnum);
                 }
                 else if (item.Fbtyp == "ZNOB" && (item.StatText == "Additional Info Requested" || item.StatText == "طلب معلومات اضافية"))
                 {
-                    viewModel.showRejectPopup();
+                    await viewModel.showRejectPopup();
                 }
                 else
                 {
@@ -107,7 +107,7 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
 
 
             }
-            catch (Exception exception)
+            catch (Exception )
             {
 
             }

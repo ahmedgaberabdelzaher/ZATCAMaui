@@ -61,7 +61,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -167,7 +167,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 

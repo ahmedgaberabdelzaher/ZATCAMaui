@@ -8,7 +8,7 @@ using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -44,7 +44,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
             }
-            catch (Exception gec)
+            catch (Exception)
             {
             }
         }
@@ -60,7 +60,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 FaqUrl = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
             }
-            Device.OpenUri(new Uri(FaqUrl));
+            Launcher.OpenAsync(new Uri(FaqUrl));
         }
     }
 }

@@ -800,7 +800,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.FrameIDError = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -861,7 +861,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -913,7 +913,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally
@@ -968,7 +968,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
             finally
@@ -1115,7 +1115,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -1168,7 +1168,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -1259,7 +1259,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 else
                 {
                     viewModel.FrameTinError = false;
-                    viewModel.ValidateIdNumberFromApi(EntryTIN.Text);
+                    _ = viewModel.ValidateIdNumberFromApi(EntryTIN.Text);
                 }
             }
             else
@@ -1469,7 +1469,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -1501,7 +1501,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1533,7 +1533,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -1565,7 +1565,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -1597,7 +1597,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -1629,7 +1629,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -1706,14 +1706,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 //viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
                 viewModel.NewAttachmentClicked();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 return;
             }
         }
 
-        private async void DeleteAttachment_Tapped(object sender, EventArgs e)
+        private void DeleteAttachment_Tapped(object sender, EventArgs e)
         {
             try
             {
@@ -1739,7 +1739,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(viewModel.AttachmentsListViewData);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return;
             }

@@ -32,7 +32,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             SetDataToUI();
             SetLocationToMap();
             viewModel.CreateCompanyTypeList();
-            viewModel.OnPageLoad();
+            _ = viewModel.OnPageLoad();
 
         }
         public void SetPickerFont()
@@ -81,7 +81,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -124,31 +124,31 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         }
 
-        public async void GetCameraCommand()
+        public void GetCameraCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "OnCameraClicked", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "OnCameraClicked", (sender, arg) =>
                 {
                      viewModel.UploadAttachment();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
         }
 
-        public async void GetGalleryCommand()
+        public void GetGalleryCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "OnGalleryClicked", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "OnGalleryClicked", (sender, arg) =>
                 {
                      viewModel.AddAttachment();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -164,7 +164,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 MessagingCenter.Unsubscribe<object, string>(this, "OnCameraClicked");
                 MessagingCenter.Unsubscribe<object, string>(this, "OnGalleryClicked");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -212,7 +212,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         viewModel.CList.Clear();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -225,7 +225,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         viewModel.RList.Clear();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -252,7 +252,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
                 TFSAddress.Text = string.Empty;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -314,24 +314,24 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
 
                 }
-                    catch (FeatureNotSupportedException fnsEx)
+                    catch (FeatureNotSupportedException)
                     {
                         // Handle not supported on device exception
                     }
-                    catch (FeatureNotEnabledException fneEx)
+                    catch (FeatureNotEnabledException)
                     {
                         // Handle not enabled on device exception
                     }
-                    catch (PermissionException pEx)
+                    catch (PermissionException)
                     {
                         // Handle permission exception
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         // Unable to get location
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
 
@@ -378,24 +378,24 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
 
                 }
-                catch (FeatureNotSupportedException fnsEx)
+                catch (FeatureNotSupportedException)
                 {
                     // Handle not supported on device exception
                 }
-                catch (FeatureNotEnabledException fneEx)
+                catch (FeatureNotEnabledException)
                 {
                     // Handle not enabled on device exception
                 }
-                catch (PermissionException pEx)
+                catch (PermissionException)
                 {
                     // Handle permission exception
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Unable to get location
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -532,19 +532,19 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
 
             }
-            catch (FeatureNotSupportedException fnsEx)
+            catch (FeatureNotSupportedException)
             {
                 // Handle not supported on device exception
             }
-            catch (FeatureNotEnabledException fneEx)
+            catch (FeatureNotEnabledException)
             {
                 // Handle not enabled on device exception
             }
-            catch (PermissionException pEx)
+            catch (PermissionException)
             {
                 // Handle permission exception
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Unable to get location
             }

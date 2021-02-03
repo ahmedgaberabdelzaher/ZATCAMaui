@@ -98,7 +98,7 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTGetTINsResponse = await GetServiceManager.MakeGetAPICall(url,false,string.Empty);
                     return true;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
@@ -290,18 +290,10 @@ namespace GAZT.Manager
                     }
                     return myICRs;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
-                    if (string.Equals(ex.Message, AppResources.ZNoICRAvailable))
-                    {
-                        throw new Exception(AppResources.ZNoICRAvailable);
-                    }
-                    else
-                    {
-                        throw new Exception(AppResources.NetworkConnectivityIssue);
-                    }
                 }
             }
             else
@@ -355,7 +347,7 @@ namespace GAZT.Manager
                     }
                     return allCertificate;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -379,7 +371,7 @@ namespace GAZT.Manager
                     {
                         App.httpClientHandler.CookieContainer = null;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -393,7 +385,7 @@ namespace GAZT.Manager
                     }
                     return forgotPasswordOTP;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -417,10 +409,11 @@ namespace GAZT.Manager
                     {
                         App.httpClientHandler.CookieContainer = null;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
+
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -433,7 +426,7 @@ namespace GAZT.Manager
                     forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
                     return forgotPasswordOTP;
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                     return null;
                 }
@@ -469,7 +462,7 @@ namespace GAZT.Manager
                     forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
                     return forgotPasswordOTP;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -493,7 +486,7 @@ namespace GAZT.Manager
                     {
                         App.httpClientHandler.CookieContainer = null;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -507,7 +500,7 @@ namespace GAZT.Manager
                     forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
                     return forgotPasswordOTP;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -616,7 +609,7 @@ namespace GAZT.Manager
                     }
                     return vATLookUp;
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -685,7 +678,7 @@ namespace GAZT.Manager
                     }
                     return _vATDeclaration;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -802,7 +795,7 @@ namespace GAZT.Manager
                     }
                     return _vATDeclarationD;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     if (_vATDeclarationD != null && _vATDeclarationD.d == null)
                     {
@@ -886,7 +879,7 @@ namespace GAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -942,7 +935,7 @@ namespace GAZT.Manager
                     }
                     return iBANIDNumbers;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
@@ -998,14 +991,14 @@ namespace GAZT.Manager
                                 IbanNumber = IBANIdNumber;
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             return null;
                         }
                     }
                     return IbanNumber;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
@@ -1020,12 +1013,11 @@ namespace GAZT.Manager
             VATCalculationData vATCalculationData = new VATCalculationData();
             if (CrossConnectivity.Current.IsConnected)
             {
-                TaxPayerProfile TP = null;
                 string NewToken = string.Empty;
                 try
                 {
                     char lang = GetLangZParameter();
-                   String url = Constants.GAZTGetVATDeclarationCalculationDataUrl + "'" + FormBundleNumber + "'" + ",Lang='" + lang + "'" + ",Operation='" + "'" + ",Gpart='" + Gpart + "'" + ",Status='" + status + "'" + ",TxnTp='" + TxnTp + "'" + ",Formproc='" + "'" + ",Periodkey='" + periodKey + "'" + ")?saml2=enabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
+                    String url = Constants.GAZTGetVATDeclarationCalculationDataUrl + "'" + FormBundleNumber + "'" + ",Lang='" + lang + "'" + ",Operation='" + "'" + ",Gpart='" + Gpart + "'" + ",Status='" + status + "'" + ",TxnTp='" + TxnTp + "'" + ",Formproc='" + "'" + ",Periodkey='" + periodKey + "'" + ")?saml2=enabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
                     HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url,false,string.Empty); 
                     if (GAZTValidateOTPResponse != null)
                     {
@@ -1096,7 +1088,7 @@ namespace GAZT.Manager
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1132,7 +1124,7 @@ namespace GAZT.Manager
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1176,7 +1168,7 @@ namespace GAZT.Manager
                     }
                     return DeleteToken;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return DeleteToken;
                 }
@@ -1201,7 +1193,7 @@ namespace GAZT.Manager
                     sadadNumber = JsonConvert.DeserializeObject<SadadNumber>(responsestr);
                     return sadadNumber;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1249,7 +1241,7 @@ namespace GAZT.Manager
                     }
                     return zAKATICRList;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1268,7 +1260,7 @@ namespace GAZT.Manager
                 {
                     RequestVATDeclaration = await SaveVATDeclarationData(vATDeclaration);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
                 return RequestVATDeclaration;
@@ -1287,7 +1279,7 @@ namespace GAZT.Manager
                 {
                     RequestVATDeclaration = await SaveVATDeclarationData(vATDeclaration);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
                 return RequestVATDeclaration;
@@ -1304,7 +1296,7 @@ namespace GAZT.Manager
             {
                 RequestVATDeclaration = await SaveVATDeclarationData(vATDeclaration);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return RequestVATDeclaration;
@@ -1314,7 +1306,6 @@ namespace GAZT.Manager
             ZakatReturnDetails zakatReturnDetails = new ZakatReturnDetails();
             if (CrossConnectivity.Current.IsConnected)
             {
-                TaxPayerProfile TP = null;
                 string NewToken = string.Empty;
                 try
                 {
@@ -1346,7 +1337,7 @@ namespace GAZT.Manager
                                 NewToken = values.First();
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                         }
@@ -1374,7 +1365,7 @@ namespace GAZT.Manager
                     }
                     return zakatReturnDetails;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1420,7 +1411,7 @@ namespace GAZT.Manager
                     }
                     return _zakatReturnDetailsD;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1478,7 +1469,7 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
                 //beforoe returning buttons we need to sest the value based on Buttons emumeration
@@ -1501,7 +1492,6 @@ namespace GAZT.Manager
                 {
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
-                    string AttBy = "TP";
                     string url = Constants.GAZTSaveEstimatedZAKATAttachement + RetGuid + "',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=enabled";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -1519,7 +1509,7 @@ namespace GAZT.Manager
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1579,7 +1569,7 @@ namespace GAZT.Manager
                     }
                     return _estimatedZAKATReturnsSADADNumber;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1625,7 +1615,7 @@ namespace GAZT.Manager
                 }
                 return null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -1664,7 +1654,7 @@ namespace GAZT.Manager
                     }
                     return DeleteToken;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return DeleteToken;
                 }
@@ -1715,7 +1705,7 @@ namespace GAZT.Manager
                     }
                     return null;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return DeleteToken;
                 }
@@ -1767,7 +1757,7 @@ namespace GAZT.Manager
                     }
                     return ZakatCorrespondenceList;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1821,7 +1811,7 @@ namespace GAZT.Manager
                     }
                     return VATCorrespondenceList;// tINStatus;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1873,7 +1863,7 @@ namespace GAZT.Manager
                     }
                     return ETReturnCorrespondenceList;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1925,7 +1915,7 @@ namespace GAZT.Manager
                     }
                     return CorrespondenceDetailsList;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1954,7 +1944,7 @@ namespace GAZT.Manager
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     return null;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -2002,7 +1992,7 @@ namespace GAZT.Manager
                     }
                     return ReturnFormBundleList;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -2051,7 +2041,7 @@ namespace GAZT.Manager
                     }
                     return ReturnFormBundleList;
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -2116,7 +2106,7 @@ namespace GAZT.Manager
                     return SignupCityList;
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -2198,7 +2188,7 @@ namespace GAZT.Manager
                             sortedIssuedByList.Remove(otherObj);
                             sortedIssuedByList.Add(otherObj);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             Console.WriteLine("Unable to Find Other Value");
                         }
@@ -2207,7 +2197,7 @@ namespace GAZT.Manager
                     }
                     return SignupIssuedByList;
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -2277,7 +2267,7 @@ namespace GAZT.Manager
                     return IsIDTypeValidList;
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -2344,7 +2334,7 @@ namespace GAZT.Manager
                     }
                     return CRValidationModelValid;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -2404,7 +2394,7 @@ namespace GAZT.Manager
                     }
                     return ValidateDuplicate;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -2435,7 +2425,7 @@ namespace GAZT.Manager
                     FirstSignupSubmit = await res.Content.ReadAsStringAsync();
                     return FirstSignupSubmit;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -2466,7 +2456,7 @@ namespace GAZT.Manager
                     FirstSignupSubmit = res.Content.ReadAsStringAsync().Result;
                     return FirstSignupSubmit;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -2500,7 +2490,7 @@ namespace GAZT.Manager
                     }
                     return FirstSignupSubmit;
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -2512,7 +2502,7 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -2568,7 +2558,7 @@ namespace GAZT.Manager
                     return GaztGuidModel;
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -2588,10 +2578,6 @@ namespace GAZT.Manager
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
-                //catch (Exception ex)
-                //{
-                //    return null;
-                //}
             }
             else
             {
@@ -2623,7 +2609,7 @@ namespace GAZT.Manager
                     terfregion = JsonConvert.DeserializeObject<TERFRegionRootObject>(response);
                     return terfregion;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -2658,7 +2644,7 @@ namespace GAZT.Manager
                     terfcity = JsonConvert.DeserializeObject<TERFCityRetrieveRootObject>(response);
                     return terfcity;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new InternetException(AppResources.ZZInternetConnectionMessage);
                 }
@@ -2693,7 +2679,7 @@ namespace GAZT.Manager
                     terffaq = JsonConvert.DeserializeObject<TERFAQs>(response);
                     return terffaq;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -2728,7 +2714,7 @@ namespace GAZT.Manager
                     terfcity = JsonConvert.DeserializeObject<TEReportResponsePostRootObject>(response);
                     return terfcity;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -2765,7 +2751,7 @@ namespace GAZT.Manager
                     terfreport = JsonConvert.DeserializeObject<ReportRetriveByMobNoRootObject>(response);
                     return terfreport;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -2796,7 +2782,7 @@ namespace GAZT.Manager
                     {
                         GAZTGetDashboardResponse =await client.GetAsync(uri);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -2829,7 +2815,7 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -2900,7 +2886,7 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -2916,7 +2902,7 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -2972,7 +2958,7 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -3042,7 +3028,7 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -3109,7 +3095,7 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -3121,7 +3107,7 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -3236,7 +3222,7 @@ namespace GAZT.Manager
                         throw new GAZTNetworkConnectivityIssueException("Network Connectivity Issue");
                     return Message;
                 }
-                catch (XPathException xex)
+                catch (XPathException)
                 {
                     throw new GAZTInvalidDataException(AppResources.Somethingwentwrong);
                 }
@@ -3271,7 +3257,6 @@ namespace GAZT.Manager
             if (CrossConnectivity.Current.IsConnected)
             {
                 String GAZTGetTINsResponseResult = String.Empty;
-                List<TIN> TINs = null;
                 string NewToken = string.Empty;
                 try
                 {
@@ -3405,7 +3390,6 @@ namespace GAZT.Manager
             if (CrossConnectivity.Current.IsConnected)
             {
                 String GAZTGetTINsResponseResult = String.Empty;
-                List<TIN> TINs = null;
                 string NewToken = string.Empty;
                 try
                 {
@@ -3721,7 +3705,7 @@ namespace GAZT.Manager
                     else
                         throw new GAZTTaxPayerProfileDataException();
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -3755,7 +3739,6 @@ namespace GAZT.Manager
             string tagName = "Gazt.gov.sa";
             string recepientNumber = "9665" + mobno;
             string message = messageforsms;
-            string sendDateTime = "0";
             if (CrossConnectivity.Current.IsConnected)
             {
                try
@@ -3767,7 +3750,7 @@ namespace GAZT.Manager
                     string statuscode = xmlroot.Value;
                     return statuscode;
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -3897,7 +3880,7 @@ namespace GAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -3968,7 +3951,7 @@ namespace GAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -4036,7 +4019,7 @@ namespace GAZT.Manager
                     throw new GAZTVATChangeFillingPeriodException(ex.Message);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return false;
@@ -4093,7 +4076,7 @@ namespace GAZT.Manager
                     }
                     return _vATDeclaration;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -4155,7 +4138,7 @@ namespace GAZT.Manager
                     }
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -4293,7 +4276,7 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
 
                     try { App.httpClientHandler.CookieContainer = null; }
-                    catch (Exception ex) { }
+                    catch (Exception) { }
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
 

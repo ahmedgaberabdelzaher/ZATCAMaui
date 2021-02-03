@@ -13,8 +13,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class VATReturnSuccessfullPageViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnDownloadFormClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
@@ -190,17 +188,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
 
 
 
 
-            OnDownloadFormClicked = new Xamarin.Forms.Command(async () =>
+            OnDownloadFormClicked = new Xamarin.Forms.Command(() =>
             {
                 String Url = string.Empty;
                 // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
@@ -208,7 +204,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.Tin + "',Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=enabled";
                 ShowPdf(Url);
             });
-            OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
+            OnAcknowlwdgementClicked = new Xamarin.Forms.Command(() =>
             {
                 String Url = string.Empty;
                 // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";

@@ -51,9 +51,9 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
 
             //}
 
-            Task.Run(async () =>
+            Task.Run(() =>
             {
-                await LoadData();
+                LoadData();
 
                 //if (viewModel != null)
                 //{
@@ -63,7 +63,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 //}
             });
         }
-        private async Task LoadData()
+        private void LoadData()
         {
             //try
             //{
@@ -97,7 +97,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             //    // App.HideProgressView();
             //}
         }
-        public async Task IntialiseAsync()
+        public void IntialiseAsync()
         {
             //try
             //{

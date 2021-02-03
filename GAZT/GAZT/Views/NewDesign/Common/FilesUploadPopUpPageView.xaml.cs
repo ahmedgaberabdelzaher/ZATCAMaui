@@ -55,7 +55,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
-        public async void onPageLoadAsync(Attachments attachments, WhichAttachment whichAttachment, string returnIdz)
+        public void onPageLoadAsync(Attachments attachments, WhichAttachment whichAttachment, string returnIdz)
         {
 
             if (whichAttachment == WhichAttachment.VATInstalment)
@@ -304,7 +304,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             });
@@ -377,7 +377,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         viewModel.IsLoading = false;
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await Task.Run(() =>
                     {

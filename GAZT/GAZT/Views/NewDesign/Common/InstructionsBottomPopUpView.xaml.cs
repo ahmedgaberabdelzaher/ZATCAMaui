@@ -68,7 +68,7 @@ namespace EGAZT.Views.NewDesign
 
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {
@@ -101,7 +101,7 @@ namespace EGAZT.Views.NewDesign
 
 
             }
-            catch (Exception e) { }
+            catch (Exception) { }
         }
 
 
@@ -124,14 +124,11 @@ namespace EGAZT.Views.NewDesign
 
         }
 
-        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void CheckBox_CheckedChanged(object sender, Boolean e)
         {
             _viewModel.EnableCheckboxContinue();
         }
 
-        private void CheckboxCustom_CheckChanged(object sender, bool e)
-        {
-            _viewModel.EnableCheckboxContinue();
-        }
+       
     }
 }

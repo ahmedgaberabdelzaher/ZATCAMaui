@@ -49,7 +49,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

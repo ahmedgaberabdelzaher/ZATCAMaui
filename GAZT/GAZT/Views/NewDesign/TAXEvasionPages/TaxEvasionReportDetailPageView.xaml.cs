@@ -29,12 +29,12 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             SetLocationToMap();
         }
-        private async void SetLocationToMap()
+        private void SetLocationToMap()
         {
             try
             {
@@ -75,25 +75,25 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     pin.Position = position;
                     mapView.Pins.Add(pin);//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
                 }
-                catch (FeatureNotSupportedException fnsEx)
+                catch (FeatureNotSupportedException)
                 {
                     // Handle not supported on device exception
                 }
-                catch (FeatureNotEnabledException fneEx)
+                catch (FeatureNotEnabledException)
                 {
                     // Handle not enabled on device exception
                 }
-                catch (PermissionException pEx)
+                catch (PermissionException)
                 {
                     // Handle permission exception
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Unable to get location
                 }
                 //}
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

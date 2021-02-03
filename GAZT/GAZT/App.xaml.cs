@@ -386,7 +386,7 @@ namespace EGAZT
                 CreateClientHandler();
                 ResetAndContinueSession();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -407,7 +407,7 @@ namespace EGAZT
 
             ActivityIndicatorView = new ActivityIndicatorPageView();
 
-            VATDeclaration vAT = null;
+            //VATDeclaration vAT = null;
             CustomNavigation navigationPage;
             bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
 
@@ -428,11 +428,11 @@ namespace EGAZT
             _dialogService = dialogService;
             MainPage = navigationPage;
 
-            MessagingCenter.Subscribe<object, string>(this, "LogoutUserFromApp", async (sender, arg) =>
+            MessagingCenter.Subscribe<object, string>(this, "LogoutUserFromApp",  (sender, arg) =>
             {
                 if (App.DoesLoginNeedToBeRefreshed == true)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread( () =>
                     {
                         try
                         {
@@ -450,7 +450,7 @@ namespace EGAZT
                             _ = Task.Run(() => WebServiceManager.GAZTLogOff());
 
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                         }
@@ -507,7 +507,7 @@ namespace EGAZT
                     Preferences.Set("Preferences_DefaultLanguage", "En");
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 Preferences.Set("Preferences_DefaultLanguage", "Ar");
             }
@@ -619,7 +619,7 @@ namespace EGAZT
             {
                 IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                
             }

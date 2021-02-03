@@ -54,13 +54,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.IsZakat = Preferences.Get("isZakat", false);
                 viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
                 viewModel.showInstructionsDialog();
-                GetZakatInstalmentData();
+                _ = GetZakatInstalmentData();
                 outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0];
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
                 viewModel.setMoreOptioButtons();
                 downPaymentSlider.ValueChanged += (a,e)=>{ downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString()); };
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 viewModel.IsLoading = false;
@@ -87,7 +87,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -223,7 +223,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
-        private async void Bills_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private void Bills_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             OldResults3 dataItem = e.ItemData as OldResults3;
 
@@ -296,7 +296,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                     downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
 
 
@@ -335,7 +335,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {
@@ -384,7 +384,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 MessagingCenter.Subscribe<object, bool>(this, "InvoiceBillsLoaded", (sender, arg) =>
                 {
-                    if (arg != null && viewModel.ZakatInvoicesList != null && App.selectedZakatItem != "")
+                    if (viewModel.ZakatInvoicesList != null && App.selectedZakatItem != "")
                     {
                         totalAmountDue = 0;
                         for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
@@ -533,7 +533,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
 
                             }
@@ -606,7 +606,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -637,7 +637,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                    downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -662,7 +662,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             viewModel.calculateYear3Data();
         }
 
-        public async void getActionCommand()
+        public void getActionCommand()
         {
             try
             {
@@ -758,13 +758,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
         }
 
-        public async void getYesCommand()
+        public  void getYesCommand()
         {
             try
             {
@@ -785,13 +785,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
         }
 
-        public async void getNoCommand()
+        public  void getNoCommand()
         {
             try
             {
@@ -813,7 +813,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -856,7 +856,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -900,7 +900,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -943,7 +943,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }

@@ -629,7 +629,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         Console.Write(ex.ToString());
                         Console.Write(ex.StackTrace.ToString());
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
                             //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             IsLoading = false;

@@ -50,9 +50,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
 
             ReqInstalmentBtnTapped = new Command(this.ReqInstalmentBtnClicked);
-            CloseClick = new Command(async () => { _navigationService.GoBack(); });
+            CloseClick = new Command(() => { _navigationService.GoBack(); });
 
-            GoBackClick = new Command(async () => { BackNavigations(); });
+            GoBackClick = new Command(() => { BackNavigations(); });
 
             Download_Acknowledgement = new Command(async () =>
             {
@@ -610,7 +610,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 {
                     IsLoading = true;
                 });
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
                     IsLoading = true;
                     ZAKATObjectionDataModel _ZAKATObjectionData = new ZAKATObjectionDataModel();
@@ -850,7 +850,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                                 _navigationService.GoBack();
                             });
                         }
-                        ZakatRequestObjectionSummary(SelectedFbNum);
+                        await ZakatRequestObjectionSummary(SelectedFbNum);
                         IsLoading = false;
                     }
                     catch (GAZTVATRegistrationInProcessException ex)

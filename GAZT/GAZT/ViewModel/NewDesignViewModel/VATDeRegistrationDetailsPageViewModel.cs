@@ -115,11 +115,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_currentStep == value) return;
 
                 _currentStep = value;
-                if (_currentStep != null)
-                {
-                    CurrentOpenedTab = _currentStep;
-                }
-                RaisePropertyChanged(nameof(_currentStep));
+                CurrentOpenedTab = _currentStep;
+                RaisePropertyChanged(nameof(CurrentStep));
                 CurrentIndex = (int)_currentStep;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 RaisePropertyChanged("CurrentStep");
@@ -1246,7 +1243,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -1256,7 +1253,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //    voidButtonTapped();
             //});
 
-            OnContinueButtonClick = new Xamarin.Forms.Command(async () =>
+            OnContinueButtonClick = new Xamarin.Forms.Command(() =>
             {
                 TitleText = "Button New";
             });
@@ -1451,10 +1448,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 await Task.Run(() =>
                 {
                     IsLoading = false;
-                });
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                   
                 });
             }
         }
@@ -1981,7 +1974,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
 
-        public async void AttachmentsContinueBtnClicked()
+        public void AttachmentsContinueBtnClicked()
         {
             try
             {
@@ -2455,7 +2448,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                     _attachment.d.Dotyp = DocTypeString;
                                                     VATDeRegistrationDetailsForAttach.d.AttdetSet.results.Add(_attachment.d);
                                                     ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeRegistrationDetailsForAttach.d.AttdetSet.results as List<Attachment>);
-                                                    Device.BeginInvokeOnMainThread(async () =>
+                                                    Device.BeginInvokeOnMainThread(() =>
                                                     {
                                                         VatAttachmentsList = myCollection;
 
@@ -3009,7 +3002,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             VATDeRegistrationDetailsData = response;
 
                             //Set data after api call 
-                            setDataAfterSubmitAPIAsync(response);
+                            await setDataAfterSubmitAPIAsync(response);
 
                         }
 
@@ -3045,7 +3038,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 return response;
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 return response;
             }
@@ -3058,7 +3051,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = true;
             });
 
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 //                VATDeRegistrationOtherDetails vATRegistrationOther = await WebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
 

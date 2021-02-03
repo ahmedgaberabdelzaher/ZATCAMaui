@@ -201,7 +201,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)

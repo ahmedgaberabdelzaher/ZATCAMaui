@@ -136,7 +136,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
             if (result != null && result == AppResources.ESTMainOutlet && viewModel.ListOutlets != null && viewModel.ListOutlets.Count > 0 && viewModel.ListOutlets.Exists(x=>x.Actcat =="M"))
             {
-                await PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.SelectOutletTypeError));
+                await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.SelectOutletTypeError));
                 return;
             }
 

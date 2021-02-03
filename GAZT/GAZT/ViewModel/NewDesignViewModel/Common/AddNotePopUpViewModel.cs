@@ -60,7 +60,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });

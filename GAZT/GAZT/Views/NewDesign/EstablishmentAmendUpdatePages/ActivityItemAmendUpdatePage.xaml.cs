@@ -104,7 +104,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             }
         }
 
-        async void LicenseSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
+         void LicenseSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
         {
             Console.WriteLine("License Main " + LicenseMainActivity.IsOn);
             if (LicenseMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)

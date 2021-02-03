@@ -622,7 +622,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             childVAT.TaxtpFg = itemVAT.TaxtpFg;
                         }
-                        catch(Exception ex)
+                        catch(Exception)
                         {
 
                         }

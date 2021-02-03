@@ -94,7 +94,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -176,7 +176,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;

@@ -43,7 +43,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
                 viewModel.ResetData();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -57,7 +57,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             MessagingCenter.Unsubscribe<object, Boolean>(this, "ISCallBackFromSuccess");
 
        }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {
@@ -70,12 +70,12 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
                 viewModel.EnableVATLandingPage();
                 viewModel.AddOutletDecisionOptions();
 
-                Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "ISCallBackFromSuccess", (sender, arg) =>
+                Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "ISCallBackFromSuccess", async(sender, arg) =>
                 {
-                    if (arg != null && arg == true)
+                    if (arg == true)
                     {
                         viewModel.EnableVAtInstalmentPlan();
-                        viewModel.GetVATInstalmentPlanList();
+                        await viewModel.GetVATInstalmentPlanList();
                     }
                     else {
 
@@ -92,7 +92,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -125,12 +125,12 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 0)
             {
                 viewModel.EnableVAtInstalmentPlan();
-                viewModel.GetVATInstalmentPlanList();
+                await viewModel.GetVATInstalmentPlanList();
             }
             else if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 1)
             {
                 viewModel.EnableDisplayInstalment();
-                viewModel.GetVATDisplaySchedule();
+                await viewModel.GetVATDisplaySchedule();
             }
 
         }

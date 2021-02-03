@@ -166,7 +166,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 ValidateIDNumberContact();
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception )
                         {
 
                         }
@@ -194,7 +194,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 ValidateIDNumberContact();
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception )
                         {
 
                         }
@@ -239,7 +239,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -411,7 +411,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -424,7 +424,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -548,7 +548,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -561,7 +561,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -740,7 +740,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 viewModel.IsLoading = false;
             }
@@ -794,7 +794,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel,true));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -821,7 +821,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel,true));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -848,7 +848,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -882,7 +882,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -1085,7 +1085,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
 
@@ -1213,7 +1213,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1225,7 +1225,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1347,7 +1347,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1360,7 +1360,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1439,7 +1439,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.IsLoading = false;
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await Task.Run(() =>
                     {

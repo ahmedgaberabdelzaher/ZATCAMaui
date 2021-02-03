@@ -24,7 +24,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             months = new Dictionary<string, string>();
 
             viewModel = App.Locator.CalendarPickerPageView;
-            viewModel.SetDefaultDate();
+            _ = viewModel.SetDefaultDate();
             viewModel.IsFutureDatePickerVisible = false;
             viewModel.IsCurrentDatePickerVisible = true;
 
@@ -39,7 +39,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             viewModel = App.Locator.CalendarPickerPageView;
             viewModel.IsFutureDatePickerVisible = false;
             viewModel.IsCurrentDatePickerVisible = true;
-            viewModel.SetDefaultDate();
+            _ = viewModel.SetDefaultDate();
             viewModel.DataSource = _pickerSource;
             viewModel.PickerItemSource = viewModel.DataSource.PickerData;
             viewModel.DatePickerTitle = viewModel.DataSource.DatePickerTitle;
@@ -92,7 +92,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -106,7 +106,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             viewModel = App.Locator.CalendarPickerPageView;
             viewModel.IsFutureDatePickerVisible = true;
             viewModel.IsCurrentDatePickerVisible = false;
-            viewModel.SetDefaultDate();
+            _ = viewModel.SetDefaultDate();
             viewModel.DataSource = _pickerSource;
             viewModel.PickerItemSource = viewModel.DataSource.PickerData;
             viewModel.DatePickerTitle = viewModel.DataSource.DatePickerTitle;
@@ -145,7 +145,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

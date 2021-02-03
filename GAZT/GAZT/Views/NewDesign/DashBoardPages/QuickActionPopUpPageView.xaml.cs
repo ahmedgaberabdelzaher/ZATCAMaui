@@ -30,9 +30,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             await ReadInbox.TranslateTo(0, 500, 10);
             await GetSupport.TranslateTo(0, 500, 10);
 
-            ZAKATReturn.TranslateTo(0, 0, 800);
-            ReadInbox.TranslateTo(0, 0, 1000);
-            GetSupport.TranslateTo(0, 0, 1200);
+            await ZAKATReturn.TranslateTo(0, 0, 800);
+            await ReadInbox.TranslateTo(0, 0, 1000);
+            await GetSupport.TranslateTo(0, 0, 1200);
         }
         private void SetLTR()
         {
@@ -75,13 +75,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void OnCloseTapped(object sender, EventArgs e)
         {
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 ZAKATReturn.TranslateTo(0, 500, 1200);
                 ReadInbox.TranslateTo(0, 500, 1200);
                 GetSupport.TranslateTo(0, 500, 1200);
             });
-            PopupNavigation.Instance.PopAsync();
+            await PopupNavigation.Instance.PopAsync();
         }
 
         private async void OnMyReturnsClicked(object sender, EventArgs e)

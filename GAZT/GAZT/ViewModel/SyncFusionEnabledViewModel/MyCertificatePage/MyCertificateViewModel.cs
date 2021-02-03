@@ -1,6 +1,4 @@
 ﻿using System;
-using System;
-using System;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GalaSoft.MvvmLight.Command;
@@ -8,7 +6,6 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using GAZT.Manager;
 using GAZT.Models;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net;
 using pdfjs.Interfaces;

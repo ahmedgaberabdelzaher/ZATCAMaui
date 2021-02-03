@@ -53,14 +53,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
-            // Added by Divya
-            //  viewModel._navigationService.NavigateTo(App.SFLandingPageView);
-            //App.TP = null;
-            //viewModel.LogOut();
             if (Navigation.NavigationStack.Count > 0)
             {
-                //Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
-                //Navigation.RemovePage(pg);
                 Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                 Navigation.RemovePage(pg1);
             }
@@ -74,7 +68,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 var text = await Clipboard.GetTextAsync();
                 var displayText = AppResources.VATRSAppNumber + " " + text;
-              //  viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();

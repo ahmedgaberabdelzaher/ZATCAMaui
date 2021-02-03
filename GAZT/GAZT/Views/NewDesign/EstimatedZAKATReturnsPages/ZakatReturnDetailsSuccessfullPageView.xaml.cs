@@ -28,13 +28,13 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             SetLTR();
             ChangeAeroIcon();
 
-            viewModel.OnPageLoad(ZakatReturnDetail);
+            _ = viewModel.OnPageLoad(ZakatReturnDetail);
 
             ToolbarItem Refresh = new ToolbarItem
             {
                 Order = ToolbarItemOrder.Primary,
                 Priority = 1,
-                Command = new Command(async () =>
+                Command = new Command(() =>
                 {
                   //  await OnRefreshButtonClicked();
                     // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
@@ -70,7 +70,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     // put Mesage already latest SADADID available
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }

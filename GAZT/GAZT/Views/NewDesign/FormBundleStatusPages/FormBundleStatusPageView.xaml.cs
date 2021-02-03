@@ -81,7 +81,7 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -115,7 +115,7 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
 
         public async void OnPageLoad()
         {
-            Task.Run(() =>
+            await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
             });
@@ -123,7 +123,7 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
             {
                 await viewModel.onPageLoad();
             });
-            Task.Run(() =>
+            await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
             });
@@ -139,7 +139,7 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
                 viewModel.TxtFBtype = selectedfbtyp.Txt50;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -164,7 +164,7 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
                 //var selectedItem = item.SelectedItem as FormBundleApplicationNumberModelResult;
                 viewModel.populate();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

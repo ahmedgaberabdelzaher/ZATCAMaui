@@ -81,7 +81,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                    
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
 
@@ -89,7 +89,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             }
         }
 
-        private async void Download_Acknowledgement(object sender, EventArgs e)
+        private void Download_Acknowledgement(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -109,7 +109,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             });
         }
 
-        private async void VatReview_Tapped(object sender, EventArgs e)
+        private void VatReview_Tapped(object sender, EventArgs e)
         {
             var _navigation = Application.Current.MainPage.Navigation;
             foreach (var item in _navigation.NavigationStack)

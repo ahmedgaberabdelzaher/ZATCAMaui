@@ -8,8 +8,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class EstablishmentSignUPPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
 
         #region Variable
         private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
@@ -48,21 +46,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Propetry
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
 
         public string _IndividualBackImg = "vat_tile_listofsignup_W.png";
         public string IndividualBackImg
@@ -135,12 +118,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-            _dialogService = dialogService;
         }
         #endregion
     }

@@ -30,10 +30,8 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
 
                 viewModel = App.Locator.InstalmentPlanPageView;
                 this.BindingContext = viewModel;
-
-
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -66,7 +64,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             viewModel.AddOutletDecisionOptions();
         }
 
-        public async void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        public void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);

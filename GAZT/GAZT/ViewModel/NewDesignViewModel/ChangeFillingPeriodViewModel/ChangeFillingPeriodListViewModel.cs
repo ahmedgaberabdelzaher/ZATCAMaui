@@ -19,9 +19,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
     [Preserve(AllMembers = true)]
     public class ChangeFillingPeriodListViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-
         public ICommand GoBackClick { get; set; }
         public ICommand CloseClick { get; set; }
         public ICommand MyRequestsButtonTapped { get; set; }
@@ -276,14 +273,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-            _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-
-            _dialogService = dialogService;
-
 
             CloseClick = new Command(async () =>
             {
@@ -329,7 +322,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
 
         private bool _isLoading = false;
-        public bool IsLoading
+        public new bool IsLoading
         {
             get
             {

@@ -1442,12 +1442,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
             OnReportingBranchSelectButtonClick = new Command(() =>
             {
-                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(ReportingBranchList);
-                //poupWindow.OnItemSelect = (item) =>
-                //{
-                //    SelectedReportingBranch = (item as BranchesDropDownModel);
-                //};
-                //PopupNavigation.Instance.PushAsync(poupWindow);
                 try
                 {
                     List<string> reportingBranchData = new List<string>();
@@ -1463,7 +1457,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     GenericPickerModel genericPickerModel = new GenericPickerModel();
                     genericPickerModel.PickerData = reportingBranchData;
-                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "reportingBranchPicker";
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
@@ -1496,10 +1489,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
             OnPDNatinalitySelectButtonClick = new Command(() =>
             {
-                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
-                //poupWindow.OnItemSelect = (item) => SelectedTaxpayerPDNationality = item as TaxpayerNationality;
-                //PopupNavigation.Instance.PushAsync(poupWindow);
-
                 try
                 {
                     List<string> nationalityData = new List<string>();
@@ -1515,7 +1504,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     GenericPickerModel genericPickerModel = new GenericPickerModel();
                     genericPickerModel.PickerData = nationalityData;
-                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "nationalityPicker";
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
@@ -1541,10 +1529,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
             OnPDCitizenSelectButtonClick = new Command(() =>
             {
-                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
-                //poupWindow.OnItemSelect = (item) => SelectedCitizen = item as TaxpayerNationalityLandx50;
-                //PopupNavigation.Instance.PushAsync(poupWindow);
-
                 try
                 {
                     List<string> citizenData = new List<string>();
@@ -1560,7 +1544,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     GenericPickerModel genericPickerModel = new GenericPickerModel();
                     genericPickerModel.PickerData = citizenData;
-                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "citizenPicker";
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
@@ -1586,9 +1569,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
             OnPDResidenceSelectButtonClick = new Command(() =>
             {
-                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
-                //poupWindow.OnItemSelect = (item) => SelectedResidence = item as TaxpayerNationalityLandx50;
-                //PopupNavigation.Instance.PushAsync(poupWindow);
                 try
                 {
                     List<string> residenceData = new List<string>();
@@ -1604,7 +1584,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     GenericPickerModel genericPickerModel = new GenericPickerModel();
                     genericPickerModel.PickerData = residenceData;
-                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "residencyPicker";
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
@@ -1632,9 +1611,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
             OnPassportIssueCountryButtonClick = new Command(() =>
             {
-                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
-                //poupWindow.OnItemSelect = (item) => SelectedPassportIssueCountry = item as TaxpayerNationality;
-                //PopupNavigation.Instance.PushAsync(poupWindow);
                 try
                 {
                     List<string> passportIssueCountryData = new List<string>();
@@ -1650,7 +1626,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     GenericPickerModel genericPickerModel = new GenericPickerModel();
                     genericPickerModel.PickerData = passportIssueCountryData;
-                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "passportIssueCountryPicker";
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
@@ -1780,7 +1755,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                 var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                 if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
                                 {
-                                    await PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully"));
+                                    await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.OKText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully"), true);
                                 }
                             }
                         }
@@ -2076,7 +2051,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         private void ShowValidationPopup(string _message)
         {
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(_message));
-            // _dialogService.ShowError(_message, AppResources.Information, "Ok", null);
         }
 
         private void OrgResidenceSelection(OrgResidenceNationalityEstablishmentRegistrationEnum selectedOption)
@@ -2456,7 +2430,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
                                         }
                                     }

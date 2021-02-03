@@ -45,7 +45,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 this.BindingContext = viewModel;
 
                 viewModel.ResetData();
-                viewModel.OnPageLoad();
+                _ = viewModel.OnPageLoad();
             }
             catch (Exception ex)
             {
@@ -75,11 +75,11 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         {
             if (App.IsArabic)
             {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
             }
             else
             {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
 
@@ -88,10 +88,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
         }
 
-        private void ContractsList_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private async void ContractsList_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var item = e.ItemData as ContractReLeaseApplicationFormModel.ContractResult;
-            viewModel.GetContractReleaseSummaryData(item);
+            await viewModel.GetContractReleaseSummaryData(item);
         }
 
         private void Download_Acknowledgement(object sender, EventArgs e)
@@ -149,7 +149,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             });
             var attachment = e.ItemData as Attachment;
 
-            if (attachment.Filename.Contains(".")) ;
+            //if (attachment.Filename.Contains(".")) ;
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
@@ -235,7 +235,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             });

@@ -76,7 +76,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 throw new ArgumentNullException("dialogService");
             }
 
-            GoBackBtnTapped = new Command(async () =>
+            GoBackBtnTapped = new Command(() =>
             {
                 _navigationService.GoBack();
             });

@@ -209,7 +209,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 else
                     viewModel.CurrentMobileNumberEntryText = "+" + App.TP.Mobile.Remove(0, 2);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
