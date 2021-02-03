@@ -15,7 +15,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         public VATDeregistrationInstructionsPage()
         {
             InitializeComponent();
-            Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+
+            
+            //Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
 
             viewModel = App.Locator.VATDeregistrationInstructionsPage;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -39,13 +41,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         }
         protected override void OnAppearing()
         {
-            MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "IsInstructionChecked", (obj, res) =>
-            {
-                if (res)
-                    Resources["IsInstructionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
-                else
-                    Resources["IsInstructionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
-            });
+            //MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "IsInstructionChecked", (obj, res) =>
+            //{
+            //    if (res)
+            //        Resources["IsInstructionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+            //    else
+            //        Resources["IsInstructionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+            //});
         }
     }
 }

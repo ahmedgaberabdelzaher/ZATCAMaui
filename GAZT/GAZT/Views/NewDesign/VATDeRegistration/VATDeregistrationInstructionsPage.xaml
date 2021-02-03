@@ -59,6 +59,14 @@
                             <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}"  />
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
+                      <custom:CustomLabel.Triggers>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsInstructionChecked}" Value="True">
+                                            <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsInstructionChecked}" Value="False">
+                                            <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
+                                        </DataTrigger>
+                                    </custom:CustomLabel.Triggers>
                 </custom:CustomLabel>
            </StackLayout>
            <buttons:SfButton Grid.ColumnSpan="2" Margin="0,24,0,24" IsEnabled="{Binding IsContinueButtonEnable}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" x:Name="btnVATDeregistration" Command="{Binding VATDeregistrationClicked}" Text="{x:Static ResourceManager:AppResources.VATDeregistration}"
