@@ -937,6 +937,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
         public async void OnIbanIdTypeClicked()
         {
+            CreateIBANType();
             List<string> idTypeData = new List<string>();
 
             foreach(IBANType iBANType in IBANTypesList)

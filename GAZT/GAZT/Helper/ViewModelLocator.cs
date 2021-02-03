@@ -1865,6 +1865,8 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATRefundsNewRequestViewModel>();
+                    SimpleIoc.Default.Register<VATRefundsNewRequestViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRefundsNewRequestViewModel>();
                 }
                 catch (Exception)
