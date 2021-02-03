@@ -48,7 +48,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 App.ZAKATType = PageExecutionType.Register;
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
                 this.BindingContext = viewModel = App.Locator.SFLoginPageView;
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
                 CheckFirstTimeorNot();
                 GetDeviceID();
