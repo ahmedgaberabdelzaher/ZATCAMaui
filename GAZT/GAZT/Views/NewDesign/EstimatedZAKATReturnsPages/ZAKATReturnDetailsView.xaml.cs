@@ -26,9 +26,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             if (AttachmentPopUpViewModel.SalesDetailList != null)
                 AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;
-           Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
             TotalVATSales.Text = "NA";
-           
+
             ChangeAeroIcon();
             ZAKATReturnDetailsViewModel.Fbguid = fbguid;
             SetLTR();
@@ -57,7 +57,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             base.OnAppearing();
             //date.Text = viewModel.Abrzu;
-            if(ZAKATReturnDetailsView.IsComingFromAttachmentPage == false)
+            if (ZAKATReturnDetailsView.IsComingFromAttachmentPage == false)
             {
                 await viewModel.OnPageLoad(ZAKATReturnDetailsViewModel.Fbguid);
                 viewModel.ZAKATReturnsPagName = AppResources.FORM5ReturnDetails;
@@ -80,7 +80,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 TVSA.IsVisible = true;
                 TVSNA.IsVisible = false;
 
-                
+
 
                 ANOLA.IsVisible = false;
                 ANOLNA.IsVisible = true;
@@ -123,25 +123,25 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 PurchaseValueApplicableLayout.IsVisible = false;
                 PurchaseValueNotApplicableLayout.IsVisible = true;
 
-               // TotalVATSalesInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.TvtslI;
-             //   TotalVATSalesEstimatedSalesLabel.Text = viewModel.ZakatReturnDetail.TvtslE;
+                // TotalVATSalesInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.TvtslI;
+                //   TotalVATSalesEstimatedSalesLabel.Text = viewModel.ZakatReturnDetail.TvtslE;
 
 
-               // AverageNumberOfLabourInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                // AverageNumberOfLabourInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
                 //AverageNumberOfLabourEstmatedSalesLabel.Text = AppResources.ZNA;
 
-               // ImportValueInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                // ImportValueInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
                 //ImportValueEstimatedSalesLabel.Text = AppResources.ZNA;
 
-               // SalesFromPointOfSalesInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                // SalesFromPointOfSalesInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
 
                 //ContactFromETIMADSystemInfoInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
                 //ContractsFromETIMADSystemEstimatedSalesLabel.Text = AppResources.ZNA;
 
-               // PurchaceValueInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
-              //  PurchaseValueEstmatedSalesLabel.Text = AppResources.ZNA;
+                // PurchaceValueInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                //  PurchaseValueEstmatedSalesLabel.Text = AppResources.ZNA;
 
-                
+
                 //AverageNumberOfLabour.Text = AppResources.ZNA;
                 //ImportValue.Text = AppResources.ZNA;
                 //SalesFromPointOfSales.Text = AppResources.ZNA;
@@ -154,7 +154,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 TotalVATSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
                 //TotalVATSales.Text = "ABC";// AppResources.ZNA;
-               
+
                 AverageNumberOfLabourInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 ImportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 SalesFromPointOfSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
@@ -204,22 +204,22 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 PurchaseValueApplicableLayout.IsVisible = true;
                 PurchaseValueNotApplicableLayout.IsVisible = false;
 
-               
-               // TotalVATSalesInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
-               // TotalVATSalesEstimatedSalesLabel.Text = AppResources.ZNA;
+
+                // TotalVATSalesInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                // TotalVATSalesEstimatedSalesLabel.Text = AppResources.ZNA;
 
 
-               // AverageNumberOfLabourInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.LabnoI;
-              //  AverageNumberOfLabourEstmatedSalesLabel.Text = viewModel.ZakatReturnDetail.LabnoE;
+                // AverageNumberOfLabourInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.LabnoI;
+                //  AverageNumberOfLabourEstmatedSalesLabel.Text = viewModel.ZakatReturnDetail.LabnoE;
 
-              //  ImportValueInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.ImpvalI;
+                //  ImportValueInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.ImpvalI;
                 //ImportValueEstimatedSalesLabel.Text = viewModel.ZakatReturnDetail.ImpvalE;
                 //SalesFromPointOfSalesInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.PtoslI;
-               // ContactFromETIMADSystemInfoInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.EtimadI;
-             //   ContractsFromETIMADSystemEstimatedSalesLabel.Text = viewModel.ZakatReturnDetail.Sumcnt;
-              //  ExportValueInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.ExamtI;
+                // ContactFromETIMADSystemInfoInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.EtimadI;
+                //   ContractsFromETIMADSystemEstimatedSalesLabel.Text = viewModel.ZakatReturnDetail.Sumcnt;
+                //  ExportValueInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.ExamtI;
                 //PurchaceValueInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.PramtI;
-               // PurchaseValueEstmatedSalesLabel.Text = viewModel.ZakatReturnDetail.PramtE;
+                // PurchaseValueEstmatedSalesLabel.Text = viewModel.ZakatReturnDetail.PramtE;
 
 
 
@@ -267,6 +267,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 {
 
                     Console.WriteLine("SADAD Clicked");
+                    viewModel.gotoSuccessPage();
                 });
             }
             catch (Exception ex)
@@ -306,7 +307,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
             else
             {
-               await viewModel.OnReleaseOrBillsClicked();
+                await viewModel.OnReleaseOrBillsClicked();
             }
             //if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
             //{
@@ -413,7 +414,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private void OnTotalVATSaleEditImageClicked(object sender, EventArgs e)
         {
-            if(viewModel.isThresholdValueLessThanTotalVATSales)
+            if (viewModel.isThresholdValueLessThanTotalVATSales)
             {
                 salesType = "TotalVATSales";
                 PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
@@ -499,14 +500,15 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
             else
             {
-                  Device.BeginInvokeOnMainThread(async () => {
-                      await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
 
-                     // await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
-                    });
-               
+                    // await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                });
+
             }
-              
+
 
 
         }
@@ -639,7 +641,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 {
                     AverageNumberOfLabour.Text = "0.00";
                 }
-                if (!String.IsNullOrEmpty(AverageNumberOfLabour.Text) )
+                if (!String.IsNullOrEmpty(AverageNumberOfLabour.Text))
                 {
                     AverageNumberOfLabour.Text = UtilityManager.GetCommaSeparatedAmount(AverageNumberOfLabour.Text);
                     AverageNumberOfLabour.TextColor = Color.Black;
@@ -650,11 +652,11 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
         }
 
-        
 
 
 
-             private void ImportValueInputFocused(object sender, FocusEventArgs e)
+
+        private void ImportValueInputFocused(object sender, FocusEventArgs e)
         {
             try
             {
@@ -681,7 +683,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 {
                     ImportValue.Text = "0.00";
                 }
-                if (!String.IsNullOrEmpty(ImportValue.Text) )
+                if (!String.IsNullOrEmpty(ImportValue.Text))
                 {
                     ImportValue.Text = UtilityManager.GetCommaSeparatedAmount(ImportValue.Text);
                     ImportValue.TextColor = Color.Black;
@@ -694,9 +696,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
 
 
-        
 
-        
+
+
 
 
         private void SalesFromPointOfSalesInputFocused(object sender, FocusEventArgs e)
@@ -726,7 +728,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 {
                     SalesFromPointOfSales.Text = "0.00";
                 }
-                if (!String.IsNullOrEmpty(SalesFromPointOfSales.Text) )
+                if (!String.IsNullOrEmpty(SalesFromPointOfSales.Text))
                 {
                     SalesFromPointOfSales.Text = UtilityManager.GetCommaSeparatedAmount(SalesFromPointOfSales.Text);
                     SalesFromPointOfSales.TextColor = Color.Black;
@@ -802,7 +804,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 {
                     ExportValue.Text = "0.00";
                 }
-                if (!String.IsNullOrEmpty(ExportValue.Text) )
+                if (!String.IsNullOrEmpty(ExportValue.Text))
                 {
                     ExportValue.Text = UtilityManager.GetCommaSeparatedAmount(ExportValue.Text);
                     ExportValue.TextColor = Color.Black;
@@ -840,7 +842,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 {
                     PurchaseValue.Text = "0.00";
                 }
-                if (!String.IsNullOrEmpty(PurchaseValue.Text) )
+                if (!String.IsNullOrEmpty(PurchaseValue.Text))
                 {
                     PurchaseValue.Text = UtilityManager.GetCommaSeparatedAmount(PurchaseValue.Text);
                     PurchaseValue.TextColor = Color.Black;
@@ -893,6 +895,6 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             viewModel.CheckBoxStatus = checkBox.IsChecked;
         }
-       
+
     }
 }

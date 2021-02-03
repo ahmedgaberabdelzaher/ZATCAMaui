@@ -1397,10 +1397,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 items.Add(singleItem);
             }
             AccountStatementsList = items;
-            if (AccountStatementsList.Count > 2)
+            Console.WriteLine();
+            if (AccountStatementsList!=null && AccountStatementsList.Count > 2)
             {
                 LastTransactionsListHeight = 220;
-            }else if(AccountStatementsList.Count>1)
+            }else if(AccountStatementsList!=null && AccountStatementsList.Count>1)
             {
                 LastTransactionsListHeight = 150;
             }
@@ -1496,7 +1497,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             InstalmentResponse = WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.TP.Userid);
 
-
+            Console.WriteLine();
 
         }
 

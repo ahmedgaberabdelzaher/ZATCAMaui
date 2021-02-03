@@ -265,7 +265,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         }
         private async void payNow_Tapped(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false));
+            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
         }
     }
 }

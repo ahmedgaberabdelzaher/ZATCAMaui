@@ -17,13 +17,15 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
     {
         bool isModaPaymentAvailable = false;
         bool isAlreadyPaid = false;
+        bool isAmountLess = false;
 
         public delegate void OnSelectDelegate(string item);
         public OnSelectDelegate OnSelect { get; set; } = null;
-        public PaymentOptionsPageView(bool isModaPaymentAvailable, bool isAlreadyPaid)
+        public PaymentOptionsPageView(bool isModaPaymentAvailable, bool isAlreadyPaid, bool isAmountLess)
         {
             this.isModaPaymentAvailable = isModaPaymentAvailable;
             this.isAlreadyPaid= isAlreadyPaid;
+            this.isAmountLess = isAmountLess;
             InitializeComponent();
             SetLTR();
         }
@@ -31,7 +33,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         private void setUpListItems()
         {
             List<PaymentOptionsModel> paymentOptions = new List<PaymentOptionsModel>();
-            if (isModaPaymentAvailable)
+            if (isModaPaymentAvailable && !isAmountLess)
             {
                 paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_iconpay", UnSelectedCardIcon = "ic_iconpay", CardLabel = AppResources.PaymentMethodCardPayment});
             }
@@ -49,6 +51,24 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             else
             {
                 paymentItemsListView.HeightRequest = 140;
+            }
+
+            if (isAmountLess || isAlreadyPaid)
+            {
+                FrameMadaPaymentText.IsVisible = true;
+            }
+            else
+            {
+                FrameMadaPaymentText.IsVisible = false;
+            }
+
+            if(isAlreadyPaid)
+            {
+                TextMadaPaymentText.Text = "There is no amount payable for the selected invoice";
+            }
+            else
+            {
+                TextMadaPaymentText.Text = "MADA payment allowed for amounts less than 20,000 SAR";
             }
         }
 

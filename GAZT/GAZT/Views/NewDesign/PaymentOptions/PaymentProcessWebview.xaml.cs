@@ -33,10 +33,19 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             InitializeComponent();
 
             var webView = new WebView();
-           
 
 
 
+            ToolbarItems.Add(new ToolbarItem("Back", null, () =>
+            {
+                if (webView.CanGoBack)
+                {
+                    webView.GoBack();
+
+                }
+                else viewModel._navigationService.GoBack();
+               
+            }));
 
             CookieContainer cookieContainer = new CookieContainer();
 
@@ -99,10 +108,12 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             webView.Source = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
             webView.Cookies = App.httpClientHandler.CookieContainer;
             webView.Navigated += OnNavigated;
-             
+            webView.Navigating += OnNavigating;
 
 
-          
+
+
+
             //Content = webView;
 
             WebviewGrid.Children.Add(webView);
@@ -130,6 +141,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         }
         protected void OnNavigating(object sender, WebNavigatingEventArgs e)
         {
+            Console.WriteLine("WebViewURL: "+e.Url);
             viewModel.IsLoading = false;
         }
 

@@ -29,6 +29,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         #endregion
 
+        private bool isFirstTime = true;
         public GAZTNewDesignDashBoardPageView()
         {
             try
@@ -114,10 +115,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             StartTimer();
             viewModel.IsLoading = false;
 
-
-            var part = GetTemplateChild("frameToolbar") as SfBorder;
-            await part.FadeTo(0, 0);
-            await btn_frameToolbar.FadeTo(1, 0);
+            if (isFirstTime)
+            {
+                var part = GetTemplateChild("frameToolbar") as SfBorder;
+                await part.FadeTo(0, 0);
+                await btn_frameToolbar.FadeTo(1, 0);
+                isFirstTime = false;
+            }
         }
 
         public void SetPickerFont()
@@ -451,47 +455,47 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             });
         }
-       /* private void TappedOnSignleReturns(object sender, EventArgs e)
-        {
-            string controltype = sender.GetType().ToString();
+        /* private void TappedOnSignleReturns(object sender, EventArgs e)
+         {
+             string controltype = sender.GetType().ToString();
 
-            Syncfusion.XForms.Cards.SfCardView arrowImage = sender as Syncfusion.XForms.Cards.SfCardView;
-            ReturnTypeAndCorrepsondingCount BModel = (ReturnTypeAndCorrepsondingCount)arrowImage.BindingContext;
-            if (BModel.ReturnTypeName == AppResources.Submitted)
-            {
-                viewModel.IsLoading = true;
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Submitted Return from Dashboard");
-                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 0);
-                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-                });
-            }
-            if (BModel.ReturnTypeName == AppResources.UnSubmitted)
-            {
-                viewModel.IsLoading = true;
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Unsubmitted Return from Dashboard");
-                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 1);
-                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+             Syncfusion.XForms.Cards.SfCardView arrowImage = sender as Syncfusion.XForms.Cards.SfCardView;
+             ReturnTypeAndCorrepsondingCount BModel = (ReturnTypeAndCorrepsondingCount)arrowImage.BindingContext;
+             if (BModel.ReturnTypeName == AppResources.Submitted)
+             {
+                 viewModel.IsLoading = true;
+                 Device.BeginInvokeOnMainThread(() =>
+                 {
+                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Submitted Return from Dashboard");
+                     viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 0);
+                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                 });
+             }
+             if (BModel.ReturnTypeName == AppResources.UnSubmitted)
+             {
+                 viewModel.IsLoading = true;
+                 Device.BeginInvokeOnMainThread(() =>
+                 {
+                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Unsubmitted Return from Dashboard");
+                     viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 1);
+                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
-                });
-            }
-            if (BModel.ReturnTypeName == AppResources.OverDue)
-            {
-                viewModel.IsLoading = true;
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Overdue Return from Dashboard");
-                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 2);
-                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                 });
+             }
+             if (BModel.ReturnTypeName == AppResources.OverDue)
+             {
+                 viewModel.IsLoading = true;
+                 Device.BeginInvokeOnMainThread(() =>
+                 {
+                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Overdue Return from Dashboard");
+                     viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 2);
+                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
-                });
+                 });
 
-            }
+             }
 
-        }*/
+         }*/
 
         private void TappedOnUnSubmitted(object sender, EventArgs e)
         {
@@ -1092,14 +1096,28 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 await part.FadeTo(1, 600);
                 await btn_frameToolbar.FadeTo(0, 600);
-
+                //await btn_frameToolbar.TranslateTo(-100, 0, 400);
             }
             else
             {
                 await part.FadeTo(0, 600);
                 await btn_frameToolbar.FadeTo(1, 600);
+                //await btn_frameToolbar.TranslateTo(0, 100, 400);
+
             }
         }
 
+        private void TapGestureRecognizer_ToolbarMyTax(object sender, EventArgs e)
+        {
+            viewModel.IsLoading = true;
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnMyBills", AppResources.MyBills + " Page");
+                BillInfo billInfo = new BillInfo();
+                billInfo.BillTypeName = AppResources.All;
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+            });
+        }
     }
 }

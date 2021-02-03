@@ -8,7 +8,7 @@
     xmlns:custom="clr-namespace:GAZT"
     mc:Ignorable="d"
     FlowDirection="RightToLeft"
-    xmlns:ResourceManager="clr-namespace:EGAZT"  xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
+    xmlns:ResourceManager="clr-namespace:EGAZT"  xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
     x:Class="EGAZT.Views.NewDesign.PaymentOptions.PaymentOptionsPageView">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -27,8 +27,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackLayout Spacing="0" Grid.Row="0">
+            <StackLayout Grid.Row="0">
                 <Label Margin="10" Text="{x:Static ResourceManager:AppResources.PaymentMethod}"  Style="{StaticResource TPProfileLabelBlackBold}"/>
             </StackLayout>
             <Grid Grid.Row="1">
@@ -46,7 +47,12 @@
                     </listView:SfListView.LayoutManager>
 
                 </listView:SfListView>
+                
             </Grid>
+            <cards:SfCardView Grid.Row="2" x:Name="FrameMadaPaymentText" HorizontalOptions="FillAndExpand"  BackgroundColor="#CCE0DC" Padding="10" HasShadow="False" VerticalOptions="FillAndExpand">
+                <custom:CustomLabel x:Name="TextMadaPaymentText"  LineSpacing="1" ></custom:CustomLabel>
+            </cards:SfCardView>
+           
         </Grid>
     </yummy:PancakeView>
 </pages:PopupPage>

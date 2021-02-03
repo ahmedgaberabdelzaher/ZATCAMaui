@@ -1062,6 +1062,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
 
+        public void gotoSuccessPage()
+        {
+            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+        }
         public async Task DoValidatePayment(string fbNum)
         {
             try
@@ -1099,8 +1103,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             }
 
+                            var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                            if(String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) ==0)
+                            {
+                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
+                            }
+                            else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
+                            {
+                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
+                            }
+                            else
+                            {
+                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
+                            }
 
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false));
                         }
 
 
