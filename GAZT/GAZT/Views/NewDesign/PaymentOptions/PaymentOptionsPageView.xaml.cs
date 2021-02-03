@@ -39,7 +39,12 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             }
             if (Device.RuntimePlatform == Device.iOS)
             {
-                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo", CardLabel =AppResources.PaymentMethodApplePay });
+
+                if (!isAlreadyPaid)
+                {
+                    paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo", CardLabel = AppResources.PaymentMethodApplePay });
+
+                }
             }
             paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_add1.png", UnSelectedCardIcon = "ic_add1", CardLabel =AppResources.Sadad});
             paymentItemsListView.ItemsSource = paymentOptions;

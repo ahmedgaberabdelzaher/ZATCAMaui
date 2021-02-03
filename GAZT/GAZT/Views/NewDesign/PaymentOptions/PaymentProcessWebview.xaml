@@ -41,7 +41,7 @@
                         Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
                     </yummy:PancakeView>
-                    <Grid Padding="20,10,24,10" Grid.Row="0">
+                    <Grid Padding="20,32,24,10" Grid.Row="0">
                        
                         <Image Grid.Row="0"  
                                VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"

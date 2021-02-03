@@ -67,7 +67,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             if (Navigation.NavigationStack.Count > 0)
             {
-                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
                 Navigation.RemovePage(pg);
             }
             viewModel._navigationService.GoBack();
