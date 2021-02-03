@@ -1290,6 +1290,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
+                IsLoading = true;
                 var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
                 List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
 
@@ -1313,10 +1314,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 PopulateBillsInformation();
                 PopulateReturnsInformation();
                 PopualateCommittmentsInformation();
+                IsLoading = false;
             }
             catch(Exception)
             {
-
+                IsLoading = false;
             }
         }
 
