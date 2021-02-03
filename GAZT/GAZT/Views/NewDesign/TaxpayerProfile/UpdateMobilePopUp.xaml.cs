@@ -42,6 +42,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             // Setup International Mobile Data
             currentMobileData = mobileData;
+            if (App.IsArabic)
+            {
+                Mobile_Entry.HorizontalTextAlignment = TextAlignment.End;
+            }
+            else
+            {
+                Mobile_Entry.HorizontalTextAlignment = TextAlignment.Start;
+            }
         }
 
         // * Forgot password : OTP Verification :
