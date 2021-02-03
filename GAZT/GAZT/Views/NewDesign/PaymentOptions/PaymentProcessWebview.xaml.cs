@@ -36,7 +36,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             this.BindingContext = viewModel;
             SetLTR();
 
-            viewModel.paymentType = type;
+            viewModel.PaymentType = type;
             //WebviewGrid.LowerChild(webView);
 
 

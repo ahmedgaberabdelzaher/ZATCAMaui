@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -25,7 +26,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             InitializeComponent();
 
             viewModel = App.Locator.GAZTNewDesignVATReturnUpdatedUIPageView;
-            viewModel.ReferenceNumber = refNum
+            viewModel.ReferenceNumber = refNum;
             viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Fbnum;
             this.BindingContext = viewModel;
             SetLTR();
@@ -66,15 +67,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         }
         
    
-        private void GoToDashboardClicked(object sender, EventArgs e)
-        {
-            if (Navigation.NavigationStack.Count > 0)
-            {
-                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
-                Navigation.RemovePage(pg);
-            }
-            viewModel._navigationService.GoBack();
-        }
+        //private void GoToDashboardClicked(object sender, EventArgs e)
+        //{
+        //    if (Navigation.NavigationStack.Count > 0)
+        //    {
+        //        Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
+        //        Navigation.RemovePage(pg);
+        //    }
+        //    viewModel._navigationService.GoBack();
+        //}
 
         public async void OnCopyReferenceNumberButtonClicked(object sender, EventArgs args)
         {
@@ -88,5 +89,14 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
+        private void GotodashboardClicked(System.Object sender, System.EventArgs e)
+        {
+            if (Navigation.NavigationStack.Count > 0)
+            {
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
+                Navigation.RemovePage(pg);
+            }
+            viewModel._navigationService.GoBack();
+        }
     }
 }
