@@ -9,6 +9,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     FlowDirection="RightToLeft"
     xmlns:custom2="clr-namespace:EGAZT"
+     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
     Title="Login"
     BackgroundColor="White">
@@ -24,7 +26,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <Grid x:Name="loginGrid" Margin="0,-50,0,-50">
+            <Grid x:Name="loginGrid" Margin="{OnPlatform Android='0,-30,0,0', iOS='0,-30,0,-30'}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100*"></RowDefinition>
                 </Grid.RowDefinitions>

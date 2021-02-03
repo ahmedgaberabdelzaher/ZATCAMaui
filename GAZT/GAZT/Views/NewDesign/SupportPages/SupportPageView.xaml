@@ -30,7 +30,7 @@
             <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                 <Setter Property="Rotation" Value="180" />
             </Style>
-            <Style x:Key="BackButtonArrow" TargetType="Image">
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
                 <Setter Property="Rotation" Value="0" />
             </Style>
         </ResourceDictionary>
