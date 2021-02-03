@@ -23,8 +23,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class ZAKATReturnDetailsViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
+        /*private readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;*/
         //============================start===================================================
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnConfirmClicked { get; set; }
@@ -633,8 +633,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private string _referenceNumber = "";
+        public string ReferenceNumber
+        {
+            get
+            {
+                return _referenceNumber;
+            }
+            set
+            {
+                if (_referenceNumber == value) return;
 
+                _referenceNumber = value;
+                RaisePropertyChanged("ReferenceNumber");
+            }
+        }
+
+        private string _taxablePeriod = "";
+        public string TaxablePeriod
+        {
+            get
+            {
+                return _taxablePeriod;
+            }
+            set
+            {
+                if (_taxablePeriod == value) return;
+
+                _taxablePeriod = value;
+                RaisePropertyChanged("TaxablePeriod");
+            }
+        }
         #endregion
+
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
 
         #region Constructor
         public ZAKATReturnDetailsViewModel(INavigationService navigationService, IDialogService dialogService)

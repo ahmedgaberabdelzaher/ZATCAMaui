@@ -7,17 +7,19 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms.Internals;
+using EGAZT.ViewModel.NewDesignViewModel;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatReturnNewSuccessPageView : ContentPage
     {
-        ZakatReturnNewSuccessViewModel viewModel;
+        ZAKATReturnDetailsViewModel viewModel;
+
         public ZakatReturnNewSuccessPageView(string CaseGuild)
         {
             InitializeComponent();
-            viewModel = App.Locator.ZakatReturnNewSuccessView;
+            viewModel = App.Locator.ZAKATReturnDetailsView;
 
             // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
            
@@ -27,18 +29,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             ChangeAeroIcon();
 
             viewModel.ReferenceNumber = CaseGuild;
-
-            ToolbarItem Refresh = new ToolbarItem
-            {
-                Order = ToolbarItemOrder.Primary,
-                Priority = 1,
-                Command = new Command(async () =>
-                {
-                    //  await OnRefreshButtonClicked();
-                    // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
-                })
-            };
-            this.ToolbarItems.Add(Refresh);
+            viewModel.TaxablePeriod = viewModel.FromDate;
+            
         }
 
         public void ChangeAeroIcon()
@@ -73,24 +65,24 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         }
         private void GoToDashboardClicked(object sender, EventArgs e)
         {
-          /*  if (Navigation.NavigationStack.Count > 0)
+            if (Navigation.NavigationStack.Count > 0)
             {
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                 Navigation.RemovePage(pg);
             }
-            viewModel._navigationService.GoBack();*/
+            viewModel._navigationService.GoBack();
         }
 
         public async void OnCopyReferenceNumberButtonClicked(object sender, EventArgs args)
         {
-            await Clipboard.SetTextAsync(viewModel.EstimatedZAKATSADADNumber.Sopbel);
-            /*if (Clipboard.HasText)
+            await Clipboard.SetTextAsync(viewModel.ReferenceNumber);
+            if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZSadadInvoiceNumber + " " + text));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDReferenceNumber + " " + text));
 
                 // await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
-            }*/
+            }
         }
 
     }

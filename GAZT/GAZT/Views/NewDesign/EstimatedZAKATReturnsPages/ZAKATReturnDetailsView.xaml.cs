@@ -897,5 +897,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             viewModel.CheckBoxStatus = checkBox.IsChecked;
         }
 
+        private void PayNowButtonClicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
