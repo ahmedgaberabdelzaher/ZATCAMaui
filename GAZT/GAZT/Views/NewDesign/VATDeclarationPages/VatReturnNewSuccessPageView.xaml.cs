@@ -91,6 +91,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         private void GotodashboardClicked(System.Object sender, System.EventArgs e)
         {
+
             if (Navigation.NavigationStack.Count > 0)
             {
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
