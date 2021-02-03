@@ -131,6 +131,8 @@ using EGAZT.Views.NewDesign.AccountStatements;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.Common;
+using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
+
 using Xamarin.Forms.Internals;
 
 namespace EGAZT
@@ -2195,7 +2197,7 @@ namespace EGAZT
 
             navigationService.Configure(App.TaxEvasionVerifyMobileNumberPage, typeof(TaxEvasionVerifyMobileNumberPage));
             navigationService.Configure(App.VATRefundsListPageView, typeof(VATRefundsListPageView));
-            navigationService.Configure(App.VATRefundDetailsPageView, typeof(VATRefundDetailsPageView));
+            navigationService.Configure(App.VATRefundDetailsPageView, typeof(VATRefundDetailsPageViewModel));
             navigationService.Configure(App.VATRefundsNewRequestPageView, typeof(VATRefundsNewRequestPageView));
             navigationService.Configure(App.VATRefundsSuccessPageView, typeof(VATRefundsSuccessPageView));
             navigationService.Configure(App.VATRefundsSuccessPageView, typeof(VATRefundsSuccessPageView));
