@@ -14,6 +14,7 @@ using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
+    [Preserve(AllMembers = true)]
     public class ZakatReturnNewSuccessViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

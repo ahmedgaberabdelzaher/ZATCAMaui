@@ -10,6 +10,7 @@ using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class VatReturnNewSuccessViewModel : BaseViewModel
     {
         private readonly INavigationService _navigationService;

@@ -19,7 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     public class PaymnetProcessWebviewViewModel : ViewModelBase
     {
         public ICommand GoBackClick { get; set; }
-
+        public int PaymentType;
 
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -123,8 +123,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             Device.BeginInvokeOnMainThread( () => {
 
-                                _navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
-                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+                                //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                                if(PaymentType == 0) {
+                                    _navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                                }
+                                else if(PaymentType == 1) {
+                                    _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                                }
 
                             });
                            

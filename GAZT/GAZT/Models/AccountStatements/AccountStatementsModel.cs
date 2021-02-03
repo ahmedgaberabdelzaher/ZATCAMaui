@@ -685,7 +685,7 @@ namespace EGAZT.Models.AccountStatements
         public string SortAscending { get; set; }
         public string SortDescending { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class AccountStatementsListItem
     {
         public string taxType { get; set; }

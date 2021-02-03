@@ -54,37 +54,37 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
             try
             {
-                foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
-                {
-                    Cookie cookie = new Cookie();
+                //foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                //{
+                //    Cookie cookie = new Cookie();
 
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        if (cookieModel.Domain.StartsWith(".") == false)
-                        {
-                            cookie.Domain = "." + cookieModel.Domain;
-                        }
-                        else
-                        {
-                            cookie.Domain = cookieModel.Domain;
-                        }
-                    }
-                    else if (Device.RuntimePlatform == Device.Android)
-                    {
-                        cookie.Domain = Constants.PartialDomainUrlForCookies;
-                    }
+                //    if (Device.RuntimePlatform == Device.iOS)
+                //    {
+                //        if (cookieModel.Domain.StartsWith(".") == false)
+                //        {
+                //            cookie.Domain = "." + cookieModel.Domain;
+                //        }
+                //        else
+                //        {
+                //            cookie.Domain = cookieModel.Domain;
+                //        }
+                //    }
+                //    else if (Device.RuntimePlatform == Device.Android)
+                //    {
+                //        cookie.Domain = Constants.PartialDomainUrlForCookies;
+                //    }
 
-                    cookie.Comment = cookieModel.Comment;
-                    cookie.Version = cookieModel.Version;
-                    cookie.HttpOnly = cookieModel.IsHttpOnly;
-                    cookie.Path = cookieModel.Path;
-                    cookie.Name = cookieModel.CName;
-                    cookie.Value = cookieModel.CValue;
-                    cookie.Secure = cookieModel.Secure;
-                    cookieContainer.Add(cookie);
-                }
+                //    cookie.Comment = cookieModel.Comment;
+                //    cookie.Version = cookieModel.Version;
+                //    cookie.HttpOnly = cookieModel.IsHttpOnly;
+                //    cookie.Path = cookieModel.Path;
+                //    cookie.Name = cookieModel.CName;
+                //    cookie.Value = cookieModel.CValue;
+                //    cookie.Secure = cookieModel.Secure;
+                //    cookieContainer.Add(cookie);
+                //}
 
-                App.httpClientHandler.CookieContainer = cookieContainer;
+                //App.httpClientHandler.CookieContainer = cookieContainer;
             }
 
             catch (Exception ex)

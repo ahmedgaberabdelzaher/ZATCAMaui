@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.PaymentModel
 {
+    [Preserve(AllMembers = true)]
     public class PaymentOptionsModel
     {
         public PaymentOptionsModel()
@@ -17,7 +19,7 @@ namespace EGAZT.Models.PaymentModel
 
     }
 
-
+    [Preserve(AllMembers = true)]
     public class D
     {
         public Metadata __metadata { get; set; }
@@ -27,13 +29,13 @@ namespace EGAZT.Models.PaymentModel
         public string Guid { get; set; }
         public string Tin { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ValidatePaymentResponse
     {
         public D d { get; set; }
     }
 
-
+    [Preserve(AllMembers = true)]
     public class MadaPayment
     {
         public Metadata __metadata { get; set; }
@@ -66,7 +68,7 @@ namespace EGAZT.Models.PaymentModel
         public string Srcid { get; set; }
         public string Zbranch { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class MadaPaymentResponse
     {
         public MadaPayment d { get; set; }
