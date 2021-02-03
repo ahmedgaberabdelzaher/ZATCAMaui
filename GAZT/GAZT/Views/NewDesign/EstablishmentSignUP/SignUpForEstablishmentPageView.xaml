@@ -1352,7 +1352,7 @@
                         <ColumnDefinition Width="20*"/>
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Column="0" Padding="0,8,0,0">
-                            <Image Source="arrowLeft.png" x:Name="Image_backArrow" Style="{StaticResource BackButtonArrow}" HorizontalOptions="Start">
+                            <Image Source="arrowLeft.png" x:Name="Image_backArrow" Style="{DynamicResource BackButtonArrow}"  HorizontalOptions="Start">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnBackButtonClick}"/>
                             </Image.GestureRecognizers>
