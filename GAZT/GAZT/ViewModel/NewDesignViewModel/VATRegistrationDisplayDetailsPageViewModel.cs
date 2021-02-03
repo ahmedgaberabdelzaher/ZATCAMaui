@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using EGAZT.Manager;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
@@ -22,11 +23,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     {
 
         string idnumber { get; set; }
+        public ICommand OnBackButtonClicked { get; set; }
 
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public VATRegistrationDisplayDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
