@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.ZakatDeregistration
@@ -67,9 +68,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.isLoading = true;
             });
 
-            
-            await viewModel.LoadDataTaxPayerDetails();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
 
+            await viewModel.LoadDataTaxPayerDetails();
 
             await Task.Run(() =>
             {
