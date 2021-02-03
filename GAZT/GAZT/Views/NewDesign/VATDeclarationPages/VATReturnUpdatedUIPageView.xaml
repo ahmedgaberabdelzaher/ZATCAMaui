@@ -2184,20 +2184,7 @@
                             <!---->
                             <!---->
                         </StackLayout>
-                          <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="FillAndExpand" Padding="0,0,0,40">
-
-                <buttons:SfButton  x:Name="btnpaynow"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnPayNowButtonClicked" Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"  Style="{StaticResource PrimaryButtonStyle}"/>
-                
-                <buttons:SfButton  x:Name="btnamend"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
-
-                <buttons:SfButton x:Name="btnprimary"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
-
-                <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
-
-                <buttons:SfButton  Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
-
-                <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
-            </StackLayout>
+                          
 
 
                     </StackLayout>
@@ -2213,7 +2200,20 @@
                 </StackLayout>
             </Grid>
 
+            <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="FillAndExpand" Padding="0,0,0,40">
 
+                <buttons:SfButton  x:Name="btnpaynow"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnPayNowButtonClicked" Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsPayNowVisible}"/>
+                
+                <buttons:SfButton  x:Name="btnamend"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                <buttons:SfButton x:Name="btnprimary"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                <buttons:SfButton  Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+            </StackLayout>
 
 
 

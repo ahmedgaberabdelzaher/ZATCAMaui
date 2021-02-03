@@ -72,6 +72,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _IsPayNowVisible = false;
+        public bool IsPayNowVisible
+        {
+            get
+            {
+                return _IsPayNowVisible;
+            }
+            set
+            {
+
+
+
+                _IsPayNowVisible = value;
+                RaisePropertyChanged("IsPayNowVisible");
+            }
+        }
+
         private VATReturnUpdatedUITabEnum _currentOpenedTab = VATReturnUpdatedUITabEnum.Instrunction;
         public VATReturnUpdatedUITabEnum CurrentOpenedTab
         {
