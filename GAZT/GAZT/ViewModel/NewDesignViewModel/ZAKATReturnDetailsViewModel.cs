@@ -649,8 +649,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            //=======================start==================================================
-
 
             OnSubmitClicked = new Xamarin.Forms.Command(() =>
             {
@@ -1005,8 +1003,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
-                            //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
 
+                            //_navigationService.NavigateTo(App.PaymentProcessWebview);
                             await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
                         }
                         else
@@ -1072,63 +1070,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    await Task.Run(() =>
+
+                    IsLoading = true;
+
+                    var platform = "";
+
+                    if (Device.RuntimePlatform == Device.iOS)
                     {
-                        IsLoading = true;
-                    });
-
-
-                    await Task.Run(async () =>
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
                     {
-                        var platform = "";
-
-                        if (Device.RuntimePlatform == Device.iOS)
-                        {
-                            platform = "C4";
-                        }
-                        else if (Device.RuntimePlatform == Device.Android)
-                        {
-                            platform = "C3";
-                        }
-                        PaymentData = WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+                        platform = "C3";
+                    }
+                    PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
 
 
-                        if (PaymentData != null && PaymentData.d != null)
+                    if (PaymentData != null && PaymentData.d != null)
+                    {
+
+                        if (PaymentData.d.Guid != null)
                         {
 
-                            if (PaymentData.d.Guid != null)
-                            {
-
-                                App.PaymentGuid = PaymentData.d.Guid;
-
-                            }
-
-                            var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
-                            if(String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) ==0)
-                            {
-                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
-                            }
-                            else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
-                            {
-                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
-                            }
-                            else
-                            {
-                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
-                            }
+                            App.PaymentGuid = PaymentData.d.Guid;
 
                         }
 
+                        var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                        if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
+                        }
+                        else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
+                        }
+                        else
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
+                        }
 
+                    }
 
-                    });
-
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-
-
+                    IsLoading = false;
 
                 }
                 catch (GAZTValidatePaymentInProcessException ex)
@@ -1160,10 +1144,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public async Task MadaPaymentSelected()
+        public void MadaPaymentSelected()
         {
 
-            _navigationService.NavigateTo(App.PaymentProcessWebview);
+            Device.BeginInvokeOnMainThread(async () => {
+
+                _navigationService.NavigateTo(App.PaymentProcessWebview);
+                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+            });
 
         }
 

@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.CustomControl;
+using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
@@ -24,29 +25,17 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         private double width = 0;
         private double height = 0;
         WebView webView;
+
         public PaymentProcessWebview()
         {
+
+            InitializeComponent();
             viewModel = App.Locator.PaymentProcessWebview;
 
             this.BindingContext = viewModel;
             SetLTR();
 
-            InitializeComponent();
-
             webView = new WebView();
-
-
-
-            ToolbarItems.Add(new ToolbarItem("Back", null, () =>
-            {
-                if (webView.CanGoBack)
-                {
-                    webView.GoBack();
-
-                }
-                else viewModel._navigationService.GoBack();
-               
-            }));
 
             CookieContainer cookieContainer = new CookieContainer();
 
@@ -105,25 +94,17 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
 
 
-
             webView.Source = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
+
             webView.Cookies = App.httpClientHandler.CookieContainer;
             webView.Navigated += OnNavigated;
-            webView.Navigating += OnNavigating;
 
-
-
-
-
-            //Content = webView;
-
-            WebviewGrid.Children.Add(webView);
+            WebviewGrid.Children.Add(webView, 0, 0);
             //WebviewGrid.LowerChild(webView);
 
-
-
-
         }
+
+
 
         protected override void OnAppearing()
         {
@@ -141,8 +122,8 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         }
         protected void OnNavigating(object sender, WebNavigatingEventArgs e)
         {
-            Console.WriteLine("WebViewURL: "+e.Url);
-           
+            Console.WriteLine("WebViewURL: " + e.Url);
+
             //Payment Successful
             if (e.Url == "http://bank/?IsPmtSts=" + App.PaymentGuid)
             {
@@ -184,11 +165,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             }
         }
 
-       
 
 
-       
-
-        
     }
 }

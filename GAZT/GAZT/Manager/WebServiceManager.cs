@@ -15807,7 +15807,7 @@ namespace GAZT.Manager
 
         #region
 
-            public static ValidatePaymentResponse GAZTValidatePayment(string fbNum, string TIN, string devicetype)
+            public static async Task <ValidatePaymentResponse> GAZTValidatePayment(string fbNum, string TIN, string devicetype)
             {
             ValidatePaymentResponse paymentResponse = null;
                 if (CrossConnectivity.Current.IsConnected)
@@ -15826,7 +15826,7 @@ namespace GAZT.Manager
                         HttpResponseMessage GAZTValidatePaymentResponse = new HttpResponseMessage();
                         try
                         {
-                        GAZTValidatePaymentResponse = client.GetAsync(uri).Result;
+                        GAZTValidatePaymentResponse = await client.GetAsync(uri);
                         }
                         catch (Exception ex)
                         {
@@ -15854,7 +15854,7 @@ namespace GAZT.Manager
                                 App.Token = NewToken;
                             }
 
-                        String paymentData = GAZTValidatePaymentResponse.Content.ReadAsStringAsync().Result;
+                        String paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
                         paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(paymentData);
                         if (!string.IsNullOrEmpty(paymentData) && paymentResponse.d == null)
                         {

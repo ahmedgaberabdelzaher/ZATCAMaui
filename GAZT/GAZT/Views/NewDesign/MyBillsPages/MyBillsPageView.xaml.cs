@@ -103,10 +103,10 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
               try
             {
-                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
-                {
-                    Console.WriteLine("Card Payment Clicked");
-                });
+                //MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                //{
+                //    Console.WriteLine("Card Payment Clicked");
+                //});
             }
             catch (Exception ex)
             {

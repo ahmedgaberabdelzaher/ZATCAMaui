@@ -239,7 +239,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
                     Console.WriteLine("Card Payment Clicked");
-                    await viewModel.MadaPaymentSelected();
+                  
+                         viewModel.MadaPaymentSelected();
+                    
                 });
             }
             catch (Exception ex)
