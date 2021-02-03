@@ -27615,7 +27615,10 @@ namespace GAZT.Droid
 			public const int file_paths = 2131755008;
 			
 			// aapt resource value: 0x7F100001
-			public const int xamarin_essentials_fileprovider_file_paths = 2131755009;
+			public const int network_security_config = 2131755009;
+			
+			// aapt resource value: 0x7F100002
+			public const int xamarin_essentials_fileprovider_file_paths = 2131755010;
 			
 			static Xml()
 			{
