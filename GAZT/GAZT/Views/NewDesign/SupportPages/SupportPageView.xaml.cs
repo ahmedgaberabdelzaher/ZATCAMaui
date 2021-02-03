@@ -25,8 +25,9 @@ namespace EGAZT.Views.NewDesign
         SupportPageViewModel viewModel;
         public SupportPageView()
         {
-            SetLTR();
+            
             InitializeComponent();
+            SetLTR();
             viewModel = App.Locator.SupportPageView;
             BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -39,10 +40,15 @@ namespace EGAZT.Views.NewDesign
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                
+                        
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
+
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
         }
         protected override void OnAppearing()
