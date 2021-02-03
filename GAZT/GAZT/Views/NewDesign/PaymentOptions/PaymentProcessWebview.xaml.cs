@@ -1,4 +1,5 @@
 ﻿using EGAZT.CustomControl;
+using EGAZT.Enums;
 using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -26,7 +27,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         private double height = 0;
         WebView webView;
 
-        public PaymentProcessWebview()
+        public PaymentProcessWebview(int type)
         {
 
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             this.BindingContext = viewModel;
             SetLTR();
 
-           
+            viewModel.paymentType = type;
             //WebviewGrid.LowerChild(webView);
 
 

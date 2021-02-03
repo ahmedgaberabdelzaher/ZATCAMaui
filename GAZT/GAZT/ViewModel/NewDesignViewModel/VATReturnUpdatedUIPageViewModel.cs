@@ -1297,7 +1297,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private string _referenceNumber = "";
+        public string ReferenceNumber
+        {
+            get
+            {
+                return _referenceNumber;
+            }
+            set
+            {
+                if (_referenceNumber == value) return;
 
+                _referenceNumber = value;
+                RaisePropertyChanged("ReferenceNumber");
+            }
+        }
+
+        private string _taxablePeriod = "";
+        public string TaxablePeriod
+        {
+            get
+            {
+                return _taxablePeriod;
+            }
+            set
+            {
+                if (_taxablePeriod == value) return;
+
+                _taxablePeriod = value;
+                RaisePropertyChanged("TaxablePeriod");
+            }
+        }
 
 
         #region  Color Property
@@ -5703,7 +5733,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             Device.BeginInvokeOnMainThread(async () => {
 
-                _navigationService.NavigateTo(App.PaymentProcessWebview);
+                _navigationService.NavigateTo(App.PaymentProcessWebview,1);
                 //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
 
             });
