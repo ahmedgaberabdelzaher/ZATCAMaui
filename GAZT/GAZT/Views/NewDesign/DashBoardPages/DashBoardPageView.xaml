@@ -389,7 +389,7 @@
 
                                                             <chart:DoughnutSeries.CenterView>
                                                                 <StackLayout HorizontalOptions = "FillAndExpand" VerticalOptions = "FillAndExpand" >
-                                                                    <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.TotalString}" BackgroundColor="AliceBlue" FontSize="12" Style="{StaticResource CaptionLabelBlack}"/>
+                                                                    <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.TotalString}" FontSize="12" Style="{StaticResource CaptionLabelBlack}"/>
                                                                     <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.BillCount}" FontSize="24" HorizontalOptions="Center" HorizontalTextAlignment="Center" StyleId="OnBoardText"/>
                                                                 </StackLayout>
                                                             </chart:DoughnutSeries.CenterView>

@@ -5,7 +5,9 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"   xmlns:custom="clr-namespace:GAZT"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              BackgroundImageSource="partials_background"  NavigationPage.HasNavigationBar="False"
-             xmlns:custom2="clr-namespace:EGAZT"  
+             xmlns:custom2="clr-namespace:EGAZT"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              x:Name="VATRefundDetails">
     <ContentPage.Resources>

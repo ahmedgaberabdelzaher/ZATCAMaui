@@ -5,7 +5,8 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:ResourceManager="clr-namespace:EGAZT" NavigationPage.HasNavigationBar="False"
-             x:Name="ZakatReg"
+             x:Name="ZakatReg" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
              BackgroundImageSource="partials_background"
              x:Class="EGAZT.Views.NewDesign.Common.GeneralServicesListPageView">
     <ContentPage.Resources>
@@ -68,7 +69,7 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-         <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
+         <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="FillAndExpand" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding GeneralServicesList}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="GeneralServices_SelectionChanged">
                         <listView:SfListView.ItemTemplate>
