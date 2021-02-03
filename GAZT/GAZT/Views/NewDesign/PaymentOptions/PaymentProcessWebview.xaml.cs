@@ -23,6 +23,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         PaymnetProcessWebviewViewModel viewModel;
         private double width = 0;
         private double height = 0;
+        WebView webView;
         public PaymentProcessWebview()
         {
             viewModel = App.Locator.PaymentProcessWebview;
@@ -32,7 +33,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
             InitializeComponent();
 
-            var webView = new WebView();
+            webView = new WebView();
 
 
 
@@ -119,7 +120,6 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             WebviewGrid.Children.Add(webView);
             //WebviewGrid.LowerChild(webView);
 
-          
 
 
 
@@ -142,6 +142,32 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         protected void OnNavigating(object sender, WebNavigatingEventArgs e)
         {
             Console.WriteLine("WebViewURL: "+e.Url);
+           
+            //Payment Successful
+            if (e.Url == "http://bank/?IsPmtSts=" + App.PaymentGuid)
+            {
+                Console.WriteLine("Payment Successful:" + e.Url);
+                webView.IsVisible = false;
+                viewModel.IsLoading = true;
+                //Service call and navigate to Success Page
+                //...
+                //Or
+                //Close WebView Activity 
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    foreach (var item in _navigation.NavigationStack)
+                    {
+                        if (item.GetType().Name == App.PaymentProcessWebview)
+                        {
+                            _navigation.RemovePage(item);
+                            break;
+                        }
+                    }
+                    viewModel._navigationService.GoBack();
+                });
+
+            }
             viewModel.IsLoading = false;
         }
 

@@ -1397,6 +1397,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 items.Add(singleItem);
             }
             AccountStatementsList = items;
+            
             Console.WriteLine();
             if (AccountStatementsList!=null && AccountStatementsList.Count > 2)
             {

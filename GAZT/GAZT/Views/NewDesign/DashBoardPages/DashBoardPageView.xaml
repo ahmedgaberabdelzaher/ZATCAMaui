@@ -207,13 +207,15 @@
 
                                                         </StackLayout>
                                                                 <cards:SfCardView Grid.Row="0" Grid.Column="1"  HasShadow="False" 
-                                                                                  BackgroundColor="{Binding 
-                                                                    StatusBG}" CornerRadius="14" 
+                                                                                  BackgroundColor="{Binding StatusBG}" CornerRadius="14" 
                                                                                   Padding="10,3,10,3" >
-                                                                    <custom:CustomLabel 
-                                                                                    VerticalOptions="CenterAndExpand" 
-                                                                                    Text="{Binding Betrh}" Style="{StaticResource 
-                                                                        CaptionLabelBlack}"></custom:CustomLabel>
+                                                                    <Label 
+                                                                        VerticalOptions="CenterAndExpand" 
+                                                                        Text="{Binding Betrh,Converter={StaticResource 
+                                                                        commaSeparatorConverter}}" Style="{StaticResource 
+                                                                        CaptionLabelBlack}">
+                                                                        
+                                                                    </Label>
                                                                 </cards:SfCardView>
                                                             </Grid>
 
