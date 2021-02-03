@@ -107,7 +107,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}"
+                    <commonView:PageIndicatorView Margin="20,25,20,0" MaxNum="{Binding MaxIndex}"
                                                   MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}"
                                                   VerticalOptions="CenterAndExpand" DotSize="16"/>
                 </Grid>
@@ -254,7 +254,7 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
-                            <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
+                            <Frame Grid.Row="1" HeightRequest="48"  Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding FormattedRequestDate}" 
                                                     PlaceholderColor="Gray"  FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
