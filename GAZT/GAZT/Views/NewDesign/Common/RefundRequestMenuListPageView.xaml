@@ -89,7 +89,7 @@
                                         <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
                                             <Label Text="{Binding ZDTitle}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" VerticalOptions="Center" />
                                         </StackLayout>
-                                        <Image Grid.Row="0" Grid.Column="2" Source="{Binding ArrowImageSource}"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                                        <Image Grid.Row="0" Grid.Column="2" Source="{Binding ArrowImageSource}" Margin="5,0,5,0" HorizontalOptions="Start" VerticalOptions="Center">
                                         </Image>
                                     </Grid>
                                 </border:SfBorder>
