@@ -977,6 +977,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForYesRefundMsg");
                 MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForNoRefundMsg");
 
+                //viewModel.DesClaimerVisibility = false;
+                try
+                {
+                   
+                    MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
+                    MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
+                    MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
+
+                }
+                catch (Exception ex)
+                {
+                    //scrollView.ScrollToAsync(0, 500, true);
+
+
+                }
 
 
                 Device.BeginInvokeOnMainThread(() =>
@@ -1018,7 +1033,52 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
             AddNote();
-        }
+          
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                {
+                    Console.WriteLine("Card Payment Clicked");
+
+                    viewModel.MadaPaymentSelected();
+
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
+                {
+                    Console.WriteLine("Apple pay Clicked");
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
+                {
+
+                    Console.WriteLine("SADAD Clicked");
+                    viewModel.gotoSuccessPage();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+        }       
 
         public void AddNote()
         {
@@ -8873,6 +8933,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
 
             }
+        }
+
+        private void OnPayNowButtonClicked(object sender, EventArgs e)
+        {
+            viewModel.DoValidatePayment(viewModel.VATDeclarationData.d.Fbnum);
         }
     }
 }

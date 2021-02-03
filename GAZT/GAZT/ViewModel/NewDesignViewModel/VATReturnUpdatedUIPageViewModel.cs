@@ -16,6 +16,10 @@ using System.Collections.ObjectModel;
 using GAZT.Helper;
 using System.Text;
 using Xamarin.Forms.Internals;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using EGAZT.Views.NewDesign.PaymentOptions;
+using EGAZT.Models.PaymentModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -981,6 +985,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _responseAddressSET = value;
                 RaisePropertyChanged("ResponseResult5");
+            }
+        }
+
+        public ValidatePaymentResponse _paymentData = null;
+        public ValidatePaymentResponse PaymentData
+        {
+            get
+            {
+                return _paymentData;
+            }
+            set
+            {
+                if (_paymentData == value) return;
+
+                _paymentData = value;
+                RaisePropertyChanged("PaymentData");
             }
         }
 
@@ -4099,7 +4119,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeclarationData.d.StdpurchasesVat = vATDeclarationD.StdpurchasesVat;
                 VATDeclarationData.d.ImportspaidVat = vATDeclarationD.ImportspaidVat;
                 VATDeclarationData.d.ImportsaccVat = vATDeclarationD.ImportsaccVat;
-                VATDeclarationData.d.TotalpurchaseVat = vATDeclarationD.TotalpurchaseVat;
+                VATDeclarationData.d.TotalpurchaseVat = vATDeclarationD.TotalpurchaseVat; 
                 VATDeclarationData.d.TotaldueVat = vATDeclarationD.TotaldueVat;
                 VATDeclarationData.d.Preperiodcorr = vATDeclarationD.Preperiodcorr;
                 VATDeclarationData.d.CreditVat = vATDeclarationD.CreditVat;
@@ -5594,5 +5614,113 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             return iSValiedNumber;
         }
 
+        public void gotoSuccessPage()
+        {
+            _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationData);
+        }
+        public async Task DoValidatePayment(string fbNum)
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = "";
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+                    PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+
+
+                    if (PaymentData != null && PaymentData.d != null)
+                    {
+
+                        if (PaymentData.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = PaymentData.d.Guid;
+
+                        }
+                        
+                        var VatAmount = NetdueVat.Replace(",", "");
+                        if (String.IsNullOrEmpty(VatAmount) || Double.Parse(VatAmount) == 0)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
+                        }
+                        else if (!String.IsNullOrEmpty(VatAmount) && Double.Parse(VatAmount) > 20000)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
+                        }
+                        else
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
+                        }
+
+                    }
+
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public void MadaPaymentSelected()
+        {
+
+            Device.BeginInvokeOnMainThread(async () => {
+
+                _navigationService.NavigateTo(App.PaymentProcessWebview);
+                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+            });
+
+        }
+
+        public async Task ApplePaySelected()
+        {
+
+
+        }
+
+        public async Task SadadPaymentSelected()
+        {
+
+            _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationData);
+
+        }
     }
 }
