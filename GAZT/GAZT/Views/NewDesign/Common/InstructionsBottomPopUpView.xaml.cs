@@ -128,5 +128,10 @@ namespace EGAZT.Views.NewDesign
         {
             _viewModel.EnableCheckboxContinue();
         }
+
+        private void CheckboxCustom_CheckChanged(object sender, bool e)
+        {
+            _viewModel.EnableCheckboxContinue();
+        }
     }
 }

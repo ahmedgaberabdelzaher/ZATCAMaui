@@ -10,6 +10,7 @@
                  xmlns:ResourceManager="clr-namespace:EGAZT"
                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                  xmlns:custom="clr-namespace:GAZT"
+                 xmlns:custom1="clr-namespace:GAZT.CustomControl"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                  CloseWhenBackgroundIsClicked="False"
@@ -111,13 +112,13 @@
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsInstuctionsChecked}" IsEnabled="{Binding IsCheckboxEditable}">
-                                <CheckBox.Triggers>
+                            <custom1:CheckboxCustom Grid.Column="0"  VerticalOptions="CenterAndExpand" CheckChanged="CheckboxCustom_CheckChanged" IsChecked="{Binding IsInstuctionsChecked}" IsEnabled="{Binding IsCheckboxEditable}">
+                                <!--<CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Value="false">
                                         <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
                                     </DataTrigger>
-                                </CheckBox.Triggers>
-                            </CheckBox>
+                                </CheckBox.Triggers>-->
+                            </custom1:CheckboxCustom>
                             <custom:CustomLabel Grid.Column="1" Text="{Binding CheckBoxDescription}" Style="{StaticResource GAZTMicroMediumGrayLabel}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                         </Grid>
 
@@ -187,13 +188,13 @@
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsTermsChecked}" IsEnabled="{Binding IsCheckboxEditable}">
-                                <CheckBox.Triggers>
+                            <custom1:CheckboxCustom Grid.Column="0"  VerticalOptions="CenterAndExpand" CheckChanged="CheckboxCustom_CheckChanged" IsChecked="{Binding IsTermsChecked}" IsEnabled="{Binding IsCheckboxEditable}">
+                                <!--<custom1:CheckboxCustom.Triggers>
                                     <DataTrigger TargetType="CheckBox" Value="false">
                                         <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
                                     </DataTrigger>
-                                </CheckBox.Triggers>
-                            </CheckBox>
+                                </custom1:CheckboxCustom.Triggers>-->
+                            </custom1:CheckboxCustom>
                             <custom:CustomLabel Grid.Column="1" Text="{Binding CheckBoxDescription}" Style="{StaticResource GAZTMicroMediumGrayLabel}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
                         </Grid>
 

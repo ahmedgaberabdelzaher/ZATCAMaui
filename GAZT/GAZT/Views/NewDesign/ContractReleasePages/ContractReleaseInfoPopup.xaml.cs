@@ -17,7 +17,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         {
             InitializeComponent();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-            ChangeAeroIcon();
+            //ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.ContractReleasePageView;
