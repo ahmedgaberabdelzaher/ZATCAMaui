@@ -170,7 +170,6 @@
 
                             <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0" IsVisible="{Binding IfnotRegInVATAndZakat}">
 
-                                
                                 <cards:SfCardView HasShadow="False" BackgroundColor="White" CornerRadius="10" Margin="15,15,15,10">
 
                                     <StackLayout VerticalOptions="Start" Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" >
@@ -182,50 +181,77 @@
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </StackLayout>
+                                        <Grid>
+                                           
+                                            <listView:SfListView HeightRequest="{Binding LastTransactionsListHeight}" ItemsSource="{Binding AccountStatementsList}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" Margin="0,10,0,0" >
 
-                                        <listView:SfListView HeightRequest="{Binding LastTransactionsListHeight}" ItemsSource="{Binding AccountStatementsList}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" Margin="0,10,0,0" >
+                                                <listView:SfListView.ItemTemplate>
+                                                    <DataTemplate>
 
-                                            <listView:SfListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    
-                                                    <cards:SfCardView CornerRadius="16" Margin="3" HeightRequest="65">
+                                                        <cards:SfCardView CornerRadius="16" Margin="3" HeightRequest="65">
 
                                                             <StackLayout Spacing="8" Margin="10" Orientation="Vertical">
-                                                            <Grid HorizontalOptions="FillAndExpand">
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                                </Grid.ColumnDefinitions>
+                                                                <Grid HorizontalOptions="FillAndExpand">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                    </Grid.ColumnDefinitions>
 
-                                                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                                                                    <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
 
-                                                                    <custom:CustomLabel Text="{Binding TaxtypeDesc}" Style="{StaticResource 
+                                                                        <custom:CustomLabel Text="{Binding TaxtypeDesc}" 
+                                                                                            Style="{StaticResource 
                                                                         BodyLabelBlackMedium}" Margin="0,-5,0,-5"></custom:CustomLabel>
-                                                                    <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding FormattedBldat2}" 
+                                                                        <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding 
+                                                                            FormattedBldat2}" 
                                                                                         Style="{StaticResource 
                                                                         CaptionLabelBlack}"></custom:CustomLabel>
 
-                                                        </StackLayout>
-                                                                <cards:SfCardView Grid.Row="0" Grid.Column="1"  HasShadow="False" 
+                                                                    </StackLayout>
+                                                                    <cards:SfCardView Grid.Row="0" Grid.Column="1"  HasShadow="False" 
                                                                                   BackgroundColor="{Binding StatusBG}" CornerRadius="14" 
-                                                                                  Padding="10,3,10,3" >
-                                                                    <Label 
+                                                                                  Padding="10,0,10,0" >
+                                                                        <Label 
                                                                         VerticalOptions="CenterAndExpand" 
-                                                                        Text="{Binding Betrh,Converter={StaticResource 
-                                                                        commaSeparatorConverter}}" Style="{StaticResource 
+                                                                       Style="{StaticResource 
                                                                         CaptionLabelBlack}">
-                                                                        
-                                                                    </Label>
-                                                                </cards:SfCardView>
-                                                            </Grid>
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span  Text="{Binding Betrh,Converter={StaticResource 
+                                                                        commaSeparatorConverter}}" ></Span>
+                                                                                    <Span Text=" "></Span>
+                                                                                    <Span Text="{x:Static 
+                                                                                        ResourceManager:AppResources.ZSAR}"></Span>
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
 
-                                                        </StackLayout>
+                                                                        </Label>
+                                                                    </cards:SfCardView>
+                                                                </Grid>
+
+                                                            </StackLayout>
                                                         </cards:SfCardView>
-                                                    
-                                                </DataTemplate>
-                                            </listView:SfListView.ItemTemplate>
+
+                                                    </DataTemplate>
+                                                </listView:SfListView.ItemTemplate>
+
+                                            </listView:SfListView>
                                             
-                                        </listView:SfListView>
+                                            <Grid IsVisible="{Binding IsAccountsStatementLoading}">
+
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
+                                                             Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" 
+                                                             Padding="15,15">
+                                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                                        <busyindicator:SfBusyIndicator 
+                                                            EnableAnimation="True" AnimationType="SingleCircle"
+                                                            HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                                            IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom"
+                                                            ViewBoxHeight="70" TextColor="#d99a29"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Grid>
+                                        </Grid>
                                         <!-- <StackLayout Orientation="Vertical" Margin="0,0,0,10"
                                          HorizontalOptions="StartAndExpand" Spacing="-5">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASAccountStatementTaxType}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="StartAndExpand">
@@ -910,18 +936,18 @@
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
-                        <StackLayout Grid.Column="1" BackgroundColor="Transparent" Grid.Row="0" IsVisible="False">
+                        <StackLayout Grid.Column="1" BackgroundColor="Transparent" Grid.Row="0" >
                             
 
                             <Image Source="details.png" VerticalOptions="CenterAndExpand">
                             </Image>
-                            <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
+                           <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>
                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding AccountStatementVisible}" Value="True">
                                         <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
                                     </DataTrigger>
                                 </yummy:PancakeView.Triggers>
-                            </yummy:PancakeView>
+                            </yummy:PancakeView> -->
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnAccountStatementsClicked"/>
                             </StackLayout.GestureRecognizers>
@@ -940,18 +966,18 @@
                                 Clicked="OnQuickActionClicked"/>
                         </StackLayout>
 
-                        <StackLayout Grid.Column="3" BackgroundColor="Transparent" Grid.Row="0" IsVisible="False">
+                        <StackLayout Grid.Column="3" BackgroundColor="Transparent" Grid.Row="0" >
                            
 
                             <Image Source="ColorChat.png" VerticalOptions="CenterAndExpand">
                             </Image>
-                            <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
+                           <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>
                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding LiveChatVisible}" Value="True">
                                         <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
                                     </DataTrigger>
                                 </yummy:PancakeView.Triggers>
-                            </yummy:PancakeView>
+                            </yummy:PancakeView> -->
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnLiveChatClicked"/>
                             </StackLayout.GestureRecognizers>

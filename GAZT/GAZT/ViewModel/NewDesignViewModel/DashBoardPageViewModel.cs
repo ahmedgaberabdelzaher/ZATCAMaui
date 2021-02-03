@@ -243,6 +243,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Public Properties
 
+
+        private bool _IsAccountsStatementLoading = true;
+        public bool IsAccountsStatementLoading
+        {
+            get
+            {
+                return _IsAccountsStatementLoading;
+            }
+            set
+            {
+                _IsAccountsStatementLoading = value;
+                RaisePropertyChanged("IsAccountsStatementLoading");
+            }
+        }
+
         private string _appVersion = App.AppVersion;
         public string AppVersion
         {
@@ -1388,6 +1403,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private async Task GetAccountStatments()
         {
+            IsAccountsStatementLoading = true;
             TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
             HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A");
 
@@ -1410,6 +1426,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 LastTransactionsListHeight = 75;
             }
+            IsAccountsStatementLoading = false;
             //Device.BeginInvokeOnMainThread(() =>
             //{
             //    foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
