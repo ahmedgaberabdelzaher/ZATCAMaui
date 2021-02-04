@@ -69,7 +69,14 @@ namespace GAZT.Droid
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessCoarseLocation }, 0);
             }
 
-            App.InitializeAppDynamics();
+            var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
+            config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+
+            AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
+
+            config.EnableAggregateExceptionReporting = true;
+            config.CollectorURL = "https://eum.gazt.gov.sa";
+            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
 
             PackageInfo info = this.PackageManager.GetPackageInfo(this.PackageName, 0);
             App.AppVersion = info.VersionName;
@@ -150,46 +157,22 @@ namespace GAZT.Droid
         protected override void OnResume()
         {
             base.OnResume();
-            //App.IsAppRunningInBackground = false;
-            //App.ResetAndContinueSession();
         }
 
         protected override void OnStop()
         {
-            //if (App.IsLoginPageVisible() == false)
-            //{
-            //    App.ShouldStopTimer = false;
-            //    App.DoesLoginNeedToBeRefreshed = false;
-            //    App.StartTimerForBackground(0, 5, 0);
-            //}
-            //else
-            //{
-            //    App.ShouldStopLoginRefreshTimer = false;
-            //    App.StartTimerForLoginRefresh(0, 3, 0);
-            //}
 
             base.OnStop();
         }
 
         protected override void OnRestart()
         {
-            //if (App.IsLoginPageVisible() == false)
-            //{
-            //    App.ShouldStopTimer = true;
-            //}
-            //else
-            //{
-            //    App.ShouldStopLoginRefreshTimer = true;
-            //}
-
             base.OnRestart();
         }
 
         protected override void OnPause()
         {
             base.OnPause();
-            //App.IsAppRunningInBackground = true;
-            //App.ResetAndContinueSession();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -213,89 +196,7 @@ namespace GAZT.Droid
 
         public override void OnBackPressed()
         {
-            if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
-            {
-                // Do something if there are some pages in the `PopupStack`
-            }
-            else
-            {
-                // Do something if there are not any pages in the `PopupStack`
-            }
             App.OnBackPressed();
         }
-
-        //public static bool ShouldStopLoginRefreshTimer = false;
-        //public static bool InvalidateTimer = false;
-
-        //public static void StartTimerForLoginRefresh(int h, int m, int sec)
-        //{
-        //    int hour = h;
-        //    int mins = m;
-        //    int counter = sec;
-
-        //    Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
-        //    {
-        //        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-        //        {
-        //            counter = counter - 1;
-        //            if (counter < 0)
-        //            {
-        //                counter = 59;
-        //                mins = mins - 1;
-        //                if (mins < 0)
-        //                {
-        //                    mins = 59;
-        //                    hour = hour - 1;
-        //                    if (hour < 0)
-        //                    {
-        //                        hour = 0;
-        //                        mins = 0;
-        //                        counter = 0;
-        //                    }
-        //                }
-        //            }
-
-
-        //            // LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
-        //        });
-
-        //        if (ShouldStopLoginRefreshTimer == true)
-        //        {
-        //            return false;
-        //        }
-
-        //        if(InvalidateTimer == true)
-        //        {
-
-        //            InvalidateTimer = false;
-        //            return false;
-        //        }
-
-        //        if (hour == 0 && mins == 0 && counter == 0)
-        //        {
-        //            App.IsLoginPageRefreshed = true;
-        //            App.HandleSessionTimeout();
-
-        //            mins = m;
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return true;
-        //        }
-        //    });
-        //}
-
-        //rohith-login
-
-        //public void stopHandler()
-        //{
-        //    handler.RemoveCallbacks(r);
-        //}
-
-        //public void startHandler()
-        //{
-        //    handler.PostDelayed(r, App.IdleTimeToLogout * 50);
-        //}
     }
 }

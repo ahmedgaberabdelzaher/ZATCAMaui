@@ -98,28 +98,6 @@ namespace GAZT.iOS
 
             LoadApplication(iosapp);
 
-            //Code for PUSH notification
-            //UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
-            //if (statusBar != null && statusBar.RespondsToSelector(new ObjCRuntime.Selector("setBackgroundColor:")))
-            //{
-            //    statusBar.BackgroundColor = UIColor.Green;// //Color.FromHex("#7f6550").ToUIColor(); // change to your desired color 
-            //}
-
-            //if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-            //{
-            //    var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, new NSSet());
-            //    UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
-            //    UIApplication.SharedApplication.RegisterForRemoteNotifications();
-            //}
-            //else
-            //{
-            //    UIRemoteNotificationType notificationType = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-            //    UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationType);
-            //}
-
-
-           
-
             return base.FinishedLaunching(app, options);
         }
 
@@ -141,15 +119,11 @@ namespace GAZT.iOS
         #endregion
         public override void OnActivated(UIApplication application)
         {
-            //App.IsAppRunningInBackground = false;
-            //App.ResetAndContinueSession();
             Console.WriteLine("OnActivated called, App is active.");
         }
 
         public override void WillEnterForeground(UIApplication application)
         {
-            //App.IsAppRunningInBackground = false;
-            //App.ResetAndContinueSession();
 
             Console.WriteLine("App will enter foreground");
         }
@@ -161,8 +135,6 @@ namespace GAZT.iOS
 
         public override void DidEnterBackground(UIApplication application)
         {
-            //App.IsAppRunningInBackground = true;
-            //App.ResetAndContinueSession();
         }
 
         // not guaranteed that this will run

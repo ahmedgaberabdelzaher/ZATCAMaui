@@ -14,7 +14,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 using GAZT.Manager;
 using System.Linq;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
@@ -459,16 +458,7 @@ namespace EGAZT
             });
           
             InitializeAppDynamics();
-            //DisplayCrashReport();
-
-            ////Thread.Sleep(60000);
-
-            //var a = 10;
-            //var b = 0;
-            //var c = a / b;
         }
-
-
 
         public static void CreateClientHandler()
         {
@@ -659,9 +649,6 @@ namespace EGAZT
         protected override void OnSleep()
         {
             TimeAtSleep = DateTime.Now;
-
-            //TimeAtSleep = dt.ToLongTimeString();
-            // Handle when your app sleeps
         }
 
         protected override void OnResume()
@@ -677,16 +664,14 @@ namespace EGAZT
 
         public static void InitializeAppDynamics()
         {
-            //var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
-            //config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+            var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
+            config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
 
-            //AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
+            AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
 
-            //config.EnableAggregateExceptionReporting = true;
-            //config.CollectorURL = "https://eum.gazt.gov.sa";
-            //AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
-
-            
+            config.EnableAggregateExceptionReporting = true;
+            config.CollectorURL = "https://eum.gazt.gov.sa";
+            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
 
         
