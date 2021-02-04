@@ -19,6 +19,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
     public partial class NewTaxEvasionFormPageView : ContentPage
     {
         NewTaxEvasionFormPageViewModel viewModel;
+
         public NewTaxEvasionFormPageView()
         {
             InitializeComponent();
