@@ -1110,27 +1110,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 return;
             }
 
-            //VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
-            //VatNewReqSummaryData.Confirmfg = "";
-            //VatNewReqSummaryData.TcFg = "X";
-            //if (string.IsNullOrEmpty(VatRefundsDisplayDataModel.RefundTp))
-            //{
-            //    if (App.IsArabic)
-            //    {
-            //        VatNewReqSummaryData.RefundTp = "طلب إسترداد";
-
-            //    }
-            //    else
-            //    {
-            //        VatNewReqSummaryData.RefundTp = "Refund Request";
-            //    }
-            //}
-
             try
             {
-               await Application.Current.MainPage.Navigation.PushAsync(new VATRefundDetailsPageView(VatRefundsDisplayDataModel));
+                await Application.Current.MainPage.Navigation.PushAsync(new VATRefundDetailsPageView(VatRefundsDisplayDataModel));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

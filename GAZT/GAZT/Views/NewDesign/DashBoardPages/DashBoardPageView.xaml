@@ -492,7 +492,7 @@
                                     <StackLayout x:Name="ifUserNotRegisteredtoZakatAndVAT" Spacing="20" IsVisible="{Binding IfnotRegInVATAndZakat}" >
                                         <StackLayout Orientation="Horizontal" Spacing="12">
                                             <Image Source="individual_32White.png" Style="{StaticResource SmallIcon}"/>
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDNewProfile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDNewProfile}" Margin="5,0,5,0"  Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Label_MyProfile_Tapped"/>
                                             </StackLayout.GestureRecognizers>

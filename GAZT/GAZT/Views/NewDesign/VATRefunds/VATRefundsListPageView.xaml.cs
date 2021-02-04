@@ -112,7 +112,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 else
                 {
                     viewModel.VatRefundsListResultModel.IsEditable = false;
-                    viewModel._navigationService.NavigateTo(App.VATRefundDetailsPageView, viewModel.VatRefundsListResultModel);
+                    Navigation.PushAsync(new VATRefundDetailsPageView(viewModel.VatRefundsListResultModel));
                 }
 
                 var view = sender as SfListView;
