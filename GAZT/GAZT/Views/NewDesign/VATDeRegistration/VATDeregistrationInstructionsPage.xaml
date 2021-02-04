@@ -7,9 +7,9 @@
                   xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                   xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
                   xmlns:local="clr-namespace:EGAZT.CustomControl"
-                          xmlns:ResourceManager="clr-namespace:EGAZT"
-                               xmlns:custom2="clr-namespace:EGAZT"
-                           xmlns:FontImage="clr-namespace:MVP.FontIcons"
+                  xmlns:ResourceManager="clr-namespace:EGAZT"
+                  xmlns:custom2="clr-namespace:EGAZT"
+                  xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:custom1="clr-namespace:GAZT.CustomControl"
                   x:Class="EGAZT.Views.NewDesign.VATDeRegistration.VATDeregistrationInstructionsPage" NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -41,20 +41,32 @@
                        </StackLayout>
                 </StackLayout>
             </border:SfBorder>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"> 
-                <CheckBox x:Name="chkDeclaration" Color="{StaticResource NeutralGreay}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionChecked}">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+ <custom1:CheckboxCustom  Grid.Row="0" Grid.Column="0" IsChecked="{Binding IsInstructionChecked}" 
+                                                                             Style="{StaticResource CheckboxHeightWidth32}"/>
+         
+
+                <!--<CheckBox x:Name="chkDeclaration" Color="{StaticResource NeutralGreay}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionChecked}">
                     <CheckBox.Triggers>
                         <DataTrigger TargetType="CheckBox"  Value="false">
                             <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
                         </DataTrigger>
                     </CheckBox.Triggers>
-                </CheckBox>
-                <custom:CustomLabel Margin="5,10,0,15"  Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                </CheckBox>-->
+                <custom:CustomLabel Margin="5,10,0,15"  Style="{DynamicResource IsInstructionCheckedStyle}" >
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}"  />
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
+                      <custom:CustomLabel.Triggers>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsInstructionChecked}" Value="True">
+                                            <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsInstructionChecked}" Value="False">
+                                            <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
+                                        </DataTrigger>
+                                    </custom:CustomLabel.Triggers>
                 </custom:CustomLabel>
            </StackLayout>
            <buttons:SfButton Grid.ColumnSpan="2" Margin="0,24,0,24" IsEnabled="{Binding IsContinueButtonEnable}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" x:Name="btnVATDeregistration" Command="{Binding VATDeregistrationClicked}" Text="{x:Static ResourceManager:AppResources.VATDeregistration}"

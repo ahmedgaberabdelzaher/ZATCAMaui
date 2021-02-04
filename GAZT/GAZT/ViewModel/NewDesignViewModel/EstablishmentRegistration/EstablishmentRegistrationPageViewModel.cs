@@ -2308,7 +2308,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
                     {
-
                         return false;
                     }
                     IsSaudi = taxPayerDetails?.Tpnationality == "SAUDI";

@@ -11,6 +11,7 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATRefunds
@@ -63,6 +64,11 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             string message = string.Empty;
             ChangeArrowDirection();
             Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>

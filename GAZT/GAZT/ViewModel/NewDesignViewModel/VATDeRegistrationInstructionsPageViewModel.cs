@@ -41,6 +41,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                //MessagingCenter.Send<VATDeRegistrationInstructionsPageViewModel, bool>(this, "IsInstructionChecked", value);
+
                 if (_isInstructionChecked == value) return;
 
                 _isInstructionChecked = value;

@@ -6,7 +6,8 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
              xmlns:customcontrol="clr-namespace:GAZT.CustomControl" x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundsListPageView"
              xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:local="clr-namespace:EGAZT.Helper" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" BackgroundImageSource="partials_background.png" NavigationPage.HasNavigationBar="False">
      <ContentPage.Resources>

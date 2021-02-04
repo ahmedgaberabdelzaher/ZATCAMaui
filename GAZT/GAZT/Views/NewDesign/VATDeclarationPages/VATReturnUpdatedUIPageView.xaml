@@ -39,16 +39,6 @@
                 <Setter Property="CornerRadius" Value="5"/>
             </Style>
 
-            <!--<Style TargetType="Frame" x:Key="circleFrame">
-                <Setter Property="BackgroundColor" Value="AliceBlue"/>
-                <Setter Property="Padding" Value="10"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="CornerRadius" Value="15"/>
-                <Setter Property="HasShadow" Value="False"/>
-                <Setter Property="HeightRequest" Value="10"/>
-                <Setter Property="WidthRequest" Value="10"/>
-            </Style>-->
-
             <Style TargetType="Frame" x:Key="circleFrame">
                 <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}"/>
                 <Setter Property="CornerRadius" Value="25"/>
@@ -150,16 +140,7 @@
                             <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnMoreClicked}"/>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <!--<Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
-                        </Label>-->
-                    <!--                        <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" TextColor="White" Text="{StaticResource Close}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer  Tapped="onMoreOptionClicked"></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
-                        </Label>-->
+                  
                 </Grid>
 
                 <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{TemplateBinding BindingContext.IsNewLoading}">
@@ -187,9 +168,9 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <StackLayout  HorizontalOptions="FillAndExpand" Grid.Row="1" BackgroundColor="White" Margin="15,16,15,0">
-                    <ScrollView  VerticalScrollBarVisibility="Never" BackgroundColor="White">
-                        <StackLayout BackgroundColor="White">
+                <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Margin="15,16,15,0">
+                    <ScrollView  VerticalScrollBarVisibility="Never" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                        <StackLayout BackgroundColor="White" VerticalOptions="StartAndExpand">
                             <Label Text="{x:Static custom2:AppResources.ZVatReadInstructions}" BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}"/>
 
                             <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionLabelGrey}">
@@ -235,23 +216,10 @@
                                 </custom:CustomLabel.GestureRecognizers>
                             </custom:CustomLabel>
 
-
-
-                            <!-- <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}">
-                    <CheckBox.Triggers>
-                        <DataTrigger TargetType="CheckBox"  Value="false">
-                            <Setter Property="Color" Value="#ff0000" />
-                        </DataTrigger>
-                    </CheckBox.Triggers>
-                </CheckBox>-->
                             <StackLayout Orientation="Horizontal">
 
                                 <custom1:CheckboxCustom  x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
-                                    <!--<custom1:CheckboxCustom.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
-                                            <Setter Property="Color" Value="#ff0000" />
-                                        </DataTrigger>
-                                    </custom1:CheckboxCustom.Triggers>-->
+                                  
                                 </custom1:CheckboxCustom >
 
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
@@ -262,35 +230,24 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                             </StackLayout>
+                             <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="EndAndExpand" HorizontalOptions="Center"  Padding="0,0,0,40">
+
+                                <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                                <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                                <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                                <buttons:SfButton  Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                                <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                            </StackLayout>
+                          
                         </StackLayout>
+
                     </ScrollView>
 
-                    <!--<StackLayout Orientation="Horizontal">
-                        <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
-                            <CheckBox.Triggers>
-                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
-                                    <Setter Property="Color" Value="#ff0000" />
-                                </DataTrigger>
-                            </CheckBox.Triggers>
-                        </CheckBox>
-                        <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
-                            <custom:CustomLabel.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
-                                    <Span Text="&#160;"/>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
-                                </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                            <custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnInCTapped"/>
-                            </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
-                    </StackLayout>-->
-
-                    <!---->
-
-
-                    <!---->
                 </StackLayout>
 
 
@@ -338,7 +295,19 @@
                           
                             <!--Total VAT Ends-->
                         </StackLayout>
+                         <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="End" HorizontalOptions="Center"  Padding="0,0,0,40">
 
+                            <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                            <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                            <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                            <buttons:SfButton  Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                            <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                        </StackLayout>
 
                     </StackLayout>
                 </ScrollView>
@@ -357,6 +326,7 @@
 
                 <!--Views On Hold-->
             </Grid>
+
 
             <Grid Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.Sales}}" RowSpacing="0"  x:Name="SalesSection">
                 <Grid.RowDefinitions>
@@ -392,9 +362,7 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
-                                            <!--<RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>-->
+                                           
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="50*"/>
@@ -586,10 +554,7 @@
                                                 </DataTrigger>
                                             </inputLayout:SfTextInputLayout.Triggers>
                                         </inputLayout:SfTextInputLayout>
-
-                                        <!---->
-                                        <!--<StackLayout Orientation="Horizontal" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">-->
-                                        <Grid Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="2">
+                                        <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
@@ -605,8 +570,8 @@
                                             </Image>
                                         </Grid>
                                         <!--</StackLayout>-->
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,-10,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,-10,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
 
 
                                         <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand" OutlineCornerRadius="8" Margin="10,0,10,0"
@@ -787,12 +752,7 @@
                                             <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
                                         </StackLayout>
 
-                                        <!--<custom:CustomLabel Text="Amount" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="0" ></custom:CustomLabel>
-                        <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="0" ></custom:CustomLabel>
-
-                        <custom:CustomLabel Text="Adjustment" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="1" ></custom:CustomLabel>
-                        <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="1" ></custom:CustomLabel>-->
-
+                                       
                                         <yummy:PancakeView  Grid.Row="21" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#E7EFED" Padding="0,0,0,0"  Margin="0,0,0,0">
                                             <StackLayout  Padding="0,0,0,8" Margin="10,0,10,0">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZVATAmount}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
@@ -807,26 +767,31 @@
 
                                 </StackLayout>
                             </StackLayout>
+                             <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="FillAndExpand" Padding="0,0,0,40">
+
+                <buttons:SfButton  x:Name="btnamend"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                <buttons:SfButton x:Name="btnprimary"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                <buttons:SfButton  Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+            </StackLayout>
                         </StackLayout>
+
                     </ScrollView>
                 </StackLayout>
                 <StackLayout Grid.Row="0" Margin="0,-17,0,0" BackgroundColor="White"  Spacing="0">
                     <StackLayout Margin="15,0,15,0">
                         <Label  Text="{x:Static custom2:AppResources.ZVatOnSales}" VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" StyleId="SingleLabel">
-                            <!--<Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static custom2:AppResources.ZVatOnSales}"   />
-                                </FormattedString>
-                            </Label.FormattedText>-->
+                         
                         </Label>
-                        <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}"  Style="{StaticResource PageTitleBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"  />-->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     </StackLayout>
-                    <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                 </StackLayout>
-                <!--<StackLayout Grid.Row="1" BackgroundColor="White">
-                    
-                </StackLayout>-->
             </Grid>
 
 
@@ -870,23 +835,12 @@
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
-                                        <!--<RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>-->
+                                       
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="50*"/>
                                         <ColumnDefinition Width="50*"/>
                                     </Grid.ColumnDefinitions>
-                                    <!--<StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}">-->
                                     <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -902,8 +856,6 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                    <!--</StackLayout>-->
-
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></custom:CustomLabel>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="1"></custom:CustomLabel>
@@ -947,7 +899,6 @@
 
                                     </inputLayout:SfTextInputLayout>
 
-                                    <!--<StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}">-->
                                     <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -963,7 +914,6 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                    <!--</StackLayout>-->
 
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></custom:CustomLabel>
@@ -1009,7 +959,6 @@
                                     </inputLayout:SfTextInputLayout>
 
 
-                                    <!--<StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}">-->
                                     <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -1025,8 +974,6 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                    <!--</StackLayout>-->
-
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></custom:CustomLabel>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></custom:CustomLabel>
@@ -1071,7 +1018,6 @@
                                     </inputLayout:SfTextInputLayout>
 
 
-                                    <!--<StackLayout Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}" >-->
                                     <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -1087,7 +1033,6 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                    <!--</StackLayout>-->
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}"  Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}"  Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
 
@@ -1129,7 +1074,6 @@
                                     </inputLayout:SfTextInputLayout>
 
 
-                                    <!--<StackLayout Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}">-->
                                     <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -1145,7 +1089,6 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                    <!--</StackLayout>-->
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
 
@@ -1186,7 +1129,6 @@
 
                                     </inputLayout:SfTextInputLayout>
 
-                                    <!--<StackLayout Orientation="Horizontal" Grid.Row="9" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}">-->
                                     <Grid Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -1202,7 +1144,6 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                    <!--</StackLayout>-->
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></custom:CustomLabel>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></custom:CustomLabel>
 
@@ -1243,7 +1184,6 @@
 
                                     </inputLayout:SfTextInputLayout>
 
-                                    <!--<StackLayout Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}">-->
                                     <Grid Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -1259,7 +1199,6 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                    <!--</StackLayout>-->
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></custom:CustomLabel>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></custom:CustomLabel>
 
@@ -1300,7 +1239,6 @@
 
                                     </inputLayout:SfTextInputLayout>
 
-                                    <!--<StackLayout Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}">-->
                                     <Grid Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -1316,7 +1254,6 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                    <!--</StackLayout>-->
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></custom:CustomLabel>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></custom:CustomLabel>
 
@@ -1357,7 +1294,6 @@
 
                                     </inputLayout:SfTextInputLayout>
 
-                                    <!--<StackLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}">-->
                                     <Grid Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -1373,7 +1309,6 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                    <!--</StackLayout>-->
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="16" Grid.Column="0"></custom:CustomLabel>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="1"></custom:CustomLabel>
 
@@ -1520,13 +1455,6 @@
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9" ></custom:CustomLabel>
                                         <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAdj, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
                                     </StackLayout>
-
-                                    <!--<custom:CustomLabel Text="Amount" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="0" ></custom:CustomLabel>
-                        <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="0" ></custom:CustomLabel>
-
-                        <custom:CustomLabel Text="Adjustment" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="1" ></custom:CustomLabel>
-                        <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="1" ></custom:CustomLabel>-->
-
                                     <yummy:PancakeView  Grid.Row="27" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#E7EFED" Padding="0,0,0,0"  Margin="0,0,0,0">
                                         <StackLayout  Padding="0,0,0,8" Margin="10,0,10,0">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVatAmountonPurchase}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
@@ -1541,33 +1469,30 @@
 
                             </StackLayout>
                         </StackLayout>
+                        <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="FillAndExpand" Padding="0,0,0,40">
 
+                <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                <buttons:SfButton  Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+            </StackLayout>
                     </StackLayout>
                 </ScrollView>
                 <StackLayout Grid.Row="0" BackgroundColor="White" Padding="0,0,0,8"  Spacing="0">
                     <StackLayout Margin="15,0,15,0">
                         <Label Text="{x:Static custom2:AppResources.ZZZZVATOnPurchasesForSummarypage}"   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" StyleId="SingleLabel">
-                            <!--<Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static custom2:AppResources.ZZZZVATOnPurchasesForSummarypage}"   />
-                                </FormattedString>
-                            </Label.FormattedText>-->
+                           
                         </Label>
-                        <!--<custom:CustomLabel  Style="{StaticResource PageTitleBlack}">
-                            <custom:CustomLabel.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATOnPurchasesForSummarypage}"
-                          LineHeight="4.0" />
-                                </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>-->
+                       
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
-                        <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                     </StackLayout>
                 </StackLayout>
-                <!--<StackLayout Grid.Row="1" BackgroundColor="White">
-                    
-                </StackLayout>-->
             </Grid>
 
 
@@ -1601,15 +1526,11 @@
                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" Style="{StaticResource CaptionLabelGrey}" />
 
                                 <StackLayout HorizontalOptions="Start" WidthRequest="150"  Padding="0,5,0,5" VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchVisible}">
-                                     <!--<syncfusion:SfCheckBox x:Name="checkBox" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" CheckedColor="{StaticResource Primary}" UncheckedColor="{StaticResource Primary}"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" />-->
                                     <custom1:CheckboxCustom  IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Style="{StaticResource CheckboxHeightWidth32}"
                                                                                VerticalOptions="CenterAndExpand" />
                                      
 
-                                    <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource CaptionLabelBlack}"  Margin="0,5,0,5" Padding="0"/>
-
-                                    <!--<Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Margin="0,5,0,5"  />-->
-                                   
+                                    <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource CaptionLabelBlack}"  Margin="0,5,0,5" Padding="0"/>                                   
                                 </StackLayout>
 
                                 <inputLayout:SfTextInputLayout  InputViewPadding="16,0,16,0" Margin="10,0,10,0" Style="{StaticResource TextInputLayout}" HorizontalOptions="FillAndExpand" OutlineCornerRadius="8"
@@ -1651,13 +1572,8 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Text="{x:Static custom2:AppResources.ZVatNetdue}"   Grid.Column="0" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" StyleId="SingleLabel">
-                                        <!--<Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"   />
-                                            </FormattedString>
-                                        </Label.FormattedText>-->
+                                      
                                     </Label>
-                                    <!--<custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZZNetVAT}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center"/>-->
                                     <custom:CustomLabel Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Margin="1,0,1,0" />
                                     <Image Grid.Column="2" Source="ic_vat_info" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Margin="1,0,1,0">
                                         <Image.GestureRecognizers>
@@ -1666,37 +1582,36 @@
 
                                     </Image>
                                 </Grid>
-                                <!--<StackLayout Spacing="10" Orientation="Horizontal" Padding="5,0,5,0">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNetVAT}" Style="{StaticResource BodyLabelBlack}" />
-                                    <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" />
-                                    <Image Source="ic_vat_info">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnNewVatNetdueClicked" />
-                                        </Image.GestureRecognizers>
-
-                                    </Image>
-                                </StackLayout>-->
+                              
                             </Frame>
                         </StackLayout>
+                        <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="End" HorizontalOptions="Center"  Padding="0,0,0,40">
 
+                            <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                            <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                            <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                            <buttons:SfButton  Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                            <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Spacing="0">
                     <StackLayout Margin="15,0,15,0">
                         <Label Text="{x:Static custom2:AppResources.ZVatNetdue}"    VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" StyleId="SingleLabel">
-                            <!--<Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"   />
-                                </FormattedString>
-                            </Label.FormattedText>-->
+                          
                         </Label>
-                        <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTotalVat}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />-->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>
+
 
             <Grid Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.Summery}}"  x:Name="SummerySection" RowSpacing="0" >
                 <Grid.RowDefinitions>
@@ -1763,25 +1678,7 @@
                                             <custom:CustomLabel Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}" Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                         </Grid>
                                     </StackLayout>
-                                    <!--<BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                                    <custom:CustomLabel HorizontalOptions="Start" Padding="10" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
-                                        <custom:CustomLabel.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZVatNote}"  />
-                                                <Span Text="&#160;"/>
-                                                <Span Text=":"/>
-                                                <Span Text="&#160;"/>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistationFirstNote}"></Span>
-                                                <Span Text="&#160;"/>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZChageOfRegistration}" TextColor="{StaticResource Primary}" >
-                                                  
-                                                </Span>
-                                            </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                        <custom:CustomLabel.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}"/>
-                                        </custom:CustomLabel.GestureRecognizers>
-                                    </custom:CustomLabel>-->
+                                  
                                 </StackLayout>
 
                             </border:SfBorder>
@@ -1817,10 +1714,7 @@
                                                 <custom:CustomLabel Text="{Binding Perslt}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
                                         </StackLayout>
-                                        <!--<StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVATAccountNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding Fin}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>-->
+                                      
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -1833,30 +1727,6 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Fin}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
 
-                                        <!--<Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
-                                            </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatPeriodFrom}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.TaxpayerPeriodFromDate}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" MaxLines="1"/>
-                                        </Grid>
-
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
-                                            </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatPeriodTo}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.TaxpayerPeriodToDate}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" MaxLines="1"/>
-                                        </Grid>-->
-
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
@@ -1865,21 +1735,7 @@
                             <!--VAT on Sales Start-->
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
-                                    <!--<StackLayout Orientation="Horizontal" Padding="10">
-                                        <Frame Style="{StaticResource circleFrame}">
-                                            <Image Source="ic_vat_bill">
-
-                                            </Image>
-                                        </Frame>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
-                                        <custom:CustomLabel  HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsControlEnabled}" VerticalTextAlignment="Center" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
-                                            <custom:CustomLabel.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnEditSalesClicked"/>
-                                            </custom:CustomLabel.GestureRecognizers>
-                                        </custom:CustomLabel>
-                                        <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" TextColor="{StaticResource GreenLabelTextColor}"/>
-                                    </StackLayout>-->
-
+                                   
 
                                     <Grid Padding="10">
                                         <Grid.RowDefinitions>
@@ -1890,14 +1746,11 @@
                                             <ColumnDefinition Width="80*"/>
                                             <ColumnDefinition Width="20*"/>
                                         </Grid.ColumnDefinitions>
-                                        <!--<StackLayout Grid.Row="0" Grid.Column="0"  WidthRequest="25" HeightRequest="25" Spacing="0" HorizontalOptions="Start">-->
                                             <Frame Style="{StaticResource circleFrame}" Grid.Row="0" Grid.Column="0">
                                             <Image Source="ic_vat_bill">
 
                                             </Image>
                                         </Frame>
-                                        <!--</StackLayout>-->
-
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZVatOnSales}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>
 
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="2" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsControlEnabled}" VerticalTextAlignment="Center" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
@@ -1905,18 +1758,13 @@
                                                 <TapGestureRecognizer Tapped="OnEditSalesClicked"/>
                                             </custom:CustomLabel.GestureRecognizers>
                                         </custom:CustomLabel>
-                                        <!--<custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TotalsalesAmt}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>-->
-                                    </Grid>
+                                                                         </Grid>
 
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                     <StackLayout Padding="10" Spacing="10" >
-                                        <!--<StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding TotalsalesAmt}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>-->
+                                      
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -1928,10 +1776,7 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TotalsalesAmt}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
-                                        <!--<StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding TotalsalesAdj}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>-->
+                                      
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -1943,10 +1788,7 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TotalsalesAdj}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
-                                        <!--<StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding TotalsalesVat}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>-->
+                                      
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -1966,22 +1808,7 @@
                             <!--VAT on Purchases Start-->
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
-                                    <!--<StackLayout Orientation="Horizontal" Padding="10">
-                                        <Frame Style="{StaticResource circleFrame}">
-                                            <Image Source="ic_vat_bill">
-
-                                            </Image>
-                                        </Frame>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
-                                        <custom:CustomLabel  HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsControlEnabled}" VerticalTextAlignment="Center" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
-                                            <custom:CustomLabel.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnEditPurcahseClicked"/>
-                                            </custom:CustomLabel.GestureRecognizers>
-                                        </custom:CustomLabel>
-                                        --><!--<custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" TextColor="{StaticResource GreenLabelTextColor}"/>--><!--
-                                    </StackLayout>-->
-
-
+                                    
                                     <Grid Padding="10">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -1991,13 +1818,11 @@
                                             <ColumnDefinition Width="80*"/>
                                             <ColumnDefinition Width="20*"/>
                                         </Grid.ColumnDefinitions>
-                                        <!--<StackLayout Grid.Row="0" Grid.Column="0"  WidthRequest="25" HeightRequest="25" Spacing="0" HorizontalOptions="Start" >-->
                                         <Frame Style="{StaticResource circleFrame}" Grid.Row="0" Grid.Column="0">
                                                 <Image Source="ic_vat_bill">
 
                                                 </Image>
                                             </Frame>
-                                        <!--</StackLayout>-->
 
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZZVATOnPurchasesForSummarypage}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>
 
@@ -2006,17 +1831,12 @@
                                                 <TapGestureRecognizer Tapped="OnEditPurcahseClicked"/>
                                             </custom:CustomLabel.GestureRecognizers>
                                         </custom:CustomLabel>
-                                        <!--<custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TotalsalesAmt}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>-->
-                                    </Grid>
+                                                               </Grid>
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                     <StackLayout Padding="10" Spacing="10">
-                                        <!--<StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding TotalpurchaseAmt}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>-->
+                                      
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -2028,10 +1848,7 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TotalpurchaseAmt}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
-                                        <!--<StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding TotalpurchaseAdj}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>-->
+                                       
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -2043,10 +1860,7 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TotalpurchaseAdj}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
-                                        <!--<StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding TotalpurchaseVat}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>-->
+                                      
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -2072,32 +1886,15 @@
                                             </Image>
                                         </Frame>
                                         <Label  Text="{x:Static custom2:AppResources.ZVatNetdue}" VerticalTextAlignment="Center" Style="{StaticResource SectionTitleBlack}" StyleId="SingleLabel">
-                                            <!--<Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"   />
-                                                </FormattedString>
-                                            </Label.FormattedText>-->
+                                         
                                         </Label>
 
-                                        <!--<custom:CustomLabel  Style="{StaticResource SectionTitleBlack}" >
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZNetVATDueFirst}"  />
-                                                    <Span Text="("/>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZNetVATDueSecond}"/>
-                                                    <Span Text=")"/>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>-->
                                     </StackLayout>
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                     <StackLayout Padding="10" Spacing="10">
-                                        <!--<StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVATDue}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding TotaldueVat}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>-->
+                                      
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -2110,10 +1907,6 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TotaldueVat}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
 
-                                        <!--<StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZFromPreviousPeriods}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding CreditVat}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>-->
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -2125,10 +1918,6 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZZVatFromPreviousPeriod}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding CreditVat}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
-                                        <!--<StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCorrections}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding Preperiodcorr}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>-->
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -2149,7 +1938,6 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNetVatDueReclaimed}" Style="{StaticResource ValueLabelBlack}"/>-->
                                         <custom:CustomLabel Text="{Binding NetdueVat}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
@@ -2158,11 +1946,7 @@
 
                             <StackLayout Orientation="Horizontal">
                                  <custom1:CheckboxCustom x:Name="chkForDeclarationSummary" VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsSummaryCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForSummary}">
-                                    <!--<custom1:CheckboxCustom.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkForDeclarationSummary}, Path=IsChecked}" Value="false">
-                                            <Setter Property="Color" Value="#ff0000" />
-                                        </DataTrigger>
-                                    </custom1:CheckboxCustom.Triggers>-->
+                                 
                                 </custom1:CheckboxCustom>
                                 <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
                                     <custom:CustomLabel.FormattedText>
@@ -2178,10 +1962,20 @@
                                 </custom:CustomLabel>
                             </StackLayout>
 
-                            <!---->
-                            <!---->
                         </StackLayout>
+                        <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="End" HorizontalOptions="Center"  Padding="0,0,0,40">
 
+                            <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                            <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
+
+                            <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                            <buttons:SfButton  Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                            <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
+
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
 
@@ -2190,28 +1984,10 @@
                     <StackLayout Margin="15,0,15,0">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatSummary}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZReviewthebelowinformation}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
-                        <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30" />-->
                     </StackLayout>
                 </StackLayout>
             </Grid>
-
-
-
-
-
-            <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="FillAndExpand" Padding="0,0,0,40">
-
-                <buttons:SfButton  x:Name="btnamend"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
-
-                <buttons:SfButton x:Name="btnprimary"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
-
-                <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
-
-                <buttons:SfButton  Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
-
-                <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZCarriedCreditDetails}" PressedBackgroundColor="White"  Command="{Binding onCreditForwardClicked}" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsCreditForwardBtnVisible}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
-            </StackLayout>
-
+          
         </Grid>
     </ContentPage.Content>
 </ContentPage>

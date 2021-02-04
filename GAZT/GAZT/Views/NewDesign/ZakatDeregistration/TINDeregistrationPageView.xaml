@@ -176,7 +176,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                            <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                            <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.7"/>
                                         </StackLayout>
                                     </Grid>
                                 </cards:SfCardView>
@@ -194,7 +194,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Image Source="re_Tile_Background_S" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                            <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                            <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.7"/>
                                         </StackLayout>
                                     </Grid>
                                 </cards:SfCardView>
@@ -1171,8 +1171,8 @@
 
                                             <Frame BorderColor="#B1B1B1" HasShadow="False" Padding="12" HeightRequest="30" CornerRadius="15" Margin="0,10,0,0" >
                                                 <StackLayout Orientation="Horizontal">
-                                                    <custom:BorderlessEntry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                       HorizontalTextAlignment="Start" VerticalOptions="Center" Text="{Binding AttachmentName}"  />
+                                                    <custom:BorderlessEntry IsEnabled="False" Style="{StaticResource DefaultMobileEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                                       HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Text="{Binding AttachmentName}"  />
                                                     <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="90">
                                                         <Image.Source>
                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="20"
