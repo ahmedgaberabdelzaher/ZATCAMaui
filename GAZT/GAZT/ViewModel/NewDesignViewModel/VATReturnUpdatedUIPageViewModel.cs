@@ -758,8 +758,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_isDeclarationCheckedForInstruction == value) return;
-
                 _isDeclarationCheckedForInstruction = value;
                 if (_isDeclarationCheckedForInstruction == true)
                 {

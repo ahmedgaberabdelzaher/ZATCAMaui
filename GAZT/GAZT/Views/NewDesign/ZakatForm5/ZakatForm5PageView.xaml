@@ -3218,7 +3218,7 @@
 
                         <Image Grid.Row="0" Grid.Column="0" x:Name="Image_backArrow" IsVisible="{Binding IsBackStepButtonVisible}" 
                                VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeft"
-                               Style="{StaticResource BackButtonArrow}">
+                               Style="{DynamicResource BackButtonArrow}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnBackButtonClick}"/>
                             </Image.GestureRecognizers>

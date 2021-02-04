@@ -136,8 +136,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         {
                                             _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
                                         });
-
-
                                     }
                                     else
                                     {

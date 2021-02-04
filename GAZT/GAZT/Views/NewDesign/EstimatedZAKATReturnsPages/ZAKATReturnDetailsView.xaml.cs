@@ -4,6 +4,7 @@ using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
@@ -26,7 +27,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             if (AttachmentPopUpViewModel.SalesDetailList != null)
                 AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;
-           Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
             TotalVATSales.Text = "NA";
            
             ChangeAeroIcon();
@@ -56,8 +57,13 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             //date.Text = viewModel.Abrzu;
-            if(ZAKATReturnDetailsView.IsComingFromAttachmentPage == false)
+            if (ZAKATReturnDetailsView.IsComingFromAttachmentPage == false)
             {
                 await viewModel.OnPageLoad(ZAKATReturnDetailsViewModel.Fbguid);
                 viewModel.ZAKATReturnsPagName = AppResources.FORM5ReturnDetails;

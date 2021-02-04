@@ -69,7 +69,7 @@ namespace EGAZT
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
         public static string GAZTNewDesignRecoverPasswordPageView = nameof(GAZTNewDesignRecoverPasswordPageView);
-        public static string GAZTForm5PageView = "GAZTFORM5ageView";
+        public static string GAZTForm5PageView = "GAZTFORM5PageView";
         public static string TaxpayerCorrespondancePageView = "TaxpayerCorrespondancePageView";
         public static string TaxpayerCorrespondanceDetailPageView = "TaxpayerCorrespondanceDetailPageView";
         public static string NewZakatObjectionPageView = "NewZakatObjectionPageView";

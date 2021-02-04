@@ -44,6 +44,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void PopToRootPage()
         {
+            App.IsSessionExpired = false;
+
             if (App.IsSessionExpired)
             {
                 Device.BeginInvokeOnMainThread(() =>
