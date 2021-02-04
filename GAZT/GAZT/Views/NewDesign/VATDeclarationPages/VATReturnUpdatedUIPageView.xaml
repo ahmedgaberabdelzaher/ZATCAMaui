@@ -296,10 +296,14 @@
                         </DataTrigger>
                     </CheckBox.Triggers>
                 </CheckBox>-->
-                             <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal">
 
                                 <custom1:CheckboxCustom  x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
-                                  
+                                    <!--<custom1:CheckboxCustom.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
+                                            <Setter Property="Color" Value="#ff0000" />
+                                        </DataTrigger>
+                                    </custom1:CheckboxCustom.Triggers>-->
                                 </custom1:CheckboxCustom >
 
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
@@ -2202,7 +2206,7 @@
                 
                 <buttons:SfButton  x:Name="btnamend"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
-                <buttons:SfButton x:Name="btnprimary"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
+                <buttons:SfButton x:Name="btnprimary"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="True"  Style="{StaticResource PrimaryButtonStyle}"/>
 
                 <buttons:SfButton  Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="15,-10,15,0"/>
 
