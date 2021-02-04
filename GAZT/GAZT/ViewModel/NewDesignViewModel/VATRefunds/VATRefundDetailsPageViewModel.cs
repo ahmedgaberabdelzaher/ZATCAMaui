@@ -43,7 +43,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 RaisePropertyChanged("VATRefundsHeaderSet");
             }
         }
+        public bool _CBTermsAndConditionsChecked = false;
+        public bool CBTermsAndConditionsChecked
+        {
+            get
+            {
+                return _CBTermsAndConditionsChecked;
+            }
 
+            set
+            {
+                if (_CBTermsAndConditionsChecked == value) return;
+
+                _CBTermsAndConditionsChecked = value;
+                RaisePropertyChanged("CBTermsAndConditionsChecked");
+            }
+        }
+        public bool _AcknowledgementChecked = false;
+        public bool AcknowledgementChecked
+        {
+            get
+            {
+                return _AcknowledgementChecked;
+            }
+
+            set
+            {
+                if (_AcknowledgementChecked == value) return;
+
+                _AcknowledgementChecked = value;
+                RaisePropertyChanged("AcknowledgementChecked");
+            }
+        }
         private ObservableCollection<VatRefSubItemsSetResult> _vatRefundsSubItemReturnsSet { get; set; }
         public ObservableCollection<VatRefSubItemsSetResult> VATRefundsSubItemReturnsSet
         {
@@ -382,6 +413,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatNewReqSummaryData.Confirmfg = "X";
             VatNewReqSummaryData.Agrfg = "X";
             VatNewReqSummaryData.Decflg = "X";
+
 
             try
             {

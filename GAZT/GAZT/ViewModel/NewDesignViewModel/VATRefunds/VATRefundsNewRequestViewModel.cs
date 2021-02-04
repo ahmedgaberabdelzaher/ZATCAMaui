@@ -1057,6 +1057,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
         public async void ContinueBtnClicked()
         {
+            VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
+            VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
+            if (SelectedIbanData != null)
+            {
+                VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
+                VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
+            }
+            VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
+            VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
+            if (SelectedIDTypeCode != null)
+            {
+                VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
+                VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
+            }
+            VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundTpParameter;
+            
+
+            VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
+
             PopUp popUp = new PopUp();
             StringBuilder PopMsg = new StringBuilder();
 
@@ -1091,24 +1110,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 return;
             }
 
-            VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+            //VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+            //VatNewReqSummaryData.Confirmfg = "";
+            //VatNewReqSummaryData.TcFg = "X";
+            //if (string.IsNullOrEmpty(VatRefundsDisplayDataModel.RefundTp))
+            //{
+            //    if (App.IsArabic)
+            //    {
+            //        VatNewReqSummaryData.RefundTp = "طلب إسترداد";
 
-            if (string.IsNullOrEmpty(VatRefundsDisplayDataModel.RefundTp))
-            {
-                if (App.IsArabic)
-                {
-                    VatNewReqSummaryData.RefundTp = "طلب إسترداد";
-
-                }
-                else
-                {
-                    VatNewReqSummaryData.RefundTp = "Refund Request";
-                }
-            }
+            //    }
+            //    else
+            //    {
+            //        VatNewReqSummaryData.RefundTp = "Refund Request";
+            //    }
+            //}
 
             try
             {
-               await Application.Current.MainPage.Navigation.PushAsync(new VATRefundDetailsPageView(VatNewReqSummaryData));
+               await Application.Current.MainPage.Navigation.PushAsync(new VATRefundDetailsPageView(VatRefundsDisplayDataModel));
             }
             catch(Exception ex)
             {

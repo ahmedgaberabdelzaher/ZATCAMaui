@@ -2,7 +2,7 @@
 <pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:custom="clr-namespace:GAZT" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundsInstructionsPageView"  xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+                 x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundsInstructionsPageView"  xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
                  NavigationPage.HasNavigationBar="False">
      <ContentPage.Resources>
         <ResourceDictionary>
@@ -40,21 +40,34 @@
                 </StackLayout>
                 </ScrollView>
             </border:SfBorder>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"> 
-                <CheckBox x:Name="chkDeclaration" Color="{StaticResource NewDarkBlueGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionsChecked, Mode=TwoWay}">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+
+                <!--<CheckBox x:Name="chkDeclaration" Color="{StaticResource NewDarkBlueGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionsChecked, Mode=TwoWay}">
                     <CheckBox.Triggers>
                         <DataTrigger TargetType="CheckBox" Binding="{Binding IsInstructionsChecked}"  Value="false">
                             <Setter Property="Color" Value="{StaticResource NewDarkBlueGreenColor}" />
                         </DataTrigger>
                     </CheckBox.Triggers>
                     
-                </CheckBox>
+                </CheckBox>-->
+                 <custom1:CheckboxCustom  Grid.Row="0" Grid.Column="0" IsChecked="{Binding IsInstructionsChecked}" 
+                                                                             Style="{StaticResource CheckboxHeightWidth32}"/>
+         
+
                 <custom:CustomLabel  Margin="5,10,0,15" Style="{StaticResource GAZTMicroMediumGrayLabel}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}"  />
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
+                    <custom:CustomLabel.Triggers>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsInstructionsChecked}" Value="True">
+                                            <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsInstructionsChecked}" Value="False">
+                                            <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
+                                        </DataTrigger>
+                                    </custom:CustomLabel.Triggers>
                 </custom:CustomLabel>
            </StackLayout>
            <buttons:SfButton Grid.ColumnSpan="2"  Margin="0,24,0,24" IsEnabled="{Binding IsInstructionsChecked}"  x:Name="btnConfirmVATRefundInstructions" Clicked="VATRefundRequestInstructions_Tapped" Text="{x:Static ResourceManager:AppResources.VATRefundRequestTtitle}"
