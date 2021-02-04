@@ -1189,7 +1189,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             Device.BeginInvokeOnMainThread(async () => {
 
-                _navigationService.NavigateTo(App.PaymentProcessWebview);
+                _navigationService.NavigateTo(App.PaymentProcessWebview,0);
 
 
                 //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());

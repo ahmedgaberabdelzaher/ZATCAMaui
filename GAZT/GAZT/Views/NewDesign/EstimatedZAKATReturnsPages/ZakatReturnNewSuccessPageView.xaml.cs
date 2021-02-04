@@ -11,6 +11,7 @@ using EGAZT.ViewModel.NewDesignViewModel;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatReturnNewSuccessPageView : ContentPage
     {
