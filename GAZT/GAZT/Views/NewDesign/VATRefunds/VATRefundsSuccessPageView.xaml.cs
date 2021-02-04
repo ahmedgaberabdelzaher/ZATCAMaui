@@ -5,6 +5,7 @@ using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATRefunds
@@ -24,6 +25,15 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             this.BindingContext = viewModel;
             viewModel.VatNewReqSummaryData = vatRefundsSummaryData;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+        }
+
         private void SetLTR()
         {
             if (App.IsArabic)

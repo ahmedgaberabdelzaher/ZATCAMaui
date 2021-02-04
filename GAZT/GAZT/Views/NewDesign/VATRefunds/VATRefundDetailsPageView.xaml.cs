@@ -22,9 +22,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         VatRefundsListResultModel vatRefundsListResultModel;
         VatRefundDisplayDataModel vatRefundsSaveDataModel;
 
+
         public VATRefundDetailsPageView(VatRefundsListResultModel vATRefundsModel)
         {
-            InitializeComponent();
+            InitializeComponent();  
 
             viewModel = App.Locator.VATRefundDetailsPageView;
             vatRefundsListResultModel = vATRefundsModel;
@@ -37,9 +38,9 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         public VATRefundDetailsPageView(VatRefundDisplayDataModel vATRefundsSaveModel)
         {
-            InitializeComponent();
+            InitializeComponent();  
 
-            viewModel = App.Locator.VATRefundDetailsPageView;
+            viewModel = App.Locator.VATRefundDetailsPageView;   
             vatRefundsListResultModel = null;
             vatRefundsSaveDataModel = vATRefundsSaveModel;
 

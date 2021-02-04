@@ -441,7 +441,7 @@
                             </listView:SfListView>
 
                             <StackLayout Grid.Row="4" Margin="0,30">
-                                <buttons:SfButton   x:Name="btnConfirm" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" IsVisible="{Binding VatRefundsListResultModel.IsEditable}" Clicked="ConfirmButton_Tapped" Text="{x:Static ResourceManager:AppResources.Confirm}"
+                                <buttons:SfButton   x:Name="btnConfirm" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" IsVisible="{Binding VatRefundsListResultModel.IsEditable}" Clicked="ConfirmSummaryButton_Tapped" Text="{x:Static ResourceManager:AppResources.Confirm}"
                                 Style="{StaticResource PrimaryButtonStyle}"/>
                             </StackLayout>
                         </Grid>

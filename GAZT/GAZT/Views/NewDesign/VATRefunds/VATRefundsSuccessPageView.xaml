@@ -5,6 +5,8 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundsSuccessPageView"  xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background">
     <ContentPage.Resources>
         <ResourceDictionary>
