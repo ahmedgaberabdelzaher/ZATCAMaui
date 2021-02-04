@@ -296,14 +296,10 @@
                         </DataTrigger>
                     </CheckBox.Triggers>
                 </CheckBox>-->
-                            <StackLayout Orientation="Horizontal">
+                             <StackLayout Orientation="Horizontal">
 
                                 <custom1:CheckboxCustom  x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
-                                    <!--<custom1:CheckboxCustom.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
-                                            <Setter Property="Color" Value="#ff0000" />
-                                        </DataTrigger>
-                                    </custom1:CheckboxCustom.Triggers>-->
+                                  
                                 </custom1:CheckboxCustom >
 
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">

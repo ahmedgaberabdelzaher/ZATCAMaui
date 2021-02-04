@@ -316,7 +316,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isDeclarationCheckEnabled = false;
+        private bool _isDeclarationCheckEnabled = true;
         public bool IsDeclarationCheckEnabled
         {
             get
@@ -779,8 +779,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_isDeclarationCheckedForInstruction == value) return;
-
                 _isDeclarationCheckedForInstruction = value;
                 if (_isDeclarationCheckedForInstruction == true)
                 {
