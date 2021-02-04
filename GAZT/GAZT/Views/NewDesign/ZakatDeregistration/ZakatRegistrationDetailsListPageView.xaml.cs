@@ -28,12 +28,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel = App.Locator.ZakatRegistrationDetailsListPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            viewModel.PopulateZakatRegListData();
         }
 
         protected override  void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.PopulateZakatRegListData();
             try
             {
                // await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);

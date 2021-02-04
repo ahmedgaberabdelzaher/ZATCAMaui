@@ -68,7 +68,7 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-         <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
+         <listView:SfListView x:Name="outletDecisionOptionsListView" ListViewCachingStrategy="RecycleTemplate" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding ZakatRegListData}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="registrationDetailsListView_SelectionChanged">
                         <listView:SfListView.ItemTemplate>

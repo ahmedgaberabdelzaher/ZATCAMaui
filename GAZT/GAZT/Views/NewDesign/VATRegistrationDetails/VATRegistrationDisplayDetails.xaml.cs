@@ -15,18 +15,28 @@ namespace EGAZT.Views.NewDesign.VATRegistrationDetails
         public VATRegistrationDisplayDetails()
         {
             InitializeComponent();
+            ChangeAeroIcon();
             viewModel = App.Locator.VATRegistrationDisplayDetails;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetLTR();
-
             Task.Run(async () =>
             {
                 //viewModel.IsLoading = true;
                 await GetVatRegistrationData();
             });
         }
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
         private void SetLTR()
         {
             if (App.IsArabic)

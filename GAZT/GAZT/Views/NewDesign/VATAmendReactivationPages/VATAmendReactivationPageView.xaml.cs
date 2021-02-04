@@ -1048,8 +1048,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 safeInsets.Bottom = -10;
                 this.Padding = safeInsets;
 
-                App.IsArabic = false;
-
                 if (Device.RuntimePlatform == Device.Android)
                 {
                     DDlIDType.BackgroundColor = Color.FromHex("#f7f7f7");
