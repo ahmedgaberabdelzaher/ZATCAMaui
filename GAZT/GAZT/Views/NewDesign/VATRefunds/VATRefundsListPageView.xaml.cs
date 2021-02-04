@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using Rg.Plugins.Popup.Services;

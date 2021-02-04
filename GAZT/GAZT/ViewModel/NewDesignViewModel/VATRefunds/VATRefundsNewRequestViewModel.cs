@@ -11,6 +11,7 @@ using EGAZT.Models.VATRefunds;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
+using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -937,6 +938,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
         public async void OnIbanIdTypeClicked()
         {
+            CreateIBANType();
             List<string> idTypeData = new List<string>();
 
             foreach(IBANType iBANType in IBANTypesList)
@@ -1088,7 +1090,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 return;
             }
+
             VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+
             if (string.IsNullOrEmpty(VatRefundsDisplayDataModel.RefundTp))
             {
                 if (App.IsArabic)
@@ -1101,11 +1105,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     VatNewReqSummaryData.RefundTp = "Refund Request";
                 }
             }
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
-            });
 
+            try
+            {
+               await Application.Current.MainPage.Navigation.PushAsync(new VATRefundDetailsPageView(VatNewReqSummaryData));
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public async void OnVoidBtnClicked()

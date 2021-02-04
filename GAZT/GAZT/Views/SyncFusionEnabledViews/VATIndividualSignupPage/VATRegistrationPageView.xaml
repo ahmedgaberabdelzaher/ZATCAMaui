@@ -69,21 +69,9 @@
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10*" />
-                        <RowDefinition Height="80*" />
-                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="90*" />
+                        <!--<RowDefinition Height="10*" />-->
                     </Grid.RowDefinitions>
-
-
-                    <!--    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
-                  Padding="15,15,15,10" BackgroundColor="White" RowSpacing="0" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10*" />
-                    <RowDefinition Height="80*" />
-                    <RowDefinition Height="10*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>-->
 
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0"  Margin="0" 
                   Padding="15,5,15,0" BackgroundColor="White" RowSpacing="0" >
@@ -119,9 +107,6 @@
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}" TextColor="{StaticResource Secondary}">
-                                                                  <!--<Span.GestureRecognizers>
-                                                                    <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
-                                                                </Span.GestureRecognizers>-->
                                                             </Span>
                                                             <Span Text="&#160;"/>
                                                             <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}"  TextColor="#005e4b">
@@ -134,17 +119,6 @@
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
-                                                <!--<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                                     <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}" Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource Secondary}"></custom:CustomLabel>
-                                                     <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}" Style="{StaticResource CaptionLabelBlack}" TextColor="#005e4b">
-                                                         <custom:CustomLabel.GestureRecognizers>
-                                                                    <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
-                                                                </custom:CustomLabel.GestureRecognizers>
-                                                     </custom:CustomLabel>
-
-                                                </StackLayout>
-                                                 <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}" Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource NeutralGreay}" Margin="0,-10,0,0"></custom:CustomLabel>-->
-
                                                 <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource GAZTMicroGrayLabel}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
@@ -211,13 +185,6 @@
                                                 <StackLayout Orientation="Horizontal">
                                                        <custom1:CheckboxCustom  IsChecked="{Binding IsInstrunctionChecked}" Style="{StaticResource CheckboxHeightWidth32}"
                                                                         x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand"/>
-                                                    <!--<CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}">
-                                                        <CheckBox.Triggers>
-                                                            <DataTrigger TargetType="CheckBox"  Value="false">
-                                                                <Setter Property="Color" Value="#ff0000" />
-                                                            </DataTrigger>
-                                                        </CheckBox.Triggers>
-                                                    </CheckBox>-->
                                                     <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
@@ -231,151 +198,6 @@
                                         </ScrollView>
                                     </Grid>
 
-                                    <!--Instrunction Details-->
-                                    <!--<Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0" 
-                                      IsVisible="{Binding IsInstrunctionVisible}"
-                          >
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <StackLayout Grid.Row="0">
-                                            <Label Text="{x:Static custom2:AppResources.ZZZZVATREInstructionsandConditions}" FontFamily="{StaticResource GAZT_FONT_BOLD}"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                            -->
-                                    <!--<Label Text="Complete the Below Details" FontFamily="{StaticResource SSTArBold}"/>
-                                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
-                                    <!--
-                                        </StackLayout>
-                                        <ScrollView Grid.Row="1" BackgroundColor="Beige" >
-                                            <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
-                              ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="15*"/>
-                                                    <ColumnDefinition Width="85*"/>
-                                                </Grid.ColumnDefinitions>
-                                                -->
-                                    <!--Start Of Read Only or pre-populated-->
-                                    <!--
-                                                <Label HorizontalTextAlignment="Start"  Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"  Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                <Label Text=""  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"   Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}"/>
-                                                            <Span Text="&#160;"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}" TextColor="#005e4b">
-                                                                <Span.GestureRecognizers>
-                                                                    <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
-                                                                </Span.GestureRecognizers>
-                                                            </Span>
-                                                            <Span Text="&#160;"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}"/>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-
-                                                <custom:CustomLabel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
-                                                    <custom:CustomLabel.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="1."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions1}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
-                                                        </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-                                                <custom:CustomLabel HorizontalTextAlignment="Start"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
-                                                    <custom:CustomLabel.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="2."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions2}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
-                                                        </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-                                                <custom:CustomLabel HorizontalTextAlignment="Start"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
-                                                    <custom:CustomLabel.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="3."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span  Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions3}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
-                                                        </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-                                                <custom:CustomLabel HorizontalTextAlignment="Start"   Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
-                                                    <custom:CustomLabel.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="4."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions4}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
-                                                        </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-                                                <custom:CustomLabel  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource MicroGrayLabelStyleNewEn}">
-                                                    <custom:CustomLabel.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="5."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions5}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
-                                                        </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-                                                <custom:CustomLabel  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand"  VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
-                                                    <custom:CustomLabel.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="6."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions6}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
-                                                        </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-                                                <custom:CustomLabel  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
-                                                    <custom:CustomLabel.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="7."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions7}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
-                                                        </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-                                                -->
-                                    <!--<Span Text="{x:Static custom2:AppResources.ZVatClickFaqInstructions}" >
-                                            <Span.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                            </Span.GestureRecognizers>
-                                        </Span>-->
-                                    <!--
-                                                    </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-                                            <Label Grid.Row="6" Text="{x:Static custom2:AppResources.ZVatClickFaqInstructions}" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}">
-                                                <Label.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.onFaqSectionClicked}"></TapGestureRecognizer>
-                                                </Label.GestureRecognizers>
-                                            </Label>-->
-                                    <!--
-                                                <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}"  Grid.Row="9" Margin="10,0,10,0" Grid.Column="0">
-                                                    <CheckBox.Triggers>
-                                                        <DataTrigger TargetType="CheckBox"  Value="false">
-                                                            <Setter Property="Color" Value="#ff0000" />
-                                                        </DataTrigger>
-                                                    </CheckBox.Triggers>
-                                                </CheckBox>
-                                                <custom:CustomLabel  Grid.Row="9" Grid.Column="1"  Margin="0,0,0,5"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
-                                                    <custom:CustomLabel.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"/>
-                                                        </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-
-
-                                            </Grid>
-                                        </ScrollView>
-                                    </Grid>-->
 
                                     <!--TaxPayers Details-->
                                     <Grid Grid.Row="0" Grid.Column="0"  Padding="0,0,0,0" IsVisible="{Binding IsTaxPayersVisible}"
@@ -437,10 +259,7 @@
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0">
                                                         <custom:BorderlessEntry Text="{Binding TinNm}" Style="{StaticResource DefaultEntry}" IsReadOnly="True" >
-                                                            <!--<Entry.Behaviors>
-                                                            <custom1:OnlyNumericValuesBehaviour/>
-                                                        </Entry.Behaviors>-->
-                                                        </custom:BorderlessEntry>
+                                                       </custom:BorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
 
@@ -470,10 +289,7 @@
                                                             InputViewPadding="16,0,16,0">
                                                         <custom:BorderlessEntry Text="{Binding CrNm}" TextColor="#bbbbbb" FontSize="Small"  
                                                             IsReadOnly="True" Style="{StaticResource DefaultEntry}">
-                                                            <!--<Entry.Behaviors>
-                                                            <custom1:OnlyNumericValuesBehaviour/>
-                                                        </Entry.Behaviors>-->
-                                                        </custom:BorderlessEntry>
+                                                      </custom:BorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
 
@@ -578,62 +394,7 @@
                                                                   <Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFourthLine}" HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Black" FontSize="11" FontFamily="{StaticResource GAZT_FONT_REGULAR}"/>
 
                                                                    <Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFifthLine}" HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Black" FontSize="11" FontFamily="{StaticResource GAZT_FONT_REGULAR}"/>
-                                                                    <!--<Label FlowDirection="LeftToRight" HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Black" FontSize="11" FontFamily="{StaticResource GAZT_FONT_REGULAR}">
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFirstLine}" ></Span>
-                                                                                <Span Text="{x:Static system:Environment.NewLine}"/>
-                                                                                <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsSecondLine}"></Span>
-                                                                                <Span Text="{x:Static system:Environment.NewLine}"/>
-                                                                                <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsThirdLine}"></Span>
-                                                                                <Span Text="{x:Static system:Environment.NewLine}"/>
-                                                                                <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFourthLine}"></Span>
-                                                                                <Span Text="{x:Static system:Environment.NewLine}"/>
-                                                                                <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFifthLine}"></Span>
-                                                                                <Span Text="{x:Static system:Environment.NewLine}"/>
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>-->
-                                                                    <!--<Label  TextColor="Black" FontFamily="{StaticResource GAZT_FONT_REGULAR}">
-                                                                    <Label.FormattedText>
-                                                                        <FormattedString>
-                                                                            -->
-                                                                    <!--<Span Text="-"></Span>-->
-                                                                    <!--
-                                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsSecondLine}"></Span>
-                                                                        </FormattedString>
-                                                                    </Label.FormattedText>
-                                                                </Label>
-                                                                <Label  TextColor="Black" FontFamily="{StaticResource GAZT_FONT_REGULAR}">
-                                                                    <Label.FormattedText>
-                                                                        <FormattedString>
-                                                                            -->
-                                                                    <!--<Span Text="-"></Span>-->
-                                                                    <!--
-                                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsThirdLine}"></Span>
-                                                                        </FormattedString>
-                                                                    </Label.FormattedText>
-                                                                </Label>
-                                                                <Label  FontFamily="{StaticResource GAZT_FONT_REGULAR}" TextColor="Black">
-                                                                    <Label.FormattedText>
-                                                                        <FormattedString>
-                                                                            -->
-                                                                    <!--<Span Text="-"></Span>-->
-                                                                    <!--
-                                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFourthLine}"></Span>
-                                                                        </FormattedString>
-                                                                    </Label.FormattedText>
-                                                                </Label>
-                                                                <Label  FontFamily="{StaticResource GAZT_FONT_REGULAR}" TextColor="Black">
-                                                                    <Label.FormattedText>
-                                                                        <FormattedString>
-                                                                            -->
-                                                                    <!--<Span Text="-"></Span>-->
-                                                                    <!--
-                                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFifthLine}"></Span>
-                                                                        </FormattedString>
-                                                                    </Label.FormattedText>
-                                                                </Label>-->
+                                                                    
                                                                 </StackLayout>
                                                             </Grid>
                                                         </StackLayout>
@@ -713,11 +474,8 @@
                                                         </custom1:CustomDatePicker>
                                                     </Grid>
                                                 </StackLayout>
-                                                <!--End Of Read Only or pre-populated {Binding TodayDate}"-->
-                                                <!--Start Of Additional Information-->
+
                                                 <StackLayout Grid.Row="8">
-                                                    <!--<Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInfo}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
-                                                <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                                                     <Label Text="{x:Static custom2:AppResources.VATRImportExport}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                                                     <Grid>
                                                         <Grid.RowDefinitions>
@@ -801,82 +559,6 @@
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
 
-                                                <!--<StackLayout Grid.Row="7">
-                                                -->
-                                                <!--<Label Text="Importer or Exporter" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
-                                                <!--
-                                                <Grid  Padding="15,0,15,0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30*"/>
-                                                        <ColumnDefinition Width="20*"/>
-                                                        <ColumnDefinition Width="20*"/>
-                                                        <ColumnDefinition Width="30*"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Label Text="I am Importer" TextColor="Black" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                    <Switch x:Name="ImporterSwitch" Grid.Row="0" Grid.Column="1" VerticalOptions="Center"/>
-                                                    -->
-                                                <!--<Button x:Name="btnImporter" Text="Attachment" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Clicked="btnImporter_Clicked" BackgroundColor="#d49504"
-                                                    TextColor="White" Padding="10" CornerRadius="8"/>-->
-
-                                                <!--<Image  Rotation="-45" Margin="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"  Grid.Column="2">
-                                                        <Image.Source>
-                                                            <FontImageSource Color="#d49504" FontFamily="UserIconFont" Size="30"
-                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                                        </Image.Source>
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="btnImporter_Clicked"/>
-                                                        </Image.GestureRecognizers>
-                                                    </Image>-->
-                                                <!--
-
-                                                    <Label Text="(Optional)" TextColor="Black" Grid.Row="0" VerticalOptions="Center" Grid.Column="3" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-
-
-                                                    <Label Text="I am Exporter" TextColor="Black" Grid.Row="1" VerticalOptions="Center" Grid.Column="0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                    <Switch x:Name="ExporterSwitch" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"/>
-                                                    <Image  Rotation="-45" Margin="0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="2">
-                                                        <Image.Source>
-                                                            <FontImageSource Color="#d49504" FontFamily="UserIconFont" Size="30"
-                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                                        </Image.Source>
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="btnExporter_Clicked"/>
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
-                                                    <Label Text="(Optional)" TextColor="Black" Grid.Row="1" VerticalOptions="Center" Grid.Column="3" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-
-
-                                                    -->
-                                                <!--<Frame Grid.Row="0" Padding="0" Grid.Column="2"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" BackgroundColor="#d49504" HeightRequest="40" CornerRadius="8">
-                                                        <Grid Padding="5">
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto"/>
-                                                            </Grid.RowDefinitions>
-                                                            <Image Grid.Row="0" Rotation="-45" Margin="0" Aspect="AspectFill">
-                                                                <Image.Source>
-                                                                    <FontImageSource Color="White" FontFamily="UserIconFont" Size="15"
-                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                                                </Image.Source>
-                                                            </Image>
-                                                            <custom:CustomButton Grid.Row="0" x:Name="btnAttachmentDocuments1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" BackgroundColor="Transparent" 
-                                                                                                     Clicked="btnImporter_Clicked" Margin="0,0,0,0"/>
-                                                        </Grid>
-                                                    </Frame>-->
-                                                <!--
-                                                </Grid>
-                                                -->
-                                                <!--<StackLayout Orientation="Horizontal" Padding="15,0,15,0">
-                                                    <Label Text="Exporter" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                    <Switch x:Name="ExporterSwitch"/>
-                                                    <Button x:Name="btnExporter" Text="Attachment" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Clicked="btnExporter_Clicked" BackgroundColor="#d49504"
-                                                    TextColor="White" Padding="10" CornerRadius="8"/>
-                                                </StackLayout>-->
-                                                <!--
-                                            </StackLayout>-->
 
                                                 <StackLayout Grid.Row="9">
                                                     <Grid>
@@ -1969,7 +1651,18 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                 </Grid>
 
-
+                                 <StackLayout BackgroundColor="white"  Padding="0,0,0,10" VerticalOptions="End" HorizontalOptions="FillAndExpand"   >
+                        <buttons:SfButton x:Name="MainButtonName"  Text="{Binding CurrentStep}"  Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}"
+                                          CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}"
+                                          BackgroundColor="{Binding ContinueButtonnBackroundColor}" >
+                           <buttons:SfButton.Margin>
+                                <OnPlatform x:TypeArguments="Thickness" >
+                                    <On Platform="iOS" Value="0,-10,0,50"/>
+                                    <On Platform="Android" Value="0"/>
+                                </OnPlatform>
+                            </buttons:SfButton.Margin>
+                            </buttons:SfButton>
+                    </StackLayout>
                             </StackLayout>
                         </ScrollView>
 
@@ -2009,7 +1702,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                             </StackLayout>
                         </Grid>
                     </StackLayout>
-                    <StackLayout Grid.Row="2" Grid.Column="0"  Padding="15,0,15,10" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
+                    <!--<StackLayout Grid.Row="2" Grid.Column="0"  Padding="15,0,15,10" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
                         <buttons:SfButton x:Name="MainButtonName"  Text="{Binding CurrentStep}"  Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}"
                                           CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}"
                                           BackgroundColor="{Binding ContinueButtonnBackroundColor}" >
@@ -2020,7 +1713,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                 </OnPlatform>
                             </buttons:SfButton.Margin>
                             </buttons:SfButton>
-                    </StackLayout>
+                    </StackLayout>-->
                 </Grid>
             </yummy:PancakeView>
 

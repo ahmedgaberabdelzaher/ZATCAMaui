@@ -2537,8 +2537,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType));
 
                             _navigationService.GoBack();
+
+                            return;
                         }
                     }
+
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;
                     SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;

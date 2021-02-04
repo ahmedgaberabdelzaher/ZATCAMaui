@@ -28,7 +28,7 @@
             <Grid>
 
                 <StackLayout>
-                    <Grid Padding="15,5,15,5">
+                    <Grid Padding="0,5,15,5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>

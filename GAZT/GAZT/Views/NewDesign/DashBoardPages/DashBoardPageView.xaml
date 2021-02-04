@@ -10,8 +10,9 @@
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
@@ -388,7 +389,7 @@
                                                             </chart:DoughnutSeries.ColorModel>
 
                                                             <chart:DoughnutSeries.CenterView>
-                                                                <StackLayout HorizontalOptions = "FillAndExpand" VerticalOptions = "FillAndExpand">
+                                                                <StackLayout HorizontalOptions = "FillAndExpand" VerticalOptions = "FillAndExpand" >
                                                                     <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.TotalString}" FontSize="12" Style="{StaticResource CaptionLabelBlack}"/>
                                                                     <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.BillCount}" FontSize="24" HorizontalOptions="Center" HorizontalTextAlignment="Center" StyleId="OnBoardText"/>
                                                                 </StackLayout>

@@ -9,6 +9,7 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATRefunds
@@ -21,9 +22,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         VatRefundsListResultModel vatRefundsListResultModel;
         VatRefundDisplayDataModel vatRefundsSaveDataModel;
 
+
         public VATRefundDetailsPageView(VatRefundsListResultModel vATRefundsModel)
         {
-            InitializeComponent();
+            InitializeComponent();  
 
             viewModel = App.Locator.VATRefundDetailsPageView;
             vatRefundsListResultModel = vATRefundsModel;
@@ -36,9 +38,9 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         public VATRefundDetailsPageView(VatRefundDisplayDataModel vATRefundsSaveModel)
         {
-            InitializeComponent();
+            InitializeComponent();  
 
-            viewModel = App.Locator.VATRefundDetailsPageView;
+            viewModel = App.Locator.VATRefundDetailsPageView;   
             vatRefundsListResultModel = null;
             vatRefundsSaveDataModel = vATRefundsSaveModel;
 
@@ -56,6 +58,11 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             ChangeArrowDirection();
 
             try

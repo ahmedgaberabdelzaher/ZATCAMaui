@@ -3,6 +3,7 @@ using EGAZT.ViewModel.NewDesignViewModel.Common;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -25,12 +26,17 @@ namespace EGAZT.Views.NewDesign.Common
             _viewModel = App.Locator.GeneralServicesListView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
+            _viewModel.PopulateRefundRequestMenuListData();
         }
-        
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.PopulateRefundRequestMenuListData();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
         }
 
         private void SetLTR()

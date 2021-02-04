@@ -10,6 +10,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
     [Preserve(AllMembers = true)]
     public class GeneralServicesViewModel : BaseViewModel
     {
+        [Preserve(AllMembers = true)]
         public class GeneralServicesListModel
         {
             public string ZDTitle { get; set; }

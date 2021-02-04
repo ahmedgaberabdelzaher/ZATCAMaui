@@ -64,7 +64,7 @@
                                         x:Name="Mobile_Entry"
                                         Text="{Binding CurrentMobileNumberEntryText}"
                                         Style="{StaticResource DefaultEntry}"
-                                        VerticalTextAlignment="Center"
+                                        VerticalTextAlignment="Center" 
                                         Keyboard="Telephone"
                                         IsReadOnly="True"
                                         TextColor="{StaticResource NeutralBlack}" HorizontalOptions="FillAndExpand">

@@ -46,7 +46,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             try
             {
                 isLoading = true;
-            //  await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
                 var retVal = await FetchDataForDisplayDetailsExt(EstablishmentRegistrationTabsEnum.RegistrationType);
                 await FetchDataForDisplayDetailsExt(EstablishmentRegistrationTabsEnum.TaxpayerDetail);
 
@@ -65,33 +64,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                         _navigationService.GoBack();
                     };
-                      //if (PopupNavigation.PopupStack.Count > 0)
-                      //      PopupNavigation.PopAsync();
-                   
+                    
                     await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
-
-
-                    //isLoading = false;
-                    //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.SomethingwentwrongTaxDetails));
-                    //_navigationService.GoBack();
-
                 }
                 if (PopupNavigation.PopupStack.Count > 0 && retVal)
                     await PopupNavigation.PopAsync();
-
-                //try
-                //{
-                //    await Task.Run(() =>
-                //    {
-
-                //        App.HideProgressView();
-
-                //    });
-                //}
-                //catch
-                //{
-
-                //}
 
             }
             catch (InternetException)

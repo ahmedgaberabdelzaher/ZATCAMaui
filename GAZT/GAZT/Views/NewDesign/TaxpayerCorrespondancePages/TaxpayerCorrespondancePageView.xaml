@@ -167,7 +167,7 @@
                                             </StackLayout>
                                             
                                         </Grid>
-                                        <Image  x:Name="ImageBackArrow" Style="{DynamicResource ImageReverse}" Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="End" VerticalOptions="Center"/>
+                                        <Image  x:Name="ImageBackArrow" Style="{DynamicResource BackButtonArrow}" Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="End" VerticalOptions="Center"/>
 
                                     </Grid>
                                 </border:SfBorder>

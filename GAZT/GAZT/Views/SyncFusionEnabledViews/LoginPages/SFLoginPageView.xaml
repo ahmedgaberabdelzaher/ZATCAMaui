@@ -26,7 +26,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <Grid x:Name="loginGrid" Margin="{OnPlatform Android='0,-30,0,0', iOS='0,-30,0,-30'}">
+            <Grid x:Name="loginGrid" Margin="{OnPlatform Android='0,-40,0,0', iOS='0,-50,0,-35'}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100*"></RowDefinition>
                 </Grid.RowDefinitions>
@@ -37,7 +37,7 @@
                 <Image Source="Burger" x:Name="HamburgerMenu" Style="{StaticResource SmallIcon}" 
                        VerticalOptions="Start"
                 HorizontalOptions="EndAndExpand"
-                        Margin="10,50,10,0">
+                        Margin="10,55,10,0">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1"/>
                     </Image.GestureRecognizers>
