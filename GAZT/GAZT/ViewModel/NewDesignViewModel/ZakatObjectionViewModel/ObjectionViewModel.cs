@@ -18,6 +18,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
         public ICommand GoBackClick { get; set; }
 
+        [Preserve(AllMembers = true)]
         public class SelectionModel
         {
             public SelectionModel()
