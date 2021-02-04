@@ -1106,7 +1106,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 }
             }
 
-
             try
             {
                await Application.Current.MainPage.Navigation.PushAsync(new VATRefundDetailsPageView(VatNewReqSummaryData));

@@ -37,7 +37,7 @@
                 <Image Source="Burger" x:Name="HamburgerMenu" Style="{StaticResource SmallIcon}" 
                        VerticalOptions="Start"
                 HorizontalOptions="EndAndExpand"
-                        Margin="10,50,10,0">
+                        Margin="10,55,10,0">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1"/>
                     </Image.GestureRecognizers>
