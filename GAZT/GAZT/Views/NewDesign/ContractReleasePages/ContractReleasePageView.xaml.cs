@@ -574,7 +574,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
         void SubmitClicked(System.Object sender, System.EventArgs e)
         {
-            Loadingbar.IsVisible = true;
+            //Loadingbar.IsVisible = true;
         }
     }
 

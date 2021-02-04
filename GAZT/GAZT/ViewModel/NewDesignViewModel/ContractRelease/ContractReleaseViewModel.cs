@@ -1224,9 +1224,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                 if (!isSubmitted)
                 {
-                    await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
-                    isSubmitted = true;
-                    await SubmitClicked();
+                    //await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+                    _ = Task.Run(SubmitClicked);
                 }
 
             }
@@ -1671,11 +1670,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             try
             {
                 request = BuildRequestObject();
+                IsLoading1 = true;
                 string ContractReleaseResponse = await ContractReleaseWebServiceManager.GAZTSubmitContractReleaseRequestData(request);
                 ContractReleaseFormResponse releaseFormResponse = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(ContractReleaseResponse);
 
                 if (releaseFormResponse.d == null)
                 {
+                    IsLoading1 = false;
                     isSubmitted = false;
                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ContractReleaseResponse);
                     StringBuilder Message = new StringBuilder();
@@ -1699,7 +1700,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                     if (ContractReleaseData.d != null)
                     {
-
+                        IsLoading1 = false;
                         await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView(this));
                     }
 
@@ -1707,11 +1708,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
+                IsLoading1 = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 throw new GAZTVATRegistrationInProcessException(ex.ToString());
             }
 
             catch (Exception ex)
             {
+                IsLoading1 = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
                 throw;

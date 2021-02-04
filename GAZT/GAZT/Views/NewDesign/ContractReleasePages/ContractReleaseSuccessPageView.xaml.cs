@@ -20,7 +20,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         {
             InitializeComponent();
             this.viewModel = viewModel;
-            ChangeAeroIcon();
+            //ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 

@@ -207,7 +207,7 @@
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}"
+                                <!--<CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}"
                                           IsChecked="{Binding IsFirstCheckboxChecked}">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Value="false">
@@ -216,9 +216,29 @@
                                     </CheckBox.Triggers>
                                 </CheckBox>
 
- 
+                                <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.VatInstalmentContinueCheckboxText}" 
+                                                    Style="{StaticResource GAZTMicroMediumGrayLabel}" HorizontalOptions="StartAndExpand" 
+                                                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>-->
 
-                                <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.VatInstalmentContinueCheckboxText}" Style="{StaticResource GAZTMicroMediumGrayLabel}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <custom1:CheckboxCustom  Grid.Row="0" Grid.Column="0"
+                                                        Style="{StaticResource CheckboxHeightWidth32}"
+                                                        VerticalOptions="CenterAndExpand"  
+                                                        IsChecked="{Binding IsFirstCheckboxChecked}"/>
+                                <custom:CustomLabel  Grid.Row="0" Grid.Column="1" >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span    Text="{x:Static ResourceManager:AppResources.VatInstalmentContinueCheckboxText}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                    <custom:CustomLabel.Triggers>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsFirstCheckboxChecked}" Value="True">
+                                            <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsFirstCheckboxChecked}" Value="False">
+                                            <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
+                                        </DataTrigger>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
                             </Grid>
 
 

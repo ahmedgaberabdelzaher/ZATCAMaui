@@ -1832,8 +1832,7 @@
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding SummaryConBtnTapped}"
                                           HeightRequest="48"
-                                          WidthRequest="366"
-                                          Clicked="SubmitClicked"/>
+                                          WidthRequest="366"/>
 
                             </StackLayout>
                         </Grid>
