@@ -1057,6 +1057,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
+                    viewModel.ApplePaySelected();
                     Console.WriteLine("Apple pay Clicked");
                 });
             }

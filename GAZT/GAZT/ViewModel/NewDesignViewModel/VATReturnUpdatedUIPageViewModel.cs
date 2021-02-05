@@ -20,6 +20,7 @@ using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using EGAZT.Views.NewDesign.PaymentOptions;
 using EGAZT.Models.PaymentModel;
+using EGAZT.Helper;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -47,10 +48,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-
-
-
-       
 
         #region Variable
 
@@ -2421,12 +2418,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Constructor
+
+
         public GAZTNewDesignVATReturnUpdatedUIPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
            
 
          
             ContinueText = AppResources.ZZZZContinue;
+
 
             OnMoreClicked = new Xamarin.Forms.Command(() =>
             {
@@ -5710,17 +5710,105 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         
                         var VatAmount = NetdueVat.Replace(",", "");
+
                         if (String.IsNullOrEmpty(VatAmount) || Double.Parse(VatAmount) == 0)
                         {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false,""));
                         }
                         else if (!String.IsNullOrEmpty(VatAmount) && Double.Parse(VatAmount) > 20000)
                         {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true,""));
                         }
                         else
                         {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false,""));
+                        }
+
+                    }
+
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+
+        public async Task DoProcessApplePayPayment(string fbNum)
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = "";
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+
+                    ApplePayGuid modelDetails = new ApplePayGuid();
+                    modelDetails.Fbnum = fbNum;
+                    modelDetails.PymntType = "A";
+                    modelDetails.Tin = App.LoginDataRetrieved.TIN;
+                    modelDetails.Srcid = platform;
+                    var PaymentData1 = await WebServiceManager.GAZTGenerateApplePayGuid(modelDetails);
+
+
+                    if (PaymentData != null && PaymentData.d != null)
+                    {
+
+                        if (PaymentData.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = PaymentData.d.Guid;
+
+                        }
+
+                        var VatAmount = NetdueVat.Replace(",", "");
+                        if (String.IsNullOrEmpty(VatAmount) || Double.Parse(VatAmount) == 0)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false,""));
+                        }
+                        else if (!String.IsNullOrEmpty(VatAmount) && Double.Parse(VatAmount) > 20000)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true,""));
+                        }
+                        else
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false,""));
                         }
 
                     }
@@ -5769,8 +5857,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
 
-        public async Task ApplePaySelected()
+        public void ApplePaySelected()
         {
+             DoProcessApplePayPayment(VATDeclarationData.d.Fbnum);
+
+            //var payment = DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment("1","VAT Return");
 
 
         }

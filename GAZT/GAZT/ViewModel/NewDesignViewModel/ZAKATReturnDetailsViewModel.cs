@@ -1028,8 +1028,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //Bill details Navigation
                             //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
 
+                            if(ZakatReturnDetails.d.MadabutFg == "X") {
 
-                            await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
+                                await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
+                            }
+                            else {
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                            }
 
                         }
                         else
@@ -1090,7 +1097,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
 
                             //_navigationService.NavigateTo(App.PaymentProcessWebview);
-                            await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
+                            //await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
+
+                            if (ZakatReturnDetails.d.MadabutFg == "X")
+                            {
+
+                                await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
+                            }
+                            else
+                            {
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                            }
                         }
                         else
                         {
@@ -1181,19 +1200,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         }
 
-                        var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
-                        if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+
+                        if (ZakatReturnDetails.d.MadabutFg == "X")
                         {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
-                        }
-                        else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
+
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
                         }
                         else
                         {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
+
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
                         }
+
+
+                        //var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                        //if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
+                        //else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
+                        //else
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
 
                     }
 
@@ -1206,8 +1242,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if(ex.Message == "There is no open liability to be paid against this declaration") {
 
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false));
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, ""));
+
                         }
+
 
 
                         
