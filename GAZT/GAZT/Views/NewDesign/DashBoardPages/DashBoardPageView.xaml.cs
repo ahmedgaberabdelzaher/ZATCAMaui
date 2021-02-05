@@ -155,7 +155,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 }*/
             }
 
-           
+
         }
 
         public void SetPickerFont()
@@ -381,7 +381,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             MessagingCenter.Unsubscribe<Object>(this, "Card_Payment");
             MessagingCenter.Unsubscribe<Object>(this, "Apple_Pay");
             MessagingCenter.Unsubscribe<Object>(this, "SADAD");
-            
+
             isTimerOff = true;
         }
         private async Task LoadData()
@@ -1144,7 +1144,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             var part = GetTemplateChild("frameToolbar") as SfBorder;
 
-           /* if (viewModel.IsMyObligationsClear)
+            if (viewModel.IsMyObligationsClear)
             {
                 part.IsVisible = false;
                 btn_frameToolbar.IsVisible = false;
@@ -1153,7 +1153,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 part.IsVisible = true;
                 btn_frameToolbar.IsVisible = true;
-            }*/
+            }
 
             if (e.ScrollY > 120)
             {
@@ -1189,6 +1189,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
               OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
               Console.WriteLine("Clicked on: Amount: "+ BModel.Amount+" ,FbNum: "+BModel.Fbnum);
               viewModel.DoValidatePayment(BModel.Fbnum, BModel.Amount);*/
+            StackLayout payNowCard = sender as StackLayout;
+            OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
+            Console.WriteLine("Clicked on: Amount: " + BModel.Amount + " ,FbNum: " + BModel.Fbnum);
+
             viewModel.IsLoading = true;
             Device.BeginInvokeOnMainThread(() =>
             {

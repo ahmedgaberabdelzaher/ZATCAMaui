@@ -23,6 +23,18 @@ namespace EGAZT.Models
                 _cal_typ = value;
             }
         }
+        private string _fbnum;
+        public string Fbnum
+        {
+            get
+            {
+                return _fbnum;
+            }
+            set
+            {
+                _fbnum = value;
+            }
+        }
         private string _BETRW = string.Empty;
         public string BETRW
         {

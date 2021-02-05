@@ -192,8 +192,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public ObservableCollection<ChartDataPoint> _InstalmentDoughnutSeriesData { get; set; }
-        public ObservableCollection<ChartDataPoint> InstalmentDoughnutSeriesData
+        public List<ObservableCollection<ChartDataPoint>> _InstalmentDoughnutSeriesData { get; set; }
+        public List<ObservableCollection<ChartDataPoint>> InstalmentDoughnutSeriesData
         {
             get
             {
@@ -1301,9 +1301,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _PendingBillsListHeight = value;
-                RaisePropertyChanged("PendingBillsListHeight ");
+                RaisePropertyChanged("PendingBillsListHeight");
             }
         }
+        private bool _IsPendingBillsVisible = false;
+        public bool IsPendingBillsVisible
+        {
+            get
+            {
+                return _IsPendingBillsVisible;
+            }
+            set
+            {
+                _IsPendingBillsVisible = value;
+                RaisePropertyChanged("IsPendingBillsVisible");
+            }
+        }
+        
 
         private string _SubmittedCount = null;
         public string SubmittedCount
@@ -1660,7 +1674,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             AccountStatementsList = items;
 
-            Console.WriteLine();
             if (AccountStatementsList != null && AccountStatementsList.Count > 2)
             {
                 LastTransactionsListHeight = 220;
@@ -1674,6 +1687,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 LastTransactionsListHeight = 75;
             }
             IsAccountsStatementLoading = false;
+
+            if (AccountStatementsList.Count == 0)
+            {
+                IfnotRegInVATAndZakat = false;
+            }
+            else
+            {
+                IfnotRegInVATAndZakat = true;
+            }
+
+
             //Device.BeginInvokeOnMainThread(() =>
             //{
             //    foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
@@ -1790,6 +1814,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             System.Diagnostics.Debug.WriteLine("Bills " + Bills.Count);
 
+            if (pendingBills.Count == 0)
+            {
+                IsPendingBillsVisible=false;
+            }
+            else
+            {
+                IsPendingBillsVisible = true;
+            }
             /*   var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
                List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
                System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
@@ -1812,25 +1844,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             foreach (InstalmentPlanResult singleItem in InstalmentResponse.INST_PLAN_itemSet.results)
             {
                 items.Add(singleItem);
-
-                chartData.Add(new ChartDataPoint("Paid", 2));
-                chartData.Add(new ChartDataPoint("unPaid", 8));
-                chartData.Add(new ChartDataPoint("idle", 14));
-                InstalmentDoughnutSeriesData = chartData;
+                
             }
 
 
 
             InstalmentPlanList = items;
-            var inColors = new ChartColorCollection();
-
-            inColors.Add(Color.Green);
-
-            inColors.Add(Color.Purple);
-
-            inColors.Add(Color.Red);
-
-            InstalmentColors = inColors;
+            
 
             Console.WriteLine();
 

@@ -206,7 +206,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             {
                 ChipModel selectedReturntype = (ChipModel)e.AddedItem;
                 //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
-                Device.BeginInvokeOnMainThread(() => {
+                Device.BeginInvokeOnMainThread(() =>
+                {
                     if (selectedReturntype.Text == AppResources.UnPaid)
                     {
                         ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#AA0C19");
@@ -287,11 +288,15 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         private async void payNow_Tapped(object sender, EventArgs eventArgs)
         {
             //var dataItem = e.Item as MyBills;
-            var item = (Xamarin.Forms.TapGestureRecognizer)sender; 
-            
-            var bill = item.BindingContext as MyBills;
-            
-            //viewModel.DoValidatePayment(bill.f);
+            StackLayout payNowCard = sender as StackLayout;
+            MyBills BModel = (MyBills)payNowCard.BindingContext;
+            Console.WriteLine("Clicked on: Amount: " + BModel.TestDueAmount + " ,FbNum: " + BModel.Fbnum);
+
+            if (!String.IsNullOrEmpty(BModel.Fbnum))
+            {
+                viewModel.DoValidatePayment(BModel.Fbnum,BModel.TestDueAmount);
+            }
+
         }
     }
 }

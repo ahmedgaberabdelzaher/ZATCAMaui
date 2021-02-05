@@ -643,7 +643,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         }
                         
-                        //var VatAmount = NetdueVat.Replace(",", "");
+                       // var VatAmount = NetdueVat.Replace(",", "");
                         if (String.IsNullOrEmpty(amount) || Double.Parse(amount) == 0)
                         {
                             await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));

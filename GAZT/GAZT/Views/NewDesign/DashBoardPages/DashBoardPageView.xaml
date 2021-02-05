@@ -24,6 +24,11 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
                 <ResourceDictionary>
+                    <chart:ChartColorCollection x:Key="Colors">
+                        <Color>YellowGreen</Color>
+                        <Color>Blue</Color>
+                        <Color>Aqua</Color>
+                    </chart:ChartColorCollection>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
                     </Style>
@@ -278,32 +283,16 @@
                                                                             <StackLayout Orientation="Horizontal">
 
 
-                                                                                <chart:SfChart x:Name="InstalmentChart"
-                       HorizontalOptions="FillAndExpand"
-                       VerticalOptions="FillAndExpand"
-                       BackgroundColor="Transparent"
-                       WidthRequest="75"
-                       HeightRequest="75">
+                                                                                <!--SFChart Instalments-->
 
-                                                                                    <chart:SfChart.Series>
+                                                                                <Frame Margin="8" WidthRequest="75"
+                                                       HeightRequest="75">
+                                                                                    
 
+                                                                                    
+                                                                                </Frame>
 
-                                                                                        <chart:DoughnutSeries x:Name="InstalmentDoughnutSeries"
-                    ItemsSource="{Binding InstalmentDoughnutSeriesData}"
-                                      XBindingPath="XValue"
-                                      YBindingPath="YValue"
-                                      EnableAnimation="true"
-                                       CircularCoefficient="0.5"
-                                      DoughnutCoefficient="0.95">
-
-
-
-                                                                                            
-                                                                                        </chart:DoughnutSeries>
-                                                                                    </chart:SfChart.Series>
-                                                                                </chart:SfChart>
-
-
+                                                                                <!--SFChart Instalments End-->
 
                                                                                 <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
 
@@ -631,7 +620,7 @@
 
                                             <!--End Horizontal List View-->
 
-                                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0" IsVisible="{Binding IsPendingBillsVisible}">
 
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
@@ -669,9 +658,9 @@
                                                         <listView:SfListView.ItemTemplate>
                                                             <DataTemplate>
 
-                                                                <cards:SfCardView CornerRadius="16" Margin="2" HeightRequest="75">
+                                                                <cards:SfCardView CornerRadius="16" Margin="0" HeightRequest="75">
 
-                                                                    <StackLayout Spacing="5" Margin="12" Orientation="Vertical">
+                                                                    <StackLayout Spacing="2" Margin="12" Orientation="Vertical">
                                                                         <Grid HorizontalOptions="FillAndExpand">
                                                                             <Grid.ColumnDefinitions>
                                                                                 <ColumnDefinition Width="50*"></ColumnDefinition>
@@ -708,17 +697,21 @@
                                                                                 <border:SfBorder Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" 
                                                                      VerticalOptions="CenterAndExpand" Padding="12,2,12,2" 
                                                                      CornerRadius="20" HeightRequest="32" BorderColor="{StaticResource Primary}" BorderWidth="1">
-                                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                                                    <StackLayout BindingContext="{Binding .}"  Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                                                                                         <Image Source="ic_iconpay" HeightRequest="16" WidthRequest="16" 
                                                                    Margin="0,0,5,0" VerticalOptions="CenterAndExpand"/>
                                                                                         <custom:CustomLabel FontFamily="{StaticResource SSTArRoman}" Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" FontSize="12" TextColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand"/>
+                                                                                        <StackLayout.GestureRecognizers>
+                                                                                            <TapGestureRecognizer CommandParameter="" Tapped="BillsPayNowTapped" />
+                                                                                        </StackLayout.GestureRecognizers>
                                                                                     </StackLayout>
+                                                                                  
                                                                                     <border:SfBorder.GestureRecognizers>
                                                                                         <TapGestureRecognizer Tapped="BillsPayNowTapped" />
                                                                                     </border:SfBorder.GestureRecognizers>
                                                                                 </border:SfBorder>
                                                                                 
-                                                                                <custom:CustomLabel Margin="0,-5,0,-5"
+                                                                                <custom:CustomLabel Margin="0,0,0,0"
                                                                                         Style="{StaticResource 
                                                                         CaptionLabelBlack}" HorizontalOptions="EndAndExpand">
 
@@ -886,13 +879,13 @@
 
                         <StackLayout IsVisible="{Binding IsMyObligationsClear}">
                             <StackLayout Orientation="Horizontal">
-                                <Image Source="confirmnew" WidthRequest="15" HeightRequest="15" Margin="0,0,5,0"></Image>
+                                <Image Source="ic_maincheck" WidthRequest="15" HeightRequest="15" Margin="0,0,5,0"></Image>
                                 <custom:CustomLabel FontSize="16" Style="{StaticResource 
                                                         CaptionLabelWhite}">
                                     <custom:CustomLabel.FormattedText>
 
                                         <FormattedString>
-                                            <Span Text="Well Done!"/>
+                                            <Span Text="Well Done!" TextColor="{StaticResource SuccessColor}"/>
                                             <Span Text=" "/>
                                             <Span Text="No Tax Obligations Pending" ></Span>
                                         </FormattedString>
