@@ -1,9 +1,14 @@
 ﻿using EGAZT.Models.AccountStatements;
 using EGAZT.Models.EnumModels;
+using EGAZT.Models.PaymentModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using Syncfusion.SfCalendar.XForms;
 using Syncfusion.SfChart.XForms;
 using System;
@@ -128,6 +133,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _PendingBills { get; set; }
+
+        public ObservableCollection<OverduePaymentAndUnSubmittedReturn> PendingBills
+        {
+            get
+            {
+                return this._PendingBills;
+            }
+            set
+            {
+                if (_PendingBills == value) return;
+
+                if (value != null)
+                {
+                    this._PendingBills = value;
+                    RaisePropertyChanged("PendingBills");
+                }
+            }
+        }
+
         private ObservableCollection<InstalmentPlanResult> _InstalmentPlanList { get; set; }
 
         public ObservableCollection<InstalmentPlanResult> InstalmentPlanList
@@ -143,10 +168,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (value != null)
                 {
                     this._InstalmentPlanList = value;
-                    RaisePropertyChanged("InstalmentPlanList ");
+                    RaisePropertyChanged("InstalmentPlanList");
                 }
             }
         }
+        public ChartColorCollection _InstalmentColors { get; set; }
+
+        public ChartColorCollection InstalmentColors
+        {
+            get
+            {
+                return this._InstalmentColors;
+            }
+            set
+            {
+                if (_InstalmentColors == value) return;
+
+                if (value != null)
+                {
+                    this._InstalmentColors = value;
+                    RaisePropertyChanged("InstalmentColors");
+                }
+            }
+        }
+
+        public ObservableCollection<ChartDataPoint> _InstalmentDoughnutSeriesData { get; set; }
+        public ObservableCollection<ChartDataPoint> InstalmentDoughnutSeriesData
+        {
+            get
+            {
+                return this._InstalmentDoughnutSeriesData;
+            }
+            set
+            {
+                if (_InstalmentDoughnutSeriesData == value) return;
+
+                if (value != null)
+                {
+                    this._InstalmentDoughnutSeriesData = value;
+                    RaisePropertyChanged("InstalmentDoughnutSeriesData");
+                }
+            }
+        }
+
 
         public List<TaxRelationSetResult> TaxTypeFilter
         {
@@ -341,6 +405,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("InstalmentResponse");
             }
         }
+
+
 
         private String _taxpayerName;
         public String TaxpayerName
@@ -1134,6 +1200,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
         private string _accStmtnCreditAmount { get; set; }
         public string AccStmtnCreditAmount
         {
@@ -1223,6 +1290,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        //Single Line 84
+        private int _PendingBillsListHeight = 250;
+        public int PendingBillsListHeight
+        {
+            get
+            {
+                return _PendingBillsListHeight;
+            }
+            set
+            {
+                _PendingBillsListHeight = value;
+                RaisePropertyChanged("PendingBillsListHeight ");
+            }
+        }
+
         private string _SubmittedCount = null;
         public string SubmittedCount
         {
@@ -1286,6 +1368,65 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private Double _MyObligationAmount = 0.0;
+        public Double MyObligationAmount
+        {
+            get
+            {
+                return _MyObligationAmount;
+            }
+            set
+            {
+                _MyObligationAmount = value;
+                RaisePropertyChanged("MyObligationAmount");
+            }
+        }
+
+        private bool _IsMyObligationsClear = true;
+        public bool IsMyObligationsClear
+        {
+            get
+            {
+                return _IsMyObligationsClear;
+            }
+            set
+            {
+                _IsMyObligationsClear = value;
+                RaisePropertyChanged("IsMyObligationsClear");
+            }
+        }
+
+        private bool _IsBodyMyTaxVisible = false;
+        public bool IsBodyMyTaxVisible
+        {
+            get
+            {
+                return _IsBodyMyTaxVisible;
+            }
+            set
+            {
+                _IsBodyMyTaxVisible = value;
+                RaisePropertyChanged("IsBodyMyTaxVisible");
+            }
+        }
+
+
+        public ValidatePaymentResponse _paymentData = null;
+        public ValidatePaymentResponse PaymentData
+        {
+            get
+            {
+                return _paymentData;
+            }
+            set
+            {
+                if (_paymentData == value) return;
+
+                _paymentData = value;
+                RaisePropertyChanged("PaymentData");
+            }
+        }
+
 
         #endregion
 
@@ -1321,6 +1462,91 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Method
+
+   /*     public async Task DoValidatePayment(string fbNum, string amount)
+        {
+            try
+            {
+                try
+                {
+                    IsLoading = true;
+
+                    var platform = "";
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+                    PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+
+
+                    if (PaymentData != null && PaymentData.d != null)
+                    {
+
+                        if (PaymentData.d.Guid != null)
+                        {
+                            App.PaymentGuid = PaymentData.d.Guid;
+                        }
+
+                        var ZakatAmount = amount.Replace(",", "");
+                        if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
+                        }
+                        else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
+                        }
+                        else
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
+                        }
+
+                    }
+
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        if (ex.Message == "There is no open liability to be paid against this declaration")
+                        {
+
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false));
+                        }
+
+
+
+                        //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        //_navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }*/
         public async Task LoadDashboardData()
         {
             try
@@ -1338,7 +1564,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
                 _ = Task.Run(GetAccountStatments);
-                //_ = Task.Run(GetBillsAndReturns);
+                _ = Task.Run(GetBillsAndReturns);
                 if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null)
                 {
 
@@ -1433,12 +1659,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 items.Add(singleItem);
             }
             AccountStatementsList = items;
-            
+
             Console.WriteLine();
-            if (AccountStatementsList!=null && AccountStatementsList.Count > 2)
+            if (AccountStatementsList != null && AccountStatementsList.Count > 2)
             {
                 LastTransactionsListHeight = 220;
-            }else if(AccountStatementsList!=null && AccountStatementsList.Count>1)
+            }
+            else if (AccountStatementsList != null && AccountStatementsList.Count > 1)
             {
                 LastTransactionsListHeight = 150;
             }
@@ -1511,23 +1738,66 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private async Task GetBillsAndReturns()
         {
             var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
+            var pendingBills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
             List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-
+            if (TempBills.Count > 3)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    pendingBills.Add(TempBills[i]);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < TempBills.Count; i++)
+                {
+                    pendingBills.Add(TempBills[i]);
+                }
+            }
             foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
             {
                 temp1.Add(ee);
+                if (ee.Amount != null)
+                {
+                    MyObligationAmount += Double.Parse(ee.Amount);
+                }
             }
+
+            if (MyObligationAmount > 0)
+            {
+                IsMyObligationsClear = false;
+                IsBodyMyTaxVisible = true;
+            }
+            else
+            {
+                IsMyObligationsClear = true;
+                IsBodyMyTaxVisible = false;
+            }
+
             Device.BeginInvokeOnMainThread(() => Bills = temp1);
+            PendingBills = pendingBills;
+            if (PendingBills != null && PendingBills.Count > 2)
+            {
+                PendingBillsListHeight = 250;
+            }
+            else if (PendingBills != null && PendingBills.Count > 1)
+            {
+                PendingBillsListHeight = 170;
+            }
+            else
+            {
+                PendingBillsListHeight = 83;
+            }
             System.Diagnostics.Debug.WriteLine("Bills " + Bills.Count);
 
-            var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
-            List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
-            foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
-            {
-                temp2.Add(ee);
-            }
-            Device.BeginInvokeOnMainThread(() => Returns = temp2);
+            /*   var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
+               List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+               System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
+               foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
+               {
+                   temp2.Add(ee);
+               }
+               Device.BeginInvokeOnMainThread(() => Returns = temp2);*/
 
         }
         private async Task getDashboardInstalmentPlan()
@@ -1536,16 +1806,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             InstalmentResponse = WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.TP.Userid);
 
             var items = new ObservableCollection<InstalmentPlanResult>();
+            var chartData = new ObservableCollection<ChartDataPoint>();
+
+
             foreach (InstalmentPlanResult singleItem in InstalmentResponse.INST_PLAN_itemSet.results)
             {
                 items.Add(singleItem);
-            }
-            InstalmentPlanList = items;
 
-            
+                chartData.Add(new ChartDataPoint("Paid", 2));
+                chartData.Add(new ChartDataPoint("unPaid", 8));
+                chartData.Add(new ChartDataPoint("idle", 14));
+                InstalmentDoughnutSeriesData = chartData;
+            }
+
+
+
+            InstalmentPlanList = items;
+            var inColors = new ChartColorCollection();
+
+            inColors.Add(Color.Green);
+
+            inColors.Add(Color.Purple);
+
+            inColors.Add(Color.Red);
+
+            InstalmentColors = inColors;
+
             Console.WriteLine();
 
         }
+
+
+
 
 
         public void PopualateCommittmentsInformation()

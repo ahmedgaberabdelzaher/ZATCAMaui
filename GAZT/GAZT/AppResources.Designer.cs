@@ -2047,6 +2047,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bills In Total.
+        /// </summary>
+        public static string DashboardBillsInTotal {
+            get {
+                return ResourceManager.GetString("DashboardBillsInTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Transaction.
         /// </summary>
         public static string DashboardLastTransaction {
@@ -2061,6 +2070,15 @@ namespace EGAZT {
         public static string DashBoardMyTaxObligations {
             get {
                 return ResourceManager.GetString("DashBoardMyTaxObligations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pending Bills.
+        /// </summary>
+        public static string DashBoardPendingBills {
+            get {
+                return ResourceManager.GetString("DashBoardPendingBills", resourceCulture);
             }
         }
         

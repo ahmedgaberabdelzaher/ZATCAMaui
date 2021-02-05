@@ -88,7 +88,7 @@
                                         <custom:CustomLabel  Margin="0,-8,0,0" Padding="0" FontSize="20">
                                             <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="10,000.00" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="20"></Span>
+                                                    <Span Text="{TemplateBinding BindingContext.MyObligationAmount}" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="20"></Span>
                                                     <Span Text=" "/>
                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" Style="{StaticResource CaptionLabelWhite}" FontSize="16"></Span>
                                                 </FormattedString>
@@ -109,10 +109,10 @@
                                     </Image.GestureRecognizers>
                                 </Image>
                             </StackLayout>
-                            
+
                         </Grid>
-                       
-                      
+
+
 
 
                     </StackLayout>
@@ -122,8 +122,8 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        
-            <Grid RowSpacing="0" BackgroundColor="Transparent" Margin="0,0,0,-16">
+
+        <Grid RowSpacing="0" BackgroundColor="Transparent" Margin="0,0,0,-16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
@@ -131,13 +131,13 @@
             <Image Aspect="AspectFill" Margin="0,-50,0,0" x:Name="BGImageLogin" BackgroundColor="Transparent" Source="partials_background.png" />
             <ScrollView Scrolled="ScrollView_Scrolled">
                 <Grid RowSpacing="0" IsVisible="{Binding HomeViewVisible}" Grid.Row="0" Margin="0" Padding="0,15,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-               
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
                     <yummy:PancakeView Grid.Row="1" Padding="0" CornerRadius="12,12,0,0" VerticalOptions="FillAndExpand">
-                   
+
                         <StackLayout Spacing="0">
                             <Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsEstablishmentRegistrationTileVisible}" BackgroundColor="{StaticResource NewDullOrangeColor}"  Padding="15,16,15,8">
                                 <Grid.RowDefinitions>
@@ -166,7 +166,7 @@
                             </Grid>
 
 
-                          
+
 
                             <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0" IsVisible="{Binding IfnotRegInVATAndZakat}">
 
@@ -182,7 +182,7 @@
                                             </Image>
                                         </StackLayout>
                                         <Grid>
-                                           
+
                                             <listView:SfListView HeightRequest="{Binding LastTransactionsListHeight}" ItemsSource="{Binding AccountStatementsList}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" Margin="0,10,0,0" >
 
                                                 <listView:SfListView.ItemTemplate>
@@ -236,7 +236,7 @@
                                                 </listView:SfListView.ItemTemplate>
 
                                             </listView:SfListView>
-                                            
+
                                             <Grid IsVisible="{Binding IsAccountsStatementLoading}">
 
                                                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
@@ -251,6 +251,122 @@
                                                     </StackLayout>
                                                 </StackLayout>
                                             </Grid>
+                                        </Grid>
+                                        <!--InstalmentPlan List-->
+                                        <Grid>
+                                            <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0" IsVisible="{Binding IsInstalmentPlanVisible}">
+
+                                                <cards:SfCardView HasShadow="False" BackgroundColor="White" CornerRadius="10" Margin="0,15,15,10">
+                                                    <StackLayout>
+                                                        <StackLayout Orientation="Horizontal" Margin="0,10,0,0" IsVisible="true">
+                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                                            <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="InstalmentPlan_Tapped"></TapGestureRecognizer>
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+                                                        </StackLayout>
+
+                                                        <CollectionView HeightRequest="155"  ItemsLayout="HorizontalList"
+                                                        ItemsSource="{Binding InstalmentPlanList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                                        BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" >
+                                                            <CollectionView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackLayout Orientation="Horizontal" Margin="8" >
+                                                                        <cards:SfCardView HasShadow="True" CornerRadius="14" 
+                                                                                          Margin="0,0,0,5" Padding="10" >
+                                                                            <StackLayout Orientation="Horizontal">
+
+
+                                                                                <chart:SfChart x:Name="InstalmentChart"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       BackgroundColor="Transparent"
+                       WidthRequest="75"
+                       HeightRequest="75">
+
+                                                                                    <chart:SfChart.Series>
+
+
+                                                                                        <chart:DoughnutSeries x:Name="InstalmentDoughnutSeries"
+                    ItemsSource="{Binding InstalmentDoughnutSeriesData}"
+                                      XBindingPath="XValue"
+                                      YBindingPath="YValue"
+                                      EnableAnimation="true"
+                                       CircularCoefficient="0.5"
+                                      DoughnutCoefficient="0.95">
+
+
+
+                                                                                            
+                                                                                        </chart:DoughnutSeries>
+                                                                                    </chart:SfChart.Series>
+                                                                                </chart:SfChart>
+
+
+
+                                                                                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+
+                                                                                    <custom:CustomLabel Text="{Binding TaxTypeDes}" Style="{StaticResource SectionTitleBlackBold}" Margin="0,-7,0,-7" Padding="0"></custom:CustomLabel>
+                                                                                    <custom:CustomLabel  Style="{StaticResource ValueLabelBlackLight}" FontSize="16" Margin="0,-7,0,-7" Padding="0">
+                                                                                        <custom:CustomLabel.FormattedText>
+                                                                                            <FormattedString>
+                                                                                                <Span Text="{Binding TotalInstAmt,Converter=
+                                                                                                    {StaticResource commaSeparatorConverter}}"  
+                                                                                                      Style="{StaticResource 
+                                                                                                    ValueLabelBlackLight}" FontSize="16"/>
+                                                                                                <Span Text=" "/>
+                                                                                                <Span Text="{x:Static 
+                                                                                                    ResourceManager:AppResources.ZSAR}" 
+                                                                                                      Style="{StaticResource 
+                                                                                                    ValueLabelBlackLight}" FontSize="16"/>
+                                                                                            </FormattedString>
+                                                                                        </custom:CustomLabel.FormattedText>
+                                                                                    </custom:CustomLabel>
+
+                                                                                    <custom:CustomLabel Text="Next Payment Due" 
+                                                                                                        Style="{StaticResource 
+                                                                                        BodyLabelBlackMedium}" Margin="0,5,0,-7" 
+                                                                                                        Padding="0"></custom:CustomLabel>
+
+                                                                                    <StackLayout Orientation="Horizontal" Margin="0,-7,0,-7">
+
+                                                                                        <custom:CustomLabel Text="{Binding DayMonth}" 
+                                                                                                            Style="{StaticResource 
+                                                                                            ValueLabelBlackLight}" FontSize="16"/>
+
+                                                                                        <custom:CustomLabel Text="{Binding NextInstAmt,Converter={StaticResource commaSeparatorConverter}}" 
+                                                                                                            Style="{StaticResource 
+                                                                                            BodyLabelBlackMedium}">
+                                                                                            <custom:CustomLabel.FormattedText>
+                                                                                                <FormattedString>
+                                                                                                    <Span Text="{Binding 
+                                                                                                        NextInstAmt,Converter={StaticResource 
+                                                                                                        commaSeparatorConverter}}" 
+                                                                                                      Style="{StaticResource 
+                                                                                                    BodyLabelBlackMedium}" />
+                                                                                                    <Span Text=" "/>
+                                                                                                    <Span Text="{x:Static 
+                                                                                                    ResourceManager:AppResources.ZSAR}" 
+                                                                                                      Style="{StaticResource 
+                                                                                                    BodyLabelBlackMedium}" />
+                                                                                                </FormattedString>
+                                                                                            </custom:CustomLabel.FormattedText>
+                                                                                        </custom:CustomLabel>
+                                                                                    </StackLayout>
+
+                                                                                </StackLayout>
+
+                                                                            </StackLayout>
+                                                                        </cards:SfCardView>
+                                                                    </StackLayout>
+
+                                                                </DataTemplate>
+                                                            </CollectionView.ItemTemplate>
+                                                        </CollectionView>
+                                                    </StackLayout>
+                                                </cards:SfCardView>
+                                            </yummy:PancakeView>
                                         </Grid>
                                         <!-- <StackLayout Orientation="Vertical" Margin="0,0,0,10"
                                          HorizontalOptions="StartAndExpand" Spacing="-5">
@@ -375,32 +491,32 @@
                                             </StackLayout>
                                         </Grid> -->
 
-                                       
+
                                     </StackLayout>
                                 </cards:SfCardView>
                             </yummy:PancakeView>
                             <StackLayout>
                                 <StackLayout BackgroundColor="LightGray">
-                                <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
-                                    <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
+                                    <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
+                                        <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
 
-                                        <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto"/>
-                                                <ColumnDefinition Width="30"/>
-                                            </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Text="{Binding SelectedCommitmentFilterValue}" Grid.Column="0" Grid.Row="0" Style="{StaticResource ValueLabelBlackMedium}">
-                                            </custom:CustomLabel>
+                                            <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="30"/>
+                                                </Grid.ColumnDefinitions>
+                                                <custom:CustomLabel Text="{Binding SelectedCommitmentFilterValue}" Grid.Column="0" Grid.Row="0" Style="{StaticResource ValueLabelBlackMedium}">
+                                                </custom:CustomLabel>
 
 
-                                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,5,5,5" HorizontalOptions="Start" VerticalOptions="Start"></Image>
-                                            <custom:CustomButton x:Name="btn1" Clicked="btnCommitmentsPickerClicked"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="Transparent"></custom:CustomButton>
+                                                <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,5,5,5" HorizontalOptions="Start" VerticalOptions="Start"></Image>
+                                                <custom:CustomButton x:Name="btn1" Clicked="btnCommitmentsPickerClicked"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="Transparent"></custom:CustomButton>
 
-                                            <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="CommitmentsPicker"  HeaderHeight="55"
+                                                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="CommitmentsPicker"  HeaderHeight="55"
                                                                  BackgroundColor="White"  
                                                              HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
                                                              HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46"
@@ -412,206 +528,310 @@
                                                              Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450"
                                                              CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"
                                                              CancelButtonBackgroundColor="#EAF7CC" SelectionChanged="CommitmentsPicker_SelectionChanged"  >
-                                                <syncfusion:SfPicker.Behaviors>
-                                                    <customcontrol:SfPickerBehavior />
-                                                </syncfusion:SfPicker.Behaviors>
-                                            </syncfusion:SfPicker>
-                                        </Grid>
-                                        <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
+                                                    <syncfusion:SfPicker.Behaviors>
+                                                        <customcontrol:SfPickerBehavior />
+                                                    </syncfusion:SfPicker.Behaviors>
+                                                </syncfusion:SfPicker>
+                                            </Grid>
+                                            <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
 
-                                        <CollectionView HeightRequest="80"  x:Name="CollectionView_Commitment" ItemsLayout="HorizontalList"
+                                            <CollectionView HeightRequest="80"  x:Name="CollectionView_Commitment" ItemsLayout="HorizontalList"
                                                         ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                                         BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
-                                            <CollectionView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackLayout Orientation="Horizontal" Margin="8" >
-                                                        <cards:SfCardView HasShadow="True" CornerRadius="14" Margin="0,0,0,5" >
-                                                            <StackLayout Orientation="Horizontal">
-                                                                <cards:SfCardView  IsVisible="{Binding IsUnSubmittedReturn}" Margin="{OnPlatform iOS='1', Android='0,0,0,-5'}" HasShadow="True" CornerRadius="14" WidthRequest="80" HeightRequest="80">
-                                                                    <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                                                                        <custom:CustomLabel VerticalTextAlignment="Center" Margin="0,0,0,-2"   HorizontalTextAlignment="Center" VerticalOptions="End">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout Orientation="Horizontal" Margin="8" >
+                                                            <cards:SfCardView HasShadow="True" CornerRadius="14" Margin="0,0,0,5" >
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <cards:SfCardView  IsVisible="{Binding IsUnSubmittedReturn}" Margin="{OnPlatform iOS='1', Android='0,0,0,-5'}" HasShadow="True" CornerRadius="14" WidthRequest="80" HeightRequest="80">
+                                                                        <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+                                                                            <custom:CustomLabel VerticalTextAlignment="Center" Margin="0,0,0,-2"   HorizontalTextAlignment="Center" VerticalOptions="End">
+                                                                                <custom:CustomLabel.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding Day    }" Style="{StaticResource ValueLabelWhiteMedium}" ></Span>
+                                                                                    </FormattedString>
+                                                                                </custom:CustomLabel.FormattedText>
+                                                                            </custom:CustomLabel>
+                                                                            <custom:CustomLabel VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-2,0,0">
+                                                                                <custom:CustomLabel.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"></Span>
+                                                                                    </FormattedString>
+                                                                                </custom:CustomLabel.FormattedText>
+                                                                            </custom:CustomLabel>
+                                                                        </StackLayout>
+                                                                        <cards:SfCardView.Triggers>
+                                                                            <Trigger TargetType="cards:SfCardView" Property="IsVisible" Value="True">
+                                                                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"></Setter>
+                                                                            </Trigger>
+                                                                        </cards:SfCardView.Triggers>
+                                                                    </cards:SfCardView>
+
+                                                                    <cards:SfCardView IsVisible="{Binding IsPaymentOverdue}" BackgroundColor="Red"   Margin="{OnPlatform iOS='1', Android='0,0,0,-5'}" HasShadow="True" CornerRadius="14" WidthRequest="80" HeightRequest="80">
+                                                                        <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+                                                                            <custom:CustomLabel VerticalTextAlignment="Center" Margin="0,0,0,-2"   HorizontalTextAlignment="Center" VerticalOptions="End">
+                                                                                <custom:CustomLabel.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding Day    }" Style="{StaticResource ValueLabelWhiteMedium}" ></Span>
+                                                                                    </FormattedString>
+                                                                                </custom:CustomLabel.FormattedText>
+                                                                            </custom:CustomLabel>
+                                                                            <custom:CustomLabel VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-2,0,0">
+                                                                                <custom:CustomLabel.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"></Span>
+                                                                                    </FormattedString>
+                                                                                </custom:CustomLabel.FormattedText>
+                                                                            </custom:CustomLabel>
+                                                                        </StackLayout>
+                                                                        <cards:SfCardView.Triggers>
+                                                                            <Trigger TargetType="cards:SfCardView" Property="IsVisible" Value="True">
+                                                                                <Setter Property="BackgroundColor" Value="{StaticResource Secondary}"></Setter>
+                                                                            </Trigger>
+                                                                        </cards:SfCardView.Triggers>
+                                                                    </cards:SfCardView>
+
+                                                                    <StackLayout Padding="10,1,10,1" VerticalOptions="Center" Spacing="0" >
+                                                                        <custom:CustomLabel Text="{Binding Incotext}" Style="{StaticResource ValueLabelBlackMedium}" IsVisible="{Binding IsUnSubmittedReturn}" />
+
+                                                                        <custom:CustomLabel Text="{Binding Txt50}" Style="{StaticResource ValueLabelBlackMedium}" IsVisible="{Binding IsPaymentOverdue}"/>
+
+                                                                        <custom:CustomLabel  IsVisible="{Binding IsUnSubmittedReturn}" Style="{StaticResource BodyLabelBlack}" LineBreakMode="WordWrap">
                                                                             <custom:CustomLabel.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding Day    }" Style="{StaticResource ValueLabelWhiteMedium}" ></Span>
+                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}"></Span>
+                                                                                    <Span Text=" : "></Span>
+                                                                                    <Span Text="{Binding TaxPeriod}"></Span>
                                                                                 </FormattedString>
                                                                             </custom:CustomLabel.FormattedText>
+
                                                                         </custom:CustomLabel>
-                                                                        <custom:CustomLabel VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-2,0,0">
+
+                                                                        <custom:CustomLabel IsVisible="{Binding IsPaymentOverdue}" Style="{StaticResource BodyLabelBlack}" LineBreakMode="WordWrap">
                                                                             <custom:CustomLabel.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"></Span>
+                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZAmount}"></Span>
+                                                                                    <Span Text=" : "></Span>
+                                                                                    <Span Text="{Binding Amount,Converter={StaticResource commaSeparatorConverter}}"/>
+                                                                                    <Span Text=" "/>
+                                                                                    <!--<Span Text="{Binding Amount}"></Span>-->
+                                                                                    <Span Text="&#160;&#160;"/>
+                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
                                                                                 </FormattedString>
                                                                             </custom:CustomLabel.FormattedText>
                                                                         </custom:CustomLabel>
                                                                     </StackLayout>
-                                                                    <cards:SfCardView.Triggers>
-                                                                        <Trigger TargetType="cards:SfCardView" Property="IsVisible" Value="True">
-                                                                            <Setter Property="BackgroundColor" Value="{StaticResource Primary}"></Setter>
-                                                                        </Trigger>
-                                                                    </cards:SfCardView.Triggers>
-                                                                </cards:SfCardView>
-
-                                                                <cards:SfCardView IsVisible="{Binding IsPaymentOverdue}" BackgroundColor="Red"   Margin="{OnPlatform iOS='1', Android='0,0,0,-5'}" HasShadow="True" CornerRadius="14" WidthRequest="80" HeightRequest="80">
-                                                                    <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                                                                        <custom:CustomLabel VerticalTextAlignment="Center" Margin="0,0,0,-2"   HorizontalTextAlignment="Center" VerticalOptions="End">
-                                                                            <custom:CustomLabel.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span Text="{Binding Day    }" Style="{StaticResource ValueLabelWhiteMedium}" ></Span>
-                                                                                </FormattedString>
-                                                                            </custom:CustomLabel.FormattedText>
-                                                                        </custom:CustomLabel>
-                                                                        <custom:CustomLabel VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-2,0,0">
-                                                                            <custom:CustomLabel.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"></Span>
-                                                                                </FormattedString>
-                                                                            </custom:CustomLabel.FormattedText>
-                                                                        </custom:CustomLabel>
-                                                                    </StackLayout>
-                                                                    <cards:SfCardView.Triggers>
-                                                                        <Trigger TargetType="cards:SfCardView" Property="IsVisible" Value="True">
-                                                                            <Setter Property="BackgroundColor" Value="{StaticResource Secondary}"></Setter>
-                                                                        </Trigger>
-                                                                    </cards:SfCardView.Triggers>
-                                                                </cards:SfCardView>
-
-                                                                <StackLayout Padding="10,1,10,1" VerticalOptions="Center" Spacing="0" >
-                                                                    <custom:CustomLabel Text="{Binding Incotext}" Style="{StaticResource ValueLabelBlackMedium}" IsVisible="{Binding IsUnSubmittedReturn}" />
-
-                                                                    <custom:CustomLabel Text="{Binding Txt50}" Style="{StaticResource ValueLabelBlackMedium}" IsVisible="{Binding IsPaymentOverdue}"/>
-
-                                                                    <custom:CustomLabel  IsVisible="{Binding IsUnSubmittedReturn}" Style="{StaticResource BodyLabelBlack}" LineBreakMode="WordWrap">
-                                                                        <custom:CustomLabel.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}"></Span>
-                                                                                <Span Text=" : "></Span>
-                                                                                <Span Text="{Binding TaxPeriod}"></Span>
-                                                                            </FormattedString>
-                                                                        </custom:CustomLabel.FormattedText>
-
-                                                                    </custom:CustomLabel>
-
-                                                                    <custom:CustomLabel IsVisible="{Binding IsPaymentOverdue}" Style="{StaticResource BodyLabelBlack}" LineBreakMode="WordWrap">
-                                                                        <custom:CustomLabel.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZAmount}"></Span>
-                                                                                <Span Text=" : "></Span>
-                                                                                <Span Text="{Binding Amount,Converter={StaticResource commaSeparatorConverter}}"/>
-                                                                                <Span Text=" "/>
-                                                                                <!--<Span Text="{Binding Amount}"></Span>-->
-                                                                                <Span Text="&#160;&#160;"/>
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
-                                                                            </FormattedString>
-                                                                        </custom:CustomLabel.FormattedText>
-                                                                    </custom:CustomLabel>
                                                                 </StackLayout>
-                                                            </StackLayout>
-                                                        </cards:SfCardView>
-                                                    </StackLayout>
+                                                            </cards:SfCardView>
+                                                        </StackLayout>
 
-                                                </DataTemplate>
-                                            </CollectionView.ItemTemplate>
-                                        </CollectionView>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
 
-                                        <!--End Horizontal List View-->
+                                            <!--End Horizontal List View-->
 
-                                        <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
-                                            <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TappedOnMyBills"></TapGestureRecognizer>
-                                                </Image.GestureRecognizers>
-                                            </Image>
-                                        </StackLayout>
+                                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
 
-                                        <!--Start Horizontal List View-->
-
-                                        <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
-                                            <StackLayout Padding="10">
-                                                <chart:SfChart ChartPadding="15"  BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250" IsVisible="true">
-                                                    <chart:SfChart.Series>
-                                                        <chart:DoughnutSeries  x:Name="doughnutSeries"  ItemsSource="{Binding MyBillsChartModels}" XBindingPath="BillType" YBindingPath="BillCount" TrackColor="{Binding BillColor}"
-                                                                               Color="{Binding BillColor}" DoughnutCoefficient="0.95" CircularCoefficient=".9">
-                                                            <chart:DoughnutSeries.ColorModel>
-                                                                <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding Colors}">
-                                                                </chart:ChartColorModel>
-                                                            </chart:DoughnutSeries.ColorModel>
-
-                                                            <chart:DoughnutSeries.CenterView>
-                                                                <StackLayout HorizontalOptions = "FillAndExpand" VerticalOptions = "FillAndExpand">
-                                                                    <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.TotalString}" FontSize="12" Style="{StaticResource CaptionLabelBlack}"/>
-                                                                    <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.BillCount}" FontSize="24" HorizontalOptions="Center" HorizontalTextAlignment="Center" StyleId="OnBoardText"/>
-                                                                </StackLayout>
-                                                            </chart:DoughnutSeries.CenterView>
-                                                        </chart:DoughnutSeries>
-                                                    </chart:SfChart.Series>
-                                                </chart:SfChart>
-                                                <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                                                    <buttons:SfButton  HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="unPaidClicked"    Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{Binding UnPaidString}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>
-                                                    <buttons:SfButton   HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue"  Clicked="partiallyClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="partially_clock" ShowIcon="True" Text="{Binding PartiallyPaidString}" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                </Grid>
+                                                <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                    <custom:CustomLabel Grid.Column="0"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="Center">
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding BillCount}" />
+                                                                <Span Text=" "/>
+                                                                <Span Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}"></Span>
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                    </custom:CustomLabel>
+                                                    <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}"  VerticalOptions="Center">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TappedOnMyBills"></TapGestureRecognizer>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
                                                 </StackLayout>
+                                                
                                             </StackLayout>
-                                        </cards:SfCardView>
 
-                                        <!--End Horizontal List View-->
+                                            <!--Start Horizontal List View-->
 
-                                        <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReturns}"  Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
-                                            <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TappedOnMyReturns"></TapGestureRecognizer>
-                                                </Image.GestureRecognizers>
-                                            </Image>
+                                            <cards:SfCardView HasShadow="False" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
+                                                <StackLayout >
 
-                                        </StackLayout>
+                                                    <listView:SfListView HeightRequest="{Binding PendingBillsListHeight}" ItemsSource="{Binding PendingBills}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" Margin="0,10,0,0" >
 
-                                        <Grid HorizontalOptions="FillAndExpand" HeightRequest="110">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="33*"/>
-                                                <ColumnDefinition Width="33*"/>
-                                                <ColumnDefinition Width="33*"/>
-                                            </Grid.ColumnDefinitions>
-                                            
-                                            <cards:SfCardView Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
-                                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="12,12,0,12" Spacing="0" Padding="0">
-                                                    <Image HorizontalOptions="Start" Source="submited.png" VerticalOptions="Start">
-                                                    </Image>
-                                                    <custom:CustomLabel  Text="{Binding SubmittedCount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Start"/>
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Submitted}" Style="{StaticResource ValueLabelBlack}"   VerticalOptions="Start"/>
+                                                        <listView:SfListView.ItemTemplate>
+                                                            <DataTemplate>
+
+                                                                <cards:SfCardView CornerRadius="16" Margin="2" HeightRequest="75">
+
+                                                                    <StackLayout Spacing="5" Margin="12" Orientation="Vertical">
+                                                                        <Grid HorizontalOptions="FillAndExpand">
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="50*"></ColumnDefinition>
+                                                                                <ColumnDefinition Width="50*"></ColumnDefinition>
+                                                                            </Grid.ColumnDefinitions>
+
+                                                                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+
+                                                                                <custom:CustomLabel Text="{Binding Amount,Converter={StaticResource 
+                                                                        commaSeparatorConverter}}" 
+                                                                                            Style="{StaticResource 
+                                                                        BodyLabelBlackMedium}" Margin="0,-5,0,-5">
+
+                                                                                    <custom:CustomLabel.FormattedText>
+
+                                                                                        <FormattedString>
+                                                                                            <Span Text="{Binding Amount,Converter={StaticResource 
+                                                                        commaSeparatorConverter}}" />
+                                                                                            <Span Text=" "/>
+                                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" ></Span>
+                                                                                        </FormattedString>
+                                                                                    </custom:CustomLabel.FormattedText>
+
+                                                                                </custom:CustomLabel>
+                                                                                
+                                                                                <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding FbtText}" 
+                                                                                        Style="{StaticResource 
+                                                                        CaptionLabelBlack}"></custom:CustomLabel>
+
+                                                                            </StackLayout>
+
+                                                                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+
+                                                                                <border:SfBorder Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" 
+                                                                     VerticalOptions="CenterAndExpand" Padding="12,2,12,2" 
+                                                                     CornerRadius="20" HeightRequest="32" BorderColor="{StaticResource Primary}" BorderWidth="1">
+                                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                                                        <Image Source="ic_iconpay" HeightRequest="16" WidthRequest="16" 
+                                                                   Margin="0,0,5,0" VerticalOptions="CenterAndExpand"/>
+                                                                                        <custom:CustomLabel FontFamily="{StaticResource SSTArRoman}" Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" FontSize="12" TextColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand"/>
+                                                                                    </StackLayout>
+                                                                                    <border:SfBorder.GestureRecognizers>
+                                                                                        <TapGestureRecognizer Tapped="BillsPayNowTapped" />
+                                                                                    </border:SfBorder.GestureRecognizers>
+                                                                                </border:SfBorder>
+                                                                                
+                                                                                <custom:CustomLabel Margin="0,-5,0,-5"
+                                                                                        Style="{StaticResource 
+                                                                        CaptionLabelBlack}" HorizontalOptions="EndAndExpand">
+
+                                                                                    <custom:CustomLabel.FormattedText>
+
+                                                                                        <FormattedString>
+                                                                                            <Span Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
+                                                                                            <Span Text=": "/>
+                                                                                            <Span Text="{Binding DueDate}"></Span>
+                                                                                        </FormattedString>
+                                                                                    </custom:CustomLabel.FormattedText>
+                                                                                </custom:CustomLabel>
+
+                                                                            </StackLayout>
+
+                                                                        </Grid>
+
+                                                                    </StackLayout>
+                                                                </cards:SfCardView>
+
+                                                            </DataTemplate>
+                                                        </listView:SfListView.ItemTemplate>
+
+                                                    </listView:SfListView>
+
+
+                                                    <!--
+                                                    <chart:SfChart ChartPadding="15"  BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250" IsVisible="true">
+                                                        <chart:SfChart.Series>
+                                                            <chart:DoughnutSeries  x:Name="doughnutSeries"  ItemsSource="{Binding MyBillsChartModels}" XBindingPath="BillType" YBindingPath="BillCount" TrackColor="{Binding BillColor}"
+                                                                               Color="{Binding BillColor}" DoughnutCoefficient="0.95" CircularCoefficient=".9">
+                                                                <chart:DoughnutSeries.ColorModel>
+                                                                    <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding Colors}">
+                                                                    </chart:ChartColorModel>
+                                                                </chart:DoughnutSeries.ColorModel>
+
+                                                                <chart:DoughnutSeries.CenterView>
+                                                                    <StackLayout HorizontalOptions = "FillAndExpand" VerticalOptions = "FillAndExpand">
+                                                                        <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.TotalString}" FontSize="12" Style="{StaticResource CaptionLabelBlack}"/>
+                                                                        <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.BillCount}" FontSize="24" HorizontalOptions="Center" HorizontalTextAlignment="Center" StyleId="OnBoardText"/>
+                                                                    </StackLayout>
+                                                                </chart:DoughnutSeries.CenterView>
+                                                            </chart:DoughnutSeries>
+                                                        </chart:SfChart.Series>
+                                                    </chart:SfChart>
+                                                    <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                                                        <buttons:SfButton  HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="unPaidClicked"    Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{Binding UnPaidString}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>
+                                                        <buttons:SfButton   HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue"  Clicked="partiallyClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="partially_clock" ShowIcon="True" Text="{Binding PartiallyPaidString}" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                                    </StackLayout>
+                                                    -->
+                                                    
                                                 </StackLayout>
-                                                <cards:SfCardView.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TappedOnSubmitted"></TapGestureRecognizer>
-                                                </cards:SfCardView.GestureRecognizers>
                                             </cards:SfCardView>
 
-                                            <cards:SfCardView Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
-                                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="12,12,0,12" Spacing="0" Padding="0" >
-                                                    <Image HorizontalOptions="Start" Source="clockNew.png" VerticalOptions="Start">
-                                                    </Image>
-                                                    <custom:CustomLabel  Text="{Binding OverDueCount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Start"/>
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.OverDue}" Style="{StaticResource ValueLabelBlack}"   VerticalOptions="Start"/>
-                                                </StackLayout>
-                                                <cards:SfCardView.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TappedOnOverDue"></TapGestureRecognizer>
-                                                </cards:SfCardView.GestureRecognizers>
-                                            </cards:SfCardView>
-                                            
+                                            <!--End Horizontal List View-->
 
-                                            <cards:SfCardView Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
-                                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="12,12,0,12" Spacing="0" Padding="0">
-                                                    <Image HorizontalOptions="Start" Source="unsubmitted.png" VerticalOptions="Start">
-                                                    </Image>
-                                                    <custom:CustomLabel  Text="{Binding UnSubmittedCount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Start"/>
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.UnSubmitted}" Style="{StaticResource ValueLabelBlack}"   VerticalOptions="Start"/>
-                                                </StackLayout>
-                                                <cards:SfCardView.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TappedOnUnSubmitted"></TapGestureRecognizer>
-                                                </cards:SfCardView.GestureRecognizers>
-                                            </cards:SfCardView>
-                                           
+                                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReturns}"  Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                                <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TappedOnMyReturns"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
 
-                                        </Grid>
-<!--
+                                            </StackLayout>
+
+                                            <Grid HorizontalOptions="FillAndExpand" HeightRequest="110">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="33*"/>
+                                                    <ColumnDefinition Width="33*"/>
+                                                    <ColumnDefinition Width="33*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <cards:SfCardView Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
+                                                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="12,12,0,12" Spacing="0" Padding="0">
+                                                        <Image HorizontalOptions="Start" Source="submited.png" VerticalOptions="Start">
+                                                        </Image>
+                                                        <custom:CustomLabel  Text="{Binding SubmittedCount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Start"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Submitted}" Style="{StaticResource ValueLabelBlack}"   VerticalOptions="Start"/>
+                                                    </StackLayout>
+                                                    <cards:SfCardView.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TappedOnSubmitted"></TapGestureRecognizer>
+                                                    </cards:SfCardView.GestureRecognizers>
+                                                </cards:SfCardView>
+
+                                                <cards:SfCardView Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
+                                                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="12,12,0,12" Spacing="0" Padding="0" >
+                                                        <Image HorizontalOptions="Start" Source="clockNew.png" VerticalOptions="Start">
+                                                        </Image>
+                                                        <custom:CustomLabel  Text="{Binding OverDueCount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Start"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.OverDue}" Style="{StaticResource ValueLabelBlack}"   VerticalOptions="Start"/>
+                                                    </StackLayout>
+                                                    <cards:SfCardView.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TappedOnOverDue"></TapGestureRecognizer>
+                                                    </cards:SfCardView.GestureRecognizers>
+                                                </cards:SfCardView>
+
+
+                                                <cards:SfCardView Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
+                                                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="12,12,0,12" Spacing="0" Padding="0">
+                                                        <Image HorizontalOptions="Start" Source="unsubmitted.png" VerticalOptions="Start">
+                                                        </Image>
+                                                        <custom:CustomLabel  Text="{Binding UnSubmittedCount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Start"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.UnSubmitted}" Style="{StaticResource ValueLabelBlack}"   VerticalOptions="Start"/>
+                                                    </StackLayout>
+                                                    <cards:SfCardView.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TappedOnUnSubmitted"></TapGestureRecognizer>
+                                                    </cards:SfCardView.GestureRecognizers>
+                                                </cards:SfCardView>
+
+
+                                            </Grid>
+                                            <!--
                                         <CollectionView  Margin="0,0,0,15" HeightRequest="110" SelectionMode="None" ItemsLayout="HorizontalList"  ItemsSource="{Binding SegregatedReturnTypesAndCorrepsondingCounts}"   HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
@@ -644,8 +864,8 @@
                                             </CollectionView.ItemTemplate>
                                         </CollectionView> 
                                         -->
-                                    </StackLayout>
-                                </yummy:PancakeView>
+                                        </StackLayout>
+                                    </yummy:PancakeView>
                                 </StackLayout>
                                 <StackLayout.Triggers>
                                     <DataTrigger TargetType="StackLayout" Binding="{Binding IsVatRegistrationTileVisible}" Value="True">
@@ -657,39 +877,69 @@
                                 </StackLayout.Triggers>
                             </StackLayout>
                         </StackLayout>
-                   
-                </yummy:PancakeView>
-                
-                <StackLayout Grid.Row="0" Margin="15,0,15,15">
 
-                    <custom:CustomLabel Text="{Binding TaxpayerName}"  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,3,0,10" VerticalOptions="Center" StyleId="SingleLabel" MaxLines="2"/>
+                    </yummy:PancakeView>
 
-                    <border:SfBorder x:Name="btn_frameToolbar" Grid.Row="0"  Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" HorizontalOptions="StartAndExpand" CornerRadius="10" HasShadow="False" BorderWidth="0"
-                                           VerticalOptions="CenterAndExpand">
-                                    <StackLayout Orientation="Vertical" Padding="12,5,12,5" Spacing="0">
-                                    
-                                        <Label Text="{x:Static ResourceManager:AppResources.DashBoardMyTaxObligations}"  
+                    <StackLayout Grid.Row="0" Margin="15,0,15,15">
+
+                        <custom:CustomLabel Text="{Binding TaxpayerName}"  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,3,0,10" VerticalOptions="Center" StyleId="SingleLabel" MaxLines="2"/>
+
+                        <StackLayout IsVisible="{Binding IsMyObligationsClear}">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="confirmnew" WidthRequest="15" HeightRequest="15" Margin="0,0,5,0"></Image>
+                                <custom:CustomLabel FontSize="16" Style="{StaticResource 
+                                                        CaptionLabelWhite}">
+                                    <custom:CustomLabel.FormattedText>
+
+                                        <FormattedString>
+                                            <Span Text="Well Done!"/>
+                                            <Span Text=" "/>
+                                            <Span Text="No Tax Obligations Pending" ></Span>
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                            </StackLayout>
+                            <custom:CustomLabel  Margin="0,-8,0,0" Padding="0" FontSize="20">
+
+                                <custom:CustomLabel.FormattedText>
+
+                                    <FormattedString>
+                                        <Span Text="0.00" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="28"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" Style="{StaticResource 
+                                                        CaptionLabelWhite}" FontSize="16"></Span>
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                        </StackLayout>
+
+                        <border:SfBorder x:Name="btn_frameToolbar" Grid.Row="0"  Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" HorizontalOptions="StartAndExpand" CornerRadius="10" HasShadow="False" BorderWidth="0"
+                                           VerticalOptions="CenterAndExpand" IsVisible="{Binding IsBodyMyTaxVisible}">
+                            <StackLayout Orientation="Vertical" Padding="12,5,12,5" Spacing="0">
+
+                                <Label Text="{x:Static ResourceManager:AppResources.DashBoardMyTaxObligations}"  
                                                Style="{StaticResource CaptionLabelWhite}" Padding="0" Margin="0" 
                                                HorizontalOptions="StartAndExpand" FontSize="12"></Label>
-                                
-                                        <custom:CustomLabel  Margin="0,-8,0,0" Padding="0" FontSize="20">
-                                    
-                                            <custom:CustomLabel.FormattedText>
-                                        
-                                                <FormattedString>
-                                            <Span Text="10,000.00" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="28"/>
+
+                                <custom:CustomLabel  Margin="0,-8,0,0" Padding="0" FontSize="20">
+
+                                    <custom:CustomLabel.FormattedText>
+
+                                        <FormattedString>
+                                            <Span Text="{Binding MyObligationAmount}" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="28"/>
                                             <Span Text=" "/>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" Style="{StaticResource 
                                                         CaptionLabelWhite}" FontSize="16"></Span>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
 
                             </StackLayout>
-                                </border:SfBorder>
+                        </border:SfBorder>
 
-                </StackLayout>
-            </Grid>
+                    </StackLayout>
+                </Grid>
             </ScrollView>
             <!--Menu Starts-->
             <Grid x:Name="OldMenu" Grid.Row="0" IsVisible="{Binding MenuViewVisible}">
@@ -871,7 +1121,7 @@
                             </StackLayout>
 
                             <StackLayout Grid.Row="0"  Padding="15,15,15,0" Spacing="10">
-                                
+
                                 <!--  
 
                                 <border:SfBorder x:Name="btn_frameToolbar" Grid.Row="0"  Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" HorizontalOptions="StartAndExpand" CornerRadius="20" HasShadow="False" BorderWidth="0"
@@ -899,7 +1149,7 @@
                     </Grid>
                 </ScrollView>
             </Grid>
-            
+
             <!--Menu Ends-->
 
             <Grid x:Name="ButtomTab" VerticalOptions="EndAndExpand" Grid.Row="1" Margin="0,-3,0,0" BackgroundColor="White" Padding="0,0,0,26">
@@ -920,7 +1170,7 @@
 
 
                         <StackLayout Grid.Column="0" BackgroundColor="Transparent" Grid.Row="0" >
-                            
+
                             <Image Source="home.png" VerticalOptions="CenterAndExpand">
                             </Image>
                             <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
@@ -937,11 +1187,11 @@
                         </StackLayout>
 
                         <StackLayout Grid.Column="1" BackgroundColor="Transparent" Grid.Row="0" >
-                            
+
 
                             <Image Source="timeline.png" VerticalOptions="CenterAndExpand">
                             </Image>
-                           <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
+                            <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>
                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding AccountStatementVisible}" Value="True">
                                         <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
@@ -967,11 +1217,11 @@
                         </StackLayout>
 
                         <StackLayout Grid.Column="3" BackgroundColor="Transparent" Grid.Row="0" >
-                           
+
 
                             <Image Source="ColorChat.png" VerticalOptions="CenterAndExpand">
                             </Image>
-                           <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
+                            <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>
                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding LiveChatVisible}" Value="True">
                                         <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
@@ -984,7 +1234,7 @@
                         </StackLayout>
 
                         <StackLayout Grid.Column="4" Grid.Row="0" BackgroundColor="Transparent">
-                           
+
                             <Image Source="ic_burger.png" VerticalOptions="CenterAndExpand"/>
                             <yummy:PancakeView  BackgroundColor="Transparent" Padding="3" CornerRadius="22" Margin="10,0,10,0" >
                                 <yummy:PancakeView.Triggers>
