@@ -20,14 +20,17 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         bool isModaPaymentAvailable = false;
         bool isAlreadyPaid = false;
         bool isAmountLess = false;
+        string amountMsg = "";
+
 
         public delegate void OnSelectDelegate(string item);
         public OnSelectDelegate OnSelect { get; set; } = null;
-        public PaymentOptionsPageView(bool isModaPaymentAvailable, bool isAlreadyPaid, bool isAmountLess)
+        public PaymentOptionsPageView(bool isModaPaymentAvailable, bool isAlreadyPaid, bool isAmountLess, string messageText)
         {
             this.isModaPaymentAvailable = isModaPaymentAvailable;
             this.isAlreadyPaid= isAlreadyPaid;
             this.isAmountLess = isAmountLess;
+            this.amountMsg = messageText;
             InitializeComponent();
             SetLTR();
         }
@@ -69,14 +72,16 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                 FrameMadaPaymentText.IsVisible = false;
             }
 
-            if(isAlreadyPaid)
-            {
-                TextMadaPaymentText.Text = "There is no amount payable for the selected invoice";
-            }
-            else
-            {
-                TextMadaPaymentText.Text = "MADA payment allowed for amounts less than 20,000 SAR";
-            }
+            TextMadaPaymentText.Text = this.amountMsg;
+
+            //if (isAlreadyPaid)
+            //{
+            //    TextMadaPaymentText.Text = "There is no amount payable for the selected invoice";
+            //}
+            //else
+            //{
+            //    TextMadaPaymentText.Text = this.amountMsg;
+            //}
         }
 
         protected override void OnAppearing()
@@ -109,9 +114,11 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             }
             else if (selectedItem.CardLabel == "Apple Pay")
             {
-                MessagingCenter.Send<Object, string>(this, "Apple_Pay", "Yes");
                 OnSelect?.Invoke("Apple Pay");
+
                 await PopupNavigation.Instance.PopAsync();
+
+                MessagingCenter.Send<Object, string>(this, "Apple_Pay", "Yes");
             }
             else
             {

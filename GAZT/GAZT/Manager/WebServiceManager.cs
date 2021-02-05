@@ -2211,7 +2211,7 @@ namespace GAZT.Manager
                     {
                         url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
                     }
-                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url,true, "123");
+                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICallWithIncomingChannel(url,true, "123");
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -15994,6 +15994,55 @@ namespace GAZT.Manager
             }
             return paymentResponse;
         }
+
+
+        public async static Task<string> GAZTGenerateApplePayGuid(ApplePayGuid applePayDetails)
+        {
+            string _contractReleasesubmitResponse = string.Empty;
+            try
+            {
+                String url = Constants.ApplePayGenerateGuid;
+                var uri = new Uri(url);
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                var serilized = JsonConvert.SerializeObject(applePayDetails);
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
+                if (!string.IsNullOrEmpty(_contractReleasesubmitResponse))
+                {
+                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_contractReleasesubmitResponse);
+                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    {
+                        string errorMessage = string.Empty;
+                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        errorMessage = WithReplacedString;
+                        throw new GAZTVATRegistrationInProcessException(errorMessage);
+                    }
+                }
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                throw new GAZTVATRegistrationInProcessException(ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                App.IsSessionExpired = true;
+                return null;
+            }
+            return _contractReleasesubmitResponse;
+
+
+        }
+       
 
         #endregion
 
