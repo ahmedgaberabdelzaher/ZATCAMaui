@@ -107,6 +107,8 @@ namespace GAZT.Models
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
+
+    [Preserve(AllMembers = true)]
     public class IGRTSetResult
     {
         public Metadata4 __metadata { get; set; }
@@ -114,6 +116,8 @@ namespace GAZT.Models
         public string GrpNo { get; set; }
         public string RateTrtmt { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
     public class IGRTSet
     {
         public List<IGRTSetResult> results { get; set; }
