@@ -1235,6 +1235,7 @@
                         </Label>-->
 
                     </StackLayout>
+                       </StackLayout>
                 </Grid>
             </yummy:PancakeView>
 
