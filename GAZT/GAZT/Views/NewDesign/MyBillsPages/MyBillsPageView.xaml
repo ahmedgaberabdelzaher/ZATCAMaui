@@ -160,14 +160,15 @@
                                             <border:SfBorder Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" 
                                                                      VerticalOptions="CenterAndExpand" Padding="12,0,12,0" 
                                                                      CornerRadius="20" HeightRequest="32" BorderColor="{StaticResource Primary}" BorderWidth="1">
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                <StackLayout BindingContext="{Binding .}"  Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                                                     <Image Source="ic_iconpay" HeightRequest="16" WidthRequest="16" 
                                                                    Margin="0,0,5,0" VerticalOptions="CenterAndExpand"/>
                                                     <custom:CustomLabel FontFamily="{StaticResource SSTArRoman}" Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" FontSize="12" TextColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand"/>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer CommandParameter="" Tapped="payNow_Tapped" />
+                                                    </StackLayout.GestureRecognizers>
                                                 </StackLayout>
-                                                <border:SfBorder.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="payNow_Tapped" />
-                                                </border:SfBorder.GestureRecognizers>
+                                                
                                             </border:SfBorder>
                                             <!--</StackLayout>-->
                                         </Grid>

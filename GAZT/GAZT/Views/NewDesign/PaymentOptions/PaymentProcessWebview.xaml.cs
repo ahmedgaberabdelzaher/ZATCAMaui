@@ -38,17 +38,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
             viewModel.PaymentType = type;
             //WebviewGrid.LowerChild(webView);
-
-
-
-        }
-
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        
-            webView = new WebView();
+webView = new WebView();
 
             CookieContainer cookieContainer = new CookieContainer();
 
@@ -116,7 +106,15 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             WebviewGrid.Children.Add(webView, 0, 0);
             WebviewGrid.LowerChild(webView);
             //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
+            
+        }
 
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        
+            
 
         }
 

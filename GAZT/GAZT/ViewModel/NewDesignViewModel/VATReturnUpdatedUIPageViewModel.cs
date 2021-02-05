@@ -3335,6 +3335,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsRefundButtonVisible = false;
                 IsCreditForwardBtnVisible = false;
                 IsVisibleAmendButton = false;
+                IsPayNowVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             //else if(viewModel.currentTab == VATReturnUpdatedUITabEnum.TaxpayerDetails)
@@ -3350,6 +3351,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsRefundButtonVisible = false;
                 IsCreditForwardBtnVisible = false;
                 IsVisibleAmendButton = false;
+                IsPayNowVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Sales)
@@ -3359,6 +3361,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsRefundButtonVisible = false;
                 IsCreditForwardBtnVisible = false;
                 IsVisibleAmendButton = false;
+                IsPayNowVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Purchase)
@@ -3368,6 +3371,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsRefundButtonVisible = false;
                 IsCreditForwardBtnVisible = false;
                 IsVisibleAmendButton = false;
+                IsPayNowVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.TotalVat)
@@ -3377,11 +3381,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsRefundButtonVisible = false;
                 IsCreditForwardBtnVisible = true;
                 IsVisibleAmendButton = false;
+                IsPayNowVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Summery)
             {
                 IsCreditForwardBtnVisible = false;
+                if (Convert.ToDouble(NetdueVat) > 0)
+                {
+                    IsPayNowVisible = true;
+                }
+                else
+                {
+                    IsPayNowVisible = false;
+                }
+
                 if(IsAmendButtonAvailable)
                 {
                     IsVisibleAmendButton = true;

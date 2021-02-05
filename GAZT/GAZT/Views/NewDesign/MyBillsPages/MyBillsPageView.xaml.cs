@@ -101,12 +101,15 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
-              try
+            try
             {
-                //MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
-                //{
-                //    Console.WriteLine("Card Payment Clicked");
-                //});
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                {
+                    Console.WriteLine("Card Payment Clicked");
+
+                    viewModel.MadaPaymentSelected();
+
+                });
             }
             catch (Exception ex)
             {
@@ -133,6 +136,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 {
 
                     Console.WriteLine("SADAD Clicked");
+                    viewModel.SadadPaymentSelected();
                 });
             }
             catch (Exception ex)
@@ -141,6 +145,23 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 Console.Write(ex.StackTrace.ToString());
             }
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            try
+            {
+                MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
+                MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
+                MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
+
+            }
+            catch (Exception ex)
+            {
+                //scrollView.ScrollToAsync(0, 500, true);
+            }
+        }
+
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -263,9 +284,14 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             }
 
         }
-        private async void payNow_Tapped(object sender, EventArgs e)
+        private async void payNow_Tapped(object sender, EventArgs eventArgs)
         {
-            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
+            //var dataItem = e.Item as MyBills;
+            var item = (Xamarin.Forms.TapGestureRecognizer)sender; 
+            
+            var bill = item.BindingContext as MyBills;
+            
+            //viewModel.DoValidatePayment(bill.f);
         }
     }
 }

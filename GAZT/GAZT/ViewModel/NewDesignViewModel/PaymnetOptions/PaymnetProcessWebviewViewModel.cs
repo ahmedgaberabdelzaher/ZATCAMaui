@@ -131,6 +131,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                                 else if(PaymentType == 1) {
                                     _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                                } else if(PaymentType == 2) {
+                                    
+                                    //_navigationService.GoBack();
+                                    var _navigation = Application.Current.MainPage.Navigation;
+                                    foreach (var item in _navigation.NavigationStack)
+                                    {
+                                        if (item.GetType().Name == App.GAZTNewDesignMyBillsPageView)
+                                        {
+                                            _navigation.RemovePage(item);
+                                            break;
+                                        }
+                                    }
+                                    foreach (var item in _navigation.NavigationStack)
+                                    {
+                                        if (item.GetType().Name == App.PaymentProcessWebview)
+                                        {
+                                            _navigation.RemovePage(item);
+                                            break;
+                                        }
+                                    }
+                                    _navigationService.GoBack();
                                 }
 
                             });

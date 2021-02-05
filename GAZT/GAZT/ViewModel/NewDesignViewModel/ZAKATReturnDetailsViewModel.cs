@@ -180,6 +180,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
+        private bool _isPayNowVisible;
+        public bool IsPayNowVisible
+        {
+            get
+            {
+                return _isPayNowVisible;
+            }
+            set
+            {
+                if (_isPayNowVisible == value) return;
+
+                _isPayNowVisible = value;
+                RaisePropertyChanged("IsPayNowVisible");
+            }
+        }
+        
         private string _fromDate;
         public string FromDate
         {
@@ -864,6 +880,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         }
 
+                        var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                        if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                        {
+                            IsPayNowVisible = false;
+                        }
+                        else
+                        {
+                            IsPayNowVisible = true;
+                        }
 
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
@@ -990,6 +1015,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0002"))// E002 means Tax officer has released the return
                 {
+                    isEditVisible = true;
+                    SetEditImage();
+                    isLabelVisible = false;
+                    IsEditTextVisible = false;
+                    IsBillsButtonTapped = true;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
+                        {
+
+                            //Bill details Navigation
+                            //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+
+                            await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
+
+                        }
+                        else
+                        {
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                        }
+                    });
+                }
+              //  else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
+                else if (ReleaseOrBillDetailsButtonText.Equals(AppResources.PaymentMethodPayNow))
+                {
+                    // AmedmentButtonVisibility = true;
                     isEditVisible = true;
                     SetEditImage();
                     isLabelVisible = false;
@@ -1294,6 +1346,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     ZakatReturnDetail = zakatReturnDetails.d;
                                     GetUpdatedDataAfterAddingComma();
+                                    var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                                    if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                                    {
+                                        IsPayNowVisible = false;
+                                    }
+                                    else
+                                    {
+                                        IsPayNowVisible = true;
+                                    }
                                     SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                                 }
                             }
