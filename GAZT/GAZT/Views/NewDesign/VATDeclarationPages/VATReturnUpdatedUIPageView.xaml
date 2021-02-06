@@ -2250,6 +2250,8 @@
                           
                         <StackLayout BackgroundColor="White" Grid.Row="1"  VerticalOptions="End" HorizontalOptions="Center"  Padding="0,0,0,40">
 
+                            <buttons:SfButton  x:Name="btnpaynow"   VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnPayNowButtonClicked" Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"  Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsPayNowVisible}"/>
+
                             <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
                             <buttons:SfButton  VerticalOptions="CenterAndExpand" Margin="15,8,15,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>

@@ -12,6 +12,8 @@ namespace EGAZT.Manager
         public static async Task<HttpResponseMessage> MakeGetAPICall(String URL,bool istoken,string token)
         {
             HttpClient client = new HttpClient(App.httpClientHandler);
+            client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
             if (istoken)
             {
                 client.DefaultRequestHeaders.Add("Token", token);

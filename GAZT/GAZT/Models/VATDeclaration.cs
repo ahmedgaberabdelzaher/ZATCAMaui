@@ -724,6 +724,10 @@ namespace EGAZT.Models
         public ADRSet ADRSet { get; set; }
         [DataMember]
         public VATRMSGSet VATR_MSGSet { get; set; }
+        [DataMember]
+        public string MadabutFg { get; set; }
+        [DataMember]
+        public string OpenliMsg { get; set; }
         //protected void OnPropertyChanged(string propertyName)
         //{
         //    var handler = PropertyChanged;
