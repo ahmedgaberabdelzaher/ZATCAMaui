@@ -646,15 +646,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                        // var VatAmount = NetdueVat.Replace(",", "");
                         if (String.IsNullOrEmpty(amount) || Double.Parse(amount) == 0)
                         {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, string.Empty));
                         }
                         else if (!String.IsNullOrEmpty(amount) && Double.Parse(amount) > 20000)
                         {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, string.Empty));
                         }
                         else
                         {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, string.Empty));
                         }
 
                     }

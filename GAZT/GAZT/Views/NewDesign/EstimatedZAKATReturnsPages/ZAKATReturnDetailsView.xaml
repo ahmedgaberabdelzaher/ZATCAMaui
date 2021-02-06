@@ -391,7 +391,7 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZAveragenumberoflabour}" Style="{StaticResource ValueLabelBlack}"/>
@@ -441,7 +441,7 @@
 
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,0" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
 
-                                            <StackLayout Spacing="0" Margin="0,0,10,0" Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand">
+                                            <StackLayout Spacing="0" Margin="0,0,10,0" Grid.Row="2" Grid.Column="1">
                                                 <inputLayout:SfTextInputLayout  ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding LabnoE}"   IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
 
@@ -515,7 +515,7 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZImportsvalue}" Style="{StaticResource ValueLabelBlack}"/>
@@ -636,7 +636,7 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZSalesformpointofsales}" Style="{StaticResource ValueLabelBlack}"/>
@@ -752,7 +752,7 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZContractsformETIMADsystem}" Style="{StaticResource ValueLabelBlack}"/>
@@ -869,7 +869,7 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZExportsvalue}" Style="{StaticResource ValueLabelBlack}"/>
@@ -983,7 +983,7 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZPurchasevalue}" Style="{StaticResource ValueLabelBlack}"/>
@@ -1097,7 +1097,7 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZCapitalamount}" Style="{StaticResource ValueLabelBlack}"/>
