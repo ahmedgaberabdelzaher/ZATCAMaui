@@ -294,7 +294,24 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
             if (!String.IsNullOrEmpty(BModel.Fbnum))
             {
-                viewModel.DoValidatePayment(BModel.Fbnum,BModel.TestDueAmount);
+
+                //if (viewModel.VATDeclarationData.d.MadabutFg == "X")
+                //{
+                //    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+
+                //    //viewModel.DoValidatePayment(fbNum: viewModel.VATDeclarationData.d.Fbnum);
+                //}
+                //else
+                //{
+
+                //    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, viewModel.VATDeclarationData.d.OpenliMsg));
+
+                //}
+                viewModel.selectedFbNum = BModel.Fbnum;
+
+                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+
+                //viewModel.DoValidatePayment(BModel.Fbnum,BModel.TestDueAmount);
             }
 
         }

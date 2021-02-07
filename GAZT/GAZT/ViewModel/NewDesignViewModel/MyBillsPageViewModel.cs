@@ -29,6 +29,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
+        public string selectedFbNum = "";
         #region Property
         public List<ReturnTypes> _TaxTypeForFilter = null;
         public List<ReturnTypes> TaxTypeForFilter
@@ -642,20 +643,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             App.PaymentGuid = PaymentData.d.Guid;
 
                         }
-                        
-                       // var VatAmount = NetdueVat.Replace(",", "");
-                        if (String.IsNullOrEmpty(amount) || Double.Parse(amount) == 0)
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, string.Empty));
-                        }
-                        else if (!String.IsNullOrEmpty(amount) && Double.Parse(amount) > 20000)
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, string.Empty));
-                        }
-                        else
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, string.Empty));
-                        }
+
+                        Device.BeginInvokeOnMainThread(async () => {
+
+                            _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                        });
+
+                        // var VatAmount = NetdueVat.Replace(",", "");
+                        //if (String.IsNullOrEmpty(amount) || Double.Parse(amount) == 0)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, string.Empty));
+                        //}
+                        //else if (!String.IsNullOrEmpty(amount) && Double.Parse(amount) > 20000)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, string.Empty));
+                        //}
+                        //else
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, string.Empty));
+                        //}
 
                     }
 
@@ -667,7 +675,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
+                        //_navigationService.GoBack();
                     });
                 }
                 catch (InternetException ex)
@@ -694,12 +702,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void MadaPaymentSelected()
         {
 
-            Device.BeginInvokeOnMainThread(async () => {
 
-                _navigationService.NavigateTo(App.PaymentProcessWebview,2);
-                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+             DoValidatePayment(selectedFbNum, "");
 
-            });
+           
 
         }
 
