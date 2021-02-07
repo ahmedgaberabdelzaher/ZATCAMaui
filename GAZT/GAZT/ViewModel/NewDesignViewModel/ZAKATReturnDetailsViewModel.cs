@@ -1279,17 +1279,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        if(ex.Message == "There is no open liability to be paid against this declaration") {
+                        //if(ex.Message == "There is no open liability to be paid against this declaration") {
 
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, ""));
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, ex.Message));
 
-                        }
+                        //}
+                        //else {
+
+                        //}
 
 
-
-                        
-                        //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        //_navigationService.GoBack();
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
                     });
                 }
                 catch (InternetException ex)
@@ -1313,13 +1314,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public void MadaPaymentSelected()
+        public async Task MadaPaymentSelectedAsync()
         {
 
             if (ZakatReturnDetails.d.MadabutFg == "X")
             {
 
-                 DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
+                 await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
             }
             else
             {

@@ -32,6 +32,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             this.isAmountLess = isAmountLess;
             this.amountMsg = messageText;
             InitializeComponent();
+
             SetLTR();
         }
 
