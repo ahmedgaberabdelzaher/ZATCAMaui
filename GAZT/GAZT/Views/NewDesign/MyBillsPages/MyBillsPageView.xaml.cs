@@ -295,7 +295,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             if (!String.IsNullOrEmpty(BModel.Fbnum))
             {
 
-                //if (viewModel.VATDeclarationData.d.MadabutFg == "X")
+
+                //if (BModel.MadabutFg == "X")
                 //{
                 //    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
 
@@ -304,10 +305,11 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 //else
                 //{
 
-                //    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, viewModel.VATDeclarationData.d.OpenliMsg));
+                //    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ""));
 
                 //}
                 viewModel.selectedFbNum = BModel.Fbnum;
+                viewModel.selectedSadadNo = BModel.VTRE2;
 
                 PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
 
