@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms.Internals;
 using EGAZT.ViewModel.NewDesignViewModel;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
@@ -66,11 +67,51 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         }
         private void GoToDashboardClicked(object sender, EventArgs e)
         {
+            var _navigation = Application.Current.MainPage.Navigation;
+            
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.GAZTNewDesignMyReturnsNewPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+          
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ZAKATReturnDetailsView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.PaymentProcessWebview)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ZakatReturnNewSuccessPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            /*viewModel._navigationService.NavigateTo(App.VatInstalmentPlanListPageView);
+
             if (Navigation.NavigationStack.Count > 0)
             {
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
                 Navigation.RemovePage(pg);
-            }
+            }*/
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
         }
 

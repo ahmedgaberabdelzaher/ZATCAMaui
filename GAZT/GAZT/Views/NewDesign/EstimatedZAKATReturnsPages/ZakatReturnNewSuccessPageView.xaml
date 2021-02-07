@@ -78,16 +78,41 @@
                         <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="0">
                             <StackLayout Spacing="0" >
                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                    <StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
+                                    <Grid Padding="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                                            Text="{x:Static ResourceManager:AppResources.NDReferenceNumber}"
+                                                            VerticalOptions="Center" Style="{StaticResource ValueLabelGrey}"
+                                                            HorizontalOptions="Start" />
+
+ 
+
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding ReferenceNumber}"
+                                                            VerticalOptions="Center" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+
+ 
+
+                                        <Image Grid.Row="0" Grid.Column="2" Source="zakat_copy.png">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="OnCopyReferenceNumberButtonClicked"/>
+                                            </Image.GestureRecognizers>
+                                            
+                                        </Image>
+
+                                    </Grid>
+                                    <!--<StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReferenceNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
                                         <custom:CustomLabel WidthRequest="180" Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                        <Image Source="zakat_copy.png">
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnCopyReferenceNumberButtonClicked"/>
-                                            </Image.GestureRecognizers>
-
-                                        </Image>
-                                    </StackLayout>
+                                       
+                                    </StackLayout>-->
                                 </border:SfBorder >
 
                                 <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">

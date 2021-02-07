@@ -14,6 +14,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
 {
@@ -93,11 +94,51 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         private void GotodashboardClicked(System.Object sender, System.EventArgs e)
         {
 
+            var _navigation = Application.Current.MainPage.Navigation;
+            
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.GAZTNewDesignMyReturnsNewPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+          
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.GAZTNewDesignVATReturnUpdatedUIPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.PaymentProcessWebview)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.VatReturnNewSuccessPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            /*viewModel._navigationService.NavigateTo(App.VatInstalmentPlanListPageView);
+
             if (Navigation.NavigationStack.Count > 0)
             {
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
                 Navigation.RemovePage(pg);
-            }
+            }*/
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
         }
     }
