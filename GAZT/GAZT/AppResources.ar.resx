@@ -8711,4 +8711,34 @@ info@gazt.gov.sa</value>
 	<data name="WHTreturns1" xml:space="preserve">
     <value>إقرارات ضريبة الاستقطاع</value>
   </data>
+    <data name="DashBoardMyTaxObligations" xml:space="preserve">
+    <value>التزاماتي الضريبية</value>
+  </data>
+    <data name="PaymentMethod" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
+    <data name="PaymentMethodApplePay" xml:space="preserve">
+    <value>Apple Pay</value>
+  </data>
+    <data name="PaymentMethodCardPayment" xml:space="preserve">
+    <value>الدفع عن طريق البطاقة</value>
+  </data>
+    <data name="PaymentMethodPayNow" xml:space="preserve">
+    <value>ادفع الان</value>
+  </data>
+    <data name="DashboardLastTransaction" xml:space="preserve">
+    <value>اخر عملية</value>
+  </data>
+    <data name="NDZakatReturnSubmittedSuccessMessage" xml:space="preserve">
+    <value>تم استكمال دفع إقراراتك الزكوية بنجاح</value>
+  </data>
+    <data name="NDVAtReturnSubmittedSuccessMessage" xml:space="preserve">
+    <value>تم استكمال دفع إقرارك الضريبي على القيمة المضافة بنجاح</value>
+  </data>
+    <data name="DashboardBillsInTotal" xml:space="preserve">
+    <value>اجمالي الفواتير</value>
+  </data>
+    <data name="DashBoardPendingBills" xml:space="preserve">
+    <value>الفواتير المعلقة (الغير مدفوعة)</value>
+  </data>
 </root>

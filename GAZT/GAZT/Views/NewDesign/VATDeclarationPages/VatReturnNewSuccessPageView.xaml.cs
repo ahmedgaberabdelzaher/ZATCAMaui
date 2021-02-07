@@ -98,7 +98,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
                 Navigation.RemovePage(pg);
             }
-            viewModel._navigationService.GoBack();
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
         }
     }
 }

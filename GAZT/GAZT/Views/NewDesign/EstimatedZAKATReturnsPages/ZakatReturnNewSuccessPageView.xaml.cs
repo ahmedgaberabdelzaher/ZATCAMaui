@@ -71,7 +71,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
                 Navigation.RemovePage(pg);
             }
-            viewModel._navigationService.GoBack();
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
         }
 
         public async void OnCopyReferenceNumberButtonClicked(object sender, EventArgs args)
