@@ -5708,21 +5708,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             App.PaymentGuid = PaymentData.d.Guid;
 
                         }
-                        
-                        var VatAmount = NetdueVat.Replace(",", "");
 
-                        if (String.IsNullOrEmpty(VatAmount) || Double.Parse(VatAmount) == 0)
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false,""));
-                        }
-                        else if (!String.IsNullOrEmpty(VatAmount) && Double.Parse(VatAmount) > 20000)
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true,""));
-                        }
-                        else
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false,""));
-                        }
+
+                        Device.BeginInvokeOnMainThread(async () => {
+
+                            _navigationService.NavigateTo(App.PaymentProcessWebview, 1);
+                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                        });
+
+
+                        //if (VATDeclarationData.d.MadabutFg == "X")
+                        //{
+
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                        //}
+                        //else
+                        //{
+
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, VATDeclarationData.d.OpenliMsg));
+
+                        //}
+
 
                     }
 
@@ -5848,12 +5855,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void MadaPaymentSelected()
         {
 
-            Device.BeginInvokeOnMainThread(async () => {
 
-                _navigationService.NavigateTo(App.PaymentProcessWebview,1);
-                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+           
 
-            });
+                DoValidatePayment(fbNum:VATDeclarationData.d.Fbnum);
+
+            //Device.BeginInvokeOnMainThread(async () => {
+
+            //    _navigationService.NavigateTo(App.PaymentProcessWebview,1);
+            //    //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+            //});
 
         }
 

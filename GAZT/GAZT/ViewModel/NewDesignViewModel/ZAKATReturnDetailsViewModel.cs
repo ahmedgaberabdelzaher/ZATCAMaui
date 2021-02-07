@@ -1028,15 +1028,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //Bill details Navigation
                             //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
 
-                            if(ZakatReturnDetails.d.MadabutFg == "X") {
+                            Device.BeginInvokeOnMainThread(async () => {
 
-                                await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
-                            }
-                            else {
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
 
-                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
 
-                            }
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                            });
+
+                            //if(ZakatReturnDetails.d.MadabutFg == "X") {
+
+                            //    await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
+                            //}
+                            //else {
+
+                            //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                            //}
 
                         }
                         else
@@ -1063,7 +1072,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
 
 
-                            await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
+                            //await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
+
+                            if (ZakatReturnDetails.d.MadabutFg == "X")
+                            {
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                            }
+                            else
+                            {
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                            }
 
                         }
                         else
@@ -1099,17 +1120,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //_navigationService.NavigateTo(App.PaymentProcessWebview);
                             //await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
 
-                            if (ZakatReturnDetails.d.MadabutFg == "X")
-                            {
 
-                                await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
-                            }
-                            else
-                            {
+                            Device.BeginInvokeOnMainThread(async () => {
 
-                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
 
-                            }
+
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                            });
+                            //if (ZakatReturnDetails.d.MadabutFg == "X")
+                            //{
+
+                            //    await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
+                            //}
+                            //else
+                            //{
+
+                            //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                            //}
                         }
                         else
                         {
@@ -1201,17 +1231,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
 
-                        if (ZakatReturnDetails.d.MadabutFg == "X")
-                        {
+                        Device.BeginInvokeOnMainThread(async () => {
 
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
-                        }
-                        else
-                        {
+                            _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
 
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
 
-                        }
+                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                        });
+
+                        //if (ZakatReturnDetails.d.MadabutFg == "X")
+                        //{
+
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                        //}
+                        //else
+                        //{
+
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
 
 
                         //var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
@@ -1277,14 +1316,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void MadaPaymentSelected()
         {
 
-            Device.BeginInvokeOnMainThread(async () => {
+            if (ZakatReturnDetails.d.MadabutFg == "X")
+            {
 
-                _navigationService.NavigateTo(App.PaymentProcessWebview,0);
+                 DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
+            }
+            else
+            {
 
+                 PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
 
-                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+            }
 
-            });
+            
 
         }
 

@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -8941,7 +8942,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         private void OnPayNowButtonClicked(object sender, EventArgs e)
         {
-            viewModel.DoValidatePayment(viewModel.VATDeclarationData.d.Fbnum);
+
+            if (viewModel.VATDeclarationData.d.MadabutFg == "X")
+            {
+                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+
+                //viewModel.DoValidatePayment(fbNum: viewModel.VATDeclarationData.d.Fbnum);
+            }
+            else
+            {
+
+                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, viewModel.VATDeclarationData.d.OpenliMsg));
+
+            }
+
+            
         }
     }
 }

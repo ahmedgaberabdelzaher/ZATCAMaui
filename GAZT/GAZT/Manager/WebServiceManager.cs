@@ -15821,9 +15821,12 @@ namespace GAZT.Manager
                             throw new GAZTInternetException();
                         }
                         HttpClient client = new HttpClient(App.httpClientHandler);
-                        String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='"+devicetype+"')" + "?$format=json";
+                       // String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='"+devicetype+"')" + "?$format=json";
+                        String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='" + devicetype + "',Sadad='',Pymntty='M')" + "?$format=json";
 
-                        HttpResponseMessage GAZTValidatePaymentResponse = new HttpResponseMessage();
+
+
+                    HttpResponseMessage GAZTValidatePaymentResponse = new HttpResponseMessage();
                         try
                         {
                         GAZTValidatePaymentResponse = await client.GetAsync(uri);
