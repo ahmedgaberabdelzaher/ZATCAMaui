@@ -41,18 +41,18 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             List<PaymentOptionsModel> paymentOptions = new List<PaymentOptionsModel>();
             if (isModaPaymentAvailable && !isAmountLess)
             {
-                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_iconpay", UnSelectedCardIcon = "ic_iconpay", CardLabel = AppResources.PaymentMethodCardPayment});
+                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_iconpay", UnSelectedCardIcon = "ic_iconpay_white", CardLabel = AppResources.PaymentMethodCardPayment});
             }
             if (Device.RuntimePlatform == Device.iOS)
             {
 
                 if (!isAlreadyPaid && !isAmountLess)
                 {
-                    paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo", CardLabel = AppResources.PaymentMethodApplePay });
+                    paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo_white", CardLabel = AppResources.PaymentMethodApplePay });
 
                 }
             }
-            paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_add1.png", UnSelectedCardIcon = "ic_add1", CardLabel =AppResources.Sadad});
+            paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_sadad", UnSelectedCardIcon = "ic_sadad_white", CardLabel =AppResources.Sadad});
             paymentItemsListView.ItemsSource = paymentOptions;
 
             if (paymentOptions.Count > 2)

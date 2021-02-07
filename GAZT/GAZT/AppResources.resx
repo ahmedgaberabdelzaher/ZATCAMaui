@@ -8808,4 +8808,7 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="DashBoardPendingBills" xml:space="preserve">
     <value>Pending Bills</value>
   </data>
+  <data name="AccountStatementTotalBalance" xml:space="preserve">
+    <value>Total Balance</value>
+  </data>
 </root>

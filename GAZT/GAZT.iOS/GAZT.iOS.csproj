@@ -1114,4 +1114,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_maincheck.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_iconpay_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_icon_applelogo_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_sadad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_sadad_white.png" />
+  </ItemGroup>
 </Project>
