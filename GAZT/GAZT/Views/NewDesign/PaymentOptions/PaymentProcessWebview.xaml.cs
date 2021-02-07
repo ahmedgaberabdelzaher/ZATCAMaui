@@ -38,7 +38,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
             viewModel.PaymentType = type;
             //WebviewGrid.LowerChild(webView);
-webView = new WebView();
+            webView = new WebView();
 
             CookieContainer cookieContainer = new CookieContainer();
 
@@ -134,9 +134,9 @@ webView = new WebView();
                 if (splitString.Length > 0)
                 {
                     var responseGUID = splitString[1];
-                    Console.WriteLine("Payment Successful:" + e.Url);
+                    //Console.WriteLine("Payment Successful:" + e.Url);
 
-                    //webView.IsVisible = false;
+                    webView.IsVisible = false;
                     viewModel.IsLoading = true;
 
                     await viewModel.UpdateMadaPaymentDetails(responseGUID);
