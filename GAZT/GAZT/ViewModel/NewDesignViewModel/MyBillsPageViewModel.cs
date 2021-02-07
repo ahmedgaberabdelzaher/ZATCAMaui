@@ -30,6 +30,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
         public string selectedFbNum = "";
+        public string selectedSadadNo = "";
+
         #region Property
         public List<ReturnTypes> _TaxTypeForFilter = null;
         public List<ReturnTypes> TaxTypeForFilter
@@ -612,7 +614,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-          public async Task DoValidatePayment(string fbNum,string amount)
+          public async Task DoValidatePayment(string fbNum,string sdadNo)
         {
             try
             {
@@ -631,7 +633,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         platform = "C3";
                     }
-                    PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+                    //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+
+                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, "M");
+
 
 
                     if (PaymentData != null && PaymentData.d != null)
@@ -703,7 +708,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
 
 
-             DoValidatePayment(selectedFbNum, "");
+             DoValidatePayment(selectedFbNum, selectedSadadNo);
 
            
 
