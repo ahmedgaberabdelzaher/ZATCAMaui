@@ -8739,6 +8739,6 @@ info@gazt.gov.sa</value>
     <value>اجمالي الفواتير</value>
   </data>
     <data name="DashBoardPendingBills" xml:space="preserve">
-    <value>الفواتير المعلقة (الغير مدفوعة)</value>
+    <value>فواتير غير المدفوعة</value>
   </data>
 </root>
