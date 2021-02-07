@@ -67,17 +67,20 @@
                         <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />
                         <StackLayout Orientation="Horizontal">
                         <!--terms and condition  CheckBox -->
-                        <CheckBox VerticalOptions="CenterAndExpand" IsEnabled="True" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
+                            <custom1:CheckboxCustom  
+                                                                        IsChecked="{Binding IsDeclarationCheckedForInstruction}" Style="{StaticResource CheckboxHeightWidth32}"
+                                                                        x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand"/>
+                        <!--<CheckBox VerticalOptions="CenterAndExpand" IsEnabled="True" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
                             <CheckBox.Triggers>
                                 <DataTrigger TargetType="CheckBox" Value="false">
                                     <Setter Property="Color" Value="#ff0000" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
-                        </CheckBox>
-                        <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
+                        </CheckBox>-->
+                        <custom:CustomLabel  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
+                                    <Span  Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
                                     <Span Text="&#160;"/>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}"  />
                                 </FormattedString>

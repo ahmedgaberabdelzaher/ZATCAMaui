@@ -99,8 +99,13 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="10,0,10,0">
-                            <custom:GAZTBorderlessEntry Text="{Binding CRNumber}" MaxLength="10" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
+                        <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
+                            <custom:GAZTBorderlessEntry Text="{Binding CRNumber}" Style="{StaticResource DefaultEntry}" MaxLength="10" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
 
                                 <customOne:GAZTBorderlessEntry.Behaviors>
                                     <custom:NumericValidationBehavior/>
@@ -361,9 +366,14 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10,0,10,0">
+                        <inputLayout:SfTextInputLayout   Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
 
-                            <custom:GAZTBorderlessEntry Text="{Binding LicenseNumber}" MaxLength="30" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry Text="{Binding LicenseNumber}" Style="{StaticResource DefaultEntry}" MaxLength="30" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
                                 <customOne:GAZTBorderlessEntry.Behaviors>
                                     <custom:NumericValidationBehavior/>
                                 </customOne:GAZTBorderlessEntry.Behaviors>
@@ -545,7 +555,7 @@
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"/>
                 <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
             </StackLayout>
-            <Grid Grid.Row="2" Padding="20,15" Margin="0,20,0,0" BackgroundColor="White">
+            <Grid Grid.Row="2" Padding="20,15" Margin="0,20,0,20" BackgroundColor="White">
                 <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{x:Static ResourceManager:AppResources.ZZNext}" Command="{Binding OnNextButtonClick}" />
             </Grid>
             <!--<StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"

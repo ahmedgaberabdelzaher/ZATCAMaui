@@ -9,6 +9,7 @@ using Rg.Plugins.Popup.Services;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.ZakatDeregistration
@@ -34,6 +35,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override  void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             try
             {
                // await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);

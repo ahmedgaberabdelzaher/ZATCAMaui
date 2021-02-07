@@ -4,6 +4,8 @@ using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -52,6 +54,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             viewModel?.OnAppearing();
             if(!viewModel.PostalAsPhysical)
             {

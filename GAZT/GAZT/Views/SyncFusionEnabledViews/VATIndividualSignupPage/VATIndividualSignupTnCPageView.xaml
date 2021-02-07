@@ -87,7 +87,9 @@
                         </CheckBox>-->
                         <custom1:CheckboxCustom  IsChecked="{Binding IschkTAndC}" Style="{StaticResource CheckboxHeightWidth32}"
                                                                         x:Name="chkTAndC"  VerticalOptions="CenterAndExpand"/>
-                        <custom:CustomLabel Text="{x:Static custom2:AppResources.ZZIagreeontermsAndconditions}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Start" HorizontalTextAlignment="Center" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
+                        <custom:CustomLabel Text="{x:Static custom2:AppResources.ZZIagreeontermsAndconditions}"
+                                            FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Start" HorizontalTextAlignment="Center" VerticalOptions="Center"
+                                            Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
                     </StackLayout>
                     <buttons:SfButton x:Name="MainButtonName" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource SSTArabicMedium}"   Margin="0"
                  CornerRadius="0"

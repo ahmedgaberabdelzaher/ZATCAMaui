@@ -87,11 +87,11 @@
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
-                            <custom:CustomLabel Text="{Binding FilterLabelText}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
+                            <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                             </custom:CustomLabel>
 
-                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,8">
-
+                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Center" VerticalOptions="Center">
+                           
                             </Image>
 
                             <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
