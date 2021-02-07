@@ -1144,7 +1144,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             var part = GetTemplateChild("frameToolbar") as SfBorder;
 
-            if (viewModel.IsMyObligationsClear)
+            if (viewModel.IsMyObligationsClear || viewModel.MenuViewVisible)
             {
                 part.IsVisible = false;
                 btn_frameToolbar.IsVisible = false;
@@ -1189,10 +1189,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
               OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
               Console.WriteLine("Clicked on: Amount: "+ BModel.Amount+" ,FbNum: "+BModel.Fbnum);
               viewModel.DoValidatePayment(BModel.Fbnum, BModel.Amount);*/
-            StackLayout payNowCard = sender as StackLayout;
-            OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
-            Console.WriteLine("Clicked on: Amount: " + BModel.Amount + " ,FbNum: " + BModel.Fbnum);
-
+          
             viewModel.IsLoading = true;
             Device.BeginInvokeOnMainThread(() =>
             {

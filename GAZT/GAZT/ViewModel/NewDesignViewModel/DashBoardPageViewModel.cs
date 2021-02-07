@@ -1317,7 +1317,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsPendingBillsVisible");
             }
         }
-        
+
 
         private string _SubmittedCount = null;
         public string SubmittedCount
@@ -1396,7 +1396,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _IsMyObligationsClear = true;
+        private bool _IsMyObligationsClear = false;
         public bool IsMyObligationsClear
         {
             get
@@ -1477,90 +1477,90 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Method
 
-   /*     public async Task DoValidatePayment(string fbNum, string amount)
-        {
-            try
-            {
-                try
-                {
-                    IsLoading = true;
+        /*     public async Task DoValidatePayment(string fbNum, string amount)
+             {
+                 try
+                 {
+                     try
+                     {
+                         IsLoading = true;
 
-                    var platform = "";
+                         var platform = "";
 
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        platform = "C4";
-                    }
-                    else if (Device.RuntimePlatform == Device.Android)
-                    {
-                        platform = "C3";
-                    }
-                    PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
-
-
-                    if (PaymentData != null && PaymentData.d != null)
-                    {
-
-                        if (PaymentData.d.Guid != null)
-                        {
-                            App.PaymentGuid = PaymentData.d.Guid;
-                        }
-
-                        var ZakatAmount = amount.Replace(",", "");
-                        if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
-                        }
-                        else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
-                        }
-                        else
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
-                        }
-
-                    }
-
-                    IsLoading = false;
-
-                }
-                catch (GAZTValidatePaymentInProcessException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        if (ex.Message == "There is no open liability to be paid against this declaration")
-                        {
-
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false));
-                        }
+                         if (Device.RuntimePlatform == Device.iOS)
+                         {
+                             platform = "C4";
+                         }
+                         else if (Device.RuntimePlatform == Device.Android)
+                         {
+                             platform = "C3";
+                         }
+                         PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
 
 
+                         if (PaymentData != null && PaymentData.d != null)
+                         {
 
-                        //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        //_navigationService.GoBack();
-                    });
-                }
-                catch (InternetException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
-                    });
-                }
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    _navigationService.GoBack();
-                });
-            }
-        }*/
+                             if (PaymentData.d.Guid != null)
+                             {
+                                 App.PaymentGuid = PaymentData.d.Guid;
+                             }
+
+                             var ZakatAmount = amount.Replace(",", "");
+                             if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                             {
+                                 await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
+                             }
+                             else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
+                             {
+                                 await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
+                             }
+                             else
+                             {
+                                 await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
+                             }
+
+                         }
+
+                         IsLoading = false;
+
+                     }
+                     catch (GAZTValidatePaymentInProcessException ex)
+                     {
+                         Device.BeginInvokeOnMainThread(async () =>
+                         {
+                             if (ex.Message == "There is no open liability to be paid against this declaration")
+                             {
+
+                                 await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false));
+                             }
+
+
+
+                             //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                             //_navigationService.GoBack();
+                         });
+                     }
+                     catch (InternetException ex)
+                     {
+                         Device.BeginInvokeOnMainThread(async () =>
+                         {
+                             //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                             _navigationService.GoBack();
+                         });
+                     }
+                 }
+                 catch (InternetException ex)
+                 {
+                     Device.BeginInvokeOnMainThread(async () =>
+                     {
+                         //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                         _navigationService.GoBack();
+                     });
+                 }
+             }*/
         public async Task LoadDashboardData()
         {
             try
@@ -1800,6 +1800,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             Device.BeginInvokeOnMainThread(() => Bills = temp1);
             PendingBills = pendingBills;
+            if (PendingBills.Count == 0)
+            {
+                IsPendingBillsVisible = false;
+            }
+            else
+            {
+                IsPendingBillsVisible = true;
+            }
             if (PendingBills != null && PendingBills.Count > 2)
             {
                 PendingBillsListHeight = 250;
@@ -1812,16 +1820,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 PendingBillsListHeight = 83;
             }
-            System.Diagnostics.Debug.WriteLine("Bills " + Bills.Count);
 
-            if (pendingBills.Count == 0)
-            {
-                IsPendingBillsVisible=false;
-            }
-            else
-            {
-                IsPendingBillsVisible = true;
-            }
+
             /*   var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
                List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
                System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
@@ -1838,23 +1838,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             InstalmentResponse = WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.TP.Userid);
 
             var items = new ObservableCollection<InstalmentPlanResult>();
-            var chartData = new ObservableCollection<ChartDataPoint>();
+
+            ChartColorCollection ColorsChild = new ChartColorCollection();
+            ColorsChild.Add(Color.FromHex("#00674e"));
+            ColorsChild.Add(Color.FromHex("#95d600"));
+            ColorsChild.Add(Color.FromHex("#cccccc"));
 
 
             foreach (InstalmentPlanResult singleItem in InstalmentResponse.INST_PLAN_itemSet.results)
             {
+                double totalPaidBills = 0;
+                double nextBill = 0;
+                double unPaidBills = 0;
+                var chartData = new ObservableCollection<Model>();
+                totalPaidBills = String.IsNullOrEmpty(singleItem.TotalInstPaid) ? 0 : int.Parse(singleItem.TotalInstPaid);
+                nextBill = String.IsNullOrEmpty(singleItem.NextInstAmt) ? 0 : 1;
+                unPaidBills = String.IsNullOrEmpty(singleItem.TotalInstUnpaid) ? 0 : int.Parse(singleItem.TotalInstUnpaid);
+                if (unPaidBills > 0) { unPaidBills = unPaidBills--; }
+                chartData.Add(new Model("Paid", totalPaidBills));
+                chartData.Add(new Model("nextPayment", nextBill));
+                chartData.Add(new Model("Remaining", unPaidBills));
+
+                var doughnutSeries = new DoughnutSeries();
+
+                doughnutSeries.CircularCoefficient = 0.99;
+                doughnutSeries.DoughnutCoefficient = 0.75;
+                doughnutSeries.ColorModel.Palette = ChartColorPalette.Custom;
+                doughnutSeries.ColorModel.CustomBrushes = ColorsChild;
+                doughnutSeries.ItemsSource = chartData;
+                singleItem.Series = new ChartSeriesCollection() { doughnutSeries }; ;
                 items.Add(singleItem);
-                
+
             }
 
 
-
             InstalmentPlanList = items;
-            
 
-            Console.WriteLine();
+            if (InstalmentPlanList.Count == 0)
+            {
+                IsInstalmentPlanVisible = false;
+            }
+            else
+            {
+                IsInstalmentPlanVisible = true;
+            }
 
         }
+
 
 
 

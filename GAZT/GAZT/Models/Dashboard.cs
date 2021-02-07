@@ -1,5 +1,7 @@
 ﻿using EGAZT;
 using EGAZT.Models;
+using Newtonsoft.Json;
+using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms.Internals;
@@ -52,8 +54,8 @@ namespace GAZT.Models
     }
 
 
-   
 
+    [Preserve(AllMembers = true)]
     public class InstalmentPlanResult
     {
         public Metadata __metadata { get; set; }
@@ -67,13 +69,33 @@ namespace GAZT.Models
         public string TotalInst { get; set; }
         public string TotalInstPaid { get; set; }
         public string TotalInstUnpaid { get; set; }
+
+        [JsonIgnore]
+        public ChartSeriesCollection Series { get; set; }
+
     }
 
+    [Preserve(AllMembers = true)]
+    public class Model
+    {
+        public Model(string x, double y)
+        {
+            XValue = x;
+            YValue = y;
+        }
+
+        public string XValue { get; set; }
+
+        public double YValue { get; set; }
+    }
+
+    [Preserve(AllMembers = true)]
     public class INSTPLANItemSet
     {
         public List<InstalmentPlanResult> results { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
     public class DashboardInstalmentplan
     {
         public Metadata __metadata { get; set; }
