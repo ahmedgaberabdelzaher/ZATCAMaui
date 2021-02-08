@@ -16096,9 +16096,11 @@ namespace GAZT.Manager
         }
 
 
-        public async static Task<string> GAZTGenerateApplePayGuid(ApplePayGuid applePayDetails)
+        public async static Task<ApplePayGuidResponse> GAZTGenerateApplePayGuid(ApplePayRequestGuid applePayDetails)
         {
-            string _contractReleasesubmitResponse = string.Empty;
+            ApplePayGuidResponse paymentResponse = null;
+
+            string _paymentsubmitResponse = string.Empty;
             try
             {
                 String url = Constants.ApplePayGenerateGuid;
@@ -16112,10 +16114,12 @@ namespace GAZT.Manager
 
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                 HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
-                if (!string.IsNullOrEmpty(_contractReleasesubmitResponse))
+                _paymentsubmitResponse = res.Content.ReadAsStringAsync().Result;
+
+                paymentResponse = JsonConvert.DeserializeObject<ApplePayGuidResponse>(_paymentsubmitResponse);
+                if (!string.IsNullOrEmpty(_paymentsubmitResponse))
                 {
-                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_contractReleasesubmitResponse);
+                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_paymentsubmitResponse);
                     if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                     {
                         string errorMessage = string.Empty;
@@ -16138,11 +16142,62 @@ namespace GAZT.Manager
                 App.IsSessionExpired = true;
                 return null;
             }
-            return _contractReleasesubmitResponse;
+            return paymentResponse;
 
 
         }
-       
+
+        public async static Task<ApplePayGuidResponse> GAZTUpdateApplePayGuid(UpdateApplePayRequestGuid applePayDetails)
+        {
+            ApplePayGuidResponse paymentResponse = null;
+
+            string _paymentsubmitResponse = string.Empty;
+            try
+            {
+                String url = Constants.ApplePayGenerateGuid;
+                var uri = new Uri(url);
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                var serilized = JsonConvert.SerializeObject(applePayDetails);
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                _paymentsubmitResponse = res.Content.ReadAsStringAsync().Result;
+
+                paymentResponse = JsonConvert.DeserializeObject<ApplePayGuidResponse>(_paymentsubmitResponse);
+                if (!string.IsNullOrEmpty(_paymentsubmitResponse))
+                {
+                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_paymentsubmitResponse);
+                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    {
+                        string errorMessage = string.Empty;
+                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        errorMessage = WithReplacedString;
+                        throw new GAZTVATRegistrationInProcessException(errorMessage);
+                    }
+                }
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                throw new GAZTVATRegistrationInProcessException(ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                App.IsSessionExpired = true;
+                return null;
+            }
+            return paymentResponse;
+
+
+        }
+
 
         #endregion
 

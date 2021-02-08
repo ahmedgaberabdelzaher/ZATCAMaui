@@ -23,10 +23,11 @@ namespace GAZT.iOS.CustomRenderer
         {
         }
 
+        private bool IsSucess;
+
         public bool AuthorizePayment(string Amount , string Title)
         {
-            NSString[] paymentNetworks = new NSString[] { PKPaymentNetwork.Visa,
-                PKPaymentNetwork.MasterCard, PKPaymentNetwork.Mada };
+            NSString[] paymentNetworks = new NSString[] {PKPaymentNetwork.Mada};
             var merchantID = "merchant.gazt.egazt";
             // Enter merchant ID registered in apple.developer.com
 
@@ -34,8 +35,8 @@ namespace GAZT.iOS.CustomRenderer
             paymentRequest.MerchantIdentifier = merchantID;
             paymentRequest.SupportedNetworks = paymentNetworks;
             paymentRequest.MerchantCapabilities = PKMerchantCapability.ThreeDS;
-            paymentRequest.CountryCode = "US";
-            paymentRequest.CurrencyCode = "USD";
+            paymentRequest.CountryCode = "SA";
+            paymentRequest.CurrencyCode = "SAR";
 
             paymentRequest.PaymentSummaryItems = new PKPaymentSummaryItem[]{
                    new PKPaymentSummaryItem(){
@@ -73,7 +74,16 @@ namespace GAZT.iOS.CustomRenderer
         public override void DidAuthorizePayment(PKPaymentAuthorizationViewController controller, PKPayment payment, Action<PKPaymentAuthorizationStatus> completion)
         {
 
-            completion(PKPaymentAuthorizationStatus.Success);
+            
+            completion(obj: PKPaymentAuthorizationStatus.Success);
+            var isSucess = PKPaymentAuthorizationStatus.Success;
+            var paymentToken = payment.Token;
+
+            MessagingCenter.Send<Object, Object>(this, "ApplePayData", paymentToken);
+
+
+
+            //completion(PKPaymentAuthorizationStatus.Success);
         }
 
 
