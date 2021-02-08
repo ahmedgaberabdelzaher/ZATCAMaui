@@ -2977,7 +2977,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
                     taxPayerDetails.Atype = "1";// SelectedEntityType.Equals("Individual") ? "1" : "2";
-                    taxPayerDetails.Tpnationality = NationalityMapping.Where(i => i.Value == SelectedRegNationalityType).FirstOrDefault().Key;
+                    foreach (var s in NationalityMapping)
+                    {
+                        if(s.Value.Equals(SelectedRegNationalityType))
+                        {
+                            taxPayerDetails.Tpnationality = s.Key;
+                        }
+
+                    }
+                     // taxPayerDetails.Tpnationality = NationalityMapping.Where(i => i.Value == SelectedRegNationalityType).FirstOrDefault().Key;
                     taxPayerDetails.Tpnationality = string.IsNullOrEmpty(taxPayerDetails.Tpnationality) ? "" : taxPayerDetails.Tpnationality;
                     taxPayerDetails.Taxtpdetermination = "1";
                     taxPayerDetails.Tpresidence = SelectedTpresidence;
@@ -2994,7 +3002,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails.Rentatt = "";
                     }
                     taxPayerDetails.StepNumberx = "01";
-                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                   taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
