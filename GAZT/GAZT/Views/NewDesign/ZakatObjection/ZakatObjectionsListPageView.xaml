@@ -79,14 +79,13 @@
                             </Label.GestureRecognizers>
                         </Label>-->
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatIncomeTaxObjection}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0" Margin="10,0,0,0"  Text="{x:Static ResourceManager:AppResources.ZakatIncomeTaxObjection}" Style="{StaticResource SectionTitleWhiteBold}" FontSize="19" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
 
 
-                        <Image Grid.Row="0" Grid.Column="0"
+                        <Image Margin="-5,0,-5,0"   Grid.Row="0" Grid.Column="0"
                                VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
                                Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
-                               HeightRequest="24"
-                               WidthRequest="24">
+                               >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
                             </Image.GestureRecognizers>
@@ -94,8 +93,7 @@
                         <Image  Grid.Row="0" Grid.Column="2"
                                VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
                                Source="close"
-                               HeightRequest="24"
-                               WidthRequest="24">
+                             >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}"/>
                             </Image.GestureRecognizers>
