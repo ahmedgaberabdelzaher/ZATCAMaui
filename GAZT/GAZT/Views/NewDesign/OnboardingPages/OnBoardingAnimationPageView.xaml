@@ -62,14 +62,14 @@
                 Clicked="ChangeLangButton_Clicked" />
             </StackLayout>
 
-            <Image Source="centered.png"  Aspect="AspectFit" Margin="{OnPlatform Android='0,-30,0,0', iOS='0,-45,0,0'}" Grid.Row="1">
+            <Image Source="centered.png"  Aspect="AspectFit" Margin="{OnPlatform Android='0,-35,0,0', iOS='0,-45,0,0'}" Grid.Row="1">
             </Image>
 
             <!--  Rotator used to navigate the view  -->
             <rotator:SfRotator             
                 Grid.Row="2"
                 
-                Margin="{OnPlatform Android='0,-10,0,0', iOS='0,10,0,0'}"
+                Margin="{OnPlatform Android='0,0,0,0', iOS='0,10,0,0'}"
                
                 BackgroundColor="Transparent"
                 SelectedDotColor="{StaticResource Yellow}"

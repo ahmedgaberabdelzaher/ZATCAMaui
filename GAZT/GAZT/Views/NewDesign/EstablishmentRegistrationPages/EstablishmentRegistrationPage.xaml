@@ -831,11 +831,17 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="16,0,16,0">
+                                <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
                                     <custom:GAZTBorderlessEntry Text="{Binding PassportNumber}" MaxLength="15" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start"
                                                               Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center"
                                                               HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
                                                               TextColor="{StaticResource NeutralBlack}"
+                                                                Style="{StaticResource DefaultEntry}"
                                                               IsSpellCheckEnabled="false"
                                                               FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
                                         <customOne:GAZTBorderlessEntry.Behaviors>
@@ -1098,8 +1104,13 @@
                 <StackLayout x:Name="OutletsTabMainLayout"
                              Orientation="Vertical" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
                     <buttons:SfButton ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewOutletButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
-                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="16,0,16,0">
-                        <Entry Placeholder="{x:Static ResourceManager:AppResources.SearchText}" Text="{Binding SearchText}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                    <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
+                        <Entry Placeholder="{x:Static ResourceManager:AppResources.SearchText}" Text="{Binding SearchText}" IsSpellCheckEnabled="false" Style="{StaticResource DefaultEntry}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                         <inputLayout:SfTextInputLayout.TrailingView>
                             <Image Source="grey_search.png"/>
                         </inputLayout:SfTextInputLayout.TrailingView>

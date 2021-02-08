@@ -14,43 +14,73 @@ namespace EGAZT.Models.ZakatObjectionsModel
         [Preserve(AllMembers = true)]
         public class Metadata
         {
+            [DataMember]
             public string id { get; set; }
+            [DataMember]
             public string uri { get; set; }
+            [DataMember]
             public string type { get; set; }
         }
         [Preserve(AllMembers = true)]
         public class Metadata2
         {
+            [DataMember]
             public string id { get; set; }
+            [DataMember]
             public string uri { get; set; }
+            [DataMember]
             public string type { get; set; }
         }
         [Preserve(AllMembers = true)]
         public class Result
         {
+            [DataMember]
             public Metadata2 __metadata { get; set; }
+            [DataMember]
             public string Fbnum { get; set; }
+            [DataMember]
             public string Objstatus { get; set; }
+            [DataMember]
             public string Fbsta { get; set; }
+            [DataMember]
             public string StatText { get; set; }
+            [DataMember]
             public string Fbtyp { get; set; }
+            [DataMember]
             public string FbtText { get; set; }
+            [DataMember]
             public string Erfdate { get; set; }
+            [DataMember]
             public string Erftime { get; set; }
+            [DataMember]
             public string Persl { get; set; }
+            [DataMember]
             public string TaxPeriod { get; set; }
+            [DataMember]
             public object DueDt { get; set; }
+            [DataMember]
             public string Due { get; set; }
+            [DataMember]
             public object Abrzu { get; set; }
+            [DataMember]
             public object Abrzo { get; set; }
+            [DataMember]
             public string Incotyp { get; set; }
+            [DataMember]
             public string Incotext { get; set; }
+            [DataMember]
             public string Flag { get; set; }
+            [DataMember]
             public string CalendrTyp { get; set; }
+            [DataMember]
             public string PrcBy { get; set; }
+            [DataMember]
             public string Grp { get; set; }
+            [DataMember]
             public string CrdtText { get; set; }
+            [DataMember]
             public string Euser { get; set; }
+            [DataMember]
             public string Fbguid { get; set; }
         }
         [Preserve(AllMembers = true)]
@@ -62,11 +92,13 @@ namespace EGAZT.Models.ZakatObjectionsModel
         [Preserve(AllMembers = true)]
         public class Deferred
         {
+            [DataMember]
             public string uri { get; set; }
         }
         [Preserve(AllMembers = true)]
         public class AuthServSet
         {
+            [DataMember]
             public Deferred __deferred { get; set; }
         }
         [Serializable]
@@ -298,20 +330,35 @@ namespace EGAZT.Models.ZakatObjectionsModel
         [Preserve(AllMembers = true)]
         public class Result4
         {
+            [DataMember]
             public Metadata __metadata { get; set; }
+            [DataMember]
             public string Notenoz { get; set; }
+            [DataMember]
             public string Refnamez { get; set; }
+            [DataMember]
             public string XInvoicez { get; set; }
+            [DataMember]
             public string XObsoletez { get; set; }
+            [DataMember]
             public string Rcodez { get; set; }
+            [DataMember]
             public string Erfusrz { get; set; }
+            [DataMember]
             public DateTime? Erfdtz { get; set; }
+            [DataMember]
             public string Erftmz { get; set; }
+            [DataMember]
             public string AttByz { get; set; }
+            [DataMember]
             public string Noteno { get; set; }
+            [DataMember]
             public int Lineno { get; set; }
+            [DataMember]
             public int ElemNo { get; set; }
+            [DataMember]
             public string Tdformat { get; set; }
+            [DataMember]
             public string Tdline { get; set; }
         }
         [Preserve(AllMembers = true)]
@@ -405,6 +452,7 @@ namespace EGAZT.Models.ZakatObjectionsModel
         [Preserve(AllMembers = true)]
         public class AttDetSet
         {
+            [DataMember]
             public List<Attachment> results { get; set; }
         }
         [Serializable]
