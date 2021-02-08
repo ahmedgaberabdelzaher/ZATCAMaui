@@ -1282,7 +1282,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (ex.Message == "There is no open liability to be paid against this declaration")
                         {
 
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, ex.Message));
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, AppResources.NoOpenLiabilityToBePaid));
 
                         }
                         else

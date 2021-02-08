@@ -106,14 +106,14 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         private async void paymentItemSelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             PaymentOptionsModel selectedItem = e.AddedItems[0] as PaymentOptionsModel;
-            if (selectedItem.CardLabel == "Card Payment")
+            if (selectedItem.CardLabel == AppResources.PaymentMethodCardPayment)
             {
                 MessagingCenter.Send<Object, string>(this, "Card_Payment", "Yes");
                 OnSelect?.Invoke("Card_Payment");
                 await PopupNavigation.Instance.PopAsync();
 
             }
-            else if (selectedItem.CardLabel == "Apple Pay")
+            else if (selectedItem.CardLabel == AppResources.PaymentMethodApplePay)
             {
                 OnSelect?.Invoke("Apple Pay");
 
