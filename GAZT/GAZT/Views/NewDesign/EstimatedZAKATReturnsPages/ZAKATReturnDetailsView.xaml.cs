@@ -82,6 +82,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 ContractFromETIMADSystemInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
                 ExportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
                 PurchaseValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+             //   RealEstateValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
 
                 TVSA.IsVisible = true;
                 TVSNA.IsVisible = false;
@@ -104,7 +105,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 EVNA.IsVisible = true;
 
                 PVA.IsVisible = false;
+                REVA.IsVisible = false;
                 PVNA.IsVisible = true;
+                REVNA.IsVisible = true;
 
 
 
@@ -129,25 +132,28 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 PurchaseValueApplicableLayout.IsVisible = false;
                 PurchaseValueNotApplicableLayout.IsVisible = true;
 
-               // TotalVATSalesInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.TvtslI;
-             //   TotalVATSalesEstimatedSalesLabel.Text = viewModel.ZakatReturnDetail.TvtslE;
+                //RealEstateValueApplicableLayout.IsVisible = false;
+                //RealEstateValueNotApplicableLayout.IsVisible = true;
+
+                // TotalVATSalesInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.TvtslI;
+                //   TotalVATSalesEstimatedSalesLabel.Text = viewModel.ZakatReturnDetail.TvtslE;
 
 
-               // AverageNumberOfLabourInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                // AverageNumberOfLabourInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
                 //AverageNumberOfLabourEstmatedSalesLabel.Text = AppResources.ZNA;
 
-               // ImportValueInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                // ImportValueInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
                 //ImportValueEstimatedSalesLabel.Text = AppResources.ZNA;
 
-               // SalesFromPointOfSalesInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                // SalesFromPointOfSalesInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
 
                 //ContactFromETIMADSystemInfoInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
                 //ContractsFromETIMADSystemEstimatedSalesLabel.Text = AppResources.ZNA;
 
-               // PurchaceValueInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
-              //  PurchaseValueEstmatedSalesLabel.Text = AppResources.ZNA;
+                // PurchaceValueInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                //  PurchaseValueEstmatedSalesLabel.Text = AppResources.ZNA;
 
-                
+
                 //AverageNumberOfLabour.Text = AppResources.ZNA;
                 //ImportValue.Text = AppResources.ZNA;
                 //SalesFromPointOfSales.Text = AppResources.ZNA;
@@ -167,6 +173,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 ContractFromETIMADSystemInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 ExportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 PurchaseValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
+                RealEstateValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
 
                 TVSA.IsVisible = false;
                 TVSNA.IsVisible = true;
@@ -188,7 +195,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 EVNA.IsVisible = false;
 
                 PVA.IsVisible = true;
+                REVA.IsVisible = true;
                 PVNA.IsVisible = false;
+                REVNA.IsVisible = false;
                 TotalVATSalesApplicableLayout.IsVisible = false;
                 TotalVATSalesNotApplicableLayout.IsVisible = true;
 
@@ -420,6 +429,11 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             salesType = "PurchaseValue";
             PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
+        private void OnRealEstateValueEditImageClicked(object sender, EventArgs e)
+        {
+            salesType = "RealEstateValue";
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+        }
 
         private void OnCapitalAmountEditImageClicked(object sender, EventArgs e)
         {
@@ -529,6 +543,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         private void OnPurchaseInfoClicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPurchasesvaluex115));
+        }
+        private void OnRealEstateInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZRealEstateWithinPeriod));
         }
 
         private void OnCapitalAmountInfoClicked(object sender, EventArgs e)
@@ -811,6 +829,43 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 }
             }
             catch (Exception )
+            {
+            }
+        }
+        private void RealEstateValueInputFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (RealEstateValue.Text == "0.00")
+                {
+                    RealEstateValue.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(RealEstateValue.Text) && RealEstateValue.Text.Contains(","))
+                {
+                    RealEstateValue.Text = RealEstateValue.Text.Replace(",", "");
+                    RealEstateValue.TextColor = Color.Black;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void RealEstateValueUnFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(RealEstateValue.Text))
+                {
+                    RealEstateValue.Text = "0.00";
+                }
+                if (!String.IsNullOrEmpty(RealEstateValue.Text))
+                {
+                    RealEstateValue.Text = UtilityManager.GetCommaSeparatedAmount(RealEstateValue.Text);
+                    RealEstateValue.TextColor = Color.Black;
+                }
+            }
+            catch (Exception)
             {
             }
         }

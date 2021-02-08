@@ -8714,4 +8714,12 @@ info@gazt.gov.sa</value>
 	<data name="ChangeLanguage" xml:space="preserve">
     <value>English</value>
   </data>
+	<data name="ZZRealEstatevalue" xml:space="preserve">
+    <value>Real Estate Sales Value</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+	<data name="ZZRealEstateWithinPeriod" xml:space="preserve">
+    <value>Real Estate Sales within the period</value>
+    <comment>Estimated Zakat</comment>
+  </data>
 </root>

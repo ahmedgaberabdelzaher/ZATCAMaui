@@ -124,6 +124,7 @@ namespace EGAZT.Models
     public class ZakatReturnDetailsD
     {
         public Metadata __metadata { get; set; }
+        public string RestFlg { get; set; }
         public string Fsource { get; set; }
         public string LabnoI { get; set; }
         public string Zkamt { get; set; }
@@ -150,8 +151,11 @@ namespace EGAZT.Models
         public string PtoslResn { get; set; }
         public string PtoslI { get; set; }
         public string PramtResn { get; set; }
+        public string RestResn { get; set; }
         public string PramtI { get; set; }
         public string PramtE { get; set; }
+        public string RestI { get; set; }
+        public string RestE { get; set; }
         public string PortalUsrz { get; set; }
         public string Persl { get; set; }
         public string Periodkeyz { get; set; }
