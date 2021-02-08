@@ -5669,7 +5669,7 @@
     <value>أدخل كلمة المرور الجديدة</value>
   </data>
 	<data name="TPNewMobileNumberEmpty" xml:space="preserve">
-    <value>Please enter new mobile number</value>
+    <value>الرجاء ادخال رقم جوال جديد</value>
   </data>
 	<data name="TPOTPSentToEmail" xml:space="preserve">
     <value>الرجاء إدخال رمز التحقق المرسل إلى بريدك الإلكتروني</value>
