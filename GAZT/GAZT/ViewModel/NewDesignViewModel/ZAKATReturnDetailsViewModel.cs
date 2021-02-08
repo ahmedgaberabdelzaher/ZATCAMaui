@@ -1279,18 +1279,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        //if(ex.Message == "There is no open liability to be paid against this declaration") {
+                        if (ex.Message == "There is no open liability to be paid against this declaration")
+                        {
 
-                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, ex.Message));
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, ex.Message));
 
-                        //}
-                        //else {
+                        }
+                        else
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            _navigationService.GoBack();
+                        }
 
-                        //}
 
-
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
+                      
                     });
                 }
                 catch (InternetException ex)
