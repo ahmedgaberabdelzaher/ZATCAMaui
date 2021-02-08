@@ -113,21 +113,30 @@
                         <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" Margin="10,0,10,0"
                                          Style="{StaticResource GreyBorderFrame}">
 
-                            <StackLayout Orientation="Horizontal" Padding="5,15,5,15">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                                    <!--<Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}"
-                                           Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" />-->
-                                    <inputLayout:SfTextInputLayout  Margin="0,0,0,0" 
+                            <StackLayout Orientation="Horizontal" Padding="5,15,5,15" HorizontalOptions="FillAndExpand">
+
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <custom:GAZTBorderlessEditor Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"></custom:GAZTBorderlessEditor>
+                                    <inputLayout:SfTextInputLayout Grid.Column="0" HorizontalOptions="FillAndExpand"  Margin="0,0,0,0" 
                                                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"  
                                                                     OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                         <Entry  Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding FromAmount}"
                                                 TextColor="Black" HorizontalOptions="FillAndExpand" Unfocused="From_Amount_Unfocused" TextChanged="From_Amount_Changed">
                                             <Entry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
-                                            </Entry.Behaviors> 
+                                            </Entry.Behaviors>
                                         </Entry>
                                     </inputLayout:SfTextInputLayout>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+
+
+
+                                    <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                         <Image Margin="5,0" HorizontalOptions="Center">
                                             <Image.Source>
                                                 <FontImageSource FontFamily="UserIconFont"
@@ -138,12 +147,8 @@
 
                                     </StackLayout>
 
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                                    <!--<Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}"
-                                           Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" />
-                                           -->
+                                <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                    
                                     <inputLayout:SfTextInputLayout  Margin="0,0,0,0" 
                                                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"  
                                                                     OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
@@ -155,7 +160,9 @@
                                         </Entry>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
+                                </Grid>
                             </StackLayout>
+                                
                         </border:SfBorder>
                     </StackLayout>
 

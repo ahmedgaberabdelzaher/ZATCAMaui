@@ -1870,7 +1870,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 singleItem.Series = new ChartSeriesCollection() { doughnutSeries };
 
 
-              /*  try {
+               /* try {
 
                     if (singleItem.Bldat!= null)
                     {
@@ -1879,28 +1879,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         string apiDate = @"""" + singleItem.Bldat + @"""";
                         dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
 
-
-
                         GregorianCalendar hjCalendar = new GregorianCalendar();
                         int year = hjCalendar.GetYear(dateStart);
                         int month = hjCalendar.GetMonth(dateStart);
                         int day = hjCalendar.GetDayOfMonth(dateStart);
 
-
-
-                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-
+                        string dateStr = string.Format("{0:00} {1}", day, UtilityManager.GetShortMonthName(""+month));
 
                         singleItem.nextPaymentDue = dateStr;
 
-
-
-                        string dt1 = string.Empty;
-                        string[] dts = null;
-                        dts = singleItem.nextPaymentDue.Split('/');
-                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                        var submitDate = dt1;
                     }
                 }
                 catch(Exception e)

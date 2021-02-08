@@ -94,7 +94,7 @@
             </Grid>
             <cards:SfCardView Grid.Row="2" x:Name="FrameMadaPaymentText" HorizontalOptions="FillAndExpand"  BackgroundColor="#CCE0DC" Padding="10" HasShadow="False" VerticalOptions="FillAndExpand">
                 <custom:CustomLabel x:Name="TextMadaPaymentText"  LineSpacing="1" ></custom:CustomLabel>
-            </cards:SfCardView>
+            </cards:SfCardView> 
            
         </Grid>
     </yummy:PancakeView>

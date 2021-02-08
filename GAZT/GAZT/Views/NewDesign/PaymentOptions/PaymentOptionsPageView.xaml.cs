@@ -83,6 +83,11 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             //{
             //    TextMadaPaymentText.Text = this.amountMsg;
             //}
+
+            if (String.IsNullOrEmpty(TextMadaPaymentText.Text))
+            {
+                FrameMadaPaymentText.IsVisible = false;
+            }
         }
 
         protected override void OnAppearing()

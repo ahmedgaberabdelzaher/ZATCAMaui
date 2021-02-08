@@ -296,22 +296,20 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             {
 
 
-                //if (BModel.MadabutFg == "X")
-                //{
-                //    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                if (BModel.MadabutFg == "X")
+                {
+                    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
 
-                //    //viewModel.DoValidatePayment(fbNum: viewModel.VATDeclarationData.d.Fbnum);
-                //}
-                //else
-                //{
-
-                //    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ""));
-
-                //}
+                    viewModel.DoValidatePayment(fbNum: BModel.Fbnum,BModel.Status);
+                }
+                else
+                {
+                    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ""));
+                }
                 viewModel.selectedFbNum = BModel.Fbnum;
                 viewModel.selectedSadadNo = BModel.VTRE2;
 
-                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+              //  PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
 
                 //viewModel.DoValidatePayment(BModel.Fbnum,BModel.TestDueAmount);
             }

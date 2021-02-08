@@ -141,9 +141,6 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
                     await viewModel.UpdateMadaPaymentDetails(responseGUID);
 
-
-                  
-
                 }
 
             }
