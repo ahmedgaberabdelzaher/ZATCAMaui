@@ -56,7 +56,7 @@ namespace GAZT.SyncFusionEnabledBehaviors.Behaviors
 
                     // Start animation to selected view.
                     var currentItem = items[index];
-                    var childElement = (((currentItem as Boarding).RotatorItem as ContentView).Children[0] as StackLayout).Children.ToList();
+                    var childElement = (((currentItem as Boarding).RotatorItem as ContentView).Children[0] as Grid).Children.ToList();
                     if (childElement != null && childElement.Count > 0)
                     {
                         this.StartAnimation(childElement, currentItem as Boarding);
@@ -66,7 +66,7 @@ namespace GAZT.SyncFusionEnabledBehaviors.Behaviors
                     if (index != this.previousIndex)
                     {
                         var previousItem = items[this.previousIndex];
-                        var previousChildElement = (((previousItem as Boarding).RotatorItem as ContentView).Children[0] as StackLayout).Children.ToList();
+                        var previousChildElement = (((previousItem as Boarding).RotatorItem as ContentView).Children[0] as Grid).Children.ToList();
                         if (previousChildElement != null && previousChildElement.Count > 0)
                         {
                             previousChildElement[0].FadeTo(0, 250);
