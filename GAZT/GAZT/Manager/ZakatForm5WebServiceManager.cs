@@ -165,7 +165,7 @@ namespace EGAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    string url = Constants.Z_ZKTE_SUMMARY + "(Fbnum='" + Fbnum + "',Flag='X')?$expand=headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";
+                    string url = Constants.Z_ZKTE_SUMMARY + "(Fbnum='" + Fbnum + "',Flag='X')?$expand=headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set&$format=json";
                     HttpResponseMessage GAZTZakatForm5SummaryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (GAZTZakatForm5SummaryResponse != null)
                     {

@@ -1351,8 +1351,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
-                if (_isZakatEstListVisible == value) return;
-
                 _isZakatEstListVisible = value;
                 RaisePropertyChanged(() => IsZakatEstListVisible);
             }
@@ -3129,9 +3127,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     IsZakatEstListVisible = false;
                                 }
-
-
-
                             }
 
                           //  IsLoading = false;
@@ -3214,33 +3209,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                    currentTab = ZakatForm5TabEnum.FinancialInformation;
                     break;
 
-                case ZakatForm5TabEnum.FinancialInformation: 
-                    currentTab = ZakatForm5TabEnum.ZakatEstimation;
-                    if (AknowledgementList.Any())
+                case ZakatForm5TabEnum.FinancialInformation:
                     {
-                        NextText = AppResources.ZZNext;
+                        currentTab = ZakatForm5TabEnum.ZakatEstimation;
+                        if (AknowledgementList.Any())
+                        {
+                            
+                            NextText = AppResources.ZZNext;
+                        }
+                        else
+                        {
+                            NextText = AppResources.Form5Finish;
+                        }
+                        break;
                     }
-                    else {
-                        NextText = AppResources.Form5Finish;
-
-                    }
-                    //  OnNextButtonClick = 
-                    break;
                 case ZakatForm5TabEnum.ZakatEstimation:
-
-                    if (AknowledgementList.Any())
                     {
-                        _navigationService.NavigateTo(App.ZakatAcknowledgmentPageView, AknowledgementList);
-                       
+                        if (AknowledgementList.Any())
+                        {
+                            _navigationService.NavigateTo(App.ZakatAcknowledgmentPageView, AknowledgementList);
+                        }
+                        else
+                        {
+                            _navigationService.GoBack();
+                            currentTab = ZakatForm5TabEnum.BasicInformation;
+                        }
+                        break;
                     }
-                    else
-                    {
-
-                        _navigationService.GoBack();
-                        currentTab = ZakatForm5TabEnum.BasicInformation;
-                        
-                    }
-                    break;
             }
         }
 
