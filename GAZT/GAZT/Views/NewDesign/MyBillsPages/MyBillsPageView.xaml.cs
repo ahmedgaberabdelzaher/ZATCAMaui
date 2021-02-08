@@ -300,7 +300,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 {
                     PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
 
-                    viewModel.DoValidatePayment(fbNum: BModel.Fbnum,BModel.Status);
+                    //viewModel.DoValidatePayment(fbNum: BModel.Fbnum,BModel.Status);
                 }
                 else
                 {

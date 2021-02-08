@@ -151,7 +151,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             break;
                                         }
                                     }
-                                    _navigationService.GoBack();
+                                    _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                                 }
 
                             });
