@@ -2402,6 +2402,7 @@ namespace EGAZT
             //Account Statements
             navigationService.Configure(App.AccountStatementsPageView, typeof(AccountStatementsPageView));
             navigationService.Configure(App.AccountStatementsFiltersPageView, typeof(AccountStatementsFiltersPageView));
+            navigationService.Configure(App.AccountStatementsNewFilterPageView, typeof(AccountStatementsNewFilterPageView));
             navigationService.Configure(App.AccountStatementsDownloadPageView, typeof(AccountStatementsDownloadPageView));
 
             //AccountStatementsDownloadPageViewModel

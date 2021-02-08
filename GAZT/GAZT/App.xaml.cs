@@ -257,6 +257,7 @@ namespace EGAZT
 
         public static string AccountStatementsPageView = "AccountStatementsPageView";
         public static string AccountStatementsFiltersPageView = "AccountStatementsFiltersPageView";
+        public static string AccountStatementsNewFilterPageView = "AccountStatementsNewFilterPageView";
         public static string AccountStatementsDownloadPageView = "AccountStatementsDownloadPageView";
 
         //AccountStatementsFiltersPageViewModel

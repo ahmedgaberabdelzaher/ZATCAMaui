@@ -1043,6 +1043,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         }
         public void FiltersClicked()
         {
+            _navigationService.NavigateTo(App.AccountStatementsNewFilterPageView);
             IsSortByVisible = !IsSortByVisible;
             IsMonthWiseStatementsViewVisible = !IsMonthWiseStatementsViewVisible;
         }
