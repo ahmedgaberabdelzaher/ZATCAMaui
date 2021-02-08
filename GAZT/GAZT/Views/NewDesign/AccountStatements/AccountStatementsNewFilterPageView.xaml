@@ -110,10 +110,10 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}" />
-                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" Margin="10,0,10,0"
+                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" 
                                          Style="{StaticResource GreyBorderFrame}">
 
-                            <StackLayout Orientation="Horizontal" Padding="5,15,5,15" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal" Padding="5,8,5,8" HorizontalOptions="FillAndExpand">
 
                                 <Grid HorizontalOptions="FillAndExpand">
                                     <Grid.ColumnDefinitions>
@@ -122,17 +122,10 @@
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <custom:GAZTBorderlessEditor Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"></custom:GAZTBorderlessEditor>
-                                    <inputLayout:SfTextInputLayout Grid.Column="0" HorizontalOptions="FillAndExpand"  Margin="0,0,0,0" 
-                                                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1"  
-                                                                    OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
-                                        <Entry  Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding FromAmount}"
-                                                TextColor="Black" HorizontalOptions="FillAndExpand" Unfocused="From_Amount_Unfocused" TextChanged="From_Amount_Changed">
-                                            <Entry.Behaviors>
-                                                <custom1:OnlyNumericValuesBehaviour/>
-                                            </Entry.Behaviors>
-                                        </Entry>
-                                    </inputLayout:SfTextInputLayout>
+                                    <custom:BorderlessEntry Grid.Column="0" Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" 
+                                                            Keyboard="Numeric" TextChanged="From_Amount_Changed" Style="{StaticResource BodyLabelBlack}" Text="{Binding FromAmount}"  Unfocused="From_Amount_Unfocused"></custom:BorderlessEntry>
+
+                                  
 
 
 
@@ -140,26 +133,17 @@
                                         <Image Margin="5,0" HorizontalOptions="Center">
                                             <Image.Source>
                                                 <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="20"
-                                                                 Glyph="{x:Static FontImage:IconFonts.LessThan}" />
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.GreaterThan}" />
                                             </Image.Source>
                                         </Image>
 
                                     </StackLayout>
 
-                                <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                    <custom:BorderlessEntry Grid.Column="2" Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}" 
+                                                            Keyboard="Numeric" TextChanged="To_Amount_Changed" Style="{StaticResource BodyLabelBlack}" Text="{Binding ToAmount}"  Unfocused="To_Amount_Unfocused"></custom:BorderlessEntry>
                                     
-                                    <inputLayout:SfTextInputLayout  Margin="0,0,0,0" 
-                                                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1"  
-                                                                    OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
-                                        <Entry  Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding FromAmount}"
-                                                TextColor="Black" HorizontalOptions="FillAndExpand" Unfocused="To_Amount_Unfocused" TextChanged="To_Amount_Changed">
-                                            <Entry.Behaviors>
-                                                <custom1:OnlyNumericValuesBehaviour/>
-                                            </Entry.Behaviors> 
-                                        </Entry>
-                                    </inputLayout:SfTextInputLayout>
-                                </StackLayout>
+                                    
                                 </Grid>
                             </StackLayout>
                                 
@@ -170,48 +154,71 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASTransactionDate}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}" />
-                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" Margin="10,0,10,0"
+                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" 
                                          Style="{StaticResource GreyBorderFrame}">
 
-                            <StackLayout Orientation="Horizontal" Padding="5,15,5,15">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                                    <Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}"
-                                           Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" />
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                        <Image Margin="5,0" HorizontalOptions="Center">
+                            <StackLayout Orientation="Horizontal"  Padding="5,8,5,8" HorizontalOptions="FillAndExpand">
+
+
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}"
+                                           HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}"/>
+
+                                        <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont"
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
+                                                </Image.Source>
+                                            </Image>
+
+                                        </StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TSDateStartDateClicked" />
+                                        </StackLayout.GestureRecognizers>
+
+
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Image Margin="5,0" HorizontalOptions="End">
                                             <Image.Source>
                                                 <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="20"
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
                                                                  Glyph="{x:Static FontImage:IconFonts.GreaterThan}" />
                                             </Image.Source>
                                         </Image>
 
                                     </StackLayout>
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TSDateStartDateClicked" />
-                                    </StackLayout.GestureRecognizers>
 
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                                    <Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}"
-                                           Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" />
-                                    <StackLayout HorizontalOptions="End" Orientation="Horizontal">
-                                        <Image Margin="5,0">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="20"
+                                    <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}"
+                                           Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" />
+                                        <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont"
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
                                                                  Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
-                                            </Image.Source>
-                                        </Image>
+                                                </Image.Source>
+                                            </Image>
+
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TSDateEndDateClicked" />
+                                        </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
-
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TSDateEndDateClicked" />
-                                    </StackLayout.GestureRecognizers>
-
-                                </StackLayout>
+                                </Grid>
                             </StackLayout>
                         </border:SfBorder>
                     </StackLayout>
@@ -219,48 +226,72 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASTaxperiod}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}" />
-                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" Margin="10,0,10,0"
+                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" 
                                          Style="{StaticResource GreyBorderFrame}">
 
-                            <StackLayout Orientation="Horizontal" Padding="5,15,5,15">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                                    <Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}"
-                                           Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" />
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                        <Image Margin="5,0" HorizontalOptions="Center">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="20"
-                                                                 Glyph="{x:Static FontImage:IconFonts.LessThan}" />
-                                            </Image.Source>
-                                        </Image>
+                            <StackLayout Orientation="Horizontal" Padding="5,8,5,8">
 
-                                    </StackLayout>
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TaxPeriodStartDateClicked" />
-                                    </StackLayout.GestureRecognizers>
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
 
-                                </StackLayout>
 
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                                    <Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}"
-                                           Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" />
-                                    <StackLayout HorizontalOptions="End" Orientation="Horizontal">
-                                        <Image Margin="5,0">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="20"
+                                    <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}"
+                                           Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="FillAndExpand" />
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                            <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                                <Image Margin="5,0">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont"
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
                                                                  Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
+                                                    </Image.Source>
+                                                </Image>
+
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TaxPeriodStartDateClicked" />
+                                        </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Image Margin="5,0" HorizontalOptions="End">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont"
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.GreaterThan}" />
                                             </Image.Source>
                                         </Image>
 
                                     </StackLayout>
 
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="EndDate" Tapped="TaxPeriodEndDateClicked" />
-                                    </StackLayout.GestureRecognizers>
+                                    <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}"
+                                           Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="FillAndExpand" />
+                                        <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont"
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
+                                                </Image.Source>
+                                            </Image>
 
-                                </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="EndDate" Tapped="TaxPeriodEndDateClicked" />
+                                        </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                </Grid>
                             </StackLayout>
                         </border:SfBorder>
                     </StackLayout>
