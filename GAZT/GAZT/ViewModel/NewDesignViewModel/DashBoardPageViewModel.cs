@@ -8,6 +8,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfCalendar.XForms;
 using Syncfusion.SfChart.XForms;
@@ -1866,7 +1867,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 doughnutSeries.ColorModel.Palette = ChartColorPalette.Custom;
                 doughnutSeries.ColorModel.CustomBrushes = ColorsChild;
                 doughnutSeries.ItemsSource = chartData;
-                singleItem.Series = new ChartSeriesCollection() { doughnutSeries }; ;
+                singleItem.Series = new ChartSeriesCollection() { doughnutSeries };
+
+
+              /*  try {
+
+                    if (singleItem.Bldat!= null)
+                    {
+                        DateTime dateStart = new DateTime();
+                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                        string apiDate = @"""" + singleItem.Bldat + @"""";
+                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+
+
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
+
+
+
+                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+
+                        singleItem.nextPaymentDue = dateStr;
+
+
+
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = singleItem.nextPaymentDue.Split('/');
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                        var submitDate = dt1;
+                    }
+                }
+                catch(Exception e)
+                {
+
+                }*/
+
                 items.Add(singleItem);
 
             }
