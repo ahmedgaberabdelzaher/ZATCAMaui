@@ -472,7 +472,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 }
                             }
                         }
-                        else if (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements || IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
+                        else if (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements || IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance || IsComeForWhichAttachment == WhichAttachment.VatReviewAttachments)
                         {
                             if (VatAttachmentsList != null)
                             {
