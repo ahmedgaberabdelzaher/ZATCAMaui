@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Linq;
+using EGAZT;
 using EGAZT.Helper;
+using EGAZT.Models.PaymentModel;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 using Foundation;
 using GAZT.iOS.CustomRenderer;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PassKit;
 using UIKit;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ApplePayAuthorizer))]
@@ -48,9 +54,10 @@ namespace GAZT.iOS.CustomRenderer
             PKPaymentAuthorizationViewController controller = new
                   PKPaymentAuthorizationViewController(paymentRequest);
             controller.Delegate = (PassKit.IPKPaymentAuthorizationViewControllerDelegate)Self;
-            
 
-            var rootController = GetTopViewController();
+            var rootController = UIApplication.SharedApplication.
+                     KeyWindow.RootViewController;
+            //var rootController = GetTopViewController();
 
 
             rootController.PresentViewController(controller,
@@ -76,10 +83,19 @@ namespace GAZT.iOS.CustomRenderer
 
             
             completion(obj: PKPaymentAuthorizationStatus.Success);
-            var isSucess = PKPaymentAuthorizationStatus.Success;
-            var paymentToken = payment.Token;
+            //var paymentToken = payment.Token.PaymentData;
 
-            MessagingCenter.Send<Object, Object>(this, "ApplePayData", paymentToken);
+            if(payment.Token != null) {
+
+                JObject json = JObject.Parse(payment.Token.PaymentData.ToString());
+                string paymentToken = json.SelectToken("data").ToString();
+
+                //Preferences.Get("ApplePayString", paymentToken);
+                MessagingCenter.Send((App)Xamarin.Forms.Application.Current, "ApplePayData", paymentToken);
+            }
+
+
+           
 
 
 
@@ -95,7 +111,7 @@ namespace GAZT.iOS.CustomRenderer
 
         public override void WillAuthorizePayment(PKPaymentAuthorizationViewController controller)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

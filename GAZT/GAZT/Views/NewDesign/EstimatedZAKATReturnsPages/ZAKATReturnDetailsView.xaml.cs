@@ -277,6 +277,25 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 Console.Write(ex.StackTrace.ToString());
             }
 
+            try
+            {
+                MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
+                {
+
+                    viewModel.ApplePayTokenData = arg.ToString();
+
+                    await viewModel.UpdateApplePayPaymentGuid();
+
+
+                });
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
         }
 
         private void SetLTR()

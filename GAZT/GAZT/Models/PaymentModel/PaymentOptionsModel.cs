@@ -111,5 +111,41 @@ namespace EGAZT.Models.PaymentModel
         public ApplePayGuid d { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
+    public class Header
+    {
+        public string ephemeralPublicKey { get; set; }
+        public string publicKeyHash { get; set; }
+        public string transactionId { get; set; }
+    }
+    [Preserve(AllMembers = true)]
+    public class ApplePayToken
+    {
+        public string Guid { get; set; }
+        public string PaymentToken { get; set; }
+
+    }
+
+    [Preserve(AllMembers = true)]
+
+    public class ApplePayinfo
+    {
+        public string Guid { get; set; }
+        public string PaymentToken { get; set; }
+        public string Gpart { get; set; }
+        public string Fbnum { get; set; }
+        public string SrcId { get; set; }
+        public string Merchantid { get; set; }
+        public string Procurl { get; set; }
+        public string Amount { get; set; }
+        public bool Success { get; set; }
+    }
+
+    public class ApplePayTokenResponse
+    {
+        public ApplePayinfo d { get; set; }
+    }
+
+
 
 }

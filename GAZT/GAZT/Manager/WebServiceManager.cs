@@ -15807,7 +15807,7 @@ namespace GAZT.Manager
 
         #region
 
-            public static async Task <ValidatePaymentResponse> GAZTValidatePayment(string fbNum, string TIN, string devicetype)
+            public static async Task <ValidatePaymentResponse> GAZTValidatePayment(string fbNum, string TIN, string devicetype,string PaymentType)
             {
             ValidatePaymentResponse paymentResponse = null;
                 if (CrossConnectivity.Current.IsConnected)
@@ -15822,7 +15822,7 @@ namespace GAZT.Manager
                         }
                         HttpClient client = new HttpClient(App.httpClientHandler);
                        // String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='"+devicetype+"')" + "?$format=json";
-                        String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='" + devicetype + "',Sadad='',Pymntty='M')" + "?$format=json";
+                        String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='" + devicetype + "',Sadad='',Pymntty='"+ PaymentType + "')" + "?$format=json";
 
 
 
@@ -16147,14 +16147,14 @@ namespace GAZT.Manager
 
         }
 
-        public async static Task<ApplePayGuidResponse> GAZTUpdateApplePayGuid(UpdateApplePayRequestGuid applePayDetails)
+        public async static Task<ApplePayTokenResponse> GAZTUpdateApplePayGuid(ApplePayToken applePayDetails)
         {
-            ApplePayGuidResponse paymentResponse = null;
+            ApplePayTokenResponse paymentResponse = null;
 
             string _paymentsubmitResponse = string.Empty;
             try
             {
-                String url = Constants.ApplePayGenerateGuid;
+                String url = Constants.UpdateApplePayGuid;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 var serilized = JsonConvert.SerializeObject(applePayDetails);
@@ -16164,10 +16164,9 @@ namespace GAZT.Manager
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                _paymentsubmitResponse = res.Content.ReadAsStringAsync().Result;
-
-                paymentResponse = JsonConvert.DeserializeObject<ApplePayGuidResponse>(_paymentsubmitResponse);
+                HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                _paymentsubmitResponse = await res.Content.ReadAsStringAsync();
+                paymentResponse = JsonConvert.DeserializeObject<ApplePayTokenResponse>(_paymentsubmitResponse);
                 if (!string.IsNullOrEmpty(_paymentsubmitResponse))
                 {
                     ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_paymentsubmitResponse);

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
@@ -565,7 +565,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         }
 
-        public async void getYesCommand()
+        public  void getYesCommand()
         {
             try
             {
@@ -596,7 +596,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async void getSubmittedFromRefundCommand()
+        public  void getSubmittedFromRefundCommand()
         {
             try
             {
@@ -646,11 +646,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
         }
-        public async void getRefundClickedCommand()
+        public  void getRefundClickedCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "RefundClicked", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "RefundClicked",  (sender, arg) =>
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
@@ -663,7 +663,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
         }
-        public async void getRefundClickedForStopLoaderCommand()
+        public  void getRefundClickedForStopLoaderCommand()
         {
             try
             {
@@ -685,7 +685,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "AddNoteForVATDeclaration", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "AddNoteForVATDeclaration",  (sender, arg) =>
                 {
                     AddNote();
                 });
@@ -696,11 +696,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async void getClearNoteCommand()
+        public  void getClearNoteCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "ClearNoteForVATDeclaration", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "ClearNoteForVATDeclaration",  (sender, arg) =>
                 {
                     AddNote();
                 });
@@ -711,7 +711,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async void getNoCommand()
+        public  void getNoCommand()
         {
             try
             {
@@ -739,7 +739,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async void getActionCommand()
+        public void getActionCommand()
         {
             try
             {
@@ -793,7 +793,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     }
                                     else
                                     {
-                                        Device.BeginInvokeOnMainThread(async () =>
+                                        Device.BeginInvokeOnMainThread( () =>
                                         {
                                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -864,7 +864,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     }
                                     else
                                     {
-                                        Device.BeginInvokeOnMainThread(async () =>
+                                        Device.BeginInvokeOnMainThread( () =>
                                         {
 
                                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
@@ -902,7 +902,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async void getRefundYesMsgCommand()
+        public  void getRefundYesMsgCommand()
         {
             try
             {
@@ -920,7 +920,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
         }
-        public async void getRefundNoMsgCommand()
+        public  void getRefundNoMsgCommand()
         {
             try
             {
@@ -980,7 +980,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForYesRefundMsg");
                 MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForNoRefundMsg");
-                MessagingCenter.Unsubscribe<object, string>(this, "ApplePayData");
+                MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
 
                 //viewModel.DesClaimerVisibility = false;
                 try
@@ -1024,6 +1024,14 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 viewModel.IsSwitchVisible = false;
             }
+
+            //if (Preferences.ContainsKey("ApplePayString") &&!string.IsNullOrEmpty(Preferences.Get("ApplePayString", string.Empty)))
+            //{
+            //    viewModel.ApplePayTokenData = Preferences.Get("ApplePayString", string.Empty);
+            //    await viewModel.UpdateApplePayPaymentGuid();
+            //    Preferences.Remove("ApplePayString");
+            //}
+
             getActionCommand();
             getYesCommand();
             getNoCommand();
@@ -1087,15 +1095,17 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             try
             {
-                MessagingCenter.Subscribe<object, Object>(this, "ApplePayData", async (sender, arg) =>
+                MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
                 {
-                    Console.WriteLine("ApplePay");
+
+                    viewModel.ApplePayTokenData = arg.ToString();
 
 
-                    viewModel.ApplePaySucess();
-                    viewModel.ApplePayStatusCode = arg;
+                    await viewModel.UpdateApplePayPaymentGuid();
+
 
                 });
+
             }
             catch (Exception ex)
             {
@@ -1349,7 +1359,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async Task IntilizeAsync()
+        public async void IntilizeAsync()
         {
             Device.BeginInvokeOnMainThread(() =>
             {

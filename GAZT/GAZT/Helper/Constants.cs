@@ -425,6 +425,7 @@ namespace GAZT.Helper
         public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=100&sap-ui-language=EN&sap-ui-xx-devmode=true&guid=";
         public static string UpdateMadaPaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_PAYMENT_STATUS_SRV/PaymentStatSet(CaseGuid=";
         public static string ApplePayGenerateGuid = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_APPLE_PAY_SRV/GuidEntrySet";
+        public static string UpdateApplePayGuid = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_APPLE_PAY_SRV/HeaderSet";
 
 
 

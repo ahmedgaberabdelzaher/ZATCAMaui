@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Helper;
 using EGAZT.Models;
 using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -62,7 +63,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("isEditVisible");
             }
         }
-
+        public string ApplePayTokenData;
         private bool _isLabelVisible = false;
         public bool isLabelVisible
         {
@@ -1198,7 +1199,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
         }
-        public async Task DoValidatePayment(string fbNum)
+        public async Task DoValidatePayment(string fbNum, string paymentType)
         {
             try
             {
@@ -1217,7 +1218,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         platform = "C3";
                     }
-                    PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+                    PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform, paymentType);
 
 
                     if (PaymentData != null && PaymentData.d != null)
@@ -1231,14 +1232,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
 
-                        Device.BeginInvokeOnMainThread(async () => {
+                        if (paymentType == "M")
+                        {
 
-                            _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
+                            Device.BeginInvokeOnMainThread(async () => {
+
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                            });
+                        }
+                        else
+                        {
+                            var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+
+                              await ProcessApplePay();
+                        }
 
 
-                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
-
-                        });
 
                         //if (ZakatReturnDetails.d.MadabutFg == "X")
                         //{
@@ -1316,13 +1327,100 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        public async Task UpdateApplePayPaymentGuid()
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = string.Empty;
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+
+
+
+                    ApplePayToken modelDetails = new ApplePayToken();
+                    modelDetails.Guid = App.PaymentGuid;
+                    //var token = "GrPRb/eyYkhLaxIi8ugsU5I0D2/IE6JT6SYb4o6CH/emQV7n5twiqt8IVazkcItvmCkHXeie16Nvbq+uFFx0mS4O/1+SoDHrP8HcDbJ/Q1swCCHR/Dwv69oTcTUy1riK6Zvpe0w1r+WJ21I36gorRUn7u94Yi9n4afOfnGJC3EmFd6DKSIRQWlT4BuLlNv5826XruanuFjdL3MKty/xoCyx2GKN+e8W6BFVnQc/gsBe4UW7oqHIQ5PrQJlQwymi5Ytd1IIJT8QsUMxiVjz6yVS5zdQBaN86ZtuokJRmC89jCwVkUMwDl9jQ5xYbFlIFS1VXKJjtWKDfMGwCWK3jvWdtCcdb4VrPIxtK7LvTWc+4C7m6SPzkOhdC/XPn7ufwvrh95no7p9tpQMkP7zOJIYAl+hS4oEqvOxdpw55dCytGXJ0yjN/HOQ3t4ofyW9mBGiHoq";
+                    modelDetails.PaymentToken = ApplePayTokenData;
+
+
+
+                    ApplePayTokenResponse response = await WebServiceManager.GAZTUpdateApplePayGuid(modelDetails);
+
+
+                    if (response != null && response.d != null)
+                    {
+
+                        if (response.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = response.d.Guid;
+
+                        }
+
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+
+                            //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+
+                            _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, "");
+
+                        });
+                    }
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
         public async Task MadaPaymentSelectedAsync()
         {
 
             if (ZakatReturnDetails.d.MadabutFg == "X")
             {
 
-                 await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
+                 await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum, "M");
             }
             else
             {
@@ -1337,8 +1435,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async Task ApplePaySelected()
         {
+             DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum, "A");
 
+        }
 
+        private async Task<bool> ProcessApplePay()
+        {
+
+            var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(ZakatAmount, "Zakat Form12");
         }
 
         public async Task SadadPaymentSelected()
