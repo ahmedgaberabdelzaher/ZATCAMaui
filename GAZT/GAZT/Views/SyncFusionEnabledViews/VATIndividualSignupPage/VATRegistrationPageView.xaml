@@ -1433,7 +1433,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                     <CheckBox VerticalOptions="Start" IsChecked="{Binding IsDeclarationChecked}"/>
                                                     <Label  Text="{x:Static custom2:AppResources.ZZZVATRDR1}"  FontFamily="{StaticResource GAZTSmallGrayLblMediumFont}"/>
                                                 </StackLayout> -->
-                                                <Label Margin="0,20,0,15" Text="{x:Static custom2:AppResources.ZZZVATRDR2}" Style="{StaticResource GAZTMicroMediumGrayLabel}"/>
+                                                <!--<Label Margin="0,20,0,15" Text="{x:Static custom2:AppResources.ZZZVATRDR2}" Style="{StaticResource GAZTMicroMediumGrayLabel}"/>-->
                                                 <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                                                       ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
                                                     <Grid.RowDefinitions>
