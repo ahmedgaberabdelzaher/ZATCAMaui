@@ -50,7 +50,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             base.OnAppearing();
 
             var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
+            safeInsets.Bottom = 0;
             this.Padding = safeInsets;
 
             App.IsComingFromSleepMode = false;
