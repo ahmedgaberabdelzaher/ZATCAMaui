@@ -2584,7 +2584,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch(Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                //TODO error : Not a valid calendar for the given culture.
             }
         }
         private async void udpdateDates(string selectedDate = null)

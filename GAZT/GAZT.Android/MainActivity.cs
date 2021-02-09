@@ -29,6 +29,7 @@ namespace GAZT.Droid
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
+            PreventLinkerFromStrippingCommonLocalizationReferences();
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -197,6 +198,12 @@ namespace GAZT.Droid
         public override void OnBackPressed()
         {
             App.OnBackPressed();
+        }
+
+        private void PreventLinkerFromStrippingCommonLocalizationReferences()
+        {
+            var gregorianCalendar = new System.Globalization.GregorianCalendar();
+            var arabivAlQuraCalendar = new System.Globalization.UmAlQuraCalendar();
         }
     }
 }
