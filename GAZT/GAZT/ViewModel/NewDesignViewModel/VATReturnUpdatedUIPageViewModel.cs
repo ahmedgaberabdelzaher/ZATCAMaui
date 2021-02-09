@@ -170,7 +170,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsRefundButtonEnabled");
             }
         }
+        private bool _applePayStatus;
+        public bool ApplePayStatus
+        {
+            get
+            {
+                return _applePayStatus;
+            }
+            set
+            {
+                if (_applePayStatus == value) return;
 
+                _applePayStatus = value;
+                RaisePropertyChanged("ApplePayStatus");
+            }
+        }
+
+        private Object _applePayStatusCode;
+        public Object ApplePayStatusCode
+        {
+            get
+            {
+                return _applePayStatusCode;
+            }
+            set
+            {
+                if (_applePayStatusCode == value) return;
+
+                _applePayStatusCode = value;
+                RaisePropertyChanged("ApplePayStatusCode");
+            }
+        }
         private bool _isRefundButtonVisible;
         public bool IsRefundButtonVisible
         {
@@ -1013,6 +1043,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _paymentData = value;
                 RaisePropertyChanged("PaymentData");
+            }
+        }
+
+        public ApplePayGuidResponse _applePayData = null;
+        public ApplePayGuidResponse ApplePayData
+        {
+            get
+            {
+                return _applePayData;
+            }
+            set
+            {
+                if (_applePayData == value) return;
+
+                _applePayData = value;
+                RaisePropertyChanged("ApplePayData");
             }
         }
 
@@ -5786,37 +5832,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         platform = "C3";
                     }
 
-                    ApplePayGuid modelDetails = new ApplePayGuid();
+                    ApplePayRequestGuid modelDetails = new ApplePayRequestGuid();
                     modelDetails.Fbnum = fbNum;
                     modelDetails.PymntType = "A";
                     modelDetails.Tin = App.LoginDataRetrieved.TIN;
                     modelDetails.Srcid = platform;
-                    var PaymentData1 = await WebServiceManager.GAZTGenerateApplePayGuid(modelDetails);
+                    ApplePayData = await WebServiceManager.GAZTGenerateApplePayGuid(modelDetails);
 
 
-                    if (PaymentData != null && PaymentData.d != null)
+                    if (ApplePayData != null && ApplePayData.d != null)
                     {
 
-                        if (PaymentData.d.Guid != null)
+                        if (ApplePayData.d.Guid != null)
                         {
 
-                            App.PaymentGuid = PaymentData.d.Guid;
+                            App.PaymentGuid = ApplePayData.d.Guid;
 
                         }
 
                         var VatAmount = NetdueVat.Replace(",", "");
-                        if (String.IsNullOrEmpty(VatAmount) || Double.Parse(VatAmount) == 0)
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false,""));
-                        }
-                        else if (!String.IsNullOrEmpty(VatAmount) && Double.Parse(VatAmount) > 20000)
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true,""));
-                        }
-                        else
-                        {
-                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false,""));
-                        }
+                        ApplePayStatus = await ProcessApplePay();
+
+
+
+                        //var VatAmount = NetdueVat.Replace(",", "");
+                        //if (String.IsNullOrEmpty(VatAmount) || Double.Parse(VatAmount) == 0)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false,""));
+                        //}
+                        //else if (!String.IsNullOrEmpty(VatAmount) && Double.Parse(VatAmount) > 20000)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true,""));
+                        //}
+                        //else
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false,""));
+                        //}
 
                     }
 
@@ -5852,13 +5903,111 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public void MadaPaymentSelected()
+
+        public async Task UpdateApplePayPaymentGuid()
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = "";
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+
+                    UpdateApplePayRequestGuid modelDetails = new UpdateApplePayRequestGuid();
+                    modelDetails.Guid = App.PaymentGuid;
+                    modelDetails.PaymentToken = (string)ApplePayStatusCode;
+
+
+                    ApplePayData = await WebServiceManager.GAZTUpdateApplePayGuid(modelDetails);
+
+
+                    if (ApplePayData != null && ApplePayData.d != null)
+                    {
+
+                        if (ApplePayData.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = ApplePayData.d.Guid;
+
+                        }
+
+                        var VatAmount = NetdueVat.Replace(",", "");
+                        ApplePayStatus = await ProcessApplePay();
+
+
+
+                        //var VatAmount = NetdueVat.Replace(",", "");
+                        //if (String.IsNullOrEmpty(VatAmount) || Double.Parse(VatAmount) == 0)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false,""));
+                        //}
+                        //else if (!String.IsNullOrEmpty(VatAmount) && Double.Parse(VatAmount) > 20000)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true,""));
+                        //}
+                        //else
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false,""));
+                        //}
+
+                    }
+
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        private async Task<bool> ProcessApplePay()
+    {
+
+            var VatAmount = NetdueVat.Replace(",", "");
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(VatAmount, "VAT Return"); 
+    }
+
+   
+
+    public void MadaPaymentSelected()
         {
 
-
-           
-
-                DoValidatePayment(fbNum:VATDeclarationData.d.Fbnum);
+            DoValidatePayment(fbNum:VATDeclarationData.d.Fbnum);
 
             //Device.BeginInvokeOnMainThread(async () => {
 
@@ -5883,6 +6032,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationData);
 
+        }
+
+
+         public void ApplePaySucess(){
+
+            Console.WriteLine("Apple pay status",ApplePayStatusCode);
         }
     }
 }

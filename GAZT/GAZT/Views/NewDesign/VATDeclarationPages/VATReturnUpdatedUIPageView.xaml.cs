@@ -980,6 +980,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForYesRefundMsg");
                 MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForNoRefundMsg");
+                MessagingCenter.Unsubscribe<object, string>(this, "ApplePayData");
 
                 //viewModel.DesClaimerVisibility = false;
                 try
@@ -1054,6 +1055,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 Console.Write(ex.StackTrace.ToString());
             }
 
+
             try
             {
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
@@ -1075,6 +1077,24 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                     Console.WriteLine("SADAD Clicked");
                     viewModel.gotoSuccessPage();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, Object>(this, "ApplePayData", async (sender, arg) =>
+                {
+                    Console.WriteLine("ApplePay");
+
+
+                    viewModel.ApplePaySucess();
+                    viewModel.ApplePayStatusCode = arg;
+
                 });
             }
             catch (Exception ex)

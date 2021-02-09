@@ -76,12 +76,39 @@ namespace EGAZT.Models.PaymentModel
 
 
     [Preserve(AllMembers = true)]
-    public class ApplePayGuid
+    public class ApplePayRequestGuid
     {
         public string Fbnum { get; set; }
         public string Tin { get; set; }
         public string Srcid { get; set; }
         public string PymntType { get; set; }
+    }
+
+    [Preserve(AllMembers = true)]
+    public class UpdateApplePayRequestGuid
+    {
+        public string Guid { get; set; }
+        public string PaymentToken { get; set; }
+
+    }
+
+
+    [Preserve(AllMembers = true)]
+    public class ApplePayGuid
+    {
+        public Metadata __metadata { get; set; }
+        public string Fbnum { get; set; }
+        public string Tin { get; set; }
+        public string Guid { get; set; }
+        public string Link { get; set; }
+        public string Srcid { get; set; }
+        public string SadadNo { get; set; }
+        public string PymntType { get; set; }
+    }
+    [Preserve(AllMembers = true)]
+    public class ApplePayGuidResponse
+    {
+        public ApplePayGuid d { get; set; }
     }
 
 

@@ -149,11 +149,6 @@
 		<Compile Update="AppResources.ar.Designer.cs">
 			<DependentUpon>AppResources.ar.resx</DependentUpon>
 		</Compile>
-		<Compile Update="AppResources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>AppResources.resx</DependentUpon>
-		</Compile>
 		<Compile Update="SyncfusionControl.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
