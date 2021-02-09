@@ -6767,7 +6767,7 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
     <value>Address Details</value>
   </data>
   <data name="ESTPhycicalAddress" xml:space="preserve">
-    <value>Phycical Address</value>
+    <value>Physical Address</value>
   </data>
   <data name="ESTHouseNumber" xml:space="preserve">
     <value>House Number</value>
@@ -6788,7 +6788,7 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
     <value>Postal Address</value>
   </data>
   <data name="ESTSameAsPhycical" xml:space="preserve">
-    <value>Same as Phycical</value>
+    <value>Same as Physical</value>
   </data>
   <data name="ESTEstimatedMethod" xml:space="preserve">
     <value>Estimated Method</value>
