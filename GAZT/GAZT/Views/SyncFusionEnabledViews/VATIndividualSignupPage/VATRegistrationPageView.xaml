@@ -1076,7 +1076,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             LeadingViewPosition="Inside"
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0" HasError="{Binding FrameIDError}">
-                                                            <custom:BorderlessEntry x:Name="EntryIDNo" Text="{Binding IdnumberFR}" FontFamily="{StaticResource SSTArabicMedium}"
+                                                            <custom:BorderlessEntry x:Name="EntryIDNo" Text="{Binding IdnumberFR}"
                                                                                     Unfocused="EntryIDNo_Unfocused"  Keyboard="Numeric"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
                                                             TextChanged="EntryIDNo_TextChanged" Placeholder="{x:Static local:AppResources.IDNumber}" Style="{StaticResource DefaultEntry}">
                                                                 <Entry.Behaviors>
@@ -1232,7 +1232,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             LeadingViewPosition="Inside"
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0" >
-                                                            <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding MobNumberFR}"
+                                                            <custom:BorderlessEntry Text="{Binding MobNumberFR}"
                                                                                     HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber"
                                                                                     Placeholder="{x:Static custom2:AppResources.MobileNumber}"
                                                                                     IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" Style="{StaticResource DefaultEntry}">
