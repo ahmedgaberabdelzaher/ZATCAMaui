@@ -26,9 +26,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             base.OnAppearing();
 
-            await ZAKATReturn.TranslateTo(0, 500, 10);
-            await ReadInbox.TranslateTo(0, 500, 10);
-            await GetSupport.TranslateTo(0, 500, 10);
+            await Task.WhenAll(new Task[] { ZAKATReturn.TranslateTo(0, 500, 10) , ReadInbox.TranslateTo(0, 500, 10) , GetSupport.TranslateTo(0, 500, 10) });
 
             await ZAKATReturn.TranslateTo(0, 0, 800);
             await ReadInbox.TranslateTo(0, 0, 1000);
