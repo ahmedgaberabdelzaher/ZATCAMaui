@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -20,6 +21,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
     public class AccountStatementsPageViewModel : BaseViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
+        public ICommand FilterCloseClick { get; set; }
         public ICommand FiltersTapped { get; set; }
         public ICommand DownloadBtnTapped { get; set; }
         public ICommand DownloadBtnTappedDownloadPage { get; set; }
@@ -1004,6 +1006,117 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        private bool _IsHijriCal = false;
+        public bool IsHijriCal
+        {
+            get
+            {
+                return _IsHijriCal;
+            }
+            set
+            {
+                if (_IsHijriCal == value) return;
+
+                _IsHijriCal = value;
+                RaisePropertyChanged("IsHijriCal");
+            }
+        }
+
+        public bool isTxStartDate = true;
+        public bool isTaxPeriodStartDate = true;
+
+        private ObservableCollection<object> _todayDateNormal;
+        public ObservableCollection<object> TodayDateNormal
+        {
+            get
+            {
+                return _todayDateNormal;
+            }
+            set
+            {
+                if (_todayDateNormal == value) return;
+                _todayDateNormal = value;
+                RaisePropertyChanged("TodayDateNormal");
+            }
+        }
+        private ObservableCollection<object> _todayDateinHijri;
+        public ObservableCollection<object> TodayDateinHijri
+        {
+            get
+            {
+                return _todayDateinHijri;
+            }
+            set
+            {
+                if (_todayDateinHijri == value) return;
+
+                _todayDateinHijri = value;
+                RaisePropertyChanged("TodayDateinHijri");
+            }
+        }
+        
+        private String _txFromDate = "";
+        public String TxFromDate
+        {
+            get
+            {
+                return _txFromDate;
+            }
+            set
+            {
+                if (_txFromDate == value) return;
+
+                _txFromDate = value;
+                RaisePropertyChanged("TxFromDate");
+            }
+        }
+        private String _txToDate = "";
+        public String TxToDate
+        {
+            get
+            {
+                return _txToDate;
+            }
+            set
+            {
+                if (_txToDate == value) return;
+
+                _txToDate = value;
+                RaisePropertyChanged("TxToDate");
+            }
+        }
+        
+        
+        private String _tPFromDate = "";
+        public String TPFromDate
+        {
+            get
+            {
+                return _tPFromDate;
+            }
+            set
+            {
+                if (_tPFromDate == value) return;
+
+                _tPFromDate = value;
+                RaisePropertyChanged("TPFromDate");
+            }
+        }
+        private String _tPToDate = "";
+        public String TPToDate
+        {
+            get
+            {
+                return _tPToDate;
+            }
+            set
+            {
+                if (_tPToDate == value) return;
+
+                _tPToDate = value;
+                RaisePropertyChanged("TPToDate");
+            }
+        }
         public AccountStatementsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -1016,6 +1129,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
 
             GoBackBtnTapped = new Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+            
+            FilterCloseClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -1046,6 +1164,86 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             _navigationService.NavigateTo(App.AccountStatementsNewFilterPageView);
             IsSortByVisible = !IsSortByVisible;
             IsMonthWiseStatementsViewVisible = !IsMonthWiseStatementsViewVisible;
+        }
+
+         public void SetDefaultDate()
+        {
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            //Select today dates
+
+            if (DateTime.Now.Date.Day < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Day);
+            else
+                todaycollection.Add(DateTime.Now.Date.Day.ToString());
+            if (DateTime.Now.Date.Month < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Month);
+            else
+                todaycollection.Add(DateTime.Now.Date.Month.ToString());
+            todaycollection.Add(DateTime.Now.Date.Year.ToString());
+            TodayDateNormal = todaycollection;
+            //TodayDateEnd = todaycollection;
+            //DefaultMonth = DateTime.Now.Date.Month;
+
+            //TodayDateinHijri
+            ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
+            var calendar = new HijriCalendar();
+            if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            else
+                todaycollectionHijri.Add(calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            if (calendar.GetMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetMonth(DateTime.Now.Date));
+            else
+                todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
+            todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
+
+            TodayDateinHijri = todaycollectionHijri;
+            //TodayDateinHijriEnd = todaycollectionHijri;
+
+            /*if (ContractReleaseData != null)
+            {
+
+
+                if (ContractReleaseData.d.ACalTp == "H")
+                {
+
+                    FromDate = HDateNow();
+                    ToDate = HDateNow();
+                }
+                else
+                {
+                    FromDate = (TodayDateStart[2] + "/" + TodayDateStart[1] + "/" + TodayDateStart[0]).ToString();
+                    ToDate = (TodayDateEnd[2] + "/" + TodayDateEnd[1] + "/" + TodayDateEnd[0]).ToString();
+                }
+
+            }*/
+        }
+
+
+        public string HDateNow()
+        {
+            try
+            {
+
+                CultureInfo calCul;
+                    if (IsHijriCal)
+                    {
+                        calCul = new CultureInfo("ar-SA");
+                    }
+                    else
+                    {
+                        calCul = new CultureInfo("en-US");
+                    }
+                    
+                return DateTime.Now.ToString("yyyy/MM/dd", calCul.DateTimeFormat);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+
+                return "";
+            }
         }
 
         public void DownloadBtnClicked()

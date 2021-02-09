@@ -191,10 +191,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
         private void PopupClose_Clicked(object sender, EventArgs e)
         {
-
-
-            PopupNavigation.Instance.PopAsync();
-
+            
             if (viewModel.IsFutureDatePickerVisible == true)
             {
                 var selectedItem = futureCalendarPicker.SelectedItem as ObservableCollection<object>;
@@ -233,11 +230,8 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                     // MessagingCenter.Send(this, "DatePickerSelectedItem",viewModel.DataSource);
                 }
             }
-
-
-
-
-
+            
+            PopupNavigation.Instance.PopAsync();
 
         }
     }

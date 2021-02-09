@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using SelectionChangedEventArgs = Syncfusion.SfPicker.XForms.SelectionChangedEventArgs;
 
 namespace EGAZT.Views.NewDesign.AccountStatements
 {
@@ -29,7 +32,17 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            viewModel = App.Locator.AccountStatementsPageView;
+
             this.BindingContext = viewModel;
+            viewModel.TodayDateNormal = null;
+            viewModel.TodayDateinHijri = null;
+            viewModel.IsHijriCal = false;
+            viewModel.TxFromDate = "";
+            viewModel.TxToDate = "";
+            viewModel.TPFromDate = "";
+            viewModel.TPToDate = "";
+            viewModel.SetDefaultDate();
         }
         
         private void SetLTR()
@@ -56,7 +69,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             }
         }
 
-        protected override void OnAppearing()
+        /*protected override void OnAppearing()
         {
             base.OnAppearing();
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem",
@@ -65,18 +78,18 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
                     if (arg.PickerId == "TSStartDateTypePicker")
                     {
-                       // viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
+                        viewModel.TxFromDate = Convert.ToDateTime(arg.SelectedValue);
                     }
                     else if (arg.PickerId == "TSEndDateTypePicker")
                     {
-                       // viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
+                        viewModel.TxToDate = Convert.ToDateTime(arg.SelectedValue);
                     }else if (arg.PickerId == "TaxPeriodStartDateTypePicker")
                     {
-                        //viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
+                        viewModel.TPFromDate = Convert.ToDateTime(arg.SelectedValue);
                     }
                     else if (arg.PickerId == "TaxPeriodEndDateTypePicker")
                     {
-                    //    viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
+                        viewModel.TPToDate = Convert.ToDateTime(arg.SelectedValue);
                     }
 
 
@@ -84,9 +97,17 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
+
+        }*/
+        
         private async void TSDateStartDateClicked(object sender, EventArgs e)
         {
-            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+            viewModel.isTxStartDate = true;
+            /*GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
             genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
             genericDatePickerModel.PickerId = "TSStartDateTypePicker";
             try
@@ -106,12 +127,21 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     // await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
+            }*/
+            if (viewModel.IsHijriCal)
+            {
+                TxDateHijriCalendar.IsOpen = true;
+            }
+            else
+            {
+                TxDateNormalCalendar.IsOpen = true;
             }
         }
 
         private async void TSDateEndDateClicked(object sender, EventArgs e)
         {
-            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+            viewModel.isTxStartDate = false;
+            /*GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
             genericDatePickerModel.DatePickerTitle = AppResources.VatDeregEndDatePickerTitle;
             genericDatePickerModel.PickerId = "TSEndDateTypePicker";
             try
@@ -131,12 +161,21 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     //await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
+            }*/
+            if (viewModel.IsHijriCal)
+            {
+                TxDateHijriCalendar.IsOpen = true;
+            }
+            else
+            {
+                TxDateNormalCalendar.IsOpen = true;
             }
         }
 
         private async void TaxPeriodStartDateClicked(object sender, EventArgs e)
         {
-            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+            viewModel.isTaxPeriodStartDate = true;
+            /*GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
             genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
             genericDatePickerModel.PickerId = "TaxPeriodStartDateTypePicker";
             try
@@ -156,12 +195,21 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     // await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
+            }*/
+            if (viewModel.IsHijriCal)
+            {
+                TaxPeriodDateHijriCalendar.IsOpen = true;
+            }
+            else
+            {
+                TaxPeriodDateNormalCalendar.IsOpen = true;
             }
         }
 
         private async void TaxPeriodEndDateClicked(object sender, EventArgs e)
         {
-            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+            viewModel.isTaxPeriodStartDate = false;
+            /*GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
             genericDatePickerModel.DatePickerTitle = AppResources.VatDeregEndDatePickerTitle;
             genericDatePickerModel.PickerId = "TaxPeriodEndDateTypePicker";
             try
@@ -181,6 +229,14 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     //await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
+            }*/
+            if (viewModel.IsHijriCal)
+            {
+                TaxPeriodDateHijriCalendar.IsOpen = true;
+            }
+            else
+            {
+                TaxPeriodDateNormalCalendar.IsOpen = true;
             }
         }
 
@@ -200,6 +256,141 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         }
 
         private void To_Amount_Changed(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void TxDateNormalCalendar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void TxDateNormalCalendar_OkButtonClicked(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void TxDateNormalCalendar_CancelButtonClicked(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void TxDateNormalCalendar_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (TxDateHijriCalendar.SelectedItem != null)
+                    {
+                        var selectedItem = TxDateHijriCalendar.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        if (viewModel.isTxStartDate)
+                        {
+                            viewModel.TxFromDate = year + "/" + month + "/" + day;   
+                        }
+                        else
+                        {
+                            viewModel.TxToDate = year + "/" + month + "/" + day;
+                        }
+                    }
+                }
+                else
+                {
+                    if (TxDateNormalCalendar.SelectedItem != null)
+                    {
+                        var selectedItem = TxDateNormalCalendar.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        
+                        if (viewModel.isTxStartDate)
+                        {
+                            viewModel.TxFromDate = year + "/" + month + "/" + day;   
+                        }
+                        else
+                        {
+                            viewModel.TxToDate = year + "/" + month + "/" + day;
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+        }
+
+        private void TaxPeriodDateNormalCalendar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void TaxPeriodDateNormalCalendar_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (TaxPeriodDateHijriCalendar.SelectedItem != null)
+                    {
+                        var selectedItem = TaxPeriodDateHijriCalendar.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        //viewModel.FromDate = year + "/" + month + "/" + day;
+                        if (viewModel.isTaxPeriodStartDate)
+                        {
+                            viewModel.TPFromDate = year + "/" + month + "/" + day;   
+                        }
+                        else
+                        {
+                            viewModel.TPToDate = year + "/" + month + "/" + day;
+                        }
+                    }
+                }
+                else
+                {
+                    if (TaxPeriodDateNormalCalendar.SelectedItem != null)
+                    {
+                        var selectedItem = TaxPeriodDateNormalCalendar.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        //viewModel.FromDate = year + "/" + month + "/" + day;
+                        if (viewModel.isTaxPeriodStartDate)
+                        {
+                            viewModel.TPFromDate = year + "/" + month + "/" + day;   
+                        }
+                        else
+                        {
+                            viewModel.TPToDate = year + "/" + month + "/" + day;
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+   
+        }
+
+        private void TaxPeriodDateNormalCalendar_OkButtonClicked(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void TaxPeriodDateNormalCalendar_CancelButtonClicked(object sender, SelectionChangedEventArgs e)
         {
             
         }

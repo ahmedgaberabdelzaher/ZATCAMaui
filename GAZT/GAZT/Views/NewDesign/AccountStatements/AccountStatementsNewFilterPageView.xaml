@@ -75,7 +75,7 @@
                                HeightRequest="24"
                                WidthRequest="24">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" />
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.FilterCloseClick}" />
                             </Image.GestureRecognizers>
                         </Image>
 
@@ -169,7 +169,7 @@
 
 
                                     <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}"
+                                        <Label Text="{Binding TxFromDate,StringFormat='{0:dd MMM yyyy}'}"
                                            HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}"/>
 
                                         <StackLayout HorizontalOptions="End" Orientation="Horizontal">
@@ -200,7 +200,7 @@
                                     </StackLayout>
 
                                     <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}"
+                                        <Label Text="{Binding TxToDate,StringFormat='{0:dd MMM yyyy}'}"
                                            Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" />
                                         <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                                             <Image Margin="5,0">
@@ -222,6 +222,75 @@
                             </StackLayout>
                         </border:SfBorder>
                     </StackLayout>
+                    <custom1:CustomDatePicker 
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="TxDateNormalCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="TxDateNormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False"
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
+                                    ResourceManager:AppResources.VRStartDate}"
+                                    Closed="TxDateNormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateNormal}"
+                                    OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="TxDateNormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
+
+                                    <custom1:CustomDatePicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                    </custom1:CustomDatePicker.Behaviors>
+                                </custom1:CustomDatePicker>
+
+                                <!--HijriDatePicker-->
+
+                                <custom1:CustomHijriDatePicker 
+                                    
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="TxDateHijriCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="TxDateNormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False" 
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
+                                    ResourceManager:AppResources.VREndDate}"
+                                    Closed="TxDateNormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateinHijri}"
+                                    OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="TxDateNormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
+
+                                </custom1:CustomHijriDatePicker>
                     <StackLayout Grid.Row="2" Grid.Column="0" HorizontalOptions="FillAndExpand">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASTaxperiod}"
                                             HorizontalOptions="StartAndExpand"
@@ -240,7 +309,7 @@
 
 
                                     <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}"
+                                        <Label Text="{Binding TPFromDate,StringFormat='{0:dd MMM yyyy}'}"
                                            Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="FillAndExpand" />
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                             <StackLayout HorizontalOptions="End" Orientation="Horizontal">
@@ -273,7 +342,7 @@
                                     </StackLayout>
 
                                     <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}"
+                                        <Label Text="{Binding TPToDate,StringFormat='{0:dd MMM yyyy}'}"
                                            Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="FillAndExpand" />
                                         <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                                             <Image Margin="5,0">
@@ -295,10 +364,79 @@
                             </StackLayout>
                         </border:SfBorder>
                     </StackLayout>
+<custom1:CustomDatePicker 
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="TaxPeriodDateNormalCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="TaxPeriodDateNormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False"
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
+                                    ResourceManager:AppResources.VRStartDate}"
+                                    Closed="TaxPeriodDateNormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateNormal}"
+                                    OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
 
+                                    <custom1:CustomDatePicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                    </custom1:CustomDatePicker.Behaviors>
+                                </custom1:CustomDatePicker>
+
+                                <!--HijriDatePicker-->
+
+                                <custom1:CustomHijriDatePicker 
+                                    
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="TaxPeriodDateHijriCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="TaxPeriodDateNormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False" 
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
+                                    ResourceManager:AppResources.VREndDate}"
+                                    Closed="TaxPeriodDateNormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateinHijri}"
+                                    OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
+
+                                </custom1:CustomHijriDatePicker>
+                    
                     <buttons:SfButton Grid.Row="3" Grid.Column="0" VerticalOptions="End" Margin="0,60,0,60" x:Name="btnReasonContinue"
                                       Command="{Binding ReasonContinueBtnTapped}"
-                                      Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                      Text="{x:Static ResourceManager:AppResources.Filter}"
                                       Style="{StaticResource PrimaryButtonStyle}" />
                 </Grid>
 
