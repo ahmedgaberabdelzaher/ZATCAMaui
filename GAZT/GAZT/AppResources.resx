@@ -7002,7 +7002,7 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Select Type</value>
   </data>
   <data name="VRChooseaZakatObjectionorVATReview" xml:space="preserve">
-    <value>Choose a Zakat Objection or VAT Review</value>
+    <value>Choose a Zakat Objection or VAT Objection</value>
   </data>
   <data name="VRDecisionDate" xml:space="preserve">
     <value>Decision Date</value>
