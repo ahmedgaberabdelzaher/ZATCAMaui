@@ -242,7 +242,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         private void From_Amount_Unfocused(object sender, FocusEventArgs e)
         {
-            
+            viewModel.FromTxAmount = TxFromAmountEntry.Text;
         }
 
         private void From_Amount_Changed(object sender, TextChangedEventArgs e)
@@ -252,7 +252,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         private void To_Amount_Unfocused(object sender, FocusEventArgs e)
         {
-            
+            viewModel.ToTxAmount = TxToAmountEntry.Text;
         }
 
         private void To_Amount_Changed(object sender, TextChangedEventArgs e)

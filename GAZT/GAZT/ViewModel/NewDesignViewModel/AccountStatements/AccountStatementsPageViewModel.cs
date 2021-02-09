@@ -22,6 +22,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
     {
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand FilterCloseClick { get; set; }
+        public ICommand FilterBtnCommand { get; set; }
         public ICommand FiltersTapped { get; set; }
         public ICommand DownloadBtnTapped { get; set; }
         public ICommand DownloadBtnTappedDownloadPage { get; set; }
@@ -1117,6 +1118,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 RaisePropertyChanged("TPToDate");
             }
         }
+
+        public String FromTxAmount = "";
+        public String ToTxAmount = "";
         public AccountStatementsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -1137,6 +1141,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 _navigationService.GoBack();
             });
+            
+            FilterBtnCommand = new Command(() =>
+            {
+                ApplyFilter();
+            });
 
             DownloadBtnTapped = new Command(DownloadBtnClicked);
             DownloadBtnTappedDownloadPage = new Command(DownloadBtnClickedDownloadPage);
@@ -1146,6 +1155,67 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             FiltersTapped = new Command(FiltersClicked);
             FlowDirect = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
+
+        private async void ApplyFilter()
+        {
+            var statementsLineItems = new ObservableCollection<ASResult>();
+
+            if (TxFromDate != "" && TxToDate != "")
+            {
+                if (IsHijriCal)
+                {
+                    CultureInfo arCI = new CultureInfo("ar-SA");
+                    DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    
+                    StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                }
+                else
+                {
+                    CultureInfo arCI = new CultureInfo("en-US");
+                    DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                }
+            }
+
+            if (TPFromDate != "" && TPToDate != "")
+            {
+                if (IsHijriCal)
+                {
+                    CultureInfo arCI = new CultureInfo("ar-SA");
+                    DateTime FormatedTPFromDate = DateTime.ParseExact(TPFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    DateTime FormatedTPToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
+                }
+                else
+                {
+                    CultureInfo arCI = new CultureInfo("en-US");
+                    DateTime FormatedTPFromDate = DateTime.ParseExact(TPFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    DateTime FormatedTPToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
+                }
+                
+            }
+
+            if (FromTxAmount != "" && ToTxAmount != "")
+            {
+                //StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.amt >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
+
+            }
+            
+            _navigationService.GoBack();
+
+        }
+
         public void ClearFilterItems()
         {
             TransactionDateFilterItem = string.Empty;

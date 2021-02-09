@@ -122,7 +122,7 @@
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <custom:BorderlessEntry Grid.Column="0" Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" 
+                                    <custom:BorderlessEntry Grid.Column="0" x:Name="TxFromAmountEntry" Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" 
                                                             Keyboard="Numeric" TextChanged="From_Amount_Changed" Style="{StaticResource BodyLabelBlack}" Text="{Binding FromAmount}"  Unfocused="From_Amount_Unfocused"></custom:BorderlessEntry>
 
                                   
@@ -140,7 +140,7 @@
 
                                     </StackLayout>
 
-                                    <custom:BorderlessEntry Grid.Column="2" Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}" 
+                                    <custom:BorderlessEntry x:Name="TxToAmountEntry" Grid.Column="2" Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}" 
                                                             Keyboard="Numeric" TextChanged="To_Amount_Changed" Style="{StaticResource BodyLabelBlack}" Text="{Binding ToAmount}"  Unfocused="To_Amount_Unfocused"></custom:BorderlessEntry>
                                     
                                     
@@ -435,7 +435,7 @@
                                 </custom1:CustomHijriDatePicker>
                     
                     <buttons:SfButton Grid.Row="3" Grid.Column="0" VerticalOptions="End" Margin="0,60,0,60" x:Name="btnReasonContinue"
-                                      Command="{Binding ReasonContinueBtnTapped}"
+                                      Command="{Binding FilterBtnCommand}"
                                       Text="{x:Static ResourceManager:AppResources.Filter}"
                                       Style="{StaticResource PrimaryButtonStyle}" />
                 </Grid>
