@@ -62,14 +62,15 @@
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
                             <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.Filter}"
+                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.Filter}"
                                Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" />
 
-                        <Image Grid.Row="0" Grid.Column="1"
+                        <Image Grid.Row="0" Grid.Column="2"
                                VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
                                Source="close"
                                HeightRequest="24"

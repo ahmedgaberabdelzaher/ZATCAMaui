@@ -355,6 +355,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        private Color _TotalBalanceBackground = Color.FromHex("#E5EFED");
+        public Color TotalBalanceBackground
+        {
+            get
+            {
+                return _TotalBalanceBackground;
+            }
+            set
+            {
+                if (_TotalBalanceBackground == value) return;
+
+                _TotalBalanceBackground = value;
+                RaisePropertyChanged("TotalBalanceBackground");
+            }
+        }
+
         public ASStatementHeaderSet _headerSet = null;
         public ASStatementHeaderSet HeaderSet
         {
@@ -364,8 +380,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
-                if (_headerSet == value) return;
-
                 _headerSet = value;
                 RaisePropertyChanged("HeaderSet");
             }
@@ -1159,7 +1173,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         private async void ApplyFilter()
         {
             var statementsLineItems = new ObservableCollection<ASResult>();
-
+            if (HeaderSet.D.StatmenetLineItemsSet != null)
+            {
+                if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                {
+                    StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                }
+            }
             if (TxFromDate != "" && TxToDate != "")
             {
                 if (IsHijriCal)
@@ -1170,7 +1190,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
                     
-                    StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                    statementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
                 }
                 else
                 {
@@ -1179,7 +1199,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         DateTimeStyles.AllowInnerWhite);
                     DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
-                    StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                    statementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
                 }
             }
 
@@ -1192,7 +1212,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         DateTimeStyles.AllowInnerWhite);
                     DateTime FormatedTPToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
-                    StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
+                    statementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
                 }
                 else
                 {
@@ -1201,7 +1221,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         DateTimeStyles.AllowInnerWhite);
                     DateTime FormatedTPToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
-                    StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
+                    statementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
                 }
                 
             }
@@ -1211,7 +1231,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 //StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.amt >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
 
             }
-            
+
+            StatementsLineItems = statementsLineItems;
             _navigationService.GoBack();
 
         }

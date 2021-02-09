@@ -960,6 +960,9 @@
                                 </custom:CustomLabel>
 
                             </StackLayout>
+                            <border:SfBorder.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_ToolbarMyTax"></TapGestureRecognizer>
+                            </border:SfBorder.GestureRecognizers>
                         </border:SfBorder>
 
                     </StackLayout>
