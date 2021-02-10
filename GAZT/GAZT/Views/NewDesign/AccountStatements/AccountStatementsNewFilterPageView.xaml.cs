@@ -22,6 +22,7 @@ using SelectionChangedEventArgs = Syncfusion.SfPicker.XForms.SelectionChangedEve
 namespace EGAZT.Views.NewDesign.AccountStatements
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Preserve(AllMembers = true)]
     public partial class AccountStatementsNewFilterPageView : ContentPage
     {
         AccountStatementsPageViewModel viewModel;

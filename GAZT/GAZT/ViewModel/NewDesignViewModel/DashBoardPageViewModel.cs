@@ -1,4 +1,5 @@
-﻿using EGAZT.Models.AccountStatements;
+﻿using EGAZT.Helper;
+using EGAZT.Models.AccountStatements;
 using EGAZT.Models.EnumModels;
 using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -29,6 +30,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
     {
         #region Variable
+
+        public string selectedFbNum = "";
+        public string selectedSadadNo = "";
+        public string selectedAmount = "";
 
         private DashBoardModelTabEnum _currentTab = DashBoardModelTabEnum.DashBoard;
         public DashBoardModelTabEnum currentTab
@@ -424,6 +429,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TaxpayerName");
             }
         }
+        private bool _applePayStatus;
+        public bool ApplePayStatus
+        {
+            get
+            {
+                return _applePayStatus;
+            }
+            set
+            {
+                if (_applePayStatus == value) return;
+
+                _applePayStatus = value;
+                RaisePropertyChanged("ApplePayStatus");
+            }
+        }
+        
+        public string ApplePayTokenData = "";
 
         private bool _ifnotRegInVATAndZakat;
         public bool IfnotRegInVATAndZakat
@@ -1478,90 +1500,221 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Method
 
-        /*     public async Task DoValidatePayment(string fbNum, string amount)
-             {
-                 try
-                 {
-                     try
-                     {
-                         IsLoading = true;
+        public async Task SadadPaymentSelected()
+        {
 
-                         var platform = "";
+            /*_navigationService.GoBack();*/
 
-                         if (Device.RuntimePlatform == Device.iOS)
-                         {
-                             platform = "C4";
-                         }
-                         else if (Device.RuntimePlatform == Device.Android)
-                         {
-                             platform = "C3";
-                         }
-                         PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+        }
+
+        public async Task ApplePaySelected()
+        {
+
+            DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo, "A");
+        }
+        public void MadaPaymentSelected()
+        {
 
 
-                         if (PaymentData != null && PaymentData.d != null)
-                         {
-
-                             if (PaymentData.d.Guid != null)
-                             {
-                                 App.PaymentGuid = PaymentData.d.Guid;
-                             }
-
-                             var ZakatAmount = amount.Replace(",", "");
-                             if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
-                             {
-                                 await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false));
-                             }
-                             else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
-                             {
-                                 await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true));
-                             }
-                             else
-                             {
-                                 await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false));
-                             }
-
-                         }
-
-                         IsLoading = false;
-
-                     }
-                     catch (GAZTValidatePaymentInProcessException ex)
-                     {
-                         Device.BeginInvokeOnMainThread(async () =>
-                         {
-                             if (ex.Message == "There is no open liability to be paid against this declaration")
-                             {
-
-                                 await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false));
-                             }
+            DoValidatePayment(selectedFbNum, selectedSadadNo, "M");
 
 
 
-                             //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                             //_navigationService.GoBack();
-                         });
-                     }
-                     catch (InternetException ex)
-                     {
-                         Device.BeginInvokeOnMainThread(async () =>
-                         {
-                             //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                             _navigationService.GoBack();
-                         });
-                     }
-                 }
-                 catch (InternetException ex)
-                 {
-                     Device.BeginInvokeOnMainThread(async () =>
-                     {
-                         //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                         _navigationService.GoBack();
-                     });
-                 }
-             }*/
+
+        }
+
+        public async Task DoValidatePayment(string fbNum, string sdadNo, string paymentType)
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = "";
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+                    //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+
+                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, "M");
+
+
+
+                    if (PaymentData != null && PaymentData.d != null)
+                    {
+
+                        if (PaymentData.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = PaymentData.d.Guid;
+
+                        }
+
+                        if (paymentType == "M")
+                        {
+
+                            Device.BeginInvokeOnMainThread(async () => {
+
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                            });
+                        }
+                        else
+                        {
+
+                            ApplePayStatus = await ProcessApplePay();
+                        }
+
+
+                        // var VatAmount = NetdueVat.Replace(",", "");
+                        //if (String.IsNullOrEmpty(amount) || Double.Parse(amount) == 0)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, string.Empty));
+                        //}
+                        //else if (!String.IsNullOrEmpty(amount) && Double.Parse(amount) > 20000)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, string.Empty));
+                        //}
+                        //else
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, string.Empty));
+                        //}
+
+                    }
+
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        //_navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+        private async Task<bool> ProcessApplePay()
+        {
+
+            var BillAmount = selectedAmount.Replace(",", "");
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, "My Bills");
+        }
+
+        public async Task UpdateApplePayPaymentGuid()
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = string.Empty;
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+
+
+
+                    ApplePayToken modelDetails = new ApplePayToken();
+                    modelDetails.Guid = App.PaymentGuid;
+                    //var token = "GrPRb/eyYkhLaxIi8ugsU5I0D2/IE6JT6SYb4o6CH/emQV7n5twiqt8IVazkcItvmCkHXeie16Nvbq+uFFx0mS4O/1+SoDHrP8HcDbJ/Q1swCCHR/Dwv69oTcTUy1riK6Zvpe0w1r+WJ21I36gorRUn7u94Yi9n4afOfnGJC3EmFd6DKSIRQWlT4BuLlNv5826XruanuFjdL3MKty/xoCyx2GKN+e8W6BFVnQc/gsBe4UW7oqHIQ5PrQJlQwymi5Ytd1IIJT8QsUMxiVjz6yVS5zdQBaN86ZtuokJRmC89jCwVkUMwDl9jQ5xYbFlIFS1VXKJjtWKDfMGwCWK3jvWdtCcdb4VrPIxtK7LvTWc+4C7m6SPzkOhdC/XPn7ufwvrh95no7p9tpQMkP7zOJIYAl+hS4oEqvOxdpw55dCytGXJ0yjN/HOQ3t4ofyW9mBGiHoq";
+                    modelDetails.PaymentToken = ApplePayTokenData;
+
+
+
+                    ApplePayTokenResponse response = await WebServiceManager.GAZTUpdateApplePayGuid(modelDetails);
+
+
+                    if (response != null && response.d != null)
+                    {
+
+                        if (response.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = response.d.Guid;
+
+                        }
+
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+
+                            //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+
+                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+
+                        });
+                    }
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
         public async Task LoadDashboardData()
         {
             try

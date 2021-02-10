@@ -6,6 +6,7 @@ using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfChart.XForms;
 using Syncfusion.XForms.Border;
+using Syncfusion.XForms.Cards;
 using Syncfusion.XForms.ProgressBar;
 using System;
 using System.Collections.Generic;
@@ -155,6 +156,68 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 }*/
             }
 
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                {
+                    Console.WriteLine("Card Payment Clicked");
+
+                    viewModel.MadaPaymentSelected();
+
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
+                {
+                    Console.WriteLine("Apple pay Clicked");
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
+                {
+
+                    Console.WriteLine("SADAD Clicked");
+                    viewModel.SadadPaymentSelected();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+            try
+            {
+                MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
+                {
+
+                    viewModel.ApplePayTokenData = arg.ToString();
+
+                    await viewModel.UpdateApplePayPaymentGuid();
+
+
+                });
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
 
         }
 
@@ -381,6 +444,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             MessagingCenter.Unsubscribe<Object>(this, "Card_Payment");
             MessagingCenter.Unsubscribe<Object>(this, "Apple_Pay");
             MessagingCenter.Unsubscribe<Object>(this, "SADAD");
+            MessagingCenter.Unsubscribe<Object>(this, "ApplePayData");
+            
 
             isTimerOff = true;
         }
@@ -1185,20 +1250,29 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void BillsPayNowTapped(object sender, EventArgs e)
         {
 
-            /*  SfBorder payNowCard = sender as SfBorder;
-              OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
-              Console.WriteLine("Clicked on: Amount: "+ BModel.Amount+" ,FbNum: "+BModel.Fbnum);
-              viewModel.DoValidatePayment(BModel.Fbnum, BModel.Amount);*/
-          
-            viewModel.IsLoading = true;
-            Device.BeginInvokeOnMainThread(() =>
+            SfBorder payNowCard = sender as SfBorder;
+            OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
+            Console.WriteLine("Clicked on: Amount: " + BModel.Amount + " ,FbNum: " + BModel.Fbnum);
+            //viewModel.DoValidatePayment(BModel.Fbnum, BModel.Amount);
+
+            if (!String.IsNullOrEmpty(BModel.Fbnum))
             {
-                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnMyBills", AppResources.MyBills + " Page");
-                BillInfo billInfo = new BillInfo();
-                billInfo.BillTypeName = AppResources.All;
-                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
-                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-            });
+
+
+                if (BModel.MadabutFg == "X")
+                {
+                    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+
+                }
+                else
+                {
+                    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ""));
+                }
+                viewModel.selectedFbNum = BModel.Fbnum;
+                viewModel.selectedSadadNo = BModel.Gpartz;
+                viewModel.selectedAmount = BModel.Amount;
+
+            }
 
         }
     }
