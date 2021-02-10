@@ -4203,18 +4203,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     string[] dts = null;
                     dts = dateStr.Split('/');
 
-                    if (App.IsArabic)
-                    {
+                    //if (App.IsArabic)
+                    //{
 
                         dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
 
-                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                    //    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
 
-                    }
+                    //}
 
 
                     strRequestedDate = dt1;
@@ -4250,18 +4250,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     string[] dts = null;
                     dts = dateStr.Split('/');
 
-                    if (App.IsArabic)
-                    {
+                    //if (App.IsArabic)
+                    //{
 
                         dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
 
-                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                    //    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
 
-                    }
+                    //}
 
                     strTaxPeriodFrom = dt1;
                 }
@@ -4287,18 +4287,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     string[] dts = null;
                     dts = dateStr.Split('/');
 
-                    if (App.IsArabic)
-                    {
+                    //if (App.IsArabic)
+                    //{
 
                         dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
 
-                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                    //    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
 
-                    }
+                    //}
 
                     strTaxPeriodTo = dt1;
                 }
@@ -5646,18 +5646,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
-                                    if (App.IsArabic)
-                                    {
+                                    //if (App.IsArabic)
+                                    //{
 
                                         dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                                    }
-                                    else
-                                    {
+                                    //}
+                                    //else
+                                    //{
 
-                                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                                    //    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
 
-                                    }
+                                    //}
                                     strFormatedDateofPenality = dt1;
 
                                 }
@@ -5682,18 +5682,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
-                                    if (App.IsArabic)
-                                    {
+                                    //if (App.IsArabic)
+                                    //{
 
                                         dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                                    }
-                                    else
-                                    {
+                                    //}
+                                    //else
+                                    //{
 
-                                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                                    //    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
 
-                                    }
+                                    //}
                                     strFormatedDueDate = dt1;
 
                                 }
@@ -5718,18 +5718,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
-                                    if (App.IsArabic)
-                                    {
+                                    //if (App.IsArabic)
+                                    //{
 
                                         dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                                    }
-                                    else
-                                    {
+                                    //}
+                                    //else
+                                    //{
 
-                                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                                    //    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
 
-                                    }
+                                    //}
                                     strFormatedStartDate = dt1;
 
                                 }
@@ -5754,18 +5754,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
-                                    if (App.IsArabic)
-                                    {
+                                    //if (App.IsArabic)
+                                    //{
 
                                         dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                                    }
-                                    else
-                                    {
+                                    //}
+                                    //else
+                                    //{
 
-                                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                                    //    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
 
-                                    }
+                                    //}
                                     strFormatedEndDate = dt1;
 
                                 }

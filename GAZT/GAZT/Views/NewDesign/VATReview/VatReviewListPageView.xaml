@@ -349,7 +349,7 @@
                                                                 Text="{x:Static ResourceManager:AppResources.VRRequestDate}"
                                                                 Style="{StaticResource ValueLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1"
-                                                                Text="{Binding RequestDate,StringFormat='{0:dd MMM yyyy}'}"
+                                                                Text="{Binding RequestDate}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />

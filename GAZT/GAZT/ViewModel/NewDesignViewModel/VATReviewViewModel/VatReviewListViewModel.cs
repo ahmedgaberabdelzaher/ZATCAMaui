@@ -966,7 +966,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 string dt1 = string.Empty;
                 string[] dts = null;
                 dts = dateStr.Split('/');
-                dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                 strRequestedDate = dt1;
             }
 
@@ -995,7 +995,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 string dt1 = string.Empty;
                 string[] dts = null;
                 dts = dateStr.Split('/');
-                dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                 strTaxPeriodFromDate = dt1;
 
             }
@@ -1023,7 +1023,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 string dt1 = string.Empty;
                 string[] dts = null;
                 dts = dateStr.Split('/');
-                dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                 strTaxPeriodToDate = dt1;
 
             }
