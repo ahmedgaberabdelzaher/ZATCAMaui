@@ -8703,7 +8703,8 @@ info@gazt.gov.sa</value>
     <value>إقرار زكوي</value>
   </data>
 	<data name="VatReturns1" xml:space="preserve">
-    <value>ضريبة القيمة المضافة</value>       </data>
+    <value>ضريبة القيمة المضافة</value>
+      </data>
 	<data name="ETReturns1" xml:space="preserve">
   <value>ضريبة السلع الانتقائية</value>
     </data>
@@ -8714,11 +8715,11 @@ info@gazt.gov.sa</value>
     <value>English</value>
   </data>
 	<data name="ZZRealEstatevalue" xml:space="preserve">
-    <value>Real Estate Sales Value</value>
+    <value>قيمة مبيعات العقارات</value>
     <comment>Estimated Zakat</comment>
   </data>
 	<data name="ZZRealEstateWithinPeriod" xml:space="preserve">
-    <value>Real Estate Sales within the period</value>
+    <value>المبيعات العقارية خلال الفترة</value>
     <comment>Estimated Zakat</comment>
   </data>
 </root>
