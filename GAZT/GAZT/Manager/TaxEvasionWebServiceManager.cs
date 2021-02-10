@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -840,27 +841,38 @@ namespace EGAZT.Manager
 
                     String url = Constants.GAZTGetVATSignUpCityAndRegionList + "dropdown_headerSet(Spras='" + lang + "',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json";
                     var uri = new Uri(url);
-                    HttpResponseMessage VATSignUpCountryRegionCityList = await client.GetAsync(uri);
-                    if (VATSignUpCountryRegionCityList != null)
+
+                    using (var responseStream = await client.GetStreamAsync(uri))
                     {
-                        HttpHeaders headers = VATSignUpCountryRegionCityList.Headers;
-                        IEnumerable<string> values;
-                        if (headers.TryGetValues("token", out values))
+                        using (var textReader = new StreamReader(responseStream))
+                        using (var jsonReader = new JsonTextReader(textReader))
                         {
-                            NewToken = values.First();
+                            vATSignUpData = JsonSerializer.CreateDefault().Deserialize<VATSignUpData>(jsonReader);
                         }
-                        if ((!string.IsNullOrEmpty(NewToken)))
-                        {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
-                            {
-                                App.IsSessionExpired = true;
-                                return null;
-                            }
-                            App.Token = NewToken;
-                        }
-                        String signUpData = await VATSignUpCountryRegionCityList.Content.ReadAsStringAsync();
-                        vATSignUpData = JsonConvert.DeserializeObject<VATSignUpData>(signUpData);
                     }
+
+                    //HttpResponseMessage VATSignUpCountryRegionCityList = await client.GetAsync(uri);
+                    //if (VATSignUpCountryRegionCityList != null)
+                    //{
+                    //    HttpHeaders headers = VATSignUpCountryRegionCityList.Headers;
+                    //    IEnumerable<string> values;
+                    //    if (headers.TryGetValues("token", out values))
+                    //    {
+                    //        NewToken = values.First();
+                    //    }
+
+                    //    if ((!string.IsNullOrEmpty(NewToken)))
+                    //    {
+                    //        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                    //        {
+                    //            App.IsSessionExpired = true;
+                    //            return null;
+                    //        }
+                    //        App.Token = NewToken;
+                    //    }
+
+                    //    String signUpData = await VATSignUpCountryRegionCityList.Content.ReadAsStringAsync();
+                    //    vATSignUpData = JsonConvert.DeserializeObject<VATSignUpData>(signUpData);
                     return vATSignUpData;
                 }
 
