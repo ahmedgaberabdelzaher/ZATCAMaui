@@ -90,14 +90,14 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
                             </Image.GestureRecognizers>
                         </Image>
-                        <Image  Grid.Row="0" Grid.Column="2"
+                        <!--<Image  Grid.Row="0" Grid.Column="2"
                                VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
                                Source="close"
                              >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}"/>
                             </Image.GestureRecognizers>
-                        </Image>
+                        </Image>-->
                     </Grid>
                 </Grid>
             </Grid>

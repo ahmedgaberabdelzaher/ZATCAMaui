@@ -181,41 +181,48 @@
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="1"/>
                     </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0" Grid.Column="0">
+                                <StackLayout.Triggers>
+                                    <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="1">
+                                        <Setter Property="IsVisible" Value="false" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
+                                        <Setter Property="IsVisible" Value="true" />
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
 
-                    <StackLayout Grid.Row="0" Grid.Column="0">
-                         
-                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" />   
-                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
 
-                                <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                        
-                                    <Label Text="{Binding ReasonTitle}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                        <Label Text="{Binding ReasonTitle}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center">
 
-                                        </Image>
+                                            </Image>
 
-                                    </StackLayout>
-                                      <StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                        <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
-                                    </StackLayout.GestureRecognizers>
-                                </StackLayout>
-                            </border:SfBorder >
-                             <StackLayout Spacing="2">
-                                    <inputLayout:SfTextInputLayout x:Name="OthersTxt" LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="10,0,10,0" 
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </border:SfBorder >
+                                <StackLayout Spacing="2">
+                                    <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="10,0,10,0" 
                                     ContainerType="Outlined"  UnfocusedColor="#B1B1B1" IsVisible="{Binding IsOthersEditorVisible}" HelperText="{Binding TextCount}" 
                                     OutlineCornerRadius="15" FocusedColor="#005e4b" ErrorColor="#B00020">
 
                                         <Entry Style="{StaticResource DefaultEntry}" Text="{Binding OtherField}" TextChanged="Others_Entry_TextChanged"  HeightRequest="100" MaxLength="1000"/>
-             
+
                                     </inputLayout:SfTextInputLayout>
-                                 <!--<Label Text="no of characters remaining"/>-->
-                             </StackLayout>
-                    </StackLayout>
-                        
-                </Grid>
+                                    <!--<Label Text="no of characters remaining"/>-->
+                                </StackLayout>
+                            </StackLayout>
+
+
+                        </Grid>
                      
                     <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
                              <StackLayout.Triggers>
@@ -329,8 +336,41 @@
                                 </border:SfBorder >
                             </StackLayout >
               </StackLayout>
-            </StackLayout>
-                   <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="End"  Margin="0,60,0,60"  x:Name="btnReasonContinue"
+                            <StackLayout>
+
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+
+                                        <Label Text="{Binding ReasonTitle}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                               HorizontalOptions="Start" VerticalOptions="Center">
+
+                                            </Image>
+
+                                        </StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </border:SfBorder >
+                                <StackLayout Spacing="2">
+                                    <inputLayout:SfTextInputLayout x:Name="OthersTxt" LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="10,0,10,0" 
+                                    ContainerType="Outlined"  UnfocusedColor="#B1B1B1" IsVisible="{Binding IsOthersEditorVisible}" HelperText="{Binding TextCount}" 
+                                    OutlineCornerRadius="15" FocusedColor="#005e4b" ErrorColor="#B00020">
+
+                                        <Entry Style="{StaticResource DefaultEntry}" Text="{Binding OtherField}" TextChanged="Others_Entry_TextChanged"  HeightRequest="100" MaxLength="1000"/>
+
+                                    </inputLayout:SfTextInputLayout>
+                                    <!--<Label Text="no of characters remaining"/>-->
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                  
+                  <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="End"  Margin="0,60,0,60"  x:Name="btnReasonContinue"
                                      Command="{Binding ReasonContinueBtnTapped}"
                                      Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>    

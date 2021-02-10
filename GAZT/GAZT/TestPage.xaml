@@ -3,6 +3,7 @@
              xmlns:custom="clr-namespace:GAZTeServicesApp.Controls" 
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              x:Class="EGAZT.TestPage" 
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:styles="clr-namespace:EGAZT.Views.SyncFusionEnabledViews.CommonStyle"
              xmlns:FontImage="clr-namespace:MVP.FontIcons">
     <ContentPage.Resources>
@@ -22,17 +23,22 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Attachment"  Padding="0,0,0,0" Style="{StaticResource ComponentHeaderBlackBold}"/>
-            <StackLayout  Padding="20" VerticalOptions="Center"  HorizontalOptions="Center">
-                <inputLayout:SfTextInputLayout Padding="0" HeightRequest="100"
-                          ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
-                           OutlineCornerRadius="14" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False"  >
-                    <StackLayout>
-                        <custom:BorderlessEntry Style="{StaticResource DefaultEntry}" x:Name="AttachmentOptional"  Placeholder="Attachments" >
-                        </custom:BorderlessEntry>
-                    </StackLayout>
-                </inputLayout:SfTextInputLayout>
-            </StackLayout>
+            <Grid Padding="4" >
+                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="104"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                        <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                            <Label Text="This is Test" Style="{DynamicResource CardLabelBlack}" LineHeight="0.6"/>
+                        </StackLayout>
+                    </Grid>
+                </cards:SfCardView>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
