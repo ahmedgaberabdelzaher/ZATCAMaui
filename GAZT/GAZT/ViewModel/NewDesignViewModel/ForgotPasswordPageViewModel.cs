@@ -2936,7 +2936,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 LblCountDownTimer = "0:" + countDownSeconds.ToString();*/
 
 
-            if (countDownSeconds <= 9)
+            if (countDownSeconds <= 9 && countDownSeconds > 0)
                 LblCountDownTimer = "0:0" + countDownSeconds.ToString();
             else if (countDownSeconds > 60)
             {
@@ -2951,7 +2951,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
             // Stop timer
-            if (countDownSeconds == 0)
+            if (countDownSeconds <= 0)
             {
                 ContinueButtonEnability = false;
                 IsResendOTPEnabled = true;
@@ -2973,7 +2973,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             countDownSeconds = 120;
             LblCountDownTimer = "0." + countDownSeconds.ToString();
 
-            otpTimer.Enabled = true;
+            otpTimer.Start();
         }
 
         private bool CheckOnlyNumber(char letter)
