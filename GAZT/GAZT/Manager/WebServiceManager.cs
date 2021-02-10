@@ -16154,6 +16154,19 @@ namespace GAZT.Manager
             string _paymentsubmitResponse = string.Empty;
             try
             {
+
+                string platform = "";
+
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    platform = "C4";
+                }
+                else if (Device.RuntimePlatform == Device.Android)
+                {
+                    platform = "C3";
+                }
+                applePayDetails.SrcId = platform;
+
                 String url = Constants.UpdateApplePayGuid;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);

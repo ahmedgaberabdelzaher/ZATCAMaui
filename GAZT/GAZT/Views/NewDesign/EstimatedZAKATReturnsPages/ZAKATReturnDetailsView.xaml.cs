@@ -47,7 +47,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
                 MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
                 MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
-                
+                MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
+
             }
             catch (Exception ex)
             {
@@ -255,7 +256,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
-                    Console.WriteLine("Apple pay Clicked");
+                    viewModel.ApplePaySelected();
                 });
             }
             catch (Exception ex)

@@ -1626,6 +1626,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
 
             var BillAmount = selectedAmount.Replace(",", "");
+            DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
             return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, "My Bills");
         }
 
@@ -1655,7 +1656,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     modelDetails.Guid = App.PaymentGuid;
                     //var token = "GrPRb/eyYkhLaxIi8ugsU5I0D2/IE6JT6SYb4o6CH/emQV7n5twiqt8IVazkcItvmCkHXeie16Nvbq+uFFx0mS4O/1+SoDHrP8HcDbJ/Q1swCCHR/Dwv69oTcTUy1riK6Zvpe0w1r+WJ21I36gorRUn7u94Yi9n4afOfnGJC3EmFd6DKSIRQWlT4BuLlNv5826XruanuFjdL3MKty/xoCyx2GKN+e8W6BFVnQc/gsBe4UW7oqHIQ5PrQJlQwymi5Ytd1IIJT8QsUMxiVjz6yVS5zdQBaN86ZtuokJRmC89jCwVkUMwDl9jQ5xYbFlIFS1VXKJjtWKDfMGwCWK3jvWdtCcdb4VrPIxtK7LvTWc+4C7m6SPzkOhdC/XPn7ufwvrh95no7p9tpQMkP7zOJIYAl+hS4oEqvOxdpw55dCytGXJ0yjN/HOQ3t4ofyW9mBGiHoq";
                     modelDetails.PaymentToken = ApplePayTokenData;
-
+                    modelDetails.SrcId = platform;
 
 
                     ApplePayTokenResponse response = await WebServiceManager.GAZTUpdateApplePayGuid(modelDetails);
@@ -1664,24 +1665,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (response != null && response.d != null)
                     {
 
-                        if (response.d.Guid != null)
+                        if (response.d.Success)
                         {
 
-                            App.PaymentGuid = response.d.Guid;
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                                //_navigationService.GoBack();
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                            });
 
                         }
 
-
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-
-                            //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
-                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
-
-
-                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
-
-                        });
                     }
                     IsLoading = false;
 

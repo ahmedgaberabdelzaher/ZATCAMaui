@@ -96,14 +96,14 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             var _navigation = Application.Current.MainPage.Navigation;
             
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.GAZTNewDesignMyReturnsNewPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
+            //foreach (var item in _navigation.NavigationStack)
+            //{
+            //    if (item.GetType().Name == App.GAZTNewDesignMyReturnsNewPageView)
+            //    {
+            //        _navigation.RemovePage(item);
+            //        break;
+            //    }
+            //}
           
             foreach (var item in _navigation.NavigationStack)
             {
@@ -132,6 +132,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
 
+            viewModel._navigationService.GoBack();
+
+
+
             /*viewModel._navigationService.NavigateTo(App.VatInstalmentPlanListPageView);
 
             if (Navigation.NavigationStack.Count > 0)
@@ -139,7 +143,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
                 Navigation.RemovePage(pg);
             }*/
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+            //viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
         }
     }
 }

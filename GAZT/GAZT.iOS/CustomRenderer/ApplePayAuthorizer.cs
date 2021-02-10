@@ -30,6 +30,8 @@ namespace GAZT.iOS.CustomRenderer
         }
 
         private bool IsSucess;
+        private bool DashboardFlag;
+
 
         public bool AuthorizePayment(string Amount , string Title)
         {
@@ -64,6 +66,7 @@ namespace GAZT.iOS.CustomRenderer
                   true, null);
             return false;
         }
+      
 
         public static UIViewController GetTopViewController()
         {
@@ -87,11 +90,24 @@ namespace GAZT.iOS.CustomRenderer
 
             if(payment.Token != null) {
 
-                JObject json = JObject.Parse(payment.Token.PaymentData.ToString());
-                string paymentToken = json.SelectToken("data").ToString();
+                //JObject json = JObject.Parse(payment.Token.PaymentData.ToString());
+                //string paymentToken = json.SelectToken("data").ToString();
+
+                string paymentData = payment.Token.PaymentData.ToString();
 
                 //Preferences.Get("ApplePayString", paymentToken);
-                MessagingCenter.Send((App)Xamarin.Forms.Application.Current, "ApplePayData", paymentToken);
+
+                if (DashboardFlag) {
+
+                    MessagingCenter.Send((App)Xamarin.Forms.Application.Current, "DashboardApplePayData", paymentData);
+
+                }
+                else {
+                    MessagingCenter.Send((App)Xamarin.Forms.Application.Current, "ApplePayData", paymentData);
+
+                }
+
+
             }
 
 
@@ -112,6 +128,12 @@ namespace GAZT.iOS.CustomRenderer
         public override void WillAuthorizePayment(PKPaymentAuthorizationViewController controller)
         {
             
+        }
+
+        public bool IsPaymentFromDashboard(bool isDahboard)
+        {
+            DashboardFlag = isDahboard;
+            return isDahboard;
         }
     }
 }

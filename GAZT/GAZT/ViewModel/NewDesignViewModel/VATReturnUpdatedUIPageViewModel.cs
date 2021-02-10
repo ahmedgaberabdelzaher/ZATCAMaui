@@ -4538,6 +4538,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             Preperiodcorr = ResponseVATDeclarationD.Preperiodcorr;
             CreditVat = ResponseVATDeclarationD.CreditVat;
             NetdueVat = ResponseVATDeclarationD.NetdueVat;
+
+
+            
         }
 
         public void SetCommasforAll()
@@ -5895,7 +5898,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     IsLoading = true;
 
-                    var platform = string.Empty;
+                    string platform = "C4";
 
                     if (Device.RuntimePlatform == Device.iOS)
                     {
@@ -5910,6 +5913,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     ApplePayToken modelDetails = new ApplePayToken();
                     modelDetails.Guid = App.PaymentGuid;
+                    modelDetails.SrcId = platform;
+
                     //var token = "GrPRb/eyYkhLaxIi8ugsU5I0D2/IE6JT6SYb4o6CH/emQV7n5twiqt8IVazkcItvmCkHXeie16Nvbq+uFFx0mS4O/1+SoDHrP8HcDbJ/Q1swCCHR/Dwv69oTcTUy1riK6Zvpe0w1r+WJ21I36gorRUn7u94Yi9n4afOfnGJC3EmFd6DKSIRQWlT4BuLlNv5826XruanuFjdL3MKty/xoCyx2GKN+e8W6BFVnQc/gsBe4UW7oqHIQ5PrQJlQwymi5Ytd1IIJT8QsUMxiVjz6yVS5zdQBaN86ZtuokJRmC89jCwVkUMwDl9jQ5xYbFlIFS1VXKJjtWKDfMGwCWK3jvWdtCcdb4VrPIxtK7LvTWc+4C7m6SPzkOhdC/XPn7ufwvrh95no7p9tpQMkP7zOJIYAl+hS4oEqvOxdpw55dCytGXJ0yjN/HOQ3t4ofyW9mBGiHoq";
                     modelDetails.PaymentToken = ApplePayTokenData;
 
@@ -5921,24 +5926,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (response != null && response.d != null)
                     {
 
-                        if (response.d.Guid != null)
+
+                     
+                        if (response.d.Success)
                         {
 
-                            App.PaymentGuid = response.d.Guid;
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+
+                                //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+
+                                _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, response.d.PayRef);
+
+                            });
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                                _navigationService.GoBack();
+                            });
 
                         }
 
 
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
 
-                            //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
-                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+                        //Device.BeginInvokeOnMainThread(() =>
+                        //{
+
+                        //    //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                        //    //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
 
 
-                            _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, "");
+                        //    _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, "");
 
-                        });
+                        //});
                     }
                     IsLoading = false;
 
@@ -5974,8 +6000,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
      private async Task<bool> ProcessApplePay()
     {
-            
-            var VatAmount = NetdueVat.Replace(",", "");
+
+
+           
+            //var VatAmount = NetdueVat.Replace(",", "");
+
+            var VatAmount = ResponseVATDeclarationD.Betrh.Replace(",", "");
+            DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
             return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(VatAmount, "VAT Return"); 
     }
 

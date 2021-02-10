@@ -177,7 +177,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
-                    Console.WriteLine("Apple pay Clicked");
+                    viewModel.ApplePaySelected();
+
                 });
             }
             catch (Exception ex)
@@ -202,7 +203,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
             try
             {
-                MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
+                MessagingCenter.Subscribe<App, string>(this, "DashboardApplePayData", async (sender, arg) =>
                 {
 
                     viewModel.ApplePayTokenData = arg.ToString();
@@ -444,8 +445,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             MessagingCenter.Unsubscribe<Object>(this, "Card_Payment");
             MessagingCenter.Unsubscribe<Object>(this, "Apple_Pay");
             MessagingCenter.Unsubscribe<Object>(this, "SADAD");
-            MessagingCenter.Unsubscribe<Object>(this, "ApplePayData");
-            
+            MessagingCenter.Unsubscribe<App, string>(this, "DashboardApplePayData");
+
+
 
             isTimerOff = true;
         }
