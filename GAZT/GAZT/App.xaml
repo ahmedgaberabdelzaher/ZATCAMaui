@@ -421,7 +421,8 @@
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />-->
                 <Setter Property="Margin" Value="10,0,10,1"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="LineHeight" Value="1.25"/>
             </Style>
 
             <!--For VAT Sign Up-->
