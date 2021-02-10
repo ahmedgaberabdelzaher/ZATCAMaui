@@ -1649,14 +1649,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     AllTransactionFilters = new ObservableCollection<ASRevenueDropDownSetDataResults>();
                 }
                 AllTransactionFilters.Clear();
-                ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
+                /*ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
                 defautlVal.Txt30 = AppResources.ASTransactionType;
                 defautlVal.TaxType = "D";
+                defautlVal.StatementFilter = "";
                 AllTransactionFilters.Insert(0, defautlVal);
                 ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
                 defautlValIndirectTax.Txt30 = AppResources.ASTransactionType;
                 defautlValIndirectTax.TaxType = "I";
-                AllTransactionFilters.Insert(1, defautlValIndirectTax);
+                defautlValIndirectTax.TaxType = "I";
+                AllTransactionFilters.Insert(1, defautlValIndirectTax);*/
                 if (TabIdentification.D.Direct == "X")
                 {
                     await PopulateDataForTransactionTypes("D");
