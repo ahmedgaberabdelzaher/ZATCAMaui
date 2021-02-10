@@ -831,7 +831,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     Task.Run(async () =>
                     {
                         await PopulateDataInChipsForYears(SelectedTransactionTypeFilter.TaxType, SelectedTransactionTypeFilter.StatementFilter);
-                        StatementsLineItems = new ObservableCollection<ASResult>();
+                        //StatementsLineItems = new ObservableCollection<ASResult>();
                     });
                 }
             }
@@ -1185,6 +1185,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         private void ApplyFilter()
         {
+            if (HeaderSet != null)
+            {
+                _navigationService.GoBack();
+                return;
+            }
+
             var statementsLineItems = new ObservableCollection<ASResult>();
             Console.WriteLine(statementsLineItems);
             Console.WriteLine(statementsLineItems.Count);
@@ -1231,7 +1237,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 Console.WriteLine(statementsLineItems);
                 Console.WriteLine(statementsLineItems.Count);
                 
-                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(p.Persl) >= Convert.ToInt32(TPFromDate)) && (Convert.ToInt32(p.Persl) <= Convert.ToInt32(TPToDate))));
+                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => !string.IsNullOrEmpty(p.Persl) && (Convert.ToInt32(p.Persl) >= Convert.ToInt32(TPFromDate)) && (Convert.ToInt32(p.Persl) <= Convert.ToInt32(TPToDate))));
                // statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (p.Persl) == "2021"));
                 Console.WriteLine(statementsLineItems);
                 Console.WriteLine(statementsLineItems.Count);
@@ -1560,6 +1566,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 IsLoading = true;
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                if (HeaderSet.D.StatmenetLineItemsSet != null)
+                {
+                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    {
+                        IsDownloadBtnVisile = true;
+                        IsNoStatementsAvaiableVisible = false;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                    }
+                    else
+                    {
+                        IsDownloadBtnVisile = false;
+                        IsNoStatementsAvaiableVisible = true;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        GroupedStatements = new List<GroupedAccountStatements>();
+                    }
+                }
+                else
+                {
+                    IsDownloadBtnVisile = false;
+                    IsNoStatementsAvaiableVisible = true;
+                }
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 if (StatementsLineItems == null)
                 {
@@ -1603,9 +1630,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 IsLoading = true;
                 YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                if (HeaderSet.D.StatmenetLineItemsSet != null)
+                {
+                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    {
+                        IsDownloadBtnVisile = true;
+                        IsNoStatementsAvaiableVisible = false;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                    }
+                    else
+                    {
+                        IsDownloadBtnVisile = false;
+                        IsNoStatementsAvaiableVisible = true;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        GroupedStatements = new List<GroupedAccountStatements>();
+                    }
+                }
+                else
+                {
+                    IsDownloadBtnVisile = false;
+                    IsNoStatementsAvaiableVisible = true;
+                }
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 var chipDataFilterlistForYears = new List<ASChipModel>();
-                ChipDataFilterlistForYears = new List<ASChipModel>();
+                var orderedChipDataFilterlistForYears = new List<ASChipModel>();
                 if (YearValuesHeader != null && YearValuesHeader.D != null)
                 {
                     foreach (ASYearValuesResults aSYearValuesResults in YearValuesHeader.D.Results)
@@ -1624,8 +1672,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 var desc = chipDataFilterlistForYears.OrderByDescending(item => item.Text);
                 foreach (ASChipModel aSChipModel in desc)
                 {
-                    ChipDataFilterlistForYears.Add(aSChipModel);
+                    orderedChipDataFilterlistForYears.Add(aSChipModel);
                 }
+
+                ChipDataFilterlistForYears = orderedChipDataFilterlistForYears;
             }
             catch (Exception ex)
             {
@@ -1669,6 +1719,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 }
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
                     (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType);
+                if (HeaderSet.D.StatmenetLineItemsSet != null)
+                {
+                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    {
+                        IsDownloadBtnVisile = true;
+                        IsNoStatementsAvaiableVisible = false;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                    }
+                    else
+                    {
+                        IsDownloadBtnVisile = false;
+                        IsNoStatementsAvaiableVisible = true;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        GroupedStatements = new List<GroupedAccountStatements>();
+                    }
+                }
+                else
+                {
+                    IsDownloadBtnVisile = false;
+                    IsNoStatementsAvaiableVisible = true;
+                }
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 IsOpeningBalanceVisible = false;
                 IsDownloadBtnVisile = false;
