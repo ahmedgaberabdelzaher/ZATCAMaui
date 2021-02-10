@@ -58,10 +58,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             LableDueDate.Text = "" + aSResult.FormattedBldat2;
             LableSadadNum.Text = "" + aSResult.Opbel;
             LableTransactionDate.Text = "" + aSResult.FormattedBldat;
-            LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
+           // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
             LableCardStatus.Text = "" + aSResult.StatusDesc;
             LableCardTitle.Text = "" + aSResult.TaxtypeDesc;
-            LableCardSubTitle.Text = "" + aSResult.Desc;
+            //LableCardSubTitle.Text = "" + aSResult.Desc;
 
             Color color = stringToColor(aSResult.Status);
 
