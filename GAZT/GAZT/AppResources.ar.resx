@@ -4161,14 +4161,14 @@
 	<data name="VATRStep2" xml:space="preserve">
     <value>الخطوة الثانية</value>
   </data>
-	<data name="VATRStep3" xml:space="preserve">
-    <value>الخطوة الثالثه</value>
+   <data name="VATRStep3" xml:space="preserve">
+    <value>الخطوة الثالثة</value>
   </data>
-	<data name="VATRStep4" xml:space="preserve">
-    <value>الخطوة الرابعه</value>
+    <data name="VATRStep4" xml:space="preserve">
+    <value>الخطوة الرابعة</value>
   </data>
-	<data name="VATRStep5" xml:space="preserve">
-    <value>الخطوه الخامسه</value>
+   <data name="VATRStep5" xml:space="preserve">
+    <value>الخطوة الخامسة</value>
   </data>
 	<data name="VATRAdditionalInformation" xml:space="preserve">
         <value>المعلومات الإضافية</value>
@@ -4763,8 +4763,8 @@
 	<data name="VatDeregNextFilingDueDate" xml:space="preserve">
     <value>تاريخ الاستحقاق القادم</value>
   </data>
-	<data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
-    <value>يقع تاريخ البدء وتاريخ الانتهاء في نفس الفترة</value>
+    <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
+    <value>يقع تاريخ البدء وتاريخ يقعان في نفس الفترة</value>
   </data>
 	<data name="VATDeregistrationInstructions" xml:space="preserve">
     <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الإيقاف (الإيقاف النهائي للرقم المميز).</value>
@@ -8501,6 +8501,9 @@ info@gazt.gov.sa</value>
   </data>
 	<data name="VATReviewDraftSaved" xml:space="preserve">
     <value>{0}تم حفظ نموذج طلب مراجعة ضريبة القيمة المضافة بنجاح</value>
+  </data>
+    <data name="VATReviewNewDraftSaved" xml:space="preserve">
+    <value>يمكنك حفظ الطلب والعودة لاحقا وذلك في غضون 30 يوما من تاريخ القرار. سيتم إلغاء الطلب تلقائيا إذا لم يتم إرساله خلال 30 يوما</value>
   </data>
 	<data name="ZZGeneralMessage_VATReviewCancelled" xml:space="preserve">
     <value>تم إلغاء نموذج مراجعة ضريبة القيمة المضافة

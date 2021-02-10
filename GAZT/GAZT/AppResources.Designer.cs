@@ -15210,6 +15210,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VATReviewNewDraftSaved {
+            get {
+                return ResourceManager.GetString("VATReviewNewDraftSaved", resourceCulture);
+            }
+        }
+        
         public static string VATAmendReactivationFRUncheckWarning {
             get {
                 return ResourceManager.GetString("VATAmendReactivationFRUncheckWarning", resourceCulture);
