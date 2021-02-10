@@ -7731,9 +7731,7 @@
 	<data name="NDRegistrationDetails" xml:space="preserve">
     <value>تفاصيل التسجيل</value>
   </data>
-	<data name="NDDeregistration" xml:space="preserve">
-    <value>إلغاء التسجيل</value>
-  </data>
+    <data name="NDDeregistration" xml:space="preserve">     <value>إيقاف التسجيل في ضريبة القيمة المضافة</value>   </data>
 	<data name="NDFillingFrequency" xml:space="preserve">
     <value>تغيير فترة تقديم الإقرارات</value>
   </data>
