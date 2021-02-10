@@ -1421,7 +1421,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
 
                 EnableReasonView();
-                IsDOBEditorVisible = true;
+                IsDOBEditorVisible = false;
                 VoidIsVisible = false;
                 PopulateAttachmentsListViewTemplate();
             }
@@ -2263,20 +2263,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
                     List<VATDeregistrationAttachmentsModel> check = new List<VATDeregistrationAttachmentsModel>();
                     //AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
+             
                     for (int i = 0; i < VatAttachmentsList.Count; i++)
                     {
-
+                        
                         try
                         {
                             if (SelectedDocumentOption != null)
                             {
+                              string attachmentCategory=   AttachmentTypes.Where(x => (x.DmsTp == VatAttachmentsList[i].Dotyp)).FirstOrDefault().Txt50;
+
                                 check.Add(new VATDeregistrationAttachmentsModel
                                 {
                                     FieldTitle = AppResources.VatDeregDocumentTitle,
                                     FieldSubTitle = AppResources.TinDeregistration20MB,
-                                    AttachmentName = SelectedDocumentOption.Txt50,
+                                    AttachmentName = attachmentCategory,
                                     IsAttachmentAttached = true
                                 });
+
                             }
 
                             check.Add(new VATDeregistrationAttachmentsModel
@@ -2292,10 +2296,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             Console.Write(ex.ToString());
                             Console.Write(ex.StackTrace.ToString());
                         }
+
                     }
-
+                    if (AttachmentsListViewData != null)
+                    {
+                        AttachmentsListViewData.Clear();
+                    }
                     AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>(check);
-
+       
                 }
             }
             catch(Exception ex)
@@ -2422,8 +2430,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             bool IsAttachmentPresent = false;
                                             foreach (Attachment ItemA in VATDeRegistrationDetailsForAttach.d.AttdetSet.results)
                                             {
-                                               // if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == SelectedDocumentOption.DmsTp))
-                                               if(AttachmentName == ItemA.Filename)
+                                                if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == SelectedDocumentOption.DmsTp))
+                                              // if(AttachmentName == ItemA.Filename)
                                                 {
                                                     IsAttachmentPresent = true;
                                                 }
