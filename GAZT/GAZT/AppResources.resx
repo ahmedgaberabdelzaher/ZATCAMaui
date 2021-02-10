@@ -8820,4 +8820,10 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="TransactionAmount" xml:space="preserve">
     <value>Transaction Amount</value>
   </data>
+  <data name="ErrorOccuredContactCustomerService" xml:space="preserve">
+    <value>An error ocurred.Please try again or contact Customer Service.</value>
+  </data>
+  <data name="tryAgain" xml:space="preserve">
+    <value>Try Again</value>
+  </data>
 </root>
