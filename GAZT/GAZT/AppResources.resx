@@ -4728,7 +4728,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Attachments-Audited Reports</value>
   </data>
   <data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
-    <value>New Attachment (Optional)</value>
+    <value>New Attachment</value>
   </data>
   <data name="VatDeregAttachmentInputsize" xml:space="preserve">
     <value>20MB</value>
@@ -8622,6 +8622,9 @@ I acknowledge that the above bank account information is correct and assume full
   </data>
   <data name="VATReviewDraftSaved" xml:space="preserve">
     <value>VAT Review form saved successfully{0}</value>
+  </data>
+      <data name="VATReviewNewDraftSaved" xml:space="preserve">
+    <value>You can save and go back to your request anytime within 30 days of the decision date. The request will be cancelled automatically if it is not submitted within 30 days.</value>
   </data>
   <data name="VATAmendReactivationFRUncheckWarning" xml:space="preserve">
     <value>Data for new financial representative will be lost, do you want to continue?</value>

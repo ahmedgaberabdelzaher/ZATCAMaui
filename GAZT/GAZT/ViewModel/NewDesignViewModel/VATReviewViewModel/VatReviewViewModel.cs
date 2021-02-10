@@ -2984,8 +2984,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                     headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                     headerAmountInfo.IsLinkAvailable = false;
-                    headerAmountInfo.Message = string.Format(AppResources.VATReviewDraftSaved, "  " + modelVATReview.d.Fbnumx);
-
+                    // headerAmountInfo.Message = string.Format(AppResources.VATReviewDraftSaved, "  " + modelVATReview.d.Fbnumx);
+                    headerAmountInfo.Message = string.Format(AppResources.VATReviewNewDraftSaved);
+                    
                     headerWithInfos.Add(headerAmountInfo);
 
                     newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();

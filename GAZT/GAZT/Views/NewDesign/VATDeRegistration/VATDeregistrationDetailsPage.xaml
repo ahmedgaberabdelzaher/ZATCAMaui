@@ -418,7 +418,7 @@
                                             
                                                     </inputLayout:SfTextInputLayout.TrailingView>
                                                     </inputLayout:SfTextInputLayout>
-                                    <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsizeLarge}"  Style="{StaticResource CaptionLabelGrey}"/>
+                                    <!--<Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsizeLarge}"  Style="{StaticResource CaptionLabelGrey}"/>-->
                                 </StackLayout>
   
                  <buttons:SfButton  Grid.Row="6" HeightRequest="48"  Grid.Column="0" Grid.ColumnSpan="2" Margin="10,10,0,36" x:Name="btnAttachmentsContinue"
