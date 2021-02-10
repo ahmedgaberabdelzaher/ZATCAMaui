@@ -1888,7 +1888,7 @@
                 </Grid.Margin>
                 <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{Binding NxtButtonLabel}" Command="{Binding OnNextButtonClick}" />
             </Grid>
-            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.8"
+            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"
                Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 <busyindicator:SfBusyIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
 	                        EnableAnimation="True" 
