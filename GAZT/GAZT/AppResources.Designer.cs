@@ -2614,6 +2614,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error ocurred.Please try again or contact Customer Service..
+        /// </summary>
+        public static string ErrorOccuredContactCustomerService {
+            get {
+                return ResourceManager.GetString("ErrorOccuredContactCustomerService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-Services.
         /// </summary>
         public static string EServices {
@@ -9897,6 +9906,15 @@ namespace EGAZT {
         public static string TransactionAmount {
             get {
                 return ResourceManager.GetString("TransactionAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Try Again.
+        /// </summary>
+        public static string tryAgain {
+            get {
+                return ResourceManager.GetString("tryAgain", resourceCulture);
             }
         }
         
