@@ -380,7 +380,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
-                _headerSet = value;
+                if (value != null)
+                {
+                    _headerSet = value;
+                }
+
                 RaisePropertyChanged("HeaderSet");
             }
         }
@@ -1170,18 +1174,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             FlowDirect = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
 
-        private async void ApplyFilter()
+        private void ApplyFilter()
         {
             var statementsLineItems = new ObservableCollection<ASResult>();
+            Console.WriteLine(statementsLineItems);
+            Console.WriteLine(statementsLineItems.Count);
             if (HeaderSet.D.StatmenetLineItemsSet != null)
             {
                 if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
                 {
-                    StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                    statementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
                 }
+                Console.WriteLine(statementsLineItems);
+                Console.WriteLine(statementsLineItems.Count);
             }
             if (TxFromDate != "" && TxToDate != "")
             {
+                var filterItems = statementsLineItems;
+                Console.WriteLine(statementsLineItems);
+                Console.WriteLine(statementsLineItems.Count);
                 if (IsHijriCal)
                 {
                     CultureInfo arCI = new CultureInfo("ar-SA");
@@ -1190,7 +1201,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
                     
-                    statementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
                 }
                 else
                 {
@@ -1199,20 +1210,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         DateTimeStyles.AllowInnerWhite);
                     DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
-                    statementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                    Console.WriteLine(statementsLineItems);
+                    Console.WriteLine(statementsLineItems.Count);
                 }
             }
 
             if (TPFromDate != "" && TPToDate != "")
             {
-                if (IsHijriCal)
+                var filterItems = statementsLineItems;
+                Console.WriteLine(statementsLineItems);
+                Console.WriteLine(statementsLineItems.Count);
+                
+                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(p.Persl) >= Convert.ToInt32(TPFromDate)) && (Convert.ToInt32(p.Persl) <= Convert.ToInt32(TPToDate))));
+               // statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (p.Persl) == "2021"));
+                Console.WriteLine(statementsLineItems);
+                Console.WriteLine(statementsLineItems.Count);
+                /*if (IsHijriCal)
                 {
                     CultureInfo arCI = new CultureInfo("ar-SA");
                     DateTime FormatedTPFromDate = DateTime.ParseExact(TPFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
-                    DateTime FormatedTPToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                    DateTime FormatedTPToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
-                    statementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Persl >= FormatedTPFromDate && p.Persl <= FormatedTPToDate));
                 }
                 else
                 {
@@ -1221,15 +1242,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         DateTimeStyles.AllowInnerWhite);
                     DateTime FormatedTPToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
-                    statementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.Bldat >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
-                }
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Persl >= FormatedTPFromDate && p.Persl <= FormatedTPToDate));
+                    Console.WriteLine(statementsLineItems);
+                    Console.WriteLine(statementsLineItems.Count);
+                }*/
                 
             }
 
             if (FromTxAmount != "" && ToTxAmount != "")
             {
-                //StatementsLineItems = new ObservableCollection<ASResult>(StatementsLineItems.Where(p => p.amt >= FormatedTPFromDate && p.Bldat <= FormatedTPToDate));
-
+                var filterItems = statementsLineItems;
+                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => Convert.ToDouble(p.BetrhAmount) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.Betrh) <= Convert.ToDouble(ToTxAmount)));
             }
 
             StatementsLineItems = statementsLineItems;
@@ -1254,7 +1277,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             _navigationService.NavigateTo(App.AccountStatementsNewFilterPageView);
             IsSortByVisible = !IsSortByVisible;
-            IsMonthWiseStatementsViewVisible = !IsMonthWiseStatementsViewVisible;
+            //IsMonthWiseStatementsViewVisible = !IsMonthWiseStatementsViewVisible;
         }
 
          public void SetDefaultDate()

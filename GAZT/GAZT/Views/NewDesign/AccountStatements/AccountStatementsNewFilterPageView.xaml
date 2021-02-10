@@ -108,7 +108,7 @@
                     
 
                     <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}"
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TransactionAmount}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}" />
                         <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" 

@@ -9892,6 +9892,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transaction Amount.
+        /// </summary>
+        public static string TransactionAmount {
+            get {
+                return ResourceManager.GetString("TransactionAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 25% from  objected amount.
         /// </summary>
         public static string TwentyFivePercentageObjectedAmount {

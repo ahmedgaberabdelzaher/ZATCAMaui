@@ -2176,6 +2176,24 @@ namespace EGAZT
                 }
             }
         }
+        
+        public AccountStatementsPageViewModel AccountStatementsFilterPageView
+        {
+            get
+            {
+                try
+                {
+
+                    //SimpleIoc.Default.Unregister<AccountStatementsPageViewModel>();
+                    //SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<AccountStatementsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         public AccountStatementsDownloadPageViewModel AccountStatementsDownloadPageView
         {

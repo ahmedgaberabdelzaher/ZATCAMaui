@@ -32,7 +32,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            viewModel = App.Locator.AccountStatementsPageView;
+            viewModel = App.Locator.AccountStatementsFilterPageView;
 
             this.BindingContext = viewModel;
             viewModel.TodayDateNormal = null;
@@ -347,11 +347,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         //viewModel.FromDate = year + "/" + month + "/" + day;
                         if (viewModel.isTaxPeriodStartDate)
                         {
-                            viewModel.TPFromDate = year + "/" + month + "/" + day;   
+                            viewModel.TPFromDate = year; //+ "/" + month + "/" + day;   
                         }
                         else
                         {
-                            viewModel.TPToDate = year + "/" + month + "/" + day;
+                            viewModel.TPToDate = year; // + "/" + month + "/" + day;
                         }
                     }
                 }
@@ -366,11 +366,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         //viewModel.FromDate = year + "/" + month + "/" + day;
                         if (viewModel.isTaxPeriodStartDate)
                         {
-                            viewModel.TPFromDate = year + "/" + month + "/" + day;   
+                            viewModel.TPFromDate = year; // + "/" + month + "/" + day;   
                         }
                         else
                         {
-                            viewModel.TPToDate = year + "/" + month + "/" + day;
+                            viewModel.TPToDate = year; // + "/" + month + "/" + day;
                         }
                     }
                 }
