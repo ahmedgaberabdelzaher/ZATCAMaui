@@ -137,8 +137,9 @@
                                        HorizontalOptions="Start" />
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1"
                                                     Text="{x:Static ResourceManager:AppResources.VRVatReviewRequest}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16"/>
+                                                    Style="{StaticResource GAZTSmallGreenLabelStyle}"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                     FontSize="16"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding NewRequestBtnTapped}" />
                                     <!-- <TapGestureRecognizer Tapped="NewObjection" /> -->
