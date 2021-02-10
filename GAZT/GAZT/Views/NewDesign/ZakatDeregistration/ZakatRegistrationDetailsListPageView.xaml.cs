@@ -36,10 +36,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
-
             try
             {
                // await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
@@ -48,8 +44,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
 
             }
-            
-
         }
 
         private void SetLTR()

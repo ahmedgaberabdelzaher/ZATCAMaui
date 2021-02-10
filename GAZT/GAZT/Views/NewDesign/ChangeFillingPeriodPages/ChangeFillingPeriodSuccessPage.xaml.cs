@@ -4,6 +4,7 @@ using GAZT.Helper;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Application = Xamarin.Forms.Application;
@@ -20,11 +21,18 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
         {
             InitializeComponent();
 
-            ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.ChangeFillingPeriodPageView;
             this.BindingContext = viewModel;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
         }
 
         private void SetLTR()
@@ -32,18 +40,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

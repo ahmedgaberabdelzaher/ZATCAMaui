@@ -2384,15 +2384,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.Attchk = ChangeFillingResponse.d.Attchk;
                 request.d.CPersl = ChangeFillingResponse.d.CPersl;
                 request.d.Fbnumz = ChangeFillingResponse.d.Fbnumz;
-                if (IsFrequencyDetailsChecked)
-                {
-                    request.d.Iagrfg = "1";
-                }
-                else
-                {
-                    request.d.Iagrfg = "0";
-                }
-
+                request.d.Iagrfg = "1";
                 request.d.Reqfg = "1";
                 request.d.Begda = ChangeFillingResponse.d.Begda;
                 request.d.PortalUsrz = ChangeFillingResponse.d.PortalUsrz;
