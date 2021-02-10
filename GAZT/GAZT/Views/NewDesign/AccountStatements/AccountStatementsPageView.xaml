@@ -133,7 +133,7 @@
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                                <Label  Text="Total Debit" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{x:Static ResourceManager:AppResources.ASAccountStatementTotalDebit}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
                                             </StackLayout>
                                             <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
                                             </yummy:PancakeView>
@@ -162,7 +162,7 @@
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                                <Label  Text="Total Credit" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label  Text="{x:Static ResourceManager:AppResources.ASAccountStatementTotalCredit}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
                                             </StackLayout>
                                             <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource ErrorColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
                                                 <yummy:PancakeView.Triggers>
@@ -196,7 +196,7 @@
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                                <Label  Text="Total Balance" VerticalOptions="CenterAndExpand" Style="{StaticResource BodyLabelBlack}"/>
+                                                <Label  Text="{x:Static ResourceManager:AppResources.AccountStatementTotalBalance}" VerticalOptions="CenterAndExpand" Style="{StaticResource BodyLabelBlack}"/>
                                             </StackLayout>
                                             <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
                                                 <Label Style="{StaticResource SectionTitleBlackBold}" Text="{Binding HeaderSet.D.Close}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">

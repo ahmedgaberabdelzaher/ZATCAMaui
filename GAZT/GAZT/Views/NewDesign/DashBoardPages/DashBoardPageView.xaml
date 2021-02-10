@@ -752,7 +752,7 @@
 
                                                                             </custom:CustomLabel>
 
-                                                                            <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding FbtText}" 
+                                                                            <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding Abtyp}" 
                                                                                         Style="{StaticResource 
                                                                         CaptionLabelBlack}"></custom:CustomLabel>
 

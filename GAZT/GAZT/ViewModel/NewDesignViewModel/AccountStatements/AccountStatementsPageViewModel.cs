@@ -385,6 +385,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     _headerSet = value;
                 }
 
+                if (_headerSet != null && _headerSet.D != null && !String.IsNullOrEmpty(_headerSet.D.Close) && Double.Parse(_headerSet.D.Close) < 0)
+                {
+                    TotalBalanceBackground = Color.FromHex("#AA0C19");
+                }
+                else
+                {
+                    TotalBalanceBackground = Color.FromHex("#E5EFED");
+                }
+
                 RaisePropertyChanged("HeaderSet");
             }
         }

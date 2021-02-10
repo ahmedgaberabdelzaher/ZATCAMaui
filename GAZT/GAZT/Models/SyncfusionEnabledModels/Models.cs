@@ -67,6 +67,8 @@ namespace GAZT.Models
     {
         public DateTime? Abrzu { get; set; }
         public string Gpartz { get; set; }
+        public string Abtyp { get; set; }
+        public string Abtypt { get; set; }
         public DateTime? Abrzo { get; set; }
         public string Langz { get; set; }
         public string Incotyp { get; set; }
