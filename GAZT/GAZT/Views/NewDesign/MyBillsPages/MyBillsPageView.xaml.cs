@@ -121,6 +121,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
+                    viewModel.ApplePaySelected();
                     Console.WriteLine("Apple pay Clicked");
                 });
             }
@@ -138,6 +139,25 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     Console.WriteLine("SADAD Clicked");
                     viewModel.SadadPaymentSelected();
                 });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+            
+            try
+            {
+                MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
+                {
+
+                    viewModel.ApplePayTokenData = arg.ToString();
+                    
+                    await viewModel.UpdateApplePayPaymentGuid();
+
+
+                });
+
             }
             catch (Exception ex)
             {
@@ -308,6 +328,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 }
                 viewModel.selectedFbNum = BModel.Fbnum;
                 viewModel.selectedSadadNo = BModel.VTRE2;
+                viewModel.selectedAmount = BModel.TestDueAmount;
 
               //  PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
 

@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Helper;
 using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.PaymentOptions;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
@@ -31,6 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnBackButtonClicked { get; set; }
         public string selectedFbNum = "";
         public string selectedSadadNo = "";
+        public string selectedAmount = "";
 
         #region Property
         public List<ReturnTypes> _TaxTypeForFilter = null;
@@ -329,6 +331,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
         
+        private bool _applePayStatus;
+        public bool ApplePayStatus
+        {
+            get
+            {
+                return _applePayStatus;
+            }
+            set
+            {
+                if (_applePayStatus == value) return;
+
+                _applePayStatus = value;
+                RaisePropertyChanged("ApplePayStatus");
+            }
+        }
+        
+        public string ApplePayTokenData = "";
+
         #endregion
 
         #region Constructor
@@ -614,7 +634,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-          public async Task DoValidatePayment(string fbNum,string sdadNo)
+          public async Task DoValidatePayment(string fbNum,string sdadNo,string paymentType)
         {
             try
             {
@@ -648,13 +668,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             App.PaymentGuid = PaymentData.d.Guid;
 
                         }
+                        
+                        if (paymentType == "M") {
 
-                        Device.BeginInvokeOnMainThread(async () => {
+                            Device.BeginInvokeOnMainThread(async () => {
 
-                            _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
-                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
 
-                        });
+                            });
+                        }
+                        else {
+
+                            ApplePayStatus = await ProcessApplePay();
+                        }
+
 
                         // var VatAmount = NetdueVat.Replace(",", "");
                         //if (String.IsNullOrEmpty(amount) || Double.Parse(amount) == 0)
@@ -704,11 +732,104 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+          public async Task UpdateApplePayPaymentGuid()
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = string.Empty;
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+
+
+
+                    ApplePayToken modelDetails = new ApplePayToken();
+                    modelDetails.Guid = App.PaymentGuid;
+                    //var token = "GrPRb/eyYkhLaxIi8ugsU5I0D2/IE6JT6SYb4o6CH/emQV7n5twiqt8IVazkcItvmCkHXeie16Nvbq+uFFx0mS4O/1+SoDHrP8HcDbJ/Q1swCCHR/Dwv69oTcTUy1riK6Zvpe0w1r+WJ21I36gorRUn7u94Yi9n4afOfnGJC3EmFd6DKSIRQWlT4BuLlNv5826XruanuFjdL3MKty/xoCyx2GKN+e8W6BFVnQc/gsBe4UW7oqHIQ5PrQJlQwymi5Ytd1IIJT8QsUMxiVjz6yVS5zdQBaN86ZtuokJRmC89jCwVkUMwDl9jQ5xYbFlIFS1VXKJjtWKDfMGwCWK3jvWdtCcdb4VrPIxtK7LvTWc+4C7m6SPzkOhdC/XPn7ufwvrh95no7p9tpQMkP7zOJIYAl+hS4oEqvOxdpw55dCytGXJ0yjN/HOQ3t4ofyW9mBGiHoq";
+                    modelDetails.PaymentToken = ApplePayTokenData;
+
+
+
+                    ApplePayTokenResponse response = await WebServiceManager.GAZTUpdateApplePayGuid(modelDetails);
+
+
+                    if (response != null && response.d != null)
+                    {
+
+                        if (response.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = response.d.Guid;
+
+                        }
+
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+
+                            //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                            //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+
+                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+
+                        });
+                    }
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+          
+          private async Task<bool> ProcessApplePay()
+          {
+            
+              var BillAmount = selectedAmount.Replace(",", "");
+              return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, "My Bills"); 
+          }
+          
         public void MadaPaymentSelected()
         {
 
 
-             DoValidatePayment(selectedFbNum, selectedSadadNo);
+             DoValidatePayment(selectedFbNum, selectedSadadNo,"M");
 
            
 
@@ -716,7 +837,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async Task ApplePaySelected()
         {
-
+            DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo,"A");
 
         }
 
