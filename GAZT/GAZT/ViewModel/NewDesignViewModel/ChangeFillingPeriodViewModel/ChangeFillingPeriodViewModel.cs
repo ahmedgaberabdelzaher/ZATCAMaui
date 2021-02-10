@@ -2310,7 +2310,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         if (resultData != null && resultData.d != null)
                         {
                             IsIDVerified = true;
-                            ContactPersonName = resultData.d.Name2 + " " + resultData.d.Name1;
+                            ContactPersonName = resultData.d.Name1 + " " + resultData.d.Name2;
                             EnableDeclaration();
                         }
                         else
