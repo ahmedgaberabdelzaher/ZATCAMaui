@@ -170,7 +170,7 @@
                             <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding ReviewReason}" 
-                                                    PlaceholderColor="Gray"  FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                    PlaceholderColor="Gray"  FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                                     <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding ReviewReasonCommand}"/>
@@ -202,7 +202,7 @@
                             <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding SubReviewReason}" 
-                                                    PlaceholderColor="Gray"  FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                    PlaceholderColor="Gray"  FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                                     <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding SubReviewReasonCommand}"/>
@@ -233,7 +233,7 @@
                             <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding ApplicationRefNumber}" 
-                                                    PlaceholderColor="Gray"  FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                    PlaceholderColor="Gray"  FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                                     <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding ApplicationNumRefCommand}"/>
@@ -257,7 +257,7 @@
                             <Frame Grid.Row="1" HeightRequest="48"  Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding FormattedRequestDate}" 
-                                                    PlaceholderColor="Gray"  FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                    PlaceholderColor="Gray"  FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                                   
                                 </StackLayout>
                             </Frame>
@@ -1231,8 +1231,7 @@
 
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                     <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding IDType}"
-                                                                FontAttributes="Bold" FontSize="Small"
-                                                                TextColor="Black" HorizontalOptions="FillAndExpand" />
+                                                                FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" />
                                     <Image Source="arrowDropdown.png" WidthRequest="20" HeightRequest="20"
                                            Margin="0,0,5,0">
                                         <Image.GestureRecognizers>
@@ -1278,8 +1277,7 @@
                                                                     Text="{Binding IDNumber}"
                                                                     Keyboard="Numeric"
                                                                     Unfocused="OnIDNumberFocusChanged"
-                                                                    FontAttributes="Bold" FontSize="Small"
-                                                                    TextColor="Black" HorizontalOptions="FillAndExpand" />
+                                                                    FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" />
 
                                     </StackLayout>
 
@@ -1307,8 +1305,7 @@
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                         <custom:GAZTBorderlessEntry IsEnabled="False"
                                                                     Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}"
-                                                                    FontAttributes="Bold" FontSize="Small"
-                                                                    TextColor="Black" HorizontalOptions="FillAndExpand" />
+                                                                    FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" />
                                         <Image Source="calendar.png" WidthRequest="20" HeightRequest="20"
                                                Margin="0,0,5,0">
                                             <Image.GestureRecognizers>
@@ -1344,8 +1341,7 @@
                                                                 Unfocused="ContactPersonTextUnFocus"
                                                                 Text="{Binding ContactPersonName}"
                                                                 IsEnabled="{Binding ContractPersonEditable}"
-                                                                FontAttributes="Bold" FontSize="Small"
-                                                                TextColor="Black" HorizontalOptions="FillAndExpand" />
+                                                                FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" />
                                 </StackLayout>
 
                             </border:SfBorder>
