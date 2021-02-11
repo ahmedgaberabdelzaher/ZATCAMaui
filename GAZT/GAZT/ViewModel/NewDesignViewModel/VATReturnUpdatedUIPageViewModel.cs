@@ -6002,10 +6002,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     {
 
 
-           
+
             //var VatAmount = NetdueVat.Replace(",", "");
 
-            var VatAmount = ResponseVATDeclarationD.Betrh.Replace(",", "");
+            var Amount = Convert.ToDouble(PaymentData.d.Amount);
+            var VatAmount = Math.Round(Amount, 2);
+
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
             return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(VatAmount, "VAT Return"); 
     }

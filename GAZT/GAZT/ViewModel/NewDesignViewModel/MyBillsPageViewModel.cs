@@ -823,7 +823,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
           private async Task<bool> ProcessApplePay()
           {
             
-              var BillAmount = selectedAmount.Replace(",", "");
+            var Amount = Convert.ToDouble(PaymentData.d.Amount);
+            var BillAmount = Math.Round(Amount, 2);
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
             return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, "My Bills"); 
           }

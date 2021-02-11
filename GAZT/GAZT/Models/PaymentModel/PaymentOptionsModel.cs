@@ -28,6 +28,8 @@ namespace EGAZT.Models.PaymentModel
         public string Srcid { get; set; }
         public string Guid { get; set; }
         public string Tin { get; set; }
+        public string Amount { get; set; }
+
     }
     [Preserve(AllMembers = true)]
     public class ValidatePaymentResponse

@@ -1451,7 +1451,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private async Task<bool> ProcessApplePay()
         {
 
-            var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+
+            var Amount = Convert.ToDouble(PaymentData.d.Amount);
+            var ZakatAmount = Math.Round(Amount, 2);
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
             return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(ZakatAmount, "Zakat Form12");
         }

@@ -159,7 +159,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                MessagingCenter.Subscribe<Object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
                     Console.WriteLine("Card Payment Clicked");
 
@@ -175,7 +175,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
+                MessagingCenter.Subscribe<Object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
                     viewModel.ApplePaySelected();
 
@@ -189,7 +189,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
+                MessagingCenter.Subscribe<Object, string>(this, "SADAD", async (sender, arg) =>
                 {
 
                     Console.WriteLine("SADAD Clicked");
@@ -442,9 +442,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
             MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
             MessagingCenter.Unsubscribe<Object>(this, "UpdateProgressBar");
-            MessagingCenter.Unsubscribe<Object>(this, "Card_Payment");
-            MessagingCenter.Unsubscribe<Object>(this, "Apple_Pay");
-            MessagingCenter.Unsubscribe<Object>(this, "SADAD");
+            MessagingCenter.Unsubscribe<Object, string>(this, "Card_Payment");
+            MessagingCenter.Unsubscribe<Object, string>(this, "Apple_Pay");
+            MessagingCenter.Unsubscribe<Object, string>(this, "SADAD");
             MessagingCenter.Unsubscribe<App, string>(this, "DashboardApplePayData");
 
 

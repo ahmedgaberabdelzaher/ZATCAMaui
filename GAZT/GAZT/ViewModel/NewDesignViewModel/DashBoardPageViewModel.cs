@@ -1543,7 +1543,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         platform = "C3";
                     }
                     //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
-
+                    PaymentData = null;
                     PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, "M");
 
 
@@ -1624,8 +1624,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         private async Task<bool> ProcessApplePay()
         {
+            var Amount = Convert.ToDouble(PaymentData.d.Amount);
+            var BillAmount = Math.Round(Amount, 2);
 
-            var BillAmount = selectedAmount.Replace(",", "");
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
             return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, "My Bills");
         }

@@ -33,7 +33,7 @@ namespace GAZT.iOS.CustomRenderer
         private bool DashboardFlag;
 
 
-        public bool AuthorizePayment(string Amount , string Title)
+        public bool AuthorizePayment(double Amount , string Title)
         {
             NSString[] paymentNetworks = new NSString[] {PKPaymentNetwork.Mada};
             var merchantID = "merchant.gazt.egazt";
