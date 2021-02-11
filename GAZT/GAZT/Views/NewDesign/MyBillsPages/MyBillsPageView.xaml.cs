@@ -174,6 +174,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
                 MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
                 MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
+                MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
 
             }
             catch (Exception ex)

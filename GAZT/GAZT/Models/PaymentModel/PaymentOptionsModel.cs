@@ -123,6 +123,7 @@ namespace EGAZT.Models.PaymentModel
     {
         public string Guid { get; set; }
         public string PaymentToken { get; set; }
+        public string SrcId { get; set; }
 
     }
 
@@ -138,6 +139,7 @@ namespace EGAZT.Models.PaymentModel
         public string Merchantid { get; set; }
         public string Procurl { get; set; }
         public string Amount { get; set; }
+        public string PayRef { get; set; }
         public bool Success { get; set; }
     }
 

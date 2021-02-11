@@ -205,6 +205,9 @@
 		<Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationFinancialDetails.xaml.cs">
 			<DependentUpon>ZakatRegistrationFinancialDetails.xaml</DependentUpon>
 		</Compile>
+		<Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="AppResources.Designer.cs">
+		  <DependentUpon>AppResources.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="AppResources.resx">
