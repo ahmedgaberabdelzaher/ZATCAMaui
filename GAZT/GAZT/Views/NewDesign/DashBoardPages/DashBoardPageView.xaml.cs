@@ -1233,7 +1233,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 await part.FadeTo(1, 600);
                 await btn_frameToolbar.FadeTo(0, 600);
-                await btn_frameToolbar.TranslateTo(xPosition - 10, -200, 200);
+                await btn_frameToolbar.TranslateTo(xPosition - 10, -200, 400);
 
                 //                  await btn_frameToolbar.TranslateTo(100, 0, 200, Easing.CubicInOut);
             }
@@ -1241,7 +1241,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 await part.FadeTo(0, 600);
                 await btn_frameToolbar.FadeTo(1, 600);
-                await btn_frameToolbar.TranslateTo(scrollView.X, scrollView.Y, 200);
+                await btn_frameToolbar.TranslateTo(scrollView.X, scrollView.Y, 400);
 
                 //await btn_frameToolbar.TranslateTo(0, 0, 200, Easing.CubicInOut);
             }

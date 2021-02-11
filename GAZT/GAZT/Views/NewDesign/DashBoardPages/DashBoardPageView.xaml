@@ -93,7 +93,8 @@
                                         <custom:CustomLabel  Margin="0,-8,0,0" Padding="0" FontSize="20">
                                             <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{TemplateBinding BindingContext.MyObligationAmount}" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="20"></Span>
+                                                    <Span Text="{Binding BindingContext.MyObligationAmount,Converter={StaticResource 
+                                                                        commaSeparatorConverter}}"  Style="{StaticResource ButtonLabelWhiteBold}" FontSize="20"></Span>
                                                     <Span Text=" "/>
                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" Style="{StaticResource CaptionLabelWhite}" FontSize="16"></Span>
                                                 </FormattedString>
