@@ -44,6 +44,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
+                viewModel.MyObligationAmount = 0.0;
+                viewModel.IsMyObligationsClear = false;
+                viewModel.MenuViewVisible = false;
+
                 SetLTR();
             }
             catch (Exception ex)
