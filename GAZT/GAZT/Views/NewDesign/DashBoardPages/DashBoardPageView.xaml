@@ -86,27 +86,21 @@
                             </StackLayout>
 
                             <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Padding="0,-10,0,0">
-                                <border:SfBorder x:Name="frameToolbar" Grid.Row="0" IsVisible="{TemplateBinding BindingContext.IsToolbarTaxVisible}" Grid.Column="1" HorizontalOptions="CenterAndExpand"  CornerRadius="10" HasShadow="False" BorderWidth="0"
+                                <border:SfBorder x:Name="frameToolbar" Grid.Row="0" IsVisible="{TemplateBinding BindingContext.IsToolbarTaxVisible}" Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" HorizontalOptions="CenterAndExpand"  CornerRadius="10" HasShadow="False" BorderWidth="0"
                                            VerticalOptions="CenterAndExpand">
+                                    <StackLayout Orientation="Vertical" Padding="10,3,10,3" Spacing="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.DashBoardMyTaxObligations}"  Style="{StaticResource CaptionLabelWhite}" Padding="0" Margin="0" HorizontalOptions="CenterAndExpand" FontSize="12"></Label>
+                                        <custom:CustomLabel  Margin="0,-8,0,0" Padding="0" FontSize="20">
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding BindingContext.MyObligationAmount}"  Style="{StaticResource ButtonLabelWhiteBold}" FontSize="20"></Span>
+                                                    <Span Text=" "/>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" Style="{StaticResource CaptionLabelWhite}" FontSize="16"></Span>
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                        </custom:CustomLabel>
 
-                                    <Grid HorizontalOptions="CenterAndExpand">
-                                        <Frame BackgroundColor="White" Opacity="0.1" CornerRadius="15"></Frame>
-
-                                        <StackLayout Orientation="Vertical" Padding="10,3,10,3" Spacing="0">
-                                            <Label Text="{x:Static ResourceManager:AppResources.DashBoardMyTaxObligations}"  Style="{StaticResource CaptionLabelWhite}" Padding="0" Margin="0" HorizontalOptions="CenterAndExpand" FontSize="12"></Label>
-                                            <custom:CustomLabel  Margin="0,-8,0,0" Padding="0" FontSize="20">
-                                                <custom:CustomLabel.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{TemplateBinding BindingContext.MyObligationAmount}" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="20"></Span>
-                                                        <Span Text=" "/>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" Style="{StaticResource CaptionLabelWhite}" FontSize="16"></Span>
-                                                    </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-
-                                        </StackLayout>
-                                    </Grid>
-                                    
+                                    </StackLayout>
                                     <border:SfBorder.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_ToolbarMyTax"></TapGestureRecognizer>
                                     </border:SfBorder.GestureRecognizers>
@@ -946,33 +940,29 @@
 
                         </StackLayout>
 
-                        <border:SfBorder x:Name="btn_frameToolbar" Grid.Row="0"  Grid.Column="1"  CornerRadius="10" HasShadow="False" BorderWidth="0"
+                        <border:SfBorder x:Name="btn_frameToolbar" Grid.Row="0"  Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" HorizontalOptions="StartAndExpand" CornerRadius="10" HasShadow="False" BorderWidth="0"
                                            VerticalOptions="CenterAndExpand" IsVisible="{Binding IsBodyMyTaxVisible}">
-                            <Grid HorizontalOptions="StartAndExpand">
+                            <StackLayout Orientation="Vertical" Padding="12,5,12,5" Spacing="0">
 
-                                <Frame BackgroundColor="White" Opacity="0.1" CornerRadius="15"></Frame>
-                                <StackLayout Orientation="Vertical" Padding="12,5,12,5" Spacing="0">
-
-                                    <Label Text="{x:Static ResourceManager:AppResources.DashBoardMyTaxObligations}"  
+                                <Label Text="{x:Static ResourceManager:AppResources.DashBoardMyTaxObligations}"  
                                                Style="{StaticResource CaptionLabelWhite}" Padding="0" Margin="0" 
                                                HorizontalOptions="StartAndExpand" FontSize="12"></Label>
 
-                                    <custom:CustomLabel  Margin="0,-8,0,0" Padding="0" FontSize="20">
+                                <custom:CustomLabel  Margin="0,-8,0,0" Padding="0" FontSize="20">
 
-                                        <custom:CustomLabel.FormattedText>
+                                    <custom:CustomLabel.FormattedText>
 
-                                            <FormattedString>
-                                                <Span Text="{Binding MyObligationAmount}" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="28"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" Style="{StaticResource 
+                                        <FormattedString>
+                                            <Span Text="{Binding MyObligationAmount,Converter={StaticResource 
+                                                                        commaSeparatorConverter}}" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="28"/>
+                                            <Span Text=" "/>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" Style="{StaticResource 
                                                         CaptionLabelWhite}" FontSize="16"></Span>
-                                            </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
 
-                                </StackLayout>
-
-                            </Grid>
+                            </StackLayout>
                             <border:SfBorder.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_ToolbarMyTax"></TapGestureRecognizer>
                             </border:SfBorder.GestureRecognizers>

@@ -1418,20 +1418,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("MyObligationAmount");
             }
         }
-        private string _MyObligationAmountCommas = "";
-        public string MyObligationAmountCommas
-        {
-            get
-            {
-                return _MyObligationAmountCommas;
-            }
-            set
-            {
-                _MyObligationAmountCommas = value;
-                RaisePropertyChanged("MyObligationAmountCommas");
-            }
-        }
-        
 
         private bool _IsMyObligationsClear = false;
         public bool IsMyObligationsClear
@@ -1489,8 +1475,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             LiveChatVisible = false;
             AccountStatementVisible = false;
             IsToolbarTaxVisible = true;
-
-            MyObligationAmount = 0.0;
 
             TaxpayerName = string.Empty;
             HomeViewVisible = true;
@@ -1931,7 +1915,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private async Task GetBillsAndReturns()
         {
-            MyObligationAmount = 0.0;
             var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
             var pendingBills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
             List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
@@ -1969,7 +1952,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsBodyMyTaxVisible = false;
             }
 
-            MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
+            var MyObligationAmount1 = string.Format("{0:N2}", MyObligationAmount);
 
             Device.BeginInvokeOnMainThread(() => Bills = temp1);
             PendingBills = pendingBills;
