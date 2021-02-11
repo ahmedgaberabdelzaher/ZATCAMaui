@@ -1952,7 +1952,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsBodyMyTaxVisible = false;
             }
 
-//            var MyObligationAmount = string.Format("{0:N2}", MyObligationAmount);
+            var MyObligationAmount1 = string.Format("{0:N2}", MyObligationAmount);
 
             Device.BeginInvokeOnMainThread(() => Bills = temp1);
             PendingBills = pendingBills;
