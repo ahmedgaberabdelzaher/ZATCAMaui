@@ -1237,7 +1237,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 Console.WriteLine(statementsLineItems);
                 Console.WriteLine(statementsLineItems.Count);
                 
-                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => !string.IsNullOrEmpty(p.Persl) && (Convert.ToInt32(p.Persl) >= Convert.ToInt32(TPFromDate)) && (Convert.ToInt32(p.Persl) <= Convert.ToInt32(TPToDate))));
+                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) >= Convert.ToInt32(TPFromDate)) && (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) <= Convert.ToInt32(TPToDate))));
                // statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (p.Persl) == "2021"));
                 Console.WriteLine(statementsLineItems);
                 Console.WriteLine(statementsLineItems.Count);

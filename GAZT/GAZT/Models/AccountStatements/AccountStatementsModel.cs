@@ -543,6 +543,9 @@ namespace EGAZT.Models.AccountStatements
         public string FormattedBldat2 { get; set; }
 
         [JsonIgnore]
+        private DateTime? PeriodEndDt { get; set; }
+
+        public DateTime? PeriodStartDt { get; set; }
         private DateTime? _Bldat2 { get; set; }
 
         [JsonProperty("Bldat2")]
