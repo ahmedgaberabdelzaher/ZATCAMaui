@@ -68,7 +68,7 @@
                                 <TapGestureRecognizer Tapped="OnBackTapped" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <Label  x:Name="lblPageTitle" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="19" Text="{Binding BindingContext.PageTitle,Source={x:Reference VATRegistration}}" Style="{StaticResource SectionTitleWhiteBold}" />
+                        <Label  x:Name="lblPageTitle" HorizontalOptions="StartAndExpand" LineHeight="0.5"  VerticalOptions="CenterAndExpand" FontSize="19" Text="{Binding BindingContext.PageTitle,Source={x:Reference VATRegistration}}" Style="{StaticResource SectionTitleWhiteBold}" />
 
 
 
@@ -1668,7 +1668,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <Frame Style="{StaticResource ComponentFrameWithRadius14}" Margin="0,24,0,0">
                                                 <StackLayout Spacing="0">
                                                     <StackLayout Style="{StaticResource ComponentStackWithHeight80}">
-                                                        <Image Margin="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
+                                                        <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
 
                                                         <Label Text="{x:Static custom2:AppResources.SalesDetails}" VerticalTextAlignment="Center" Style="{StaticResource SectionTitleBlackBold}"/>
@@ -1686,11 +1686,11 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <!--SliderLable1-->
                                                         <StackLayout Orientation="Horizontal">
                                                             <Label Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsComming12months}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1}" Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label HorizontalTextAlignment="End" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1}" Style="{StaticResource BodyLabelBlackMedium}"/>
                                                         </StackLayout>
                                                         <StackLayout Orientation="Horizontal">
                                                             <Label Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsLast12months}" Margin="0,20,0,0" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable2}" Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label HorizontalTextAlignment="End" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable2}" Style="{StaticResource BodyLabelBlackMedium}"/>
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </StackLayout>
@@ -1727,13 +1727,27 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <Frame Style="{StaticResource ComponentFrameWithRadius14}" Margin="0,24,0,0">
                                                 <StackLayout Spacing="0">
                                                     <StackLayout Style="{StaticResource ComponentStackWithHeight80}">
-                                                        <Image Margin="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
+                                                   <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
-                                                        <Label Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" Style="{StaticResource SectionTitleBlackBold}"/>
-                                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Padding="0,0,16,0" WidthRequest="70">
-                                                            <Label Text="{x:Static custom2:AppResources.CREdit}" HorizontalTextAlignment="End"
+                                                        <Label VerticalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" Style="{StaticResource SectionTitleBlackBold}">
+                                                        <Label.Margin>
+                                                            <OnPlatform x:TypeArguments="Thickness" >
+                                                                <On Platform="iOS" Value="0"/>
+                                                                <On Platform="Android" Value="-20,-5,0,0"/>
+                                                            </OnPlatform>
+                                                        </Label.Margin>
+                                                        </Label>
+                                                      
+                                                          <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center"  >
+                                                         <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                                Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
-                                                                <Label.GestureRecognizers>
+                                                                <Label.Margin>
+                                                            <OnPlatform x:TypeArguments="Thickness" >
+                                                                <On Platform="iOS" Value="0"/>
+                                                                <On Platform="Android" Value="-5,0,0,0"/>
+                                                            </OnPlatform>
+                                                        </Label.Margin>
+                                                                    <Label.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="GoBackToFinacialRepresentativeDetails" />
                                                                 </Label.GestureRecognizers>
                                                             </Label>
