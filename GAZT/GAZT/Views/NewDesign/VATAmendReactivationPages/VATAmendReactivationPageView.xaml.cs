@@ -126,6 +126,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+
+            }
 
         }
         public void ChangeAeroIcon()
