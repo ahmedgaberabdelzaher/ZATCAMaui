@@ -796,6 +796,9 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<OutletDetailsAmendUpdatePageViewModel>();
+                    SimpleIoc.Default.Register<OutletDetailsAmendUpdatePageViewModel>();
+
                     return ServiceLocator.Current.GetInstance<OutletDetailsAmendUpdatePageViewModel>();
                 }
                 catch (Exception)

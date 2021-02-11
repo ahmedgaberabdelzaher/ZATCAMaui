@@ -102,7 +102,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 AppResources.ZZZZVATREFinancialDetails};
 
 
-
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 3;
 
