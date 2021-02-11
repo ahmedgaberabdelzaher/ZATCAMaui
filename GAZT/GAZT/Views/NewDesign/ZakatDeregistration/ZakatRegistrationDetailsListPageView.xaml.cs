@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EGAZT.Enums;
+using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.VATDeRegistration;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
@@ -35,7 +38,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override  void OnAppearing()
         {
             base.OnAppearing();
-
+           
             try
             {
                // await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
@@ -81,9 +84,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         public async void registrationDetailsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
+            var selectedLv = sender as SfListView;
             try
             {
-                var selectedLv = sender as SfListView;
+                
+                if (selectedLv.SelectedItem == null) return;
+
                 ZakatDeregistrationDetailsListModel selectedItem = (ZakatDeregistrationDetailsListModel)selectedLv.SelectedItem;
 
                 if (selectedItem.ZDTitle == AppResources.DBSMTaxpayerDetails)
@@ -143,6 +149,25 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration eService");
                     //viewModel._navigationService.NavigateTo(App.VATDeregistrationInstructionsPage);
+
+                    try
+                    {
+                        _ = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        //await Task.Run(() =>
+                        //{
+
+                        //});
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        });
+                        return;
+                    }
+
+
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
@@ -174,6 +199,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                selectedLv.SelectedItem = null;
             }
         }
     }
