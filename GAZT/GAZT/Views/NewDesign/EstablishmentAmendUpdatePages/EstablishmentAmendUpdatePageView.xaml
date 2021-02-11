@@ -129,7 +129,7 @@
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NationalityStatusStayMoreThanKSAClick}"/>
                                         </Grid.GestureRecognizers>
-                                        <cards:SfCardView HasShadow="False" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                        <cards:SfCardView HasShadow="True" Grid.Row="0" Grid.Column="0" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                           IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" >
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <Grid.RowDefinitions>
@@ -144,7 +144,7 @@
                                                 </StackLayout>
                                             </Grid>
                                         </cards:SfCardView>
-                                        <cards:SfCardView HasShadow="False" Grid.Row="0" Grid.Column="0"  CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                        <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" Grid.Row="0" Grid.Column="0"  CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                           IsVisible="{Binding IsClickedStayMoreThanKSAOption}">
                                             <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <Grid.RowDefinitions>
@@ -164,7 +164,7 @@
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NationalityStatusRentOwnHouseClick}"/>
                                         </Grid.GestureRecognizers>
-                                        <cards:SfCardView Grid.Row="0" Grid.Column="0" HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                        <cards:SfCardView Grid.Row="0" Grid.Column="0" HasShadow="true" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                           IsVisible="{Binding IsClickedOwnRentOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <Grid.RowDefinitions>
@@ -179,7 +179,7 @@
                                                 </StackLayout>
                                             </Grid>
                                         </cards:SfCardView>
-                                        <cards:SfCardView x:Name="OwnhouseCard" Grid.Row="0" Grid.Column="0" HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                        <cards:SfCardView x:Name="OwnhouseCard" Grid.Row="0" Grid.Column="0" HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                           IsVisible="{Binding IsClickedOwnRentOption}">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <Grid.RowDefinitions>
@@ -199,7 +199,7 @@
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NationalityStatusNoneOfTheAboveClick}"/>
                                         </Grid.GestureRecognizers>
-                                        <cards:SfCardView x:Name="NoneOfTheAboveCard" HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                        <cards:SfCardView x:Name="NoneOfTheAboveCard" HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                           IsVisible="{Binding IsClickedNoneOfTheAboveOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" >
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <Grid.RowDefinitions>
@@ -214,7 +214,7 @@
                                                 </StackLayout>
                                             </Grid>
                                         </cards:SfCardView>
-                                        <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                        <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                           IsVisible="{Binding IsClickedNoneOfTheAboveOption}">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <Grid.RowDefinitions>
@@ -321,7 +321,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding PermanentEstablishmentLegalEntityClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="true" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -336,7 +336,7 @@
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
-                                            <cards:SfCardView HasShadow="False"  BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True"  BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedPermanentLegalEntity}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -359,7 +359,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OtherTaxableIncomeLegalEntityClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <cards:SfCardView HasShadow="False" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" Grid.Row="0" Grid.Column="0" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -374,7 +374,7 @@
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
-                                            <cards:SfCardView HasShadow="False" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" Grid.Row="0" Grid.Column="0" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -414,7 +414,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ABranchOfNonResidentCompanyPEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -429,7 +429,7 @@
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -452,7 +452,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ConstructionSitePEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -467,7 +467,7 @@
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedConstructionSitePE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -490,7 +490,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding InstallationPEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -505,7 +505,7 @@
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedInstallationPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -528,7 +528,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding AFixedBasePEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -543,7 +543,7 @@
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedAFixedBasePE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -566,7 +566,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -581,7 +581,7 @@
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                               IsVisible="{Binding IsClickedNonResidentPartnerPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -611,7 +611,7 @@
                                                 <RowDefinition Height="104"/>
                                                 <RowDefinition Height="24"/>
                                             </Grid.RowDefinitions>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104"/>
@@ -635,7 +635,7 @@
                                                 <RowDefinition Height="104"/>
                                                 <RowDefinition Height="24"/>
                                             </Grid.RowDefinitions>
-                                            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104"/>
@@ -918,7 +918,7 @@
                                                                     Margin="26" HorizontalTextAlignment="Start" />
                                                     </Grid>
                                                 </cards:SfCardView>-->
-                                                <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="104"/>
@@ -943,7 +943,7 @@
                                                                   TextColor="White"  Margin="26" HorizontalTextAlignment="Start" />
                                                     </Grid>
                                                 </cards:SfCardView>-->
-                                                <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="104"/>
@@ -1394,7 +1394,7 @@
                                                                     Margin="26" HorizontalTextAlignment="Start" />
                                         </Grid>
                                     </cards:SfCardView>-->
-                                    <cards:SfCardView  HasShadow="False" BackgroundColor="Transparent" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                    <cards:SfCardView  HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="104"/>
@@ -1419,7 +1419,7 @@
                                                                   TextColor="White"  Margin="26" HorizontalTextAlignment="Start" />
                                         </Grid>
                                     </cards:SfCardView>-->
-                                    <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="104"/>
@@ -1446,7 +1446,7 @@
                             </listView:SfListView.LayoutManager>
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView  HasShadow="False" BackgroundColor="Transparent" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                    <cards:SfCardView  HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="104"/>
@@ -1464,7 +1464,7 @@
                             </listView:SfListView.ItemTemplate>
                             <listView:SfListView.SelectedItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView  HasShadow="False" BackgroundColor="Transparent" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                    <cards:SfCardView  HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="104"/>

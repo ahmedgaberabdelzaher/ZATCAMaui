@@ -487,7 +487,7 @@
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <!--<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
-                                                        <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True" HeightRequest="108">
+                                                        <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" HeightRequest="108">
                                                             <Grid ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
                                                                 <Image x:Name="ImporterImage" Source="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.ImporterImageSource}" Aspect="AspectFill"  Grid.Row="0" />
                                                                 <Label x:Name="ImporterLabel" VerticalOptions="End" Padding="10" TextColor="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.ImporterTextColor}" Text="{x:Static custom2:AppResources.VATRImporter}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}" />
@@ -497,7 +497,7 @@
                                                             </Grid>
 
                                                         </cards:SfCardView>
-                                                        <cards:SfCardView Grid.Row="1" Grid.Column="1" HasShadow="True" HeightRequest="108">
+                                                        <cards:SfCardView Grid.Row="1" Grid.Column="1" HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" HeightRequest="108">
 
                                                             <Grid ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
                                                                 <Image x:Name="ExporterImage" Source="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.ExporterImageSource}"  Aspect="AspectFill" Grid.Row="0"/>
@@ -596,7 +596,7 @@
 
 
                                                                     <Grid Padding="5,0,5,0">
-                                                                        <cards:SfCardView  HasShadow="True" CornerRadius="3" HorizontalOptions="FillAndExpand">
+                                                                        <cards:SfCardView  HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                                             <Grid>
                                                                                 <Image Margin="0" Source="vat_tile_IbanCard_background.png" Aspect="AspectFill"  Grid.Row="0">
                                                                                 </Image>

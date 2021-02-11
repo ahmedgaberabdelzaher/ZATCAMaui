@@ -61,8 +61,8 @@
                             <ColumnDefinition Width="90*"/>
                             <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>-->
-                        <StackLayout Orientation="Horizontal" HeightRequest="72" Spacing="0">
-                                    <Image Margin="12" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                    <StackLayout Orientation="Horizontal" HeightRequest="72" Spacing="0">
+                        <Image Margin="12" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
                                Source="arrowLeftwhite"  Style="{DynamicResource BackButtonArrow}" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnBackTapped" />
@@ -71,9 +71,9 @@
                         <Label  x:Name="lblPageTitle" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="19" Text="{Binding BindingContext.PageTitle,Source={x:Reference VATRegistration}}" Style="{StaticResource SectionTitleWhiteBold}" />
 
 
-                
-                            </StackLayout>
-                   <!-- </Grid>-->
+
+                    </StackLayout>
+                    <!-- </Grid>-->
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   Padding="0,0,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
@@ -545,7 +545,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                             <!--#region Modified View for Imorter Exporter -->
 
 
-                                                            <cards:SfCardView BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                            <cards:SfCardView BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                                           Grid.Row="0" Grid.Column="0" HasShadow="True" IsEnabled="{Binding BindingContext.TaxPayerDetails.ImporterNoRB,Source={x:Reference VATRegistration}}">
                                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                     <Grid.RowDefinitions>
@@ -563,7 +563,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     </Grid.GestureRecognizers>
                                                                 </Grid>
                                                             </cards:SfCardView>
-                                                            <cards:SfCardView  BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                            <cards:SfCardView  BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                                           Grid.Row="0" Grid.Column="1" HasShadow="True" IsEnabled="{Binding BindingContext.TaxPayerDetails.ExporterNoRB,Source={x:Reference VATRegistration}}">
                                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                     <Grid.RowDefinitions>
@@ -611,7 +611,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                             </StackLayout>
                                                         </inputLayout:SfTextInputLayout>-->
                                                         <Label Text="{x:Static custom2:AppResources.VATRAttachment}" IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}" Padding="0,0,0,0" Style="{StaticResource ComponentHeaderBlackBold}"/>
-<inputLayout:SfTextInputLayout Grid.Row="1"  Margin="0,-6,0,-6" IsEnabled="{Binding BindingContext.TaxPayerDetails.ExporterrAttachmentsBtn,Source={x:Reference VATRegistration}}" IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}"
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1"  Margin="0,-6,0,-6" IsEnabled="{Binding BindingContext.TaxPayerDetails.ExporterrAttachmentsBtn,Source={x:Reference VATRegistration}}" IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}"
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             Style="{StaticResource TextInputLayout}" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" InputViewPadding="16,0,16,0">
                                                             <StackLayout Orientation="Horizontal">
@@ -683,7 +683,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                             VerticalOptions="FillAndExpand"  >
                                                                 <CollectionView.ItemTemplate>
                                                                     <DataTemplate>
-                                                                        <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                        <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                                 <Grid.RowDefinitions>
                                                                                     <RowDefinition Height="104"/>
@@ -784,7 +784,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     <ColumnDefinition Width="50*"/>
                                                                 </Grid.ColumnDefinitions>
 
-                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>
@@ -802,7 +802,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
 
-                                                                <cards:SfCardView Grid.Row="1" ShadowColor="#5d6770" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1" ShadowColor="Gray" Grid.Column="1" HasShadow="True" BackgroundColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>
@@ -839,7 +839,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     <ColumnDefinition Width="50*"/>
                                                                     <ColumnDefinition Width="50*"/>
                                                                 </Grid.ColumnDefinitions>
-                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>
@@ -857,7 +857,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
 
-                                                                <cards:SfCardView Grid.Row="1" ShadowColor="#5d6770" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1" ShadowColor="Gray" Grid.Column="1" HasShadow="True" BackgroundColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>
@@ -1022,14 +1022,14 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
 
 
                                                             </custom:CustomLabel>-->
-                                                                <custom:CustomLabel Style="{DynamicResource IsAddNewRepresentativeCheckedStyle}" VerticalOptions="CenterAndExpand">
+                                                            <custom:CustomLabel Style="{DynamicResource IsAddNewRepresentativeCheckedStyle}" VerticalOptions="CenterAndExpand">
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static custom2:AppResources.VATChangeRegistrationAddFinancialRepresentative}"  />
                                                                     </FormattedString>
                                                                 </custom:CustomLabel.FormattedText>
                                                             </custom:CustomLabel>
-                                                        
+
                                                         </StackLayout>
                                                     </StackLayout>
                                                     <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
@@ -1668,9 +1668,9 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <Frame Style="{StaticResource ComponentFrameWithRadius14}" Margin="0,24,0,0">
                                                 <StackLayout Spacing="0">
                                                     <StackLayout Style="{StaticResource ComponentStackWithHeight80}">
-   <Image Margin="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
+                                                        <Image Margin="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
-                                                
+
                                                         <Label Text="{x:Static custom2:AppResources.SalesDetails}" VerticalTextAlignment="Center" Style="{StaticResource SectionTitleBlackBold}"/>
                                                         <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Padding="0,0,16,0">
                                                             <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="CenterAndExpand"
@@ -1698,7 +1698,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <Frame Style="{StaticResource ComponentFrameWithRadius14}" Margin="0,24,0,0">
                                                 <StackLayout Spacing="0">
                                                     <StackLayout Style="{StaticResource ComponentStackWithHeight80}">
-                                               <Image Margin="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
+                                                        <Image Margin="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
                                                         <Label VerticalTextAlignment="Center" Text="{x:Static custom2:AppResources.VATRExpensesDetails}" Style="{StaticResource SectionTitleBlackBold}"/>
                                                         <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Padding="0,0,16,0">
@@ -1727,7 +1727,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <Frame Style="{StaticResource ComponentFrameWithRadius14}" Margin="0,24,0,0">
                                                 <StackLayout Spacing="0">
                                                     <StackLayout Style="{StaticResource ComponentStackWithHeight80}">
-                                             <Image Margin="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
+                                                        <Image Margin="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
                                                         <Label Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" Style="{StaticResource SectionTitleBlackBold}"/>
                                                         <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Padding="0,0,16,0" WidthRequest="70">

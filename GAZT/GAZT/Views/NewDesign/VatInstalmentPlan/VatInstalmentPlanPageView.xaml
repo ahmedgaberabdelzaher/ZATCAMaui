@@ -582,7 +582,7 @@
                             <listView:SfListView.ItemTemplate>
 
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="10"  >
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="10"  >
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                             <Image Source="vat_tile_IbanCard_background_white" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10" >
@@ -621,7 +621,7 @@
                             <listView:SfListView.SelectedItemTemplate>
 
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="10"  >
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="10"  >
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                             <Image Source="re_Tile_Background_S"  Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10" >

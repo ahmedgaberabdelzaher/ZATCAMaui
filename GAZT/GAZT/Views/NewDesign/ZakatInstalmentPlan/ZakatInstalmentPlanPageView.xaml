@@ -913,7 +913,7 @@
                                 <listView:SfListView.ItemTemplate>
 
                                     <DataTemplate>
-                                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                        <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="100">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                                 <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
@@ -929,7 +929,7 @@
                                 <listView:SfListView.SelectedItemTemplate>
 
                                     <DataTemplate>
-                                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                        <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="100">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                                 <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
@@ -1015,7 +1015,7 @@
                                       ItemsSource="{Binding ZakatAgreementOptions}"  SelectionMode="Single" SelectionBackgroundColor="Transparent" ItemTapped="Frequncy_Selected" >
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="100">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                             <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <custom:CustomLabel Text="{Binding FrequencyOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
@@ -1027,7 +1027,7 @@
                             </listView:SfListView.ItemTemplate>
                             <listView:SfListView.SelectedItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="100">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                             <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <custom:CustomLabel Text="{Binding FrequencyOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
@@ -1492,7 +1492,7 @@
                             </listView:SfListView.FooterTemplate>
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="10"  >
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="10"  >
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                             <Image Source="vat_tile_IbanCard_background_white"  Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10" >

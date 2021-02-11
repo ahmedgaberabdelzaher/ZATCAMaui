@@ -721,7 +721,7 @@
                                         </listView:SfListView.LayoutManager>
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" HeightRequest="108">
+                                                <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" HeightRequest="108">
                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
                                                         <Image Source="vat_tile_listofsignup_W.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                         <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
@@ -732,7 +732,7 @@
                                         </listView:SfListView.ItemTemplate>
                                         <listView:SfListView.SelectedItemTemplate>
                                             <DataTemplate>
-                                                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" HeightRequest="108">
+                                                <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" HeightRequest="108">
                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
                                                         <Image Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_tile_listofsignup.png"/>
                                                         <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
@@ -1161,7 +1161,7 @@
                             </listView:SfListView.LayoutManager>
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" HeightRequest="108">
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" HeightRequest="108">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
                                             <Image Source="vat_tile_listofsignup_W.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
@@ -1172,7 +1172,7 @@
                             </listView:SfListView.ItemTemplate>
                             <listView:SfListView.SelectedItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" HeightRequest="108">
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" HeightRequest="108">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
                                             <Image Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_tile_listofsignup.png"/>
                                             <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
@@ -1189,7 +1189,7 @@
                             </listView:SfListView.LayoutManager>
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" HeightRequest="108">
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" HeightRequest="108">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
                                             <Image Source="vat_tile_listofsignup_W.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
@@ -1200,7 +1200,7 @@
                             </listView:SfListView.ItemTemplate>
                             <listView:SfListView.SelectedItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" HeightRequest="108">
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" HeightRequest="108">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
                                             <Image Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_tile_listofsignup.png"/>
                                             <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
