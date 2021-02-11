@@ -39,7 +39,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             base.OnDisappearing();
             //  viewModel.ClearData();
-            viewModel.DesClaimerVisibility = false;
+//            viewModel.DesClaimerVisibility = false;
             try
             {
                 MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToReleaseTheReturn");
