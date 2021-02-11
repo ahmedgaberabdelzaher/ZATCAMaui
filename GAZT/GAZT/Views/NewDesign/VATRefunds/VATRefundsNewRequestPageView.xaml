@@ -211,7 +211,7 @@
                             </listView:SfListView.ItemTemplate>
                             <listView:SfListView.SelectedItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="136" WidthRequest="171">
+                                    <cards:SfCardView HasShadow="False"  CornerRadius="20" HeightRequest="136" WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="30*"/>
