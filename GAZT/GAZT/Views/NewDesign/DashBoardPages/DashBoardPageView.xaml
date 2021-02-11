@@ -725,7 +725,7 @@
                                                                                         </custom:CustomLabel.FormattedText>
                                                                                     </custom:CustomLabel>
 
-                                                                                    <custom:CustomLabel Text="Next Payment Due" 
+                                                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DashBoardNextPaymentDue}"  
                                                                                                         Style="{StaticResource 
                                                                                         BodyLabelBlackMedium}" Margin="0,5,0,-7" 
                                                                                                         Padding="0"></custom:CustomLabel>
@@ -917,11 +917,10 @@
                                 <custom:CustomLabel FontSize="16" Style="{StaticResource 
                                                         CaptionLabelWhite}">
                                     <custom:CustomLabel.FormattedText>
-
                                         <FormattedString>
-                                            <Span Text="Well Done!" TextColor="{StaticResource SuccessColor}"/>
+                                            <Span Text="{x:Static ResourceManager:AppResources.DashBoardWellDone}" TextColor="{StaticResource SuccessColor}"/>
                                             <Span Text=" "/>
-                                            <Span Text="No Tax Obligations Pending" ></Span>
+                                            <Span Text="{x:Static ResourceManager:AppResources.DashBoardNoTaxObligationsPending}"></Span>
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>

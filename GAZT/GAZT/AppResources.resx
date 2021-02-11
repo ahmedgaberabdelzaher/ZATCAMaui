@@ -8826,4 +8826,16 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="tryAgain" xml:space="preserve">
     <value>Try Again</value>
   </data>
+  <data name="ASStatementDetails" xml:space="preserve">
+    <value>Statement Details</value>
+  </data>
+  <data name="DashBoardNextPaymentDue" xml:space="preserve">
+    <value>Next Payment Due</value>
+  </data>
+  <data name="DashBoardNoTaxObligationsPending" xml:space="preserve">
+    <value>No Tax Obligations Pending</value>
+  </data>
+  <data name="DashBoardWellDone" xml:space="preserve">
+    <value>Well Done!</value>
+  </data>
 </root>

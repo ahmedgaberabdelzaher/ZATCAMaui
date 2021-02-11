@@ -18,6 +18,7 @@ using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using static EGAZT.ViewModel.NewDesignViewModel.GAZTNewDesignDashBoardPageViewModel;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.DashBoardPages
 {
@@ -1222,16 +1223,26 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 btn_frameToolbar.IsVisible = true;
             }
 
+            var screenWidth = Application.Current.MainPage.Width;
+            var btnWidth = btn_frameToolbar.Width;
+            var xPosition = screenWidth - btnWidth - 20;
+            var scrollView = sender as Xamarin.Forms.ScrollView;
+            var yPostion = e.ScrollY;
+
             if (e.ScrollY > 120)
             {
                 await part.FadeTo(1, 600);
                 await btn_frameToolbar.FadeTo(0, 600);
-                //  await btn_frameToolbar.TranslateTo(100, 0, 200, Easing.CubicInOut);
+                await btn_frameToolbar.TranslateTo(xPosition - 10, -200, 200);
+
+                //                  await btn_frameToolbar.TranslateTo(100, 0, 200, Easing.CubicInOut);
             }
             else
             {
                 await part.FadeTo(0, 600);
                 await btn_frameToolbar.FadeTo(1, 600);
+                await btn_frameToolbar.TranslateTo(scrollView.X, scrollView.Y, 200);
+
                 //await btn_frameToolbar.TranslateTo(0, 0, 200, Easing.CubicInOut);
             }
         }
