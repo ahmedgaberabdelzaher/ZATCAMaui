@@ -1185,7 +1185,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         private void ApplyFilter()
         {
-            if (HeaderSet != null)
+            if (HeaderSet == null)
             {
                 _navigationService.GoBack();
                 return;
@@ -1267,7 +1267,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             if (FromTxAmount != "" && ToTxAmount != "")
             {
                 var filterItems = statementsLineItems;
-                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => Convert.ToDouble(p.BetrhAmount) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.Betrh) <= Convert.ToDouble(ToTxAmount)));
+                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => Convert.ToDouble(p.Betrh) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.Betrh) <= Convert.ToDouble(ToTxAmount)));
             }
 
             StatementsLineItems = statementsLineItems;
