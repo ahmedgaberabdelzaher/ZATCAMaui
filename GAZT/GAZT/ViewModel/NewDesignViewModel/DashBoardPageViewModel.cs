@@ -33,6 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public string selectedFbNum = "";
         public string selectedSadadNo = "";
+        public string selectedTaxablePeriod = "";
         public string selectedAmount = "";
 
         private DashBoardModelTabEnum _currentTab = DashBoardModelTabEnum.DashBoard;
@@ -1520,6 +1521,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
 
             /*_navigationService.GoBack();*/
+            _navigationService.NavigateTo(App.MyBillsSuccessPageView, selectedSadadNo);
 
         }
 
@@ -1683,8 +1685,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
 
                         if (response.d.Success)
-                        {
-
+                        { 
+                            _navigationService.NavigateTo(App.MyBillsSuccessPageView, response.d.PayRef);
                         }
                         else
                         {

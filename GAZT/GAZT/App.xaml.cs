@@ -39,6 +39,7 @@ namespace EGAZT
         public static string GAZTNewDesignVATReturnUpdatedUIPageView = "GAZTNewDesignVATReturnUpdatedUIPageView";
         public static string GAZTNewDesignDashBoardPageView = "GAZTNewDesignDashBoardPageView";
         public static string GAZTNewDesignMyBillsPageView = "GAZTNewDesignMyBillsPageView";
+        public static string MyBillsSuccessPageView = "MyBillsSuccessPageView";
         public static string GAZTNewDesignMyReturnsNewPageView = "GAZTNewDesignMyReturnsNewPageView";
         public static string GAZTNewDesignOnBoardingAnimationPageView = "GAZTNewDesignOnBoardingAnimationPageView";
         public static string GAZTNewDesignStyleTestUIPageView = "GAZTNewDesignStyleTestUIPageView";

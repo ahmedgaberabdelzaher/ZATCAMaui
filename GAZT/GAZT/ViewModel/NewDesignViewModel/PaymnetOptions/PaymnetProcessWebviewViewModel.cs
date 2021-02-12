@@ -133,8 +133,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, PaymentData.d.PayRef);
                                 } else if(PaymentType == 2) {
                                     
+                                    _navigationService.NavigateTo(App.MyBillsSuccessPageView, PaymentData.d.PayRef);
+
                                     //_navigationService.GoBack();
-                                    var _navigation = Application.Current.MainPage.Navigation;
+                                    /*var _navigation = Application.Current.MainPage.Navigation;
                                     foreach (var item in _navigation.NavigationStack)
                                     {
                                         if (item.GetType().Name == App.GAZTNewDesignMyBillsPageView)
@@ -151,7 +153,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             break;
                                         }
                                     }
-                                    _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                                    _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);*/
                                 }
 
                             });

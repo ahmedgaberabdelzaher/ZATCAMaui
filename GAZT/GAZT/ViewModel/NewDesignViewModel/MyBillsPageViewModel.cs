@@ -27,12 +27,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class GAZTNewDesignMyBillsPageViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
+        public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
         public string selectedFbNum = "";
         public string selectedSadadNo = "";
         public string selectedAmount = "";
+        public string selectedTaxablePeriod = "";
 
         #region Property
         public List<ReturnTypes> _TaxTypeForFilter = null;
@@ -50,6 +51,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TaxTypeForFilter");
             }
         } 
+        
+        private string _referenceNumber = "";
+        public string ReferenceNumber
+        {
+            get
+            {
+                return _referenceNumber;
+            }
+            set
+            {
+                if (_referenceNumber == value) return;
+
+                _referenceNumber = value;
+                RaisePropertyChanged("ReferenceNumber");
+            }
+        }
+
+        private string _taxablePeriod = "";
+        public string TaxablePeriod
+        {
+            get
+            {
+                return _taxablePeriod;
+            }
+            set
+            {
+                if (_taxablePeriod == value) return;
+
+                _taxablePeriod = value;
+                RaisePropertyChanged("TaxablePeriod");
+            }
+        }
         
         public ChipModel _selectedChipFilterItem=null;
         public ChipModel SelectedChipFilterItem
@@ -792,8 +825,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (response.d.Success)
                         {
 
+                            _navigationService.NavigateTo(App.MyBillsSuccessPageView, response.d.PayRef);
 
-                            _navigationService.GoBack();
+                            //_navigationService.GoBack();
                         }
                         else
                         {
@@ -864,8 +898,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async Task SadadPaymentSelected()
         {
+            _navigationService.NavigateTo(App.MyBillsSuccessPageView, selectedSadadNo);
 
-            _navigationService.GoBack();
+            //_navigationService.GoBack();
 
         }
     }

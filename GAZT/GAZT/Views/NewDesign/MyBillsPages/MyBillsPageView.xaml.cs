@@ -331,7 +331,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 viewModel.selectedFbNum = BModel.Fbnum;
                 viewModel.selectedSadadNo = BModel.VTRE2;
                 viewModel.selectedAmount = BModel.TestDueAmount;
-
+                viewModel.selectedTaxablePeriod = "";
               //  PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
 
                 //viewModel.DoValidatePayment(BModel.Fbnum,BModel.TestDueAmount);

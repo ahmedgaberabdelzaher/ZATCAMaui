@@ -19,7 +19,7 @@ namespace EGAZT {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class AppResources {
@@ -8652,6 +8652,24 @@ namespace EGAZT {
         public static string Sadad {
             get {
                 return ResourceManager.GetString("Sadad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SADAD Bill Payment.
+        /// </summary>
+        public static string SADADBillPayment {
+            get {
+                return ResourceManager.GetString("SADADBillPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The payment of your SADAD bill has been completed successfully.
+        /// </summary>
+        public static string SADADBillPaymentSuccessMessage {
+            get {
+                return ResourceManager.GetString("SADADBillPaymentSuccessMessage", resourceCulture);
             }
         }
         
