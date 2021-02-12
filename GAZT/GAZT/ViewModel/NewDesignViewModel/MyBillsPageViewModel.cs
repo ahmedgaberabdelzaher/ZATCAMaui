@@ -202,7 +202,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         decimal positiveMoney = d;
                         positiveMoney.ToString(format);  //will return $24,508,975.94
                         string TestDueAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
-                        AmountLabel = TestDueAmount + " "+AppResources.ZSAR ;
+
+
+                        AmountLabel = TestDueAmount + " "+AppResources.ZSAR;
                  
                         IsListVisible = true;
                         isNoDataLableVisible = false;
@@ -219,7 +221,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _amountLabel= " - ";
+
+        private string _AmountTitle = AppResources.DashBoardMyTaxObligations;
+        public string AmountTitle
+        {
+            get
+            {
+                return _AmountTitle;
+            }
+            set
+            {
+                if (_AmountTitle == value) return;
+
+                _AmountTitle = value;
+              
+             
+                RaisePropertyChanged("AmountTitle");
+            }
+        }
+
+        private string _amountLabel = " - ";
         public string AmountLabel
         {
             get
@@ -231,12 +252,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_amountLabel == value) return;
 
                 _amountLabel = value;
-              
-             
+
+
                 RaisePropertyChanged("AmountLabel");
             }
         }
-        
+
         private bool _isLoading = false;
         public bool IsLoading
         {

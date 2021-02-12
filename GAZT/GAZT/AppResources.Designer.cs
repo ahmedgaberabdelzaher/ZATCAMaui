@@ -79,6 +79,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Statement Amount.
+        /// </summary>
+        public static string AccountStatementsDetailsStatementsAmount {
+            get {
+                return ResourceManager.GetString("AccountStatementsDetailsStatementsAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Balance.
         /// </summary>
         public static string AccountStatementTotalBalance {
@@ -5913,6 +5922,15 @@ namespace EGAZT {
         public static string InvaliedCaptcha {
             get {
                 return ResourceManager.GetString("InvaliedCaptcha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice Status.
+        /// </summary>
+        public static string InvoiceStatus {
+            get {
+                return ResourceManager.GetString("InvoiceStatus", resourceCulture);
             }
         }
         

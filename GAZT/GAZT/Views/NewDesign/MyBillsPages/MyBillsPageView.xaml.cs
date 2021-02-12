@@ -240,6 +240,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                         ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#fbf4e9");
                     }
                 });
+                viewModel.AmountTitle = AppResources.MyBillsTotalUnPaidAmount;
                 viewModel.SelectedChipFilterItem = selectedReturntype;
             }
             catch (Exception ex)

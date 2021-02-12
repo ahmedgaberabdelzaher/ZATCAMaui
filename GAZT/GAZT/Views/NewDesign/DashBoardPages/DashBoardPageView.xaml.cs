@@ -44,6 +44,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
+                viewModel.MyObligationAmount = 0.0;
+                viewModel.IsMyObligationsClear = false;
+                viewModel.MenuViewVisible = false;
+                InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
+                {
+                    ItemSpacing = 10
+                };
+                
                 SetLTR();
             }
             catch (Exception ex)
@@ -1233,7 +1241,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 await part.FadeTo(1, 600);
                 await btn_frameToolbar.FadeTo(0, 600);
-                await btn_frameToolbar.TranslateTo(xPosition - 10, -200, 400);
+                await btn_frameToolbar.TranslateTo(xPosition - 10, -100, 400);
 
                 //                  await btn_frameToolbar.TranslateTo(100, 0, 200, Easing.CubicInOut);
             }

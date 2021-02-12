@@ -1,4 +1,5 @@
 ﻿    using GAZT.Manager;
+using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using Xamarin.Forms.Internals;
@@ -115,7 +116,6 @@ namespace EGAZT.Models
                     positiveMoney.ToString(format);  //will return $24,508,975.94
                     TotalPaidAmt = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
 
-                  
                 }
             }
         }
@@ -292,6 +292,9 @@ namespace EGAZT.Models
                 }
             }
         }
+        [JsonIgnore]
+        public string StatusText { get; set; }
+
         public string FormatedFaedn { get; set; }
         private string _status = string.Empty;
         public string Status
@@ -307,22 +310,26 @@ namespace EGAZT.Models
                 {
                     StatusImage = "ic_check_circle.png";
                     Colorcode = "#006450";
-
+                    StatusText = AppResources.Paid;
 
                 }
                 else if (_status == Enum.GetName(typeof(BillStatus), 1))
                 {
                     StatusImage = "ic_loading.png";
                     Colorcode = "#D99A29";
+                    StatusText = AppResources.PartiallyPaid;
                 }
                 else if (_status == Enum.GetName(typeof(BillStatus), 2))
                 {
                     StatusImage = "ic_money.png";
                     Colorcode = " #AA0C19";
-
+                    StatusText = AppResources.UnPaid;
                 }
             }
         }
+
+
+
 
         //public string _cal_typ = String.Empty;
         //public string CalTyp

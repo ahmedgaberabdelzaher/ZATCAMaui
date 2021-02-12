@@ -43,7 +43,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource SectionTitleWhiteBold}" 
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}" Style="{StaticResource SectionTitleWhiteBold}" 
                                HorizontalOptions="Center" VerticalOptions="Center"/>
 
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"
@@ -95,7 +95,7 @@
                 <custom:CustomLabel Padding="0,-16,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="Start" VerticalTextAlignment="Start">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static ResourceManager:AppResources.MyBillsTotalUnPaidAmount}" Style="{StaticResource CaptionLabelGrey}" ></Span>
+                            <Span Text="{Binding AmountTitle}" Style="{StaticResource CaptionLabelGrey}" ></Span>
                             <Span Text="&#160;" Style="{StaticResource SectionTitleBlackBold}"></Span>
                             <Span Text="{Binding AmountLabel}"  Style="{StaticResource CaptionLabelGrey}"></Span>
                         </FormattedString>
@@ -255,8 +255,8 @@
                                             </StackLayout>
 
                                             <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5"  Margin="0,0,0,14">
-                                                <Label Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Text="{Binding VTRE2}" Style="{StaticResource ValueLabelBlack}" />
+                                                <Label Text="{x:Static ResourceManager:AppResources.InvoiceStatus}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{Binding StatusText}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
 
 

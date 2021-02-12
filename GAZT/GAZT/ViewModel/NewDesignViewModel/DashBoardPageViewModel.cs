@@ -444,7 +444,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ApplePayStatus");
             }
         }
-        
+
         public string ApplePayTokenData = "";
 
         private bool _ifnotRegInVATAndZakat;
@@ -1418,6 +1418,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("MyObligationAmount");
             }
         }
+        private string _MyObligationAmountCommas = "";
+        public string MyObligationAmountCommas
+        {
+            get
+            {
+                return _MyObligationAmountCommas;
+            }
+            set
+            {
+                _MyObligationAmountCommas = value;
+                RaisePropertyChanged("MyObligationAmountCommas");
+            }
+        }
+
 
         private bool _IsMyObligationsClear = false;
         public bool IsMyObligationsClear
@@ -1475,6 +1489,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             LiveChatVisible = false;
             AccountStatementVisible = false;
             IsToolbarTaxVisible = true;
+
+            MyObligationAmount = 0.0;
 
             TaxpayerName = string.Empty;
             HomeViewVisible = true;
@@ -1915,6 +1931,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private async Task GetBillsAndReturns()
         {
+            MyObligationAmount = 0.0;
             var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
             var pendingBills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
             List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
@@ -1952,7 +1969,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsBodyMyTaxVisible = false;
             }
 
-            var MyObligationAmount1 = string.Format("{0:N2}", MyObligationAmount);
+            MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
 
             Device.BeginInvokeOnMainThread(() => Bills = temp1);
             PendingBills = pendingBills;
@@ -1978,14 +1995,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
 
 
-            /*   var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
-               List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-               System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
-               foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
-               {
-                   temp2.Add(ee);
-               }
-               Device.BeginInvokeOnMainThread(() => Returns = temp2);*/
+            var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
+            List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+            System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
+            foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
+            {
+                temp2.Add(ee);
+            }
+            Device.BeginInvokeOnMainThread(() => Returns = temp2);
 
         }
         private async Task getDashboardInstalmentPlan()
@@ -2018,37 +2035,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 var doughnutSeries = new DoughnutSeries();
 
                 doughnutSeries.CircularCoefficient = 0.99;
-                doughnutSeries.DoughnutCoefficient = 0.75;
+                doughnutSeries.DoughnutCoefficient = 0.85;
                 doughnutSeries.ColorModel.Palette = ChartColorPalette.Custom;
                 doughnutSeries.ColorModel.CustomBrushes = ColorsChild;
                 doughnutSeries.ItemsSource = chartData;
                 singleItem.Series = new ChartSeriesCollection() { doughnutSeries };
 
 
-               /* try {
+                /* try {
 
-                    if (singleItem.Bldat!= null)
-                    {
-                        DateTime dateStart = new DateTime();
-                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                        string apiDate = @"""" + singleItem.Bldat + @"""";
-                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                     if (singleItem.Bldat!= null)
+                     {
+                         DateTime dateStart = new DateTime();
+                         CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                         string apiDate = @"""" + singleItem.Bldat + @"""";
+                         dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
 
-                        GregorianCalendar hjCalendar = new GregorianCalendar();
-                        int year = hjCalendar.GetYear(dateStart);
-                        int month = hjCalendar.GetMonth(dateStart);
-                        int day = hjCalendar.GetDayOfMonth(dateStart);
+                         GregorianCalendar hjCalendar = new GregorianCalendar();
+                         int year = hjCalendar.GetYear(dateStart);
+                         int month = hjCalendar.GetMonth(dateStart);
+                         int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                        string dateStr = string.Format("{0:00} {1}", day, UtilityManager.GetShortMonthName(""+month));
+                         string dateStr = string.Format("{0:00} {1}", day, UtilityManager.GetShortMonthName(""+month));
 
-                        singleItem.nextPaymentDue = dateStr;
+                         singleItem.nextPaymentDue = dateStr;
 
-                    }
-                }
-                catch(Exception e)
-                {
+                     }
+                 }
+                 catch(Exception e)
+                 {
 
-                }*/
+                 }*/
 
                 items.Add(singleItem);
 

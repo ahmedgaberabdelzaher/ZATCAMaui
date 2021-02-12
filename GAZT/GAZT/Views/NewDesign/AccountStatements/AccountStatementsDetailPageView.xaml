@@ -176,7 +176,7 @@
                 <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"  x:Name="CardAmount" CornerRadius="20" Opacity=".2" >
                 </Frame>
                 <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="10">
-                    <custom:CustomLabel Text="Statement Amount" Style="{StaticResource CaptionLabelGrey}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"></custom:CustomLabel>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.AccountStatementsDetailsStatementsAmount}" Style="{StaticResource CaptionLabelGrey}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"></custom:CustomLabel>
                     <custom:CustomLabel x:Name="LableAmount" Text="" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"></custom:CustomLabel>
                 </StackLayout>
             </Grid>

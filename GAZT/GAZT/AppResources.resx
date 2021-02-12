@@ -8807,7 +8807,7 @@ I acknowledge that the above bank account information is correct and assume full
   </data>
   <data name="DashBoardPendingBills" xml:space="preserve">
     <value>Pending Bills</value>
-  </data> 
+  </data>
   <data name="NoOpenLiabilityToBePaid" xml:space="preserve">
     <value>There is no open liability to be paid against this declaration</value>
   </data>
@@ -8837,5 +8837,11 @@ I acknowledge that the above bank account information is correct and assume full
   </data>
   <data name="DashBoardWellDone" xml:space="preserve">
     <value>Well Done!</value>
+  </data>
+  <data name="AccountStatementsDetailsStatementsAmount" xml:space="preserve">
+    <value>Statement Amount</value>
+  </data>
+  <data name="InvoiceStatus" xml:space="preserve">
+    <value>Invoice Status</value>
   </data>
 </root>
