@@ -99,7 +99,7 @@
 
     <ContentPage.Content>
 
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <Grid>
 
                 <Grid.RowDefinitions>
