@@ -26,6 +26,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         private double width = 0;
         private double height = 0;
         WebView webView;
+        private bool isLoginLoaded = false;
 
         public PaymentProcessWebview(int type)
         {
@@ -38,49 +39,18 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
             viewModel.PaymentType = type;
             //WebviewGrid.LowerChild(webView);
+          
+            //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
+            
+        }
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
             webView = new WebView();
 
-            CookieContainer cookieContainer = new CookieContainer();
-
-            try
-            {
-                //foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
-                //{
-                //    Cookie cookie = new Cookie();
-
-                //    if (Device.RuntimePlatform == Device.iOS)
-                //    {
-                //        if (cookieModel.Domain.StartsWith(".") == false)
-                //        {
-                //            cookie.Domain = "." + cookieModel.Domain;
-                //        }
-                //        else
-                //        {
-                //            cookie.Domain = cookieModel.Domain;
-                //        }
-                //    }
-                //    else if (Device.RuntimePlatform == Device.Android)
-                //    {
-                //        cookie.Domain = Constants.PartialDomainUrlForCookies;
-                //    }
-
-                //    cookie.Comment = cookieModel.Comment;
-                //    cookie.Version = cookieModel.Version;
-                //    cookie.HttpOnly = cookieModel.IsHttpOnly;
-                //    cookie.Path = cookieModel.Path;
-                //    cookie.Name = cookieModel.CName;
-                //    cookie.Value = cookieModel.CValue;
-                //    cookie.Secure = cookieModel.Secure;
-                //    cookieContainer.Add(cookie);
-                //}
-
-                //App.httpClientHandler.CookieContainer = cookieContainer;
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
 
 
 
@@ -95,38 +65,146 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                 platform = "C3";
             }
 
+            string paymentUrl = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
 
 
-            webView.Source = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
+            CookieContainer cookieContainer = new CookieContainer();
 
-            webView.Cookies = App.httpClientHandler.CookieContainer;
+
+            try
+            {
+                foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                {
+                    Cookie cookie = new Cookie();
+                    cookie.Domain = Constants.PartialDomainUrlForCookies;
+                    cookie.Comment = cookieModel.Comment;
+                    cookie.Version = cookieModel.Version;
+                    cookie.HttpOnly = cookieModel.IsHttpOnly;
+                    cookie.Path = cookieModel.Path;
+                    cookie.Name = cookieModel.CName;
+                    cookie.Value = cookieModel.CValue;
+                    cookie.Secure = cookieModel.Secure;
+                    cookieContainer.Add(cookie);
+                }
+
+                
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            viewModel.IsLoading = true;
+            Uri uri = new Uri(paymentUrl, UriKind.RelativeOrAbsolute);
+            webView.Cookies = cookieContainer;
+            webView.Source = new UrlWebViewSource { Url = uri.ToString() };
+
+
+
+            //webView.Source = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
+
+
+            isLoginLoaded = false;
+
+
             webView.Navigated += OnNavigated;
             webView.Navigating += OnNavigating;
 
             WebviewGrid.Children.Add(webView, 0, 0);
             WebviewGrid.LowerChild(webView);
-            //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
-            
+
         }
 
-
-        protected override void OnAppearing()
+        protected override void OnDisappearing()
         {
-            base.OnAppearing();
-        
-            
+            base.OnDisappearing();
 
+            viewModel.IsLoading = false;
+
+            WebviewGrid.Children.Remove(webView);
         }
 
         private void OnNavigated(object sender, WebNavigatedEventArgs e)
         {
-            viewModel.IsLoading = false;
+           
+
+            if (isLoginLoaded) {
+
+
+                if (webView != null)
+                    WebviewGrid.Children.Remove(webView);
+
+                webView = new WebView();
+
+
+                var platform = "";
+
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    platform = "C4";
+                }
+                else if (Device.RuntimePlatform == Device.Android)
+                {
+                    platform = "C3";
+                }
+
+                string paymentUrl = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
+
+
+                CookieContainer cookieContainer = new CookieContainer();
+
+
+                try
+                {
+                    foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                    {
+                        Cookie cookie = new Cookie();
+                        cookie.Domain = Constants.PartialDomainUrlForCookies;
+                        cookie.Comment = cookieModel.Comment;
+                        cookie.Version = cookieModel.Version;
+                        cookie.HttpOnly = cookieModel.IsHttpOnly;
+                        cookie.Path = cookieModel.Path;
+                        cookie.Name = cookieModel.CName;
+                        cookie.Value = cookieModel.CValue;
+                        cookie.Secure = cookieModel.Secure;
+                        cookieContainer.Add(cookie);
+                    }
+
+
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+
+                Uri uri = new Uri(paymentUrl, UriKind.RelativeOrAbsolute);
+                webView.Cookies = cookieContainer;
+                webView.Source = new UrlWebViewSource { Url = uri.ToString() };
+                webView.Navigated += OnNavigated;
+                webView.Navigating += OnNavigating;
+
+                WebviewGrid.Children.Add(webView, 0, 0);
+                WebviewGrid.LowerChild(webView);
+                isLoginLoaded = false;
+
+                viewModel.IsLoading = true;
+            }
+            else {
+                viewModel.IsLoading = false;
+            }
+
+
         }
         protected async void OnNavigating(object sender, WebNavigatingEventArgs e)
         {
             Console.WriteLine("WebViewURL: " + e.Url);
 
             //viewModel.pushSomething();
+
+            isLoginLoaded = false;
 
             if (e.Url.Contains("http://bank/?IsPmtSts"))
             {
@@ -139,13 +217,20 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                     webView.IsVisible = false;
                     viewModel.IsLoading = true;
 
+
+
                     await viewModel.UpdateMadaPaymentDetails(responseGUID);
 
                 }
 
             }
+            else if (e.Url.Contains(Constants.DomainUrlForCookies)) {
+
+                isLoginLoaded = true;
+                webView.IsVisible = false;
+            }
+
             
-            viewModel.IsLoading = false;
         }
 
 
