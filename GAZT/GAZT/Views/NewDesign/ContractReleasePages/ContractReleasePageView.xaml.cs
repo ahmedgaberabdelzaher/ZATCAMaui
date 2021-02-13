@@ -35,9 +35,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             SetPickerFont();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
+           
 
             viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
@@ -50,28 +48,23 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 await GetContractReleaseData();
 
             });
+
             viewModel.showInstructionDialog();
 
             viewModel.contractReleaseInterface = this;
 
             try
             {
+                viewModel.PopulateDataInChips();
 
-                Task.Run(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    viewModel.PopulateDataInChips();
-
+                    ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType == AppResources.NDGregorian).FirstOrDefault();
+                    viewModel.IsHijriCal = false;
                 });
-                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType == AppResources.NDGregorian).FirstOrDefault();
-                viewModel.IsHijriCal = false;
-
-
-
             }
             catch (Exception)
             {
-
-
 
             }
 
@@ -183,7 +176,9 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
+
+
+            Device.BeginInvokeOnMainThread(()=>this.Padding = safeInsets);
 
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem",
                 (sender, arg) =>
@@ -291,6 +286,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
         public void setDateFormatFirstTime()
         {
+            Device.BeginInvokeOnMainThread(() => { 
             if (viewModel.IsHijriCal)
             {
                 ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[1];
@@ -299,6 +295,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
                 ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[0];
             }
+            });
         }
         private void HandleAmountReleaseTextChange(object sender, TextChangedEventArgs e)
         {

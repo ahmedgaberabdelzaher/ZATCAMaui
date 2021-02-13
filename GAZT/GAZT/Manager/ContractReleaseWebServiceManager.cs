@@ -193,8 +193,8 @@ namespace EGAZT.Manager
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
+                HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                _contractReleasesubmitResponse = await res.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(_contractReleasesubmitResponse))
                 {
                     ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_contractReleasesubmitResponse);
