@@ -44,7 +44,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             viewModel.TPFromDate = "";
             viewModel.TPToDate = "";
             viewModel.SetDefaultDate();
-            viewModel.IsHijriCal = (viewModel.HeaderSet.D.CalType == "G");
+            viewModel.IsHijriCal = (viewModel.HeaderSet.D.CalType != "G");
 
         }
         
