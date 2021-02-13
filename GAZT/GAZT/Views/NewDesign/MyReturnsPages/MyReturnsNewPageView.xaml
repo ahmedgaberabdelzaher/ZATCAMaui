@@ -87,15 +87,31 @@
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
-                            <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
-                            </custom:CustomLabel>
+                            <Label HorizontalTextAlignment="Start" Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" HorizontalOptions="StartAndExpand"
+                                   TextColor="{StaticResource NeutralBlack}"
+                                   FontFamily="{StaticResource SSTArBold}"
+
+                               FontSize="28" FontAttributes="Bold">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="btn_Clicked">
+
+                                    </TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
 
                             <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Center" VerticalOptions="Center">
-                           
-                            </Image>
+                                 <Image.Margin>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="iOS" Value="5,8,5,0"/>
+                                        <On Platform="Android" Value="5,10,5,0"/>
+                                    </OnPlatform>
+                                 </Image.Margin>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="btn_Clicked">
 
-                            <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
-                            </custom:CustomButton>
+                                    </TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
 
                             <syncfusion:SfPicker FlowDirection="RightToLeft"   x:Name="TaxTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" SelectedItemFontSize="15"

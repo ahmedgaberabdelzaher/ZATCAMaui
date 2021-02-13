@@ -38,15 +38,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override  void OnAppearing()
         {
             base.OnAppearing();
-           
-            try
-            {
-               // await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
-            }
-            catch(Exception)
-            {
 
-            }
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
         }
 
         private void SetLTR()

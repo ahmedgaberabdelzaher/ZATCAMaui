@@ -610,7 +610,7 @@
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" IsVisible="{Binding DisplayCompleteDetailsLabel}"/>
                 <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
             </StackLayout>
-            <Grid Grid.Row="2" Padding="20,15" Margin="0,20,0,0" BackgroundColor="White">
+            <Grid Grid.Row="2" Padding="20,0,20,35  " Margin="0,0,0,0" BackgroundColor="White">
                 <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{x:Static ResourceManager:AppResources.ZZNext}" Command="{Binding OnNextButtonClick}" />
             </Grid>
             <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"

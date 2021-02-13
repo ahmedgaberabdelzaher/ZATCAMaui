@@ -536,6 +536,8 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TaxpayerCorrespondancePageViewModel>();
+                    SimpleIoc.Default.Register<TaxpayerCorrespondancePageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxpayerCorrespondancePageViewModel>();
                 }
                 catch (Exception )

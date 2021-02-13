@@ -1342,7 +1342,7 @@
                             <Image Source="grey_search.png"/>
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
-                    <CollectionView VerticalOptions="FillAndExpand" ItemsSource="{Binding SearchableOutletData}" HorizontalOptions="FillAndExpand" SelectionMode="None" Margin="0,40,0,0" VerticalScrollBarVisibility="Never">
+                    <CollectionView VerticalOptions="FillAndExpand" ItemsSource="{Binding SearchableOutletData}" HorizontalOptions="FillAndExpand" SelectionMode="None" Margin="0,60,0,0" VerticalScrollBarVisibility="Never">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                         </CollectionView.ItemsLayout>

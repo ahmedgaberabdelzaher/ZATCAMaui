@@ -240,6 +240,7 @@
     <BundleResource Include="Resources\vat_user_summary%403x.png" />
     <BundleResource Include="Resources\ChartBar%403x.png" />
     <BundleResource Include="Resources\ic_GAZT_Logo_Text.png" />
+    <BundleResource Include="Resources\ic_star_180.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
