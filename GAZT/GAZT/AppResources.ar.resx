@@ -2833,7 +2833,7 @@
     <comment>VAT Real Estate Service</comment>
   </data>
 	<data name="ZZIBANisincorrect" xml:space="preserve">
-    <value>إدخال غير صالحَ</value>
+    <value>إدخال غير صحيح</value>
     <comment>VAT Declaration</comment>
   </data>
 	<data name="ZZPleaseretainthisnumberforfuturereferenceandcommunucation" xml:space="preserve">
