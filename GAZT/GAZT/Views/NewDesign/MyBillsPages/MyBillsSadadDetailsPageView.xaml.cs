@@ -26,7 +26,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         {
             InitializeComponent();
             this.isDashboard = isDashboard;
-            if (isDashboard)
+            if (!isDashboard)
             {
                 viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
                 viewModel.ReferenceNumber = viewModel.selectedSadadNo;
@@ -60,7 +60,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDReferenceNumber + " " + text));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.SADADNumber + " " + text));
 
                 // await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
             }   
@@ -68,7 +68,15 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
         private void DoneClicked(object sender, EventArgs e)
         {
-            viewModel._navigationService.GoBack();
+            if (isDashboard)
+            {
+                _dashBoardPageViewModel._navigationService.GoBack();
+            }
+            else
+            {
+                viewModel._navigationService.GoBack();    
+            }
+            //viewModel._navigationService.GoBack();
         }
         
         protected override void OnAppearing()

@@ -52,6 +52,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
         
+        private string _taxablePeriod = "";
+        public string TaxablePeriod
+        {
+            get
+            {
+                return _taxablePeriod;
+            }
+            set
+            {
+                if (_taxablePeriod == value) return;
+
+                _taxablePeriod = value;
+                RaisePropertyChanged("TaxablePeriod");
+            }
+        }
+        
         private string _referenceNumber = "";
         public string ReferenceNumber
         {

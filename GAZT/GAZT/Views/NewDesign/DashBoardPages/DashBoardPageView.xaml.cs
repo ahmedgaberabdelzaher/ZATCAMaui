@@ -1328,7 +1328,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.selectedSadadNo = BModel.Gpartz;
                 viewModel.selectedAmount = BModel.Amount;
 
-                viewModel.selectedTaxablePeriod = "";
+                viewModel.selectedTaxablePeriod = BModel.TaxPeriod;
             }
 
         }

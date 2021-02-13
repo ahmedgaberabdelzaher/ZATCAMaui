@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Rg.Plugins.Popup.Services;
@@ -17,13 +18,41 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
     public partial class MyBillsSuccessPageView : ContentPage
     {
         GAZTNewDesignMyBillsPageViewModel viewModel;
+        GAZTNewDesignDashBoardPageViewModel _dashBoardPageViewModel;
+        private bool isDashboard = true;
+        private String refNum;
         public MyBillsSuccessPageView(String refNum)
         {
             InitializeComponent();
-            viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
+            this.refNum = refNum;
+            
+            foreach (var item in Application.Current.MainPage.Navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.GAZTNewDesignMyBillsPageView)
+                {
+                    isDashboard = false;
+                    break;
+                }
+            }
+            
+            if (!isDashboard)
+            {
+                viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
+                viewModel.ReferenceNumber = this.refNum;
+                viewModel.TaxablePeriod = viewModel.selectedTaxablePeriod;
+                this.BindingContext = viewModel;    
+            }
+            else
+            {
+                _dashBoardPageViewModel = App.Locator.GAZTNewDesignDashBoardPageView;
+                _dashBoardPageViewModel.ReferenceNumber = this.refNum;
+                _dashBoardPageViewModel.TaxablePeriod = _dashBoardPageViewModel.selectedTaxablePeriod;
+                this.BindingContext = _dashBoardPageViewModel;
+            }
+            /*viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
             viewModel.ReferenceNumber = refNum;
             viewModel.TaxablePeriod = "";
-            this.BindingContext = viewModel;
+            this.BindingContext = viewModel;*/
             SetLTR();
             ChangeAeroIcon();
         }
