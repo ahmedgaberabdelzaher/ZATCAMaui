@@ -97,7 +97,7 @@
                                             <custom:CustomLabel  Margin="0,-8,0,0" Padding="0" FontSize="20">
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{TemplateBinding BindingContext.MyObligationAmount}" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="20"></Span>
+                                                        <Span Text="{TemplateBinding BindingContext.MyObligationAmountCommas}" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="20"></Span>
                                                         <Span Text=" "/>
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" Style="{StaticResource CaptionLabelWhite}" FontSize="16"></Span>
                                                     </FormattedString>
@@ -139,7 +139,7 @@
             </Grid.RowDefinitions>
             <Image Aspect="AspectFill" Margin="0,-50,0,0" x:Name="BGImageLogin" BackgroundColor="Transparent" Source="partials_background.png" />
             <ScrollView Scrolled="ScrollView_Scrolled">
-                <Grid RowSpacing="0" IsVisible="{Binding HomeViewVisible}" Grid.Row="0" Margin="0" Padding="0,15,0,0">
+                <Grid RowSpacing="0" IsVisible="{Binding HomeViewVisible}" Grid.Row="0" Margin="0" Padding="0,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
@@ -913,9 +913,9 @@
 
                     </yummy:PancakeView>
 
-                    <StackLayout Grid.Row="0" Margin="15,0,15,15">
+                    <StackLayout Grid.Row="0" Margin="15,-10,15,15">
 
-                        <custom:CustomLabel Text="{Binding TaxpayerName}"  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,3,0,10" VerticalOptions="Center" StyleId="SingleLabel" MaxLines="2"/>
+                        <custom:CustomLabel Text="{Binding TaxpayerName}"  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,0,0,10" VerticalOptions="Center" StyleId="SingleLabel" MaxLines="2"/>
 
                         <StackLayout IsVisible="{Binding IsMyObligationsClear}">
                             <StackLayout Orientation="Horizontal">
@@ -962,7 +962,7 @@
                                         <custom:CustomLabel.FormattedText>
 
                                             <FormattedString>
-                                                <Span Text="{Binding MyObligationAmount}" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="28"/>
+                                                <Span Text="{Binding MyObligationAmountCommas}" Style="{StaticResource ButtonLabelWhiteBold}" FontSize="28"/>
                                                 <Span Text=" "/>
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" Style="{StaticResource 
                                                         CaptionLabelWhite}" FontSize="16"></Span>
