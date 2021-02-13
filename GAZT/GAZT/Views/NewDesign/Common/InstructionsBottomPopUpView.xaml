@@ -98,7 +98,7 @@
                                             Style="{StaticResource ValueLabelBlackBold}" />
                                 <custom:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Description}"
                                         HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}" LineSpacing="1.5" />
+                                        Style="{StaticResource BodyLabelGrey}" LineSpacing="1" />
                             </Grid>
                         </border:SfBorder>
 

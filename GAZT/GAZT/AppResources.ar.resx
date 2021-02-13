@@ -1224,8 +1224,7 @@
     <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls</value>
   </data>
 	<data name="ZContractReleaseChooseonlyfilewithextension" xml:space="preserve">
-    <value>
-حجم الملف المسموح به في المرفقات 10MB
+    <value>حجم الملف المسموح به في المرفقات 10MB
 اعدادات الماسح الضوئي الموصى بها : 745*1024
 صيغ الملفات المسموح بها  (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
   </data>
