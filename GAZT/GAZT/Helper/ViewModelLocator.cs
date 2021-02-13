@@ -697,6 +697,8 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATDeRegistrationDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<VATDeRegistrationDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATDeRegistrationDetailsPageViewModel>();
                 }
                 catch (Exception )
