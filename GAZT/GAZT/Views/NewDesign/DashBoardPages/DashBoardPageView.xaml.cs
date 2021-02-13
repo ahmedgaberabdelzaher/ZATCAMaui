@@ -442,6 +442,41 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         public void RefreshDashboardCommand()
         {
+            if (viewModel.MenuViewVisible)
+            {
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnMenuTapped", AppResources.ZZZMenu + " Page");
+                viewModel.MenuViewVisible = true;
+                viewModel.HomeViewVisible = false;
+                viewModel.AccountStatementVisible = false;
+                viewModel.LiveChatVisible = false;
+                viewModel.HomeIndicatorColor = Color.White;
+                viewModel.MenuIndicatorColor = Color.FromHex("#006450");
+                viewModel.StackMenuColor = Color.Transparent;
+                viewModel.TabbarColor = Color.Transparent;
+                viewModel.IsToolbarTaxVisible = false;
+                var part = GetTemplateChild("frameToolbar") as SfBorder;
+                part.IsVisible = false;
+
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+            }
+            else
+            {
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnHomeTapped", "Home Page");
+                viewModel.MenuViewVisible = false;
+                viewModel.HomeViewVisible = true;
+                viewModel.AccountStatementVisible = false;
+                viewModel.LiveChatVisible = false;
+                viewModel.HomeIndicatorColor = Color.DarkGreen;
+                viewModel.MenuIndicatorColor = Color.White;
+                viewModel.TabbarColor = Color.DarkGray;
+                viewModel.StackMenuColor = Color.White;
+                var part = GetTemplateChild("frameToolbar") as SfBorder;
+                part.IsVisible = true;
+
+                viewModel.IsToolbarTaxVisible = true;
+
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+            }
         }
 
         protected override void OnDisappearing()
