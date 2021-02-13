@@ -1638,22 +1638,24 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <!--Taxpayer Details Summery-->
                                             <Frame Style="{StaticResource ComponentFrameWithRadius14}" Margin="0,32,0,0">
                                                 <StackLayout Spacing="0">
-                                                    <StackLayout Style="{StaticResource ComponentStackWithHeight80}">
-                                                        <Grid Margin="16" VerticalOptions="CenterAndExpand">
-                                                            <!--<BoxView HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" CornerRadius="50"   Style="{StaticResource ComponentBoxIconSummaryPage}" BackgroundColor="#006450" Opacity="0.1"/>-->
-                                                            <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="vat_user_summary.png" Aspect="AspectFit"/>
-                                                        </Grid>
+                                                    <Grid HeightRequest="80" ColumnSpacing="15" Padding="10">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="64"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="vat_user_summary.png" Aspect="AspectFit"/>
 
-                                                        <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}"  VerticalTextAlignment="Center" Style="{StaticResource SectionTitleBlackBold}"/>
-                                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Padding="0,0,16,0">
-                                                            <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="CenterAndExpand"
+                                                        <Label Grid.Column="1" Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}" LineHeight="0.75" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand"  Style="{StaticResource SectionTitleBlackBold}"/>
+                                                        <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="Center"
                                                                 Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
                                                                 <Label.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="GoBackToTaxPayerDetails" />
                                                                 </Label.GestureRecognizers>
                                                             </Label>
                                                         </StackLayout>
-                                                    </StackLayout>
+                                                    </Grid>
 
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
 
@@ -1667,20 +1669,24 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <!--Sales Details Summery-->
                                             <Frame Style="{StaticResource ComponentFrameWithRadius14}" Margin="0,24,0,0">
                                                 <StackLayout Spacing="0">
-                                                    <StackLayout Style="{StaticResource ComponentStackWithHeight80}">
-                                                        <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
+                                                    <Grid HeightRequest="80" ColumnSpacing="15" Padding="10">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="64"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
-
-                                                        <Label Text="{x:Static custom2:AppResources.SalesDetails}" VerticalTextAlignment="Center" Style="{StaticResource SectionTitleBlackBold}"/>
-                                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Padding="0,0,16,0">
-                                                            <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="CenterAndExpand"
+                                                        <Label Grid.Column="1" Text="{x:Static custom2:AppResources.SalesDetails}" LineHeight="0.75" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                                        <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="Center"
                                                                     Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
                                                                 <Label.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="GoBackToSalesDetails" />
                                                                 </Label.GestureRecognizers>
                                                             </Label>
                                                         </StackLayout>
-                                                    </StackLayout>
+                                                    </Grid>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
                                                     <StackLayout Padding="16">
                                                         <!--SliderLable1-->
@@ -1697,19 +1703,24 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             </Frame>
                                             <Frame Style="{StaticResource ComponentFrameWithRadius14}" Margin="0,24,0,0">
                                                 <StackLayout Spacing="0">
-                                                    <StackLayout Style="{StaticResource ComponentStackWithHeight80}">
-                                                        <Image Margin="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
+                                                    <Grid HeightRequest="80" ColumnSpacing="15" Padding="10">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="64"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
-                                                        <Label VerticalTextAlignment="Center" Text="{x:Static custom2:AppResources.VATRExpensesDetails}" Style="{StaticResource SectionTitleBlackBold}"/>
-                                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Padding="0,0,16,0">
-                                                            <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="CenterAndExpand"
+                                                        <Label Grid.Column="1" LineHeight="0.75" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" Text="{x:Static custom2:AppResources.VATRExpensesDetails}" Style="{StaticResource SectionTitleBlackBold}"/>
+                                                        <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="Center"
                                                                Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
                                                                 <Label.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="GoBackToVATExpenseDetails" />
                                                                 </Label.GestureRecognizers>
                                                             </Label>
                                                         </StackLayout>
-                                                    </StackLayout>
+                                                    </Grid>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
                                                     <StackLayout Padding="16">
                                                         <!--quesTion4answerSelected-->
@@ -1726,33 +1737,25 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             </Frame>
                                             <Frame Style="{StaticResource ComponentFrameWithRadius14}" Margin="0,24,0,0">
                                                 <StackLayout Spacing="0">
-                                                    <StackLayout Style="{StaticResource ComponentStackWithHeight80}">
-                                                   <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
+                                                    <Grid HeightRequest="80" ColumnSpacing="15" Padding="10">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="64"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
-                                                        <Label VerticalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" Style="{StaticResource SectionTitleBlackBold}">
-                                                        <Label.Margin>
-                                                            <OnPlatform x:TypeArguments="Thickness" >
-                                                                <On Platform="iOS" Value="0"/>
-                                                                <On Platform="Android" Value="-20,-5,0,0"/>
-                                                            </OnPlatform>
-                                                        </Label.Margin>
-                                                        </Label>
-                                                      
-                                                          <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center"  >
-                                                         <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="Center" VerticalTextAlignment="Center"
+                                                        <Label Grid.Column="1" LineHeight="0.75" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" Style="{StaticResource SectionTitleBlackBold}" />
+
+                                                        <StackLayout  Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"  >
+                                                            <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                                Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
-                                                                <Label.Margin>
-                                                            <OnPlatform x:TypeArguments="Thickness" >
-                                                                <On Platform="iOS" Value="0"/>
-                                                                <On Platform="Android" Value="-5,0,0,0"/>
-                                                            </OnPlatform>
-                                                        </Label.Margin>
-                                                                    <Label.GestureRecognizers>
+                                                                <Label.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="GoBackToFinacialRepresentativeDetails" />
                                                                 </Label.GestureRecognizers>
                                                             </Label>
                                                         </StackLayout>
-                                                    </StackLayout>
+                                                    </Grid>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
                                                     <StackLayout Padding="16">
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
