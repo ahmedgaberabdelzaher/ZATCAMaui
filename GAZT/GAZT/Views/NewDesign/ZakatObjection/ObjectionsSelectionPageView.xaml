@@ -108,7 +108,7 @@
 
                     </Grid>
 
-                    <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" >
 
                         <listView:SfListView HorizontalOptions="FillAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="StartAndExpand" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding SelectionOptions}" SelectedItem="{Binding SelectedOption, Mode=TwoWay}"  SelectionMode="Single"

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATRegistrationDetails
@@ -26,6 +27,15 @@ namespace EGAZT.Views.NewDesign.VATRegistrationDetails
                 await GetVatRegistrationData();
             });
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+        }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

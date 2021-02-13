@@ -66,7 +66,7 @@
                         <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
                             <Image Source="deregistration.png"/>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDDeregistration}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DBSMVATDeregistration}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
 
                         </StackLayout>
                         <border:SfBorder.GestureRecognizers>
