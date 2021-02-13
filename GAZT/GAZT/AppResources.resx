@@ -8845,7 +8845,7 @@ I acknowledge that the above bank account information is correct and assume full
     <value>Invoice Status</value>
   </data>
   <data name="SADADBillPayment" xml:space="preserve">
-    <value>SADAD Bill Payment</value>
+    <value>Bill Payment</value>
   </data>
   <data name="SADADBillPaymentSuccessMessage" xml:space="preserve">
     <value>The payment of your SADAD bill has been completed successfully</value>

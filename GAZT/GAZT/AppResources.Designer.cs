@@ -8656,7 +8656,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SADAD Bill Payment.
+        ///   Looks up a localized string similar to Bill Payment.
         /// </summary>
         public static string SADADBillPayment {
             get {

@@ -8759,4 +8759,25 @@ info@gazt.gov.sa</value>
   <data name="AccountStatementsDetailsStatementsAmount" xml:space="preserve">
     <value>كشف المبلغ</value>
   </data>
+  <data name="Filter" xml:space="preserve">
+    <value>فلتر</value>
+  </data>
+  <data name="TransactionAmount" xml:space="preserve">
+    <value>مبلغ العملية</value>
+  </data>
+  <data name="ErrorOccuredContactCustomerService" xml:space="preserve">
+    <value> حدث خطأ ما، الرجاء المحاولة مره أخرى او الاتصال بخدمة العملاء</value>
+  </data>
+  <data name="tryAgain" xml:space="preserve">
+    <value> محاولة مره أخرى</value>
+  </data>
+  <data name="InvoiceStatus" xml:space="preserve">
+    <value>حالة الفاتورة</value>
+  </data>
+  <data name="SADADBillPayment" xml:space="preserve">
+    <value>مدفوعات </value>
+  </data>
+  <data name="SADADBillPaymentSuccessMessage" xml:space="preserve">
+    <value>تم اكتمال عملية دفع الفاتورة بنجاح</value>
+  </data>
 </root>
