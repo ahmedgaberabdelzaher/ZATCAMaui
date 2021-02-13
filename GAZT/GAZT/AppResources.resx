@@ -8850,4 +8850,14 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="SADADBillPaymentSuccessMessage" xml:space="preserve">
     <value>The payment of your SADAD bill has been completed successfully</value>
   </data>
+  <data name="SADADDetailss" xml:space="preserve">
+    <value>SADAD Details</value>
+  </data>
+  <data name="ReviewSADADBillDetailss" xml:space="preserve">
+    <value>Review SADAD Bill Details</value>
+  </data>
+  <data name="SADADGAZTIDD" xml:space="preserve">
+    <value>SADAD GAZT ID</value>
+  </data>
+  
 </root>

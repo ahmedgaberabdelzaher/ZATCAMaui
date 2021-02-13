@@ -53,7 +53,6 @@
 	  <None Remove="Views\SyncFusionEnabledViews\SigupPages\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\TaxEvasionPages\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
-	  <Compile Remove="AppResources.Designer.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="MECalendar" Version="0.1.5" />
@@ -208,6 +207,8 @@
 		</Compile>
 		<Compile Update="AppResources.Designer.cs">
 		  <DependentUpon>AppResources.resx</DependentUpon>
+		  <AutoGen>True</AutoGen>
+		  <DesignTime>True</DesignTime>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
