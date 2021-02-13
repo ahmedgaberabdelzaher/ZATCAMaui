@@ -195,7 +195,7 @@
                                                         <custom:CustomLabel  Text="{Binding RetStatTxt}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />
                                                     </StackLayout>
                                                     <!--StatusTxt-->
-                                                    <buttons:SfButton Grid.Row="0" Grid.Column="1" FontFamily="{StaticResource SSTArRoman}" Text="{Binding Status}" HorizontalOptions="End" VerticalOptions="CenterAndExpand" HeightRequest="40" Padding="12,0,12,0" CornerRadius="20" >
+                                                    <buttons:SfButton Grid.Row="0" Grid.Column="1" FontFamily="{StaticResource SSTArRoman}" IsEnabled="False" Text="{Binding Status}" HorizontalOptions="End" VerticalOptions="CenterAndExpand" HeightRequest="40" Padding="12,0,12,0" CornerRadius="20" >
                                                         <!--BackgroundColor="{StaticResource LightGreenColor}"
                                                         TextColor="{StaticResource Primary}"-->
                                                         <buttons:SfButton.Triggers>

@@ -115,7 +115,7 @@
                                          SelectionChanged="chipgroup_SelectionChanged" VerticalOptions="Center" >
                         <buttons:SfChipGroup.ItemTemplate>
                             <DataTemplate >
-                                <StackLayout Margin="-5,-10" Orientation="Horizontal" Spacing="2" Padding="5,-2" WidthRequest="70">
+                                <StackLayout Margin="-5,-10" Orientation="Horizontal" Spacing="2" Padding="5,-2" >
                                     <Image Source="{Binding ImageSource}"
                                            HorizontalOptions="Center"
                                            HeightRequest="25"

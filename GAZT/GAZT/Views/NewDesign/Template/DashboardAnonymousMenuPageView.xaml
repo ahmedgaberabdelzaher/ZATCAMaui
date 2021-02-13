@@ -127,10 +127,10 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="60*" />
-                        <RowDefinition Height="1" />
+                        <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <BoxView Style="{StaticResource WhiteLineSeperator}" HeightRequest="1" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0"/>
-                    <StackLayout Orientation="Horizontal"  Grid.Row="1"  Grid.Column="0" Spacing="20" HorizontalOptions="Start" Padding="20">
+                    <StackLayout Orientation="Horizontal"  Grid.Row="1"  Grid.Column="0" Spacing="20" HorizontalOptions="Start" Padding="20,0,20,0">
                         <Image Source="language" HorizontalOptions="Start" Style="{StaticResource SmallIcon}"/>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}" Style="{StaticResource ValueLabelWhiteBold}" 
                                                     VerticalOptions="Center" HorizontalTextAlignment="Start"/>
@@ -139,7 +139,7 @@
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                     <BoxView Style="{StaticResource VerticalWhiteLineSeperator}" WidthRequest="1" Grid.Row="1" Grid.Column="1"/>
-                    <StackLayout Orientation="Horizontal" Spacing="20" Grid.Row="1" Grid.Column="2" HorizontalOptions="StartAndExpand" Padding="20">
+                    <StackLayout Orientation="Horizontal" Spacing="20" Grid.Row="1" Grid.Column="2" HorizontalOptions="StartAndExpand" Padding="20,0,20,0">
                         <Image Source="user_profile" HorizontalOptions="StartAndExpand" Style="{StaticResource SmallIcon}"/>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSwitchUser}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"
                                                     HorizontalTextAlignment="Start"/>

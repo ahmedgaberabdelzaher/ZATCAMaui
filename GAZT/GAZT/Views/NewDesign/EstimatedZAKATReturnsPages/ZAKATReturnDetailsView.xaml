@@ -244,7 +244,7 @@
                             </Frame>
 
 
-                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <yummy:PancakeView Style="{StaticResource GreyBorderFrameWithShadow1}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
 
@@ -1327,7 +1327,7 @@
 
 
                                 </StackLayout>
-                            </border:SfBorder>
+                            </yummy:PancakeView>
 
                         </StackLayout>
                     </ScrollView>
