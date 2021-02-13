@@ -44,7 +44,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource SectionTitleWhiteBold}" 
-                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                               HorizontalOptions="Center" VerticalOptions="Center" LineHeight="{OnPlatform Android=1.4,Default=.7}"/>
 
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"
                                VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"

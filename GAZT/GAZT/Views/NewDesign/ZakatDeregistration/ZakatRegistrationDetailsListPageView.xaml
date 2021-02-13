@@ -58,6 +58,7 @@
                             </Grid.RowDefinitions>
                             <ContentPresenter VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
+                                              Padding="0,0,0,20"
                         Grid.Column="0"
                         Grid.Row="0" BackgroundColor="White"/>
                         </Grid>

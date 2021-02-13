@@ -50,8 +50,10 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid>
-
-                <StackLayout>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
                     <!--<Grid Padding="15,5,15,5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="72"/>
@@ -61,20 +63,32 @@
                             <ColumnDefinition Width="90*"/>
                             <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>-->
-                    <StackLayout Orientation="Horizontal" HeightRequest="72" Spacing="0">
-                        <Image Margin="12" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                    <Grid   Grid.Row="0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Margin="12" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Grid.Column="0"
                                Source="arrowLeftwhite"  Style="{DynamicResource BackButtonArrow}" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnBackTapped" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <Label  x:Name="lblPageTitle" HorizontalOptions="StartAndExpand" LineHeight="0.5"  VerticalOptions="CenterAndExpand" FontSize="19" Text="{Binding BindingContext.PageTitle,Source={x:Reference VATRegistration}}" Style="{StaticResource SectionTitleWhiteBold}" />
+                        <Label x:Name="lblPageTitle" HorizontalOptions="Center"
+                               Grid.Column="0" Grid.ColumnSpan="2"
+                               Margin="50,0"
+                               MaxLines="2" LineHeight="{OnPlatform Android=1.4,Default=.7}"
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="CenterAndExpand"
+                               Text="{Binding BindingContext.PageTitle,Source={x:Reference VATRegistration}}"
+                               Style="{StaticResource SectionTitleWhiteBold}" />
 
-
-
-                    </StackLayout>
+                    </Grid>
                     <!-- </Grid>-->
-                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
+                    <yummy:PancakeView Grid.Row="1"  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   Padding="0,0,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
 
@@ -87,7 +101,6 @@
                         Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
                     </yummy:PancakeView>
-                </StackLayout>
 
             </Grid>
         </ControlTemplate>
@@ -1642,7 +1655,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="50"/>
                                                             <ColumnDefinition Width="*"/>
-                                                            <ColumnDefinition Width="64"/>
+                                                            <ColumnDefinition Width="Auto"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Image Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="vat_user_summary.png" Aspect="AspectFit"/>
 
@@ -1673,7 +1686,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="50"/>
                                                             <ColumnDefinition Width="*"/>
-                                                            <ColumnDefinition Width="64"/>
+                                                            <ColumnDefinition Width="Auto"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Image Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
@@ -1707,7 +1720,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="50"/>
                                                             <ColumnDefinition Width="*"/>
-                                                            <ColumnDefinition Width="64"/>
+                                                            <ColumnDefinition Width="Auto"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Image Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
@@ -1741,15 +1754,18 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="50"/>
                                                             <ColumnDefinition Width="*"/>
-                                                            <ColumnDefinition Width="64"/>
+                                                            <ColumnDefinition Width="Auto"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Image Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ComponentBoxIconSummaryPage}"  Source="ChartBar.png" Aspect="AspectFit"/>
 
-                                                        <Label Grid.Column="1" LineHeight="0.75" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" Style="{StaticResource SectionTitleBlackBold}" />
+                                                        <Label Grid.Column="1" LineHeight="{OnPlatform Android=1.4,Default=.7}" VerticalTextAlignment="Center"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}"
+                                                               Style="{StaticResource SectionTitleBlackBold}"  />
 
                                                         <StackLayout  Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"  >
                                                             <Label Text="{x:Static custom2:AppResources.CREdit}" VerticalOptions="Center" VerticalTextAlignment="Center"
-                                                               Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
+                                                               Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium" >
                                                                 <Label.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="GoBackToFinacialRepresentativeDetails" />
                                                                 </Label.GestureRecognizers>
@@ -2012,9 +2028,10 @@ SelectionChanged="DDlIDTypeSR_OkayButtonClicked" OkButtonClicked="DDlIDTypeSR_Ok
 
                                 </Grid>
 
-                                <StackLayout  Padding="15,0,15,30" VerticalOptions="End" HorizontalOptions="FillAndExpand" BackgroundColor="White" >
-                                    <buttons:SfButton  x:Name="MainButtonName" Text="{Binding CurrentStep}" Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}" CornerRadius="14" Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
-                                </StackLayout>
+                                <buttons:SfButton  x:Name="MainButtonName" Text="{Binding CurrentStep}" Margin="0,0,0,20" 
+                                                   Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}"
+                                                   CornerRadius="14" Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}"
+                                                   BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
                             </StackLayout>
                         </ScrollView>
 
