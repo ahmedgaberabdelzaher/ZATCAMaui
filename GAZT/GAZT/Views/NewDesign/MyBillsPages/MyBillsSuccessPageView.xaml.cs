@@ -100,8 +100,15 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     break;
                 }
             }
-            
-            viewModel._navigationService.GoBack();
+            if (isDashboard)
+            {
+                _dashBoardPageViewModel._navigationService.GoBack();
+            }
+            else
+            {
+                viewModel._navigationService.GoBack();    
+            }
+            //viewModel._navigationService.GoBack();
         }
         
         protected override void OnAppearing()

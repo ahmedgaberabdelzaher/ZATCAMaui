@@ -93,14 +93,14 @@
             </Grid.RowDefinitions>
 
             <Grid VerticalOptions="FillAndExpand" Grid.Row="0">
-                <ScrollView>
-                    <StackLayout Padding="10">
+                <ScrollView VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand" Padding="10">
                         <control:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADDetailss}"
                                              Style="{StaticResource SectionTitleBlack}" />
                         <control:CustomLabel Text="{x:Static ResourceManager:AppResources.ReviewSADADBillDetailss}"
                                              Style="{StaticResource BodyLabelGrey}"/>
                        
-                        <Grid>
+                        <Grid VerticalOptions="FillAndExpand">
                          <Grid.RowDefinitions>
                              <RowDefinition Height="Auto" />
                              <RowDefinition Height="*" />
