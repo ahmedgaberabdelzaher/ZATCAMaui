@@ -65,7 +65,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                 platform = "C3";
             }
 
-            string paymentUrl = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
+            string paymentUrl = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform + "&sap-ui-language=" + UtilityManager.GetLanguageParameter();
 
 
             CookieContainer cookieContainer = new CookieContainer();
@@ -149,7 +149,8 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                     platform = "C3";
                 }
 
-                string paymentUrl = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
+
+                string paymentUrl = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform + "&sap-ui-language=" + UtilityManager.GetLanguageParameter();
 
 
                 CookieContainer cookieContainer = new CookieContainer();

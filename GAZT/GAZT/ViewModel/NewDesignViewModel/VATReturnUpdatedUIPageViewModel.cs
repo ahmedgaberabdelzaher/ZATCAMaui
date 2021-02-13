@@ -3476,6 +3476,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             IsMainButtonVisible = false;
                             IsRefundButtonVisible = false;
                             CreditDetailsText = AppResources.ZZZZConfirmandGenerateSADADBill;
+                            IsPayNowVisible = false;
                         }
                     }
                     else

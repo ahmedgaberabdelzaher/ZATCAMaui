@@ -425,7 +425,7 @@ namespace GAZT.Helper
         //Dev Payment Url
         //public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=100&sap-ui-language=EN&sap-ui-xx-devmode=true&guid=";
         //Qa paymnet Url
-        public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=300&sap-ui-language=EN&sap-ui-xx-devmode=true&guid=";
+        public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=300&sap-ui-xx-devmode=true&guid=";
         //Prduction Payment Url 
         //public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=500&sap-ui-language=EN&sap-ui-xx-devmode=true&guid=";
         public static string UpdateMadaPaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_PAYMENT_STATUS_SRV/PaymentStatSet(CaseGuid=";

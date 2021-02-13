@@ -1599,7 +1599,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (PaymentData != null && PaymentData.d != null)
                     {
 
-                        if (PaymentData.d.Guid != null&&PaymentData.d.Guid == "")
+                        if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                         {
                             await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
                             return;
@@ -1721,7 +1721,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
 
                         if (response.d.Success)
-                        { 
+                        {
                             _navigationService.NavigateTo(App.MyBillsSuccessPageView, response.d.PayRef);
                         }
                         else
@@ -1785,8 +1785,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
                 DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-                _ = Task.Run(GetAccountStatments);
-                _ = Task.Run(GetBillsAndReturns);
+                _ = Task.Run(async () => {
+                    await GetAccountStatments();
+                    await GetBillsAndReturns();
+                    PopualateCommittmentsInformation();
+                });
+                //_ = Task.Run(GetAccountStatments);
+                //_ = Task.Run(GetBillsAndReturns);
                 if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null)
                 {
 
@@ -2009,7 +2014,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
 
-            Device.BeginInvokeOnMainThread(() => Bills = temp1);
+            Bills = temp1;
             PendingBills = pendingBills;
             if (PendingBills.Count == 0)
             {
@@ -2132,23 +2137,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-
+                BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
                 var BillsAndReturnsCommitmentsTemp = new List<OverduePaymentAndUnSubmittedReturn>();
                 // Create events
-                foreach (var Bill in Bills)
-                {
-                    Bill.IsUnSubmittedReturn = false;
-                    Bill.IsPaymentOverdue = true;
-                    Bill.ColorCode = Color.FromHex("#AA0C19");
 
-                    BillsAndReturnsCommitmentsTemp.Add(Bill);
-                }
-                foreach (var UnsubmittedReturn in Returns)
+                if (Bills != null)
                 {
-                    UnsubmittedReturn.IsUnSubmittedReturn = true;
-                    UnsubmittedReturn.IsPaymentOverdue = false;
-                    UnsubmittedReturn.ColorCode = Color.FromHex("#5D6770");
-                    BillsAndReturnsCommitmentsTemp.Add(UnsubmittedReturn);
+                    foreach (var Bill in Bills)
+                    {
+                        Bill.IsUnSubmittedReturn = false;
+                        Bill.IsPaymentOverdue = true;
+                        Bill.ColorCode = Color.FromHex("#AA0C19");
+
+                        BillsAndReturnsCommitmentsTemp.Add(Bill);
+                    }
+                }
+
+                if (Returns != null)
+                {
+                    foreach (var UnsubmittedReturn in Returns)
+                    {
+                        UnsubmittedReturn.IsUnSubmittedReturn = true;
+                        UnsubmittedReturn.IsPaymentOverdue = false;
+                        UnsubmittedReturn.ColorCode = Color.FromHex("#5D6770");
+                        BillsAndReturnsCommitmentsTemp.Add(UnsubmittedReturn);
+                    }
                 }
 
                 if (BillsAndReturnsCommitments != null)
