@@ -1640,14 +1640,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
                     viewModel.ImporterTextColor = Color.Black;
-                    ImporterLabel.TextColor = Color.Black;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
                 else
                 {
                     viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
                     viewModel.ImporterTextColor = Color.White;
-                    ImporterLabel.TextColor = Color.White;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                 }
                 setAttachmentImporterExporterVisibility();
@@ -1678,14 +1676,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
                     viewModel.ExporterTextColor = Color.Black;
-                    ExporterLabel.TextColor = Color.Black;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
                 else
                 {
                     viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
                     viewModel.ExporterTextColor = Color.White;
-                    ExporterLabel.TextColor = Color.White;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                 }
                 setAttachmentImporterExporterVisibility();

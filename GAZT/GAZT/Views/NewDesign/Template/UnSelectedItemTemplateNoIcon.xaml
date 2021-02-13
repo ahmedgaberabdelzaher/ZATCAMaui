@@ -4,19 +4,21 @@
           xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
           x:Class="EGAZT.Views.NewDesign.Template.UnSelectedItemTemplateNoIcon">
     <ViewCell.View>
-        <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="104"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="End" HorizontalOptions="FillAndExpand">
-                    <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.6"/>
-                </StackLayout>
-            </Grid>
-        </cards:SfCardView>
+        <Grid Padding="4" >
+            <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="104"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.6"/>
+                    </StackLayout>
+                </Grid>
+            </cards:SfCardView>
+        </Grid>
     </ViewCell.View>
 </ViewCell>

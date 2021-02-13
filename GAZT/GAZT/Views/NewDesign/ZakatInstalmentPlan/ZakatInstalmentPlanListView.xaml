@@ -120,7 +120,7 @@
                             <listView:SfListView.ItemTemplate>
 
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="120">
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                             <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
@@ -136,7 +136,7 @@
                             <listView:SfListView.SelectedItemTemplate>
 
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="120">
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                             <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"

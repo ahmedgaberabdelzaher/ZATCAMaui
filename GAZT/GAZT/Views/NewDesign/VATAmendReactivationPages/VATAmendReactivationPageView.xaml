@@ -558,7 +558,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                             <!--#region Modified View for Imorter Exporter -->
 
 
-                                                            <cards:SfCardView BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                            <cards:SfCardView BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                                           Grid.Row="0" Grid.Column="0" HasShadow="True" IsEnabled="{Binding BindingContext.TaxPayerDetails.ImporterNoRB,Source={x:Reference VATRegistration}}">
                                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                     <Grid.RowDefinitions>
@@ -576,7 +576,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     </Grid.GestureRecognizers>
                                                                 </Grid>
                                                             </cards:SfCardView>
-                                                            <cards:SfCardView  BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                            <cards:SfCardView  BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
                                                                           Grid.Row="0" Grid.Column="1" HasShadow="True" IsEnabled="{Binding BindingContext.TaxPayerDetails.ExporterNoRB,Source={x:Reference VATRegistration}}">
                                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                     <Grid.RowDefinitions>
@@ -696,7 +696,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                             VerticalOptions="FillAndExpand"  >
                                                                 <CollectionView.ItemTemplate>
                                                                     <DataTemplate>
-                                                                        <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                        <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                                 <Grid.RowDefinitions>
                                                                                     <RowDefinition Height="104"/>
@@ -797,7 +797,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     <ColumnDefinition Width="50*"/>
                                                                 </Grid.ColumnDefinitions>
 
-                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>
@@ -815,7 +815,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
 
-                                                                <cards:SfCardView Grid.Row="1" ShadowColor="Gray" Grid.Column="1" HasShadow="True" BackgroundColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1" ShadowColor="#5d6770" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>
@@ -852,7 +852,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     <ColumnDefinition Width="50*"/>
                                                                     <ColumnDefinition Width="50*"/>
                                                                 </Grid.ColumnDefinitions>
-                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>
@@ -870,7 +870,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
 
-                                                                <cards:SfCardView Grid.Row="1" ShadowColor="Gray" Grid.Column="1" HasShadow="True" BackgroundColor="Gray" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1" ShadowColor="#5d6770" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>

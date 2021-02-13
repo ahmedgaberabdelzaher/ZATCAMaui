@@ -641,7 +641,7 @@
                                 <listView:SfListView.ItemTemplate>
 
                                     <DataTemplate>
-                                        <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray"
+                                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent"
                                                           CornerRadius="20" HeightRequest="120">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                                   ColumnSpacing="20" RowSpacing="10">
@@ -820,7 +820,7 @@
                                 <listView:SfListView.ItemTemplate>
 
                                     <DataTemplate>
-                                            <cards:SfCardView HasShadow="True" BackgroundColor="Gray" ShadowColor="Gray"
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="Transparent"
                                                           CornerRadius="20" HeightRequest="120">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                                   ColumnSpacing="20" RowSpacing="10">
