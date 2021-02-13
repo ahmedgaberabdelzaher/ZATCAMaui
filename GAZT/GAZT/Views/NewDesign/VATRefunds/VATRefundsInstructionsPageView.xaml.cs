@@ -6,6 +6,7 @@ using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.VATRefunds
@@ -27,6 +28,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         protected override void OnAppearingAnimationEnd()
         {
             base.OnAppearingAnimationEnd();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             viewModel.ReloadData();
         }
 
