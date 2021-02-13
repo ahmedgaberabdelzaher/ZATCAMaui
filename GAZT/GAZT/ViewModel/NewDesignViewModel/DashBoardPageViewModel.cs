@@ -1569,6 +1569,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (PaymentData != null && PaymentData.d != null)
                     {
 
+                        if (PaymentData.d.Guid != null&&PaymentData.d.Guid == "")
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                            return;
+                        }
+
                         if (PaymentData.d.Guid != null)
                         {
 

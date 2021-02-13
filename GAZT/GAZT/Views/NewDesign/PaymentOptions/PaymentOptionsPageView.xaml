@@ -51,7 +51,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                <Image Style="{DynamicResource CardIcon}" Source="{Binding SelectedCardIcon}" Margin="0"></Image>
+                                                <Image Source="{Binding SelectedCardIcon}" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="EndAndExpand" Aspect="AspectFit" Margin="0"></Image>
                                                 <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8" Padding="0" Margin="0,-10"/> 
                                             </StackLayout>
                                         </Grid>
@@ -74,7 +74,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Image Source="re_Tile_Background_S" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                <Image Style="{DynamicResource CardIcon}" Source="{Binding UnSelectedCardIcon}" Margin="0"></Image>
+                                                <Image Source="{Binding UnSelectedCardIcon}" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="EndAndExpand" Aspect="AspectFit" Margin="0"></Image>
                                                 <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" TextColor="White" LineHeight="0.8" Padding="0" Margin="0,-10"/>
                                             </StackLayout>
                                         </Grid>

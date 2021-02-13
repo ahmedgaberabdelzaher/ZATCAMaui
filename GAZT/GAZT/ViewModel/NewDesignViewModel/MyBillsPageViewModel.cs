@@ -711,7 +711,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, "M");
 
-
+                    if (PaymentData.d.Guid != null&&PaymentData.d.Guid == "")
+                    {
+                        await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                        return;
+                    }
 
                     if (PaymentData != null && PaymentData.d != null)
                     {
