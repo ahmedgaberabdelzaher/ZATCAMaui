@@ -1225,7 +1225,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 if (!isSubmitted)
                 {
                     //await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
-                    _ = Task.Run(SubmitClicked);
+                    await SubmitClicked();
                 }
 
             }
@@ -1719,7 +1719,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
-                throw;
+                //throw;
             }
             return true;
         }
