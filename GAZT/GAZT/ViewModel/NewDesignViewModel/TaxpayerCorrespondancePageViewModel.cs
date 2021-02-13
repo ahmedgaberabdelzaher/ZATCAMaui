@@ -521,7 +521,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (itemZakat.Zzfav == "1")
                         {
                             childZakat.IsFav = true;
-                            childZakat.FavImg = "ic_star.png";
+                            if (App.IsArabic)
+                            {
+                                childZakat.FavImg = "ic_star_180.png";
+                            }
+                            else
+                            {
+                                childZakat.FavImg = "ic_star.png";
+                            }
                         }
                         else
                         {
@@ -634,7 +641,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (itemVAT.Zzfav == "1")
                         {
                             childVAT.IsFav = true;
-                            childVAT.FavImg = "ic_star.png";
+                            if (App.IsArabic)
+                            {
+                                childVAT.FavImg = "ic_star_180.png";
+                            }
+                            else
+                            {
+                                childVAT.FavImg = "ic_star.png";
+                            }
                         }
                         else
                         {
@@ -742,7 +756,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (itemET.Zzfav == "1")
                         {
                             childET.IsFav = true;
-                            childET.FavImg = "ic_star.png";
+                            if (App.IsArabic)
+                            {
+                                childET.FavImg = "ic_star_180.png";
+                            }
+                            else
+                            {
+                                childET.FavImg = "ic_star.png";
+                            }
                         }
                         else
                         {

@@ -77,21 +77,29 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <custom:CustomLabel Text="{Binding FilterTaxTypeLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
-                    </custom:CustomLabel>
-                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Start" VerticalOptions="Center">
-                               <Image.Margin>
-                        <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="iOS" Value="5,-5,5,0"/>
-                            <On Platform="Android" Value="5,10,5,0"/>
-                        </OnPlatform>
-                    </Image.Margin>
-                    </Image>
-                    <custom:CustomButton x:Name="btnForTaxType" Grid.Column="0" Grid.Row="0"  Clicked="btn_TaxTypeClicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
-                    </custom:CustomButton>
+                   <StackLayout Orientation="Horizontal" Spacing="0" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" >
+                        <Label HorizontalTextAlignment="Start" Text="{Binding FilterTaxTypeLabelText}" HorizontalOptions="StartAndExpand" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}"
+                               FontSize="28" FontAttributes="Bold">
+                             <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="btn_TaxTypeClicked">
+                                </TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Image Source="arrowDropdown"  HorizontalOptions="Start" VerticalOptions="Center">
+                          <Image.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="5,8,5,0"/>
+                                <On Platform="Android" Value="5,10,5,0"/>
+                            </OnPlatform>
+                        </Image.Margin>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btn_TaxTypeClicked">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                        </Image>
+                   </StackLayout>
                     <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TaxTypeDownPicker" HeaderHeight="55" HeaderTextColor="White"
                     ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                     ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding TaxTypeListForDropDown}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
@@ -167,7 +175,7 @@
                                             </StackLayout>
                                             
                                         </Grid>
-                                        <Image  x:Name="ImageBackArrow" Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="End" VerticalOptions="Center"/>
+                                        <Image  x:Name="ImageBackArrow" Style="{DynamicResource BackButtonArrow}" Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="End" VerticalOptions="Center"/>
 
                                     </Grid>
                                 </border:SfBorder>
