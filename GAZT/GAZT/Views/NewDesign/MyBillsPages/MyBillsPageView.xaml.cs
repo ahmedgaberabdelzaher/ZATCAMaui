@@ -39,7 +39,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 viewModel.onPageLoad(billInfo);
                 viewModel.PopulateReturnTypeList();
                 viewModel.PopulateDataInChips();
-                viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
+                //viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
+                viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x=>x.Status!="P"));
 
 
                 if (billInfo != null)

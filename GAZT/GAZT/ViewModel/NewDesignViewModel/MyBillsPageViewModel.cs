@@ -84,6 +84,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
         
+        private string _totalAmount = "0.0";
+        public string TotalAmount
+        {
+            get
+            {
+                return _totalAmount;
+            }
+            set
+            {
+                if (_totalAmount == value) return;
+
+                _totalAmount = value;
+                RaisePropertyChanged("TotalAmount");
+            }
+        }
+        
         public ChipModel _selectedChipFilterItem=null;
         public ChipModel SelectedChipFilterItem
         {
@@ -902,7 +918,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async Task SadadPaymentSelected()
         {
-            _navigationService.NavigateTo(App.MyBillsSuccessPageView, selectedSadadNo);
+            //_navigationService.NavigateTo(App.MyBillsSuccessPageView, selectedSadadNo);
+            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, false);
 
             //_navigationService.GoBack();
 

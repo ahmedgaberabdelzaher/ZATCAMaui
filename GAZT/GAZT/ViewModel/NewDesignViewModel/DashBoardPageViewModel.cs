@@ -36,6 +36,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public string selectedTaxablePeriod = "";
         public string selectedAmount = "";
 
+        private string _totalAmount = "0.0";
+        public string TotalAmount
+        {
+            get
+            {
+                return _totalAmount;
+            }
+            set
+            {
+                if (_totalAmount == value) return;
+
+                _totalAmount = value;
+                RaisePropertyChanged("TotalAmount");
+            }
+        }
+        
+        private string _referenceNumber = "";
+        public string ReferenceNumber
+        {
+            get
+            {
+                return _referenceNumber;
+            }
+            set
+            {
+                if (_referenceNumber == value) return;
+
+                _referenceNumber = value;
+                RaisePropertyChanged("ReferenceNumber");
+            }
+        }
+        
         private DashBoardModelTabEnum _currentTab = DashBoardModelTabEnum.DashBoard;
         public DashBoardModelTabEnum currentTab
         {
@@ -1519,10 +1551,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async Task SadadPaymentSelected()
         {
-
             /*_navigationService.GoBack();*/
-            _navigationService.NavigateTo(App.MyBillsSuccessPageView, selectedSadadNo);
-
+            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, true);
         }
 
         public async Task ApplePaySelected()
