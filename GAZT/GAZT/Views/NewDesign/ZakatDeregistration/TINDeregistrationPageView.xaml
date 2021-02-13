@@ -1150,7 +1150,7 @@
             </ScrollView>-->
             </ScrollView>
             <Grid IsVisible="{Binding IsAttachmentsViewEnabled}">
-                <ScrollView >
+                <ScrollView VerticalScrollBarVisibility="Never">
                     <StackLayout IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  
                              Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Attachment}" HorizontalOptions="StartAndExpand"
@@ -1256,11 +1256,13 @@
                             </ListView.ItemTemplate>
 
                         </ListView>
-                    </StackLayout>
-                </ScrollView>
-                <buttons:SfButton HeightRequest="48" VerticalOptions="End"  Margin="20,16,20,5" x:Name="btnAttachmentsContinue"
+                         <buttons:SfButton HeightRequest="48" VerticalOptions="End"  Margin="0,16,0,5" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
+                    </StackLayout>
+                   
+                </ScrollView>
+                
             </Grid>
 
 
