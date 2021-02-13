@@ -241,6 +241,8 @@
     <BundleResource Include="Resources\vat_user_summary%403x.png" />
     <BundleResource Include="Resources\ChartBar%403x.png" />
     <Compile Include="CustomRenderer\ApplePayAuthorizer.cs" />
+    <BundleResource Include="Resources\ic_sadad_white.png" />
+    <BundleResource Include="Resources\ic_sadad.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1119,11 +1121,5 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_icon_applelogo_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_sadad.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_sadad_white.png" />
   </ItemGroup>
 </Project>
