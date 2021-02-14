@@ -115,7 +115,7 @@
                     </Grid>
 
                     <Grid BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
-                          VerticalOptions="Start">
+                          VerticalOptions="StartAndExpand">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -126,9 +126,9 @@
                                          HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true"
                                          Style="{StaticResource GreyBorderFrameWithShadow}">
                             <Grid>
-                                <Grid.RowDefinitions>
+                                <!--<Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
+                                </Grid.RowDefinitions>-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="*" />
@@ -138,8 +138,8 @@
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1"
                                                     Text="{x:Static ResourceManager:AppResources.VRVatReviewRequest}"
                                                     Style="{StaticResource GAZTSmallGreenLabelStyle}"
-                                                    HorizontalOptions="Start" VerticalOptions="Start"
-                                                     FontSize="16" LineHeight="1"/>
+                                                    HorizontalOptions="Start" VerticalOptions="StartAndExpand"
+                                                    FontSize="16" LineHeight="1" LineSpacing="1" LineBreakMode="WordWrap"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding NewRequestBtnTapped}" />
                                     <!-- <TapGestureRecognizer Tapped="NewObjection" /> -->
