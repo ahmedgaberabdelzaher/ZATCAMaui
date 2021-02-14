@@ -75,7 +75,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             FrameCardStatus.BackgroundColor = color;
             CardAmount.BackgroundColor = color;
 
-            LableAmount.Text = "" +aSResult.BetrhAmount + " "+AppResources.ZSAR;
+            LableAmount.Text = "" +aSResult.Betrh + " "+AppResources.ZSAR;
         }
 
         private Color stringToColor(String value)
