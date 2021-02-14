@@ -1994,29 +1994,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
             var pendingBills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
             List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            if (TempBills.Count > 3)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    pendingBills.Add(TempBills[i]);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < TempBills.Count; i++)
-                {
-                    pendingBills.Add(TempBills[i]);
-                }
-            }
-            foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
-            {
-                temp1.Add(ee);
-                if (ee.Amount != null)
-                {
-                    MyObligationAmount += Double.Parse(ee.Amount);
-                }
-            }
 
+            if (TempBills != null)
+            {
+                if (TempBills.Count > 3)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        pendingBills.Add(TempBills[i]);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < TempBills.Count; i++)
+                    {
+                        pendingBills.Add(TempBills[i]);
+                    }
+                }
+                foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
+                {
+                    temp1.Add(ee);
+                    if (ee.Amount != null)
+                    {
+                        MyObligationAmount += Double.Parse(ee.Amount);
+                    }
+                }
+            }
             if (MyObligationAmount > 0)
             {
                 IsMyObligationsClear = false;
