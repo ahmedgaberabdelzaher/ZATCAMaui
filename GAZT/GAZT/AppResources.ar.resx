@@ -4682,8 +4682,7 @@
     <value>مرفقات - قوائم مدققه</value>
   </data>
 	<data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
-    <value>إضافة مرفق جديد (إختياري)</value>
-  </data>
+    <value>إضافة مرفق جديد</value>       </data>
 	<data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value> اختر تاريخ البداية</value>
   </data>

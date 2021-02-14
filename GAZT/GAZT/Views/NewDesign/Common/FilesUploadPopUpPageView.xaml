@@ -30,7 +30,7 @@
                                  Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout Orientation="Vertical">
                         <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
-                        <Button  TextColor="{StaticResource Primary}" Margin="10,0,10,0" FontSize="Medium" FontAttributes="Bold" Text="{x:Static ResourceManager:AppResources.CRDone}" Command="{Binding GoButtonClick}"    BackgroundColor="Transparent" HorizontalOptions="End">
+                        <Button  TextColor="{StaticResource Primary}" Style="{StaticResource GAZTVerifyButton}"  Margin="10,0,10,0" FontSize="Medium" FontAttributes="Bold" Text="{x:Static ResourceManager:AppResources.CRDone}" Command="{Binding GoButtonClick}"    BackgroundColor="Transparent" HorizontalOptions="End">
                         </Button>
                     </StackLayout>
                 </border:SfBorder>
