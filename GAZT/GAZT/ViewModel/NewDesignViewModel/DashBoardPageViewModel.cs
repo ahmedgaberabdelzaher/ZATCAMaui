@@ -1725,7 +1725,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     ApplePayToken modelDetails = new ApplePayToken();
                     modelDetails.Guid = App.PaymentGuid;
-                    //var token = "GrPRb/eyYkhLaxIi8ugsU5I0D2/IE6JT6SYb4o6CH/emQV7n5twiqt8IVazkcItvmCkHXeie16Nvbq+uFFx0mS4O/1+SoDHrP8HcDbJ/Q1swCCHR/Dwv69oTcTUy1riK6Zvpe0w1r+WJ21I36gorRUn7u94Yi9n4afOfnGJC3EmFd6DKSIRQWlT4BuLlNv5826XruanuFjdL3MKty/xoCyx2GKN+e8W6BFVnQc/gsBe4UW7oqHIQ5PrQJlQwymi5Ytd1IIJT8QsUMxiVjz6yVS5zdQBaN86ZtuokJRmC89jCwVkUMwDl9jQ5xYbFlIFS1VXKJjtWKDfMGwCWK3jvWdtCcdb4VrPIxtK7LvTWc+4C7m6SPzkOhdC/XPn7ufwvrh95no7p9tpQMkP7zOJIYAl+hS4oEqvOxdpw55dCytGXJ0yjN/HOQ3t4ofyW9mBGiHoq";
                     modelDetails.PaymentToken = ApplePayTokenData;
                     modelDetails.SrcId = platform;
 
@@ -1807,7 +1806,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PopualateCommittmentsInformation();
                 });
                 //_ = Task.Run(GetAccountStatments);
-                //_ = Task.Run(GetBillsAndReturns);
+               // _ = Task.Run(GetBillsAndReturns);
                 if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null)
                 {
 
@@ -2059,7 +2058,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
             List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
             foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
             {
                 temp2.Add(ee);

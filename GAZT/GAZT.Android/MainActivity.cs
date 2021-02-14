@@ -45,6 +45,8 @@ namespace GAZT.Droid
             {
                 Window.Attributes.LayoutInDisplayCutoutMode = Android.Views.LayoutInDisplayCutoutMode.ShortEdges;
             }
+
+            PreventLinkerFromStrippingCommonLocalizationReferences();
           
             // Xamarin.Essentials.Platform.Init(this, bundle);
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
@@ -82,6 +84,12 @@ namespace GAZT.Droid
             LoadApplication(app);
             global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
              .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
+        }
+
+        private void PreventLinkerFromStrippingCommonLocalizationReferences()
+        {
+            var gregorianCalendar = new System.Globalization.GregorianCalendar();
+            var arabivAlQuraCalendar = new System.Globalization.UmAlQuraCalendar();
         }
         private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
         {

@@ -35,7 +35,7 @@ namespace EGAZT.Models.AccountStatements
     [Preserve(AllMembers = true)]
     public class DataForDownloadPage
     {
-        public  ASTaxpayerSelectedValues ASTaxpayerSelectedValues;
+        public ASTaxpayerSelectedValues ASTaxpayerSelectedValues;
         public List<ObservableGroupCollection<string, ASResult>> GroupedDataForDownload;
         public ObservableCollection<ASResult> StatementsLineItems;
         public bool isNormalList;
@@ -375,7 +375,7 @@ namespace EGAZT.Models.AccountStatements
         public ASResult[] Results { get; set; }
     }
     [Preserve(AllMembers = true)]
-    public partial class ASResult:ViewModelBase
+    public partial class ASResult : ViewModelBase
     {
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
@@ -386,12 +386,15 @@ namespace EGAZT.Models.AccountStatements
 
         private string status;
         [JsonProperty("Status")]
-        public string Status { get { return status; }
+        public string Status
+        {
+            get { return status; }
             set
             {
                 status = value;
-                
-            } }
+
+            }
+        }
 
         [JsonIgnore]
         public Color StatusColor { get; set; }
@@ -422,12 +425,15 @@ namespace EGAZT.Models.AccountStatements
 
         private string _StatusDesc;
         [JsonProperty("StatusDesc")]
-        public string StatusDesc {
+        public string StatusDesc
+        {
             get { return _StatusDesc; }
-            set {
+            set
+            {
                 _StatusDesc = value;
-                
-            } }
+
+            }
+        }
 
         [JsonProperty("TaxtypeDesc")]
         public string TaxtypeDesc { get; set; }
@@ -473,7 +479,7 @@ namespace EGAZT.Models.AccountStatements
         }
 
         [JsonIgnore]
-        private Color _StatusBG  = Color.FromHex("#E5EFED");
+        private Color _StatusBG = Color.FromHex("#E5EFED");
         [JsonIgnore]
         public Color StatusBG
         {
@@ -484,12 +490,12 @@ namespace EGAZT.Models.AccountStatements
                     _StatusBG = Color.Transparent;
                     return _StatusBG;
                 }
-               
+
                 return _StatusBG;
             }
             set
             {
-                
+
                 _StatusBG = value;
 
                 RaisePropertyChanged("StatusBG");
@@ -554,9 +560,7 @@ namespace EGAZT.Models.AccountStatements
                         FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("ar-SA"));
                     }
 
-                    /*string[] dts = FormattedBldat.Split('-');
-                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    FormattedBldat = date;*/
+
                 }
             }
         }
@@ -569,7 +573,7 @@ namespace EGAZT.Models.AccountStatements
 
         [JsonIgnore]
         private DateTime? PeriodEndDt { get; set; }
-        
+
         [JsonProperty("PeriodStartDt")]
         public DateTime? PeriodStartDt { get; set; }
         [JsonIgnore]
@@ -599,7 +603,7 @@ namespace EGAZT.Models.AccountStatements
                     string[] dts = FormattedBldat2.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                     FormattedBldat2 = date;*/
-                }       
+                }
             }
         }
 
