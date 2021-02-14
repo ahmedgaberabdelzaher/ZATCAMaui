@@ -1147,7 +1147,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public static string CalType = "G";
+        public string CalType = "G";
 
         public String FromTxAmount = "";
         public String ToTxAmount = "";
