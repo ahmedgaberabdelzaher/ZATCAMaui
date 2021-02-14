@@ -1311,9 +1311,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             Console.WriteLine("Clicked on: Amount: " + BModel.Amount + " ,FbNum: " + BModel.Fbnum);
             //viewModel.DoValidatePayment(BModel.Fbnum, BModel.Amount);
 
-            if (!String.IsNullOrEmpty(BModel.Fbnum))
-            {
-
 
                 if (BModel.MadabutFg == "X")
                 {
@@ -1329,7 +1326,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.selectedAmount = BModel.Amount;
 
                 viewModel.selectedTaxablePeriod = BModel.Persl;
-            }
 
         }
     }

@@ -128,7 +128,7 @@
                                 <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
 
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADGAZTIDD}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSADADGAZTId}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <custom:CustomLabel Text="020" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
                                         </StackLayout>

@@ -36,7 +36,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
             this.BindingContext = viewModel;
             SetLTR();
-
+            ChangeAeroIcon();
             viewModel.PaymentType = type;
             //WebviewGrid.LowerChild(webView);
           
@@ -115,6 +115,20 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             WebviewGrid.LowerChild(webView);
 
         }
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
+
 
         protected override void OnDisappearing()
         {
