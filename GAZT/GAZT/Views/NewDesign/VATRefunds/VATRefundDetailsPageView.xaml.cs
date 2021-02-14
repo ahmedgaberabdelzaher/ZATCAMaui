@@ -318,7 +318,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 viewModel.CBTermsAndConditionsChecked = false;
                 isTandCChecked = false;
-                PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundRequestTermsAndConditions));
+                PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundSummaryTermsandConditions));
             }
             else if (isTandCChecked && !viewModel.CBTermsAndConditionsChecked)
                 isTandCChecked = false;
@@ -326,7 +326,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         private void TermsAndConditions_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundRequestTermsAndConditions));
+            PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundSummaryTermsandConditions));
         }
     }
 }

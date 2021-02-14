@@ -15168,6 +15168,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VATRefundSummaryTermsandConditions {
+            get {
+                return ResourceManager.GetString("VATRefundSummaryTermsandConditions", resourceCulture);
+            }
+        }
+        
         public static string VATRefundReturnSubmitConfirmation {
             get {
                 return ResourceManager.GetString("VATRefundReturnSubmitConfirmation", resourceCulture);
