@@ -31,7 +31,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             ChangeAeroIcon();
 
             viewModel.ReferenceNumber = CaseGuild;
-            viewModel.TaxablePeriod = viewModel.FromDate;
+            viewModel.TaxablePeriod = viewModel.ZakatReturnDetails.d.Persl;
             
         }
 

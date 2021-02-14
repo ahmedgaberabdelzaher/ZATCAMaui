@@ -29,7 +29,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             viewModel = App.Locator.GAZTNewDesignVATReturnUpdatedUIPageView;
             viewModel.ReferenceNumber = refNum;
-            viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Fbnum;
+            viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Persl;
             this.BindingContext = viewModel;
             SetLTR();
             ChangeAeroIcon();
