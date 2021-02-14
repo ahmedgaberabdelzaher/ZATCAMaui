@@ -282,26 +282,16 @@
         <Grid  >
 
             <StackLayout Padding="15" Orientation="Vertical">
-                <!--<ListView x:Name="LvwContacts"
+                <ListView x:Name="LvwContacts"
                           Margin="5"
                           BackgroundColor="White"
                           SeparatorVisibility="None"
                           IsGroupingEnabled="True"
                           VerticalScrollBarVisibility="Never"
                           SelectionMode="None"
-                          GroupDisplayBinding="{Binding Key}"        
                           ItemsSource="{Binding GroupedData}"  
                           ItemTapped="LvwContacts_ItemTapped"
-                          HasUnevenRows="True">-->
-                <ListView x:Name="LvwContacts"
-                      Margin="5"
-                      BackgroundColor="White"
-                      SeparatorVisibility="None"
-                      VerticalScrollBarVisibility="Never"
-                          SelectionMode="None"
-                      ItemsSource="{Binding StatementsLineItems}"  
-                      ItemTapped="LvwContacts_ItemTapped"
-                      HasUnevenRows="True">
+                          HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -353,18 +343,18 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                    <!-- <ListView.GroupHeaderTemplate> -->
-                    <!--     <DataTemplate> -->
-                    <!--         <ViewCell> -->
-                    <!--             <ViewCell.View> -->
-                    <!--                 <Grid> -->
-                    <!--                     <custom:CustomLabel Text="{Binding Key}"  Style="{StaticResource SectionTitleBlack}" /> -->
-                    <!--                 </Grid> -->
-                    <!--             </ViewCell.View> -->
-                    <!--         </ViewCell> -->
-                    <!--     </DataTemplate> -->
-                    <!-- </ListView.GroupHeaderTemplate> -->
-                    <ListView.Footer>
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    
+                                        <custom:CustomLabel Text="{Binding Key}"  Style="{StaticResource SectionTitleBlack}" />
+                                    
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
+                    <!--<ListView.Footer>
                         <Grid>
                             <StackLayout Orientation="Vertical">
                                 <StackLayout  IsVisible="{Binding IsNotHaveStatements}">
@@ -405,11 +395,11 @@
                                                                             HasShadow="False"   
                                                                             VerticalOptions="CenterAndExpand" HorizontalOptions="End" />
                                                                     <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand"  HorizontalOptions="CenterAndExpand" >
-                                                                        <!--
+                                                                        ~1~
                                                                         <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding Betrh}"
                                                                                 TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
                                                                         </Label>
-                                                                                -->
+                                                                                @1@
                                                                         <custom:CustomLabel Style="{StaticResource CaptionLabelBlack}"
                                                                             TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
                                                                             <custom:CustomLabel.FormattedText>
@@ -421,13 +411,13 @@
                                                                             </custom:CustomLabel.FormattedText>
                                                                         </custom:CustomLabel>
                                                                         
-                                                                        <!--<custom:CustomLabel  TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                                        ~1~<custom:CustomLabel  TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
                                                                             <custom:CustomLabel.FormattedText>
                                                                                 <FormattedString>
                                                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
                                                                                 </FormattedString>
                                                                             </custom:CustomLabel.FormattedText>
-                                                                        </custom:CustomLabel>-->
+                                                                        </custom:CustomLabel>@1@
                                                                     </StackLayout>
                                                                 </Grid>
                                                                 
@@ -441,7 +431,7 @@
                                 </ListView>
                             </StackLayout>
                         </Grid>
-                    </ListView.Footer>
+                    </ListView.Footer>-->
                     <ListView.Header >
                         <StackLayout Orientation="Vertical" Spacing="-5" Grid.Row="0" FlowDirection="RightToLeft">
 

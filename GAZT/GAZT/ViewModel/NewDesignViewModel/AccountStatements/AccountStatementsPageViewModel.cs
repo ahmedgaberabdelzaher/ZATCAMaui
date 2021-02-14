@@ -467,6 +467,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         };
 
+        [Preserve(AllMembers = true)]
         public class ObservableGroupCollection<S, T> : ObservableCollection<T>
         {
             private readonly S _key;
