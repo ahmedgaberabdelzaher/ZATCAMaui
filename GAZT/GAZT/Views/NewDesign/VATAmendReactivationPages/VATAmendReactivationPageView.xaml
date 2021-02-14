@@ -1632,8 +1632,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                         </Grid.RowDefinitions>
                                         <StackLayout Spacing="0">
                                             <StackLayout Spacing="0">
-                                                <Label Text="{x:Static custom2:AppResources.ZZSummary}" Style="{StaticResource SectionTitleBlackBold28}"  />
-                                                <Label Text="{x:Static custom2:AppResources.VATRReviewInformation}" Style="{StaticResource BodyLabelGrey}"/>
+                                                <Label Text="{x:Static custom2:AppResources.ZZSummary}" Style="{StaticResource SectionTitleBlackBold28}" HorizontalOptions="Start" />
+                                                <Label Text="{x:Static custom2:AppResources.VATRReviewInformation}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Start" />
                                                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,24,0,0"/>
                                             </StackLayout>
                                             <Frame Style="{StaticResource ComponentGrayFrame}" Padding="0,0,0,2" HasShadow="False" Margin="0,32,0,0">
