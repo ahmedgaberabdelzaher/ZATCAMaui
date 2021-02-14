@@ -2134,6 +2134,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
 
 
+            InstalmentPlanList = new ObservableCollection<InstalmentPlanResult>();
             InstalmentPlanList = items;
 
             if (InstalmentPlanList.Count == 0)
