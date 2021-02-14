@@ -1394,7 +1394,7 @@
                                            HasShadow="False" />
                                             <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
                                            HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
-                                           Source="establishments" />
+                                           Source="details" />
                                             <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
                                                  Padding="8,0">
                                                 <Label Text="{x:Static ResourceManager:AppResources.CRRequestDetails}"
@@ -1716,7 +1716,7 @@
                                            HasShadow="False" />
                                             <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
                                            HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
-                                           Source="establishments" />
+                                           Source="declaration" />
                                             <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
                                                  Padding="8,0">
                                                 <Label Text="{x:Static ResourceManager:AppResources.CRDeclaration}"
