@@ -599,8 +599,6 @@ namespace EGAZT
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<GAZTNewDesignDashBoardPageViewModel>();
-                    SimpleIoc.Default.Register<GAZTNewDesignDashBoardPageViewModel>();
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignDashBoardPageViewModel>();
                 }
                 catch (Exception )
