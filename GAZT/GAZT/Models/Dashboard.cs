@@ -63,7 +63,7 @@ namespace GAZT.Models
         public string TaxTypeDes { get; set; }
         public string TotalInstAmt { get; set; }
         public string NextInstAmt { get; set; }
-        public DateTime Bldat { get; set; }
+        public DateTime? Bldat { get; set; }
         public string Waers { get; set; }
         public string DayMonth { get; set; }
         public string TotalInst { get; set; }
