@@ -519,7 +519,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public bool isMonthWiseStatementsViewVisible = false;
+        public bool isMonthWiseStatementsViewVisible = true;
 
         public bool IsMonthWiseStatementsViewVisible
         {
@@ -540,7 +540,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public bool isNormalStatementsViewVisible = true;
+        public bool isNormalStatementsViewVisible = false;
 
         public bool IsNormalStatementsViewVisible
         {

@@ -282,17 +282,24 @@
         <Grid  >
 
             <StackLayout Padding="15" Orientation="Vertical">
-                
-
+                <!--<ListView x:Name="LvwContacts"
+                          Margin="5"
+                          BackgroundColor="White"
+                          SeparatorVisibility="None"
+                          IsGroupingEnabled="True"
+                          VerticalScrollBarVisibility="Never"
+                          SelectionMode="None"
+                          GroupDisplayBinding="{Binding Key}"        
+                          ItemsSource="{Binding GroupedData}"  
+                          ItemTapped="LvwContacts_ItemTapped"
+                          HasUnevenRows="True">-->
                 <ListView x:Name="LvwContacts"
                       Margin="5"
                       BackgroundColor="White"
                       SeparatorVisibility="None"
-                      IsGroupingEnabled="True"
                       VerticalScrollBarVisibility="Never"
                           SelectionMode="None"
-                      GroupDisplayBinding="{Binding Key}"        
-                      ItemsSource="{Binding GroupedData}"  
+                      ItemsSource="{Binding StatementsLineItems}"  
                       ItemTapped="LvwContacts_ItemTapped"
                       HasUnevenRows="True">
                     <ListView.ItemTemplate>
@@ -346,17 +353,17 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                    <ListView.GroupHeaderTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.View>
-                                    <Grid>
-                                        <custom:CustomLabel Text="{Binding Key}"  Style="{StaticResource SectionTitleBlack}" />
-                                    </Grid>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.GroupHeaderTemplate>
+                    <!-- <ListView.GroupHeaderTemplate> -->
+                    <!--     <DataTemplate> -->
+                    <!--         <ViewCell> -->
+                    <!--             <ViewCell.View> -->
+                    <!--                 <Grid> -->
+                    <!--                     <custom:CustomLabel Text="{Binding Key}"  Style="{StaticResource SectionTitleBlack}" /> -->
+                    <!--                 </Grid> -->
+                    <!--             </ViewCell.View> -->
+                    <!--         </ViewCell> -->
+                    <!--     </DataTemplate> -->
+                    <!-- </ListView.GroupHeaderTemplate> -->
                     <ListView.Footer>
                         <Grid>
                             <StackLayout Orientation="Vertical">
