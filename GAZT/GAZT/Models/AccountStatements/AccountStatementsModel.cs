@@ -171,10 +171,10 @@ namespace EGAZT.Models.AccountStatements
             set
             {
                 _CalType = value;
-                /*if (_CalType != null)
+                if (_CalType != null)
                 {
                     AccountStatementsPageViewModel.CalType = _CalType;
-                }*/
+                }
             }
         }
         private string openingBalance = string.Empty;
@@ -545,18 +545,18 @@ namespace EGAZT.Models.AccountStatements
                 _Bldat = value;
                 if (_Bldat != null)
                 {
-                    /*if (CalType.Equals("G"))
+                    if (CalType.Equals("G"))
                     {
                         FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     }
                     else
                     {
                         FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("ar-SA"));
-                    }*/
+                    }
 
-                    string[] dts = FormattedBldat.Split('-');
+                    /*string[] dts = FormattedBldat.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    FormattedBldat = date;
+                    FormattedBldat = date;*/
                 }
             }
         }
@@ -569,8 +569,10 @@ namespace EGAZT.Models.AccountStatements
 
         [JsonIgnore]
         private DateTime? PeriodEndDt { get; set; }
-
+        
+        [JsonProperty("PeriodStartDt")]
         public DateTime? PeriodStartDt { get; set; }
+        [JsonIgnore]
         private DateTime? _Bldat2 { get; set; }
 
         [JsonProperty("Bldat2")]
@@ -585,18 +587,18 @@ namespace EGAZT.Models.AccountStatements
                 _Bldat2 = value;
                 if (_Bldat2 != null)
                 {
-                    /*if (CalType.Equals("G"))
+                    if (CalType.Equals("G"))
                     {
                         FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     }
                     else
                     {
                         FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("ar-SA"));
-                    }*/
-                    FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    }
+                    /*FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat2.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    FormattedBldat2 = date;
+                    FormattedBldat2 = date;*/
                 }       
             }
         }
