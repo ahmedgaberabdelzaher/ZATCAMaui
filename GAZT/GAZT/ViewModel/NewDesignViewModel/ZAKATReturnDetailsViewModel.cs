@@ -1870,6 +1870,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsEditTextVisible = false;
                     ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
+                else if (ButtonStatus.Equals("E0010"))// In Paid state 
+                {
+                    isEditVisible = true;
+                    SetEditImage();
+                    isLabelVisible = false;
+                    IsEditTextVisible = false;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
+                }
                 else if (ButtonStatus.Equals(""))//In Processing
                 {
                 }
