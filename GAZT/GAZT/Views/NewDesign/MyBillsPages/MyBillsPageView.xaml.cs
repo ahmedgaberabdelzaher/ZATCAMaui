@@ -241,7 +241,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                         ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#fbf4e9");
                     }
                 });
-                viewModel.AmountTitle = AppResources.MyBillsTotalUnPaidAmount;
+                //viewModel.AmountTitle = AppResources.MyBillsTotalUnPaidAmount;
                 viewModel.SelectedChipFilterItem = selectedReturntype;
             }
             catch (Exception ex)
@@ -315,8 +315,9 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             MyBills BModel = (MyBills)payNowCard.BindingContext;
             Console.WriteLine("Clicked on: Amount: " + BModel.TestDueAmount + " ,FbNum: " + BModel.Fbnum);
 
-            if (!String.IsNullOrEmpty(BModel.Fbnum))
+            /*if (String.IsNullOrEmpty(BModel.Fbnum))
             {
+            */
 
 
                 if (BModel.MadabutFg == "X")
@@ -336,7 +337,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
               //  PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
 
                 //viewModel.DoValidatePayment(BModel.Fbnum,BModel.TestDueAmount);
-            }
+           // }
 
         }
     }

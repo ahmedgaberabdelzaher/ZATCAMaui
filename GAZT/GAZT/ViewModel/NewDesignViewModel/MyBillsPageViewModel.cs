@@ -218,7 +218,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_myBills == value) return;
 
                 _myBills = value;
-                if(_myBills!=null)
+                if(_myBills!=null&&SelectedChipFilterItem==null)
                 {
 
                     if (_myBills.Count != 0)
