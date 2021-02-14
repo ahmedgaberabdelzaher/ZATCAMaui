@@ -6016,7 +6016,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             var VatAmount = Math.Round(Amount, 2);
 
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(VatAmount, "VAT Return"); 
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(VatAmount, AppResources.ZAmount); 
     }
 
    

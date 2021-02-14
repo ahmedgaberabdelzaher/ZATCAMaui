@@ -1698,7 +1698,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             var BillAmount = Math.Round(Amount, 2);
 
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, "My Bills");
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ZAmount);
         }
 
         public async Task UpdateApplePayPaymentGuid()

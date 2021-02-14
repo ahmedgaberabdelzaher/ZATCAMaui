@@ -1380,7 +1380,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
 
 
-                                _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, response.d.PayRef);
+                                _navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, response.d.PayRef);
 
                             });
                         }
@@ -1461,7 +1461,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             var Amount = Convert.ToDouble(PaymentData.d.Amount);
             var ZakatAmount = Math.Round(Amount, 2);
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(ZakatAmount, "Zakat Form12");
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(ZakatAmount, AppResources.ZAmount);
         }
 
         public async Task SadadPaymentSelected()
