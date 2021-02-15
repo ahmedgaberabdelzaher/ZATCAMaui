@@ -1167,7 +1167,7 @@
                                         <StackLayout Spacing="2" BindingContextChanged="attachmentsListViewChild_BindingContextChanged">
                                             <Label Text="{Binding FieldTitle}" HorizontalOptions="StartAndExpand"
                                              Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start"
-                                                   FlowDirection="LeftToRight" />
+                                                 />
 
                                             <Frame BorderColor="#B1B1B1" HasShadow="False" Padding="12" HeightRequest="30" CornerRadius="15" Margin="0,10,0,0" >
                                                 <StackLayout Orientation="Horizontal">
