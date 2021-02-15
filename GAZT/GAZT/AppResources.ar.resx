@@ -8730,6 +8730,6 @@ info@gazt.gov.sa</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="TinDeregistrationSameNotAllow" xml:space="preserve">
-    <value>Cannot be transferred to same TIN</value>
+    <value>لا يمكنه الانتقال الي نفس الرقم المميز</value>
   </data>
 </root>
