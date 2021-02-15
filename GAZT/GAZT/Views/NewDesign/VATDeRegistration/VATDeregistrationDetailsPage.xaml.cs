@@ -32,7 +32,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
     public partial class VATDeregistrationDetailsPage : ContentPage
     {
         VATDeRegistrationDetailsPageViewModel viewModel;
-      
+
 
         public VATDeregistrationDetailsPage()
         {
@@ -44,8 +44,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             SetLTR();
             ChangeArrowDirection();
-            
-          
+
+
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
@@ -71,7 +71,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         private void MessagingCenterCallBacks()
         {
-            MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
+            MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) =>
+            {
                 if (arg)
                 {
                     viewModel.IsInstructionChecked = arg;
@@ -92,7 +93,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             viewModel.IsContactPersonEnabled = true;
                             viewModel.IsDOBEditorVisible = false;
-                          //  IDNumberField.WidthRequest = 320;
+                            //  IDNumberField.WidthRequest = 320;
                         }
                         else
                         {
@@ -102,7 +103,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.ReasonTitle = arg.SelectedValue;
-                     
+
                         if (viewModel.ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                         {
                             viewModel.IsOthersEditorVisible = true;
@@ -121,7 +122,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         if (viewModel.IDType.Contains(AppResources.ZZGCCID))
                         {
                             viewModel.IsDOBEditorVisible = false;
-                           // IDNumberField.WidthRequest = 320;
+                            // IDNumberField.WidthRequest = 320;
                         }
                         else
                         {
@@ -145,10 +146,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
             {
-           
+
                 if (App.IsArabic)
                 {
-                    if(arg.PickerId == "StartDateTypePicker")
+                    if (arg.PickerId == "StartDateTypePicker")
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
                     }
@@ -166,7 +167,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 ValidateIDNumberContact();
                             }
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                         }
@@ -194,7 +195,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 ValidateIDNumberContact();
                             }
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                         }
@@ -239,7 +240,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -274,19 +275,20 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 {
 
                     //viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
-                  viewModel.PopulateAttachments(arg.results);
+                    viewModel.PopulateAttachments(arg.results);
 
 
                 }
             });
-            if (viewModel.IDType != null) {
-                        //MessagingCenterCallBacks();
-                    }
+            if (viewModel.IDType != null)
+            {
+                //MessagingCenterCallBacks();
+            }
             viewModel.PopulateSummaryReasonData();
             viewModel.PopulateSummaryDeclarationData();
             viewModel.PopulateAttachmentsListViewTemplate();
 
-           // summaryAttachmentsListView.ItemsSource = viewModel.AttachmentsListViewData;  
+            // summaryAttachmentsListView.ItemsSource = viewModel.AttachmentsListViewData;  
         }
 
         public async void ValidateIDNumberContact()
@@ -299,7 +301,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 });
             });
             string dob = viewModel.DOB.Replace("/", "");
-           
+
             if (viewModel.IDType == AppResources.NationaID)
             {
                 ContactName.IsEnabled = false;
@@ -337,10 +339,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         else
                         {
                             viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
-                             ContactName.IsEnabled = false;
-                            
+                            ContactName.IsEnabled = false;
+
                             FrmIDNumber.HasError = false;
-                          //  viewModel.FrameContactIDError = false;
+                            //  viewModel.FrameContactIDError = false;
                         }
                     }
                     catch
@@ -352,9 +354,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 FrmIDNumber.HasError = true;
-                               // viewModel.FrameContactIDError = true;
+                                // viewModel.FrameContactIDError = true;
                                 viewModel.TxtIDNumber = string.Empty;
-                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
@@ -411,7 +413,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 });
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -424,7 +426,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -457,12 +459,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
-                                 FrmIDNumber.HasError = true;
+                                FrmIDNumber.HasError = true;
                                 //viewModel.FrameContactIDError = true;
                                 viewModel.TxtIDNumber = string.Empty;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
-                               // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
@@ -476,9 +478,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         else
                         {
                             viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
-                              ContactName.IsEnabled = false;
+                            ContactName.IsEnabled = false;
                             FrmIDNumber.HasError = false;
-                           // viewModel.FrameContactIDError = false;
+                            // viewModel.FrameContactIDError = false;
                         }
                     }
                     catch
@@ -490,7 +492,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 FrmIDNumber.HasError = true;
-                               // viewModel.FrameContactIDError = true;
+                                // viewModel.FrameContactIDError = true;
                                 viewModel.TxtIDNumber = string.Empty;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
@@ -554,14 +556,14 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                 viewModel.IsLoading = false;
+                                viewModel.IsLoading = false;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                                 //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -599,7 +601,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         private static int getQuarter(DateTime date)
         {
-            return (date.Year * 4) + ((date.Month - 1)/ 3);
+            return (date.Year * 4) + ((date.Month - 1) / 3);
         }
 
         public static int GetMonthDifference(DateTime startDate, DateTime endDate)
@@ -627,6 +629,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             viewModel.SelectedReasonListIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             viewModel.ReasonTitle = string.Empty;
+            viewModel.OtherField = string.Empty;
 
             viewModel.AddOutletDocumentOptions();
 
@@ -713,10 +716,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
 
 
-                          Attachment listitem = (from itm in viewModel.VatAttachmentsList
-                                                           where itm.Doguid == attachment.Doguid.ToString()
-                                                           select itm)
-                                            .FirstOrDefault<Attachment>();
+                            Attachment listitem = (from itm in viewModel.VatAttachmentsList
+                                                   where itm.Doguid == attachment.Doguid.ToString()
+                                                   select itm)
+                                              .FirstOrDefault<Attachment>();
 
                             if (listitem != null)
                                 viewModel.VatAttachmentsList.Remove(listitem);
@@ -765,7 +768,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             else
             {
                 //attachmentsListView.SelectedItems.Clear();
-             //   viewModel.AddAttachmentEx();
+                //   viewModel.AddAttachmentEx();
             }
         }
 
@@ -792,9 +795,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             genericDatePickerModel.PickerId = "StartDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel,true));
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException)
             {
 
             }
@@ -819,9 +822,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             genericDatePickerModel.PickerId = "EndDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel,true));
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException)
             {
 
             }
@@ -848,7 +851,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException)
             {
 
             }
@@ -882,7 +885,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException)
             {
 
             }
@@ -1065,13 +1068,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             }
                             else
                             {
-                                popUp.FlowDirections = "LeftToRight";   
+                                popUp.FlowDirections = "LeftToRight";
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.TxtIDNumber = string.Empty;
-                             EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                            EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
                         }
 
 
@@ -1085,7 +1088,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
 
             }
-            catch (Exception )
+            catch (Exception)
             {
 
 
@@ -1103,7 +1106,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 });
             });
             string dob = viewModel.DOB.Replace("/", "");
-             ContactName.IsEnabled = true;
+            ContactName.IsEnabled = true;
             if (viewModel.IDType == AppResources.NationaID)
             {
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
@@ -1122,7 +1125,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
-                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                                 //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
@@ -1130,19 +1133,19 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             {
                                 viewModel.FrameIDError = false;
                                 //FrmIDNumber.HasError = false;
-                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
                         else
                         {
-                              viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
                             //  viewModel.DOB = vATSignUpData.d.Birthdt10;
 
                             // viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
 
-                              ContactName.IsEnabled = false;
+                            ContactName.IsEnabled = false;
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
                         }
@@ -1213,7 +1216,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 });
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1221,11 +1224,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             {
                                 // IsLoading = false;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                               // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1276,7 +1279,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
 
 
-                              ContactName.IsEnabled = false;
+                            ContactName.IsEnabled = false;
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
                         }
@@ -1412,7 +1415,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
         {
-           
+
             try
             {
                 try
@@ -1466,7 +1469,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
             //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatDeregistrationVoidMessage));
 
-            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo,AppResources.ZYes);
+            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);
             if (!result)
             {
 
@@ -1494,11 +1497,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
         }
 
-     
+
         void Others_Entry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
+            //viewModel.ReasonTitle = e.NewTextValue;
             //OthersTxt.HelperText
-            if(e.NewTextValue != null)
+            if (e.NewTextValue != null)
             {
                 viewModel.SetTextCount(e.NewTextValue.Length);
 
