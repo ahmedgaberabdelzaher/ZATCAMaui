@@ -15533,5 +15533,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ChangeLanguage", resourceCulture);
             }
         }
+        
+        public static string TinDeregistrationSameNotAllow {
+            get {
+                return ResourceManager.GetString("TinDeregistrationSameNotAllow", resourceCulture);
+            }
+        }
     }
 }

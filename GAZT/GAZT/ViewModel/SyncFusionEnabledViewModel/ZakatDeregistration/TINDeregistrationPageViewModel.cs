@@ -465,10 +465,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                MessagingCenter.Send<TINDeregistrationPageViewModel, bool>(this, "IsOutletChecked", value);
                 if (_isOutletChecked == value) return;
 
-                if (value == _isOutletChecked) return;
+                MessagingCenter.Send<TINDeregistrationPageViewModel, bool>(this, "IsOutletChecked", value);
                 _isOutletChecked = value;
 
                 if (_isOutletChecked)
@@ -4228,7 +4227,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     else
                     {
-                        if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
+                        if (TINNumber == App.LoginDataRetrieved.TIN)
+                        {
+                            await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
+                            return;
+                        }
+                        else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber))
                             {
@@ -4393,7 +4397,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitDregRsnTb == "3") != null)
                     {
                         var transferrred = SelectedOutletForCloseTranser.PermitTypes.Where(x => x.APermitDregRsnTb == "3");
-                        if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitIdNoTb)) != null)
+
+                        if (transferrred.FirstOrDefault(x => x.APermitTransTinTb == App.LoginDataRetrieved.TIN) != null)
+                        {
+                            await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
+                            return;
+                        }
+                        else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitIdNoTb)) != null)
                         {
                             await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             return;
@@ -4403,7 +4413,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             return;
                         }
-
                     }
                     await SaveAsDraft();
                     EnableOutletDetaislView();

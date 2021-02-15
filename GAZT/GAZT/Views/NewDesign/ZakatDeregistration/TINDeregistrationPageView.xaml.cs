@@ -127,9 +127,15 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "IsOutletChecked", (sender, args) =>
             {
                 if (args)
+                {
                     Resources["IsOutletCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    viewModel.OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                }
                 else
+                {
                     Resources["IsOutletCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                    viewModel.OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                }
             });
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "IsDeclarationChecked", (sender, args) =>
             {
