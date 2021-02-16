@@ -4974,12 +4974,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     {
 
                         DisputeDetailsDesc = note.Strline;
+                        return;
                     }
                     if (note.Rcodez == "RAVT_BOX")
                     {
 
                         ReportDetails = note.Strline;
-
+                        return;
                     }
 
 
