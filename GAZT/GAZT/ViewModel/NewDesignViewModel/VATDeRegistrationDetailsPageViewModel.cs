@@ -346,7 +346,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isLoading;
+        private bool _isLoading = false;
         public bool IsLoading
         {
             get
@@ -1362,7 +1362,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //Step 5
 
                             if (vATDeRegistration.d.Idnumbr != null)
-
                                 if (string.IsNullOrEmpty(IDType))
                                 {
                                     TxtIDNumber = string.Empty;
@@ -1455,6 +1454,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
+                // need to set null
                 await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(VatAttachmentsList.ToList(), Models.ZakatInstalationModels.WhichAttachment.VATDeregistration
                     , ReturnIDx, SelectedDocumentOption.DmsTp));
 
@@ -2222,6 +2222,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsSummaryViewEnabled = true;
                 }
             }
+            else if(string.IsNullOrEmpty(IDType))
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseselectparametertype));
+            }
             else if(TxtIDNumber == string.Empty)
             {
                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseenteravalidID));
@@ -2235,6 +2239,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 //await _dialogService.ShowMessage(AppResources.ZZPleaseentertheName, AppResources.Alerts);
 
+            }
+            else if(IsDeclarationChecked == false)
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
             }
             else
             {

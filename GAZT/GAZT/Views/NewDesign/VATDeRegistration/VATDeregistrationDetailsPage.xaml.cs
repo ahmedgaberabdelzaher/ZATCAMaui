@@ -247,6 +247,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            viewModel.IsSummaryViewEnabled = false;
             ChangeArrowDirection();
             MessagingCenterCallBacks();
 

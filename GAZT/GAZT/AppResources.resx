@@ -802,7 +802,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZPleaseselectparametertype" xml:space="preserve">
     <value>Please select the ID Type value</value>
   </data>
-  <data name="ZSearchParameter" xml:space="preserve">
+  <data name="ZSearchParameter" xml:spaZPleaseselectparametertypece="preserve">
     <value>Search Parameter  </value>
   </data>
   <data name="ZVATAccountNumber" xml:space="preserve">
