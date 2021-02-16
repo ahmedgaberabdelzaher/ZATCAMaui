@@ -4663,7 +4663,7 @@
     <value>ملفات أخرى</value>
   </data>
   <data name="TinDeregistrationDateValidationMessage" xml:space="preserve">
-    <value>يجب ان يكون تاريخ إلغاء التسجيل اكبر من تاريخ بداية اخر تصريح سارى المفعول</value>
+    <value>الإيقاف يجب أن يكون أكبر من تاريخ بدء الترخيص</value>
   </data>
   <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
     <value>1. يجب ان لايتعدى عدد المرفقات لعملية تقديم الإقرار / أو التعديل على الإقرار عن 5 مرفقات.</value>
