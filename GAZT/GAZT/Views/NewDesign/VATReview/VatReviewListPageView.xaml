@@ -135,7 +135,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start"></Image>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.VRVatReviewRequest}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16"/>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.VRVatReviewRequest}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" LineSpacing="1"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding NewRequestBtnTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>
