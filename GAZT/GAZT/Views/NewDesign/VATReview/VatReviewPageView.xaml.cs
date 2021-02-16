@@ -112,7 +112,18 @@ namespace EGAZT.Views.NewDesign.VatReview
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem",
                 (sender, arg) =>
                 {
+                    try
+                    {
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = arg.SelectedValue.Split('/');
+                        dt1 = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
+                        viewModel.PickedDateFullMonth = dt1;
+                    }
+                    catch(Exception e)
+                    {
 
+                    }
                     viewModel.PickedDate = arg.SelectedValue;
                     viewModel.ValidateIdNumber();
                 });

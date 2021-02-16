@@ -1304,7 +1304,7 @@
                                                  Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                         <custom:GAZTBorderlessEntry IsEnabled="False"
-                                                                    Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}"
+                                                                    Text="{Binding PickedDateFullMonth,StringFormat='{0:dd MMM yyyy}'}"
                                                                     FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" />
                                         <Image Source="calendar.png" WidthRequest="20" HeightRequest="20"
                                                Margin="0,0,5,0">

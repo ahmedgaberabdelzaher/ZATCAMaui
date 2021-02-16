@@ -309,6 +309,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("PickedDate");
             }
         }
+        private string _pickedDateFullMonth = "";
+
+        public string PickedDateFullMonth
+        {
+            get { return _pickedDateFullMonth; }
+            set
+            {
+                if (_pickedDateFullMonth == value) return;
+
+                _pickedDateFullMonth = value;
+                RaisePropertyChanged("PickedDateFullMonth");
+            }
+        }
 
         private GenericDatePickerModel genericDatePickerModel;
 
@@ -4196,7 +4209,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     int month = hjCalendar.GetMonth(dateStart);
                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                     string dt1 = string.Empty;
@@ -4243,7 +4256,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     int month = hjCalendar.GetMonth(dateStart);
                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                     string dt1 = string.Empty;
@@ -4280,7 +4293,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     int month = hjCalendar.GetMonth(dateStart);
                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                     string dt1 = string.Empty;
@@ -5640,7 +5653,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     int month = hjCalendar.GetMonth(dateStart);
                                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                                     string dt1 = string.Empty;
@@ -5676,7 +5689,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     int month = hjCalendar.GetMonth(dateStart);
                                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                                     string dt1 = string.Empty;
@@ -5712,7 +5725,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     int month = hjCalendar.GetMonth(dateStart);
                                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                                     string dt1 = string.Empty;
@@ -5748,7 +5761,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     int month = hjCalendar.GetMonth(dateStart);
                                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                                     string dt1 = string.Empty;
