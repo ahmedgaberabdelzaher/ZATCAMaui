@@ -1124,7 +1124,7 @@ namespace GAZT.Manager
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception)
+                catch (Exception Ex)
                 {
                     return null;
                 }
