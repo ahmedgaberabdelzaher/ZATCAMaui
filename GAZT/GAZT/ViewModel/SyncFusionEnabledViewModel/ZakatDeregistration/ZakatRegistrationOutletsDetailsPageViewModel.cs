@@ -69,7 +69,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
 
                 string message = ex.Message;
-                await _dialogService.ShowMessage(message, AppResources.Information, AppResources.OKText, () =>
+                await _dialogService.ShowMessage(message, AppResources.Information, AppResources.ZZZOkayText, () =>
                 {
                     _navigationService.GoBack();
                 });

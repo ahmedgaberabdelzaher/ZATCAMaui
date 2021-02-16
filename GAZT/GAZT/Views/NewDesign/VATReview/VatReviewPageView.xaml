@@ -321,8 +321,8 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                           <border:SfBorder Grid.Row="1" Margin="0,0,0,3" Padding="10,5,10,10"
-                                             MinimumHeightRequest="100"
+                           <border:SfBorder Grid.Row="1" Margin="0,0,0,3" 
+                                             MinimumHeightRequest="100" Padding="0,0,0,7"
                                              Style="{StaticResource GreyBorderFrame}" VerticalOptions="FillAndExpand">
 
  
@@ -338,8 +338,8 @@
                                                                  TextChanged="Report_Details_Tx_TextChanged"
                                                              AutoSize="TextChanges"
                                                               MaxLength="1000"
-                                                                 Margin="0,5,0,0"
-                                                             VerticalOptions="FillAndExpand"
+                                                                 Margin="10,5,10,10"
+                                                             VerticalOptions="CenterAndExpand"
                                                              IsEnabled="{Binding IsReportDetailsEditable}"
                                                              HorizontalOptions="FillAndExpand"
                                                              Style="{StaticResource BodyLabelBlack}" />
@@ -737,26 +737,31 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                           <border:SfBorder Grid.Row="1" Margin="0,0,0,3" Padding="10,5,10,10"
-                                             Style="{StaticResource GreyBorderFrame}">
+
+                            <border:SfBorder Grid.Row="1" Margin="0,0,0,3" 
+                                             MinimumHeightRequest="100" Padding="0,0,0,7"
+                                             Style="{StaticResource GreyBorderFrame}" VerticalOptions="FillAndExpand">
+
                                 <StackLayout Orientation="Vertical">
 
-                                    <custom:GAZTBorderlessEditor x:Name="Dispute_Details_Tx" MaxLength="1000"
+                                    <custom:GAZTBorderlessEditor x:Name="Dispute_Details_Tx"
                                                              Unfocused="Dispute_Details_UnFocused"
                                                              PlaceholderColor="Gray" FontSize="Small"
-                                                             IsEnabled="{Binding IsDisputeDetailsEditable}"
-                                                             Text="{Binding DisputeDetailsDesc}"
                                                              MinimumHeightRequest="100"
+                                                             Text="{Binding DisputeDetailsDesc}"
                                                                  TextChanged="Dispute_Details_Tx_TextChanged"
                                                              AutoSize="TextChanges"
+                                                              MaxLength="1000"
+                                                                 Margin="10,5,10,10"
+                                                             VerticalOptions="CenterAndExpand"
+                                                             IsEnabled="{Binding IsDisputeDetailsEditable}"
                                                              HorizontalOptions="FillAndExpand"
                                                              Style="{StaticResource BodyLabelBlack}" />
-
- 
-
                                 </StackLayout>
+
                             </border:SfBorder>
 
+                       
                               <custom:CustomLabel Grid.Row="2"
                                                 HorizontalOptions="EndAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" >
@@ -1304,7 +1309,7 @@
                                                  Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                         <custom:GAZTBorderlessEntry IsEnabled="False"
-                                                                    Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}"
+                                                                    Text="{Binding PickedDateFullMonth,StringFormat='{0:dd MMM yyyy}'}"
                                                                     FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" />
                                         <Image Source="calendar.png" WidthRequest="20" HeightRequest="20"
                                                Margin="0,0,5,0">

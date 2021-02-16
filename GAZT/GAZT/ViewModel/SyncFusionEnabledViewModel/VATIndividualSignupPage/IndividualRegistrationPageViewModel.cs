@@ -1847,7 +1847,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             if (!string.IsNullOrEmpty(ConfirmEmail) && !string.IsNullOrEmpty(Email))
             {
-                if (Email != ConfirmEmail)
+                if (Email.ToLower() != ConfirmEmail.ToLower())
                 {
 
                     showErrorMessage = true;

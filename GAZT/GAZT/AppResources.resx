@@ -4679,6 +4679,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationOutletCheckboxCloseorTransferAllOutlets" xml:space="preserve">
     <value>I agree about that, I see the outlets that will be de-registered / transferred to another Taxpayer.</value>
   </data>
+  <data name="TINDeregEditNew">
+    <value>Edit</value>
+  </data>
   <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
     <value>Select DOB</value>
   </data>
