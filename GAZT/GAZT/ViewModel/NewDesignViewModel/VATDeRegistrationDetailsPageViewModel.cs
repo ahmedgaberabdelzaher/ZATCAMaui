@@ -1909,7 +1909,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                     }
                     else
-
                     {
                         if (ReasonTitle == string.Empty)
                         {
@@ -1917,6 +1916,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
 
+                        }
+                        else if(ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
+                        {
+                            if(string.IsNullOrEmpty(OtherField))
+                            {
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                            }
+                            else
+                            {
+                                setDATA("05");
+                                await saveAsDraftVoidAPIMethodCall();
+                                VoidIsVisible = true;
+                                EnableAttachmentsView();
+                            }
                         }
                         else
                         {
