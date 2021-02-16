@@ -7908,6 +7908,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TINDeregEditNew {
+            get {
+                return ResourceManager.GetString("TINDeregEditNew", resourceCulture);
+            }
+        }
+        
         public static string VatDeregDOBDatePickerTitle {
             get {
                 return ResourceManager.GetString("VatDeregDOBDatePickerTitle", resourceCulture);

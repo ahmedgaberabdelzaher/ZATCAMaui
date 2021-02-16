@@ -4432,6 +4432,9 @@
 	<data name="TinDeregistrationTransfer" xml:space="preserve">
     <value>نقل</value>
   </data>
+   <data name="TINDeregEditNew">
+    <value>تعديل</value>
+  </data>
 	<data name="TinDeregistrationContactNumber" xml:space="preserve">
     <value>رقم الاتصال</value>
   </data>
