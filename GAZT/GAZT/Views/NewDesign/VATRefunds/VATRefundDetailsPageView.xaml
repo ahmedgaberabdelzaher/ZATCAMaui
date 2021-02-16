@@ -128,15 +128,15 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50*"/>
-                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefund}" HorizontalOptions="StartAndExpand"
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefund}"  HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource PageTitleBlack}" />
                                     <Label Text="{x:Static ResourceManager:AppResources.VATRReviewInformation}" IsVisible="{Binding VatRefundsListResultModel.IsEditable}" Style="{StaticResource BodyLabelGrey}"
                                        HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                    <Label Text="{Binding VATRefundsHeaderSet.RefundFbnum}" Margin="5,-10,5,0" Style="{StaticResource CaptionLabelGrey}">
+                                    <Label Text="{Binding VATRefundsHeaderSet.RefundFbnum}" Margin="5,-10,5,15" Style="{StaticResource CaptionLabelGrey}">
                                         <Label.Triggers>
                                             <DataTrigger TargetType="Label" Binding="{Binding  VatRefundsListResultModel.IsEditable}" Value="false">
                                                 <Setter Property="IsVisible" Value="true" />
@@ -149,7 +149,7 @@
 
                                 </StackLayout>
                                 <yummy:PancakeView Grid.Row="0" Grid.Column="1" IsVisible="true" Padding="10,10,10,10" CornerRadius="14" 
-                                               WidthRequest="80"  HeightRequest="20" Opacity=".2" BackgroundColor="{StaticResource Secondary}"  BorderThickness="1" VerticalOptions="Center" HorizontalOptions="End" >
+                                               WidthRequest="80"  HeightRequest="20" Opacity=".2" BackgroundColor="{StaticResource Secondary}"  BorderThickness="1" VerticalOptions="Center" HorizontalOptions="EndAndExpand" >
                                     <yummy:PancakeView.Triggers>
                                         <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
                                         <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding VATRefundsHeaderSet.Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
@@ -163,8 +163,8 @@
                                         </DataTrigger>
                                     </yummy:PancakeView.Triggers>
                                 </yummy:PancakeView>
-                                <StackLayout Grid.Row="0" Grid.Column="1" IsVisible="true" VerticalOptions="Center"  HorizontalOptions="End"  Margin="15,0">
-                                    <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding VATRefundsHeaderSet.Status}" TextColor="{StaticResource Secondary}"   HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                                <StackLayout Grid.Row="0" Grid.Column="1" IsVisible="true" VerticalOptions="Center"  HorizontalOptions="EndAndExpand"  Margin="15,0">
+                                    <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding VATRefundsHeaderSet.Status}" TextColor="{StaticResource Secondary}" MaxLines="1"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label.Triggers>
                                             <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
                                             <DataTrigger TargetType="Label" Binding="{Binding VATRefundsHeaderSet.Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
