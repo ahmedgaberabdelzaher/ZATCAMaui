@@ -497,9 +497,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //{
             //    index = 1;
             //}
-            if (viewModel.SelectedOutletOption.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+            if (viewModel.SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
                 viewModel.IsOption2Visible = true;
+            }
+            else if (viewModel.SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationCloseAllOutlets))
+            {
+                viewModel.IsOption1Visible = true;
             }
             //viewModel.IsOption1Visible = index == 0 ? true : false;
             //viewModel.IsOption2Visible = index == 1 ? true : false;
