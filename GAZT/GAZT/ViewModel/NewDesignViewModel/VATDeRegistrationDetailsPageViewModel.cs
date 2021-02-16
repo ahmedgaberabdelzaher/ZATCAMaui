@@ -2125,6 +2125,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             else
                             {
                                 SelectedOutletOption = OutletDecisionOptions[0];
+                                SelectedOutletOptionIndex = 0;
                             }
                         }
                     }
