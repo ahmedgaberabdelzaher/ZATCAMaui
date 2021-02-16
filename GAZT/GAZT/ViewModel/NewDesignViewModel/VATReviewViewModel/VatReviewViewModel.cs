@@ -6370,12 +6370,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         VAAccNumber = _vATDeclaration.d.Fin;
                         VAIdnumber = _vATDeclaration.d.Idnumber;
                         VATaxpayerName = _vATDeclaration.d.Tpnm;
-                        VAAddress = _vATDeclaration.d.ADRSet.results[0].BuildingNo + "," +
-                                    _vATDeclaration.d.ADRSet.results[0].Street + "," +
-                                    _vATDeclaration.d.ADRSet.results[0].Addrnumber + "," +
-                                    _vATDeclaration.d.ADRSet.results[0].RegionDesc + "," +
-                                    _vATDeclaration.d.ADRSet.results[0].City + "," +
-                                    _vATDeclaration.d.ADRSet.results[0].PostalCd;
+                        if (_vATDeclaration.d.ADRSet.results.Count > 0)
+                        {
+                            VAAddress = _vATDeclaration.d.ADRSet.results[0].BuildingNo + "," +
+                                        _vATDeclaration.d.ADRSet.results[0].Street + "," +
+                                        _vATDeclaration.d.ADRSet.results[0].Addrnumber + "," +
+                                        _vATDeclaration.d.ADRSet.results[0].RegionDesc + "," +
+                                        _vATDeclaration.d.ADRSet.results[0].City + "," +
+                                        _vATDeclaration.d.ADRSet.results[0].PostalCd;
+                        }
+                        else
+                        {
+                            VAAddress = "";
+                        }
+
                         VAVATReturnType = _vATDeclaration.d.Incotext;
                         VAVatReturnReferenceNo = _vATDeclaration.d.Fbnum;
                         VATaxPeriod = _vATDeclaration.d.Perslt;

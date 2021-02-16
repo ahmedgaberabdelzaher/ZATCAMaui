@@ -36,6 +36,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         }
 
 
+        public bool isNewRequestCreated = false;
         private bool _isBackButtonVisible = true;
 
         public bool IsBackButtonVisible
@@ -628,7 +629,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             CloseClick = new Command(() => { _navigationService.GoBack(); });
 
-            NewRequestBtnTapped = new Command(() => { ShowVatReviewPage(); });
+            NewRequestBtnTapped = new Command(() =>
+            {
+                if (!isNewRequestCreated)
+                {
+                    isNewRequestCreated = true;
+                    ShowVatReviewPage();
+                }
+            });
         }
 
         public void EnableSummaryView()
