@@ -1681,7 +1681,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <ColumnDefinition Width="40*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Label Grid.Row="0" Grid.Column="0"   Text="{x:Static custom2:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
+                                                        <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
                                                                Style="{StaticResource BodyLabelBlackMedium}"/>
                                                           </Grid>
 
@@ -1721,9 +1721,11 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsComming12months}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1}" Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1}" Style="{StaticResource BodyLabelBlackMedium}"
+                                                                   HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                                                <Label Grid.Row="1" Grid.Column="0"  Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsLast12months}"  Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable2}" Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable2}" Style="{StaticResource BodyLabelBlackMedium}"
+                                                                   HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                                       
                                                           </Grid>
 
@@ -1760,9 +1762,9 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Label  Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryofExpenseDetailsComming12Months}"  Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label  Grid.Row="0" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion3answerSelected}"  Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label  Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion3answerSelected}"  Style="{StaticResource BodyLabelBlackMedium}"/>
                                                      <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfExpenseDetailsLast12Months}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion4answerSelected}"  Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion4answerSelected}"  Style="{StaticResource BodyLabelBlackMedium}"/>
                                                       
                                                           </Grid>
                                                    
@@ -1809,15 +1811,15 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                          <Label  Grid.Row="0" Grid.Column="0"  Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource BodyLabelGrey}"/>
                                                             <Label  Grid.Row="0" Grid.Column="1"  Text="{Binding BindingContext.GpartSum, Source={x:Reference VATRegistration}}" Style="{StaticResource BodyLabelBlackMedium}"/>
                                                 <Label  Grid.Row="1" Grid.Column="0"  Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label  Grid.Row="1" Grid.Column="1" Text="{Binding BindingContext.TxtIDTypeSum, Source={x:Reference VATRegistration}}" Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label  Grid.Row="1" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Text="{Binding BindingContext.TxtIDTypeSum, Source={x:Reference VATRegistration}}" Style="{StaticResource BodyLabelBlackMedium}"/>
                                                             <Label  Grid.Row="2" Grid.Column="0"  Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label  Grid.Row="2" Grid.Column="1"  Text="{Binding BindingContext.IdnumberSum,Source={x:Reference VATRegistration}}"  Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label  Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Text="{Binding BindingContext.IdnumberSum,Source={x:Reference VATRegistration}}"  Style="{StaticResource BodyLabelBlackMedium}"/>
                                                               <Label  Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label  Grid.Row="3" Grid.Column="1" Text="{Binding BindingContext.FirstnmSum,Source={x:Reference VATRegistration}}" Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label  Grid.Row="3" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Text="{Binding BindingContext.FirstnmSum,Source={x:Reference VATRegistration}}" Style="{StaticResource BodyLabelBlackMedium}"/>
                                                               <Label  Grid.Row="4" Grid.Column="0"  Text="{x:Static custom2:AppResources.ZZZVATRSurName}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label  Grid.Row="4" Grid.Column="1"  Text="{Binding BindingContext.LastnmSum,Source={x:Reference VATRegistration}}"  Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label  Grid.Row="4" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Text="{Binding BindingContext.LastnmSum,Source={x:Reference VATRegistration}}"  Style="{StaticResource BodyLabelBlackMedium}"/>
                                                             <Label  Grid.Row="5" Grid.Column="0"  Text="{x:Static custom2:AppResources.MobileNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <custom:CustomLabel  Grid.Row="5" Grid.Column="1"  Style="{StaticResource BodyLabelBlackMedium}">
+                                                            <custom:CustomLabel  Grid.Row="5" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"  Style="{StaticResource BodyLabelBlackMedium}">
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="(0966)"/>
@@ -1826,7 +1828,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                 </custom:CustomLabel.FormattedText>
                                                             </custom:CustomLabel>
                                                          <Label  Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label  Grid.Row="6" Grid.Column="1"  Text="{Binding BindingContext.SmtpAddrSum, Source={x:Reference VATRegistration}}" Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label  Grid.Row="6" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Text="{Binding BindingContext.SmtpAddrSum, Source={x:Reference VATRegistration}}" Style="{StaticResource BodyLabelBlackMedium}"/>
                                                      
                                                           </Grid>
                                                 </StackLayout>
