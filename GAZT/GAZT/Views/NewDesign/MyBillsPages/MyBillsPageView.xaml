@@ -102,8 +102,7 @@
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
                 <!--<custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>-->
-                <ScrollView BackgroundColor="Transparent" Orientation="Horizontal"
-                            HorizontalScrollBarVisibility="Never" 
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal"
                             VerticalOptions="Center" Margin="0,24,0,0">
                     <buttons:SfChipGroup Margin="0" x:Name="ChipGroup_statusFilter" Type="Choice" 
                                          Padding="0"  HorizontalOptions="Start" 
@@ -115,7 +114,7 @@
                                          SelectionChanged="chipgroup_SelectionChanged" VerticalOptions="Center" >
                         <buttons:SfChipGroup.ItemTemplate>
                             <DataTemplate >
-                                <StackLayout Margin="-5,-10" Orientation="Horizontal" Spacing="2" Padding="5,-2" WidthRequest="70">
+                                <StackLayout Margin="-5,-10" Orientation="Horizontal" Spacing="2" Padding="5,-2" WidthRequest="80">
                                     <Image Source="{Binding ImageSource}"
                                            HorizontalOptions="Center"
                                            HeightRequest="25"
@@ -129,7 +128,7 @@
                             </DataTemplate>
                         </buttons:SfChipGroup.ItemTemplate>
                     </buttons:SfChipGroup>
-                </ScrollView>
+                </StackLayout>
             </StackLayout>
             <StackLayout Grid.Row="1" Padding="0">
 
@@ -280,6 +279,7 @@
                 <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.NoBillsAvailable}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isNoDataLableVisible}"/>
 
             </StackLayout>
+
 
         </Grid>
 

@@ -618,6 +618,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
         public void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
         {
+
             switch (SelectedTaxTypeForFilter.Id)
             {
                 case "00":
@@ -674,10 +675,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     break;
             }
-            }
+        }
 
         public void FilterIfTypeAndStausFilterSelected()
         {
+            //IsLoading = true;
+
             if (SelectedChipFilterItem != null)
             {
                 if (SelectedChipFilterItem.TemplateType.Equals(AppResources.Paid))
@@ -702,6 +705,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 FilterOnTaxType(MyBills);
             }
+
+            IsLoading = false;
         }
 
           public async Task DoValidatePayment(string fbNum,string sdadNo,string paymentType)
@@ -725,7 +730,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
 
-                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, "M");
+
+
+                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, paymentType);
 
                     if (PaymentData.d.Guid != null&&PaymentData.d.Guid == "")
                     {
