@@ -505,7 +505,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     {
                         if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
                         {
-                            await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage));
+                            await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage));
                             return;
                         }
                     }
