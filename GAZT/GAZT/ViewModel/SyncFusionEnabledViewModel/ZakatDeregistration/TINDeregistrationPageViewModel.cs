@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -5107,7 +5108,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
         public void PopulateAttachments(List<Attachment> attachments)
         {
-            var attachmentsListViewData = new List<Attachment>();
+          
 
             foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
             {
@@ -5129,6 +5130,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
                     TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
             }
+
             AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
             EnableAttachments();
         }
@@ -5156,10 +5158,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
         public async void NewAttachmentClicked()
         {
+
             try
             {
-                TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(TinDeregistrationData.AttDetSet.Results, Models.ZakatInstalationModels.WhichAttachment.TINDeregistration
+                var attachmentsList = new List<Attachment>();
+                foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
+                {
+                    foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                    {
+                        UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
+                        if (attachmentTemp.Dotyp == SelectedAttachment.DocType)
+                        {
+                            if (attachmentsModelsTemp.AttachmentTypeList == null)
+                                attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
+                            if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
+                                attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+                        }
+                    }
+                }
+                attachmentsList.Clear();
+                TinDeregistrationData.AttDetSet.Results?.Clear();
+                foreach (var item in AttachmentsListViewData)
+                {
+                    if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
+                    {
+                        if (item.DocType == SelectedAttachment.DocType)
+                            attachmentsList.AddRange(item.AttachmentTypeList);
+                    }
+                }
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(attachmentsList, Models.ZakatInstalationModels.WhichAttachment.TINDeregistration
                         , TinDeregistrationData.CaseGuid, SelectedAttachment.DocType));
 
             }

@@ -41,7 +41,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         }
 
         public FilesUploadPopUpPageView(List<Attachment> attachments, WhichAttachment whichAttachment, string returnIdz, string dmsType)
-        {
+       {
             InitializeComponent();
             //App.IsArabic = false;
             viewModel = App.Locator.FilesUploadPopUpView;
@@ -100,6 +100,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             else if (whichAttachment == WhichAttachment.TINDeregistration)
             {
+                viewModel.VatAttachmentCount = attachments.results.Count;
+
                 viewModel.TitleOne = "";
                 viewModel.TitleTwo = AppResources.TINDeregAttachmentsTitleTwo;
             }
