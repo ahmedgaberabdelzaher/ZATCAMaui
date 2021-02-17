@@ -197,19 +197,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             try
             {
 
-                IsLoading = true;
+                //IsLoading = true;
 
 
-                await WebServiceManager.GAZTCancelPayment(App.PaymentGuid, "C2");
+                //await WebServiceManager.GAZTCancelPayment(App.PaymentGuid, "C2");
 
-                /*  Device.BeginInvokeOnMainThread(() =>
+                  Device.BeginInvokeOnMainThread(() =>
             {
                 _navigationService.GoBack();
-            });*/
+            });
 
 
 
-                IsLoading = false;
+               // IsLoading = false;
 
             }
             catch (GAZTValidatePaymentInProcessException ex)

@@ -188,14 +188,33 @@
 
                                  
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
-                                            <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
 
-                                               <custom:CustomLabel FlowDirection="LeftToRight" Grid.Column="0"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="Center">
+                                            <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal" IsVisible="{Binding IsBillsTotalAmountEN}">
+
+                                               <custom:CustomLabel Grid.Column="0"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="Center">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding BillCount}" Style="{StaticResource CaptionLabelBlack}"/>
                                                             <Span Text="&#160;" Style="{StaticResource CaptionLabelBlack}"/>
                                                             <Span Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" Style="{StaticResource CaptionLabelBlack}"></Span>
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+                                                <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}"  VerticalOptions="Center">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TappedOnMyBills"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal" IsVisible="{Binding IsBillsTotalAmountAR}">
+
+                                               <custom:CustomLabel Grid.Column="0"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="Center">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" Style="{StaticResource CaptionLabelBlack}"></Span>
+                                                              <Span Text="&#160;" Style="{StaticResource CaptionLabelBlack}"/>
+                                                            <Span Text="{Binding BillCount}" Style="{StaticResource CaptionLabelBlack}"/>
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>

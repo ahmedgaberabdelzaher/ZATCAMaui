@@ -15950,7 +15950,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                    /*    String paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
+                        String paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
                         paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(paymentData);
                         if (!string.IsNullOrEmpty(paymentData) && paymentResponse.d == null)
                         {
@@ -15965,7 +15965,7 @@ namespace GAZT.Manager
                                 throw new GAZTValidatePaymentInProcessException(errorMessage);
                             }
                         }
-*/
+
                     }
                 }
                 catch (JsonReaderException ex)

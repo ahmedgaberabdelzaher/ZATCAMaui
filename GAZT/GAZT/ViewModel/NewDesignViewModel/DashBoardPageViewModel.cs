@@ -1048,6 +1048,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("MenuViewVisible");
             }
         }
+
+        private bool _isBillsTotalAmountAR = false;
+        public bool IsBillsTotalAmountAR
+        {
+            get
+            {
+                return _isBillsTotalAmountAR;
+            }
+            set
+            {
+                if (_isBillsTotalAmountAR == value) return;
+
+                this._isBillsTotalAmountAR = value;
+                this.RaisePropertyChanged("IsBillsTotalAmountAR");
+            }
+        }
+        private bool _isBillsTotalAmountEN = false;
+        public bool IsBillsTotalAmountEN
+        {
+            get
+            {
+                return _isBillsTotalAmountEN;
+            }
+            set
+            {
+                if (_isBillsTotalAmountEN == value) return;
+
+                this._isBillsTotalAmountEN = value;
+                this.RaisePropertyChanged("IsBillsTotalAmountEN");
+            }
+        }
         public bool HomeViewVisible
         {
             get
@@ -2349,6 +2380,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ChartColorCollection ColorsChild = new ChartColorCollection();
             int iBillsCount = 0;
             BillCount = Convert.ToInt32(iBillsCount).ToString();
+
+            if (App.IsArabic) {
+
+                IsBillsTotalAmountAR = true;
+                IsBillsTotalAmountEN = false;
+            }
+            else {
+                IsBillsTotalAmountAR = false;
+                IsBillsTotalAmountEN = true;
+
+            }
+
+
 
             try
             {
