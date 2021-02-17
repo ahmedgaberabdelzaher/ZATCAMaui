@@ -190,7 +190,7 @@
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                             <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
 
-                                               <custom:CustomLabel Grid.Column="0"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="Center">
+                                               <custom:CustomLabel FlowDirection="LeftToRight" Grid.Column="0"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="Center">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding BillCount}" Style="{StaticResource CaptionLabelBlack}"/>

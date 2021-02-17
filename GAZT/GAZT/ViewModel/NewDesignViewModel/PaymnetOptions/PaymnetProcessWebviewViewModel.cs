@@ -37,6 +37,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
+
+
         public MadaPaymentResponse _paymentData = null;
         public MadaPaymentResponse PaymentData
         {
@@ -69,10 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             GoBackClick = new Command(async () =>
             {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    _navigationService.GoBack();
-                });
+                CancelPaymentService();
             });
 
         }
@@ -83,119 +82,154 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async Task UpdateMadaPaymentDetails(string caseGuid)
         {
-            
-                try
+
+            try
+            {
+
+                IsLoading = true;
+
+                var platform = "";
+
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    platform = "C4";
+                }
+                else if (Device.RuntimePlatform == Device.Android)
+                {
+                    platform = "C3";
+                }
+                PaymentData = await WebServiceManager.GAZTUpdateMadaPaymentDetails(caseGuid, platform);
+
+
+                if (PaymentData != null && PaymentData.d != null)
                 {
 
-                    IsLoading = true;
-
-                    var platform = "";
-
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (PaymentData.d.PayRef != null)
                     {
-                        platform = "C4";
-                    }
-                    else if (Device.RuntimePlatform == Device.Android)
-                    {
-                        platform = "C3";
-                    }
-                    PaymentData = await WebServiceManager.GAZTUpdateMadaPaymentDetails(caseGuid,platform);
+                        //Device.BeginInvokeOnMainThread(() =>
+                        //{
+                        //    var _navigation = Application.Current.MainPage.Navigation;
+                        //    foreach (var item in _navigation.NavigationStack)
+                        //    {
+                        //        if (item.GetType().Name == App.PaymentProcessWebview)
+                        //        {
+                        //            _navigation.RemovePage(item);
+                        //            break;
+                        //        }
+                        //    }
+                        //    _navigationService.GoBack();
+                        //});
 
-
-                    if (PaymentData != null && PaymentData.d != null)
-                    {
-
-                        if (PaymentData.d.PayRef != null)
+                        Device.BeginInvokeOnMainThread(() =>
                         {
-                            //Device.BeginInvokeOnMainThread(() =>
-                            //{
-                            //    var _navigation = Application.Current.MainPage.Navigation;
-                            //    foreach (var item in _navigation.NavigationStack)
-                            //    {
-                            //        if (item.GetType().Name == App.PaymentProcessWebview)
-                            //        {
-                            //            _navigation.RemovePage(item);
-                            //            break;
-                            //        }
-                            //    }
-                            //    _navigationService.GoBack();
-                            //});
 
-                            Device.BeginInvokeOnMainThread( () => {
-
-                                //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                            //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
                             //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
 
-                                if(PaymentType == 0) {
-                                    _navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
-                                }
-                                else if(PaymentType == 1) {
-                                    _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, PaymentData.d.PayRef);
-                                } else if(PaymentType == 2) {
-                                    
-                                    _navigationService.NavigateTo(App.MyBillsSuccessPageView, PaymentData.d.PayRef);
+                            if (PaymentType == 0)
+                            {
+                                _navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                            }
+                            else if (PaymentType == 1)
+                            {
+                                _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                            }
+                            else if (PaymentType == 2)
+                            {
 
-                                    //_navigationService.GoBack();
-                                    /*var _navigation = Application.Current.MainPage.Navigation;
-                                    foreach (var item in _navigation.NavigationStack)
+                                _navigationService.NavigateTo(App.MyBillsSuccessPageView, PaymentData.d.PayRef);
+
+                                //_navigationService.GoBack();
+                                /*var _navigation = Application.Current.MainPage.Navigation;
+                                foreach (var item in _navigation.NavigationStack)
+                                {
+                                    if (item.GetType().Name == App.GAZTNewDesignMyBillsPageView)
                                     {
-                                        if (item.GetType().Name == App.GAZTNewDesignMyBillsPageView)
-                                        {
-                                            _navigation.RemovePage(item);
-                                            break;
-                                        }
+                                        _navigation.RemovePage(item);
+                                        break;
                                     }
-                                    foreach (var item in _navigation.NavigationStack)
-                                    {
-                                        if (item.GetType().Name == App.PaymentProcessWebview)
-                                        {
-                                            _navigation.RemovePage(item);
-                                            break;
-                                        }
-                                    }
-                                    _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);*/
                                 }
+                                foreach (var item in _navigation.NavigationStack)
+                                {
+                                    if (item.GetType().Name == App.PaymentProcessWebview)
+                                    {
+                                        _navigation.RemovePage(item);
+                                        break;
+                                    }
+                                }
+                                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);*/
+                            }
 
-                            });
-                           
-                        }
-
+                        });
 
                     }
 
-                    IsLoading = false;
 
                 }
-                catch (GAZTValidatePaymentInProcessException ex)
+
+                IsLoading = false;
+
+            }
+            catch (GAZTValidatePaymentInProcessException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+
+
+        }
+
+        public async Task CancelPaymentService()
+        {
+            try
+            {
+
+                IsLoading = true;
+
+
+                await WebServiceManager.GAZTCancelPayment(App.PaymentGuid, "C2");
+
+                /*  Device.BeginInvokeOnMainThread(() =>
+            {
+                _navigationService.GoBack();
+            });*/
+
+
+
+                IsLoading = false;
+
+            }
+            catch (GAZTValidatePaymentInProcessException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        //_navigationService.GoBack();
                     });
-                }
-                catch (InternetException ex)
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
                         //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
-                    });
-                }
-            
-           
-        }
+                    _navigationService.GoBack();
+                });
+            }
 
-       /* public async void pushSomething()
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                _navigationService.GoBack();
-            });
         }
-*/
     }
 }

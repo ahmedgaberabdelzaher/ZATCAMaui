@@ -15902,7 +15902,99 @@ namespace GAZT.Manager
                 }
                 return paymentResponse;
             }
+        public static async Task<ValidatePaymentResponse> GAZTCancelPayment(string GUID, string type)
+        {
+            ValidatePaymentResponse paymentResponse = null;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DateTime currentDate = DateTime.Now;
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String uri = Constants.CancelPaymentService + "'" + GUID + "',SRCID='" + type + "')" + "?$format=json";
 
+
+                    HttpResponseMessage GAZTValidatePaymentResponse = new HttpResponseMessage();
+                    try
+                    {
+                        GAZTValidatePaymentResponse = await client.GetAsync(uri);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    if (GAZTValidatePaymentResponse != null)
+                    {
+                        if (GAZTValidatePaymentResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+
+                        HttpHeaders headers = GAZTValidatePaymentResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+
+                    /*    String paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
+                        paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(paymentData);
+                        if (!string.IsNullOrEmpty(paymentData) && paymentResponse.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(paymentData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                throw new GAZTValidatePaymentInProcessException(errorMessage);
+                            }
+                        }
+*/
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return paymentResponse;
+        }
 
 
         public static async Task<ValidatePaymentResponse> GAZTValidateMyBillsPayment(string fbNum, string TIN, string devicetype, string sadadNo, string paymentType)

@@ -622,8 +622,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
         #endregion
-        public void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
+        public async void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
         {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
             switch (SelectedTaxTypeForFilter.Id)
             {
                 case "00":
@@ -680,11 +685,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     break;
             }
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
         }
 
-        public void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
+        public async void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
-            //IsLoading = true;
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
 
             calculateMyTaxOblAmount = isTaxTypeFilter;
             if (isTaxTypeFilter)
@@ -718,6 +730,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 FilterOnTaxType(MyBills);
             }
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
         }
 
           public async Task DoValidatePayment(string fbNum,string sdadNo,string paymentType)

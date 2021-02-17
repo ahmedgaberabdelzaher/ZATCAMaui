@@ -422,6 +422,7 @@ namespace GAZT.Helper
         #region Payment Integration
 
         public static string ValidatePaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMADA_CALL_SRV/HeaderSet(Fbnum=";
+        public static string CancelPaymentService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_MADA_PYMNT_CANCEL_SRV/MADAPYMNTCNLSet(GUID=";
         //Dev Payment Url
         //public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=100&sap-ui-language=EN&sap-ui-xx-devmode=true&guid=";
         //Qa paymnet Url
