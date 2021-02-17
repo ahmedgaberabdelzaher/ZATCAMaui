@@ -219,11 +219,12 @@ namespace EGAZT.Views.NewDesign
             viewModel.setFAQ();
             if (App.IsArabic)
             {
-                ContactWebView.Source = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
+                ContactWebView.Source = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
             }
             else
             {
-                ContactWebView.Source = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
+                ContactWebView.Source = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
+
             }
         }
 
