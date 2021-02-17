@@ -34,7 +34,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public string selectedSadadNo = "";
         public string selectedAmount = "";
         public string selectedTaxablePeriod = "";
-        private bool calculateMyTaxOblAmount = false;
 
         #region Property
         public List<ReturnTypes> _TaxTypeForFilter = null;
@@ -51,8 +50,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _TaxTypeForFilter = value;
                 RaisePropertyChanged("TaxTypeForFilter");
             }
-        } 
-        
+        }
+
         private string _referenceNumber = "";
         public string ReferenceNumber
         {
@@ -84,7 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TaxablePeriod");
             }
         }
-        
+
         private string _totalAmount = "0.0";
         public string TotalAmount
         {
@@ -100,8 +99,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TotalAmount");
             }
         }
-        
-        public ChipModel _selectedChipFilterItem=null;
+
+        public ChipModel _selectedChipFilterItem = null;
         public ChipModel SelectedChipFilterItem
         {
             get
@@ -112,7 +111,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (_selectedChipFilterItem == value) return;
 
-                if (value != null&&_selectedChipFilterItem!=value)
+                if (value != null && _selectedChipFilterItem != value)
                 {
                     _selectedChipFilterItem = value;
                     FilterIfTypeAndStausFilterSelected(false);
@@ -134,13 +133,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_SelectionColor == value) return;
 
                 _SelectionColor = value;
-                
+
                 RaisePropertyChanged("SelectionColor");
             }
         }
-        
 
-        public ObservableCollection<ChipModel> _chipDataFilterlist=null;
+
+        public ObservableCollection<ChipModel> _chipDataFilterlist = null;
         public ObservableCollection<ChipModel> ChipDataFilterlist
         {
             get
@@ -187,7 +186,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_filterLabelText == value) return;
 
                 _filterLabelText = value;
-                calculateMyTaxOblAmount = true;
+
                 RaisePropertyChanged("FilterLabelText");
             }
         }
@@ -217,11 +216,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 if (_myBills == value) return;
+
                 _myBills = value;
-                if(_myBills!=null&&calculateMyTaxOblAmount)
+                if (_myBills != null && SelectedChipFilterItem == null)
                 {
-                    /*if (_myBills.Count != 0)
-                    {*/
+
+                    if (_myBills.Count != 0)
+                    {
                         double Amount = 0.00;
                         foreach (var item in MyBills)
                         {
@@ -229,16 +230,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //I = 1 - Partially Paid
                             //O = 2 - Unpaid
 
-                            if(item.Status == "O")
+                            if (item.Status == "O")
                             {
                                 if (item.TestDueAmount != null)
                                 {
                                     Amount = Amount + Convert.ToDouble(item.TestDueAmount);
                                 }
                             }
-                            else if(item.Status == "I")
+                            else if (item.Status == "I")
                             {
-                                if(item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
+                                if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
                                 {
                                     Amount = Amount + Convert.ToDouble(item.TotalRemainingAmount);
                                 }
@@ -252,24 +253,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         string TestDueAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
 
 
-                        AmountLabel = TestDueAmount + " "+AppResources.ZSAR;
-                        if (Amount != 0.00)
-                        {
-                            IsListVisible = true;
-                            isNoDataLableVisible = false;
-                        }
-                        else
-                        {
-                            IsListVisible = false;
-                            isNoDataLableVisible = true;
-                        }
+                        AmountLabel = TestDueAmount + " " + AppResources.ZSAR;
 
-                        /*}
-                        else
-                        {*/
-                        //AmountLabel = " - ";
-                        
-                    //}
+                        IsListVisible = true;
+                        isNoDataLableVisible = false;
+                    }
+                    else
+                    {
+                        AmountLabel = " - ";
+                        IsListVisible = false;
+                        isNoDataLableVisible = true;
+                    }
 
                 }
                 RaisePropertyChanged("MyBills");
@@ -289,8 +283,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_AmountTitle == value) return;
 
                 _AmountTitle = value;
-              
-             
+
+
                 RaisePropertyChanged("AmountTitle");
             }
         }
@@ -328,7 +322,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-        
+
         private bool _isListVisible = false;
         public bool IsListVisible
         {
@@ -343,7 +337,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _isListVisible = value;
                 RaisePropertyChanged("IsListVisible");
             }
-          } 
+        }
         private bool _isNoDataLableVisible = false;
         public bool isNoDataLableVisible
         {
@@ -390,7 +384,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SelcectedBillsIndex");
             }
         }
-        
+
         public ValidatePaymentResponse _paymentData = null;
         public ValidatePaymentResponse PaymentData
         {
@@ -406,7 +400,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("PaymentData");
             }
         }
-        
+
         private bool _applePayStatus;
         public bool ApplePayStatus
         {
@@ -422,7 +416,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ApplePayStatus");
             }
         }
-        
+
         public string ApplePayTokenData = "";
 
         #endregion
@@ -454,7 +448,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             IsLoading = true;
             MyBills = null;
-            
+
             try
             {
                 try
@@ -466,12 +460,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (MyBills != null && MyBills.Count != 0)
                     {
                         MyBillsOriginal = MyBills;
-                       
+
                         SelcectedBillsIndex = 0;
 
                         int milliseconds = 1000;
                         Thread.Sleep(milliseconds);
-                        
+
                         if (billInfo != null)
                         {
                             if (billInfo.BillTypeName == AppResources.Paid)
@@ -488,9 +482,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                         }
 
-                        foreach(MyBills myBills in MyBills)
+                        foreach (MyBills myBills in MyBills)
                         {
-                            if(myBills.Period.Contains("000000") || myBills.PeriodPart1.Contains("000000") || myBills.PeriodPart2.Contains("000000"))
+                            if (myBills.Period.Contains("000000") || myBills.PeriodPart1.Contains("000000") || myBills.PeriodPart2.Contains("000000"))
                             {
                                 myBills.IsPeriodVisible = false;
                             }
@@ -501,7 +495,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             if (myBills.Status == "I")
                             {
-                                if(string.IsNullOrEmpty(myBills.Paidamt))
+                                if (string.IsNullOrEmpty(myBills.Paidamt))
                                 {
                                     myBills.Paidamt = "0";
                                 }
@@ -529,7 +523,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                       // await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
+                        // await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
                         _navigationService.GoBack();
                     });
@@ -541,7 +535,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
@@ -565,13 +559,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
             }
-            catch 
+            catch
             {
             }
 
 
         }
-        public void PopulateDataInChips() 
+        public void PopulateDataInChips()
 
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
@@ -579,7 +573,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 new ChipModel(){Text =AppResources.UnPaid, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"},
                 new ChipModel(){Text =AppResources.Partiallynewui, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"}
             };
-        }        
+        }
         public void PopToRootPage()
         {
             try
@@ -609,8 +603,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 break;
                             }
                         }
-                    // _navigationService.NavigateTo(App.SFLoginPageView);
-                    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                        // _navigationService.NavigateTo(App.SFLoginPageView);
+                        _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                         _navigation.NavigationStack.ToList().Clear();
                     });
                 }
@@ -624,6 +618,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
         public async void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
         {
+
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -685,11 +680,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     break;
             }
+
+
+            if (MyBills != null)
+            {
+
+                if (MyBills.Count != 0)
+                {
+
+                    IsListVisible = true;
+                    isNoDataLableVisible = false;
+                }
+                else
+                {
+                    IsListVisible = false;
+                    isNoDataLableVisible = true;
+                }
+
+            }
+
             await Task.Run(() =>
             {
                 IsLoading = false;
             });
         }
+
 
         public async void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
@@ -698,14 +713,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = true;
             });
 
-            calculateMyTaxOblAmount = isTaxTypeFilter;
-            if (isTaxTypeFilter)
-            {
-                MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-                FilterOnTaxType(MyBills);
-                return;
-            }
-            
             if (SelectedChipFilterItem != null)
             {
                 if (SelectedChipFilterItem.TemplateType.Equals(AppResources.Paid))
@@ -730,13 +737,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 FilterOnTaxType(MyBills);
             }
+
             await Task.Run(() =>
             {
                 IsLoading = false;
             });
+
         }
 
-          public async Task DoValidatePayment(string fbNum,string sdadNo,string paymentType)
+        public async Task DoValidatePayment(string fbNum, string sdadNo, string paymentType)
         {
             try
             {
@@ -757,9 +766,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
 
-                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, "M");
 
-                    if (PaymentData.d.Guid != null&&PaymentData.d.Guid == "")
+
+                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, paymentType);
+
+                    if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                     {
                         await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
                         return;
@@ -774,8 +785,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             App.PaymentGuid = PaymentData.d.Guid;
 
                         }
-                        
-                        if (paymentType == "M") {
+
+                        if (paymentType == "M")
+                        {
 
                             Device.BeginInvokeOnMainThread(async () => {
 
@@ -784,7 +796,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             });
                         }
-                        else {
+                        else
+                        {
 
                             ApplePayStatus = await ProcessApplePay();
                         }
@@ -838,7 +851,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-          public async Task UpdateApplePayPaymentGuid()
+        public async Task UpdateApplePayPaymentGuid()
         {
             try
             {
@@ -894,7 +907,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
                     }
-                 
+
                     IsLoading = false;
 
                 }
@@ -926,25 +939,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
-          
-          private async Task<bool> ProcessApplePay()
-          {
-            
+
+        private async Task<bool> ProcessApplePay()
+        {
+
             var Amount = Convert.ToDouble(PaymentData.d.Amount);
             var BillAmount = Math.Round(Amount, 2);
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ZAmount); 
-          }
-          
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ZAmount);
+        }
+
         public void MadaPaymentSelected()
         {
-             DoValidatePayment(selectedFbNum, selectedSadadNo,"M");
+            DoValidatePayment(selectedFbNum, selectedSadadNo, "M");
 
         }
 
         public async Task ApplePaySelected()
         {
-            DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo,"A");
+            DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo, "A");
 
         }
 

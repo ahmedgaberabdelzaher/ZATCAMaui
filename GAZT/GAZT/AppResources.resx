@@ -527,7 +527,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Invalid captcha</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>There are no bills available</value>
+    <value>No bills available till now</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>Loading...</value>

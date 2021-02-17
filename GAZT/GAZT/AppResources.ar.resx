@@ -544,7 +544,7 @@
     <value>كلمة التحقق غير صالحة</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>لا توجد فواتير</value>
+    <value>لا يوجد لديك فواتير حاليا</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>...تحميل</value>
