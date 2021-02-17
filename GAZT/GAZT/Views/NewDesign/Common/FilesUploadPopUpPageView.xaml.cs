@@ -85,8 +85,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             else if (whichAttachment == WhichAttachment.ContractReleaseCopy || whichAttachment == WhichAttachment.ContractReleaseInvoice)
             {
-                viewModel.TitleOne = AppResources.ZContractReleaseAttachmentTitle;
+                viewModel.TitleOne = "";
                 viewModel.TitleTwo = AppResources.ZContractReleaseChooseonlyfilewithextension;
+                if (!App.IsArabic)
+                {
+                    viewModel.TitleOne = AppResources.ZContractReleaseAttachmentTitle;
+                }
+                
             }
             else if (whichAttachment == WhichAttachment.VATInstalment)
             {

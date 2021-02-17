@@ -1224,7 +1224,8 @@
     <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls</value>
   </data>
   <data name="ZContractReleaseChooseonlyfilewithextension" xml:space="preserve">
-    <value>اعدادات الماسح الضوئي الموصى بها : 745*1024
+    <value>حجم الملف المسموح به في المرفقات 10MB
+اعدادات الماسح الضوئي الموصى بها : 745*1024
 صيغ الملفات المسموح بها  (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
   </data>
   <data name="BPTermsAndConditionsAlert" xml:space="preserve">
@@ -4029,8 +4030,8 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRExpensesDetails" xml:space="preserve">
-<value>تفاصيل المصروفات</value>
-  <comment>VATRegistrationPageView</comment>
+    <value>تفاصيل المصروفات</value>
+    <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRExporter" xml:space="preserve">
     <value>أنا مصدر</value>
@@ -4684,8 +4685,8 @@
     <value>مرفقات - قوائم مدققه</value>
   </data>
   <data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
- <value>إضافة مرفق جديد</value>
-    </data>
+    <value>إضافة مرفق جديد</value>
+  </data>
   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value> اختر تاريخ البداية</value>
   </data>
@@ -7870,7 +7871,7 @@
     <value>نسبة المشتريات المخصصة للتوريدات الخاضعة للضريبة</value>
   </data>
   <data name="ZContractReleaseAttachmentTitle" xml:space="preserve">
-    <value>حجم الملف المسموح به في المرفقات 10MB</value>
+    <value />
   </data>
   <data name="VRVSInstruction1" xml:space="preserve">
     <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الإيقاف (الإيقاف النهائي للرقم المميز)</value>

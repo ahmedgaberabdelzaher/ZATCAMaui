@@ -3389,6 +3389,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
 
                     EnableReportDetailsView();
+                    EnableReviewDetailsConButton();
 
                 }
 
@@ -3925,6 +3926,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             else
             {
                 AttachmentsListViewData = attachmentsListViewData;
+                EnableReviewDetailsConButton();
             }
 
 

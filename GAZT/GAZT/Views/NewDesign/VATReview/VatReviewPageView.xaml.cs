@@ -306,6 +306,8 @@ namespace EGAZT.Views.NewDesign.VatReview
         private void Report_Details_Tx_TextChanged(object sender, TextChangedEventArgs e)
         {
             viewModel.charCountReportDetails = Report_Details_Tx.Text.Length + "/" + 1000;
+            viewModel.ReportDetails = Report_Details_Tx.Text;
+            viewModel.EnableReportDetailsConButton();
         }
 
 
