@@ -4029,8 +4029,8 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRExpensesDetails" xml:space="preserve">
-    <value>التفاصيل المصروفات</value>
-    <comment>VATRegistrationPageView</comment>
+<value>تفاصيل المصروفات</value>
+  <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRExporter" xml:space="preserve">
     <value>أنا مصدر</value>
