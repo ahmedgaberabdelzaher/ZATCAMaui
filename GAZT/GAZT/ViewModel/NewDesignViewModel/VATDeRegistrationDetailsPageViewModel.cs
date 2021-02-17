@@ -1032,8 +1032,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 if (_selectedOutletOption == value) return;
-
                 _selectedOutletOption = value;
+
+                if (OutletDecisionOptions == null)
+                    AddOutletDecisionOptions();
+                SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(value);
+                SelectedReasonListIndex = OutletDecisionOptions.IndexOf(value);
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
                 RaisePropertyChanged("SelectedOutletOption");
             }
@@ -1286,41 +1290,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 SelectedOutletOption = new VATDeregistrationModel();
 
                 SelectedDocumentOption = new ResultsAttachmentItemForElgblDocSet();
-                AddOutletDecisionOptions();
                 AddOutletDocumentOptions();
+                SelectedOutletOption = OutletDecisionOptions[VATDeRegistrationDetailsData != null
+                                   && VATDeRegistrationDetailsData.d != null &&
+                                   VATDeRegistrationDetailsData.d.Reqtp == "S" ? 1 : 0];
 
-                try
-                {
-                    if (VATDeRegistrationDetailsData != null)
-                    {
-                        if (VATDeRegistrationDetailsData.d != null)
-                        {
-                            if (VATDeRegistrationDetailsData.d.Reqtp == "S")
-                            {
-                                SelectedOutletOption = OutletDecisionOptions[1];
-                                SelectedOutletOptionIndex = 1;
-                            }
-                            else
-                            {
-                                SelectedOutletOption = OutletDecisionOptions[0];
-                                SelectedOutletOptionIndex = 0;
-                            }
-                        }
-                        else
-                        {
-                            SelectedOutletOption = OutletDecisionOptions[0];
-                        }
-                    }
-                    else
-                    {
-                        SelectedOutletOption = OutletDecisionOptions[0];
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
-                }
 
                 GetLastICRDate();
 
@@ -2118,31 +2092,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             if (OutletDecisionOptions != null)
             {
-                try
-                {
-                    if (VATDeRegistrationDetailsData != null)
-                    {
-                        if (VATDeRegistrationDetailsData.d != null)
-                        {
-                            if (VATDeRegistrationDetailsData.d.Reqtp == "S")
-                            {
-                                SelectedOutletOption = OutletDecisionOptions[1];
-                                SelectedOutletOptionIndex = 1;
+                CurrentStep = ProcessStep.Step1;
 
-                            }
-                            else
-                            {
-                                SelectedOutletOption = OutletDecisionOptions[0];
-                                SelectedOutletOptionIndex = 0;
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
-                }
+                SelectedOutletOption = OutletDecisionOptions[
+                        VATDeRegistrationDetailsData != null &&
+                        VATDeRegistrationDetailsData.d != null &&
+                        VATDeRegistrationDetailsData.d.Reqtp == "S" ? 1 : 0
+                    ];
             }
             IsBackButtonVisible = true;
             IsReasonViewEnabled = true;

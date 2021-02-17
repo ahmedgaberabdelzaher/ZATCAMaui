@@ -626,9 +626,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
-            viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
-            viewModel.SelectedReasonListIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+            //VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
+            //viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+            //viewModel.SelectedReasonListIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             viewModel.ReasonTitle = string.Empty;
             viewModel.OtherField = string.Empty;
 
