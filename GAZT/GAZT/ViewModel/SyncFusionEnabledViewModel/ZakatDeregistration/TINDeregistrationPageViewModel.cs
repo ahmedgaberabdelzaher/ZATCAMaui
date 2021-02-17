@@ -5168,7 +5168,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
                     {
                         UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
-                        if (attachmentTemp.Dotyp == SelectedAttachment.DocType)
+                        if (attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)// Replace the code to solve the repeat image issue on TIN De-Registration if (attachmentTemp.Dotyp == SelectedAttachment.DocType)
                         {
                             if (attachmentsModelsTemp.AttachmentTypeList == null)
                                 attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();

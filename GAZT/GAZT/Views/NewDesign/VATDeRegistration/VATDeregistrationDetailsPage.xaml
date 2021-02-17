@@ -195,8 +195,6 @@
                                     <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                                 </listView:SfListView.LayoutManager>
                             </listView:SfListView>
-
-
                             <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
@@ -246,9 +244,7 @@
 
                             </Grid>
 
-
                             <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
-
                                 <StackLayout.Triggers>
                                     <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
                                         <Setter Property="IsVisible" Value="false" />
@@ -258,7 +254,6 @@
                                     </DataTrigger>
                                 </StackLayout.Triggers>
                                 <StackLayout>
-
                                     <StackLayout>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
@@ -302,7 +297,6 @@
                                             </StackLayout>
                                         </border:SfBorder >
                                     </StackLayout>
-
                                     <StackLayout Orientation="Vertical">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedFilingPeriod}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />

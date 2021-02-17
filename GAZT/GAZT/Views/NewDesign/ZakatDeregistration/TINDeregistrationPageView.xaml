@@ -1159,6 +1159,8 @@
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
                         <BoxView  Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
+
+
                         <ListView  x:Name="attachmentsListView"  ItemsSource="{Binding AttachmentsListViewData}" HasUnevenRows="True"
                                       SelectionMode="None" SeparatorColor="Transparent">
                             <ListView.ItemTemplate>
@@ -1187,6 +1189,8 @@
                                             </Frame>
                                             <Label Text="{Binding FieldSubTitle}" HorizontalOptions="StartAndExpand" Margin="0,10,0,0"
                                                     Style="{StaticResource CaptionLabelGrey}" />
+
+
                                             <StackLayout BindableLayout.ItemsSource="{Binding AttachmentTypeList}"
                                             HorizontalOptions="Center" >
                                                 <BindableLayout.ItemTemplate>
