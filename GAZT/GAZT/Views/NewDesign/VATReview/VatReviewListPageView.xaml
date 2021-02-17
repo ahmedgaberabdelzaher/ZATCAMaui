@@ -92,7 +92,7 @@
 
     <ContentPage.Content>
 
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
 
             <Grid>
 
@@ -143,7 +143,7 @@
 
                         </border:SfBorder>
 
-                        <Grid Grid.Row="1" Margin="0,10,0,0" BackgroundColor="Transparent"
+                        <Grid Grid.Row="1" Margin="0,10,0,20" BackgroundColor="Transparent"
                               HorizontalOptions="FillAndExpand" VerticalOptions="Start">
 
                             <listView:SfListView Grid.Row="0" HorizontalOptions="CenterAndExpand"
@@ -157,7 +157,7 @@
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
                                         <border:SfBorder Padding="10" Grid.Column="0" CornerRadius="15"
-                                                         Margin="0,15,0,0" HasShadow="True"
+                                                         Margin="0,15,0,0" HasShadow="True" 
                                                          Style="{StaticResource GreyBorderFrameWithShadow}">
                                             <Grid Padding="0" RowSpacing="0" Margin="0">
                                                 <Grid.RowDefinitions>
@@ -426,6 +426,7 @@
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
                                                     </Grid.ColumnDefinitions>
                                                     <custom:CustomLabel Grid.Column="0"
                                                                             Text="{x:Static ResourceManager:AppResources.VRAttachment}"
@@ -435,6 +436,10 @@
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End"
                                                                             VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Grid.Column="2" HorizontalOptions="End">
+                                                        <Image Source="Generic_attachment_icon" WidthRequest="25" HeightRequest="25"
+                                                       HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                    </StackLayout>
                                                 </Grid>
 
                                             </DataTemplate>

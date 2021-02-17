@@ -4029,8 +4029,8 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRExpensesDetails" xml:space="preserve">
-    <value>التفاصيل المصروفات</value>
-    <comment>VATRegistrationPageView</comment>
+<value>تفاصيل المصروفات</value>
+  <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRExporter" xml:space="preserve">
     <value>أنا مصدر</value>
@@ -4684,8 +4684,8 @@
     <value>مرفقات - قوائم مدققه</value>
   </data>
   <data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
-    <value />
-  </data>
+ <value>إضافة مرفق جديد</value>
+    </data>
   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value> اختر تاريخ البداية</value>
   </data>
