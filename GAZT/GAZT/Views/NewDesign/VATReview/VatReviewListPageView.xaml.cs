@@ -52,6 +52,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
+            _viewModel.isNewRequestCreated = false;
             await _viewModel.VATObjectionList();
 
         }
@@ -88,7 +89,11 @@ namespace EGAZT.Views.NewDesign.VatReview
 
                 App.selectedVATItem = item.Fbnum;
                 App.selectedVATItemFbust = item.Fbust;
-                _viewModel._navigationService.NavigateTo(App.VatReviewPageView);
+                if (!_viewModel.isNewRequestCreated)
+                {
+                    _viewModel.isNewRequestCreated = true;
+                    _viewModel._navigationService.NavigateTo(App.VatReviewPageView);
+                }
             }
             else
             {

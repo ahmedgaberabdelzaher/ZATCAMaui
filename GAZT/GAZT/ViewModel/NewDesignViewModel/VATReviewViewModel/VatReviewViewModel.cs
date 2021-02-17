@@ -309,6 +309,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("PickedDate");
             }
         }
+        private string _pickedDateFullMonth = "";
+
+        public string PickedDateFullMonth
+        {
+            get { return _pickedDateFullMonth; }
+            set
+            {
+                if (_pickedDateFullMonth == value) return;
+
+                _pickedDateFullMonth = value;
+                RaisePropertyChanged("PickedDateFullMonth");
+            }
+        }
 
         private GenericDatePickerModel genericDatePickerModel;
 
@@ -4196,7 +4209,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     int month = hjCalendar.GetMonth(dateStart);
                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                     string dt1 = string.Empty;
@@ -4243,7 +4256,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     int month = hjCalendar.GetMonth(dateStart);
                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                     string dt1 = string.Empty;
@@ -4280,7 +4293,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     int month = hjCalendar.GetMonth(dateStart);
                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                     string dt1 = string.Empty;
@@ -4961,12 +4974,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     {
 
                         DisputeDetailsDesc = note.Strline;
+                        return;
                     }
                     if (note.Rcodez == "RAVT_BOX")
                     {
 
                         ReportDetails = note.Strline;
-
+                        return;
                     }
 
 
@@ -5640,7 +5654,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     int month = hjCalendar.GetMonth(dateStart);
                                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                                     string dt1 = string.Empty;
@@ -5676,7 +5690,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     int month = hjCalendar.GetMonth(dateStart);
                                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                                     string dt1 = string.Empty;
@@ -5712,7 +5726,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     int month = hjCalendar.GetMonth(dateStart);
                                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                                     string dt1 = string.Empty;
@@ -5748,7 +5762,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     int month = hjCalendar.GetMonth(dateStart);
                                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
                                     string dt1 = string.Empty;
@@ -6370,12 +6384,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         VAAccNumber = _vATDeclaration.d.Fin;
                         VAIdnumber = _vATDeclaration.d.Idnumber;
                         VATaxpayerName = _vATDeclaration.d.Tpnm;
-                        VAAddress = _vATDeclaration.d.ADRSet.results[0].BuildingNo + "," +
-                                    _vATDeclaration.d.ADRSet.results[0].Street + "," +
-                                    _vATDeclaration.d.ADRSet.results[0].Addrnumber + "," +
-                                    _vATDeclaration.d.ADRSet.results[0].RegionDesc + "," +
-                                    _vATDeclaration.d.ADRSet.results[0].City + "," +
-                                    _vATDeclaration.d.ADRSet.results[0].PostalCd;
+                        if (_vATDeclaration.d.ADRSet.results.Count > 0)
+                        {
+                            VAAddress = _vATDeclaration.d.ADRSet.results[0].BuildingNo + "," +
+                                        _vATDeclaration.d.ADRSet.results[0].Street + "," +
+                                        _vATDeclaration.d.ADRSet.results[0].Addrnumber + "," +
+                                        _vATDeclaration.d.ADRSet.results[0].RegionDesc + "," +
+                                        _vATDeclaration.d.ADRSet.results[0].City + "," +
+                                        _vATDeclaration.d.ADRSet.results[0].PostalCd;
+                        }
+                        else
+                        {
+                            VAAddress = "";
+                        }
+
                         VAVATReturnType = _vATDeclaration.d.Incotext;
                         VAVatReturnReferenceNo = _vATDeclaration.d.Fbnum;
                         VATaxPeriod = _vATDeclaration.d.Perslt;

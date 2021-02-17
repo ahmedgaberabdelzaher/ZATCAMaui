@@ -1755,7 +1755,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                 var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                 if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.OKText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully"), true);
+                                    await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully"), true);
                                 }
                             }
                         }

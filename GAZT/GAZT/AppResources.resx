@@ -802,7 +802,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZPleaseselectparametertype" xml:space="preserve">
     <value>Please select the ID Type value</value>
   </data>
-  <data name="ZSearchParameter" xml:space="preserve">
+  <data name="ZSearchParameter" xml:spaZPleaseselectparametertypece="preserve">
     <value>Search Parameter  </value>
   </data>
   <data name="ZVATAccountNumber" xml:space="preserve">
@@ -4678,6 +4678,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="TinDeregistrationOutletCheckboxCloseorTransferAllOutlets" xml:space="preserve">
     <value>I agree about that, I see the outlets that will be de-registered / transferred to another Taxpayer.</value>
+  </data>
+  <data name="TINDeregEditNew">
+    <value>Edit</value>
   </data>
   <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
     <value>Select DOB</value>
@@ -8802,7 +8805,10 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="ZAKATCamelCase" xml:space="preserve">
     <value />
   </data>
-<data name="ChangeLanguage" xml:space="preserve">
+  <data name="ChangeLanguage" xml:space="preserve">
     <value>عربي</value>
+  </data>
+  <data name="TinDeregistrationSameNotAllow" xml:space="preserve">
+    <value>Cannot be transferred to same TIN</value>
   </data>
 </root>

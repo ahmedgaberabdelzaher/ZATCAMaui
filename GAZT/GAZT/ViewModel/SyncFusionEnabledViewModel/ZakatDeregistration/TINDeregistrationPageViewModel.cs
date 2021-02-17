@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -465,10 +466,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                MessagingCenter.Send<TINDeregistrationPageViewModel, bool>(this, "IsOutletChecked", value);
                 if (_isOutletChecked == value) return;
 
-                if (value == _isOutletChecked) return;
+                MessagingCenter.Send<TINDeregistrationPageViewModel, bool>(this, "IsOutletChecked", value);
                 _isOutletChecked = value;
 
                 if (_isOutletChecked)
@@ -3735,6 +3735,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             //SelectedOutletOption = OutletDecisionOptions[0];
             //SelectedOutletOptionIndex = 0;
+            MessagingCenter.Send<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");
 
             IsBackButtonVisible = true;
             IsReasonViewEnabled = true;
@@ -4228,7 +4229,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     else
                     {
-                        if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
+                        if (TINNumber == App.LoginDataRetrieved.TIN)
+                        {
+                            await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
+                            return;
+                        }
+                        else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber))
                             {
@@ -4393,7 +4399,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitDregRsnTb == "3") != null)
                     {
                         var transferrred = SelectedOutletForCloseTranser.PermitTypes.Where(x => x.APermitDregRsnTb == "3");
-                        if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitIdNoTb)) != null)
+
+                        if (transferrred.FirstOrDefault(x => x.APermitTransTinTb == App.LoginDataRetrieved.TIN) != null)
+                        {
+                            await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
+                            return;
+                        }
+                        else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitIdNoTb)) != null)
                         {
                             await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             return;
@@ -4403,7 +4415,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             return;
                         }
-
                     }
                     await SaveAsDraft();
                     EnableOutletDetaislView();
@@ -5098,7 +5109,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
         public void PopulateAttachments(List<Attachment> attachments)
         {
-            var attachmentsListViewData = new List<Attachment>();
+          
 
             foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
             {
@@ -5120,6 +5131,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
                     TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
             }
+
             AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
             EnableAttachments();
         }
@@ -5147,10 +5159,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
         public async void NewAttachmentClicked()
         {
+
             try
             {
-                TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(TinDeregistrationData.AttDetSet.Results, Models.ZakatInstalationModels.WhichAttachment.TINDeregistration
+                var attachmentsList = new List<Attachment>();
+                foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
+                {
+                    foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                    {
+                        UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
+                        if (attachmentTemp.Dotyp == SelectedAttachment.DocType)
+                        {
+                            if (attachmentsModelsTemp.AttachmentTypeList == null)
+                                attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
+                            if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
+                                attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+                        }
+                    }
+                }
+                attachmentsList.Clear();
+                TinDeregistrationData.AttDetSet.Results?.Clear();
+                foreach (var item in AttachmentsListViewData)
+                {
+                    if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
+                    {
+                        if (item.DocType == SelectedAttachment.DocType)
+                            attachmentsList.AddRange(item.AttachmentTypeList);
+                    }
+                }
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(attachmentsList, Models.ZakatInstalationModels.WhichAttachment.TINDeregistration
                         , TinDeregistrationData.CaseGuid, SelectedAttachment.DocType));
 
             }

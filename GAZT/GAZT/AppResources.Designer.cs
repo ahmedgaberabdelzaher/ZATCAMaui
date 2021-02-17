@@ -7908,6 +7908,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TINDeregEditNew {
+            get {
+                return ResourceManager.GetString("TINDeregEditNew", resourceCulture);
+            }
+        }
+        
         public static string VatDeregDOBDatePickerTitle {
             get {
                 return ResourceManager.GetString("VatDeregDOBDatePickerTitle", resourceCulture);
@@ -15531,6 +15537,12 @@ namespace EGAZT {
         public static string ChangeLanguage {
             get {
                 return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationSameNotAllow {
+            get {
+                return ResourceManager.GetString("TinDeregistrationSameNotAllow", resourceCulture);
             }
         }
     }
