@@ -12,8 +12,8 @@ namespace EGAZT.Models
         public string Abtypt { get; set; } //TaxType
         public string VTRE2 { get; set; } //SadadPaymentNumber
         public string MadabutFg { get; set; } //Mada Payment
+        public string OpenliMsg { get; set; } //Mada Payment Message
         public string Persl { get; set; } //Mada Payment
-
         public string _cal_typ = String.Empty;
         public string CalTyp
         {

@@ -1447,7 +1447,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (!string.IsNullOrEmpty(value))
                 {
                     _OverDueCount = value;
-                    RaisePropertyChanged("OverDue");
+                    RaisePropertyChanged("OverDueCount");
 
                 }
 

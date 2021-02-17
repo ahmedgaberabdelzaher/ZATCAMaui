@@ -1319,7 +1319,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 }
                 else
                 {
-                    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ""));
+                    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, BModel.OpenliMsg));
                 }
                 viewModel.selectedFbNum = BModel.Fbnum;
                 viewModel.selectedSadadNo = BModel.Gpartz;
