@@ -1447,7 +1447,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (!string.IsNullOrEmpty(value))
                 {
                     _OverDueCount = value;
-                    RaisePropertyChanged("OverDue");
+                    RaisePropertyChanged("OverDueCount");
 
                 }
 
@@ -1608,7 +1608,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
                     PaymentData = null;
-                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, "M");
+                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, paymentType);
 
 
 

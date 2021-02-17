@@ -185,14 +185,17 @@
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
+
+                                 
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                             <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                                <custom:CustomLabel Grid.Column="0"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="Center">
+
+                                               <custom:CustomLabel Grid.Column="0"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="Center">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding BillCount}" />
-                                                            <Span Text=" "/>
-                                                            <Span Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}"></Span>
+                                                            <Span Text="{Binding BillCount}" Style="{StaticResource CaptionLabelBlack}"/>
+                                                            <Span Text="&#160;" Style="{StaticResource CaptionLabelBlack}"/>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" Style="{StaticResource CaptionLabelBlack}"></Span>
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
@@ -1005,7 +1008,7 @@
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="ic_Payments" Style="{StaticResource SmallIcon}"/>
-                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBBills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Label_MyBills"/>
                                             </StackLayout.GestureRecognizers>

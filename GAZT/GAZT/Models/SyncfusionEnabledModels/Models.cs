@@ -69,7 +69,8 @@ namespace GAZT.Models
         public string Gpartz { get; set; }
         public string Abtyp { get; set; }
         public string MadabutFg { get; set; }
-        
+        public string OpenliMsg { get; set; } //Mada Payment Message
+
         public string Abtypt { get; set; }
         public DateTime? Abrzo { get; set; }
         public string Langz { get; set; }

@@ -680,10 +680,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     break;
             }
-            }
+        }
 
         public void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
+            //IsLoading = true;
+
             calculateMyTaxOblAmount = isTaxTypeFilter;
             if (isTaxTypeFilter)
             {
