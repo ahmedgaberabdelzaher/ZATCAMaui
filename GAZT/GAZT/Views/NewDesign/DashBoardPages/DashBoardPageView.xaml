@@ -232,7 +232,7 @@
                                         <cards:SfCardView HasShadow="False" BackgroundColor="White" CornerRadius="10" Margin="0,5,0,0">
                                             <StackLayout >
 
-                                                <listView:SfListView ItemsSource="{Binding PendingBills}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" >
+                                                <listView:SfListView ItemsSource="{Binding PendingBills}" MinimumHeightRequest="{Binding PendingBillsListHeight}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" >
                                                      <listView:SfListView.Behaviors>
                                                             <local:ListViewBehavior/>
                                                    </listView:SfListView.Behaviors>
