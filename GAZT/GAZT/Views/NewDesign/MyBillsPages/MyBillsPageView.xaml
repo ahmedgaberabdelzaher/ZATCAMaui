@@ -116,7 +116,7 @@
                                          SelectionChanged="chipgroup_SelectionChanged" VerticalOptions="Center" >
                         <buttons:SfChipGroup.ItemTemplate>
                             <DataTemplate >
-                                <StackLayout Margin="-5,-10" Orientation="Horizontal" Spacing="2" Padding="5,-2" WidthRequest="80">
+                                <StackLayout Margin="-5,-10" Orientation="Horizontal" Spacing="2" Padding="5,-2"  HorizontalOptions="FillAndExpand">
                                     <Image Source="{Binding ImageSource}"
                                            HorizontalOptions="Center"
                                            HeightRequest="25"
@@ -125,6 +125,7 @@
                                                         HorizontalOptions="CenterAndExpand" 
                                                         Style="{StaticResource CaptionLabelBlack}"
                                                         VerticalTextAlignment="Center"
+                                                        Margin="0,0,5,0"
                                                         VerticalOptions="Center"/>
                                 </StackLayout>
                             </DataTemplate>
@@ -137,7 +138,7 @@
                 <ListView  x:Name="Bills" ItemsSource="{Binding MyBills,Mode=TwoWay}"
                            IsVisible="{Binding IsListVisible}" VerticalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand" HasUnevenRows="True" BackgroundColor="White"
-                           SeparatorVisibility="None" ItemTapped="Bills_ItemTapped">
+                           SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

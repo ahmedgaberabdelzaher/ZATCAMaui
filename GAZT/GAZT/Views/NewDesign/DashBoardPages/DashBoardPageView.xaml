@@ -5,6 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:local="clr-namespace:EGAZT.CustomControl"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
@@ -16,6 +17,7 @@
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
             BackgroundImageSource="partials_background" x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />
@@ -178,7 +180,7 @@
                             <!--Pending Bills-->
                             <StackLayout IsVisible="{Binding IsPendingBillsVisible}">
                                 <yummy:PancakeView  BackgroundColor="White"  Padding="15,0,15,0">
-                                    <StackLayout  Margin="0,15,0,0"  VerticalOptions="FillAndExpand">
+                                    <StackLayout  Margin="0,15,0,15"  VerticalOptions="FillAndExpand">
 
                                         <Grid>
                                             <Grid.ColumnDefinitions>
@@ -230,12 +232,14 @@
                                         <cards:SfCardView HasShadow="False" BackgroundColor="White" CornerRadius="10" Margin="0,5,0,0">
                                             <StackLayout >
 
-                                                <listView:SfListView HeightRequest="{Binding PendingBillsListHeight}" ItemsSource="{Binding PendingBills}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" >
-
+                                                <listView:SfListView ItemsSource="{Binding PendingBills}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" >
+                                                     <listView:SfListView.Behaviors>
+                                                            <local:ListViewBehavior/>
+                                                   </listView:SfListView.Behaviors>
                                                     <listView:SfListView.ItemTemplate>
                                                         <DataTemplate>
 
-                                                            <cards:SfCardView CornerRadius="16" Margin="0" HeightRequest="75">
+                                                            <cards:SfCardView CornerRadius="16" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
                                                                 <StackLayout Spacing="2" Margin="12" Orientation="Vertical">
                                                                     <Grid HorizontalOptions="FillAndExpand">
@@ -265,7 +269,7 @@
 
                                                                             <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding Abtypt}" 
                                                                                         Style="{StaticResource 
-                                                                        CaptionLabelBlack}"></custom:CustomLabel>
+                                                                        CaptionLabelBlack}" VerticalOptions="End"></custom:CustomLabel>
 
                                                                         </StackLayout>
 
