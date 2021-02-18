@@ -173,7 +173,7 @@ namespace EGAZT.Models.AccountStatements
                 _CalType = value;
                 if (_CalType != null)
                 {
-                    AccountStatementsPageViewModel.CalType = _CalType;
+                    App.CalType = _CalType;
                 }
             }
         }
@@ -551,7 +551,7 @@ namespace EGAZT.Models.AccountStatements
                 _Bldat = value;
                 if (_Bldat != null)
                 {
-                    if (CalType.Equals("G"))
+                    if (App.CalType.Equals("G"))
                     {
                         FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     }
@@ -591,9 +591,16 @@ namespace EGAZT.Models.AccountStatements
                 _Bldat2 = value;
                 if (_Bldat2 != null)
                 {
-                    if (CalType.Equals("G"))
+                    if (App.CalType.Equals("G"))
                     {
-                        FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        if (App.IsArabic)
+                        {
+                            FormattedBldat2 = _Bldat2?.ToString("yyyy-MMMM-dd", new CultureInfo("en-US"));
+                        }
+                        else
+                        {
+                            FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        }
                     }
                     else
                     {
