@@ -32,9 +32,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                InitializeComponent();
                 viewModel = App.Locator.GAZTNewDesignVATReturnUpdatedUIPageView;
                 this.BindingContext = viewModel;
+                InitializeComponent();
+             
               //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
                 SetLTR();
@@ -1941,7 +1942,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
         }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
             return IsAllEntered;
@@ -3145,42 +3146,42 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 EntryImportsaccAdj.Text = "0.00";
                 EntryImportsaccVat.Text = "0.00";
 
-                EntryVatAmount15.Text = string.Empty;
-                EntryVatAdjustmentWithSAR15.Text = string.Empty;
+                EntryVatAmount15.Text = "0.00";// string.Empty;
+                EntryVatAdjustmentWithSAR15.Text = "0.00";// string.Empty;
                 EntryStdsalesVat15.Text = "0.00";
 
-                EntryVatAmount5.Text = string.Empty;
-                EntryVatAdjustmentWithSAR5.Text = string.Empty;
+                EntryVatAmount5.Text = "0.00";// string.Empty;
+                EntryVatAdjustmentWithSAR5.Text = "0.00";// string.Empty;
                 EntryStdsalesVat5.Text = "0.00";
 
                 //
 
-                EntryStdpurchaseAmt15.Text = string.Empty;
-                EntryStdpurchaseAdj15.Text = string.Empty;
+                EntryStdpurchaseAmt15.Text = "0.00";//string.Empty;
+                EntryStdpurchaseAdj15.Text = "0.00";//string.Empty;
                 EntryStdpurchasesVat15.Text = "0.00";
 
-                EntryStdpurchaseAmt5.Text = string.Empty;
-                EntryStdpurchaseAdj5.Text = string.Empty;
+                EntryStdpurchaseAmt5.Text = "0.00";//string.Empty;
+                EntryStdpurchaseAdj5.Text = "0.00";//string.Empty;
                 EntryStdpurchasesVat5.Text = "0.00";
 
                 //
 
-                EntryZVatAmountWithSAR15.Text = string.Empty;
-                EntryImportspaidAdj15.Text = string.Empty;
+                EntryZVatAmountWithSAR15.Text = "0.00";//string.Empty;
+                EntryImportspaidAdj15.Text = "0.00";//string.Empty;
                 EntryImportspaidVat15.Text = "0.00";
 
-                EntryZVatAmountWithSAR5.Text = string.Empty;
-                EntryImportspaidAdj5.Text = string.Empty;
+                EntryZVatAmountWithSAR5.Text = "0.00";//string.Empty;
+                EntryImportspaidAdj5.Text = "0.00";// string.Empty;
                 EntryImportspaidVat5.Text = "0.00";
 
                 //
 
-                EntryImportsaccAmt15.Text = string.Empty;
-                EntryImportsaccAdj15.Text = string.Empty;
+                EntryImportsaccAmt15.Text = "0.00";//string.Empty;
+                EntryImportsaccAdj15.Text = "0.00";// string.Empty;
                 EntryImportsaccVat15.Text = "0.00";
 
-                EntryImportsaccAmt5.Text = string.Empty;
-                EntryImportsaccAdj5.Text = string.Empty;
+                EntryImportsaccAmt5.Text = "0.00";//string.Empty;
+                EntryImportsaccAdj5.Text = "0.00";//string.Empty;
                 EntryImportsaccVat5.Text = "0.00";
             }
             catch (Exception)
