@@ -146,7 +146,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                                await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
                             });
                         }
                     }
@@ -155,16 +155,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 viewModel.IsIBANValid = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                    await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
                 });
             }
         }
@@ -202,9 +203,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void Close_Tapped(object sender, EventArgs e)
         {
-          
+
+            if (viewModel.IsIBANValid)
+            {
                 PopupNavigation.Instance.PopAsync();
-           
+
+            }
+            else
+            {
+                Checked_IBAN();
+
+            }
+
         }
     }
 }
