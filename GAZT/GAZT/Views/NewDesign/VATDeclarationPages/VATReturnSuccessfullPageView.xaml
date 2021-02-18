@@ -10,9 +10,10 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             BackgroundImageSource="partials_background"
+             BackgroundImageSource="partials_background.png"
              NavigationPage.HasNavigationBar="False"
-             x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.VATReturnSuccessfullPageView">
+             x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.VATReturnSuccessfullPageView"
+            >
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -40,14 +41,14 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <StackLayout Grid.Row="0" Padding="15,5,15,0">
+            <!--<StackLayout Grid.Row="0" Padding="15,5,15,0">
                 <Image  Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
 
                 </Image>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnBackButtonClicked}"/>
                 </StackLayout.GestureRecognizers>
-            </StackLayout>
+            </StackLayout>-->
 
             <ScrollView Grid.Row="1" Margin="0,8,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
             <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand">

@@ -2087,6 +2087,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZVatRefundTermsAndConditions {
+            get {
+                return ResourceManager.GetString("ZVatRefundTermsAndConditions", resourceCulture);
+            }
+        }
+        
         public static string ZVatTotalAdjustment {
             get {
                 return ResourceManager.GetString("ZVatTotalAdjustment", resourceCulture);

@@ -1139,6 +1139,9 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZVatTermsAndConditions" xml:space="preserve">
     <value>Terms &amp; Conditions</value>
   </data>
+   <data name="ZVatRefundTermsAndConditions" xml:space="preserve">
+    <value>Terms &amp; Conditions</value>
+  </data>
   <data name="ZVatTotalAdjustment" xml:space="preserve">
     <value>Total Adjustment</value>
   </data>

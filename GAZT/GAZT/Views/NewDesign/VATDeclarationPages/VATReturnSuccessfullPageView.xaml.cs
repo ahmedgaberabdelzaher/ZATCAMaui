@@ -32,7 +32,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 this.BindingContext = viewModel;
                 SetLTR();
                 ChangeAeroIcon();
-              //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     viewModel.SadadNumber = string.Empty;

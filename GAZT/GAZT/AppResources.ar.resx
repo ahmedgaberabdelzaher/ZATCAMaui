@@ -1196,6 +1196,9 @@
   <data name="ZVatTermsAndConditions" xml:space="preserve">
     <value>الشروط والأحكام:</value>
   </data>
+   <data name="ZVatRefundTermsAndConditions" xml:space="preserve">
+    <value>الشروط والأحكام</value>
+  </data>
   <data name="ZVatTotalAdjustment" xml:space="preserve">
     <value>إجمالي التسوية</value>
   </data>
