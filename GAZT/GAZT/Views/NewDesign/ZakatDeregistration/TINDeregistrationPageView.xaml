@@ -162,7 +162,7 @@
                     <listView:SfListView BackgroundColor="Transparent" x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False"
                                       IsScrollingEnabled="False" AutoFitMode="Height"  VerticalOptions="Center"
                                       Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemSpacing="5" IsVisible="{Binding IsOutletDecisionOptionsLVVisible}"
-                                      ItemsSource="{Binding OutletDecisionOptions}"   SelectionMode="Single" SelectedItem="{Binding SelectedOutletOption}"
+                                      ItemsSource="{Binding OutletDecisionOptions}"   SelectionMode="Single" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
@@ -174,7 +174,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                        <Image  Source="unselected171x136" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
                                             <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.7"/>
                                         </StackLayout>
@@ -192,7 +192,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Image Source="re_Tile_Background_S" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                        <Image Source="re_Tile_Background_S" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
                                             <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.7"/>
                                         </StackLayout>
