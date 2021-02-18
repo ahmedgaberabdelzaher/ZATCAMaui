@@ -1531,6 +1531,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 attachmentsListViewData.Add(attachemnt);
             }
             VatAttachmentsList = attachmentsListViewData;
+
         }
         #endregion
         public void GoBackBtnClicked()
@@ -2852,7 +2853,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         VATDeRegistrationDetailsData.d.NotesSet.results.Add(vATDeregNote);
                     }
                 }
-
+                VATDeRegistrationDetailsData.d.AttdetSet.results = new List<Attachment>();
+                foreach (Attachment attachemnt in VatAttachmentsList)
+                {
+                    if (!VATDeRegistrationDetailsData.d.AttdetSet.results.Contains(attachemnt))
+                        VATDeRegistrationDetailsData.d.AttdetSet.results.Add(attachemnt);
+                }
 
             }
             catch (Exception ex)
