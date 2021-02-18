@@ -113,14 +113,12 @@
                 </Grid>
 
                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" Margin="0,0,0,10"
-                                 Style="{StaticResource GreyBorderFrame}">
+                                 Style="{StaticResource GreyBorderFrame}" VerticalOptions="FillAndExpand">
 
-                    <Grid Margin="8">
+                    <Grid Margin="8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
@@ -136,16 +134,21 @@
                         </Image>
                         <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.Information}"
                                             Margin="10,0,0,0" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource ValueLabelBlack}" />
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.VRTIDInstruction1}" 
+                                            Style="{StaticResource ValueLabelBlack}" VerticalOptions="FillAndExpand"/>
+
+                        <StackLayout Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRTIDInstruction1}" 
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
-                        <custom:CustomLabel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.VRTIDInstruction2}" 
+                                            Style="{StaticResource CaptionLabelGrey}" VerticalOptions="FillAndExpand"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRTIDInstruction2}" 
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
-                        <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.VRTIDInstruction3}" 
+                                            Style="{StaticResource CaptionLabelGrey}" VerticalOptions="FillAndExpand"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRTIDInstruction3}" 
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
+                                            Style="{StaticResource CaptionLabelGrey}" VerticalOptions="FillAndExpand"/>
+                        </StackLayout>
+                      
                     </Grid>
                 </border:SfBorder>
                 
@@ -390,6 +393,7 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0"
                                                                 Text="{x:Static ResourceManager:AppResources.VRAttachment}"
@@ -398,6 +402,9 @@
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
+                                            <Image Grid.Column="2" Source="Generic_attachment_icon"
+                                                           Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                           HorizontalOptions="Start" VerticalOptions="Center" />
                                         </Grid>
 
                                     </DataTemplate>

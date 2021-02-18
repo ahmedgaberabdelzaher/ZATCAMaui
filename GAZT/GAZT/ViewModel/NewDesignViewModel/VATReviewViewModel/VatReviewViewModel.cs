@@ -4104,9 +4104,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 ApplicationRefPickerModel = genericPickerModel;
                 ApplicationRefNumber = ApplicationRefPickerModel.SelectedValue;
 
-
                 ResetDataAfterAppRefNumPicked();
                 setDataBasedOnAppRefNum(ApplicationRefPickerModel.SelectedValue);
+
+                /*var billNumberObj= appRefNumList.Find(appRef => (appRef.Fbnum == ApplicationRefNumber) || (appRef.Opbel == ApplicationRefNumber));
+
+                                if (billNumberObj.Msgflg == "X")
+                                {
+                                    await _dialogService.ShowMessage(billNumberObj.Msgtxt, AppResources.CRWarning);
+                                }*/
             }
         }
 
@@ -4150,7 +4156,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 modelVATReview.d.UserTypx, fbnumx, sopbel);
         }
 
-        public void setDataBasedOnAppRefNum(string appRefNum)
+        public async void setDataBasedOnAppRefNum(string appRefNum)
         {
 
 
@@ -4378,7 +4384,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(selectedApplicationRef.Msgtxt, AppResources.Information);
+                        await _dialogService.ShowMessage(selectedApplicationRef.Msgtxt, AppResources.CRWarning);
                     });
                 }
                 else

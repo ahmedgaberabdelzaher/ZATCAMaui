@@ -7326,10 +7326,10 @@
     <value>المبلغ</value>
   </data>
   <data name="VRSecurityNote1" xml:space="preserve">
-    <value>يرجى ملاحظة أنه بمجرد الضغط على هذا الزر ، لا يمكن مراجعة مبلغ التأمين وفاتورة سداد ذات الصلة.</value>
+    <value>يرجى ملاحظة بأن استمرارك بالضغط على هذا الخيار فإن مبلغ الضمان وفاتورة سداد لا يمكن تغيرهما لاحقا أو التعديل عليما</value>
   </data>
   <data name="VRSecurityNote2" xml:space="preserve">
-    <value>يرجى التأكد من دفع أي مستحقات معلقة على فاتورة إعادة التقييم الأصلية التي لم يتم دفعها أو تقديمها كضمان</value>
+    <value>يرجى دفع جميع المبالغ المستحقة للتقييم الأساسي للضريبة الصادرة التي لم تدفع أو تقدم كضمانات لطلبات المراجعة</value>
   </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc1" xml:space="preserve">
     <value>أقر بأن طلبي لن تتم معالجته حتى يتم دفع مبلغ الضمان بالكامل في غضون 20 يومًا.</value>
@@ -7847,7 +7847,7 @@
     <value>من تاريخ</value>
   </data>
   <data name="VRTIDEffectiveDateTo" xml:space="preserve">
-    <value>الي تاريخ</value>
+    <value>الى تاريخ</value>
   </data>
   <data name="VRTIDExemptPurchases" xml:space="preserve">
     <value>نسبة المشتريات المخصصة للتوريدات المعفاة</value>
