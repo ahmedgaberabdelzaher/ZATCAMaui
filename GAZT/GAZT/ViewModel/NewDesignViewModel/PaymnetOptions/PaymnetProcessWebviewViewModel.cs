@@ -198,9 +198,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
 
                 //IsLoading = true;
+                //var platform = "";
 
-
-                //await WebServiceManager.GAZTCancelPayment(App.PaymentGuid, "C2");
+                //if (Device.RuntimePlatform == Device.iOS)
+                //{
+                //    platform = "C4";
+                //}
+                //else if (Device.RuntimePlatform == Device.Android)
+                //{
+                //    platform = "C3";
+                //}
+               // await WebServiceManager.GAZTCancelPayment(App.PaymentGuid, platform);
 
                   Device.BeginInvokeOnMainThread(() =>
             {

@@ -34,6 +34,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public string selectedSadadNo = "";
         public string selectedAmount = "";
         public string selectedTaxablePeriod = "";
+        private bool calculateMyBills = false;
 
         #region Property
         public List<ReturnTypes> _TaxTypeForFilter = null;
@@ -218,11 +219,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_myBills == value) return;
 
                 _myBills = value;
-                if (_myBills != null && SelectedChipFilterItem == null)
+                if (_myBills != null&&calculateMyBills)
                 {
 
-                    if (_myBills.Count != 0)
-                    {
+                    //if (_myBills.Count != 0)
+                    //{
                         double Amount = 0.00;
                         foreach (var item in MyBills)
                         {
@@ -255,13 +256,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         AmountLabel = TestDueAmount + " " + AppResources.ZSAR;
 
-                        IsListVisible = true;
+                        
+                    //}
+
+                    if (Amount == 0.00) {
                         isNoDataLableVisible = false;
                     }
                     else
                     {
-                        AmountLabel = " - ";
-                        IsListVisible = false;
                         isNoDataLableVisible = true;
                     }
 
@@ -712,6 +714,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 IsLoading = true;
             });
+
+            calculateMyBills = isTaxTypeFilter;
+
+            if (isTaxTypeFilter) {
+                MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x =>  x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+
+                FilterOnTaxType(MyBills);
+                return;
+        }
 
             if (SelectedChipFilterItem != null)
             {

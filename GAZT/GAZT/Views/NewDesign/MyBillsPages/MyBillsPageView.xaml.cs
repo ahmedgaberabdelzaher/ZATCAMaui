@@ -55,6 +55,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                         viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
                         ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#AA0C19");
                         ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#f6e6e8");
+                        viewModel.FilterIfTypeAndStausFilterSelected(false);
+
                     }
                     if (billInfo.BillTypeName.Equals(AppResources.PartiallyPaid))
                     {
