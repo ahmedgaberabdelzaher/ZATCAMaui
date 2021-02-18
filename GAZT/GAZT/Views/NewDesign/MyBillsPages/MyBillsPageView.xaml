@@ -108,9 +108,11 @@
                             VerticalOptions="Center" Margin="0,24,0,0">
                     <buttons:SfChipGroup Margin="0" x:Name="ChipGroup_statusFilter" Type="Choice" 
                                          Padding="0"  HorizontalOptions="Start" 
-                                         ChipBackgroundColor="Transparent" 
                                          ItemsSource="{Binding ChipDataFilterlist}" 
-                                         HeightRequest="32" 
+                                         HeightRequest="32"
+                                         SelectionIndicatorColor="Transparent"
+                                         ChipBackgroundColor="Transparent" 
+	                                     SelectedChipBackgroundColor="Transparent" 
                                          IsClippedToBounds="True"
                                          ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" 
                                          SelectionChanged="chipgroup_SelectionChanged" VerticalOptions="Center" >
