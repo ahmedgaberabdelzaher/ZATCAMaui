@@ -869,7 +869,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                if (_selectedOutletOption == value) return;
+                //if (_selectedOutletOption == value) return;
 
                 if (value != null)
                 {
@@ -2453,7 +2453,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             OnPermitDobTapped = new Command(this.OnPermitDobClicked);
             //
             TinDeregistrationModel = new TINDeregistrationModel();
-            SelectedOutletOption = new TINDeregistrationModel();
+            //SelectedOutletOption = new TINDeregistrationModel();
             TinDeregistrationData = new TinDeregistrationResponseModel();
             TinDeregistrationReasonSetData = new TinDeregistrationReasonSetDataModel();
             OnPermitTypeReasonTapped = new Command(this.OnOutletPermitTypeDeRegisrtationReasonClicked);
@@ -3735,6 +3735,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             //SelectedOutletOption = OutletDecisionOptions[0];
             //SelectedOutletOptionIndex = 0;
+            if (!string.IsNullOrWhiteSpace(TinDeregistrationData.ADregOpt))
+            {
+                SelectedOutletOption = OutletDecisionOptions.Where(m => m.OutletOptionIndex == TinDeregistrationData.ADregOpt).FirstOrDefault();
+                SelectedOutletOptionIndex = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
+            }
             MessagingCenter.Send<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");
 
             IsBackButtonVisible = true;
