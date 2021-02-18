@@ -197,27 +197,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             try
             {
 
-                //IsLoading = true;
-                //var platform = "";
+                IsLoading = true;
+                var platform = "";
 
-                //if (Device.RuntimePlatform == Device.iOS)
-                //{
-                //    platform = "C4";
-                //}
-                //else if (Device.RuntimePlatform == Device.Android)
-                //{
-                //    platform = "C3";
-                //}
-               // await WebServiceManager.GAZTCancelPayment(App.PaymentGuid, platform);
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    platform = "C4";
+                }
+                else if (Device.RuntimePlatform == Device.Android)
+                {
+                    platform = "C3";
+                }
+                var CancelAPI = await WebServiceManager.GAZTCancelPayment(App.PaymentGuid, platform);
 
-                  Device.BeginInvokeOnMainThread(() =>
+                IsLoading = false;
+
+                Device.BeginInvokeOnMainThread(() =>
             {
                 _navigationService.GoBack();
             });
 
 
 
-               // IsLoading = false;
+
 
             }
             catch (GAZTValidatePaymentInProcessException ex)

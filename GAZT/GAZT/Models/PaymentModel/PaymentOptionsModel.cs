@@ -130,7 +130,6 @@ namespace EGAZT.Models.PaymentModel
     }
 
     [Preserve(AllMembers = true)]
-
     public class ApplePayinfo
     {
         public string Guid { get; set; }
@@ -144,12 +143,27 @@ namespace EGAZT.Models.PaymentModel
         public string PayRef { get; set; }
         public bool Success { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ApplePayTokenResponse
     {
         public ApplePayinfo d { get; set; }
     }
 
+
+
+    [Preserve(AllMembers = true)]
+    public class CancelPayment
+    {
+        public Metadata __metadata { get; set; }
+        public string SRCID { get; set; }
+        public string GUID { get; set; }
+        public string CANC_RES { get; set; }
+    }
+    [Preserve(AllMembers = true)]
+    public class CancelPaymentResponse
+    {
+        public CancelPayment d { get; set; }
+    }
 
 
 }

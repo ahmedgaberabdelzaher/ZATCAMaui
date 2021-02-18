@@ -15902,9 +15902,9 @@ namespace GAZT.Manager
                 }
                 return paymentResponse;
             }
-        public static async Task<ValidatePaymentResponse> GAZTCancelPayment(string GUID, string type)
+        public static async Task<CancelPaymentResponse> GAZTCancelPayment(string GUID, string type)
         {
-            ValidatePaymentResponse paymentResponse = null;
+            CancelPaymentResponse paymentResponse = null;
             if (CrossConnectivity.Current.IsConnected)
             {
                 DateTime currentDate = DateTime.Now;
@@ -15916,7 +15916,7 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String uri = Constants.CancelPaymentService + "'" + GUID + "',SRCID='" + type + "')" + "?$format=json";
+                    String uri = Constants.CancelPaymentService + "'" + GUID + "',SRCID='" + type + "',CANC_RES='01')" + "?$format=json";
 
 
                     HttpResponseMessage GAZTValidatePaymentResponse = new HttpResponseMessage();
@@ -15951,7 +15951,7 @@ namespace GAZT.Manager
                         }
 
                         String paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
-                        paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(paymentData);
+                        paymentResponse = JsonConvert.DeserializeObject<CancelPaymentResponse>(paymentData);
                         if (!string.IsNullOrEmpty(paymentData) && paymentResponse.d == null)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(paymentData);
