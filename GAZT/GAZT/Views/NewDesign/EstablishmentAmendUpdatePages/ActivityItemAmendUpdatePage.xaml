@@ -613,17 +613,26 @@
             <Grid Grid.Row="2" Padding="20,0,20,35  " Margin="0,0,0,0" BackgroundColor="White">
                 <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{x:Static ResourceManager:AppResources.ZZNext}" Command="{Binding OnNextButtonClick}" />
             </Grid>
-            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"
-               Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                <busyindicator:SfBusyIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-	                        EnableAnimation="True" 
-	                        AnimationType="SingleCircle" 
-	                        IsBusy="True" 
-	                        TextColor="#D99A29"
-	                        ViewBoxWidth="70"
-                            ViewBoxHeight="70"
-                            TitlePlacement="Bottom" />
-            </StackLayout>
+               <Grid Grid.Row="0" Grid.RowSpan="3"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70"
+                                        
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70"
+                                       TextColor="#D99A29"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+ 
         </Grid>
     </ContentPage.Content>
 </ContentPage>
