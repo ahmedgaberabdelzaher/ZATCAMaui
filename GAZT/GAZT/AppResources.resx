@@ -802,7 +802,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZPleaseselectparametertype" xml:space="preserve">
     <value>Please select the ID Type value</value>
   </data>
-  <data name="ZSearchParameter" xml:spaZPleaseselectparametertypece="preserve">
+  <data name="ZSearchParameter" xml:space="preserve">
     <value>Search Parameter  </value>
   </data>
   <data name="ZVATAccountNumber" xml:space="preserve">
@@ -1139,7 +1139,7 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZVatTermsAndConditions" xml:space="preserve">
     <value>Terms &amp; Conditions</value>
   </data>
-   <data name="ZVatRefundTermsAndConditions" xml:space="preserve">
+  <data name="ZVatRefundTermsAndConditions" xml:space="preserve">
     <value>Terms &amp; Conditions</value>
   </data>
   <data name="ZVatTotalAdjustment" xml:space="preserve">
@@ -1796,11 +1796,11 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
     <value>Purchase Value</value>
     <comment>Estimated Zakat</comment>
   </data>
-	 <data name="ZZRealEstatevalue" xml:space="preserve">
+  <data name="ZZRealEstatevalue" xml:space="preserve">
     <value>Real Estate Sales Value</value>
     <comment>Estimated Zakat</comment>
   </data>
-	 <data name="ZZRealEstateWithinPeriod" xml:space="preserve">
+  <data name="ZZRealEstateWithinPeriod" xml:space="preserve">
     <value>Real Estate Sales within the period</value>
     <comment>Estimated Zakat</comment>
   </data>
@@ -4682,7 +4682,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationOutletCheckboxCloseorTransferAllOutlets" xml:space="preserve">
     <value>I agree about that, I see the outlets that will be de-registered / transferred to another Taxpayer.</value>
   </data>
-  <data name="TINDeregEditNew">
+  <data name="TINDeregEditNew" xml:space="preserve">
     <value>Edit</value>
   </data>
   <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
@@ -8599,8 +8599,8 @@ I acknowledge that the above bank account information is correct and assume full
     5. Taxpayer has the right to withdraw his verified credit balance after the taxpayer pays his remaining liabilities or after GAZT offset the taxpayer remaining liabilities.
 </value>
   </data>
-    <data name="VATRefundSummaryTermsandConditions" xml:space="preserve" >
-            <value>
+  <data name="VATRefundSummaryTermsandConditions" xml:space="preserve">
+    <value>
     1. It is assumed that the taxpayer has read and understood the Kingdom of Saudi Arabia’s VAT Law and Regulations and all the information provided is, to the best of the taxpayer’s knowledge, true, correct and complete.
     
     2. GAZT holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this refund request.
@@ -8611,7 +8611,7 @@ I acknowledge that the above bank account information is correct and assume full
     
     5. Taxpayer has the right to withdraw his verified credit balance after the taxpayer pays his remaining liabilities or after GAZT offset the taxpayer remaining liabilities.
 </value>
-        </data>
+  </data>
   <data name="VATRefundReturnSubmitConfirmation" xml:space="preserve">
     <value>
         Dear Taxpayer, GAZT may request from you to upload the following information during the review of your refund request:
@@ -8642,7 +8642,7 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="VATReviewDraftSaved" xml:space="preserve">
     <value>VAT Review form saved successfully{0}</value>
   </data>
-      <data name="VATReviewNewDraftSaved" xml:space="preserve">
+  <data name="VATReviewNewDraftSaved" xml:space="preserve">
     <value>You can save and go back to your request anytime within 30 days of the decision date. The request will be cancelled automatically if it is not submitted within 30 days.</value>
   </data>
   <data name="VATAmendReactivationFRUncheckWarning" xml:space="preserve">
@@ -8813,5 +8813,8 @@ I acknowledge that the above bank account information is correct and assume full
   </data>
   <data name="TinDeregistrationSameNotAllow" xml:space="preserve">
     <value>Cannot be transferred to same TIN</value>
+  </data>
+  <data name="VATReviewPleaseVisitPortal" xml:space="preserve">
+    <value>Please visit GAZT portal to add the required additional information.</value>
   </data>
 </root>

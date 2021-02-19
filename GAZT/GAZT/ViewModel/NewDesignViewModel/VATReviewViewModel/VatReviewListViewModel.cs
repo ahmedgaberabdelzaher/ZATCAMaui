@@ -875,7 +875,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             NumberOfObjAndReviews = vatreviews.Count + " " + AppResources.VatReview;
         }
 
-        private void BindSummaryData(VATObjectionSummaryModel responseModel)
+        private async void BindSummaryData(VATObjectionSummaryModel responseModel)
         {
             List<VATObjectionFormModel.ReviewReason> reasonList =
                 new List<VATObjectionFormModel.ReviewReason>();
@@ -1106,6 +1106,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             BankGuranteeAttachmentsListViewData = bankAttachments;
             AttachmentsListViewData = attachments;
+
+            if(responseModel.d.Fbstax.Equals("IP011") && responseModel.d.Fbustx.Equals("E0018")){
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.VATReviewPleaseVisitPortal,
+                                        AppResources.Information);
+                    
+                });
+                
+            }
         }
 
         public static DateTime ConvertJsonToDateTime(string jsonDate)

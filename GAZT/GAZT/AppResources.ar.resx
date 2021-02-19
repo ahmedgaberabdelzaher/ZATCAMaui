@@ -1196,7 +1196,7 @@
   <data name="ZVatTermsAndConditions" xml:space="preserve">
     <value>الشروط والأحكام:</value>
   </data>
-   <data name="ZVatRefundTermsAndConditions" xml:space="preserve">
+  <data name="ZVatRefundTermsAndConditions" xml:space="preserve">
     <value>الشروط والأحكام</value>
   </data>
   <data name="ZVatTotalAdjustment" xml:space="preserve">
@@ -8737,5 +8737,8 @@ info@gazt.gov.sa</value>
   </data>
   <data name="TinDeregistrationSameNotAllow" xml:space="preserve">
     <value>لا يمكنه الانتقال الي نفس الرقم المميز</value>
+  </data>
+  <data name="VATReviewPleaseVisitPortal" xml:space="preserve">
+    <value>الرجاء زيارة بوابة الهيئة لإضافة المعلومات الاضافية المطلوبة</value>
   </data>
 </root>

@@ -250,7 +250,7 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
-                                                Text="{x:Static ResourceManager:AppResources.VRDecisionDate}"
+                                                Text="{x:Static ResourceManager:AppResources.VRRequestDate}"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
@@ -258,7 +258,9 @@
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding FormattedRequestDate}" 
                                                     PlaceholderColor="Gray"  FontSize="Small" Style="{StaticResource DefaultEntry}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
-                                  
+
+                                    <Image Source="calendar.png" WidthRequest="20" HeightRequest="20"
+                                               Margin="0,0,5,0"/>
                                 </StackLayout>
                             </Frame>
                            
@@ -1140,7 +1142,7 @@
                         </Frame>
                        
 
-                        <buttons:SfButton Margin="0,16,0,16" VerticalOptions="End"
+                        <buttons:SfButton Margin="0,16,0,16" VerticalOptions="EndAndExpand"
                                           BackgroundColor="{Binding SecurityPaymentButtonBackGroundColor}"
                                           Text="{x:Static ResourceManager:AppResources.VRContinue}"
                                           Style="{StaticResource PrimaryButtonStyle}"
@@ -1608,6 +1610,7 @@
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
                                                         </Grid.ColumnDefinitions>
 
                                                         <custom:CustomLabel Grid.Column="0"
@@ -1617,6 +1620,10 @@
                                                                             Style="{StaticResource ValueLabelBlack}"
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End" />
+
+                                                        <Image  Grid.Column="2" Source="Generic_attachment_icon"
+                                                           Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                           HorizontalOptions="Start" VerticalOptions="Center" />
                                                     </Grid>
 
  
@@ -1961,7 +1968,9 @@
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
                                                         </Grid.ColumnDefinitions>
+                                                        
                                                         <Label Grid.Column="0"
                                                                             Text="{x:Static ResourceManager:AppResources.VRAttachment}"
                                                                             Style="{StaticResource ValueLabelGrey}" />
@@ -1969,6 +1978,10 @@
                                                                             Style="{StaticResource ValueLabelBlack}"
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End" />
+                                                        <Image  Grid.Column="2" Source="Generic_attachment_icon"
+                                                           Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                           HorizontalOptions="Start" VerticalOptions="Center" />
+                                                        
                                                     </Grid>
 
                                                 </DataTemplate>

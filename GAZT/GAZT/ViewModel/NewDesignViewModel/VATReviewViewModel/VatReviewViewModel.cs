@@ -4378,7 +4378,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         IsApplicationVisible = true;
                         EnableReviewReasonConButton();
 
-
                     }
 
 
