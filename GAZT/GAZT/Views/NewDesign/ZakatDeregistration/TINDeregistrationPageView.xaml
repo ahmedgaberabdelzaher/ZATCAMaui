@@ -15,6 +15,7 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Name="TinDeReg">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -43,6 +44,7 @@
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
+
             <Grid BackgroundColor="Transparent">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -80,11 +82,25 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
-                        <Image Grid.Row="0" Grid.Column="2" Source="close" IsVisible="{TemplateBinding BindingContext.VoidIsVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+
+                        <!--<Image Grid.Row="0" Grid.Column="2" Source="close" IsVisible="{TemplateBinding BindingContext.VoidIsVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
-                        </Image>
+                        </Image>-->
+
+                        <StackLayout  Grid.Row="0" Grid.Column="2">
+                        <StackLayout Spacing="3" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Orientation="Horizontal" Rotation="90">
+                            <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
+                            <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
+                            <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnMoreClicked}"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                  
+
                     </Grid>
                 </Grid>
 
@@ -92,7 +108,8 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <Grid>
+
+        <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <ScrollView>
                 <Grid IsVisible="{Binding IsReasonViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0"
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -1611,5 +1628,27 @@
                 </Grid>
             </ScrollView>
         </Grid>
+          
+
+              <!--<Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                         
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                        TextColor="#006450"/>
+                        Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"
+                    </StackLayout>
+                </StackLayout>
+            </Grid>-->
     </ContentPage.Content>
 </ContentPage>

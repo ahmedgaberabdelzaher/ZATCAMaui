@@ -117,7 +117,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
             ChangeArrowDirection();
-
             SetDate();
 
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton", (sender, args) =>
@@ -1712,9 +1711,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             try
             {
+                var obj1 = viewModel.TinDeregistrationData.AttDetSet.Results;
                 TinDeregestrationAttachmentsModel selectedOutlet = (TinDeregestrationAttachmentsModel)(e as TappedEventArgs).Parameter;
                 viewModel.SelectedAttachment = selectedOutlet;
                 //viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
+                var obj = viewModel.TinDeregistrationData.AttDetSet.Results;
                 viewModel.NewAttachmentClicked();
             }
             catch (Exception )
@@ -1800,5 +1801,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             if (((StackLayout)sender).Height > 0)
                 attachmentsListView.HeightRequest = (viewModel.AttachmentsListViewData.Count + childElements) * ((StackLayout)sender).Height;
         }
+
+      
     }
 }
