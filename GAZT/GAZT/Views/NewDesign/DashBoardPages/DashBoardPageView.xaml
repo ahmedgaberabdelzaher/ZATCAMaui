@@ -639,8 +639,8 @@
 
                                                                         <custom:CustomLabel Text="{Binding TaxtypeDesc}" 
                                                                                             Style="{StaticResource 
-                                                                        BodyLabelBlackMedium}" Margin="0,0,0,0"></custom:CustomLabel>
-                                                                        <custom:CustomLabel Margin="0,0,0,0" Text="{Binding 
+                                                                        BodyLabelBlackMedium}" Margin="0,-5,0,-5"></custom:CustomLabel>
+                                                                        <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding 
                                                                             FormattedBldat2}" 
                                                                                         Style="{StaticResource 
                                                                         CaptionLabelBlack}"></custom:CustomLabel>
