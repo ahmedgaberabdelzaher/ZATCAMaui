@@ -655,8 +655,7 @@
                                                                         CaptionLabelBlack}" TextColor="{Binding AmountTextColor}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span  Text="{Binding Betrh,Converter={StaticResource 
-                                                                        commaSeparatorConverter}}" ></Span>
+                                                                                    <Span  Text="31st SAM 2020" ></Span>
                                                                                     <Span Text=" "></Span>
                                                                                     <Span Text="{x:Static 
                                                                                         ResourceManager:AppResources.ZSAR}"></Span>

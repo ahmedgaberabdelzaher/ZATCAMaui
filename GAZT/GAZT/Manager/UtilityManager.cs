@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using PanCardView.Extensions;
 using Plugin.Connectivity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -223,6 +224,53 @@ namespace GAZT.Manager
                 }
             }
             return FullDate;
+        }
+        
+        public static string GetDayPrefix(DateTime? dt)
+        {
+            /*DateTime dt;
+            if (dateTime != null)
+            {
+                dt = dateTime;
+            }
+            else
+            {
+                dt = DateTime.Now;
+            }*/
+            string suffix = "";
+
+            if (dt != null)
+            {
+                int dtDay=0;
+                if (dt != null)
+                {
+                    dtDay = Convert.ToInt32(dt?.Day);
+                }
+                   
+
+                if (new[] {11, 12, 13}.Contains(dtDay))
+                {
+                    suffix = "th";
+                }
+                else if (dtDay % 10 == 1)
+                {
+                    suffix = "st";
+                }
+                else if (dtDay % 10 == 2)
+                {
+                    suffix = "nd";
+                }
+                else if (dtDay % 10 == 3)
+                {
+                    suffix = "rd";
+                }
+                else
+                {
+                    suffix = "th";
+                }
+            }
+
+            return suffix;
         }
         public static string englishDateConversion(string Date)
         {

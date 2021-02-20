@@ -551,6 +551,7 @@ namespace EGAZT.Models.AccountStatements
                 _Bldat = value;
                 if (_Bldat != null)
                 {
+                    /*
                     if (App.CalType.Equals("G"))
                     {
                         FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
@@ -559,8 +560,16 @@ namespace EGAZT.Models.AccountStatements
                     {
                         FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("ar-SA"));
                     }
+                    */
 
-
+                    if (App.CalType.Equals("G"))
+                    {
+                        FormattedBldat = string.Format(_Bldat?.ToString("dd{0} MMMM yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_Bldat));
+                    }
+                    else
+                    {
+                        FormattedBldat = string.Format(_Bldat?.ToString("dd{0} MMMM yyyy", new CultureInfo("ar-SA")), UtilityManager.GetDayPrefix(_Bldat));
+                    }
                 }
             }
         }
@@ -593,18 +602,11 @@ namespace EGAZT.Models.AccountStatements
                 {
                     if (App.CalType.Equals("G"))
                     {
-                        if (App.IsArabic)
-                        {
-                            FormattedBldat2 = _Bldat2?.ToString("yyyy-MMMM-dd", new CultureInfo("en-US"));
-                        }
-                        else
-                        {
-                            FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        }
+                        FormattedBldat2 = string.Format(_Bldat2?.ToString("dd{0} MMMM yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_Bldat2));
                     }
                     else
                     {
-                        FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("ar-SA"));
+                        FormattedBldat2 = string.Format(_Bldat2?.ToString("dd{0} MMMM yyyy", new CultureInfo("ar-SA")), UtilityManager.GetDayPrefix(_Bldat2));
                     }
                     /*FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat2.Split('-');
