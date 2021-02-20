@@ -159,7 +159,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         FrmDBO.IsVisible = false;
                         CalLabel.IsVisible = false;
                         DateLabel.IsVisible = false;
-                        outletDecisionOptionsListView.IsVisible = false;
+                        //outletDecisionOptionsListView.IsVisible = false;
                         viewModel.IsOption2Visible = false;
                     }
                     else
@@ -168,11 +168,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         FrmDBO.IsVisible = true;
                         CalLabel.IsVisible = true;
                         DateLabel.IsVisible = true;
-                        outletDecisionOptionsListView.IsVisible = true;
+                        //outletDecisionOptionsListView.IsVisible = true;
 
                         viewModel.IsOption2Visible = false;
                         viewModel.IsOption1Visible = false;
-                        viewModel.AddOutletDecisionOptions();
+                        //viewModel.AddOutletDecisionOptions();
                     }
                 }
 
