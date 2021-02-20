@@ -239,7 +239,7 @@
                                                     <listView:SfListView.ItemTemplate>
                                                         <DataTemplate>
 
-                                                            <cards:SfCardView CornerRadius="16" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                                                            <cards:SfCardView CornerRadius="16" Margin="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
                                                                 <StackLayout Spacing="2" Margin="12" Orientation="Vertical">
                                                                     <Grid HorizontalOptions="FillAndExpand">
