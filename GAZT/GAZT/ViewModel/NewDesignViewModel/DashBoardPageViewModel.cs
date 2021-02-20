@@ -1932,7 +1932,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 items.Add(singleItem);
             }
             
-            var newItems = items.OrderByDescending(i => i.Bldat2).ToList();
+            var newItems = items.OrderByDescending(i => i.Bldat).ToList();
             
             AccountStatementsList = new ObservableCollection<ASResult>(newItems);
 

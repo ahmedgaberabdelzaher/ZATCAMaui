@@ -641,7 +641,7 @@
                                                                                             Style="{StaticResource 
                                                                         BodyLabelBlackMedium}" Margin="0,-5,0,-5"></custom:CustomLabel>
                                                                         <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding 
-                                                                            FormattedBldat2}" 
+                                                                            FormattedBldat}" 
                                                                                         Style="{StaticResource 
                                                                         CaptionLabelBlack}"></custom:CustomLabel>
 
