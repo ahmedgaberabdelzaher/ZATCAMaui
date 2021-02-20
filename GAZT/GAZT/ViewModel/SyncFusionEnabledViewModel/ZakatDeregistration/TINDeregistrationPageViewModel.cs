@@ -44,8 +44,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public int DefaultMonth;
         public int DefaultMonthHijri;
         public bool isSubmitted;
+        public bool isSaveAsDraftCalledForAttachment = false;
         public string permitThirdOptionReason = string.Empty;
         public string selectedCalPermitNo = null;
+        public static int numberOfAttachmentSentToAttachmentPopUp= 0;
+
         List<TinDeregestrationAttachmentsModel> check;
 
         //
@@ -3949,48 +3952,101 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //{
                 //    AttachmentsListViewData.Clear();
                 //}
-                TinDeregistrationResponseModel zakatDeregResponseData = new TinDeregistrationResponseModel();
-                zakatDeregResponseData.Approvez = "";
-                zakatDeregResponseData.Rejectz = "";
-
-                zakatDeregResponseData = await TINDeregistrationWebServiceManager.GaztTinDeregistrationNewRequestData(zakatDeregResponseData);
-
-                TinDeregistrationData.AttDetSet.Results = zakatDeregResponseData.AttDetSet.Results;
-
-                //if (AttachmentsListViewData != null)
-                //{
-                //    AttachmentsListViewData.Clear();
-                //}
-              //  AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(check);
-
-                foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
+                if(isSaveAsDraftCalledForAttachment == true)
                 {
-                    foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                    TinDeregistrationResponseModel zakatDeregResponseData = new TinDeregistrationResponseModel();
+                    zakatDeregResponseData.Approvez = "";
+                    zakatDeregResponseData.Rejectz = "";
+
+                    zakatDeregResponseData = await TINDeregistrationWebServiceManager.GaztTinDeregistrationNewRequestData(zakatDeregResponseData);
+
+                    TinDeregistrationData.AttDetSet.Results = zakatDeregResponseData.AttDetSet.Results;
+
+                    //if (AttachmentsListViewData != null)
+                    //{
+                    //    AttachmentsListViewData.Clear();
+                    //}
+                    //  AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(check);
+
+                    if (AttachmentsListViewData[0].AttachmentTypeList != null && AttachmentsListViewData[0].AttachmentTypeList.Count > 0)
+                        AttachmentsListViewData[0].AttachmentTypeList.Clear();
+                    if (AttachmentsListViewData[1].AttachmentTypeList != null && AttachmentsListViewData[1].AttachmentTypeList.Count > 0)
+                        AttachmentsListViewData[1].AttachmentTypeList.Clear();
+
+                    foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
                     {
-                        if (attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
+                        foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
                         {
-                            if (attachmentsModelsTemp.AttachmentTypeList == null)
-                                attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
-                            if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
-                                attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+                            if (attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
+                            {
+                                if (attachmentsModelsTemp.AttachmentTypeList == null)
+                                    attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
+                                if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
+                                    attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+                            }
                         }
                     }
+                    TinDeregistrationData.AttDetSet.Results?.Clear();
+                    foreach (var item in AttachmentsListViewData)
+                    {
+                        if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
+                            TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
+                    }
+                    AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
+
+
+                    CurrentStep = ProcessStep.Step3;
+                    IsReasonViewEnabled = false;
+                    IsOutletViewEnabled = false;
+                    IsAttachmentsViewEnabled = true;
+                    IsDeclarationViewEnabled = false;
+                    IsSummaryViewEnabled = false;
+
                 }
-                TinDeregistrationData.AttDetSet.Results?.Clear();
-                foreach (var item in AttachmentsListViewData)
+                else
                 {
-                    if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
-                        TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
+                   
+                    //if (AttachmentsListViewData != null)
+                    //{
+                    //    AttachmentsListViewData.Clear();
+                    //}
+                    //  AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(check);
+
+                    //if (AttachmentsListViewData[0].AttachmentTypeList != null && AttachmentsListViewData[0].AttachmentTypeList.Count > 0)
+                    //    AttachmentsListViewData[0].AttachmentTypeList.Clear();
+                    //if (AttachmentsListViewData[1].AttachmentTypeList != null && AttachmentsListViewData[1].AttachmentTypeList.Count > 0)
+                    //    AttachmentsListViewData[1].AttachmentTypeList.Clear();
+
+                    foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
+                    {
+                        foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                        {
+                            if (attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
+                            {
+                                if (attachmentsModelsTemp.AttachmentTypeList == null)
+                                    attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
+                                if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
+                                    attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+                            }
+                        }
+                    }
+                    TinDeregistrationData.AttDetSet.Results?.Clear();
+                    foreach (var item in AttachmentsListViewData)
+                    {
+                        if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
+                            TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
+                    }
+                    AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
+
+
+                    CurrentStep = ProcessStep.Step3;
+                    IsReasonViewEnabled = false;
+                    IsOutletViewEnabled = false;
+                    IsAttachmentsViewEnabled = true;
+                    IsDeclarationViewEnabled = false;
+                    IsSummaryViewEnabled = false;
+
                 }
-                AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
-
-
-                CurrentStep = ProcessStep.Step3;
-                IsReasonViewEnabled = false;
-                IsOutletViewEnabled = false;
-                IsAttachmentsViewEnabled = true;
-                IsDeclarationViewEnabled = false;
-                IsSummaryViewEnabled = false;
             }
             catch (Exception ex)
             {
@@ -4059,23 +4115,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             try
                             {
-                                foreach (Attachment selectedAttachment in TinDeregistrationData.AttDetSet.Results)
-                                {
-                                    string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
-                                    if (results == "X")
-                                    {
-                                        foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
-                                        {
-                                            //   UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
-                                            if (selectedAttachment.Dotyp == attachmentsModelsTemp.DocType && attachmentsModelsTemp.AttachmentTypeList.Any(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp))
-                                            {
-                                                var index = attachmentsModelsTemp.AttachmentTypeList.Where(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp).FirstOrDefault();
-                                                if (index != null)
-                                                    attachmentsModelsTemp.AttachmentTypeList.Remove(index);
-                                            }
-                                        }
-                                    }
-                                }
+                                //foreach (Attachment selectedAttachment in TinDeregistrationData.AttDetSet.Results)
+                                //{
+                                //    string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
+                                //    if (results == "X")
+                                //    {
+                                //        foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                                //        {
+                                //            //   UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
+                                //            if (selectedAttachment.Dotyp == attachmentsModelsTemp.DocType && attachmentsModelsTemp.AttachmentTypeList.Any(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp))
+                                //            {
+                                //                var index = attachmentsModelsTemp.AttachmentTypeList.Where(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp).FirstOrDefault();
+                                //                if (index != null)
+                                //                    attachmentsModelsTemp.AttachmentTypeList.Remove(index);
+                                //            }
+                                //        }
+                                //    }
+                                //}
 
                             }
                             catch (Exception ex)
@@ -4085,8 +4141,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 return;
                             }
 
-                            AttachmentsListViewData.Clear();
-                            TinDeregistrationData.AttDetSet.Results.Clear();
+                            if(isSaveAsDraftCalledForAttachment == true)
+                            {
+                                AttachmentsListViewData.Clear();
+                                TinDeregistrationData.AttDetSet.Results.Clear();
+                            }
 
                             EnableOutletDetaislView();
 
@@ -5170,27 +5229,27 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(check);
                
-                foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
-                {
-                    foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
-                    {
-                        if (attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
-                        {
-                            if (attachmentsModelsTemp.AttachmentTypeList == null)
-                                attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
-                            if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
-                                attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
-                        }
-                    }
-                }
-                TinDeregistrationData.AttDetSet.Results?.Clear();
-                foreach (var item in AttachmentsListViewData)
-                {
-                    if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
-                        TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
-                }
-                AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
-                // attachmentsListViewDataString = JsonConvert.SerializeObject(attachmentsListViewData);
+                //foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
+                //{
+                //    foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                //    {
+                //        if (attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
+                //        {
+                //            if (attachmentsModelsTemp.AttachmentTypeList == null)
+                //                attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
+                //            if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
+                //                attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+                //        }
+                //    }
+                //}
+                //TinDeregistrationData.AttDetSet.Results?.Clear();
+                //foreach (var item in AttachmentsListViewData)
+                //{
+                //    if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
+                //        TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
+                //}
+                //AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
+                //// attachmentsListViewDataString = JsonConvert.SerializeObject(attachmentsListViewData);
             }
 
             catch (Exception ex) {
@@ -5251,7 +5310,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             if(AttachmentsListViewData[0].AttachmentTypeList != null && AttachmentsListViewData[0].AttachmentTypeList.Count > 0)
             AttachmentsListViewData[0].AttachmentTypeList.Clear();
-            if (AttachmentsListViewData[0].AttachmentTypeList != null && AttachmentsListViewData[0].AttachmentTypeList.Count > 0)
+            if (AttachmentsListViewData[1].AttachmentTypeList != null && AttachmentsListViewData[1].AttachmentTypeList.Count > 0)
                 AttachmentsListViewData[1].AttachmentTypeList.Clear();
             try
             {
@@ -5280,6 +5339,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             attachmentsList.AddRange(item.AttachmentTypeList);
                     }
                 }
+
+                numberOfAttachmentSentToAttachmentPopUp = attachmentsList.Count;
                 await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(attachmentsList, Models.ZakatInstalationModels.WhichAttachment.TINDeregistration
                         , TinDeregistrationData.CaseGuid, SelectedAttachment.DocType));
 
@@ -5950,6 +6011,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         //AttachmentsContinueBtnClicked();
                         await SaveAsDraft();
+                        isSaveAsDraftCalledForAttachment = true;
                         break;
 
                     }
@@ -5957,12 +6019,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                        // DeclarationContinueBtnClicked();
                         await SaveAsDraft();
+                        isSaveAsDraftCalledForAttachment = true;
                         break;
                     }
                 case ProcessStep.Step5:
                     {
                        // SummaryContinueBtnClicked();
                         await Submit();
+                        isSaveAsDraftCalledForAttachment = true;
+
                         if (isSubmitted)
                         {
                             _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);

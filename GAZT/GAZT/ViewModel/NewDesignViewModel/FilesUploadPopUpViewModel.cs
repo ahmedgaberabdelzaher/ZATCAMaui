@@ -1003,6 +1003,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, returnIdz, APiMethod, attachment.Doguid);
                         if (results == "X")
                         {
+
                             Attachment listitem = (from itm in VatAttachmentsList
                                                    where itm.Doguid == attachment.Doguid.ToString()
                                                    select itm)

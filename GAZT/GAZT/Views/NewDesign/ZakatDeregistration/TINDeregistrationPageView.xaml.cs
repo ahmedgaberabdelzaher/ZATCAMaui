@@ -185,6 +185,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (arg != null && arg.results != null && arg.results.Count > 0)
                 {
                     viewModel.TinDeregistrationData.AttDetSet.Results = arg.results;
+                    if(TINDeregistrationPageViewModel.numberOfAttachmentSentToAttachmentPopUp != arg.results.Count)
+                    {
+                        viewModel.isSaveAsDraftCalledForAttachment = false;
+                        TINDeregistrationPageViewModel.numberOfAttachmentSentToAttachmentPopUp = 0;
+                    }
                     var obj = viewModel.AttachmentsListViewData;
                     viewModel.PopulateAttachments(null);
 
