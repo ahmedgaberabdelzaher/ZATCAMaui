@@ -152,27 +152,49 @@ namespace GAZT.Models
             set
             {
                 _dueDtC = value;
-                if (_dueDtC != null)
-                {
+                //if (_dueDtC != null)
+                //{
+                //    if(CalendarTyp != null) {
 
 
-                    if (App.IsArabic)
+                //        if (App.IsArabic)
 
-                    {
-                        string[] dts = _dueDtC.Split('-');
-                        FormatedDuedate = UtilityManager.FormatAccordingToDeviceHijriEnglish(dts[2] + "-" + dts[1] + "-" + dts[0]);
-                    }
-                    else
-                    {
-                        string[] dts = _dueDtC.Split('-');
+                //        {
+                //            string[] dts = _dueDtC.Split('-');
+                //            FormatedDuedate = UtilityManager.FormatAccordingToDeviceHijriEnglish(dts[2] + "-" + dts[1] + "-" + dts[0]);
+                //        }
+                //        else
+                //        {
+                //            if (CalendarTyp.Equals("H"))
+                //            {
 
-                        string date = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
+                //                string[] dts = _dueDtC.Split('-');
 
-                        FormatedDuedate = date;
+                //                string date = UtilityManager.FormatAccordingToDeviceHijriEnglish(dts[2] + "-" + dts[1] + "-" + dts[0]);
 
-                    }
+                //                FormatedDuedate = date;
+
+                //            }
+                //            else
+                //            {
+
+                //                string[] dts = _dueDtC.Split('-');
+
+                //                string date = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
+
+                //                FormatedDuedate = date;
+
+                //            }
+
+
+                //        }
+
+                //    }
+
+
+                    
                         
-                    }
+                //    }
  
                 
             }
