@@ -321,7 +321,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
-                                FrmIDNumber.HasError = true;
+                                viewModel.FrameIDError = true;
 
                                 //viewModel.FrameContactIDError = true;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
@@ -331,7 +331,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             else
                             {
                                 //viewModel.FrameContactIDError = false;
-                                FrmIDNumber.HasError = false;
+                                viewModel.FrameIDError = false;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                                 // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
@@ -342,7 +342,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
                             ContactName.IsEnabled = false;
 
-                            FrmIDNumber.HasError = false;
+                            viewModel.FrameIDError = false;
                             //  viewModel.FrameContactIDError = false;
                         }
                     }
@@ -354,7 +354,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
-                                FrmIDNumber.HasError = true;
+                                viewModel.FrameIDError = true;
                                 // viewModel.FrameContactIDError = true;
                                 viewModel.TxtIDNumber = string.Empty;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
@@ -363,7 +363,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             }
                             else
                             {
-                                FrmIDNumber.HasError = false;
+                                viewModel.FrameIDError = false;
                                 //viewModel.FrameContactIDError = false;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
@@ -460,7 +460,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
-                                FrmIDNumber.HasError = true;
+                                viewModel.FrameIDError = true;
                                 //viewModel.FrameContactIDError = true;
                                 viewModel.TxtIDNumber = string.Empty;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
@@ -469,7 +469,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             }
                             else
                             {
-                                FrmIDNumber.HasError = false;
+                                viewModel.FrameIDError = false;
                                 // viewModel.FrameContactIDError = false;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
@@ -480,7 +480,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
                             ContactName.IsEnabled = false;
-                            FrmIDNumber.HasError = false;
+                            viewModel.FrameIDError = false;
                             // viewModel.FrameContactIDError = false;
                         }
                     }
@@ -492,7 +492,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
-                                FrmIDNumber.HasError = true;
+                                viewModel.FrameIDError = true;
                                 // viewModel.FrameContactIDError = true;
                                 viewModel.TxtIDNumber = string.Empty;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
@@ -501,7 +501,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             }
                             else
                             {
-                                FrmIDNumber.HasError = false;
+                                viewModel.FrameIDError = false;
                                 // viewModel.FrameContactIDError = false;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
@@ -1085,6 +1085,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 {
                     // FrmIDNumber.HasError = false;
                     viewModel.FrameIDError = true;
+                    viewModel.IsDeclarationContinueButtonEnabled = false;
                 }
 
 
@@ -1099,13 +1100,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         }
         public async void ValidateIDNumber()
         {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-            });
+            viewModel.IsLoading = true;
+          
             string dob = viewModel.DOB.Replace("/", "");
             ContactName.IsEnabled = true;
             if (viewModel.IDType == AppResources.NationaID)
@@ -1394,6 +1390,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
             {
                 viewModel.FrameIDError = false;
+                viewModel.IsDeclarationContinueButtonEnabled = true;
+            }
+            else
+            {
+                viewModel.FrameIDError = true;
+                viewModel.IsDeclarationContinueButtonEnabled = false;
             }
         }
 

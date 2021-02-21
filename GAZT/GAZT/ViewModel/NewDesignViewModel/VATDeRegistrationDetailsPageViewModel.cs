@@ -838,14 +838,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_iSDeclarationContinueButtonEnabled == value) return;
 
                 _iSDeclarationContinueButtonEnabled = value;
-                if (_iSDeclarationContinueButtonEnabled)
-                {
-                    DeclarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
-                }
-                else
-                {
-                    DeclarationContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
-                }
+                //if (_iSDeclarationContinueButtonEnabled)
+                //{
+                //    DeclarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                //}
+                //else
+                //{
+                //    DeclarationContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                //}
                 RaisePropertyChanged("IsDeclarationContinueButtonEnabled");
             }
         }
@@ -1898,9 +1898,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
 
                         }
-                        else if(ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
+                        else if (ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                         {
-                            if(string.IsNullOrEmpty(OtherField))
+                            if (string.IsNullOrEmpty(OtherField))
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                             }
@@ -2013,8 +2013,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 try
                 {
-                    if (!IsDeclarationContinueButtonEnabled)
+                    if (!IsDeclarationChecked)
+                    {
                         return;
+                    }
+                    else if (string.IsNullOrEmpty(IDType))
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        return;
+                    }
+                    else if (IDType == AppResources.NationaID || IDType == AppResources.ZZIqamaID)
+                    {
+                        if (IsDOBEditorVisible && string.IsNullOrEmpty(DOB))
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                            return;
+                        }
+                    }
+                    else if (IDType == AppResources.ZZGCCID && string.IsNullOrEmpty(TxtIDNumber))
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        return;
+                    }
+                    if (FrameIDError)
+                    {
+                        //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        return;
+                    }
                     setDATA("05");
                     await saveAsDraftVoidAPIMethodCall();
 
@@ -2202,7 +2227,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsSummaryViewEnabled = true;
                 }
             }
-            else if(string.IsNullOrEmpty(IDType))
+            else if (string.IsNullOrEmpty(IDType))
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseselectparametertype));
             }
@@ -2220,7 +2245,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //await _dialogService.ShowMessage(AppResources.ZZPleaseentertheName, AppResources.Alerts);
 
             }
-            else if(IsDeclarationChecked == false)
+            else if (IsDeclarationChecked == false)
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
             }

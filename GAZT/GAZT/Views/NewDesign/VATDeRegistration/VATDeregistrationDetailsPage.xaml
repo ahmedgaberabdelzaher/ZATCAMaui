@@ -551,7 +551,7 @@
                                             Style="{StaticResource CaptionLabelGrey}" />
                                             <inputLayout:SfTextInputLayout  Margin="0,0,0,0" 
 						        ContainerType="Outlined" UnfocusedColor="#B1B1B1"  x:Name="FrmIDNumber"
-						        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
+						        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020">
                                                 <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding TxtIDNumber}"
                                                         TextColor="Black" HorizontalOptions="FillAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
                                                     <Entry.Behaviors>
