@@ -618,14 +618,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if (value != null)
                     outletDecisionOptions = value;
-                if (value != null && value.Count > 0)
-                    IsOutletDecisionOptionsLVVisible = true;
-                else
-                    IsOutletDecisionOptionsLVVisible = false;
+                //if (value != null && value.Count > 0)
+                //    IsOutletDecisionOptionsLVVisible = true;
+                //else
+                //    IsOutletDecisionOptionsLVVisible = false;
                 RaisePropertyChanged("OutletDecisionOptions");
             }
         }
-        private bool _isOutletDecisionOptionsLVVisible;
+        private bool _isOutletDecisionOptionsLVVisible = true;
         public bool IsOutletDecisionOptionsLVVisible
         {
             get => _isOutletDecisionOptionsLVVisible; set
@@ -1086,10 +1086,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_selectedReason == value) return;
 
                 _selectedReason = value;
-                if (value != null)
-                    IsOutletDecisionOptionsLVVisible = true;
-                else
-                    IsOutletDecisionOptionsLVVisible = false;
+                //if (value != null)
+                //    IsOutletDecisionOptionsLVVisible = true;
+                //else
+                //    IsOutletDecisionOptionsLVVisible = false;
                 RaisePropertyChanged("SelectedReason");
             }
         }

@@ -4385,6 +4385,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     {
                         await _dialogService.ShowMessage(selectedApplicationRef.Msgtxt, AppResources.CRWarning);
                     });
+                }else if(selectedApplicationRef.Fbtyp== "VATR")
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.VATWarningAssessment, AppResources.CRWarning);
+                        EnableReviewReasonConButton();
+                    });
+                }
+                else if (selectedApplicationRef.Fbtyp== "VTPN" && selectedApplicationRef.Pentyp == "R")
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.VATWarningPenalties, AppResources.CRWarning);
+                        EnableReviewReasonConButton();
+                    });
                 }
                 else
                 {

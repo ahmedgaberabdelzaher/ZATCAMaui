@@ -7914,7 +7914,29 @@ namespace EGAZT {
             }
         }
         
-        public static string TINDeregEditNew {
+        /// <summary>
+        ///   Looks up a localized string similar to Correction penalties and penalties for error in tax return will be reviewed as part of your re-assessment review request. After submitting this review request, you will not be able to request a review on these penalties, as well as late payment penalties.
+        /// </summary>
+        public static string VATWarningAssessment {
+            get {
+                return ResourceManager.GetString("VATWarningAssessment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By requesting a review on non-fixed penalties, I agree with the re-assessment that was issued by GAZT for this return period.
+        /// </summary>
+        public static string VATWarningPenalties {
+            get {
+                return ResourceManager.GetString("VATWarningPenalties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verification Code.
+        /// </summary>
+        public static string TINDeregEditNew
+        {
             get {
                 return ResourceManager.GetString("TINDeregEditNew", resourceCulture);
             }
