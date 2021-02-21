@@ -299,7 +299,7 @@
                                                                                     <FormattedString>
                                                                                         <Span Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
                                                                                         <Span Text=": "/>
-                                                                                        <Span Text="{Binding DueDate}"></Span>
+                                                                                        <Span Text="{Binding FormatedDuedate}"></Span>
                                                                                     </FormattedString>
                                                                                 </custom:CustomLabel.FormattedText>
                                                                             </custom:CustomLabel>

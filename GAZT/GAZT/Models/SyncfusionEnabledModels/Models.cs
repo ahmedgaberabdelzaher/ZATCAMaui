@@ -115,17 +115,83 @@ namespace GAZT.Models
             set
             {
                 _dueDT = value;
-                if (_dueDT != null)
+                //if (_dueDT != null)
+                //{
+                //    if (_dueDT.Contains("T"))
+                //    {
+                //        string[] _dueDate = new String[2];
+                //        _dueDate = _dueDT.Split('T');
+                //        DueDate = _dueDate[0];
+                //    }
+                //}
+            }
+        }
+        public string CalendarTyp { get; set; }
+
+        public string FormatedDuedate { get; set; }
+
+        public DateTime _dueDtC;
+        public DateTime DueDtC
+        {
+            get
+            {
+                return _dueDtC;
+            }
+            set
+            {
+                _dueDtC = value;
+                if (_dueDtC != null)
                 {
-                    if (_dueDT.Contains("T"))
+
+                    var dateString = _dueDtC.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                    if (App.IsArabic)
                     {
-                        string[] _dueDate = new String[2];
-                        _dueDate = _dueDT.Split('T');
-                        DueDate = _dueDate[0];
+
+                        string[] dts = dateString.Split('-');
+                        FormatedDuedate = UtilityManager.FormatAccordingToDeviceHijriEnglish(dts[2] + "-" + dts[1] + "-" + dts[0]);
                     }
+                    else
+                    {
+                        FormatedDuedate = UtilityManager.FormatAccordingToDeviceHijriEnglish(dateString);
+                    }
+
+
+                    //if (CalendarTyp.Equals("G"))
+                    //{
+                    //    FormatedDuedate = _dueDtC.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    //    string[] dts = FormatedDuedate.Split('-');
+                    //    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                    //    FormatedDuedate = date;
+                    //}
+                    //else {
+
+                    //    var dateString = _dueDtC.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                    //    if (App.IsArabic)
+                    //    {
+
+                    //        string[] dts = dateString.Split('/');
+                    //        FormatedDuedate = UtilityManager.FormatAccordingToDeviceHijriEnglish(dts[2] + "-" + dts[1] + "-" + dts[0]);
+                    //    }
+                    //    else
+                    //    {
+                    //        FormatedDuedate = UtilityManager.FormatAccordingToDeviceHijriEnglish(dateString);
+                    //    }
+                    //}
+
+
+                    //if (_dueDtC.Contains("T"))
+                    //{
+                    //    string[] _dueDate = new String[2];
+                    //    _dueDtC = _dueDT.Split('T');
+                    //    _dueDtC = _dueDate[0];
+                    //}
                 }
             }
-        }//DueDate
+        }
+
+        //DueDate
         private string _fbnum;
         public string Fbnum
         {
@@ -138,7 +204,6 @@ namespace GAZT.Models
                 _fbnum = value;
             }
         }
-        public string CalendarTyp { get; set; }
         public string Fbtyp { get; set; }
         public string FbtText { get; set; }
         public string Txt50 { get; set; }
