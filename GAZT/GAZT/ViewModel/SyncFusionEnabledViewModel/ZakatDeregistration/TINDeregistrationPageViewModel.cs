@@ -6008,7 +6008,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data saved successfully"));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data was saved successfully"));
                         }
                         break;
 
@@ -6019,7 +6019,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if(isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data saved successfully"));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data was saved successfully"));
                         }
                         break;
                     }
@@ -6029,7 +6029,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data saved successfully"));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data was saved successfully"));
                             isSaveAsDraftCalledForAttachment = true;
                         }
                         break;
@@ -6041,7 +6041,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data saved successfully"));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data was saved successfully"));
                            // await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
                             isSaveAsDraftCalledForAttachment = true;
                         }
@@ -6054,7 +6054,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data saved successfully"));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data was saved successfully"));
                             isSaveAsDraftCalledForAttachment = true;
                         }
                         else
@@ -6089,6 +6089,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     zakatDeregResponseData = await TINDeregistrationWebServiceManager.GaztTinDeregistrationNewRequestData(zakatDeregResponseData);
                     TinDeregistrationData = zakatDeregResponseData;
                     await DeletUploadedImage(TinDeregistrationData.AttDetSet.Results);
+                    SelectedOutletOption = null;
+                    PickerDobToDisplay = null;
                 });
 
                 await Task.Run(() =>

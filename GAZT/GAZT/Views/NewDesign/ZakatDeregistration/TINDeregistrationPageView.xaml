@@ -452,11 +452,11 @@
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HasError="{Binding FrameTinError}"
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10" x:Name="TINNumber"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                     <control:BorderlessEntry x:Name="EntryTIN" Text="{Binding TINNumber}" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand" TextChanged="OnTinEntered">
                                         <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
                                         </control:BorderlessEntry.Behaviors>
@@ -1166,8 +1166,8 @@
 
             </ScrollView>-->
             </ScrollView>
+
             <Grid IsVisible="{Binding IsAttachmentsViewEnabled}">
-                <ScrollView VerticalScrollBarVisibility="Never">
                     <StackLayout IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  
                              Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Attachment}" HorizontalOptions="StartAndExpand"
@@ -1282,7 +1282,6 @@
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                     </StackLayout>
                    
-                </ScrollView>
                 
             </Grid>
 

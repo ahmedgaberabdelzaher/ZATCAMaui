@@ -1870,6 +1870,26 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 attachmentsListView.HeightRequest = (viewModel.AttachmentsListViewData.Count + childElements) * ((StackLayout)sender).Height;
         }
 
-      
+        private void OnTinEntered(object sender, EventArgs e)
+        {
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Xamarin.Forms.Entry)sender;
+                if(senderObj.Text.Equals(App.LoginDataRetrieved.TIN))
+                {
+                    TINNumber.HasError = true;
+                }
+                else
+                {
+                    TINNumber.HasError = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }
