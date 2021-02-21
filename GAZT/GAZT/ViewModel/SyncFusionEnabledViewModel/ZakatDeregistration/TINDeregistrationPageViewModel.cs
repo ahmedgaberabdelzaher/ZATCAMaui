@@ -48,9 +48,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public string permitThirdOptionReason = string.Empty;
         public string selectedCalPermitNo = null;
         public static int numberOfAttachmentSentToAttachmentPopUp= 0;
-
         List<TinDeregestrationAttachmentsModel> check;
-
+        List<Attachment> attachmentList;
         //
         #endregion
 
@@ -5259,6 +5258,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
         public void PopulateAttachments(List<Attachment> attachments)
         {
+            // To clean the existing data to replace it with latest data after upload and delete of attachment
             foreach(var obj in AttachmentsListViewData)
             {
                 if(SelectedAttachment != null && SelectedAttachment.DocType != null && SelectedAttachment.DocType.Equals(obj.DocType) && obj.AttachmentTypeList != null)
@@ -5289,6 +5289,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
 
             AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
+           attachmentList = GetAllAttachemt(AttachmentsListViewData);
             EnableAttachments();
         }
 
@@ -6092,6 +6093,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 zakatDeregResponseData = await TINDeregistrationWebServiceManager.GaztTinDeregistrationNewRequestData(zakatDeregResponseData);
                 TinDeregistrationData = zakatDeregResponseData;
+               await DeletUploadedImage(TinDeregistrationData.AttDetSet.Results);
             });
 
             await Task.Run(() =>
@@ -6101,6 +6103,49 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
           //  TinDeregistrationData.AttDetSet.Results = zakatDeregResponseData.AttDetSet.Results;
 
+        }
+
+
+        public async Task DeletUploadedImage(List<Attachment> AttachmentList)
+        {
+            foreach(Attachment attachment  in attachmentList)//List aof attachmentts from server
+            {
+                bool isAttachmentAvailableOnServer = false;
+                foreach (Attachment serverAttachment in AttachmentList)//List aof attachmentts from server
+                {
+                    if (serverAttachment.Doguid.Equals(attachment.Doguid))
+                    {
+                        isAttachmentAvailableOnServer = true;
+                    }
+                }
+                if (isAttachmentAvailableOnServer == false)
+                {
+                    DeleteAttachment(attachment);
+                }
+
+                  
+            }
+        }
+
+        public void DeleteAttachment(Attachment attachment)
+        {
+            string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, TinDeregistrationData.CaseGuid, "", attachment.Doguid);
+            if (results != "X")
+            {
+             //   _navigationService.NavigateTo(AppResources.Somethingwentwrong, AppResources.ZError);
+            }
+        }
+        public List<Attachment> GetAllAttachemt(List<TinDeregestrationAttachmentsModel> attachmentList)
+        {
+            List<Attachment> list = new List<Attachment>();
+            foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in attachmentList)
+            {
+                foreach (Attachment attachment in attachmentsModelsTemp.AttachmentTypeList)
+                {
+                    list.Add(attachment);
+                }
+            }
+            return list;
         }
     }
 }
