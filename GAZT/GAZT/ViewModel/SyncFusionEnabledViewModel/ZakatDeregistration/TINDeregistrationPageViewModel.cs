@@ -5259,6 +5259,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
         public void PopulateAttachments(List<Attachment> attachments)
         {
+            foreach(var obj in AttachmentsListViewData)
+            {
+                if(SelectedAttachment != null && SelectedAttachment.DocType != null && SelectedAttachment.DocType.Equals(obj.DocType) && obj.AttachmentTypeList != null)
+                {
+                    obj.AttachmentTypeList.Clear();
+                }
+            }
+
             foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
             {
                 foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)

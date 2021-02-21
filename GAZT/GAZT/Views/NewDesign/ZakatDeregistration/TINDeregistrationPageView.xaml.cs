@@ -1730,6 +1730,39 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
+        //private void DeleteAttachment_Tapped(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        Attachment selectedAttachment = (Attachment)(e as TappedEventArgs).Parameter;
+        //        var list = viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Any(q => q.Filename == selectedAttachment.Filename)).Select(f => f.AttachmentTypeList).FirstOrDefault();
+        //        list.Remove(selectedAttachment);
+        //        list = new List<Attachment>(list);
+        //        // viewModel.PopulateAttachments(viewModel.AttachmentTypeList);
+        //        //   viewModel.AttachmentsListViewData = JsonConvert.DeserializeObject<List<TinDeregestrationAttachmentsModel>>(viewModel.attachmentsListViewDataString);
+        //        string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, viewModel.TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
+        //        if (results == "X")
+        //        {
+        //            foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in viewModel.AttachmentsListViewData)
+        //            {
+        //                //   UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
+        //                if (selectedAttachment.Dotyp == attachmentsModelsTemp.DocType && attachmentsModelsTemp.AttachmentTypeList.Any(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp))
+        //                {
+        //                    var index = attachmentsModelsTemp.AttachmentTypeList.Where(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp).FirstOrDefault();
+        //                    if (index != null)
+        //                        attachmentsModelsTemp.AttachmentTypeList.Remove(index);
+        //                }
+        //            }
+        //            viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(viewModel.AttachmentsListViewData);
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return;
+        //    }
+        //}
+
+
         private void DeleteAttachment_Tapped(object sender, EventArgs e)
         {
             try
@@ -1743,24 +1776,54 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, viewModel.TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
                 if (results == "X")
                 {
-                    foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in viewModel.AttachmentsListViewData)
+                    foreach (Attachment attachment in viewModel.TinDeregistrationData.AttDetSet.Results)
                     {
-                        //   UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
-                        if (selectedAttachment.Dotyp == attachmentsModelsTemp.DocType && attachmentsModelsTemp.AttachmentTypeList.Any(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp))
+                        if (attachment.Doguid.Equals(selectedAttachment.Doguid))
                         {
-                            var index = attachmentsModelsTemp.AttachmentTypeList.Where(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp).FirstOrDefault();
-                            if (index != null)
-                                attachmentsModelsTemp.AttachmentTypeList.Remove(index);
+                            viewModel.TinDeregistrationData.AttDetSet.Results.Remove(attachment);
+                            break;
                         }
                     }
+
+                    foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in viewModel.AttachmentsListViewData)
+                    {
+                        foreach (Attachment attachment in attachmentsModelsTemp.AttachmentTypeList)
+                        {
+                            if (attachment.Doguid.Equals(selectedAttachment.Doguid))
+                            {
+                                attachmentsModelsTemp.AttachmentTypeList.Remove(attachment);
+                                break;
+                            }
+                        }
+                    }
+                    //foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in viewModel.AttachmentsListViewData)
+                    //{
+
+
+                    //    //   UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
+                    //    if (selectedAttachment.Dotyp == attachmentsModelsTemp.DocType && attachmentsModelsTemp.AttachmentTypeList.Any(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp))
+                    //    {
+                    //        var index = attachmentsModelsTemp.AttachmentTypeList.Where(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp).FirstOrDefault();
+                    //        if (index != null)
+                    //        {
+
+                    //            viewModel.TinDeregistrationData.AttDetSet.Results.Remove(index);
+                    //            attachmentsModelsTemp.AttachmentTypeList.Remove(index);
+                    //        }
+
+
+                    //    }
+                    //}
                     viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(viewModel.AttachmentsListViewData);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return;
             }
         }
+
+
 
         private void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
         {
