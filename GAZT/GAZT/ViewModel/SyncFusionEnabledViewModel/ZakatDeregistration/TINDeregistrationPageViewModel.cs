@@ -2482,7 +2482,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             OnPermitDobTapped = new Command(this.OnPermitDobClicked);
             //
             TinDeregistrationModel = new TINDeregistrationModel();
-            //SelectedOutletOption = new TINDeregistrationModel();
+            SelectedOutletOption = new TINDeregistrationModel();
             TinDeregistrationData = new TinDeregistrationResponseModel();
             TinDeregistrationReasonSetData = new TinDeregistrationReasonSetDataModel();
             OnPermitTypeReasonTapped = new Command(this.OnOutletPermitTypeDeRegisrtationReasonClicked);
