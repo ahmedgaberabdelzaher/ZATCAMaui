@@ -245,7 +245,7 @@
                                                                     <Grid HorizontalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
                                                                             <ColumnDefinition Width="50*"></ColumnDefinition>
-                                                                            <ColumnDefinition Width="50*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                                                                         </Grid.ColumnDefinitions>
 
                                                                         <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">

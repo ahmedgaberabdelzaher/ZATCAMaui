@@ -2028,31 +2028,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             var pendingBills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
             List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
 
-            if (TempBills != null)
-            {
-                if (TempBills.Count > 3)
+            if(TempBills != null) {
+
+                var newItems = TempBills.OrderByDescending(i => i.DueDtC).ToList();
+
+                if (newItems != null)
                 {
-                    for (int i = 0; i < 3; i++)
+                    if (newItems.Count > 3)
                     {
-                        pendingBills.Add(TempBills[i]);
+                        for (int i = 0; i < 3; i++)
+                        {
+                            pendingBills.Add(newItems[i]);
+                        }
                     }
-                }
-                else
-                {
-                    for (int i = 0; i < TempBills.Count; i++)
+                    else
                     {
-                        pendingBills.Add(TempBills[i]);
+                        for (int i = 0; i < newItems.Count; i++)
+                        {
+                            pendingBills.Add(newItems[i]);
+                        }
                     }
-                }
-                foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
-                {
-                    temp1.Add(ee);
-                    if (ee.Amount != null)
+                    foreach (OverduePaymentAndUnSubmittedReturn ee in newItems)
                     {
-                        MyObligationAmount += Double.Parse(ee.Amount);
+                        temp1.Add(ee);
+                        if (ee.Amount != null)
+                        {
+                            MyObligationAmount += Double.Parse(ee.Amount);
+                        }
                     }
                 }
             }
+
+            
             if (MyObligationAmount > 0)
             {
                 IsMyObligationsClear = false;

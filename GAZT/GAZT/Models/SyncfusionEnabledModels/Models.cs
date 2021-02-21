@@ -70,7 +70,19 @@ namespace GAZT.Models
         public string Abtyp { get; set; }
         public string MadabutFg { get; set; }
         public string OpenliMsg { get; set; } //Mada Payment Message
+        public string _calendarTyp = String.Empty;
+        public string CalendarTyp
+        {
+            get
+            {
 
+                return _calendarTyp;
+            }
+            set
+            {
+                _calendarTyp = value;
+            }
+        }
         public string Abtypt { get; set; }
         public DateTime? Abrzo { get; set; }
         public string Langz { get; set; }
@@ -126,12 +138,12 @@ namespace GAZT.Models
                 //}
             }
         }
-        public string CalendarTyp { get; set; }
+      
 
         public string FormatedDuedate { get; set; }
 
-        public DateTime _dueDtC;
-        public DateTime DueDtC
+        public string _dueDtC;
+        public string DueDtC
         {
             get
             {
@@ -143,51 +155,26 @@ namespace GAZT.Models
                 if (_dueDtC != null)
                 {
 
-                    var dateString = _dueDtC.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
                     if (App.IsArabic)
-                    {
 
-                        string[] dts = dateString.Split('-');
+                    {
+                        string[] dts = _dueDtC.Split('-');
                         FormatedDuedate = UtilityManager.FormatAccordingToDeviceHijriEnglish(dts[2] + "-" + dts[1] + "-" + dts[0]);
                     }
                     else
                     {
-                        FormatedDuedate = UtilityManager.FormatAccordingToDeviceHijriEnglish(dateString);
+                        string[] dts = _dueDtC.Split('-');
+
+                        string date = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
+
+                        FormatedDuedate = date;
+
                     }
-
-
-                    //if (CalendarTyp.Equals("G"))
-                    //{
-                    //    FormatedDuedate = _dueDtC.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    //    string[] dts = FormatedDuedate.Split('-');
-                    //    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    //    FormatedDuedate = date;
-                    //}
-                    //else {
-
-                    //    var dateString = _dueDtC.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                    //    if (App.IsArabic)
-                    //    {
-
-                    //        string[] dts = dateString.Split('/');
-                    //        FormatedDuedate = UtilityManager.FormatAccordingToDeviceHijriEnglish(dts[2] + "-" + dts[1] + "-" + dts[0]);
-                    //    }
-                    //    else
-                    //    {
-                    //        FormatedDuedate = UtilityManager.FormatAccordingToDeviceHijriEnglish(dateString);
-                    //    }
-                    //}
-
-
-                    //if (_dueDtC.Contains("T"))
-                    //{
-                    //    string[] _dueDate = new String[2];
-                    //    _dueDtC = _dueDT.Split('T');
-                    //    _dueDtC = _dueDate[0];
-                    //}
-                }
+                        
+                    }
+ 
+                
             }
         }
 
