@@ -4186,6 +4186,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 try
                 {
+
+                    IsOutletChecked = false;
                     if (SelectedReason == null)
                     {
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
