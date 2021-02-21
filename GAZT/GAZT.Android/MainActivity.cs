@@ -89,7 +89,7 @@ namespace GAZT.Droid
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
             global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
-             .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
+             .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Pan);
         }
         private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
         {
