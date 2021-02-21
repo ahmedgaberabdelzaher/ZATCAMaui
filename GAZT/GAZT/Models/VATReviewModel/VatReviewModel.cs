@@ -4,6 +4,7 @@ using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.VatReviewModel
 {
+    [Preserve(AllMembers = true)]
     public class VATObjectionButtonFormModeModel
     {
         [Preserve(AllMembers = true)]
@@ -75,13 +76,13 @@ namespace EGAZT.Models.VatReviewModel
     }
 
 
+    [Preserve(AllMembers = true)]
     public class VATObjectionEnableSubmitModel
     {
         [Preserve(AllMembers = true)]
         public D d { get; set; }
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         [Preserve(AllMembers = true)]
-
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -96,6 +97,7 @@ namespace EGAZT.Models.VatReviewModel
 
     }
 
+    [Preserve(AllMembers = true)]
     public class VATObjectionFormModel
     {
         [Preserve(AllMembers = true)]
@@ -151,6 +153,7 @@ namespace EGAZT.Models.VatReviewModel
         }
     }
 
+    [Preserve(AllMembers = true)]
     public class VATObjectionGenrateSadadModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
@@ -193,6 +196,7 @@ namespace EGAZT.Models.VatReviewModel
         public string type { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
     public class VATObjectionListModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -321,6 +325,7 @@ namespace EGAZT.Models.VatReviewModel
 
     }
 
+    [Preserve(AllMembers = true)]
     public class VATObjectionRejectedFormModel
     {
         [Preserve(AllMembers = true)]
@@ -389,13 +394,13 @@ namespace EGAZT.Models.VatReviewModel
         }
     }
 
+    [Preserve(AllMembers = true)]
     public class VATObjectionSecurityAmountModel
     {
         [Preserve(AllMembers = true)]
         public D d { get; set; }
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         [Preserve(AllMembers = true)]
-
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -688,6 +693,7 @@ namespace EGAZT.Models.VatReviewModel
 
     }
 
+    [Preserve(AllMembers = true)]
     public class VATObjectionValidateTaxpayerModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -744,6 +750,7 @@ namespace EGAZT.Models.VatReviewModel
 
     }
 
+    [Preserve(AllMembers = true)]
     public class VATObjectionViewbillModel
     {
         [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -848,6 +855,7 @@ namespace EGAZT.Models.VatReviewModel
     }
 
 
+    [Preserve(AllMembers = true)]
     public class VATObjectionSummaryInputModel
     {
         [Preserve(AllMembers = true)]
@@ -911,6 +919,7 @@ namespace EGAZT.Models.VatReviewModel
             public string Vtref { get; set; }
         }
 
+        [Preserve(AllMembers = true)]
         public class VATReviewRequestTPFVModel
         {
             [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -1069,6 +1078,7 @@ namespace EGAZT.Models.VatReviewModel
 
         }
 
+        [Preserve(AllMembers = true)]
         public class VATReviewRequestTPFVOn1stAPISuccessModel
         {
             [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -1157,6 +1167,7 @@ namespace EGAZT.Models.VatReviewModel
             public string ContactPersonName { get; set; }
         }
 
+        [Preserve(AllMembers = true)]
         public class VATReviewRequestVTGRModel
         {
             [Preserve(AllMembers = true)]
@@ -1429,6 +1440,7 @@ namespace EGAZT.Models.VatReviewModel
 
         }
 
+        [Preserve(AllMembers = true)]
         public class VATReviewRequestVTGROn1stAPISuccessModel
         {
             [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -1502,6 +1514,7 @@ namespace EGAZT.Models.VatReviewModel
             public string ReasonforDeRegistration { get; set; }
             public string ContactPersonName { get; set; }
             public string DeclarationId { get; set; }
+            [Preserve(AllMembers = true)]
             public class AttdetSet
             {
 
@@ -1517,6 +1530,7 @@ namespace EGAZT.Models.VatReviewModel
             public DateTime NextDtfrom { get; set; }
             public DateTime NextDtto { get; set; }
 
+            [Preserve(AllMembers = true)]
             public class Result3
             {
 
@@ -1545,6 +1559,7 @@ namespace EGAZT.Models.VatReviewModel
 
         }
 
+        [Preserve(AllMembers = true)]
         public class VATObjectionDREGReasonModel
         {
             [Preserve(AllMembers = true)]
@@ -1575,6 +1590,7 @@ namespace EGAZT.Models.VatReviewModel
 
         }
 
+        [Preserve(AllMembers = true)]
         public class VATReviewDREGViewApplicationModel
         {
             [Preserve(AllMembers = true)]
@@ -1811,6 +1827,7 @@ namespace EGAZT.Models.VatReviewModel
             public string ContactPersonName { get; set; }
         }
 
+        [Preserve(AllMembers = true)]
         public class VATReviewDREGSuspensionListModel
         {
             [Preserve(AllMembers = true)]
