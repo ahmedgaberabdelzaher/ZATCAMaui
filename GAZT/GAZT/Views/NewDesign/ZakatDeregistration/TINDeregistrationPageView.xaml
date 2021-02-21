@@ -181,13 +181,16 @@
                                       Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemSpacing="5" IsVisible="{Binding IsOutletDecisionOptionsLVVisible}"
                                       ItemsSource="{Binding OutletDecisionOptions}"   SelectionMode="Single" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
-                        <listView:SfListView.LayoutManager>
-                            <listView:GridLayout SpanCount="2" />
-                        </listView:SfListView.LayoutManager>
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" HeightRequest="108">
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
+                                <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="104"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
                                         <Image  Source="unselected171x136" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
                                             <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.7"/>
@@ -198,8 +201,14 @@
                         </listView:SfListView.ItemTemplate>
                         <listView:SfListView.SelectedItemTemplate>
                             <DataTemplate>
-                                <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" HeightRequest="108">
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
+                                <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="104"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
                                         <Image Source="re_Tile_Background_S" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
                                             <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.7"/>
@@ -208,6 +217,9 @@
                                 </cards:SfCardView>
                             </DataTemplate>
                         </listView:SfListView.SelectedItemTemplate>
+                        <listView:SfListView.LayoutManager>
+                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+                        </listView:SfListView.LayoutManager>
                     </listView:SfListView>
                     <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption1Visible}">
                         <custom:CustomLabel x:Name="DateLabel" Style="{StaticResource CaptionLabelGrey}" >
@@ -1611,7 +1623,7 @@
                             </StackLayout>
                         </border:SfBorder >
                     </Grid>
-                    <buttons:SfButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnContinueSummary" Command="{Binding SummaryContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                    <buttons:SfButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnContinueSummary" Command="{Binding SummaryContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.Submit}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                 </Grid>
             </ScrollView>

@@ -13,7 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>-->
-   <yummy:PancakeView  VerticalOptions="EndAndExpand" BackgroundColor="White">
+   <yummy:PancakeView  VerticalOptions="EndAndExpand" CornerRadius="15,15,0,0" BackgroundColor="White">
 
         <Grid>
             <Grid.RowDefinitions>
