@@ -6000,26 +6000,39 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public async Task OnSaveAsDraftClicked()
         {
+            isSubmitted = false;
             switch (CurrentStep)
             {
                 case ProcessStep.Step1:
                     {
                         //ReasonContinueBtnClicked();
                         await SaveAsDraft();
+                        if (isSubmitted == true)
+                        {
+                            await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
+                        }
                         break;
 
                     }
                 case ProcessStep.Step2:
                     {
-                        //OutletContinueBtnClicked();
+                       // OutletContinueBtnClicked();
                         await SaveAsDraft();
+                        if(isSubmitted == true)
+                        {
+                           await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
+                        }
                         break;
                     }
                 case ProcessStep.Step3:
                     {
-                        //AttachmentsContinueBtnClicked();
+                       //AttachmentsContinueBtnClicked();
                         await SaveAsDraft();
-                        isSaveAsDraftCalledForAttachment = true;
+                        if (isSubmitted == true)
+                        {
+                            await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
+                            isSaveAsDraftCalledForAttachment = true;
+                        }
                         break;
 
                     }
@@ -6027,15 +6040,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                        // DeclarationContinueBtnClicked();
                         await SaveAsDraft();
-                        isSaveAsDraftCalledForAttachment = true;
+                        if (isSubmitted == true)
+                        {
+                            await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
+                            isSaveAsDraftCalledForAttachment = true;
+                        }
                         break;
                     }
                 case ProcessStep.Step5:
                     {
-                       // SummaryContinueBtnClicked();
-                        await Submit();
-                        isSaveAsDraftCalledForAttachment = true;
+                        //SummaryContinueBtnClicked();
 
+                        await Submit();
+                        if (isSubmitted == true)
+                        {
+                            await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
+                            isSaveAsDraftCalledForAttachment = true;
+                        }
                         if (isSubmitted)
                         {
                             _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
