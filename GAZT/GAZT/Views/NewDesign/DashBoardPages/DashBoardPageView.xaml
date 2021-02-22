@@ -188,17 +188,18 @@
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
 
+
                                  
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
 
                                             <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal" IsVisible="{Binding IsBillsTotalAmountEN}">
 
-                                               <custom:CustomLabel Grid.Column="0"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="Center">
+                                               <custom:CustomLabel Grid.Column="0"  Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding BillCount}" Style="{StaticResource CaptionLabelBlack}"/>
+                                                            <Span Text="{Binding BillCount}" Style="{StaticResource CaptionLabelGrey}"/>
                                                             <Span Text="&#160;" Style="{StaticResource CaptionLabelBlack}"/>
-                                                            <Span Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" Style="{StaticResource CaptionLabelBlack}"></Span>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" Style="{StaticResource CaptionLabelGrey}"></Span>
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
@@ -211,12 +212,12 @@
 
                                             <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal" IsVisible="{Binding IsBillsTotalAmountAR}">
 
-                                               <custom:CustomLabel Grid.Column="0"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="Center">
+                                               <custom:CustomLabel Grid.Column="0"  Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" Style="{StaticResource CaptionLabelBlack}"></Span>
-                                                              <Span Text="&#160;" Style="{StaticResource CaptionLabelBlack}"/>
-                                                            <Span Text="{Binding BillCount}" Style="{StaticResource CaptionLabelBlack}"/>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" Style="{StaticResource CaptionLabelGrey}"></Span>
+                                                              <Span Text="&#160;" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <Span Text="{Binding BillCount}" Style="{StaticResource CaptionLabelGrey}"/>
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
@@ -269,7 +270,7 @@
 
                                                                             <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding Abtypt}" 
                                                                                         Style="{StaticResource 
-                                                                        CaptionLabelBlack}" VerticalOptions="End"></custom:CustomLabel>
+                                                                        CaptionLabelGrey}" VerticalOptions="End"></custom:CustomLabel>
 
                                                                         </StackLayout>
 
@@ -292,7 +293,7 @@
 
                                                                             <custom:CustomLabel Margin="0,0,0,0"
                                                                                         Style="{StaticResource 
-                                                                        CaptionLabelBlack}" HorizontalOptions="EndAndExpand">
+                                                                        CaptionLabelGrey}" HorizontalOptions="EndAndExpand">
 
                                                                                 <custom:CustomLabel.FormattedText>
 
