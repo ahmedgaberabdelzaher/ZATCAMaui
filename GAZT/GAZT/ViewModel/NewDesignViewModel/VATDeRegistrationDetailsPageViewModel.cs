@@ -1108,6 +1108,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("VatAttachmentsList");
             }
         }
+        private ObservableCollection<Attachment> _filtervatAttachmentsList = new ObservableCollection<Attachment>();
+        public ObservableCollection<Attachment> FilterVatAttachmentsList
+        {
+            get
+            {
+                return _filtervatAttachmentsList;
+            }
+            set
+            {
+                _filtervatAttachmentsList = value;
+                RaisePropertyChanged(nameof(FilterVatAttachmentsList));
+            }
+        }
         private String _stepNumber;
         public String StepNumber
         {
@@ -1455,6 +1468,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public void updateattachmentList()
+        {
+            if (VatAttachmentsList != null)
+            {
+                List<Attachment> attachmentsList = new List<Attachment>();
+                foreach (var item in VatAttachmentsList)
+                {
+                    if (item.Dotyp == SelectedDocumentOption?.DmsTp)
+                    {
+                        attachmentsList.Add(item);
+                    }
+                }
+                FilterVatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
+            }
+        }
 
         private async void GetLastICRDate()
         {

@@ -486,6 +486,34 @@
                                 </inputLayout:SfTextInputLayout>
                                 <!--<Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsizeLarge}"  Style="{StaticResource CaptionLabelGrey}"/>-->
                             </StackLayout>
+                            <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BindableLayout.ItemsSource="{Binding FilterVatAttachmentsList}" HorizontalOptions="Center" >
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <border:SfBorder Margin="10,0,0,10" Padding="10"
+                                            Style="{StaticResource SfStyleGreyBorderFrame}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon.png" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                        HorizontalOptions="Start" VerticalOptions="Center"/>
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"
+                                                    Text="{Binding Filename}"
+                                                    LineSpacing="1"
+                                                    FontSize="Small" TextColor="Black"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="Center"/>
+                                            </Grid>
+                                        </border:SfBorder>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
 
                             <buttons:SfButton  Grid.Row="6" HeightRequest="48"  Grid.Column="0" Grid.ColumnSpan="2" Margin="10,10,0,36" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
