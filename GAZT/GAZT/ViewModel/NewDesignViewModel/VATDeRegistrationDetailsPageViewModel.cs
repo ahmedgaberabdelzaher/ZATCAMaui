@@ -1297,6 +1297,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async Task onPageLoad()
         {
+            string reqType = string.Empty;
+
             try
             {
                 VATDeregistrationModel = new VATDeregistrationModel();
@@ -1311,6 +1313,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 GetLastICRDate();
 
+                if (SelectedOutletOption.ActiveOutletDecisionOptions.Contains(AppResources.VATDeregistrationReasonType1))
+                {
+                    reqType = "VT_DREG";
+                }
+                else
+                {
+                    reqType = "VT_SUSP";
+                }
                 await Task.Run(() =>
                 {
                     IsLoading = true;
@@ -1325,6 +1335,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         vATDeRegistration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
 
+                        if (reasonList == null)
+                        {
+                            reasonList = VATDeregistrationWebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
+
+                        }
+                        for (int i = 0; i < reasonList.d.results.Count; i++)
+                        {
+                            if (reasonList.d.results[i].Reason == vATDeRegistration.d.Reason)
+                            {
+                                ReasonTitle = reasonList.d.results[i].Rdesc;
+
+                            }
+                        }
 
                         if (vATDeRegistration != null && vATDeRegistration.d != null)
                         {
@@ -1353,15 +1376,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //Step 5
 
                             if (vATDeRegistration.d.Idnumbr != null)
-                                if (string.IsNullOrEmpty(IDType))
-                                {
-                                    TxtIDNumber = string.Empty;
+                            {
+                                TxtIDNumber = vATDeRegistration.d.Idnumbr;
 
-                                }
-                                else
-                                {
-                                    TxtIDNumber = vATDeRegistration.d.Idnumbr;
-                                }
+                            }
+                            if (vATDeRegistration.d.Type == "ZS00001")
+                            {
+                                IDType = AppResources.NationaID;
+
+                            }
+                            else if (vATDeRegistration.d.Type == "ZS00002")
+                            {
+                                IDType = AppResources.ZZIqamaID;
+
+                            }else
+                            {
+                                IDType = AppResources.ZZGCCID;
+
+                            }
+                           
+                               
                             ContactPersonName = vATDeRegistration.d.Contactnm;
                             ReturnIDx = vATDeRegistration.d.ReturnIdx;
 
@@ -1385,6 +1419,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             });
                         }
                         IsLoading = false;
+
+                        PopulateAttachments(vATDeRegistration.d.AttdetSet.results);
+
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
@@ -1413,6 +1450,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 EnableReasonView();
                 IsDOBEditorVisible = false;
                 VoidIsVisible = false;
+
+
                 PopulateAttachmentsListViewTemplate();
             }
             catch (GAZTVATRegistrationInProcessException ex)
