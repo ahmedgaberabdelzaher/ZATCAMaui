@@ -647,7 +647,7 @@
                                     </StackLayout>-->
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="user_profile" Style="{StaticResource SmallIcon}"/>
+                                        <Image Source="log_out" Style="{StaticResource SmallIcon}"/>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DBLogOut}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="Logout_Tapped"/>
