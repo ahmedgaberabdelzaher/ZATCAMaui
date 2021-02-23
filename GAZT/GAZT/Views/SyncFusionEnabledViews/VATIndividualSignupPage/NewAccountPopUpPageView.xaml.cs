@@ -40,6 +40,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             NewAccountPopUpPageViewModel.ValidTypeIban = string.Empty;
             this.BindingContext = viewModel;
             viewModel.IbanNumberText = Iban;
+            viewModel.CloseButtonVisible = true;
             string SAremovedIban = Iban.Replace("SA", string.Empty);
             if (string.IsNullOrEmpty(viewModel.IbanNumberText))
             {
@@ -56,11 +57,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IbanPartFour = SAremovedIban.Substring(13, 4);
                     viewModel.IbanPartFive = SAremovedIban.Substring(17, 4);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
-              
+
                 //Bind Iban and remove name
             }
             SetLTR();
@@ -104,7 +105,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 //Bind Iban and remove name
             }
 
-            if(isComingFromScreen == IsComingFromScreen.VATAmendReactivation)
+            if (isComingFromScreen == IsComingFromScreen.VATAmendReactivation)
             {
                 viewModel.CloseButtonVisible = true;
                 btnDone.IsVisible = false;
@@ -197,7 +198,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void IbanAddButtonClicked(object sender, EventArgs e)
         {
             viewModel.IbanNumberText = string.Empty;
-            viewModel.IbanNumberText = "SA"+viewModel.IbanPartOne + viewModel.IbanPartTwo + viewModel.IbanPartThree + viewModel.IbanPartFour + viewModel.IbanPartFive;
+            viewModel.IbanNumberText = "SA" + viewModel.IbanPartOne + viewModel.IbanPartTwo + viewModel.IbanPartThree + viewModel.IbanPartFour + viewModel.IbanPartFive;
             Checked_IBAN();
         }
 
@@ -215,6 +216,109 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
 
+        }
+
+        private async void IbanOne_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                if (!string.IsNullOrEmpty(viewModel.IbanPartFive))
+                {
+                    await Task.Delay(1);
+                    IbanFive.Focus();
+                }
+                else if (!string.IsNullOrEmpty(viewModel.IbanPartFour))
+                {
+                    await Task.Delay(1);
+                    IbanFour.Focus();
+                }
+                else if (!string.IsNullOrEmpty(viewModel.IbanPartThree))
+                {
+                    await Task.Delay(1);
+                    IbanThree.Focus();
+                }
+                else if (!string.IsNullOrEmpty(viewModel.IbanPartTwo))
+                {
+                    await Task.Delay(1);
+                    IbanTwo.Focus();
+                }
+            }
+            else if (e.NewTextValue.ToCharArray().Count() == ((GAZT.BorderlessEntry)sender).MaxLength)
+            {
+                await Task.Delay(1);
+                IbanTwo.Focus();
+            }
+        }
+
+        private async void IbanTwo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                await Task.Delay(1);
+                IbanOne.Focus();
+            }
+            else if (e.NewTextValue.ToCharArray().Count() == ((GAZT.BorderlessEntry)sender).MaxLength)
+            {
+                await Task.Delay(1);
+                IbanThree.Focus();
+            }
+        }
+
+        private async void IbanThree_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                await Task.Delay(1);
+                IbanTwo.Focus();
+            }
+            else if (e.NewTextValue.ToCharArray().Count() == ((GAZT.BorderlessEntry)sender).MaxLength)
+            {
+                await Task.Delay(1);
+                IbanFour.Focus();
+            }
+        }
+
+        private async void IbanFour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                await Task.Delay(1);
+                IbanThree.Focus();
+            }
+            else if (e.NewTextValue.ToCharArray().Count() == ((GAZT.BorderlessEntry)sender).MaxLength)
+            {
+                await Task.Delay(1);
+                IbanFive.Focus();
+            }
+        }
+
+        private async void IbanFive_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                await Task.Delay(1);
+                IbanFour.Focus();
+            }
+            else if (e.NewTextValue.ToCharArray().Count() == ((GAZT.BorderlessEntry)sender).MaxLength)
+            {
+                IbanFive.Unfocus();
+            }
+        }
+
+        private async void IbanOne_Completed(object sender, EventArgs e)
+        {
+            await Task.Delay(1);
+            IbanTwo.Focus();
+        }
+
+        private void CloseIban_Tapped(object sender, EventArgs e)
+        {
+            viewModel.IbanPartOne = string.Empty;
+            viewModel.IbanPartTwo = string.Empty;
+            viewModel.IbanPartThree = string.Empty;
+            viewModel.IbanPartFour = string.Empty;
+            viewModel.IbanPartFive = string.Empty;
+            PopupNavigation.Instance.PopAsync();
         }
     }
 }

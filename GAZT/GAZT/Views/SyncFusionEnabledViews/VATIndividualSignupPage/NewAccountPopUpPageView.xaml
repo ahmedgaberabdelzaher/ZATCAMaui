@@ -12,9 +12,9 @@
                     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local="clr-namespace:EGAZT.CustomControl"
                  x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.NewAccountPopUpPageView">
-      <ScrollView>
-    <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White">     
-        <StackLayout>
+    <ScrollView>
+        <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White">
+            <StackLayout>
                 <!--<Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
@@ -26,82 +26,89 @@
                                                     Glyph="{x:Static FontImage:IconFonts.Close}"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Close_Tapped"/>
+                        <TapGestureRecognizer Tapped="CloseIban_Tapped"/>
                     </Image.GestureRecognizers>
                 </Image>
 
                 <StackLayout Padding="22,22,22,0">
-                
-                <Label Text="{Binding AccountText}"  VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
-                <!--<StackLayout Grid.Row="2">
+
+                    <Label Text="{Binding AccountText}"  VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
+                    <!--<StackLayout Grid.Row="2">
                     <Label Text="{x:Static custom2:AppResources.ZZName}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                         <custom:BorderlessEntry Text="Divya Choudhary" TextColor="Gray" FontSize="Small" IsReadOnly="True" Placeholder="ID Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                            --><!--<Entry.Behaviors>
+                            -->
+                    <!--<Entry.Behaviors>
                                 <custom1:OnlyNumericValuesBehaviour/>
-                            </Entry.Behaviors>--><!--
+                            </Entry.Behaviors>-->
+                    <!--
                         </custom:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>-->
                     <Label Text="{x:Static custom2:AppResources.NAIBAN}" FontFamily="{StaticResource SSTArBold}"/>
-            </StackLayout>
-            <StackLayout Padding="15,0,15,15">
-                <Frame Padding="0" BorderColor="LightGray" CornerRadius="8" HasShadow="False">
+                </StackLayout>
+                <StackLayout Padding="15,0,15,15">
+                    <Frame Padding="0" BorderColor="LightGray" CornerRadius="8" HasShadow="False">
                         <StackLayout Orientation="Horizontal" FlowDirection="LeftToRight">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="5,8,0,8">
-                            <StackLayout Orientation="Horizontal">
-                                <BoxView CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="DarkGreen"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="5,8,0,8">
+                                <StackLayout Orientation="Horizontal">
+                                    <BoxView CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="DarkGreen"/>
                                     <Label Text="{x:Static custom2:AppResources.NASA}" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource SSTArBold}"/>
-                                <!--<Image Rotation="270">
+                                    <!--<Image Rotation="270">
                                     <Image.Source>
                                         <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="15"
                                                  Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                     </Image.Source>
                                 </Image>-->
+                                </StackLayout>
+                            </StackLayout>
+                            <BoxView WidthRequest="1" BackgroundColor="LightGray"/>
+                            <StackLayout Orientation="Horizontal" Padding="0,5,0,5">
+                                <custom:BorderlessEntry x:Name="IbanOne" Placeholder="03" MaxLength="2" ReturnType="Next" Keyboard="Numeric" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartOne}"  
+                                                    TextChanged="IbanOne_TextChanged" Completed="IbanOne_Completed">
+                                    <!--<custom:BorderlessEntry.Behaviors>
+                                                       <local:EntryFocusBehaviour NextFocusElementName="IbanTwo"/>
+                                                     </custom:BorderlessEntry.Behaviors>-->
+                                </custom:BorderlessEntry>
+                                <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
+                                <custom:BorderlessEntry x:Name="IbanTwo" Keyboard="Numeric" Placeholder="80000000" MaxLength="8" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartTwo}"
+                                                        TextChanged="IbanTwo_TextChanged">
+                                    <!--<custom:BorderlessEntry.Behaviors>
+                                                       <local:EntryFocusBehaviour NextFocusElementName="IbanThree"/>
+                                                     </custom:BorderlessEntry.Behaviors>-->
+                                </custom:BorderlessEntry>
+                                <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
+                                <custom:BorderlessEntry x:Name="IbanThree" Placeholder="0000" MaxLength="4" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartThree}" Keyboard="Numeric"
+                                                        TextChanged="IbanThree_TextChanged">
+                                    <!--<custom:BorderlessEntry.Behaviors>
+                                        <local:EntryFocusBehaviour NextFocusElementName="IbanFour"/>
+                                    </custom:BorderlessEntry.Behaviors>-->
+                                </custom:BorderlessEntry>
+                                <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
+                                <custom:BorderlessEntry x:Name="IbanFour" Placeholder="0000" MaxLength="4" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFour}" Keyboard="Numeric"
+                                                        TextChanged="IbanFour_TextChanged">
+                                    <!--<custom:BorderlessEntry.Behaviors>
+                                        <local:EntryFocusBehaviour NextFocusElementName="IbanFive"/>
+                                    </custom:BorderlessEntry.Behaviors>-->
+                                </custom:BorderlessEntry>
+                                <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
+                                <custom:BorderlessEntry x:Name="IbanFive" Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFive}" Keyboard="Numeric"
+                                                        TextChanged="IbanFive_TextChanged"/>
+
                             </StackLayout>
                         </StackLayout>
-                        <BoxView WidthRequest="1" BackgroundColor="LightGray"/>
-                        <StackLayout Orientation="Horizontal" Padding="0,5,0,5">
-                            <custom:BorderlessEntry x:Name="IbanOne" Placeholder="03" MaxLength="2" ReturnType="Next" Keyboard="Numeric" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartOne}"  >
-                                                    <custom:BorderlessEntry.Behaviors>
-                                                       <local:EntryFocusBehaviour NextFocusElementName="IbanTwo"/>
-                                                     </custom:BorderlessEntry.Behaviors>
-                                 </custom:BorderlessEntry>                 
-                            <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                                <custom:BorderlessEntry x:Name="IbanTwo" Keyboard="Numeric" Placeholder="80000000" MaxLength="8" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartTwo}">
-                                  <custom:BorderlessEntry.Behaviors>
-                                                       <local:EntryFocusBehaviour NextFocusElementName="IbanThree"/>
-                                                     </custom:BorderlessEntry.Behaviors>
-                                 </custom:BorderlessEntry> 
-                            <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                                <custom:BorderlessEntry x:Name="IbanThree" Placeholder="0000" MaxLength="4" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartThree}" Keyboard="Numeric">
-                                  <custom:BorderlessEntry.Behaviors>
-                                                       <local:EntryFocusBehaviour NextFocusElementName="IbanFour"/>
-                                                     </custom:BorderlessEntry.Behaviors>
-                                 </custom:BorderlessEntry> 
-                            <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                                <custom:BorderlessEntry x:Name="IbanFour" Placeholder="0000" MaxLength="4" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFour}" Keyboard="Numeric">
-                                  <custom:BorderlessEntry.Behaviors>
-                                                       <local:EntryFocusBehaviour NextFocusElementName="IbanFive"/>
-                                                     </custom:BorderlessEntry.Behaviors>
-                                 </custom:BorderlessEntry> 
-                            <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                                <custom:BorderlessEntry x:Name="IbanFive" Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFive}" Keyboard="Numeric"/>
-                              
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
-            <buttons:SfButton x:Name="btnAddAccount" Text="{x:Static custom2:AppResources.Save}" Clicked="IbanAddButtonClicked" CornerRadius="14" VerticalOptions="End" FontAttributes="Bold" 
+                    </Frame>
+                </StackLayout>
+                <buttons:SfButton x:Name="btnAddAccount" Text="{x:Static custom2:AppResources.Save}" Clicked="IbanAddButtonClicked" CornerRadius="14" VerticalOptions="End" FontAttributes="Bold" 
                                   HeightRequest="48" Margin="10,0,10,10" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
                               BackgroundColor="#d49504" BorderWidth="0" />
                 <buttons:SfButton x:Name="btnDone" Text="{x:Static custom2:AppResources.ZZZZDone}" Clicked="Close_Tapped" CornerRadius="14" VerticalOptions="End" FontAttributes="Bold" 
                                   HeightRequest="48" Margin="10,0,10,10" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
                               BackgroundColor="#d49504" BorderWidth="0" />
-        </StackLayout>
-          
-    </yummy:PancakeView>
-            </ScrollView>
+            </StackLayout>
+
+        </yummy:PancakeView>
+    </ScrollView>
 </pages:PopupPage>
