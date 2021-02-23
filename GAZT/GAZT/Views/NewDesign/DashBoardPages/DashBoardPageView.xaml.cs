@@ -45,6 +45,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
                 viewModel.MyObligationAmount = 0.0;
+                viewModel.MyObligationAmountCommas = "";
                 viewModel.IsMyObligationsClear = false;
                 viewModel.MenuViewVisible = false;
                 InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
@@ -134,6 +135,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;
             viewModel.PartiallyPaidString = AppResources.Partiallynewui + " " + viewModel.PartiallyPaidBillCount;
             viewModel.TotalString = AppResources.NDTotalNumberOfBills;
+           
             ChangeArrowDirection();
             MessagingCenter.Subscribe<Object>(this, "UpdateProgressBar", (sender) =>
             {

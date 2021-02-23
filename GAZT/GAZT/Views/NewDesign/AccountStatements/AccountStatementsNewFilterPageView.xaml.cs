@@ -15,6 +15,7 @@ using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using SelectionChangedEventArgs = Syncfusion.SfPicker.XForms.SelectionChangedEventArgs;
@@ -31,6 +32,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             InitializeComponent();
             ChangeAeroIcon();
+            ChangeFilterArrow();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.AccountStatementsFilterPageView;
@@ -72,6 +74,29 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             }
         }
 
+        public void ChangeFilterArrow()
+        {
+            if (App.IsArabic)
+            {
+                Resources["FilterArrow"] = Resources["FilterArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["FilterArrow"] = Resources["FilterArrowImageForEnglishStyle"];
+            }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
+            
+        }
+
         /*protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -106,7 +131,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
 
         }*/
-        
+
         private async void TSDateStartDateClicked(object sender, EventArgs e)
         {
             viewModel.isTxStartDate = true;

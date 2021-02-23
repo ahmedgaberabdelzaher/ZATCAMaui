@@ -31,10 +31,19 @@
                     <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="0" />
                     </Style>
+
+                     <Style x:Key="FilterArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="FilterArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+
 
     <ContentPage.ControlTemplate>
         <ControlTemplate>
@@ -131,13 +140,9 @@
 
 
                                     <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                        <Image Margin="5,0" HorizontalOptions="Center">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="24"
-                                                                 Glyph="{x:Static FontImage:IconFonts.GreaterThan}" />
-                                            </Image.Source>
-                                        </Image>
+                                        
+
+                                        <Image Margin="5,0" HorizontalOptions="Center" Source="arrowRight" Style="{DynamicResource FilterArrow}" HeightRequest="24" WidthRequest="24"></Image>
 
                                     </StackLayout>
 
@@ -190,13 +195,7 @@
 
                                     </StackLayout>
                                     <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                        <Image Margin="5,0" HorizontalOptions="End">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="24"
-                                                                 Glyph="{x:Static FontImage:IconFonts.GreaterThan}" />
-                                            </Image.Source>
-                                        </Image>
+                                       <Image Margin="5,0" HorizontalOptions="Center" Source="arrowRight" Style="{DynamicResource FilterArrow}" HeightRequest="24" WidthRequest="24"></Image>
 
                                     </StackLayout>
 
@@ -332,13 +331,7 @@
                                     </StackLayout>
 
                                     <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                        <Image Margin="5,0" HorizontalOptions="End">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="24"
-                                                                 Glyph="{x:Static FontImage:IconFonts.GreaterThan}" />
-                                            </Image.Source>
-                                        </Image>
+                                         <Image Margin="5,0" HorizontalOptions="Center" Source="arrowRight" Style="{DynamicResource FilterArrow}" HeightRequest="24" WidthRequest="24"></Image>
 
                                     </StackLayout>
 
