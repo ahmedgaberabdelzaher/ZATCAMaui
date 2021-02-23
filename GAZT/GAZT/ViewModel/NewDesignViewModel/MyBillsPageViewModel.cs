@@ -975,7 +975,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public async Task SadadPaymentSelected()
         {
             //_navigationService.NavigateTo(App.MyBillsSuccessPageView, selectedSadadNo);
-            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, false);
+            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, 1);
 
             //_navigationService.GoBack();
 

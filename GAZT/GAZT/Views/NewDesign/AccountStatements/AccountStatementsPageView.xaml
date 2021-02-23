@@ -313,23 +313,27 @@
                                                         <Label Text="{Binding FormattedBldat}" Margin="0,5,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                                                     </StackLayout>
                                                     <Frame Grid.Row="0" Grid.Column="1"
+                                                           HorizontalOptions="FillAndExpand"
                                                     BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"
-                                                    Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"
+                                                    Padding="10,10,10,10" CornerRadius="14"
                                                     HeightRequest="20" Opacity=".2"
-                                        HasShadow="False"   
-                                                    VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                                     HasShadow="False"   
+                                                    VerticalOptions="CenterAndExpand" >
                                                     </Frame>
-                                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
+                                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" Padding="10,0,10,0">
                                                         <!--<Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding Betrh}"
                                                TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         </Label>-->
+
+                                                        
+
                                                         <custom:CustomLabel Style="{StaticResource CaptionLabelBlack}"
                                                                             TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{Binding Betrh,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
-                                                                    <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
-                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="{Binding Betrh,Converter={StaticResource commaSeparatorConverter}}" TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" Style="{StaticResource CaptionLabelBlack}" ></Span>
+                                                                    <Span Text="&#160;" Style="{StaticResource CaptionLabelBlack}" ></Span>
+                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR} " TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  Style="{StaticResource CaptionLabelBlack}" ></Span>
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
                                                         </custom:CustomLabel>

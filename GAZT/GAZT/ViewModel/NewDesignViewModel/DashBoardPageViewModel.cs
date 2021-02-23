@@ -1599,7 +1599,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public async Task SadadPaymentSelected()
         {
             /*_navigationService.GoBack();*/
-            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, true);
+            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, 0);
         }
 
         public async Task ApplePaySelected()

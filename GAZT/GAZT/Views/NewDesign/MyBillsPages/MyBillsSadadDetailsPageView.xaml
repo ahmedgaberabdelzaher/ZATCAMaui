@@ -161,7 +161,7 @@
                             </StackLayout>
 
                             <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" Orientation="Vertical" Spacing="4" BackgroundColor="White" Padding="0,2,0,0">
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.CRDone}"  Margin="0,0,0,2" Clicked="DoneClicked" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
+                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.CRDone}"  Margin="0,0,0,20" Clicked="DoneClicked" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
                        
                             </StackLayout>
                      </Grid>

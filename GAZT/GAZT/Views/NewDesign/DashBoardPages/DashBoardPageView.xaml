@@ -233,7 +233,7 @@
                                         <cards:SfCardView HasShadow="False" BackgroundColor="White" CornerRadius="10" Margin="0,5,0,0">
                                             <StackLayout >
 
-                                                <listView:SfListView ItemsSource="{Binding PendingBills}" MinimumHeightRequest="{Binding PendingBillsListHeight}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" >
+                                                <listView:SfListView ItemsSource="{Binding PendingBills}"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" >
                                                      <listView:SfListView.Behaviors>
                                                             <local:ListViewBehavior/>
                                                    </listView:SfListView.Behaviors>
@@ -300,7 +300,7 @@
                                                                                     <FormattedString>
                                                                                         <Span Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
                                                                                         <Span Text=": "/>
-                                                                                        <Span Text="{Binding DueDtC}"></Span>
+                                                                                        <Span Text="{Binding FormatedDuedate}"></Span>
                                                                                     </FormattedString>
                                                                                 </custom:CustomLabel.FormattedText>
                                                                             </custom:CustomLabel>
@@ -562,7 +562,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <cards:SfCardView Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
-                                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="12,12,12,12" Spacing="0" Padding="0">
+                                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5,12,5,12" Spacing="0" Padding="0">
                                                     <Image HorizontalOptions="Start" Source="submited.png" VerticalOptions="Start">
                                                     </Image>
                                                     <custom:CustomLabel  Text="{Binding SubmittedCount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Start"/>
@@ -573,8 +573,8 @@
                                                 </cards:SfCardView.GestureRecognizers>
                                             </cards:SfCardView>
 
-                                            <cards:SfCardView Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
-                                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="12,12,12,12" Spacing="0" Padding="0" >
+                                            <cards:SfCardView Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
+                                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5,12,5,12" Spacing="0" Padding="0" >
                                                     <Image HorizontalOptions="Start" Source="clockNew.png" VerticalOptions="Start">
                                                     </Image>
                                                     <custom:CustomLabel  Text="{Binding OverDueCount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Start"/>
@@ -586,8 +586,8 @@
                                             </cards:SfCardView>
 
 
-                                            <cards:SfCardView Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
-                                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="12,12,12,12" Spacing="0" Padding="0">
+                                            <cards:SfCardView Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
+                                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5,12,5,12" Spacing="0" Padding="0">
                                                     <Image HorizontalOptions="Start" Source="unsubmitted.png" VerticalOptions="Start">
                                                     </Image>
                                                     <custom:CustomLabel  Text="{Binding UnSubmittedCount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Start"/>

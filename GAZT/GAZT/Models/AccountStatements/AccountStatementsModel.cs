@@ -565,6 +565,22 @@ namespace EGAZT.Models.AccountStatements
                     if (App.CalType.Equals("G"))
                     {
                         FormattedBldat = string.Format(_Bldat?.ToString("dd{0} MMMM yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_Bldat));
+
+                        string[] dts = FormattedBldat.Split(' ');
+                        if (App.IsArabic) {
+
+                            string date = dts[2] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[0]; 
+
+                            FormattedBldat = date;
+                        }
+                        else {
+                            string date = dts[0] + " "  + UtilityManager.GetMonthName(dts[1]) + " " + dts[2] ;
+
+                            FormattedBldat = date;
+                        }
+
+
+                       
                     }
                     else
                     {
@@ -603,6 +619,22 @@ namespace EGAZT.Models.AccountStatements
                     if (App.CalType.Equals("G"))
                     {
                         FormattedBldat2 = string.Format(_Bldat2?.ToString("dd{0} MMMM yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_Bldat2));
+
+                        string[] dts = FormattedBldat2.Split(' ');
+
+                        if (App.IsArabic)
+                        {
+
+                            string date = dts[2] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[0];
+
+                            FormattedBldat2 = date;
+                        }
+                        else
+                        {
+                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                            FormattedBldat2 = date;
+                        }
                     }
                     else
                     {
