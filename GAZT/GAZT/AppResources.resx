@@ -6114,7 +6114,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Create VAT Installment Plan request</value>
   </data>
   <data name="VatInstalmentPlan" xml:space="preserve">
-    <value>Instalment Plan</value>
+    <value>Instalment Plans</value>
   </data>
   <data name="VatInstalmentPlanSubmittedSuccess" xml:space="preserve">
     <value>Your Instalment Plan submitted successfully</value>
