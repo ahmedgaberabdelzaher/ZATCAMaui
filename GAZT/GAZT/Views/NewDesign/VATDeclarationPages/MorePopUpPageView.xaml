@@ -44,7 +44,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand">
+                            <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                             <custom:CustomLabel BackgroundColor="White" Text="{Binding}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource SectionTitleBlack}"/>
                             </StackLayout>
                         </ViewCell>
