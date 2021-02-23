@@ -49,9 +49,12 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             if (viewModel.AcknowledgementChecked && viewModel.CBTermsAndConditionsChecked)
-                btnConfirmSummary.IsEnabled = true;
+                //btnConfirmSummary.IsEnabled = true;
+                viewModel.IsConfirmSummaryEnabled = true;
             else
-                btnConfirmSummary.IsEnabled = false;
+                viewModel.IsConfirmSummaryEnabled = false;
+
+            //btnConfirmSummary.IsEnabled = false;
             isTandCChecked = false;
         }
 
@@ -302,17 +305,25 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         private void Acknowledgment_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             if (viewModel.AcknowledgementChecked && viewModel.CBTermsAndConditionsChecked)
-                btnConfirmSummary.IsEnabled = true;
+                // btnConfirmSummary.IsEnabled = true;
+                viewModel.IsConfirmSummaryEnabled = true;
+
             else
-                btnConfirmSummary.IsEnabled = false;
+                viewModel.IsConfirmSummaryEnabled = false;
+
+            // btnConfirmSummary.IsEnabled = false;
         }
 
         private void TermsAndConditions_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             if (viewModel.AcknowledgementChecked && viewModel.CBTermsAndConditionsChecked)
-                btnConfirmSummary.IsEnabled = true;
+                //btnConfirmSummary.IsEnabled = true;
+                viewModel.IsConfirmSummaryEnabled = true;
+
             else
-                btnConfirmSummary.IsEnabled = false;
+                //btnConfirmSummary.IsEnabled = false;
+                viewModel.IsConfirmSummaryEnabled = false;
+
             // Display T&C popup on checkbox click if its not checked
             if (!isTandCChecked && viewModel.CBTermsAndConditionsChecked)
             {
@@ -327,6 +338,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         private void TermsAndConditions_Tapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundSummaryTermsandConditions));
+        }
+
+        void btnConfirmSummary_Clicked(System.Object sender, System.EventArgs e)
+        {
         }
     }
 }
