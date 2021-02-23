@@ -7590,9 +7590,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipPrivateHealthcareAdjustment;
                 headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
-                headerAdjustmentInfo.IsLinkAvailable = true;
-                headerAdjustmentInfo.LinkText = AppResources.ZZZZFAQ; 
-                headerAdjustmentInfo.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                //headerAdjustmentInfo.LinkText = AppResources.ZZZZFAQ; 
+                //headerAdjustmentInfo.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
                 if (App.IsArabic)
                 {
                     headerAdjustmentInfo.FlowDirections = "RightToLeft";
