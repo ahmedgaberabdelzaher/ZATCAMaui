@@ -1044,7 +1044,7 @@
     <value>يرجى تأكيد أن المعلومات أعلاه صحيحة قبل المواصلة</value>
   </data>
   <data name="ZVatCorrectionsfrompreviousperiod" xml:space="preserve">
-    <value>تصحيحات من الفترات السابقة (بين ±  ريال)</value>
+    <value>تصحيحات من الفترات السابقة (بين ± ريال)</value>
   </data>
   <data name="ZVatcreditcarriedforward" xml:space="preserve">
     <value>ضريبة القيمة المضافة التي تم ترحيلها من الفترة / الفترات السابقة</value>

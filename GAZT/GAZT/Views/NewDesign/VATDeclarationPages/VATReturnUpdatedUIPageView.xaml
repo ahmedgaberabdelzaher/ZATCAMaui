@@ -1562,16 +1562,17 @@
                                 <Grid Padding="5,0,5,0" ColumnSpacing="0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="{x:Static custom2:AppResources.ZVatNetdue}"   Grid.Column="0" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" StyleId="SingleLabel">
+                                    <Label Text="{x:Static custom2:AppResources.ZVatNetdue}"   Grid.Column="0" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" StyleId="SingleLabel">
                                       
                                     </Label>
-                                    <custom:CustomLabel Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Margin="1,0,1,0" />
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="1,0,1,0" />
                                     <Image Grid.Column="2" Source="ic_vat_info" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Margin="1,0,1,0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnNewVatNetdueClicked" />
@@ -1929,15 +1930,15 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Preperiodcorr}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
                                     </StackLayout>
-                                    <StackLayout BackgroundColor="#E7EFED" Orientation="Horizontal" Padding="10">
-                                        <custom:CustomLabel VerticalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}">
-                                            <custom:CustomLabel.FormattedText>
+                                    <StackLayout BackgroundColor="#E7EFED" Orientation="Vertical" Padding="10">
+                                        <custom:CustomLabel Text="{x:Static custom2:AppResources.ZVatNetdue}"  FontFamily="{StaticResource SSTArabicMedium}" VerticalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}">
+                                            <!--<custom:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"  FontFamily="{StaticResource SSTArabicMedium}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel.FormattedText>-->
                                         </custom:CustomLabel>
-                                        <custom:CustomLabel Text="{Binding NetdueVat}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding NetdueVat}" Style="{StaticResource SectionTitleBlack}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
