@@ -140,8 +140,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         viewModel.IsIBANValid = false;
                         if (viewModel.IbanNumberText == "SA")
                         {
-                            MessagingCenter.Send<Object, string>(this, "IbanReceived", viewModel.IbanNumberText);
-                            await PopupNavigation.Instance.PopAsync();
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                            });
                         }
                         else
                         {
