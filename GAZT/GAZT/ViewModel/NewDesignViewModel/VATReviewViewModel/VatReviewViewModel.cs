@@ -2356,6 +2356,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         }
 
 
+        [Preserve(AllMembers = true)]
         public class SelectionModel
         {
             public SelectionModel()
@@ -4920,7 +4921,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             if (modelVATReview.d.IdType == "ZS0001")
             {
                 IDType = AppResources.VFCNationalID;
-                IsDOBVisible = false;
+                IsDOBVisible = true;
 
             }
             else if (modelVATReview.d.IdType == "ZS0002")
@@ -5659,7 +5660,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 VBPeriodkey = item.Perslt;
 
                                 VBAmount = item.Betrh;
-
 
 
                                 string strFormatedDateofPenality = "";

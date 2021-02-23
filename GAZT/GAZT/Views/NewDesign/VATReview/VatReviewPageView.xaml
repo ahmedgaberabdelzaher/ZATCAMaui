@@ -11,9 +11,10 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="EGAZT.Views.NewDesign.VatReview.VatReviewPageView"
+             xmlns:local="clr-namespace:EGAZT.CustomControl"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-                                      xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+                                      xmlns:converters="clr-namespace:EGAZT.NewDesignConverters" xmlns:d="http://xamarin.com/schemas/2014/forms/design"
 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
@@ -113,7 +114,7 @@
                 </Grid>
 
 
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" VerticalOptions="FillAndExpand">
 
 
                     <!--Review Reason-->
@@ -304,14 +305,9 @@
 
                         </Grid>
                         
-                        <Grid Grid.Row="5" Margin="0,10,0,0" HorizontalOptions="FillAndExpand">
+                        <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand">
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
+                           
                             <custom:CustomLabel Grid.Row="0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" >
@@ -323,32 +319,28 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                           <border:SfBorder Grid.Row="1" Margin="0,0,0,3" 
-                                             MinimumHeightRequest="100" Padding="0,0,0,7"
+
+                            <border:SfBorder Grid.Row="1" Margin="0,0,0,3" 
+                                              Padding="0,0,0,7"
                                              Style="{StaticResource GreyBorderFrame}" VerticalOptions="FillAndExpand">
 
- 
+                                <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
 
-                                <StackLayout Orientation="Vertical">
-
- 
                                     <custom:GAZTBorderlessEditor x:Name="Report_Details_Tx"
                                                              Unfocused="Report_Details_UnFocused"
-                                                             MinimumHeightRequest="100"
+                                                             MinimumHeightRequest="120"
                                                              Text="{Binding ReportDetails}"
                                                                  TextChanged="Report_Details_Tx_TextChanged"
                                                              AutoSize="TextChanges"
                                                               MaxLength="1000"
-                                                                 Margin="10,5,10,10"
                                                              VerticalOptions="CenterAndExpand"
                                                              IsEnabled="{Binding IsReportDetailsEditable}"
                                                              HorizontalOptions="FillAndExpand"
                                                              Style="{StaticResource BodyLabelBlack}" />
                                 </StackLayout>
 
- 
-
                             </border:SfBorder>
+                          
 
                             <custom:CustomLabel Grid.Row="2"
                                                 HorizontalOptions="EndAndExpand"
@@ -363,7 +355,7 @@
                     HorizontalOptions="StartAndExpand"
                     Style="{StaticResource BodyLabelBlack}" />
 
-                        </Grid>
+                        </StackLayout>
                         
                    <Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand">
 
@@ -1367,10 +1359,10 @@
 
                     </Grid>
 
-                    <Grid IsVisible="{Binding SummaryVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                    <StackLayout IsVisible="{Binding SummaryVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                        <StackLayout Orientation="Vertical">
+                        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
 
                             <Grid Margin="0,5,0,10">
                                 <Grid.RowDefinitions>
@@ -1959,10 +1951,14 @@
 
                                          <listView:SfListView IsVisible="{Binding IsBankGurantSecuritySelected}" HorizontalOptions="Center"
                                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
-                                                             VerticalOptions="Center" AutoFitMode="Height"
+                                                             VerticalOptions="Center" AutoFitMode="DynamicHeight"
                                                              ItemsSource="{Binding BankGuranteeAttachmentsListViewData}"
                                                              SelectionMode="None"
                                                              SelectionBackgroundColor="Transparent">
+                                            <listView:SfListView.Behaviors>
+                                                <local:ListViewBehavior/> 
+                                            </listView:SfListView.Behaviors>
+                                     
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
 
@@ -1997,7 +1993,7 @@
                             </border:SfBorder>
 
                             <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
-                                             Style="{StaticResource GreyBorderFrameWithShadow}">
+                                             Style="{StaticResource GreyBorderFrameWithShadow}" VerticalOptions="FillAndExpand">
 
                                 <StackLayout Orientation="Vertical">
 
@@ -2105,7 +2101,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0"
                                                                 Text="{x:Static ResourceManager:AppResources.VRContactPersonName}"
-                                                                Style="{StaticResource ValueLabelGrey}" />
+                                                                Style="{StaticResource ValueLabelGrey}" VerticalOptions="FillAndExpand" />
                                             <Label Grid.Column="1" Text="{Binding ContactPersonName}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
@@ -2116,13 +2112,13 @@
                                 </StackLayout>
                             </border:SfBorder>
 
-                            <buttons:SfButton Margin="0,16,0,16"
+                            <buttons:SfButton Margin="0,5,0,85"
                                               Text="{x:Static ResourceManager:AppResources.Submit}"
                                               Style="{StaticResource PrimaryButtonStyle}"
-                                              Command="{Binding SummaryConBtnTapped}" />
+                                              Command="{Binding SummaryConBtnTapped}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
 
                         </StackLayout>
-                    </Grid>
+                    </StackLayout>
 
                     <!-- Loadig Indiacatr -->
                     <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
