@@ -87,11 +87,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.TitleOne = "";
                 viewModel.TitleTwo = AppResources.ZContractReleaseChooseonlyfilewithextension;
-                if (!App.IsArabic)
+                /*if (!App.IsArabic)
                 {
                     viewModel.TitleOne = AppResources.ZContractReleaseAttachmentTitle;
-                }
-                
+                }*/
             }
             else if (whichAttachment == WhichAttachment.VATInstalment)
             {

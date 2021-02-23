@@ -781,11 +781,9 @@
                         </StackLayout>
 
                     </StackLayout>
-
                     <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" HorizontalOptions="FillAndExpand" VerticalOptions="End"
                                       x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
-
                 </Grid>
             </ScrollView>
             <ScrollView IsVisible="{Binding IsOutletViewEnabled}">
@@ -1179,7 +1177,7 @@
 
 
                         <ListView  x:Name="attachmentsListView"  ItemsSource="{Binding AttachmentsListViewData}" HasUnevenRows="True"
-                                      SelectionMode="None" SeparatorColor="Transparent">
+                                      SelectionMode="None" SeparatorColor="Transparent" VerticalScrollBarVisibility="Never">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -1277,12 +1275,13 @@
                             </ListView.ItemTemplate>
 
                         </ListView>
-                         <buttons:SfButton HeightRequest="48" VerticalOptions="End"  Margin="0,16,0,5" x:Name="btnAttachmentsContinue"
+                        <StackLayout HeightRequest="60" HorizontalOptions="FillAndExpand" VerticalOptions="End" Padding="0,10,0,10">
+                         <buttons:SfButton HeightRequest="48" VerticalOptions="End"   x:Name="btnAttachmentsContinue" Padding="0,0,0,0"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
+                            </StackLayout>
                     </StackLayout>
                    
-                
             </Grid>
 
 

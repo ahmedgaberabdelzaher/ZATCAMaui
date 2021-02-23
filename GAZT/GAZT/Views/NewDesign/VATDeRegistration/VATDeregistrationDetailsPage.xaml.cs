@@ -277,7 +277,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                     //viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
                     viewModel.PopulateAttachments(arg.results);
-
+                    viewModel?.updateattachmentList();
 
                 }
             });
@@ -787,6 +787,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
             ResultsAttachmentItemForElgblDocSet selectedItem = e.AddedItems[0] as ResultsAttachmentItemForElgblDocSet;
             viewModel.SelectedOutletOptionIndex = viewModel.AttachmentTypes.IndexOf(selectedItem);
+            viewModel?.updateattachmentList();
         }
         async void VATDeregStartDateClicked(System.Object sender, System.EventArgs e)
         {

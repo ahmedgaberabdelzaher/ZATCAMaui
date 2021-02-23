@@ -1510,7 +1510,7 @@
                                             <RowDefinition Height="auto"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTheValueofZakatdues}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  />
@@ -1533,7 +1533,7 @@
                                             <RowDefinition Height="auto"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTheValueTaxDues}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
@@ -1556,7 +1556,7 @@
                                             <RowDefinition Height="auto"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTotalDues}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />

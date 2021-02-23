@@ -249,7 +249,7 @@
                                 </Grid>
                             </Grid>
 
-                            <StackLayout Orientation="Horizontal" Margin="0,-15,0,0" HorizontalOptions="Center">
+                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0" HorizontalOptions="Center">
                                 <Image Source="clock">
                                 </Image>
                                 <custom:CustomLabel  Text="{Binding LblCountDownTimer}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />
