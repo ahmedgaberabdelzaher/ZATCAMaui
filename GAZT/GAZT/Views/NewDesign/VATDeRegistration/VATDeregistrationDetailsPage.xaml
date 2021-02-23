@@ -498,8 +498,8 @@
                                                 </Grid.RowDefinitions>
 
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
                                                 <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon.png" Margin="5,0" WidthRequest="25" HeightRequest="25"
                                         HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -507,8 +507,8 @@
                                                     Text="{Binding Filename}"
                                                     LineSpacing="1"
                                                     FontSize="Small" TextColor="Black"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    VerticalOptions="Center"/>
+                                                    HorizontalOptions="StartAndExpand"
+                                                    VerticalOptions="Center" HorizontalTextAlignment="Start"  />
                                             </Grid>
                                         </border:SfBorder>
                                     </DataTemplate>
