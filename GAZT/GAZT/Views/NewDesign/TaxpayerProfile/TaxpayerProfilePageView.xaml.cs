@@ -164,9 +164,16 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                         Console.Write(ex.StackTrace.ToString());
                     }
 
-
+                
                     viewModel.EmailEntry = App.TP.Email;
                     viewModel.PasswordEntry = "********";
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await viewModel.GetTinStatusDATA();
+                    });
+
+
                 }
             }
             catch (Exception ex)

@@ -164,10 +164,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             _dialogService = dialogService;
 
             // * TIN STATUS API CALLS
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await this.GetTinStatusDATA();
-            });
+           
         }
 
         public async Task GetTinStatusDATA()
@@ -194,7 +191,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        private void UpdateTinStatus()
+        public void UpdateTinStatus()
         {
             if (ListTINStatus != null)
             {
