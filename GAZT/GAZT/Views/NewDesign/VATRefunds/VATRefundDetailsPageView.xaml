@@ -614,21 +614,21 @@
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions1}" TextColor="Black"  />
                                             <Span  Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions2}" TextColor="Blue" />
-                                            <Span  Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions3}" TextColor="Black"  />
+                                            <Span LineHeight="1.7" Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions3}" TextColor="Black"  />
 
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                     <custom:CustomLabel.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TermsAndConditions_Tapped"/>
                                     </custom:CustomLabel.GestureRecognizers>
-                                         <custom:CustomLabel.Triggers>
+                                         <!--<custom:CustomLabel.Triggers>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding CBTermsAndConditionsChecked}" Value="True">
                                             <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                                         </DataTrigger>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding CBTermsAndConditionsChecked}" Value="False">
                                             <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                         </DataTrigger>
-                                    </custom:CustomLabel.Triggers>
+                                    </custom:CustomLabel.Triggers>-->
                                 </custom:CustomLabel>
                             <!--</StackLayout>-->
                                                                 </Grid>
@@ -643,17 +643,17 @@
                                                     Style="{DynamicResource IsInstructionCheckedStyle}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span  Text="{x:Static ResourceManager:AppResources.VATRefundAcknowledgment}" TextColor="Black"   />
+                                            <Span LineHeight="1.8" Text="{x:Static ResourceManager:AppResources.VATRefundAcknowledgment}" TextColor="Black"   />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
-                                        <custom:CustomLabel.Triggers>
+                                        <!--<custom:CustomLabel.Triggers>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding AcknowledgementChecked}" Value="True">
                                             <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                                         </DataTrigger>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding AcknowledgementChecked}" Value="False">
                                             <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                         </DataTrigger>
-                                    </custom:CustomLabel.Triggers>
+                                    </custom:CustomLabel.Triggers>-->
                                 </custom:CustomLabel>
                             <!--</StackLayout>-->
                         </Grid>
@@ -693,7 +693,8 @@
                                         </StackLayout>
                                     </Grid>
                                     <StackLayout Grid.Row="2" Margin="0,30">
-                                        <buttons:SfButton x:Name="btnConfirmSummary" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Clicked="ConfirmSummaryButton_Tapped" Text="{x:Static ResourceManager:AppResources.Confirm}"
+                                        <buttons:SfButton x:Name="btnConfirmSummary" IsEnabled="{Binding IsConfirmSummaryEnabled}" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Clicked="ConfirmSummaryButton_Tapped"
+                                                          Text="{x:Static ResourceManager:AppResources.Confirm}" BackgroundColor="{Binding ContinueButtonnBackroundColor}"
                                         Style="{StaticResource PrimaryButtonStyle}">
                                             <!--<buttons:SfButton.Triggers>
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding IsEnabled,Source={x:Reference btnConfirmSummary}}" Value="true">

@@ -56,6 +56,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 if (_CBTermsAndConditionsChecked == value) return;
 
                 _CBTermsAndConditionsChecked = value;
+                if (_CBTermsAndConditionsChecked)
+                {
+                    IsConfirmSummaryEnabled = true;
+                }
+                else
+                {
+                    IsConfirmSummaryEnabled = false;
+                }
                 RaisePropertyChanged("CBTermsAndConditionsChecked");
             }
         }
@@ -70,9 +78,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             set
             {
                 if (_AcknowledgementChecked == value) return;
-
                 _AcknowledgementChecked = value;
+
+                if (_AcknowledgementChecked)
+                {
+                    IsConfirmSummaryEnabled = true;
+                }
+                else
+                {
+                    IsConfirmSummaryEnabled = false;
+                }
                 RaisePropertyChanged("AcknowledgementChecked");
+            }
+        }
+        private bool _IsConfirmSummaryEnabled = false;
+        public bool IsConfirmSummaryEnabled
+        {
+            get
+            {
+                return _IsConfirmSummaryEnabled;
+            }
+            set
+            {
+                if (_IsConfirmSummaryEnabled == value) return;
+
+                _IsConfirmSummaryEnabled = value;
+                if (_IsConfirmSummaryEnabled)
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                }
+                else
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                }
+                RaisePropertyChanged("IsConfirmSummaryEnabled");
+            }
+        }
+        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+        public Color ContinueButtonnBackroundColor
+        {
+            get
+            {
+                return _continueButtonnBackroundColor;
+            }
+            set
+            {
+                if (_continueButtonnBackroundColor == value) return;
+
+                _continueButtonnBackroundColor = value;
+                RaisePropertyChanged("ContinueButtonnBackroundColor");
             }
         }
         private ObservableCollection<VatRefSubItemsSetResult> _vatRefundsSubItemReturnsSet { get; set; }
