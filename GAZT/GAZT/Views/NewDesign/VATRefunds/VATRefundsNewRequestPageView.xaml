@@ -99,8 +99,8 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50*"/>
-                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="40*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                             <Grid.RowDefinitions>
