@@ -44,10 +44,8 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                                 <StackLayout Spacing="15" Margin="0,0,0,7">
                                     <Frame CornerRadius="12" HasShadow="False" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
                                         <StackLayout>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Image Source="ic_vat_info">
-
-                                                </Image>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image Source="ic_vat_info"/>
                                             <custom:CustomLabel x:Name="HeaderTextlbl"   Text="{Binding HeaderText}" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand">
                                                 <custom:CustomLabel.Triggers>
                                                     <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding Source={x:Reference HeaderTextlbl}, Path=Text.Length}" Value="0">
@@ -55,9 +53,9 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                                                     </DataTrigger>
                                                 </custom:CustomLabel.Triggers>
                                             </custom:CustomLabel>
+                                            <Label  LineHeight="0.8" Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
                                         </StackLayout>
-                                        <Label LineHeight="0.8" Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
-                                        </StackLayout>
+                                    </StackLayout>
                                     </Frame>
 
                                     <!--<Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">

@@ -90,8 +90,7 @@
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="{Binding ReturnReferenceNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
-                                        
+                                        <custom:CustomLabel Text="{Binding ReturnReferenceNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>                                       
 
                                     </StackLayout>
                                 </StackLayout>

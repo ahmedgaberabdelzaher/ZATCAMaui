@@ -2049,7 +2049,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void SetLayoutVisibilityAfterTappingOnAmendButton()
         {
             isEditVisible = true;
-            isLabelVisible = false;
+            //Setting isVisibility to true to display amount fields when clicked on Amend
+            isLabelVisible = true;
+            //isLabelVisible = false;
             IsEditTextVisible = false;
             SetSubmitButtonVisibility = true;
             SetAmendButtonVisibility = false;
