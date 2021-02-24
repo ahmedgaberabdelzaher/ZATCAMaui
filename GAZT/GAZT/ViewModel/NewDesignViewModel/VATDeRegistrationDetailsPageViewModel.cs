@@ -65,8 +65,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             Step1 = 0,
             Step2, Step3, Step4, Step5, Step6
         }
-
-
+        private bool _isRequestTypeEnabled;
+        public bool IsRequestTypeEnabled
+        {
+            get => _isRequestTypeEnabled;
+            set
+            {
+                _isRequestTypeEnabled = value;
+                RaisePropertyChanged(nameof(IsRequestTypeEnabled));
+            }
+        }
         private bool _isInstructionChecked;
         public bool IsInstructionChecked
         {
@@ -1396,6 +1404,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             }
 
+                            if (vATDeRegistration.d.Fbstax == "IP11" && vATDeRegistration.d.Fbustx == "E0018")
+                                IsRequestTypeEnabled = false;
+                            else
+                                IsRequestTypeEnabled = true;
 
                             ContactPersonName = vATDeRegistration.d.Contactnm;
                             ReturnIDx = vATDeRegistration.d.ReturnIdx;
