@@ -1389,13 +1389,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 IDType = AppResources.ZZIqamaID;
 
-                            }else
+                            }
+                            else
                             {
                                 IDType = AppResources.ZZGCCID;
 
                             }
-                           
-                               
+
+
                             ContactPersonName = vATDeRegistration.d.Contactnm;
                             ReturnIDx = vATDeRegistration.d.ReturnIdx;
 
@@ -1421,7 +1422,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         IsLoading = false;
 
                         PopulateAttachments(vATDeRegistration.d.AttdetSet.results);
-
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
@@ -1452,7 +1452,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VoidIsVisible = false;
 
 
-                PopulateAttachmentsListViewTemplate();
+                //PopulateAttachmentsListViewTemplate();
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -2124,9 +2124,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 PopulateSummaryReasonData();
                 PopulateSummaryDeclarationData();
-                PopulateAttachmentsListViewTemplate();
                 EnableSummaryView();
-
+                PopulateAttachmentsListViewTemplate();
 
             }
             catch (GAZTUnlockAccountException ex)
@@ -2150,7 +2149,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                PopulateAttachmentsListViewTemplate();
+                //PopulateAttachmentsListViewTemplate();
                 VATDeRegistrationDetails response = await SubmitClicked();
 
                 if (response != null)
@@ -2237,6 +2236,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
             }
+            updateattachmentList();
         }
 
         public async void EnableDeclarationView()
@@ -2327,7 +2327,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsSummaryViewEnabled = true;
             }
 
-
+            //PopulateAttachmentsListViewTemplate();
             // PopulateSummaryReasonData();
             //PopulateSummaryDeclarationData();
         }
@@ -2378,11 +2378,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
                     }
-                    if (AttachmentsListViewData != null)
-                    {
-                        AttachmentsListViewData.Clear();
-                    }
                     AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>(check);
+                    // RaisePropertyChanged("AttachmentsListViewData");
 
                 }
             }
@@ -2981,11 +2978,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             VATDeRegistrationDetails response = new VATDeRegistrationDetails();
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-
+                //await Task.Run(() =>
+                //{
+                //    IsLoading = true;
+                //});
+                IsLoading = true;
                 VATDeRegistrationDetails vATDeRegistrationDetails = new VATDeRegistrationDetails();
                 response = await VatRegistrationWebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
                 // PopToRootPage();
@@ -3016,7 +3013,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             VATDeRegistrationDetailsData = response;
 
                             //Set data after api call 
-                            await setDataAfterSubmitAPIAsync(response);
+                            //await setDataAfterSubmitAPIAsync(response);
 
                         }
                         IsLoading = false;
@@ -3058,11 +3055,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             VATDeRegistrationDetails response = new VATDeRegistrationDetails();
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-
+                //await Task.Run(() =>
+                //{
+                //    IsLoading = true;
+                //});
+                IsLoading = true;
                 setDATA("01");
                 VATDeRegistrationDetails vATDeRegistrationDetails = new VATDeRegistrationDetails();
                 response = await VatRegistrationWebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
@@ -3096,15 +3093,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             VATDeRegistrationDetailsData = response;
 
                             //Set data after api call 
-                            await setDataAfterSubmitAPIAsync(response);
+                            //await setDataAfterSubmitAPIAsync(response);
 
                         }
 
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
-
+                        //await Task.Run(() =>
+                        //{
+                        //    IsLoading = false;
+                        //});
+                        IsLoading = false;
                         return response;
                     }
                     catch (Exception ex)

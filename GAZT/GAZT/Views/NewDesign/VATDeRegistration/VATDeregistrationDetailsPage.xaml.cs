@@ -287,7 +287,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
             viewModel.PopulateSummaryReasonData();
             viewModel.PopulateSummaryDeclarationData();
-            viewModel.PopulateAttachmentsListViewTemplate();
+           // viewModel.PopulateAttachmentsListViewTemplate();
 
             // summaryAttachmentsListView.ItemsSource = viewModel.AttachmentsListViewData;  
         }
