@@ -135,7 +135,7 @@
                 <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid >
 
-                        <Grid IsVisible="{Binding IsReasonViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid  IsVisible="{Binding IsReasonViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
@@ -166,7 +166,7 @@
 
                             <custom:CustomLabel Grid.Row="1" Text="{x:Static ResourceManager:AppResources.VatDeregRequestType}" HorizontalOptions="StartAndExpand"
                                                Style="{StaticResource CaptionLabelGrey}" />
-                            <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
+                            <listView:SfListView x:Name="outletDecisionOptionsListView" IsEnabled="{Binding IsRequestTypeEnabled}" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
                                 <listView:SfListView.ItemTemplate>
@@ -197,7 +197,7 @@
                                     <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                                 </listView:SfListView.LayoutManager>
                             </listView:SfListView>
-                            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="{Binding IsRequestTypeEnabled}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
@@ -213,7 +213,7 @@
                                         </DataTrigger>
                                     </StackLayout.Triggers>
 
-                                   
+
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
@@ -249,7 +249,7 @@
 
                             </Grid>
 
-                            <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                            <StackLayout IsEnabled="{Binding IsRequestTypeEnabled}" Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
                                 <StackLayout.Triggers>
                                     <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
                                         <Setter Property="IsVisible" Value="false" />
@@ -260,38 +260,38 @@
                                 </StackLayout.Triggers>
                                 <StackLayout>
                                     <StackLayout>
-                                          <StackLayout>
+                                        <StackLayout>
 
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
-                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
+                                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
 
-                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                                <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
 
-                                            <Label Text="{Binding ReasonTitle}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                                <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                                    <Label Text="{Binding ReasonTitle}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center">
 
-                                                </Image>
+                                                        </Image>
 
-                                            </StackLayout>
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
-                                            </StackLayout.GestureRecognizers>
-                                        </StackLayout>
-                                    </border:SfBorder >
-                                    <StackLayout Spacing="2">
-                                        <inputLayout:SfTextInputLayout x:Name="OthersTxt" LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="10,0,10,0" 
+                                                    </StackLayout>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
+                                                </StackLayout>
+                                            </border:SfBorder >
+                                            <StackLayout Spacing="2">
+                                                <inputLayout:SfTextInputLayout x:Name="OthersTxt" LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="10,0,10,0" 
                                     ContainerType="Outlined"  UnfocusedColor="#B1B1B1" IsVisible="{Binding IsOthersEditorVisible}" HelperText="{Binding TextCount}" 
                                     OutlineCornerRadius="15" FocusedColor="#005e4b" ErrorColor="#B00020">
 
-                                            <Entry Style="{StaticResource DefaultEntry}" Text="{Binding OtherField}" TextChanged="Others_Entry_TextChanged"  HeightRequest="100" MaxLength="1000"/>
+                                                    <Entry Style="{StaticResource DefaultEntry}" Text="{Binding OtherField}" TextChanged="Others_Entry_TextChanged"  HeightRequest="100" MaxLength="1000"/>
 
-                                        </inputLayout:SfTextInputLayout>
-                                        <!--<Label Text="no of characters remaining"/>-->
-                                    </StackLayout>
-                                </StackLayout>
+                                                </inputLayout:SfTextInputLayout>
+                                                <!--<Label Text="no of characters remaining"/>-->
+                                            </StackLayout>
+                                        </StackLayout>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                         <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
@@ -393,7 +393,7 @@
                                         </border:SfBorder >
                                     </StackLayout >
                                 </StackLayout>
-                               
+
                             </StackLayout>
 
                             <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="End"  Margin="0,60,0,60"  x:Name="btnReasonContinue"
@@ -848,7 +848,7 @@
 
 
             </Grid>
-
+            
             <Grid IsVisible="{Binding IsLoading}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
@@ -868,7 +868,7 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-
+            
         </Grid>
 
     </ContentPage.Content>
