@@ -883,47 +883,41 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
-                                  IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                    <StackLayout Grid.Row="0" HorizontalOptions="Center"
                                   VerticalOptions="Center"
-                                  ItemsSource="{Binding YearsattachmentsListViewData}"
-                                  SelectionMode="None"
-                                  SelectionBackgroundColor="Transparent">
-                                        <listView:SfListView.ItemTemplate>
+                                  BindableLayout.ItemsSource="{Binding YearsattachmentsListViewData}">
+                                        <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Padding="5,0,5,0">
-                                                    <Grid.RowDefinitions>
+                                                <Grid Padding="5,0">
+                                                    <!--<Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
-                                                    </Grid.RowDefinitions>
+                                                    </Grid.RowDefinitions>-->
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="*" />
                                                     </Grid.ColumnDefinitions>
                                                     <custom:CustomLabel Grid.Column="0"
                                                                  Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsTwoYears}"
-                                                                 Style="{StaticResource ValueLabelGrey}" LineBreakMode="TailTruncation"  />
-                                                    <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" LineBreakMode="TailTruncation" 
+                                                                 Style="{StaticResource ValueLabelGrey}" />
+                                                    <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" 
                                                                  Style="{StaticResource ValueLabelBlack}"
                                                                  HorizontalOptions="EndAndExpand"
                                                                  HorizontalTextAlignment="End" />
                                                 </Grid>
                                             </DataTemplate>
-                                        </listView:SfListView.ItemTemplate>
-                                    </listView:SfListView>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
 
 
-                                    <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
-                                                      IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                    <StackLayout Grid.Row="0" HorizontalOptions="Center"
                                                       VerticalOptions="Center"
-                                                      ItemsSource="{Binding MonthsattachmentsListViewData}"
-                                                      SelectionMode="None"
-                                                      SelectionBackgroundColor="Transparent">
-                                        <listView:SfListView.ItemTemplate>
+                                                      BindableLayout.ItemsSource="{Binding MonthsattachmentsListViewData}">
+                                        <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Padding="5,0,5,0">
-                                                    <Grid.RowDefinitions>
+                                                <Grid Padding="5,0">
+                                                    <!--<Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
-                                                    </Grid.RowDefinitions>
+                                                    </Grid.RowDefinitions>-->
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="*" />
@@ -937,21 +931,18 @@
                                                                      HorizontalTextAlignment="End" />
                                                 </Grid>
                                             </DataTemplate>
-                                        </listView:SfListView.ItemTemplate>
-                                    </listView:SfListView>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
 
-                                    <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
-                                                  IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                    <StackLayout Grid.Row="0" HorizontalOptions="Center"
                                                   VerticalOptions="Center"
-                                                  ItemsSource="{Binding OtherAttachmentsListViewData}"
-                                                  SelectionMode="None"
-                                                  SelectionBackgroundColor="Transparent">
-                                        <listView:SfListView.ItemTemplate>
+                                                  BindableLayout.ItemsSource="{Binding OtherAttachmentsListViewData}">
+                                        <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Padding="5,0,5,0">
-                                                    <Grid.RowDefinitions>
+                                                <Grid Padding="5,0">
+                                                    <!--<Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
-                                                    </Grid.RowDefinitions>
+                                                    </Grid.RowDefinitions>-->
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="*" />
@@ -965,8 +956,8 @@
                                                                  HorizontalTextAlignment="End" />
                                                 </Grid>
                                             </DataTemplate>
-                                        </listView:SfListView.ItemTemplate>
-                                    </listView:SfListView>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
                                 </StackLayout>
                             </border:SfBorder >
 
