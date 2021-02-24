@@ -5079,10 +5079,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>VAT</value>
   </data>
   <data name="ZakatInstalmetChooseTaxTypeText" xml:space="preserve">
-    <value>Choose the Tax type to request a instalment plan</value>
+    <value>Choose the Tax type to request an instalment plan</value>
   </data>
   <data name="ZakatInstalmet" xml:space="preserve">
-    <value>Choose the Tax type to request a instalment plan</value>
+    <value>Choose the Tax type to request an instalment plan</value>
   </data>
   <data name="ZakatInstalmetDownPaymentAmount" xml:space="preserve">
     <value>Down Payment Amount</value>
