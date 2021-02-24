@@ -223,6 +223,7 @@
     <Compile Include="CustomRenderer\MyEntryRenderer.cs" />
     <Compile Include="AndroidDownloader.cs" />
     <Compile Include="CustomRenderer\CustomPdfRenderer.cs" />
+    <Compile Include="CustomRenderer\CustomWebViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\pdfjs\web\compressed.tracemonkey-pldi-09.pdf" />
