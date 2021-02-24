@@ -713,7 +713,7 @@
                                                                 <DataTemplate>
                                                                     <StackLayout Orientation="Horizontal" WidthRequest="366" Padding="0,0,10,0" >
                                                                         <cards:SfCardView HasShadow="True" CornerRadius="14" 
-                                                                                          Padding="15" HorizontalOptions="FillAndExpand">
+                                                                                          Padding="15" HorizontalOptions="FillAndExpand" Margin="5">
                                                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 
 

@@ -175,9 +175,12 @@
 
 
                                     <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding TxFromDate,StringFormat='{0:dd MMM yyyy}'}"
-                                           HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}"/>
 
+
+                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" 
+                                                              Style="{StaticResource BodyLabelBlack}" Text="{Binding TxFromDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" HorizontalOptions="FillAndExpand"></custom:BorderlessEntry>
+
+                                      
                                         <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -200,8 +203,9 @@
                                     </StackLayout>
 
                                     <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding TxToDate,StringFormat='{0:dd MMM yyyy}'}"
-                                           Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" />
+                                       
+                                         <custom:BorderlessEntry   Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}" 
+                                                              Style="{StaticResource BodyLabelBlack}" Text="{Binding TxToDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" HorizontalOptions="FillAndExpand"></custom:BorderlessEntry>
                                         <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -309,8 +313,11 @@
 
 
                                     <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding TPFromDate,StringFormat='{0:dd MMM yyyy}'}"
-                                           Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="FillAndExpand" />
+                                       
+
+                                         <custom:BorderlessEntry  Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" 
+                                                              Style="{StaticResource BodyLabelBlack}" Text="{Binding TPFromDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" HorizontalOptions="FillAndExpand"></custom:BorderlessEntry>
+
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                             <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                                                 <Image Margin="5,0">
@@ -336,8 +343,9 @@
                                     </StackLayout>
 
                                     <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding TPToDate,StringFormat='{0:dd MMM yyyy}'}"
-                                           Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="FillAndExpand" />
+                                        
+                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}" 
+                                                              Style="{StaticResource BodyLabelBlack}" Text="{Binding TPToDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" HorizontalOptions="FillAndExpand"></custom:BorderlessEntry>
                                         <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                                             <Image Margin="5,0">
                                                 <Image.Source>

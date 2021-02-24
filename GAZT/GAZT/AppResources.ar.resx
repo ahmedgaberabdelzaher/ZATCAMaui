@@ -8296,10 +8296,10 @@ info@gazt.gov.sa</value>
     <value>العمليات الدائنة</value>
   </data>
   <data name="ASAccountStatementFrom" xml:space="preserve">
-    <value>تاريخ البداية</value>
+    <value>من</value>
   </data>
   <data name="ASAccountStatementTo" xml:space="preserve">
-    <value>تاريخ النهاية</value>
+    <value>إلى</value>
   </data>
   <data name="ASAccountStatementDashboardTileText" xml:space="preserve">
     <value>كشف الحساب</value>

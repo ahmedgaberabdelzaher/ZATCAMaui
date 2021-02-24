@@ -45,9 +45,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
                 viewModel.MyObligationAmount = 0.0;
+
                 viewModel.MyObligationAmountCommas = "";
+                viewModel.IsPendingBillsVisible = false;
+                viewModel.IsInstalmentPlanVisible = false;
                 viewModel.IsMyObligationsClear = false;
                 viewModel.MenuViewVisible = false;
+                viewModel.IfnotRegInVATAndZakat = false;
+                viewModel.IsBodyMyTaxVisible = false;
                 InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
                 {
                     ItemSpacing = 10
