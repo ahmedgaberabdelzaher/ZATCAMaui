@@ -829,7 +829,7 @@
 
                                                 <cards:SfCardView HasShadow="False" BackgroundColor="White" CornerRadius="10" Margin="0,15,15,10">
                                                     <StackLayout>
-                                                        <StackLayout Orientation="Horizontal" Margin="0,10,0,0" IsVisible="true">
+                                                        <StackLayout Orientation="Horizontal" Margin="16,10,0,0" IsVisible="true">
                                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                                             <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                                                                 <Image.GestureRecognizers>
