@@ -78,7 +78,7 @@
                     </Grid.RowDefinitions>
                    
                  
-                        <WebView x:Name="CorWebView"  Grid.Row="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                        <custom:CustomWebView x:Name="CorWebView"  Grid.Row="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                       <border:SfBorder Grid.Row="1"  Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding IsAttachmentEnabled}">
                         <Grid Padding="15">
                             <Grid.RowDefinitions >

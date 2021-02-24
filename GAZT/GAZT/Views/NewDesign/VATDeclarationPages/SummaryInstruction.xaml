@@ -18,7 +18,7 @@
         </ResourceDictionary>
     </pages:PopupPage.Resources>
     <yummy:PancakeView VerticalOptions="End" Margin="0,200,0,0" Style="{StaticResource CommonTopCurves}">
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout>
             <custom:CustomLabel Text="{x:Static custom2:AppResources.ZVatTermsAndConditions}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource BodyLabelBlack}" />
 
