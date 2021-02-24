@@ -355,7 +355,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        private Color _TotalBalanceBackground = Color.FromHex("#E5EFED");
+        private Color _TotalBalanceBackground = Color.FromHex("#006450");
         public Color TotalBalanceBackground
         {
             get
@@ -391,7 +391,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 }
                 else
                 {
-                    TotalBalanceBackground = Color.FromHex("#E5EFED");
+                    TotalBalanceBackground = Color.FromHex("#006450");
                 }
 
                 RaisePropertyChanged("HeaderSet");

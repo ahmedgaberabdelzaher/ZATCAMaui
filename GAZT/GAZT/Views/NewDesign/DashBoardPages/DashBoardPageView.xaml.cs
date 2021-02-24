@@ -53,6 +53,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.MenuViewVisible = false;
                 viewModel.IfnotRegInVATAndZakat = false;
                 viewModel.IsBodyMyTaxVisible = false;
+
                 InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
                 {
                     ItemSpacing = 10
@@ -396,7 +397,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         }
                         if (App.LoginDataRetrieved.VtReg == "X")
                         {
-                            viewModel.IfnotRegInVATAndZakat = true;
+                            //viewModel.IfnotRegInVATAndZakat = true;
                             viewModel.IfSignUpnNotRegInVATShowVATServie = true;
                             viewModel.IfSignUpnNotRegInVAT = false;
                         }
@@ -411,7 +412,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         }
                         if (App.LoginDataRetrieved.ZkReg == "X")
                         {
-                            viewModel.IfnotRegInVATAndZakat = true;
+                            //viewModel.IfnotRegInVATAndZakat = true;
                         }
                     }
 
@@ -1329,7 +1330,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, BModel.OpenliMsg));
                 }
                 viewModel.selectedFbNum = BModel.Fbnum;
-                viewModel.selectedSadadNo = BModel.Gpartz;
+                viewModel.selectedSadadNo = BModel.Sopbel;
                 viewModel.selectedAmount = BModel.Amount;
 
                 viewModel.selectedTaxablePeriod = BModel.Persl;

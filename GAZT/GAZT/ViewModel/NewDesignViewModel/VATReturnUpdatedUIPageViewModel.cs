@@ -5778,6 +5778,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
+                        IsLoading = false;
                         await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         _navigationService.GoBack();
                     });
@@ -5786,9 +5787,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
+
+                        IsLoading = false;
                         //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         _navigationService.GoBack();
+                    });
+                }
+                catch (GAZTNetworkConnectivityIssueException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
                     });
                 }
             }
@@ -5796,6 +5809,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    IsLoading = false;
                     //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
@@ -5870,6 +5884,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
+                        IsLoading = false;
                         await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         _navigationService.GoBack();
                     });
@@ -5878,6 +5893,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
+                        IsLoading = false;
                         //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         _navigationService.GoBack();
@@ -5888,6 +5904,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    IsLoading = false;
                     //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
@@ -5980,6 +5997,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
+                        IsLoading = false;
                         await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         _navigationService.GoBack();
                     });
@@ -5988,6 +6006,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
+                        IsLoading = false;
                         //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         _navigationService.GoBack();
@@ -5998,6 +6017,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    IsLoading = false;
                     //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
