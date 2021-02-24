@@ -1891,5 +1891,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             }
         }
+
+        private void OnTinRegistrationReasonTapped(object sender, EventArgs e)
+        {
+            viewModel.OnTinRegisrtationReasonClicked();
+        }
     }
 }

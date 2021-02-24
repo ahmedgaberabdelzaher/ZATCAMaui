@@ -218,12 +218,12 @@
                                 <custom1:CheckboxCustom  Grid.Row="0" Grid.Column="0"
                                                                        Style="{StaticResource CheckboxHeightWidth32}"
                                                                          VerticalOptions="CenterAndExpand"  CheckChanged="OnFrequechCheckChanged" IsChecked="{Binding IsFrequencyDetailsChecked}"/>
-                                <custom:CustomLabel  Grid.Row="0" Grid.Column="1" >
-                                    <custom:CustomLabel.FormattedText>
+                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VFCFrequencyDetailsCheckBoxString}" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Start"  HorizontalOptions="StartAndExpand">
+                                    <!--<custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span    Text="{x:Static ResourceManager:AppResources.VFCFrequencyDetailsCheckBoxString}" />
+                                            <Span    />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel.FormattedText>-->
                                     <custom:CustomLabel.Triggers>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsFrequencyDetailsChecked}" Value="True">
                                             <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
@@ -403,58 +403,6 @@
 
                             <Grid Grid.Row="0" IsVisible="{Binding IsOthersAtachmentsVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                                <listView:SfListView HorizontalOptions="Center"
-                                             IsScrollBarVisible="False" IsScrollingEnabled="False"
-                                             VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                             ItemsSource="{Binding OtherAttachmentsListViewData}"
-                                             TapCommand="{Binding NewAttachmentTapped}"
-                                             SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
-
-
-                                    <listView:SfListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid HorizontalOptions="FillAndExpand">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-
-                                                <border:SfBorder Grid.Row="0" Margin="0,0,0,10" Padding="12"
-                                                         Style="{StaticResource SfStyleGreyBorderFrame}">
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto" />
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="auto" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon" Margin="5,0" WidthRequest="25" HeightRequest="25"
-                                                       HorizontalOptions="Start" VerticalOptions="Center"/>
-
-                                                        <Label Grid.Row="0" Grid.Column="1"
-                                                               Text="{Binding Filename}"
-                                                               Style="{StaticResource CaptionLabelBlack}"
-                                                               LineHeight="0.8"
-                                                               HorizontalOptions="FillAndExpand"
-                                                               VerticalOptions="Center"/>
-                                                        <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
-                                                       VerticalOptions="Center"
-                                                       Rotation="90">
-                                                            <Image.Source>
-                                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
-                                                                         Size="24"
-                                                                         Glyph="{x:Static FontImage:IconFonts.Close}" />
-                                                            </Image.Source>
-                                                        </Image>
-                                                    </Grid>
-                                                </border:SfBorder>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </listView:SfListView.ItemTemplate>
-                                </listView:SfListView>
                             </Grid>
 
                             <Grid Grid.Row="1" HorizontalOptions="FillAndExpand">
@@ -510,7 +458,7 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Attachments}" Style="{StaticResource CaptionLabelBlack}" CharacterSpacing="0" VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
                                 <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static 
-                                        ResourceManager:AppResources.VFCAttachmnetsInfo}" HorizontalOptions="FillAndExpand" 
+                                        ResourceManager:AppResources.VFCAttachmnetsInfo}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"
                                                         VerticalOptions="FillAndExpand"/>
 
                             </StackLayout>

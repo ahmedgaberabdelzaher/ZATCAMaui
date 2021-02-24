@@ -137,11 +137,16 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" Margin="0" VerticalOptions="CenterAndExpand"></Image>
-                                <Label Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand" />
+                                <Label Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}" HorizontalOptions="StartAndExpand"  HorizontalTextAlignment="Start" FontSize="16"  VerticalOptions="CenterAndExpand" />
+                              
+
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding MyRequestsButtonTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>
+
                             </Grid>
+
+                           
                         </border:SfBorder>
                     </Grid>
 

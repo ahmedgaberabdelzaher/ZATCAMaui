@@ -168,7 +168,7 @@
                                     </StackLayout>
 
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnTinRegistrationReasonTapped}" ></TapGestureRecognizer>
+                                        <TapGestureRecognizer Tapped="OnTinRegistrationReasonTapped" ></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
 
                                 </StackLayout>
