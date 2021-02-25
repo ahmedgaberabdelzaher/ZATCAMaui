@@ -8765,9 +8765,9 @@ I acknowledge that the above bank account information is correct and assume full
 	<data name="DBSMVATRegistrationDetails" xml:space="preserve">
     <value>VAT Registration Details</value>
   </data>
-	<data name="DBSMAmend" xml:space="preserve">
-    <value>Amend</value>
-  </data>
+ <data name="DBSMAmend" xml:space="preserve">
+        <value>Amend Registration</value>
+        </data>
 	<data name="DBSMAmendmentOfVATRegistration" xml:space="preserve">
     <value>Amendment Of VAT Registration</value>
   </data>

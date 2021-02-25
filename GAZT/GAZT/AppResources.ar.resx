@@ -8679,8 +8679,8 @@ info@gazt.gov.sa</value>
     <value>تفاصيل التسجيل في ضريبة القيمة المضافة</value>
   </data>
   <data name="DBSMAmend" xml:space="preserve">
-    <value>تعديل الحساب</value>
-  </data>
+        <value>تعديل تفاصي التسجيل</value>
+   </data>
   <data name="DBSMAmendmentOfVATRegistration" xml:space="preserve">
     <value>تعديل تفاصيل التسجيل في ضريبة القيمة المضافة</value>
   </data>

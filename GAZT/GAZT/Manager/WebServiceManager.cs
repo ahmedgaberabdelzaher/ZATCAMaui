@@ -109,7 +109,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        
+
         public static async Task<List<TIN>> GAZTGetAllTins(String Username)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -118,13 +118,13 @@ namespace GAZT.Manager
                 List<TIN> TINs = null;
                 try
                 {
-                    String url = Constants.GetAllTin + Username;
+                    String url = Constants.GetAllTin + Username + "'" + "&$format=json";
 
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                   
+
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTGetTINsResponse = await client.GetAsync(uri);
 
@@ -136,8 +136,10 @@ namespace GAZT.Manager
                     }
                     if (!string.IsNullOrEmpty(GAZTGetTINsResponseResult))
                     {
-                        GAZTGetTINsResponseResult = JObject.Parse(GAZTGetTINsResponseResult)["tinData"].ToString();
-                        TINs = JsonConvert.DeserializeObject<List<TIN>>(GAZTGetTINsResponseResult);
+                        GAZTGetTINsResponseResult = JObject.Parse(GAZTGetTINsResponseResult)["d"].ToString();
+                        string GAZTGetTINSResponseJSONJToken = JObject.Parse(GAZTGetTINsResponseResult)["results"].ToString();
+
+                        TINs = JsonConvert.DeserializeObject<List<TIN>>(GAZTGetTINSResponseJSONJToken);
                         if (TINs == null)
                         {
                             throw new Exception(AppResources.NoTINsAvailable);
@@ -162,7 +164,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-           
         public static ObservableCollection<MyBills> GAZTGetMyBills(String Tin, string lang)
         {
             if (CrossConnectivity.Current.IsConnected)
