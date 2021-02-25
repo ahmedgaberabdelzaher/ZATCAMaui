@@ -53,8 +53,8 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                                                     </DataTrigger>
                                                 </custom:CustomLabel.Triggers>
                                             </custom:CustomLabel>
-                                            <Label  LineHeight="0.8" Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
                                         </StackLayout>
+                                        <Label  LineHeight="0.8" Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
                                     </StackLayout>
                                     </Frame>
 
