@@ -1850,10 +1850,10 @@
     <value>رقم فاتورة سداد</value>
     <comment>Estimated Zakat</comment>
   </data>
-  <data name="ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports" xml:space="preserve">
-    <value>مجموع كل من (المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات)</value>
-    <comment>Estimated Zakat</comment>
-  </data>
+     <data name="ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports" xml:space="preserve">
+        <value>مجموع كلاً من (المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات )</value>
+        <comment>Estimated Zakat</comment>
+        </data>
   <data name="ZZTheUndisputedAmount" xml:space="preserve">
     <value>المبلغ الغير المعترض عليه</value>
     <comment>Estimated Zakat</comment>
