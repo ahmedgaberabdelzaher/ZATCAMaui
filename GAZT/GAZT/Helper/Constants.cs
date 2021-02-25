@@ -139,6 +139,7 @@ namespace GAZT.Helper
         #region NEW DASHBOARD
         //Dashboard - get the set of Unpaid Amounts
         public static string GetDashboardData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '";
+        public static string GetDashboardInstalmentPlanData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INST_PLAN_NEW_MOBILE_SRV/HeaderSet(Taxpayer";
         public static string GAZTGetTheSetOfUnpaidAmounts = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/PaymentOverdueSet?$filter=Langz eq ";
         public static string GAZTGetTheSetOfUnsubmittedReturns = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq ";
         public static string GAZTGetUnSubmittedReturnSetForDashboard = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq '";
@@ -409,6 +410,25 @@ namespace GAZT.Helper
 
         //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/zpdfDownloadSet(Euser='00000000000001088319',Fguid='005056B1365C1EDB82951CC479769E28',Taxtype='D',FiscalYear='2020',StatementFilter='04',FromDt=datetime'2020-8-1T00:00:00',ToDt=datetime'2020-10-31T00:00:00',Langz='E')/$value
         public static string AccountStatementDownloadPdf = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/zpdfDownloadSet(Euser='',";
+
+
+
+        #endregion
+
+
+        #region Payment Integration
+
+        public static string ValidatePaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMADA_CALL_SRV/HeaderSet(Fbnum=";
+        public static string CancelPaymentService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_MADA_PYMNT_CANCEL_SRV/MADAPYMNTCNLSet(GUID=";
+        //Dev Payment Url
+        //public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=100&sap-ui-language=EN&sap-ui-xx-devmode=true&guid=";
+        //Qa paymnet Url
+        public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=300&sap-ui-xx-devmode=true&guid=";
+        //Prduction Payment Url 
+        //public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=500&sap-ui-language=EN&sap-ui-xx-devmode=true&guid=";
+        public static string UpdateMadaPaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_PAYMENT_STATUS_SRV/PaymentStatSet(CaseGuid=";
+        public static string ApplePayGenerateGuid = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_APPLE_PAY_SRV/GuidEntrySet";
+        public static string UpdateApplePayGuid = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_APPLE_PAY_SRV/HeaderSet";
 
 
 

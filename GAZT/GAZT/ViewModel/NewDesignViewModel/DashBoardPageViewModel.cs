@@ -1,14 +1,21 @@
-﻿using EGAZT.Manager;
+﻿using EGAZT.Helper;
 using EGAZT.Models.AccountStatements;
 using EGAZT.Models.EnumModels;
+using EGAZT.Models.PaymentModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using Syncfusion.SfCalendar.XForms;
 using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -23,6 +30,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
     {
         #region Variable
+
+        public string selectedFbNum = "";
+        public string selectedSadadNo = "";
+        public string selectedTaxablePeriod = "";
+        public string selectedAmount = "";
+
+        private string _totalAmount = "0.0";
+        public string TotalAmount
+        {
+            get
+            {
+                return _totalAmount;
+            }
+            set
+            {
+                if (_totalAmount == value) return;
+
+                _totalAmount = value;
+                RaisePropertyChanged("TotalAmount");
+            }
+        }
+
+        private string _taxablePeriod = "";
+        public string TaxablePeriod
+        {
+            get
+            {
+                return _taxablePeriod;
+            }
+            set
+            {
+                if (_taxablePeriod == value) return;
+
+                _taxablePeriod = value;
+                RaisePropertyChanged("TaxablePeriod");
+            }
+        }
+
+        private string _referenceNumber = "";
+        public string ReferenceNumber
+        {
+            get
+            {
+                return _referenceNumber;
+            }
+            set
+            {
+                if (_referenceNumber == value) return;
+
+                _referenceNumber = value;
+                RaisePropertyChanged("ReferenceNumber");
+            }
+        }
 
         private DashBoardModelTabEnum _currentTab = DashBoardModelTabEnum.DashBoard;
         public DashBoardModelTabEnum currentTab
@@ -59,6 +119,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private bool _menuViewVisible = false;
         private bool _homeViewVisible = true;
         private bool _accountStatementVisible = false;
+        private bool _IsToolbarTaxVisible = true;
         private bool _liveChatVisible = false;
         private Color _homeIndicatorColor = Color.FromHex("#005e4b");
         private Color _menuIndicatorColor = Color.White;
@@ -89,7 +150,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private List<TaxRelationSetResult> _taxTypeFilter = null;
         private List<MyBillsChartModel> _MyBillsChartModels = null;
 
-
         public List<OverduePaymentAndUnSubmittedReturn> BillsAndReturnsCommitments
         {
             get
@@ -107,6 +167,106 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             }
         }
+
+        private ObservableCollection<ASResult> _AccountStatementsList { get; set; }
+
+        public ObservableCollection<ASResult> AccountStatementsList
+        {
+            get
+            {
+                return this._AccountStatementsList;
+            }
+            set
+            {
+                if (_AccountStatementsList == value) return;
+
+                if (value != null)
+                {
+                    this._AccountStatementsList = value;
+                    RaisePropertyChanged("AccountStatementsList");
+                }
+            }
+        }
+
+        private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _PendingBills { get; set; }
+
+        public ObservableCollection<OverduePaymentAndUnSubmittedReturn> PendingBills
+        {
+            get
+            {
+                return this._PendingBills;
+            }
+            set
+            {
+                if (_PendingBills == value) return;
+
+                if (value != null)
+                {
+                    this._PendingBills = value;
+                    RaisePropertyChanged("PendingBills");
+                }
+            }
+        }
+
+        private ObservableCollection<InstalmentPlanResult> _InstalmentPlanList { get; set; }
+
+        public ObservableCollection<InstalmentPlanResult> InstalmentPlanList
+        {
+            get
+            {
+                return this._InstalmentPlanList;
+            }
+            set
+            {
+                if (_InstalmentPlanList == value) return;
+
+                if (value != null)
+                {
+                    this._InstalmentPlanList = value;
+                    RaisePropertyChanged("InstalmentPlanList");
+                }
+            }
+        }
+        public ChartColorCollection _InstalmentColors { get; set; }
+
+        public ChartColorCollection InstalmentColors
+        {
+            get
+            {
+                return this._InstalmentColors;
+            }
+            set
+            {
+                if (_InstalmentColors == value) return;
+
+                if (value != null)
+                {
+                    this._InstalmentColors = value;
+                    RaisePropertyChanged("InstalmentColors");
+                }
+            }
+        }
+
+        public List<ObservableCollection<ChartDataPoint>> _InstalmentDoughnutSeriesData { get; set; }
+        public List<ObservableCollection<ChartDataPoint>> InstalmentDoughnutSeriesData
+        {
+            get
+            {
+                return this._InstalmentDoughnutSeriesData;
+            }
+            set
+            {
+                if (_InstalmentDoughnutSeriesData == value) return;
+
+                if (value != null)
+                {
+                    this._InstalmentDoughnutSeriesData = value;
+                    RaisePropertyChanged("InstalmentDoughnutSeriesData");
+                }
+            }
+        }
+
+
         public List<TaxRelationSetResult> TaxTypeFilter
         {
             get
@@ -222,6 +382,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Public Properties
 
+
+        private bool _IsAccountsStatementLoading = true;
+        public bool IsAccountsStatementLoading
+        {
+            get
+            {
+                return _IsAccountsStatementLoading;
+            }
+            set
+            {
+                _IsAccountsStatementLoading = value;
+                RaisePropertyChanged("IsAccountsStatementLoading");
+            }
+        }
+
         private string _appVersion = App.AppVersion;
         public string AppVersion
         {
@@ -270,6 +445,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public DashboardInstalmentplan _instalmentResponse = null;
+        public DashboardInstalmentplan InstalmentResponse
+        {
+            get
+            {
+                return _instalmentResponse;
+            }
+            set
+            {
+                if (_instalmentResponse == value) return;
+
+                _instalmentResponse = value;
+                RaisePropertyChanged("InstalmentResponse");
+            }
+        }
+
+
+
         private String _taxpayerName;
         public String TaxpayerName
         {
@@ -285,8 +478,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TaxpayerName");
             }
         }
+        private bool _applePayStatus;
+        public bool ApplePayStatus
+        {
+            get
+            {
+                return _applePayStatus;
+            }
+            set
+            {
+                if (_applePayStatus == value) return;
 
-        private bool _ifnotRegInVATAndZakat;
+                _applePayStatus = value;
+                RaisePropertyChanged("ApplePayStatus");
+            }
+        }
+
+        public string ApplePayTokenData = "";
+
+
+        private bool _ifnotRegInVATAndZakat = false;
         public bool IfnotRegInVATAndZakat
         {
             get
@@ -295,8 +506,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_ifnotRegInVATAndZakat == value) return;
-
                 _ifnotRegInVATAndZakat = value;
                 RaisePropertyChanged("IfnotRegInVATAndZakat");
             }
@@ -331,6 +540,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _ifRegInVAT = value;
                 RaisePropertyChanged("IfRegInVAT");
+            }
+        }
+
+        private bool _isInstalmentPlanVisible = false;
+        public bool IsInstalmentPlanVisible
+        {
+            get
+            {
+                return _isInstalmentPlanVisible;
+            }
+            set
+            {
+                if (_isInstalmentPlanVisible == value) return;
+
+                _isInstalmentPlanVisible = value;
+                RaisePropertyChanged("IsInstalmentPlanVisible");
             }
         }
 
@@ -516,7 +741,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                // if (_translateText == value) return;
+                if (_translateText == value) return;
 
                 _translateText = value;
                 RaisePropertyChanged("TranslateText");
@@ -722,7 +947,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                //if (_logout == value) return;
+                if (_logout == value) return;
 
                 this._logout = value;
                 this.RaisePropertyChanged("Logout");
@@ -822,6 +1047,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("MenuViewVisible");
             }
         }
+
+        private bool _isBillsTotalAmountAR = false;
+        public bool IsBillsTotalAmountAR
+        {
+            get
+            {
+                return _isBillsTotalAmountAR;
+            }
+            set
+            {
+                if (_isBillsTotalAmountAR == value) return;
+
+                this._isBillsTotalAmountAR = value;
+                this.RaisePropertyChanged("IsBillsTotalAmountAR");
+            }
+        }
+        private bool _isBillsTotalAmountEN = false;
+        public bool IsBillsTotalAmountEN
+        {
+            get
+            {
+                return _isBillsTotalAmountEN;
+            }
+            set
+            {
+                if (_isBillsTotalAmountEN == value) return;
+
+                this._isBillsTotalAmountEN = value;
+                this.RaisePropertyChanged("IsBillsTotalAmountEN");
+            }
+        }
         public bool HomeViewVisible
         {
             get
@@ -833,10 +1089,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_homeViewVisible == value) return;
 
                 this._homeViewVisible = value;
-                if (_homeViewVisible)
+                if (_homeViewVisible != null)
                 {
-                    _homeIndicatorColor = Color.FromHex("#005e4b");
-                    MenuIndicatorColor = Color.White;
+                    if (_homeViewVisible)
+                    {
+                        _homeIndicatorColor = Color.FromHex("#005e4b");
+                        MenuIndicatorColor = Color.White;
+                    }
+
                 }
                 this.RaisePropertyChanged("HomeViewVisible");
             }
@@ -853,12 +1113,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_accountStatementVisible == value) return;
 
                 this._accountStatementVisible = value;
-                if (_accountStatementVisible)
+                if (_accountStatementVisible != null)
                 {
-                    _homeIndicatorColor = Color.FromHex("#005e4b");
-                    MenuIndicatorColor = Color.White;
-                }
+                    if (_accountStatementVisible)
+                    {
+                        _homeIndicatorColor = Color.FromHex("#005e4b");
+                        MenuIndicatorColor = Color.White;
+                    }
 
+                }
                 this.RaisePropertyChanged("AccountStatementVisible");
             }
         }
@@ -1039,6 +1302,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
         private string _accStmtnCreditAmount { get; set; }
         public string AccStmtnCreditAmount
         {
@@ -1097,6 +1361,202 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public bool IsToolbarTaxVisible
+        {
+            get
+            {
+                return _IsToolbarTaxVisible;
+            }
+            set
+            {
+                if (_IsToolbarTaxVisible == value) return;
+
+                this._IsToolbarTaxVisible = value;
+
+                this.RaisePropertyChanged("IsToolbarTaxVisible");
+            }
+        }
+
+        //Single Line 74
+        private int _LastTransactionsListHeight = 220;
+        public int LastTransactionsListHeight
+        {
+            get
+            {
+                return _LastTransactionsListHeight;
+            }
+            set
+            {
+                _LastTransactionsListHeight = value;
+                RaisePropertyChanged("LastTransactionsListHeight");
+            }
+        }
+
+        //Single Line 84
+        private int _PendingBillsListHeight = 250;
+        public int PendingBillsListHeight
+        {
+            get
+            {
+                return _PendingBillsListHeight;
+            }
+            set
+            {
+                _PendingBillsListHeight = value;
+                RaisePropertyChanged("PendingBillsListHeight");
+            }
+        }
+        private bool _IsPendingBillsVisible = false;
+        public bool IsPendingBillsVisible
+        {
+            get
+            {
+                return _IsPendingBillsVisible;
+            }
+            set
+            {
+                _IsPendingBillsVisible = value;
+                RaisePropertyChanged("IsPendingBillsVisible");
+            }
+        }
+
+
+        private string _SubmittedCount = null;
+        public string SubmittedCount
+        {
+            get
+            {
+                return _SubmittedCount;
+            }
+            set
+            {
+                if (_SubmittedCount == value) return;
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _SubmittedCount = value;
+                    RaisePropertyChanged("SubmittedCount");
+
+                }
+
+            }
+        }
+
+        private string _UnSubmittedCount = null;
+        public string UnSubmittedCount
+        {
+            get
+            {
+                return _UnSubmittedCount;
+            }
+            set
+            {
+                if (_UnSubmittedCount == value) return;
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _UnSubmittedCount = value;
+                    RaisePropertyChanged("UnSubmittedCount");
+
+                }
+
+            }
+        }
+
+        private string _OverDueCount = null;
+        public string OverDueCount
+        {
+            get
+            {
+                return _OverDueCount;
+            }
+            set
+            {
+                if (_OverDueCount == value) return;
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _OverDueCount = value;
+                    RaisePropertyChanged("OverDueCount");
+
+                }
+
+            }
+        }
+
+        private Double _MyObligationAmount = 0.0;
+        public Double MyObligationAmount
+        {
+            get
+            {
+                return _MyObligationAmount;
+            }
+            set
+            {
+                _MyObligationAmount = value;
+                RaisePropertyChanged("MyObligationAmount");
+            }
+        }
+        private string _MyObligationAmountCommas = "";
+        public string MyObligationAmountCommas
+        {
+            get
+            {
+                return _MyObligationAmountCommas;
+            }
+            set
+            {
+                _MyObligationAmountCommas = value;
+                RaisePropertyChanged("MyObligationAmountCommas");
+            }
+        }
+
+
+        private bool _IsMyObligationsClear = false;
+        public bool IsMyObligationsClear
+        {
+            get
+            {
+                return _IsMyObligationsClear;
+            }
+            set
+            {
+                _IsMyObligationsClear = value;
+                RaisePropertyChanged("IsMyObligationsClear");
+            }
+        }
+
+        private bool _IsBodyMyTaxVisible = false;
+        public bool IsBodyMyTaxVisible
+        {
+            get
+            {
+                return _IsBodyMyTaxVisible;
+            }
+            set
+            {
+                _IsBodyMyTaxVisible = value;
+                RaisePropertyChanged("IsBodyMyTaxVisible");
+            }
+        }
+
+
+        public ValidatePaymentResponse _paymentData = null;
+        public ValidatePaymentResponse PaymentData
+        {
+            get
+            {
+                return _paymentData;
+            }
+            set
+            {
+                if (_paymentData == value) return;
+
+                _paymentData = value;
+                RaisePropertyChanged("PaymentData");
+            }
+        }
+
 
         #endregion
 
@@ -1107,9 +1567,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             MenuViewVisible = false;
             LiveChatVisible = false;
             AccountStatementVisible = false;
+            IsToolbarTaxVisible = true;
+
+            MyObligationAmount = 0.0;
+
             TaxpayerName = string.Empty;
             HomeViewVisible = true;
             IsVatRegistrationTileVisible = false;
+            IsInstalmentPlanVisible = false;
             if (App.TP != null)
                 TaxPayerProfile = App.TP;
 
@@ -1124,11 +1589,248 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             MenuViewVisible = false;
             HomeViewVisible = true;
+
         }
         #endregion
 
         #region Method
-        public void LoadDashboardData()
+
+        public async Task SadadPaymentSelected()
+        {
+            /*_navigationService.GoBack();*/
+            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, 0);
+        }
+
+        public async Task ApplePaySelected()
+        {
+
+            DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo, "A");
+        }
+        public void MadaPaymentSelected()
+        {
+
+
+            DoValidatePayment(selectedFbNum, selectedSadadNo, "M");
+
+
+
+
+        }
+
+        public async Task DoValidatePayment(string fbNum, string sdadNo, string paymentType)
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = "";
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+                    //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+                    PaymentData = null;
+                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, paymentType);
+
+
+
+                    if (PaymentData != null && PaymentData.d != null)
+                    {
+
+                        if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                            return;
+                        }
+
+                        if (PaymentData.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = PaymentData.d.Guid;
+
+                        }
+
+                        if (paymentType == "M")
+                        {
+
+                            Device.BeginInvokeOnMainThread(async () => {
+
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                            });
+                        }
+                        else
+                        {
+
+                            ApplePayStatus = await ProcessApplePay();
+                        }
+
+
+                        // var VatAmount = NetdueVat.Replace(",", "");
+                        //if (String.IsNullOrEmpty(amount) || Double.Parse(amount) == 0)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, string.Empty));
+                        //}
+                        //else if (!String.IsNullOrEmpty(amount) && Double.Parse(amount) > 20000)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, string.Empty));
+                        //}
+                        //else
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, string.Empty));
+                        //}
+
+                    }
+
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        //_navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (GAZTNetworkConnectivityIssueException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+        private async Task<bool> ProcessApplePay()
+        {
+            var Amount = Convert.ToDouble(PaymentData.d.Amount);
+            var BillAmount = Math.Round(Amount, 2);
+
+            DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ZAmount);
+        }
+
+        public async Task UpdateApplePayPaymentGuid()
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = string.Empty;
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+
+
+
+                    ApplePayToken modelDetails = new ApplePayToken();
+                    modelDetails.Guid = App.PaymentGuid;
+                    modelDetails.PaymentToken = ApplePayTokenData;
+                    modelDetails.SrcId = platform;
+
+
+                    ApplePayTokenResponse response = await WebServiceManager.GAZTUpdateApplePayGuid(modelDetails);
+
+
+                    if (response != null && response.d != null)
+                    {
+
+                        if (response.d.Success)
+                        {
+                            _navigationService.NavigateTo(App.MyBillsSuccessPageView, response.d.PayRef);
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                                //_navigationService.GoBack();
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                            });
+
+                        }
+
+                    }
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task LoadDashboardData()
         {
             try
             {
@@ -1143,18 +1845,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         TaxpayerName = App.TP.NameOrg1;
                     }
                 }
-                Task.Run(async()=> {
-                    try
+                DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                _ = Task.Run(async () => {
+                    await GetAccountStatments();
+                    await GetBillsAndReturns();
+                    PopualateCommittmentsInformation();
+                });
+                //_ = Task.Run(GetAccountStatments);
+                // _ = Task.Run(GetBillsAndReturns);
+                if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null)
+                {
+
+                    if (DashboardData.results[0].InsActFlg == "X")
                     {
-                        DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-                        GetAccountStatments();
-                        GetBillsAndReturns();
+                        IsInstalmentPlanVisible = true;
+                        _ = Task.Run(getDashboardInstalmentPlan);
                     }
-                    catch(Exception)
+                    else
                     {
 
+                        IsInstalmentPlanVisible = false;
                     }
-                });
+
+                }
+
+
+
+
             }
             catch (AggregateException ae)
             {
@@ -1209,140 +1926,317 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PopToRootPage();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
             }
+
+            IsLoading = false;
             SelectedCommitmentFilterLabelValue = AppResources.ZZOverdueCommitments;
         }
 
-        private async void GetAccountStatments()
+        private async Task GetAccountStatments()
         {
-            try {
-                TabIdentification = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementsTabIdentification();
-                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
+            IsAccountsStatementLoading = true;
+            TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
+            HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A");
 
-
-                foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet?.D?.TaxRelationSet?.Results)
-                {
-                    if (TabIdentification.D?.Direct == "X")
-                    {
-                        if (taxRelationSetResult.StatementFilter == "01")
-                        {
-                            taxRelationSetResult.DisplayId = 01;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "02")
-                        {
-                            taxRelationSetResult.DisplayId = 02;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "03")
-                        {
-                            taxRelationSetResult.DisplayId = 03;
-                        }
-                    }
-
-                    if (TabIdentification.D?.Indirect == "X")
-                    {
-                        if (taxRelationSetResult.StatementFilter == "06")
-                        {
-                            taxRelationSetResult.DisplayId = 06;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "07")
-                        {
-                            taxRelationSetResult.DisplayId = 07;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "09")
-                        {
-                            taxRelationSetResult.DisplayId = 09;
-                        }
-                    }
-                }
-
-                TaxTypeFilter = new List<TaxRelationSetResult>();
-
-                TaxTypeFilter = new List<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
-                if (TaxTypeFilter != null && TaxTypeFilter.Count > 0)
-                    SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
-
-                double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
-                double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.CreditAmount.Replace("-", string.Empty)));
-                double totalBalance = tempEndProgressBar + startCreditProgressBar;
-
-                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
-
-                DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
-                CreditAmountStartProgressBar = (startCreditProgressBar / totalBalance) * 100;
-
-                TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
-                MessagingCenter.Send<Object>(this, "UpdateProgressBar");
-            }
-            catch (Exception)
+            var items = new ObservableCollection<ASResult>();
+            foreach (ASResult singleItem in HeaderSet.D.StatmenetLineItemsSet.Results)
             {
-
+                items.Add(singleItem);
             }
+
+            var newItems = items.OrderByDescending(i => i.Bldat).ToList();
+
+            AccountStatementsList = new ObservableCollection<ASResult>(newItems);
+
+            if (AccountStatementsList != null && AccountStatementsList.Count > 2)
+            {
+                LastTransactionsListHeight = 220;
+            }
+            else if (AccountStatementsList != null && AccountStatementsList.Count > 1)
+            {
+                LastTransactionsListHeight = 150;
+            }
+            else
+            {
+                LastTransactionsListHeight = 75;
+            }
+            IsAccountsStatementLoading = false;
+
+            if (AccountStatementsList.Count == 0)
+            {
+                IfnotRegInVATAndZakat = false;
+            }
+            else
+            {
+                IfnotRegInVATAndZakat = true;
+            }
+
+
+            //Device.BeginInvokeOnMainThread(() =>
+            //{
+            //    foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
+            //    {
+            //        if (TabIdentification.D?.Direct == "X")
+            //        {
+            //            if (taxRelationSetResult.StatementFilter == "01")
+            //            {
+            //                taxRelationSetResult.DisplayId = 01;
+            //            }
+
+            //            if (taxRelationSetResult.StatementFilter == "02")
+            //            {
+            //                taxRelationSetResult.DisplayId = 02;
+            //            }
+
+            //            if (taxRelationSetResult.StatementFilter == "03")
+            //            {
+            //                taxRelationSetResult.DisplayId = 03;
+            //            }
+            //        }
+
+            //        if (TabIdentification.D?.Indirect == "X")
+            //        {
+            //            if (taxRelationSetResult.StatementFilter == "06")
+            //            {
+            //                taxRelationSetResult.DisplayId = 06;
+            //            }
+
+            //            if (taxRelationSetResult.StatementFilter == "07")
+            //            {
+            //                taxRelationSetResult.DisplayId = 07;
+            //            }
+
+            //            if (taxRelationSetResult.StatementFilter == "09")
+            //            {
+            //                taxRelationSetResult.DisplayId = 09;
+            //            }
+            //        }
+            //    }
+
+            //    TaxTypeFilter = new List<TaxRelationSetResult>();
+
+            //    TaxTypeFilter = new List<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
+            //    if (TaxTypeFilter != null && TaxTypeFilter.Count > 0)
+            //        SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
+
+            //    double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
+            //    double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.CreditAmount.Replace("-", string.Empty)));
+            //    double totalBalance = tempEndProgressBar + startCreditProgressBar;
+
+            //    AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
+
+            //    DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
+            //    CreditAmountStartProgressBar = (startCreditProgressBar / totalBalance) * 100;
+
+            //    TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
+            //    MessagingCenter.Send<Object>(this, "UpdateProgressBar");
+            //});
         }
 
-        private async void GetBillsAndReturns()
+        private async Task GetBillsAndReturns()
         {
-            try
+            MyObligationAmount = 0.0;
+            var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
+            var pendingBills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
+            List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+
+            if (TempBills != null)
             {
-                IsLoading = true;
-                var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
-                List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
 
-                foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
+                var newItems = TempBills.ToList();
+
+                if (newItems != null)
                 {
-                    temp1.Add(ee);
+                    if (newItems.Count > 3)
+                    {
+                        for (int i = 0; i < 3; i++)
+                        {
+                            pendingBills.Add(newItems[i]);
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < newItems.Count; i++)
+                        {
+                            pendingBills.Add(newItems[i]);
+                        }
+                    }
+                    foreach (OverduePaymentAndUnSubmittedReturn ee in newItems)
+                    {
+                        temp1.Add(ee);
+                        if (ee.Amount != null)
+                        {
+                            MyObligationAmount += Double.Parse(ee.Amount);
+                        }
+                    }
                 }
-                Bills = temp1;
-
-                var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
-                List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
-                {
-                    temp2.Add(ee);
-                }
-                Returns = temp2;
-
-
-                BillCount = string.Empty;
-                BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
-                PopulateBillsInformation();
-                PopulateReturnsInformation();
-                PopualateCommittmentsInformation();
-                IsLoading = false;
             }
-            catch(Exception)
+
+
+            if (MyObligationAmount > 0)
             {
-                IsLoading = false;
+                IsMyObligationsClear = false;
+                IsBodyMyTaxVisible = true;
             }
+            else
+            {
+                IsMyObligationsClear = true;
+                IsBodyMyTaxVisible = false;
+            }
+
+            MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
+
+            Bills = temp1;
+            PendingBills = pendingBills;
+            if (PendingBills.Count == 0)
+            {
+                IsPendingBillsVisible = false;
+            }
+            else
+            {
+                IsPendingBillsVisible = true;
+            }
+            if (PendingBills != null && PendingBills.Count > 2)
+            {
+                PendingBillsListHeight = 250;
+            }
+            else if (PendingBills != null && PendingBills.Count > 1)
+            {
+                PendingBillsListHeight = 170;
+            }
+            else
+            {
+                PendingBillsListHeight = 83;
+            }
+
+
+            var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
+            List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+            foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
+            {
+                temp2.Add(ee);
+            }
+            Device.BeginInvokeOnMainThread(() => Returns = temp2);
+
         }
+        private async Task getDashboardInstalmentPlan()
+        {
+
+            InstalmentResponse = WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.TP.Userid);
+
+            var items = new ObservableCollection<InstalmentPlanResult>();
+
+            ChartColorCollection ColorsChild = new ChartColorCollection();
+            ColorsChild.Add(Color.FromHex("#00674e"));
+            ColorsChild.Add(Color.FromHex("#95d600"));
+            ColorsChild.Add(Color.FromHex("#cccccc"));
+
+
+            foreach (InstalmentPlanResult singleItem in InstalmentResponse.INST_PLAN_itemSet.results)
+            {
+                double totalPaidBills = 0;
+                double nextBill = 0;
+                double unPaidBills = 0;
+                var chartData = new ObservableCollection<Model>();
+                totalPaidBills = String.IsNullOrEmpty(singleItem.TotalInstPaid) ? 0 : int.Parse(singleItem.TotalInstPaid);
+                nextBill = String.IsNullOrEmpty(singleItem.NextInstAmt) ? 0 : 1;
+                unPaidBills = String.IsNullOrEmpty(singleItem.TotalInstUnpaid) ? 0 : int.Parse(singleItem.TotalInstUnpaid);
+                if (unPaidBills > 0) { unPaidBills = unPaidBills--; }
+                chartData.Add(new Model("Paid", totalPaidBills));
+                chartData.Add(new Model("nextPayment", nextBill));
+                chartData.Add(new Model("Remaining", unPaidBills));
+
+                var doughnutSeries = new DoughnutSeries();
+
+                doughnutSeries.CircularCoefficient = 0.99;
+                doughnutSeries.DoughnutCoefficient = 0.85;
+                doughnutSeries.ColorModel.Palette = ChartColorPalette.Custom;
+                doughnutSeries.ColorModel.CustomBrushes = ColorsChild;
+                doughnutSeries.ItemsSource = chartData;
+                singleItem.Series = new ChartSeriesCollection() { doughnutSeries };
+
+
+                /* try {
+
+                     if (singleItem.Bldat!= null)
+                     {
+                         DateTime dateStart = new DateTime();
+                         CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                         string apiDate = @"""" + singleItem.Bldat + @"""";
+                         dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                         GregorianCalendar hjCalendar = new GregorianCalendar();
+                         int year = hjCalendar.GetYear(dateStart);
+                         int month = hjCalendar.GetMonth(dateStart);
+                         int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                         string dateStr = string.Format("{0:00} {1}", day, UtilityManager.GetShortMonthName(""+month));
+
+                         singleItem.nextPaymentDue = dateStr;
+
+                     }
+                 }
+                 catch(Exception e)
+                 {
+
+                 }*/
+
+                items.Add(singleItem);
+
+            }
+
+
+            InstalmentPlanList = new ObservableCollection<InstalmentPlanResult>();
+            InstalmentPlanList = items;
+
+            if (InstalmentPlanList.Count == 0)
+            {
+                IsInstalmentPlanVisible = false;
+            }
+            else
+            {
+                IsInstalmentPlanVisible = true;
+            }
+
+        }
+
+
+
+
+
 
         public void PopualateCommittmentsInformation()
         {
             try
             {
-
+                BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
                 var BillsAndReturnsCommitmentsTemp = new List<OverduePaymentAndUnSubmittedReturn>();
                 // Create events
-                foreach (var Bill in Bills)
-                {
-                    Bill.IsUnSubmittedReturn = false;
-                    Bill.IsPaymentOverdue = true;
-                    Bill.ColorCode = Color.FromHex("#AA0C19");
 
-                    BillsAndReturnsCommitmentsTemp.Add(Bill);
-                }
-                foreach (var UnsubmittedReturn in Returns)
+                if (Bills != null)
                 {
-                    UnsubmittedReturn.IsUnSubmittedReturn = true;
-                    UnsubmittedReturn.IsPaymentOverdue = false;
-                    UnsubmittedReturn.ColorCode = Color.FromHex("#5D6770");
-                    BillsAndReturnsCommitmentsTemp.Add(UnsubmittedReturn);
+                    foreach (var Bill in Bills)
+                    {
+                        Bill.IsUnSubmittedReturn = false;
+                        Bill.IsPaymentOverdue = true;
+                        Bill.ColorCode = Color.FromHex("#AA0C19");
+
+                        BillsAndReturnsCommitmentsTemp.Add(Bill);
+                    }
+                }
+
+                if (Returns != null)
+                {
+                    foreach (var UnsubmittedReturn in Returns)
+                    {
+                        UnsubmittedReturn.IsUnSubmittedReturn = true;
+                        UnsubmittedReturn.IsPaymentOverdue = false;
+                        UnsubmittedReturn.ColorCode = Color.FromHex("#5D6770");
+                        BillsAndReturnsCommitmentsTemp.Add(UnsubmittedReturn);
+                    }
                 }
 
                 if (BillsAndReturnsCommitments != null)
@@ -1486,7 +2380,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (GAZTSessionExpiredException)
+            catch (GAZTSessionExpiredException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -1512,6 +2406,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ChartColorCollection ColorsChild = new ChartColorCollection();
             int iBillsCount = 0;
             BillCount = Convert.ToInt32(iBillsCount).ToString();
+
+            if (App.IsArabic)
+            {
+
+                IsBillsTotalAmountAR = true;
+                IsBillsTotalAmountEN = false;
+            }
+            else
+            {
+                IsBillsTotalAmountAR = false;
+                IsBillsTotalAmountEN = true;
+
+            }
+
+
 
             try
             {
@@ -1653,7 +2562,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             SubmittedReturnTypeAndCorrepsondingCount.ReturnCount = RtnTotstr;
                             SubmittedReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.Submitted;
-
+                            SubmittedCount = RtnTotstr;
                             SegregatedReturnTypeAndCorrepsondingCount.Add(SubmittedReturnTypeAndCorrepsondingCount);
                         }
 
@@ -1674,6 +2583,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             OverdueReturnTypeAndCorrepsondingCount.ReturnCount = DueIcrstr;
                             OverdueReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.OverDue;
+                            OverDueCount = DueIcrstr;
 
                             SegregatedReturnTypeAndCorrepsondingCount.Add(OverdueReturnTypeAndCorrepsondingCount);
                         }
@@ -1695,6 +2605,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             UnSubmittedReturnTypeAndCorrepsondingCount.ReturnCount = NrtnTotstr;
                             UnSubmittedReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.UnSubmitted;
+                            UnSubmittedCount = NrtnTotstr;
 
                             SegregatedReturnTypeAndCorrepsondingCount.Add(UnSubmittedReturnTypeAndCorrepsondingCount);
                         }
@@ -1771,7 +2682,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
 
                 double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
                 double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.Credit.Replace("-", string.Empty)));

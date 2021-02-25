@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:custom2="clr-namespace:EGAZT"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:local="clr-namespace:EGAZT"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
+             NavigationPage.HasNavigationBar="False" BackgroundColor="#006450"
+             x:Class="EGAZT.Views.NewDesign.AccountStatements.AccountStatementsNewFilterPageView">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+
+                     <Style x:Key="FilterArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="FilterArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="Black" CornerRadius="15,15,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"
+                              Padding="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <!--<RowDefinition Height="10*" />-->
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter VerticalOptions="FillAndExpand"
+                                              HorizontalOptions="FillAndExpand"
+                                              Grid.Column="0"
+                                              Grid.Row="0" BackgroundColor="White" />
+                        </Grid>
+                    </yummy:PancakeView>
+                    <Grid Padding="24,10,24,10" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.Filter}"
+                               Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" />
+
+                        <Image Grid.Row="0" Grid.Column="2"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                               Source="close"
+                               HeightRequest="24"
+                               WidthRequest="24">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.FilterCloseClick}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+        <Grid>
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <Grid BackgroundColor="Transparent" Margin="20,10,20,0" HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    
+
+                    <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TransactionAmount}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}" />
+                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" 
+                                         Style="{StaticResource GreyBorderFrame}">
+
+                            <StackLayout Orientation="Horizontal" Padding="5,8,5,8" HorizontalOptions="FillAndExpand">
+
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <custom:BorderlessEntry Grid.Column="0" x:Name="TxFromAmountEntry" Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" 
+                                                            Keyboard="Numeric" TextChanged="From_Amount_Changed" Style="{StaticResource BodyLabelBlack}" Text="{Binding FromAmount}"  Unfocused="From_Amount_Unfocused"></custom:BorderlessEntry>
+
+                                  
+
+
+
+                                    <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                        
+
+                                        <Image Margin="5,0" HorizontalOptions="Center" Source="arrowRight" Style="{DynamicResource FilterArrow}" HeightRequest="24" WidthRequest="24"></Image>
+
+                                    </StackLayout>
+
+                                    <custom:BorderlessEntry x:Name="TxToAmountEntry" Grid.Column="2" Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}" 
+                                                            Keyboard="Numeric" TextChanged="To_Amount_Changed" Style="{StaticResource BodyLabelBlack}" Text="{Binding ToAmount}"  Unfocused="To_Amount_Unfocused"></custom:BorderlessEntry>
+                                    
+                                    
+                                </Grid>
+                            </StackLayout>
+                                
+                        </border:SfBorder>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASTransactionDate}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}" />
+                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" 
+                                         Style="{StaticResource GreyBorderFrame}">
+
+                            <StackLayout Orientation="Horizontal"  Padding="5,8,5,8" HorizontalOptions="FillAndExpand">
+
+
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+
+                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" 
+                                                              Style="{StaticResource BodyLabelBlack}" Text="{Binding TxFromDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" HorizontalOptions="FillAndExpand"></custom:BorderlessEntry>
+
+                                      
+                                        <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont"
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
+                                                </Image.Source>
+                                            </Image>
+
+                                        </StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TSDateStartDateClicked" />
+                                        </StackLayout.GestureRecognizers>
+
+
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                       <Image Margin="5,0" HorizontalOptions="Center" Source="arrowRight" Style="{DynamicResource FilterArrow}" HeightRequest="24" WidthRequest="24"></Image>
+
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                       
+                                         <custom:BorderlessEntry   Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}" 
+                                                              Style="{StaticResource BodyLabelBlack}" Text="{Binding TxToDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" HorizontalOptions="FillAndExpand"></custom:BorderlessEntry>
+                                        <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont"
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
+                                                </Image.Source>
+                                            </Image>
+
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TSDateEndDateClicked" />
+                                        </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </border:SfBorder>
+                    </StackLayout>
+                    <custom1:CustomDatePicker 
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="TxDateNormalCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="TxDateNormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False"
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
+                                    ResourceManager:AppResources.VRStartDate}"
+                                    Closed="TxDateNormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateNormal}"
+                                    OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="TxDateNormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
+
+                                    <custom1:CustomDatePicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                    </custom1:CustomDatePicker.Behaviors>
+                                </custom1:CustomDatePicker>
+
+                                <!--HijriDatePicker-->
+
+                                <custom1:CustomHijriDatePicker 
+                                    
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="TxDateHijriCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="TxDateNormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False" 
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
+                                    ResourceManager:AppResources.VREndDate}"
+                                    Closed="TxDateNormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateinHijri}"
+                                    OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="TxDateNormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
+
+                                </custom1:CustomHijriDatePicker>
+                    <StackLayout Grid.Row="2" Grid.Column="0" HorizontalOptions="FillAndExpand">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASTaxperiod}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}" />
+                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" 
+                                         Style="{StaticResource GreyBorderFrame}">
+
+                            <StackLayout Orientation="Horizontal" Padding="5,8,5,8">
+
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                       
+
+                                         <custom:BorderlessEntry  Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" 
+                                                              Style="{StaticResource BodyLabelBlack}" Text="{Binding TPFromDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" HorizontalOptions="FillAndExpand"></custom:BorderlessEntry>
+
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                            <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                                <Image Margin="5,0">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont"
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
+                                                    </Image.Source>
+                                                </Image>
+
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TaxPeriodStartDateClicked" />
+                                        </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                         <Image Margin="5,0" HorizontalOptions="Center" Source="arrowRight" Style="{DynamicResource FilterArrow}" HeightRequest="24" WidthRequest="24"></Image>
+
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        
+                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}" 
+                                                              Style="{StaticResource BodyLabelBlack}" Text="{Binding TPToDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" HorizontalOptions="FillAndExpand"></custom:BorderlessEntry>
+                                        <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont"
+                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
+                                                </Image.Source>
+                                            </Image>
+
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="EndDate" Tapped="TaxPeriodEndDateClicked" />
+                                        </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </border:SfBorder>
+                    </StackLayout>
+<custom1:CustomDatePicker 
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="TaxPeriodDateNormalCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="TaxPeriodDateNormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False"
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
+                                    ResourceManager:AppResources.VRStartDate}"
+                                    Closed="TaxPeriodDateNormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateNormal}"
+                                    OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
+
+                                    <custom1:CustomDatePicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                    </custom1:CustomDatePicker.Behaviors>
+                                </custom1:CustomDatePicker>
+
+                                <!--HijriDatePicker-->
+
+                                <custom1:CustomHijriDatePicker 
+                                    
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="TaxPeriodDateHijriCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="TaxPeriodDateNormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False" 
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
+                                    ResourceManager:AppResources.VREndDate}"
+                                    Closed="TaxPeriodDateNormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateinHijri}"
+                                    OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
+
+                                </custom1:CustomHijriDatePicker>
+                    
+                    <buttons:SfButton Grid.Row="3" Grid.Column="0" VerticalOptions="End" Margin="0,60,0,60" x:Name="btnReasonContinue"
+                                      Command="{Binding FilterBtnCommand}"
+                                      Text="{x:Static ResourceManager:AppResources.Filter}"
+                                      Style="{StaticResource PrimaryButtonStyle}" />
+                </Grid>
+
+            </ScrollView>
+            <!--{Binding IsLoading}-->
+            <Grid Grid.Row="0" Grid.Column="0" IsVisible="False" Margin="0,-20,0,0"
+                  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4"
+                             VerticalOptions="FillAndExpand" />
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
+                             Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
+                                                       EnableAnimation="True"
+                                                       AnimationType="SingleCircle"
+                                                       HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       IsBusy="True"
+                                                       ViewBoxWidth="70"
+                                                       TitlePlacement="Bottom"
+                                                       ViewBoxHeight="70"
+                                                       TextColor="#D99A29" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

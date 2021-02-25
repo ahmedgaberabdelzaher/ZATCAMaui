@@ -15,6 +15,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Helper;
+using EGAZT.Models.PaymentModel;
+using EGAZT.Views.NewDesign.PaymentOptions;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -23,9 +27,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class GAZTNewDesignMyBillsPageViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
+        public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
+        public string selectedFbNum = "";
+        public string selectedSadadNo = "";
+        public string selectedAmount = "";
+        public string selectedTaxablePeriod = "";
+        private bool calculateMyBills = false;
+
         #region Property
         public List<ReturnTypes> _TaxTypeForFilter = null;
         public List<ReturnTypes> TaxTypeForFilter
@@ -41,9 +51,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _TaxTypeForFilter = value;
                 RaisePropertyChanged("TaxTypeForFilter");
             }
-        } 
-        
-        public ChipModel _selectedChipFilterItem=null;
+        }
+
+        private string _referenceNumber = "";
+        public string ReferenceNumber
+        {
+            get
+            {
+                return _referenceNumber;
+            }
+            set
+            {
+                if (_referenceNumber == value) return;
+
+                _referenceNumber = value;
+                RaisePropertyChanged("ReferenceNumber");
+            }
+        }
+
+        private string _taxablePeriod = "";
+        public string TaxablePeriod
+        {
+            get
+            {
+                return _taxablePeriod;
+            }
+            set
+            {
+                if (_taxablePeriod == value) return;
+
+                _taxablePeriod = value;
+                RaisePropertyChanged("TaxablePeriod");
+            }
+        }
+
+        private string _totalAmount = "0.0";
+        public string TotalAmount
+        {
+            get
+            {
+                return _totalAmount;
+            }
+            set
+            {
+                if (_totalAmount == value) return;
+
+                _totalAmount = value;
+                RaisePropertyChanged("TotalAmount");
+            }
+        }
+
+        public ChipModel _selectedChipFilterItem = null;
         public ChipModel SelectedChipFilterItem
         {
             get
@@ -54,10 +112,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (_selectedChipFilterItem == value) return;
 
-                if (value != null&&_selectedChipFilterItem!=value)
+                if (value != null && _selectedChipFilterItem != value)
                 {
                     _selectedChipFilterItem = value;
-                    FilterIfTypeAndStausFilterSelected();
+                    FilterIfTypeAndStausFilterSelected(false);
                 }
                 _selectedChipFilterItem = value;
                 RaisePropertyChanged("SelectedChipFilterItem");
@@ -76,13 +134,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_SelectionColor == value) return;
 
                 _SelectionColor = value;
-                
+
                 RaisePropertyChanged("SelectionColor");
             }
         }
-        
 
-        public ObservableCollection<ChipModel> _chipDataFilterlist=null;
+
+        public ObservableCollection<ChipModel> _chipDataFilterlist = null;
         public ObservableCollection<ChipModel> ChipDataFilterlist
         {
             get
@@ -112,7 +170,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_SelectedTaxTypeForFilter != null)
                 {
                     FilterLabelText = _SelectedTaxTypeForFilter.TaxType;
-                    FilterIfTypeAndStausFilterSelected();
+                    FilterIfTypeAndStausFilterSelected(true);
                 }
                 RaisePropertyChanged("SelectedTaxTypeForFilter");
             }
@@ -161,11 +219,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_myBills == value) return;
 
                 _myBills = value;
-                if(_myBills!=null)
+                if (_myBills != null&&calculateMyBills)
                 {
 
-                    if (_myBills.Count != 0)
-                    {
+                    //if (_myBills.Count != 0)
+                    //{
                         double Amount = 0.00;
                         foreach (var item in MyBills)
                         {
@@ -173,16 +231,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //I = 1 - Partially Paid
                             //O = 2 - Unpaid
 
-                            if(item.Status == "O")
+                            if (item.Status == "O")
                             {
                                 if (item.TestDueAmount != null)
                                 {
                                     Amount = Amount + Convert.ToDouble(item.TestDueAmount);
                                 }
                             }
-                            else if(item.Status == "I")
+                            else if (item.Status == "I")
                             {
-                                if(item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
+                                if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
                                 {
                                     Amount = Amount + Convert.ToDouble(item.TotalRemainingAmount);
                                 }
@@ -194,15 +252,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         decimal positiveMoney = d;
                         positiveMoney.ToString(format);  //will return $24,508,975.94
                         string TestDueAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
-                        AmountLabel = TestDueAmount + " "+AppResources.ZSAR ;
-                 
-                        IsListVisible = true;
+
+
+                        AmountLabel = TestDueAmount + " " + AppResources.ZSAR;
+
+                        
+                    //}
+
+                    if (Amount == 0.00) {
                         isNoDataLableVisible = false;
                     }
                     else
                     {
-                        AmountLabel = " - ";
-                        IsListVisible = false;
                         isNoDataLableVisible = true;
                     }
 
@@ -211,7 +272,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _amountLabel= " - ";
+
+        private string _AmountTitle = AppResources.DashBoardMyTaxObligations;
+        public string AmountTitle
+        {
+            get
+            {
+                return _AmountTitle;
+            }
+            set
+            {
+                if (_AmountTitle == value) return;
+
+                _AmountTitle = value;
+
+
+                RaisePropertyChanged("AmountTitle");
+            }
+        }
+
+        private string _amountLabel = " - ";
         public string AmountLabel
         {
             get
@@ -223,12 +303,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_amountLabel == value) return;
 
                 _amountLabel = value;
-              
-             
+
+
                 RaisePropertyChanged("AmountLabel");
             }
         }
-        
+
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -244,7 +324,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-        
+
         private bool _isListVisible = false;
         public bool IsListVisible
         {
@@ -259,7 +339,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _isListVisible = value;
                 RaisePropertyChanged("IsListVisible");
             }
-          } 
+        }
         private bool _isNoDataLableVisible = false;
         public bool isNoDataLableVisible
         {
@@ -306,7 +386,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SelcectedBillsIndex");
             }
         }
-        
+
+        public ValidatePaymentResponse _paymentData = null;
+        public ValidatePaymentResponse PaymentData
+        {
+            get
+            {
+                return _paymentData;
+            }
+            set
+            {
+                if (_paymentData == value) return;
+
+                _paymentData = value;
+                RaisePropertyChanged("PaymentData");
+            }
+        }
+
+        private bool _applePayStatus;
+        public bool ApplePayStatus
+        {
+            get
+            {
+                return _applePayStatus;
+            }
+            set
+            {
+                if (_applePayStatus == value) return;
+
+                _applePayStatus = value;
+                RaisePropertyChanged("ApplePayStatus");
+            }
+        }
+
+        public string ApplePayTokenData = "";
+
         #endregion
 
         #region Constructor
@@ -336,7 +450,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             IsLoading = true;
             MyBills = null;
-            
+
             try
             {
                 try
@@ -348,12 +462,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (MyBills != null && MyBills.Count != 0)
                     {
                         MyBillsOriginal = MyBills;
-                       
+
                         SelcectedBillsIndex = 0;
 
                         int milliseconds = 1000;
                         Thread.Sleep(milliseconds);
-                        
+
                         if (billInfo != null)
                         {
                             if (billInfo.BillTypeName == AppResources.Paid)
@@ -370,9 +484,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                         }
 
-                        foreach(MyBills myBills in MyBills)
+                        foreach (MyBills myBills in MyBills)
                         {
-                            if(myBills.Period.Contains("000000") || myBills.PeriodPart1.Contains("000000") || myBills.PeriodPart2.Contains("000000"))
+                            if (myBills.Period.Contains("000000") || myBills.PeriodPart1.Contains("000000") || myBills.PeriodPart2.Contains("000000"))
                             {
                                 myBills.IsPeriodVisible = false;
                             }
@@ -383,7 +497,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             if (myBills.Status == "I")
                             {
-                                if(string.IsNullOrEmpty(myBills.Paidamt))
+                                if (string.IsNullOrEmpty(myBills.Paidamt))
                                 {
                                     myBills.Paidamt = "0";
                                 }
@@ -411,7 +525,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                       // await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
+                        // await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
                         _navigationService.GoBack();
                     });
@@ -423,7 +537,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
@@ -447,13 +561,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
             }
-            catch 
+            catch
             {
             }
 
 
         }
-        public void PopulateDataInChips() 
+        public void PopulateDataInChips()
 
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
@@ -461,7 +575,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 new ChipModel(){Text =AppResources.UnPaid, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"},
                 new ChipModel(){Text =AppResources.Partiallynewui, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"}
             };
-        }        
+        }
         public void PopToRootPage()
         {
             try
@@ -491,8 +605,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 break;
                             }
                         }
-                    // _navigationService.NavigateTo(App.SFLoginPageView);
-                    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                        // _navigationService.NavigateTo(App.SFLoginPageView);
+                        _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                         _navigation.NavigationStack.ToList().Clear();
                     });
                 }
@@ -504,8 +618,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
         #endregion
-        public void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
+        public async void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
         {
+
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
             switch (SelectedTaxTypeForFilter.Id)
             {
                 case "00":
@@ -562,10 +682,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     break;
             }
+
+
+            if (MyBills != null)
+            {
+
+                if (MyBills.Count != 0)
+                {
+
+                    IsListVisible = true;
+                    isNoDataLableVisible = false;
+                }
+                else
+                {
+                    IsListVisible = false;
+                    isNoDataLableVisible = true;
+                }
+
             }
 
-        public void FilterIfTypeAndStausFilterSelected()
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+        }
+
+
+        public async void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            calculateMyBills = isTaxTypeFilter;
+
+            if (isTaxTypeFilter) {
+                MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x =>  x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+
+                FilterOnTaxType(MyBills);
+                return;
+        }
+
             if (SelectedChipFilterItem != null)
             {
                 if (SelectedChipFilterItem.TemplateType.Equals(AppResources.Paid))
@@ -590,7 +748,254 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 FilterOnTaxType(MyBills);
             }
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
         }
 
+        public async Task DoValidatePayment(string fbNum, string sdadNo, string paymentType)
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = "";
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+                    //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+
+
+
+                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, paymentType);
+
+                    if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
+                    {
+                        await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                        return;
+                    }
+
+                    if (PaymentData != null && PaymentData.d != null)
+                    {
+
+                        if (PaymentData.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = PaymentData.d.Guid;
+
+                        }
+
+                        if (paymentType == "M")
+                        {
+
+                            Device.BeginInvokeOnMainThread(async () => {
+
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                            });
+                        }
+                        else
+                        {
+
+                            ApplePayStatus = await ProcessApplePay();
+                        }
+
+
+                        // var VatAmount = NetdueVat.Replace(",", "");
+                        //if (String.IsNullOrEmpty(amount) || Double.Parse(amount) == 0)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, string.Empty));
+                        //}
+                        //else if (!String.IsNullOrEmpty(amount) && Double.Parse(amount) > 20000)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, string.Empty));
+                        //}
+                        //else
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, string.Empty));
+                        //}
+
+                    }
+
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        //_navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+
+            catch (GAZTNetworkConnectivityIssueException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    
+                });
+            }
+        }
+
+        public async Task UpdateApplePayPaymentGuid()
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = string.Empty;
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+
+
+
+                    ApplePayToken modelDetails = new ApplePayToken();
+                    modelDetails.Guid = App.PaymentGuid;
+                    //var token = "GrPRb/eyYkhLaxIi8ugsU5I0D2/IE6JT6SYb4o6CH/emQV7n5twiqt8IVazkcItvmCkHXeie16Nvbq+uFFx0mS4O/1+SoDHrP8HcDbJ/Q1swCCHR/Dwv69oTcTUy1riK6Zvpe0w1r+WJ21I36gorRUn7u94Yi9n4afOfnGJC3EmFd6DKSIRQWlT4BuLlNv5826XruanuFjdL3MKty/xoCyx2GKN+e8W6BFVnQc/gsBe4UW7oqHIQ5PrQJlQwymi5Ytd1IIJT8QsUMxiVjz6yVS5zdQBaN86ZtuokJRmC89jCwVkUMwDl9jQ5xYbFlIFS1VXKJjtWKDfMGwCWK3jvWdtCcdb4VrPIxtK7LvTWc+4C7m6SPzkOhdC/XPn7ufwvrh95no7p9tpQMkP7zOJIYAl+hS4oEqvOxdpw55dCytGXJ0yjN/HOQ3t4ofyW9mBGiHoq";
+                    modelDetails.PaymentToken = ApplePayTokenData;
+                    modelDetails.SrcId = platform;
+
+
+
+                    ApplePayTokenResponse response = await WebServiceManager.GAZTUpdateApplePayGuid(modelDetails);
+
+
+                    if (response != null && response.d != null)
+                    {
+
+                        if (response.d.Success)
+                        {
+
+                            _navigationService.NavigateTo(App.MyBillsSuccessPageView, response.d.PayRef);
+
+                            //_navigationService.GoBack();
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                                //_navigationService.GoBack();
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                            });
+
+                        }
+
+                    }
+
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        private async Task<bool> ProcessApplePay()
+        {
+
+            var Amount = Convert.ToDouble(PaymentData.d.Amount);
+            var BillAmount = Math.Round(Amount, 2);
+            DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ZAmount);
+        }
+
+        public void MadaPaymentSelected()
+        {
+            DoValidatePayment(selectedFbNum, selectedSadadNo, "M");
+
+        }
+
+        public async Task ApplePaySelected()
+        {
+            DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo, "A");
+
+        }
+
+        public async Task SadadPaymentSelected()
+        {
+            //_navigationService.NavigateTo(App.MyBillsSuccessPageView, selectedSadadNo);
+            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, 1);
+
+            //_navigationService.GoBack();
+
+        }
     }
 }

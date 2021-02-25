@@ -1,4 +1,5 @@
 ﻿    using GAZT.Manager;
+using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using Xamarin.Forms.Internals;
@@ -10,6 +11,9 @@ namespace EGAZT.Models
     {
         public string Abtypt { get; set; } //TaxType
         public string VTRE2 { get; set; } //SadadPaymentNumber
+        public string MadabutFg { get; set; } //Mada Payment
+        public string OpenliMsg { get; set; } //Mada Payment Message
+        public string Persl { get; set; } //Mada Payment
         public string _cal_typ = String.Empty;
         public string CalTyp
         {
@@ -21,6 +25,18 @@ namespace EGAZT.Models
             set
             {
                 _cal_typ = value;
+            }
+        }
+        private string _fbnum;
+        public string Fbnum
+        {
+            get
+            {
+                return _fbnum;
+            }
+            set
+            {
+                _fbnum = value;
             }
         }
         private string _BETRW = string.Empty;
@@ -101,7 +117,6 @@ namespace EGAZT.Models
                     positiveMoney.ToString(format);  //will return $24,508,975.94
                     TotalPaidAmt = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
 
-                  
                 }
             }
         }
@@ -278,6 +293,9 @@ namespace EGAZT.Models
                 }
             }
         }
+        [JsonIgnore]
+        public string StatusText { get; set; }
+
         public string FormatedFaedn { get; set; }
         private string _status = string.Empty;
         public string Status
@@ -293,22 +311,26 @@ namespace EGAZT.Models
                 {
                     StatusImage = "ic_check_circle.png";
                     Colorcode = "#006450";
-
+                    StatusText = AppResources.Paid;
 
                 }
                 else if (_status == Enum.GetName(typeof(BillStatus), 1))
                 {
                     StatusImage = "ic_loading.png";
                     Colorcode = "#D99A29";
+                    StatusText = AppResources.PartiallyPaid;
                 }
                 else if (_status == Enum.GetName(typeof(BillStatus), 2))
                 {
                     StatusImage = "ic_money.png";
                     Colorcode = " #AA0C19";
-
+                    StatusText = AppResources.UnPaid;
                 }
             }
         }
+
+
+
 
         //public string _cal_typ = String.Empty;
         //public string CalTyp

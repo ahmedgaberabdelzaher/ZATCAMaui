@@ -1,5 +1,7 @@
 ﻿using EGAZT.Models;
+using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -27,6 +29,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public MyReturnsRootObject MyReturns { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
+
 
         public static int numberOfAttachmentComingFromServer = 0;
         #region Property
@@ -258,6 +261,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ChipDataFilterlist");
             }
         }
+
+       
+
+
+        
         public string _filterLabelText;
         public string FilterLabelText
         {
@@ -511,6 +519,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
+
+
+        
+
+
+
         public bool isStatusNotValid(MyReturnsResult SelectedReturnsVAT)
         {
             bool isValid = true;

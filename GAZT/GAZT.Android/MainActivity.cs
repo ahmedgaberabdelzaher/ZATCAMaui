@@ -46,7 +46,7 @@ namespace GAZT.Droid
             {
                 Window.Attributes.LayoutInDisplayCutoutMode = Android.Views.LayoutInDisplayCutoutMode.ShortEdges;
             }
-          
+
             // Xamarin.Essentials.Platform.Init(this, bundle);
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)
@@ -84,7 +84,7 @@ namespace GAZT.Droid
             App app = new App();
             App.appObj = app;
             //Distribute.SetEnabledForDebuggableBuild(true);
-           
+
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
@@ -109,7 +109,7 @@ namespace GAZT.Droid
             try
             {
                 const string errorFileName = "Fatal.log";
-                var libraryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal); 
+                var libraryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
                 var errorFilePath = Path.Combine(libraryPath, errorFileName);
                 File.WriteAllText(errorFilePath, JsonConvert.SerializeObject(exception));
             }

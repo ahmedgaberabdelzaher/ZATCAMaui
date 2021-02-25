@@ -12,7 +12,6 @@ using Xamarin.Forms.Xaml;
 namespace GAZT.CustomControl
 {
     [Preserve(AllMembers = true)]
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CheckboxCustom : ContentView
     {

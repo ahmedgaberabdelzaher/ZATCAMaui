@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using GalaSoft.MvvmLight;
 using GAZT.Manager;
 using Newtonsoft.Json;
@@ -34,7 +35,7 @@ namespace EGAZT.Models.AccountStatements
     [Preserve(AllMembers = true)]
     public class DataForDownloadPage
     {
-        public  ASTaxpayerSelectedValues ASTaxpayerSelectedValues;
+        public ASTaxpayerSelectedValues ASTaxpayerSelectedValues;
         public List<ObservableGroupCollection<string, ASResult>> GroupedDataForDownload;
         public ObservableCollection<ASResult> StatementsLineItems;
         public bool isNormalList;
@@ -156,9 +157,26 @@ namespace EGAZT.Models.AccountStatements
         [JsonIgnore]
         public bool IsTotalBalancePositive { get; set; }
 
+        /*[JsonProperty("CalType")]
+        public string CalType { get; set; }*/
+        [JsonIgnore]
+        private string _CalType;
         [JsonProperty("CalType")]
-        public string CalType { get; set; }
-
+        public string CalType
+        {
+            get
+            {
+                return _CalType;
+            }
+            set
+            {
+                _CalType = value;
+                if (_CalType != null)
+                {
+                    App.CalType = _CalType;
+                }
+            }
+        }
         private string openingBalance = string.Empty;
 
         [JsonIgnore]
@@ -357,7 +375,7 @@ namespace EGAZT.Models.AccountStatements
         public ASResult[] Results { get; set; }
     }
     [Preserve(AllMembers = true)]
-    public partial class ASResult:ViewModelBase
+    public partial class ASResult : ViewModelBase
     {
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
@@ -368,12 +386,15 @@ namespace EGAZT.Models.AccountStatements
 
         private string status;
         [JsonProperty("Status")]
-        public string Status { get { return status; }
+        public string Status
+        {
+            get { return status; }
             set
             {
                 status = value;
-                
-            } }
+
+            }
+        }
 
         [JsonIgnore]
         public Color StatusColor { get; set; }
@@ -404,12 +425,15 @@ namespace EGAZT.Models.AccountStatements
 
         private string _StatusDesc;
         [JsonProperty("StatusDesc")]
-        public string StatusDesc {
+        public string StatusDesc
+        {
             get { return _StatusDesc; }
-            set {
+            set
+            {
                 _StatusDesc = value;
-                
-            } }
+
+            }
+        }
 
         [JsonProperty("TaxtypeDesc")]
         public string TaxtypeDesc { get; set; }
@@ -454,21 +478,53 @@ namespace EGAZT.Models.AccountStatements
             }
         }
 
-        //[JsonIgnore]
-        //private Color _StatusBG  = Color.FromHex("#D99A29");
-        //[JsonIgnore]
-        //public Color StatusBG
-        //{
-        //    get
-        //    {
-        //        return _StatusBG;
-        //    }
-        //    set
-        //    {
-        //        _StatusBG = value;
-        //        RaisePropertyChanged("StatusBG");
-        //    }
-        //}
+        [JsonIgnore]
+        private Color _StatusBG = Color.FromHex("#E5EFED");
+        [JsonIgnore]
+        public Color StatusBG
+        {
+            get
+            {
+                if (Betrh != null && Double.Parse(Betrh) < 0)
+                {
+                    _StatusBG = Color.Transparent;
+                    return _StatusBG;
+                }
+
+                return _StatusBG;
+            }
+            set
+            {
+
+                _StatusBG = value;
+
+                RaisePropertyChanged("StatusBG");
+            }
+        }
+
+        [JsonIgnore]
+        private Color _AmountTextColor = Color.FromHex("#006450");
+        [JsonIgnore]
+        public Color AmountTextColor
+        {
+            get
+            {
+                if (Betrh != null && Double.Parse(Betrh) < 0)
+                {
+                    _AmountTextColor = Color.Black;
+                    return _AmountTextColor;
+                }
+
+                return _AmountTextColor;
+            }
+            set
+            {
+
+                _AmountTextColor = value;
+
+                RaisePropertyChanged("AmountTextColor");
+            }
+        }
 
 
 
@@ -495,11 +551,41 @@ namespace EGAZT.Models.AccountStatements
                 _Bldat = value;
                 if (_Bldat != null)
                 {
-                   
-                    FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    string[] dts = FormattedBldat.Split('-');
-                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    FormattedBldat = date;
+                    /*
+                    if (App.CalType.Equals("G"))
+                    {
+                        FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    }
+                    else
+                    {
+                        FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("ar-SA"));
+                    }
+                    */
+
+                    if (App.CalType.Equals("G"))
+                    {
+                        FormattedBldat = string.Format(_Bldat?.ToString("dd{0} MMMM yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_Bldat));
+
+                        string[] dts = FormattedBldat.Split(' ');
+                        if (App.IsArabic) {
+
+                            string date = dts[2] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[0]; 
+
+                            FormattedBldat = date;
+                        }
+                        else {
+                            string date = dts[0] + " "  + UtilityManager.GetMonthName(dts[1]) + " " + dts[2] ;
+
+                            FormattedBldat = date;
+                        }
+
+
+                       
+                    }
+                    else
+                    {
+                        FormattedBldat = string.Format(_Bldat?.ToString("dd{0} MMMM yyyy", new CultureInfo("ar-SA")), UtilityManager.GetDayPrefix(_Bldat));
+                    }
                 }
             }
         }
@@ -510,6 +596,11 @@ namespace EGAZT.Models.AccountStatements
         [JsonIgnore]
         public string FormattedBldat2 { get; set; }
 
+        [JsonIgnore]
+        private DateTime? PeriodEndDt { get; set; }
+
+        [JsonProperty("PeriodStartDt")]
+        public DateTime? PeriodStartDt { get; set; }
         [JsonIgnore]
         private DateTime? _Bldat2 { get; set; }
 
@@ -525,12 +616,35 @@ namespace EGAZT.Models.AccountStatements
                 _Bldat2 = value;
                 if (_Bldat2 != null)
                 {
-                  
-                    FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    if (App.CalType.Equals("G"))
+                    {
+                        FormattedBldat2 = string.Format(_Bldat2?.ToString("dd{0} MMMM yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_Bldat2));
+
+                        string[] dts = FormattedBldat2.Split(' ');
+
+                        if (App.IsArabic)
+                        {
+
+                            string date = dts[2] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[0];
+
+                            FormattedBldat2 = date;
+                        }
+                        else
+                        {
+                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                            FormattedBldat2 = date;
+                        }
+                    }
+                    else
+                    {
+                        FormattedBldat2 = string.Format(_Bldat2?.ToString("dd{0} MMMM yyyy", new CultureInfo("ar-SA")), UtilityManager.GetDayPrefix(_Bldat2));
+                    }
+                    /*FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat2.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    FormattedBldat2 = date;
-                }       
+                    FormattedBldat2 = date;*/
+                }
             }
         }
 
@@ -652,5 +766,12 @@ namespace EGAZT.Models.AccountStatements
         public string FilterHeader { get; set; }
         public string SortAscending { get; set; }
         public string SortDescending { get; set; }
+    }
+    [Preserve(AllMembers = true)]
+    public class AccountStatementsListItem
+    {
+        public string taxType { get; set; }
+        public string lastDate { get; set; }
+        public string amount { get; set; }
     }
 }

@@ -128,6 +128,8 @@ namespace EGAZT.Models
         public string Fsource { get; set; }
         public string LabnoI { get; set; }
         public string Zkamt { get; set; }
+        public string MadabutFg { get; set; }
+        public string OpenliMsg { get; set; }
         public string LabnoE { get; set; }
         public string Zbamt { get; set; }
         public string Waers { get; set; }

@@ -1,5 +1,6 @@
 ﻿using EGAZT;
 using GAZT.Manager;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -67,6 +68,31 @@ namespace GAZT.Models
     {
         public DateTime? Abrzu { get; set; }
         public string Gpartz { get; set; }
+        public string Abtyp { get; set; }
+        public string MadabutFg { get; set; }
+        public string OpenliMsg { get; set; } //Mada Payment Message
+
+
+        [JsonIgnore]
+        private string _CalendarTyp;
+        [JsonProperty("CalendarTyp")]
+        public string CalendarTyp
+        {
+            get
+            {
+                return _CalendarTyp;
+            }
+            set
+            {
+                _CalendarTyp = value;
+                if (_CalendarTyp != null)
+                {
+                    App.CalType = _CalendarTyp;
+                }
+            }
+        }
+       
+        public string Abtypt { get; set; }
         public DateTime? Abrzo { get; set; }
         public string Langz { get; set; }
         public string Incotyp { get; set; }
@@ -110,17 +136,117 @@ namespace GAZT.Models
             set
             {
                 _dueDT = value;
-                if (_dueDT != null)
-                {
-                    if (_dueDT.Contains("T"))
-                    {
-                        string[] _dueDate = new String[2];
-                        _dueDate = _dueDT.Split('T');
-                        DueDate = _dueDate[0];
-                    }
-                }
+                //if (_dueDT != null)
+                //{
+                //    if (_dueDT.Contains("T"))
+                //    {
+                //        string[] _dueDate = new String[2];
+                //        _dueDate = _dueDT.Split('T');
+                //        DueDate = _dueDate[0];
+                //    }
+                //}
             }
-        }//DueDate
+        }
+      
+
+        public string FormatedDuedate { get; set; }
+
+
+     
+
+        public DateTime? _dueDtC;
+        public DateTime? DueDtC
+        {
+            get
+            {
+                return _dueDtC;
+            }
+            set
+            {
+                _dueDtC = value;
+                if (_dueDtC != null)
+                {
+                    if (App.CalType != "")
+                    {
+
+                        string formatedDate = string.Format(_dueDtC?.ToString("dd{0}/MM/yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_dueDtC));
+
+                        if (App.CalType.Equals("G"))
+                        {
+
+                            if (App.IsArabic)
+                            {
+
+                                string[] dts1 = formatedDate.Split('/');
+
+                                FormatedDuedate = dts1[2] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[0];
+                            }
+                            else
+                            {
+                                string[] dts1 = formatedDate.Split('/');
+
+                                FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
+                            }
+
+
+                        }
+                        else if (App.CalType.Equals("H"))
+                        {
+
+
+                            if (App.IsArabic)
+                            {
+
+                                string[] dts1 = formatedDate.Split('/');
+
+                                FormatedDuedate = dts1[2] + " " + UtilityManager.GetMonthNameHijri(dts1[1]) + " " + dts1[0];
+                            }
+                            else
+                            {
+                                string[] dts1 = formatedDate.Split('/');
+
+                                FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthNameHijri(dts1[1]) + " " + dts1[2];
+                            }
+                
+
+                        }
+
+
+                    }
+                    else {
+
+                        string formatedDate = string.Format(_dueDtC?.ToString("dd{0}/MM/yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_dueDtC));
+
+
+                        if (App.IsArabic)
+                        {
+
+                            string[] dts1 = formatedDate.Split('/');
+
+                            FormatedDuedate = dts1[2] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[0];
+                        }
+                        else
+                        {
+                            string[] dts1 = formatedDate.Split('/');
+
+                            FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
+                        }
+
+                    }
+
+
+                }
+
+
+
+
+                    //    }
+
+
+                }
+        }
+
+        //DueDate
         private string _fbnum;
         public string Fbnum
         {
@@ -133,7 +259,6 @@ namespace GAZT.Models
                 _fbnum = value;
             }
         }
-        public string CalendarTyp { get; set; }
         public string Fbtyp { get; set; }
         public string FbtText { get; set; }
         public string Txt50 { get; set; }

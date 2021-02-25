@@ -2,6 +2,7 @@
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.AccountStatements
@@ -23,6 +24,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
             viewModel.PopulateFiltersData();
         }
 

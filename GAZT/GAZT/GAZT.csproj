@@ -101,7 +101,6 @@
 		<Folder Include="Connected Services\" />
 		<Folder Include="Effect\" />
 		<Folder Include="SyncFusionEnabledBehaviors\" />
-		<Folder Include="Enums\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
 		<Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
 		<Folder Include="Views\SyncFusionEnabledViews\UnlockAccount\" />
@@ -126,11 +125,12 @@
 		<Folder Include="GAZTDLL\Droid\" />
 		<Folder Include="GAZTDLL\iOS\" />
 		<Folder Include="Views\NewDesign\VATRegistrationDetails\" />
-		<Folder Include="Views\NewDesign\AccountStatements\" />
 		<Folder Include="ViewModel\NewDesignViewModel\AccountStatements\" />
 		<Folder Include="Models\AccountStatements\" />
 		<Folder Include="ViewModel\NewDesignViewModel\Common\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\ChecKTINStatusPage\" />
+		<Folder Include="ViewModel\NewDesignViewModel\PaymnetOptions\" />
+		<Folder Include="EGAZT\ViewModel\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -139,11 +139,6 @@
 	<ItemGroup>
 		<Compile Update="AppResources.ar.Designer.cs">
 			<DependentUpon>AppResources.ar.resx</DependentUpon>
-		</Compile>
-		<Compile Update="AppResources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>AppResources.resx</DependentUpon>
 		</Compile>
 		<Compile Update="SyncfusionControl.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -202,6 +197,11 @@
 		<Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationFinancialDetails.xaml.cs">
 			<DependentUpon>ZakatRegistrationFinancialDetails.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="AppResources.Designer.cs">
+		  <DependentUpon>AppResources.resx</DependentUpon>
+		  <AutoGen>True</AutoGen>
+		  <DesignTime>True</DesignTime>
+		</Compile>
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="AppResources.resx">
@@ -220,6 +220,9 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\MyBillsView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\AccountStatements\AccountStatementsDetailPageView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\Common\ListPopUpViewPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>

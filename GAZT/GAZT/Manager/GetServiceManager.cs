@@ -12,10 +12,27 @@ namespace EGAZT.Manager
         public static async Task<HttpResponseMessage> MakeGetAPICall(String URL,bool istoken,string token)
         {
             HttpClient client = new HttpClient(App.httpClientHandler);
+            client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
             if (istoken)
             {
                 client.DefaultRequestHeaders.Add("Token", token);
             }
+
+            var uri = new Uri(URL);
+            HttpResponseMessage response = await client.GetAsync(uri);
+            return response;
+        }
+
+        public static async Task<HttpResponseMessage> MakeGetAPICallWithIncomingChannel(String URL, bool istoken, string token)
+        {
+            HttpClient client = new HttpClient(App.httpClientHandler);
+            if (istoken)
+            {
+                client.DefaultRequestHeaders.Add("Token", token);
+            }
+            client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
             var uri = new Uri(URL);
             HttpResponseMessage response = await client.GetAsync(uri);
             return response;

@@ -1,5 +1,8 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.DashBoardPages;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -156,6 +159,8 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             {
 
             }
+
+            
         }
 
         private void SetLTR()
@@ -222,6 +227,16 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+        }
+
+        private async void payNow_Tapped(object sender, EventArgs e)
+        {
+            
+            MyReturnsResult SelectedItem = (MyReturnsResult)viewModel.ListToDisplay[0];
+
+            //await viewModel.DoValidatePayment(SelectedItem.Fbnum);
+
+            
         }
     }
 }

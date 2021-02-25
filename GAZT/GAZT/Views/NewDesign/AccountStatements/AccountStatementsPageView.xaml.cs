@@ -6,7 +6,10 @@ using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using static EGAZT.ViewModel.NewDesignViewModel.AccountStatements.AccountStatementsPageViewModel;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.AccountStatements
 {
@@ -87,6 +90,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
         }
 
 
@@ -339,9 +346,24 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         }
 
-        void LvwContacts_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        async void LvwContacts_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            LvwContacts.SelectedItem = null;
+            var item = e.Item as ASResult;
+
+            await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));
+
+            if (e.Item == null) return;
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+        }
+
+        async void LVNormalStatements_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            var item = e.Item as ASResult;
+            await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));
+
+            if (e.Item == null) return;
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+
         }
     }
 }

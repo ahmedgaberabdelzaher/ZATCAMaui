@@ -4,8 +4,8 @@ using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.Template
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     [Preserve(AllMembers = true)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UnSelectedItemTemplateNoIcon : ViewCell
     {
         public UnSelectedItemTemplateNoIcon()

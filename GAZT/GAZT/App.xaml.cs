@@ -39,6 +39,8 @@ namespace EGAZT
         public static string GAZTNewDesignVATReturnUpdatedUIPageView = "GAZTNewDesignVATReturnUpdatedUIPageView";
         public static string GAZTNewDesignDashBoardPageView = "GAZTNewDesignDashBoardPageView";
         public static string GAZTNewDesignMyBillsPageView = "GAZTNewDesignMyBillsPageView";
+        public static string MyBillsSuccessPageView = "MyBillsSuccessPageView";
+        public static string MyBillsSadadDetailsPageView = "MyBillsSadadDetailsPageView";
         public static string GAZTNewDesignMyReturnsNewPageView = "GAZTNewDesignMyReturnsNewPageView";
         public static string GAZTNewDesignOnBoardingAnimationPageView = "GAZTNewDesignOnBoardingAnimationPageView";
         public static string GAZTNewDesignStyleTestUIPageView = "GAZTNewDesignStyleTestUIPageView";
@@ -88,7 +90,9 @@ namespace EGAZT
         //test
         public static string AttachmentPopupPageView = "AttachmentPopupPageView";
         public static string VATReturnSuccessfullPageView = "VATReturnSuccessfullPageView";
+        public static string VatReturnNewSuccessPageView = "VatReturnNewSuccessPageView";
         public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
+        public static string ZakatReturnNewSuccessPageView = "ZakatReturnNewSuccessPageView";
         public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
         public static string AttachmentPopUp = "AttachmentPopUp";
         public static string ZakatObjectionSuccessfullPageView = "ZakatObjectionSuccessfullPageView";
@@ -150,6 +154,11 @@ namespace EGAZT
         public static string OldZakatInstalmentPlanListPageView = "OldZakatInstalmentPlanListPageView";
         public static string OldZakatInstalmentPlanSuccessPage = "OldZakatInstalmentPlanSuccessPage";
         public static string AddNotesPopupPageView = "AddNotesPopupPageView";
+
+        #endregion
+
+        #region Payment Implementation
+        public static string PaymentProcessWebview = "PaymentProcessWebview";
 
         #endregion
 
@@ -250,6 +259,7 @@ namespace EGAZT
 
         public static string AccountStatementsPageView = "AccountStatementsPageView";
         public static string AccountStatementsFiltersPageView = "AccountStatementsFiltersPageView";
+        public static string AccountStatementsNewFilterPageView = "AccountStatementsNewFilterPageView";
         public static string AccountStatementsDownloadPageView = "AccountStatementsDownloadPageView";
 
         //AccountStatementsFiltersPageViewModel
@@ -266,6 +276,7 @@ namespace EGAZT
         public static string fontFamilyRoman = null;
         public static TIN CurrentDropdownTIN;
         public static bool IsJailBrokenDevice = false;
+        public static string CalType = "G";
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;//true
         public static bool IsArabic = false;//true
@@ -300,6 +311,7 @@ namespace EGAZT
         //HttpClientHandlerForSSL Certificate Issue
         public static string IncomingChannel = string.Empty;
         public static bool DoesLoginNeedToBeRefreshed;
+        public static string PaymentGuid = string.Empty;
 
         //in Seconds
         public static int IdleTimeToLogout = 100;

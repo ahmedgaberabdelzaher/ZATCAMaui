@@ -29,10 +29,9 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
+    <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
     <MtouchExtraArgs>--linkskip=AppDynamics.Agent --linkskip=UIKit   --linkskip=Syncfusion.SfPdfViewer.XForms        --linkskip=Newtonsoft.Json
  --linkskip=Newtonsoft.Json.Linq --linkskip=Plugin.Connectivity
  --linkskip=System
@@ -48,6 +47,7 @@
  --linkskip=System.Xml
  --linkskip=System.Xml.Linq
  --linkskip=System.Xml.XPath  --linkskip=Xamarin.Forms</MtouchExtraArgs>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -58,8 +58,8 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
+    <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
+    <CodesignProvision>VS: com.gazt.egazt Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,7 +71,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: ghazi alanzi (NMD3JCYGR3)</CodesignKey>
+    <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
@@ -81,7 +81,6 @@
     <OptimizePNGs>false</OptimizePNGs>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchInterpreter>-all</MtouchInterpreter>
-    <CodesignProvision>eGAZT Development Profile</CodesignProvision>
     <MtouchExtraArgs>--linkskip=MvvmLight 
 
 --linkskip=GalaSoft.MvvmLight 
@@ -95,6 +94,7 @@
 --linkskip=GalaSoft.MvvmLight.Platform
 
 --linkskip=Microsoft.Practices.ServiceLocation</MtouchExtraArgs>
+    <CodesignProvision>eGAZT Development Profile</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -105,8 +105,8 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignProvision>VS: com.gazt.egazt Development</CodesignProvision>
+    <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
@@ -118,8 +118,8 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignProvision>VS: com.gazt.egazt Development</CodesignProvision>
+    <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
     <MtouchLink>SdkOnly</MtouchLink>
@@ -134,7 +134,7 @@
     <DefineConstants>
     </DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
     <MtouchVerbosity>
     </MtouchVerbosity>
     <MtouchUseLlvm>true</MtouchUseLlvm>
@@ -147,6 +147,7 @@
     <Compile Include="BaseUrl_iOS.cs" />
     <Compile Include="CustomRenderer\CustomEditorRenderer.cs" />
     <Compile Include="CustomRenderer\CustomPickerRenderer.cs" />
+    <Compile Include="CustomRenderer\CustomWebViewRenderer.cs" />
     <Compile Include="CustomRenderer\GAZTBorderlessEditorRenderer.cs" />
     <Compile Include="CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
     <Compile Include="CustomRenderer\GAZTBorderlessPickerRenderer.cs" />
@@ -239,10 +240,12 @@
     <BundleResource Include="Resources\vat_new_Iconmetrolocation%403x.png" />
     <BundleResource Include="Resources\vat_user_summary%403x.png" />
     <BundleResource Include="Resources\ChartBar%403x.png" />
+    <Compile Include="CustomRenderer\ApplePayAuthorizer.cs" />
+    <BundleResource Include="Resources\ic_sadad_white.png" />
+    <BundleResource Include="Resources\ic_sadad.png" />
     <BundleResource Include="Resources\ic_GAZT_Logo_Text.png" />
     <BundleResource Include="Resources\ic_star_180.png" />
     <BundleResource Include="Resources\log_out%402x.png" />
-    <Compile Include="CustomRenderer\CustomWebViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1091,5 +1094,20 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\checked_box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_iconpay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_icon_applelogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_maincheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_iconpay_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_icon_applelogo_white.png" />
   </ItemGroup>
 </Project>

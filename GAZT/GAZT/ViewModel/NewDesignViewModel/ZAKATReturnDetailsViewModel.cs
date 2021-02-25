@@ -4,12 +4,16 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Helper;
 using EGAZT.Models;
+using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -20,8 +24,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class ZAKATReturnDetailsViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
+        /*private readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;*/
         //============================start===================================================
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnConfirmClicked { get; set; }
@@ -70,7 +74,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("isEditVisible");
             }
         }
-
+        public string ApplePayTokenData;
         private bool _isLabelVisible = false;
         public bool isLabelVisible
         {
@@ -188,6 +192,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
+        private bool _isPayNowVisible;
+        public bool IsPayNowVisible
+        {
+            get
+            {
+                return _isPayNowVisible;
+            }
+            set
+            {
+                if (_isPayNowVisible == value) return;
+
+                _isPayNowVisible = value;
+                RaisePropertyChanged("IsPayNowVisible");
+            }
+        }
+        
         private string _fromDate;
         public string FromDate
         {
@@ -640,8 +660,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public ValidatePaymentResponse _paymentData = null;
+        public ValidatePaymentResponse PaymentData
+        {
+            get
+            {
+                return _paymentData;
+            }
+            set
+            {
+                if (_paymentData == value) return;
 
+                _paymentData = value;
+                RaisePropertyChanged("PaymentData");
+            }
+        }
+
+        private string _referenceNumber = "";
+        public string ReferenceNumber
+        {
+            get
+            {
+                return _referenceNumber;
+            }
+            set
+            {
+                if (_referenceNumber == value) return;
+
+                _referenceNumber = value;
+                RaisePropertyChanged("ReferenceNumber");
+            }
+        }
+
+        private string _taxablePeriod = "";
+        public string TaxablePeriod
+        {
+            get
+            {
+                return _taxablePeriod;
+            }
+            set
+            {
+                if (_taxablePeriod == value) return;
+
+                _taxablePeriod = value;
+                RaisePropertyChanged("TaxablePeriod");
+            }
+        }
         #endregion
+
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
 
         #region Constructor
         public ZAKATReturnDetailsViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -656,8 +725,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            //=======================start==================================================
-
 
             OnSubmitClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -840,6 +907,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         }
 
+                        var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                        if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                        {
+                            IsPayNowVisible = false;
+                        }
+                        else
+                        {
+                            IsPayNowVisible = true;
+                        }
 
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
@@ -983,7 +1059,68 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
-                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+                            //Bill details Navigation
+                            //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+                            Device.BeginInvokeOnMainThread(async () => {
+
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
+
+
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                            });
+
+                            //if(ZakatReturnDetails.d.MadabutFg == "X") {
+
+                            //    await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
+                            //}
+                            //else {
+
+                            //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                            //}
+
+                        }
+                        else
+                        {
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                        }
+                    });
+                }
+              //  else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
+                else if (ReleaseOrBillDetailsButtonText.Equals(AppResources.PaymentMethodPayNow))
+                {
+                    // AmedmentButtonVisibility = true;
+                    isEditVisible = true;
+                    SetEditImage();
+                    isLabelVisible = false;
+                    IsEditTextVisible = false;
+                    IsBillsButtonTapped = true;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
+                        {
+
+                            //Bill details Navigation
+                            //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+
+                            //await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
+
+                            if (ZakatReturnDetails.d.MadabutFg == "X")
+                            {
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                            }
+                            else
+                            {
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                            }
+
                         }
                         else
                         {
@@ -1014,7 +1151,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
-                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+                            //_navigationService.NavigateTo(App.PaymentProcessWebview);
+                            //await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
+
+
+                            Device.BeginInvokeOnMainThread(async () => {
+
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
+
+
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                            });
+                            //if (ZakatReturnDetails.d.MadabutFg == "X")
+                            //{
+
+                            //    await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
+                            //}
+                            //else
+                            //{
+
+                            //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                            //}
                         }
                         else
                         {
@@ -1064,6 +1224,301 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
 
 
+        }
+
+        public void gotoSuccessPage()
+        {
+            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+        }
+        public async Task DoValidatePayment(string fbNum, string paymentType)
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    var platform = "";
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+                    PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform, paymentType);
+
+
+                    if (PaymentData != null && PaymentData.d != null)
+                    {
+
+                        if (PaymentData.d.Guid != null&&PaymentData.d.Guid == "")
+                        {
+                            await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                            return;
+                        }
+                        
+                        if (PaymentData.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = PaymentData.d.Guid;
+
+                        }
+
+
+                        if (paymentType == "M")
+                        {
+
+                            Device.BeginInvokeOnMainThread(async () => {
+
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+                            });
+                        }
+                        else
+                        {
+                            var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+
+                              await ProcessApplePay();
+                        }
+
+
+
+                        //if (ZakatReturnDetails.d.MadabutFg == "X")
+                        //{
+
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                        //}
+                        //else
+                        //{
+
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
+
+
+                        //var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                        //if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
+                        //else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
+                        //else
+                        //{
+                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
+
+                    }
+
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+
+                        IsLoading = false;
+                        if (ex.Message == "There is no open liability to be paid against this declaration")
+                        {
+
+                            await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, AppResources.NoOpenLiabilityToBePaid));
+
+                        }
+                        else
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            _navigationService.GoBack();
+                        }
+
+
+                      
+                    });
+                }
+                catch (GAZTNetworkConnectivityIssueException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
+                    });
+                }
+                catch (InternetException ex)
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+
+                        IsLoading = false;
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                    IsLoading = false;
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+
+        public async Task UpdateApplePayPaymentGuid()
+        {
+            try
+            {
+                try
+                {
+
+                    IsLoading = true;
+
+                    string platform = string.Empty;
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        platform = "C4";
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        platform = "C3";
+                    }
+
+
+
+                    ApplePayToken modelDetails = new ApplePayToken();
+                    modelDetails.Guid = App.PaymentGuid;
+                    //var token = "GrPRb/eyYkhLaxIi8ugsU5I0D2/IE6JT6SYb4o6CH/emQV7n5twiqt8IVazkcItvmCkHXeie16Nvbq+uFFx0mS4O/1+SoDHrP8HcDbJ/Q1swCCHR/Dwv69oTcTUy1riK6Zvpe0w1r+WJ21I36gorRUn7u94Yi9n4afOfnGJC3EmFd6DKSIRQWlT4BuLlNv5826XruanuFjdL3MKty/xoCyx2GKN+e8W6BFVnQc/gsBe4UW7oqHIQ5PrQJlQwymi5Ytd1IIJT8QsUMxiVjz6yVS5zdQBaN86ZtuokJRmC89jCwVkUMwDl9jQ5xYbFlIFS1VXKJjtWKDfMGwCWK3jvWdtCcdb4VrPIxtK7LvTWc+4C7m6SPzkOhdC/XPn7ufwvrh95no7p9tpQMkP7zOJIYAl+hS4oEqvOxdpw55dCytGXJ0yjN/HOQ3t4ofyW9mBGiHoq";
+                    modelDetails.PaymentToken = ApplePayTokenData;
+                    modelDetails.SrcId = platform;
+
+
+                    ApplePayTokenResponse response = await WebServiceManager.GAZTUpdateApplePayGuid(modelDetails);
+
+
+                    if (response != null && response.d != null)
+                    {
+
+
+                        if (response.d.Success)
+                        {
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+
+                                //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+
+
+                                _navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, response.d.PayRef);
+
+                            });
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                                //_navigationService.GoBack();
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                            });
+
+                        }
+
+                    }
+                    IsLoading = false;
+
+                }
+                catch (GAZTValidatePaymentInProcessException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task MadaPaymentSelectedAsync()
+        {
+
+            if (ZakatReturnDetails.d.MadabutFg == "X")
+            {
+
+                 await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum, "M");
+            }
+            else
+            {
+
+                 PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+            }
+
+            
+
+        }
+
+        public async Task ApplePaySelected()
+        {
+             DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum, "A");
+
+        }
+
+        private async Task<bool> ProcessApplePay()
+        {
+
+
+            var Amount = Convert.ToDouble(PaymentData.d.Amount);
+            var ZakatAmount = Math.Round(Amount, 2);
+            DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(ZakatAmount, AppResources.ZAmount);
+        }
+
+        public async Task SadadPaymentSelected()
+        {
+
+            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
         }
 
         public async Task ReleaseEstimateZakatReturn()
@@ -1150,6 +1605,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     ZakatReturnDetail = zakatReturnDetails.d;
                                     GetUpdatedDataAfterAddingComma();
+                                    var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                                    if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                                    {
+                                        IsPayNowVisible = false;
+                                    }
+                                    else
+                                    {
+                                        IsPayNowVisible = true;
+                                    }
                                     SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                                 }
                             }
@@ -1401,7 +1865,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetEditImage();
                     isLabelVisible = false;
                     IsEditTextVisible = false;
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals("E0002"))// E0002 if return  released by GAZT officer 
                 {
@@ -1412,7 +1876,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetAmendButtonVisibility = true;
                     UnSetEditImage();
                     SetConfirmButtonVisibility = false;
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals("E0003"))//E0003 The return is Paid OR Partially paid 
                 {
@@ -1424,7 +1888,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     SetAmendButtonVisibility = true;
                     SetConfirmButtonVisibility = false;
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//When the Return is already Amended by Taxpayer(E0004),
                 {
@@ -1436,7 +1900,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetConfirmButtonVisibility = false;
                     SetAmendButtonVisibility = false;
 
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals("E0005"))//In Processing
                 {
@@ -1447,7 +1911,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetSubmitButtonVisibility = false;
                     SetConfirmButtonVisibility = false;
                     SetAmendButtonVisibility = false;
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals("E0011"))// In Paid state 
                 {
@@ -1455,7 +1919,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetEditImage();
                     isLabelVisible = false;
                     IsEditTextVisible = false;
-                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
+                }
+                else if (ButtonStatus.Equals("E0010"))// In Paid state 
+                {
+                    isEditVisible = true;
+                    SetEditImage();
+                    isLabelVisible = false;
+                    IsEditTextVisible = false;
+                    ReleaseOrBillDetailsButtonText = AppResources.PaymentMethodPayNow;
                 }
                 else if (ButtonStatus.Equals(""))//In Processing
                 {

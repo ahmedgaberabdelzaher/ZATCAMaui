@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -21,6 +22,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
     public class AccountStatementsPageViewModel : BaseViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
+        public ICommand FilterCloseClick { get; set; }
+        public ICommand FilterBtnCommand { get; set; }
         public ICommand FiltersTapped { get; set; }
         public ICommand DownloadBtnTapped { get; set; }
         public ICommand DownloadBtnTappedDownloadPage { get; set; }
@@ -353,6 +356,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        private Color _TotalBalanceBackground = Color.FromHex("#006450");
+        public Color TotalBalanceBackground
+        {
+            get
+            {
+                return _TotalBalanceBackground;
+            }
+            set
+            {
+                if (_TotalBalanceBackground == value) return;
+
+                _TotalBalanceBackground = value;
+                RaisePropertyChanged("TotalBalanceBackground");
+            }
+        }
+
         public ASStatementHeaderSet _headerSet = null;
         public ASStatementHeaderSet HeaderSet
         {
@@ -362,9 +381,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
-                if (_headerSet == value) return;
+                if (value != null)
+                {
+                    _headerSet = value;
+                }
 
-                _headerSet = value;
+                if (_headerSet != null && _headerSet.D != null && !String.IsNullOrEmpty(_headerSet.D.Close) && Double.Parse(_headerSet.D.Close) < 0)
+                {
+                    TotalBalanceBackground = Color.FromHex("#AA0C19");
+                }
+                else
+                {
+                    TotalBalanceBackground = Color.FromHex("#006450");
+                }
+
                 RaisePropertyChanged("HeaderSet");
             }
         }
@@ -438,6 +468,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         };
 
+        [Preserve(AllMembers = true)]
         public class ObservableGroupCollection<S, T> : ObservableCollection<T>
         {
             private readonly S _key;
@@ -802,7 +833,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     Task.Run(async () =>
                     {
                         await PopulateDataInChipsForYears(SelectedTransactionTypeFilter.TaxType, SelectedTransactionTypeFilter.StatementFilter);
-                        StatementsLineItems = new ObservableCollection<ASResult>();
+                        //StatementsLineItems = new ObservableCollection<ASResult>();
                     });
                 }
             }
@@ -1005,6 +1036,122 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        private bool _IsHijriCal = false;
+        public bool IsHijriCal
+        {
+            get
+            {
+                return _IsHijriCal;
+            }
+            set
+            {
+                if (_IsHijriCal == value) return;
+
+                _IsHijriCal = value;
+                RaisePropertyChanged("IsHijriCal");
+            }
+        }
+
+        public bool isTxStartDate = true;
+        public bool isTaxPeriodStartDate = true;
+
+        private ObservableCollection<object> _todayDateNormal;
+        public ObservableCollection<object> TodayDateNormal
+        {
+            get
+            {
+                return _todayDateNormal;
+            }
+            set
+            {
+                if (_todayDateNormal == value) return;
+                _todayDateNormal = value;
+                RaisePropertyChanged("TodayDateNormal");
+            }
+        }
+        private ObservableCollection<object> _todayDateinHijri;
+        public ObservableCollection<object> TodayDateinHijri
+        {
+            get
+            {
+                return _todayDateinHijri;
+            }
+            set
+            {
+                if (_todayDateinHijri == value) return;
+
+                _todayDateinHijri = value;
+                RaisePropertyChanged("TodayDateinHijri");
+            }
+        }
+        
+        private String _txFromDate = "";
+        public String TxFromDate
+        {
+            get
+            {
+                return _txFromDate;
+            }
+            set
+            {
+                if (_txFromDate == value) return;
+
+                _txFromDate = value;
+                RaisePropertyChanged("TxFromDate");
+            }
+        }
+        private String _txToDate = "";
+        public String TxToDate
+        {
+            get
+            {
+                return _txToDate;
+            }
+            set
+            {
+                if (_txToDate == value) return;
+
+                _txToDate = value;
+                RaisePropertyChanged("TxToDate");
+            }
+        }
+        
+        
+        private String _tPFromDate = "";
+        public String TPFromDate
+        {
+            get
+            {
+                return _tPFromDate;
+            }
+            set
+            {
+                if (_tPFromDate == value) return;
+
+                _tPFromDate = value;
+                RaisePropertyChanged("TPFromDate");
+            }
+        }
+        private String _tPToDate = "";
+        public String TPToDate
+        {
+            get
+            {
+                return _tPToDate;
+            }
+            set
+            {
+                if (_tPToDate == value) return;
+
+                _tPToDate = value;
+                RaisePropertyChanged("TPToDate");
+            }
+        }
+
+        public static string CalType = "G";
+
+        public String FromTxAmount = "";
+        public String ToTxAmount = "";
         public AccountStatementsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -1020,6 +1167,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 _navigationService.GoBack();
             });
+            
+            FilterCloseClick = new Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+            
+            FilterBtnCommand = new Command(() =>
+            {
+                ApplyFilter();
+            });
 
             DownloadBtnTapped = new Command(DownloadBtnClicked);
             DownloadBtnTappedDownloadPage = new Command(DownloadBtnClickedDownloadPage);
@@ -1029,6 +1186,99 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             FiltersTapped = new Command(FiltersClicked);
             FlowDirect = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
+
+        private void ApplyFilter()
+        {
+            if (HeaderSet == null)
+            {
+                _navigationService.GoBack();
+                return;
+            }
+
+            var statementsLineItems = new ObservableCollection<ASResult>();
+            Console.WriteLine(statementsLineItems);
+            Console.WriteLine(statementsLineItems.Count);
+            if (HeaderSet.D.StatmenetLineItemsSet != null)
+            {
+                if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                {
+                    statementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                }
+                Console.WriteLine(statementsLineItems);
+                Console.WriteLine(statementsLineItems.Count);
+            }
+            if (TxFromDate != "" && TxToDate != "")
+            {
+                var filterItems = statementsLineItems;
+                Console.WriteLine(statementsLineItems);
+                Console.WriteLine(statementsLineItems.Count);
+                if (IsHijriCal)
+                {
+                    CultureInfo arCI = new CultureInfo("ar-SA");
+                    DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                }
+                else
+                {
+                    CultureInfo arCI = new CultureInfo("en-US");
+                    DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                    Console.WriteLine(statementsLineItems);
+                    Console.WriteLine(statementsLineItems.Count);
+                }
+            }
+
+            if (TPFromDate != "" && TPToDate != "")
+            {
+                var filterItems = statementsLineItems;
+                Console.WriteLine(statementsLineItems);
+                Console.WriteLine(statementsLineItems.Count);
+                
+                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) >= Convert.ToInt32(TPFromDate)) && (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) <= Convert.ToInt32(TPToDate))));
+               // statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (p.Persl) == "2021"));
+                Console.WriteLine(statementsLineItems);
+                Console.WriteLine(statementsLineItems.Count);
+                /*if (IsHijriCal)
+                {
+                    CultureInfo arCI = new CultureInfo("ar-SA");
+                    DateTime FormatedTPFromDate = DateTime.ParseExact(TPFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    DateTime FormatedTPToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Persl >= FormatedTPFromDate && p.Persl <= FormatedTPToDate));
+                }
+                else
+                {
+                    CultureInfo arCI = new CultureInfo("en-US");
+                    DateTime FormatedTPFromDate = DateTime.ParseExact(TPFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    DateTime FormatedTPToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Persl >= FormatedTPFromDate && p.Persl <= FormatedTPToDate));
+                    Console.WriteLine(statementsLineItems);
+                    Console.WriteLine(statementsLineItems.Count);
+                }*/
+                
+            }
+
+            if (FromTxAmount != "" && ToTxAmount != "")
+            {
+                var filterItems = statementsLineItems;
+                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => Convert.ToDouble(p.Betrh) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.Betrh) <= Convert.ToDouble(ToTxAmount)));
+            }
+
+            StatementsLineItems = statementsLineItems;
+            _navigationService.GoBack();
+
+        }
+
         public void ClearFilterItems()
         {
             TransactionDateFilterItem = string.Empty;
@@ -1044,8 +1294,89 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         }
         public void FiltersClicked()
         {
+            _navigationService.NavigateTo(App.AccountStatementsNewFilterPageView);
             IsSortByVisible = !IsSortByVisible;
-            IsMonthWiseStatementsViewVisible = !IsMonthWiseStatementsViewVisible;
+            //IsMonthWiseStatementsViewVisible = !IsMonthWiseStatementsViewVisible;
+        }
+
+         public void SetDefaultDate()
+        {
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            //Select today dates
+
+            if (DateTime.Now.Date.Day < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Day);
+            else
+                todaycollection.Add(DateTime.Now.Date.Day.ToString());
+            if (DateTime.Now.Date.Month < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Month);
+            else
+                todaycollection.Add(DateTime.Now.Date.Month.ToString());
+            todaycollection.Add(DateTime.Now.Date.Year.ToString());
+            TodayDateNormal = todaycollection;
+            //TodayDateEnd = todaycollection;
+            //DefaultMonth = DateTime.Now.Date.Month;
+
+            //TodayDateinHijri
+            ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
+            var calendar = new HijriCalendar();
+            if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            else
+                todaycollectionHijri.Add(calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            if (calendar.GetMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetMonth(DateTime.Now.Date));
+            else
+                todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
+            todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
+
+            TodayDateinHijri = todaycollectionHijri;
+            //TodayDateinHijriEnd = todaycollectionHijri;
+
+            /*if (ContractReleaseData != null)
+            {
+
+
+                if (ContractReleaseData.d.ACalTp == "H")
+                {
+
+                    FromDate = HDateNow();
+                    ToDate = HDateNow();
+                }
+                else
+                {
+                    FromDate = (TodayDateStart[2] + "/" + TodayDateStart[1] + "/" + TodayDateStart[0]).ToString();
+                    ToDate = (TodayDateEnd[2] + "/" + TodayDateEnd[1] + "/" + TodayDateEnd[0]).ToString();
+                }
+
+            }*/
+        }
+
+
+        public string HDateNow()
+        {
+            try
+            {
+
+                CultureInfo calCul;
+                    if (IsHijriCal)
+                    {
+                        calCul = new CultureInfo("ar-SA");
+                    }
+                    else
+                    {
+                        calCul = new CultureInfo("en-US");
+                    }
+                    
+                return DateTime.Now.ToString("yyyy/MM/dd", calCul.DateTimeFormat);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+
+                return "";
+            }
         }
 
         public void DownloadBtnClicked()
@@ -1238,7 +1569,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 }
 
                 IsLoading = true;
-                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                if (HeaderSet.D.StatmenetLineItemsSet != null)
+                {
+                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    {
+                        IsDownloadBtnVisile = true;
+                        IsNoStatementsAvaiableVisible = false;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                    }
+                    else
+                    {
+                        IsDownloadBtnVisile = false;
+                        IsNoStatementsAvaiableVisible = true;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        GroupedStatements = new List<GroupedAccountStatements>();
+                    }
+                }
+                else
+                {
+                    IsDownloadBtnVisile = false;
+                    IsNoStatementsAvaiableVisible = true;
+                }
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 if (StatementsLineItems == null)
                 {
@@ -1280,11 +1632,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             try
             {
                 IsLoading = true;
-                YearValuesHeader = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
-                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                if (HeaderSet.D.StatmenetLineItemsSet != null)
+                {
+                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    {
+                        IsDownloadBtnVisile = true;
+                        IsNoStatementsAvaiableVisible = false;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                    }
+                    else
+                    {
+                        IsDownloadBtnVisile = false;
+                        IsNoStatementsAvaiableVisible = true;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        GroupedStatements = new List<GroupedAccountStatements>();
+                    }
+                }
+                else
+                {
+                    IsDownloadBtnVisile = false;
+                    IsNoStatementsAvaiableVisible = true;
+                }
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 var chipDataFilterlistForYears = new List<ASChipModel>();
-                ChipDataFilterlistForYears = new List<ASChipModel>();
+                var orderedChipDataFilterlistForYears = new List<ASChipModel>();
                 if (YearValuesHeader != null && YearValuesHeader.D != null)
                 {
                     foreach (ASYearValuesResults aSYearValuesResults in YearValuesHeader.D.Results)
@@ -1303,8 +1676,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 var desc = chipDataFilterlistForYears.OrderByDescending(item => item.Text);
                 foreach (ASChipModel aSChipModel in desc)
                 {
-                    ChipDataFilterlistForYears.Add(aSChipModel);
+                    orderedChipDataFilterlistForYears.Add(aSChipModel);
                 }
+
+                ChipDataFilterlistForYears = orderedChipDataFilterlistForYears;
             }
             catch (Exception ex)
             {
@@ -1328,14 +1703,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     AllTransactionFilters = new ObservableCollection<ASRevenueDropDownSetDataResults>();
                 }
                 AllTransactionFilters.Clear();
-                ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
+                /*ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
                 defautlVal.Txt30 = AppResources.ASTransactionType;
                 defautlVal.TaxType = "D";
+                defautlVal.StatementFilter = "";
                 AllTransactionFilters.Insert(0, defautlVal);
                 ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
                 defautlValIndirectTax.Txt30 = AppResources.ASTransactionType;
                 defautlValIndirectTax.TaxType = "I";
-                AllTransactionFilters.Insert(1, defautlValIndirectTax);
+                defautlValIndirectTax.TaxType = "I";
+                AllTransactionFilters.Insert(1, defautlValIndirectTax);*/
                 if (TabIdentification.D.Direct == "X")
                 {
                     await PopulateDataForTransactionTypes("D");
@@ -1346,6 +1723,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 }
                 HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet
                     (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType);
+                if (HeaderSet.D.StatmenetLineItemsSet != null)
+                {
+                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    {
+                        IsDownloadBtnVisile = true;
+                        IsNoStatementsAvaiableVisible = false;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                    }
+                    else
+                    {
+                        IsDownloadBtnVisile = false;
+                        IsNoStatementsAvaiableVisible = true;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        GroupedStatements = new List<GroupedAccountStatements>();
+                    }
+                }
+                else
+                {
+                    IsDownloadBtnVisile = false;
+                    IsNoStatementsAvaiableVisible = true;
+                }
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 IsOpeningBalanceVisible = false;
                 IsDownloadBtnVisile = false;

@@ -52,6 +52,15 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             MessagingCenter.Send(new GAZTNewDesignMyBillsPageView(), "pickerNew", (ReturnTypes)TaxTypePicker.SelectedItem);
         }
 
+        private async void PopupClose_Clicked(object sender, EventArgs e)
+        {
+
+            await picker.TranslateTo(0, 500, 250);
+            await PopupNavigation.Instance.PopAsync(false);
+            MessagingCenter.Send(new GAZTNewDesignMyBillsPageView(), "pickerNew", (ReturnTypes)TaxTypePicker.SelectedItem);
+        }
+
+
         public void SetPickerFont()
         {
             try
@@ -99,7 +108,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
         void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
         {
-            Dissapear();
+            //Dissapear();
         }
 
         void SwipeGestureRecognizer_Swiped(System.Object sender, Xamarin.Forms.SwipedEventArgs e)
