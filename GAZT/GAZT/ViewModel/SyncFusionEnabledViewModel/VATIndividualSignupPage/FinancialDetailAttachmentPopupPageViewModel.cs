@@ -392,7 +392,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("AttachmentCount");
             }
         }
-        public WhichAttachment _isComeForWhichAttachment;
+        private WhichAttachment _isComeForWhichAttachment = WhichAttachment.Others;
         public WhichAttachment IsComeForWhichAttachment
         {
             get
@@ -436,8 +436,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_attachmentList == value) return;
 
                 _attachmentList = value;
-                if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
-                {
+                //if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
+                //{
                     if (_attachmentList != null)
                     {
                         if (_attachmentList.Count >= 5)
@@ -453,25 +453,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         IsAttachmentVisibile = true;
                     }
-                }
-                else
-                {
-                    if (_attachmentList != null)
-                    {
-                        if (_attachmentList.Count >= 1)
-                        {
-                            IsAttachmentVisibile = false;
-                        }
-                        else
-                        {
-                            IsAttachmentVisibile = true; ;
-                        }
-                    }
-                    else
-                    {
-                        IsAttachmentVisibile = true;
-                    }
-                }
+                //}
+                //else
+                //{
+                //    if (_attachmentList != null)
+                //    {
+                //        if (_attachmentList.Count >= 1)
+                //        {
+                //            IsAttachmentVisibile = false;
+                //        }
+                //        else
+                //        {
+                //            IsAttachmentVisibile = true; ;
+                //        }
+                //    }
+                //    else
+                //    {
+                //        IsAttachmentVisibile = true;
+                //    }
+                //}
                 RaisePropertyChanged("AttachmentList");
             }
         }
