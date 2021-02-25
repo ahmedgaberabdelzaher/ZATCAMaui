@@ -185,8 +185,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         public async Task loadPageData()
         {
-
             viewModel.SetDefaultDate();
+            
             //ClearFields();
             await viewModel.OnPageLoad();
             await viewModel.SetIssueIdList();
@@ -204,6 +204,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             }
 
+            viewModel.PickerDobToDisplay = string.Empty;
         }
 
         private void LIssuedBy_Clicked(object sender, EventArgs e)
@@ -873,7 +874,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
-            if (!string.IsNullOrEmpty(EntryIDNumber.Text))
+            if (!string.IsNullOrEmpty(EntryIDNumber.Text) && !string.IsNullOrEmpty(viewModel.PickerDobToDisplay))
             {
                 if (viewModel.SelectedSignUpUsing != null)
                 {

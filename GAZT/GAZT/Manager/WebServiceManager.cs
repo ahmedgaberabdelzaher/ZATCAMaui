@@ -118,7 +118,17 @@ namespace GAZT.Manager
                 try
                 {
                     String url = Constants.GetAllTin + Username;
-                    HttpResponseMessage GAZTGetTINsResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
+
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                   
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTGetTINsResponse = await client.GetAsync(uri);
+
+                    //HttpResponseMessage GAZTGetTINsResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
+
                     if (GAZTGetTINsResponse != null)
                     {
                         GAZTGetTINsResponseResult = GAZTGetTINsResponse.Content.ReadAsStringAsync().Result;

@@ -2211,7 +2211,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         public void ClearData()
         {
-            SetDefaultDate();
+            //SetDefaultDate();
             VerifyButtonDisableColor = Color.FromHex("#d49504");
             //IsVerifyOTPEnabled = true;
             IsResendOTPEnabled = false;
