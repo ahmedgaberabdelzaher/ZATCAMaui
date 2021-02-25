@@ -3,7 +3,7 @@ using GAZT.Droid.CustomRenderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(CustomWebView), typeof(CustomWebViewRenderer))]
+[assembly: ExportRenderer(typeof(GAZT.CustomWebView), typeof(CustomWebViewRenderer))]
 namespace GAZT.Droid.CustomRenderer
 {
     public class CustomWebViewRenderer: WebViewRenderer

@@ -1845,7 +1845,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         TaxpayerName = App.TP.NameOrg1;
                     }
                 }
-                DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
                 _ = Task.Run(async () => {
                     await GetAccountStatments();
                     await GetBillsAndReturns();

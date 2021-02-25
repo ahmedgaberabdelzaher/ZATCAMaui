@@ -503,7 +503,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             isTimerOff = true;
         }
-        private void LoadData()
+        private async void LoadData()
         {
             try
             {

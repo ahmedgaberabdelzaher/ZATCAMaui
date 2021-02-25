@@ -740,7 +740,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public  void getActionCommand()
+        public async void getActionCommand()
         {
             try
             {
@@ -794,7 +794,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     }
                                     else
                                     {
-                                        Device.BeginInvokeOnMainThread( () =>
+                                        Device.BeginInvokeOnMainThread( async() =>
                                         {
                                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -865,7 +865,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     }
                                     else
                                     {
-                                        Device.BeginInvokeOnMainThread( () =>
+                                        Device.BeginInvokeOnMainThread( async() =>
                                         {
 
                                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
