@@ -1832,10 +1832,11 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
     <value>SUCCESS</value>
     <comment>Estimated Zakat</comment>
   </data>
-  <data name="ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports" xml:space="preserve">
-    <value>The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)</value>
-    <comment>Estimated Zakat</comment>
-  </data>
+
+   <data name="ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports" xml:space="preserve">
+        <value>The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)</value>
+        <comment>Estimated Zakat</comment>
+    </data>
   <data name="ZZTheUndisputedAmount" xml:space="preserve">
     <value>The Undisputed Amount</value>
     <comment>Estimated Zakat</comment>
