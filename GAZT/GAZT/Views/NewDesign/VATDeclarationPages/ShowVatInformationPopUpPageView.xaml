@@ -6,6 +6,7 @@
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                  mc:Ignorable="d"
+                 xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
                    xmlns:ResourceManager="clr-namespace:EGAZT"
                  xmlns:FontImage="clr-namespace:MVP.FontIcons"
                 xmlns:custom="clr-namespace:GAZT"
@@ -16,6 +17,7 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
         </ResourceDictionary>
     </pages:PopupPage.Resources>
     <yummy:PancakeView x:Name="MainPanCakeView" CornerRadius="8,8,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
@@ -26,7 +28,7 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <custom:CustomLabel Grid.Row="0" Text="{Binding MainString}" Style="{StaticResource SectionTitleBlack}"/>
-                <ListView  x:Name="InformationList"
+            <ListView  x:Name="InformationList"
                            Grid.Row="1"
            ItemsSource="{Binding HeaderWithInfoList}"
           HorizontalOptions="FillAndExpand"
@@ -37,28 +39,34 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                      
             SeparatorVisibility="None"
             >
-                  
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Spacing="15" Margin="0,0,0,7">
-                                    <Frame CornerRadius="12" HasShadow="False" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
-                                        <StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Image Source="ic_vat_info"/>
-                                            <custom:CustomLabel x:Name="HeaderTextlbl"   Text="{Binding HeaderText}" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand">
-                                                <custom:CustomLabel.Triggers>
-                                                    <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding Source={x:Reference HeaderTextlbl}, Path=Text.Length}" Value="0">
-                                                        <Setter Property="IsVisible" Value="False" />
-                                                    </DataTrigger>
-                                                </custom:CustomLabel.Triggers>
-                                            </custom:CustomLabel>
-                                        </StackLayout>
-                                        <Label  LineHeight="0.8" Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
-                                    </StackLayout>
-                                    </Frame>
 
-                                    <!--<Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Spacing="15" Margin="0,0,0,7">
+                                <Frame CornerRadius="12" HasShadow="False" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
+                                    <StackLayout>
+                                        <StackLayout IsVisible="{Binding IsHeaderAvailable}">
+                                            <StackLayout Orientation="Horizontal" >
+                                                <Image Source="ic_vat_info"/>
+                                                <custom:CustomLabel x:Name="HeaderTextlbl"   Text="{Binding HeaderText}" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand">
+                                                    <custom:CustomLabel.Triggers>
+                                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding Source={x:Reference HeaderTextlbl}, Path=Text.Length}" Value="0">
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </DataTrigger>
+                                                    </custom:CustomLabel.Triggers>
+                                                </custom:CustomLabel>
+                                            </StackLayout>
+                                            <Label  LineHeight="0.8" Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" IsVisible="{Binding IsHeaderAvailable,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
+                                            <Image Source="ic_vat_info" VerticalOptions="Start"/>
+                                            <Label  LineHeight="0.8" Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+
+                                <!--<Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
                                         <StackLayout>
                                             <StackLayout Orientation="Horizontal">
                                                 <Image Source="ic_vat_info">
@@ -70,11 +78,11 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                                             <custom:CustomLabel Text="For example returns of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables." Style="{StaticResource CaptionLabelGrey}" />
                                         </StackLayout>
                                     </Frame>-->
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <StackLayout BackgroundColor="White" Grid.Row="2" Margin="0,0,0,0"  VerticalOptions="FillAndExpand">
 

@@ -41,6 +41,7 @@ namespace GAZT.Models
         public bool IsLinkAvailable { get; set; }
         public string FlowDirections { get; set; }
         public bool isFontSet { get; set; }
+        public bool IsHeaderAvailable { get => string.IsNullOrEmpty(HeaderText) ? false : true; }
 
     }
     [Preserve(AllMembers = true)]
