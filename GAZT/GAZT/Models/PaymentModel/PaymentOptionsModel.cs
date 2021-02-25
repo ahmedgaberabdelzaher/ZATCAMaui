@@ -69,6 +69,7 @@ namespace EGAZT.Models.PaymentModel
         public string PymntProcFg { get; set; }
         public string Srcid { get; set; }
         public string Zbranch { get; set; }
+        public string PerslTxt { get; set; }
     }
     [Preserve(AllMembers = true)]
     public class MadaPaymentResponse

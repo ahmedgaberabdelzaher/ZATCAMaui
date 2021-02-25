@@ -5,9 +5,10 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using EGAZT.Manager;
+using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -750,6 +751,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 value = new ObservableCollection<TaxRelationSetResult>(value.OrderBy(temp => temp.DisplayId).ToList());
                 _transactionTypeFilter = value;
                 RaisePropertyChanged("TransactionTypeFilter");
+            }
+        }
+
+        private GenericPickerModel _pickerModel { get; set; }
+
+        public GenericPickerModel PickerModel
+        {
+            get { return _pickerModel; }
+            set
+            {
+                if (_pickerModel == value) return;
+
+                _pickerModel = value;
+                RaisePropertyChanged("PickerModel");
             }
         }
 
@@ -1527,7 +1542,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             try
             {
 
-                TabIdentification = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementsTabIdentification();
+                TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
                 TaxTypeForFilter = new ObservableCollection<ASReturnTypes>();
 
                 StatementsLineItems = new ObservableCollection<ASResult>();
@@ -1619,11 +1634,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         public async Task PopulateDataForTransactionTypes(string taxType)
         {
-            var tempValues = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
+            var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
             foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.D.Results)
             {
                 aSRevenueDropDownSetDataResults.TaxType = taxType;
                 AllTransactionFilters.Add(aSRevenueDropDownSetDataResults);
+                
             }
         }
 
@@ -1703,12 +1719,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     AllTransactionFilters = new ObservableCollection<ASRevenueDropDownSetDataResults>();
                 }
                 AllTransactionFilters.Clear();
-                /*ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
-                defautlVal.Txt30 = AppResources.ASTransactionType;
-                defautlVal.TaxType = "D";
-                defautlVal.StatementFilter = "";
-                AllTransactionFilters.Insert(0, defautlVal);
-                ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
+               
+              /*  ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
                 defautlValIndirectTax.Txt30 = AppResources.ASTransactionType;
                 defautlValIndirectTax.TaxType = "I";
                 defautlValIndirectTax.TaxType = "I";
@@ -1721,7 +1733,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     await PopulateDataForTransactionTypes("I");
                 }
-                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet
+
+
+
+               
+
+
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
                     (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType);
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {
@@ -1758,6 +1776,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
                     }
                 }
+
+
+
                 foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
                 {
                     if (TabIdentification.D.Direct == "X")
@@ -1798,6 +1819,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
                 SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
 
+                var list = new List<string>();
+
+                foreach (TaxRelationSetResult dropdown in TransactionTypeFilter)
+                {
+                    list.Add(dropdown.Txt30.ToUpper());
+                }
+
+                GenericPickerModel genericPickerModel = new GenericPickerModel();
+                genericPickerModel.PickerData = list;
+                genericPickerModel.PickerTitle = "";
+                genericPickerModel.PickerId = "AccountStatement";
+
+                PickerModel = genericPickerModel;
+
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1828,12 +1863,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+
+        public void updatePicker()
+        {
+            var selectedFilter  = new ObservableCollection<TaxRelationSetResult>(TransactionTypeFilter.Where(temp => temp.Txt30.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
+
+            SelectedTransactionTypeFilter = selectedFilter.FirstOrDefault();
+
+        }
+
+        public async void showPickerDialog()
+        {
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+
         public async void PopulateStatements(string taxType, string statementFilter, string year)
         {
             try
             {
                 IsLoading = true;
-                HeaderSet = await GetAccountStatementWebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {

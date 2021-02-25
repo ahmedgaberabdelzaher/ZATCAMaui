@@ -2,8 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
+using EGAZT.Views.NewDesign.GenericPickers;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
@@ -35,7 +37,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     await viewModel.PopulateASFilterData();
                     viewModel.PopulateFiltersData();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                 }
@@ -50,7 +52,16 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             }
             else
             {
+
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
 
@@ -73,13 +84,13 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         public void ChangeAeroIcon()
         {
-            if (App.IsArabic)
+            if (!App.IsArabic)
             {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
             }
             else
             {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
 
@@ -94,8 +105,23 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
-        }
 
+
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+                viewModel.PickerModel = arg;
+                viewModel.updatePicker();
+
+             
+               
+            });
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
+
+        }
 
         void searchButtonTapped(System.Object sender, System.EventArgs e)
         {
@@ -132,7 +158,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     || c.FormattedBldat2.ToLower().Contains(keyword.ToLower()) || c.FormattedBldat.ToLower().Contains(keyword.ToLower())).ToList();
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(suggestion);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                 }
@@ -145,8 +171,12 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         void btnTransactionTypePicker_Clicked(System.Object sender, System.EventArgs e)
         {
-            TransactionTypePicker.IsOpen = true;
+            //TransactionTypePicker.IsOpen = true;
+            viewModel.showPickerDialog();
         }
+
+
+
 
         private void yearChipGroup_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
         {
@@ -158,7 +188,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 viewModel.IsOpeningBalanceVisible = true;
                 viewModel.PopulateStatements(viewModel.SelectedTransactionTypeFilter.TaxType, viewModel.SelectedTransactionTypeFilter.StatementFilter, viewModel.SelectedYear.Text);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
