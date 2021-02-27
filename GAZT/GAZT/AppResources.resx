@@ -6324,7 +6324,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="NDServices" xml:space="preserve">
     <value>Services</value>
   </data>
-  <data name="NDSwitchUser" xml:space="preserve">
+	<data name="NDSwitchUser" xml:space="preserve">
     <value>Switch User</value>
   </data>
   <data name="NDVATLookUP" xml:space="preserve">
