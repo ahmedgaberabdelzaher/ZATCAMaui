@@ -275,7 +275,7 @@
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,-17,0,0" Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <custom:CustomLabel Text="{x:Static custom2:AppResources.ZInstructions}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                        <custom:CustomLabel Text="{x:Static custom2:AppResources.ZInstructions}" HorizontalOptions="StartAndExpand" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
 
                         <BoxView Style="{StaticResource lineSeperator}"/>
                     </StackLayout>
@@ -335,7 +335,7 @@
                 </ScrollView>
                 <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,0,0,8">
                     <StackLayout Margin="15,0,15,0">
-                        <custom:CustomLabel Text="{x:Static custom2:AppResources.ZZVATReturnForm}"  Style="{StaticResource PageTitleBlack}" />
+                        <custom:CustomLabel Text="{x:Static custom2:AppResources.ZZVATReturnForm}" HorizontalOptions="StartAndExpand" Style="{StaticResource PageTitleBlack}" />
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" Margin="0,-8,0,0"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
                         <BoxView Style="{StaticResource lineSeperator}"/>
                     </StackLayout>
@@ -808,9 +808,9 @@
                 </StackLayout>
                 <StackLayout Grid.Row="0" Margin="0,-17,0,0" BackgroundColor="White"  Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <Label  Text="{x:Static custom2:AppResources.ZVatOnSales}" VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" StyleId="SingleLabel">
+                        <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZVatOnSales}" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" >
 
-                        </Label>
+                        </custom:CustomLabel>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     </StackLayout>
                 </StackLayout>
@@ -1508,9 +1508,9 @@
                 </ScrollView>
                 <StackLayout Grid.Row="0" BackgroundColor="White" Padding="0,0,0,8"  Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <Label Text="{x:Static custom2:AppResources.ZZZZVATOnPurchasesForSummarypage}"   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" StyleId="SingleLabel">
+                        <custom:CustomLabel Text="{x:Static custom2:AppResources.ZZZZVATOnPurchasesForSummarypage}" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" >
 
-                        </Label>
+                        </custom:CustomLabel>
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     </StackLayout>
@@ -1626,9 +1626,9 @@
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <Label Text="{x:Static custom2:AppResources.ZVatNetdue}"    VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" StyleId="SingleLabel">
+                        <custom:CustomLabel Text="{x:Static custom2:AppResources.ZVatNetdue}" HorizontalOptions="StartAndExpand" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
 
-                        </Label>
+                        </custom:CustomLabel>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
                     </StackLayout>
