@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Xamarin.Forms.Internals;
 
 namespace GAZT.Models
@@ -65,7 +66,22 @@ namespace GAZT.Models
         public string NextInstAmt { get; set; }
         public DateTime? Bldat { get; set; }
         public string Waers { get; set; }
-        public string DayMonth { get; set; }
+        //public string DayMonth { get; set; }
+        private string _dayMonth;
+        public string DayMonth
+        {
+            get
+            {
+                return _dayMonth;
+            }
+            set
+            {
+                _dayMonth = value;
+
+                _dayMonth = Regex.Replace(_dayMonth, "['st','nd','rd','th']", ""); 
+
+            }
+        }
         public string TotalInst { get; set; }
         public string TotalInstPaid { get; set; }
         public string TotalInstUnpaid { get; set; }

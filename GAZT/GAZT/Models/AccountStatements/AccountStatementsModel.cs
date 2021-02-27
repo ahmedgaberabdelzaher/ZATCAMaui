@@ -564,7 +564,7 @@ namespace EGAZT.Models.AccountStatements
 
                     if (App.CalType.Equals("G"))
                     {
-                        FormattedBldat = string.Format(_Bldat?.ToString("dd{0} MMMM yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_Bldat));
+                        FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
 
                         string[] dts = FormattedBldat.Split(' ');
                         if (App.IsArabic) {
@@ -584,7 +584,7 @@ namespace EGAZT.Models.AccountStatements
                     }
                     else
                     {
-                        FormattedBldat = string.Format(_Bldat?.ToString("dd{0} MMMM yyyy", new CultureInfo("ar-SA")), UtilityManager.GetDayPrefix(_Bldat));
+                        FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("ar-SA")));
                     }
                 }
             }
@@ -618,7 +618,7 @@ namespace EGAZT.Models.AccountStatements
                 {
                     if (App.CalType.Equals("G"))
                     {
-                        FormattedBldat2 = string.Format(_Bldat2?.ToString("dd{0} MMMM yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_Bldat2));
+                        FormattedBldat2 = string.Format(_Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
 
                         string[] dts = FormattedBldat2.Split(' ');
 
@@ -638,7 +638,7 @@ namespace EGAZT.Models.AccountStatements
                     }
                     else
                     {
-                        FormattedBldat2 = string.Format(_Bldat2?.ToString("dd{0} MMMM yyyy", new CultureInfo("ar-SA")), UtilityManager.GetDayPrefix(_Bldat2));
+                        FormattedBldat2 = string.Format(_Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("ar-SA")));
                     }
                     /*FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat2.Split('-');

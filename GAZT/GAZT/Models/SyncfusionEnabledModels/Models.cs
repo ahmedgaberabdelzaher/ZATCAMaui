@@ -169,7 +169,7 @@ namespace GAZT.Models
                     if (App.CalType != "")
                     {
 
-                        string formatedDate = string.Format(_dueDtC?.ToString("dd{0}/MM/yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_dueDtC));
+                        string formatedDate = string.Format(_dueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
 
                         if (App.CalType.Equals("G"))
                         {
@@ -215,7 +215,7 @@ namespace GAZT.Models
                     }
                     else {
 
-                        string formatedDate = string.Format(_dueDtC?.ToString("dd{0}/MM/yyyy", new CultureInfo("en-US")), UtilityManager.GetDayPrefix(_dueDtC));
+                        string formatedDate = string.Format(_dueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
 
 
                         if (App.IsArabic)
