@@ -82,24 +82,24 @@ namespace EGAZT.Views.NewDesign.VatReview
 
             Xamarin.Forms.MessagingCenter.Subscribe<object, int>(this, "draftRequest", (sender, arg) =>
             {
-                    DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[arg];
-                
+                DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[arg];
+
             });
 
             Xamarin.Forms.MessagingCenter.Subscribe<object, int>(this, "draftSecurity", (sender, arg) =>
             {
-                
-                    securityTypeListView.SelectedItem = viewModel.SecurityPaymentOptions[arg];
-                    if (arg == 0)
-                    {
-                        viewModel.EnableSadadSecurityView();
-                    }
-                    else if (arg == 1)
-                    {
-                        viewModel.EnablebankGuranteeSecurityView();
-                    }
-                    viewModel.EnableSecurityPaymentsConButton();
-                
+
+                securityTypeListView.SelectedItem = viewModel.SecurityPaymentOptions[arg];
+                if (arg == 0)
+                {
+                    viewModel.EnableSadadSecurityView();
+                }
+                else if (arg == 1)
+                {
+                    viewModel.EnablebankGuranteeSecurityView();
+                }
+                viewModel.EnableSecurityPaymentsConButton();
+
             });
 
 
@@ -120,7 +120,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                         dt1 = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
                         viewModel.PickedDateFullMonth = dt1;
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
 
                     }
@@ -250,7 +250,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
                 });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -390,6 +390,12 @@ namespace EGAZT.Views.NewDesign.VatReview
         private void RRAmountUnfocused(object sender, FocusEventArgs e)
         {
             viewModel.requestedReviewAmount = rrAmountTxt.Text;
+
+            if (!String.IsNullOrEmpty(viewModel.RequestedReviewAmount) && !String.IsNullOrEmpty(viewModel.TotalTaxLiability) &&
+                Double.Parse(viewModel.RequestedReviewAmount) > Double.Parse(viewModel.TotalTaxLiability))
+            {
+                viewModel.RequestedReviewAmount = viewModel.TotalTaxLiability;
+            }
             viewModel.EnableReviewDetailsConButton();
             viewModel.FetchSecurityAmount();
 
@@ -401,6 +407,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             {
                 viewModel.IsRRAmountEdit = false;
                 viewModel.VRRequesttoReviewtheAmountValue = AppResources.VRInfull;
+                viewModel.RequestedReviewAmount = viewModel.TotalTaxLiability;
             }
             else if (selectedITem.SelectionTitle.Equals(AppResources.VRInpartial))
             {

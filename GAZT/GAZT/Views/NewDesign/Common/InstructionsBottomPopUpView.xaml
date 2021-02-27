@@ -195,7 +195,7 @@
                                             Margin="10,0,0,0" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource ValueLabelBlackBold}" FontSize="16"/>
 
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Description}"
+                                <custom:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Description}"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}" LineSpacing="1.5" />
 

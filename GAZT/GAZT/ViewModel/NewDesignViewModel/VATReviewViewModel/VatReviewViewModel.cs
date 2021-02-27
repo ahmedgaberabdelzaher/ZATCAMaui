@@ -4917,7 +4917,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             MessagingCenter.Send<Object, int>(this, "draftSecurity", modelVATReview.d.SecurityDtl.Sectp == "B" ? 1 : 0);
             MessagingCenter.Send<Object, int>(this, "draftRequest", modelVATReview.d.SecurityDtl.Amttp == "P" ? 1 : 0);
 
-
+            
             if (modelVATReview.d.IdType == "ZS0001")
             {
                 IDType = AppResources.VFCNationalID;
@@ -4937,6 +4937,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 IDType = AppResources.VFCGCCID;
                 IsDOBVisible = false;
             }
+
+            
             IDNumber = modelVATReview.d.DecIdNo;
             ContactPersonName = modelVATReview.d.Decnm;
             if (!string.IsNullOrEmpty(ContactPersonName))
@@ -4971,6 +4973,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             BankGuranteeAttachmentsListViewData = bankAttachments;
             AttachmentsListViewData = attachments;
 
+            if (BankGuranteeAttachmentsListViewData!=null && BankGuranteeAttachmentsListViewData.Count>0)
+            {
+                IsSadadCheckBox2 = true;
+                IsSadadCheckBox1 = true;
+            }
+
             if (string.IsNullOrEmpty(modelVATReview.d.SecurityDtl.Sopbel))
             {
 
@@ -4993,19 +5001,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 foreach (var note in modelVATReview.d.NotesSet.results)
                 {
-                    if (note.Rcodez == "RAVT_SDCAS")
+                    if (note.Rcodez == "RAVT_SDCAS" && !String.IsNullOrEmpty(note.Strline))
                     {
-
                         DisputeDetailsDesc = note.Strline;
                         return;
                     }
-                    if (note.Rcodez == "RAVT_BOX")
-                    {
+                   
+                }
 
+                foreach (var note in modelVATReview.d.NotesSet.results)
+                {
+                    
+                    if (note.Rcodez == "RAVT_BOX" && !String.IsNullOrEmpty(note.Strline))
+                    {
                         ReportDetails = note.Strline;
                         return;
                     }
-
 
                 }
 
