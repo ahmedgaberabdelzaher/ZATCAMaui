@@ -7309,7 +7309,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Switch User.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string NDSwitchUser {
             get {
