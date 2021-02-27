@@ -23,7 +23,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             ChangeAeroIcon();
             SetLTR();
             SetPickerFont();
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             
 
             this.BindingContext = viewModel;
@@ -97,7 +97,6 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                 viewModel.SelectedItem = viewModel.DataSource.SelectedValue;
                 genericPicker.SelectedItem = viewModel.SelectedItem;
             }
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetPickerFont();
         }
