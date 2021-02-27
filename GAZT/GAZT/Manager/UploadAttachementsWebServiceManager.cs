@@ -39,7 +39,8 @@ namespace EGAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
+                    var fileNameRemovedSpace = fileName.Replace("SpaceAdded", " ");
+                    client.DefaultRequestHeaders.Add("slug",fileName.Contains("SpaceAdded") ? fileNameRemovedSpace : WebUtility.UrlEncode(fileName));
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);

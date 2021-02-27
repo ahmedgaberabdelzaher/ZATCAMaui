@@ -1009,23 +1009,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             TaxPeriodFrom = strTaxPeriodFromDate;
 
-            foreach (var note in responseModel.d.NotesSet.results)
-            {
-                if (note.Rcodez == "RAVT_SDCAS")
-                {
-
-                    DisputeDetailsDesc = note.Strline;
-                    return;
-                }
-                if (note.Rcodez == "RAVT_BOX")
-                {
-
-                    ReportDetails = note.Strline;
-                    return;
-                }
-
-
-            }
+          
             //ReportDetails = responseModel.d.NotesSet.results[0].Tdline;
             RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Disamt);
             string strTaxPeriodToDate = "";
@@ -1132,6 +1116,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     
                 });
                 
+            }
+
+            foreach (var note in responseModel.d.NotesSet.results)
+            {
+                if (note.Rcodez == "RAVT_SDCAS")
+                {
+                    DisputeDetailsDesc = note.Strline;
+                    return;
+                }
+                if (note.Rcodez == "RAVT_BOX")
+                {
+                    ReportDetails = note.Strline;
+                    return;
+                }
+
             }
         }
 
