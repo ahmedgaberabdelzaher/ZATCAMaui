@@ -764,7 +764,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                         {
                                                             IsAttachmentPresent = true;
                                                         }
+
+                                                        if (ItemA.Filename.Contains(" - ") && ItemA.Filename.Length>2)
+                                                        {      
+                                                            var splitStrings = ItemA.Filename.Split('-');
+                                                            
+                                                            if(splitStrings.Count()>0 && splitStrings[1].Trim() == AttachmentName)
+                                                            {
+                                                                IsAttachmentPresent = true;
+                                                            }
+                                                        }
                                                     }
+
+                                                    
                                                     if (IsAttachmentPresent == false)
                                                     {
                                                         string attachmentType = UtilityManager.GetContentType(Extention);
@@ -1123,10 +1135,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     else if (IsComeForWhichAttachment == WhichAttachment.VatReviewAttachments)
                     {
                         APiMethod = "ZDP_INDTAX_ATT_SRV";
+                        string attName = "1SpaceAdded-SpaceAdded"+AttachmentName;
+                        AttachmentName = attName;
                     }
                     else if (IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
                     {
                         APiMethod = "ZDP_INDTAX_ATT_SRV";
+                        string attName = "1SpaceAdded-SpaceAdded" + AttachmentName;
+                        AttachmentName = attName;
                     }
                     else if (IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment)
                     {
@@ -1136,6 +1152,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     {
                         APiMethod = "Z_SAVE_ATTACH_SRV";
                     }
+
                     AttachmentRootOject attachment = await UploadAttachementsWebServiceManager.GAZTGenericSaveAttachment(attachmentByteData, AttachmentName, returnIdz, Doctype, contentType, APiMethod);
 
                     if (attachment != null && attachment.d != null)

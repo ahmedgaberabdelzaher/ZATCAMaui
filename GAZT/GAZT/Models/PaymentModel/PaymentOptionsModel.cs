@@ -143,6 +143,7 @@ namespace EGAZT.Models.PaymentModel
         public string Amount { get; set; }
         public string PayRef { get; set; }
         public bool Success { get; set; }
+        public string PerslTxt { get; set; }
     }
     [Preserve(AllMembers = true)]
     public class ApplePayTokenResponse
@@ -164,6 +165,13 @@ namespace EGAZT.Models.PaymentModel
     public class CancelPaymentResponse
     {
         public CancelPayment d { get; set; }
+    }
+
+    [Preserve(AllMembers = true)]
+    public class PaymentSucess
+    {
+        public string Paymentref { get; set; }
+        public string Period { get; set; }
     }
 
 

@@ -54,11 +54,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.IfnotRegInVATAndZakat = false;
                 viewModel.IsBodyMyTaxVisible = false;
 
-                InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
-                {
-                    ItemSpacing = 10
-                };
-                
+                //InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
+                //{
+                //    ItemSpacing = 10
+                //};
+
+
+               
+
                 SetLTR();
             }
             catch (Exception ex)
@@ -141,6 +144,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;
             viewModel.PartiallyPaidString = AppResources.Partiallynewui + " " + viewModel.PartiallyPaidBillCount;
             viewModel.TotalString = AppResources.NDTotalNumberOfBills;
+
+          
+
            
             ChangeArrowDirection();
             MessagingCenter.Subscribe<Object>(this, "UpdateProgressBar", (sender) =>
