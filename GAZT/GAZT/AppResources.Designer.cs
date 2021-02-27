@@ -2218,7 +2218,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Amend.
+        ///   Looks up a localized string similar to Amend Registration.
         /// </summary>
         public static string DBSMAmend {
             get {
@@ -13523,7 +13523,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2. Revenue.
+        ///   Looks up a localized string similar to Revenue.
         /// </summary>
         public static string ZakatCashBank {
             get {
@@ -13550,7 +13550,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4. Cash + Bank.
+        ///   Looks up a localized string similar to Cash + Bank.
         /// </summary>
         public static string ZakatDebitors {
             get {
@@ -13937,7 +13937,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 11. Profitability Ratio (3/2).
+        ///   Looks up a localized string similar to Profitability Ratio (3/2).
         /// </summary>
         public static string ZakatInstalmentNetCashFlowFromOperation {
             get {
@@ -13946,7 +13946,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 10. Retained Earnings (Accumulated Losses).
+        ///   Looks up a localized string similar to Retained Earnings (Accumulated Losses).
         /// </summary>
         public static string ZakatInstalmentNetIncome {
             get {
@@ -14243,7 +14243,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 6. Total Current Assets.
+        ///   Looks up a localized string similar to Total Current Assets.
         /// </summary>
         public static string ZakatInstalmentTotalCurrentAssets {
             get {
@@ -14252,7 +14252,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 8. Debtors.
+        ///   Looks up a localized string similar to Debtors.
         /// </summary>
         public static string ZakatInstalmentTotalCurrentLiabilities {
             get {
@@ -14279,7 +14279,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7. Total Current Liabilities.
+        ///   Looks up a localized string similar to Total Current Liabilities.
         /// </summary>
         public static string ZakatInstalmentZakatAndTax {
             get {
@@ -14498,7 +14498,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 5. Short Term Investments.
+        ///   Looks up a localized string similar to Short Term Investments.
         /// </summary>
         public static string ZakatInventory {
             get {
@@ -14606,7 +14606,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 9. Creditors.
+        ///   Looks up a localized string similar to Creditors.
         /// </summary>
         public static string ZakatRevenue {
             get {
@@ -14660,7 +14660,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3. Net Income.
+        ///   Looks up a localized string similar to Net Income.
         /// </summary>
         public static string ZakatShortTermInvestment {
             get {
