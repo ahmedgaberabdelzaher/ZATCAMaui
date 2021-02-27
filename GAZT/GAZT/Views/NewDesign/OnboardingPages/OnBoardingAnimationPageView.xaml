@@ -102,7 +102,7 @@
                 Text="{Binding NextButtonText}" />
 
             <commonView:OnBoardingPageIndicator Grid.Row="3"  HorizontalOptions="Center" MaxNum="{Binding MaxIndex}"
-                                        MinNum="{Binding SelectedIndex}" DotSize="12"/>
+                                        MinNum="{Binding SelectedIndex}" DotSize="12" FlowDirection="LeftToRight"/>
 
         </Grid>
     </ContentPage.Content>

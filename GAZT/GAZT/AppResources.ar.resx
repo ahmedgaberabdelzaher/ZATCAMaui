@@ -1850,10 +1850,10 @@
     <value>رقم فاتورة سداد</value>
     <comment>Estimated Zakat</comment>
   </data>
-     <data name="ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports" xml:space="preserve">
-        <value>مجموع كلاً من (المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات )</value>
-        <comment>Estimated Zakat</comment>
-        </data>
+  <data name="ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports" xml:space="preserve">
+    <value>مجموع كلاً من (المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات )</value>
+    <comment>Estimated Zakat</comment>
+  </data>
   <data name="ZZTheUndisputedAmount" xml:space="preserve">
     <value>المبلغ الغير المعترض عليه</value>
     <comment>Estimated Zakat</comment>
@@ -2035,7 +2035,7 @@
     <value>تم تغيير كلمة المرور بنجاح</value>
   </data>
   <data name="ZVATCreateNote" xml:space="preserve">
-   <value>إضافة الملاحظات</value>
+    <value>إضافة الملاحظات</value>
   </data>
   <data name="ZZDeclarationText" xml:space="preserve">
     <value>أقر بأن المعلومات المقدمة في هذا الإقرار دقيقة وصحيحة وكاملة بالمستندات المرفقة، وإنني الشخص المخول بملء هذا الإقرار أو المخول للتوقيع بالنيابة عن المكلف، وأتحمل كامل المسؤولية في حال ثبت خلاف ذلك.</value>
@@ -6840,34 +6840,34 @@
     <value>سنة</value>
   </data>
   <data name="ZakatCashBank" xml:space="preserve">
-    <value>النقدية + البنك .2 </value>
+    <value>النقدية + البنك</value>
   </data>
   <data name="ZakatShortTermInvestment" xml:space="preserve">
-    <value>استثمار قصير المدى .3</value>
+    <value>استثمار قصير المدى</value>
   </data>
   <data name="ZakatDebitors" xml:space="preserve">
-    <value>المدينين .4</value>
+    <value>المدينين</value>
   </data>
   <data name="ZakatInventory" xml:space="preserve">
-    <value>المخزون .5</value>
+    <value>المخزون</value>
   </data>
   <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
-    <value>إجمالي الأصول الحالية .6</value>
+    <value>إجمالي الأصول الحالية</value>
   </data>
   <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
-    <value>الزكاة والضريبة .7</value>
+    <value>الزكاة والضريبة</value>
   </data>
   <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-    <value>إجمالي الالتزامات الحالية .8</value>
+    <value>إجمالي الالتزامات الحالية</value>
   </data>
   <data name="ZakatRevenue" xml:space="preserve">
-    <value>إيرادات .9</value>
+    <value>إيرادات</value>
   </data>
   <data name="ZakatInstalmentNetIncome" xml:space="preserve">
-    <value>صافي الدخل .10</value>
+    <value>صافي الدخل</value>
   </data>
   <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
-    <value>صافي التدفق النقدي من العملية .11</value>
+    <value>صافي التدفق النقدي من العملية</value>
   </data>
   <data name="ZakatInstalmentPlanSubTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -8679,8 +8679,8 @@ info@gazt.gov.sa</value>
     <value>تفاصيل التسجيل في ضريبة القيمة المضافة</value>
   </data>
   <data name="DBSMAmend" xml:space="preserve">
-        <value>تعديل تفاصي التسجيل</value>
-   </data>
+    <value>تعديل تفاصي التسجيل</value>
+  </data>
   <data name="DBSMAmendmentOfVATRegistration" xml:space="preserve">
     <value>تعديل تفاصيل التسجيل في ضريبة القيمة المضافة</value>
   </data>
