@@ -2,6 +2,7 @@
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+          xmlns:custom="clr-namespace:GAZT"
           x:Class="EGAZT.Views.NewDesign.Template.UnSelectedItemTemplateNoIcon">
     <ViewCell.View>
         <Grid Padding="4" >
@@ -15,7 +16,7 @@
                     </Grid.ColumnDefinitions>
                     <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="End" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.6"/>
+                        <custom:CustomLabel Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.6"/>
                     </StackLayout>
                 </Grid>
             </cards:SfCardView>
