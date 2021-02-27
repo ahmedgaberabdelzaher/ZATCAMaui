@@ -834,6 +834,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 if (value == null) return;
                 _selectedTransactionTypeFilter = value;
+
+                if(_selectedTransactionTypeFilter.DisplayId == 01) {
+                    _selectedTransactionTypeFilter.Txt30 = AppResources.All;
+                }
+
                 if (_selectedTransactionTypeFilter.StatementFilter != null)
                 {
                     IsYearsChipVisible = true;
@@ -1734,11 +1739,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     await PopulateDataForTransactionTypes("I");
                 }
 
-
-
-               
-
-
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
                     (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType);
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
@@ -1783,17 +1783,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     if (TabIdentification.D.Direct == "X")
                     {
-                        if (taxRelationSetResult.StatementFilter == "01")
+                        if (taxRelationSetResult.StatementFilter == "10")
                         {
                             taxRelationSetResult.DisplayId = 01;
                         }
-                        if (taxRelationSetResult.StatementFilter == "02")
+                        if (taxRelationSetResult.StatementFilter == "01")
                         {
                             taxRelationSetResult.DisplayId = 02;
                         }
-                        if (taxRelationSetResult.StatementFilter == "03")
+                        
+                        if (taxRelationSetResult.StatementFilter == "02")
                         {
                             taxRelationSetResult.DisplayId = 03;
+                        }
+                        if (taxRelationSetResult.StatementFilter == "03")
+                        {
+                            taxRelationSetResult.DisplayId = 04;
                         }
                     }
                     if (TabIdentification.D.Indirect == "X")
@@ -1810,26 +1815,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         {
                             taxRelationSetResult.DisplayId = 09;
                         }
+                        if (taxRelationSetResult.StatementFilter == "10")
+                        {
+                            taxRelationSetResult.DisplayId = 01;
+                        }
                     }
                 }
                 if (TransactionTypeFilter == null)
                 {
                     TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
                 }
-                TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
+                TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp =>  temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 04 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
+
+
                 SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
 
+                
                 var list = new List<string>();
 
                 foreach (TaxRelationSetResult dropdown in TransactionTypeFilter)
                 {
-                    list.Add(dropdown.Txt30.ToUpper());
+                    if(dropdown.DisplayId == 01) {
+                        list.Add(AppResources.All);
+                    }
+                    else {
+                        list.Add(dropdown.Txt30.ToUpper());
+                    }
+
+
+                    
                 }
 
                 GenericPickerModel genericPickerModel = new GenericPickerModel();
                 genericPickerModel.PickerData = list;
                 genericPickerModel.PickerTitle = "";
                 genericPickerModel.PickerId = "AccountStatement";
+                genericPickerModel.SelectedValue = SelectedTransactionTypeFilter.Txt30;
 
                 PickerModel = genericPickerModel;
 
@@ -1866,9 +1887,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         public void updatePicker()
         {
-            var selectedFilter  = new ObservableCollection<TaxRelationSetResult>(TransactionTypeFilter.Where(temp => temp.Txt30.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
 
-            SelectedTransactionTypeFilter = selectedFilter.FirstOrDefault();
+            if (PickerModel.SelectedValue.Equals(AppResources.All)) {
+
+                var selectedFilter = new ObservableCollection<TaxRelationSetResult>(TransactionTypeFilter.Where(temp => temp.DisplayId == 01)).ToList();
+
+                SelectedTransactionTypeFilter = selectedFilter.FirstOrDefault();
+            }
+            else {
+                var selectedFilter = new ObservableCollection<TaxRelationSetResult>(TransactionTypeFilter.Where(temp => temp.Txt30.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
+
+                SelectedTransactionTypeFilter = selectedFilter.FirstOrDefault();
+            }
+
+
+           
 
         }
 
