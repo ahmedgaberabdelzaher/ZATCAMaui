@@ -841,7 +841,7 @@
                                                             </Image>
                                                         </StackLayout>
 
-                                                        <CollectionView x:Name="InstalmentsCollectionView" MinimumHeightRequest="146"  ItemsLayout="HorizontalList"
+                                                        <CollectionView x:Name="InstalmentsCollectionView" HeightRequest="160"  ItemsLayout="HorizontalList"
                                                         ItemsSource="{Binding InstalmentPlanList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                                         BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" >
                                                             <CollectionView.ItemTemplate>

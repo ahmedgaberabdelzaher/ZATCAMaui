@@ -125,19 +125,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
                             //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+                            PaymentSucess paymentInfo = new PaymentSucess();
+                            paymentInfo.Paymentref = PaymentData.d.PayRef;
+                            if(PaymentData.d.PerslTxt != null) {
+                                paymentInfo.Period = PaymentData.d.PerslTxt;
+                            }
 
                             if (PaymentType == 0)
                             {
-                                _navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                                _navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, paymentInfo);
                             }
                             else if (PaymentType == 1)
                             {
-                                _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, PaymentData.d.PayRef);
+                                _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, paymentInfo);
                             }
                             else if (PaymentType == 2)
                             {
 
-                                _navigationService.NavigateTo(App.MyBillsSuccessPageView, PaymentData.d.PayRef);
+                                _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
 
                                 //_navigationService.GoBack();
                                 /*var _navigation = Application.Current.MainPage.Navigation;

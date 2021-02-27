@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using EGAZT.Models.PaymentModel;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GAZT.Models;
@@ -23,13 +24,23 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
     public partial class VatReturnNewSuccessPageView : ContentPage
     {
         public GAZTNewDesignVATReturnUpdatedUIPageViewModel viewModel;
-        public VatReturnNewSuccessPageView(String refNum)
+        public VatReturnNewSuccessPageView(PaymentSucess paymentInfo)
         {
             InitializeComponent();
 
             viewModel = App.Locator.GAZTNewDesignVATReturnUpdatedUIPageView;
-            viewModel.ReferenceNumber = refNum;
-            viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Persl;
+           
+
+
+            viewModel.ReferenceNumber = paymentInfo.Paymentref;
+            if (paymentInfo.Period != null)
+            {
+                viewModel.TaxablePeriod = paymentInfo.Period;
+            }
+            else {
+                viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Persl;
+            }
+
             this.BindingContext = viewModel;
             SetLTR();
             ChangeAeroIcon();

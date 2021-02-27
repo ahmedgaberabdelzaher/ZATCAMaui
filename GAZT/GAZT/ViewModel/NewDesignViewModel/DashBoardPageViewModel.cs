@@ -1780,7 +1780,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (response.d.Success)
                         {
-                            _navigationService.NavigateTo(App.MyBillsSuccessPageView, response.d.PayRef);
+
+                            PaymentSucess paymentInfo = new PaymentSucess();
+                            paymentInfo.Paymentref = response.d.PayRef;
+                            if (response.d.PerslTxt != null)
+                            {
+                                paymentInfo.Period = response.d.PerslTxt;
+                            }
+                            _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
                         }
                         else
                         {
@@ -2191,6 +2198,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             InstalmentPlanList = new ObservableCollection<InstalmentPlanResult>();
             InstalmentPlanList = items;
+
 
             if (InstalmentPlanList.Count == 0)
             {

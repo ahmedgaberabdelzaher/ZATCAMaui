@@ -10,6 +10,7 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
 using Application = Xamarin.Forms.Application;
+using EGAZT.Models.PaymentModel;
 
 namespace EGAZT.Views.NewDesign.MyBillsPages
 {
@@ -21,7 +22,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         GAZTNewDesignDashBoardPageViewModel _dashBoardPageViewModel;
         private bool isDashboard = true;
         private String refNum;
-        public MyBillsSuccessPageView(String refNum)
+        public MyBillsSuccessPageView(PaymentSucess paymentInfo)
         {
             InitializeComponent();
             this.refNum = refNum;
@@ -38,8 +39,18 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             if (!isDashboard)
             {
                 viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
-                viewModel.ReferenceNumber = this.refNum;
-                viewModel.TaxablePeriod = viewModel.selectedTaxablePeriod;
+
+                viewModel.ReferenceNumber = paymentInfo.Paymentref;
+                if (paymentInfo.Period != null)
+                {
+                    viewModel.TaxablePeriod = paymentInfo.Period;
+                }
+                else
+                {
+                    viewModel.TaxablePeriod = viewModel.selectedTaxablePeriod;
+
+                }
+
                 this.BindingContext = viewModel;    
             }
             else

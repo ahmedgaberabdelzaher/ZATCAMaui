@@ -9,6 +9,7 @@ using Rg.Plugins.Popup.Services;
 using Xamarin.Forms.Internals;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Application = Xamarin.Forms.Application;
+using EGAZT.Models.PaymentModel;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
@@ -18,7 +19,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
     {
         ZAKATReturnDetailsViewModel viewModel;
 
-        public ZakatReturnNewSuccessPageView(string CaseGuild)
+        public ZakatReturnNewSuccessPageView(PaymentSucess paymentInfo)
         {
             InitializeComponent();
             viewModel = App.Locator.ZAKATReturnDetailsView;
@@ -30,8 +31,17 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             SetLTR();
             ChangeAeroIcon();
 
-            viewModel.ReferenceNumber = CaseGuild;
-            viewModel.TaxablePeriod = viewModel.ZakatReturnDetails.d.Persl;
+            viewModel.ReferenceNumber = paymentInfo.Paymentref;
+            if(paymentInfo.Period != null) {
+                viewModel.TaxablePeriod = paymentInfo.Period;
+            }
+            else {
+
+                viewModel.TaxablePeriod = viewModel.ZakatReturnDetails.d.Persl;
+            }
+
+
+            
             
         }
 
