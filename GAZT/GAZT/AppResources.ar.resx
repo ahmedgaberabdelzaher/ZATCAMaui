@@ -793,7 +793,7 @@
     <value>رقم السجل التجاري</value>
   </data>
   <data name="ZCRNumberisnotequalto10" xml:space="preserve">
-    <value>عدد الأرقام في الرقم التسلسلي يجب أن يكون 10 ارقام</value>
+    <value>عدد الارقام في الرقم المرجعي يجب أن يكون 10 ارقام</value>
   </data>
   <data name="ZPleaseenterlookupnumber" xml:space="preserve">
     <value>Please enter lookup number</value>
