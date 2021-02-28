@@ -27,16 +27,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
-
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-              viewModel.IndividualBackImg= "vat_tile_listofsignup_W.png";
-              viewModel.EstablishmentBackImg = "vat_tile_listofsignup_W.png";
-            });
             if (App.IsArabic)
             {
                 backArrow.Rotation = 180;
@@ -47,8 +37,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 backArrow.Rotation = 0;
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
-            viewModel.PageTitle= AppResources.ZTERNewAccount;
-            viewModel.BodyText= AppResources.ZZZZSelectthetypeofEntity;
+
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
+
+            await Task.Run(() =>
+            {
+              viewModel.IsLoading = false;
+              viewModel.IndividualBackImg= "vat_tile_listofsignup_W.png";
+              viewModel.EstablishmentBackImg = "vat_tile_listofsignup_W.png";
+            });
         }
 
         private async void OnEstablishmentTapped(object sender, EventArgs e)

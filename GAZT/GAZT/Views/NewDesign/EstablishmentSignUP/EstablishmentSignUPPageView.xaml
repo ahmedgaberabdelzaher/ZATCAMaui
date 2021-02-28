@@ -144,8 +144,8 @@
 
 
                     <StackLayout Grid.Row="1" Padding="0,48,0,0">
-                        <custom:CustomLabel Text="{Binding PageTitle}" Style="{StaticResource PageTitleBlack}"/>
-                        <custom:CustomLabel Text="{Binding BodyText}" Style="{StaticResource BodyLabelGrey}"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTERNewAccount}" Style="{StaticResource PageTitleBlack}"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZSelectthetypeofEntity}" Style="{StaticResource BodyLabelGrey}"/>
                         <BoxView Style="{StaticResource SeparatorStyle}"/>
                     </StackLayout>
 
