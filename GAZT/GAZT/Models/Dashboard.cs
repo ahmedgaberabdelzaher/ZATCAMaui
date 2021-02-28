@@ -78,7 +78,7 @@ namespace GAZT.Models
             {
                 _dayMonth = value;
 
-                _dayMonth = Regex.Replace(_dayMonth, "['st','nd','rd','th']", ""); 
+                //_dayMonth = Regex.Replace(_dayMonth, "['st','nd','rd','th']", ""); 
 
             }
         }

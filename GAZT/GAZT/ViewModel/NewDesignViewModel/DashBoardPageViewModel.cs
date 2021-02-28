@@ -1946,7 +1946,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             IsAccountsStatementLoading = true;
             TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-            HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A");
+            HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A",true);
 
             var items = new ObservableCollection<ASResult>();
             foreach (ASResult singleItem in HeaderSet.D.StatmenetLineItemsSet.Results)
@@ -2690,7 +2690,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType,true);
 
                 double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
                 double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.Credit.Replace("-", string.Empty)));
