@@ -89,7 +89,7 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
                 this.FlowDirection = FlowDirection.RightToLeft;
-                viewModel.LanguageText = AppResources.ZZZSetToEn;
+                //viewModel.LanguageText = AppResources.ZZZSetToEn;
                 viewModel.test();
                 InitializeComponent();
                 
@@ -110,7 +110,7 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
                 this.FlowDirection = FlowDirection.LeftToRight;
-                viewModel.LanguageText = AppResources.ZZZSetToEn;
+                //viewModel.LanguageText = AppResources.ZZZSetToEn;
 
                 viewModel.test();
                 InitializeComponent();
