@@ -715,27 +715,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
         private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
         {
-            Console.WriteLine(_enum);
-            if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+            try
             {
-                var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "ZS0004").ToList();
-                if ( mainactivity.Count > 0)
+                Console.WriteLine(_enum);
+                if(taxPayerDetails != null && taxPayerDetails.Nreg_ActivitySet != null)
                 {
-                    _enum = EstablishmentOutletActivitiesTabsEnum.ActivityList;
+                    if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                    {
+                        var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "ZS0004").ToList();
+                        if (mainactivity.Count > 0)
+                        {
+                            _enum = EstablishmentOutletActivitiesTabsEnum.ActivityList;
+                        }
+                    }
+
+
+                    _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+                    {
+                        openedTab = _enum,
+                        taxPayerDetails = taxPayerDetails,
+                        nextNumber = newNumber,
+                        goBackAction = (List<Nreg_ActivityItem> list) =>
+                        {
+                            addActivities(list);
+                        }
+                    }); ;
                 }
+                else
+                {
+                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                }
+
             }
-
-
-            _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+            catch(Exception ex)
             {
-                openedTab = _enum,
-                taxPayerDetails = taxPayerDetails,
-                nextNumber = newNumber,
-                goBackAction = (List<Nreg_ActivityItem> list) =>
-                {
-                    addActivities(list);
-                }
-            }); ;
+
+            }
+           
         }
 
         private async void navigateToNext()
