@@ -835,9 +835,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (value == null) return;
                 _selectedTransactionTypeFilter = value;
 
-                if(_selectedTransactionTypeFilter.DisplayId == 01) {
-                    _selectedTransactionTypeFilter.Txt30 = AppResources.All;
-                }
+               
 
                 if (_selectedTransactionTypeFilter.StatementFilter != null)
                 {
@@ -1835,12 +1833,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 foreach (TaxRelationSetResult dropdown in TransactionTypeFilter)
                 {
-                    if(dropdown.DisplayId == 01) {
-                        list.Add(AppResources.All);
-                    }
-                    else {
+                    
+                   
                         list.Add(dropdown.Txt30.ToUpper());
-                    }
+                    
 
 
                     
@@ -1888,18 +1884,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         public void updatePicker()
         {
 
-            if (PickerModel.SelectedValue.Equals(AppResources.All)) {
+            var selectedFilter = new ObservableCollection<TaxRelationSetResult>(TransactionTypeFilter.Where(temp => temp.Txt30.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
 
-                var selectedFilter = new ObservableCollection<TaxRelationSetResult>(TransactionTypeFilter.Where(temp => temp.DisplayId == 01)).ToList();
-
-                SelectedTransactionTypeFilter = selectedFilter.FirstOrDefault();
-            }
-            else {
-                var selectedFilter = new ObservableCollection<TaxRelationSetResult>(TransactionTypeFilter.Where(temp => temp.Txt30.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
-
-                SelectedTransactionTypeFilter = selectedFilter.FirstOrDefault();
-            }
-
+            SelectedTransactionTypeFilter = selectedFilter.FirstOrDefault();
 
            
 
