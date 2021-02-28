@@ -557,7 +557,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     if (PickerModel != null && !string.IsNullOrEmpty(PickerModel.SelectedValue))
                     {
 
-             
+
                         if (PickerModel.PickerId == "AddressCountryPicker")
                         {
                             if (PickerModel.PickerExtraData != null && PickerModel.PickerExtraData.ToString().Equals("same"))
@@ -586,7 +586,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         {
                             if (PickerModel.PickerExtraData != null && PickerModel.PickerExtraData.ToString().Equals("same"))
                             {
-                                CitySame = OutletDropDowns?.city_dropdownSet?.results.Where(i =>  i.CityName == PickerModel.SelectedValue).FirstOrDefault();
+                                CitySame = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityName == PickerModel.SelectedValue).FirstOrDefault();
                             }
                             else
                             {
@@ -1369,7 +1369,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             OutletName = string.Empty;
             if (taxPayerDetails != null)
             {
-                taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
+                taxPayerDetails?.Nreg_ActivitySet?.results?.Clear();
             }
             PostalAsPhysical = false;
 
