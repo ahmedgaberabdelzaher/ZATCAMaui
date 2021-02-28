@@ -946,12 +946,13 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
-
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                
             </Style>
             <Style x:Key="CheckboxSelectedFontStyle" x:Name="CheckboxSelectedFontStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
                 <Setter Property="FontSize" Value="12" />
-                <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+                    <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
             </Style>
 
             <!--Button Style-->

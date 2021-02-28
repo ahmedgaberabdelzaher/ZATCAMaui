@@ -523,24 +523,20 @@
 
 
                             <StackLayout Orientation="Horizontal" >
-                                                    <custom1:CheckboxCustom  
-                                                                       Style="{StaticResource CheckboxHeightWidth32}"
-                                                                         VerticalOptions="CenterAndExpand" CheckChanged="CheckBox_CheckedChanged"  IsChecked="{Binding IsCheckboxChecked}"/>
-                                                    <custom:CustomLabel   >
-                                                        <custom:CustomLabel.FormattedText>
-                                                            <FormattedString>
-                                                                <Span    Text="{x:Static ResourceManager:AppResources.CFPDeclarationCheckbox}" />
-                                                            </FormattedString>
-                                                        </custom:CustomLabel.FormattedText>
-                                                        <custom:CustomLabel.Triggers>
-                                                                     <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsCheckboxChecked}" Value="True">
-                                                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
-                                                                     </DataTrigger>
-                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsCheckboxChecked}" Value="False">
-                                                                         <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
-                                                                     </DataTrigger>
-                                                       </custom:CustomLabel.Triggers>
-                                                    </custom:CustomLabel>
+                                        <custom1:CheckboxCustom  
+                                                            Style="{StaticResource CheckboxHeightWidth32}"
+                                                                VerticalOptions="CenterAndExpand" CheckChanged="CheckBox_CheckedChanged"  IsChecked="{Binding IsCheckboxChecked}"/>
+                                        <Label Text="{x:Static ResourceManager:AppResources.CFPDeclarationCheckbox}" FontFamily="{StaticResource SSTArRoman}" FontSize="12"
+                                                HorizontalTextAlignment="Start" >
+                                            <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IsCheckboxChecked}" Value="True">
+                                                        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IsCheckboxChecked}" Value="False">
+                                                        <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
+                                                    </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
                                 </StackLayout>
 
                         </StackLayout>
