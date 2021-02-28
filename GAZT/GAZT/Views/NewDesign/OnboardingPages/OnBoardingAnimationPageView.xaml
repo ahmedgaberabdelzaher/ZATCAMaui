@@ -56,7 +56,7 @@
                 FontFamily="{StaticResource SSTArBold}"
                 HorizontalOptions="EndAndExpand"
                 IsVisible="{Binding IsSkipButtonVisible}"
-                Text="{Binding LanguageText}"
+                Text="{x:Static ResourceManager:AppResources.ZZZSetToEn}"
                 TextColor="{x:StaticResource WhiteTextColor}"
                 VerticalOptions="EndAndExpand"
                 Clicked="ChangeLangButton_Clicked" />
@@ -68,7 +68,7 @@
             <!--  Rotator used to navigate the view  -->
             <rotator:SfRotator             
                 Grid.Row="2"
-                
+                FlowDirection="LeftToRight"
                 Margin="{OnPlatform Android='0,0,0,0', iOS='0,10,0,0'}"
                
                 BackgroundColor="Transparent"
