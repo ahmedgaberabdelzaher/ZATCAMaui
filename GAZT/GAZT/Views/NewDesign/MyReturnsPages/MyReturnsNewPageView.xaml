@@ -156,9 +156,9 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <border:SfBorder   Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                            <StackLayout Padding="0">
-                                                <Grid  Padding="15" RowSpacing="0" >
+                                        <border:SfBorder Margin="0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <StackLayout Padding="0,10">
+                                                <Grid Padding="10" RowSpacing="0">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
@@ -220,7 +220,7 @@
                                                     </buttons:SfButton>
                                                 </Grid>
                                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                                                <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="15" >
+                                                <Grid Padding="10" RowSpacing="15" ColumnSpacing="15" >
                                                     <Grid.RowDefinitions >
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
