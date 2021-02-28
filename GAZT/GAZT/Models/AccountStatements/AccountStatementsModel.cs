@@ -569,7 +569,7 @@ namespace EGAZT.Models.AccountStatements
                         string[] dts = FormattedBldat.Split(' ');
                         if (App.IsArabic) {
 
-                            string date = dts[2] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[0]; 
+                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2]; 
 
                             FormattedBldat = date;
                         }

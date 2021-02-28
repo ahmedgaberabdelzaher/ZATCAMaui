@@ -1589,7 +1589,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 }
 
                 IsLoading = true;
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType,false);
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {
                     if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
@@ -1654,7 +1654,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 IsLoading = true;
                 YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType,false);
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {
                     if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
@@ -1740,7 +1740,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 }
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
-                    (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType);
+                    (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType,false);
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {
                     if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
@@ -1932,7 +1932,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             try
             {
                 IsLoading = true;
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType,false);
                 AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {

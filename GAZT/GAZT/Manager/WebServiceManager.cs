@@ -5520,7 +5520,7 @@ namespace GAZT.Manager
 
 
 
-        public static async Task<ASStatementHeaderSet> GAZTGetAccountStatementHeaderSet(string statementFilter, string fiscalYear, string taxType)
+        public static async Task<ASStatementHeaderSet> GAZTGetAccountStatementHeaderSet(string statementFilter, string fiscalYear, string taxType , bool isFromDashboard)
 
         {
 
@@ -5549,8 +5549,12 @@ namespace GAZT.Manager
                     if (!string.IsNullOrEmpty(statementFilter) && statementFilter == "10")
 
                     {
+                        if (isFromDashboard) {
 
-                        isLoad = "X";
+                            isLoad = "X";
+                        }
+
+                        
 
 
 
