@@ -1092,12 +1092,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
               //  else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
                 else if (ReleaseOrBillDetailsButtonText.Equals(AppResources.PaymentMethodPayNow))
                 {
-                    // AmedmentButtonVisibility = true;
-                    isEditVisible = true;
-                    SetEditImage();
-                    isLabelVisible = false;
-                    IsEditTextVisible = false;
-                    IsBillsButtonTapped = true;
+                   
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
