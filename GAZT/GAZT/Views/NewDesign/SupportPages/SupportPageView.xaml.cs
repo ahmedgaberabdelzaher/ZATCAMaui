@@ -25,7 +25,7 @@ namespace EGAZT.Views.NewDesign
         SupportPageViewModel viewModel;
         public SupportPageView()
         {
-            
+
             InitializeComponent();
             SetLTR();
             viewModel = App.Locator.SupportPageView;
@@ -40,8 +40,8 @@ namespace EGAZT.Views.NewDesign
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
-                
-                        
+
+
             }
             else
             {
@@ -69,7 +69,7 @@ namespace EGAZT.Views.NewDesign
                 BranchLocation.BackgroundColor = Color.FromHex("#FFFFFF");
             }
 
-          
+
 
             //if (App.IsArabic)
             //{
@@ -83,7 +83,7 @@ namespace EGAZT.Views.NewDesign
 
             SetLocationToMap();
 
-            if(viewModel.currentTab== SupportTabEnum.Parent)
+            if (viewModel.currentTab == SupportTabEnum.Parent)
             {
                 viewModel.setSupportTab();
             }
@@ -139,24 +139,24 @@ namespace EGAZT.Views.NewDesign
                     };
                     mapView.Pins.Add(pin);
                 }
-            catch (FeatureNotSupportedException)
-            {
-                // Handle not supported on device exception
-            }
-            catch (FeatureNotEnabledException)
-            {
-                // Handle not enabled on device exception
-            }
-            catch (PermissionException)
-            {
-                // Handle permission exception
+                catch (FeatureNotSupportedException)
+                {
+                    // Handle not supported on device exception
+                }
+                catch (FeatureNotEnabledException)
+                {
+                    // Handle not enabled on device exception
+                }
+                catch (PermissionException)
+                {
+                    // Handle permission exception
+                }
+                catch (Exception)
+                {
+                    // Unable to get location
+                }
             }
             catch (Exception)
-            {
-                // Unable to get location
-            }
-            }
-            catch(Exception)
             {
 
             }
@@ -219,11 +219,13 @@ namespace EGAZT.Views.NewDesign
             viewModel.setFAQ();
             if (App.IsArabic)
             {
-                ContactWebView.Source = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
+                //ContactWebView.Source = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
+                ContactWebView.Source = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
             }
             else
             {
-                ContactWebView.Source = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
+                // ContactWebView.Source = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
+                ContactWebView.Source = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
 
             }
         }
@@ -233,7 +235,7 @@ namespace EGAZT.Views.NewDesign
             viewModel.setChat();
             if (App.IsArabic)
             {
-                
+
                 ChatWebView.Source = "https://chat.gazt.gov.sa/I3root/index.html?lang=ar";
             }
             else
@@ -258,7 +260,7 @@ namespace EGAZT.Views.NewDesign
 
         private void ChatWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
-            if(e.Url.Contains(Constants.GAZTChatPartialUrl))
+            if (e.Url.Contains(Constants.GAZTChatPartialUrl))
             {
                 viewModel.IsLoading = false;
             }
@@ -275,7 +277,7 @@ namespace EGAZT.Views.NewDesign
 
         private void SuggestionsandComplaintsClicked(object sender, EventArgs e)
         {
-       
+
             viewModel.PageTitle = AppResources.NDSuggestionsandComplaints;
             ContactUsWebView.IsVisible = true;
             if (App.IsArabic)
