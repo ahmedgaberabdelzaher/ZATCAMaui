@@ -24,7 +24,6 @@ namespace EGAZT.Views.NewDesign.Common
                 Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 SetLTR();
-                ChangeAeroIcon();
                 viewModel.NoteText = notes;
                 viewModel.IsEdit = isEdit;
 
@@ -48,17 +47,7 @@ namespace EGAZT.Views.NewDesign.Common
             }
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+      
 
         protected override bool OnBackButtonPressed()
         {

@@ -717,6 +717,7 @@
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
                                                     </Grid.ColumnDefinitions>
                                                     <custom:CustomLabel Grid.Column="0"
                                                                             Text="{x:Static ResourceManager:AppResources.VRAttachment}"
@@ -725,6 +726,10 @@
                                                                             Style="{StaticResource ValueLabelBlack}"
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End" />
+
+                                                    <Image Source="Generic_attachment_icon" WidthRequest="25" HeightRequest="25"
+                                                       HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+
                                                 </Grid>
 
                                             </DataTemplate>
