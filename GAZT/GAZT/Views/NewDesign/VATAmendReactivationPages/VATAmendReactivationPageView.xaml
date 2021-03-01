@@ -542,7 +542,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                     </StackLayout>
                                                     <!--End Of Read Only or pre-populated {Binding TodayDate}"-->
                                                     <!--Start Of Additional Information-->
-                                                    <StackLayout Grid.Row="8" >
+                                                    <StackLayout Grid.Row="8" IsEnabled="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration}}" >
                                                         <Label Text="{x:Static custom2:AppResources.VATRImportExport}" Padding="0,0,0,0" Style="{StaticResource ComponentHeaderBlackBold}"/>
                                                         <Grid ColumnSpacing="30">
                                                             <Grid.RowDefinitions>
