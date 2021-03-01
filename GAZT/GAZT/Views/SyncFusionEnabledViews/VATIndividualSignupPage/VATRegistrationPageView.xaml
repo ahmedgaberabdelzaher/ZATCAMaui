@@ -612,7 +612,7 @@
                                                                     <Grid Padding="5,0,5,0">
                                                                         <cards:SfCardView  HasShadow="True" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                                             <Grid>
-                                                                                <Image Margin="0" Source="vat_tile_IbanCard_background.png" Aspect="AspectFill"  Grid.Row="0">
+                                                                                <Image Margin="0" Source="selected171x136.png" Aspect="AspectFill"  Grid.Row="0">
                                                                                 </Image>
                                                                                 <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
                                                                                     <Grid.RowDefinitions>
