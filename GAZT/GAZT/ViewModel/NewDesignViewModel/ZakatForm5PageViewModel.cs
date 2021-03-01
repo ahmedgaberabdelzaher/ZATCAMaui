@@ -1579,12 +1579,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             get
             {
-                return _IndustrySummaryIsVisible;
+                return _ContractingSummaryIsVisible;
             }
             set
             {
-                if (_ContractingSummaryIsVisible == value) return;
-
                 _ContractingSummaryIsVisible = value;
                 RaisePropertyChanged(() => ContractingSummaryIsVisible);
             }
