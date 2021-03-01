@@ -485,6 +485,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         }
 
         public IList<ASResult> Items { get; private set; }
+        private List<ObservableGroupCollection<string, ASResult>> groupedDataValuetoUpdate = null;
+
         private List<ObservableGroupCollection<string, ASResult>> groupedData = null;
 
         public List<ObservableGroupCollection<string, ASResult>> GroupedData
@@ -656,7 +658,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                             }
                         }
-                        GroupedData = agroupedData;
+
+                        if (IsMonthWiseStatementsViewVisible)
+                        {
+                            GroupedData = agroupedData;
+                        }
+                        else
+                        {
+                            groupedDataValuetoUpdate = agroupedData;
+                        }
                     }
                     _statementsLineItems = value;
                     RaisePropertyChanged("StatementsLineItems");
@@ -852,6 +862,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     {
                         await PopulateDataInChipsForYears(SelectedTransactionTypeFilter.TaxType, SelectedTransactionTypeFilter.StatementFilter);
                         IsMonthWiseStatementsViewVisible = true;
+                        GroupedData = groupedDataValuetoUpdate;
                         //StatementsLineItems = new ObservableCollection<ASResult>();
                     });
                 }

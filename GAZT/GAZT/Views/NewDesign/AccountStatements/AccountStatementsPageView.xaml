@@ -289,7 +289,6 @@
                           BackgroundColor="White"
                           SeparatorVisibility="None"
                           IsGroupingEnabled="True"
-                          IsVisible="{Binding IsMonthWiseStatementsViewVisible}"
                           VerticalScrollBarVisibility="Never"
                           SelectionMode="None"
                           ItemsSource="{Binding GroupedData}"  
