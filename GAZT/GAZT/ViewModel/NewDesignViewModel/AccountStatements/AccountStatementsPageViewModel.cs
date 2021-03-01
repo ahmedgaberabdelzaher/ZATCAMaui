@@ -522,7 +522,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public bool isMonthWiseStatementsViewVisible = true;
+        public bool isMonthWiseStatementsViewVisible = false;
 
         public bool IsMonthWiseStatementsViewVisible
         {
@@ -851,6 +851,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     Task.Run(async () =>
                     {
                         await PopulateDataInChipsForYears(SelectedTransactionTypeFilter.TaxType, SelectedTransactionTypeFilter.StatementFilter);
+                        IsMonthWiseStatementsViewVisible = true;
                         //StatementsLineItems = new ObservableCollection<ASResult>();
                     });
                 }
