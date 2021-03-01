@@ -31,7 +31,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             SetPickerFont();
-            _ = PageLoad();
+          //  _ = PageLoad();
         }
         public void SetPickerFont()
         {
@@ -108,6 +108,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     viewModel.IsLoading = true;
                 await viewModel.onPageLoad();
                 viewModel.SetData();
+                viewModel.FilterOnbasisOfChipSelectedItem();
                     viewModel.IsLoading = false;
                 
             }
@@ -118,11 +119,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 viewModel.IsLoading = false;
             }
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             try
             {
                 base.OnAppearing();
+                await PageLoad();
                 var safeInsets = On<iOS>().SafeAreaInsets();
                 safeInsets.Bottom = -10;
                 this.Padding = safeInsets;
