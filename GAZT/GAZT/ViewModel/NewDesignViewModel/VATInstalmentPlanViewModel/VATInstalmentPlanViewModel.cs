@@ -1873,10 +1873,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             try
             {
-                Device.BeginInvokeOnMainThread(() =>
-                {
+               /* Device.BeginInvokeOnMainThread(() =>
+                {*/
                     IsLoading = true;
-                });
+              //  });
                 await Task.Run(async () =>
                 {
 
