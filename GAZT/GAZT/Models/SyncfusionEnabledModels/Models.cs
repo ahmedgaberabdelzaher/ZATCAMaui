@@ -66,16 +66,17 @@ namespace GAZT.Models
     [Preserve(AllMembers = true)]
     public class OverduePaymentAndUnSubmittedReturn
     {
+       
+
         public DateTime? Abrzu { get; set; }
         public string Gpartz { get; set; }
         public string Abtyp { get; set; }
         public string MadabutFg { get; set; }
         public string OpenliMsg { get; set; } //Mada Payment Message
 
+        
 
-        [JsonIgnore]
-        private string _CalendarTyp;
-        [JsonProperty("CalendarTyp")]
+        public string _CalendarTyp;
         public string CalendarTyp
         {
             get
@@ -87,11 +88,13 @@ namespace GAZT.Models
                 _CalendarTyp = value;
                 if (_CalendarTyp != null)
                 {
-                    App.CalType = _CalendarTyp;
+                    App.ACCalType = _CalendarTyp;
                 }
             }
         }
+
        
+
         public string Abtypt { get; set; }
         public DateTime? Abrzo { get; set; }
         public string Langz { get; set; }
@@ -166,12 +169,12 @@ namespace GAZT.Models
                 _dueDtC = value;
                 if (_dueDtC != null)
                 {
-                    if (App.CalType != "")
+                    if (App.ACCalType != "")
                     {
 
                         string formatedDate = string.Format(_dueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
 
-                        if (App.CalType.Equals("G"))
+                        if (App.ACCalType.Equals("G"))
                         {
 
                              string[] dts1 = formatedDate.Split('/');
@@ -179,7 +182,7 @@ namespace GAZT.Models
                             FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
 
                         }
-                        else if (App.CalType.Equals("H"))
+                        else if (App.ACCalType.Equals("H"))
                         {
 
                             string[] dts1 = formatedDate.Split('/');

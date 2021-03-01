@@ -582,9 +582,46 @@ namespace EGAZT.Models.AccountStatements
 
                        
                     }
-                    else
+                    else if (App.CalType.Equals("H"))
                     {
                         FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("ar-SA")));
+
+                        string[] dts = FormattedBldat.Split(' ');
+                        if (App.IsArabic)
+                        {
+
+                            string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                            FormattedBldat = date;
+                        }
+                        else
+                        {
+                            string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                            FormattedBldat = date;
+                        }
+
+
+
+                    }
+                    else
+                    {
+                        FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+
+                        string[] dts = FormattedBldat.Split(' ');
+                        if (App.IsArabic)
+                        {
+
+                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                            FormattedBldat = date;
+                        }
+                        else
+                        {
+                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                            FormattedBldat = date;
+                        }
                     }
                 }
             }

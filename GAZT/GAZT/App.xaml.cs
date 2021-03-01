@@ -277,6 +277,8 @@ namespace EGAZT
         public static TIN CurrentDropdownTIN;
         public static bool IsJailBrokenDevice = false;
         public static string CalType = "G";
+        public static string ACCalType = "G";
+
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;//true
         public static bool IsArabic = false;//true
