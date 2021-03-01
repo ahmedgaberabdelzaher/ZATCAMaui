@@ -1636,15 +1636,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ImporterImageSource == "selected171x136.png")
                 {
-                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ImporterImageSource = "unselected171x136.png";
                     viewModel.ImporterTextColor = Color.Black;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
                 else
                 {
-                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
+                    viewModel.ImporterImageSource = "selected171x136.png";
                     viewModel.ImporterTextColor = Color.White;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                 }
@@ -1672,15 +1672,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ExporterImageSource == "selected171x136.png")
                 {
-                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ExporterImageSource = "unselected171x136.png";
                     viewModel.ExporterTextColor = Color.Black;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
                 else
                 {
-                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
+                    viewModel.ExporterImageSource = "selected171x136.png";
                     viewModel.ExporterTextColor = Color.White;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                 }

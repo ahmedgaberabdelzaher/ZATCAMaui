@@ -15,8 +15,9 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-             ios:Page.UseSafeArea="true"
-             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
+             ios:Page.UseSafeArea="True"
+             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
             BackgroundImageSource="partials_background" x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView">
@@ -564,7 +565,7 @@
                                                 <ColumnDefinition Width="33*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <cards:SfCardView Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
+                                            <cards:SfCardView Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" Margin="2" >
                                                 <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5,12,5,12" Spacing="0" Padding="0">
                                                     <Image HorizontalOptions="Start" Source="submited.png" VerticalOptions="Start">
                                                     </Image>
@@ -576,7 +577,7 @@
                                                 </cards:SfCardView.GestureRecognizers>
                                             </cards:SfCardView>
 
-                                            <cards:SfCardView Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
+                                            <cards:SfCardView Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" Margin="2">
                                                 <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5,12,5,12" Spacing="0" Padding="0" >
                                                     <Image HorizontalOptions="Start" Source="clockNew.png" VerticalOptions="Start">
                                                     </Image>
@@ -589,7 +590,7 @@
                                             </cards:SfCardView>
 
 
-                                            <cards:SfCardView Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="8" >
+                                            <cards:SfCardView Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="2">
                                                 <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5,12,5,12" Spacing="0" Padding="0">
                                                     <Image HorizontalOptions="Start" Source="unsubmitted.png" VerticalOptions="Start">
                                                     </Image>
@@ -611,7 +612,7 @@
 
                             <!--Last Transaction-->
                             <StackLayout IsVisible="{Binding IfnotRegInVATAndZakat}">
-                            <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0" >
+                            <yummy:PancakeView BackgroundColor="White"  CornerRadius="12,12,0,0" >
 
                                 <cards:SfCardView HasShadow="False" BackgroundColor="White" CornerRadius="10" Margin="15,15,15,10">
 
@@ -1229,7 +1230,7 @@
             <!--Menu Ends-->
 
             <Grid x:Name="ButtomTab" VerticalOptions="EndAndExpand" Grid.Row="1" Margin="0,-3,0,0" BackgroundColor="White" Padding="0,0,0,26">
-                <Image Source="Bg_Bottom_nav.png" Aspect="Fill" BackgroundColor="Transparent"/>
+                <Image Source="Bg_Bottom_nav.png"  Aspect="AspectFill" BackgroundColor="Transparent"/>
                 <yummy:PancakeView Padding="20,0,20,8" BackgroundColor="Transparent" >
                     <Grid BackgroundColor="Transparent">
                         <Grid.RowDefinitions>
