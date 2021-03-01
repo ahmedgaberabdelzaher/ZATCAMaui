@@ -48,7 +48,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <!--Parent View Starts-->
-                    <ScrollView Grid.Row="0" Padding="0,0,0,32" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Parent}}">
+                    <ScrollView Grid.Row="0" Padding="0,0,0,32" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Parent}}" VerticalScrollBarVisibility="Never">
                         <StackLayout Spacing="24" Padding="0,12,0,0">
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}" >
@@ -273,12 +273,12 @@
                             </StackLayout>
                         </Grid>
 
-                        <WebView x:Name="ContactUsWebView" IsVisible="False"  WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />
+                        <WebView x:Name="ContactUsWebView" IsVisible="False"  WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" Margin="0,-60,0,0"/>
                     </Grid>
                     <!--ContactUs View End-->
 
                     <!--Branch Locator Starts-->
-                    <ScrollView  Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.BranchLocator}}">
+                    <ScrollView  Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.BranchLocator}}" VerticalScrollBarVisibility="Never">
                         <StackLayout Padding="0,0,0,32" >
                             <!--DropDown Starts-->
                             <Grid>
@@ -300,7 +300,7 @@
                                 </custom:CustomButton>
 
                                 <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="BranchLocation" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
-                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Red" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                         FooterHeight="46" SelectionChanged="BranchLocation_SelectionChanged">

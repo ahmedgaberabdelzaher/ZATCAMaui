@@ -15755,5 +15755,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ACFilterYearValidation", resourceCulture);
             }
         }
+        
+        public static string VATAmendRegistrationCancel {
+            get {
+                return ResourceManager.GetString("VATAmendRegistrationCancel", resourceCulture);
+            }
+        }
     }
 }

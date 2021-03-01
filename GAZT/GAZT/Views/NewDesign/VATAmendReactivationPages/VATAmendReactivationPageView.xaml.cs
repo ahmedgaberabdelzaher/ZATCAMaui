@@ -1682,7 +1682,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 if (viewModel.ListOfActionButtonsApplicableForRegistration != null && viewModel.ListOfActionButtonsApplicableForRegistration.Count() != 0)
                 {
-                    String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
+                    String action = await DisplayActionSheet("", AppResources.VATAmendRegistrationCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
                     if (App.IsArabic)
                     {
                         ArButtons buttonId = ArButtons.None;
