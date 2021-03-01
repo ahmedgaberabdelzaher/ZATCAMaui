@@ -523,6 +523,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                 loginGrid.Children.Add(hybridWebView, 0, 0);
                 loginGrid.LowerChild(hybridWebView);
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                if (Device.RuntimePlatform == Device.iOS && safeInsets.Bottom == 0)
+                {
+                    loginGrid.Margin = new Thickness(0, -50, 0, -30);
+                }
             }
             catch (Exception ex)
             {
