@@ -902,7 +902,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             ToDate = " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
                             string[] dts2 = ToDate.Split('-');
-                            string date2 = dts2[0] + "-" + UtilityManager.GetMonthName(dts2[1]) + "-" + dts2[2];
+                            string date2 = dts2[1] + "-" + UtilityManager.GetMonthName(dts2[2]) + "-" + dts2[3];
                             ToDate = date2;
 
                         }

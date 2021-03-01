@@ -937,11 +937,7 @@ namespace GAZT.Manager
         public static string Converthijri(DateTime FormatedFaedn)
         {
             // FormatedFaedn = _faedn.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-            var calendar = new HijriCalendar();
-            var day = calendar.GetDayOfMonth(FormatedFaedn);
-            var year = calendar.GetYear(FormatedFaedn);
-            var month = calendar.GetMonth(FormatedFaedn);
-            string hijriDate = UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
+            string hijriDate = UtilityManager.FormatAccordingToDeviceHijriEnglish(FormatedFaedn.ToString("d/M/yyyy", new CultureInfo("ar-SA").DateTimeFormat));
             return hijriDate;
 
         }
