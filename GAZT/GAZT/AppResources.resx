@@ -8847,6 +8847,9 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+     <data name="ACFilterApply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
   <data name="TransactionAmount" xml:space="preserve">
     <value>Transaction Amount</value>
   </data>

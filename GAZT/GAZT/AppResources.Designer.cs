@@ -15618,6 +15618,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ACFilterApply {
+            get {
+                return ResourceManager.GetString("ACFilterApply", resourceCulture);
+            }
+        }
+        
         public static string TransactionAmount {
             get {
                 return ResourceManager.GetString("TransactionAmount", resourceCulture);

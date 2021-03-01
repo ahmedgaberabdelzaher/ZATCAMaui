@@ -438,7 +438,7 @@
                     
                     <buttons:SfButton Grid.Row="3" Grid.Column="0" VerticalOptions="End" Margin="0,60,0,60" x:Name="btnReasonContinue"
                                       Command="{Binding FilterBtnCommand}"
-                                      Text="{x:Static ResourceManager:AppResources.Filter}"
+                                      Text="{x:Static ResourceManager:AppResources.ACFilterApply}"
                                       Style="{StaticResource PrimaryButtonStyle}" />
                 </Grid>
 
