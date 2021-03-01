@@ -174,63 +174,29 @@ namespace GAZT.Models
                         if (App.CalType.Equals("G"))
                         {
 
-                            if (App.IsArabic)
-                            {
+                             string[] dts1 = formatedDate.Split('/');
 
-                                string[] dts1 = formatedDate.Split('/');
-
-                                FormatedDuedate = dts1[2] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[0];
-                            }
-                            else
-                            {
-                                string[] dts1 = formatedDate.Split('/');
-
-                                FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
-                            }
-
+                            FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
 
                         }
                         else if (App.CalType.Equals("H"))
                         {
 
+                            string[] dts1 = formatedDate.Split('/');
 
-                            if (App.IsArabic)
-                            {
-
-                                string[] dts1 = formatedDate.Split('/');
-
-                                FormatedDuedate = dts1[2] + " " + UtilityManager.GetMonthNameHijri(dts1[1]) + " " + dts1[0];
-                            }
-                            else
-                            {
-                                string[] dts1 = formatedDate.Split('/');
-
-                                FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthNameHijri(dts1[1]) + " " + dts1[2];
-                            }
-                
+                            FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthNameHijri(dts1[1]) + " " + dts1[2];
 
                         }
-
 
                     }
                     else {
 
+
                         string formatedDate = string.Format(_dueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
 
+                        string[] dts1 = formatedDate.Split('/');
 
-                        if (App.IsArabic)
-                        {
-
-                            string[] dts1 = formatedDate.Split('/');
-
-                            FormatedDuedate = dts1[2] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[0];
-                        }
-                        else
-                        {
-                            string[] dts1 = formatedDate.Split('/');
-
-                            FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
-                        }
+                        FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
 
                     }
 
