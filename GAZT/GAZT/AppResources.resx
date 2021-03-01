@@ -8907,4 +8907,13 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="VATWarningPenalties" xml:space="preserve">
     <value>By requesting a review on non-fixed penalties, I agree with the re-assessment that was issued by GAZT for this return period</value>
   </data>
+     <data name="ACFilterAmountValidation" xml:space="preserve">
+    <value>The minimum amount must be less than the maximum amount</value>
+  </data>
+     <data name="ACFilterDateValidation" xml:space="preserve">
+    <value>The start date of the transaction must be before the end date of the transaction</value>
+  </data>
+      <data name="ACFilterYearValidation" xml:space="preserve">
+    <value>Period start date must be before the period end date</value>
+  </data>
 </root>

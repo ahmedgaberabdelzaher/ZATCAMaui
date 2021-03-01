@@ -65,7 +65,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="24"/>
                             <ColumnDefinition Width="*"/>
-                           <ColumnDefinition Width="24"/>
+                            <ColumnDefinition Width="24"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ASStatementDetails}" TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="CenterAndExpand" FontSize="Large" />
 
@@ -79,97 +79,86 @@
                             </Image.GestureRecognizers>
                         </Image>
 
-                        
+
                     </Grid>
                 </Grid>
             </Grid>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        
-        
-        <StackLayout Margin="20">
 
-            <cards:SfCardView  HasShadow="True" Padding="10" CornerRadius="20" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
 
-                <Grid RowSpacing="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"></ColumnDefinition>
-                        <ColumnDefinition Width="50*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
 
-                    <StackLayout Grid.Row="0" Grid.ColumnSpan="2" >
+        <StackLayout>
+            <border:SfBorder Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                <StackLayout Padding="0" Spacing="0" >
+                    <Grid  Padding="15" RowSpacing="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="0">
+                            <Label x:Name="LableCardTitle"   VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
 
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                            </Grid.RowDefinitions>
-
-                            <StackLayout Grid.Row="0" Grid.Column="0">
-                                <custom:CustomLabel x:Name="LableCardTitle" Style="{StaticResource SectionTitleBlackBold}"></custom:CustomLabel>
-                                <StackLayout Margin="0,-10" Orientation="Horizontal">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASFBNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></custom:CustomLabel>
-                                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Text=": "></custom:CustomLabel>
-                                    <custom:CustomLabel x:Name="LableFbNum" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                </StackLayout>
-
+                            <StackLayout  Orientation="Horizontal">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASFBNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></custom:CustomLabel>
+                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Text=": "></custom:CustomLabel>
+                                <custom:CustomLabel x:Name="LableFbNum" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
                             </StackLayout>
-
-                            <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="CenterAndExpand" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Frame x:Name="FrameCardStatus" CornerRadius="20" BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Opacity="0.2"/>
-                                <custom:CustomLabel x:Name="LableCardStatus" Style="{StaticResource CaptionLabelGrey}" TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" Padding="10,0,10,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
-                            </Grid>
-
-                        </Grid>
-                        
-                    </StackLayout>
-                    
-                       
-                    <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" Margin="0,5" />
-
-                    <StackLayout Grid.Row="2" Grid.Column="0" Margin="0,5">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                        <custom:CustomLabel x:Name="LableSadadNum" Margin="0,-10" Style="{StaticResource BodyLabelBlackMedium}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="2" Grid.Column="1" Margin="0,5">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                        <custom:CustomLabel x:Name="LableTransactionDate"  Margin="0,-10" Style="{StaticResource BodyLabelBlackMedium}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                    </StackLayout>
-
-
-                    <StackLayout Grid.Row="3" Grid.Column="0" Margin="0,5">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryTaxPeriod}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                        <custom:CustomLabel x:Name="LableTaxPeriod" Margin="0,-10" Style="{StaticResource BodyLabelBlackMedium}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="3" Grid.Column="1" Margin="0,5">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                        <custom:CustomLabel x:Name="LableDueDate" Margin="0,-10" Style="{StaticResource BodyLabelBlackMedium}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                    </StackLayout>
+                        </StackLayout>
+                        <Frame x:Name="FrameCardStatus" Grid.Row="0" Grid.Column="1"
+                                                           HorizontalOptions="FillAndExpand"
+                                                    BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"
+                                                    Padding="10,10,10,10" CornerRadius="14"
+                                                    HeightRequest="20" Opacity=".2"
+                                                     HasShadow="False"   
+                                                    VerticalOptions="CenterAndExpand" >
+                        </Frame>
+                        <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" Padding="10,0,10,0">
+                            <!--<Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding Betrh}"
+                                               TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                        </Label>-->
 
 
 
+                            <custom:CustomLabel x:Name="LableCardStatus" Style="{StaticResource CaptionLabelBlack}"
+                                                                            TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+
+                            </custom:CustomLabel>
+                        </StackLayout>
+                        <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" Margin="0,5" />
+
+                        <StackLayout Grid.Row="2" Grid.Column="0" Margin="0,5">
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                            <custom:CustomLabel x:Name="LableSadadNum" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="2" Grid.Column="1" Margin="0,5">
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                            <custom:CustomLabel x:Name="LableTransactionDate"  Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                        </StackLayout>
 
 
-                </Grid>
-                
-            </cards:SfCardView>
+                        <StackLayout Grid.Row="3" Grid.Column="0" Margin="0,5">
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryTaxPeriod}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                            <custom:CustomLabel x:Name="LableTaxPeriod" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                        </StackLayout>
 
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,20">
+                        <StackLayout Grid.Row="3" Grid.Column="1" Margin="0,5">
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                            <custom:CustomLabel x:Name="LableDueDate" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                        </StackLayout>
+                    </Grid>
+
+                </StackLayout>
+            </border:SfBorder >
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,20" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
@@ -180,8 +169,8 @@
                     <custom:CustomLabel x:Name="LableAmount" Text="" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"></custom:CustomLabel>
                 </StackLayout>
             </Grid>
-            
-            
         </StackLayout>
+
+
     </ContentPage.Content>
 </ContentPage>

@@ -63,7 +63,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             LableTaxPeriod.Text = ""+aSResult.PeriodTxt;
             LableFbNum.Text = "" + aSResult.Fbnum;
             LableDueDate.Text = "" + aSResult.FormattedBldat2;
-            LableSadadNum.Text = "" + aSResult.Opbel;
+            LableSadadNum.Text = "" + aSResult.Vtre2;
             LableTransactionDate.Text = "" + aSResult.FormattedBldat;
            // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
             LableCardStatus.Text = "" + aSResult.StatusDesc;

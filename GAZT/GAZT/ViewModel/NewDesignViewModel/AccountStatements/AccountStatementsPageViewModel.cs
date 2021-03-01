@@ -545,6 +545,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+
+        public bool isTotalAmountVisible = false;
+
+        public bool IsTotalAmountVisible
+        {
+            get
+            {
+                return isTotalAmountVisible;
+            }
+            set
+            {
+                if (isTotalAmountVisible == value) return;
+
+                if (isTotalAmountVisible != value)
+                {
+                    isTotalAmountVisible = value;
+                    RaisePropertyChanged("IsTotalAmountVisible");
+                }
+            }
+        }
         public bool isNormalStatementsViewVisible = false;
 
         public bool IsNormalStatementsViewVisible
@@ -1665,6 +1685,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 IsLoading = true;
                 YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType,false);
+                IsTotalAmountVisible = true;
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {
                     if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)

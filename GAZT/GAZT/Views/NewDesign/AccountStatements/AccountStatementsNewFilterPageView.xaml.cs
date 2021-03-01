@@ -280,7 +280,21 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         private void To_Amount_Unfocused(object sender, FocusEventArgs e)
         {
+
             viewModel.ToTxAmount = TxToAmountEntry.Text;
+            if(!string.IsNullOrEmpty(viewModel.FromTxAmount) && !string.IsNullOrEmpty(viewModel.ToTxAmount)) {
+                var fromAmount = Convert.ToDouble(viewModel.FromTxAmount);
+                var toAmount = Convert.ToDouble(viewModel.ToTxAmount);
+
+                if(fromAmount > toAmount) {
+
+                     viewModel._dialogService.ShowMessage(AppResources.ACFilterAmountValidation,AppResources.Information);
+                    viewModel.ToTxAmount = "";
+                    TxToAmountEntry.Text = "";
+                }
+
+            }
+
         }
 
         private void To_Amount_Changed(object sender, TextChangedEventArgs e)
@@ -345,6 +359,41 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     }
                 }
 
+                if (!string.IsNullOrEmpty(viewModel.TxFromDate) && !string.IsNullOrEmpty(viewModel.TxToDate))
+                {
+
+                    try {
+
+                        CultureInfo calCul;
+
+                        if (viewModel.IsHijriCal)
+                        {
+                            calCul = new CultureInfo("ar-SA");
+                        }
+                        else
+                        {
+                            calCul = new CultureInfo("en-US");
+                        }
+
+
+                        if (DateTime.ParseExact(viewModel.TxFromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(viewModel.TxToDate, "yyyy/MM/dd", calCul))
+                        {
+                            viewModel.TxToDate = "";
+                             viewModel._dialogService.ShowMessage(AppResources.ACFilterDateValidation,AppResources.Information);
+                        }
+
+                    }
+                    catch (Exception ex) {
+
+                        Console.WriteLine("Date exception", ex.Message);
+                    }
+
+
+
+                   
+
+                }
+
 
             }
             catch (Exception ex)
@@ -381,6 +430,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         {
                             viewModel.TPToDate = year; // + "/" + month + "/" + day;
                         }
+
                     }
                 }
                 else
@@ -400,7 +450,29 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         {
                             viewModel.TPToDate = year; // + "/" + month + "/" + day;
                         }
+
+
+                       
                     }
+                }
+
+
+                CultureInfo calCul;
+
+                if (viewModel.IsHijriCal)
+                {
+                    calCul = new CultureInfo("ar-SA");
+                }
+                else
+                {
+                    calCul = new CultureInfo("en-US");
+                }
+
+
+                if (DateTime.ParseExact(viewModel.TPFromDate, "yyyy", calCul) > DateTime.ParseExact(viewModel.TPToDate, "yyyy", calCul))
+                {
+                    viewModel.TPToDate = "";
+                    viewModel._dialogService.ShowMessage(AppResources.ACFilterYearValidation, AppResources.Information);
                 }
 
 

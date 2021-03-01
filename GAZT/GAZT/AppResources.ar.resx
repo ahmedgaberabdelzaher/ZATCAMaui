@@ -8829,4 +8829,13 @@ info@gazt.gov.sa</value>
   <data name="SADADDetailss" xml:space="preserve">
     <value>تفاصيل سداد</value>
   </data>
+      <data name="ACFilterAmountValidation" xml:space="preserve">
+    <value>مبلغ الحد الأدنى يجب ان يكون اقل من مبلغ الحد الاقصى</value>
+  </data>
+     <data name="ACFilterDateValidation" xml:space="preserve">
+    <value>تاريخ بداية العملية يجب ان يكون قبل تاريخ نهاية العملية</value>
+  </data>
+      <data name="ACFilterYearValidation" xml:space="preserve">
+    <value>تاريخ بداية الفترة يجب ان يكون قبل تاريخ نهاية الفترة</value>
+  </data>
 </root>

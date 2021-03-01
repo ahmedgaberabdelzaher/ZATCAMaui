@@ -15737,5 +15737,23 @@ namespace EGAZT {
                 return ResourceManager.GetString("VATWarningPenalties", resourceCulture);
             }
         }
+        
+        public static string ACFilterAmountValidation {
+            get {
+                return ResourceManager.GetString("ACFilterAmountValidation", resourceCulture);
+            }
+        }
+        
+        public static string ACFilterDateValidation {
+            get {
+                return ResourceManager.GetString("ACFilterDateValidation", resourceCulture);
+            }
+        }
+        
+        public static string ACFilterYearValidation {
+            get {
+                return ResourceManager.GetString("ACFilterYearValidation", resourceCulture);
+            }
+        }
     }
 }
