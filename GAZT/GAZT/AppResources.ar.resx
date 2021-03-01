@@ -8838,4 +8838,9 @@ info@gazt.gov.sa</value>
       <data name="ACFilterYearValidation" xml:space="preserve">
     <value>تاريخ بداية الفترة يجب ان يكون قبل تاريخ نهاية الفترة</value>
   </data>
+    <data name="VATAmendRegistrationCancel" xml:space="preserve">
+    <value>يلغي</value>
+    <comment>VAT Amendment Registration</comment>
+  </data>
+    
 </root>
