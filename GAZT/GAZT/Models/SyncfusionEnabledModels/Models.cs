@@ -88,6 +88,32 @@ namespace GAZT.Models
                 _CalendarTyp = value;
                 if (_CalendarTyp != null)
                 {
+
+                    if (DueDtC != null)
+                    {
+
+                        string formatedDate = string.Format(DueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
+
+                        if (CalendarTyp.Equals("G"))
+                        {
+
+                            string[] dts1 = formatedDate.Split('/');
+
+                            FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
+
+                        }
+                        else if (CalendarTyp.Equals("H"))
+                        {
+
+                            string[] dts1 = formatedDate.Split('/');
+
+                            FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthNameHijri(dts1[1]) + " " + dts1[2];
+
+                        }
+
+                    }
+
+
                     App.ACCalType = _CalendarTyp;
                 }
             }
@@ -169,12 +195,12 @@ namespace GAZT.Models
                 _dueDtC = value;
                 if (_dueDtC != null)
                 {
-                    if (App.ACCalType != "")
+                    if (CalendarTyp != null)
                     {
 
                         string formatedDate = string.Format(_dueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
 
-                        if (App.ACCalType.Equals("G"))
+                        if (CalendarTyp.Equals("G"))
                         {
 
                              string[] dts1 = formatedDate.Split('/');
@@ -182,7 +208,7 @@ namespace GAZT.Models
                             FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
 
                         }
-                        else if (App.ACCalType.Equals("H"))
+                        else if (CalendarTyp.Equals("H"))
                         {
 
                             string[] dts1 = formatedDate.Split('/');
@@ -192,16 +218,16 @@ namespace GAZT.Models
                         }
 
                     }
-                    else {
+                    //else {
 
 
-                        string formatedDate = string.Format(_dueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
+                    //    string formatedDate = string.Format(_dueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
 
-                        string[] dts1 = formatedDate.Split('/');
+                    //    string[] dts1 = formatedDate.Split('/');
 
-                        FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
+                    //    FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
 
-                    }
+                    //}
 
 
                 }
