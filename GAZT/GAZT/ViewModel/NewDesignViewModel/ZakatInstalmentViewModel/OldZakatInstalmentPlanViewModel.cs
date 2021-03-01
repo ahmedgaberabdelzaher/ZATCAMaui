@@ -3376,10 +3376,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                 try
                 {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
+                  /*  Device.BeginInvokeOnMainThread(() =>
+                    {*/
                         IsNewLoading = true;
-                    });
+                 //   });
                     await Task.Run(async () =>
                     {
 
@@ -4719,7 +4719,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
 
-                    MessagingCenter.Send<object, Boolean>(this, "InvoiceBillsLoaded", true);
+                    MessagingCenter.Send<object, bool>(this, "InvoiceBillsLoaded", true);
 
 
 
@@ -4738,7 +4738,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {

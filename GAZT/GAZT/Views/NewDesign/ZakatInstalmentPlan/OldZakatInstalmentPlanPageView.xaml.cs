@@ -396,7 +396,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                             {
 
                                 BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[i];
-                                totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.selectedList[i].ADueAmtTb);
+                                totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.ZakatInvoicesList[i].ADueAmtTb);
 
                             }
 
