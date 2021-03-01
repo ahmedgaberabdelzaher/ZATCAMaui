@@ -8678,9 +8678,10 @@ info@gazt.gov.sa</value>
   <data name="DBSMVATRegistrationDetails" xml:space="preserve">
     <value>تفاصيل التسجيل في ضريبة القيمة المضافة</value>
   </data>
+    
   <data name="DBSMAmend" xml:space="preserve">
-    <value>تعديل تفاصي التسجيل</value>
-  </data>
+   <value>تعديل تفاصيل التسجيل</value>
+   </data>
   <data name="DBSMAmendmentOfVATRegistration" xml:space="preserve">
     <value>تعديل تفاصيل التسجيل في ضريبة القيمة المضافة</value>
   </data>

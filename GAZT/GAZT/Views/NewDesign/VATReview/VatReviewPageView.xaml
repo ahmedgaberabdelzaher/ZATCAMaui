@@ -1589,13 +1589,9 @@
 
                                         </Grid>
 
-                                         <listView:SfListView HorizontalOptions="Center"
-                                                             IsScrollBarVisible="False" IsScrollingEnabled="False"
-                                                             VerticalOptions="Center" AutoFitMode="Height"
-                                                             ItemsSource="{Binding AttachmentsListViewData}"
-                                                             SelectionMode="None"
-                                                             SelectionBackgroundColor="Transparent">
-                                            <listView:SfListView.ItemTemplate>
+                                         <StackLayout HorizontalOptions="Center"
+                                                            BindableLayout.ItemsSource="{Binding BankGuranteeAttachmentsListViewData}" VerticalOptions="Center">
+                                            <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
 
  
@@ -1626,8 +1622,8 @@
  
 
                                                 </DataTemplate>
-                                            </listView:SfListView.ItemTemplate>
-                                        </listView:SfListView>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
 
                                     </StackLayout>
                                 </StackLayout>
@@ -1949,17 +1945,12 @@
                                                                 HorizontalTextAlignment="End" />
                                         </Grid>
 
-                                         <listView:SfListView IsVisible="{Binding IsBankGurantSecuritySelected}" HorizontalOptions="Center"
-                                                             IsScrollBarVisible="False" IsScrollingEnabled="False"
-                                                             VerticalOptions="Center" AutoFitMode="DynamicHeight"
-                                                             ItemsSource="{Binding BankGuranteeAttachmentsListViewData}"
-                                                             SelectionMode="None"
-                                                             SelectionBackgroundColor="Transparent">
-                                            <listView:SfListView.Behaviors>
-                                                <local:ListViewBehavior/> 
-                                            </listView:SfListView.Behaviors>
-                                     
-                                            <listView:SfListView.ItemTemplate>
+                                        <StackLayout IsVisible="{Binding IsBankGurantSecuritySelected}" HorizontalOptions="Center" BindableLayout.ItemsSource="{Binding BankGuranteeAttachmentsListViewData}" 
+                                                             
+                                                             VerticalOptions="Center" >
+
+
+                                            <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
 
                                                     <Grid>
@@ -1986,8 +1977,8 @@
                                                     </Grid>
 
                                                 </DataTemplate>
-                                            </listView:SfListView.ItemTemplate>
-                                        </listView:SfListView>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
