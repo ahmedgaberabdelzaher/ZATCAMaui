@@ -155,6 +155,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 {
                     // * Start timer period for valid OTP
                     viewModel.StartOTPTimer();
+                    viewModel.ResendOTPTextColor = Color.FromHex("#c7c7c7");
+
                 }
             }
         }

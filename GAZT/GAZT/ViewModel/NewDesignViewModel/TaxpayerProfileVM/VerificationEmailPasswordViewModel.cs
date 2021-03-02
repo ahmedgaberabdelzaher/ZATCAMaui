@@ -9,6 +9,7 @@ using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Models.TPProfile;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -243,6 +244,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged("ConfirmPasswordEntry");
             }
         }
+
+
+        private Color _resendOTPTextColor = Color.FromHex("#c7c7c7");
+        public Color ResendOTPTextColor
+        {
+            get
+            {
+                return _resendOTPTextColor;
+            }
+            set
+            {
+                if (_resendOTPTextColor == value) return;
+
+                _resendOTPTextColor = value;
+                RaisePropertyChanged("ResendOTPTextColor");
+            }
+        }
+        
         #endregion
 
         public VerificationEmailPasswordViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -299,7 +318,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 LblCountDownTimer = "0:" + countDownSeconds.ToString();
 
             // Stop timer
-            if (countDownSeconds == 0) { otpTimer.Stop(); }
+            if (countDownSeconds == 0)
+            {
+                otpTimer.Stop();
+                ResendOTPTextColor = Color.FromHex("#006450");
+
+            }
         }
 
         // * Call API
