@@ -403,7 +403,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         }
                         if (App.LoginDataRetrieved.VtReg == "X")
                         {
-                            //viewModel.IfnotRegInVATAndZakat = true;
+                            viewModel.IfnotRegInVATAndZakat = true;
                             viewModel.IfSignUpnNotRegInVATShowVATServie = true;
                             viewModel.IfSignUpnNotRegInVAT = false;
                         }
@@ -418,7 +418,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         }
                         if (App.LoginDataRetrieved.ZkReg == "X")
                         {
-                            //viewModel.IfnotRegInVATAndZakat = true;
+                            viewModel.IfnotRegInVATAndZakat = true;
                         }
                     }
 

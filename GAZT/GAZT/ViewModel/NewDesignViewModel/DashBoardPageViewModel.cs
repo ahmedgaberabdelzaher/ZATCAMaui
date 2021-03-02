@@ -511,6 +511,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _IsAccountStatementAvilable = false;
+        public bool IsAccountStatementAvilable
+        {
+            get
+            {
+                return _IsAccountStatementAvilable;
+            }
+            set
+            {
+                _IsAccountStatementAvilable = value;
+                RaisePropertyChanged("IsAccountStatementAvilable");
+            }
+        }
+
         private bool _ifRegInZakat;
         public bool IfRegInZakat
         {
@@ -1974,11 +1988,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             if (AccountStatementsList.Count == 0)
             {
-                IfnotRegInVATAndZakat = false;
+                IsAccountStatementAvilable = false;
             }
             else
             {
-                IfnotRegInVATAndZakat = true;
+                IsAccountStatementAvilable = true;
             }
 
 
