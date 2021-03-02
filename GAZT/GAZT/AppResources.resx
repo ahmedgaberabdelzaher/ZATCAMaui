@@ -7210,13 +7210,13 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Periodic Instalment Amount</value>
   </data>
   <data name="ZakatInstalmentCashRatio" xml:space="preserve">
-    <value>13. Proportion of Cash ((4 + 5) / 7)</value>
+    <value>Proportion of Cash ((4 + 5) / 7)</value>
   </data>
   <data name="ZakatInstalmentDisplayInstalmentDetails" xml:space="preserve">
     <value>Display Instalment Details</value>
   </data>
   <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
-    <value>12. Current Ratio (6/7)</value>
+    <value>Current Ratio (6/7)</value>
   </data>
   <data name="ZakatYear" xml:space="preserve">
     <value>Year</value>
@@ -8847,7 +8847,7 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
-     <data name="ACFilterApply" xml:space="preserve">
+  <data name="ACFilterApply" xml:space="preserve">
     <value>Apply</value>
   </data>
   <data name="TransactionAmount" xml:space="preserve">
@@ -8907,16 +8907,16 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="VATWarningPenalties" xml:space="preserve">
     <value>By requesting a review on non-fixed penalties, I agree with the re-assessment that was issued by GAZT for this return period</value>
   </data>
-     <data name="ACFilterAmountValidation" xml:space="preserve">
+  <data name="ACFilterAmountValidation" xml:space="preserve">
     <value>The minimum amount must be less than the maximum amount</value>
   </data>
-     <data name="ACFilterDateValidation" xml:space="preserve">
+  <data name="ACFilterDateValidation" xml:space="preserve">
     <value>The start date of the transaction must be before the end date of the transaction</value>
   </data>
-      <data name="ACFilterYearValidation" xml:space="preserve">
+  <data name="ACFilterYearValidation" xml:space="preserve">
     <value>Period start date must be before the period end date</value>
   </data>
-   <data name="VATAmendRegistrationCancel" xml:space="preserve">
+  <data name="VATAmendRegistrationCancel" xml:space="preserve">
     <value>Cancel</value>
     <comment>VAT Amendment Registration</comment>
   </data>
