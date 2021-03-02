@@ -45,19 +45,21 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 {
                     viewModel.TaxablePeriod = paymentInfo.Period;
                 }
-                else
-                {
-                    viewModel.TaxablePeriod = viewModel.selectedTaxablePeriod;
-
-                }
+                
 
                 this.BindingContext = viewModel;    
             }
             else
             {
                 _dashBoardPageViewModel = App.Locator.GAZTNewDesignDashBoardPageView;
-                _dashBoardPageViewModel.ReferenceNumber = this.refNum;
-                _dashBoardPageViewModel.TaxablePeriod = _dashBoardPageViewModel.selectedTaxablePeriod;
+
+                _dashBoardPageViewModel.ReferenceNumber = paymentInfo.Paymentref;
+
+                if (paymentInfo.Period != null)
+                {
+                    _dashBoardPageViewModel.TaxablePeriod = paymentInfo.Period;
+                }
+                
                 this.BindingContext = _dashBoardPageViewModel;
             }
             /*viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
