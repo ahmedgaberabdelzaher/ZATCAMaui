@@ -1063,24 +1063,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //Bill details Navigation
                             //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
 
-                            Device.BeginInvokeOnMainThread(async () => {
 
-                                _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
+                            if (ReleaseOrBillDetailsButtonText.Equals(AppResources.PaymentMethodPayNow)) {
+
+                                if (ZakatReturnDetails.d.MadabutFg == "X")
+                                {
+
+                                     PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                                }
+                                else
+                                {
+
+                                     PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                                }
+
+                            }
+                            else {
+                                _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                            }
 
 
-                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
-
-                            });
-
-                            //if(ZakatReturnDetails.d.MadabutFg == "X") {
-
-                            //    await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
-                            //}
-                            //else {
-
-                            //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
-
-                            //}
 
                         }
                         else
@@ -1098,11 +1101,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
 
-                            //Bill details Navigation
-                            //_navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
-
-
-                            //await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
+                          
 
                             if (ZakatReturnDetails.d.MadabutFg == "X")
                             {
@@ -1119,7 +1118,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                         }
                     });
                 }
@@ -1151,25 +1150,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //await DoValidatePayment(fbNum: _zakatReturnDetails.d.Fbnum);
 
 
-                            Device.BeginInvokeOnMainThread(async () => {
+                            if (ReleaseOrBillDetailsButtonText.Equals(AppResources.PaymentMethodPayNow))
+                            {
 
-                                _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
+                                if (ZakatReturnDetails.d.MadabutFg == "X")
+                                {
 
+                                    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                                }
+                                else
+                                {
 
-                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+                                    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
 
-                            });
-                            //if (ZakatReturnDetails.d.MadabutFg == "X")
-                            //{
+                                }
 
-                            //    await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum);
-                            //}
-                            //else
-                            //{
+                            }
+                            else
+                            {
+                                _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                            }
 
-                            //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
-
-                            //}
                         }
                         else
                         {

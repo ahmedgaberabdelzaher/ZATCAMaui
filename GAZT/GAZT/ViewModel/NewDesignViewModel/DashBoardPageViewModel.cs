@@ -1801,6 +1801,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 paymentInfo.Period = response.d.PerslTxt;
                             }
+
                             _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
                         }
                         else
