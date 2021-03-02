@@ -797,7 +797,8 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     <ColumnDefinition Width="50*"/>
                                                                 </Grid.ColumnDefinitions>
 
-                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                                                  IsEnabled="{Binding FinancialDetails.VATEligibilityPoint3Parent}">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>
@@ -815,7 +816,8 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
 
-                                                                <cards:SfCardView Grid.Row="1" ShadowColor="#5d6770" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1" ShadowColor="#5d6770" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                                                  IsEnabled="{Binding FinancialDetails.VATEligibilityPoint3Parent}">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>
@@ -852,7 +854,8 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     <ColumnDefinition Width="50*"/>
                                                                     <ColumnDefinition Width="50*"/>
                                                                 </Grid.ColumnDefinitions>
-                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                                                  IsEnabled="{Binding FinancialDetails.VATEligibilityPoint4Parent}">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>
@@ -870,7 +873,8 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
 
-                                                                <cards:SfCardView Grid.Row="1" ShadowColor="#5d6770" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                                                <cards:SfCardView Grid.Row="1" ShadowColor="#5d6770" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                                                  IsEnabled="{Binding FinancialDetails.VATEligibilityPoint4Parent}">
                                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="104"/>

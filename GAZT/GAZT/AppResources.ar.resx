@@ -4197,7 +4197,7 @@
     <value>الرجاء إدخال رقم مميز صالح</value>
   </data>
   <data name="VATRSaveasdraftMessage" xml:space="preserve">
-    <value>سيتم حفظ طلبك في مسودة، ويجب عليك إكماله خلال 20 يوم عمل، أخرى وإلا سيتم إلغاؤه تلقائيًا ،وتحتاج إلى إعادة تقديم طلب جديد</value>
+    <value>سيتم حفظ طلبك في مسودة، ويجب عليك إكماله خلال 20 يوم عمل، وإلا سيتم إلغاؤه تلقائيًا ،وتحتاج إلى إعادة تقديم طلب جديد</value>
   </data>
   <data name="VATRgotologinpage" xml:space="preserve">
     <value>الذهاب إلى صفحة تسجيل الدخول</value>

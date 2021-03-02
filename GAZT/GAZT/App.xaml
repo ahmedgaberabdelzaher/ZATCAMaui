@@ -811,6 +811,17 @@
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
+            <Style x:Key="GAZTTermsConditions" x:Name="GAZTTermsConditions" TargetType="Label">
+                <!-- Medium font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+                <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
+                <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
 
             <!-- Used for Checkbox label  in gray color-->
             <Style x:Key="GAZTMicroMediumGrayLabel" x:Name="GAZTMicroMediumGrayLabel" TargetType="Label">
@@ -947,12 +958,12 @@
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
                 <Setter Property="HorizontalTextAlignment" Value="Start"/>
-                
+
             </Style>
             <Style x:Key="CheckboxSelectedFontStyle" x:Name="CheckboxSelectedFontStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
                 <Setter Property="FontSize" Value="12" />
-                    <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+                <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
             </Style>
 
             <!--Button Style-->

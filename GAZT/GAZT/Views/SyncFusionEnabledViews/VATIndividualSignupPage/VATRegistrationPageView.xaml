@@ -98,12 +98,12 @@
                                         <ScrollView HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                                             <StackLayout BackgroundColor="White">
 
-                                                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATREInstructionsandConditions}" Style="{StaticResource GAZTMediumBlackLabel}" Margin="0"/>
+                                                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATREInstructionsandConditions}" Style="{StaticResource PageTitleBlack}" Margin="0"/>
 
                                                 <Label HorizontalTextAlignment="Start" TextColor="#d49504" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"  Style="{StaticResource GAZTSmallGoldLabel}" Margin="0"/>
 
 
-                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"  Margin="0">
+                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource GAZTTermsConditions}"  Margin="0">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}" TextColor="{StaticResource Secondary}">
@@ -119,7 +119,7 @@
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
-                                                <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource GAZTMicroGrayLabel}">
+                                                <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="1."  />
@@ -128,7 +128,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTMicroGrayLabel}">
+                                                <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="2."   FontSize="11"/>
@@ -137,7 +137,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTMicroGrayLabel}">
+                                                <custom:CustomLabel  VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="3." />
@@ -146,7 +146,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  Style="{StaticResource GAZTMicroGrayLabel}">
+                                                <custom:CustomLabel  Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="4."  />
@@ -155,7 +155,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  VerticalOptions="EndAndExpand" Style="{StaticResource GAZTMicroGrayLabel}">
+                                                <custom:CustomLabel  VerticalOptions="EndAndExpand" Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="5." />
@@ -164,7 +164,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  Style="{StaticResource GAZTMicroGrayLabel}">
+                                                <custom:CustomLabel  Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="6."  />
@@ -173,7 +173,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  Style="{StaticResource GAZTMicroGrayLabel}">
+                                                <custom:CustomLabel  Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="7."  />
@@ -185,7 +185,7 @@
                                                 <StackLayout Orientation="Horizontal">
                                                     <custom1:CheckboxCustom  IsChecked="{Binding IsInstrunctionChecked}" Style="{StaticResource CheckboxHeightWidth32}"
                                                                         x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand"/>
-                                                    <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                                                    <custom:CustomLabel   Style="{StaticResource CheckboxSelectedFontStyle}">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
                                                                 <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}"  />
