@@ -2483,6 +2483,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     LicenseOrCRModelM.ID = 2;
                     LicenseOrCRModelM.LCType = AppResources.ZZCRNumber;
                     IDTypeIndex = 0;
+                    SelectedIssuedBy = null;
                 }
                 catch (Exception ex)
                 {
@@ -2509,6 +2510,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         }
         private Dictionary<string, string> EnIssueBy = new Dictionary<string, string>()
         {
+            {"",""},
             {"90701", "STC" },
             {"90702", "Ministry of Commerce and Industry" },
             {"90703", "Ministry of Health" },
@@ -2541,6 +2543,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         private Dictionary<string, string> ArIssueBy = new Dictionary<string, string>()
         {
+  {"",""},
+
             {"90701", "شركة الاتصالات السعوديه" },
             {"90702", "وزارة التجارة والصناعة" },
             {"90703", "وزارة الصحة" },
