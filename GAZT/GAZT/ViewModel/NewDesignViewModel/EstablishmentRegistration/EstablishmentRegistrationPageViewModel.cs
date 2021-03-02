@@ -2338,7 +2338,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             GCCIDType = EnIDType[idItem?.Type];
                         }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
-                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
                     FatherName = taxPayerDetails?.FatherName;

@@ -6618,7 +6618,7 @@
     <value>نهاية سنة المديونية الأولى</value>
   </data>
   <data name="ESTPledgeLabel" xml:space="preserve">
-    <value>أتعهد بان المعلومات المقدمة صحيحة وأنا مخول لإكمال هذا النموذج </value>
+<value>أتعهد بأن المعلومات المقدمة صحيحة وأنا مخول لإكمال هذا النموذج </value>
   </data>
   <data name="ESTReviewTheBelowInformation" xml:space="preserve">
     <value>مراجعة البيانات التالية:</value>
