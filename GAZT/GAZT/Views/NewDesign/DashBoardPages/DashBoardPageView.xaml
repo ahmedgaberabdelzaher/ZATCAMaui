@@ -628,9 +628,7 @@
                                         <Grid>
 
                                             <listView:SfListView HeightRequest="{Binding LastTransactionsListHeight}" ItemsSource="{Binding AccountStatementsList}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" Margin="0,10,0,0" >
-                                                 <listView:SfListView.Behaviors>
-                                                            <local:ListViewBehavior/>
-                                                   </listView:SfListView.Behaviors>
+
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
 

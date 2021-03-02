@@ -54,13 +54,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.IfnotRegInVATAndZakat = false;
                 viewModel.IsBodyMyTaxVisible = false;
 
+                if(viewModel.AccountStatementsList != null) {
+
+                    viewModel.AccountStatementsList.Clear();
+                }
+
+                
                 //InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
                 //{
                 //    ItemSpacing = 10
                 //};
 
 
-               
+
 
                 SetLTR();
             }
