@@ -80,7 +80,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void Vat_Registration_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATRegistration_Details_Tapped", "VAT Registration Details eService");
-            Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATRegistrationPageView));
+            viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 

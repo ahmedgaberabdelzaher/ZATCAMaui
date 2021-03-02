@@ -1755,19 +1755,27 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     if (App.IsArabic)
                     {
-                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
-                        if (!result)
+                        var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRVoidConfirmationMessage);
+                        confirmPopup.OnSelect = async(result) =>
                         {
-                            await viewModel.SubmitClicked();
-                        }
+                            if (result == "Yes")
+                            {
+                                await viewModel.SubmitClicked();
+                            }
+                        };
+                        await PopupNavigation.Instance.PushAsync(confirmPopup);
                     }
                     else
                     {
-                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
-                        if (result)
+                        var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRVoidConfirmationMessage);
+                        confirmPopup.OnSelect = async (result) =>
                         {
-                            await viewModel.SubmitClicked();
-                        }
+                            if (result == "Yes")
+                            {
+                                await viewModel.SubmitClicked();
+                            }
+                        };
+                        await PopupNavigation.Instance.PushAsync(confirmPopup);
                     }
                 }
                 else
@@ -1799,11 +1807,15 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             }
                             else
                             {
-                                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRSaveasdraftMessage, AppResources.ZYes, AppResources.ZNo);
-                                if (result)
+                                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRSaveasdraftMessage);
+                                confirmPopup.OnSelect = async (result) =>
                                 {
-                                    await viewModel.SubmitClicked();
-                                }
+                                    if (result == "Yes")
+                                    {
+                                        await viewModel.SubmitClicked();
+                                    }
+                                };
+                                await PopupNavigation.Instance.PushAsync(confirmPopup);
                             }
                         }
                         else if (viewModel.CurrentStep == "Step 4")
@@ -1815,11 +1827,15 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             }
                             else
                             {
-                                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRSaveasdraftMessage, AppResources.ZYes, AppResources.ZNo);
-                                if (result)
+                                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRSaveasdraftMessage);
+                                confirmPopup.OnSelect = async (result) =>
                                 {
-                                    await viewModel.SubmitClicked();
-                                }
+                                    if (result == "Yes")
+                                    {
+                                        await viewModel.SubmitClicked();
+                                    }
+                                };
+                                await PopupNavigation.Instance.PushAsync(confirmPopup);
                             }
                         }
                         else
@@ -4105,44 +4121,52 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             if (!viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
             {
-                var result = await DisplayAlert("", AppResources.VATAmendAddNewFinancialRepresentativeWarning, AppResources.ZYes, AppResources.ZNo);
-                if (result)
+                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATAmendAddNewFinancialRepresentativeWarning);
+                confirmPopup.OnSelect = (result) =>
                 {
-                    viewModel.IsNewFinancialRepVisible = true;
-                    viewModel.IsAddNewRepresentativeChecked = true;
+                    if (result == "Yes")
+                    {
+                        viewModel.IsNewFinancialRepVisible = true;
+                        viewModel.IsAddNewRepresentativeChecked = true;
 
-                    viewModel.GpartSum =
-                    viewModel.IdnumberSum =
-                    viewModel.FirstnmSum =
-                    viewModel.LastnmSum =
-                    viewModel.MobNumberSum =
-                    viewModel.SmtpAddrSum = string.Empty;
-                    viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.FirstOrDefault()?.Name;
-                    Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
-                }
-                else
-                {
-                    viewModel.IsNewFinancialRepVisible = false;
-                    viewModel.IsAddNewRepresentativeChecked = false;
-                }
+                        viewModel.GpartSum =
+                        viewModel.IdnumberSum =
+                        viewModel.FirstnmSum =
+                        viewModel.LastnmSum =
+                        viewModel.MobNumberSum =
+                        viewModel.SmtpAddrSum = string.Empty;
+                        viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.FirstOrDefault()?.Name;
+                        Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    }
+                    else
+                    {
+                        viewModel.IsNewFinancialRepVisible = false;
+                        viewModel.IsAddNewRepresentativeChecked = false;
+                    }
+                };
+                await PopupNavigation.Instance.PushAsync(confirmPopup);
             }
             else
             {
-                var result = await DisplayAlert("", AppResources.VATAmendReactivationFRUncheckWarning, AppResources.ZYes, AppResources.ZNo);
-                if (result)
+                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATAmendReactivationFRUncheckWarning);
+                confirmPopup.OnSelect = (result) =>
                 {
-                    viewModel.IsNewFinancialRepVisible = false;
-                    viewModel.IsAddNewRepresentativeChecked = false;
+                    if (result == "Yes")
+                    {
+                        viewModel.IsNewFinancialRepVisible = false;
+                        viewModel.IsAddNewRepresentativeChecked = false;
 
-                    viewModel.GpartSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Gpart;
-                    viewModel.IdnumberSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Idnumber;
-                    viewModel.FirstnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Firstnm;
-                    viewModel.LastnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Lastnm;
-                    viewModel.MobNumberSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].MobNumber;
-                    viewModel.SmtpAddrSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].SmtpAddr;
-                    viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
-                    Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
-                }
+                        viewModel.GpartSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Gpart;
+                        viewModel.IdnumberSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Idnumber;
+                        viewModel.FirstnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Firstnm;
+                        viewModel.LastnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Lastnm;
+                        viewModel.MobNumberSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].MobNumber;
+                        viewModel.SmtpAddrSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].SmtpAddr;
+                        viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
+                        Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                    }
+                };
+                await PopupNavigation.Instance.PushAsync(confirmPopup);
             }
         }
 

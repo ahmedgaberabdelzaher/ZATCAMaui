@@ -96,6 +96,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 return;
                 
             }
+            OnSelect?.Invoke("No");
             await PopupNavigation.Instance.PopAsync();
         }
         private void SetLTR()

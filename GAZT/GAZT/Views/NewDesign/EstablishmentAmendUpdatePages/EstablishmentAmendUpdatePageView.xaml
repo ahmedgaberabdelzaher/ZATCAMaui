@@ -1333,16 +1333,21 @@
                         </Grid>
                     </ScrollView>
                 </StackLayout>
-                <StackLayout x:Name="OutletsTabMainLayout"
-                             Orientation="Vertical" Spacing="24" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
-                    <buttons:SfButton ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}" ImageSource="ic_add_plus.png" Style="{StaticResource ButtonBlackBold16}"  BorderColor="{StaticResource NeutralGreay}" BorderWidth="1"  Command="{Binding OnNewOutletButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
-                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                <Grid x:Name="OutletsTabMainLayout"
+                             RowSpacing="18" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <buttons:SfButton Grid.Row="0" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}" ImageSource="ic_add_plus.png" Style="{StaticResource ButtonBlackBold16}"  BorderColor="{StaticResource NeutralGreay}" BorderWidth="1"  Command="{Binding OnNewOutletButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
+                    <inputLayout:SfTextInputLayout Grid.Row="1" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
                         <Entry Placeholder="{x:Static ResourceManager:AppResources.SearchText}" Text="{Binding SearchText}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                         <inputLayout:SfTextInputLayout.TrailingView>
                             <Image Source="grey_search.png"/>
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
-                    <CollectionView VerticalOptions="FillAndExpand" ItemsSource="{Binding SearchableOutletData}" HorizontalOptions="FillAndExpand" SelectionMode="None" Margin="0,40,0,0" VerticalScrollBarVisibility="Never">
+                    <CollectionView Grid.Row="2" VerticalOptions="FillAndExpand" ItemsSource="{Binding SearchableOutletData}" HorizontalOptions="FillAndExpand" SelectionMode="None" Margin="0,30,0,0" VerticalScrollBarVisibility="Never">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                         </CollectionView.ItemsLayout>
@@ -1374,7 +1379,7 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </StackLayout>
+                </Grid>
                 <ScrollView x:Name="FinancialDetailMainTab" Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
                     <StackLayout Spacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMethodOfFinancialRecordMaintained}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />

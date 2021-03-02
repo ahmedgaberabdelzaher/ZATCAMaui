@@ -26,7 +26,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     public class FileAttachmentPopUpPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
+        //public readonly IDialogService _dialogService;
         public ICommand OnAttachmentClick { get; set; }
         public ICommand GoButtonClick { get; set; }
 
@@ -375,11 +375,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 throw new ArgumentNullException("navigationService");
             }
             _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
+            //_dialogService = dialogService;
+            //if (dialogService == null)
+            //{
+            //    throw new ArgumentNullException("dialogService");
+            //}
             FileAttachments = new ObservableCollection<string>();
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
@@ -452,8 +452,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                
                                 if (count >= 5)
                                 {
-                                    await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
-                                    await PopupNavigation.Instance.PopAsync();
+                                    var popup = new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
+                                    popup.OnDone = async () =>
+                                    {
+                                        await PopupNavigation.Instance.PopAsync();
+                                    };
+                                    await PopupNavigation.Instance.PushAsync(popup);
                                     return;
                                 }
                             }

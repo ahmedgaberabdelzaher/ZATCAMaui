@@ -144,7 +144,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Image Aspect="AspectFill" Margin="0,-50,0,0" x:Name="BGImageLogin" BackgroundColor="Transparent" Source="partials_background.png" />
-            <ScrollView Scrolled="ScrollView_Scrolled">
+            <ScrollView Scrolled="ScrollView_Scrolled" VerticalScrollBarVisibility="Never">
                 <Grid RowSpacing="0" IsVisible="{Binding HomeViewVisible}" Grid.Row="0" Margin="0" Padding="0,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -611,7 +611,7 @@
 
 
                             <!--Last Transaction-->
-                            <StackLayout IsVisible="{Binding IsAccountStatementAvilable}">
+                            <StackLayout IsVisible="{Binding IfnotRegInVATAndZakat}">
                             <yummy:PancakeView BackgroundColor="White"  CornerRadius="12,12,0,0" >
 
                                 <cards:SfCardView HasShadow="False" BackgroundColor="White" CornerRadius="10" Margin="15,15,15,10">
@@ -1020,7 +1020,7 @@
             <!--Menu Starts-->
             
             <Grid x:Name="OldMenu" Grid.Row="0" IsVisible="{Binding MenuViewVisible}">
-                <ScrollView >
+                <ScrollView VerticalScrollBarVisibility="Never">
                     <Grid >
                         <Grid x:Name="ParentMenu">
                             <Grid.RowDefinitions>
@@ -1141,7 +1141,7 @@
                                                 <TapGestureRecognizer Tapped="Vat_Registration_Tapped" />
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                        <BoxView Style="{StaticResource WhiteLineSeperator}" Margin="0,12,0,0"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="ic_menu_Tax_check.png" Style="{StaticResource SmallIcon}"/>

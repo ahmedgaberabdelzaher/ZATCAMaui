@@ -1053,8 +1053,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _searchableOutletData;
             private set
             {
-                if (_searchableOutletData == value) return;
-
                 if (value != null && value.Count > 0)
                 {
                     _searchableOutletData = value;
@@ -2612,6 +2610,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     SelectedTaxpayerPDNationality = TaxpayerFullNationlityList?.Where(i => i.Land1 == taxPayerDetails?.Natio).FirstOrDefault();
                     SelectedCitizen = TaxpayerFullNationlityList?.Where(i => i.Land1 == taxPayerDetails?.Citizen).FirstOrDefault();
                     SelectedResidence = TaxpayerFullNationlityList?.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault();
+
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
@@ -2625,6 +2624,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Outlets)
                 {
+                    IsLoading = true;
                     bindingOutletList();
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
                 }
@@ -2830,6 +2830,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         {
             try
             {
+                await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
+
+                IsLoading = true;
+
+                taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
+                idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
+                if (App.IsArabic)
+                {
+                    GCCIDType = idItem != null ? ArIDType[idItem?.Type] : "";
+                }
+                else
+                {
+                    GCCIDType = idItem != null ? EnIDType[idItem?.Type] : "";
+                }
+                GCCIDTypeIdNumberValue = idItem?.Idnumber;
+                SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                FirstName = taxPayerDetails?.NameFirst;
+                LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
+                FatherName = taxPayerDetails?.FatherName;
+                GrandFatherName = taxPayerDetails?.GrandfatherName;
+                FamilyName = taxPayerDetails?.FamilyName;
+                Initial = taxPayerDetails?.Initials;
+                if (taxPayerDetails?.Xsexm == "X")
+                    SelectedGender = GenderList.FirstOrDefault();
+                if (taxPayerDetails?.Xsexf == "X")
+                    SelectedGender = GenderList.LastOrDefault();
+                if (string.IsNullOrEmpty(SelectedGender))
+                {
+                    SelectedGender = GenderList.FirstOrDefault();
+                }
+                SelectedTaxpayerPDNationality = TaxpayerFullNationlityList?.Where(i => i.Land1 == taxPayerDetails?.Natio).FirstOrDefault();
+                SelectedCitizen = TaxpayerFullNationlityList?.Where(i => i.Land1 == taxPayerDetails?.Citizen).FirstOrDefault();
+                SelectedResidence = TaxpayerFullNationlityList?.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault();
+
+                IsLoading = true;
+
                 var _outletTempData = await EstablishmentRegistrationWebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
 
                 OutletData.Clear();
@@ -2839,14 +2875,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     OutletData.Add(_out);
                     SearchableOutletData.Add(_out);
                 });
+
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
+                IsLoading = false;
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
             }
             catch (Exception ex)
             {
+                IsLoading = false;
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
