@@ -39,12 +39,16 @@
             </StackLayout>
             <ScrollView>
                 <yummy:PancakeView BackgroundColor="White" CornerRadius="22,22,0,0" Padding="20" HasShadow="False" Margin="0,-20,0,0"  VerticalOptions="EndAndExpand">
-                    <StackLayout>
+                    <StackLayout Padding="0,0,0,10">
                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
-                            <StackLayout Orientation="Horizontal" Padding="10" >
-                                <Label Text="{x:Static custom2:AppResources.VATRSName}"  VerticalOptions="Center" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                <Label x:Name="Label_Name" Style="{StaticResource BodyLabelBlackMedium}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
-                            </StackLayout>
+                            <Grid ColumnSpacing="10" Padding="10" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSName}"  VerticalOptions="Center" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                <Label Grid.Column="1" x:Name="Label_Name" Style="{StaticResource BodyLabelBlackMedium}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                            </Grid>
                         </Frame>
                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
                             <StackLayout Orientation="Horizontal" Padding="10">
