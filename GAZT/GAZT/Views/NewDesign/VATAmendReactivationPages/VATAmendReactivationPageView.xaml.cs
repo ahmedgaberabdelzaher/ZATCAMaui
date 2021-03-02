@@ -505,7 +505,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     {
                         if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
                         {
-                            await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage));
+                            await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage, string.Empty));
                             return;
                         }
                     }
@@ -2720,7 +2720,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 });
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 

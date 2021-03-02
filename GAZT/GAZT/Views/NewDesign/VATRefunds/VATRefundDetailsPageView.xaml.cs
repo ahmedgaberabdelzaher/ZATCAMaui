@@ -25,7 +25,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         public VATRefundDetailsPageView(VatRefundsListResultModel vATRefundsModel)
         {
-            InitializeComponent();  
+            InitializeComponent();
 
             viewModel = App.Locator.VATRefundDetailsPageView;
             vatRefundsListResultModel = vATRefundsModel;
@@ -38,9 +38,9 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         public VATRefundDetailsPageView(VatRefundDisplayDataModel vATRefundsSaveModel)
         {
-            InitializeComponent();  
+            InitializeComponent();
 
-            viewModel = App.Locator.VATRefundDetailsPageView;   
+            viewModel = App.Locator.VATRefundDetailsPageView;
             vatRefundsListResultModel = null;
             vatRefundsSaveDataModel = vATRefundsSaveModel;
 
@@ -329,7 +329,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 viewModel.CBTermsAndConditionsChecked = false;
                 isTandCChecked = false;
-                PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundSummaryTermsandConditions));
+                PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundSummaryTermsandConditions, AppResources.ZVatRefundTermsAndConditions));
             }
             else if (isTandCChecked && !viewModel.CBTermsAndConditionsChecked)
                 isTandCChecked = false;
@@ -337,7 +337,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         private void TermsAndConditions_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundSummaryTermsandConditions));
+            PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundSummaryTermsandConditions, AppResources.ZVatRefundTermsAndConditions));
         }
 
         void btnConfirmSummary_Clicked(System.Object sender, System.EventArgs e)

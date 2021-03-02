@@ -17,6 +17,14 @@ namespace EGAZT.Views.NewDesign.Common
             btnOK.Text = buttonName;
             SetLTR();
         }
+        public SingleButtonPopupView(string buttonName, string message, string header)
+        {
+            InitializeComponent();
+            MessageText.Text = message;
+            btnOK.Text = buttonName;
+            SetLTR();
+            lblPopupHeader.Text = header;
+        }
 
         private void OnOkayButtonClicked(object sender, EventArgs e)
         {

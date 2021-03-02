@@ -43,7 +43,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _currentTab;
             set
             {
-               /// if (_currentTab == value) return;
+                /// if (_currentTab == value) return;
                 if (_currentTab == value)
                 {
                     if (!IsNavigationCompletedToSuccessfulPage)
@@ -1207,7 +1207,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         if (PickerModel.PickerId == "nationalityPicker")
                         {
                             SelectedTaxpayerPDNationality = TaxpayerFullNationlityList?.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
-                     
+
                         }
                         if (PickerModel.PickerId == "citizenPicker")
                         {
@@ -1224,7 +1224,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             SelectedPassportIssueCountry = TaxpayerFullNationlityList?.Where(i => i.Landx50 == PickerModel.SelectedValue).FirstOrDefault();
 
                         }
-                        
+
                         if (PickerModel.PickerId == "reportingBranchPicker")
                         {
                             SelectedReportingBranch = ReportingBranchList?.Where(i => i.Augrp == PickerModel.SelectedValue).FirstOrDefault();
@@ -1755,7 +1755,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                 var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                 if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully"), true);
+                                    await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully", string.Empty), true);
                                 }
                             }
                         }
@@ -2655,7 +2655,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             catch (GAZTErrorException e)
             {
                 IsExceptionPopupVisible = true;
-                await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZZDone, e.Message));
+                await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZZDone, e.Message, AppResources.Information));
             }
             catch (Exception e)
             {

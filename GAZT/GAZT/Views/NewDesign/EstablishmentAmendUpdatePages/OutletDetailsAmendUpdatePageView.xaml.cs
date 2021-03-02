@@ -31,7 +31,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;
             viewModel.IsEditingMode = outletNavigation.IsEditingMode;
             viewModel.currentTab = outletNavigation.openedTab;
-            
+
             BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
@@ -134,9 +134,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         {
             var result = await DisplayActionSheet(AppResources.SelectOutletType, null, null, viewModel.ListOutletTypes.ToArray());
 
-            if (result != null && result == AppResources.ESTMainOutlet && viewModel.ListOutlets != null && viewModel.ListOutlets.Count > 0 && viewModel.ListOutlets.Exists(x=>x.Actcat =="M"))
+            if (result != null && result == AppResources.ESTMainOutlet && viewModel.ListOutlets != null && viewModel.ListOutlets.Count > 0 && viewModel.ListOutlets.Exists(x => x.Actcat == "M"))
             {
-                await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.SelectOutletTypeError));
+                await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.SelectOutletTypeError, string.Empty));
                 return;
             }
 
