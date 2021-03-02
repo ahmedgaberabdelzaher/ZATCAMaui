@@ -37,6 +37,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.NewAccountPopUpPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
             NewAccountPopUpPageViewModel.ValidTypeIban = string.Empty;
             this.BindingContext = viewModel;
             viewModel.IbanNumberText = Iban;
@@ -108,7 +109,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (isComingFromScreen == IsComingFromScreen.VATAmendReactivation)
             {
                 viewModel.CloseButtonVisible = true;
-                btnDone.IsVisible = false;
+                btnDone.IsVisible = true;
 
             }
             else

@@ -2478,6 +2478,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Outlets)
                 {
+                    await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
+                    taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
+                    idItem = taxPayerDetails?.Nreg_IdSet?.results?.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
+                    if (idItem != null)
+                        if (App.IsArabic)
+                        {
+                            GCCIDType = ArIDType[idItem?.Type];
+                        }
+                        else
+                        {
+                            GCCIDType = EnIDType[idItem?.Type];
+                        }
+                    GCCIDTypeIdNumberValue = idItem?.Idnumber;
+                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    FirstName = taxPayerDetails?.NameFirst;
+                    LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
+                    FatherName = taxPayerDetails?.FatherName;
+                    GrandFatherName = taxPayerDetails?.GrandfatherName;
+                    FamilyName = taxPayerDetails?.FamilyName;
+                    Initial = taxPayerDetails?.Initials;
+                    if (taxPayerDetails?.Xsexm == "X")
+                        SelectedGender = GenderList.FirstOrDefault();
+                    if (taxPayerDetails?.Xsexf == "X")
+                        SelectedGender = GenderList.LastOrDefault();
+                    if (string.IsNullOrEmpty(SelectedGender))
+                    {
+                        SelectedGender = GenderList.FirstOrDefault();
+                    }
+                    SelectedTaxpayerPDNationality = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Natio).FirstOrDefault();
+                    SelectedCitizen = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Citizen).FirstOrDefault();
+                    SelectedResidence = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault();
+
                     bindingOutletList();
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
                 }
