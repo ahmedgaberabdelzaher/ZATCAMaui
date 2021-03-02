@@ -8737,13 +8737,13 @@ I acknowledge that the above bank account information is correct and assume full
     <value>Logout</value>
   </data>
   <data name="DBSMZakatInstalmentPlan" xml:space="preserve">
-    <value>Zakat Instalment Plan</value>
+    <value>Zakat</value>
   </data>
   <data name="DBSMIncomeTax" xml:space="preserve">
-    <value>Income Tax Instalment Plan</value>
+    <value>Income Tax</value>
   </data>
   <data name="DBSMVATInstalmentPlan" xml:space="preserve">
-    <value>VAT Instalment Plan</value>
+    <value>Value add tax</value>
   </data>
   <data name="DBSMZAKATObjection" xml:space="preserve">
     <value>Zakat Objection</value>

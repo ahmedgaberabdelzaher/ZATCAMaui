@@ -8652,13 +8652,13 @@ info@gazt.gov.sa</value>
     <value>تسجيل الخروج</value>
   </data>
   <data name="DBSMZakatInstalmentPlan" xml:space="preserve">
-    <value>خطة التقسيط الزكاة</value>
+    <value>الزكاة</value>
   </data>
   <data name="DBSMIncomeTax" xml:space="preserve">
-    <value>خطة التقسيط ضريبة الدخل</value>
+    <value>ضريبة الدخل</value>
   </data>
   <data name="DBSMVATInstalmentPlan" xml:space="preserve">
-    <value>خطة التقسيط ضريبة القيمة المضافة</value>
+    <value>ضريبة القيمة المضافة</value>
   </data>
   <data name="DBSMZAKATObjection" xml:space="preserve">
     <value>اعتراضات الزكاة</value>
@@ -8678,10 +8678,9 @@ info@gazt.gov.sa</value>
   <data name="DBSMVATRegistrationDetails" xml:space="preserve">
     <value>تفاصيل التسجيل في ضريبة القيمة المضافة</value>
   </data>
-    
   <data name="DBSMAmend" xml:space="preserve">
-   <value>تعديل تفاصيل التسجيل</value>
-   </data>
+    <value>تعديل تفاصيل التسجيل</value>
+  </data>
   <data name="DBSMAmendmentOfVATRegistration" xml:space="preserve">
     <value>تعديل تفاصيل التسجيل في ضريبة القيمة المضافة</value>
   </data>
@@ -8802,7 +8801,7 @@ info@gazt.gov.sa</value>
   <data name="Filter" xml:space="preserve">
     <value>فلتر</value>
   </data>
-    <data name="ACFilterApply" xml:space="preserve">
+  <data name="ACFilterApply" xml:space="preserve">
     <value>تصفية النتائج</value>
   </data>
   <data name="TransactionAmount" xml:space="preserve">
@@ -8829,18 +8828,17 @@ info@gazt.gov.sa</value>
   <data name="SADADDetailss" xml:space="preserve">
     <value>تفاصيل سداد</value>
   </data>
-      <data name="ACFilterAmountValidation" xml:space="preserve">
+  <data name="ACFilterAmountValidation" xml:space="preserve">
     <value>مبلغ الحد الأدنى يجب ان يكون اقل من مبلغ الحد الاقصى</value>
   </data>
-     <data name="ACFilterDateValidation" xml:space="preserve">
+  <data name="ACFilterDateValidation" xml:space="preserve">
     <value>تاريخ بداية العملية يجب ان يكون قبل تاريخ نهاية العملية</value>
   </data>
-      <data name="ACFilterYearValidation" xml:space="preserve">
+  <data name="ACFilterYearValidation" xml:space="preserve">
     <value>تاريخ بداية الفترة يجب ان يكون قبل تاريخ نهاية الفترة</value>
   </data>
-    <data name="VATAmendRegistrationCancel" xml:space="preserve">
+  <data name="VATAmendRegistrationCancel" xml:space="preserve">
     <value>يلغي</value>
     <comment>VAT Amendment Registration</comment>
   </data>
-    
 </root>
