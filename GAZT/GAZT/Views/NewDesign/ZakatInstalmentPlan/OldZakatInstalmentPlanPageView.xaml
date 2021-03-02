@@ -518,10 +518,16 @@
                                     </StackLayout>
                                     <StackLayout Grid.Row="6" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
                                         <Label
-                                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmentProfitabilityRatio}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span  Text="12. " />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentProfitabilityRatio}"  />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
@@ -533,10 +539,17 @@
 
                                     <StackLayout Grid.Row="6" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical" VerticalOptions="FillAndExpand">
                                         <Label
-                                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmentCashRatio}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span  Text="13. " />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentCashRatio}"  />
+
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
@@ -870,10 +883,17 @@
                                     </StackLayout>
                                     <StackLayout Grid.Row="6" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
                                         <Label
-                                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmentProfitabilityRatio}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span  Text="12. " />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentProfitabilityRatio}"  />
+                                                    
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
@@ -885,10 +905,17 @@
 
                                     <StackLayout Grid.Row="6" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
                                         <Label
-                                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmentCashRatio}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span  Text="13. " />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentCashRatio}"  />
+
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
@@ -1225,10 +1252,17 @@
                                     </StackLayout>
                                     <StackLayout Grid.Row="6" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
                                         <Label
-                                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmentProfitabilityRatio}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span  Text="12. "/>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentProfitabilityRatio}"  />
+                                                    
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
@@ -1240,10 +1274,17 @@
 
                                     <StackLayout Grid.Row="6" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
                                         <Label
-                                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmentCashRatio}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span  Text="13. " />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentCashRatio}"  />
+                                                    
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 

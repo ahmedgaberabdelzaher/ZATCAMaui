@@ -54,13 +54,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.IfnotRegInVATAndZakat = false;
                 viewModel.IsBodyMyTaxVisible = false;
 
+                if(viewModel.AccountStatementsList != null) {
+
+                    viewModel.AccountStatementsList.Clear();
+                }
+
+                
                 //InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
                 //{
                 //    ItemSpacing = 10
                 //};
 
 
-               
+
 
                 SetLTR();
             }
@@ -403,7 +409,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         }
                         if (App.LoginDataRetrieved.VtReg == "X")
                         {
-                            //viewModel.IfnotRegInVATAndZakat = true;
+                            viewModel.IfnotRegInVATAndZakat = true;
                             viewModel.IfSignUpnNotRegInVATShowVATServie = true;
                             viewModel.IfSignUpnNotRegInVAT = false;
                         }
@@ -418,7 +424,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         }
                         if (App.LoginDataRetrieved.ZkReg == "X")
                         {
-                            //viewModel.IfnotRegInVATAndZakat = true;
+                            viewModel.IfnotRegInVATAndZakat = true;
                         }
                     }
 
