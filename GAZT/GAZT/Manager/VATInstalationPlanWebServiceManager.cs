@@ -69,8 +69,10 @@ namespace EGAZT.Manager
                     string fbtyp = type;
 
                     Char lang = WebServiceManager.GetLangZParameter();
+                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+
                     String url = Constants.VATGetFormGUIDURL + "Euser1='" + "',Fbguid='" + fbguid + "',Fbnum='" + fbnum + "',Fbtyp='" + fbtyp + "'," +
-                     "Gpart='" + gpart + "',Lang='" + lang + "',Persl='" + "',Status='" + Status + "',Dispflag='" + "')?=&$format=json";
+                     "Gpart='" + gpart + "',Lang='" + lang + "',Persl='" + "',Status='" + Status + "',Dispflag='" + "')?=&$format=json&sap-language="+ LangZAREN;
                     HttpResponseMessage _vATRefillingGetDropdownResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 

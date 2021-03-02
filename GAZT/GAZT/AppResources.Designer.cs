@@ -2290,7 +2290,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Income Tax Instalment Plan.
+        ///   Looks up a localized string similar to Income Tax.
         /// </summary>
         public static string DBSMIncomeTax {
             get {
@@ -2344,7 +2344,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Instalment Plan.
+        ///   Looks up a localized string similar to Value add tax.
         /// </summary>
         public static string DBSMVATInstalmentPlan {
             get {
@@ -2371,7 +2371,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zakat Instalment Plan.
+        ///   Looks up a localized string similar to Zakat.
         /// </summary>
         public static string DBSMZakatInstalmentPlan {
             get {
