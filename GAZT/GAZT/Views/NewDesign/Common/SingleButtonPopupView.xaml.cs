@@ -24,6 +24,11 @@ namespace EGAZT.Views.NewDesign.Common
             btnOK.Text = buttonName;
             SetLTR();
             lblPopupHeader.Text = header;
+
+            if (string.IsNullOrEmpty(header))
+                lblPopupHeader.IsVisible = false;
+            else
+                lblPopupHeader.IsVisible = true;
         }
 
         private void OnOkayButtonClicked(object sender, EventArgs e)
