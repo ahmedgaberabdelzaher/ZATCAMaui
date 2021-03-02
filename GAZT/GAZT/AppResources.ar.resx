@@ -5028,10 +5028,10 @@
     <value>اختر نوع الضريبة لطلب خطة التقسيط</value>
   </data>
   <data name="ZakatInstalmetFrequency" xml:space="preserve">
-    <value>التكرار</value>
+    <value>تردد الاقساط</value>
   </data>
   <data name="ZakatInstalmentAgrement" xml:space="preserve">
-    <value>القسط الشهري</value>
+    <value>خطة التقسيط المطلوبة</value>
   </data>
   <data name="ZakatInstalmentSchedule" xml:space="preserve">
     <value>جدول التقسيط</value>
@@ -5046,7 +5046,7 @@
     <value>طلب خطة التقسيط</value>
   </data>
   <data name="ZakatInstalmetRequestInstalmentDesc" xml:space="preserve">
-    <value>تفاصيل طلب خطة تقسيط</value>
+    <value>تفاصيل خطة التقسيط المطلوبة</value>
   </data>
   <data name="ZakatInstalmetTotalAmount" xml:space="preserve">
     <value>إجمالي المبلغ المستحق</value>
