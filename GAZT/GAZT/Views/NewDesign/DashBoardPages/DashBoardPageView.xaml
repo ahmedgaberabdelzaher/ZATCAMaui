@@ -1141,7 +1141,7 @@
                                                 <TapGestureRecognizer Tapped="Vat_Registration_Tapped" />
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                        <BoxView Style="{StaticResource WhiteLineSeperator}" Margin="0,12,0,0"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="ic_menu_Tax_check.png" Style="{StaticResource SmallIcon}"/>

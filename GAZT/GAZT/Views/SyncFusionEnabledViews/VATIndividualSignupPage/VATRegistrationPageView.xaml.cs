@@ -55,11 +55,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.SetDefaultDate();
                 SetLTR();
 
-                Task.Run(async () =>
-                {
-                    viewModel.IsLoading = true;
-                    await GetVatRegistrationData();
-                });
+               
+
                 SetPickerFont();
             }
             catch (Exception)
@@ -1079,6 +1076,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 var safeInsets = On<iOS>().SafeAreaInsets();
                 safeInsets.Bottom = -10;
                 this.Padding = safeInsets;
+
+                Task.Run(async () =>
+                {
+                    viewModel.IsLoading = true;
+                    await GetVatRegistrationData();
+                });
 
                 if (Device.RuntimePlatform == Device.Android)
                 {
