@@ -33,9 +33,8 @@
 
             <Style TargetType="Frame" x:Key="circleFrame">
                 <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}"/>
-                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="CornerRadius" Value="25"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="Padding" Value="10"/>
                 <Setter Property="HeightRequest" Value="25"/>
                 <Setter Property="WidthRequest" Value="25"/>
                 <Setter Property="HasShadow" Value="False"/>
@@ -1120,13 +1119,18 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
-                                    <Frame Style="{StaticResource circleFrame}" Grid.Row="0" Grid.Column="0">
-                                        <Image Margin="0" Source="ic_vat_return.png">
+                                    <!--<Frame Style="{StaticResource circleFrame}" Grid.Row="0" Grid.Column="0">
+                                        <Image Margin="0" Source="vat_user.png" >
 
  
 
                                         </Image>
-                                    </Frame>
+                                    </Frame>-->
+                                     <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                        </Frame>
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="vat_user"/>
+                                    
                                         <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZIndividualInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                         <buttons:SfButton  Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_indiviadualInfo" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static ResourceManager:AppResources.NDEdit}" Clicked="Btn_Edit_indiviadualInfo_Clicked" HorizontalOptions="End"/>
                                     </Grid>
@@ -1192,12 +1196,17 @@
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
                                     
-                                    <Frame Style="{StaticResource circleFrame}" Grid.Row="0" Grid.Column="0">
-                                        <Image Margin="0" Source="ic_vat_return.png">
+                                    <!--<Frame Style="{StaticResource circleFrame}" Grid.Row="0" Grid.Column="0">
+                                        <Image Margin="0" Source="ic_company.png" >
 
 
                                         </Image>
-                                    </Frame>
+                                    </Frame>-->
+                                         <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                        </Frame>
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_company"/>
+                                    
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZBusinessInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                         <buttons:SfButton Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_BusinessInfo" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static ResourceManager:AppResources.NDEdit}" Clicked="Btn_Edit_BusinessInfo_Clicked" HorizontalOptions="End"/>
                                     </Grid>
@@ -1269,13 +1278,18 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
-                                    <Frame Style="{StaticResource circleFrame}" Grid.Row="0" Grid.Column="0">
-                                        <Image Margin="0" Source="ic_vat_return.png">
+                                    <!--<Frame Style="{StaticResource circleFrame}" Grid.Row="0" Grid.Column="0">
+                                        <Image Margin="0" Source="phone_Green.png" >
 
  
 
                                         </Image>
-                                    </Frame>
+                                    </Frame>-->
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                        </Frame>
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="phone_Green" />
+                                    
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                         <buttons:SfButton Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_ContactInfo" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static ResourceManager:AppResources.NDEdit}" Clicked="Btn_Edit_ContactInfo_Clicked" HorizontalOptions="End"/>
                                     </Grid>

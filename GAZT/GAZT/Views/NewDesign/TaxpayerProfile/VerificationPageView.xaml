@@ -50,7 +50,7 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
 
-                        <ScrollView Grid.Row="1">
+                        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                             <StackLayout >
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VerificationCode}" Style="{StaticResource PageTitleBlack}" />
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPOTPSentToEmail}" Style="{StaticResource BodyLabelGrey}" Padding="0,0,0,16"/>
