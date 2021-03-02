@@ -40,11 +40,14 @@ namespace EGAZT.Manager
                     string euser4 = "null";
                     string euser5 = "null";
                     fbguid = "";
+                    
                     Char lang = WebServiceManager.GetLangZParameter();
+                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+                    
                     String url = Constants.ZakatOldInstalmentsListUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
                        "Auditor='" + auditor + "'," +
                      "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
-                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "')?$expand=ListSet,AuthServSet&$format=json";
+                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "')?$expand=ListSet,AuthServSet&$format=json&sap-language=" + LangZAREN;
                     HttpResponseMessage GAZTzakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 

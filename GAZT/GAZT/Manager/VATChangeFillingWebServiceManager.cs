@@ -470,8 +470,9 @@ namespace EGAZT.Manager
                 {
                     string NewToken = string.Empty;
                     Char lang = WebServiceManager.GetLangZParameter();
+                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
                     String url = Constants.VATChangeFillingSummaryURL + "Fbnumz='" + fbnum + "',PortalUsrz='" + "',Langz='" + lang + "'," +
-                      "Operationz='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',UserTypz='" + "',Fbguid='" + "')?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
+                      "Operationz='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',UserTypz='" + "',Fbguid='" + "')?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json&sap-language=" + LangZAREN;
                     HttpResponseMessage _vatChangeFillingSumamryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
