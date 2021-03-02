@@ -197,7 +197,7 @@
                                     <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
                                                   VerticalOptions="EndAndExpand"
                                                   Margin="0,16,0,0" BackgroundColor="Transparent"
-                                                  TextColor="{StaticResource Primary}"
+                                                  TextColor="{Binding ResendOTPTextColor}"
                                                   Clicked="OnResendOTPBtnClicked"/>
                                 </StackLayout>
 
