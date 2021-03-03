@@ -5031,7 +5031,7 @@
     <value>تردد الاقساط</value>
   </data>
   <data name="ZakatInstalmentAgrement" xml:space="preserve">
-    <value>خطة التقسيط المطلوبة</value>
+    <value>خطة التقسيط</value>
   </data>
   <data name="ZakatInstalmentSchedule" xml:space="preserve">
     <value>جدول التقسيط</value>
@@ -7510,10 +7510,10 @@
     <value>المبلغ الغير معترض عليه من المكلف</value>
   </data>
   <data name="ZOSelectReturn" xml:space="preserve">
-    <value>حدد العودة</value>
+    <value>تحديد الإقرار</value>
   </data>
   <data name="ZOChooseOneReturn" xml:space="preserve">
-    <value>اختر عودة واحدة</value>
+    <value>الرجاء تحديد إقرار</value>
   </data>
   <data name="ZOSearchReturnReferenceNumber" xml:space="preserve">
     <value>بحث</value>
@@ -7621,7 +7621,7 @@
     <value>تجارة</value>
   </data>
   <data name="ZakatDraftSaved" xml:space="preserve">
-    <value>{0}تم حفظ نموذج الإقرار الضريبي  بنجاح</value>
+    <value>{0}تم حفظ نموذج الاقرار الضريبي بنجاح</value>
   </data>
   <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
     <value>نموذج الإقرار غير مقبول. يرجى بدء العملية مرة أخرى لتقديم تقسيط الزكاة</value>

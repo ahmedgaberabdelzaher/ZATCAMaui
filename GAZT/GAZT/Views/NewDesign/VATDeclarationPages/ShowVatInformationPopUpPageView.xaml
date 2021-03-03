@@ -57,11 +57,11 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                                                     </custom:CustomLabel.Triggers>
                                                 </custom:CustomLabel>
                                             </StackLayout>
-                                            <Label  LineHeight="0.8" Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
+                                            <Label Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" IsVisible="{Binding IsHeaderAvailable,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                             <Image Source="ic_vat_info" VerticalOptions="Start"/>
-                                            <Label  LineHeight="0.8" Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
+                                            <Label Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
