@@ -22,6 +22,7 @@
              NavigationPage.HasNavigationBar="False"
             BackgroundImageSource="partials_background" x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView">
 
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />

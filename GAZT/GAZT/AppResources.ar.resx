@@ -5577,10 +5577,10 @@
     <value>حسبة الزكاة</value>
   </data>
   <data name="NDZakatObjection" xml:space="preserve">
-    <value>اعتراض زكاة</value>
+    <value>اعتراض الزكاة</value>
   </data>
   <data name="NDZakatObjectionIsSubmittedSuccessfully" xml:space="preserve">
-    <value>تم تقديم اعتراضك الزكوى</value>
+    <value>تم استلام طلب اعتراضك الزكوي</value>
   </data>
   <data name="NDZakatReturn" xml:space="preserve">
     <value> إقرار زكاة</value>
