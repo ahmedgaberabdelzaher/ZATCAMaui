@@ -230,6 +230,7 @@
                     <Grid Padding="15,5,15,5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -257,15 +258,23 @@
                             </Image>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                                     Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
-                            <SearchBar  BackgroundColor="White" custom:RoundCornersEffect.CornerRadius="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" TextChanged="SearchBar_TextChanged" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
+                                      Grid.Row="1" Grid.ColumnSpan="3">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                           
+                            <SearchBar Grid.Column="0"  BackgroundColor="White" custom:RoundCornersEffect.CornerRadius="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" TextChanged="SearchBar_TextChanged" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
                             </SearchBar>
-                            <Image Source="close" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
+                                <Image Grid.Column="1" WidthRequest="24" HeightRequest="24" Source="close" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CloseSearchButton_Tapped">
                                     </TapGestureRecognizer>
                                 </Image.GestureRecognizers>
                             </Image>
+                            </Grid>
                         </StackLayout>
                     </Grid>
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">

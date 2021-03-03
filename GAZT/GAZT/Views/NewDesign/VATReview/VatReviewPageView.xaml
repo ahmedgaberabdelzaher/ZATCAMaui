@@ -313,7 +313,7 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}" >
                                  <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.VRReportDetails}"  />
+                                        <Span Text="{x:Static ResourceManager:AppResources.VATReviewRequestString}"  />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
