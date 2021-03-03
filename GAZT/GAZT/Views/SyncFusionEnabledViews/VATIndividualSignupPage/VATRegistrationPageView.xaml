@@ -98,7 +98,7 @@
                                         <ScrollView HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                                             <StackLayout BackgroundColor="White">
 
-                                                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATREInstructionsandConditions}" Style="{StaticResource PageTitleBlack}" Margin="0"/>
+                                                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATREInstructionsandConditions}" Style="{StaticResource GAZTMediumBlackLabel}" Margin="0"/>
 
                                                 <Label HorizontalTextAlignment="Start" TextColor="#d49504" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"  Style="{StaticResource GAZTSmallGoldLabel}" Margin="0"/>
 
