@@ -5496,12 +5496,6 @@ namespace EGAZT {
             }
         }
         
-        public static string ZZZRefundNoMsg {
-            get {
-                return ResourceManager.GetString("ZZZRefundNoMsg", resourceCulture);
-            }
-        }
-        
         public static string ZZZRefundYesMsg {
             get {
                 return ResourceManager.GetString("ZZZRefundYesMsg", resourceCulture);
@@ -15771,6 +15765,12 @@ namespace EGAZT {
         public static string MyBillsSADADPaymentNumberCopy {
             get {
                 return ResourceManager.GetString("MyBillsSADADPaymentNumberCopy", resourceCulture);
+            }
+        }
+        
+        public static string VATRefundNoMsg {
+            get {
+                return ResourceManager.GetString("VATRefundNoMsg", resourceCulture);
             }
         }
     }

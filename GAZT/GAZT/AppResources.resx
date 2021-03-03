@@ -3254,10 +3254,7 @@ Should we require further information, we would be in contact.</value>
     <value>I hereby confirm that I will pay any outstanding liabilities and submit all due returns in GAZT before submitting the refund request or GAZT will offset the outstanding liabilities from my VAT credit balance before the refund paid. GAZT have also the right to reject my refund request if I have any overdue declaration.</value>
     <comment>VAT Declaration</comment>
   </data>
-  <data name="ZZZRefundNoMsg" xml:space="preserve">
-    <value>Dear Taxpayer, if you did not submit the refund request for the return’s credit balance you will not be able to refund it again. You can request to refund your all total credit balance from the Ad-hoc Refund Request.</value>
-    <comment>VAT Declaration</comment>
-  </data>
+
   <data name="ZZZRefundYesMsg" xml:space="preserve">
     <value>Dear Taxpayer, GAZT may request from you to upload the following information during the review of your refund request:
 1. Trail balance for the return period 
@@ -8926,7 +8923,11 @@ I acknowledge that the above bank account information is correct and assume full
      <data name="VATReviewRequestString" xml:space="preserve">
     <value>Please state the decision you would like to review and the grounds for your request</value>
   </data>
-    <data name="MyBillsSADADPaymentNumberCopy" xml:space="preserve">
+    
+   <data name="MyBillsSADADPaymentNumberCopy" xml:space="preserve">
     <value>SADAD payment number copied</value>
+  </data> 
+  <data name="VATRefundNoMsg" xml:space="preserve">
+    <value>Dear Taxpayer, if you did not submit the refund request for the return’s credit balance you will not be able to refund it again. You can request to refund your all total credit balance from the Ad-hoc Refund Request.</value>
   </data>
 </root>
