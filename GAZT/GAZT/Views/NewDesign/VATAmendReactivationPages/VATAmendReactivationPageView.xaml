@@ -402,7 +402,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand"
 
                                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding BindingContext.TaxPayerDetails.AddInformationCBVisible,Source={x:Reference VATRegistration} }"  IsEnabled="{Binding BindingContext.TaxPayerDetails.AddInformationCB,Source={x:Reference VATRegistration} }">
                                                         <custom1:CheckboxCustom   VerticalOptions="CenterAndExpand" Style="{StaticResource CheckboxHeightWidth32}"
-                                                                    IsEnabled="{Binding BindingContext.AddAdditionalInfoCheckBoxEnabled,Source={x:Reference VATRegistration}}" 
+                                                                    
                                                                     IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" 
                                                                     CheckChanged="AddAdditionalInfo_CheckedChanged"/>
 
