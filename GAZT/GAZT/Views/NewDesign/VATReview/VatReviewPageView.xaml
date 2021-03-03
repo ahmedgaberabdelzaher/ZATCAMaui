@@ -1026,29 +1026,7 @@
                                                     HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
                             </Grid>
 
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}"
-                                          VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged"
-                                          IsChecked="{Binding IsSadadCheckBox2}">
-                                    <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Value="false">
-                                            <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
-                                        </DataTrigger>
-                                    </CheckBox.Triggers>
-                                </CheckBox>
-                                <custom:CustomLabel Grid.Column="1"
-                                                    Text="{x:Static ResourceManager:AppResources.VRSecurityBankGurrantCheckBoxDesc2}"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
-                            </Grid>
-
+                 
 
                         </StackLayout>
 

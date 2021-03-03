@@ -15773,5 +15773,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("VATRefundNoMsg", resourceCulture);
             }
         }
+        
+        public static string AccountStatementsFilterTitle {
+            get {
+                return ResourceManager.GetString("AccountStatementsFilterTitle", resourceCulture);
+            }
+        }
     }
 }
