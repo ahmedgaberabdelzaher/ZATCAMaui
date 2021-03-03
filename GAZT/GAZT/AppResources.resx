@@ -7117,7 +7117,10 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Please ensure you pay any outstanding dues on the original re-assessment bill that were not paid or submitted as security</value>
   </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc1" xml:space="preserve">
-    <value>I acknowledge that my application will not process until my security is paid in full within 20 Days.</value>
+    <value>Accept Terms and Conditions
+I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes within 20 days, bearing in mind that the request will be cancelled automatically in the event of non-compliance.
+I acknowledge that the bank guarantee provided to the Authority is valid for at least one year and that it is extendable.
+I acknowledge to clarify in the original bank guarantee the TIN of the company and the objected period.</value>
   </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc2" xml:space="preserve">
     <value>I acknowledge that bank guarantees need to be valid for at least one year and submitted in person to the GAZT branch assigned to me.</value>
@@ -8923,10 +8926,10 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="VATReviewRequestString" xml:space="preserve">
     <value>Please state the decision you would like to review and the grounds for your request</value>
   </data>
-     <data name="VATReviewRequestString" xml:space="preserve">
-    <value>Please state the decision you would like to review and the grounds for your request</value>
-  </data>
-    <data name="MyBillsSADADPaymentNumberCopy" xml:space="preserve">
+  <data name="MyBillsSADADPaymentNumberCopy" xml:space="preserve">
     <value>SADAD payment number copied</value>
+  </data>
+  <data name="AccountStatementsFilterTitle" xml:space="preserve">
+    <value>Filter</value>
   </data>
 </root>

@@ -652,20 +652,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-        private bool isSadadCheckBox2 = false;
-
-        public bool IsSadadCheckBox2
-        {
-            get { return isSadadCheckBox2; }
-            set
-            {
-                if (isSadadCheckBox2 == value) return;
-
-                isSadadCheckBox2 = value;
-                RaisePropertyChanged("IsSadadCheckBox2");
-            }
-        }
-
+   
         private bool isSadadCheckBox3 = false;
 
         public bool IsSadadCheckBox3
@@ -4731,7 +4718,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             BankGuranteeAttachmentsListViewData = null;
             IsSadadCheckBox3 = false;
             IsSadadCheckBox1 = false;
-            IsSadadCheckBox2 = false;
             IsApplicationVisible = false;
             DisputeDetailsDesc = "";
             RequestedReviewAmount = "";
@@ -4819,7 +4805,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             else if (IsBankGurantSecuritySelected)
             {
-                if (BankGuranteeAttachmentsListViewData == null || BankGuranteeAttachmentsListViewData.Count == 0 || !IsSadadCheckBox1 || !IsSadadCheckBox2)
+                if (BankGuranteeAttachmentsListViewData == null || BankGuranteeAttachmentsListViewData.Count == 0 || !IsSadadCheckBox1)
                 {
 
                     IsSecurityPaymentEnabled = false;
@@ -4975,7 +4961,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             if (BankGuranteeAttachmentsListViewData!=null && BankGuranteeAttachmentsListViewData.Count>0)
             {
-                IsSadadCheckBox2 = true;
                 IsSadadCheckBox1 = true;
             }
 
