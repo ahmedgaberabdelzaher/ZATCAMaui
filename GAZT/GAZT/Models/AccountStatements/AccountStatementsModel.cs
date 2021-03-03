@@ -676,6 +676,22 @@ namespace EGAZT.Models.AccountStatements
                     else
                     {
                         FormattedBldat2 = string.Format(_Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("ar-SA")));
+
+
+                        string[] dts = FormattedBldat2.Split(' ');
+                        if (App.IsArabic)
+                        {
+
+                            string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                            FormattedBldat2 = date;
+                        }
+                        else
+                        {
+                            string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                            FormattedBldat2 = date;
+                        }
                     }
                     /*FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat2.Split('-');
