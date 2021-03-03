@@ -702,9 +702,10 @@
                                              Style="{StaticResource GreyBorderFrame}">
                                 <custom:BorderlessEntry x:Name="rrAmountTxt"
                                                         IsEnabled="{Binding IsRRAmountEdit}"
-                                                        Text="{Binding RequestedReviewAmount,Converter={StaticResource commaSeparatorConverter}}"
+                                                        Text="{Binding RequestedReviewAmount}"
                                                         Keyboard="Numeric"
                                                         Unfocused="RRAmountUnfocused"
+                                                        
                                                         HorizontalOptions="FillAndExpand"
                                                         Style="{StaticResource BodyLabelBlack}" />
                             </border:SfBorder>

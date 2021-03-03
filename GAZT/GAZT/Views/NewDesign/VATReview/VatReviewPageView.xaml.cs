@@ -389,7 +389,7 @@ namespace EGAZT.Views.NewDesign.VatReview
         }
         private void RRAmountUnfocused(object sender, FocusEventArgs e)
         {
-            viewModel.requestedReviewAmount = rrAmountTxt.Text;
+            viewModel.RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(rrAmountTxt.Text.ToString());
 
             if (!String.IsNullOrEmpty(viewModel.RequestedReviewAmount) && !String.IsNullOrEmpty(viewModel.TotalTaxLiability) &&
                 Double.Parse(viewModel.RequestedReviewAmount) > Double.Parse(viewModel.TotalTaxLiability))
@@ -407,7 +407,8 @@ namespace EGAZT.Views.NewDesign.VatReview
             {
                 viewModel.IsRRAmountEdit = false;
                 viewModel.VRRequesttoReviewtheAmountValue = AppResources.VRInfull;
-                viewModel.RequestedReviewAmount = viewModel.TotalTaxLiability;
+//                viewModel.RequestedReviewAmount = viewModel.TotalTaxLiability;
+                viewModel.RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(viewModel.TotalTaxLiability.ToString());
             }
             else if (selectedITem.SelectionTitle.Equals(AppResources.VRInpartial))
             {

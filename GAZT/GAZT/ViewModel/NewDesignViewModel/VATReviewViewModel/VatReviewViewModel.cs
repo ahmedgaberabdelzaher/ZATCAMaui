@@ -4332,7 +4332,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 TotalTaxLiability = selectedApplicationRef.Liaamt;
                 TaxPaid = selectedApplicationRef.Clramt;
-                RequestedReviewAmount = selectedApplicationRef.Liaamt;
+                RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString()); 
 
                 SecurityAmount =
                     (Double.Parse(selectedApplicationRef.Liaamt) - Double.Parse(selectedApplicationRef.Clramt))
@@ -6279,7 +6279,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         }
 
                         modelVATReview.d.SecurityDtl.DataVersion = "00001";
-                        modelVATReview.d.SecurityDtl.Disamt = RequestedReviewAmount;
+                        modelVATReview.d.SecurityDtl.Disamt = (Double.Parse(RequestedReviewAmount))+"";
                         modelVATReview.d.SecurityDtl.Liaamt = selectedApplicationRef.Liaamt;
                         modelVATReview.d.SecurityDtl.Opbel = selectedApplicationRef.Opbel;
                         modelVATReview.d.SecurityDtl.Penamount = selectedApplicationRef.Penamount;
