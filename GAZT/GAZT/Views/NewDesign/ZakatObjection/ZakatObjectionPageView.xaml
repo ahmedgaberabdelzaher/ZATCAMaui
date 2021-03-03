@@ -186,8 +186,18 @@
                                                     <custom:CustomLabel Grid.Row="1" TextColor="White" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding FinancialPeriod}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
                                                     <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                    <custom:CustomLabel Grid.Row="3" TextColor="White" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding AssessmentAmountGAZT,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="StartAndExpand"
-                                                                    Style="{StaticResource SectionTitleBlack}" />
+                                                  
+                                                     <custom:CustomLabel  Grid.Row="3" TextColor="White" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center">
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding AssessmentAmountGAZT,StringFormat='{0:N}',Converter={StaticResource commaSeparatorConverter}}" TextColor="White" Style="{StaticResource SectionTitleBlack}" ></Span>
+                                                                    <Span Text="&#160;" Style="{StaticResource SectionTitleBlack}" TextColor="White" ></Span>
+                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" TextColor="White" Style="{StaticResource SectionTitleBlack}" ></Span>
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
+
+
                                                     <custom:CustomLabel Grid.Row="4" TextColor="White" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRReferenceNumber}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                     <custom:CustomLabel Grid.Row="5" TextColor="White" Grid.Column="0" Text="{Binding ReferenceNum}" Style="{StaticResource ValueLabelBlack}"></custom:CustomLabel>
                                                     <custom:CustomLabel Grid.Row="4" TextColor="White" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatYear}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
