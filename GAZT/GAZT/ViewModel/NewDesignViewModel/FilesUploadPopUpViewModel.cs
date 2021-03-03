@@ -774,7 +774,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                                 IsAttachmentPresent = true;
                                                             }
                                                         }
-                                                        if(!String.IsNullOrEmpty(ItemA.Filename) && !String.IsNullOrEmpty(AttachmentName) && ItemA.Filename.Replace("+","").Replace("-","").Replace("_","").Replace(" ","")==AttachmentName.Replace("+", "").Replace("-", "").Replace("_", "").Replace(" ", ""))
+                                                        if(!String.IsNullOrEmpty(ItemA.Filename) && !String.IsNullOrEmpty(AttachmentName) && ItemA.Filename.Replace("+","").Replace("-","").Replace("_","").Replace(" ","").Replace("1", "") == AttachmentName.Replace("+", "").Replace("-", "").Replace("_", "").Replace(" ", "").Replace("1", ""))
                                                         {
                                                             IsAttachmentPresent = true;
                                                         }
