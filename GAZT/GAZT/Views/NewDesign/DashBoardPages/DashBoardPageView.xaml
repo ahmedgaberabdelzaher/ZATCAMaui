@@ -396,6 +396,7 @@
                                                     </syncfusion:SfPicker.Behaviors>
                                                 </syncfusion:SfPicker>
                                             </Grid>
+
                                             <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
 
                                             <CollectionView HeightRequest="80"  x:Name="CollectionView_Commitment" ItemsLayout="HorizontalList"
