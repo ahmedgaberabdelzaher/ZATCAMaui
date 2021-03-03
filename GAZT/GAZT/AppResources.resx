@@ -8809,7 +8809,7 @@ I acknowledge that the above bank account information is correct and assume full
     <value />
   </data>
   <data name="DashBoardMyTaxObligations" xml:space="preserve">
-    <value>My obligations</value>
+    <value>My Obligations</value>
   </data>
   <data name="PaymentMethod" xml:space="preserve">
     <value>Payment Method</value>
