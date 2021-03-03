@@ -1,6 +1,7 @@
 ﻿using System;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
@@ -68,6 +69,33 @@ namespace EGAZT.Views.NewDesign
 
         }
 
+        public InstructionsBottomPopUpView(bool isWithCancelOption, string instructionString, string checkBoxString, string continueString, InstructionsBottomPopUpViewModel.DialogType _dialogType)
+        {
+            InitializeComponent();
+            _viewModel = App.Locator.InstructionsBottomPopUpView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            this.BindingContext = _viewModel;
+            _viewModel.Description = instructionString;
+            _viewModel.CheckBoxDescription = checkBoxString;
+            _viewModel.ButtonTitle = continueString;
+
+            if (_dialogType == InstructionsBottomPopUpViewModel.DialogType.Instructions)
+            {
+                _viewModel.IsInstructions = false;
+                _viewModel.IsTerms = false;
+            }
+            else if (_dialogType == InstructionsBottomPopUpViewModel.DialogType.TermsConditions)
+            {
+                _viewModel.IsTerms = true;
+                _viewModel.IsInstructions = false;
+            }
+
+            _viewModel.IsCancelButtonVisible = isWithCancelOption;
+
+
+
+        }
+
         protected override void OnAppearing()
         {
             try
@@ -130,5 +158,7 @@ namespace EGAZT.Views.NewDesign
         }
 
        
+
+
     }
 }

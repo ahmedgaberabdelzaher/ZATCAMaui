@@ -649,7 +649,7 @@
                                                                         <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding 
                                                                             FormattedBldat}" 
                                                                                         Style="{StaticResource 
-                                                                        CaptionLabelBlack}"></custom:CustomLabel>
+                                                                        CaptionLabelGrey}"></custom:CustomLabel>
 
                                                                     </StackLayout>
                                                                     <cards:SfCardView Grid.Row="0" Grid.Column="1"  HasShadow="False" 
