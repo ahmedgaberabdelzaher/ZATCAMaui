@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EGAZT.Models;
 using GAZT.Helper;
@@ -39,8 +40,15 @@ namespace EGAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    var fileNameRemovedSpace = fileName.Replace("SpaceAdded", " ");
-                    client.DefaultRequestHeaders.Add("slug",fileName.Contains("SpaceAdded") ? fileNameRemovedSpace : WebUtility.UrlEncode(fileName));
+                 
+                    Regex regex = new Regex("[\u0600-\u06ff]|[\u0750-\u077f]|[\ufb50-\ufc3f]|[\ufe70-\ufefc]");
+                    var fileNameRemovedSpace = fileName;
+                    //Checking if file name is Arabic/Persian
+                    if (fileName.Contains("SpaceAdded") && regex.IsMatch(fileName))
+                    {
+                        fileNameRemovedSpace= WebUtility.UrlEncode(fileName);
+                    }
+                    client.DefaultRequestHeaders.Add("slug",fileName.Contains("SpaceAdded") ? fileNameRemovedSpace.Replace("SpaceAdded", " ") : WebUtility.UrlEncode(fileName));
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
@@ -60,6 +68,12 @@ namespace EGAZT.Manager
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
+        }
+
+        private bool checkIsArabicText(string text)
+        {
+            Regex regex = new Regex("[\u0600-\u06ff]|[\u0750-\u077f]|[\ufb50-\ufc3f]|[\ufe70-\ufefc]");
+            return regex.IsMatch(text);
         }
 
 
