@@ -1696,8 +1696,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private DateTime _submissionDate = DateTime.Now;
-        public DateTime SubmissionDate
+        private string _submissionDate = DateTime.Today.ToString("yyyy/MM/dd");
+        public string SubmissionDate
         {
             get
             {
@@ -5454,7 +5454,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 summaryDeclarationData.Add(new TINDeregistrationSummaryModel
                 {
                     SummaryTitle = AppResources.Date,
-                    SummaryData = SubmissionDate.ToString("yyyy/MM/dd"),
+                    SummaryData = SubmissionDate,
                     IsEditVisible = true
                 });
 
