@@ -3905,7 +3905,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                             if (SelectedOutletOption.OutletOptionIndex != "3")
                             {
-                                permitInfo.APermitDeregDisplayDate = PickerDobToDisplay;//DeregistrationDate.ToString("dd MMM yyyy");
+                                DateTime dt = Convert.ToDateTime(PickerDobToDisplay);
+                                permitInfo.APermitDeregDisplayDate = dt.ToString("yyyy/MM/dd");//DeregistrationDate.ToString("dd MMM yyyy");
                                 permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
                                 permitInfo.APermitEffDtCTb = "G";
                                 permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
@@ -4280,11 +4281,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                                     if (SelectedOutletOption.OutletOptionIndex != "3")
                                                     {
-                                                        permitInfo.APermitDeregDisplayDate = PickerDobToDisplay;//DeregistrationDate.ToString("dd MMM yyyy");
-                                                        permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
-                                                        permitInfo.APermitEffDtCTb = "G";
-                                                        permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+                                                        try
+                                                        {
+                                                            DateTime dt = Convert.ToDateTime(PickerDobToDisplay);
+                                                            permitInfo.APermitDeregDisplayDate = dt.ToString("yyyy/MM/dd"); ;//DeregistrationDate.ToString("dd MMM yyyy");
+                                                            permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
+                                                            permitInfo.APermitEffDtCTb = "G";
+                                                            permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
 
+                                                        }
+                                                        catch (Exception ex)
+                                                        {
+
+                                                        }
+                                                       
                                                     }
 
                                                     //if (outletInfo.PermitTypes == null)
@@ -4313,7 +4323,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                                     if (SelectedOutletOption.OutletOptionIndex != "3")
                                                     {
-                                                        permitInfo.APermitDeregDisplayDate = PickerDobToDisplay;//DeregistrationDate.ToString("dd MMM yyyy");
+                                                        DateTime dt = Convert.ToDateTime(PickerDobToDisplay);
+                                                        permitInfo.APermitDeregDisplayDate = dt.ToString("yyyy/MM/dd");//DeregistrationDate.ToString("dd MMM yyyy");
                                                         permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
                                                         permitInfo.APermitEffDtCTb = "G";
                                                         permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);

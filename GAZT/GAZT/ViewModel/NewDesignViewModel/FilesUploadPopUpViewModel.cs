@@ -403,7 +403,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                         var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                         if (IsComeForWhichAttachment == WhichAttachment.VATDeregistration ||
-                            IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
+                        IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
                         {
                             if (VatAttachmentsList != null)
                             {
