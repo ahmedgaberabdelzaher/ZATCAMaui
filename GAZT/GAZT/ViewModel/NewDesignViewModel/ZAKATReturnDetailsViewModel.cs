@@ -1224,7 +1224,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void gotoSuccessPage()
         {
-            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+            
+            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, ZakatReturnDetail);
         }
         public async Task DoValidatePayment(string fbNum, string paymentType)
         {
