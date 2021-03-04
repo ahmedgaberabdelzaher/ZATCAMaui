@@ -2012,7 +2012,8 @@
 • متوسط عدد العمالة × 6000 ريال سعودي
 • قيمة الاستيرادات × 115%
 • مجموع كلآ من (المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات)
-• قيمة المشتريات وفقاً لإقرارات ضريبة القيمة المضافة × 115%</value>
+• قيمة المشتريات وفقاً لإقرارات ضريبة القيمة المضافة × 115%
+• المبيعات العقارية</value>
     <comment>Zakat return details</comment>
   </data>
   <data name="ZZDeleteAttachmentConfirmationText" xml:space="preserve">
@@ -4495,14 +4496,14 @@
   <data name="TinDeregistrationCloseOutletsIndividually" xml:space="preserve">
     <value>إغلاق / نقل ملكية الترخيص لمكلف آخر</value>
   </data>
-  <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
+	<data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
     <value>اوافق انه قد تم الاطلاع على التراخيص التي سيتم الفروع / اغلاقها</value>
   </data>
   <data name="TinDeregistrationOutletCheckboxTransferAllOutlets" xml:space="preserve">
     <value>اوافق انه قد تم الاطلاع على الفروع / التراخيص التي سيتم نقل ملكيتها لمكلف اخر</value>
   </data>
   <data name="TinDeregistrationOutletCheckboxCloseorTransferAllOutlets" xml:space="preserve">
-    <value>اوافق انه قد تم الاطلاع على التراخيص التي سيتم الفروع / اغلاقها</value>
+    <value>اوافق انه قد تم الاطلاع على الفروع / التراخيص التي سيتم اغلاقها / نقل ملكيتها لمكلف اخر</value>
   </data>
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>تاريخ الإيقاف / الشطب</value>
@@ -4950,7 +4951,7 @@
     <value>Objections and Reviews</value>
   </data>
   <data name="NDRefunds" xml:space="preserve">
-    <value>الاستردادت</value>
+    <value>الاستردادات</value>
   </data>
   <data name="NDReturns" xml:space="preserve">
     <value>الإقرارات</value>
@@ -5577,10 +5578,10 @@
     <value>حسبة الزكاة</value>
   </data>
   <data name="NDZakatObjection" xml:space="preserve">
-    <value>اعتراض زكاة</value>
+    <value>اعتراض الزكاة</value>
   </data>
   <data name="NDZakatObjectionIsSubmittedSuccessfully" xml:space="preserve">
-    <value>تم تقديم اعتراضك الزكوى</value>
+    <value>تم استلام طلب اعتراضك الزكوي</value>
   </data>
   <data name="NDZakatReturn" xml:space="preserve">
     <value> إقرار زكاة</value>
@@ -8844,9 +8845,13 @@ info@gazt.gov.sa</value>
     <value>يلغي</value>
     <comment>VAT Amendment Registration</comment>
   </data>
-  <data name="MyBillsSADADPaymentNumberCopy" xml:space="preserve">
+   <data name="MyBillsSADADPaymentNumberCopy" xml:space="preserve">
     <value>تم نسخ رقم فاتورة سداد</value>
   </data>
+    <data name="VATRefundNoMsg" xml:space="preserve">
+    <value>عزيزي المكلف, اذا لم تقدم طلب استرداد لرصيد الإقرار الدائن فلن تستطيع طلب الرصيد الدائن للاقرار مرة اخرى. يمكنك تقديم طلب استرداد كل المبالغ الدائنة مجمعة من خلال تقديم طلب الاسترداد</value>
+  </data>
+  
   <data name="AccountStatementsFilterTitle" xml:space="preserve">
     <value>تصفية النتائج</value>
   </data>

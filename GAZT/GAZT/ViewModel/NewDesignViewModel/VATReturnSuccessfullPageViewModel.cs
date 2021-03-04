@@ -61,11 +61,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 if (_sadadNumber == value) return;
-
+                SadadBindNumber = value;
                 _sadadNumber = value;
                 RaisePropertyChanged("SadadNumber");
             }
         }
+        
+        private string _sadadBindNumber = "";
+        public string SadadBindNumber
+        {
+            get
+            {
+                return _sadadBindNumber;
+            }
+            set
+            {
+                if (_sadadBindNumber == value) return;
+
+                _sadadBindNumber = value;
+                RaisePropertyChanged("SadadBindNumber");
+            }
+        }
+        
+        private string _totalAmount = "0.0";
+        public string TotalAmount
+        {
+            get
+            {
+                return _totalAmount;
+            }
+            set
+            {
+                if (_totalAmount == value) return;
+
+                _totalAmount = value;
+                RaisePropertyChanged("TotalAmount");
+            }
+        }
+        
         public string _amountPayable;
         public string AmountPayable
         {
@@ -76,7 +109,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 if (_amountPayable == value) return;
-
+                TotalAmount = value;            
                 _amountPayable = value;
                 RaisePropertyChanged("AmountPayable");
             }

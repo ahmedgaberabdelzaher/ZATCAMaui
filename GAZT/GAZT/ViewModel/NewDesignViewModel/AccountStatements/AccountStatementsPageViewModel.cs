@@ -619,10 +619,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     else
                     {
                         IsNotHaveStatements = true;
+                        GroupedData = new List<ObservableGroupCollection<string, ASResult>>();
+                        groupedDataValuetoUpdate = new List<ObservableGroupCollection<string, ASResult>>();
                     }
                     if (IsNormalStatementsViewVisible)
                     {
                         GroupedData = new List<ObservableGroupCollection<string, ASResult>>();
+                        groupedDataValuetoUpdate = new List<ObservableGroupCollection<string, ASResult>>();
+
                     }
                     else
                     {
@@ -1683,6 +1687,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             try
             {
                 IsLoading = true;
+                IsMonthWiseStatementsViewVisible = false;
                 YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType,false);
                 IsTotalAmountVisible = true;

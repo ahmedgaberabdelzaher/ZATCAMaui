@@ -112,7 +112,7 @@
 
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                            <custom:CustomLabel Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                                            <custom:CustomLabel Text="{Binding SadadBindNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
 
 
                                         </StackLayout>

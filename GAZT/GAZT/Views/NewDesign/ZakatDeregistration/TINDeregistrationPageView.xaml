@@ -448,7 +448,7 @@
                                     </StackLayout>
                                 </border:SfBorder >
                             </StackLayout>-->
-                            <StackLayout IsVisible="{Binding TinText.IsVisible}">
+                            <StackLayout IsVisible="{Binding TinText.IsVisible}" Margin="0,20,0,0">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HasError="{Binding FrameTinError}"
@@ -646,7 +646,7 @@
 
                         <StackLayout>
 
-                            <StackLayout IsVisible="{Binding FirstNameText.IsVisible}">
+                            <StackLayout IsVisible="{Binding FirstNameText.IsVisible}" Margin="0,20,0,0">
                                 <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>

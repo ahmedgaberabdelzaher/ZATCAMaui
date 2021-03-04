@@ -1520,7 +1520,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public async Task SadadPaymentSelected()
         {
 
-            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, ZakatReturnDetail);
         }
 
         public async Task ReleaseEstimateZakatReturn()

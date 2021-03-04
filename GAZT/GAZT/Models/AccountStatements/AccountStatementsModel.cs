@@ -584,9 +584,9 @@ namespace EGAZT.Models.AccountStatements
                     }
                     else if (App.CalType.Equals("H"))
                     {
-                        FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("ar-SA")));
+                        FormattedBldat = string.Format(_Bldat?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
 
-                        string[] dts = FormattedBldat.Split(' ');
+                        string[] dts = FormattedBldat.Split('/');
                         if (App.IsArabic)
                         {
 
@@ -675,10 +675,9 @@ namespace EGAZT.Models.AccountStatements
                     }
                     else
                     {
-                        FormattedBldat2 = string.Format(_Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("ar-SA")));
 
-
-                        string[] dts = FormattedBldat2.Split(' ');
+                        FormattedBldat2 = string.Format(_Bldat2?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+                        string[] dts = FormattedBldat2.Split('/');
                         if (App.IsArabic)
                         {
 

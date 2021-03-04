@@ -402,7 +402,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand"
 
                                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding BindingContext.TaxPayerDetails.AddInformationCBVisible,Source={x:Reference VATRegistration} }"  IsEnabled="{Binding BindingContext.TaxPayerDetails.AddInformationCB,Source={x:Reference VATRegistration} }">
                                                         <custom1:CheckboxCustom   VerticalOptions="CenterAndExpand" Style="{StaticResource CheckboxHeightWidth32}"
-                                                                    IsEnabled="{Binding BindingContext.AddAdditionalInfoCheckBoxEnabled,Source={x:Reference VATRegistration}}" 
+                                                                    
                                                                     IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" 
                                                                     CheckChanged="AddAdditionalInfo_CheckedChanged"/>
 
@@ -796,44 +796,54 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     <ColumnDefinition Width="50*"/>
                                                                     <ColumnDefinition Width="50*"/>
                                                                 </Grid.ColumnDefinitions>
+                                                                    <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True"  Margin="3" Padding="0"  CornerRadius="20" HorizontalOptions="FillAndExpand" HeightRequest="104" WidthRequest="171"
+                                                                                      IsEnabled="{Binding FinancialDetails.VATEligibilityPoint3Parent}">
+                                                                    <Grid>
+                                                                        <Image Margin="0" Source="{Binding ImageforTextQuestion3First}" Aspect="AspectFill"  Grid.Row="0">
+                                                                        </Image>
+                                                                        <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="*"/>
+                                                                                <RowDefinition Height="auto"/>
+                                                                            </Grid.RowDefinitions>
+                                                                            <StackLayout Grid.Row="1" Spacing="0">
+                                                                                <Label Text="{Binding TextQuestion3First}"   TextColor="{Binding TextQuestion3FirstTextColor}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.7"/>
+                                                                                <!--<Label Text="187,500 SAR"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>-->
+                                                                            </StackLayout>
 
-                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
-                                                                                  IsEnabled="{Binding FinancialDetails.VATEligibilityPoint3Parent}">
-                                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                                                        <Grid.RowDefinitions>
-                                                                            <RowDefinition Height="104"/>
-                                                                        </Grid.RowDefinitions>
-                                                                        <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="*"/>
-                                                                        </Grid.ColumnDefinitions>
-                                                                        <Image  Source="{Binding ImageforTextQuestion3First}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                                        <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                                            <Label Text="{Binding TextQuestion3First}" TextColor="{Binding TextQuestion3FirstTextColor}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
-                                                                        </StackLayout>
+                                                                        </Grid>
+
                                                                     </Grid>
                                                                     <cards:SfCardView.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="TapppedOnQuestion3First"></TapGestureRecognizer>
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
 
-                                                                <cards:SfCardView Grid.Row="1" ShadowColor="#5d6770" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                                <cards:SfCardView Grid.Row="1" Grid.Column="1" HasShadow="True"  Margin="3" Padding="0"  CornerRadius="20" HorizontalOptions="FillAndExpand" HeightRequest="104" WidthRequest="171"
                                                                                   IsEnabled="{Binding FinancialDetails.VATEligibilityPoint3Parent}">
-                                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                                                        <Grid.RowDefinitions>
-                                                                            <RowDefinition Height="104"/>
-                                                                        </Grid.RowDefinitions>
-                                                                        <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="*"/>
-                                                                        </Grid.ColumnDefinitions>
-                                                                        <Image  Source="{Binding ImageforTextQuestion3Second}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                                        <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                                            <Label Text="{Binding TextQuestion3Second}" TextColor="{Binding TextQuestion3SecondTextColor}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
-                                                                        </StackLayout>
+
+                                                                    <Grid Margin="0" Padding="0" VerticalOptions="FillAndExpand">
+                                                                        <yummy:PancakeView Grid.Row="0" BackgroundColor="White">
+                                                                            <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Source="{Binding ImageforTextQuestion3Second}"  Aspect="AspectFill"/>
+                                                                        </yummy:PancakeView>
+
+                                                                        <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="*"/>
+                                                                                <RowDefinition Height="auto"/>
+                                                                            </Grid.RowDefinitions>
+                                                                            <StackLayout Grid.Row="1" Spacing="0">
+                                                                                <Label Text="{Binding TextQuestion3Second}" VerticalOptions="End" Style="{DynamicResource CardLabelBlack}" TextColor="{Binding TextQuestion3SecondTextColor}"  LineHeight="0.7"/>
+                                                                                <!--<Label Text="187,500 SAR" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>-->
+                                                                            </StackLayout>
+
+                                                                        </Grid>
                                                                     </Grid>
                                                                     <cards:SfCardView.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="TapppedOnQuestion3Second"></TapGestureRecognizer>
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
+                    
                                                             </Grid>
                                                         </StackLayout>
 
@@ -844,7 +854,6 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                     <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
                                                         <StackLayout>
                                                             <Label  Text="{x:Static custom2:AppResources.ZZZVATRQuestion4}" TextColor="#010101" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
-
                                                             <Grid>
                                                                 <Grid.RowDefinitions>
                                                                     <RowDefinition Height="auto"/>
@@ -854,43 +863,53 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     <ColumnDefinition Width="50*"/>
                                                                     <ColumnDefinition Width="50*"/>
                                                                 </Grid.ColumnDefinitions>
-                                                                <cards:SfCardView Grid.Row="1"  Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
-                                                                                  IsEnabled="{Binding FinancialDetails.VATEligibilityPoint4Parent}">
-                                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                                                        <Grid.RowDefinitions>
-                                                                            <RowDefinition Height="104"/>
-                                                                        </Grid.RowDefinitions>
-                                                                        <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="*"/>
-                                                                        </Grid.ColumnDefinitions>
-                                                                        <Image  Source="{Binding ImageforTextQuestion4First}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                                        <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                                            <Label Text="{Binding TextQuestion4First}" TextColor="{Binding TextQuestion4FirstTextColor}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
-                                                                        </StackLayout>
+                                                                     <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True"  Margin="3" Padding="0"  CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                                                       IsEnabled="{Binding FinancialDetails.VATEligibilityPoint4Parent}">
+                                                                    <Grid>
+                                                                        <Image Margin="0" Source="{Binding ImageforTextQuestion4First}" Aspect="AspectFill"  Grid.Row="0">
+                                                                        </Image>
+                                                                        <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="*"/>
+                                                                                <RowDefinition Height="auto"/>
+                                                                            </Grid.RowDefinitions>
+                                                                            <StackLayout Grid.Row="1" Spacing="0">
+                                                                                <Label Text="{Binding TextQuestion4First}" Style="{DynamicResource CardLabelBlack}"  TextColor="{Binding TextQuestion4FirstTextColor}"  LineHeight="0.7"/>
+                                                                            </StackLayout>
+
+                                                                        </Grid>
+
                                                                     </Grid>
                                                                     <cards:SfCardView.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="TapppedOnQuestion4First"></TapGestureRecognizer>
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
+                                                                <cards:SfCardView Grid.Row="1" Grid.Column="1" HasShadow="True"  Margin="3" Padding="0"  ShadowColor="#5d6770" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                                                  IsEnabled="{Binding FinancialDetails.VATEligibilityPoint4Parent}"
+                                                                    BackgroundColor="Blue"   HorizontalOptions="FillAndExpand">
 
-                                                                <cards:SfCardView Grid.Row="1" ShadowColor="#5d6770" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171"
-                                                                                  IsEnabled="{Binding FinancialDetails.VATEligibilityPoint4Parent}">
-                                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                                                        <Grid.RowDefinitions>
-                                                                            <RowDefinition Height="104"/>
-                                                                        </Grid.RowDefinitions>
-                                                                        <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="*"/>
-                                                                        </Grid.ColumnDefinitions>
-                                                                        <Image  Source="{Binding ImageforTextQuestion4Second}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                                        <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                                            <Label Text="{Binding TextQuestion4Second}" TextColor="{Binding TextQuestion4SecondTextColor}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
-                                                                        </StackLayout>
+                                                                    <Grid Margin="0" Padding="0" VerticalOptions="FillAndExpand">
+                                                                        <yummy:PancakeView Grid.Row="0" BackgroundColor="White">
+                                                                            <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Source="{Binding ImageforTextQuestion4Second}"  Aspect="AspectFill" />
+                                                                        </yummy:PancakeView>
+
+                                                                        <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="*"/>
+                                                                                <RowDefinition Height="auto"/>
+                                                                            </Grid.RowDefinitions>
+                                                                            <StackLayout Grid.Row="1" Spacing="0">
+                                                                                <Label Text="{Binding TextQuestion4Second}" VerticalOptions="End" Style="{DynamicResource CardLabelBlack}" TextColor="{Binding TextQuestion4SecondTextColor}"  LineHeight="0.7"/>
+                                                                                <!--<Label Text="Inma Bank" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>-->
+                                                                            </StackLayout>
+
+                                                                        </Grid>
                                                                     </Grid>
                                                                     <cards:SfCardView.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="TapppedOnQuestion4Second"></TapGestureRecognizer>
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
+                                                          
                                                             </Grid>
 
 
@@ -1684,8 +1703,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <ColumnDefinition Width="60*"/>
                                                             <ColumnDefinition Width="40*"/>
                                                         </Grid.ColumnDefinitions>
-                                                        <Label Grid.Row="0" Grid.Column="0"   Text="{x:Static custom2:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
+                                                        <Label Grid.Row="0" Grid.Column="0"   Text="{x:Static custom2:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="End"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
                                                                Style="{StaticResource BodyLabelBlackMedium}"/>
                                                           </Grid>
 
@@ -1724,12 +1743,12 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <ColumnDefinition Width="50*"/>
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
-                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsComming12months}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1}" Style="{StaticResource BodyLabelBlackMedium}"
-                                                                   HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                               <Label Grid.Row="1" Grid.Column="0"  Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsLast12months}"  Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable2}" Style="{StaticResource BodyLabelBlackMedium}"
-                                                                   HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsComming12months}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1}" Style="{StaticResource BodyLabelBlackMedium}" HorizontalOptions="End"
+                                                                   />
+                                                               <Label Grid.Row="1" Grid.Column="0"  Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsLast12months}"  Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" />
+                                                            <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable2}" Style="{StaticResource BodyLabelBlackMedium}" 
+                                                                   HorizontalOptions="End" />
                                                       
                                                           </Grid>
 
@@ -1765,10 +1784,10 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <ColumnDefinition Width="50*"/>
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
-                                                        <Label  Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryofExpenseDetailsComming12Months}"  Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label  Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion3answerSelected}"  Style="{StaticResource BodyLabelBlackMedium}"/>
-                                                     <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfExpenseDetailsLast12Months}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion4answerSelected}"  Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                        <Label  Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryofExpenseDetailsComming12Months}"  Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                                            <Label  Grid.Row="0" Grid.Column="1" HorizontalOptions="End"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion3answerSelected}"  Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                     <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfExpenseDetailsLast12Months}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                                            <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="End"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion4answerSelected}"  Style="{StaticResource BodyLabelBlackMedium}"/>
                                                       
                                                           </Grid>
                                                    

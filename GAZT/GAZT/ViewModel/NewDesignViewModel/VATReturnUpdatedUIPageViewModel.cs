@@ -5713,7 +5713,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void gotoSuccessPage()
         {
-            _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationData);
+            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, _vATDeclarationData);
         }
         public async Task DoValidatePayment(string fbNum,string paymentType)
         {

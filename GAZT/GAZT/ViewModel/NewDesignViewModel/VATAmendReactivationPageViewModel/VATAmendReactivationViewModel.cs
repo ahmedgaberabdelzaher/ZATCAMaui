@@ -2762,48 +2762,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 if (value1forimage3first == "1")
                 {
                     quesTion3answerSelected = TextQuestion3First;
-                    ImageforTextQuestion3First = "vat_tile_IbanCard_background.png";
+                    ImageforTextQuestion3First = "selected171x136.png";
                     TextQuestion3FirstTextColor = Color.White;
                 }
                 else
                 {
-                    ImageforTextQuestion3First = "vat_tile_IbanCard_background_white.png";
+                    ImageforTextQuestion3First = "unselected171x136.png";
                     TextQuestion3FirstTextColor = Color.Black;
                 }
 
                 if (value2forimage3second == "1")
                 {
                     quesTion3answerSelected = TextQuestion3Second;
-                    ImageforTextQuestion3Second = "vat_tile_IbanCard_background.png";
+                    ImageforTextQuestion3Second = "selected171x136.png";
                     TextQuestion3SecondTextColor = Color.White;
                 }
                 else
                 {
-                    ImageforTextQuestion3Second = "vat_tile_IbanCard_background_white.png";
+                    ImageforTextQuestion3Second = "unselected171x136.png";
                     TextQuestion3SecondTextColor = Color.Black;
                 }
 
                 if (value1forimage4first == "1")
                 {
                     quesTion4answerSelected = TextQuestion4First;
-                    ImageforTextQuestion4First = "vat_tile_IbanCard_background.png";
+                    ImageforTextQuestion4First = "selected171x136.png";
                     TextQuestion4FirstTextColor = Color.White;
                 }
                 else
                 {
-                    ImageforTextQuestion4First = "vat_tile_IbanCard_background_white.png";
+                    ImageforTextQuestion4First = "unselected171x136.png";
                     TextQuestion4FirstTextColor = Color.Black;
                 }
 
                 if (value2forimage4second == "1")
                 {
                     quesTion4answerSelected = TextQuestion4Second;
-                    ImageforTextQuestion4Second = "vat_tile_IbanCard_background.png";
+                    ImageforTextQuestion4Second = "selected171x136.png";
                     TextQuestion4SecondTextColor = Color.White;
                 }
                 else
                 {
-                    ImageforTextQuestion4Second = "vat_tile_IbanCard_background_white.png";
+                    ImageforTextQuestion4Second = "unselected171x136.png";
                     TextQuestion4SecondTextColor = Color.Black;
                 }
             }

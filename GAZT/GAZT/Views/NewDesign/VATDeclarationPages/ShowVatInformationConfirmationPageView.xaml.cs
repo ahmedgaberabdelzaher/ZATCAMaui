@@ -98,10 +98,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         MessagingCenter.Send<Object, string>(this, "YesReceivedForRefundMsg", AppResources.ZZZRefundYesMsgForFiteenPercent);
                     }
 
-                    var messageForNoRefundConfirmation = viewModel.HeaderWithInfoList.Where(x =>x.Message == AppResources.ZZZRefundNoMsg).FirstOrDefault();
+                    var messageForNoRefundConfirmation = viewModel.HeaderWithInfoList.Where(x =>x.Message == AppResources.VATRefundNoMsg).FirstOrDefault();
                     if (messageForNoRefundConfirmation != null)
                     {
-                        MessagingCenter.Send<Object, string>(this, "ReceivedForYesRefundMsg", AppResources.ZZZRefundNoMsg);
+                        MessagingCenter.Send<Object, string>(this, "ReceivedForYesRefundMsg", AppResources.VATRefundNoMsg);
                     }
                 }
             }
@@ -134,10 +134,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     {
                         MessagingCenter.Send<Object, string>(this, "NoReceivedForRefundMsg", AppResources.ZZZRefundYesMsgForFiteenPercent);
                     }
-                    var messageForNoRefundConfirmation = viewModel.HeaderWithInfoList.Where(x => x.Message == AppResources.ZZZRefundNoMsg).FirstOrDefault();
+                    var messageForNoRefundConfirmation = viewModel.HeaderWithInfoList.Where(x => x.Message == AppResources.VATRefundNoMsg).FirstOrDefault();
                     if (messageForNoRefundConfirmation != null)
                     {
-                        MessagingCenter.Send<Object, string>(this, "ReceivedForNoRefundMsg", AppResources.ZZZRefundNoMsg);
+                        MessagingCenter.Send<Object, string>(this, "ReceivedForNoRefundMsg", AppResources.VATRefundNoMsg);
                     }
                 }
             }
