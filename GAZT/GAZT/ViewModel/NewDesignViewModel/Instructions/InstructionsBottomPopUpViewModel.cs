@@ -101,6 +101,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
         }
 
+        private bool _isCancelButtonVisible = false;
+        public bool IsCancelButtonVisible
+        {
+            get
+            {
+                return _isCancelButtonVisible;
+            }
+            set
+            {
+                _isCancelButtonVisible = value;
+                RaisePropertyChanged("IsCancelButtonVisible");
+            }
+        }
+
         private string _checkBoxDescription = "";
         public string CheckBoxDescription
         {

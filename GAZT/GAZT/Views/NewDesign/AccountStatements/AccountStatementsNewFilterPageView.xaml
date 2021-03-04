@@ -76,7 +76,7 @@
                             <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.Filter}"
+                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.AccountStatementsFilterTitle}"
                                Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" />
 
                         <Image Grid.Row="0" Grid.Column="2"

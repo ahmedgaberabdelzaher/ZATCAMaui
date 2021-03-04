@@ -83,7 +83,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.SADADNumber + " " + text));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.MyBillsSADADPaymentNumberCopy + " " + text));
 
                 // await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
             }   

@@ -763,6 +763,9 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<EstablishmentRegistrationPageViewModel>();
+                    SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
+
                     return ServiceLocator.Current.GetInstance<EstablishmentRegistrationPageViewModel>();
                 }
                 catch (Exception)

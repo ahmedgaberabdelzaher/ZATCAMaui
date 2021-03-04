@@ -22,6 +22,7 @@
              NavigationPage.HasNavigationBar="False"
             BackgroundImageSource="partials_background" x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView">
 
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />
@@ -395,6 +396,7 @@
                                                     </syncfusion:SfPicker.Behaviors>
                                                 </syncfusion:SfPicker>
                                             </Grid>
+
                                             <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
 
                                             <CollectionView HeightRequest="80"  x:Name="CollectionView_Commitment" ItemsLayout="HorizontalList"
@@ -649,7 +651,7 @@
                                                                         <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding 
                                                                             FormattedBldat}" 
                                                                                         Style="{StaticResource 
-                                                                        CaptionLabelBlack}"></custom:CustomLabel>
+                                                                        CaptionLabelGrey}"></custom:CustomLabel>
 
                                                                     </StackLayout>
                                                                     <cards:SfCardView Grid.Row="0" Grid.Column="1"  HasShadow="False" 

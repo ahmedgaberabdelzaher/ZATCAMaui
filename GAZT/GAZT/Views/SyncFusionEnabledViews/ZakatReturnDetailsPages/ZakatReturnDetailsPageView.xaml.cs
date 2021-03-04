@@ -56,7 +56,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View
         {
             base.OnAppearing();
             ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = true;
-          await viewModel.OnPageLoad(Fbguid);
+            await viewModel.OnPageLoad(Fbguid);
             date.Text = viewModel.Abrzu;
         }
         private void SetLTR()

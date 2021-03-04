@@ -3888,7 +3888,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 bool result;
                 if(App.IsArabic)
                 {
-                     result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundNoMsg,AppResources.ZZCancel,AppResources.Confirm);
+                     result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundNoMsg, AppResources.ZZCancel,AppResources.Confirm);
                         if (!result)
                         {
                             returnResult = true;
@@ -3902,7 +3902,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 }
                 else
                 {
-                     result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundNoMsg, AppResources.Confirm, AppResources.ZZCancel);
+                     result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundNoMsg, AppResources.Confirm, AppResources.ZZCancel);
                         if (result)
                         {
                             returnResult = true;

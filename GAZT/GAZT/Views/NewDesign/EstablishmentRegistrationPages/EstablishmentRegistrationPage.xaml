@@ -156,7 +156,7 @@
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NationalityStatusStayMoreThanKSAClick}"/>
                                         </Grid.GestureRecognizers>
-                                        <Image Grid.Row="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
+                                        <!--<Image Grid.Row="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
                                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                         <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}"  Style="{StaticResource ValueLabelBlackMedium}"
                                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
@@ -166,11 +166,42 @@
                                         <Image Grid.Row="0" Source="vat_tile_listofsignup.png" 
                                                IsVisible="{Binding IsClickedStayMoreThanKSAOption}"
                                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                        <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}"  Style="{StaticResource ValueLabelBlackMedium}"
+                                          <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}"  Style="{StaticResource ValueLabelBlackMedium}"
                                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption}" 
                                                             HorizontalOptions="CenterAndExpand"  Margin="10" 
                                                             VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                            LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                                            LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />-->
+                                       <cards:SfCardView HasShadow="False" Grid.Row="0" Grid.Column="0"  CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                          IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" >
+                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="104"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                    <Label Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        </cards:SfCardView>
+                                        <cards:SfCardView HasShadow="False" Grid.Row="0" Grid.Column="0"  CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                          IsVisible="{Binding IsClickedStayMoreThanKSAOption}">
+                                            <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="104"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                    <Label Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        </cards:SfCardView>
+                                      
                                     </Grid>
                                     <Grid x:Name="OwnhouseGrid" Grid.Row="0" Grid.Column="1" >
                                         <Grid.RowDefinitions>
@@ -295,7 +326,46 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <Grid x:Name="PermanentEstablishmentGrid" Grid.Row="0" Grid.Column="0" >
+                                           <Grid x:Name="PermanentEstablishmentGrid" Grid.Row="0" Grid.Column="0" RowSpacing="24" ColumnSpacing="24">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="104"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding PermanentEstablishmentLegalEntityClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
+                                            <cards:SfCardView HasShadow="False"  CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedPermanentLegalEntity}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
+                                        </Grid>
+
+                                        <!--<Grid x:Name="PermanentEstablishmentGrid" Grid.Row="0" Grid.Column="0" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="136"></RowDefinition>
                                             </Grid.RowDefinitions>
@@ -320,8 +390,8 @@
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" Style="{StaticResource ValueLabelBlackMedium}"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
-                                        </Grid>
-                                        <Grid x:Name="OtherTaxableIncomeGrid" Grid.Row="0" Grid.Column="1">
+                                        </Grid>-->
+                                        <!--<Grid x:Name="OtherTaxableIncomeGrid" Grid.Row="0" Grid.Column="1">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="136"></RowDefinition>
                                             </Grid.RowDefinitions>
@@ -346,7 +416,46 @@
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" Style="{StaticResource ValueLabelBlackMedium}"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                        </Grid>-->
+                                                                                <Grid x:Name="OtherTaxableIncomeGrid" Grid.Row="0" Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="104"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OtherTaxableIncomeLegalEntityClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <cards:SfCardView HasShadow="False" Grid.Row="0" Grid.Column="0"  CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
+                                            <cards:SfCardView HasShadow="False" Grid.Row="0" Grid.Column="0"  CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
                                         </Grid>
+
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
@@ -360,7 +469,8 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <StackLayout Orientation="Vertical"   Margin="0,0,0,10">
-                                    <Grid  Margin="0,0,0,10">
+
+                                    <Grid  Margin="0,0,0,10" RowSpacing="24">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
@@ -368,103 +478,204 @@
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <Grid x:Name="ABranchNonResidentCompanyGrid"  Grid.Row="0" Grid.Column="0">
+                                          <Grid x:Name="ABranchNonResidentCompanyGrid"  Grid.Row="0" Grid.Column="0">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="100*"></ColumnDefinition>
-
                                             </Grid.ColumnDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ABranchOfNonResidentCompanyPEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTABranchOfNonResidentCompanyLabel}"
-                                                                IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                               HorizontalOptions="CenterAndExpand"   Margin="20,0,20,0"
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlackMedium}"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTABranchOfNonResidentCompanyLabel}"  IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}" 
-                                                                HorizontalOptions="CenterAndExpand"   Margin="20,0,20,0"
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlackMedium}"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTABranchOfNonResidentCompanyLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTABranchOfNonResidentCompanyLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
                                         </Grid>
-                                        <Grid x:Name="ConstructionSiteGrid"   Grid.Row="1" Grid.Column="0" >
+
+                                                                                <Grid x:Name="ConstructionSiteGrid"   Grid.Row="1" Grid.Column="0" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ConstructionSitePEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTConstuctionSiteLabel}" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0" Style="{StaticResource ValueLabelBlackMedium}"
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedConstructionSitePE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTConstuctionSiteLabel}" IsVisible="{Binding IsClickedConstructionSitePE}" 
-                                                                HorizontalOptions="CenterAndExpand"   Margin="20,0,20,0" Style="{StaticResource ValueLabelBlackMedium}"
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTConstuctionSiteLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedConstructionSitePE}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTConstuctionSiteLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
                                         </Grid>
-                                        <Grid x:Name="InstallationGrid"   Grid.Row="2" Grid.Column="0" >
+
+                                                                                <Grid x:Name="InstallationGrid"   Grid.Row="2" Grid.Column="0" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding InstallationPEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTInstallationLabel}" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                              HorizontalOptions="CenterAndExpand"   Margin="20,0,20,0" Style="{StaticResource ValueLabelBlackMedium}"
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedInstallationPE}"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTInstallationLabel}"  IsVisible="{Binding IsClickedInstallationPE}" 
-                                                                HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0" Style="{StaticResource ValueLabelBlackMedium}"
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTInstallationLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedInstallationPE}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTInstallationLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
                                         </Grid>
-                                        <Grid x:Name="AFixedBasedGrid"   Grid.Row="3" Grid.Column="0" >
+
+                                         <Grid x:Name="AFixedBasedGrid"   Grid.Row="3" Grid.Column="0" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding AFixedBasePEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTAFixedBaseLabel}"
-                                                                IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
-                                                                HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0" Style="{StaticResource ValueLabelBlackMedium}"
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedAFixedBasePE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTAFixedBaseLabel}"  IsVisible="{Binding IsClickedAFixedBasePE}" 
-                                                                HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0" Style="{StaticResource ValueLabelBlackMedium}"
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTAFixedBaseLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedAFixedBasePE}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTAFixedBaseLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
                                         </Grid>
-                                        <Grid x:Name="ANonResidentPartnerGrid"   Grid.Row="4" Grid.Column="0">
+
+                                          <Grid x:Name="ANonResidentPartnerGrid"   Grid.Row="4" Grid.Column="0">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTANonResidentPartnerLabel}"
-                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0" Style="{StaticResource ValueLabelBlackMedium}"
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTANonResidentPartnerLabel}" IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
-                                                               HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0" Style="{StaticResource ValueLabelBlackMedium}"
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTANonResidentPartnerLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
+                                            <cards:SfCardView HasShadow="False" CornerRadius="20" HeightRequest="104" WidthRequest="171"
+                                                              IsVisible="{Binding IsClickedNonResidentPartnerPE}">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="104"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTANonResidentPartnerLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
                                         </Grid>
+
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>

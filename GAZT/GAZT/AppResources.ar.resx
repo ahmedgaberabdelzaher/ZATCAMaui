@@ -4950,7 +4950,7 @@
     <value>Objections and Reviews</value>
   </data>
   <data name="NDRefunds" xml:space="preserve">
-    <value>الاستردادت</value>
+    <value>الاستردادات</value>
   </data>
   <data name="NDReturns" xml:space="preserve">
     <value>الإقرارات</value>
@@ -5577,7 +5577,7 @@
     <value>حسبة الزكاة</value>
   </data>
   <data name="NDZakatObjection" xml:space="preserve">
-    <value>اعتراض زكاة</value>
+    <value>اعتراض الزكاة</value>
   </data>
   <data name="NDZakatObjectionIsSubmittedSuccessfully" xml:space="preserve">
     <value>تم استلام طلب اعتراضك الزكوي</value>
@@ -7335,7 +7335,10 @@
     <value>يرجى دفع جميع المبالغ المستحقة للتقييم الأساسي للضريبة الصادرة التي لم تدفع أو تقدم كضمانات لطلبات المراجعة</value>
   </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc1" xml:space="preserve">
-    <value>أقر بأن طلبي لن تتم معالجته حتى يتم دفع مبلغ الضمان بالكامل في غضون 20 يومًا.</value>
+    <value>لموافقة على الشروط والاحكام
+اتعهد بأن اقدم اصل الضمان البنكي الى الهيئة العامة للزكاة والدخل خلال 20 يوماً، علماً بأن الطلب سيتم إلغاؤه آلياً فى حال عدم الالتزام بذلك.
+أتعهد بأن يكون الضمان البنكي المقدم للهيئة ساري المفعول لمدة عام واحد على الأقل وأن يكون قابلاً للتمديد.
+أتعهد بأن أوضح في أصل الضمان الرقم المميز الخاص بالمنشأة والفترة المعترض عليها.</value>
   </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc2" xml:space="preserve">
     <value>أقر بأن الضمانات المصرفية يجب أن تكون صالحة لمدة عام واحد على الأقل وتقديمها شخصيًا إلى فرع الهيئة العامة للزكاة والدخل المخصص لي.</value>
@@ -8748,7 +8751,7 @@ info@gazt.gov.sa</value>
     <value>يترتب على الاستمرار في متابعة تقديم الطلب الموافقة على تقييم الهيئة للضريبة المستحقة للإقرار المتعلق بالفترة محل الاعتراض، وأن الاعتراض يقتصر فقط على الغرامات محل الطلب.</value>
   </data>
   <data name="DashBoardMyTaxObligations" xml:space="preserve">
-    <value>التزاماتي الضريبية</value>
+    <value>التزاماتي</value>
   </data>
   <data name="PaymentMethod" xml:space="preserve">
     <value>خيارات الدفع</value>
@@ -8840,5 +8843,15 @@ info@gazt.gov.sa</value>
   <data name="VATAmendRegistrationCancel" xml:space="preserve">
     <value>يلغي</value>
     <comment>VAT Amendment Registration</comment>
+  </data>
+   <data name="MyBillsSADADPaymentNumberCopy" xml:space="preserve">
+    <value>تم نسخ رقم فاتورة سداد</value>
+  </data>
+    <data name="VATRefundNoMsg" xml:space="preserve">
+    <value>عزيزي المكلف, اذا لم تقدم طلب استرداد لرصيد الإقرار الدائن فلن تستطيع طلب الرصيد الدائن للاقرار مرة اخرى. يمكنك تقديم طلب استرداد كل المبالغ الدائنة مجمعة من خلال تقديم طلب الاسترداد</value>
+  </data>
+  
+  <data name="AccountStatementsFilterTitle" xml:space="preserve">
+    <value>تصفية النتائج</value>
   </data>
 </root>

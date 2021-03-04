@@ -8805,7 +8805,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                         NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                                         headerAmountInfo.HeaderText = AppResources.ZZZConfirmationMsg;
                                         headerAmountInfo.IsLinkAvailable = false;
-                                        headerAmountInfo.Message = AppResources.ZZZRefundNoMsg;
+                                        headerAmountInfo.Message = AppResources.VATRefundNoMsg;
                                         headerWithInfos.Add(headerAmountInfo);
 
 

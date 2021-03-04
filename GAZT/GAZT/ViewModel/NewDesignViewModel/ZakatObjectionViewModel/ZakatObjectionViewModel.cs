@@ -920,14 +920,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
             WithdrawBtnTapped = new Command(async () =>
             {
-
+               
 
                 if (IsWithDrawEnable)
                 {
 
-                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.CRContinue,
-                _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
-                    .Instructions));
+                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(isWithCancelOption: true, instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.CRContinue,
+               _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                   .Instructions));
 
                     await GetWithdrawReviewReason();
                     EnableWithdrawObjectionDetails();

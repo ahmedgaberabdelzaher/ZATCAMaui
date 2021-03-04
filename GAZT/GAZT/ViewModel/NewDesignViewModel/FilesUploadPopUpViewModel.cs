@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Manager;
@@ -758,29 +759,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     bool IsAttachmentPresent = false;
                                                     foreach (Attachment ItemA in AttachmentsList.results)
                                                     {
-                                                       // var fileName = (WebUtility.UrlEncode(AttachmentName));
+                                                        // var fileName = (WebUtility.UrlEncode(AttachmentName));
 
                                                         if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
                                                         {
                                                             IsAttachmentPresent = true;
                                                         }
 
-                                                        if (ItemA.Filename.Contains(" - ") && ItemA.Filename.Length>2)
-                                                        {      
+                                                        if (ItemA.Filename.Contains(" - ") && ItemA.Filename.Length > 2)
+                                                        {
                                                             var splitStrings = ItemA.Filename.Split('-');
-                                                            
-                                                            if(splitStrings.Count()>0 && splitStrings[1].Trim() == AttachmentName)
+
+                                                            if (splitStrings.Count() > 0 && splitStrings[1].Trim() == AttachmentName)
                                                             {
                                                                 IsAttachmentPresent = true;
                                                             }
                                                         }
-                                                        if(!String.IsNullOrEmpty(ItemA.Filename) && !String.IsNullOrEmpty(AttachmentName) && ItemA.Filename.Replace("+","").Replace("-","").Replace("_","").Replace(" ","").Replace("1", "") == AttachmentName.Replace("+", "").Replace("-", "").Replace("_", "").Replace(" ", "").Replace("1", ""))
+                                                        if (!String.IsNullOrEmpty(ItemA.Filename) && !String.IsNullOrEmpty(AttachmentName) && ItemA.Filename.Replace("+", "").Replace("-", "").Replace("_", "").Replace(" ", "").Replace("1", "") == AttachmentName.Replace("+", "").Replace("-", "").Replace("_", "").Replace(" ", "").Replace("1", ""))
                                                         {
                                                             IsAttachmentPresent = true;
                                                         }
                                                     }
 
-                                                    
+
                                                     if (IsAttachmentPresent == false)
                                                     {
                                                         string attachmentType = UtilityManager.GetContentType(Extention);
@@ -1140,7 +1141,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     {
                         APiMethod = "ZDP_INDTAX_ATT_SRV";
                         AttachmentName = AttachmentName.Replace("-", "_").Replace(" ", "");
-                        string attName = "1SpaceAdded-SpaceAdded"+AttachmentName;
+                        string attName = "1SpaceAdded-SpaceAdded" + AttachmentName;
                         AttachmentName = attName;
                     }
                     else if (IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
@@ -1191,6 +1192,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             return _attachment;
 
         }
+     
         public decimal GetAttachMentSize(List<decimal> SizeList)
         {
             decimal TotalSize = 0;

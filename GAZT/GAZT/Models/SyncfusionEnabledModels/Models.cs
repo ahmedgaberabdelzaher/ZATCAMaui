@@ -165,15 +165,15 @@ namespace GAZT.Models
             set
             {
                 _dueDT = value;
-                //if (_dueDT != null)
-                //{
-                //    if (_dueDT.Contains("T"))
-                //    {
-                //        string[] _dueDate = new String[2];
-                //        _dueDate = _dueDT.Split('T');
-                //        DueDate = _dueDate[0];
-                //    }
-                //}
+                if (_dueDT != null)
+                {
+                    if (_dueDT.Contains("T"))
+                    {
+                        string[] _dueDate = new String[2];
+                        _dueDate = _dueDT.Split('T');
+                        DueDate = _dueDate[0];
+                    }
+                }
             }
         }
       
