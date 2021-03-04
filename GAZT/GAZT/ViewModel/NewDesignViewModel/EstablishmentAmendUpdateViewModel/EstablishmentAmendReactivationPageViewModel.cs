@@ -1850,6 +1850,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 AppResources. VATRFinancialDetails, AppResources.ZVatSummary };
             SetUIAvailability();
             bindingOutletList();
+            if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
+            {
+                fetchTabDataAndBind(currentTab);
+            }
         }
 
         void SetUIAvailability()
@@ -2650,6 +2654,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     SelectedMethod = EnMethodList?[taxPayerDetails?.Accmethod];
                     CalendarType = EnCalendarTypeList?[taxPayerDetails?.Fdcalender];
                     udpdateDates();
+                }
+                if (IsSaudi)
+                {
+                    TabList.Remove(AppResources.ESTPassportDetailsTabTitleLabel);
                 }
             }
             catch (GAZTErrorException e)
