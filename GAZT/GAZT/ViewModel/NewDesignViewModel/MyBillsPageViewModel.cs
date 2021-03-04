@@ -53,6 +53,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private string _sadadBindNumber = "";
+        public string SadadBindNumber
+        {
+            get
+            {
+                return _sadadBindNumber;
+            }
+            set
+            {
+                if (_sadadBindNumber == value) return;
+
+                _sadadBindNumber = value;
+                RaisePropertyChanged("SadadBindNumber");
+            }
+        }
+        
         private string _referenceNumber = "";
         public string ReferenceNumber
         {

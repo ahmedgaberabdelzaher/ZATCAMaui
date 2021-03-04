@@ -60,7 +60,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
+        private string _totalAmount = "0.0";
+        public string TotalAmount
+        {
+            get
+            {
+                return _totalAmount;
+            }
+            set
+            {
+                if (_totalAmount == value) return;
 
+                _totalAmount = value;
+                RaisePropertyChanged("TotalAmount");
+            }
+        }
+        
         private string _zAKATAmount;
         public string ZAKATAmount
         {
@@ -73,11 +88,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_zAKATAmount == value) return;
 
                 _zAKATAmount = value;
+                TotalAmount = _zAKATAmount;
                 RaisePropertyChanged("ZAKATAmount");
             }
         }
 
+        private string _sadadBindNumber = "";
+        public string SadadBindNumber
+        {
+            get
+            {
+                return _sadadBindNumber;
+            }
+            set
+            {
+                if (_sadadBindNumber == value) return;
 
+                _sadadBindNumber = value;
+                RaisePropertyChanged("SadadBindNumber");
+            }
+        }
+        
         private string _sADADNumber;
         public string SADADNumber
         {
@@ -90,6 +121,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_sADADNumber == value) return;
 
                 _sADADNumber = value;
+                SadadBindNumber = value;
                 RaisePropertyChanged("SADADNumber");
             }
         }
