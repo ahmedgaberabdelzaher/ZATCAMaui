@@ -304,6 +304,7 @@
                           ItemsSource="{Binding GroupedData}"  
                           ItemTapped="LvwContacts_ItemTapped"
                           HasUnevenRows="True">
+
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -370,14 +371,14 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.GroupHeaderTemplate>
-                    <!--<ListView.Footer>
+                    <ListView.Footer>
                         <Grid>
                             <StackLayout Orientation="Vertical">
                                 <StackLayout  IsVisible="{Binding IsNotHaveStatements}">
                                     <custom:CustomLabel Margin="0,50,0,0"  Text="{x:Static ResourceManager:AppResources.ASNoFinancialTransactions}"
                                                     Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </StackLayout>
-                                <ListView Margin="5"   IsVisible="{Binding IsNormalStatementsViewVisible}" 
+                                <!--<ListView Margin="5"   IsVisible="{Binding IsNormalStatementsViewVisible}" 
                                           SeparatorVisibility="None"
                                           VerticalScrollBarVisibility="Never"
                                           SelectionMode="None"
@@ -444,10 +445,10 @@
                                             </ViewCell>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
-                                </ListView>
+                                </ListView>-->
                             </StackLayout>
                         </Grid>
-                    </ListView.Footer>-->
+                    </ListView.Footer>
                     <ListView.Header >
                         <StackLayout Orientation="Vertical" Spacing="-5" Grid.Row="0" FlowDirection="RightToLeft">
 
