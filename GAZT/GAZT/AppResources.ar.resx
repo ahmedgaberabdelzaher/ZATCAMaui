@@ -2012,7 +2012,8 @@
 • متوسط عدد العمالة × 6000 ريال سعودي
 • قيمة الاستيرادات × 115%
 • مجموع كلآ من (المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات)
-• قيمة المشتريات وفقاً لإقرارات ضريبة القيمة المضافة × 115%</value>
+• قيمة المشتريات وفقاً لإقرارات ضريبة القيمة المضافة × 115%
+• المبيعات العقارية</value>
     <comment>Zakat return details</comment>
   </data>
   <data name="ZZDeleteAttachmentConfirmationText" xml:space="preserve">
@@ -4496,7 +4497,7 @@
     <value>إغلاق / نقل ملكية الترخيص لمكلف آخر</value>
   </data>
   <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
-    <value>اوافق انه قد تم الاطلاع على التراخيص التي سيتم الفروع / اغلاقها</value>
+    <value>اوافق انه قد تم الاطلاع على الفروع / التراخيص التي سيتم اغلاقها / نقل ملكيتها لمكلف اخر</value>
   </data>
   <data name="TinDeregistrationOutletCheckboxTransferAllOutlets" xml:space="preserve">
     <value>اوافق انه قد تم الاطلاع على الفروع / التراخيص التي سيتم نقل ملكيتها لمكلف اخر</value>
