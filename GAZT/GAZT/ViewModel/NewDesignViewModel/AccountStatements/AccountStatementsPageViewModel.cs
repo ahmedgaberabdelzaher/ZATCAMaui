@@ -622,7 +622,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                     if (IsNormalStatementsViewVisible)
                     {
-                        GroupedData = new List<ObservableGroupCollection<string, ASResult>>();
+                        if (IsMonthWiseStatementsViewVisible)
+                        {
+                            GroupedData = new List<ObservableGroupCollection<string, ASResult>>();
+                        }
+                        else
+                        {
+                            groupedDataValuetoUpdate = new List<ObservableGroupCollection<string, ASResult>>();
+                        }
                     }
                     else
                     {
@@ -880,6 +887,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     Task.Run(async () =>
                     {
+                        IsMonthWiseStatementsViewVisible = false;
                         await PopulateDataInChipsForYears(SelectedTransactionTypeFilter.TaxType, SelectedTransactionTypeFilter.StatementFilter);
                         IsMonthWiseStatementsViewVisible = true;
                         GroupedData = groupedDataValuetoUpdate;
