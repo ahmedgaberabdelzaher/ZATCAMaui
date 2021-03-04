@@ -4496,14 +4496,14 @@
   <data name="TinDeregistrationCloseOutletsIndividually" xml:space="preserve">
     <value>إغلاق / نقل ملكية الترخيص لمكلف آخر</value>
   </data>
-  <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
-    <value>اوافق انه قد تم الاطلاع على الفروع / التراخيص التي سيتم اغلاقها / نقل ملكيتها لمكلف اخر</value>
+	<data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
+    <value>اوافق انه قد تم الاطلاع على التراخيص التي سيتم الفروع / اغلاقها</value>
   </data>
   <data name="TinDeregistrationOutletCheckboxTransferAllOutlets" xml:space="preserve">
     <value>اوافق انه قد تم الاطلاع على الفروع / التراخيص التي سيتم نقل ملكيتها لمكلف اخر</value>
   </data>
   <data name="TinDeregistrationOutletCheckboxCloseorTransferAllOutlets" xml:space="preserve">
-    <value>اوافق انه قد تم الاطلاع على التراخيص التي سيتم الفروع / اغلاقها</value>
+    <value>اوافق انه قد تم الاطلاع على الفروع / التراخيص التي سيتم اغلاقها / نقل ملكيتها لمكلف اخر</value>
   </data>
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>تاريخ الإيقاف / الشطب</value>
