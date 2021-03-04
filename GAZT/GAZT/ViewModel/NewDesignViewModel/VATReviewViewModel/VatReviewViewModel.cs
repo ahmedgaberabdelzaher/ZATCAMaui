@@ -4959,9 +4959,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             BankGuranteeAttachmentsListViewData = bankAttachments;
             AttachmentsListViewData = attachments;
 
-            if (BankGuranteeAttachmentsListViewData!=null && BankGuranteeAttachmentsListViewData.Count>0)
+            
+            if (modelVATReview.d.SecurityDtl.ChkBank == "X")
             {
                 IsSadadCheckBox1 = true;
+            }
+            else
+            {
+                IsSadadCheckBox1 = true;
+            }
+            if (modelVATReview.d.SecurityDtl.ChkCash == "X")
+            {
+                IsSadadCheckBox3 = true;
+            }
+            else
+            {
+                IsSadadCheckBox3 = true;
             }
 
             if (string.IsNullOrEmpty(modelVATReview.d.SecurityDtl.Sopbel))
