@@ -168,8 +168,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             if (isFirstTime)
             {
-                var part = GetTemplateChild("frameToolbar") as SfBorder;
-                await part.FadeTo(0, 0);
+
+                await frameToolbar.FadeTo(0, 0);
                 await btn_frameToolbar.FadeTo(1, 0);
                 isFirstTime = false;
 
@@ -474,8 +474,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.StackMenuColor = Color.Transparent;
                 viewModel.TabbarColor = Color.Transparent;
                 viewModel.IsToolbarTaxVisible = false;
-                var part = GetTemplateChild("frameToolbar") as SfBorder;
-                part.IsVisible = false;
+
+                frameToolbar.IsVisible = false;
 
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
@@ -490,8 +490,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.MenuIndicatorColor = Color.White;
                 viewModel.TabbarColor = Color.DarkGray;
                 viewModel.StackMenuColor = Color.White;
-                var part = GetTemplateChild("frameToolbar") as SfBorder;
-                part.IsVisible = true;
+
+                frameToolbar.IsVisible = true;
 
                 viewModel.IsToolbarTaxVisible = true;
 
@@ -571,8 +571,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.MenuIndicatorColor = Color.White;
             viewModel.TabbarColor = Color.DarkGray;
             viewModel.StackMenuColor = Color.White;
-            var part = GetTemplateChild("frameToolbar") as SfBorder;
-            part.IsVisible = true;
+
+            frameToolbar.IsVisible = true;
 
             viewModel.IsToolbarTaxVisible = true;
 
@@ -592,8 +592,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.StackMenuColor = Color.Transparent;
                 viewModel.TabbarColor = Color.Transparent;
                 viewModel.IsToolbarTaxVisible = false;
-                var part = GetTemplateChild("frameToolbar") as SfBorder;
-                part.IsVisible = false;
+
+                frameToolbar.IsVisible = false;
 
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
@@ -1276,16 +1276,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
         {
-            var part = GetTemplateChild("frameToolbar") as SfBorder;
+
 
             if (viewModel.IsMyObligationsClear || viewModel.MenuViewVisible)
             {
-                part.IsVisible = false;
+                frameToolbar.IsVisible = false;
                 btn_frameToolbar.IsVisible = false;
             }
             else
             {
-                part.IsVisible = true;
+                frameToolbar.IsVisible = true;
                 btn_frameToolbar.IsVisible = true;
             }
 
@@ -1297,7 +1297,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             if (e.ScrollY > 120)
             {
-                await part.FadeTo(1, 600);
+                await frameToolbar.FadeTo(1, 600);
                 await btn_frameToolbar.FadeTo(0, 600);
                 await btn_frameToolbar.TranslateTo(xPosition - 10, -100, 400);
 
@@ -1305,7 +1305,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
             else
             {
-                await part.FadeTo(0, 600);
+                await frameToolbar.FadeTo(0, 600);
                 await btn_frameToolbar.FadeTo(1, 600);
                 await btn_frameToolbar.TranslateTo(scrollView.X, scrollView.Y, 400);
 
