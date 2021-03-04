@@ -194,7 +194,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
             this._zakatReturnDetail = ZakatReturnDetail;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            this.BindingContext = viewModel;
+            this.BindingContext = _ZakatReturnSuccessPageViewModel;
             SetLTR();
             ChangeAeroIcon();
 

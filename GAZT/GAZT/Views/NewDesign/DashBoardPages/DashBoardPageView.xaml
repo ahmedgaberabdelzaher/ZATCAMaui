@@ -1251,7 +1251,7 @@
             
             <Grid x:Name="ButtomTab" VerticalOptions="EndAndExpand" Grid.Row="1" Margin="0,-3,0,0" BackgroundColor="White" Padding="0,0,0,26">
                 <Image Source="Bg_Bottom_nav.png"  Aspect="AspectFill" BackgroundColor="Transparent"/>
-                <yummy:PancakeView Padding="20,0,20,8" BackgroundColor="Transparent" >
+                <yummy:PancakeView Padding="20,0,20,15" BackgroundColor="Transparent" >
                     <Grid BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>

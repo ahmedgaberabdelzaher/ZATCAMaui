@@ -85,7 +85,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
-                if (_zAKATAmount == value) return;
+               
 
                 _zAKATAmount = value;
                 TotalAmount = _zAKATAmount;
@@ -118,10 +118,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
-                if (_sADADNumber == value) return;
 
                 _sADADNumber = value;
-                SadadBindNumber = value;
                 RaisePropertyChanged("SADADNumber");
             }
         }
@@ -135,9 +133,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
-                if (_referenceNumber == value) return;
 
                 _referenceNumber = value;
+                SadadBindNumber = value;
+
                 RaisePropertyChanged("ReferenceNumber");
             }
         }
