@@ -5415,7 +5415,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         //TinDeregistrationData.AEffectiveDtH = DeregistrationDate.ToString("yyyy/MM/dd");
 
                         SummaryTitle = AppResources.TinDeregistrationDate,
-                        SummaryData = DeregistrationDate.ToString("dd/MM/yyyy"),
+                        SummaryData = DeregistrationDate.ToString("yyyy/MM/dd"),
                         IsEditVisible = true
                     });
                 }
@@ -5454,7 +5454,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 summaryDeclarationData.Add(new TINDeregistrationSummaryModel
                 {
                     SummaryTitle = AppResources.Date,
-                    SummaryData = SubmissionDate.ToString("dd MMM yyyy"),
+                    SummaryData = SubmissionDate.ToString("yyyy/MM/dd"),
                     IsEditVisible = true
                 });
 

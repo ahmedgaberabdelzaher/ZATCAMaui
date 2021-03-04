@@ -1378,7 +1378,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
 
-                                        <Label Text="{Binding SubmissionDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding SubmissionDate}" IsEnabled="False" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                             <Image Margin="5,0">
                                                 <Image.Source>
