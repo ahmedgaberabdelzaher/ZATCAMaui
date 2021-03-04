@@ -518,6 +518,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                                         if (IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
                                         {
+                                            if(AttachmentName.Contains(" "))
+                                            {
+                                                string updatedName = AttachmentName.Replace(' ', '_');
+                                                AttachmentName = updatedName;
+                                            }
                                             if (fileSize <= 1)
                                             {
                                                 if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
