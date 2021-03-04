@@ -1043,6 +1043,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private void DpDbo_Closed(object sender, EventArgs e)
         {
+            FrmDBO.HasError = false;
+            viewModel.IsDeRegistrationValid = true;
             bool isHIjri;
             DateTime deregDate;
             DateTime permitDate;
@@ -1126,6 +1128,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 if (deregDate < permitDate)
                 {
+                    viewModel.IsDeRegistrationValid = false;
+                    FrmDBO.HasError = true;
                     viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
                 }
 

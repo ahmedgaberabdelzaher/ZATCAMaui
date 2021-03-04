@@ -51,6 +51,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public static int numberOfAttachmentSentToAttachmentPopUp= 0;
         List<TinDeregestrationAttachmentsModel> check;
         List<Attachment> attachmentList;
+        public bool IsDeRegistrationValid = true;
         //
         #endregion
 
@@ -4200,6 +4201,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     else if (SelectedOutletOption.OutletOptionIndex == null)
                     {
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        return;
+                    }
+                    else if(IsDeRegistrationValid == false)
+                    {
+                       await _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
                         return;
                     }
                     else
