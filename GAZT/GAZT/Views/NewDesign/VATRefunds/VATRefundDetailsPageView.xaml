@@ -693,7 +693,7 @@
                                         </StackLayout>
                                     </Grid>
                                     <StackLayout Grid.Row="2" Margin="0,30">
-                                        <buttons:SfButton x:Name="btnConfirmSummary" IsEnabled="{Binding IsConfirmSummaryEnabled}" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Clicked="ConfirmSummaryButton_Tapped"
+                                        <buttons:SfButton x:Name="btnConfirmSummary" IsEnabled="{Binding IsConfirmSummaryEnabled}" IsVisible="{Binding IsConfirmSummaryEnabled}" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Clicked="ConfirmSummaryButton_Tapped"
                                                           Text="{x:Static ResourceManager:AppResources.Confirm}" BackgroundColor="{Binding ContinueButtonnBackroundColor}"
                                         Style="{StaticResource PrimaryButtonStyle}">
                                             <!--<buttons:SfButton.Triggers>

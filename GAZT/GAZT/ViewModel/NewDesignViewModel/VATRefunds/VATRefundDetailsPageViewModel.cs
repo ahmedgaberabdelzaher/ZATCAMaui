@@ -53,10 +53,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
-                if (_CBTermsAndConditionsChecked == value) return;
-
                 _CBTermsAndConditionsChecked = value;
-                if (_CBTermsAndConditionsChecked)
+                if (_CBTermsAndConditionsChecked == true && _AcknowledgementChecked == true)
                 {
                     IsConfirmSummaryEnabled = true;
                 }
@@ -77,10 +75,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
-                if (_AcknowledgementChecked == value) return;
                 _AcknowledgementChecked = value;
-
-                if (_AcknowledgementChecked)
+                if (_AcknowledgementChecked == true && _CBTermsAndConditionsChecked == true)
                 {
                     IsConfirmSummaryEnabled = true;
                 }
