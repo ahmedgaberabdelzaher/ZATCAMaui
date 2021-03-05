@@ -40,6 +40,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
             viewModel = App.Locator.TINDeregistrationPageView;
 
+            viewModel.ClearData();
             ChangeAeroIcon();
             SetLTR();
             // ChangeArrowDirection();

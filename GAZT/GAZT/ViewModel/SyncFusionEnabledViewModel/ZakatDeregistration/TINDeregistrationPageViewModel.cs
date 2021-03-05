@@ -1053,9 +1053,37 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 if (_tinDeregistrationData == value) return;
 
+
                 _tinDeregistrationData = value;
+                if (IDTypeDataModel == null)
+                {
+                    IDTypeDataModel = new VATSignUpD();
+                }
+                if(IBANTypesList != null && _iBANTypesList.Count > 0)
+                {
+                    foreach (var obj in _iBANTypesList)
+                    {
+                        if (obj.key.Equals(value.AIdType))
+                        {
+                            SelectedIdtype = obj.Text;
+                        }
+                    }
+                }
+               
+                SelectedIdNumber = value.AIdNo;
+                    IDTypeDataModel.Name1 = value.ANm3;
+                FirstNameFromIdType = value.ANm3;
+                IDTypeDataModel.Name2 = value.ANm4;
+                    IDTypeDataModel.FatherName = value.ANm5;
+                    IDTypeDataModel.GrandfatherName = value.ANm6;
+                    IDTypeDataModel.FamilyName = value.ANm7;
+               
+               
+
+
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
                 RaisePropertyChanged("TinDeregistrationData");
+                
             }
         }
 
@@ -2079,21 +2107,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 _iBANTypesList = value;
                 if (_iBANTypesList == value) return;
 
-                //if (_iBANTypesList != null && _iBANTypesList.Count != 0)
-                //{
-                //    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked == false)
-                //    {
-                //        IsEnableIBANType = false;
-                //    }
-                //    else
-                //    {
-                //        IsEnableIBANType = true;
-                //    }
-                //}
-                //else
-                //{
-                //    IsEnableIBANType = false;
-                //}
+                if (_iBANTypesList != null && _iBANTypesList.Count != 0)
+                {
+                  
+                    //if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked == false)
+                    //{
+                    //    IsEnableIBANType = false;
+                    //}
+                    //else
+                    //{
+                    //    IsEnableIBANType = true;
+                    //}
+                }
+                else
+                {
+                    //IsEnableIBANType = false;
+                }
                 RaisePropertyChanged("IBANTypesList");
             }
         }
@@ -2717,7 +2746,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void ClearData()
         {
-
+            PickerDobToDisplay = string.Empty;
         }
         public async void OnTinRegisrtationReasonClicked()
         {
@@ -5713,6 +5742,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
                     TinDeregistrationData.AExpdtH = DeregistrationDate.ToString("yyyy/MM/dd");
 
+                    //  TinDeregistrationData.AIdType = SelectedIdtype;
+                    TinDeregistrationData.AIdNo = SelectedIdNumber;
+                    TinDeregistrationData.ANm1 = "";
+                    TinDeregistrationData.ANm2 = TINNumber;
+                    TinDeregistrationData.ANm3 = FirstNameFromIdType;// IDTypeDataModel.Name1;
+                    TinDeregistrationData.ANm4 = IDTypeDataModel.Name2;
+                    TinDeregistrationData.ANm5 = IDTypeDataModel.FatherName;
+                    TinDeregistrationData.ANm6 = IDTypeDataModel.GrandfatherName;
+                    TinDeregistrationData.ANm7 = IDTypeDataModel.FamilyName;
+
                     //if (IsDeclarationChecked)
                     //{
                     //    TinDeregistrationData.ADeclarationChkbox = "1";
@@ -6371,8 +6410,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             //IsOption2Visible = index == 1 ? true : false;
         }
 
-
-
+       
 
     }
 }

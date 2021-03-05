@@ -110,6 +110,7 @@
     <ContentPage.Content>
 
         <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
             <ScrollView>
                 <Grid IsVisible="{Binding IsReasonViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0"
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -221,6 +222,7 @@
                             <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                         </listView:SfListView.LayoutManager>
                     </listView:SfListView>
+
                     <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption1Visible}">
                         <custom:CustomLabel x:Name="DateLabel" Style="{StaticResource CaptionLabelGrey}" >
                             <custom:CustomLabel.FormattedText>
@@ -781,11 +783,13 @@
                         </StackLayout>
 
                     </StackLayout>
+
                     <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" HorizontalOptions="FillAndExpand" VerticalOptions="End"
                                       x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                 </Grid>
             </ScrollView>
+
             <ScrollView IsVisible="{Binding IsOutletViewEnabled}">
                 <StackLayout IsVisible="{Binding IsOutletViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0"
                     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -1407,6 +1411,7 @@
                     </Grid>
                 </Grid>
             </ScrollView>
+
             <ScrollView IsVisible="{Binding IsSummaryViewEnabled}">
                 <Grid IsVisible="{Binding IsSummaryViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
