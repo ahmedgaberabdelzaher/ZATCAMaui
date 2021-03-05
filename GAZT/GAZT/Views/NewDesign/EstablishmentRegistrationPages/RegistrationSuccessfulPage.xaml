@@ -8,7 +8,7 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              BackgroundImageSource="partials_background.png"
-             ios:Page.UseSafeArea="true"
+             ios:Page.UseSafeArea="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>

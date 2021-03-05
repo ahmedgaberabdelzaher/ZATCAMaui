@@ -696,6 +696,9 @@
                                                             <Setter Property="BackgroundColor" Value="White" />
                                                             <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup_W" />
                                                             <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="Gray" />
+                                                            <Setter TargetName="cardLabel" Property="custom:CustomLabel.FontFamily" Value="{StaticResource SSTArRoman}"/>
+                                                            <Setter TargetName="cardLabel" Property="custom:CustomLabel.FontSize" Value="14"/>
+
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                     <VisualState x:Name="Selected">
@@ -703,12 +706,14 @@
                                                             <Setter Property="BackgroundColor" Value="White" />
                                                             <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup" />
                                                             <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="White" />
+                                                            <Setter TargetName="cardLabel" Property="custom:CustomLabel.FontFamily" Value="{StaticResource SSTArRoman}"/>
+                                                            <Setter TargetName="cardLabel" Property="custom:CustomLabel.FontSize" Value="14"/>  
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
                                             <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
-                                            <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
+                                            <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" TextColor="{StaticResource NeutralBlack}"
                                                                     FontFamily="{StaticResource SSTArabicMedium}"
                                                                       HorizontalOptions="Start"  Padding="20" 
                                                                 VerticalOptions="End" HorizontalTextAlignment="Start"/>
