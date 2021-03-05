@@ -8924,10 +8924,6 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="VATReviewRequestString" xml:space="preserve">
     <value>Please state the decision you would like to review and the grounds for your request</value>
   </data>
-     <data name="VATReviewRequestString" xml:space="preserve">
-    <value>Please state the decision you would like to review and the grounds for your request</value>
-  </data>
-    
   <data name="MyBillsSADADPaymentNumberCopy" xml:space="preserve">
     <value>SADAD payment number copied</value>
   </data> 
