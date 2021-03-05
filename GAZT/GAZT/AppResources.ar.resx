@@ -4496,7 +4496,7 @@
   <data name="TinDeregistrationCloseOutletsIndividually" xml:space="preserve">
     <value>إغلاق / نقل ملكية الترخيص لمكلف آخر</value>
   </data>
-	<data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
+  <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
     <value>اوافق انه قد تم الاطلاع على التراخيص التي سيتم الفروع / اغلاقها</value>
   </data>
   <data name="TinDeregistrationOutletCheckboxTransferAllOutlets" xml:space="preserve">
@@ -8845,15 +8845,17 @@ info@gazt.gov.sa</value>
     <value>يلغي</value>
     <comment>VAT Amendment Registration</comment>
   </data>
-   <data name="MyBillsSADADPaymentNumberCopy" xml:space="preserve">
+  <data name="MyBillsSADADPaymentNumberCopy" xml:space="preserve">
     <value>تم نسخ رقم فاتورة سداد</value>
   </data>
-    <data name="VATRefundNoMsg" xml:space="preserve">
+  <data name="VATRefundNoMsg" xml:space="preserve">
     <value>عزيزي المكلف, اذا لم تقدم طلب استرداد لرصيد الإقرار الدائن فلن تستطيع طلب الرصيد الدائن للاقرار مرة اخرى. يمكنك تقديم طلب استرداد كل المبالغ الدائنة مجمعة من خلال تقديم طلب الاسترداد</value>
   </data>
-  
   <data name="AccountStatementsFilterTitle" xml:space="preserve">
     <value>تصفية</value>
     
+  </data>
+  <data name="MultipleBillsThisBillHasOtherLiabilities" xml:space="preserve">
+    <value>This bill has other liability and should be paid togather</value>
   </data>
 </root>

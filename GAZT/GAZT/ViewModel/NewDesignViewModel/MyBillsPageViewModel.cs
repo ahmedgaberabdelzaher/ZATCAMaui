@@ -21,6 +21,7 @@ using EGAZT.Views.NewDesign.PaymentOptions;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using EGAZT.Views.NewDesign.MyBillsPages;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -31,6 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
         public string selectedFbNum = "";
+        MyBills BModel = null;
         public string selectedSadadNo = "";
         public string selectedAmount = "";
         public string selectedTaxablePeriod = "";
@@ -68,7 +70,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SadadBindNumber");
             }
         }
-        
+
         private string _referenceNumber = "";
         public string ReferenceNumber
         {
@@ -133,7 +135,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     FilterIfTypeAndStausFilterSelected(false);
                 }
-                
+
                 RaisePropertyChanged("SelectedChipFilterItem");
             }
         }
@@ -223,6 +225,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        private ObservableCollection<MyBills> multiplePayableBills;
+        public ObservableCollection<MyBills> MultiplePayableBills
+        {
+            get
+            {
+                return multiplePayableBills;
+            }
+            set
+            {
+                if (multiplePayableBills == value) return;
+
+                multiplePayableBills = value;
+
+                RaisePropertyChanged("MultiplePayableBills");
+            }
+        }
+
+
         private ObservableCollection<MyBills> _myBills;
         public ObservableCollection<MyBills> MyBills
         {
@@ -235,47 +256,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_myBills == value) return;
 
                 _myBills = value;
-                if (_myBills != null&&calculateMyBills)
+                if (_myBills != null && calculateMyBills)
                 {
 
                     //if (_myBills.Count != 0)
                     //{
-                        double Amount = 0.00;
-                        foreach (var item in MyBills)
-                        {
-                            //P = 0 - Paid
-                            //I = 1 - Partially Paid
-                            //O = 2 - Unpaid
+                    double Amount = 0.00;
+                    foreach (var item in MyBills)
+                    {
+                        //P = 0 - Paid
+                        //I = 1 - Partially Paid
+                        //O = 2 - Unpaid
 
-                            if (item.Status == "O")
+                        if (item.Status == "O")
+                        {
+                            if (item.TestDueAmount != null)
                             {
-                                if (item.TestDueAmount != null)
-                                {
-                                    Amount = Amount + Convert.ToDouble(item.TestDueAmount);
-                                }
-                            }
-                            else if (item.Status == "I")
-                            {
-                                if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
-                                {
-                                    Amount = Amount + Convert.ToDouble(item.TotalRemainingAmount);
-                                }
+                                Amount = Amount + Convert.ToDouble(item.TestDueAmount);
                             }
                         }
+                        else if (item.Status == "I")
+                        {
+                            if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
+                            {
+                                Amount = Amount + Convert.ToDouble(item.TotalRemainingAmount);
+                            }
+                        }
+                    }
 
-                        string format = "$#,##0.00;-$#,##0.00;Zero";
-                        decimal d = Convert.ToDecimal(Amount.ToString());
-                        decimal positiveMoney = d;
-                        positiveMoney.ToString(format);  //will return $24,508,975.94
-                        string TestDueAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
+                    string format = "$#,##0.00;-$#,##0.00;Zero";
+                    decimal d = Convert.ToDecimal(Amount.ToString());
+                    decimal positiveMoney = d;
+                    positiveMoney.ToString(format);  //will return $24,508,975.94
+                    string TestDueAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
 
 
-                        AmountLabel = TestDueAmount + " " + AppResources.ZSAR;
+                    AmountLabel = TestDueAmount + " " + AppResources.ZSAR;
 
-                        
+
                     //}
 
-                    if (Amount == 0.00) {
+                    if (Amount == 0.00)
+                    {
                         isNoDataLableVisible = false;
                     }
                     else
@@ -462,6 +484,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Method
 
+        public void verifyPaymentAndShowBillsPopup(MyBills BModel)
+        {
+            this.BModel = BModel;
+            MultiplePayableBills = new ObservableCollection<MyBills>();
+            if (MyBills != null && MyBills.Count > 0)
+            {
+                MultiplePayableBills = new ObservableCollection<MyBills>(MyBills.Where(x => (!String.IsNullOrEmpty(BModel.VTRE2) && x.VTRE2.Equals(BModel.VTRE2)) || (!String.IsNullOrEmpty(BModel.Fbnum) && x.Fbnum.Equals(BModel.Fbnum))).ToList());
+            }
+
+            if (MultiplePayableBills != null && MultiplePayableBills.Count > 1)
+            {
+                PopupNavigation.Instance.PushAsync(new MyBillsMultiplePayableList(MultiplePayableBills));
+                return;
+            }
+            else
+            {
+                showPaymentOptions();
+            }
+        }
+
+        public async void showPaymentOptions()
+        {
+
+            if (BModel != null)
+            {
+                if (BModel.MadabutFg == "X")
+                {
+                    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                }
+                else
+                {
+                    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, BModel.OpenliMsg));
+                }
+                var total = "";
+                if (MultiplePayableBills != null && MultiplePayableBills.Count > 0)
+                {
+                    total = MultiplePayableBills.Sum(x => Double.Parse(x.TestDueAmount)).ToString();
+                }else
+                {
+                    total = BModel.TestDueAmount;
+                }
+                selectedFbNum = BModel.Fbnum;
+                selectedSadadNo = BModel.VTRE2;
+                selectedAmount = total;
+                selectedTaxablePeriod = BModel.Persl;
+            }
+        }
         public void onPageLoad(BillInfo billInfo)
         {
             IsLoading = true;
@@ -733,12 +802,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             calculateMyBills = isTaxTypeFilter;
 
-            if (isTaxTypeFilter) {
-                MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x =>  x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+            if (isTaxTypeFilter)
+            {
+                MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
 
                 FilterOnTaxType(MyBills);
                 return;
-        }
+            }
 
             if (SelectedChipFilterItem != null)
             {
@@ -816,7 +886,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (paymentType == "M")
                         {
 
-                            Device.BeginInvokeOnMainThread(async () => {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
 
                                 _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
                                 //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
@@ -887,7 +958,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = false;
                     //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    
+
                 });
             }
         }

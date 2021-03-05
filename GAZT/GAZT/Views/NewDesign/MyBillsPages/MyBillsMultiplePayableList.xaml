@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    mc:Ignorable="d"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    FlowDirection="RightToLeft" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    x:Class="EGAZT.Views.NewDesign.MyBillsPages.MyBillsMultiplePayableList"
+    xmlns:local="clr-namespace:EGAZT.CustomControl" xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+    >
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" BackgroundColor="White" Margin="0,20,0,0">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="0,10,0,10" Grid.Row="0">
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZNote}" ></custom:CustomLabel>
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MultipleBillsThisBillHasOtherLiabilities}"></custom:CustomLabel>
+            </StackLayout>
+
+            <yummy:PancakeView Grid.Row="1" BackgroundColor="Transparent">
+                
+            
+            <listView:SfListView ItemsSource="{Binding MultiplePayableBills}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent">
+                <listView:SfListView.Behaviors>
+                    <local:ListViewBehavior/>
+                </listView:SfListView.Behaviors>
+
+                <listView:SfListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <cards:SfCardView CornerRadius="16" Margin="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+
+                            <StackLayout Spacing="2" Margin="12" Orientation="Vertical">
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+
+                                        <custom:CustomLabel Text="{Binding TestDueAmount,Converter={StaticResource 
+                                                                        commaSeparatorConverter}}" 
+                                                                                            Style="{StaticResource 
+                                                                        BodyLabelBlackMedium}" Margin="0,-5,0,-5">
+
+                                            <custom:CustomLabel.FormattedText>
+
+                                                <FormattedString>
+                                                    <Span Text="{Binding TestDueAmount,Converter={StaticResource 
+                                                                        commaSeparatorConverter}}" />
+                                                    <Span Text=" "/>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" ></Span>
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+
+                                        </custom:CustomLabel>
+
+                                        <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding Abtypt}" 
+                                                                                        Style="{StaticResource 
+                                                                        CaptionLabelGrey}" VerticalOptions="End"></custom:CustomLabel>
+
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Vertical" Grid.Row="0" >
+
+                                        <border:SfBorder Grid.Row="0" HasShadow="False" BorderWidth="0" HorizontalOptions="EndAndExpand" 
+                                                                     VerticalOptions="CenterAndExpand" Padding="12,2,12,2" 
+                                                                     CornerRadius="20" HeightRequest="32"  BackgroundColor="#fbf4e9" >
+                                            <border:SfBorder.Triggers>
+                                                <DataTrigger TargetType="border:SfBorder" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                    <Setter Property="BackgroundColor" Value="#f6e6e8" />
+                                                </DataTrigger>
+                                            </border:SfBorder.Triggers>
+                                           
+                                                
+                                                <Label FontFamily="{StaticResource SSTArRoman}" Text="{Binding StatusText}" FontSize="12" TextColor="#D99A29" VerticalOptions="CenterAndExpand">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                            <Setter Property="TextColor" Value="#AA0C19" />
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+
+                                                </Label>
+
+                                        </border:SfBorder>
+
+                                        <custom:CustomLabel Margin="0,0,0,0"
+                                                                                        Style="{StaticResource 
+                                                                        CaptionLabelGrey}" HorizontalOptions="EndAndExpand">
+
+                                            <custom:CustomLabel.FormattedText>
+
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
+                                                    <Span Text=": "/>
+                                                    <Span Text="{Binding FormatedFaedn}"></Span>
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                        </custom:CustomLabel>
+
+                                    </StackLayout>
+
+                                </Grid>
+
+                            </StackLayout>
+                        </cards:SfCardView>
+
+                    </DataTemplate>
+                </listView:SfListView.ItemTemplate>
+            </listView:SfListView>
+            </yummy:PancakeView>
+            <buttons:SfButton Grid.Row="2"
+                                          Margin="0,10,0,10"  WidthRequest="366" HeightRequest="48" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                              Clicked="ContinueButtonClicked"
+                                           />
+        </Grid>
+    </yummy:PancakeView>
+</pages:PopupPage>

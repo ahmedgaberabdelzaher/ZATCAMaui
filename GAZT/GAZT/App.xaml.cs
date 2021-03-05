@@ -118,6 +118,8 @@ namespace EGAZT
         #endregion
 
         #region new design views Release2
+        
+        public static string MyBillsMultiplePayableList = "MyBillsMultiplePayableList";
         public static string InstalmentPlanPageView = "InstalmentPlanPageView";
         public static string VatInstalmentPlanSuccessPage = "VatInstalmentPlanSuccessPage";
         public static string ZakatInstalmentPlanPageView = "ZakatInstalmentPlanPageView";

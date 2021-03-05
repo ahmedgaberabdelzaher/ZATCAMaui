@@ -1,8 +1,10 @@
 ﻿using EGAZT.Helper;
+using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.Models.EnumModels;
 using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.MyBillsPages;
 using EGAZT.Views.NewDesign.PaymentOptions;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -37,6 +39,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public string selectedAmount = "";
 
         private string _sadadBindNumber = "";
+        OverduePaymentAndUnSubmittedReturn BModel=null;
+
         public string SadadBindNumber
         {
             get
@@ -51,7 +55,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SadadBindNumber");
             }
         }
-        
+
+        private ObservableCollection<MyBills> multiplePayableBills;
+        public ObservableCollection<MyBills> MultiplePayableBills
+        {
+            get
+            {
+                return multiplePayableBills;
+            }
+            set
+            {
+                if (multiplePayableBills == value) return;
+
+                multiplePayableBills = value;
+
+                RaisePropertyChanged("MultiplePayableBills");
+            }
+        }
+
         private string _totalAmount = "0.0";
         public string TotalAmount
         {
@@ -204,6 +225,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private List<OverduePaymentAndUnSubmittedReturn> allBills { get; set; }
+        public List<OverduePaymentAndUnSubmittedReturn> AllBills
+        {
+            get
+            {
+                return this.allBills;
+            }
+            set
+            {
+                if (allBills == value) return;
+
+                if (value != null)
+                {
+                    this.allBills = value;
+                    RaisePropertyChanged("AllBills");
+                }
+            }
+        }
         private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _PendingBills { get; set; }
 
         public ObservableCollection<OverduePaymentAndUnSubmittedReturn> PendingBills
@@ -1624,6 +1663,69 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Method
+        public void verifyPaymentAndShowBillsPopup(OverduePaymentAndUnSubmittedReturn BModel)
+        {
+            this.BModel = BModel;
+           var newMultiplePayableBills = new ObservableCollection<MyBills>();
+
+            foreach(var item in AllBills)
+            {
+                newMultiplePayableBills.Add(new MyBills { 
+                    Abtypt = item.Abtypt,
+                    VTRE2=item.Sopbel, 
+                    MadabutFg =item.MadabutFg,
+                    TestDueAmount=item.Amount,
+                    FormatedFaedn=item.FormatedDuedate,
+                    StatusText=item.IcrStatus,
+                    Fbnum=item.Fbnum
+
+                });
+            }
+
+            if (AllBills != null && AllBills.Count > 0)
+            {
+                MultiplePayableBills = new ObservableCollection<MyBills>(newMultiplePayableBills.Where(x => (!String.IsNullOrEmpty(BModel.Sopbel) && x.VTRE2.Equals(BModel.Sopbel)) || (!String.IsNullOrEmpty(BModel.Fbnum) && x.Fbnum.Equals(BModel.Fbnum))).ToList());
+            }
+
+            if (MultiplePayableBills != null && MultiplePayableBills.Count > 1)
+            {
+                PopupNavigation.Instance.PushAsync(new MyBillsMultiplePayableList(MultiplePayableBills));
+                return;
+            }
+            else
+            {
+                showPaymentOptions();
+            }
+        }
+
+        public async void showPaymentOptions()
+        {
+
+            if (BModel != null)
+            {
+                if (BModel.MadabutFg == "X")
+                {
+                    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                }
+                else
+                {
+                    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, BModel.OpenliMsg));
+                }
+                var total = "";
+                if (MultiplePayableBills != null && MultiplePayableBills.Count > 0)
+                {
+                    total = MultiplePayableBills.Sum(x => Double.Parse(x.TestDueAmount)).ToString();
+                }
+                else
+                {
+                    total = BModel.Amount;
+                }
+                selectedFbNum = BModel.Fbnum;
+                selectedSadadNo = BModel.Sopbel;
+                selectedAmount = total;
+                selectedTaxablePeriod = BModel.Persl;
+            }
+        }
 
         public async Task SadadPaymentSelected()
         {
@@ -2076,10 +2178,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private async Task GetBillsAndReturns()
         {
+            AllBills = new List<OverduePaymentAndUnSubmittedReturn>();
             MyObligationAmount = 0.0;
             var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
             var pendingBills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
             List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+            AllBills = TempBills;
 
             if (TempBills != null)
             {

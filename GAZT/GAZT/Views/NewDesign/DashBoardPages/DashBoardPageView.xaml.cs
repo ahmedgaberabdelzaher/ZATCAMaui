@@ -189,6 +189,22 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             try
             {
+                MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", async (sender, arg) =>
+                {
+                    Console.WriteLine("MultipleBillsContinue Clicked");
+
+                    viewModel.showPaymentOptions();
+
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
                 MessagingCenter.Subscribe<Object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
                     Console.WriteLine("Card Payment Clicked");
@@ -511,6 +527,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             MessagingCenter.Unsubscribe<Object, string>(this, "Apple_Pay");
             MessagingCenter.Unsubscribe<Object, string>(this, "SADAD");
             MessagingCenter.Unsubscribe<App, string>(this, "DashboardApplePayData");
+            MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
 
 
 
@@ -1336,8 +1353,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             Console.WriteLine("Clicked on: Amount: " + BModel.Amount + " ,FbNum: " + BModel.Fbnum);
             //viewModel.DoValidatePayment(BModel.Fbnum, BModel.Amount);
 
-
-                if (BModel.MadabutFg == "X")
+            viewModel.verifyPaymentAndShowBillsPopup(BModel);
+            /*if (BModel.MadabutFg == "X")
                 {
                     PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
 
@@ -1350,7 +1367,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.selectedSadadNo = BModel.Sopbel;
                 viewModel.selectedAmount = BModel.Amount;
 
-                viewModel.selectedTaxablePeriod = BModel.Persl;
+                viewModel.selectedTaxablePeriod = BModel.Persl;*/
 
         }
     }
