@@ -1149,8 +1149,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 });
                 Xamarin.Forms.MessagingCenter.Subscribe<object, ELGBL_DOCSetforsubmit>(this, "EligibilitySetAttachmentReceived", (sender, arg) =>
                 {
-                    if (arg != null)
-                    {
+                if (arg != null)
+                {
                         viewModel.VATRegistrationDetailsData.d.ELGBL_DOCSet = arg;
                         //  FrmNewAttachment.HasError = false;
                     }

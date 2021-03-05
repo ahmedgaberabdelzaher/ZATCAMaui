@@ -836,7 +836,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             ActMgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRMainGroup.IndSector : LicenseMainGroup.IndSector,
                             ActSgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRSubGroup.IndSector : LicenseSubGroup.IndSector,
                             Actcat = MainActivity ? "M" : "S",
-                            Actno = $"{Int16.Parse(newNumber?.Actno):000}",
+                            Actno = $"{Int16.Parse(newNumber?.Actno):00000}",
                             Crattfg = CRsCopies.Count > 0 ? "X" : string.Empty
                         };
 
@@ -1261,7 +1261,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     CRLicenseNo = LicenseNumber;
                 }
-                string outletref = $"{Int16.Parse(newNumber?.Actno):000-}" + CRLicenseNo;
+                string outletref = $"{Int16.Parse(newNumber?.Actno):00000-}" + CRLicenseNo;
 
                 Attachment dd = await EstablishmentRegistrationWebServiceManager.ESTAttachment(attachmentByteData, fileName, taxPayerDetails?.ReturnIdx, docType, contentType, outletref);
 

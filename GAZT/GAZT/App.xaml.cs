@@ -314,6 +314,7 @@ namespace EGAZT
         public static string IncomingChannel = string.Empty;
         public static bool DoesLoginNeedToBeRefreshed;
         public static string PaymentGuid = string.Empty;
+        public static bool isFromDashboard = false;
 
         //in Seconds
         public static int IdleTimeToLogout = 100;

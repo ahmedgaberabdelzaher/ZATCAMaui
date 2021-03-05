@@ -669,8 +669,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                             _eligibledocset.FormGuid = "";
                                                             _eligibledocset.Fbtyp = "";
                                                             _eligibledocset.RankingOrder = "";
-                                                            VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Add(_eligibledocset);
 
+                                                            bool isAdded = false;
+
+                                                            foreach(ResultsItemForDOCSetforsubmit results in VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results)
+                                                            {
+                                                                if(_eligibledocset.DmsTp == results.DmsTp)
+                                                                {
+                                                                    isAdded = true;
+                                                                }
+                                                            }
+
+                                                            if(isAdded == false)
+                                                            {
+                                                                VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Add(_eligibledocset);
+                                                            }
                                                         }
                                                         catch (Exception ex)
                                                         {

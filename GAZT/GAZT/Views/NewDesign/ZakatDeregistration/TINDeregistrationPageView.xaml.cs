@@ -1062,7 +1062,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
                         string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
                         var date = year + "/" + month + "/" + day;
-                        if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
+                        if (!string.IsNullOrEmpty(date)&& viewModel.SelectedOutletOption.OutletOptionIndex != "1"  && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
                             viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
                             viewModel.PickerDOBDateDisplay = "";
@@ -1084,7 +1084,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string day = (DpDbo.SelectedItem as IList<object>)[0].ToString();
                         string year = (DpDbo.SelectedItem as IList<object>)[2].ToString();
                         var date = year + "/" + month + "/" + day;
-                        if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
+                        if (!string.IsNullOrEmpty(date)  && viewModel.SelectedOutletOption.OutletOptionIndex != "1" && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
                             viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
                             viewModel.PickerDOBDateDisplay = "";

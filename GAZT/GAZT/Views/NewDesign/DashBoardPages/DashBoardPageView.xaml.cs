@@ -1,4 +1,5 @@
 ﻿using EGAZT.Enums;
+using EGAZT.Models.EnumModels;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.PaymentOptions;
 using EGAZT.Views.NewDesign.VATDeRegistration;
@@ -758,6 +759,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                  viewModel.IsToolbarTaxVisible = false;*/
 
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnSupportTapped", "Support");
+                App.isFromDashboard = true;
                 viewModel._navigationService.NavigateTo(App.SupportPageView);
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
