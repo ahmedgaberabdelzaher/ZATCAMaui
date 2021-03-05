@@ -317,7 +317,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             get { return _taxType; }
             set
             {
-                if (_referenceNum == value) return;
+                if (_taxType == value) return;
 
                 _taxType = value;
                 RaisePropertyChanged("TaxType");
@@ -1802,6 +1802,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 {
                     billsModel.TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
                 }
+                else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX/ZAKT"))
+                {
+                    billsModel.TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax+" / "+AppResources.FORM5Zakat;
+                }
                 else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ZAKT"))
                 {
                     billsModel.TaxType = AppResources.FORM5Zakat;
@@ -1842,6 +1846,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
                 {
                     TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                }
+                else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX/ZAKT"))
+                {
+                    TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax+" / "+AppResources.FORM5Zakat;
                 }
                 else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ZAKT"))
                 {
