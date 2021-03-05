@@ -783,7 +783,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                if (_selectedOutletOptionIndex == value) return;
+               if (_selectedOutletOptionIndex == value) return;
 
                 _selectedOutletOptionIndex = value;
                 RaisePropertyChanged("SelectedOutletOptionIndex");
@@ -2608,7 +2608,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         try
                         {
                             SelectedOutletOption = OutletDecisionOptions.Where(m => m.OutletOptionIndex == TinDeregistrationData.ADregOpt).FirstOrDefault();
+
                             SelectedOutletOptionIndex = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
+                            SetDefaultReasonLayout();
                             MessagingCenter.Send<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");
                             // MessagingCenter.Send<TINDeregistrationModel>(SelectedOutletOption, "selectedOutletOption");
                         }
@@ -6199,5 +6201,171 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
            
         }
+
+
+
+        public void SetDefaultReasonLayout()
+        {
+           // TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
+            int index = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
+
+           SelectedOutletOptionIndex =OutletDecisionOptions.IndexOf(SelectedOutletOption);
+
+            //if (SelectedOutletOptionIndex == 1)
+            //{
+            //   NationalTypeSelected();
+            //}
+            if (SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+            {
+               NationalTypeSelected();
+                Device.BeginInvokeOnMainThread(() =>IsDobVisible = true);
+            }
+
+           IsOption1Visible = index == 0 ? true : false;
+           IsOption2Visible = index == 1 ? true : false;
+
+            if (IsOption2Visible == true)
+            {
+               PickerDobToDisplay = string.Empty;
+               TINNumber = string.Empty;
+               SelectedIdtype = string.Empty;
+               SelectedIdNumber = string.Empty;
+               PickerDOBDateDisplay = string.Empty;
+
+                if (FirstNameFromIdType != null)
+                {
+                   FirstNameFromIdType = string.Empty;
+                }
+
+                if (IDTypeDataModel == null)
+                {
+                   IDTypeDataModel = new VATSignUpD();
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                       IDTypeDataModel.Name1 = string.Empty;
+                       IDTypeDataModel.Name2 = string.Empty;
+                       IDTypeDataModel.FatherName = string.Empty;
+                       IDTypeDataModel.GrandfatherName = string.Empty;
+                       IDTypeDataModel.FamilyName = string.Empty;
+                    });
+                }
+            }
+            else if (IsOption1Visible == true)
+            {
+                if (FirstNameFromIdType != null)
+                {
+                   FirstNameFromIdType = string.Empty;
+                }
+
+               PickerDobToDisplay = string.Empty;
+                //TodayDate = new ObservableCollection<object>();
+                //TodayDateinHijri = new ObservableCollection<object>();
+            }
+            else
+            {
+                if (FirstNameFromIdType != null)
+                {
+                   FirstNameFromIdType = string.Empty;
+                }
+
+               PickerDobToDisplay = string.Empty;
+               TINNumber = string.Empty;
+               SelectedIdtype = string.Empty;
+               SelectedIdNumber = string.Empty;
+               PickerDOBDateDisplay = string.Empty;
+
+                if (IDTypeDataModel == null)
+                {
+                   IDTypeDataModel = new VATSignUpD();
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                       IDTypeDataModel.Name1 = string.Empty;
+                       IDTypeDataModel.Name2 = string.Empty;
+                       IDTypeDataModel.FatherName = string.Empty;
+                       IDTypeDataModel.GrandfatherName = string.Empty;
+                       IDTypeDataModel.FamilyName = string.Empty;
+                    });
+                }
+               PickerDobToDisplay = string.Empty;
+                //TodayDate = new ObservableCollection<object>();
+                //TodayDateinHijri = new ObservableCollection<object>();
+            }
+
+           AllOutlets =AllOutlets.Select(x =>
+            {
+                x.PermitTypes = x.PermitTypes.Select(y =>
+                {
+                    y.APermitDeregDisplayDate = null;
+                    return y;
+                }).ToList();
+                return x;
+            }).ToList();
+
+            GetSelectedDataTemplate(SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
+
+        }
+        void GetSelectedDataTemplate(bool isIndex1 = false)
+        {
+            //var captionStyle = Resources["CaptionLabelBlack"] as Style;
+            //Grid cardView = new Grid() { HeightRequest = 100 };
+            //Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
+            //Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
+            //Label label = new Label()
+            //{
+            //    HorizontalOptions = LayoutOptions.StartAndExpand,
+            //    VerticalOptions = LayoutOptions.EndAndExpand,
+            //    Style = captionStyle,
+            //    Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions,
+            //    Margin = new Thickness(20, 0, 20, 20),
+            //    TextColor = Color.White,
+            //    HorizontalTextAlignment = TextAlignment.Start
+            //};
+            //grid.Children.Add(image);
+            //grid.Children.Add(label);
+
+            //cardView.Children.Add(grid);
+            //outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
+            if (SelectedOutletOptionIndex == 2)
+            {
+               outletEditIsVisible = true;
+                OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+            }
+            else if (SelectedOutletOptionIndex == 1)
+            {
+                outletEditIsVisible = false;
+                OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
+            }
+            else
+            {
+                outletEditIsVisible = false;
+                OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+            }
+
+            //int index = Convert.ToInt16(SelectedOutletOptionIndex);
+            //if (isIndex1)
+            //{
+            //    index = 1;
+            //}
+            if (SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+            {
+                IsOption2Visible = true;
+            }
+            else if (SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationCloseAllOutlets))
+            {
+                IsOption1Visible = true;
+            }
+            //IsOption1Visible = index == 0 ? true : false;
+            //IsOption2Visible = index == 1 ? true : false;
+        }
+
+
+
+
     }
 }
