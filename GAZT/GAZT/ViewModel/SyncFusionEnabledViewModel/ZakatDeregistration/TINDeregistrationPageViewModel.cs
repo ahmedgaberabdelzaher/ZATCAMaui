@@ -4345,12 +4345,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                         }
                                         else
                                         {
+
                                             outletInfo.AOutletEffDtHTb = DeregistrationDate.ToString("yyyy/MM/dd");
                                             outletInfo.AOutletEffDtTb = ConvertDateFormat(DeregistrationDate);
                                             outletInfo.AOutletEffDtCTb = "G";
                                             foreach (PermitSetResult permitInfo in allPermitTypes)
                                             {
                                                 permitInfo.APermitDeregDisplayDate = DeregistrationDate.ToString("yyyy/MM/dd");
+                                                if (TinDeregistrationData.ADregOpt == "2")
+                                                {
+                                                    permitInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
+                                                    
+                                                }
+                                                permitInfo.APermitDregRsnTb = TinDeregistrationData.ADregOpt == "2"? "2":"3";
                                                 tempPermitTypes.Add(permitInfo);
 
                                             }
