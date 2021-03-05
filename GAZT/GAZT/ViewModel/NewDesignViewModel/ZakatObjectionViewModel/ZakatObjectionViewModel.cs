@@ -730,6 +730,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 RaisePropertyChanged("objRefNumber");
             }
         }
+        [Preserve(AllMembers = true)]
         public class BillsModel
         {
             public BillsModel()
@@ -742,7 +743,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             public string TaxType { get; set; }
             public string AssessmentAmountGAZT { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class SelectionModel
         {
             public SelectionModel()
