@@ -284,6 +284,9 @@
 		<EmbeddedResource Update="Views\NewDesign\FormBundleStatusPages\FormBundleStatusPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\MyBillsPages\MyBillsMultiplePayableList.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\MyBillsPages\MyBillsPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>

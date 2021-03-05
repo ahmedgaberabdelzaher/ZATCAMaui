@@ -106,6 +106,22 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
             try
             {
+                MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", async (sender, arg) =>
+                {
+                    Console.WriteLine("MultipleBillsContinue Clicked");
+
+                    viewModel.showPaymentOptions();
+
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
                 MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
                     Console.WriteLine("Card Payment Clicked");
@@ -178,6 +194,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
                 MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
                 MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
+                MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
 
             }
             catch (Exception ex)
@@ -315,16 +332,11 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             MyBills BModel = (MyBills)payNowCard.BindingContext;
             Console.WriteLine("Clicked on: Amount: " + BModel.TestDueAmount + " ,FbNum: " + BModel.Fbnum);
 
-            /*if (String.IsNullOrEmpty(BModel.Fbnum))
-            {
-            */
-
-
-                if (BModel.MadabutFg == "X")
+            viewModel.verifyPaymentAndShowBillsPopup(BModel);
+/*                if (BModel.MadabutFg == "X")
                 {
                     PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
 
-                    //viewModel.DoValidatePayment(fbNum: BModel.Fbnum,BModel.Status);
                 }
                 else
                 {
@@ -333,11 +345,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 viewModel.selectedFbNum = BModel.Fbnum;
                 viewModel.selectedSadadNo = BModel.VTRE2;
                 viewModel.selectedAmount = BModel.TestDueAmount;
-                viewModel.selectedTaxablePeriod = BModel.Persl;
-              //  PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
-
-                //viewModel.DoValidatePayment(BModel.Fbnum,BModel.TestDueAmount);
-           // }
+                viewModel.selectedTaxablePeriod = BModel.Persl;*/
 
         }
     }
