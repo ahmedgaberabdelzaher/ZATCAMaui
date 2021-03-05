@@ -26,7 +26,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel.validateCR = _activityNavigation.validateCR;
             viewModel.validateLicense = _activityNavigation.validateLicense;
             viewModel.goBackAction = _activityNavigation.goBackAction;
-            viewModel.NregActivityList = _activityNavigation.taxPayerDetails?.Nreg_ActivitySet?.results.Where(i => i.Actno == $"{Int16.Parse(_activityNavigation.nextNumber?.Actno):000}").ToList();
+            viewModel.NregActivityList = _activityNavigation.taxPayerDetails?.Nreg_ActivitySet?.results.Where(i => i.Actno == $"{Int16.Parse(_activityNavigation.nextNumber?.Actno):00000}").ToList();
             viewModel.CurrentTab = _activityNavigation.openedTab;
             BindingContext = viewModel;
             ChangeAeroIcon();

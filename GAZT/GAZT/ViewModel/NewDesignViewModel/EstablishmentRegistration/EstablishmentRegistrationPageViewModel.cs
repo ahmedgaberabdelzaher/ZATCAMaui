@@ -3085,10 +3085,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     passportObj.ValidDateFrom = issueDate;
                     passportObj.ValidDateTo = expireDate;
                     passportObj.Type = "FS0002";
-                    passportObj.Srcidentify = "000";
+                    passportObj.Srcidentify = "00000";
                     if (taxPayerDetails.Nreg_IdSet.results.Count > 0)
                     {
-                        taxPayerDetails.Nreg_IdSet.results[0].Srcidentify = "000";
+                        taxPayerDetails.Nreg_IdSet.results[0].Srcidentify = "00000";
                         taxPayerDetails.Nreg_IdSet.results[0].Gpart = "";
 
                         Nreg_IdItem nreg_IdItem = new Nreg_IdItem();

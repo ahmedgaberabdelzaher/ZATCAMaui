@@ -838,7 +838,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         outletItem.Actnm = OutletName;
                         outletItem.Actno = OutletActNumber;
                         outletItem.Caltp = taxPayerDetails?.Caltp;
-                        outletItem.Actcat = OutletActNumber == "000" ? "M" : "S";
+                        outletItem.Actcat = OutletActNumber == "00000" ? "M" : "S";
                         taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
                         taxPayerDetails.StepNumberx = "03";
                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
@@ -925,9 +925,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         newNumber = await EstablishmentRegistrationWebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
                     }
-                    OutletActNumber = newNumber?.Actno == null ? newNumber?.Actno : "000";
+                    OutletActNumber = newNumber?.Actno == null ? newNumber?.Actno : "00000";
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
-                    if (OutletActNumber == "000")
+                    if (OutletActNumber == "00000")
                     {
                         var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
                         if (preLoadedItems.Count == 1)
