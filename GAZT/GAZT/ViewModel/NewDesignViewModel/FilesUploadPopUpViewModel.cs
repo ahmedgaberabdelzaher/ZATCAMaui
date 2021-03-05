@@ -401,9 +401,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                         filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
 
-                        var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                         if (IsComeForWhichAttachment == WhichAttachment.VATDeregistration ||
-                            IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
+                        IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
                         {
                             if (VatAttachmentsList != null)
                             {
@@ -500,6 +499,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             }
                         }
 
+                        var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                         VatAttachmentCount++;
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {
@@ -518,6 +518,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                                         if (IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
                                         {
+                                            if(AttachmentName.Contains(" "))
+                                            {
+                                                string updatedName = AttachmentName.Replace(' ', '_');
+                                                AttachmentName = updatedName;
+                                            }
                                             if (fileSize <= 1)
                                             {
                                                 if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)

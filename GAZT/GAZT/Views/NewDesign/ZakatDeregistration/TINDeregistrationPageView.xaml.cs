@@ -49,6 +49,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>();
             this.BindingContext = viewModel;
             viewModel.LoadReasonSet();
+            //   GetSelectedDataTemplate();
+           // outletDecisionOptionsListView.Selected
             viewModel.PopulateAttachmentsListViewTemplate();
 
             //MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
@@ -358,107 +360,109 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
-            int index = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
+            viewModel.SelectedOutletOption = selectedItem;
+            viewModel.SetDefaultReasonLayout();
+            //int index = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
 
-            viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+            //viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
 
-            //if (viewModel.SelectedOutletOptionIndex == 1)
+            ////if (viewModel.SelectedOutletOptionIndex == 1)
+            ////{
+            ////    viewModel.NationalTypeSelected();
+            ////}
+            //if (selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             //{
             //    viewModel.NationalTypeSelected();
+            //    Device.BeginInvokeOnMainThread(() => viewModel.IsDobVisible = true);
             //}
-            if (selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
-            {
-                viewModel.NationalTypeSelected();
-                Device.BeginInvokeOnMainThread(() => viewModel.IsDobVisible = true);
-            }
 
-            viewModel.IsOption1Visible = index == 0 ? true : false;
-            viewModel.IsOption2Visible = index == 1 ? true : false;
+            //viewModel.IsOption1Visible = index == 0 ? true : false;
+            //viewModel.IsOption2Visible = index == 1 ? true : false;
 
-            if (viewModel.IsOption2Visible == true)
-            {
-                viewModel.PickerDobToDisplay = string.Empty;
-                viewModel.TINNumber = string.Empty;
-                viewModel.SelectedIdtype = string.Empty;
-                viewModel.SelectedIdNumber = string.Empty;
-                viewModel.PickerDOBDateDisplay = string.Empty;
+            //if (viewModel.IsOption2Visible == true)
+            //{
+            //    viewModel.PickerDobToDisplay = string.Empty;
+            //    viewModel.TINNumber = string.Empty;
+            //    viewModel.SelectedIdtype = string.Empty;
+            //    viewModel.SelectedIdNumber = string.Empty;
+            //    viewModel.PickerDOBDateDisplay = string.Empty;
 
-                if (viewModel.FirstNameFromIdType != null)
-                {
-                    viewModel.FirstNameFromIdType = string.Empty;
-                }
+            //    if (viewModel.FirstNameFromIdType != null)
+            //    {
+            //        viewModel.FirstNameFromIdType = string.Empty;
+            //    }
 
-                if (viewModel.IDTypeDataModel == null)
-                {
-                    viewModel.IDTypeDataModel = new VATSignUpD();
-                }
-                else
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IDTypeDataModel.Name1 = string.Empty;
-                        viewModel.IDTypeDataModel.Name2 = string.Empty;
-                        viewModel.IDTypeDataModel.FatherName = string.Empty;
-                        viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
-                        viewModel.IDTypeDataModel.FamilyName = string.Empty;
-                    });
-                }
-            }
-            else if (viewModel.IsOption1Visible == true)
-            {
-                if (viewModel.FirstNameFromIdType != null)
-                {
-                    viewModel.FirstNameFromIdType = string.Empty;
-                }
+            //    if (viewModel.IDTypeDataModel == null)
+            //    {
+            //        viewModel.IDTypeDataModel = new VATSignUpD();
+            //    }
+            //    else
+            //    {
+            //        Device.BeginInvokeOnMainThread(() =>
+            //        {
+            //            viewModel.IDTypeDataModel.Name1 = string.Empty;
+            //            viewModel.IDTypeDataModel.Name2 = string.Empty;
+            //            viewModel.IDTypeDataModel.FatherName = string.Empty;
+            //            viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
+            //            viewModel.IDTypeDataModel.FamilyName = string.Empty;
+            //        });
+            //    }
+            //}
+            //else if (viewModel.IsOption1Visible == true)
+            //{
+            //    if (viewModel.FirstNameFromIdType != null)
+            //    {
+            //        viewModel.FirstNameFromIdType = string.Empty;
+            //    }
 
-                viewModel.PickerDobToDisplay = string.Empty;
-                //viewModel.TodayDate = new ObservableCollection<object>();
-                //viewModel.TodayDateinHijri = new ObservableCollection<object>();
-            }
-            else
-            {
-                if (viewModel.FirstNameFromIdType != null)
-                {
-                    viewModel.FirstNameFromIdType = string.Empty;
-                }
+            //    viewModel.PickerDobToDisplay = string.Empty;
+            //    //viewModel.TodayDate = new ObservableCollection<object>();
+            //    //viewModel.TodayDateinHijri = new ObservableCollection<object>();
+            //}
+            //else
+            //{
+            //    if (viewModel.FirstNameFromIdType != null)
+            //    {
+            //        viewModel.FirstNameFromIdType = string.Empty;
+            //    }
 
-                viewModel.PickerDobToDisplay = string.Empty;
-                viewModel.TINNumber = string.Empty;
-                viewModel.SelectedIdtype = string.Empty;
-                viewModel.SelectedIdNumber = string.Empty;
-                viewModel.PickerDOBDateDisplay = string.Empty;
+            //    viewModel.PickerDobToDisplay = string.Empty;
+            //    viewModel.TINNumber = string.Empty;
+            //    viewModel.SelectedIdtype = string.Empty;
+            //    viewModel.SelectedIdNumber = string.Empty;
+            //    viewModel.PickerDOBDateDisplay = string.Empty;
 
-                if (viewModel.IDTypeDataModel == null)
-                {
-                    viewModel.IDTypeDataModel = new VATSignUpD();
-                }
-                else
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IDTypeDataModel.Name1 = string.Empty;
-                        viewModel.IDTypeDataModel.Name2 = string.Empty;
-                        viewModel.IDTypeDataModel.FatherName = string.Empty;
-                        viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
-                        viewModel.IDTypeDataModel.FamilyName = string.Empty;
-                    });
-                }
-                viewModel.PickerDobToDisplay = string.Empty;
-                //viewModel.TodayDate = new ObservableCollection<object>();
-                //viewModel.TodayDateinHijri = new ObservableCollection<object>();
-            }
+            //    if (viewModel.IDTypeDataModel == null)
+            //    {
+            //        viewModel.IDTypeDataModel = new VATSignUpD();
+            //    }
+            //    else
+            //    {
+            //        Device.BeginInvokeOnMainThread(() =>
+            //        {
+            //            viewModel.IDTypeDataModel.Name1 = string.Empty;
+            //            viewModel.IDTypeDataModel.Name2 = string.Empty;
+            //            viewModel.IDTypeDataModel.FatherName = string.Empty;
+            //            viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
+            //            viewModel.IDTypeDataModel.FamilyName = string.Empty;
+            //        });
+            //    }
+            //    viewModel.PickerDobToDisplay = string.Empty;
+            //    //viewModel.TodayDate = new ObservableCollection<object>();
+            //    //viewModel.TodayDateinHijri = new ObservableCollection<object>();
+            //}
 
-            viewModel.AllOutlets = viewModel.AllOutlets.Select(x =>
-            {
-                x.PermitTypes = x.PermitTypes.Select(y =>
-                {
-                    y.APermitDeregDisplayDate = null;
-                    return y;
-                }).ToList();
-                return x;
-            }).ToList();
+            //viewModel.AllOutlets = viewModel.AllOutlets.Select(x =>
+            //{
+            //    x.PermitTypes = x.PermitTypes.Select(y =>
+            //    {
+            //        y.APermitDeregDisplayDate = null;
+            //        return y;
+            //    }).ToList();
+            //    return x;
+            //}).ToList();
 
-            GetSelectedDataTemplate(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
+            //GetSelectedDataTemplate(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
         }
         void GetSelectedDataTemplate(bool isIndex1 = false)
         {
@@ -481,35 +485,35 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             //cardView.Children.Add(grid);
             //outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
-            if (viewModel.SelectedOutletOptionIndex == 2)
-            {
-                viewModel.outletEditIsVisible = true;
-                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
-            }
-            else if (viewModel.SelectedOutletOptionIndex == 1)
-            {
-                viewModel.outletEditIsVisible = false;
-                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
-            }
-            else
-            {
-                viewModel.outletEditIsVisible = false;
-                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
-            }
+            //if (viewModel.SelectedOutletOptionIndex == 2)
+            //{
+            //    viewModel.outletEditIsVisible = true;
+            //    viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+            //}
+            //else if (viewModel.SelectedOutletOptionIndex == 1)
+            //{
+            //    viewModel.outletEditIsVisible = false;
+            //    viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
+            //}
+            //else
+            //{
+            //    viewModel.outletEditIsVisible = false;
+            //    viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+            //}
 
             //int index = Convert.ToInt16(viewModel.SelectedOutletOptionIndex);
             //if (isIndex1)
             //{
             //    index = 1;
             //}
-            if (viewModel.SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
-            {
-                viewModel.IsOption2Visible = true;
-            }
-            else if (viewModel.SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationCloseAllOutlets))
-            {
-                viewModel.IsOption1Visible = true;
-            }
+            //if (viewModel.SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+            //{
+            //    viewModel.IsOption2Visible = true;
+            //}
+            //else if (viewModel.SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationCloseAllOutlets))
+            //{
+            //    viewModel.IsOption1Visible = true;
+            //}
             //viewModel.IsOption1Visible = index == 0 ? true : false;
             //viewModel.IsOption2Visible = index == 1 ? true : false;
         }
@@ -1043,6 +1047,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private void DpDbo_Closed(object sender, EventArgs e)
         {
+            FrmDBO.HasError = false;
+            viewModel.IsDeRegistrationValid = true;
             bool isHIjri;
             DateTime deregDate;
             DateTime permitDate;
@@ -1056,7 +1062,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
                         string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
                         var date = year + "/" + month + "/" + day;
-                        if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
+                        if (!string.IsNullOrEmpty(date)&& viewModel.SelectedOutletOption.OutletOptionIndex != "1"  && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
                             viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
                             viewModel.PickerDOBDateDisplay = "";
@@ -1078,7 +1084,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string day = (DpDbo.SelectedItem as IList<object>)[0].ToString();
                         string year = (DpDbo.SelectedItem as IList<object>)[2].ToString();
                         var date = year + "/" + month + "/" + day;
-                        if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
+                        if (!string.IsNullOrEmpty(date)  && viewModel.SelectedOutletOption.OutletOptionIndex != "1" && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
                             viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
                             viewModel.PickerDOBDateDisplay = "";
@@ -1126,6 +1132,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 if (deregDate < permitDate)
                 {
+                    viewModel.IsDeRegistrationValid = false;
+                    FrmDBO.HasError = true;
                     viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
                 }
 

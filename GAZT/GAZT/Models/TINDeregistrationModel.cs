@@ -1072,7 +1072,7 @@ namespace EGAZT.Models
             set
             {
                 _reasonDescription = value;
-                OnPropertyRaised("PermitTypes");
+                OnPropertyRaised("ReasonDescription");
             }
         }
     }
@@ -1595,7 +1595,7 @@ namespace EGAZT.Models
             set
             {
                 _reasonDescription = value;
-                OnPropertyRaised("PermitTypes");
+                OnPropertyRaised("ReasonDescription");
             }
         }
     }

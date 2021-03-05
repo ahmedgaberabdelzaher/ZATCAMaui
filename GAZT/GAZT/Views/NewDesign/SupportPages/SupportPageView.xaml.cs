@@ -81,12 +81,45 @@ namespace EGAZT.Views.NewDesign
             //    this.FlowDirection = FlowDirection.LeftToRight;
             //}
 
-            SetLocationToMap();
 
-            if (viewModel.currentTab == SupportTabEnum.Parent)
-            {
-                viewModel.setSupportTab();
+
+
+            
+
+            if (App.isFromDashboard) {
+
+                viewModel.currentTab = SupportTabEnum.Chat;
+
+                viewModel.setChat();
+                if (App.IsArabic)
+                {
+
+                    ChatWebView.Source = "https://chat.gazt.gov.sa/I3root/index.html?lang=ar";
+                }
+                else
+                {
+                    ChatWebView.Source = "https://chat.gazt.gov.sa/I3root/index.html?lang=en";
+                }
             }
+            else {
+
+                SetLocationToMap();
+                if (viewModel.currentTab == SupportTabEnum.Parent)
+                {
+                    viewModel.setSupportTab();
+                }
+            }
+
+
+
+            
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            App.isFromDashboard = false;
         }
         public void SetPickerFont()
         {
@@ -169,7 +202,18 @@ namespace EGAZT.Views.NewDesign
         }
         private void OnBackArrowTapped(object sender, EventArgs e)
         {
-            GoToBackStep();
+
+            if (App.isFromDashboard) {
+
+                viewModel._navigationService.GoBack();
+
+            }
+            else {
+
+                GoToBackStep();
+            }
+
+            
         }
 
         public void GoToBackStep()

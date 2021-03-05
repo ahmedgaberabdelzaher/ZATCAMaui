@@ -288,7 +288,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
                 if(fromAmount > toAmount) {
 
-                     viewModel._dialogService.ShowMessage(AppResources.ACFilterAmountValidation,AppResources.Information);
+                    //viewModel._dialogService.ShowMessage(AppResources.ACFilterAmountValidation,AppResources.Information);
+
+                    ShowValidationMessage(AppResources.ACFilterAmountValidation);
                     viewModel.ToTxAmount = "";
                     TxToAmountEntry.Text = "";
                 }
@@ -296,6 +298,20 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             }
 
         }
+
+        void ShowValidationMessage(string message) {
+
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                /*await viewModel._dialogService.ShowMessage(message,
+                                    AppResources.Information);*/
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+
+            });
+
+        }
+
 
         private void To_Amount_Changed(object sender, TextChangedEventArgs e)
         {
@@ -379,7 +395,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         if (DateTime.ParseExact(viewModel.TxFromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(viewModel.TxToDate, "yyyy/MM/dd", calCul))
                         {
                             viewModel.TxToDate = "";
-                             viewModel._dialogService.ShowMessage(AppResources.ACFilterDateValidation,AppResources.Information);
+
+                            ShowValidationMessage(AppResources.ACFilterDateValidation);
                         }
 
                     }
@@ -472,7 +489,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 if (DateTime.ParseExact(viewModel.TPFromDate, "yyyy", calCul) > DateTime.ParseExact(viewModel.TPToDate, "yyyy", calCul))
                 {
                     viewModel.TPToDate = "";
-                    viewModel._dialogService.ShowMessage(AppResources.ACFilterYearValidation, AppResources.Information);
+                    ShowValidationMessage(AppResources.ACFilterYearValidation);
+
                 }
 
 

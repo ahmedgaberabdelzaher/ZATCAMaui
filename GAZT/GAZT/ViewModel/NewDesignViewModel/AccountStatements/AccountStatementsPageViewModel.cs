@@ -539,7 +539,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (isMonthWiseStatementsViewVisible != value)
                 {
                     isMonthWiseStatementsViewVisible = value;
-                    IsNormalStatementsViewVisible = !value;
+                    //IsNormalStatementsViewVisible = !value;
                     RaisePropertyChanged("IsMonthWiseStatementsViewVisible");
                 }
             }
@@ -619,14 +619,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     else
                     {
                         IsNotHaveStatements = true;
-                        GroupedData = new List<ObservableGroupCollection<string, ASResult>>();
-                        groupedDataValuetoUpdate = new List<ObservableGroupCollection<string, ASResult>>();
+                        if (IsMonthWiseStatementsViewVisible)
+                        {
+                            GroupedData = new List<ObservableGroupCollection<string, ASResult>>();
+                        }
+                        else
+                        {
+                            groupedDataValuetoUpdate = new List<ObservableGroupCollection<string, ASResult>>();
+                        }
                     }
                     if (IsNormalStatementsViewVisible)
                     {
-                        GroupedData = new List<ObservableGroupCollection<string, ASResult>>();
-                        groupedDataValuetoUpdate = new List<ObservableGroupCollection<string, ASResult>>();
-
+                        if (IsMonthWiseStatementsViewVisible)
+                        {
+                            GroupedData = new List<ObservableGroupCollection<string, ASResult>>();
+                        }
+                        else
+                        {
+                            groupedDataValuetoUpdate = new List<ObservableGroupCollection<string, ASResult>>();
+                        }
                     }
                     else
                     {
@@ -884,6 +895,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     Task.Run(async () =>
                     {
+                        IsMonthWiseStatementsViewVisible = false;
                         await PopulateDataInChipsForYears(SelectedTransactionTypeFilter.TaxType, SelectedTransactionTypeFilter.StatementFilter);
                         IsMonthWiseStatementsViewVisible = true;
                         GroupedData = groupedDataValuetoUpdate;
