@@ -395,7 +395,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         {
                             viewModel.TxToDate = "";
 
-                            _ = ShowValidationMessage(AppResources.ACFilterDateValidation);
+                            ShowValidationMessage(AppResources.ACFilterDateValidation);
                         }
 
                     }
@@ -488,7 +488,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 if (DateTime.ParseExact(viewModel.TPFromDate, "yyyy", calCul) > DateTime.ParseExact(viewModel.TPToDate, "yyyy", calCul))
                 {
                     viewModel.TPToDate = "";
-                    _ = ShowValidationMessage(AppResources.ACFilterYearValidation);
+                    ShowValidationMessage(AppResources.ACFilterYearValidation);
 
                 }
 
