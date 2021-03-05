@@ -1300,81 +1300,85 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (PickerModel.PickerId == "reasonPicker")
                         {
-                            string tempSelectedReason = PickerModel.SelectedValue;
-                            permitThirdOptionReason = PickerModel.SelectedValue;
+                            Task.Run(async () => {
+                              await  ResetTINDeRegistrationObject();
+                                string tempSelectedReason = PickerModel.SelectedValue;
+                                permitThirdOptionReason = PickerModel.SelectedValue;
 
-                            if (tempSelectedReason != string.Empty)
-                            {
-                                SelectedReason = TinDeregReasons.Where(m => m.ReasonDesc == PickerModel.SelectedValue).FirstOrDefault();
-                                TinDeregistrationData.ADregReason = SelectedReason.ReasonCd;
-                                TinDeregistrationData.ADeregSelectedReasonValue = SelectedReason.ReasonDesc;
-
-                                List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
-
-                                foreach (OutletSetResult outletInfo in AllOutlets)
+                                if (tempSelectedReason != string.Empty)
                                 {
-                                    if (SelectedOutletOption.Equals(AppResources.TinDeregistrationCloseAllOutlets) || SelectedOutletOption.Equals(AppResources.TinDeregistrationCloseOutletsIndividually))
+                                    SelectedReason = TinDeregReasons.Where(m => m.ReasonDesc == PickerModel.SelectedValue).FirstOrDefault();
+                                    TinDeregistrationData.ADregReason = SelectedReason.ReasonCd;
+                                    TinDeregistrationData.ADeregSelectedReasonValue = SelectedReason.ReasonDesc;
+
+                                    List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
+
+                                    foreach (OutletSetResult outletInfo in AllOutlets)
                                     {
-                                        outletInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
-
-                                    }
-                                    else
-                                    {
-                                        outletInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
-
-                                    }
-                                    //outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
-                                    outletInfo.PermitTypes = new List<PermitSetResult>();
-                                    var tempPermitTypes = new List<PermitSetResult>();
-                                    foreach (PermitSetResult permitInfo in allPermitTypes)
-                                    {
-
-                                        if (permitInfo.APermitDregRsnTb == null)
-                                            permitInfo.APermitDregRsnTb = string.Empty;
-
-                                        if (permitInfo.APermitIdNoTb == null)
-                                            permitInfo.APermitIdNoTb = "";
-
-                                        if (permitInfo.APermitTransTinTb == null)
-                                            permitInfo.APermitTransTinTb = "";
-
-                                        if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                                        if (SelectedOutletOption.Equals(AppResources.TinDeregistrationCloseAllOutlets) || SelectedOutletOption.Equals(AppResources.TinDeregistrationCloseOutletsIndividually))
                                         {
-                                            if (SelectedOutletOptionIndex == 0 || SelectedOutletOptionIndex == 2)
-                                            {
-                                                permitInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
+                                            outletInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
 
-                                            }
-                                            else
-                                            {
-                                                permitInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
-
-                                            }
-                                            //permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
-
-                                            //if (outletInfo.PermitTypes == null)
-                                            //    outletInfo.PermitTypes = new List<PermitSetResult>();
-
-
-                                            tempPermitTypes.Add(permitInfo);
                                         }
+                                        else
+                                        {
+                                            outletInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
+
+                                        }
+                                        //outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
+                                        outletInfo.PermitTypes = new List<PermitSetResult>();
+                                        var tempPermitTypes = new List<PermitSetResult>();
+                                        foreach (PermitSetResult permitInfo in allPermitTypes)
+                                        {
+
+                                            if (permitInfo.APermitDregRsnTb == null)
+                                                permitInfo.APermitDregRsnTb = string.Empty;
+
+                                            if (permitInfo.APermitIdNoTb == null)
+                                                permitInfo.APermitIdNoTb = "";
+
+                                            if (permitInfo.APermitTransTinTb == null)
+                                                permitInfo.APermitTransTinTb = "";
+
+                                            if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                                            {
+                                                if (SelectedOutletOptionIndex == 0 || SelectedOutletOptionIndex == 2)
+                                                {
+                                                    permitInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
+
+                                                }
+                                                else
+                                                {
+                                                    permitInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
+
+                                                }
+                                                //permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
+
+                                                //if (outletInfo.PermitTypes == null)
+                                                //    outletInfo.PermitTypes = new List<PermitSetResult>();
+
+
+                                                tempPermitTypes.Add(permitInfo);
+                                            }
+                                        }
+                                        outletInfo.PermitTypes = tempPermitTypes;
                                     }
-                                    outletInfo.PermitTypes = tempPermitTypes;
+                                    DateField.IsVisible = true;
+
                                 }
-                                DateField.IsVisible = true;
+                                else
+                                {
+                                    DateField.IsVisible = false;
+                                    SelectedReason.ReasonDesc = string.Empty;
+                                    SelectedReason.ReasonCd = string.Empty;
 
-                            }
-                            else
-                            {
-                                DateField.IsVisible = false;
-                                SelectedReason.ReasonDesc = string.Empty;
-                                SelectedReason.ReasonCd = string.Empty;
+                                }
+                                AddOutletDecisionOptions();
+                                PopulateAttachmentsListViewTemplate();
 
-                            }
-                            AddOutletDecisionOptions();
-                            PopulateAttachmentsListViewTemplate();
+                            });
 
-                            ResetTINDeRegistrationObject();
+                         
                         }
                         else if (PickerModel.PickerId == "idTypePicker")
                         {
