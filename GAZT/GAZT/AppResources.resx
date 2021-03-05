@@ -8615,12 +8615,9 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="VATRefundReturnSubmitConfirmation" xml:space="preserve">
     <value>
         Dear Taxpayer, GAZT may request from you to upload the following information during the review of your refund request:
-        
-        1. Trial balance for the return period.
-        
-        2. Detailed Sales List.
-        
-        3. Detailed Purchase List
+1. Trail balance for the return period
+2. Sales list subject to VAT (0%-5%-Exempt)                      
+3. Purchased list subject to VAT (5%, reverse charge)
     </value>
   </data>
   <data name="ZAKATAmendUpdatePageTitle" xml:space="preserve">
