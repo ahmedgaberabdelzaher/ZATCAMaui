@@ -1783,14 +1783,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 billsModel.FinancialPeriod = String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom) + " - " +
                       String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo);
                 */
-                var FormattedFromDate = string.Format(zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
-                var FormattedToDate = string.Format(zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
 
-                string[] dtsFrom = FormattedFromDate.Split(' ');
-                string[] dtsTo = FormattedToDate.Split(' ');
-                string fromDate = /*dts[0] + " " +*/ UtilityManager.GetMonthName(dtsFrom[1]) + " " + dtsFrom[2]; 
-                string toDate = /*dts[0] + " " +*/ UtilityManager.GetMonthName(dtsTo[1]) + " " + dtsTo[2];
-                billsModel.FinancialPeriod = fromDate+" - "+toDate;
+                if(zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom  != null) {
+
+                    var FormattedFromDate = string.Format(zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+                    var FormattedToDate = string.Format(zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+
+                    string[] dtsFrom = FormattedFromDate.Split(' ');
+                    string[] dtsTo = FormattedToDate.Split(' ');
+                    string fromDate = /*dts[0] + " " +*/ UtilityManager.GetMonthName(dtsFrom[1]) + " " + dtsFrom[2];
+                    string toDate = /*dts[0] + " " +*/ UtilityManager.GetMonthName(dtsTo[1]) + " " + dtsTo[2];
+                    billsModel.FinancialPeriod = fromDate + " - " + toDate;
+                }
+
+               
                 
                 if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
                 {
