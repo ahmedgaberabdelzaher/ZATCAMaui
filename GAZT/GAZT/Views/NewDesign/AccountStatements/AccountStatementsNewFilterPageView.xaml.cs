@@ -304,8 +304,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await viewModel._dialogService.ShowMessage(message,
-                                    AppResources.Information);
+                /*await viewModel._dialogService.ShowMessage(message,
+                                    AppResources.Information);*/
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
 
             });
 
