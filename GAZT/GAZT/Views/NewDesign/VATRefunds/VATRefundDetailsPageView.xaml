@@ -609,12 +609,13 @@
          
 
                               <!--  <CheckBox x:Name="CBTermsAndCondition  CheckedChanged="TermsAndConditions_CheckedChanged"/>-->
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5,10,0,10" Style="{DynamicResource IsInstructionCheckedStyle}"   HorizontalOptions="Start" HorizontalTextAlignment="Start" >
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5,10,0,10"
+                                                    Style="{DynamicResource IsInstructionCheckedStyle}" FontFamily="{StaticResource SSTArRoman}"  HorizontalOptions="Start" HorizontalTextAlignment="Start" >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions1}" TextColor="Black"  />
                                             <Span  Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions2}" TextColor="Blue" />
-                                            <Span LineHeight="1.7" Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions3}" TextColor="Black"  />
+                                            <Span LineHeight="1" Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions3}" TextColor="Black"  />
 
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -640,10 +641,10 @@
          
                                 <!--<CheckBox x:Name="CBAcknowledment"   VerticalOptions="CenterAndExpand" CheckedChanged="Acknowledgment_CheckedChanged"/>-->
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="0" HorizontalOptions="Start" HorizontalTextAlignment="Start"
-                                                    Style="{DynamicResource IsInstructionCheckedStyle}">
+                                                    Style="{DynamicResource IsInstructionCheckedStyle}" FontFamily="{StaticResource SSTArRoman}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span LineHeight="1.8" Text="{x:Static ResourceManager:AppResources.VATRefundAcknowledgment}" TextColor="Black"   />
+                                            <Span LineHeight="1" Text="{x:Static ResourceManager:AppResources.VATRefundAcknowledgment}" TextColor="Black"   />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                         <!--<custom:CustomLabel.Triggers>
