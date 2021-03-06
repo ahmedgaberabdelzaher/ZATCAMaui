@@ -6321,11 +6321,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                       IDTypeDataModel.Name1 = string.Empty;
-                       IDTypeDataModel.Name2 = string.Empty;
-                       IDTypeDataModel.FatherName = string.Empty;
-                       IDTypeDataModel.GrandfatherName = string.Empty;
-                       IDTypeDataModel.FamilyName = string.Empty;
+                       //IDTypeDataModel.Name1 = string.Empty;
+                       //IDTypeDataModel.Name2 = string.Empty;
+                       //IDTypeDataModel.FatherName = string.Empty;
+                       //IDTypeDataModel.GrandfatherName = string.Empty;
+                       //IDTypeDataModel.FamilyName = string.Empty;
                     });
                 }
             }
