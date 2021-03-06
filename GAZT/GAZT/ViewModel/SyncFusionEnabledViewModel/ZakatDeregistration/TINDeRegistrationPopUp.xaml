@@ -21,7 +21,7 @@
             </Grid.RowDefinitions>
 
             <StackLayout Spacing="0" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-             <buttons:SfButton Text="Save As Draft" TextColor="Black" Grid.Row="0" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="Transparent" FontSize="18" Clicked="OnSaveAsDraftClicked" HeightRequest="50"></buttons:SfButton>
+             <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZSaveAsDraft}" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black" Grid.Row="0" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="Transparent" FontSize="18" Clicked="OnSaveAsDraftClicked" HeightRequest="50"></buttons:SfButton>
 </StackLayout>
                 
         </Grid>

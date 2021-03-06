@@ -15785,5 +15785,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("MultipleBillsThisBillHasOtherLiabilities", resourceCulture);
             }
         }
+        
+        public static string TinDeregDataSavedSuccessfully {
+            get {
+                return ResourceManager.GetString("TinDeregDataSavedSuccessfully", resourceCulture);
+            }
+        }
     }
 }

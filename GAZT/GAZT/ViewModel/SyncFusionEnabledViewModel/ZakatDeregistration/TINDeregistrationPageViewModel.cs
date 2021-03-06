@@ -6108,7 +6108,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data was saved successfully"));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
 
@@ -6119,7 +6119,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if(isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data was saved successfully"));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
                     }
@@ -6129,7 +6129,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data was saved successfully"));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             isSaveAsDraftCalledForAttachment = true;
                         }
                         break;
@@ -6141,7 +6141,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data was saved successfully"));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                            // await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
                             isSaveAsDraftCalledForAttachment = true;
                         }
@@ -6154,7 +6154,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Data was saved successfully"));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             isSaveAsDraftCalledForAttachment = true;
                         }
                         else
