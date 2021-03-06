@@ -1145,7 +1145,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 summarySelectedBillsList.Add(new ZakatSelectBillModel()
                 {
                     billNumber = AppResources.Bill + " " +(i + 1).ToString("00") + ":",
-                    amount = selectedList[i].Betrh + " " + selectedList[i].Waers,
+                    amount = selectedList[i].Betrh /*+ " " + selectedList[i].Waers*/,
                     saadNumber = selectedList[i].SadadNo,
                     taxPeriod = selectedList[i].Taxperioddsc,
                     isSelected = false,
@@ -1559,7 +1559,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
         }
-        public string _monthlyInstalment = "0.00 SAR";
+        public string _monthlyInstalment = "0.00";
 
         public string MonthlyInstalment
         {
@@ -2278,7 +2278,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 VATPenalityAmount = VatInstalments.d.Peneltyamt;
                 if(StatementList != null && StatementList.ToList().Count > 0) {
 
-                    MonthlyInstalment = string.Format("{0:N2}", double.Parse(VatInstalments.d.VTISSet.results[0].Betrw)) + " SAR";
+                    MonthlyInstalment = VatInstalments.d.VTISSet.results[0].Betrw ;
 
                 }
 
