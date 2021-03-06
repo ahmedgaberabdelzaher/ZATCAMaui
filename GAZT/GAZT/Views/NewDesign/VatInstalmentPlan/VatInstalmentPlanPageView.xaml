@@ -1025,7 +1025,7 @@
                         </Grid>
 
 
-                        <Grid Grid.Row="2"  Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand">
+                        <Grid Grid.Row="2"  Grid.ColumnSpan="2">
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
