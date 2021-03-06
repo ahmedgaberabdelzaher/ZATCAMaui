@@ -2090,7 +2090,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (singleItem.TaxType != null)
                     {
 
-                        if (singleItem.TaxType.Equals("VATX"))
+                        if (singleItem.TaxType.Equals("VATX") || singleItem.TaxType.Equals("ETAX"))
                         {
                             singleItem.FormattedBldat = string.Format(singleItem.Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
 
@@ -2161,7 +2161,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-                        if (singleItem.TaxType.Equals("VATX"))
+                        if (singleItem.TaxType.Equals("VATX") || singleItem.TaxType.Equals("ETAX"))
                         {
                             singleItem.FormattedBldat2 = string.Format(singleItem.Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
 
