@@ -1067,23 +1067,29 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         private void OnIDDOBClicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(idNumber.Text))
+
+            if (viewModel.IsEnteredTINValid == false)
             {
-                idNumber.Focus();
-                return;
+                if (string.IsNullOrEmpty(idNumber.Text))
+                {
+                    idNumber.Focus();
+                    return;
+                }
+                if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID && viewModel.DobText.IsEditable == false)
+                {
+                    return;
+                }
+                if (!viewModel.IsDOBHijriCal)
+                {
+                    DpDbo3.IsOpen = true;
+                }
+                else
+                {
+                    DpDboHijri3.IsOpen = true;
+                }
             }
-            if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID && viewModel.DobText.IsEditable == false)
-            {
-                return;
-            }
-            if (!viewModel.IsDOBHijriCal)
-            {
-                DpDbo3.IsOpen = true;
-            }
-            else
-            {
-                DpDboHijri3.IsOpen = true;
-            }
+
+              
         }
         private void DpDbo_Closed(object sender, EventArgs e)
         {
@@ -1323,6 +1329,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 else
                 {
+                    viewModel.IsEnteredTINValid = false;
                     viewModel.FrameTinError = false;
                     _ = viewModel.ValidateIdNumberFromApi(EntryTIN.Text);
                 }
@@ -1414,13 +1421,24 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         public void OnDOBDateEntryFocussed(object sender, EventArgs args)
         {
-            if (viewModel.IsDOBHijriCal)
+            if(viewModel.IsEnteredTINValid == false)
             {
-                DpDboHijri3.IsOpen = true;
+                DateEntry23.TextColor = Color.Black;
+                if (viewModel.IsDOBHijriCal)
+                {
+                    DpDboHijri3.IsOpen = true;
+                }
+                else
+                {
+                    DpDbo3.IsOpen = true;
+                }
+
             }
             else
             {
-                DpDbo3.IsOpen = true;
+                TINNumber.HasError = true;
+                viewModel.IsEnteredTINValid = false;
+                DateEntry23.TextColor = Color.LightGray;
             }
 
         }
@@ -1929,6 +1947,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if(senderObj.Text.Equals(App.LoginDataRetrieved.TIN))
                 {
                     TINNumber.HasError = true;
+                    viewModel.IsEnteredTINValid = false;
                 }
                 else
                 {

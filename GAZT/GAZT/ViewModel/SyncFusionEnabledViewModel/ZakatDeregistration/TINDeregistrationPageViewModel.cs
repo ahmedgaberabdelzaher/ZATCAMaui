@@ -52,6 +52,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         List<TinDeregestrationAttachmentsModel> check;
         List<Attachment> attachmentList;
         public bool IsDeRegistrationValid = true;
+        public bool IsEnteredTINValid = false;
+
         //
         #endregion
 
@@ -246,6 +248,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_tINNumber == value) return;
 
                 _tINNumber = value;
+                if(string.IsNullOrEmpty(_tINNumber))
+                {
+                    IsEnteredTINValid = false;
+                }
                 RaisePropertyChanged("TINNumber");
             }
         }
@@ -3525,7 +3531,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             ///IDTypeDataModel = new VATSignUpD();
                             //IDTypeDataModel = resultData.d;
-
+                            IsEnteredTINValid = true;
                             IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
                             if (idType != null)
                             {
