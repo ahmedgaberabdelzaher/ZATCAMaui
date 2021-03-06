@@ -218,6 +218,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("PkrDBO");
             }
         }
+
+        private string _dateOfBirth = string.Empty;
+        public string DateOfBirth
+        {
+            get
+            {
+                return _dateOfBirth;
+            }
+            set
+            {
+                if (_dateOfBirth == value) return;
+
+                _dateOfBirth = value;
+                RaisePropertyChanged("DateOfBirth");
+            }
+        }
         private string _tINNumber = string.Empty;
         public string TINNumber
         {
@@ -1316,6 +1332,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             Task.Run(async () => {
                               await  ResetTINDeRegistrationObject();
+                                ClearData();
                                 string tempSelectedReason = PickerModel.SelectedValue;
                                 permitThirdOptionReason = PickerModel.SelectedValue;
 
@@ -2735,7 +2752,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void ClearData()
         {
+           //Reason Section data
             PickerDobToDisplay = string.Empty;
+            if (IDTypeDataModel != null)
+            {
+                IDTypeDataModel.Name1 = string.Empty;
+                FirstNameFromIdType = string.Empty;
+                IDTypeDataModel.Name2 = string.Empty;
+                IDTypeDataModel.FatherName = string.Empty;
+                IDTypeDataModel.GrandfatherName = string.Empty;
+                IDTypeDataModel.FamilyName = string.Empty;
+                SelectedIdNumber = string.Empty;
+                IDTypeDataModel.Name1 = string.Empty;
+            }
+            PkrDBO = string.Empty;
+            DateOfBirth = string.Empty;
+            FirstNameFromIdType = string.Empty;
+            PickerDOBDateDisplay = string.Empty;
+            PickerDobToDisplay = string.Empty;
+            TINNumber = string.Empty;
+
+
+
         }
         public async void OnTinRegisrtationReasonClicked()
         {
@@ -5714,8 +5752,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
 
                     //TinDeregistrationData.ASubmissionDate = DeregistrationDate.ToString();
-                    TinDeregistrationData.ADob = ConvertDateFormat(DeregistrationDate);
+                    TinDeregistrationData.ADob = ConvertDateFormat(Convert.ToDateTime(PickerDOBDateDisplay));
                     TinDeregistrationData.ADobH = DeregistrationDate.ToString("yyyy/MM/dd");
+
+                    //PickerDOBDateDisplay = TinDeregistrationData.ADobH;//ADob, 
+                    //PickerDobToDisplay = TinDeregistrationData.AExpdtH;//ASubmissionDateH,ASubmissionDate
 
                     //TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DateTime.Now);
                     TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DeregistrationDate);
@@ -6423,10 +6464,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     SelectedIdNumber = TinDeregistrationData.AIdNo;
                     IDTypeDataModel.Name1 = TinDeregistrationData.ANm3;
                     FirstNameFromIdType = TinDeregistrationData.ANm3;
-                    //IDTypeDataModel.Name2 = TinDeregistrationData.ANm4;
-                    //IDTypeDataModel.FatherName = TinDeregistrationData.ANm5;
-                    //IDTypeDataModel.GrandfatherName = TinDeregistrationData.ANm6;
-                    //IDTypeDataModel.FamilyName = TinDeregistrationData.ANm7;
                     PickerDOBDateDisplay = TinDeregistrationData.ADobH;//ADob, 
                     PickerDobToDisplay = TinDeregistrationData.AExpdtH;//ASubmissionDateH,ASubmissionDate
                     TINNumber = TinDeregistrationData.ATransTin; 

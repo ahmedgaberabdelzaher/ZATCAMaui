@@ -51,7 +51,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             this.BindingContext = viewModel;
             viewModel.LoadReasonSet();
             //   GetSelectedDataTemplate();
-           // outletDecisionOptionsListView.Selected
+            // outletDecisionOptionsListView.Selected
             viewModel.PopulateAttachmentsListViewTemplate();
 
             //MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
@@ -840,43 +840,64 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (viewModel.IsHijriCal)
                 {
-                    if (DpDboHijri.SelectedItem != null && (DpDboHijri.SelectedItem as IList<object>).Count == 3)
+                   
+
+                    if (!string.IsNullOrEmpty(viewModel.PickerDobToDisplay))
                     {
-                        string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
-                        string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
-                        string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
-                        viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerDobToDisplay = viewModel.PkrDBO; //DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
-
-
-
+                        viewModel.PickerDobToDisplay = UtilityManager.ConvertToHijri(viewModel.PickerDobToDisplay);
                     }
                     else
                     {
-                        viewModel.PkrDBO = string.Empty;
-                        viewModel.PickerDobToDisplay = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;// UtilityManager.HijriToGreg(viewModel.PickerDobToDisplay);
 
                     }
+                    //if (DpDboHijri.SelectedItem != null && (DpDboHijri.SelectedItem as IList<object>).Count == 3)
+                    //{
+                    //    string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
+                    //    string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
+                    //    string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
+                    //    viewModel.PkrDBO = year + "/" + month + "/" + day;
+                    //    viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                    //    viewModel.PickerDobToDisplay = viewModel.PkrDBO; //DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+
+
+
+                    //}
+                    //else
+                    //{
+                    //    viewModel.PkrDBO = string.Empty;
+                    //    viewModel.PickerDobToDisplay = string.Empty;
+
+                    //}
 
                 }
                 else
                 {
-                    if (DpDbo.SelectedItem != null && (DpDbo.SelectedItem as IList<object>).Count == 3)
+
+                    if (!string.IsNullOrEmpty(viewModel.PickerDobToDisplay))
                     {
-                        string month = (DpDbo.SelectedItem as IList<object>)[1].ToString();
-                        string day = (DpDbo.SelectedItem as IList<object>)[0].ToString();
-                        string year = (DpDbo.SelectedItem as IList<object>)[2].ToString();
-                        viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerDobToDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        viewModel.PickerDobToDisplay = UtilityManager.HijriToGreg(viewModel.PickerDobToDisplay);
                     }
                     else
                     {
-                        viewModel.PkrDBO = string.Empty;
-                        viewModel.PickerDobToDisplay = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;// UtilityManager.HijriToGreg(viewModel.PickerDobToDisplay);
 
                     }
+                    //if (DpDbo.SelectedItem != null && (DpDbo.SelectedItem as IList<object>).Count == 3)
+                    //{
+                    //    string month = (DpDbo.SelectedItem as IList<object>)[1].ToString();
+                    //    string day = (DpDbo.SelectedItem as IList<object>)[0].ToString();
+                    //    string year = (DpDbo.SelectedItem as IList<object>)[2].ToString();
+                    //    viewModel.PkrDBO = year + "/" + month + "/" + day;
+                    //    viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                    //    viewModel.PickerDobToDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                    //}
+                    //else
+                    //{
+                    //    viewModel.PkrDBO = string.Empty;
+                    //    viewModel.PickerDobToDisplay = string.Empty;
+
+                    //}
                 }
 
 
@@ -948,43 +969,61 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (viewModel.IsDOBHijriCal)
                 {
-                    if (DpDboHijri3.SelectedItem != null && (DpDboHijri3.SelectedItem as IList<object>).Count == 3)
+                    if (!string.IsNullOrEmpty(viewModel.PickerDOBDateDisplay))
                     {
-                        string month = (DpDboHijri3.SelectedItem as IList<object>)[1].ToString();
-                        string day = (DpDboHijri3.SelectedItem as IList<object>)[0].ToString();
-                        string year = (DpDboHijri3.SelectedItem as IList<object>)[2].ToString();
-                        viewModel.SelectedDob = viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        //viewModel.SelectedDob = day + "/" + month + "/" + year;
-                        viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
-
-
+                        viewModel.PickerDOBDateDisplay = UtilityManager.ConvertToHijri(viewModel.PickerDOBDateDisplay);
                     }
                     else
                     {
-                        viewModel.PkrDBO = string.Empty;
-                        viewModel.PickerDOBDateDisplay = string.Empty;
+                        viewModel.PickerDOBDateDisplay = string.Empty;// UtilityManager.HijriToGreg(viewModel.PickerDobToDisplay);
 
                     }
+                    //if (DpDboHijri3.SelectedItem != null && (DpDboHijri3.SelectedItem as IList<object>).Count == 3)
+                    //{
+                    //    string month = (DpDboHijri3.SelectedItem as IList<object>)[1].ToString();
+                    //    string day = (DpDboHijri3.SelectedItem as IList<object>)[0].ToString();
+                    //    string year = (DpDboHijri3.SelectedItem as IList<object>)[2].ToString();
+                    //    viewModel.SelectedDob = viewModel.DateOfBirth = year + "/" + month + "/" + day;
+                    //    //viewModel.SelectedDob = day + "/" + month + "/" + year;
+                    //    viewModel.PickerDOBDateDisplay = viewModel.DateOfBirth;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+
+
+                    //}
+                    //else
+                    //{
+                    //    viewModel.DateOfBirth = string.Empty;
+                    //    viewModel.PickerDOBDateDisplay = string.Empty;
+
+                    //}
 
                 }
                 else
                 {
-                    if (DpDbo3.SelectedItem != null && (DpDbo3.SelectedItem as IList<object>).Count == 3)
+                    if (!string.IsNullOrEmpty(viewModel.PickerDOBDateDisplay))
                     {
-                        string month = (DpDbo3.SelectedItem as IList<object>)[1].ToString();
-                        string day = (DpDbo3.SelectedItem as IList<object>)[0].ToString();
-                        string year = (DpDbo3.SelectedItem as IList<object>)[2].ToString();
-                        viewModel.SelectedDob = viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        //viewModel.SelectedDob = day + "/" + month + "/" + year;
-                        viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
-
+                        viewModel.PickerDOBDateDisplay = UtilityManager.HijriToGreg(viewModel.PickerDOBDateDisplay);
                     }
                     else
                     {
-                        viewModel.PkrDBO = string.Empty;
-                        viewModel.PickerDOBDateDisplay = string.Empty;
+                        viewModel.PickerDOBDateDisplay = string.Empty;// UtilityManager.HijriToGreg(viewModel.PickerDobToDisplay);
 
                     }
+                    //if (DpDbo3.SelectedItem != null && (DpDbo3.SelectedItem as IList<object>).Count == 3)
+                    //{
+                    //    string month = (DpDbo3.SelectedItem as IList<object>)[1].ToString();
+                    //    string day = (DpDbo3.SelectedItem as IList<object>)[0].ToString();
+                    //    string year = (DpDbo3.SelectedItem as IList<object>)[2].ToString();
+                    //    viewModel.SelectedDob = viewModel.DateOfBirth = year + "/" + month + "/" + day;
+                    //    //viewModel.SelectedDob = day + "/" + month + "/" + year;
+                    //    viewModel.PickerDOBDateDisplay = viewModel.DateOfBirth;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+
+                    //}
+                    //else
+                    //{
+                    //    viewModel.DateOfBirth = string.Empty;
+                    //    viewModel.PickerDOBDateDisplay = string.Empty;
+
+                    //}
                 }
 
             }
@@ -1057,6 +1096,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (viewModel.IsHijriCal)
                 {
+                  
                     if (DpDboHijri.SelectedItem != null && (DpDboHijri.SelectedItem as IList<object>).Count == 3)
                     {
                         string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
@@ -1079,6 +1119,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 else
                 {
+                  
                     if (DpDbo.SelectedItem != null)
                     {
                         string month = (DpDbo.SelectedItem as IList<object>)[1].ToString();
@@ -1161,9 +1202,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
                             return;
                         }
-                        viewModel.PkrDBO = date;
+                        viewModel.DateOfBirth = date;
                         viewModel.SelectedDob = date;
-                        viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;
+                        viewModel.PickerDOBDateDisplay = viewModel.DateOfBirth;
 
                         viewModel.ValidateIDNumber();
 
@@ -1182,9 +1223,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
                             return;
                         }
-                        viewModel.PkrDBO = date;
+                        viewModel.DateOfBirth = date;
                         viewModel.SelectedDob = date;
-                        viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;
+                        viewModel.PickerDOBDateDisplay = viewModel.DateOfBirth;
                         viewModel.ValidateIDNumber();
 
                     }
@@ -1904,6 +1945,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         private void OnTinRegistrationReasonTapped(object sender, EventArgs e)
         {
             viewModel.OnTinRegisrtationReasonClicked();
+        }
+
+        public void SetDefaultDateToPicker()
+        {
+            //DpDboHijri3.SelectedItem = DateTime.Today.AddYears(-10);
+            //DpDbo3.SelectedItem = DateTime.Today.AddYears(-10);
+            //DpDboHijri.SelectedItem = DateTime.Today.AddYears(-10);
+            //DpDbo.SelectedItem = DateTime.Today.AddYears(-10);
         }
     }
 }
