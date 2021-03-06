@@ -8930,6 +8930,6 @@ I acknowledge that the above bank account information is correct and assume full
     <value>Filter</value>
   </data>
   <data name="MultipleBillsThisBillHasOtherLiabilities" xml:space="preserve">
-    <value>This bill has other liability and should be paid togather</value>
+    <value>This bill has other liability and should be paid together</value>
   </data>
 </root>
