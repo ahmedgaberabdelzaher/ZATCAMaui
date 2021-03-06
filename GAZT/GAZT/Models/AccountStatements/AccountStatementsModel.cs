@@ -551,7 +551,9 @@ namespace EGAZT.Models.AccountStatements
                 _Bldat = value;
                 if (_Bldat != null)
                 {
-                    /*
+                   
+
+                   
                     if (App.CalType.Equals("G"))
                     {
                         FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
@@ -560,69 +562,69 @@ namespace EGAZT.Models.AccountStatements
                     {
                         FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("ar-SA"));
                     }
-                    */
+                    
 
-                    if (App.CalType.Equals("G"))
-                    {
-                        FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+                    //if (App.CalType.Equals("G"))
+                    //{
+                    //    FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
 
-                        string[] dts = FormattedBldat.Split(' ');
-                        if (App.IsArabic) {
+                    //    string[] dts = FormattedBldat.Split(' ');
+                    //    if (App.IsArabic) {
 
-                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2]; 
+                    //        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2]; 
 
-                            FormattedBldat = date;
-                        }
-                        else {
-                            string date = dts[0] + " "  + UtilityManager.GetMonthName(dts[1]) + " " + dts[2] ;
+                    //        FormattedBldat = date;
+                    //    }
+                    //    else {
+                    //        string date = dts[0] + " "  + UtilityManager.GetMonthName(dts[1]) + " " + dts[2] ;
 
-                            FormattedBldat = date;
-                        }
-
-
-                       
-                    }
-                    else if (App.CalType.Equals("H"))
-                    {
-                        FormattedBldat = string.Format(_Bldat?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
-
-                        string[] dts = FormattedBldat.Split('/');
-                        if (App.IsArabic)
-                        {
-
-                            string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                            FormattedBldat = date;
-                        }
-                        else
-                        {
-                            string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                            FormattedBldat = date;
-                        }
+                    //        FormattedBldat = date;
+                    //    }
 
 
 
-                    }
-                    else
-                    {
-                        FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+                    //}
+                    //else if (App.CalType.Equals("H"))
+                    //{
+                    //    FormattedBldat = string.Format(_Bldat?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
 
-                        string[] dts = FormattedBldat.Split(' ');
-                        if (App.IsArabic)
-                        {
+                    //    string[] dts = FormattedBldat.Split('/');
+                    //    if (App.IsArabic)
+                    //    {
 
-                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+                    //        string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
 
-                            FormattedBldat = date;
-                        }
-                        else
-                        {
-                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+                    //        FormattedBldat = date;
+                    //    }
+                    //    else
+                    //    {
+                    //        string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
 
-                            FormattedBldat = date;
-                        }
-                    }
+                    //        FormattedBldat = date;
+                    //    }
+
+
+
+                    //}
+                    //else
+                    //{
+                    //    FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+
+                    //    string[] dts = FormattedBldat.Split(' ');
+                    //    if (App.IsArabic)
+                    //    {
+
+                    //        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                    //        FormattedBldat = date;
+                    //    }
+                    //    else
+                    //    {
+                    //        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                    //        FormattedBldat = date;
+                    //    }
+                    //}
                 }
             }
         }
@@ -653,45 +655,45 @@ namespace EGAZT.Models.AccountStatements
                 _Bldat2 = value;
                 if (_Bldat2 != null)
                 {
-                    if (App.CalType.Equals("G"))
-                    {
-                        FormattedBldat2 = string.Format(_Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+                    //if (App.CalType.Equals("G"))
+                    //{
+                    //    FormattedBldat2 = string.Format(_Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
 
-                        string[] dts = FormattedBldat2.Split(' ');
+                    //    string[] dts = FormattedBldat2.Split(' ');
 
-                        if (App.IsArabic)
-                        {
+                    //    if (App.IsArabic)
+                    //    {
 
-                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+                    //        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
 
-                            FormattedBldat2 = date;
-                        }
-                        else
-                        {
-                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+                    //        FormattedBldat2 = date;
+                    //    }
+                    //    else
+                    //    {
+                    //        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
 
-                            FormattedBldat2 = date;
-                        }
-                    }
-                    else
-                    {
+                    //        FormattedBldat2 = date;
+                    //    }
+                    //}
+                    //else
+                    //{
 
-                        FormattedBldat2 = string.Format(_Bldat2?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
-                        string[] dts = FormattedBldat2.Split('/');
-                        if (App.IsArabic)
-                        {
+                    //    FormattedBldat2 = string.Format(_Bldat2?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+                    //    string[] dts = FormattedBldat2.Split('/');
+                    //    if (App.IsArabic)
+                    //    {
 
-                            string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+                    //        string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
 
-                            FormattedBldat2 = date;
-                        }
-                        else
-                        {
-                            string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+                    //        FormattedBldat2 = date;
+                    //    }
+                    //    else
+                    //    {
+                    //        string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
 
-                            FormattedBldat2 = date;
-                        }
-                    }
+                    //        FormattedBldat2 = date;
+                    //    }
+                    //}
                     /*FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat2.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];

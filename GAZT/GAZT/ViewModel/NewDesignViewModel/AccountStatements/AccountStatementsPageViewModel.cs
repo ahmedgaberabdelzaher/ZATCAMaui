@@ -615,6 +615,142 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     if (value.Count > 0)
                     {
                         IsNotHaveStatements = false;
+
+                        var items = new ObservableCollection<ASResult>();
+
+                        foreach (ASResult singleItem in value)
+                        {
+
+                            try
+                            {
+
+                                if (singleItem.TaxType != null)
+                                {
+
+                                    if (singleItem.TaxType.Equals("VATX"))
+                                    {
+                                        singleItem.FormattedBldat = string.Format(singleItem.Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+
+                                        string[] dts = singleItem.FormattedBldat.Split(' ');
+                                        if (App.IsArabic)
+                                        {
+
+                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                            singleItem.FormattedBldat = date;
+                                        }
+                                        else
+                                        {
+                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                            singleItem.FormattedBldat = date;
+                                        }
+                                    }
+                                    else
+                                    {
+
+
+                                        if (App.CalType.Equals("G"))
+                                        {
+                                            singleItem.FormattedBldat = string.Format(singleItem.Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+
+                                            string[] dts = singleItem.FormattedBldat.Split(' ');
+                                            if (App.IsArabic)
+                                            {
+
+                                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormattedBldat = date;
+                                            }
+                                            else
+                                            {
+                                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormattedBldat = date;
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                            singleItem.FormattedBldat = string.Format(singleItem.Bldat?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+
+                                            string[] dts = singleItem.FormattedBldat.Split('/');
+                                            if (App.IsArabic)
+                                            {
+
+                                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormattedBldat = date;
+                                            }
+                                            else
+                                            {
+                                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormattedBldat = date;
+                                            }
+                                        }
+
+
+                                    }
+
+
+                                    if (singleItem.TaxType.Equals("VATX"))
+                                    {
+                                        singleItem.FormattedBldat2 = string.Format(singleItem.Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+
+                                        string[] dts = singleItem.FormattedBldat2.Split(' ');
+
+                                        if (App.IsArabic)
+                                        {
+                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                            singleItem.FormattedBldat2 = date;
+                                        }
+                                        else
+                                        {
+                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                            singleItem.FormattedBldat2 = date;
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        singleItem.FormattedBldat2 = string.Format(singleItem.Bldat2?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+                                        string[] dts = singleItem.FormattedBldat2.Split('/');
+                                        if (App.IsArabic)
+                                        {
+
+                                            string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                            singleItem.FormattedBldat2 = date;
+                                        }
+                                        else
+                                        {
+                                            string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                            singleItem.FormattedBldat2 = date;
+                                        }
+                                    }
+
+                                }
+                            }
+                            catch (Exception e)
+                            {
+
+
+                            }
+
+
+                            items.Add(singleItem);
+
+
+
+                        }
+
+                        value = items;
+
+                        
                     }
                     else
                     {
