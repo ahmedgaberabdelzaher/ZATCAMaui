@@ -1022,7 +1022,7 @@
                                 </CheckBox>
                                 <custom:CustomLabel Grid.Column="1"
                                                     Text="{x:Static ResourceManager:AppResources.VRSecurityBankGurrantCheckBoxDesc1}"
-                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    Style="{StaticResource BodyLabelBlack}"
                                                     HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
                             </Grid>
 
@@ -1065,7 +1065,7 @@
                                                         Text="{x:Static ResourceManager:AppResources.VRSADADNumber}"
                                                         Style="{StaticResource ValueLabelGrey}" />
                                     <custom:CustomLabel Grid.Column="1" Text="{Binding SADADNumber}"
-                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Style="{StaticResource BodyLabelBlack}"
                                                         HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" />
                                 </Grid>
 
@@ -1091,7 +1091,7 @@
                                 </CheckBox>
                                 <custom:CustomLabel Grid.Column="1"
                                                     Text="{x:Static ResourceManager:AppResources.VRSecuritySadadCheckBoxDesc1}"
-                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    Style="{StaticResource BodyLabelBlack}"
                                                     HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
                             </Grid>
 
@@ -1169,7 +1169,7 @@
                             </CheckBox>
                             <custom:CustomLabel Grid.Column="1"
                                                 Text="{x:Static ResourceManager:AppResources.VRDECCheckBox}"
-                                                Style="{StaticResource ValueLabelBlack}"
+                                                Style="{StaticResource BodyLabelBlack}"
                                                 HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
                         </Grid>
 
@@ -1207,7 +1207,7 @@
 
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                     <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding IDType}"
-                                                                 Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" />
+                                                                 Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" />
                                     <Image Source="arrowDropdown.png" WidthRequest="20" HeightRequest="20"
                                            Margin="0,0,5,0">
                                         <Image.GestureRecognizers>
@@ -1253,7 +1253,7 @@
                                                                     Text="{Binding IDNumber}"
                                                                     Keyboard="Numeric"
                                                                     Unfocused="OnIDNumberFocusChanged"
-                                                                    Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" />
+                                                                    Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" />
 
                                     </StackLayout>
 
@@ -1286,7 +1286,7 @@
                                         </Grid.ColumnDefinitions>
                                         <custom:GAZTBorderlessEntry Grid.Column="0" IsEnabled="False"
                                                                     Text="{Binding PickedDateFullMonth,StringFormat='{0:dd MMM yyyy}'}"
-                                                                    Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                                                    Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                                         
                                         <Image Grid.Column="1" Source="calendar.png" WidthRequest="20" HeightRequest="20"
                                                Margin="0,0,5,0">
@@ -1324,7 +1324,7 @@
                                                                 Unfocused="ContactPersonTextUnFocus"
                                                                 Text="{Binding ContactPersonName}"
                                                                 IsEnabled="{Binding ContractPersonEditable}"
-                                                                Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" />
+                                                                Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" />
                                 </StackLayout>
 
                             </border:SfBorder>
@@ -1424,7 +1424,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Column="1">
                                                 <Label  Text="{Binding ReviewReason}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1445,7 +1445,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Column="1">
                                                 <Label  Text="{Binding SubReviewReason}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
 
@@ -1466,7 +1466,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Column="1">
                                                 <Label Text="{Binding ApplicationRefNumber}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1488,7 +1488,7 @@
                                             <StackLayout Grid.Column="1">
                                                 <Label 
                                                                 Text="{Binding FormattedRequestDate}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1561,7 +1561,7 @@
                                             </StackLayout>
                                             <StackLayout  Grid.Column="1">
                                             <Label Text="{Binding ReportDetails}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1589,7 +1589,7 @@
                                                                             Text="{x:Static ResourceManager:AppResources.VRAttachment}"
                                                                             Style="{StaticResource ValueLabelGrey}" />
                                                         <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}"
-                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                            Style="{StaticResource BodyLabelBlack}"
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End" />
 
@@ -1673,7 +1673,7 @@
                                             <StackLayout Grid.Column="1">
                                                 <custom:CustomLabel  
                                                     Text="{Binding TaxPeriodOfCase}"
-                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    Style="{StaticResource BodyLabelBlack}"
                                                     HorizontalOptions="EndAndExpand"           
                                                     HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1697,7 +1697,7 @@
                                             <StackLayout Grid.Column="1">
                                                 <Label 
                                                                 Text="{Binding FormattedTaxperdioFromDate}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1720,7 +1720,7 @@
                                             <StackLayout Grid.Column="1">
                                                 <Label
                                                                 Text="{Binding FormattedTaxperdioToDate}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1743,7 +1743,7 @@
                                             <StackLayout Grid.Column="1">
                                                 <Label 
                                                                 Text="{Binding PenalityAmountInQuestion,Converter={StaticResource commaSeparatorConverter}}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1762,7 +1762,7 @@
                                                                 Style="{StaticResource ValueLabelGrey}" />
                                             <custom:CustomLabel Grid.Column="1"
                                                                 Text="{Binding VRRequesttoReviewtheAmountValue}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                         </Grid>-->
@@ -1783,7 +1783,7 @@
                                             <StackLayout Grid.Column="1">
                                                 <Label
                                                                 Text="{Binding RequestedReviewAmount,Converter={StaticResource commaSeparatorConverter}}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1805,7 +1805,7 @@
                                             <StackLayout Grid.Column="1">
                                                 <Label        
                                                     Text="{Binding DisputeDetailsDesc}"
-                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    Style="{StaticResource BodyLabelBlack}"
                                                     HorizontalOptions="EndAndExpand"            
                                                     HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1878,7 +1878,7 @@
                                             </StackLayout>
                                             <StackLayout  Grid.Column="1">
                                                 <Label Text="{Binding SecurityAmount,Converter={StaticResource commaSeparatorConverter}}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1901,7 +1901,7 @@
                                             <StackLayout Grid.Column="1">
                                                 <Label
                                                     Text="{Binding SecurityType}"
-                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    Style="{StaticResource BodyLabelBlack}"
                                                     HorizontalOptions="EndAndExpand"            
                                                     HorizontalTextAlignment="End" />
                                             </StackLayout>
@@ -1919,7 +1919,7 @@
                                                                 Text="{x:Static ResourceManager:AppResources.VRSADADNumber}"
                                                                 Style="{StaticResource ValueLabelGrey}" />
                                             <Label Grid.Column="1" Text="{Binding SADADNumber}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                         </Grid>
@@ -1946,7 +1946,7 @@
                                                                             Text="{x:Static ResourceManager:AppResources.VRAttachment}"
                                                                             Style="{StaticResource ValueLabelGrey}" />
                                                         <Label Grid.Column="1" Text="{Binding Filename}"
-                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                            Style="{StaticResource BodyLabelBlack}"
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End" />
                                                         <Image  Grid.Column="2" Source="Generic_attachment_icon"
@@ -2021,7 +2021,7 @@
                                                                 Text="{x:Static ResourceManager:AppResources.VRIDType}"
                                                                 Style="{StaticResource ValueLabelGrey}" />
                                             <Label Grid.Column="1" Text="{Binding IDType}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                         </Grid>
@@ -2038,7 +2038,7 @@
                                                                 Text="{x:Static ResourceManager:AppResources.VRIDNumber}"
                                                                 Style="{StaticResource ValueLabelGrey}" />
                                             <Label Grid.Column="1" Text="{Binding IDNumber}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                         </Grid>
@@ -2056,7 +2056,7 @@
                                                                 Style="{StaticResource ValueLabelGrey}" />
                                             <Label Grid.Column="1"
                                                                 Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                         </Grid>
@@ -2073,7 +2073,7 @@
                                                                 Text="{x:Static ResourceManager:AppResources.VRContactPersonName}"
                                                                 Style="{StaticResource ValueLabelGrey}" VerticalOptions="FillAndExpand" />
                                             <Label Grid.Column="1" Text="{Binding ContactPersonName}"
-                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
                                         </Grid>
