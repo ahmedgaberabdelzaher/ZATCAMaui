@@ -7622,7 +7622,7 @@
     <value>تجارة</value>
   </data>
   <data name="ZakatDraftSaved" xml:space="preserve">
-    <value>{0}تم حفظ نموذج الإقرار الضريبي  بنجاح</value>
+    <value>تم حفظ طلب خطة التقسيط</value>
   </data>
   <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
     <value>نموذج الإقرار غير مقبول. يرجى بدء العملية مرة أخرى لتقديم تقسيط الزكاة</value>
@@ -8860,5 +8860,8 @@ info@gazt.gov.sa</value>
   </data>
   <data name="BillsNotPaid" xml:space="preserve">
     <value>الغير مدفوعة</value>
+  </data>
+  <data name="ZakatDraftSaved1" xml:space="preserve">
+    <value>بنجاح</value>
   </data>
 </root>

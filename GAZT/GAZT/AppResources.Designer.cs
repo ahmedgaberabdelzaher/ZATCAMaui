@@ -13676,11 +13676,20 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zakat Instalment form saved successfully{0}.
+        ///   Looks up a localized string similar to Request for Instalment Plan.
         /// </summary>
         public static string ZakatDraftSaved {
             get {
                 return ResourceManager.GetString("ZakatDraftSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saved successfully.
+        /// </summary>
+        public static string ZakatDraftSaved1 {
+            get {
+                return ResourceManager.GetString("ZakatDraftSaved1", resourceCulture);
             }
         }
         

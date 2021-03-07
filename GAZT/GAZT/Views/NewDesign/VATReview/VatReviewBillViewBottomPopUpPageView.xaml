@@ -75,7 +75,7 @@
                                     
                         <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                        <StackLayout   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <StackLayout   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10">
 
                             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                 <Grid>
@@ -84,7 +84,7 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDocumentNo}" Style="{StaticResource ValueLabelGrey}"/>
                                             <Label Grid.Column="1" Text="{Binding VBDocumentNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
@@ -97,7 +97,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSADADNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBSadadNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
@@ -110,7 +110,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDateofPenalty}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBDateofPenality}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
@@ -123,7 +123,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDescriptionofPenalty}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBDescriptionOfPenality}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
@@ -136,7 +136,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRPeriodKey}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBPeriodkey}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
@@ -149,7 +149,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRStartDate}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBStartDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
@@ -162,7 +162,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VREndDate}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBEndDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
@@ -174,8 +174,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="35*"/>
+                                        <ColumnDefinition Width="65*"/>
                                     </Grid.ColumnDefinitions>
                                     <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDueDate}" Style="{StaticResource ValueLabelGrey}"/>
                                     <custom:CustomLabel Grid.Column="1" Text="{Binding VBDueDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
@@ -188,7 +188,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRAmount}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>

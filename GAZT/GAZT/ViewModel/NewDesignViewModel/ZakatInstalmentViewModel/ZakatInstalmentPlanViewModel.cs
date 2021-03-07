@@ -3499,7 +3499,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                                     headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                     headerAmountInfo.IsLinkAvailable = false;
-                                    headerAmountInfo.Message = string.Format(AppResources.ZakatDraftSaved, "  " + ZakatInstalments.d.Fbnum);
+                                    //                                    headerAmountInfo.Message = string.Format(AppResources.ZakatDraftSaved, "  " + ZakatInstalments.d.Fbnum);
+                                    headerAmountInfo.Message = string.Format(AppResources.ZakatDraftSaved + " " + ZakatInstalments.d.Fbnum + " " + AppResources.ZakatDraftSaved1, " " + ZakatInstalments.d.Fbnum);
+
 
                                     headerWithInfos.Add(headerAmountInfo);
 

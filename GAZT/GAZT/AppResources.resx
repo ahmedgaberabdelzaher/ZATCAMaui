@@ -7740,7 +7740,7 @@ I acknowledge to clarify in the original bank guarantee the TIN of the company a
     <value>Trade/Business</value>
   </data>
   <data name="ZakatDraftSaved" xml:space="preserve">
-    <value>Zakat Instalment form saved successfully{0}</value>
+    <value>Request for Instalment Plan</value>
   </data>
   <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
     <value>Zakat Form is cancelled. Please initiate the process again to file Zakat instalment</value>
@@ -8940,5 +8940,8 @@ I acknowledge that the above bank account information is correct and assume full
   </data>
   <data name="BillsNotPaid" xml:space="preserve">
     <value>Not Paid</value>
+  </data>
+  <data name="ZakatDraftSaved1" xml:space="preserve">
+    <value>Saved successfully</value>
   </data>
 </root>

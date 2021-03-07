@@ -310,7 +310,7 @@
                            
                             <custom:CustomLabel Grid.Row="0"
                                                 HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                                Style="{StaticResource MicroGrayLabelStyle}" LineSpacing="0.5">
                                  <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.VATReviewRequestString}"  />
@@ -1012,7 +1012,7 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}"
-                                          VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged"
+                                          VerticalOptions="StartAndExpand" CheckedChanged="CheckBox_CheckedChanged"
                                           IsChecked="{Binding IsSadadCheckBox1}">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Value="false">

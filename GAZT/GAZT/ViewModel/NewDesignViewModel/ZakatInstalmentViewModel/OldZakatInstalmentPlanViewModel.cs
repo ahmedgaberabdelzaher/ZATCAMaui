@@ -3513,8 +3513,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                                 ZakatInstalments = ZakatInstalmentsdata;
 
                                 IsInitialDraft = true;
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
+                                /*Device.BeginInvokeOnMainThread(async () =>
+                                {*/
                                     App.selectedZakatItem = ZakatInstalments.d.Fbnum;
                                     setMoreOptioButtons();
 
@@ -3523,7 +3523,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                                     headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                     headerAmountInfo.IsLinkAvailable = false;
-                                    headerAmountInfo.Message = string.Format(AppResources.ZakatDraftSaved, "  " + ZakatInstalments.d.Fbnum);
+                                    //headerAmountInfo.Message = string.Format(AppResources.ZakatDraftSaved, "  " + ZakatInstalments.d.Fbnum);
+                                    headerAmountInfo.Message = string.Format(AppResources.ZakatDraftSaved+ " " + ZakatInstalments.d.Fbnum + " " + AppResources.ZakatDraftSaved1, " " + ZakatInstalments.d.Fbnum);
 
                                     headerWithInfos.Add(headerAmountInfo);
 
@@ -3535,7 +3536,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
                                     //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
-                                });
+                               // });
                             }
                             else
                             {
