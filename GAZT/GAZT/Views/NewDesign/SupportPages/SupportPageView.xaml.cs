@@ -250,7 +250,10 @@ namespace EGAZT.Views.NewDesign
 
         private void ContactWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
-            viewModel.IsLoading = true;
+            if(viewModel.PageTitle != AppResources.NDSuggestionsandComplaints)
+            {
+                viewModel.IsLoading = true;
+            }
         }
 
         private void ContactWebView_Navigated(object sender, WebNavigatedEventArgs e)

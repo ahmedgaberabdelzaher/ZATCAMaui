@@ -121,7 +121,7 @@
                     
                     <!--FAQ View Starts-->
                     <StackLayout IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.FAQ}}">
-                        <WebView x:Name="ContactWebView" WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />
+                        <WebView x:Name="ContactWebView" Margin="-20,-20,-20,0"  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" />
                     </StackLayout>
                     <!--FAQ View End-->
 
@@ -273,7 +273,7 @@
                             </StackLayout>
                         </Grid>
 
-                        <WebView x:Name="ContactUsWebView" IsVisible="False"  WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" Margin="0,-60,0,0"/>
+                        <WebView x:Name="ContactUsWebView" IsVisible="False"  WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" Margin="-20,-60,-20,0"/>
                     </Grid>
                     <!--ContactUs View End-->
 
