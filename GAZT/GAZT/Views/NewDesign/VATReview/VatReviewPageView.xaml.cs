@@ -43,6 +43,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
 
             viewModel.setMoreOptioButtons();
+            
         }
 
         private void SetLTR()
@@ -79,28 +80,43 @@ namespace EGAZT.Views.NewDesign.VatReview
             MessagingCenter.Unsubscribe<object, int>(this, "draftSecurity");
 
 
-
-            Xamarin.Forms.MessagingCenter.Subscribe<object, int>(this, "draftRequest", (sender, arg) =>
+            try
+            {
+                MessagingCenter.Subscribe<object, int>(this, "draftRequest", (sender, arg) =>
             {
                 DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[arg];
 
             });
-
-            Xamarin.Forms.MessagingCenter.Subscribe<object, int>(this, "draftSecurity", (sender, arg) =>
+            }
+            catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
 
-                securityTypeListView.SelectedItem = viewModel.SecurityPaymentOptions[arg];
-                if (arg == 0)
+            try
+            {
+                MessagingCenter.Subscribe<object, int>(this, "draftSecurity", async (sender, arg) =>
                 {
-                    viewModel.EnableSadadSecurityView();
-                }
-                else if (arg == 1)
-                {
-                    viewModel.EnablebankGuranteeSecurityView();
-                }
-                viewModel.EnableSecurityPaymentsConButton();
+                    securityTypeListView.SelectedItem = viewModel.SecurityPaymentOptions[arg];
+                    if (arg == 0)
+                    {
+                        viewModel.EnableSadadSecurityView();
+                    }
+                    else if (arg == 1)
+                    {
+                        viewModel.EnablebankGuranteeSecurityView();
+                    }
+                    viewModel.EnableSecurityPaymentsConButton();
 
-            });
+
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
 
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>

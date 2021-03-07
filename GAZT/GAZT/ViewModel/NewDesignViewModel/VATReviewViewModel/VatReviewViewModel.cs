@@ -3272,6 +3272,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private async void showIdTypePickerDialog()
         {
+            IDNumber = "";
+            PickedDateFullMonth = "";
             try
             {
                 await PopupNavigation.Instance.PushAsync(new PickerPageView(IDTypePickerModel));
@@ -3704,6 +3706,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             DeclarationVisible = true;
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.Declaration;
+
+            EnableDeclarationConButton();
         }
 
         private void EnableSummaryView()
@@ -4675,7 +4679,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             charCountReportDetails = 0 + "/" + 1000;
             charCountDisputeDetails = 0 + "/" + 1000;
-
+            PickedDateFullMonth = "";
             IsGeneratingFormbundle = false;
             IsSadadSecuritySelected = false;
             IsBankGurantSecuritySelected = false;
@@ -4900,8 +4904,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             DefaultSecurity = modelVATReview.d.SecurityDtl.Sectp == "B" ? 1 : 0;
             DefaultReq = modelVATReview.d.SecurityDtl.Amttp == "P" ? 1 : 0;
-            MessagingCenter.Send<Object, int>(this, "draftSecurity", modelVATReview.d.SecurityDtl.Sectp == "B" ? 1 : 0);
-            MessagingCenter.Send<Object, int>(this, "draftRequest", modelVATReview.d.SecurityDtl.Amttp == "P" ? 1 : 0);
+            MessagingCenter.Send<object, int>(this, "draftSecurity", modelVATReview.d.SecurityDtl.Sectp == "B" ? 1 : 0);
+            MessagingCenter.Send<object, int>(this, "draftRequest", modelVATReview.d.SecurityDtl.Amttp == "P" ? 1 : 0);
 
             
             if (modelVATReview.d.IdType == "ZS0001")
@@ -4930,16 +4934,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             if (!string.IsNullOrEmpty(ContactPersonName))
             {
                 IsIDVerified = true;
+                IsDOBVisible = false;
                 if (modelVATReview.d.IdType == "ZS0003" && string.IsNullOrEmpty(IDNumber))
                 {
                     IsIDVerified = false;
+                    IsDOBVisible = true;
                 }
-            }
-
-            if (!string.IsNullOrEmpty(IDNumber))
-            {
-
-                IsDECCheckBox = true;
             }
 
 
@@ -4966,7 +4966,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             else
             {
-                IsSadadCheckBox1 = true;
+                IsSadadCheckBox1 = false;
             }
             if (modelVATReview.d.SecurityDtl.ChkCash == "X")
             {
@@ -4974,7 +4974,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             else
             {
-                IsSadadCheckBox3 = true;
+                IsSadadCheckBox3 = false;
+            }
+
+            if (modelVATReview.d.DecFlg1 == true)
+            {
+                IsDECCheckBox = true;
+            }
+            else
+            {
+                IsDECCheckBox = false;
             }
 
             if (string.IsNullOrEmpty(modelVATReview.d.SecurityDtl.Sopbel))
@@ -5940,6 +5949,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             _postData.Skipst5covid19 = "";
             _postData.Srcidentifyx = modelVATReview.d.Srcidentifyx;
             _postData.Statusx = modelVATReview.d.Statusx;
+
             if (IsGeneratingFormbundle)
             {
                 _postData.StepNumberx = "04";
@@ -6193,7 +6203,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 modelVATReview.d.AgreeFg = true;
                 modelVATReview.d.Appfg = "N";
                 modelVATReview.d.CalTyp = "1";
-                modelVATReview.d.DecFlg1 = true;
+                modelVATReview.d.DecFlg1 = IsDECCheckBox;
                 // modelVATReview.d.DecFlg2 = true;
                 modelVATReview.d.Decnm = ContactPersonName;
 
@@ -6253,17 +6263,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             modelVATReview.d.SecurityDtl.Sectp = "C";
                             modelVATReview.d.SecurityDtl.Sopbel = SADADNumber;
                             modelVATReview.d.SecurityDtl.ChkBank = "";
-                            modelVATReview.d.SecurityDtl.ChkCash = "X";
+                            modelVATReview.d.SecurityDtl.ChkCash = IsSadadCheckBox3 ? "X" : "";
 
                         }
                         else
                         {
 
-
-
                             modelVATReview.d.SecurityDtl.Sectp = "B";
                             modelVATReview.d.SecurityDtl.ChkCash = "";
-                            modelVATReview.d.SecurityDtl.ChkBank = "X";
+                            modelVATReview.d.SecurityDtl.ChkBank = IsSadadCheckBox1? "X" : "";
 
 
                         }
