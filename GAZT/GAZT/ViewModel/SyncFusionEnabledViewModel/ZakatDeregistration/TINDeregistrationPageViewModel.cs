@@ -3487,22 +3487,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         catch (Exception ex)
                         {
-                            Console.Write(ex.ToString());
+                            Console.Write("---------------------------");
                             Console.Write(ex.StackTrace.ToString());
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(resultData);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
                                 string errorCode = errorMesg.error.innererror.errordetails[0].code;
                                 ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
 
-                                String WithReplacedString = ErrorMessage.Replace("An exception was raised", string.Empty);
-                                ErrorMessage = WithReplacedString;
+                                //String WithReplacedString = ErrorMessage.Replace("An exception was raised", string.Empty);
+                                //ErrorMessage = WithReplacedString;
                                 //ErrorMessageForVAT
-                                throw new GAZTErrorException(ErrorMessage);
+                                throw new GAZTErrorException(AppResources.InvalidEntry);
                             }
                         }
 
-                        if (_responseData == null)
+                        if (string.IsNullOrWhiteSpace(_responseData))
                         {
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
