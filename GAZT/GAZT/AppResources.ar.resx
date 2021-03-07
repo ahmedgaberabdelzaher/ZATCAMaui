@@ -8856,4 +8856,8 @@ info@gazt.gov.sa</value>
   <data name="TinDeregDataSavedSuccessfully" xml:space="preserve">
     <value>تم حفظ البيانات بنجاح</value>
   </data>
+    <data name="VATReviewRequestString" xml:space="preserve">
+        <value>يرجى ذكر القرار الذي ترغب في مراجعته وأسباب طلبك</value>
+    </data>
+     
 </root>

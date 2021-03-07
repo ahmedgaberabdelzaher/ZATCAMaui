@@ -14,6 +14,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using GAZT.Manager;
 
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
 {
@@ -259,6 +260,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
+            MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
+            MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
+            MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
+
+
+        }
+
         private void SfButton_Clicked(object sender, EventArgs e)
         {
             //PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView());
@@ -310,7 +324,33 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         private void OnVATPayNowClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+
+
+            doValidateVATReturnAmount();
+
+            //PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
         }
+
+
+        public async Task doValidateVATReturnAmount() {
+
+            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(viewModel.VATDeclarationData.d.Fbguid, viewModel.VATDeclarationData.d.Fbnum, App.TP.Tin, viewModel.VATDeclarationData.d.Persl);
+
+
+            if (_vATDeclaration.d.MadabutFg == "X")
+            {
+                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+
+                //viewModel.DoValidatePayment(fbNum: viewModel.VATDeclarationData.d.Fbnum);
+            }
+            else
+            {
+
+                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, viewModel.VATDeclarationData.d.OpenliMsg));
+
+            }
+
+        }
+
     }
 }
