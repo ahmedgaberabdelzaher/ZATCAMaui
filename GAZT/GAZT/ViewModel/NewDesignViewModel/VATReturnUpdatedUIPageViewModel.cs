@@ -5976,9 +5976,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                                _navigationService.GoBack();
+
+                                await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+
+                              
                             });
 
                         }

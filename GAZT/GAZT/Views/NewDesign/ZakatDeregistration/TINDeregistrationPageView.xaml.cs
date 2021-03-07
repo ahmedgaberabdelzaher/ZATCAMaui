@@ -517,6 +517,23 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //}
             //viewModel.IsOption1Visible = index == 0 ? true : false;
             //viewModel.IsOption2Visible = index == 1 ? true : false;
+
+            if (viewModel.SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationCloseOutletsIndividually))
+            {
+                viewModel.outletEditIsVisible = true;
+                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+            }
+            else if (viewModel.SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+            {
+                viewModel.outletEditIsVisible = false;
+                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
+            }
+            else
+            {
+                viewModel.outletEditIsVisible = false;
+                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+            }
+
         }
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)

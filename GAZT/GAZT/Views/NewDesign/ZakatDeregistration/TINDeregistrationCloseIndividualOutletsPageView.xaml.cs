@@ -620,7 +620,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             if (viewModel.SelectedPermitOutletOptionIndex == 2)
             {
                 viewModel.outletEditIsVisible = true;
-                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+              //  viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
                 foreach (var items in viewModel.SelectedOutletForCloseTranser.PermitTypes)
                 {
                     items.APermitDregRsnTb = "1";
@@ -634,7 +634,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             else if (viewModel.SelectedPermitOutletOptionIndex == 1)
             {
                 viewModel.outletEditIsVisible = false;
-                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
+                //viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
                 viewModel.SingleDeregistrationDate = string.Empty;
                 viewModel.SelectedIdNumber = string.Empty;
                 viewModel.SelectedIdtype = string.Empty;
@@ -645,7 +645,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             else
             {
                 viewModel.outletEditIsVisible = false;
-                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+               // viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
                 viewModel.SingleDeregistrationDate = string.Empty;
             }
 

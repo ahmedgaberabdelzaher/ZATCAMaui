@@ -3487,22 +3487,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         catch (Exception ex)
                         {
-                            Console.Write(ex.ToString());
+                            Console.Write("---------------------------");
                             Console.Write(ex.StackTrace.ToString());
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(resultData);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
                                 string errorCode = errorMesg.error.innererror.errordetails[0].code;
                                 ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
 
-                                String WithReplacedString = ErrorMessage.Replace("An exception was raised", string.Empty);
-                                ErrorMessage = WithReplacedString;
+                                //String WithReplacedString = ErrorMessage.Replace("An exception was raised", string.Empty);
+                                //ErrorMessage = WithReplacedString;
                                 //ErrorMessageForVAT
-                                throw new GAZTErrorException(ErrorMessage);
+                                throw new GAZTErrorException(AppResources.InvalidEntry);
                             }
                         }
 
-                        if (_responseData == null)
+                        if (string.IsNullOrWhiteSpace(_responseData))
                         {
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
@@ -6417,22 +6417,36 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             //cardView.Children.Add(grid);
             //outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
-            if (SelectedOutletOptionIndex == 2)
+            //if (SelectedOutletOptionIndex == 2)
+            //{
+            //   outletEditIsVisible = true;
+            //    OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+            //}
+            //else if (SelectedOutletOptionIndex == 1)
+            //{
+            //    outletEditIsVisible = false;
+            //    OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
+            //}
+            //else
+            //{
+            //    outletEditIsVisible = false;
+            //    OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+            //}
+            if (SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationCloseOutletsIndividually))
             {
                outletEditIsVisible = true;
-                OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+               OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
             }
-            else if (SelectedOutletOptionIndex == 1)
+            else if (SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
                 outletEditIsVisible = false;
                 OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
             }
             else
             {
-                outletEditIsVisible = false;
-                OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+               outletEditIsVisible = false;
+               OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
             }
-
             //int index = Convert.ToInt16(SelectedOutletOptionIndex);
             //if (isIndex1)
             //{

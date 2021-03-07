@@ -152,6 +152,20 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
 
         }
+
+
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
+            MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
+            MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
+            MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
+
+
+        }
         private void OnReturnClicked(object sender, EventArgs e)
         {
             if (Navigation.NavigationStack.Count > 0)
@@ -176,6 +190,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private void PayNowClicked(object sender, EventArgs e)
         {
+
+          
+
+
             PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
         }
 
