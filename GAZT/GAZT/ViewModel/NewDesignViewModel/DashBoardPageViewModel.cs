@@ -1677,7 +1677,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     TestDueAmount=item.Amount,
                     FormatedFaedn=item.FormatedDuedate,
                     StatusText=item.IcrStatus,
-                    Fbnum=item.Fbnum
+                    Fbnum=item.Fbnum,
+                    Txt30=item.Txt50
 
                 });
             }

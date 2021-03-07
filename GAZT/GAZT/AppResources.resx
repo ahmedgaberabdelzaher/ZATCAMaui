@@ -8932,10 +8932,13 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="MultipleBillsThisBillHasOtherLiabilities" xml:space="preserve">
     <value>This bill has other liability and should be paid together</value>
   </data>
-    <data name="TinDeregDataSavedSuccessfully" xml:space="preserve">
+  <data name="TinDeregDataSavedSuccessfully" xml:space="preserve">
     <value>Your Data was saved successfully</value>
   </data>
   <data name="ZZZZZakatReturnSubmittedNew" xml:space="preserve">
     <value>Your Zakat estimate return is submitted successfully and bill generated for</value>
+  </data>
+  <data name="BillsNotPaid" xml:space="preserve">
+    <value>Not Paid</value>
   </data>
 </root>

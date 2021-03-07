@@ -8491,7 +8491,7 @@ info@gazt.gov.sa</value>
     </value>
   </data>
   <data name="VATRefundReturnSubmitConfirmation" xml:space="preserve">
-   <value>عزيزي المكلف، قد تحتاج الهيئة خلال مراجعة طلب الاسترداد الى البيانات الإضافية التالية:
+    <value>عزيزي المكلف، قد تحتاج الهيئة خلال مراجعة طلب الاسترداد الى البيانات الإضافية التالية:
 1. ميزان المراجعة لفترة الإقرار
 2. المبيعات الخاضعة لضريبة القيمة المضافة (0٪ - 5٪ - غير مشمول)
 3. المشتريات الخاضعة لضريبة القيمة المضافة (5٪ ، رسوم عكسية)</value>
@@ -8797,9 +8797,9 @@ info@gazt.gov.sa</value>
   <data name="AccountStatementsDetailsStatementsAmount" xml:space="preserve">
     <value>المبلغ</value>
   </data>
-    <data name="Filter" xml:space="preserve">
-     <value>تصفية</value>
-     </data>
+  <data name="Filter" xml:space="preserve">
+    <value>تصفية</value>
+  </data>
   <data name="ACFilterApply" xml:space="preserve">
     <value>تصفية النتائج</value>
   </data>
@@ -8848,7 +8848,6 @@ info@gazt.gov.sa</value>
   </data>
   <data name="AccountStatementsFilterTitle" xml:space="preserve">
     <value>تصفية</value>
-    
   </data>
   <data name="MultipleBillsThisBillHasOtherLiabilities" xml:space="preserve">
     <value>هذه الفاتورة مرتبطه بالتزامات اخرى يجب دفعها سوياً</value>
@@ -8856,8 +8855,10 @@ info@gazt.gov.sa</value>
   <data name="TinDeregDataSavedSuccessfully" xml:space="preserve">
     <value>تم حفظ البيانات بنجاح</value>
   </data>
-    <data name="VATReviewRequestString" xml:space="preserve">
-        <value>يرجى ذكر القرار الذي ترغب في مراجعته وأسباب طلبك</value>
-    </data>
-     
+  <data name="VATReviewRequestString" xml:space="preserve">
+    <value>يرجى ذكر القرار الذي ترغب في مراجعته وأسباب طلبك</value>
+  </data>
+  <data name="BillsNotPaid" xml:space="preserve">
+    <value>الغير مدفوعة</value>
+  </data>
 </root>

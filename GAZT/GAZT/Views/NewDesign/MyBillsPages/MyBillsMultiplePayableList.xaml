@@ -75,7 +75,7 @@
 
                                         </custom:CustomLabel>
 
-                                        <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding Abtypt}" 
+                                            <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding Txt30}" 
                                                                                         Style="{StaticResource 
                                                                         CaptionLabelGrey}" VerticalOptions="End"></custom:CustomLabel>
 
@@ -87,15 +87,21 @@
                                                                      VerticalOptions="CenterAndExpand" Padding="12,2,12,2" 
                                                                      CornerRadius="20" HeightRequest="32"  BackgroundColor="#fbf4e9" >
                                             <border:SfBorder.Triggers>
-                                                <DataTrigger TargetType="border:SfBorder" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                    <DataTrigger TargetType="border:SfBorder" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
                                                     <Setter Property="BackgroundColor" Value="#f6e6e8" />
                                                 </DataTrigger>
-                                            </border:SfBorder.Triggers>
+                                                    <DataTrigger TargetType="border:SfBorder" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.BillsNotPaid}">
+                                                        <Setter Property="BackgroundColor" Value="#f6e6e8" />
+                                                    </DataTrigger>
+                                                </border:SfBorder.Triggers>
                                            
                                                 
                                                 <Label FontFamily="{StaticResource SSTArRoman}" Text="{Binding StatusText}" FontSize="12" TextColor="#D99A29" VerticalOptions="CenterAndExpand">
                                                     <Label.Triggers>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
+                                                            <Setter Property="TextColor" Value="#AA0C19" />
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.BillsNotPaid}">
                                                             <Setter Property="TextColor" Value="#AA0C19" />
                                                         </DataTrigger>
                                                     </Label.Triggers>

@@ -24,6 +24,11 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             viewModel = App.Locator.MyBillsMultiplePayableList;
             this.BindingContext = viewModel;
 
+            for(int i = 0; i < multiplePayableBills.Count; i++)
+            {
+                multiplePayableBills[i].Abtypt = multiplePayableBills[i].Txt30;
+            }
+
             viewModel.MultiplePayableBills = multiplePayableBills;
             SetLTR();
         }

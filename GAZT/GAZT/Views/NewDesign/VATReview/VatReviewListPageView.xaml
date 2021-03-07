@@ -727,7 +727,7 @@
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End" />
 
-                                                    <Image Source="Generic_attachment_icon" WidthRequest="25" HeightRequest="25"
+                                                    <Image Source="Generic_attachment_icon" Grid.Column="2" WidthRequest="25" HeightRequest="25"
                                                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
 
                                                 </Grid>
