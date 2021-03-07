@@ -1,6 +1,7 @@
 ﻿using System;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -25,9 +26,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             this._zakatReturnDetail = ZakatReturnDetail;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            viewModel.ReferenceNumber = ZakatReturnDetail.Persl;
             SetLTR();
             ChangeAeroIcon();
-
+            viewModel.ZakatReturnDetail = ZakatReturnDetail;    
             _ = viewModel.OnPageLoad(ZakatReturnDetail);
 
             ToolbarItem Refresh = new ToolbarItem
@@ -90,6 +92,65 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             base.OnAppearing();
             //Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
             //Navigation.RemovePage(pg);
+            
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                {
+                    viewModel.MadaPaymentSelectedAsync();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
+                {
+                    viewModel.ApplePaySelected();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
+                {
+                    viewModel.gotoSuccessPage();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
+                {
+
+                    viewModel.ApplePayTokenData = arg.ToString();
+
+                    await viewModel.UpdateApplePayPaymentGuid();
+
+
+                });
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
         }
         private void OnReturnClicked(object sender, EventArgs e)
         {
@@ -103,15 +164,31 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         public async void OnCopySadadNumberButtonClicked(object sender, EventArgs args)
         {
-            await Clipboard.SetTextAsync(viewModel.EstimatedZAKATSADADNumber.Sopbel);
+            await Clipboard.SetTextAsync(viewModel.ReferenceNumber);
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZSadadInvoiceNumber + " " + text));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.CRReferenceNumber + " " + text));
 
                // await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
                 }
         }
 
+        private void PayNowClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+        }
+
+        private async void OnCopyTaxablePeriodClicked(object sender, EventArgs e)
+        {
+            await Clipboard.SetTextAsync(viewModel.ReferenceNumber);
+            if (Clipboard.HasText)
+            {
+                var text = await Clipboard.GetTextAsync();
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVatTaxablePeriod + " " + text));
+
+                // await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
+            }
+        }
     }
 }
