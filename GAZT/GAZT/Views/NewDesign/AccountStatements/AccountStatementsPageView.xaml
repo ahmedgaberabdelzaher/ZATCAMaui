@@ -324,6 +324,10 @@
                                                         <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
                                                         <Label Text="{Binding FormattedBldat}" Margin="0,5,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                                                     </StackLayout>
+
+
+
+
                                                     <Frame Grid.Row="0" Grid.Column="1"
                                                            HorizontalOptions="FillAndExpand"
                                                     BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"

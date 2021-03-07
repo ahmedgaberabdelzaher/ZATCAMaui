@@ -317,6 +317,7 @@ namespace EGAZT
         public static bool DoesLoginNeedToBeRefreshed;
         public static string PaymentGuid = string.Empty;
         public static bool isFromDashboard = false;
+        public static string selectedForm12Fbguid = string.Empty;
 
         //in Seconds
         public static int IdleTimeToLogout = 100;

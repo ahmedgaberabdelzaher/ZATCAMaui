@@ -1039,6 +1039,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                     {
+
+                        ZakatReturnDetail.Fbguid = ZAKATReturnDetailsViewModel.Fbguid;
                         _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                     }
                     else

@@ -8,6 +8,8 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms.Internals;
+using System.Threading.Tasks;
+using GAZT.Manager;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
@@ -26,7 +28,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             this._zakatReturnDetail = ZakatReturnDetail;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            viewModel.ReferenceNumber = ZakatReturnDetail.Persl;
+            viewModel.TaxablePeriod = ZakatReturnDetail.Persl;
             SetLTR();
             ChangeAeroIcon();
             viewModel.ZakatReturnDetail = ZakatReturnDetail;    
@@ -191,10 +193,31 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         private void PayNowClicked(object sender, EventArgs e)
         {
 
-          
+
+            doValidateZakatAmount();
+
+        }
 
 
-            PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+        public async Task doValidateZakatAmount()
+        {
+
+
+            ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(App.selectedForm12Fbguid);
+
+
+            if (zakatReturnDetails.d.MadabutFg == "X")
+            {
+
+                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+            }
+            else
+            {
+
+                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, zakatReturnDetails.d.OpenliMsg));
+
+            }
+
         }
 
         private async void OnCopyTaxablePeriodClicked(object sender, EventArgs e)

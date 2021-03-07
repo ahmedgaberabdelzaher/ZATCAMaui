@@ -728,19 +728,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         public async Task MadaPaymentSelectedAsync()
         {
 
-            if (ZakatReturnDetail.MadabutFg == "X")
-            {
+            await DoValidatePayment(fbNum: ZakatReturnDetail.Fbnum, "M");
 
-                 await DoValidatePayment(fbNum: ZakatReturnDetail.Fbnum, "M");
-            }
-            else
-            {
-
-                 PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetail.OpenliMsg));
-
-            }
-
-            
 
         }
 

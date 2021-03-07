@@ -78,7 +78,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         private void GoToDashboardClicked(object sender, EventArgs e)
         {
             var _navigation = Application.Current.MainPage.Navigation;
-            
+
             //foreach (var item in _navigation.NavigationStack)
             //{
             //    if (item.GetType().Name == App.GAZTNewDesignMyReturnsNewPageView)
@@ -87,7 +87,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             //        break;
             //    }
             //}
-          
+
             foreach (var item in _navigation.NavigationStack)
             {
                 if (item.GetType().Name == App.ZAKATReturnDetailsView)
@@ -100,6 +100,14 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             foreach (var item in _navigation.NavigationStack)
             {
                 if (item.GetType().Name == App.PaymentProcessWebview)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ZakatReturnDetailsSuccessfullPageView)
                 {
                     _navigation.RemovePage(item);
                     break;

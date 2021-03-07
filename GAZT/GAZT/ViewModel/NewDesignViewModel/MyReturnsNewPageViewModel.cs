@@ -127,6 +127,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         App.IsZakatLoadingFromMyReturns = true;
                                         Device.BeginInvokeOnMainThread(() =>
                                         {
+                                            App.selectedForm12Fbguid = _selectedListItem.Fbguid;
                                             _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
                                         });
 
