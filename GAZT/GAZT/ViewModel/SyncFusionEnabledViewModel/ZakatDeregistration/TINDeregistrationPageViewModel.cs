@@ -6413,22 +6413,36 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             //cardView.Children.Add(grid);
             //outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
-            if (SelectedOutletOptionIndex == 2)
+            //if (SelectedOutletOptionIndex == 2)
+            //{
+            //   outletEditIsVisible = true;
+            //    OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+            //}
+            //else if (SelectedOutletOptionIndex == 1)
+            //{
+            //    outletEditIsVisible = false;
+            //    OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
+            //}
+            //else
+            //{
+            //    outletEditIsVisible = false;
+            //    OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+            //}
+            if (SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationCloseOutletsIndividually))
             {
                outletEditIsVisible = true;
-                OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+               OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
             }
-            else if (SelectedOutletOptionIndex == 1)
+            else if (SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
                 outletEditIsVisible = false;
                 OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
             }
             else
             {
-                outletEditIsVisible = false;
-                OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+               outletEditIsVisible = false;
+               OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
             }
-
             //int index = Convert.ToInt16(SelectedOutletOptionIndex);
             //if (isIndex1)
             //{
