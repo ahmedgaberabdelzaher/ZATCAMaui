@@ -1167,8 +1167,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
             set
             {
-                MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", value);
                 if (_IsChangeEmailChecked == value) return;
+
 
                 _IsChangeEmailChecked = value;
                 if (_IsChangeEmailChecked)
@@ -1194,6 +1194,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             items.Add(financialRepresentativesModel);
                         }
                         ListFinanceRepresenatives = items;
+
+                      bool isFinancialRepresentativeAvailable = IsFinancialRepresentativeDataAvailable(ListFinanceRepresenatives);
+                        if(isFinancialRepresentativeAvailable == true)
+                        {
+                            MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", true);
+                            IsChangeEmailChecked = true;
+                            IsChangeEmailCheckBoxEnabled = true;
+                        }
+                        else
+                        {
+                            IsChangeEmailCheckBoxEnabled = false;
+                            IsChangeEmailChecked = false;
+                            MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", false);
+
+
+                        }
+
                     }
 
                 }
@@ -1252,7 +1269,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             {
                 if (_IsChangeEmailCheckBoxEnabled == value) return;
 
-                _IsChangeEmailCheckBoxEnabled = value;
+                bool isFinancialRepresentativeAvailable = IsFinancialRepresentativeDataAvailable(ListFinanceRepresenatives);
+                if (isFinancialRepresentativeAvailable == true)
+                {
+                    _IsChangeEmailCheckBoxEnabled = value;
+                    MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", true);
+                    IsChangeEmailChecked = true;
+                    IsChangeEmailCheckBoxEnabled = true;
+                }
+                else
+                {
+                    IsChangeEmailCheckBoxEnabled = false;
+                    IsChangeEmailChecked = false;
+                    MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", false);
+
+
+                }
+
+
+
+
 
                 RaisePropertyChanged("IsChangeEmailCheckBoxEnabled");
             }
@@ -3301,6 +3337,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             DefaultMonth = DateTime.Now.Date.Month;
         }
 
+        private bool IsFinancialRepresentativeDataAvailable(List<FinancialRepresentativesModel> financialRepresentativeList)
+        {
+            if(!string.IsNullOrEmpty(financialRepresentativeList[0].FirstnmFR) ||
+                !string.IsNullOrEmpty(financialRepresentativeList[0].GpartFR) ||
+                !string.IsNullOrEmpty(financialRepresentativeList[0].IdnumberFR) ||
+                !string.IsNullOrEmpty(financialRepresentativeList[0].LastnmFR) ||
+                !string.IsNullOrEmpty(financialRepresentativeList[0].MobNumberFR) ||
+                !string.IsNullOrEmpty(financialRepresentativeList[0].SmtpAddrFR) ||
+                !string.IsNullOrEmpty(financialRepresentativeList[0].GpartFR) ||
+                financialRepresentativeList[0].TxtIDTypeFR != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
     }
 }
