@@ -438,7 +438,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     viewModel.isBtnVisible = true;
                     viewModel.IsMainButtonVisible = false;
-                    viewModel.CreditDetailsText = AppResources.ZZZZConfirmandGenerateSADADBill;
+                    viewModel.CreditDetailsText = AppResources.Confirm;
                 }
             }
         }

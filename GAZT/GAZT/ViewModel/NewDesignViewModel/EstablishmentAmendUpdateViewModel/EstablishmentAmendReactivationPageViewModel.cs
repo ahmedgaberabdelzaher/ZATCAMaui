@@ -3284,7 +3284,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     passportObj.ValidDateFrom = issueDate;
                     passportObj.ValidDateTo = expireDate;
                     passportObj.Type = "FS0002";
-                    passportObj.Srcidentify = "000";
+                    passportObj.Srcidentify = "00000";
 
                     taxPayerDetails.Nreg_IdSet.results.Clear();
                     taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
@@ -3446,7 +3446,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
 
                     passportObj.Type = "FS0002";
-                    passportObj.Srcidentify = "000";
+                    passportObj.Srcidentify = "00000";
 
                     taxPayerDetails.Nreg_IdSet.results.Clear();
                     taxPayerDetails.Nreg_IdSet.results.Add(passportObj);

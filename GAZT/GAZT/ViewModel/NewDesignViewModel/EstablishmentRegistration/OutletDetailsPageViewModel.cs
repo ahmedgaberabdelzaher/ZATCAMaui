@@ -925,7 +925,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         newNumber = await EstablishmentRegistrationWebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
                     }
-                    OutletActNumber = newNumber?.Actno == null ? newNumber?.Actno : "00000";
+                    OutletActNumber = (newNumber == null || string.IsNullOrEmpty(newNumber?.Actno)) ? "00000" : newNumber.Actno;
+                    //$"{Int32.Parse(newNumber?.Actno):00000}";
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
                     if (OutletActNumber == "00000")
                     {

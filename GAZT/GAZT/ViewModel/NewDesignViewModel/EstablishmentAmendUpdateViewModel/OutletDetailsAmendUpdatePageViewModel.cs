@@ -1087,11 +1087,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         {
                             newNumber = await EstablishmentRegistrationWebServiceManager.ESTOutletNumberESAmendUpdate(taxPayerDetails?.Fbnumx, App.LoginDataRetrieved.TIN);
                         }
-                        OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
+                        OutletActNumber = (newNumber == null || string.IsNullOrEmpty(newNumber?.Actno)) ? "00000" : newNumber.Actno;
+
+                        // OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
                         taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
                          );
 
-                        if (OutletActNumber == "000")
+                        if (OutletActNumber == "00000")
                         {
                             var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
                             if (preLoadedItems.Count == 1)

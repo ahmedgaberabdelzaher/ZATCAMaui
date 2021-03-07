@@ -278,19 +278,19 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 viewModel._navigationService.GoBack();    
             }else if(screenIndex == 2)
             {
-                if (Navigation.NavigationStack.Count > 0)
+                /*if (Navigation.NavigationStack.Count > 0)
                 {
                     Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                     Navigation.RemovePage(pg);
-                }
+                }*/
                 _VatReturnSuccessPageViewModel._navigationService.GoBack();
             }else if(screenIndex == 3)
             {
-                if (Navigation.NavigationStack.Count > 0)
+                /*if (Navigation.NavigationStack.Count > 0)
                 {
                     Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                     Navigation.RemovePage(pg);
-                }
+                }*/
                 _ZakatReturnSuccessPageViewModel._navigationService.GoBack();
             }
             //viewModel._navigationService.GoBack();

@@ -142,6 +142,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     break;
                 }
             }
+            
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.VATReturnSuccessfullPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
 
             viewModel._navigationService.GoBack();
 

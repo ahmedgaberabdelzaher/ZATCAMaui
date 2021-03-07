@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGAZT.Views.NewDesign.PaymentOptions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -144,6 +145,71 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
 
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                {
+                    Console.WriteLine("Card Payment Clicked");
+
+                    viewModel.MadaPaymentSelected();
+
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
+                {
+                    viewModel.ApplePaySelected();
+                    Console.WriteLine("Apple pay Clicked");
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
+                {
+
+                    Console.WriteLine("SADAD Clicked");
+                    viewModel.gotoSuccessPage();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            try
+            {
+                MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
+                {
+
+                    viewModel.ApplePayTokenData = arg.ToString();
+
+
+                    await viewModel.UpdateApplePayPaymentGuid();
+
+
+                });
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
         public void ChangeAeroIcon()
         {
@@ -240,6 +306,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 //await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
             }
+        }
+
+        private void OnVATPayNowClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
         }
     }
 }

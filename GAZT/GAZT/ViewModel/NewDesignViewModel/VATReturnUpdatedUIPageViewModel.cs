@@ -2586,7 +2586,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             onSecondButtonClicked = new Xamarin.Forms.Command(async() =>
             {
-                if (CreditDetailsText == AppResources.ZZZZConfirmandGenerateSADADBill)
+                if (CreditDetailsText == AppResources.Confirm)
                 {
                    
                         if (IsDeclarationCheckedForSummary)
@@ -3475,7 +3475,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             isBtnVisible = true;
                             IsMainButtonVisible = false;
                             IsRefundButtonVisible = false;
-                            CreditDetailsText = AppResources.ZZZZConfirmandGenerateSADADBill;
+                            CreditDetailsText = AppResources.Confirm;
                             IsPayNowVisible = false;
                         }
                     }
