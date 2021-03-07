@@ -5758,8 +5758,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
 
                     //TinDeregistrationData.ASubmissionDate = DeregistrationDate.ToString();
-                    TinDeregistrationData.ADob = ConvertDateFormat(Convert.ToDateTime(PickerDOBDateDisplay));
-                    TinDeregistrationData.ADobH = DeregistrationDate.ToString("yyyy/MM/dd");
+                    if(!string.IsNullOrEmpty(PickerDOBDateDisplay))
+                    {
+                        TinDeregistrationData.ADob = ConvertDateFormat(Convert.ToDateTime(PickerDOBDateDisplay));
+                        TinDeregistrationData.ADobH = DeregistrationDate.ToString("yyyy/MM/dd");
+                    }
+                   
 
                     //PickerDOBDateDisplay = TinDeregistrationData.ADobH;//ADob, 
                     //PickerDobToDisplay = TinDeregistrationData.AExpdtH;//ASubmissionDateH,ASubmissionDate
