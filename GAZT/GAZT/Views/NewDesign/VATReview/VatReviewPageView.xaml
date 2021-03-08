@@ -1195,28 +1195,25 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" >
                                 <custom:CustomLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.VRIDType}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                              </custom:CustomLabel>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.VRIDType}"  />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
 
-                            <border:SfBorder Grid.Row="1" Margin="0,0,0,10" 
-                                             Style="{StaticResource GreyBorderFrame}" >
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,5,20,5">
-                                    <custom:CustomLabel IsEnabled="False" Text="{Binding IDType}"
-                                                                 Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" />
-                                    <Image Source="arrowDropdown.png" WidthRequest="20" HeightRequest="20"
-                                           Margin="0,0,5,0" >
+                            <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <custom:CustomLabel IsEnabled="False" Text="{Binding IDType}" 
+                                                    Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding IdTypeSpinnerTapped}" />
+                                            <TapGestureRecognizer Command="{Binding IdTypeSpinnerTapped}"/>
                                         </Image.GestureRecognizers>
                                     </Image>
                                 </StackLayout>
-
-                            </border:SfBorder>
+                            </Frame>
+                           
                         </Grid>
 
                         <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
@@ -1243,7 +1240,7 @@
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
-                              </custom:CustomLabel>
+                                </custom:CustomLabel>
 
                                 <border:SfBorder Grid.Row="1" Margin="0,0,0,10" 
                                                  Style="{StaticResource GreyBorderFrame}">
@@ -1258,6 +1255,7 @@
                                     </StackLayout>
 
                                 </border:SfBorder>
+                                
                             </Grid>
 
                             <Grid Grid.Row="0" IsVisible="{Binding IsDOBVisible}" Grid.Column="1">
@@ -1274,28 +1272,28 @@
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
-                              </custom:CustomLabel>
+                                </custom:CustomLabel>
 
                                 <border:SfBorder Grid.Row="1" Margin="0,0,0,10" 
-                                                 Style="{StaticResource GreyBorderFrame}" >
+                                                 Style="{StaticResource GreyBorderFrame}">
 
                                     <Grid HorizontalOptions="FillAndExpand">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <custom:GAZTBorderlessEntry Grid.Column="0" IsEnabled="False"
+                                        <Label Grid.Column="0" IsEnabled="False"
                                                                     Text="{Binding PickedDateFullMonth,StringFormat='{0:dd MMM yyyy}'}"
                                                                     Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-                                        
+
                                         <Image Grid.Column="1" Source="calendar.png" WidthRequest="20" HeightRequest="20"
-                                               Margin="10,0,10,0" >
+                                               Margin="0,0,5,0">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ShowDatePicker}" />
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                   
+
                                 </border:SfBorder>
                             </Grid>
                         </Grid>
@@ -1310,17 +1308,17 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" >
                                 <custom:CustomLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.VRContactPersonName}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                              </custom:CustomLabel>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.VRContactPersonName}"  />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
 
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" 
-                                             Style="{StaticResource GreyBorderFrame}" Padding="20,5,20,5">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                                    <custom:CustomLabel x:Name="ContactPersonEntry"
+                                             Style="{StaticResource GreyBorderFrame}">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <custom:GAZTBorderlessEntry x:Name="ContactPersonEntry"
                                                                 Unfocused="ContactPersonTextUnFocus"
                                                                 Text="{Binding ContactPersonName}"
                                                                 IsEnabled="{Binding ContractPersonEditable}"
@@ -1328,7 +1326,10 @@
                                 </StackLayout>
 
                             </border:SfBorder>
+                            
+                            
                         </Grid>
+
 
                         <buttons:SfButton Grid.Row="6" Margin="0,16,0,16" VerticalOptions="End"
                                           BackgroundColor="{Binding DeclarationButtonBackGroundColor}"
