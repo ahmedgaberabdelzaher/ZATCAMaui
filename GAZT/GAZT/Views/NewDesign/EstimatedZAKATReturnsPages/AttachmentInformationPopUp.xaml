@@ -17,7 +17,7 @@
     </pages:PopupPage.Resources>
     <yummy:PancakeView Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="True" BackgroundColor="White">
 
-        <StackLayout VerticalOptions="Center">
+        <StackLayout VerticalOptions="Center" Margin="0,0,0,0">
             <!--<Image HorizontalOptions="EndAndExpand">
                 <Image.Source>
                     <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
@@ -29,7 +29,7 @@
             </Image>-->
 
             <Label x:Name="InfromatationText" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
-                            <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}"/>
+                            <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,0,10" />
 
         </StackLayout>
     </yummy:PancakeView>
