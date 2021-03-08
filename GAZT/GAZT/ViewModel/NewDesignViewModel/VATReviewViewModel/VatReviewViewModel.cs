@@ -4834,8 +4834,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 IsLoading = true;
             });
             //if (attachment.Filename.Contains("."))
-            string Extention = attachment.Filename.Split('.')[1];
-            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            //string Extention = attachment.Filename.Split('.')[1];
+            if (attachment.FileExtn.Equals("PDF") || attachment.FileExtn.Equals("pdf"))
             {
                 if (attachment.DocUrl != null)
                 {
