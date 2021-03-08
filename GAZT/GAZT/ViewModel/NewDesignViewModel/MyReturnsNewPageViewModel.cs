@@ -102,7 +102,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_selectedListItem == value) return;
 
                 _selectedListItem = value;
 
