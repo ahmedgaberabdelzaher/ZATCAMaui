@@ -1626,6 +1626,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public string _dayMonth = null;
+        public string DayMonth
+        {
+            get
+            {
+                return _dayMonth;
+            }
+            set
+            {
+                if (_dayMonth == value) return;
+                _dayMonth = value;
+                RaisePropertyChanged("DayMonth");
+            }
+        }
 
         #endregion
 
@@ -2428,6 +2442,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 doughnutSeries.ColorModel.CustomBrushes = ColorsChild;
                 doughnutSeries.ItemsSource = chartData;
                 singleItem.Series = new ChartSeriesCollection() { doughnutSeries };
+                singleItem.DayMonthToDisplay = singleItem.Bldat.Value.Day + " " + UtilityManager.GetMonthName(singleItem.Bldat.Value.Month.ToString());
 
 
                 /* try {

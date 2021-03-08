@@ -82,12 +82,16 @@ namespace GAZT.Models
 
             }
         }
+        
         public string TotalInst { get; set; }
         public string TotalInstPaid { get; set; }
         public string TotalInstUnpaid { get; set; }
 
         [JsonIgnore]
         public ChartSeriesCollection Series { get; set; }
+        [JsonIgnore]
+        public string DayMonthToDisplay { get; set; }
+
 
     }
 

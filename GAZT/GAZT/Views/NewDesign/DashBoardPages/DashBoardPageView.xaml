@@ -893,12 +893,13 @@
                                                                                         BodyLabelBlackMedium}" Margin="0,0,0,-8" 
                                                                                                         Padding="0"></custom:CustomLabel>
 
-                                                                        <StackLayout Orientation="Horizontal" Margin="0,-8,5,-8">
-
-                                                                            <custom:CustomLabel Text="{Binding DayMonth}" 
+                                                                         <custom:CustomLabel Text="{Binding DayMonthToDisplay}" 
                                                                                                             Style="{StaticResource 
                                                                                             ValueLabelBlackLight}" FontSize="16" Margin="0,0,10,0"/>
 
+                                                                        <StackLayout Orientation="Horizontal" Margin="0,-8,5,-8">
+
+                                                                           
                                                                             <BoxView BackgroundColor="{StaticResource SuccessColor}"  HeightRequest="8" WidthRequest="8" CornerRadius="8" HorizontalOptions="End" VerticalOptions="Center" Margin="0,13" ></BoxView>
 
 
