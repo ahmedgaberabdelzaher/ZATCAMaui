@@ -1282,7 +1282,7 @@
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" IsEnabled="False"
+                                        <custom:GAZTBorderlessEntry Grid.Column="0" IsEnabled="False"
                                                                     Text="{Binding PickedDateFullMonth,StringFormat='{0:dd MMM yyyy}'}"
                                                                     Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
 
