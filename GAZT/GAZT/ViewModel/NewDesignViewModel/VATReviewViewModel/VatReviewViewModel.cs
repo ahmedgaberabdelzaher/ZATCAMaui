@@ -3976,7 +3976,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             var attachmentsListViewData = new ObservableCollection<Attachment>();
             foreach (Attachment attachemnt in attachments)
             {
-                if (attachemnt.Dotyp == "ZVTD")
+                if (attachemnt.Dotyp == "ZVTD"||attachemnt.Dotyp == "ZVTG"||attachemnt.Dotyp == "ZVTH"||attachemnt.Dotyp == "ZVTI")
                 {
                     attachmentsListViewData.Add(attachemnt);
                 }
