@@ -836,7 +836,7 @@
                                                 </Image>
                                             </StackLayout>
 
-                                            <CollectionView x:Name="InstalmentsCollectionView" HeightRequest="160"  ItemsLayout="HorizontalList"
+                                            <CollectionView x:Name="InstalmentsCollectionView" HeightRequest="170"  ItemsLayout="HorizontalList"
                                                         ItemsSource="{Binding InstalmentPlanList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                                         BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" >
                                                 <CollectionView.ItemTemplate>
@@ -903,7 +903,7 @@
                                                                             <BoxView BackgroundColor="{StaticResource SuccessColor}"  HeightRequest="8" WidthRequest="8" CornerRadius="8" HorizontalOptions="End" VerticalOptions="Center" Margin="0,13" ></BoxView>
 
 
-                                                                            <custom:CustomLabel Text="{Binding NextInstAmt,Converter={StaticResource commaSeparatorConverter}}" 
+                                                                            <custom:CustomLabel  Text="{Binding NextInstAmt,Converter={StaticResource commaSeparatorConverter}}" 
                                                                                                             Style="{StaticResource 
                                                                                             BodyLabelBlackMedium}">
 
