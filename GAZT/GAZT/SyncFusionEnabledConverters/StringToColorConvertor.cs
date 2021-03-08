@@ -13,11 +13,11 @@ namespace EGAZT.CustomControl
             Color StatusColor;
             if (value.ToString() == "1" || value.ToString() == "4")
             {
-                StatusColor = Color.FromHex("#FCE087");
+                StatusColor = Color.FromHex("#E39800");
             }
             else if (value.ToString() == "2" || value.ToString() == "8" || value.ToString() == "9")
             {
-                StatusColor = Color.FromHex("#99C97B");
+                StatusColor = Color.FromHex("#006450");
             }
             else if (value.ToString().Trim() == "3")
             {
@@ -33,7 +33,7 @@ namespace EGAZT.CustomControl
             }
             else
             {
-                StatusColor = Color.FromHex("#D99A29");
+                StatusColor = Color.FromHex("#E39800");
             }
             return StatusColor;
         }
