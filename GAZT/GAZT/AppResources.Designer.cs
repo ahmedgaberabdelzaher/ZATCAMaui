@@ -3550,6 +3550,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZZEstimatedSalesInformationTextWithRealEstate {
+            get {
+                return ResourceManager.GetString("ZZEstimatedSalesInformationTextWithRealEstate", resourceCulture);
+            }
+        }
+        
         public static string ZZDeleteAttachmentConfirmationText {
             get {
                 return ResourceManager.GetString("ZZDeleteAttachmentConfirmationText", resourceCulture);

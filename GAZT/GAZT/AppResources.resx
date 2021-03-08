@@ -2005,6 +2005,16 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
 • The average number of labor x 6000 SAR
 • The value of imports x 115%
 • The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)
+• The value of purchases based on the VAT returns x 115%</value>
+    <comment>Zakat return details</comment>
+  </data>
+  <data name="ZZEstimatedSalesInformationTextWithRealEstate" xml:space="preserve">
+    <value>TP estimated sales are calculated based on:
+- VAT Sales if the TP has sales in his VAT returns.
+- If TP has no VAT sales, system take the greater value of the following:
+• The average number of labor x 6000 SAR
+• The value of imports x 115%
+• The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)
 • The value of purchases based on the VAT returns x 115%
 • Real estate sales</value>
     <comment>Zakat return details</comment>

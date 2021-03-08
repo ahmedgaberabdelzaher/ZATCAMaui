@@ -553,7 +553,14 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private void OnEstimatedSalesForTheFiscalYearInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZEstimatedSalesInformationText));
+            if(viewModel.IsRealEstateViewVisible == false)
+            {
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZEstimatedSalesInformationText));
+            }
+            else
+            {
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZEstimatedSalesInformationTextWithRealEstate));
+            }
         }
 
         private void OnZAKATAmountInfoClicked(object sender, EventArgs e)
