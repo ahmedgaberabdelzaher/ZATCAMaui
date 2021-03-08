@@ -170,7 +170,7 @@
 
                             <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding ReviewReason}" 
+                                    <custom:CustomLabel IsEnabled="False" Text="{Binding ReviewReason}" 
                                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                                     <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
@@ -202,7 +202,7 @@
 
                             <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding SubReviewReason}" 
+                                    <custom:CustomLabel IsEnabled="False" Text="{Binding SubReviewReason}" 
                                                     Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                                     <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
@@ -233,7 +233,7 @@
 
                             <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding ApplicationRefNumber}" 
+                                    <custom:CustomLabel IsEnabled="False" Text="{Binding ApplicationRefNumber}" 
                                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                                     <Image Source="arrowDropdown.png" WidthRequest="24" HeightRequest="24" Margin="12" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
@@ -257,7 +257,7 @@
 
                             <Frame Grid.Row="1" HeightRequest="48"  Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding FormattedRequestDate}" 
+                                    <custom:CustomLabel IsEnabled="False" Text="{Binding FormattedRequestDate}" 
                                                     Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
 
                                     <Image Source="calendar.png" WidthRequest="20" HeightRequest="20"
@@ -1203,13 +1203,13 @@
                               </custom:CustomLabel>
 
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" 
-                                             Style="{StaticResource GreyBorderFrame}">
+                                             Style="{StaticResource GreyBorderFrame}" >
 
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding IDType}"
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,5,20,5">
+                                    <custom:CustomLabel IsEnabled="False" Text="{Binding IDType}"
                                                                  Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" />
                                     <Image Source="arrowDropdown.png" WidthRequest="20" HeightRequest="20"
-                                           Margin="0,0,5,0">
+                                           Margin="0,0,5,0" >
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding IdTypeSpinnerTapped}" />
                                         </Image.GestureRecognizers>
@@ -1277,7 +1277,7 @@
                               </custom:CustomLabel>
 
                                 <border:SfBorder Grid.Row="1" Margin="0,0,0,10" 
-                                                 Style="{StaticResource GreyBorderFrame}">
+                                                 Style="{StaticResource GreyBorderFrame}" >
 
                                     <Grid HorizontalOptions="FillAndExpand">
                                         <Grid.ColumnDefinitions>
@@ -1289,7 +1289,7 @@
                                                                     Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                                         
                                         <Image Grid.Column="1" Source="calendar.png" WidthRequest="20" HeightRequest="20"
-                                               Margin="0,0,5,0">
+                                               Margin="10,0,10,0" >
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ShowDatePicker}" />
                                             </Image.GestureRecognizers>
@@ -1318,9 +1318,9 @@
                               </custom:CustomLabel>
 
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" 
-                                             Style="{StaticResource GreyBorderFrame}">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                    <custom:GAZTBorderlessEntry x:Name="ContactPersonEntry"
+                                             Style="{StaticResource GreyBorderFrame}" Padding="20,5,20,5">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                    <custom:CustomLabel x:Name="ContactPersonEntry"
                                                                 Unfocused="ContactPersonTextUnFocus"
                                                                 Text="{Binding ContactPersonName}"
                                                                 IsEnabled="{Binding ContractPersonEditable}"
