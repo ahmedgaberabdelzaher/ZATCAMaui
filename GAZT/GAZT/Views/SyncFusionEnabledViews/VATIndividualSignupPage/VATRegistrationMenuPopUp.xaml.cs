@@ -21,7 +21,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         public VATRegistrationMenuPopUp()
         {
             InitializeComponent();
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
 
         private async void OnAttachmentTapped(object sender, EventArgs e)

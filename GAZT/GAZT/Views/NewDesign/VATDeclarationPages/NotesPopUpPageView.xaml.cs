@@ -34,7 +34,6 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 BindingContext = viewModel;
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 SetLTR();
                 ChangeAeroIcon();
                 //  viewModel.NoteText = string.Empty;

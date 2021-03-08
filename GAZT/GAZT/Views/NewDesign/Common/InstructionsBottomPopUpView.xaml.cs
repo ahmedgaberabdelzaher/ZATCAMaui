@@ -21,7 +21,6 @@ namespace EGAZT.Views.NewDesign
         {
             InitializeComponent();
             _viewModel = App.Locator.InstructionsBottomPopUpView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
             _viewModel.Description = instructionString;
             _viewModel.CheckBoxDescription = checkBoxString;

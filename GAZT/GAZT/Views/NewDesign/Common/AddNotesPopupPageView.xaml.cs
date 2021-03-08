@@ -22,7 +22,6 @@ namespace EGAZT.Views.NewDesign.Common
                 BindingContext = viewModel;
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 SetLTR();
                 viewModel.NoteText = notes;
                 viewModel.IsEdit = isEdit;

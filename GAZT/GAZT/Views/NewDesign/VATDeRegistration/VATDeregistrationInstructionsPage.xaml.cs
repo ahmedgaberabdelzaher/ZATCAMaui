@@ -20,7 +20,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             //Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
 
             viewModel = App.Locator.VATDeregistrationInstructionsPage;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetLTR();
             //this.FlowDirection = FlowDirection.LeftToRight;

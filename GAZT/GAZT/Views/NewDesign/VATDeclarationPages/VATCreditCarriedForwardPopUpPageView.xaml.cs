@@ -23,7 +23,6 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         public VATCreditCarriedForwardPopUpPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.VATCreditCarriedForwardPopUpPageView;
             BindingContext = viewModel;
             SetLTR();

@@ -38,8 +38,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 InitializeComponent();
                 viewModel = App.Locator.FinancialDetailAttachmentPopupPageView;
                 this.BindingContext = viewModel;
-
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 
                 SetLTR();
                 

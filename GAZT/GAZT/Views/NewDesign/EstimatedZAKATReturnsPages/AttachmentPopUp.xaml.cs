@@ -27,7 +27,6 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 viewModel = App.Locator.AttachmentPopUp;
                 InitializeComponent();
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel;
                 viewModel.ClearData();
                 ZAKATReturnDetailsView.IsComingFromAttachmentPage = true;

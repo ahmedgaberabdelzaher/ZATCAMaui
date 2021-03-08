@@ -17,7 +17,6 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             InfromatationText.Text = infromationText;
-            //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
         }
 

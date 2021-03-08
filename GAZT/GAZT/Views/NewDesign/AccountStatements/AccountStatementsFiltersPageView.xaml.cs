@@ -17,7 +17,6 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             viewModel = App.Locator.AccountStatementsFiltersPageView;
             ChangeAeroIcon();
             SetLTR();
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
         }
 

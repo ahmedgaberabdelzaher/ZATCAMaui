@@ -25,7 +25,6 @@ namespace EGAZT.Views.NewDesign.Common
             //SetLTR();
 
 
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
             {
                 viewModel = App.Locator.ViewNotePopUpViewModel;

@@ -18,7 +18,6 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         {
             InitializeComponent();
             viewModel = App.Locator.VatInstalmentPlanPageView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             this.FlowDirection = FlowDirection.LeftToRight;
         }

@@ -21,7 +21,6 @@ namespace EGAZT.Views.NewDesign.VatReview
         {
             InitializeComponent();
             _viewModel = App.Locator.VatReviewView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
             SetLTR();
         }

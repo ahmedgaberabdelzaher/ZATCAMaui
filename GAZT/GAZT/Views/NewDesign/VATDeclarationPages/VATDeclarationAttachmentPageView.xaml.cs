@@ -46,7 +46,6 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (e.Item == null) return;
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
             {
 

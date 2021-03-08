@@ -33,7 +33,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             //App.IsArabic = false;
             viewModel = App.Locator.FilesUploadPopUpView;
             this.BindingContext = viewModel;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
             var attachement = new Attachments();
             attachement.results = attachments;

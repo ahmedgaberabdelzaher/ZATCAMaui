@@ -28,7 +28,6 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             viewModel.IsFutureDatePickerVisible = false;
             viewModel.IsCurrentDatePickerVisible = true;
 
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetPickerFont();
         }

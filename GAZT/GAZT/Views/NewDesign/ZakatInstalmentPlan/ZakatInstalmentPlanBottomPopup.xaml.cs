@@ -16,7 +16,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         {
             InitializeComponent();
             viewModel = App.Locator.ZakatInstalmentPlanPageView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             this.FlowDirection = FlowDirection.LeftToRight;
         }

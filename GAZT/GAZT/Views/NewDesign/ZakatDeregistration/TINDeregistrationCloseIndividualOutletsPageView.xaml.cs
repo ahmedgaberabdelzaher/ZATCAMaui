@@ -35,7 +35,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             ChangeAeroIcon();
             SetLTR();
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             // viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
         }

@@ -32,7 +32,6 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             //SetLTR();
 
 
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
             {
                 viewModel = App.Locator.NotesDescriptionPopUpPageView;

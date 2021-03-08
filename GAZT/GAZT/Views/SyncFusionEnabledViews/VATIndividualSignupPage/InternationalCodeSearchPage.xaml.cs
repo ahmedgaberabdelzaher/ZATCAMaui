@@ -28,7 +28,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
 
             viewModel = App.Locator.InternationalCodeSearchPage;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext =  viewModel;
 
             this.mobileData = countryCodeData;

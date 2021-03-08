@@ -30,7 +30,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.FileAttachmentPopUpPageView;
             this.BindingContext = viewModel;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
            viewModel.AttachmentList=new ObservableCollection<VATAttachment>();
             viewModel.VatAttachmentsList = new ObservableCollection<Attachment>();

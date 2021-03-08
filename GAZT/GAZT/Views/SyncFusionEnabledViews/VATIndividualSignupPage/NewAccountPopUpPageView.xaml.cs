@@ -36,7 +36,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             InitializeComponent();
             viewModel = App.Locator.NewAccountPopUpPageView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
             NewAccountPopUpPageViewModel.ValidTypeIban = string.Empty;
             this.BindingContext = viewModel;

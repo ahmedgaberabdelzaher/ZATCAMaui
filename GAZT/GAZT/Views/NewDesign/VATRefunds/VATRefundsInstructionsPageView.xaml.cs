@@ -20,7 +20,6 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             InitializeComponent();
             viewModel = App.Locator.VATRefundsInstructionsPageView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetLTR();
         }
