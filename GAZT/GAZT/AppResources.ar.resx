@@ -8800,7 +8800,6 @@ info@gazt.gov.sa</value>
   <data name="Filter" xml:space="preserve">
     <value>تصفية</value>
   </data>
-  <data name="ACFilterApply" xml:space="preserve">     <value>بحث</value>   </data>
   <data name="TransactionAmount" xml:space="preserve">
     <value>مبلغ العملية</value>
   </data>
@@ -8861,5 +8860,8 @@ info@gazt.gov.sa</value>
   </data>
   <data name="ZakatDraftSaved1" xml:space="preserve">
     <value>بنجاح</value>
+  </data>
+     <data name="ACFilterApply" xml:space="preserve">
+    <value>بحث</value>
   </data>
 </root>
