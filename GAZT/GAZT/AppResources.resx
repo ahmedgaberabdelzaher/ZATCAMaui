@@ -8869,7 +8869,7 @@ I acknowledge that the above bank account information is correct and assume full
     <value>Well Done!</value>
   </data>
   <data name="AccountStatementsDetailsStatementsAmount" xml:space="preserve">
-    <value>Statement Amount</value>
+    <value>Amount</value>
   </data>
   <data name="InvoiceStatus" xml:space="preserve">
     <value>Invoice Status</value>
