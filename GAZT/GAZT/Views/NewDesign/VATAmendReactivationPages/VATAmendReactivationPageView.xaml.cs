@@ -1031,6 +1031,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<object, string>(this, "IbanReceived");
             MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "EligibilitySetAttachmentReceived");
@@ -1167,6 +1168,87 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     if (arg != null)
                     {
                         viewModel.VATRegistrationDetailsData.d.ELGBL_DOCSet = arg;
+                    }
+                });
+                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+                {
+                    if (arg != null && !string.IsNullOrEmpty(arg.SelectedValue))
+                    {
+                        if (arg.PickerId == "SummaryIdTypePicker")
+                        {
+                            viewModel.TxtIDTypeSR = arg.SelectedValue;
+                            viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR.Where(p => p.Name.Equals(arg.SelectedValue)).FirstOrDefault();
+                            if (!viewModel.TxtIDTypeSR.Equals(AppResources.ZZGCCID))
+                            {
+                                if (string.IsNullOrEmpty(arg.SelectedValue) || string.IsNullOrWhiteSpace(arg.SelectedValue))
+                                {
+                                    FrmContactDBO.IsVisible = false;
+                                    btnSR.IsVisible = false;
+                                    lblDOB.IsVisible = false;
+                                }
+                                else
+                                {
+                                    FrmContactDBO.IsVisible = true;
+                                    btnSR.IsVisible = true;
+                                    lblDOB.IsVisible = true;
+                                }
+                            }
+                            else
+                            {
+                                FrmContactDBO.IsVisible = false;
+                                btnSR.IsVisible = false;
+                                lblDOB.IsVisible = false;
+                            }
+                        }
+                        else if (arg.PickerId == "FinancialIdTypePicker")
+                        {
+                            FrmFirstName.IsEnabled = false;
+                            FrmLastName.IsEnabled = false;
+                            FrmEmailAddress.IsEnabled = false;
+                            FrmPhoneNumber.IsEnabled = false;
+                            ClearFinancialRepresentativeData();
+                            viewModel.TxtIDTypeFR = viewModel.IdTypeListFR.Where(p => p.Name.Equals(arg.SelectedValue)).FirstOrDefault().Name;
+                            viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(p => p.Name.Equals(arg.SelectedValue)).FirstOrDefault();
+                            var val = viewModel.IdTypeListFR.Where(p => p.Name.Equals(arg.SelectedValue)).FirstOrDefault();
+                            if (val != null && val.ID.ToString() == "00000")
+                            {
+                                FrmIDNo.IsEnabled = false;
+                                EntryTINNumber.IsEnabled = true;
+                                viewModel.IDTypeIndexFR = 0;
+                                viewModel.TxtIDTypeFR = string.Empty;
+
+                                viewModel.IDNumberNonMandatoryVisibility = true;
+                                viewModel.IDNumberMandatoryVisibility = true;
+
+                                viewModel.DOBNonMandatoryVisibility = true;
+                                viewModel.DOBMandatoryVisibility = true;
+                                NewFRDOBField.IsVisible = false;
+                            }
+                            else
+                            {
+                                EntryTINNumber.Text = string.Empty;
+                                EntryIDNo.Text = string.Empty;
+                                EntryTINNumber.IsEnabled = true;
+                                FrmIDNo.IsEnabled = true;
+                                viewModel.IDNumberNonMandatoryVisibility = false;
+                                viewModel.IDNumberMandatoryVisibility = true;
+
+                                // For GCC ID DOB is not mandatory
+                                var val2 = viewModel.IdTypeListFR.Where(p => p.Name.Equals(arg.SelectedValue)).FirstOrDefault();
+                                if (val2 != null && val2.ID.Equals("ZS0003"))
+                                {
+                                    viewModel.DOBNonMandatoryVisibility = true;
+                                    viewModel.DOBMandatoryVisibility = false;
+                                    NewFRDOBField.IsVisible = false;
+                                }
+                                else
+                                {
+                                    viewModel.DOBNonMandatoryVisibility = false;
+                                    viewModel.DOBMandatoryVisibility = true;
+                                    NewFRDOBField.IsVisible = true;
+                                }
+                            }
+                        }
                     }
                 });
                 viewModel.IsNewFinancialRepVisible = viewModel.IsAddNewRepresentativeChecked;
@@ -1419,7 +1501,16 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void btnID_Clicked(object sender, EventArgs e)
         {
-            DDlIDType.IsOpen = true;
+            //DDlIDType.IsOpen = true;
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = new List<string>();
+            foreach (var item in viewModel.IdTypeListFR)
+            {
+                genericPickerModel.PickerData.Add(item.Name);
+            }
+            //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+            genericPickerModel.PickerId = "FinancialIdTypePicker";
+            PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
         private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -1508,7 +1599,16 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             if (App.VATType == Enums.PageExecutionType.Reactivation)
             {
-                DDlContactIDType.IsOpen = true;
+                // DDlContactIDType.IsOpen = true;
+                GenericPickerModel genericPickerModel = new GenericPickerModel();
+                genericPickerModel.PickerData = new List<string>();
+                foreach (var item in viewModel.IdTypeListSR)
+                {
+                    genericPickerModel.PickerData.Add(item.Name);
+                }
+                //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                genericPickerModel.PickerId = "SummaryIdTypePicker";
+                PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
         }
         #region SetColor
@@ -1756,7 +1856,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     if (App.IsArabic)
                     {
                         var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRVoidConfirmationMessage);
-                        confirmPopup.OnSelect = async(result) =>
+                        confirmPopup.OnSelect = async (result) =>
                         {
                             if (result == "Yes")
                             {
