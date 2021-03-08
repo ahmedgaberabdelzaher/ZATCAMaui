@@ -125,6 +125,7 @@
 
                         <Grid>
                             <listView:SfListView HorizontalOptions="Center"
+                                                 x:Name="ObjectionsList"
                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
                                              VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                              ItemsSource="{Binding ReturnBills}" SelectionMode="Multiple"
@@ -153,7 +154,8 @@
                                                         <SearchBar Text="{Binding InputData}" Margin="0" 
                                                                Placeholder="{x:Static ResourceManager:AppResources.ZOSearchReturnReferenceNumber}"
                                                                PlaceholderColor="Gray" FontSize="Small" TextColor="Black" HorizontalTextAlignment="Center"
-                                                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsEnabled="False"/>
+                                                               TextChanged="SearchItem_PropertyChanged"
+                                                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsEnabled="True"/>
                                                     </Frame>
 
                                                 </Grid>
