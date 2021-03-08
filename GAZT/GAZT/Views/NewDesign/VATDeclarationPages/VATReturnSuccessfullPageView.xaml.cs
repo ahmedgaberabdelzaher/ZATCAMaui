@@ -346,7 +346,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             else
             {
 
-                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, viewModel.VATDeclarationData.d.OpenliMsg));
+                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, _vATDeclaration.d.OpenliMsg));
 
             }
 

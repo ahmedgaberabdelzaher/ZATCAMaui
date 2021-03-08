@@ -1685,7 +1685,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             if (AllBills != null && AllBills.Count > 0)
             {
-                MultiplePayableBills = new ObservableCollection<MyBills>(newMultiplePayableBills.Where(x => !String.IsNullOrEmpty(BModel.Fbnum) && x.VTRE2.Equals(BModel.Fbnum)).ToList());
+                MultiplePayableBills = new ObservableCollection<MyBills>(newMultiplePayableBills.Where(x => !String.IsNullOrEmpty(BModel.Fbnum) && x.Fbnum.Equals(BModel.Fbnum)).ToList());
             }
 
             if (MultiplePayableBills != null && MultiplePayableBills.Count > 1)

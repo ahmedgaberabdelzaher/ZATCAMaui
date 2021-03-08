@@ -1364,9 +1364,9 @@
                             </Grid>
 
                             <border:SfBorder Margin="0,16,0,10" HasShadow="False"
-                                             Style="{StaticResource GreyBorderFrameWithShadow}">
+                                             Style="{StaticResource GreyBorderFrameWithShadow}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                                <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                     <Grid Padding="15" RowSpacing="0">
                                         <Grid.RowDefinitions>
@@ -1407,7 +1407,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,15">
+                                    <StackLayout Padding="15,15,15,15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1472,7 +1472,7 @@
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
                                         </Grid>
-                                        <Grid>
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
@@ -1503,7 +1503,7 @@
                             <border:SfBorder Margin="0,16,0,10" HasShadow="False"
                                              Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                     <Grid Padding="15" RowSpacing="0">
                                         <Grid.RowDefinitions>
@@ -1544,7 +1544,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,15">
+                                    <StackLayout Padding="15,15,15,15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1613,7 +1613,7 @@
                             <border:SfBorder IsVisible="{Binding IsSecurityPaymentsTabVisible}" Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
                                              Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                     <Grid Padding="15" RowSpacing="0">
                                         <Grid.RowDefinitions>
