@@ -1195,21 +1195,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         }
                         ListFinanceRepresenatives = items;
 
-                      bool isFinancialRepresentativeAvailable = IsFinancialRepresentativeDataAvailable(ListFinanceRepresenatives);
-                        if(isFinancialRepresentativeAvailable == true)
-                        {
-                            MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", true);
-                            IsChangeEmailChecked = true;
-                            IsChangeEmailCheckBoxEnabled = true;
-                        }
-                        else
-                        {
-                            IsChangeEmailCheckBoxEnabled = false;
-                            IsChangeEmailChecked = false;
-                            MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", false);
+                      //bool isFinancialRepresentativeAvailable = IsFinancialRepresentativeDataAvailable(ListFinanceRepresenatives);
+                      //  if(isFinancialRepresentativeAvailable == true)
+                      //  {
+                      //      MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", true);
+                      //      IsChangeEmailChecked = true;
+                      //      IsChangeEmailCheckBoxEnabled = true;
+                      //  }
+                      //  else
+                      //  {
+                      //      IsChangeEmailCheckBoxEnabled = false;
+                      //      IsChangeEmailChecked = false;
+                      //      MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", false);
 
 
-                        }
+                      //  }
 
                     }
 
@@ -1269,23 +1269,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             {
                 if (_IsChangeEmailCheckBoxEnabled == value) return;
 
-                bool isFinancialRepresentativeAvailable = IsFinancialRepresentativeDataAvailable(ListFinanceRepresenatives);
-                if (isFinancialRepresentativeAvailable == true)
-                {
-                    _IsChangeEmailCheckBoxEnabled = value;
-                    MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", true);
-                    IsChangeEmailChecked = true;
-                    IsChangeEmailCheckBoxEnabled = true;
-                }
-                else
-                {
-                    IsChangeEmailCheckBoxEnabled = false;
-                    IsChangeEmailChecked = false;
-                    MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", false);
+                //bool isFinancialRepresentativeAvailable = IsFinancialRepresentativeDataAvailable(ListFinanceRepresenatives);
+                //if (isFinancialRepresentativeAvailable == true)
+                //{
+                //    _IsChangeEmailCheckBoxEnabled = value;
+                //    MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", true);
+                //    IsChangeEmailChecked = true;
+                //    IsChangeEmailCheckBoxEnabled = true;
+                //}
+                //else
+                //{
+                //    IsChangeEmailCheckBoxEnabled = false;
+                //    IsChangeEmailChecked = false;
+                //    MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", false);
 
 
-                }
-
+                //}
+                _IsChangeEmailCheckBoxEnabled = value;
 
 
 
@@ -2924,12 +2924,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 {
                                     if (!string.IsNullOrEmpty(vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber))
                                     {
-                                        IsChangeEmailCheckBoxEnabled = true;
+                                        Device.BeginInvokeOnMainThread(() =>
+                                        {
+                                            IsChangeEmailCheckBoxEnabled = true;
+                                        });
                                     }
+                                    
                                     else
                                     {
-                                        IsChangeEmailCheckBoxEnabled = false;
-                                    }
+                                        Device.BeginInvokeOnMainThread(() =>
+                                        {
+                                            IsChangeEmailCheckBoxEnabled = false;
+                                        });
+                                     }
                                 }
                                 GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                                 IdnumberFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;

@@ -1429,7 +1429,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnEditOutletButtonClick = new Command((item) => openEditOutlet(item as OutletItem));
             OnDeleteOutletButtonClick = new Command(async (item) =>
             {
-                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText)
+                var newItem = item as OutletItem;
+                string QuestionMark = string.Empty;
+                if (App.IsArabic)
+                {
+                    QuestionMark = "؟";
+                }
+                else
+                {
+                    QuestionMark = "?";
+                }
+                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " + newItem.Actnm + QuestionMark)
                 {
                     CloseWhenBackgroundIsClicked = false
                 };
