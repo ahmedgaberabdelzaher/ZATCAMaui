@@ -107,6 +107,37 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
 
         }
 
+        private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+            try
+            {
+                if (viewModel.InputData.Length > 0)
+                {
+                    var itemsSource = viewModel.ReturnBills.Where(w => w.ReferenceNum.ToString().Contains(viewModel.InputData)).ToList();
+
+                    ObjectionsList.ItemsSource = itemsSource;
+
+                    
+
+                }
+                else
+                {
+                    ObjectionsList.ItemsSource = viewModel.ReturnBills;
+
+                    
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+
 
         public async Task GetZakatObjectionsData()
         {
