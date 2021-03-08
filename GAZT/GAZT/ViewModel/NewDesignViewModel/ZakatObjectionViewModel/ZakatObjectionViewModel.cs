@@ -774,7 +774,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             public bool IsNotSelected { get; set; }
         }
 
-        public ObservableCollection<BillsModel> returnBills { get; set; }
+        public ObservableCollection<BillsModel> returnBills = null;
 
         public ObservableCollection<BillsModel> ReturnBills
         {

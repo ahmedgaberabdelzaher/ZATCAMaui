@@ -123,9 +123,11 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 }
                 else
                 {
-                    ObjectionsList.ItemsSource = viewModel.ReturnBills;
+                    if (viewModel.ReturnBills != null)
+                    {
+                        ObjectionsList.ItemsSource = viewModel.ReturnBills;
+                    }
 
-                    
 
                 }
 
