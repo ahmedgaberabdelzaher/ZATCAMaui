@@ -1442,8 +1442,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 var filterItems = statementsLineItems;
                 Console.WriteLine(statementsLineItems);
                 Console.WriteLine(statementsLineItems.Count);
-                
-                statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) >= Convert.ToInt32(TPFromDate)) && (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) <= Convert.ToInt32(TPToDate))));
+             
+                if (IsHijriCal)
+                {
+                    CultureInfo arCI = new CultureInfo("ar-SA");
+                    DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    
+                    //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) >= Convert.ToInt32(String.Format("{0:yyyy}",FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) <= Convert.ToInt32(String.Format("{0:yyyy}",FormatedTpToDate)))));
+                }
+                else
+                {
+                    CultureInfo enCI = new CultureInfo("en-US");
+                    DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", enCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
+                        DateTimeStyles.AllowInnerWhite);
+                    //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                    //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) >= Convert.ToInt32(FormatedTpFromDate)) && (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) <= Convert.ToInt32(FormatedTpToDate))));
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) >= Convert.ToInt32(String.Format("{0:yyyy}",FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) <= Convert.ToInt32(String.Format("{0:yyyy}",FormatedTpToDate)))));
+
+                    Console.WriteLine(statementsLineItems);
+                    Console.WriteLine(statementsLineItems.Count);
+                }
+                //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) >= Convert.ToInt32(TPFromDate)) && (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) <= Convert.ToInt32(TPToDate))));
                // statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (p.Persl) == "2021"));
                 Console.WriteLine(statementsLineItems);
                 Console.WriteLine(statementsLineItems.Count);

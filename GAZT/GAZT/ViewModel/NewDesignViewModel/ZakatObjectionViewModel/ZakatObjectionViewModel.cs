@@ -1796,9 +1796,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     billsModel.FinancialPeriod = fromDate + " - " + toDate;
                 }
 
-               
-                
-                if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
+                billsModel.TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
+
+                /*if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
                 {
                     billsModel.TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
                 }
@@ -1809,7 +1809,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ZAKT"))
                 {
                     billsModel.TaxType = AppResources.FORM5Zakat;
-                }
+                }*/
                 billsModel.AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
 
                 bills.Add(billsModel);
@@ -1843,7 +1843,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 }
                 ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
 
-                if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
+                TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
+
+                /*if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
                 {
                     TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
                 }
@@ -1854,7 +1856,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ZAKT"))
                 {
                     TaxType = AppResources.FORM5Zakat;
-                }
+                }*/
                 AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
                 RevisedAmount = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ARevAmt;
                 DisputeAmount = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ADisputeAmt;
