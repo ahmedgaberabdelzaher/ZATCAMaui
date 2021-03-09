@@ -259,7 +259,8 @@
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
-                                                        </Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
                                                         <custom:CustomLabel Grid.Column="0"
                                                                             Text="{x:Static ResourceManager:AppResources.Attachment}"
                                                                             Style="{StaticResource ValueLabelGrey}" />
@@ -267,7 +268,10 @@
                                                                             Style="{StaticResource ValueLabelBlack}"
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End" />
-                                                    </Grid>
+                                                <Image Grid.Row="0" Grid.Column="2" Source="Generic_attachment_icon"
+                                                           Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                           HorizontalOptions="Start" VerticalOptions="Center" />
+                                            </Grid>
 
                                                 </DataTemplate>
                                             </listView:SfListView.ItemTemplate>

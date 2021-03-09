@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -38,6 +39,12 @@ namespace EGAZT.Views.NewDesign.VatReview
                 this.FlowDirection = FlowDirection.RightToLeft;
 
             }
+        }
+
+        private void CloseTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PopAsync();
+
         }
     }
 }

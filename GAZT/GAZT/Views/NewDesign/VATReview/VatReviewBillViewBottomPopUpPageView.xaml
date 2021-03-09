@@ -23,12 +23,21 @@
     </ContentPage.Resources>
 
     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Margin="0,40,0,0">
-     <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="EndAndExpand" IsVisible="true">
+
+       
+        <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="EndAndExpand" IsVisible="true">
         
          <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" >
             
                 <StackLayout Margin="15,0,15,0" VerticalOptions="FillAndExpand">
-                   
+
+                    <Image  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                               Source="ic_Close_Circle" Margin="-10" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CloseTapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
                     <Grid Margin="0,5,0,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
