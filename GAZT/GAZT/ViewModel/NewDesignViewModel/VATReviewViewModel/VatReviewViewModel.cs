@@ -4748,7 +4748,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             if (ReviewReason == "" || SubReviewReason == "" || ApplicationRefNumber == "" || RequestDate == null)
             {
-                IsReviewReasonEnabled = false;
+
+                if (!string.IsNullOrEmpty(SADADNumber)) {
+
+                    IsReviewReasonEnabled = true;
+                }
+                else {
+                    IsReviewReasonEnabled = false;
+                }
+
+               
             }
             else
             {
@@ -5029,29 +5038,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             }
 
-            if (selectedApplicationRef.Msgflg == "X")
-            {
+            if(selectedApplicationRef != null) {
 
-                if (string.IsNullOrEmpty(modelVATReview.d.SecurityDtl.Sopbel))
+                if (selectedApplicationRef.Msgflg == "X")
                 {
-                    IsApplicationVisible = false;
+
+                    if (string.IsNullOrEmpty(modelVATReview.d.SecurityDtl.Sopbel))
+                    {
+                        IsApplicationVisible = false;
+
+                    }
+                    else
+                    {
+                        IsApplicationVisible = true;
+                        EnableReviewReasonConButton();
+
+
+                    }
+
 
                 }
                 else
                 {
-                    IsApplicationVisible = true;
                     EnableReviewReasonConButton();
 
-
                 }
-
-
             }
-            else
-            {
+            else {
                 EnableReviewReasonConButton();
-
             }
+
+
+
+           
 
 
             EnableReportDetailsConButton();
