@@ -75,25 +75,25 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <StackLayout Orientation="Vertical" Grid.Row="0" >
-                                <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
-                                    <Label.FormattedText>
+                                <custom:CustomLabel  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
+                                    <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ESTEntityTypeQuestionLabel}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
                                 <custom:CustomLabel Text="{Binding SelectedEntityType}" HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
                             </StackLayout>
                             <StackLayout Orientation="Vertical" Grid.Row="1" >
-                                <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
-                                    <Label.FormattedText>
+                                <custom:CustomLabel  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
+                                    <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.NDWhatisYourNationality}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
                                 <custom:CustomLabel Text="{Binding SelectedRegNationalityType}"  HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
                             </StackLayout>
                             <Grid  Grid.Row="2"  IsVisible="{Binding IsSaudi,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
@@ -104,14 +104,14 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label  Style="{StaticResource forLightLabel}"  Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand"  >
-                                    <Label.FormattedText>
+                                <custom:CustomLabel  Style="{StaticResource forLightLabel}"  Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand"  >
+                                    <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusQuestionLabel}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
                                 <buttons:SfButton ImageWidth="25" VerticalOptions="CenterAndExpand"  Grid.Row="0"  Grid.Column="1" IsVisible="{Binding IsClickedStayMoreThanKSAOption}" TextColor=" DarkGreen" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTResidentOptionValue}"  BorderWidth="1" BackgroundColor="#cee0dd"  CornerRadius="20"  HorizontalOptions="EndAndExpand"/>
 
                             </Grid>
