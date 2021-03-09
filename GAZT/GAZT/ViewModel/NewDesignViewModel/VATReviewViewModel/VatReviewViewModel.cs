@@ -5008,10 +5008,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 foreach (var note in modelVATReview.d.NotesSet.results)
                 {
-                    if (note.Rcodez == "RAVT_SDCAS" && !String.IsNullOrEmpty(note.Strline))
+                    if (note.Rcodez == "RAVT_SDCAS" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(DisputeDetailsDesc))
                     {
                         DisputeDetailsDesc = note.Strline;
-                        return;
+                        
                     }
                    
                 }
@@ -5019,10 +5019,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 foreach (var note in modelVATReview.d.NotesSet.results)
                 {
                     
-                    if (note.Rcodez == "RAVT_BOX" && !String.IsNullOrEmpty(note.Strline))
+                    if (note.Rcodez == "RAVT_BOX" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(ReportDetails))
                     {
                         ReportDetails = note.Strline;
-                        return;
+                       
                     }
 
                 }
