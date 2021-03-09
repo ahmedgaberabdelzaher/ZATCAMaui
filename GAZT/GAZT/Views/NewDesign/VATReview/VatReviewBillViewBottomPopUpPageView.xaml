@@ -21,10 +21,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Margin="0,40,0,0">
      <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="EndAndExpand" IsVisible="true">
         
-         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">
+         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" >
             
                 <StackLayout Margin="15,0,15,0" VerticalOptions="FillAndExpand">
                    
@@ -83,8 +84,8 @@
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="60*"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDocumentNo}" Style="{StaticResource ValueLabelGrey}"/>
                                             <Label Grid.Column="1" Text="{Binding VBDocumentNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
@@ -96,8 +97,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="60*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSADADNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBSadadNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
@@ -109,8 +110,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="60*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDateofPenalty}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBDateofPenality}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
@@ -122,8 +123,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="60*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDescriptionofPenalty}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBDescriptionOfPenality}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
@@ -135,8 +136,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="60*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRPeriodKey}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBPeriodkey}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
@@ -148,8 +149,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="60*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRStartDate}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBStartDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
@@ -161,8 +162,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="60*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VREndDate}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBEndDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
@@ -187,8 +188,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="60*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRAmount}" Style="{StaticResource ValueLabelGrey}"/>
                                     <Label Grid.Column="1" Text="{Binding VBAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
@@ -205,4 +206,5 @@
         </ScrollView>
     
     </yummy:PancakeView>
+    </StackLayout>
 </pages:PopupPage>
