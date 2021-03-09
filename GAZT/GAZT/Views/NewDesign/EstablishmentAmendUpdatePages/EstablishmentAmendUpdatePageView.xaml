@@ -140,7 +140,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                 </StackLayout>
                                             </Grid>
                                         </cards:SfCardView>
@@ -155,7 +155,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                 </StackLayout>
                                             </Grid>
                                         </cards:SfCardView>
@@ -175,7 +175,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                    <Label  Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionTwoValue}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionTwoValue}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                 </StackLayout>
                                             </Grid>
                                         </cards:SfCardView>
@@ -190,7 +190,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <Image  Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                    <Label  Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionTwoValue}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionTwoValue}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                 </StackLayout>
                                             </Grid>
                                         </cards:SfCardView>
@@ -210,7 +210,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                    <Label  Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionThreeValue}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionThreeValue}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                 </StackLayout>
                                             </Grid>
                                         </cards:SfCardView>
@@ -225,7 +225,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <Image  Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                    <Label  Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionThreeValue}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionThreeValue}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                 </StackLayout>
                                             </Grid>
                                         </cards:SfCardView>
@@ -237,14 +237,14 @@
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAttachments}"  Style="{StaticResource ButtonLabelBlackBold}"/>
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" >
-                                        <Label HorizontalOptions="Start" Style="{StaticResource forLightLabel}" >
-                                            <Label.FormattedText>
+                                        <custom:CustomLabel HorizontalOptions="Start" Style="{StaticResource forLightLabel}" >
+                                            <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static ResourceManager:AppResources.ESTProvideAttachmentCopyofRentLabel}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
                                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                                 </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                                            </custom:CustomLabel.FormattedText>
+                                        </custom:CustomLabel>
                                         <Image Source="information.png"  WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"></TapGestureRecognizer>
@@ -254,7 +254,7 @@
                                     <StackLayout>
                                         <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"    Style="{StaticResource GreyBorderFrame}">
                                             <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" IsEnabled="True">
-                                                <Label Text="{x:Static ResourceManager:AppResources.Attachments}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Attachments}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                                 <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                     <Image Grid.Row="0" Grid.Column="1" Source="ic_attachment" Margin="5,0" WidthRequest="20" HeightRequest="20"
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
@@ -298,14 +298,14 @@
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout x:Name="NoneOfTheAboveOptionsLayout" IsVisible="{Binding IsClickedNoneOfTheAboveOption}" Orientation="Vertical" Grid.Row="5" >
-                                <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
-                                    <Label.FormattedText>
+                                <custom:CustomLabel  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
+                                    <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ESTChooseLegalEntityBelowTitleLabel}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
                                 <StackLayout Orientation="Vertical"  >
                                     <Grid ColumnSpacing="24" RowSpacing="24">
                                         <Grid.RowDefinitions>
@@ -332,7 +332,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -347,7 +347,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -370,7 +370,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -385,7 +385,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -394,14 +394,14 @@
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout x:Name="PermanentEstablishmentsOptionsLayout" IsVisible="{Binding IsClickedPermanentLegalEntity}"  Orientation="Vertical" Grid.Row="6" >
-                                <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
-                                    <Label.FormattedText>
+                                <custom:CustomLabel  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
+                                    <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
                                 <StackLayout Orientation="Vertical"   >
                                     <Grid RowDefinitions="104,104,104,104,104" RowSpacing="24">
                                         <Grid x:Name="ABranchNonResidentCompanyGrid"  Grid.Row="0" Grid.Column="0">
@@ -425,7 +425,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTABranchOfNonResidentCompanyLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTABranchOfNonResidentCompanyLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -440,7 +440,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTABranchOfNonResidentCompanyLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTABranchOfNonResidentCompanyLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -463,7 +463,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTConstuctionSiteLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTConstuctionSiteLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -478,7 +478,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTConstuctionSiteLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTConstuctionSiteLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -501,7 +501,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTInstallationLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTInstallationLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -516,7 +516,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTInstallationLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTInstallationLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -539,7 +539,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTAFixedBaseLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTAFixedBaseLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -554,7 +554,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTAFixedBaseLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTAFixedBaseLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -577,7 +577,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTANonResidentPartnerLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTANonResidentPartnerLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -592,7 +592,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ESTANonResidentPartnerLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTANonResidentPartnerLabel}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -621,7 +621,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image x:Name="cardBackGroundImage" Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label x:Name="cardLabel" Text="{Binding .}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel x:Name="cardLabel" Text="{Binding .}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -645,7 +645,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Image  Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                        <Label  Text="{Binding .}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                        <custom:CustomLabel  Text="{Binding .}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </cards:SfCardView>
@@ -696,7 +696,7 @@
 
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
 
-                                            <Label x:Name="dob" Text="{Binding DisplaySelectedDOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                            <custom:CustomLabel x:Name="dob" Text="{Binding DisplaySelectedDOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                 <Image Margin="5,0">
                                                     <Image.Source>
@@ -928,7 +928,7 @@
                                                         </Grid.ColumnDefinitions>
                                                         <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                         <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                            <Label  Text="{Binding .}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                            <custom:CustomLabel  Text="{Binding .}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                                         </StackLayout>
                                                     </Grid>
                                                 </cards:SfCardView>
@@ -953,7 +953,7 @@
                                                         </Grid.ColumnDefinitions>
                                                         <Image  Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                         <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                            <Label  Text="{Binding .}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                            <custom:CustomLabel  Text="{Binding .}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                                         </StackLayout>
                                                     </Grid>
                                                 </cards:SfCardView>
@@ -1039,7 +1039,7 @@
                                 <StackLayout Orientation="Vertical" Padding="0,0,10,0">
                                     <StackLayout Orientation="Horizontal" Padding="0,0,10,0">
                                         <Image Source="information.png"/>
-                                        <Label Text="{x:Static ResourceManager:AppResources.Information}"  TextColor="Black" Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}"  TextColor="Black" Style="{StaticResource GAZTSmallBlackLbl}"/>
                                     </StackLayout>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTPassportDetailsMandatoryNoteLabel}"  LineSpacing="1" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTPleaseProvideAllNecessaryDetailsBelow}" LineSpacing="1" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
@@ -1108,7 +1108,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
 
-                                        <Label x:Name="PassportIssueDate" Text="{Binding DisplayPassportIssueDate}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                        <custom:CustomLabel x:Name="PassportIssueDate" Text="{Binding DisplayPassportIssueDate}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -1190,7 +1190,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
 
-                                        <Label x:Name="PassportExpiryDate" Text="{Binding DisplayPassportExpireDate}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                        <custom:CustomLabel x:Name="PassportExpiryDate" Text="{Binding DisplayPassportExpireDate}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -1264,14 +1264,14 @@
                             <StackLayout x:Name="PassportAttachmentsMainLayout"  Orientation="Vertical" Grid.Row="5" Margin="0,0,0,10">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAttachments}"  Style="{StaticResource ButtonLabelBlackBold}"/>
                                 <StackLayout Orientation="Horizontal" >
-                                    <Label HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" >
-                                        <Label.FormattedText>
+                                    <custom:CustomLabel HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" >
+                                        <custom:CustomLabel.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.ESTPleaseProvideACopyOfAbovePassportDetailsLabel}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
                                                 <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                             </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
                                     <Image Source="information.png"  WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"></TapGestureRecognizer>
@@ -1283,7 +1283,7 @@
                                                      Style="{StaticResource GreyBorderFrame}"
                                                      IsEnabled="{Binding PassportDetails.Attachment}">
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                 <Image Grid.Row="0" Grid.Column="1" Source="ic_attachment" Margin="5,0" WidthRequest="20" HeightRequest="20"
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
@@ -1409,7 +1409,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                <Label  Text="{Binding .}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                <custom:CustomLabel  Text="{Binding .}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                             </StackLayout>
                                         </Grid>
                                     </cards:SfCardView>
@@ -1434,7 +1434,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Image  Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                <Label  Text="{Binding .}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                <custom:CustomLabel  Text="{Binding .}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                             </StackLayout>
                                         </Grid>
                                     </cards:SfCardView>
@@ -1461,7 +1461,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                <Label  Text="{Binding .}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+                                                <custom:CustomLabel  Text="{Binding .}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
                                             </StackLayout>
                                         </Grid>
                                     </cards:SfCardView>
@@ -1479,7 +1479,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Image  Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                <Label  Text="{Binding .}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+                                                <custom:CustomLabel  Text="{Binding .}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
                                             </StackLayout>
                                         </Grid>
                                     </cards:SfCardView>

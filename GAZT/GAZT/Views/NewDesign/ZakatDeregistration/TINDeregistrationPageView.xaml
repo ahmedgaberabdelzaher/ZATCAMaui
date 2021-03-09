@@ -825,7 +825,7 @@
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
-                                    <border:SfBorder Margin="0,16,0,10"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <border:SfBorder Padding="0,16,0,16"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout Padding="0">
                                             <Grid Padding="15" RowSpacing="0" >
                                                 <Grid.RowDefinitions>
