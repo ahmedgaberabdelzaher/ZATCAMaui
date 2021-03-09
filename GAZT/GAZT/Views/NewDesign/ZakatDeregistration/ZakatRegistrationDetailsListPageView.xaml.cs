@@ -132,7 +132,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                     */
 
-                } 
+                }
+                else if (selectedItem.ZDTitle == AppResources.VatReactivationDashboardTitle)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATReactivation_Tapped", "VAT Reactivation eService");
+                    App.VATType = PageExecutionType.Reactivation;
+                    viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                    /*
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Financial Details eService");
+                    //viewModel._navigationService.NavigateTo(App.ZakatRegistrationFinancialDetails);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                    */
+
+                }
                 /*else if (selectedItem.ZDTitle == AppResources.Registrations)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Financial Details eService");
