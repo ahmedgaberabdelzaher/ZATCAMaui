@@ -68,7 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         public void AddSelectionOptions()
         {
             var outletDecisionOptions = new ObservableCollection<SelectionModel>();
-            if (App.LoginDataRetrieved != null && App.LoginDataRetrieved.VtReg == "X")
+            if (App.LoginDataRetrieved != null && (App.LoginDataRetrieved.VtReg == "X" || App.LoginDataRetrieved.VtReg == "R"))
             {
                 outletDecisionOptions.Add(new SelectionModel
                 {
