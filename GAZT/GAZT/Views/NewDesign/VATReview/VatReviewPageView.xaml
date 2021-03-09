@@ -119,9 +119,9 @@
 
                     <!--Review Reason-->
 
-                    <Grid IsVisible="{Binding ReviewReasonVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                    <StackLayout IsVisible="{Binding ReviewReasonVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Grid.RowDefinitions>
+                        <!--<Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
@@ -130,7 +130,7 @@
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
 
-                        </Grid.RowDefinitions>
+                        </Grid.RowDefinitions>-->
 
                         <Grid Grid.Row="0" Margin="0,5,0,10">
                             <Grid.RowDefinitions>
@@ -150,13 +150,13 @@
 
                         </Grid>
 
-                        <Grid Grid.Row="1"  WidthRequest="171">
+                        <Grid Grid.Row="1" Margin="0,10,0,10">
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                            <custom:CustomLabel Grid.Row="0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" >
                                  <custom:CustomLabel.FormattedText>
@@ -168,7 +168,7 @@
                               </custom:CustomLabel>
 
 
-                            <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
+                            <Frame Grid.Row="1" HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:CustomLabel IsEnabled="False" Text="{Binding ReviewReason}" 
                                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
@@ -183,13 +183,13 @@
                            
 
                         </Grid>
-                        <Grid Grid.Row="2" Margin="0,10,0,10"  WidthRequest="171">
+                        <Grid Grid.Row="2" Margin="0,10,0,10" >
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                            <custom:CustomLabel Grid.Row="0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" >
                                  <custom:CustomLabel.FormattedText>
@@ -200,7 +200,7 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                            <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
+                            <Frame Grid.Row="1"   HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:CustomLabel IsEnabled="False" Text="{Binding SubReviewReason}" 
                                                     Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
@@ -215,12 +215,12 @@
                           
                         </Grid>
 
-                        <Grid Grid.Row="3" Margin="0,10,0,10" WidthRequest="171">
+                        <Grid Grid.Row="3" Margin="0,10,0,10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                            <custom:CustomLabel Grid.Row="0" 
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" >
                                 <custom:CustomLabel.FormattedText>
@@ -231,7 +231,7 @@
                                     </custom:CustomLabel.FormattedText>
                               </custom:CustomLabel>
 
-                            <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
+                            <Frame Grid.Row="1"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:CustomLabel IsEnabled="False" Text="{Binding ApplicationRefNumber}" 
                                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
@@ -245,17 +245,17 @@
 
 
                         </Grid>
-                        <Grid Grid.Row="4" Margin="0,10,0,10"  WidthRequest="171">
+                        <Grid Grid.Row="4" Margin="0,10,0,10" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                            <custom:CustomLabel Grid.Row="0" 
                                                 Text="{x:Static ResourceManager:AppResources.VRRequestDate}"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
-                            <Frame Grid.Row="1" HeightRequest="48"  Grid.ColumnSpan="2"  HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
+                            <Frame Grid.Row="1" HeightRequest="48"    HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,0,10,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <custom:CustomLabel IsEnabled="False" Text="{Binding FormattedRequestDate}" 
                                                     Style="{StaticResource BodyLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
@@ -282,7 +282,7 @@
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
 
-                    </Grid>
+                    </StackLayout>
 
                     <StackLayout IsVisible="{Binding ReportDetailsVisible}" BackgroundColor="Transparent"
                                  Margin="20,10,20,0"

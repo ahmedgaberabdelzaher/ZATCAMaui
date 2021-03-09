@@ -1029,6 +1029,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 RaisePropertyChanged("SelectedTransactionTypeFilter");
                 if (_selectedTransactionTypeFilter.StatementFilter != null)
                 {
+
+                    IsLoading = true;
                     Task.Run(async () =>
                     {
                         IsMonthWiseStatementsViewVisible = false;
@@ -1832,7 +1834,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 await Task.Run(() =>
                 {
-                    IsLoading = false;
+                    //IsLoading = false;
                 });
             }
             catch (Exception)
@@ -2061,10 +2063,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 PickerModel = genericPickerModel;
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+
+
             }
             catch (GAZTErrorException ex)
             {
@@ -2153,7 +2153,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     IsDownloadBtnVisile = false;
                     IsNoStatementsAvaiableVisible = true;
                 }
-                IsLoading = false;
+               
             }
             catch (Exception ex)
             {
