@@ -439,11 +439,11 @@
 
                                             </StackLayout>
 
-                                            <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,0" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
 
-                                            <StackLayout Spacing="0" Margin="0,0,10,0" Grid.Row="2" Grid.Column="1">
-                                                <inputLayout:SfTextInputLayout  ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="{Binding LabnoE}"   IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            <StackLayout Spacing="0" Margin="0,0,0,0" Grid.Row="2" Grid.Column="1">
+                                                <inputLayout:SfTextInputLayout InputViewPadding="16,0,16,0"  ContainerBackgroundColor="#F3F3F3" OutlineCornerRadius="8" ContainerType="Outlined" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding LabnoE}" HeightRequest="48"  IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
 
                                                     </custom:GAZTBorderlessEntry>
 
@@ -1289,11 +1289,11 @@
                                         <!---->
                                     </StackLayout>
 
-                                    <StackLayout Style="{StaticResource SfStyleForZakatPlanGreen}"  Padding="10,10,10,10" BindingContext="{Binding ZakatReturnDetail}" Orientation="Horizontal">
+                                    <StackLayout Style="{StaticResource SfStyleForZakatPlanGreen}" Padding="10,10,10,10" BindingContext="{Binding ZakatReturnDetail}" Orientation="Horizontal">
                                         <Grid>
                                             <Grid.RowDefinitions>
 
-                                                <RowDefinition Height="70"/>
+                                                <RowDefinition Height="30"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="45*"/>
@@ -1302,8 +1302,8 @@
                                                 <ColumnDefinition Width="12*"/>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource BodyLabelBlack}" FontSize="16" HorizontalOptions="FillAndExpand"/>
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Estsl}" Style="{StaticResource SectionTitleBlack}" FontSize="16" HorizontalOptions="FillAndExpand"/>
-                                            <Image Grid.Row="0" Grid.Column="2" Source="ic_vat_info" HorizontalOptions="EndAndExpand" VerticalOptions="Start">
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Estsl}" Style="{StaticResource SectionTitleBlack}" FontSize="16" HorizontalOptions="FillAndExpand"/>
+                                            <Image Grid.Row="0" Grid.Column="2" Source="ic_vat_info" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnEstimatedSalesForTheFiscalYearInfoClicked"/>
                                                 </Image.GestureRecognizers>

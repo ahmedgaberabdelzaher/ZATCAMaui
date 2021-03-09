@@ -247,7 +247,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
                 });
             }
 
-            if (App.LoginDataRetrieved.VtReg == "X")
+            if (App.LoginDataRetrieved.VtReg == "X" || App.LoginDataRetrieved.VtReg == "R")
             {
 
                 outletDecisionOptions.Add(new InstalmentPlanModel

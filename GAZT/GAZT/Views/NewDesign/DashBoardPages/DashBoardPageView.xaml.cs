@@ -385,8 +385,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         }
                         else if (App.LoginDataRetrieved.VtReg == "R")
                         {
+                            //viewModel.IsVatRegistrationTileVisible = false;
+                            //viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                            //viewModel.IfSignUpnNotRegInVAT = false;
+                            //viewModel.IsRegistrationDetailsTileVisible = true;
                             viewModel.IsVatRegistrationTileVisible = false;
+                            viewModel.IfRegInZakat = false;
+                           viewModel.IfnotRegInVATAndZakat = true;
                             viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                            //viewModel.IsRegistrationDetailsTileVisible = true;
+                            //refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = true;
+                            //fillingMenu.IsVisible = fillingMenuBox.IsVisible = true;
+
                         }
                         else if (App.LoginDataRetrieved.VtReg == "")
                         {

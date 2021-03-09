@@ -4771,7 +4771,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public async void OutletContinueBtnClicked()
         {
-            if (!IsOutletContinueButtonEnabled) return;
+            if (!IsOutletContinueButtonEnabled)
+            {
+                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                return;
+            }
             try
             {
                 if (IsOutletChecked)

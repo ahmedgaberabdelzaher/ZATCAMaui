@@ -121,7 +121,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         ArrowImageSource = fileImage
                     });
                 }
-
+             
                 if (App.LoginDataRetrieved.ZkReg == "X")
                 {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
@@ -210,6 +210,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     ZDImageSource = "sf_ic_Paid.png",
                     ArrowImageSource = fileImage
 
+                });
+            }
+            if (App.LoginDataRetrieved.VtReg == "R")
+            {
+                tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                {
+                    ZDTitle = AppResources.VatReactivationDashboardTitle,
+                    ZDImageSource = "registration.png",
+                    ArrowImageSource = fileImage
                 });
             }
             ZakatRegListData = new List<ZakatDeregistrationDetailsListModel>(tempZakatRegListData);

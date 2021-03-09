@@ -124,7 +124,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton", (sender, args) =>
             {
-                btnOutletContinue.IsEnabled = args;
+                btnOutletContinue.IsEnabled = true;
             });
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "IsOutletChecked", (sender, args) =>
             {
