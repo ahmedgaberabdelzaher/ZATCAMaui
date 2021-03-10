@@ -1789,20 +1789,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
         }
-        public void suspendedDateValidation()
+        public async Task<bool> suspendedDateValidation()
         {
             if (FromDate != DateTime.Now && ToDate != DateTime.Now)
             {
                 if (LastIcrDate > FromDate)
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatDeregistrationSuspendedDateValidation));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatDeregistrationSuspendedDateValidation));
 
                     //  _dialogService.ShowMessage(AppResources.VatDeregistrationSuspendedDateValidation, AppResources.Information);
                     isDateValidated = false;
                 }
                 else if (ToDate <= FromDate)
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatDeregSuspendedEndDateMismatchException));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatDeregSuspendedEndDateMismatchException));
 
                     // _dialogService.ShowMessage(AppResources.VatDeregSuspendedEndDateMismatchException, AppResources.Information);
                     isDateValidated = false;
@@ -1868,7 +1868,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                         }
 
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
 
                         // _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                         isDateValidated = false;
@@ -1876,6 +1876,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 }
             }
+            return true;
 
 
         }

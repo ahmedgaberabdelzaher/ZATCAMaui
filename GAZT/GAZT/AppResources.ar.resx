@@ -4657,7 +4657,7 @@
     <value>تقارير مدققه</value>
   </data>
   <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
-    <value>تاريخ الإيقاف يجب ان يكون بعد يوم واحد على الاقل من تاريخ اخر تقديم للإقرار</value>
+    <value>تاريخ بداية التعليق يجب أن يكون بعد يوم من تاريخ أخر فترة</value>
   </data>
   <data name="VatDeregSuspendedEndDateMismatchException" xml:space="preserve">
     <value>تاريخ نهاية العقد يجب أن لايكون قبل تاريخ البدء</value>

@@ -4864,7 +4864,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>VAT Deregistration submitted successfully</value>
   </data>
   <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
-    <value> Suspension Date must be 1 day ahead of Last ICR date</value>
+    <value>Suspension Date must be 1 day ahead of Last ICR date</value>
   </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>Do you want to cancel the Deregistration?</value>
