@@ -239,11 +239,19 @@
                         </StackLayout>
 
                         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
-                            <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" >
-                                <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry" 
+                            <inputLayout:SfTextInputLayout x:Name="FrmDBO" Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"
+                            Style="{StaticResource TextInputLayout}"
+
+                            FocusedColor="#005e4b" ErrorColor="#B00020"
+                            InputViewPadding="16,0,16,0" >
+                                <custom:BorderlessEntry Margin="10,10,10,10" Style="{StaticResource DefaultEntry}" x:Name="DateEntry" 
                                                          Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
                                                          Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd"  BackgroundColor="Gray"
-                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
+                                                              IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
 
                                 </custom:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -344,11 +352,19 @@
                             </StackLayout>
 
                             <Grid >
-                                <inputLayout:SfTextInputLayout x:Name="FrmDBO2" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry21"
+                                <inputLayout:SfTextInputLayout x:Name="FrmDBO2" Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            UnfocusedColor="#B1B1B1"
+                            Style="{StaticResource TextInputLayout}"
+
+                            FocusedColor="#005e4b" ErrorColor="#B00020"
+                            InputViewPadding="16,0,16,0">
+                                    <custom:BorderlessEntry Style="{StaticResource DefaultEntry}" x:Name="DateEntry21"
                                                          Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
                                                          Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
-                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
+                                                               IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
 
                                     </custom:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -453,16 +469,19 @@
                             <StackLayout IsVisible="{Binding TinText.IsVisible}" Margin="0,20,0,0">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HasError="{Binding FrameTinError}"
+                                <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                                                               Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" HasError="{Binding FrameTinError}"
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10" x:Name="TINNumber"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
-                                    <control:BorderlessEntry x:Name="EntryTIN" Text="{Binding TINNumber}" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand" TextChanged="OnTinEntered">
-                                        <control:BorderlessEntry.Behaviors>
+                                    <custom:BorderlessEntry x:Name="EntryTIN" Style="{StaticResource DefaultEntry}" Text="{Binding TINNumber}" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" 
+                                                            HorizontalOptions="FillAndExpand"  Unfocused="BorderlessTINEntry_Unfocused" TextChanged="OnTinEntered">
+                                        <custom:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
-                                        </control:BorderlessEntry.Behaviors>
-                                    </control:BorderlessEntry>
+                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
@@ -506,16 +525,18 @@
                                 </custom:CustomLabel>
 
 
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                    <control:BorderlessEntry x:Name="idNumber"  IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding SelectedIdNumber}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                        <control:BorderlessEntry.Behaviors>
+                                <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="{Binding FrameIDError}">
+                                    <custom:BorderlessEntry Style="{StaticResource DefaultEntry}" x:Name="idNumber"  IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"  Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding SelectedIdNumber}"
+                                                            HorizontalOptions="FillAndExpand">
+                                        <custom:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
-                                        </control:BorderlessEntry.Behaviors>
-                                    </control:BorderlessEntry>
+                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
@@ -535,11 +556,16 @@
                         </StackLayout>
 
                         <Grid IsVisible="{Binding IsDobVisible}">
-                            <inputLayout:SfTextInputLayout x:Name="FrmDBO1" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry23"
+                            <inputLayout:SfTextInputLayout x:Name="FrmDBO1" Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" HasError="{Binding FrameTinError}"
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1">
+                                <custom:BorderlessEntry Style="{StaticResource DefaultEntry}" x:Name="DateEntry23"
                                                          Text ="{Binding PickerDOBDateDisplay}" Unfocused="DOBDatePicker_Unfocused" TextChanged="DOBDateEntry_TextChanged"
                                                          Focused="OnDOBDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
-                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
+                                                              IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
 
                                 </custom:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -658,17 +684,19 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
 
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding FirstNameFromIdType, Mode=TwoWay}" IsEnabled="{Binding FirstNameText.IsEditable}"
-                                                            Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                        <control:BorderlessEntry.Behaviors>
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                           Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="False">
+                                    <custom:BorderlessEntry BackgroundColor="Red" Text="{Binding FirstNameFromIdType, Mode=TwoWay}" IsEnabled="{Binding FirstNameText.IsEditable}"
+                                                            Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"  Style="{StaticResource DefaultEntry}"
+                                                            HorizontalOptions="FillAndExpand">
+                                        <custom:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
-                                        </control:BorderlessEntry.Behaviors>
-                                    </control:BorderlessEntry>
+                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
@@ -682,45 +710,54 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
 
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" IsEnabled="{Binding SurnameText.IsEditable}"
-                                                            Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                        <control:BorderlessEntry.Behaviors>
+                                <inputLayout:SfTextInputLayout Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            Style="{StaticResource TextInputLayout}"
+                               InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="False">
+                                    <custom:BorderlessEntry Margin="0,10,0,0"  Text="{Binding IDTypeDataModel.Name2}" IsEnabled="{Binding SurnameText.IsEditable}"
+                                                            Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}"
+                                                             Style="{StaticResource DefaultEntry}"
+                                                            HorizontalOptions="FillAndExpand">
+                                        <custom:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
-                                        </control:BorderlessEntry.Behaviors>
-                                    </control:BorderlessEntry>
+                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding FathersNameText.IsVisible}">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.FatherName}" IsEnabled="{Binding FathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                        <control:BorderlessEntry.Behaviors>
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="False">
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.FatherName}" IsEnabled="{Binding FathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" 
+                                                          Style="{StaticResource DefaultEntry}"
+                                                            HorizontalOptions="FillAndExpand">
+                                        <custom:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
-                                        </control:BorderlessEntry.Behaviors>
-                                    </control:BorderlessEntry>
+                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding GrandFathersNameText.IsVisible}">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" />
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.GrandfatherName}" IsEnabled="{Binding GrandFathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                Style="{StaticResource CaptionLabelGrey}" />
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="False">
+                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.GrandfatherName}" IsEnabled="{Binding GrandFathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" 
+                                                            Style="{StaticResource DefaultEntry}"
+                                                            HorizontalOptions="FillAndExpand">
                                         <control:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </control:BorderlessEntry.Behaviors>
@@ -732,12 +769,15 @@
                             <StackLayout IsVisible="{Binding FamilyNameText.IsVisible}">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.FamilyName}" IsEnabled="{Binding FamilyNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                                                               Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="False">
+                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.FamilyName}" IsEnabled="{Binding FamilyNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" 
+                                                            Style="{StaticResource DefaultEntry}"
+                                                            HorizontalOptions="FillAndExpand">
                                         <control:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </control:BorderlessEntry.Behaviors>
@@ -752,32 +792,37 @@
                             <StackLayout>
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name1}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" IsEnabled="{Binding Name1Text.IsEditable}" Style="{StaticResource CaptionLabelBlack}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                        <control:BorderlessEntry.Behaviors>
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="False">
+                                    <custom:BorderlessEntry  Text="{Binding IDTypeDataModel.Name1}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" 
+                                                             IsEnabled="{Binding Name1Text.IsEditable}" Style="{StaticResource DefaultEntry}"
+                                                            HorizontalOptions="FillAndExpand">
+                                        <custom:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
-                                        </control:BorderlessEntry.Behaviors>
-                                    </control:BorderlessEntry>
+                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
                             <StackLayout>
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" IsEnabled="{Binding Name2Text.IsEditable}"  Style="{StaticResource CaptionLabelBlack}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                        <control:BorderlessEntry.Behaviors>
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="False">
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName2}"  IsEnabled="{Binding Name2Text.IsEditable}"  Style="{StaticResource DefaultEntry}"
+                                                           HorizontalOptions="FillAndExpand">
+                                        <custom:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
-                                        </control:BorderlessEntry.Behaviors>
-                                    </control:BorderlessEntry>
+                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
                         </StackLayout>
@@ -1325,12 +1370,15 @@
                             <StackLayout>
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZName}" HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}" />
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecName}" 
-                                                                TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                                                               Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="False">
+                                    <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationContactPersonName}"  Style="{StaticResource DefaultEntry}"  
+                                                                Text="{Binding TinDeregistrationData.ADecName}" 
+                                                                HorizontalOptions="StartAndExpand">
                                         <custom:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </custom:BorderlessEntry.Behaviors>
@@ -1340,12 +1388,15 @@
                             <StackLayout>
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDesignation}" HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}" />
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationDesignation}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecDesig}" 
-                                                                TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                                                               Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="False">
+                                    <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationDesignation}" Style="{StaticResource DefaultEntry}" 
+                                                                 Text="{Binding TinDeregistrationData.ADecDesig}" 
+                                                                HorizontalOptions="FillAndExpand">
                                         <custom:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </custom:BorderlessEntry.Behaviors>
@@ -1355,9 +1406,12 @@
                             <StackLayout>
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MobileNumber}" HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}" />
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							            ContainerType="Outlined" UnfocusedColor="#B1B1B1" LeadingViewPosition="Inside"
-							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                                                               Style="{StaticResource TextInputLayout}"
+                            InputViewPadding="16,0,16,0" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" HasError="False">
                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="+966" HorizontalOptions="StartAndExpand"
@@ -1366,13 +1420,13 @@
                                         </StackLayout>
                                     </inputLayout:SfTextInputLayout.LeadingView>
 
-                                    <control:BorderlessEntry Keyboard="Numeric" Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" Unfocused="EntryMobileNo_Unfocused"
-                                                                TextColor="#bbbbbb" HorizontalOptions="FillAndExpand" MaxLength="10">
-                                        <control:BorderlessEntry.Behaviors>
+                                    <custom:BorderlessEntry Keyboard="Numeric" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" 
+                                                          Text="{Binding TinDeregistrationData.ADecTelNo}" Unfocused="EntryMobileNo_Unfocused"
+                                                                HorizontalOptions="FillAndExpand" MaxLength="10">
+                                        <custom:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
-                                        </control:BorderlessEntry.Behaviors>
-                                    </control:BorderlessEntry>
+                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
                             <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
