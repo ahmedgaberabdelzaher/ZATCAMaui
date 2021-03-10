@@ -287,100 +287,112 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                if (viewModel.IsHijriCal)
+                if (viewModel != null)
                 {
-                    if (TransferDeregDatePickerHijri.SelectedItem != null && (TransferDeregDatePickerHijri.SelectedItem as IList<object>).Count == 3)
+                    if (viewModel.IsHijriCal)
                     {
-                        string month = (TransferDeregDatePickerHijri.SelectedItem as IList<object>)[1].ToString();
-                        string day = (TransferDeregDatePickerHijri.SelectedItem as IList<object>)[0].ToString();
-                        string year = (TransferDeregDatePickerHijri.SelectedItem as IList<object>)[2].ToString();
-                        viewModel.SingleDeregistrationDate = viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        // viewModel.SingleDeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        if (TransferDeregDatePickerHijri.SelectedItem != null && (TransferDeregDatePickerHijri.SelectedItem as IList<object>).Count == 3)
+                        {
+                            string month = (TransferDeregDatePickerHijri.SelectedItem as IList<object>)[1].ToString();
+                            string day = (TransferDeregDatePickerHijri.SelectedItem as IList<object>)[0].ToString();
+                            string year = (TransferDeregDatePickerHijri.SelectedItem as IList<object>)[2].ToString();
+                            viewModel.SingleDeregistrationDate = viewModel.PkrDBO = year + "/" + month + "/" + day;
+                            // viewModel.SingleDeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                            viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
+
+                        }
+                        else
+                        {
+                            viewModel.PkrDBO = string.Empty;
+                            viewModel.PickerCloseAllDeregDateDisplay = string.Empty;
+
+                        }
 
                     }
                     else
                     {
-                        viewModel.PkrDBO = string.Empty;
-                        viewModel.PickerCloseAllDeregDateDisplay = string.Empty;
+                        if (TransferDeregDatePicker.SelectedItem != null && (TransferDeregDatePicker.SelectedItem as IList<object>).Count == 3)
+                        {
+                            string month = (TransferDeregDatePicker.SelectedItem as IList<object>)[1].ToString();
+                            string day = (TransferDeregDatePicker.SelectedItem as IList<object>)[0].ToString();
+                            string year = (TransferDeregDatePicker.SelectedItem as IList<object>)[2].ToString();
+                            viewModel.SingleDeregistrationDate = viewModel.PkrDBO = year + "/" + month + "/" + day;
+                            // viewModel.SingleDeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                            viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
+
+                        }
+                        else
+                        {
+                            viewModel.PkrDBO = string.Empty;
+                            viewModel.PickerCloseAllDeregDateDisplay = string.Empty;
+
+                        }
                     }
 
                 }
-                else
-                {
-                    if (TransferDeregDatePicker.SelectedItem != null && (TransferDeregDatePicker.SelectedItem as IList<object>).Count == 3)
-                    {
-                        string month = (TransferDeregDatePicker.SelectedItem as IList<object>)[1].ToString();
-                        string day = (TransferDeregDatePicker.SelectedItem as IList<object>)[0].ToString();
-                        string year = (TransferDeregDatePicker.SelectedItem as IList<object>)[2].ToString();
-                        viewModel.SingleDeregistrationDate = viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        // viewModel.SingleDeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
-
-                    }
-                    else
-                    {
-                        viewModel.PkrDBO = string.Empty;
-                        viewModel.PickerCloseAllDeregDateDisplay = string.Empty;
-
-                    }
-                }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
             finally
             {
-                Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
+                if(viewModel != null)
+                {
+                    Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
+                }
             }
         }
         private void HijriCal3Switch_Toggled(object sender, ToggledEventArgs e)
         {
             try
             {
-                if (viewModel.IsDOBHijriCal)
+                if(viewModel != null)
                 {
-                    if (TransferDOBPickerHijri.SelectedItem != null && (TransferDOBPickerHijri.SelectedItem as IList<object>).Count == 3)
+                    if (viewModel.IsDOBHijriCal)
                     {
-                        string month = (TransferDOBPickerHijri.SelectedItem as IList<object>)[1].ToString();
-                        string day = (TransferDOBPickerHijri.SelectedItem as IList<object>)[0].ToString();
-                        string year = (TransferDOBPickerHijri.SelectedItem as IList<object>)[2].ToString();
-                        viewModel.SelectedDob = viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        //viewModel.SelectedDob = day + "/" + month + "/" + year;
-                        viewModel.TransferPickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        if (TransferDOBPickerHijri.SelectedItem != null && (TransferDOBPickerHijri.SelectedItem as IList<object>).Count == 3)
+                        {
+                            string month = (TransferDOBPickerHijri.SelectedItem as IList<object>)[1].ToString();
+                            string day = (TransferDOBPickerHijri.SelectedItem as IList<object>)[0].ToString();
+                            string year = (TransferDOBPickerHijri.SelectedItem as IList<object>)[2].ToString();
+                            viewModel.SelectedDob = viewModel.PkrDBO = year + "/" + month + "/" + day;
+                            //viewModel.SelectedDob = day + "/" + month + "/" + year;
+                            viewModel.TransferPickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
+
+                        }
+                        else
+                        {
+                            viewModel.PkrDBO = string.Empty;
+                            viewModel.TransferPickerDOBDateDisplay = string.Empty;
+
+                        }
 
                     }
                     else
                     {
-                        viewModel.PkrDBO = string.Empty;
-                        viewModel.TransferPickerDOBDateDisplay = string.Empty;
+                        if (TransferDOBPicker.SelectedItem != null && (TransferDOBPicker.SelectedItem as IList<object>).Count == 3)
+                        {
+                            string month = (TransferDOBPicker.SelectedItem as IList<object>)[1].ToString();
+                            string day = (TransferDOBPicker.SelectedItem as IList<object>)[0].ToString();
+                            string year = (TransferDOBPicker.SelectedItem as IList<object>)[2].ToString();
+                            viewModel.SelectedDob = viewModel.PkrDBO = year + "/" + month + "/" + day;
+                            //viewModel.SelectedDob = day + "/" + month + "/" + year;
+                            viewModel.TransferPickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
+                        }
+                        else
+                        {
+                            viewModel.PkrDBO = string.Empty;
+                            viewModel.PickerDOBDateDisplay = string.Empty;
+
+                        }
                     }
 
-                }
-                else
-                {
-                    if (TransferDOBPicker.SelectedItem != null && (TransferDOBPicker.SelectedItem as IList<object>).Count == 3)
-                    {
-                        string month = (TransferDOBPicker.SelectedItem as IList<object>)[1].ToString();
-                        string day = (TransferDOBPicker.SelectedItem as IList<object>)[0].ToString();
-                        string year = (TransferDOBPicker.SelectedItem as IList<object>)[2].ToString();
-                        viewModel.SelectedDob = viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        //viewModel.SelectedDob = day + "/" + month + "/" + year;
-                        viewModel.TransferPickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
-
-                    }
-                    else
-                    {
-                        viewModel.PkrDBO = string.Empty;
-                        viewModel.PickerDOBDateDisplay = string.Empty;
-
-                    }
                 }
 
             }
@@ -389,7 +401,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             finally
             {
-                Device.BeginInvokeOnMainThread(() => HijriCalSwitch1.IsToggled = viewModel.IsDOBHijriCal);
+                if (viewModel != null)
+                {
+                    Device.BeginInvokeOnMainThread(() => HijriCalSwitch1.IsToggled = viewModel.IsDOBHijriCal);
+                }
             }
         }
 
@@ -754,7 +769,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 PopUp popUp = new PopUp();
                 StringBuilder Messages = new StringBuilder();
-                if (!string.IsNullOrEmpty(viewModel.SelectedIdtype))
+                if (viewModel != null && !string.IsNullOrEmpty(viewModel.SelectedIdtype))
                 {
                     if (viewModel.SelectedIdtype == AppResources.TinDeregistrationNationalID)
                     {
@@ -766,7 +781,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             {
                                 popUp.FlowDirections = "RightToLeft";
                                 popUp.isFontSet = true;
-                            }
+                            } 
                             else
                             {
                                 popUp.FlowDirections = "LeftToRight";

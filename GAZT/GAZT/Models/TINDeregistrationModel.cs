@@ -1234,15 +1234,30 @@ namespace EGAZT.Models
             get { return isHijiri; }
             set
             {
-                if (isHijiri == value) return;
-                if (value)
-                    APermitDeregDisplayDate = UtilityManager.ConvertToHijri(APermitDeregDisplayDate);
-                else
-                    APermitDeregDisplayDate = UtilityManager.HijriToGreg(APermitDeregDisplayDate);
-                if (!string.IsNullOrEmpty(APermitDeregDisplayDate))
-                    APermitEffDtTb = UtilityManager.ConvertDateFormat(APermitDeregDisplayDate);
-                isHijiri = value;
-                OnPropertyRaised("IsHijiri");
+                try
+                {
+                    if(isHijiri == value) return;
+                    if (value)
+                    {
+                        if(!string.IsNullOrEmpty(APermitDeregDisplayDate))
+                          APermitDeregDisplayDate = UtilityManager.ConvertToHijri(APermitDeregDisplayDate);
+                    }
+                    else
+                    {
+                        if(!string.IsNullOrEmpty(APermitDeregDisplayDate))
+                          APermitDeregDisplayDate = UtilityManager.HijriToGreg(APermitDeregDisplayDate);
+
+                    }
+                    if (!string.IsNullOrEmpty(APermitDeregDisplayDate))
+                        APermitEffDtTb = UtilityManager.ConvertDateFormat(APermitDeregDisplayDate);
+                    isHijiri = value;
+                    OnPropertyRaised("IsHijiri");
+                }
+                catch(Exception ex)
+                {
+
+                }
+               
             }
         }
         [JsonIgnore]

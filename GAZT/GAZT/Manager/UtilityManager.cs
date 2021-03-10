@@ -1127,10 +1127,18 @@ namespace GAZT.Manager
         "dd M yyyy","d MM yyyy"};
         public static string HijriToGreg(string hijri)
         {
-            CultureInfo arCul = new CultureInfo("ar-SA");
-            CultureInfo enCul = new CultureInfo("en-US");
-            DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
-            return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
+            try
+            {
+                CultureInfo arCul = new CultureInfo("ar-SA");
+                CultureInfo enCul = new CultureInfo("en-US");
+                DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
+                return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+           
         }
 
 
