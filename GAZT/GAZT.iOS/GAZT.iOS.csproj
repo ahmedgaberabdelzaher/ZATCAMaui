@@ -1110,4 +1110,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_icon_applelogo_white.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Account_statment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Account_statment_Gray.png" />
+  </ItemGroup>
 </Project>

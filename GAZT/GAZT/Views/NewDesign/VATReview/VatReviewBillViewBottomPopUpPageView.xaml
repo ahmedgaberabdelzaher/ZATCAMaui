@@ -22,7 +22,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Margin="0,40,0,0">
 
        
         <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="EndAndExpand" IsVisible="true">
@@ -32,13 +31,13 @@
                 <StackLayout Margin="15,0,15,0" VerticalOptions="FillAndExpand">
 
                     <Image  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
-                               Source="ic_Close_Circle" Margin="-10" >
+                               Source="ic_Close_Circle" Margin="-15" >
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CloseTapped"/>
                         </Image.GestureRecognizers>
                     </Image>
 
-                    <Grid Margin="0,5,0,10">
+                    <Grid Margin="0,0,0,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -215,5 +214,5 @@
         </ScrollView>
     
     </yummy:PancakeView>
-    </StackLayout>
+    
 </pages:PopupPage>

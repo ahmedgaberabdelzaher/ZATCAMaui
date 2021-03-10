@@ -1278,7 +1278,7 @@
             </Grid>
 
             <!--Menu Ends-->
-            
+
             <Grid x:Name="ButtomTab" VerticalOptions="EndAndExpand" Grid.Row="1" Margin="0,-3,0,0" BackgroundColor="White" Padding="0,0,0,26">
                 <Image Source="Bg_Bottom_nav.png"  Aspect="AspectFill" BackgroundColor="Transparent"/>
                 <yummy:PancakeView Padding="20,0,20,15" BackgroundColor="Transparent" >
@@ -1297,7 +1297,7 @@
 
                         <StackLayout Grid.Column="0" BackgroundColor="Transparent" Grid.Row="0" Margin="10,10,10,0">
 
-                            <Image Source="home.png" VerticalOptions="CenterAndExpand">
+                            <Image Source="home.png" VerticalOptions="CenterAndExpand" WidthRequest="24" HeightRequest="24">
                             </Image>
                             <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="5" >
                                 <yummy:PancakeView.Triggers>
@@ -1315,7 +1315,7 @@
                         <StackLayout Grid.Column="1" BackgroundColor="Transparent" Grid.Row="0" Margin="10,10,10,0">
 
 
-                            <Image Source="timeline.png" VerticalOptions="CenterAndExpand">
+                            <Image Source="Account_statment" VerticalOptions="CenterAndExpand" WidthRequest="24" HeightRequest="24">
                             </Image>
                             <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>
@@ -1344,7 +1344,7 @@
 
                         <StackLayout Grid.Column="3" BackgroundColor="Transparent" Grid.Row="0" Margin="10,10,10,0">
 
-                            <Image Source="ColorChat.png" VerticalOptions="CenterAndExpand">
+                            <Image Source="ColorChat.png" VerticalOptions="CenterAndExpand"  WidthRequest="24" HeightRequest="24">
                             </Image>
                             <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>
@@ -1360,7 +1360,7 @@
 
                         <StackLayout Grid.Column="4" Grid.Row="0" BackgroundColor="Transparent" Margin="10,10,10,0">
 
-                            <Image Source="ic_burger.png" VerticalOptions="CenterAndExpand"/>
+                            <Image Source="ic_burger.png" VerticalOptions="CenterAndExpand" WidthRequest="24" HeightRequest="24"/>
                             <yummy:PancakeView  BackgroundColor="Transparent" Padding="3" CornerRadius="5">
                                 <yummy:PancakeView.Triggers>
                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding MenuViewVisible}" Value="True">

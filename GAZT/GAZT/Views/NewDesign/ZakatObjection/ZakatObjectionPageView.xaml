@@ -1377,9 +1377,13 @@
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*"/>
                                                             <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="Auto"/>
                                                         </Grid.ColumnDefinitions>
                                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRAttachment}" Style="{StaticResource ValueLabelGrey}"/>
                                                         <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                        <Image Grid.Column="2" Source="Generic_attachment_icon"
+                                                               Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                               HorizontalOptions="Start" VerticalOptions="Center" />
                                                     </Grid>
 
                                                 </DataTemplate>

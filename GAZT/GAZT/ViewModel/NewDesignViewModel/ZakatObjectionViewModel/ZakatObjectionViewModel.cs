@@ -1792,7 +1792,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         private void BindData(ZakatObjectionRequestSummaryModel zakatObjectionRequestSummary)
         {
             var bills = new ObservableCollection<BillsModel>();
-
+            returnBills = new ObservableCollection<BillsModel>();
 
             if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results != null && zakatObjectionRequestSummary.d.ZNOB_ObjSet.results.Count > 0)
             {
