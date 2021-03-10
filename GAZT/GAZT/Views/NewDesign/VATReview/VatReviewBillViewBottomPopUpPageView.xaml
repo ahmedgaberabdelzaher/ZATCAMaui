@@ -31,7 +31,7 @@
                 <StackLayout Margin="15,0,15,0" VerticalOptions="FillAndExpand">
 
                     <Image  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
-                               Source="ic_Close_Circle" Margin="-15" >
+                               Source="ic_close">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CloseTapped"/>
                         </Image.GestureRecognizers>
