@@ -41,6 +41,8 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                     case Xamarin.Forms.Device.iOS:
                         {
                             PickerDoneButton.FontFamily = "SSTArabic-Medium";
+                            PickerCancelButton.FontFamily = "SSTArabic-Medium";
+
                             PickerTitle.FontFamily = "SSTArabic-Medium";
 
                             genericPicker.HeaderFontFamily = "SSTArabic-Medium";
@@ -51,6 +53,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                     case Xamarin.Forms.Device.Android:
                         PickerDoneButton.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         PickerTitle.FontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PickerCancelButton.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
 
                         genericPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
                         genericPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
@@ -128,6 +131,13 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void PopupCancel_Clicked(object sender, EventArgs e)
+        {
+
+            PopupNavigation.Instance.PopAsync();
+
         }
 
         void PopupPage_BackgroundClicked(System.Object sender, System.EventArgs e)
