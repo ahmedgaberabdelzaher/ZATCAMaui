@@ -318,6 +318,7 @@ namespace EGAZT
         public static string PaymentGuid = string.Empty;
         public static bool isFromDashboard = false;
         public static string selectedForm12Fbguid = string.Empty;
+        public static bool isMybillsRefresh = false;
 
         //in Seconds
         public static int IdleTimeToLogout = 100;

@@ -84,7 +84,9 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
         private void GotodashboardClicked(object sender, EventArgs e)
         {
-        
+
+            App.isMybillsRefresh = true;
+
             var _navigation = Application.Current.MainPage.Navigation;
             
             //foreach (var item in _navigation.NavigationStack)
@@ -115,15 +117,21 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             }
             if (isDashboard)
             {
+
                 _dashBoardPageViewModel._navigationService.GoBack();
             }
             else
             {
+
+
                 viewModel._navigationService.GoBack();    
             }
             //viewModel._navigationService.GoBack();
+
+
+
         }
-        
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

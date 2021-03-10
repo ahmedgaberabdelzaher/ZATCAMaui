@@ -167,6 +167,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             StartTimer();
             viewModel.IsLoading = false;
 
+           
+
             if (isFirstTime)
             {
 
@@ -184,6 +186,12 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     //part.IsVisible = true;
                     btn_frameToolbar.IsVisible = true;
                 }*/
+            }
+
+
+            if (App.isMybillsRefresh) {
+
+                await viewModel.GetBillsAndReturns();
             }
 
 
