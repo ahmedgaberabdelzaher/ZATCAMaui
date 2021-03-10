@@ -542,8 +542,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                if (_outletContinueButtonnBackroundColor == value) return;
-
                 _outletContinueButtonnBackroundColor = value;
                 RaisePropertyChanged("OutletContinueButtonnBackroundColor");
             }
@@ -580,8 +578,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                if (_iSOutletContinueButtonEnabled == value) return;
-
                 _iSOutletContinueButtonEnabled = value;
                 if (value)
                 {
