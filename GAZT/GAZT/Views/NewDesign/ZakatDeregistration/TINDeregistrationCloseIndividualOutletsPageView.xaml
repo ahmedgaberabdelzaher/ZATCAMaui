@@ -134,7 +134,7 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <StackLayout x:Name="CalLabel" Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                            <custom:CustomLabel Text="Test3"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"  />
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"  />
                             <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" Toggled="HijriCalSwitch_Toggled" />
                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                         </StackLayout>
@@ -271,7 +271,7 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <StackLayout Orientation="Horizontal" >
-                                    <custom:CustomLabel Text="tst7" HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}" HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                     <Switch x:Name="HijriCalSwitch1" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal, Mode=TwoWay}" Toggled="HijriCal2Switch_Toggled" />
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                                 </StackLayout>
@@ -452,7 +452,7 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                             <StackLayout Orientation="Horizontal" IsVisible="{Binding IsDobVisible}">
-                                <custom:CustomLabel Text="test9"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                 <Switch x:Name="HijriCalSwitch3" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijriCal, Mode=TwoWay}" Toggled="HijriCal3Switch_Toggled" />
                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                             </StackLayout>
@@ -787,9 +787,9 @@
                                                 VerticalOptions="Center" Style="{StaticResource CaptionLabelGrey}" />
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
-                                                <custom:CustomLabel Text="Test4"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                                 <Switch x:Name="HijriCalSwitch4" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijiri, Mode=TwoWay}" />
-                                                <custom:CustomLabel  Text="Test4" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
+                                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                                             </StackLayout>
                                             <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5" >
                                                 <Grid IsVisible="{Binding IsDobVisible}">
@@ -927,7 +927,7 @@
                                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
                                                                             Style="{StaticResource CaptionLabelGrey}" />
                                                         <StackLayout Orientation="Horizontal" >
-                                                            <custom:CustomLabel Text="TEst2"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                                             <Switch x:Name="HijriCalSwitch5" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijiri, Mode=TwoWay}" />
                                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                                                         </StackLayout>
