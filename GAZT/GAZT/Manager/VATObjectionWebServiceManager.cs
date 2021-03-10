@@ -108,12 +108,12 @@ namespace EGAZT.Manager
                     {
 
                         url = Constants.GetVATObjectionSummaryURL + "FormGuid='" + "',Fbnumx='" + "',Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='" + lang + "'," +
-                     "Officerx='" + "',PortalUsrx='" + "',Euserx='" + "',Appfg='" + "')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
+                     "Officerx='" + "',PortalUsrx='" + "',Euserx='" + "',Appfg='N')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
                     }
                     else
                     {
                         url = Constants.GetVATObjectionSummaryURL + "FormGuid='" + "',Fbnumx='" + FBGuid + "',Gpartx='" + "',Langx='" + lang + "'," +
-                    "Officerx='" + "',PortalUsrx='" + "',Euserx='00000000000000000000',Appfg='" + "')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
+                    "Officerx='" + "',PortalUsrx='" + "',Euserx='00000000000000000000',Appfg='N')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
                     }
                     HttpResponseMessage vATObjectionSummaryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (vATObjectionSummaryResponse != null)

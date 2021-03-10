@@ -6045,8 +6045,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             notes.Erftmz = null;
             notes.Erfusrz = "";
             notes.Lineno = 1;
-            notes.Noteno = "2";
-            notes.Notenoz = "2";
+            notes.Noteno = "";
+            notes.Notenoz = "";
             notes.Rcodez = "RAVT_BOX";
             notes.Refnamez = "";
             notes.Tdformat = "";
@@ -6344,9 +6344,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 response = await VATObjectionWebServiceManager.SaveVatReviewObjection(request);
 
 
-
-                PopToRootPage();
-
                 if (response != null)
                 {
                     try
@@ -6435,7 +6432,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     IsLoading = true;
 
                     VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVRVATReturns(Fbguid, Fbnumz, EUser, "");
-                    PopToRootPage();
+                   
                     if (_vATDeclaration != null && _vATDeclaration.d != null)
                     {
                         VATinNumber = _vATDeclaration.d.Gpart;
@@ -6534,7 +6531,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     try
                     {
                         vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDisplayDetailsData();
-                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        
 
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
