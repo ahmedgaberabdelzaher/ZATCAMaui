@@ -188,9 +188,10 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
         }
 
-        private void PopupClose_Clicked(object sender, EventArgs e)
+        private async void PopupClose_Clicked(object sender, EventArgs e)
         {
-            
+            await PopupNavigation.Instance.PopAsync();
+
             if (viewModel.IsFutureDatePickerVisible == true)
             {
                 var selectedItem = futureCalendarPicker.SelectedItem as ObservableCollection<object>;
@@ -199,15 +200,9 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                 string year = selectedItem[2].ToString();
                 newDate = year + "/" + month + "/" + day;
 
-
-
                 if (newDate != null || newDate != string.Empty)
                 {
                     MessagingCenter.Send<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", viewModel.DataSource);
-
-
-
-                    // MessagingCenter.Send(this, "DatePickerSelectedItem",viewModel.DataSource);
                 }
             }
             else
@@ -218,19 +213,12 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                 string year = selectedItem[2].ToString();
                 newDate = year + "/" + month + "/" + day;
 
-
-
                 if (newDate != null || newDate != string.Empty)
                 {
                     MessagingCenter.Send<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", viewModel.DataSource);
-
-
-
-                    // MessagingCenter.Send(this, "DatePickerSelectedItem",viewModel.DataSource);
                 }
             }
             
-            PopupNavigation.Instance.PopAsync();
 
         }
     }

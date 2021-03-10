@@ -327,9 +327,7 @@
                                                     <custom:GAZTBorderlessEntry  Text="{Binding TvtslE}"   IsReadOnly="True"  Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
-                                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
-                                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                                 
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel  Text="{Binding TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,0,0" HorizontalOptions="EndAndExpand"/>
@@ -447,9 +445,7 @@
 
                                                     </custom:GAZTBorderlessEntry>
 
-                                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
-                                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                                  
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.LabnoE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,0,0" HorizontalOptions="EndAndExpand"/>
@@ -572,9 +568,7 @@
                                                     <custom:GAZTBorderlessEntry  Text="{Binding ImpvalE}"   IsReadOnly="True"  Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
-                                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
-                                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                              
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ImpvalE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,0,0" HorizontalOptions="EndAndExpand"/>
@@ -692,9 +686,7 @@
                                                     <custom:GAZTBorderlessEntry  Text="{Binding PtoslI}" Keyboard="Numeric" IsReadOnly="True"   Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
-                                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
-                                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                                   
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <!--<custom:CustomLabel Text="{Binding PtoslI}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>-->
@@ -807,10 +799,7 @@
                                                     <custom:GAZTBorderlessEntry  Text="{Binding EtimadI}"    IsReadOnly="True"  Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
-                                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
-                                                    </inputLayout:SfTextInputLayout.TrailingView>
-
+                                                  
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel   Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.Sumcnt}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,0,0" HorizontalOptions="EndAndExpand"/>
                                             </StackLayout>
@@ -928,9 +917,7 @@
 
                                                     </custom:GAZTBorderlessEntry>
 
-                                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
-                                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                                  
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <!--<custom:CustomLabel Text="{Binding ExamtI}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>-->
@@ -1044,9 +1031,7 @@
                                                     <custom:GAZTBorderlessEntry  Text="{Binding PramtE}"  IsReadOnly="True"   Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
-                                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
-                                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                                   
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.PramtE}"    IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,0,0" HorizontalOptions="EndAndExpand"/>
@@ -1160,10 +1145,7 @@
                                                     <custom:GAZTBorderlessEntry  Text="{Binding RestE}"  IsReadOnly="True"   Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
-                                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
-                                                    </inputLayout:SfTextInputLayout.TrailingView>
-
+                                                  
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel  Text="{Binding RestE}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}"   Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,0,0" HorizontalOptions="EndAndExpand"/>
                                             </StackLayout>
@@ -1253,10 +1235,7 @@
                                                     <custom:GAZTBorderlessEntry  Text="{Binding Cpamt}"   IsReadOnly="True"  Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
-                                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
-                                                    </inputLayout:SfTextInputLayout.TrailingView>
-
+                                                 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel Text="{Binding Cpamt}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,0,0" HorizontalOptions="EndAndExpand"/>
                                             </StackLayout>

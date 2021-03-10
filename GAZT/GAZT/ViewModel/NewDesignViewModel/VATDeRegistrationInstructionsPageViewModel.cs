@@ -68,8 +68,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_isContinueButtonEnable == value) return;
-
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {

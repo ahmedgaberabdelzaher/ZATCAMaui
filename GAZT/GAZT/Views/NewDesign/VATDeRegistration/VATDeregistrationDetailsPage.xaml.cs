@@ -144,7 +144,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
             });
 
-            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
+            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", async(sender, arg) =>
             {
 
                 if (App.IsArabic)
@@ -204,7 +204,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                 if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle) || arg.DatePickerTitle.Contains(AppResources.VatDeregEndDatePickerTitle))
                 {
-                    viewModel.suspendedDateValidation();
+                   bool isValidated = await viewModel.suspendedDateValidation();
                 }
 
             });

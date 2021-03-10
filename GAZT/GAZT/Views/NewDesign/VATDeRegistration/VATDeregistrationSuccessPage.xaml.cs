@@ -29,7 +29,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     Label_ApplicationNumber.Text = response.d.Fbnumx;
                     viewModel.FBNumber = response.d.Fbnumx;
                     //string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                    string StartdateToshow = DateTime.Today.Date.ToString("dd/MM/yyyy").Replace('-', '/');
+                    string StartdateToshow = DateTime.Today.Date.ToString("yyyy/MM/dd").Replace('-', '/');
                     Label_Date.Text = StartdateToshow;
                 }
             }

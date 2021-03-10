@@ -1176,7 +1176,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Data available to GAZT</value>
   </data>
   <data name="ZEstimatedSales" xml:space="preserve">
-    <value>Estimated Sales</value>
+    <value>Estimated Sales in SAR</value>
   </data>
   <data name="ZEstimateSales" xml:space="preserve">
     <value>Estimate Sales</value>
@@ -1185,7 +1185,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Financial Period From</value>
   </data>
   <data name="ZInformationfromrelatedparties" xml:space="preserve">
-    <value>Information from related parties</value>
+    <value>Information from related parties in SAR</value>
   </data>
   <data name="ZNewValue" xml:space="preserve">
     <value>New Value</value>
@@ -4864,7 +4864,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>VAT Deregistration submitted successfully</value>
   </data>
   <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
-    <value> Suspension Date must be 1 day ahead of Last ICR date</value>
+    <value>Suspension Date must be 1 day ahead of Last ICR date</value>
   </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>Do you want to cancel the Deregistration?</value>
