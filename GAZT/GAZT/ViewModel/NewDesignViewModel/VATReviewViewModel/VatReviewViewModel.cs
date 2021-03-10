@@ -7005,8 +7005,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         _VATReviewRequestVTGR = await GetVATReviewWebServiceManager.GAZTGetVATReviewRequestVTGR(strEuser, strFbguid, strGpart, strTxnTpz, strFBNum);
                         if (_VATReviewRequestVTGR != null && _VATReviewRequestVTGR.d != null)
                         {
-                            VRVGEffectivedate = _VATReviewRequestVTGR.d.EFFDATESet.results.Where(x => x.Persl == _VATReviewRequestVTGR.d.Persl).FirstOrDefault().Txt50
-                            ;
+
+                            try{
+                                VRVGEffectivedate = _VATReviewRequestVTGR.d.EFFDATESet.results.Where(x => x.Persl == _VATReviewRequestVTGR.d.Persl).FirstOrDefault().Txt50;
+                            }
+                            catch (Exception e) {
+
+                            }
+
+
+                           
                             VRVGIDType = IDToNameDictionary[_VATReviewRequestVTGR.d.DecidTy];
                             VRVGIDNumber = _VATReviewRequestVTGR.d.DecidNo;
                             VRVGContactPersonName = _VATReviewRequestVTGR.d.Decname;
