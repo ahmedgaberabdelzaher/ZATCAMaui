@@ -1343,6 +1343,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         vATDeRegistration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
 
+                        //VATDeRegistrationDetailsData.d.StartDate = ConvertDateFormat(FromDate);
+                        //VATDeRegistrationDetailsData.d.EndDate = ConvertDateFormat(ToDate);
+                        //VATDeRegistrationDetailsData.d.SuspDtfrom = ConvertDateFormat(SuspendedStartDate);
+                        //VATDeRegistrationDetailsData.d.SuspDtto = ConvertDateFormat(SuspendedEndDate);
+                        //VATDeRegistrationDetailsData.d.NextDtfrom = ConvertDateFormat(NextFilingStartDate);
+                        //VATDeRegistrationDetailsData.d.NextDtto = ConvertDateFormat(NextFilingEndDate);
+
                         if (reasonList == null)
                         {
                             reasonList = VATDeregistrationWebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
@@ -2972,13 +2979,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public String ConvertDateFormat(DateTime newDate)
         {
+            DateTime dateTime = Convert.ToDateTime(newDate);
+
             string ConvertedDate = string.Empty;
-            TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+            TimeSpan span = (newDate - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
             string unixTime = span.TotalSeconds.ToString("N0");
             unixTime = unixTime.Replace(",", "");
             ConvertedDate = "" + "/Date(" + unixTime + ")/";
 
-            long unixTimestamp = ((long)(newDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
+            double unixTimestamp = ((double)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
 
             unixTimestamp = unixTimestamp * 1000;
 

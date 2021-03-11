@@ -292,8 +292,16 @@
                                                 <!--<Label Text="no of characters remaining"/>-->
                                             </StackLayout>
                                         </StackLayout>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}" HorizontalOptions="StartAndExpand"
+                                       <Grid>
+                                           <Grid.ColumnDefinitions>
+                                               <ColumnDefinition Width="*"/>
+                                               <ColumnDefinition Width="*"/>
+                                           </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
+                                            <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedEndDate}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />
+                                       </Grid>
                                         <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
 
                                             <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">

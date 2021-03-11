@@ -32,7 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ContinueButtonnBackroundColor");
             }
         }
-        private bool _isInstructionChecked;
+        private bool _isInstructionChecked = false;
         public bool IsInstructionChecked
         {
             get
@@ -41,11 +41,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                //MessagingCenter.Send<VATDeRegistrationInstructionsPageViewModel, bool>(this, "IsInstructionChecked", value);
-
-                if (_isInstructionChecked == value) return;
-
-                _isInstructionChecked = value;
+                    _isInstructionChecked = value;
               
                     if (_isInstructionChecked)
                     {
