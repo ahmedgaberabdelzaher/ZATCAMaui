@@ -2907,10 +2907,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
 
         }
-        public async void ValidateIDNumber()
+        public async void ValidateIDNumber(string date = null)
         {
-            string dob = PkrDBO.Replace("/", "");
+            string dob;
             string idTypeCode = string.Empty;
+            if (!string.IsNullOrEmpty(date) && !string.IsNullOrWhiteSpace(date))
+            {
+                dob = date.Replace("/", "");
+            }
+            else
+                dob = PkrDBO.Replace("/", "");
 
             //ZS0002 - IQAMA
             //ZS0005 - IBAN
@@ -2953,7 +2959,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     if (!string.IsNullOrEmpty(IDTypeDataModel.Name1)) FirstNameFromIdType = IDTypeDataModel.Name1;
                     if (!string.IsNullOrEmpty(IDTypeDataModel.Tin)) TINNumber = IDTypeDataModel.Tin;
-                    if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10)) PickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
+                    //   if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10)) PickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
 
                     if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
                     {

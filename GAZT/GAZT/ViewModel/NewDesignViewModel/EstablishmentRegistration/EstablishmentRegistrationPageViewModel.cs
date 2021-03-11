@@ -2281,6 +2281,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
                     udpdateDates();
                 }
+                if (IsSaudi)
+                {
+                    TabList.Remove(AppResources.ESTPassportDetailsTabTitleLabel);
+                }
             }
             catch (Exception e)
             {

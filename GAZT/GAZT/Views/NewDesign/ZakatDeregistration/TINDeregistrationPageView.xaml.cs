@@ -672,7 +672,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(viewModel.PickerDOBDateDisplay))
                                 {
-                                    viewModel.ValidateIDNumber();
+                                    viewModel.ValidateIDNumber(viewModel.PickerDOBDateDisplay);
                                 }
                             }
                         }
@@ -732,7 +732,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(viewModel.PickerDOBDateDisplay))
                                 {
-                                    viewModel.ValidateIDNumber();
+                                    viewModel.ValidateIDNumber(viewModel.PickerDOBDateDisplay);
                                 }
                             }
                         }
@@ -971,11 +971,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
-               
+
             }
         }
 
@@ -1228,7 +1228,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.SelectedDob = date;
                         viewModel.PickerDOBDateDisplay = viewModel.DateOfBirth;
 
-                        viewModel.ValidateIDNumber();
+                        viewModel.ValidateIDNumber(date);
 
                     }
                 }
@@ -1248,7 +1248,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.DateOfBirth = date;
                         viewModel.SelectedDob = date;
                         viewModel.PickerDOBDateDisplay = viewModel.DateOfBirth;
-                        viewModel.ValidateIDNumber();
+                        viewModel.ValidateIDNumber(date);
 
                     }
                 }
