@@ -172,6 +172,55 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             if (viewModel.ZakatReferanceNumber != null)
             {
 
+                String downloadurl = Constants.ZOdownloadAckLetter + "'" + viewModel.ZakatReferanceNumber + "')/$value";
+                //await WebServiceManager.FileDownload(downloadurl, "pdf");
+                viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
+
+
+            }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+
+
+
+            });
+        }
+
+        private async void Download_Form(object sender, EventArgs e)
+        {
+
+
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+
+            if (viewModel.ZakatReferanceNumber != null)
+            {
+                String downloadurl = Constants.OldZakatdownloadCoverFormFile + "'" + viewModel.ZakatReferanceNumber + "')/$value";
+                //await WebServiceManager.FileDownload(downloadurl, "pdf");
+                viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
+
+
+
+            }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+
+
+            });
+
+            if (viewModel.ZakatReferanceNumber != null)
+            {
+
                 String downloadurl = Constants.downloadFile + "'" + viewModel.ZakatReferanceNumber + "')/$value";
                 //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
