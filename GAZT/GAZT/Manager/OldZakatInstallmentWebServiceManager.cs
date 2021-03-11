@@ -297,7 +297,12 @@ namespace EGAZT.Manager
                         {
                             string errorMessage = string.Empty;
                             errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                            if (!errorMesg.error.innererror.errordetails[0].message.Equals(errorMesg.error.innererror.errordetails[1].message)) {
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+
+                            }
+
+
                             String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
