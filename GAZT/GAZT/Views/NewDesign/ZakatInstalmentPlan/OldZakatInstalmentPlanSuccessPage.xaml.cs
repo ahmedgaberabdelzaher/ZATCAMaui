@@ -210,30 +210,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.IsLoading = false;
             });
 
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-
-
-
-            });
-
-            if (viewModel.ZakatReferanceNumber != null)
-            {
-
-                String downloadurl = Constants.downloadFile + "'" + viewModel.ZakatReferanceNumber + "')/$value";
-                //await WebServiceManager.FileDownload(downloadurl, "pdf");
-                viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
-
-
-            }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-
-
-
-            });
+            
         }
 
         protected override void OnAppearing()
