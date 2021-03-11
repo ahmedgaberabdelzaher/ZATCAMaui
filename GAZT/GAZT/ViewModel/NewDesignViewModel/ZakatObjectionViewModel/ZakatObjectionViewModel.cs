@@ -327,6 +327,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 RaisePropertyChanged("ReferenceNum");
             }
         }
+        public string _NewTaxType = "";
+        public string NewTaxType
+        {
+            get { return _NewTaxType; }
+            set
+            {
+                if (_NewTaxType == value) return;
+
+                _NewTaxType = value;
+                RaisePropertyChanged("NewTaxType");
+            }
+        }
+
+        public string _NewFinancialPeriod = "";
+        public string NewFinancialPeriod
+        {
+            get { return _NewFinancialPeriod; }
+            set
+            {
+                if (_NewFinancialPeriod == value) return;
+
+                _NewFinancialPeriod = value;
+                RaisePropertyChanged("NewFinancialPeriod");
+            }
+        }
+
 
         public string _taxType = "";
 
@@ -758,7 +784,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             public string FiscalYear { get; set; }
             public string FinancialPeriod { get; set; }
             public string ReferenceNum { get; set; }
-            public string TaxType { get; set; }
+            public string TaxType { get; set; }            
             public string AssessmentAmountGAZT { get; set; }
             public string RevisedAmount { get; set; }
 
@@ -1864,6 +1890,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
 
                     billsModel.TaxType = objction.ATaxTy;
+                    NewTaxType = objction.ATaxTy;
+                    NewFinancialPeriod= billsModel.FinancialPeriod;
                     billsModel.ReferenceNum = objction.ARefNo;
 
                     billsModel.AssessmentAmountGAZT = objction.AAssnmtAmt;

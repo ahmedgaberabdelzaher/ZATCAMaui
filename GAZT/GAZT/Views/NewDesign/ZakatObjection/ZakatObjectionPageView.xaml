@@ -1205,7 +1205,7 @@
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOFinancialPeriod}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="FillAndExpand"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding FinancialPeriod}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding NewFinancialPeriod}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1227,7 +1227,7 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOTaxType}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding TaxType}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding NewTaxType}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
