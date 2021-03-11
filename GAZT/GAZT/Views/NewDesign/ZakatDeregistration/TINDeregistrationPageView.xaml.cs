@@ -964,7 +964,18 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             finally
             {
-                Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
+                try
+                {
+                    if (viewModel != null)
+                    {
+                        Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
+                    }
+                }
+                catch(Exception ex)
+                {
+
+                }
+               
             }
         }
 

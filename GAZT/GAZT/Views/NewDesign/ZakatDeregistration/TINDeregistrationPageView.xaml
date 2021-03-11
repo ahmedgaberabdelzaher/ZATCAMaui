@@ -825,7 +825,7 @@
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
-                                    <border:SfBorder Padding="0,16,0,16"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <border:SfBorder Margin="0,16,0,10"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout Padding="0">
                                             <Grid Padding="15" RowSpacing="0" >
                                                 <Grid.RowDefinitions>
@@ -1569,9 +1569,8 @@
                                                         </Label.Triggers>
                                                     </Label>
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                                                    <Label  VerticalOptions="CenterAndExpand" Text="{Binding Filename}" LineBreakMode="MiddleTruncation" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                    <Image  VerticalOptions="CenterAndExpand" Source="Generic_attachment_icon" Style="{StaticResource SmallIcon}"  HorizontalOptions="EndAndExpand"/>
+                                                <StackLayout Grid.Row="0" Grid.Column="1" >
+                                                    <Label Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                 </StackLayout>
                                             </Grid>
                                         </DataTemplate>

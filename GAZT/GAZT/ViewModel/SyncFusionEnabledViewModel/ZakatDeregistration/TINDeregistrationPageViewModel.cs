@@ -542,8 +542,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                if (_outletContinueButtonnBackroundColor == value) return;
-
                 _outletContinueButtonnBackroundColor = value;
                 RaisePropertyChanged("OutletContinueButtonnBackroundColor");
             }
@@ -580,8 +578,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                if (_iSOutletContinueButtonEnabled == value) return;
-
                 _iSOutletContinueButtonEnabled = value;
                 if (value)
                 {
@@ -1081,6 +1077,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     IDTypeDataModel = new VATSignUpD();
                 }
+                SelectedIdtype = value.AIdType;
                 IDTypeDataModel.Name1 = value.ANm3;
                 FirstNameFromIdType = value.ANm3;
                 IDTypeDataModel.Name2 = value.ANm4;
@@ -1420,6 +1417,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (PickerModel.PickerId == "idTypePicker")
                         {
+                            SelectedIdtype = string.Empty;
                             if (SelectedIdtype != PickerModel.SelectedValue)
                             {
                                 SelectedIdNumber = string.Empty;
@@ -5793,7 +5791,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
                     TinDeregistrationData.AExpdtH = DeregistrationDate.ToString("yyyy/MM/dd");
 
-                    //  TinDeregistrationData.AIdType = SelectedIdtype;
+                    TinDeregistrationData.AIdType = SelectedIdtype;
                     TinDeregistrationData.AIdNo = SelectedIdNumber;
                     TinDeregistrationData.ANm1 = "";
                     TinDeregistrationData.ANm2 = TINNumber;
@@ -6496,6 +6494,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                     }
 
+                    SelectedIdtype = TinDeregistrationData.AIdType;
                     SelectedIdNumber = TinDeregistrationData.AIdNo;
                     IDTypeDataModel.Name1 = TinDeregistrationData.ANm3;
                     FirstNameFromIdType = TinDeregistrationData.ANm3;

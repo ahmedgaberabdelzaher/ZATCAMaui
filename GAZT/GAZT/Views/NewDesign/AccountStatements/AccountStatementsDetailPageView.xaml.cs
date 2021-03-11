@@ -1,4 +1,6 @@
 ﻿using EGAZT.Models.AccountStatements;
+using EGAZT.NewDesignConverters;
+using GAZT.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,8 +76,17 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             FrameCardStatus.BackgroundColor = color;
             CardAmount.BackgroundColor = color;
+            var commaAmount = "";
+            if (aSResult.Betrh != null && !string.IsNullOrEmpty(aSResult.Betrh.ToString()))
+            {
+                commaAmount = UtilityManager.GetCommaSeparatedAmount(aSResult.Betrh.ToString());
+            }
+            else
+            {
+                commaAmount= "0.00";
+            }
 
-            LableAmount.Text = "" +aSResult.Betrh + " "+AppResources.ZSAR;
+            LableAmount.Text = "" + commaAmount + " "+AppResources.ZSAR;
         }
 
         private Color stringToColor(String value)

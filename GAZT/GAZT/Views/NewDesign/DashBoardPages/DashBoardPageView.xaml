@@ -27,6 +27,7 @@
         <ResourceDictionary>
             <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+            <local:StringToColorConvertor x:Key="StringToColorConvertor" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -644,7 +645,35 @@
                                                                         CaptionLabelGrey}"></custom:CustomLabel>
 
                                                                         </StackLayout>
-                                                                        <cards:SfCardView Grid.Row="0" Grid.Column="1"  HasShadow="False" 
+
+                                                                        <Frame Grid.Row="0" Grid.Column="1"
+                                                           HorizontalOptions="FillAndExpand"
+                                                    BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"
+                                                    Padding="10,10,10,10" CornerRadius="14"
+                                                    HeightRequest="20" Opacity=".2"
+                                                     HasShadow="False"   
+                                                    VerticalOptions="CenterAndExpand" >
+                                                    </Frame>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" Padding="10,0,10,0">
+                                                        <!--<Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding Betrh}"
+                                               TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                        </Label>-->
+
+                                                        
+
+                                                        <custom:CustomLabel Style="{StaticResource CaptionLabelBlack}"
+                                                                            TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding Betrh,Converter={StaticResource commaSeparatorConverter}}" TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" Style="{StaticResource CaptionLabelBlack}" ></Span>
+                                                                    <Span Text="&#160;" Style="{StaticResource CaptionLabelBlack}" ></Span>
+                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR} " TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  Style="{StaticResource CaptionLabelBlack}" ></Span>
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
+                                                    </StackLayout>
+
+                                                                        <!--<cards:SfCardView Grid.Row="0" Grid.Column="1"  HasShadow="False" 
                                                                                   BackgroundColor="{Binding StatusBG}" CornerRadius="14" 
                                                                                   Padding="10,0,10,0" >
                                                                             <Label 
@@ -662,7 +691,7 @@
                                                                                 </Label.FormattedText>
 
                                                                             </Label>
-                                                                        </cards:SfCardView>
+                                                                        </cards:SfCardView>-->
                                                                     </Grid>
 
                                                                 </StackLayout>
@@ -1249,7 +1278,7 @@
             </Grid>
 
             <!--Menu Ends-->
-            
+
             <Grid x:Name="ButtomTab" VerticalOptions="EndAndExpand" Grid.Row="1" Margin="0,-3,0,0" BackgroundColor="White" Padding="0,0,0,26">
                 <Image Source="Bg_Bottom_nav.png"  Aspect="AspectFill" BackgroundColor="Transparent"/>
                 <yummy:PancakeView Padding="20,0,20,15" BackgroundColor="Transparent" >
@@ -1268,7 +1297,7 @@
 
                         <StackLayout Grid.Column="0" BackgroundColor="Transparent" Grid.Row="0" Margin="10,10,10,0">
 
-                            <Image Source="home.png" VerticalOptions="CenterAndExpand">
+                            <Image Source="home.png" VerticalOptions="CenterAndExpand" WidthRequest="24" HeightRequest="24">
                             </Image>
                             <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="5" >
                                 <yummy:PancakeView.Triggers>
@@ -1286,7 +1315,7 @@
                         <StackLayout Grid.Column="1" BackgroundColor="Transparent" Grid.Row="0" Margin="10,10,10,0">
 
 
-                            <Image Source="timeline.png" VerticalOptions="CenterAndExpand">
+                            <Image Source="Account_statment" VerticalOptions="CenterAndExpand" WidthRequest="24" HeightRequest="24">
                             </Image>
                             <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>
@@ -1315,7 +1344,7 @@
 
                         <StackLayout Grid.Column="3" BackgroundColor="Transparent" Grid.Row="0" Margin="10,10,10,0">
 
-                            <Image Source="ColorChat.png" VerticalOptions="CenterAndExpand">
+                            <Image Source="ColorChat.png" VerticalOptions="CenterAndExpand"  WidthRequest="24" HeightRequest="24">
                             </Image>
                             <!-- <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>
@@ -1331,7 +1360,7 @@
 
                         <StackLayout Grid.Column="4" Grid.Row="0" BackgroundColor="Transparent" Margin="10,10,10,0">
 
-                            <Image Source="ic_burger.png" VerticalOptions="CenterAndExpand"/>
+                            <Image Source="ic_burger.png" VerticalOptions="CenterAndExpand" WidthRequest="24" HeightRequest="24"/>
                             <yummy:PancakeView  BackgroundColor="Transparent" Padding="3" CornerRadius="5">
                                 <yummy:PancakeView.Triggers>
                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding MenuViewVisible}" Value="True">

@@ -1132,13 +1132,13 @@ namespace GAZT.Manager
                 CultureInfo arCul = new CultureInfo("ar-SA");
                 CultureInfo enCul = new CultureInfo("en-US");
                 DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
-                var temp1 = tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
-                return temp1;
+                return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return null;
             }
+           
         }
 
 
