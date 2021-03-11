@@ -123,16 +123,16 @@ namespace GAZT.Manager
         }
         public static bool IsUserNameValid(string userName)
         {
-            
+
             foreach (char letter in userName.ToCharArray())
             {
                 if (letter <= 127)
                 {
-                   
+
                 }
                 else
                 {
-                   
+
                 }
             }
             Match UserNameMatch = Regex.Match(userName, EnglishString);
@@ -225,7 +225,7 @@ namespace GAZT.Manager
             }
             return FullDate;
         }
-        
+
         public static string GetDayPrefix(DateTime? dt)
         {
             /*DateTime dt;
@@ -241,14 +241,14 @@ namespace GAZT.Manager
 
             if (dt != null)
             {
-                int dtDay=0;
+                int dtDay = 0;
                 if (dt != null)
                 {
                     dtDay = Convert.ToInt32(dt?.Day);
                 }
-                   
 
-                if (new[] {11, 12, 13}.Contains(dtDay))
+
+                if (new[] { 11, 12, 13 }.Contains(dtDay))
                 {
                     suffix = "th";
                 }
@@ -470,7 +470,7 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     throw new InvalidDataException();
                 }
@@ -584,7 +584,7 @@ namespace GAZT.Manager
         {
             if (Extention.ToLower() == "doc")
             {
-               return "Generic_attachment_icon.png";
+                return "Generic_attachment_icon.png";
 
             }
             else if (Extention.ToLower() == "docx")
@@ -1056,7 +1056,7 @@ namespace GAZT.Manager
                     amountWithComma = _testDueAmount;
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return string.Empty;
             }
@@ -1105,7 +1105,7 @@ namespace GAZT.Manager
 
         public static int FindTheAnswerIndexBasedOntheAnswerId(string QuestionNumber, string AnswerId, QUESCONFIG_MSet qUESCONFIG_MSet)
         {
-        
+
 
             IEnumerable<IGrouping<string, QuestionsetWithMinMax>> QuestionsGroupedByQuestionNo = GetQuestionsGroupedByQuestionNo(qUESCONFIG_MSet);
 
@@ -1118,7 +1118,7 @@ namespace GAZT.Manager
             //return AnswersGroupedByQuestionNo.FindIndex(qmm);
             return index;
         }
-        private static  string[] allFormats ={"yyyy/MM/dd","yyyy/M/d",
+        private static string[] allFormats ={"yyyy/MM/dd","yyyy/M/d",
         "dd/MM/yyyy","d/M/yyyy",
         "dd/M/yyyy","d/MM/yyyy","yyyy-MM-dd",
         "yyyy-M-d","dd-MM-yyyy","d-M-yyyy",
@@ -1127,10 +1127,18 @@ namespace GAZT.Manager
         "dd M yyyy","d MM yyyy"};
         public static string HijriToGreg(string hijri)
         {
-            CultureInfo arCul = new CultureInfo("ar-SA");
-            CultureInfo enCul = new CultureInfo("en-US");
-            DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
-            return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
+            try
+            {
+                CultureInfo arCul = new CultureInfo("ar-SA");
+                CultureInfo enCul = new CultureInfo("en-US");
+                DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
+                var temp1 = tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
+                return temp1;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
 
@@ -1138,10 +1146,19 @@ namespace GAZT.Manager
         {
             try
             {
-                CultureInfo arSA = new CultureInfo("ar-SA");
-                CultureInfo enCul = new CultureInfo("en-US");
-                DateTime tempDate = DateTime.ParseExact(date, allFormats, enCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
-                return tempDate.ToString("yyyy/MM/dd", arSA.DateTimeFormat);
+                try
+                {
+                    CultureInfo arSA = new CultureInfo("ar-SA");
+                    CultureInfo enCul = new CultureInfo("en-US");
+                    DateTime tempDate = DateTime.ParseExact(date, allFormats, enCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
+                    var var2 = tempDate.ToString("yyyy/MM/dd", arSA.DateTimeFormat);
+                    return var2;
+                }
+                catch (Exception ex)
+                {
+
+                    return null;
+                }
 
             }
             catch (Exception ex)
@@ -1158,11 +1175,11 @@ namespace GAZT.Manager
                 arSA.DateTimeFormat.Calendar = new GregorianCalendar();
                 return DateTime.ParseExact(date, "yyyy/MM/dd", arSA).ToString("yyyy/MM/dd");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return "";
             }
-             
+
         }
 
         public static string ConvertDateFormat(object newDate)
@@ -1295,7 +1312,7 @@ namespace GAZT.Manager
             }
         }
     }
-   
+
 
     public enum ArButtons
     {
@@ -1420,7 +1437,7 @@ namespace GAZT.Manager
     }
 
 
-    
+
 
 }
 

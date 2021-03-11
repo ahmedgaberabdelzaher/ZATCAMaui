@@ -337,7 +337,7 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                            <StackLayout Orientation="Horizontal" >
+                            <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}" HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                 <Switch x:Name="HijriCalSwitch1" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal, Mode=TwoWay}" Toggled="HijriCal2Switch_Toggled" />
                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>

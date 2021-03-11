@@ -48,7 +48,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public bool isSaveAsDraftCalledForAttachment = false;
         public string permitThirdOptionReason = string.Empty;
         public string selectedCalPermitNo = null;
-        public static int numberOfAttachmentSentToAttachmentPopUp= 0;
+        public static int numberOfAttachmentSentToAttachmentPopUp = 0;
         List<TinDeregestrationAttachmentsModel> check;
         List<Attachment> attachmentList;
         public bool IsDeRegistrationValid = true;
@@ -248,7 +248,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_tINNumber == value) return;
 
                 _tINNumber = value;
-                if(string.IsNullOrEmpty(_tINNumber))
+                if (string.IsNullOrEmpty(_tINNumber))
                 {
                     IsEnteredTINValid = false;
                 }
@@ -805,7 +805,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-               if (_selectedOutletOptionIndex == value) return;
+                if (_selectedOutletOptionIndex == value) return;
 
                 _selectedOutletOptionIndex = value;
                 RaisePropertyChanged("SelectedOutletOptionIndex");
@@ -1024,7 +1024,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("AttachmentName");
             }
         }
-     
+
 
         private TinDeregestrationAttachmentsModel _selectedAttachment { get; set; }
         public TinDeregestrationAttachmentsModel SelectedAttachment
@@ -1091,7 +1091,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
                 RaisePropertyChanged("TinDeregistrationData");
-                
+
             }
         }
 
@@ -1336,8 +1336,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (PickerModel.PickerId == "reasonPicker")
                         {
-                            Task.Run(async () => {
-                              await  ResetTINDeRegistrationObject();
+                            Task.Run(async () =>
+                            {
+                                await ResetTINDeRegistrationObject();
                                 ClearData();
                                 string tempSelectedReason = PickerModel.SelectedValue;
                                 permitThirdOptionReason = PickerModel.SelectedValue;
@@ -1415,7 +1416,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                             });
 
-                         
+
                         }
                         else if (PickerModel.PickerId == "idTypePicker")
                         {
@@ -2118,7 +2119,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if (_iBANTypesList != null && _iBANTypesList.Count != 0)
                 {
-                  
+
                     //if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked == false)
                     //{
                     //    IsEnableIBANType = false;
@@ -2215,7 +2216,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_ListOfActionButtonsApplicable == value) return;
 
                 _ListOfActionButtonsApplicable = value;
-              
+
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
@@ -2531,7 +2532,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             OnPermitTypeReasonTapped = new Command(this.OnOutletPermitTypeDeRegisrtationReasonClicked);
             OnMoreClicked = new Command(this.OnMoreOptionClicked);
 
-           
+
             TinText = new FieldValidations();
             IdTypeText = new FieldValidations();
             IdNumberText = new FieldValidations();
@@ -2597,14 +2598,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
 
-        public async void  OnMoreOptionClicked()
+        public async void OnMoreOptionClicked()
         {
             //if (IsNavigatedToSubmitted == false)
             //{
             //ListOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
             //    PopupNavigation.Instance.PushAsync(new MorePopUpPageView(ListOfActionButtonsApplicable));
             TINDeRegistrationPopUp popUp = new TINDeRegistrationPopUp();
-            popUp.OnItemSelect = async() => {
+            popUp.OnItemSelect = async () =>
+            {
                 await OnSaveAsDraftClicked();
             };
             await PopupNavigation.Instance.PushAsync(popUp);
@@ -2758,7 +2760,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void ClearData()
         {
-           //Reason Section data
+            //Reason Section data
             PickerDobToDisplay = string.Empty;
             if (IDTypeDataModel != null)
             {
@@ -4022,7 +4024,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //{
                 //    AttachmentsListViewData.Clear();
                 //}
-                if(isSaveAsDraftCalledForAttachment == true)
+                if (isSaveAsDraftCalledForAttachment == true)
                 {
                     TinDeregistrationResponseModel zakatDeregResponseData = new TinDeregistrationResponseModel();
                     zakatDeregResponseData.Approvez = "";
@@ -4078,8 +4080,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 else
                 {
-                   
-                   
+
+
                     foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
                     {
                         foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
@@ -4204,7 +4206,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 return;
                             }
 
-                            if(isSaveAsDraftCalledForAttachment == true)
+                            if (isSaveAsDraftCalledForAttachment == true)
                             {
                                 AttachmentsListViewData.Clear();
                                 TinDeregistrationData.AttDetSet.Results.Clear();
@@ -4272,9 +4274,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         return;
                     }
-                    else if(IsDeRegistrationValid == false)
+                    else if (IsDeRegistrationValid == false)
                     {
-                       await _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                        await _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
                         return;
                     }
                     else
@@ -4362,7 +4364,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                         {
 
                                                         }
-                                                       
+
                                                     }
 
                                                     //if (outletInfo.PermitTypes == null)
@@ -4419,9 +4421,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                 if (TinDeregistrationData.ADregOpt == "2")
                                                 {
                                                     permitInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
-                                                    
+
                                                 }
-                                                permitInfo.APermitDregRsnTb = TinDeregistrationData.ADregOpt == "2"? "2":"3";
+                                                permitInfo.APermitDregRsnTb = TinDeregistrationData.ADregOpt == "2" ? "2" : "3";
                                                 tempPermitTypes.Add(permitInfo);
 
                                             }
@@ -4503,7 +4505,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             }
                         }
 
-                       // await SaveAsDraft();
+                        // await SaveAsDraft();
                         EnableOutletDetaislView();
                     }
 
@@ -4517,7 +4519,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     else
                     {
-                      //  await SaveAsDraft();
+                        //  await SaveAsDraft();
                         EnableOutletDetaislView();
                     }
                 }
@@ -4609,7 +4611,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         SelectedOutletForCloseTranser.ReasonDescription = AppResources.TinDeregistrationTransfer;
                         SetDataForTransferToASingleTranferee();
-                     //   await SaveAsDraft();
+                        //   await SaveAsDraft();
                         EnableOutletDetaislView();
                     }
 
@@ -4652,7 +4654,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             return;
                         }
                     }
-                   // await SaveAsDraft();
+                    // await SaveAsDraft();
                     EnableOutletDetaislView();
                 }
                 else if (SelectedPermitOutletOptionIndex == 0)
@@ -4695,8 +4697,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             item.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
                         }
                     }
-                   // await SaveAsDraft();
-                   EnableOutletDetaislView();
+                    // await SaveAsDraft();
+                    EnableOutletDetaislView();
                 }
 
                 if (TinDeregistrationData.ADregOpt == "3")
@@ -5069,7 +5071,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                 check = new List<TinDeregestrationAttachmentsModel>();
+                check = new List<TinDeregestrationAttachmentsModel>();
 
                 //ADregReason: "2"
                 //ADregOpt: "1"
@@ -5246,7 +5248,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
 
                         if (AllOutlets != null && AllOutlets.Count > 0)
-                            isTransfer = AllOutlets.Any(x => x.PermitTypes != null && x.PermitTypes.Any(y =>!string.IsNullOrEmpty(y.APermitDisplayReason) && y.APermitDisplayReason.Equals(AppResources.TinDeregistrationTransfer)));
+                            isTransfer = AllOutlets.Any(x => x.PermitTypes != null && x.PermitTypes.Any(y => !string.IsNullOrEmpty(y.APermitDisplayReason) && y.APermitDisplayReason.Equals(AppResources.TinDeregistrationTransfer)));
 
                         if (isTransfer || SelectedPermitOutletOptionIndex == 1 || permitThirdOptionReason.Contains(AppResources.TinDeregistrationTransfer))
 
@@ -5318,7 +5320,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     AttachmentsListViewData.Clear();
                 }
                 AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(check);
-               
+
                 //foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
                 //{
                 //    foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
@@ -5342,7 +5344,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //// attachmentsListViewDataString = JsonConvert.SerializeObject(attachmentsListViewData);
             }
 
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
@@ -5350,9 +5353,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public void PopulateAttachments(List<Attachment> attachments)
         {
             // To clean the existing data to replace it with latest data after upload and delete of attachment
-            foreach(var obj in AttachmentsListViewData)
+            foreach (var obj in AttachmentsListViewData)
             {
-                if(SelectedAttachment != null && SelectedAttachment.DocType != null && SelectedAttachment.DocType.Equals(obj.DocType) && obj.AttachmentTypeList != null)
+                if (SelectedAttachment != null && SelectedAttachment.DocType != null && SelectedAttachment.DocType.Equals(obj.DocType) && obj.AttachmentTypeList != null)
                 {
                     obj.AttachmentTypeList.Clear();
                 }
@@ -5380,7 +5383,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
 
             AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
-           attachmentList = GetAllAttachemt(AttachmentsListViewData);
+            attachmentList = GetAllAttachemt(AttachmentsListViewData);
             EnableAttachments();
         }
 
@@ -5407,8 +5410,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
         public async void NewAttachmentClicked()
         {
-          
-         try
+
+            try
             {
                 foreach (TinDeregestrationAttachmentsModel tinDeregestrationAttachmentsModel in AttachmentsListViewData)
                 {
@@ -5771,7 +5774,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         TinDeregistrationData.ADob = null;
                     }
-                   
+
 
                     //PickerDOBDateDisplay = TinDeregistrationData.ADobH;//ADob, 
                     //PickerDobToDisplay = TinDeregistrationData.AExpdtH;//ASubmissionDateH,ASubmissionDate
@@ -6133,9 +6136,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 case ProcessStep.Step2:
                     {
-                       // OutletContinueBtnClicked();
+                        // OutletContinueBtnClicked();
                         await SaveAsDraft();
-                        if(isSubmitted == true)
+                        if (isSubmitted == true)
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
@@ -6143,7 +6146,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 case ProcessStep.Step3:
                     {
-                       //AttachmentsContinueBtnClicked();
+                        //AttachmentsContinueBtnClicked();
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
@@ -6155,12 +6158,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 case ProcessStep.Step4:
                     {
-                       // DeclarationContinueBtnClicked();
+                        // DeclarationContinueBtnClicked();
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
-                           // await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
+                            // await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
                             isSaveAsDraftCalledForAttachment = true;
                         }
                         break;
@@ -6222,8 +6225,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             }
 
-           
-          //  TinDeregistrationData.AttDetSet.Results = zakatDeregResponseData.AttDetSet.Results;
+
+            //  TinDeregistrationData.AttDetSet.Results = zakatDeregResponseData.AttDetSet.Results;
 
         }
 
@@ -6248,11 +6251,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-           
+
         }
 
         public void DeleteAttachment(Attachment attachment)
@@ -6265,11 +6268,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     //   _navigationService.NavigateTo(AppResources.Somethingwentwrong, AppResources.ZError);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-           
+
         }
 
         public List<Attachment> GetAllAttachemt(List<TinDeregestrationAttachmentsModel> attachmentList)
@@ -6289,21 +6292,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 return list;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new List<Attachment>();
             }
-           
+
         }
 
 
 
         public void SetDefaultReasonLayout()
         {
-           // TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
+            // TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
             int index = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
 
-           SelectedOutletOptionIndex =OutletDecisionOptions.IndexOf(SelectedOutletOption);
+            SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(SelectedOutletOption);
 
             //if (SelectedOutletOptionIndex == 1)
             //{
@@ -6311,39 +6314,39 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             //}
             if (SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
-               NationalTypeSelected();
-                Device.BeginInvokeOnMainThread(() =>IsDobVisible = true);
+                NationalTypeSelected();
+                Device.BeginInvokeOnMainThread(() => IsDobVisible = true);
             }
 
-           IsOption1Visible = index == 0 ? true : false;
-           IsOption2Visible = index == 1 ? true : false;
+            IsOption1Visible = index == 0 ? true : false;
+            IsOption2Visible = index == 1 ? true : false;
 
             if (IsOption2Visible == true)
             {
-               PickerDobToDisplay = string.Empty;
-               TINNumber = string.Empty;
-               SelectedIdtype = string.Empty;
-               SelectedIdNumber = string.Empty;
-               PickerDOBDateDisplay = string.Empty;
+                PickerDobToDisplay = string.Empty;
+                TINNumber = string.Empty;
+                SelectedIdtype = string.Empty;
+                SelectedIdNumber = string.Empty;
+                PickerDOBDateDisplay = string.Empty;
 
                 if (FirstNameFromIdType != null)
                 {
-                   FirstNameFromIdType = string.Empty;
+                    FirstNameFromIdType = string.Empty;
                 }
 
                 if (IDTypeDataModel == null)
                 {
-                   IDTypeDataModel = new VATSignUpD();
+                    IDTypeDataModel = new VATSignUpD();
                 }
                 else
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                       //IDTypeDataModel.Name1 = string.Empty;
-                       //IDTypeDataModel.Name2 = string.Empty;
-                       //IDTypeDataModel.FatherName = string.Empty;
-                       //IDTypeDataModel.GrandfatherName = string.Empty;
-                       //IDTypeDataModel.FamilyName = string.Empty;
+                        //IDTypeDataModel.Name1 = string.Empty;
+                        //IDTypeDataModel.Name2 = string.Empty;
+                        //IDTypeDataModel.FatherName = string.Empty;
+                        //IDTypeDataModel.GrandfatherName = string.Empty;
+                        //IDTypeDataModel.FamilyName = string.Empty;
                     });
                 }
             }
@@ -6351,10 +6354,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 if (FirstNameFromIdType != null)
                 {
-                   FirstNameFromIdType = string.Empty;
+                    FirstNameFromIdType = string.Empty;
                 }
 
-               PickerDobToDisplay = string.Empty;
+                PickerDobToDisplay = string.Empty;
                 //TodayDate = new ObservableCollection<object>();
                 //TodayDateinHijri = new ObservableCollection<object>();
             }
@@ -6362,44 +6365,44 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 if (FirstNameFromIdType != null)
                 {
-                   FirstNameFromIdType = string.Empty;
+                    FirstNameFromIdType = string.Empty;
                 }
 
-               PickerDobToDisplay = string.Empty;
-               TINNumber = string.Empty;
-               SelectedIdtype = string.Empty;
-               SelectedIdNumber = string.Empty;
-               PickerDOBDateDisplay = string.Empty;
+                PickerDobToDisplay = string.Empty;
+                TINNumber = string.Empty;
+                SelectedIdtype = string.Empty;
+                SelectedIdNumber = string.Empty;
+                PickerDOBDateDisplay = string.Empty;
 
                 if (IDTypeDataModel == null)
                 {
-                   IDTypeDataModel = new VATSignUpD();
+                    IDTypeDataModel = new VATSignUpD();
                 }
                 else
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                       IDTypeDataModel.Name1 = string.Empty;
-                       IDTypeDataModel.Name2 = string.Empty;
-                       IDTypeDataModel.FatherName = string.Empty;
-                       IDTypeDataModel.GrandfatherName = string.Empty;
-                       IDTypeDataModel.FamilyName = string.Empty;
+                        IDTypeDataModel.Name1 = string.Empty;
+                        IDTypeDataModel.Name2 = string.Empty;
+                        IDTypeDataModel.FatherName = string.Empty;
+                        IDTypeDataModel.GrandfatherName = string.Empty;
+                        IDTypeDataModel.FamilyName = string.Empty;
                     });
                 }
-               PickerDobToDisplay = string.Empty;
+                PickerDobToDisplay = string.Empty;
                 //TodayDate = new ObservableCollection<object>();
                 //TodayDateinHijri = new ObservableCollection<object>();
             }
 
-           AllOutlets =AllOutlets.Select(x =>
-            {
-                x.PermitTypes = x.PermitTypes.Select(y =>
-                {
-                    y.APermitDeregDisplayDate = null;
-                    return y;
-                }).ToList();
-                return x;
-            }).ToList();
+            AllOutlets = AllOutlets.Select(x =>
+              {
+                  x.PermitTypes = x.PermitTypes.Select(y =>
+                  {
+                      y.APermitDeregDisplayDate = null;
+                      return y;
+                  }).ToList();
+                  return x;
+              }).ToList();
 
             GetSelectedDataTemplate(SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
 
@@ -6442,8 +6445,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             //}
             if (SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationCloseOutletsIndividually))
             {
-               outletEditIsVisible = true;
-               OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+                outletEditIsVisible = true;
+                OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
             }
             else if (SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
@@ -6452,8 +6455,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             else
             {
-               outletEditIsVisible = false;
-               OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+                outletEditIsVisible = false;
+                OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
             }
             //int index = Convert.ToInt16(SelectedOutletOptionIndex);
             //if (isIndex1)
@@ -6472,7 +6475,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             //IsOption2Visible = index == 1 ? true : false;
         }
 
-       public void SetAllTransferOutletData()
+        public void SetAllTransferOutletData()
         {
             try
             {
@@ -6498,9 +6501,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     FirstNameFromIdType = TinDeregistrationData.ANm3;
                     PickerDOBDateDisplay = TinDeregistrationData.ADobH;//ADob, 
                     PickerDobToDisplay = TinDeregistrationData.AExpdtH;//ASubmissionDateH,ASubmissionDate
-                    TINNumber = TinDeregistrationData.ATransTin; 
+                    TINNumber = TinDeregistrationData.ATransTin;
                 }
-                
+
             }
             catch (Exception ex)
             {
