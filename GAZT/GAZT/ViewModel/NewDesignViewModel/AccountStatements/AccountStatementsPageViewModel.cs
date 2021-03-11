@@ -1453,6 +1453,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 _navigationService.GoBack();
                 return;
             }
+           
 
             var statementsLineItems = new ObservableCollection<ASResult>();
             Console.WriteLine(statementsLineItems);
@@ -1466,6 +1467,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 Console.WriteLine(statementsLineItems);
                 Console.WriteLine(statementsLineItems.Count);
             }
+
+           /* if (!string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate))
+            {
+                return;
+            }
+            else if (string.IsNullOrEmpty(TxFromDate) && !string.IsNullOrEmpty(TxToDate))
+            {
+                return;
+            }
+            else if (!string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate))
+            {
+                return;
+            }
+            else if (string.IsNullOrEmpty(TPFromDate) && !string.IsNullOrEmpty(TPToDate))
+            {
+                return;
+            }
+            else if (string.IsNullOrEmpty(FromTxAmount) && !string.IsNullOrEmpty(ToTxAmount))
+            {
+                return;
+            }
+            else if (!string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
+            {
+                return;
+            }*/
+
             if (TxFromDate != "" && TxToDate != "")
             {
                 var filterItems = statementsLineItems;

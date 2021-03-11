@@ -549,15 +549,20 @@
                                HasShadow="False"
                                Style="{StaticResource SfStyleForZakatPlanGreen}"
                                 Padding="0">
-                                <StackLayout Padding="10" Orientation="Horizontal">
+                                <Grid Padding="10" >
 
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalInstalmentsRequestAmount}" HorizontalOptions="StartAndExpand"
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalInstalmentsRequestAmount}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
 
-                                    <custom:CustomLabel  Text="{Binding TotalAmount,Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="EndAndExpand"
+                                    <custom:CustomLabel Grid.Column="1" Text="{Binding TotalAmount}" HorizontalOptions="EndAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}" VerticalTextAlignment="Center"/>
 
-                                </StackLayout>
+                                </Grid>
                             </Frame>
                         </Grid>
 

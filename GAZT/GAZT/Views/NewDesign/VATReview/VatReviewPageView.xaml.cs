@@ -410,7 +410,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             if (!String.IsNullOrEmpty(viewModel.RequestedReviewAmount) && !String.IsNullOrEmpty(viewModel.TotalTaxLiability) &&
                 Double.Parse(viewModel.RequestedReviewAmount) > Double.Parse(viewModel.TotalTaxLiability))
             {
-                viewModel.RequestedReviewAmount = viewModel.TotalTaxLiability;
+                viewModel.RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(viewModel.TotalTaxLiability);
             }
             viewModel.EnableReviewDetailsConButton();
             viewModel.FetchSecurityAmount();
