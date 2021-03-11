@@ -395,5 +395,17 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
 
         }
+
+        private void StatusList_Tapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+            var item = e.ItemData as ASResult;
+
+            if (item != null)
+            {
+                viewModel.FromStatus = item.StatusDesc;
+                viewModel.ApplyFilter();
+            }
+        }
+
     }
 }
