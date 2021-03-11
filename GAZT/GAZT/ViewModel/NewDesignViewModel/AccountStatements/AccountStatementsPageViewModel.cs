@@ -2220,6 +2220,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     IsNoStatementsAvaiableVisible = true;
                 }
 
+                IsLoading = false;
             }
             catch (Exception ex)
             {
