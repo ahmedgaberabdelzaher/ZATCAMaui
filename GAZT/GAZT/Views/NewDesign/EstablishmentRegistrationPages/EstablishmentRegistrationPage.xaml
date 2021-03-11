@@ -1357,11 +1357,11 @@
                                                 <TapGestureRecognizer Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
                                             </custom:CustomLabel.GestureRecognizers>
                                         </custom:CustomLabel>
-                                        <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding Actno, Converter={StaticResource deleteActionVisibilityConverter}}">
+                                        <!--<Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding Actno, Converter={StaticResource deleteActionVisibilityConverter}}">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnDeleteOutletButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
                                             </Image.GestureRecognizers>
-                                        </Image>
+                                        </Image>-->
                                     </Grid>
                                 </cards:SfCardView>
                             </DataTemplate>

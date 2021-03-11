@@ -1369,11 +1369,11 @@
                                             </custom:CustomLabel.GestureRecognizers>
                                         </custom:CustomLabel>
                                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Crlicenceno}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,-12,0,0"/>
-                                        <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding Actno, Converter={StaticResource deleteActionVisibilityConverter}}">
+                                        <!--<Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding Actno, Converter={StaticResource deleteActionVisibilityConverter}}">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnDeleteOutletButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
                                             </Image.GestureRecognizers>
-                                        </Image>
+                                        </Image>-->
                                     </Grid>
                                 </cards:SfCardView>
                             </DataTemplate>
