@@ -10,7 +10,7 @@
 	<string>production</string>
 	<key>com.apple.developer.in-app-payments</key>
 	<array>
-		<string>merchant.gazt.egazt</string>
+		<string>merchant.com.gazt.enterprise.egazt</string>
 	</array>
 </dict>
 </plist>

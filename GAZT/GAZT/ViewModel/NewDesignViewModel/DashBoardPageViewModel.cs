@@ -2319,8 +2319,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //});
         }
 
-        private async Task GetBillsAndReturns()
+        public async Task GetBillsAndReturns()
         {
+            App.isMybillsRefresh = false;
             AllBills = new List<OverduePaymentAndUnSubmittedReturn>();
             MyObligationAmount = 0.0;
             var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
