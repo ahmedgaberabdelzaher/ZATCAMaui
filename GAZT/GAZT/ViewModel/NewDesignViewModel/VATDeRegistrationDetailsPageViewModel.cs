@@ -1395,17 +1395,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 TxtIDNumber = vATDeRegistration.d.Idnumbr;
 
                             }
-                            if (vATDeRegistration.d.Type == "ZS00001")
+                            if (vATDeRegistration.d.Type == "ZS0001")
                             {
                                 IDType = AppResources.NationaID;
 
                             }
-                            else if (vATDeRegistration.d.Type == "ZS00002")
+                            else if (vATDeRegistration.d.Type == "ZS0002")
                             {
                                 IDType = AppResources.ZZIqamaID;
 
                             }
-                            else
+                            else if (vATDeRegistration.d.Type == "ZS0003")
                             {
                                 IDType = AppResources.ZZGCCID;
 
@@ -2289,6 +2289,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     IsDeclarationChecked = false;
                 }
+
             }
         }
 
@@ -2894,7 +2895,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     VATDeRegistrationDetailsData.d.Type = "ZS0002";
 
                 }
-                else
+                else if (IDType == AppResources.ZZGCCID)
                 {
                     VATDeRegistrationDetailsData.d.Type = "ZS0003";
 
