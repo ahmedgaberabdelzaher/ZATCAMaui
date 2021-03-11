@@ -1846,7 +1846,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
 
-                            NextFilingDueDate = date.ToString("dd MMM yyyy", new CultureInfo("en-US"));
+                            NextFilingDueDate = date.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                         }
 
                         isDateValidated = true;

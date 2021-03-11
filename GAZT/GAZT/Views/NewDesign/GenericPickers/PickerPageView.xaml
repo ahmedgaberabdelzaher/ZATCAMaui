@@ -23,7 +23,7 @@
                 <border:SfBorder Margin="0,0,0,5" HasShadow="False" Padding="0"
                                          Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout Orientation="Horizontal">
-                        <Button x:Name="PickerDoneButton" TextColor="{StaticResource Primary}" FontSize="Medium" FontAttributes="Bold" Text="{x:Static ResourceManager:AppResources.CRDone}" Clicked="PopupClose_Clicked" Margin="10,0,10,0"   BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                        <Button x:Name="PickerDoneButton" TextColor="{StaticResource Primary}" FontSize="Medium" FontAttributes="Bold" Text="{x:Static ResourceManager:AppResources.ZDone}" Clicked="PopupClose_Clicked" Margin="10,0,10,0"   BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
                     </Button>
                          <Button x:Name="PickerCancelButton" TextColor="{StaticResource Primary}" FontSize="Medium" FontAttributes="Bold" Text="{x:Static ResourceManager:AppResources.ZZClose}" Clicked="PopupCancel_Clicked" Margin="10,0,10,0"   BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center">
                     </Button>
