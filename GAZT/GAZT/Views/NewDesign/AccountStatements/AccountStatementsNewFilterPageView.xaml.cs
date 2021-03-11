@@ -56,7 +56,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             var doneButton = new Button
             {
-                Text = AppResources.CRDone,
+                Text = AppResources.ZDone,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.End,
                 TextColor = Color.Black,
@@ -76,7 +76,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             var doneButton1 = new Button
             {
-                Text = AppResources.CRDone,
+                Text = AppResources.ZDone,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.End,
                 TextColor = Color.Black,
@@ -96,7 +96,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             var doneButton2 = new Button
             {
-                Text = AppResources.CRDone,
+                Text = AppResources.ZDone,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.End,
                 TextColor = Color.Black,
@@ -116,7 +116,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             var doneButton3 = new Button
             {
-                Text = AppResources.CRDone,
+                Text = AppResources.ZDone,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.End,
                 TextColor = Color.Black,
