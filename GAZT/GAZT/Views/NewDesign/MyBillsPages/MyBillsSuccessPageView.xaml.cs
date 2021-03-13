@@ -26,7 +26,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         {
             InitializeComponent();
             this.refNum = refNum;
-            
+
             foreach (var item in Application.Current.MainPage.Navigation.NavigationStack)
             {
                 if (item.GetType().Name == App.GAZTNewDesignMyBillsPageView)
@@ -35,31 +35,35 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     break;
                 }
             }
-            
+
             if (!isDashboard)
             {
                 viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
 
                 viewModel.ReferenceNumber = paymentInfo.Paymentref;
-                if (paymentInfo.Period != null)
+                /*if (paymentInfo.Period != null)
                 {
                     viewModel.TaxablePeriod = paymentInfo.Period;
-                }
-                
+                    
+                }*/
+                viewModel.TaxablePeriod = !string.IsNullOrEmpty(paymentInfo.Period) ? paymentInfo.Period : "N/A";
 
-                this.BindingContext = viewModel;    
+
+                this.BindingContext = viewModel;
             }
             else
             {
                 _dashBoardPageViewModel = App.Locator.GAZTNewDesignDashBoardPageView;
 
                 _dashBoardPageViewModel.ReferenceNumber = paymentInfo.Paymentref;
+                /*
+                                if (paymentInfo.Period != null)
+                                {
+                                    _dashBoardPageViewModel.TaxablePeriod = paymentInfo.Period;
 
-                if (paymentInfo.Period != null)
-                {
-                    _dashBoardPageViewModel.TaxablePeriod = paymentInfo.Period;
-                }
-                
+                                }*/
+                _dashBoardPageViewModel.TaxablePeriod = !string.IsNullOrEmpty(paymentInfo.Period) ? paymentInfo.Period : "N/A";
+
                 this.BindingContext = _dashBoardPageViewModel;
             }
             /*viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
@@ -79,7 +83,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDReferenceNumber + " " + text));
 
                 // await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
-            }   
+            }
         }
 
         private void GotodashboardClicked(object sender, EventArgs e)
@@ -88,7 +92,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             App.isMybillsRefresh = true;
 
             var _navigation = Application.Current.MainPage.Navigation;
-            
+
             //foreach (var item in _navigation.NavigationStack)
             //{
             //    if (item.GetType().Name == App.GAZTNewDesignMyReturnsNewPageView)
@@ -97,7 +101,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             //        break;
             //    }
             //}
-          
+
             foreach (var item in _navigation.NavigationStack)
             {
                 if (item.GetType().Name == App.GAZTNewDesignMyBillsPageView)
@@ -124,7 +128,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             {
 
 
-                viewModel._navigationService.GoBack();    
+                viewModel._navigationService.GoBack();
             }
             //viewModel._navigationService.GoBack();
 
