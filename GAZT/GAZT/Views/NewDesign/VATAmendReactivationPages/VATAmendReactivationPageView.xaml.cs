@@ -52,7 +52,27 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 this.BindingContext = viewModel;
+                if(App.IsArabic)
+                {
+                    label1.HorizontalTextAlignment = TextAlignment.End;
+                    label2.HorizontalTextAlignment = TextAlignment.End;
+                    label3.HorizontalTextAlignment = TextAlignment.End;
+                    label4.HorizontalTextAlignment = TextAlignment.End;
 
+                    
+
+
+
+
+                }
+                else
+                {
+                    label1.HorizontalTextAlignment = TextAlignment.Start;
+                    label2.HorizontalTextAlignment = TextAlignment.Start;
+                    label3.HorizontalTextAlignment = TextAlignment.Start;
+                    label4.HorizontalTextAlignment = TextAlignment.Start;
+
+                }
 
                 ChangeAeroIcon();
                 clearDATA();

@@ -806,11 +806,8 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                                 <RowDefinition Height="*"/>
                                                                                 <RowDefinition Height="auto"/>
                                                                             </Grid.RowDefinitions>
-                                                                            <StackLayout Grid.Row="1" Spacing="0">
-                                                                                <Label Text="{Binding TextQuestion3First}"   TextColor="{Binding TextQuestion3FirstTextColor}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.7"/>
+                                                                                <custom:CustomLabel x:Name="label4" Grid.Row="1" Text="{Binding TextQuestion3First}"   TextColor="{Binding TextQuestion3FirstTextColor}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.7"/>
                                                                                 <!--<Label Text="187,500 SAR"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>-->
-                                                                            </StackLayout>
-
                                                                         </Grid>
 
                                                                     </Grid>
@@ -832,10 +829,9 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                                 <RowDefinition Height="*"/>
                                                                                 <RowDefinition Height="auto"/>
                                                                             </Grid.RowDefinitions>
-                                                                            <StackLayout Grid.Row="1" Spacing="0">
-                                                                                <Label Text="{Binding TextQuestion3Second}" VerticalOptions="End" Style="{DynamicResource CardLabelBlack}" TextColor="{Binding TextQuestion3SecondTextColor}"  LineHeight="0.7"/>
+                                                                           
+                                                                                <custom:CustomLabel Grid.Row="1" x:Name="label3" Text="{Binding TextQuestion3Second}" VerticalOptions="End" Style="{DynamicResource CardLabelBlack}" TextColor="{Binding TextQuestion3SecondTextColor}"  LineHeight="0.7"/>
                                                                                 <!--<Label Text="187,500 SAR" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>-->
-                                                                            </StackLayout>
 
                                                                         </Grid>
                                                                     </Grid>
@@ -873,9 +869,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                                 <RowDefinition Height="*"/>
                                                                                 <RowDefinition Height="auto"/>
                                                                             </Grid.RowDefinitions>
-                                                                            <StackLayout Grid.Row="1" Spacing="0">
-                                                                                <Label Text="{Binding TextQuestion4First}" Style="{DynamicResource CardLabelBlack}"  TextColor="{Binding TextQuestion4FirstTextColor}"  LineHeight="0.7"/>
-                                                                            </StackLayout>
+                                                                                <custom:CustomLabel x:Name="label1" Grid.Row="1" Text="{Binding TextQuestion4First}" Style="{DynamicResource CardLabelBlack}"  TextColor="{Binding TextQuestion4FirstTextColor}"  LineHeight="0.7"/>
 
                                                                         </Grid>
 
@@ -898,10 +892,9 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                                 <RowDefinition Height="*"/>
                                                                                 <RowDefinition Height="auto"/>
                                                                             </Grid.RowDefinitions>
-                                                                            <StackLayout Grid.Row="1" Spacing="0">
-                                                                                <Label Text="{Binding TextQuestion4Second}" VerticalOptions="End" Style="{DynamicResource CardLabelBlack}" TextColor="{Binding TextQuestion4SecondTextColor}"  LineHeight="0.7"/>
+                                                                          
+                                                                                <custom:CustomLabel x:Name="label2" Grid.Row="1" Text="{Binding TextQuestion4Second}" VerticalOptions="End" Style="{DynamicResource CardLabelBlack}" TextColor="{Binding TextQuestion4SecondTextColor}"  LineHeight="0.7"/>
                                                                                 <!--<Label Text="Inma Bank" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>-->
-                                                                            </StackLayout>
 
                                                                         </Grid>
                                                                     </Grid>
