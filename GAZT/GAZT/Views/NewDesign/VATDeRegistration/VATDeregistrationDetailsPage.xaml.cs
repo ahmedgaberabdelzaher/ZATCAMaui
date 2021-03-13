@@ -683,6 +683,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             base.OnDisappearing();
 
             viewModel.IsLoading = false;
+            outletDecisionOptionsListView.SelectedItem = null;
+
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");

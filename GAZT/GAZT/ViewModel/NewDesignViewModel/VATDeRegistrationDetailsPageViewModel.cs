@@ -301,10 +301,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     }
                 }
-                else
-                {
-                    IsOthersEditorVisible = true;
-                }
+                //else
+                //{
+                //    IsOthersEditorVisible = true;
+                //}
                 RaisePropertyChanged("ReasonTitle");
             }
         }
@@ -1894,7 +1894,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
                 string reqType = string.Empty;
-                if (SelectedOutletOptionIndex == 0)
+                if(SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.VATDeregistrationReasonType1))
+               // if (SelectedOutletOptionIndex == 0)
                 {
                     reqType = "VT_DREG";
                 }
