@@ -1407,7 +1407,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <StackLayout Padding="15,15,15,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1472,7 +1472,7 @@
                                                                 HorizontalTextAlignment="End" />
                                             </StackLayout>
                                         </Grid>
-                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,35">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
