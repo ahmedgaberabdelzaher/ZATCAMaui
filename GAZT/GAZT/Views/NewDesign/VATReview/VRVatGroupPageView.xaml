@@ -301,12 +301,18 @@
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="auto" />
+
                                                             <ColumnDefinition Width="*" />
+
                                                         </Grid.ColumnDefinitions>
                                                         <custom:CustomLabel Grid.Column="0"
                                                                             Text="{x:Static ResourceManager:AppResources.VRAttachment}"
                                                                             Style="{StaticResource ValueLabelGrey}" />
-                                                        <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}"
+                                                         <Image Grid.Row="0" Grid.Column="1" Source="Generic_attachment_icon"
+                                                           Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                           HorizontalOptions="Start" VerticalOptions="Center" />
+                                                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Filename}"
                                                                             Style="{StaticResource ValueLabelBlack}"
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End" />

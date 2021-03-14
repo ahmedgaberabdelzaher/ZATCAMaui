@@ -7011,30 +7011,64 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             }
 
 
-                           
-                            VRVGIDType = IDToNameDictionary[_VATReviewRequestVTGR.d.DecidTy];
-                            VRVGIDNumber = _VATReviewRequestVTGR.d.DecidNo;
-                            VRVGContactPersonName = _VATReviewRequestVTGR.d.Decname;
+                            if(_VATReviewRequestVTGR.d.DecidTy != null) {
 
-                            VRVGVATeligiblesupplies = VGSupplicesDictionary[_VATReviewRequestVTGR.d.AggreSupply];
-                            VRVGVATeligiblepurchases = VGPurchasesDictionary[_VATReviewRequestVTGR.d.AggrePurchase];
+                                VRVGIDType = IDToNameDictionary[_VATReviewRequestVTGR.d.DecidTy];
+                            }
 
-                            var tinsListViewData = new ObservableCollection<VATReviewRequestVTGRModel.TABLESetResult>();
-                            foreach (VATReviewRequestVTGRModel.TABLESetResult tin in _VATReviewRequestVTGR.d.TABLESet.results)
-                            {
+                            if(_VATReviewRequestVTGR.d.DecidNo != null) {
 
-                                tinsListViewData.Add(tin);
+                                VRVGIDNumber = _VATReviewRequestVTGR.d.DecidNo;
 
                             }
-                            VRVGTinsListViewData = tinsListViewData;
-                            var attachmentsListViewData = new ObservableCollection<Attachment>();
-                            foreach (Attachment attachemnt in _VATReviewRequestVTGR.d.ATTDETSet.results)
-                            {
+                            if(_VATReviewRequestVTGR.d.Decname != null) {
 
-                                attachmentsListViewData.Add(attachemnt);
+                                VRVGContactPersonName = _VATReviewRequestVTGR.d.Decname;
 
                             }
-                            VRVGAttachmentsListViewData = attachmentsListViewData;
+
+                            if(_VATReviewRequestVTGR.d.AggreSupply != null)
+                            {
+
+                                VRVGVATeligiblesupplies = VGSupplicesDictionary[_VATReviewRequestVTGR.d.AggreSupply];
+
+                            }
+
+                            if(_VATReviewRequestVTGR.d.AggrePurchase != null) {
+
+                                VRVGVATeligiblepurchases = VGPurchasesDictionary[_VATReviewRequestVTGR.d.AggrePurchase];
+
+                            }
+
+
+
+                            if(_VATReviewRequestVTGR.d.TABLESet.results != null) {
+
+                                var tinsListViewData = new ObservableCollection<VATReviewRequestVTGRModel.TABLESetResult>();
+                                foreach (VATReviewRequestVTGRModel.TABLESetResult tin in _VATReviewRequestVTGR.d.TABLESet.results)
+                                {
+
+                                    tinsListViewData.Add(tin);
+
+                                }
+                                VRVGTinsListViewData = tinsListViewData;
+                            }
+
+                            if(_VATReviewRequestVTGR.d.ATTDETSet.results != null) {
+
+                                var attachmentsListViewData = new ObservableCollection<Attachment>();
+                                foreach (Attachment attachemnt in _VATReviewRequestVTGR.d.ATTDETSet.results)
+                                {
+
+                                    attachmentsListViewData.Add(attachemnt);
+
+                                }
+                                VRVGAttachmentsListViewData = attachmentsListViewData;
+                            }
+
+
+                          
+                          
 
                             Device.BeginInvokeOnMainThread(() =>
                             {
