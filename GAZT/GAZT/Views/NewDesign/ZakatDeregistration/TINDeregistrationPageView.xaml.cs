@@ -304,7 +304,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            outletDecisionOptionsListView.SelectedItem = null;
+            //outletDecisionOptionsListView.SelectedItem = null;
             //SimpleIoc.Default.Unregister<TINDeregistrationPageViewModel>();
             //SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
 
