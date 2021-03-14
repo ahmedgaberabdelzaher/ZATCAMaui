@@ -105,7 +105,7 @@ namespace EGAZT.Manager
 
         #region VATDeregistration Reason
 
-        public static VATDeregistrationModelRootObject GAZTGETVATDeregReasonDropdownList(string selectedType)
+        public static async Task<VATDeregistrationModelRootObject> GAZTGETVATDeregReasonDropdownList(string selectedType)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -120,7 +120,7 @@ namespace EGAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTVATDeregreasonDataResponse = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTVATDeregreasonDataResponse = await client.GetAsync(uri);
                     if (GAZTVATDeregreasonDataResponse != null)
                     {
                         if (GAZTVATDeregreasonDataResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -254,7 +254,7 @@ namespace EGAZT.Manager
             }
         }
         #endregion
-       
+
 
         #region VATDeregistration Reason
 

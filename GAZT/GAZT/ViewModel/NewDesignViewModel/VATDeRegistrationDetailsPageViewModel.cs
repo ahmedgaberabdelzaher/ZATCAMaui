@@ -1314,21 +1314,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 SelectedDocumentOption = new ResultsAttachmentItemForElgblDocSet();
                 AddOutletDocumentOptions();
-                SelectedOutletOption = OutletDecisionOptions[VATDeRegistrationDetailsData != null
-                                   && VATDeRegistrationDetailsData.d != null &&
-                                   VATDeRegistrationDetailsData.d.Reqtp == "S" ? 1 : 0];
-
-
                 GetLastICRDate();
-
-                if (SelectedOutletOption.ActiveOutletDecisionOptions.Contains(AppResources.VATDeregistrationReasonType1))
-                {
-                    reqType = "VT_DREG";
-                }
-                else
-                {
-                    reqType = "VT_SUSP";
-                }
                 await Task.Run(() =>
                 {
                     IsLoading = true;
@@ -1350,23 +1336,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //VATDeRegistrationDetailsData.d.NextDtfrom = ConvertDateFormat(NextFilingStartDate);
                         //VATDeRegistrationDetailsData.d.NextDtto = ConvertDateFormat(NextFilingEndDate);
 
-                        if (reasonList == null)
-                        {
-                            reasonList = VATDeregistrationWebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
-
-                        }
-                        for (int i = 0; i < reasonList.d.results.Count; i++)
-                        {
-                            if (reasonList.d.results[i].Reason == vATDeRegistration.d.Reason)
-                            {
-                                ReasonTitle = reasonList.d.results[i].Rdesc;
-
-                            }
-                        }
-
                         if (vATDeRegistration != null && vATDeRegistration.d != null)
                         {
-
                             if (vATDeRegistration.d.Agreeflg)
                             {
                                 IsInstructionChecked = true;
@@ -1420,8 +1391,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             ReturnIDx = vATDeRegistration.d.ReturnIdx;
 
                             VATDeRegistrationDetailsData = vATDeRegistration;
+                            SelectedOutletOption = OutletDecisionOptions[VATDeRegistrationDetailsData != null
+                                     && VATDeRegistrationDetailsData.d != null &&
+                                     VATDeRegistrationDetailsData.d.Reqtp == "S" ? 1 : 0];
 
+                            if (SelectedOutletOption.ActiveOutletDecisionOptions.Contains(AppResources.VATDeregistrationReasonType1))
+                            {
+                                reqType = "VT_DREG";
+                            }
+                            else
+                            {
+                                reqType = "VT_SUSP";
+                            }
+                            if (reasonList == null)
+                            {
+                                reasonList = await VATDeregistrationWebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
+
+                            }
+                            for (int i = 0; i < reasonList.d.results.Count; i++)
+                            {
+                                if (reasonList.d.results[i].Reason == vATDeRegistration.d.Reason)
+                                {
+                                    ReasonTitle = reasonList.d.results[i].Rdesc;
+
+                                }
+                            }
+
+                            string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            SuspendedStartDate = Convert.ToDateTime(convertedDate);//filling period
+                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            SuspendedEndDate = Convert.ToDateTime(convertedDate);//filling perio end date
+
+                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.StartDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            FromDate = Convert.ToDateTime(convertedDate);//suspension start date
+
+                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.EndDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            ToDate = Convert.ToDateTime(convertedDate);//suspension end date
+                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            NextFilingStartDate = Convert.ToDateTime(convertedDate);//next filling start date
+                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            NextFilingEndDate = Convert.ToDateTime(convertedDate);//next filling end date
                             //populateAttachments(vATDeRegistration);
+                            await suspendedDateValidation();
                             if (vATDeRegistration.d.NotesSet != null)
                             {
                                 OtherField = vATDeRegistration.d.NotesSet.results[0].Strline;
@@ -1689,7 +1700,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
         [Obsolete]
-        public void OnVatRegistrationReasonClicked()
+        public async void OnVatRegistrationReasonClicked()
         {
 
             List<string> reasonDescription = new List<string>();
@@ -1707,7 +1718,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             try
             {
-                reasonList = VATDeregistrationWebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
+                reasonList = await VATDeregistrationWebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
                 if (reasonList != null)
                 {
                     for (int i = 0; i < reasonList.d.results.Count; i++)
@@ -1894,8 +1905,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
                 string reqType = string.Empty;
-                if(SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.VATDeregistrationReasonType1))
-               // if (SelectedOutletOptionIndex == 0)
+                if (SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.VATDeregistrationReasonType1))
+                // if (SelectedOutletOptionIndex == 0)
                 {
                     reqType = "VT_DREG";
                 }
@@ -2833,7 +2844,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    reqType = "VT_SUSP";
+                    //reqType = "VT_SUSP";
+                    reqType = "VT_DREG";
                     requestTyp = "S";
 
                     VATDeRegistrationDetailsData.d.StartDate = ConvertDateFormat(FromDate);
@@ -2850,8 +2862,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 VATDeRegistrationDetailsData.d.TxnTpx = reqType;
                 VATDeRegistrationDetailsData.d.Reqtp = requestTyp;
-                VATDeRegistrationDetailsData.d.StepNumber = "03";
-                VATDeRegistrationDetailsData.d.StepNumberx = "03";
+                if (IsDeclarationViewEnabled)
+                {
+                    VATDeRegistrationDetailsData.d.StepNumber = "03";
+                    VATDeRegistrationDetailsData.d.StepNumberx = "03";
+                }
+                else
+                {
+                    VATDeRegistrationDetailsData.d.StepNumber = "02";
+                    VATDeRegistrationDetailsData.d.StepNumberx = "02";
+                }
 
                 for (int i = 0; i < reasonList.d.results.Count; i++)
                 {
@@ -2992,7 +3012,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             double unixTimestamp = ((double)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
 
             unixTimestamp = unixTimestamp * 1000;
-
+            if (unixTimestamp.ToString().Contains("."))
+                unixTimestamp = double.Parse(unixTimestamp.ToString().Split('.')[0]);
             ConvertedDate = "" + "/Date(" + unixTimestamp + ")/";
 
             return ConvertedDate;
