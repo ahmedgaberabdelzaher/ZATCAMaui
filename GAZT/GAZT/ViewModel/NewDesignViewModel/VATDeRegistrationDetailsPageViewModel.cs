@@ -1486,7 +1486,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                            
                             //populateAttachments(vATDeRegistration);
-                            await suspendedDateValidation();
+                            //await suspendedDateValidation();
                             if (vATDeRegistration.d.NotesSet != null)
                             {
                                 if(vATDeRegistration.d.NotesSet.results!= null && vATDeRegistration.d.NotesSet.results.Count > 0)
