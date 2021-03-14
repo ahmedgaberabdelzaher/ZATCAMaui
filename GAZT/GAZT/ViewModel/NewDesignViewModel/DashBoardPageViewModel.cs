@@ -2090,7 +2090,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SelectedCommitmentFilterLabelValue = AppResources.ZZOverdueCommitments;
         }
 
-        private async Task GetAccountStatments()
+        public async Task GetAccountStatments()
         {
             IsAccountsStatementLoading = true;
             TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
