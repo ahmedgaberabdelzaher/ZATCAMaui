@@ -394,7 +394,7 @@
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                         <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
 
-                                            <StackLayout Orientation="Horizontal"  Padding="5,23,5,23">
+                                            <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                                 <Label Text="{Binding NextFilingDueDate ,StringFormat='{0:yyyy/MM/dd}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
 
                                             </StackLayout>
