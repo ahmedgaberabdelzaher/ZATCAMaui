@@ -1078,6 +1078,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     IDTypeDataModel = new VATSignUpD();
                 }
                 SelectedIdtype = value.AIdType;
+                SelectedIdNumber = value.AIdNo;
+                TINNumber = value.ANm2;
                 IDTypeDataModel.Name1 = value.ANm3;
                 FirstNameFromIdType = value.ANm3;
                 IDTypeDataModel.Name2 = value.ANm4;
@@ -3857,7 +3859,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             //SelectedOutletOption = OutletDecisionOptions[0];
             //SelectedOutletOptionIndex = 0;
-            if (!string.IsNullOrWhiteSpace(TinDeregistrationData.ADregOpt))
+            if (string.IsNullOrWhiteSpace(SelectedOutletOption?.CardLabel) && !string.IsNullOrWhiteSpace(TinDeregistrationData.ADregOpt))
             {
                 SelectedOutletOption = OutletDecisionOptions.Where(m => m.OutletOptionIndex == TinDeregistrationData.ADregOpt).FirstOrDefault();
                 SelectedOutletOptionIndex = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
@@ -6214,8 +6216,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     zakatDeregResponseData = await TINDeregistrationWebServiceManager.GaztTinDeregistrationNewRequestData(zakatDeregResponseData);
                     TinDeregistrationData = zakatDeregResponseData;
                     await DeletUploadedImage(TinDeregistrationData.AttDetSet.Results);
+                    TinDeregistrationData?.AttDetSet.Results?.Clear();
                     SelectedOutletOption = null;
                     PickerDobToDisplay = null;
+                    SelectedIdtype = string.Empty;
+                    SelectedIdNumber = string.Empty;
+                    TINNumber = string.Empty;
+                    if (IDTypeDataModel != null)
+                    {
+                        IDTypeDataModel.Name2 = string.Empty;
+                        FirstNameFromIdType = string.Empty;
+                        IDTypeDataModel.FatherName = string.Empty;
+                        IDTypeDataModel.GrandfatherName = string.Empty;
+                        IDTypeDataModel.FamilyName = string.Empty;
+                    }
                 });
 
                 await Task.Run(() =>

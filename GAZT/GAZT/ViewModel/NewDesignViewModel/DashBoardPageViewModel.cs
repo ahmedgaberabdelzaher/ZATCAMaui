@@ -1718,6 +1718,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             if (BModel != null)
             {
+
                 if (BModel.MadabutFg == "X")
                 {
                     await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));

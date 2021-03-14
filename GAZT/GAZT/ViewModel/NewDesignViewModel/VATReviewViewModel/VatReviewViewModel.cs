@@ -7168,7 +7168,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                                 VRVSContactPersonName = dregresult.d.Contactnm;
                                 VRVSIDNumber = dregresult.d.Idnumbr;
-                                VRVSIDType = dregresult.d.Type;
+                                VRVSIDType = IDToNameDictionary[dregresult.d.Type];
 
                                 var settings = new JsonSerializerSettings
                                 {

@@ -91,7 +91,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsInstructionChecked");
             }
         }
+        private bool _isDeregReasonVisible;
+        public bool IsDeregReasonVisible
+        {
+            get
+            {
+                return _isDeregReasonVisible;
+            }
+            set
+            {
+                if (_isDeregReasonVisible == value) return;
 
+                _isDeregReasonVisible = value;
+                RaisePropertyChanged("IsDeregReasonVisible");
+            }
+        }
+        private bool _isSuspReasonVisible;
+        public bool IsSuspReasonVisible
+        {
+            get
+            {
+                return _isSuspReasonVisible;
+            }
+            set
+            {
+                if (_isSuspReasonVisible == value) return;
+
+                _isSuspReasonVisible = value;
+                RaisePropertyChanged("IsSuspReasonVisible");
+            }
+        }
         private bool _isContactPersonEnabled;
         public bool IsContactPersonEnabled
         {
@@ -1909,10 +1938,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 // if (SelectedOutletOptionIndex == 0)
                 {
                     reqType = "VT_DREG";
+                    IsDeregReasonVisible = true;
+                    IsSuspReasonVisible = false;
+
+
                 }
                 else
                 {
                     reqType = "VT_SUSP";
+                    IsDeregReasonVisible = false;
+                    IsSuspReasonVisible = true;
+
+
                 }
 
                 //OutletDocumentOptions = new ObservableCollection<VATDeregistrationModel>();

@@ -364,6 +364,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.SelectedOutletOption = selectedItem;
             
             viewModel.SetDefaultReasonLayout();
+            viewModel?.ResetTINDeRegistrationObject();
             //int index = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
 
             //viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
