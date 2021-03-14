@@ -6219,17 +6219,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData?.AttDetSet.Results?.Clear();
                     SelectedOutletOption = null;
                     PickerDobToDisplay = null;
-                    SelectedIdtype = string.Empty;
-                    SelectedIdNumber = string.Empty;
-                    TINNumber = string.Empty;
-                    if (IDTypeDataModel != null)
-                    {
-                        IDTypeDataModel.Name2 = string.Empty;
-                        FirstNameFromIdType = string.Empty;
-                        IDTypeDataModel.FatherName = string.Empty;
-                        IDTypeDataModel.GrandfatherName = string.Empty;
-                        IDTypeDataModel.FamilyName = string.Empty;
-                    }
                 });
 
                 await Task.Run(() =>

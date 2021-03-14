@@ -364,7 +364,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.SelectedOutletOption = selectedItem;
             
             viewModel.SetDefaultReasonLayout();
-            viewModel?.ResetTINDeRegistrationObject();
+
+
+            viewModel.SelectedIdtype = string.Empty;
+            viewModel.SelectedIdNumber = string.Empty;
+            viewModel.TINNumber = string.Empty;
+            if (viewModel.IDTypeDataModel != null)
+            {
+                viewModel.IDTypeDataModel.Name2 = string.Empty;
+                viewModel.FirstNameFromIdType = string.Empty;
+                viewModel.IDTypeDataModel.FatherName = string.Empty;
+                viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
+                viewModel.IDTypeDataModel.FamilyName = string.Empty;
+            }
+
             //int index = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
 
             //viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
