@@ -645,7 +645,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnMyBills", AppResources.MyBills + " Page");
                 BillInfo billInfo = new BillInfo();
-                billInfo.BillTypeName = AppResources.UnPaid;
+                //billInfo.BillTypeName = AppResources.UnPaid;
                 viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             });
