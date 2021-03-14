@@ -1446,26 +1446,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                             }
 
-                            string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            SuspendedStartDate = Convert.ToDateTime(convertedDate);//filling period
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            SuspendedEndDate = Convert.ToDateTime(convertedDate);//filling perio end date
+                            string convertedDate = string.Empty;
 
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.StartDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            FromDate = Convert.ToDateTime(convertedDate);//suspension start date
+                            if (vATDeRegistration.d.SuspDtfrom != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                SuspendedStartDate = Convert.ToDateTime(convertedDate);//filling period
+                            }
 
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.EndDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            ToDate = Convert.ToDateTime(convertedDate);//suspension end date
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            NextFilingStartDate = Convert.ToDateTime(convertedDate);//next filling start date
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            NextFilingEndDate = Convert.ToDateTime(convertedDate);//next filling end date
+                            if(vATDeRegistration.d.SuspDtto != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                SuspendedEndDate = Convert.ToDateTime(convertedDate);//filling perio end date
+
+                            }
+
+                            if(vATDeRegistration.d.StartDate != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.StartDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                FromDate = Convert.ToDateTime(convertedDate);//suspension start date
+                            }
+
+                            if(vATDeRegistration.d.EndDate != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.EndDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                ToDate = Convert.ToDateTime(convertedDate);//suspension end date
+                            }
+
+                            if(vATDeRegistration.d.NextDtfrom != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                NextFilingStartDate = Convert.ToDateTime(convertedDate);//next filling start date
+                            }
+
+                            if(vATDeRegistration.d.NextDtto != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                NextFilingEndDate = Convert.ToDateTime(convertedDate);//next filling end date
+                            }
+                           
                             //populateAttachments(vATDeRegistration);
-                            await suspendedDateValidation();
+                            //await suspendedDateValidation();
                             if (vATDeRegistration.d.NotesSet != null)
                             {
-                                OtherField = vATDeRegistration.d.NotesSet.results[0].Strline;
-
+                                if(vATDeRegistration.d.NotesSet.results!= null && vATDeRegistration.d.NotesSet.results.Count > 0)
+                                {
+                                    OtherField = vATDeRegistration.d.NotesSet.results[0].Strline;
+                                }
                             }
                         }
                         else
@@ -1511,7 +1538,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VoidIsVisible = false;
 
 
-                //PopulateAttachmentsListViewTemplate();
+                PopulateAttachmentsListViewTemplate();
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
