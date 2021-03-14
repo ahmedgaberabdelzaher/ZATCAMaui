@@ -670,6 +670,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            if(viewModel.SelectedPermitTypeOutletOption != null && viewModel.PermitOutletDecisionOptions != null && viewModel.PermitOutletDecisionOptions.Count > 0)
+            {
+                Device.BeginInvokeOnMainThread(() => {
+
+                    int index = Convert.ToInt16(viewModel.SelectedPermitTypeOutletOption.OutletOptionIndex) - 1;
+                    viewModel.SelectedPermitOutletOptionIndex = index;
+                    viewModel.SelectedPermitTypeOutletOption = viewModel.PermitOutletDecisionOptions[index];
+                    SetLayoutVisibilityOnPageAppearing(viewModel.SelectedPermitTypeOutletOption);
+                    GetSelectedDataTemplate();
+                    //TINDeregistrationModel selectedPermitTypeOutletOption = new TINDeregistrationModel();
+                    //selectedPermitTypeOutletOption = viewModel.SelectedPermitTypeOutletOption;
+                    //viewModel.SelectedPermitTypeOutletOption = selectedPermitTypeOutletOption;
+                });
+            }
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
@@ -847,6 +861,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 popUp.FlowDirections = "LeftToRight";
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
                         }
@@ -1614,6 +1630,48 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     ClosePermitDOBPicker.IsOpen = true;
                 }
             });
+        }
+
+        public void SetLayoutVisibilityOnPageAppearing(TINDeregistrationModel selectedItem)
+        {
+          //  TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
+            viewModel.SelectedPermitOutletOptionIndex = viewModel.PermitOutletDecisionOptions.IndexOf(selectedItem);
+
+            if (viewModel.SelectedPermitOutletOptionIndex == 2)
+            {
+                if (viewModel.SelectedOutletForCloseTranser != null)
+                {
+                    if (viewModel.SelectedOutletForCloseTranser.PermitTypes != null)
+                    {
+                        if (viewModel.SelectedOutletForCloseTranser.PermitTypes.Count > 0)
+                        {
+                            viewModel.IsNodataAvailableVisible = false;
+
+                            viewModel.IsMultiplePermitsVisible = true;
+                        }
+                        else
+                        {
+                            viewModel.IsNodataAvailableVisible = true;
+
+                        }
+                    }
+                    else
+                    {
+                        viewModel.IsNodataAvailableVisible = true;
+                    }
+                }
+            }
+            else
+            {
+                viewModel.IsNodataAvailableVisible = false;
+                viewModel.IsMultiplePermitsVisible = false;
+                if (viewModel.SelectedPermitOutletOptionIndex == 1)
+                {
+                    viewModel.FirstNameLbl = AppResources.ZZZVATRFirstName;
+                    viewModel.SurnameNameLbl = AppResources.TinDeregistrationSurName;
+                }
+            }
+
         }
     }
 }
