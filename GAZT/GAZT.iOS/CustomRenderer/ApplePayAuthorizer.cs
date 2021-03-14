@@ -36,8 +36,8 @@ namespace GAZT.iOS.CustomRenderer
         public bool AuthorizePayment(double Amount , string Title)
         {
             NSString[] paymentNetworks = new NSString[] {PKPaymentNetwork.Mada};
-            var merchantID = "merchant.com.gazt.enterprise.egazt";
-            //var merchantID = "merchant.gazt.egazt";
+           // var merchantID = "merchant.com.gazt.enterprise.egazt";
+            var merchantID = "merchant.gazt.egazt";
             // Enter merchant ID registered in apple.developer.com
 
             PKPaymentRequest paymentRequest = new PKPaymentRequest();
