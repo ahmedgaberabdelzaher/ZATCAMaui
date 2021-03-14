@@ -488,9 +488,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             this.BModel = BModel;
             MultiplePayableBills = new ObservableCollection<MyBills>();
-            if (MyBills != null && MyBills.Count > 0)
+            if (MyBillsOriginal != null && MyBillsOriginal.Count > 0)
             {
-                MultiplePayableBills = new ObservableCollection<MyBills>(MyBills.Where(x => (!String.IsNullOrEmpty(BModel.VTRE2) && x.VTRE2.Equals(BModel.VTRE2))).ToList());
+                MultiplePayableBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => (!String.IsNullOrEmpty(BModel.VTRE2) && x.VTRE2.Equals(BModel.VTRE2) && ((BModel.Status == Enum.GetName(typeof(BillStatus), 1)) || (BModel.Status == Enum.GetName(typeof(BillStatus), 2))))).ToList());
 
                 //MultiplePayableBills = new ObservableCollection<MyBills>(MyBills.Where(x => (!String.IsNullOrEmpty(BModel.VTRE2) && x.VTRE2.Equals(BModel.VTRE2)) || (!String.IsNullOrEmpty(BModel.Fbnum) && x.Fbnum.Equals(BModel.Fbnum))).ToList());
             }

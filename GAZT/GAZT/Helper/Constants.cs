@@ -14,6 +14,11 @@ namespace GAZT.Helper
         public static string PreProdUrlPort = ":443";
         public static string ProdUrlPort = ":443";
 
+        public static string DevPaymentSapClinet = "100";
+        public static string QAPaymentSapClinet = "300";
+        public static string PreProdPaymentSapClinet = "500";
+        public static string ProdPaymentSapClinet = "500";
+
         public static string DevBaseUrlForODataServices = "https://tstdg1as1.mygazt.gov.sa:8080";
         public static string DevBaseUrlForAuthentication = "https://tstdp1as1.mygazt.gov.sa:50001";
         public static string QABaseUrlForODataServices = "https://sapgatewayqa.gazt.gov.sa";
@@ -422,12 +427,12 @@ namespace GAZT.Helper
 
         public static string ValidatePaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMADA_CALL_SRV/HeaderSet(Fbnum=";
         public static string CancelPaymentService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_MADA_PYMNT_CANCEL_SRV/MADAPYMNTCNLSet(GUID=";
-        //Dev Payment Url
+
+
         //public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=100&sap-ui-language=EN&sap-ui-xx-devmode=true&guid=";
-        //Qa paymnet Url
-        public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=300&sap-ui-xx-devmode=true&guid=";
-        //Prduction Payment Url 
-        //public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-client=500&sap-ui-language=EN&sap-ui-xx-devmode=true&guid=";
+
+        public static string PaymentUrl = BaseUrlOfODataServices + "/sap/bc/ui5_ui5/sap/zuibmobilepay/index.html?sap-ui-xx-devmode=true&guid=";
+
         public static string UpdateMadaPaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_PAYMENT_STATUS_SRV/PaymentStatSet(CaseGuid=";
         public static string ApplePayGenerateGuid = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_APPLE_PAY_SRV/GuidEntrySet";
         public static string UpdateApplePayGuid = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_APPLE_PAY_SRV/HeaderSet";
