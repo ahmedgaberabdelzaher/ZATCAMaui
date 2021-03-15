@@ -58,12 +58,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     label2.HorizontalTextAlignment = TextAlignment.End;
                     label3.HorizontalTextAlignment = TextAlignment.End;
                     label4.HorizontalTextAlignment = TextAlignment.End;
-
-                    
-
-
-
-
                 }
                 else
                 {
