@@ -988,7 +988,6 @@
                     </Grid>
 
                     <buttons:SfButton  Margin="0,16,0,16" 
-                                       BackgroundColor="{Binding OutletContinueButtonnBackroundColor}"
                                        x:Name="btnOutletContinue" Command="{Binding OutletContinueBtnTapped}"
                                        Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
