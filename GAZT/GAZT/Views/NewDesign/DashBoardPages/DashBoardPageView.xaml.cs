@@ -146,6 +146,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
+            viewModel.isPayNowTapped = false;
+
             viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
             viewModel.PaidString = AppResources.Paid + " " + viewModel.PaidBillCount;
             viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;
@@ -203,6 +205,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     Console.WriteLine("MultipleBillsContinue Clicked");
 
                     viewModel.showPaymentOptions();
+                    viewModel.isPayNowTapped = false;
 
                 });
             }
@@ -219,6 +222,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     Console.WriteLine("Card Payment Clicked");
 
                     viewModel.MadaPaymentSelected();
+                    viewModel.isPayNowTapped = false;
 
                 });
             }
@@ -233,6 +237,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 MessagingCenter.Subscribe<Object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
                     viewModel.ApplePaySelected();
+                    viewModel.isPayNowTapped = false;
 
                 });
             }
@@ -249,6 +254,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                     Console.WriteLine("SADAD Clicked");
                     viewModel.SadadPaymentSelected();
+                    viewModel.isPayNowTapped = false;
                 });
             }
             catch (Exception ex)
@@ -1366,13 +1372,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void BillsPayNowTapped(object sender, EventArgs e)
         {
+            if (!viewModel.isPayNowTapped)
+            {
+                viewModel.isPayNowTapped = true;
+                SfBorder payNowCard = sender as SfBorder;
+                OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
+                Console.WriteLine("Clicked on: Amount: " + BModel.Amount + " ,FbNum: " + BModel.Fbnum);
+                //viewModel.DoValidatePayment(BModel.Fbnum, BModel.Amount);
 
-            SfBorder payNowCard = sender as SfBorder;
-            OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
-            Console.WriteLine("Clicked on: Amount: " + BModel.Amount + " ,FbNum: " + BModel.Fbnum);
-            //viewModel.DoValidatePayment(BModel.Fbnum, BModel.Amount);
-
-            viewModel.verifyPaymentAndShowBillsPopup(BModel);
+                viewModel.verifyPaymentAndShowBillsPopup(BModel);
+            }
             /*if (BModel.MadabutFg == "X")
                 {
                     PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));

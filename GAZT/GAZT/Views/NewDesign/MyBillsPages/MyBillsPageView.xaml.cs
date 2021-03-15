@@ -104,6 +104,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
+            viewModel.isPayNowTapped = false;
+
             try
             {
                 MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", async (sender, arg) =>
@@ -111,6 +113,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     Console.WriteLine("MultipleBillsContinue Clicked");
 
                     viewModel.showPaymentOptions();
+                    viewModel.isPayNowTapped = false;
 
                 });
             }
@@ -127,6 +130,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     Console.WriteLine("Card Payment Clicked");
 
                     viewModel.MadaPaymentSelected();
+                    viewModel.isPayNowTapped= false;
 
                 });
             }
@@ -142,6 +146,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 {
                     viewModel.ApplePaySelected();
                     Console.WriteLine("Apple pay Clicked");
+                    viewModel.isPayNowTapped = false;
                 });
             }
             catch (Exception ex)
@@ -157,6 +162,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
                     Console.WriteLine("SADAD Clicked");
                     viewModel.SadadPaymentSelected();
+                    viewModel.isPayNowTapped = false;
                 });
             }
             catch (Exception ex)
@@ -328,11 +334,17 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         private async void payNow_Tapped(object sender, EventArgs eventArgs)
         {
             //var dataItem = e.Item as MyBills;
-            StackLayout payNowCard = sender as StackLayout;
-            MyBills BModel = (MyBills)payNowCard.BindingContext;
-            Console.WriteLine("Clicked on: Amount: " + BModel.TestDueAmount + " ,FbNum: " + BModel.Fbnum);
 
-            viewModel.verifyPaymentAndShowBillsPopup(BModel);
+            if (!viewModel.isPayNowTapped)
+            {
+                viewModel.isPayNowTapped = true;
+                StackLayout payNowCard = sender as StackLayout;
+                MyBills BModel = (MyBills)payNowCard.BindingContext;
+                Console.WriteLine("Clicked on: Amount: " + BModel.TestDueAmount + " ,FbNum: " + BModel.Fbnum);
+
+                viewModel.verifyPaymentAndShowBillsPopup(BModel);
+            }
+        
 /*                if (BModel.MadabutFg == "X")
                 {
                     PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));

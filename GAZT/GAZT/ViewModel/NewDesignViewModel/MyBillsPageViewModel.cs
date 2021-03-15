@@ -37,6 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public string selectedAmount = "";
         public string selectedTaxablePeriod = "";
         private bool calculateMyBills = false;
+        public bool isPayNowTapped = false;
 
         #region Property
         public List<ReturnTypes> _TaxTypeForFilter = null;
@@ -484,7 +485,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Method
 
-        public void verifyPaymentAndShowBillsPopup(MyBills BModel)
+        public async void verifyPaymentAndShowBillsPopup(MyBills BModel)
         {
             this.BModel = BModel;
             MultiplePayableBills = new ObservableCollection<MyBills>();
@@ -497,13 +498,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             if (MultiplePayableBills != null && MultiplePayableBills.Count > 1)
             {
-                PopupNavigation.Instance.PushAsync(new MyBillsMultiplePayableList(MultiplePayableBills));
+                await PopupNavigation.Instance.PushAsync(new MyBillsMultiplePayableList(MultiplePayableBills));
+                await Task.Delay(2000);
+                isPayNowTapped = false;
                 return;
             }
             else
             {
                 showPaymentOptions();
             }
+
+
         }
 
         public async void showPaymentOptions()
@@ -531,6 +536,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 selectedSadadNo = BModel.VTRE2;
                 selectedAmount = total;
                 selectedTaxablePeriod = BModel.Persl;
+                isPayNowTapped = false;
+
             }
         }
         public void onPageLoad(BillInfo billInfo)

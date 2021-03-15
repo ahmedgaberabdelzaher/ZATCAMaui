@@ -314,5 +314,15 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
-    
+
+
+    public class GAZTValidateMadaPaymentException : GAZTException
+    {
+        public GAZTValidateMadaPaymentException()
+        { }
+        public GAZTValidateMadaPaymentException(string errorCode, string ExceptionMessage) : base(ExceptionMessage)
+        {
+        }
+    }
+
 }

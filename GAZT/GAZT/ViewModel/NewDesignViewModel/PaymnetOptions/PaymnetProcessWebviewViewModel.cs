@@ -150,7 +150,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                
 
             }
-            catch (GAZTValidatePaymentInProcessException ex)
+            catch (GAZTValidateMadaPaymentException ex)
             {
                 IsLoading = false;
                 Device.BeginInvokeOnMainThread(async () =>
