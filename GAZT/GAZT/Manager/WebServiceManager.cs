@@ -5204,6 +5204,7 @@ namespace GAZT.Manager
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
 
                             {
+                                string errorCode = AppResources.ZError;
 
                                 string errorMessage = string.Empty;
 
@@ -5211,11 +5212,14 @@ namespace GAZT.Manager
 
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
+                                errorCode += errorMesg.error.innererror.errordetails[1].code;
+
+
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
 
                                 errorMessage = WithReplacedString;
 
-                                throw new GAZTValidatePaymentInProcessException(errorMessage);
+                                throw new GAZTValidateMadaPaymentException(errorCode, errorMessage);
 
                             }
 
@@ -5473,7 +5477,7 @@ namespace GAZT.Manager
 
                         errorMessage = WithReplacedString;
 
-                        throw new GAZTVATRegistrationInProcessException(errorMessage);
+                        throw new GAZTValidatePaymentInProcessException(errorMessage);
 
                     }
 
@@ -5483,11 +5487,11 @@ namespace GAZT.Manager
 
             }
 
-            catch (GAZTVATRegistrationInProcessException ex)
+            catch (GAZTValidatePaymentInProcessException ex)
 
             {
 
-                throw new GAZTVATRegistrationInProcessException(ex.Message);
+                throw new GAZTValidatePaymentInProcessException(ex.Message);
 
             }
 
@@ -5495,9 +5499,6 @@ namespace GAZT.Manager
 
             {
 
-
-
-                App.IsSessionExpired = true;
 
                 return null;
 
