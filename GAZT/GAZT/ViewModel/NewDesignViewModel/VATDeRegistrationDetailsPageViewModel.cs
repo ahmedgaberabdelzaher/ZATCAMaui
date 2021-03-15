@@ -3171,6 +3171,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = true;
                 setDATA("01");
                 VATDeRegistrationDetails vATDeRegistrationDetails = new VATDeRegistrationDetails();
+
+                VATDeRegistrationDetailsData.d.AttdetSet = new AttdetSet();
                 response = await VatRegistrationWebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
 
                 // PopToRootPage();

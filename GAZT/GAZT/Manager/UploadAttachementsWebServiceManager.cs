@@ -77,7 +77,7 @@ namespace EGAZT.Manager
         }
 
 
-        public static string GAZTGenericDeleteAttachment(string fileName, string RetGuid, string aPiMethod, string doGuid = "")//, string returnedFguid
+        public static string GAZTGenericDeleteAttachment(string fileName, string RetGuid, string aPiMethod, string doGuid = "", string doType = "")//, string returnedFguid
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -86,9 +86,7 @@ namespace EGAZT.Manager
                 {
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = WebServiceManager.GetLangZParameter();
-                    string Dotyp = "VTA0";
-                    string AttBy = "TP";
-                    String url = Constants.GAZTDeteleAttachmentNew + "RetGuid='" + RetGuid + "',Flag='N',Dotyp='',SchGuid='',Srno=1,Doguid='" + doGuid + "',AttBy='TP',OutletRef='')/$value";
+                    String url = Constants.GAZTDeteleAttachmentNew + aPiMethod + "/AttachMedSet(" + "RetGuid='" + RetGuid + "',Flag='N',Dotyp='"+ doType +"',SchGuid='',Srno=1,Doguid='" + doGuid + "',AttBy='TP',OutletRef='')/$value";
                     url = url.Replace("attachmentServiceurl", aPiMethod);
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);

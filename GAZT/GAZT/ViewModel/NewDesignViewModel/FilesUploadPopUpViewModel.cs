@@ -1022,7 +1022,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             APiMethod = "Z_SAVE_ATTACH_SRV";
                         }
 
-                        string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, returnIdz, APiMethod, attachment.Doguid);
+                        string results = string.Empty;
+
+                        if(IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
+                        {
+                            results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, returnIdz, APiMethod, attachment.Doguid, attachment.Dotyp);
+                        }
+                        else
+                        {
+                            results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, returnIdz, APiMethod, attachment.Doguid);
+                        }
+
                         if (results == "X")
                         {
 
