@@ -1802,181 +1802,195 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 if (viewModel.ListOfActionButtonsApplicableForRegistration != null && viewModel.ListOfActionButtonsApplicableForRegistration.Count() != 0)
                 {
-                    String action = await DisplayActionSheet("", AppResources.VATAmendRegistrationCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
-                    if (App.IsArabic)
+                    String action = string.Empty;
+                    VATAmendReactivationMoreOptionPopUp popUp = new VATAmendReactivationMoreOptionPopUp(viewModel.ListOfActionButtonsApplicableForRegistration);
+                    popUp.OnItemSelect = async (args) =>
                     {
-                        ArButtons buttonId = ArButtons.None;
-                        if (!string.IsNullOrEmpty(action))
-                        {
-                            action = action.Replace(" ", "");
-                        }
-                        Enum.TryParse(action, out buttonId);
-                        switch (buttonId)
-                        {
-                            case ArButtons.إضافةملاحظات:
-                                break;
-                            case ArButtons.عرضملاحظات:
-                                break;
-                            case ArButtons.المرفقات:
-                                break;
-                            case ArButtons.إلغاء:
-                                OperationCode = "04";
-                                break;
-                            case ArButtons.حفظكمسودة:
-                                OperationCode = "05";
-                                break;
-                            case ArButtons.تقديم:
-                                OperationCode = "01";
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        Buttons buttonId = Buttons.None;
-                        buttonId = Buttons.Attachments;
-                        if (!string.IsNullOrEmpty(action))
-                        {
-                            action = action.Replace(" ", "");
-                        }
-                        Enum.TryParse(action, out buttonId);
-                        switch (buttonId)
-                        {
-                            case Buttons.CreateNotes:
-                                break;
-                            case Buttons.DisplayNotes:
-                                break;
-                            case Buttons.Attachments:
-                                break;
-                            case Buttons.Void:
-                                OperationCode = "04";
-                                break;
-                            case Buttons.SaveasDraft:
-                                OperationCode = "05";
-                                break;
-                            case Buttons.Submit:
-                                OperationCode = "01";
-                                break;
+                        action = args;
 
-                            default:
-                                break;
+                        if (App.IsArabic)
+                        {
+                            ArButtons buttonId = ArButtons.None;
+                            if (!string.IsNullOrEmpty(action))
+                            {
+                                action = action.Replace(" ", "");
+                            }
+                            Enum.TryParse(action, out buttonId);
+                            switch (buttonId)
+                            {
+                                case ArButtons.إضافةملاحظات:
+                                    break;
+                                case ArButtons.عرضملاحظات:
+                                    break;
+                                case ArButtons.المرفقات:
+                                    break;
+                                case ArButtons.إلغاء:
+                                    OperationCode = "04";
+                                    break;
+                                case ArButtons.حفظكمسودة:
+                                    OperationCode = "05";
+                                    break;
+                                case ArButtons.تقديم:
+                                    OperationCode = "01";
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
-                    }
+                        else
+                        {
+                            Buttons buttonId = Buttons.None;
+                            buttonId = Buttons.Attachments;
+                            if (!string.IsNullOrEmpty(action))
+                            {
+                                action = action.Replace(" ", "");
+                            }
+                            Enum.TryParse(action, out buttonId);
+                            switch (buttonId)
+                            {
+                                case Buttons.CreateNotes:
+                                    break;
+                                case Buttons.DisplayNotes:
+                                    break;
+                                case Buttons.Attachments:
+                                    break;
+                                case Buttons.Void:
+                                    OperationCode = "04";
+                                    break;
+                                case Buttons.SaveasDraft:
+                                    OperationCode = "05";
+                                    break;
+                                case Buttons.Submit:
+                                    OperationCode = "01";
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+
+
+                        viewModel.VATRegistrationDetailsData.d.Operationz = OperationCode;
+                        if (!string.IsNullOrEmpty(OperationCode))
+                        {
+                            if (OperationCode == "04")
+                            {
+                                if (App.IsArabic)
+                                {
+                                    var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRVoidConfirmationMessage);
+                                    confirmPopup.OnSelect = async (result) =>
+                                    {
+                                        if (result == "Yes")
+                                        {
+                                            await viewModel.SubmitClicked();
+                                        }
+                                    };
+                                    await PopupNavigation.Instance.PushAsync(confirmPopup);
+                                }
+                                else
+                                {
+                                    var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRVoidConfirmationMessage);
+                                    confirmPopup.OnSelect = async (result) =>
+                                    {
+                                        if (result == "Yes")
+                                        {
+                                            await viewModel.SubmitClicked();
+                                        }
+                                    };
+                                    await PopupNavigation.Instance.PushAsync(confirmPopup);
+                                }
+                            }
+                            else
+                            {
+                                if (viewModel.IsAddAdditionalInfoChecked)
+                                {
+                                    viewModel.AddAdditionalInfoCheckBoxEnabled = false;
+                                }
+                                else
+                                {
+                                    viewModel.AddAdditionalInfoCheckBoxEnabled = true;
+                                }
+                                if (viewModel.IsFDChangeSectionChecked)
+                                {
+                                    viewModel.IsFinancialDChangeSectionEnabled = false;
+                                }
+                                else
+                                {
+                                    viewModel.IsFinancialDChangeSectionEnabled = true;
+                                }
+                                if (App.VATType == Enums.PageExecutionType.Amend)
+                                {
+                                    if (viewModel.CurrentStep == "Step 3")
+                                    {
+                                        if (!viewModel.IsAddAdditionalInfoChecked)
+                                        {
+                                            string message = AppResources.ZZVATAmendNoChangesMadeMessage;
+                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                                        }
+                                        else
+                                        {
+                                            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRSaveasdraftMessage);
+                                            confirmPopup.OnSelect = async (result) =>
+                                            {
+                                                if (result == "Yes")
+                                                {
+                                                    await viewModel.SubmitClicked();
+                                                }
+                                            };
+                                            await PopupNavigation.Instance.PushAsync(confirmPopup);
+                                        }
+                                    }
+                                    else if (viewModel.CurrentStep == "Step 4")
+                                    {
+                                        if (!viewModel.IsAddNewRepresentativeChecked || !viewModel.IsAddAdditionalInfoChecked)
+                                        {
+                                            string message = AppResources.ZZVATAmendNoChangesMadeMessage;
+                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                                        }
+                                        else
+                                        {
+                                            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRSaveasdraftMessage);
+                                            confirmPopup.OnSelect = async (result) =>
+                                            {
+                                                if (result == "Yes")
+                                                {
+                                                    await viewModel.SubmitClicked();
+                                                }
+                                            };
+                                            await PopupNavigation.Instance.PushAsync(confirmPopup);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (viewModel.IsFDChangeSectionChecked || viewModel.IsAddAdditionalInfoChecked || viewModel.IsAddNewRepresentativeChecked || viewModel.IsChangeEmailChecked)
+                                        {
+                                            await viewModel.SubmitClicked();
+                                        }
+                                        else
+                                        {
+                                            string message = AppResources.ZZVATAmendNoChangesMadeMessage;
+                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    await viewModel.SubmitClicked();
+                                }
+                            }
+                        }
+                    };
+                    await PopupNavigation.Instance.PushAsync(popUp);
+
+
+                  //  String action = await DisplayActionSheet("", AppResources.VATAmendRegistrationCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
+
                 }
             }
             catch (Exception)
             {
             }
-            viewModel.VATRegistrationDetailsData.d.Operationz = OperationCode;
-            if (!string.IsNullOrEmpty(OperationCode))
-            {
-                if (OperationCode == "04")
-                {
-                    if (App.IsArabic)
-                    {
-                        var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRVoidConfirmationMessage);
-                        confirmPopup.OnSelect = async (result) =>
-                        {
-                            if (result == "Yes")
-                            {
-                                await viewModel.SubmitClicked();
-                            }
-                        };
-                        await PopupNavigation.Instance.PushAsync(confirmPopup);
-                    }
-                    else
-                    {
-                        var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRVoidConfirmationMessage);
-                        confirmPopup.OnSelect = async (result) =>
-                        {
-                            if (result == "Yes")
-                            {
-                                await viewModel.SubmitClicked();
-                            }
-                        };
-                        await PopupNavigation.Instance.PushAsync(confirmPopup);
-                    }
-                }
-                else
-                {
-                    if (viewModel.IsAddAdditionalInfoChecked)
-                    {
-                        viewModel.AddAdditionalInfoCheckBoxEnabled = false;
-                    }
-                    else
-                    {
-                        viewModel.AddAdditionalInfoCheckBoxEnabled = true;
-                    }
-                    if (viewModel.IsFDChangeSectionChecked)
-                    {
-                        viewModel.IsFinancialDChangeSectionEnabled = false;
-                    }
-                    else
-                    {
-                        viewModel.IsFinancialDChangeSectionEnabled = true;
-                    }
-                    if (App.VATType == Enums.PageExecutionType.Amend)
-                    {
-                        if (viewModel.CurrentStep == "Step 3")
-                        {
-                            if (!viewModel.IsAddAdditionalInfoChecked)
-                            {
-                                string message = AppResources.ZZVATAmendNoChangesMadeMessage;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                            }
-                            else
-                            {
-                                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRSaveasdraftMessage);
-                                confirmPopup.OnSelect = async (result) =>
-                                {
-                                    if (result == "Yes")
-                                    {
-                                        await viewModel.SubmitClicked();
-                                    }
-                                };
-                                await PopupNavigation.Instance.PushAsync(confirmPopup);
-                            }
-                        }
-                        else if (viewModel.CurrentStep == "Step 4")
-                        {
-                            if (!viewModel.IsAddNewRepresentativeChecked || !viewModel.IsAddAdditionalInfoChecked)
-                            {
-                                string message = AppResources.ZZVATAmendNoChangesMadeMessage;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                            }
-                            else
-                            {
-                                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATRSaveasdraftMessage);
-                                confirmPopup.OnSelect = async (result) =>
-                                {
-                                    if (result == "Yes")
-                                    {
-                                        await viewModel.SubmitClicked();
-                                    }
-                                };
-                                await PopupNavigation.Instance.PushAsync(confirmPopup);
-                            }
-                        }
-                        else
-                        {
-                            if (viewModel.IsFDChangeSectionChecked || viewModel.IsAddAdditionalInfoChecked || viewModel.IsAddNewRepresentativeChecked || viewModel.IsChangeEmailChecked)
-                            {
-                                await viewModel.SubmitClicked();
-                            }
-                            else
-                            {
-                                string message = AppResources.ZZVATAmendNoChangesMadeMessage;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                            }
-                        }
-                    }
-                    else
-                    {
-                        await viewModel.SubmitClicked();
-                    }
-                }
-            }
+         
         }
         private void DDlIDTypeSR_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {

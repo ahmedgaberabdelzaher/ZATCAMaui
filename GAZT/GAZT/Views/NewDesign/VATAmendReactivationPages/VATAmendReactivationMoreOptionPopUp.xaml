@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.VATAmendReactivationPages.VATAmendReactivationMoreOptionPopUp"
+        xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+>
+    <ContentPage.Content>
+         <yummy:PancakeView  VerticalOptions="EndAndExpand" CornerRadius="15,15,0,0" BackgroundColor="White">
+            <StackLayout Spacing="0" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250">
+                 <ListView  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HasUnevenRows="True" x:Name="optionList" HeightRequest="220" SeparatorVisibility="None" ItemTapped="OptionItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="50">
+                                    <custom:CustomLabel Text="{Binding option}" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="10"/>
+                                </StackLayout>
+                               </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+               
+
+            </StackLayout>
+    </yummy:PancakeView>
+    </ContentPage.Content>
+</pages:PopupPage>
