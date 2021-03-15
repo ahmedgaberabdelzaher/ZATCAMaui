@@ -1718,6 +1718,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             if (BModel != null)
             {
+
                 if (BModel.MadabutFg == "X")
                 {
                     await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
@@ -2090,7 +2091,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SelectedCommitmentFilterLabelValue = AppResources.ZZOverdueCommitments;
         }
 
-        private async Task GetAccountStatments()
+        public async Task GetAccountStatments()
         {
             IsAccountsStatementLoading = true;
             TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();

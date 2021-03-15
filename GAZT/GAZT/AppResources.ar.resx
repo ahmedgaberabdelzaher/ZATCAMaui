@@ -4768,8 +4768,8 @@
     <value>فترة بداية تعليق الالتزام</value>
   </data>
   <data name="VatDeregSuspendedEndDate" xml:space="preserve">
-    <value>نهاية فترة الإيقاف</value>
-  </data>
+   <value>فترة نهاية تعليق الالتزام</value>     
+   </data>
   <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
     <value>فترة تعليق الالتزام</value>
   </data>

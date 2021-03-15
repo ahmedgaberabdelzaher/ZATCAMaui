@@ -304,7 +304,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            outletDecisionOptionsListView.SelectedItem = null;
+            //outletDecisionOptionsListView.SelectedItem = null;
             //SimpleIoc.Default.Unregister<TINDeregistrationPageViewModel>();
             //SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
 
@@ -362,7 +362,22 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
             viewModel.SelectedOutletOption = selectedItem;
+            
             viewModel.SetDefaultReasonLayout();
+
+
+            viewModel.SelectedIdtype = string.Empty;
+            viewModel.SelectedIdNumber = string.Empty;
+            viewModel.TINNumber = string.Empty;
+            if (viewModel.IDTypeDataModel != null)
+            {
+                viewModel.IDTypeDataModel.Name2 = string.Empty;
+                viewModel.FirstNameFromIdType = string.Empty;
+                viewModel.IDTypeDataModel.FatherName = string.Empty;
+                viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
+                viewModel.IDTypeDataModel.FamilyName = string.Empty;
+            }
+
             //int index = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
 
             //viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);

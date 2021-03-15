@@ -192,6 +192,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             if (App.isMybillsRefresh) {
 
                 await viewModel.GetBillsAndReturns();
+                await viewModel.GetAccountStatments();
             }
 
 

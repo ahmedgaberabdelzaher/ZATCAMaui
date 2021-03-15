@@ -685,7 +685,7 @@
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" IsEnabled="{Binding SurnameText.IsEditable}"
+                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name2, Mode=TwoWay}" IsEnabled="{Binding SurnameText.IsEditable}"
                                                             Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
@@ -825,7 +825,7 @@
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
-                                    <border:SfBorder Margin="0,16,0,10"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <border:SfBorder Margin="0,16,0,16"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout Padding="0">
                                             <Grid Padding="15" RowSpacing="0" >
                                                 <Grid.RowDefinitions>

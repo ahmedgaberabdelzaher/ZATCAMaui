@@ -514,7 +514,7 @@
                             
                             <!--Status Chips-->
 
-                            <Grid VerticalOptions="Start" Margin="0,10">
+                            <Grid VerticalOptions="Start" Margin="0,10,0,0" FlowDirection="RightToLeft" HorizontalOptions="Start">
                            <listView:SfListView 
                           SelectionMode="None"
                           ItemsSource="{Binding ChipDataFilterlistForStatus}"
@@ -522,7 +522,7 @@
                                HeightRequest="50"
                                IsScrollBarVisible="False"
                                ItemTapped="StatusList_Tapped" ItemSpacing="5"
-                               HorizontalOptions="FillAndExpand" VerticalOptions="Start" AutoFitMode="Height" SelectionBackgroundColor="Transparent"                          >
+                               HorizontalOptions="FillAndExpand" VerticalOptions="Start" AutoFitMode="Height" SelectionBackgroundColor="Transparent">
 
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>

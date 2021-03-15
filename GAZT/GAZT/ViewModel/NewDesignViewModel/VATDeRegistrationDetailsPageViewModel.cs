@@ -91,7 +91,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsInstructionChecked");
             }
         }
+        private bool _isDeregReasonVisible;
+        public bool IsDeregReasonVisible
+        {
+            get
+            {
+                return _isDeregReasonVisible;
+            }
+            set
+            {
+                if (_isDeregReasonVisible == value) return;
 
+                _isDeregReasonVisible = value;
+                RaisePropertyChanged("IsDeregReasonVisible");
+            }
+        }
+        private bool _isSuspReasonVisible;
+        public bool IsSuspReasonVisible
+        {
+            get
+            {
+                return _isSuspReasonVisible;
+            }
+            set
+            {
+                if (_isSuspReasonVisible == value) return;
+
+                _isSuspReasonVisible = value;
+                RaisePropertyChanged("IsSuspReasonVisible");
+            }
+        }
         private bool _isContactPersonEnabled;
         public bool IsContactPersonEnabled
         {
@@ -1417,26 +1446,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                             }
 
-                            string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            SuspendedStartDate = Convert.ToDateTime(convertedDate);//filling period
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            SuspendedEndDate = Convert.ToDateTime(convertedDate);//filling perio end date
+                            string convertedDate = string.Empty;
 
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.StartDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            FromDate = Convert.ToDateTime(convertedDate);//suspension start date
+                            if (vATDeRegistration.d.SuspDtfrom != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                SuspendedStartDate = Convert.ToDateTime(convertedDate);//filling period
+                            }
 
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.EndDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            ToDate = Convert.ToDateTime(convertedDate);//suspension end date
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            NextFilingStartDate = Convert.ToDateTime(convertedDate);//next filling start date
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            NextFilingEndDate = Convert.ToDateTime(convertedDate);//next filling end date
+                            if(vATDeRegistration.d.SuspDtto != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                SuspendedEndDate = Convert.ToDateTime(convertedDate);//filling perio end date
+
+                            }
+
+                            if(vATDeRegistration.d.StartDate != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.StartDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                FromDate = Convert.ToDateTime(convertedDate);//suspension start date
+                            }
+
+                            if(vATDeRegistration.d.EndDate != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.EndDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                ToDate = Convert.ToDateTime(convertedDate);//suspension end date
+                            }
+
+                            if(vATDeRegistration.d.NextDtfrom != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                NextFilingStartDate = Convert.ToDateTime(convertedDate);//next filling start date
+                            }
+
+                            if(vATDeRegistration.d.NextDtto != null)
+                            {
+                                convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                NextFilingEndDate = Convert.ToDateTime(convertedDate);//next filling end date
+                            }
+                           
                             //populateAttachments(vATDeRegistration);
-                            await suspendedDateValidation();
+                            //await suspendedDateValidation();
                             if (vATDeRegistration.d.NotesSet != null)
                             {
-                                OtherField = vATDeRegistration.d.NotesSet.results[0].Strline;
-
+                                if(vATDeRegistration.d.NotesSet.results!= null && vATDeRegistration.d.NotesSet.results.Count > 0)
+                                {
+                                    OtherField = vATDeRegistration.d.NotesSet.results[0].Strline;
+                                }
                             }
                         }
                         else
@@ -1482,7 +1538,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VoidIsVisible = false;
 
 
-                //PopulateAttachmentsListViewTemplate();
+                PopulateAttachmentsListViewTemplate();
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -1909,10 +1965,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 // if (SelectedOutletOptionIndex == 0)
                 {
                     reqType = "VT_DREG";
+                    IsDeregReasonVisible = true;
+                    IsSuspReasonVisible = false;
+
+
                 }
                 else
                 {
                     reqType = "VT_SUSP";
+                    IsDeregReasonVisible = false;
+                    IsSuspReasonVisible = true;
+
+
                 }
 
                 //OutletDocumentOptions = new ObservableCollection<VATDeregistrationModel>();
