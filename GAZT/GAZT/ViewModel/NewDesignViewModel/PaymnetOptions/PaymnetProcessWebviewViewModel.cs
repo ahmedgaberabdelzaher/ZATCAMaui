@@ -83,6 +83,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public async Task UpdateMadaPaymentDetails(string caseGuid)
         {
 
+            string caseGuidNumber = caseGuid;
+
             try
             {
 
@@ -98,28 +100,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     platform = "C3";
                 }
-                PaymentData = await WebServiceManager.GAZTUpdateMadaPaymentDetails(caseGuid, platform);
+                PaymentData = await WebServiceManager.GAZTUpdateMadaPaymentDetails(caseGuidNumber, platform);
 
 
                 if (PaymentData != null && PaymentData.d != null)
                 {
 
-                    if (PaymentData.d.PayRef != null)
+                    if (PaymentData.d.FinalStat == "02")
                     {
-                        //Device.BeginInvokeOnMainThread(() =>
-                        //{
-                        //    var _navigation = Application.Current.MainPage.Navigation;
-                        //    foreach (var item in _navigation.NavigationStack)
-                        //    {
-                        //        if (item.GetType().Name == App.PaymentProcessWebview)
-                        //        {
-                        //            _navigation.RemovePage(item);
-                        //            break;
-                        //        }
-                        //    }
-                        //    _navigationService.GoBack();
-                        //});
-
+                        IsLoading = false;
                         Device.BeginInvokeOnMainThread(() =>
                         {
 
@@ -144,48 +133,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
 
-                                //_navigationService.GoBack();
-                                /*var _navigation = Application.Current.MainPage.Navigation;
-                                foreach (var item in _navigation.NavigationStack)
-                                {
-                                    if (item.GetType().Name == App.GAZTNewDesignMyBillsPageView)
-                                    {
-                                        _navigation.RemovePage(item);
-                                        break;
-                                    }
-                                }
-                                foreach (var item in _navigation.NavigationStack)
-                                {
-                                    if (item.GetType().Name == App.PaymentProcessWebview)
-                                    {
-                                        _navigation.RemovePage(item);
-                                        break;
-                                    }
-                                }
-                                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);*/
                             }
 
                         });
 
                     }
+                    else if (PaymentData.d.FinalStat == "01") {
+
+                        PaymentData = await WebServiceManager.GAZTUpdateMadaPaymentDetails(caseGuidNumber, platform);
+                    }
+
 
 
                 }
 
-                IsLoading = false;
+               
 
             }
             catch (GAZTValidatePaymentInProcessException ex)
             {
+                IsLoading = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
             catch (InternetException ex)
             {
+                IsLoading = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);

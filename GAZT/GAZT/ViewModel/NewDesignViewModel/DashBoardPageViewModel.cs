@@ -2002,28 +2002,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
                 DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-                _ = Task.Run(async () => {
-                    await GetAccountStatments();
-                    await GetBillsAndReturns();
-                    PopualateCommittmentsInformation();
-                });
-                //_ = Task.Run(GetAccountStatments);
-                // _ = Task.Run(GetBillsAndReturns);
-                if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null)
-                {
 
-                    if (DashboardData.results[0].InsActFlg == "X")
-                    {
-                        IsInstalmentPlanVisible = true;
-                        _ = Task.Run(getDashboardInstalmentPlan);
-                    }
-                    else
-                    {
+                if (App.isMybillsRefresh) {
 
-                        IsInstalmentPlanVisible = false;
-                    }
-
+                    _ = Task.Run(async () => {
+                        await GetAccountStatments();
+                        await GetBillsAndReturns();
+                    });
                 }
+                else {
+
+                    _ = Task.Run(async () => {
+                        await GetAccountStatments();
+                        await GetBillsAndReturns();
+                        PopualateCommittmentsInformation();
+                    });
+                    //_ = Task.Run(GetAccountStatments);
+                    // _ = Task.Run(GetBillsAndReturns);
+                    if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null)
+                    {
+
+                        if (DashboardData.results[0].InsActFlg == "X")
+                        {
+                            IsInstalmentPlanVisible = true;
+                            _ = Task.Run(getDashboardInstalmentPlan);
+                        }
+                        else
+                        {
+
+                            IsInstalmentPlanVisible = false;
+                        }
+
+                    }
+                }
+
+
+                
 
 
 
