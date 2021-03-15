@@ -761,7 +761,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             Enum.TryParse(message, out buttonId);
                             switch (buttonId)
                             {
-                                case ArButtons.إضافةملاحظات:
+                                case ArButtons.إضافةالملاحظات:
                                     AddNotePopUp();
                                     break;
                                 case ArButtons.عرضملاحظات:
@@ -832,7 +832,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             Enum.TryParse(message, out buttonId);
                             switch (buttonId)
                             {
-                                case Buttons.CreateNotes:
+                                case Buttons.AddNote:
                                     AddNotePopUp();
                                     break;
                                 case Buttons.DisplayNotes:
