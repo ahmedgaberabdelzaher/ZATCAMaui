@@ -65,7 +65,7 @@
 
                        
                          <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackVisible}"
-                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                                Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
                                HeightRequest="24"
                                WidthRequest="24">
@@ -74,7 +74,7 @@
                             </Image.GestureRecognizers>
                         </Image>
                          <Image  Grid.Row="0" Grid.Column="2"
-                               VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                                Source="close"
                                HeightRequest="24"
                                WidthRequest="24">
@@ -140,7 +140,7 @@
                                     
                                     </Grid>
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                                     <StackLayout Padding="15,15,15,0">
+                                     <StackLayout Padding="15,15,15,10">
 
                                         <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
                                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
@@ -233,7 +233,7 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding VRVGVATeligiblepurchases}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
                                         
-                                        <Grid>
+                                        <Grid Margin="0,0,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
@@ -282,7 +282,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15,15,15,10">
 
                                         <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
                                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
@@ -360,7 +360,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15,15,15,5">
 
                                         <Grid>
                                             <Grid.RowDefinitions>

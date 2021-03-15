@@ -174,7 +174,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private string _TotalString = AppResources.NDTotalNumberOfBills;
         private Dashboard DashboardData = null;
         private CalendarEventCollection _CommittmentsSchedule = null;
-
+        public bool isPayNowTapped = false;
 
         #region Lists
 
@@ -1677,7 +1677,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Method
-        public void verifyPaymentAndShowBillsPopup(OverduePaymentAndUnSubmittedReturn BModel)
+        public async void verifyPaymentAndShowBillsPopup(OverduePaymentAndUnSubmittedReturn BModel)
         {
             this.BModel = BModel;
            var newMultiplePayableBills = new ObservableCollection<MyBills>();
@@ -1704,7 +1704,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             if (MultiplePayableBills != null && MultiplePayableBills.Count > 1)
             {
-                PopupNavigation.Instance.PushAsync(new MyBillsMultiplePayableList(MultiplePayableBills));
+                await PopupNavigation.Instance.PushAsync(new MyBillsMultiplePayableList(MultiplePayableBills));
+                await Task.Delay(2000);
+                isPayNowTapped = false;
                 return;
             }
             else
@@ -1740,7 +1742,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 selectedSadadNo = BModel.Sopbel;
                 selectedAmount = total;
                 selectedTaxablePeriod = BModel.Persl;
-            }
+                isPayNowTapped = false;
+    }
         }
 
         public async Task SadadPaymentSelected()
@@ -2008,6 +2011,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     _ = Task.Run(async () => {
                         await GetAccountStatments();
                         await GetBillsAndReturns();
+                        PopulateBillsInformation();
                     });
                 }
                 else {
