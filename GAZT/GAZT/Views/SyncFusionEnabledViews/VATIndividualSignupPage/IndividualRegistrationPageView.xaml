@@ -800,8 +800,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                  BackgroundColor="Transparent" >
                                                                 </custom:CustomButton>
                                                                 <!--<custom:BorderlessEntry    Style="{StaticResource DefaultEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>-->
-                                                                <custom:BorderlessEntry Text="{Binding MobileNumber}" MaxLength="{Binding MaxDigids}"  x:Name="EntryMobileNumber" Margin="0,-5,0,0"
-                                                                                        Placeholder="{x:Static local:AppResources.ZZMobileNumber}" VerticalOptions="Center"  HorizontalOptions="Start" IsSpellCheckEnabled="False"
+                                                                <custom:BorderlessEntry Text="{Binding MobileNumber}" MaxLength="{Binding MaxDigids}"  x:Name="EntryMobileNumber" Margin="0,-5,0,0" 
+                                                                                        Placeholder="{x:Static local:AppResources.ZZMobileNumber}" VerticalOptions="Center"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" IsSpellCheckEnabled="False"
                                                                                         Unfocused="EntryMobileNumber_Unfocused"  Keyboard="Telephone" TextColor="Black"  Style="{StaticResource DefaultEntry}" >
 
                                                                     <Entry.Behaviors>
