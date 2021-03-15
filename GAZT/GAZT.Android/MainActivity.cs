@@ -70,6 +70,12 @@ namespace GAZT.Droid
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessCoarseLocation }, 0);
             }
 
+
+            //Code for holding screenshots 
+            //Window.SetFlags(WindowManagerFlags.Secure, WindowManagerFlags.Secure);
+
+
+
             var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
             config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
 

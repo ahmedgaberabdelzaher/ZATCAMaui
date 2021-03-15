@@ -28,7 +28,7 @@
         
          <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" >
             
-                <StackLayout Margin="15,0,15,0" VerticalOptions="FillAndExpand">
+                <StackLayout Margin="15" VerticalOptions="FillAndExpand">
 
                     <Image  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
                                Source="ic_close">

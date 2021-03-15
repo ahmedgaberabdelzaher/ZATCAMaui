@@ -396,15 +396,27 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         }
 
-        private void StatusList_Tapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
-        {
-            var item = e.ItemData as ASResult;
+        /*     private void StatusList_Tapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+             {
+                 var item = e.ItemData as ASResult;
 
-            if (item != null)
+                 if (item != null)
+                 {
+                     viewModel.FromStatus = item.StatusDesc;
+                     viewModel.ApplyFilter();
+                 }
+             }*/
+
+        private void ChipsData_Tapped(object sender, EventArgs e)
+        {
+            Grid chipGrid = sender as Grid;
+            ASResult chipModel = (ASResult)chipGrid.BindingContext;
+            if (chipModel != null)
             {
-                viewModel.FromStatus = item.StatusDesc;
+                viewModel.FromStatus = chipModel.StatusDesc;
                 viewModel.ApplyFilter();
             }
+
         }
 
     }

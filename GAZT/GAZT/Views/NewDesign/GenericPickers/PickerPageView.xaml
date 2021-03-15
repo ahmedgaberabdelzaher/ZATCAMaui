@@ -18,8 +18,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="End" IsVisible="true">
-             <StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Spacing="0">
+        <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" IsVisible="true">
+             <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="End" Spacing="0">
                 <border:SfBorder Margin="0,0,0,5" HasShadow="False" Padding="0"
                                          Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout Orientation="Horizontal">
@@ -29,10 +29,10 @@
                     </Button>
                     </StackLayout>
                 </border:SfBorder>
-                <StackLayout Margin="24,8,24,0" >
+                <StackLayout Margin="0,8,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                    <Label x:Name="PickerTitle" Text="{Binding PickerTitle}" 
-                                    HorizontalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"
+                                    HorizontalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlack}"
                                 Margin="0,16,0,0" BackgroundColor="Transparent" />
 
                     <syncfusion:SfPicker 
@@ -41,7 +41,7 @@
                         Style="{StaticResource PickerStyle}" 
                         ItemsSource="{Binding PickerItemSource}"
 						Margin="2" 
-                        HeaderBackgroundColor="Aqua"
+                        HeaderBackgroundColor="Transparent"
 						x:Name="genericPicker" 
                          UnSelectedItemFontSize="15"
                         SelectedItemFontSize="15"
