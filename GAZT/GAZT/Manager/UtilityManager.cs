@@ -1371,7 +1371,9 @@ namespace GAZT.Manager
         Changefromestimatetoaccounting = 52,
         Invoice = 53,
         إصدار = 54,
-        ReviseDownPayment = 55
+        ReviseDownPayment = 55,
+        إضافةالملاحظات = 56
+
     }
 
 
@@ -1433,7 +1435,8 @@ namespace GAZT.Manager
         Changefromestimatetoaccounting = 52,
         Invoice = 53,
         Release = 54,
-        ReviseDownPayment = 55
+        ReviseDownPayment = 55,
+        AddNote = 56
     }
 
 
