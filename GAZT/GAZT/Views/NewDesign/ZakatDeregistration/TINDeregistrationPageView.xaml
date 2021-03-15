@@ -1243,7 +1243,7 @@
                                                                     <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon.png" Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                        HorizontalOptions="Start" VerticalOptions="Center"/>
                                                                     <custom:CustomLabel Grid.Row="0" Grid.Column="1"
-                                                                    Text="{Binding Filename}"
+                                                                    Text="{Binding Filename}" 
                                                                     FontSize="Small" TextColor="Black"
                                                                     HorizontalOptions="FillAndExpand"
                                                                     VerticalOptions="Center"/>

@@ -1441,22 +1441,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                             if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
                             {
+                                IsDobVisible = true;
                                 NationalTypeSelected();
                             }
                             else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
                             {
+                                IsDobVisible = false;
                                 IsName1Visible = true;
                                 CompanyIdTypeSelected();
                             }
                             else if (SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
                             {
+                                IsDobVisible = true;
                                 IqamaTypeSelected();
                             }
                             else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
                             {
                                 SelectedIdNumber = string.Empty;
                                 SelectedDob = string.Empty;
-
+                                IsDobVisible = false;
                                 GCCIdTypeSelected();
                             }
                         }
@@ -4496,7 +4499,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 return;
@@ -5799,10 +5802,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
                     TinDeregistrationData.AExpdtH = DeregistrationDate.ToString("yyyy/MM/dd");
 
-                    TinDeregistrationData.AIdType = SelectedIdtype;
+                    TinDeregistrationData.AIdType = SelectedIDTypeCode;// "ZS0005"
                     TinDeregistrationData.AIdNo = SelectedIdNumber;
-                    TinDeregistrationData.ANm1 = "";
-                    TinDeregistrationData.ANm2 = TINNumber;
+                    TinDeregistrationData.ATin = TINNumber;
+                    TinDeregistrationData.ANm1 = FirstNameFromIdType;
+                    TinDeregistrationData.ANm2 = "";
                     TinDeregistrationData.ANm3 = FirstNameFromIdType;// IDTypeDataModel.Name1;
                     TinDeregistrationData.ANm4 = IDTypeDataModel.Name2;
                     TinDeregistrationData.ANm5 = IDTypeDataModel.FatherName;
@@ -6500,10 +6504,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             {
                                 SelectedIdtype = obj.Text;
                             }
+                            if (TinDeregistrationData.AIdType == "ZS0001")
+                            {
+                                IsDobVisible = true;
+                            }
+                            else if (obj.key == "ZS0005")
+                            {
+                                IsDobVisible = false;
+                            }
+                            else if (obj.key == "ZS0002")
+                            {
+                                IsDobVisible = true;
+                            }
+                            else if (obj.key == "ZS0003")
+                            {
+                                IsDobVisible = false;
+                            }
                         }
                     }
 
-                    SelectedIdtype = TinDeregistrationData.AIdType;
+                    //SelectedIdtype = TinDeregistrationData.AIdType;
                     SelectedIdNumber = TinDeregistrationData.AIdNo;
                     IDTypeDataModel.Name1 = TinDeregistrationData.ANm3;
                     FirstNameFromIdType = TinDeregistrationData.ANm3;
