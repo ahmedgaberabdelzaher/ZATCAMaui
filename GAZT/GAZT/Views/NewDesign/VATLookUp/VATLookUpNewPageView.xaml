@@ -280,7 +280,7 @@
             </StackLayout>
             <StackLayout Grid.Row="1"
                          HorizontalOptions="Center"
-                         Padding="10,5,10,10"
+                         Padding="10,5,10,30"
                          BackgroundColor="White">
                 <buttons:SfButton x:Name="btnScan"
                                   Text="{x:Static ResourceManager:AppResources.ZQRScanner}"
