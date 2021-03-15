@@ -155,8 +155,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
