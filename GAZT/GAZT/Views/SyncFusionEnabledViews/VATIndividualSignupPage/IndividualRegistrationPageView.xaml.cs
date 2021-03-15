@@ -78,7 +78,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.PopulateDataInChips();
                 ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType == AppResources.NDGregorian).FirstOrDefault();
                 viewModel.IsHijriCal = false;
-
+                viewModel.DOBddyymm = string.Empty;
+                viewModel.DOB = string.Empty;
+                
             }
             catch(Exception e)
             {
