@@ -2341,14 +2341,183 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         for (int i = 0; i < 3; i++)
                         {
-                            pendingBills.Add(newItems[i]);
+
+
+                            var singleItem = newItems[i];
+
+                            try
+                            {
+
+                                if (singleItem.Abtyp != null)
+                                {
+
+                                    if (singleItem.Abtyp.Equals("VATX") || singleItem.Abtyp.Equals("ETAX"))
+                                    {
+                                        singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
+
+                                        string[] dts = singleItem.FormatedDuedate.Split('/');
+                                        if (App.IsArabic)
+                                        {
+
+                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                            singleItem.FormatedDuedate = date;
+                                        }
+                                        else
+                                        {
+                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                            singleItem.FormatedDuedate = date;
+                                        }
+                                    }
+                                    else
+                                    {
+
+
+                                        if (singleItem.CalendarTyp.Equals("G"))
+                                        {
+                                            singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
+
+                                            string[] dts = singleItem.FormatedDuedate.Split('/');
+                                            if (App.IsArabic)
+                                            {
+
+                                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormatedDuedate = date;
+                                            }
+                                            else
+                                            {
+                                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormatedDuedate = date;
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                            singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+
+                                            string[] dts = singleItem.FormatedDuedate.Split('/');
+                                            if (App.IsArabic)
+                                            {
+
+                                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormatedDuedate = date;
+                                            }
+                                            else
+                                            {
+                                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormatedDuedate = date;
+                                            }
+                                        }
+
+
+                                    }
+
+
+                                }
+                            }
+                            catch (Exception e)
+                            {
+
+
+                            }
+
+
+                            pendingBills.Add(singleItem);
                         }
                     }
                     else
                     {
                         for (int i = 0; i < newItems.Count; i++)
                         {
-                            pendingBills.Add(newItems[i]);
+                            var singleItem = newItems[i];
+
+                            try
+                            {
+
+                                if (singleItem.Abtyp != null)
+                                {
+
+                                    if (singleItem.Abtyp.Equals("VATX") || singleItem.Abtyp.Equals("ETAX"))
+                                    {
+                                        singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
+
+                                        string[] dts = singleItem.FormatedDuedate.Split('/');
+                                        if (App.IsArabic)
+                                        {
+
+                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                            singleItem.FormatedDuedate = date;
+                                        }
+                                        else
+                                        {
+                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                            singleItem.FormatedDuedate = date;
+                                        }
+                                    }
+                                    else
+                                    {
+
+
+                                        if (singleItem.CalendarTyp.Equals("G"))
+                                        {
+                                            singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
+
+                                            string[] dts = singleItem.FormatedDuedate.Split('/');
+                                            if (App.IsArabic)
+                                            {
+
+                                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormatedDuedate = date;
+                                            }
+                                            else
+                                            {
+                                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormatedDuedate = date;
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                            singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+
+                                            string[] dts = singleItem.FormatedDuedate.Split('/');
+                                            if (App.IsArabic)
+                                            {
+
+                                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormatedDuedate = date;
+                                            }
+                                            else
+                                            {
+                                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                                singleItem.FormatedDuedate = date;
+                                            }
+                                        }
+
+
+                                    }
+
+
+                                }
+                            }
+                            catch (Exception e)
+                            {
+
+
+                            }
+
+                            pendingBills.Add(singleItem);
                         }
                     }
                     foreach (OverduePaymentAndUnSubmittedReturn ee in newItems)
