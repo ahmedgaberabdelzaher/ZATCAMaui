@@ -6539,7 +6539,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     FirstNameFromIdType = TinDeregistrationData.ANm3;
                     PickerDOBDateDisplay = TinDeregistrationData.ADobH;//ADob, 
                     PickerDobToDisplay = TinDeregistrationData.AExpdtH;//ASubmissionDateH,ASubmissionDate
-                    TINNumber = TinDeregistrationData.ATransTin;
+                    TINNumber = TinDeregistrationData.ATin;
                 }
 
             }
