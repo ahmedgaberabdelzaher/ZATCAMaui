@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -42,6 +43,9 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
         }
 
         public void ChangeAeroIcon()

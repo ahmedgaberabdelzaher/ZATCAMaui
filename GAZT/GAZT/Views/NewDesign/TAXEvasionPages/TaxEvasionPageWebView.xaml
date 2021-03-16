@@ -4,7 +4,7 @@
              xmlns:ResourceManager="clr-namespace:EGAZT"
              NavigationPage.HasNavigationBar="False"
              BackgroundImageSource="partials_background.png"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:custom="clr-namespace:GAZT" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionPageWebView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -23,29 +23,26 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                <Grid Padding="15,5,15,5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,0" >
+                <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="90*"/>
-                        <ColumnDefinition Width="10*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
-
-                    <Image Grid.Row="0" Grid.Column="0" IsVisible="true" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TOnBackButtonClicked"/>
-                        </Image.GestureRecognizers>
-                    </Image>
+                   
+                    <!--FAQ View Starts-->
+                    <StackLayout>
+                        <WebView x:Name="taxEvasionWebView"  Margin="-20,-40,-20,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Navigated="taxEvasionWebView_Navigated" Navigating="taxEvasionWebView_Navigating"/>
+                    </StackLayout>
+                   
                 </Grid>
-                <WebView x:Name="taxEvasionWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Red" Navigated="taxEvasionWebView_Navigated" Navigating="taxEvasionWebView_Navigating"/>
-            </StackLayout>
-            <Grid x:Name="loadingIndicator" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            </yummy:PancakeView>
+               <Grid x:Name="loadingIndicator" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <StackLayout  Orientation="Vertical" BackgroundColor="Transparent"  VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout  Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -64,6 +61,21 @@
                         <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>
+            </Grid>
+
+            <Grid Grid.Row="0" Padding="20,5,20,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <Image Source="arrowLeftwhite.png" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Style="{DynamicResource BackButtonArrow}"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TOnBackButtonClicked" NumberOfTapsRequired="1"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
             </Grid>
         </Grid>
     </ContentPage.Content>
