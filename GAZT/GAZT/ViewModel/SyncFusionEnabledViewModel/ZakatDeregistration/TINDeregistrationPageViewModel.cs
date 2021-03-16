@@ -4402,11 +4402,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                                     if (SelectedOutletOption.OutletOptionIndex != "3")
                                                     {
-                                                        DateTime dt = Convert.ToDateTime(PickerDobToDisplay);
-                                                        permitInfo.APermitDeregDisplayDate = dt.ToString("yyyy/MM/dd");//DeregistrationDate.ToString("dd MMM yyyy");
-                                                        permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
+                                                        if(!string.IsNullOrEmpty(PickerDobToDisplay))
+                                                        {
+                                                            DateTime dt = Convert.ToDateTime(PickerDobToDisplay);
+                                                            permitInfo.APermitDeregDisplayDate = dt.ToString("yyyy/MM/dd");//DeregistrationDate.ToString("dd MMM yyyy");
+
+                                                        }
+                                                        if (!string.IsNullOrEmpty(DeregistrationDate.ToString()))
+                                                        {
+                                                            permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
+                                                            permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+                                                        }
                                                         permitInfo.APermitEffDtCTb = "G";
-                                                        permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+
+
 
                                                     }
 
@@ -4499,7 +4508,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDobToDisplay))
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 return;
@@ -4513,7 +4522,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 return;
                             }
                         }
-
+                        //else if (string.IsNullOrEmpty(PickerDobToDisplay))
+                        //{
+                        //        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        //        return;
+                        //}
                         // await SaveAsDraft();
                         EnableOutletDetaislView();
                     }
@@ -5808,6 +5821,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.AIdType = SelectedIDTypeCode;// "ZS0005"
                     TinDeregistrationData.AIdNo = SelectedIdNumber;
                     TinDeregistrationData.ATin = TINNumber;
+                    TinDeregistrationData.ATransTin = TINNumber;
                     TinDeregistrationData.ANm1 = FirstNameFromIdType;
                     TinDeregistrationData.ANm2 = "";
                     TinDeregistrationData.ANm3 = FirstNameFromIdType;// IDTypeDataModel.Name1;

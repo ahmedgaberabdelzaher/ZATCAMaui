@@ -203,7 +203,7 @@ namespace EGAZT.Manager
             tinDeregistrationSendResponseModel.ATransTin = tinDeregistrationResponseModel.ATransTin;
             tinDeregistrationSendResponseModel.ATitle = tinDeregistrationResponseModel.ATitle;
             tinDeregistrationSendResponseModel.ATinType = tinDeregistrationResponseModel.ATinType;
-            tinDeregistrationSendResponseModel.ATin = tinDeregistrationResponseModel.ATin;
+            tinDeregistrationSendResponseModel.ATin = tinDeregistrationResponseModel.Taxpayerz; ;// tinDeregistrationResponseModel.ATin;
             tinDeregistrationSendResponseModel.ATaxpayerName = tinDeregistrationResponseModel.ATaxpayerName;
             tinDeregistrationSendResponseModel.ASubmissionDateH = tinDeregistrationResponseModel.ASubmissionDateH;
             tinDeregistrationSendResponseModel.ASubmissionDateC = tinDeregistrationResponseModel.ASubmissionDateC;
