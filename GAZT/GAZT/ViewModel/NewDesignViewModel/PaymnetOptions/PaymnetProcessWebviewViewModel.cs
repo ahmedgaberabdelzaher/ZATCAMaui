@@ -140,7 +140,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else if (PaymentData.d.FinalStat == "01") {
 
-                        PaymentData = await WebServiceManager.GAZTUpdateMadaPaymentDetails(caseGuidNumber, platform);
+
+                        _ = UpdateMadaPaymentDetails(caseGuidNumber);
                     }
 
 
