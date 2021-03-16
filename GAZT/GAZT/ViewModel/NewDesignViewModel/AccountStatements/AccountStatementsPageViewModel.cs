@@ -1470,21 +1470,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
             {
-                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
+
+//                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
                 return;
             } else if ((string.IsNullOrEmpty(FromTxAmount) && !string.IsNullOrEmpty(ToTxAmount)) || (!string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount)))
             {
-                _dialogService.ShowMessage(AppResources.AccountStatementsEnterAmount, AppResources.Information);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
+                //                _dialogService.ShowMessage(AppResources.AccountStatementsEnterAmount, AppResources.Information);
                 return;
             }
             else if ((!string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate)) || (string.IsNullOrEmpty(TxFromDate) && !string.IsNullOrEmpty(TxToDate)))
             {
-                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTransactionDate));
+                //                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
                 return;
             }
             else if ((!string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate)) || (string.IsNullOrEmpty(TPFromDate) && !string.IsNullOrEmpty(TPToDate)))
             {
-                _dialogService.ShowMessage(AppResources.AccountStatementsTaxPeriod, AppResources.Information);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTaxPeriod));
+                //_dialogService.ShowMessage(AppResources.AccountStatementsTaxPeriod, AppResources.Information);
                 return;
             }
              
