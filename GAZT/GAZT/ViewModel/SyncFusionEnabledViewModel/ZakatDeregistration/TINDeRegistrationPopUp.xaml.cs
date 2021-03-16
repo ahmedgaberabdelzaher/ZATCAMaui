@@ -19,8 +19,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         private async void OnSaveAsDraftClicked(object sender, EventArgs e)
         {
+            await PopupNavigation.Instance.PopAsync();
             OnItemSelect?.Invoke();
-                await PopupNavigation.Instance.PopAsync();
         }
 
     }
