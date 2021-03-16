@@ -1468,31 +1468,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 Console.WriteLine(statementsLineItems.Count);
             }
 
-           /* if (!string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate))
+            if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
             {
+                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
+                return;
+            } else if ((string.IsNullOrEmpty(FromTxAmount) && !string.IsNullOrEmpty(ToTxAmount)) || (!string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount)))
+            {
+                _dialogService.ShowMessage(AppResources.AccountStatementsEnterAmount, AppResources.Information);
                 return;
             }
-            else if (string.IsNullOrEmpty(TxFromDate) && !string.IsNullOrEmpty(TxToDate))
+            else if ((!string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate)) || (string.IsNullOrEmpty(TxFromDate) && !string.IsNullOrEmpty(TxToDate)))
             {
+                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
                 return;
             }
-            else if (!string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate))
+            else if ((!string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate)) || (string.IsNullOrEmpty(TPFromDate) && !string.IsNullOrEmpty(TPToDate)))
             {
+                _dialogService.ShowMessage(AppResources.AccountStatementsTaxPeriod, AppResources.Information);
                 return;
             }
-            else if (string.IsNullOrEmpty(TPFromDate) && !string.IsNullOrEmpty(TPToDate))
-            {
-                return;
-            }
-            else if (string.IsNullOrEmpty(FromTxAmount) && !string.IsNullOrEmpty(ToTxAmount))
-            {
-                return;
-            }
-            else if (!string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
-            {
-                return;
-            }*/
-
+             
+            
             if (TxFromDate != "" && TxToDate != "")
             {
                 var filterItems = statementsLineItems;
@@ -1600,6 +1596,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             
 
         }
+
+       
 
         public void ClearFilterItems()
         {
