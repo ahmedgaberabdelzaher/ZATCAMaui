@@ -1,6 +1,7 @@
 ﻿using EGAZT.CustomControl;
 using EGAZT.Enums;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
@@ -257,6 +258,30 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
 
                     await viewModel.UpdateMadaPaymentDetails(responseGUID);
+
+                }
+
+            }
+            else if (e.Url.Contains("http://error/?isAuthErr"))
+            {
+                var splitString = e.Url.Split('&');
+                if (splitString.Length > 0)
+                {
+                    var responseMessage = splitString[1].Replace("msg","");
+
+                    //Console.WriteLine("Payment Successful:" + e.Url);
+
+                    webView.IsVisible = false;
+                    viewModel.IsLoading = true;
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(responseMessage));
+                        //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        viewModel._navigationService.GoBack();
+                    });
+
+                    //await viewModel.UpdateMadaPaymentDetails(responseGUID);
 
                 }
 

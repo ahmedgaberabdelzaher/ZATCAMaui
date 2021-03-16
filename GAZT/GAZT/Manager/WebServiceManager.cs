@@ -3002,7 +3002,7 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     string uri = Constants.GAZTGetPaymentOverdueSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
-                    HttpResponseMessage GAZTGetPaymentOverdueSetResponse = await GetServiceManager.MakeGetAPICall(uri, true, "123");
+                    HttpResponseMessage GAZTGetPaymentOverdueSetResponse = await GetServiceManager.MakeGetAPICallWithIncomingChannel(uri, true, "123");
                     if (GAZTGetPaymentOverdueSetResponse != null)
                     {
                         if (GAZTGetPaymentOverdueSetResponse.StatusCode == HttpStatusCode.Unauthorized)
