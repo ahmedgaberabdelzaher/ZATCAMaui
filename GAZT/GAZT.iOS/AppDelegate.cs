@@ -135,6 +135,17 @@ namespace GAZT.iOS
 
         public override void DidEnterBackground(UIApplication application)
         {
+
+            nint taskID = UIApplication.SharedApplication.BeginBackgroundTask(() => {
+                // Console.WriteLine("Background stopped");
+
+            });
+
+            //var newTask= new Task(() => {
+            //       // UIApplication.SharedApplication.EndBackgroundTask(taskID); });
+            //        newTask.Start();
+            //     }
+
         }
 
         // not guaranteed that this will run
