@@ -4768,8 +4768,8 @@
     <value>فترة بداية تعليق الالتزام</value>
   </data>
   <data name="VatDeregSuspendedEndDate" xml:space="preserve">
-   <value>فترة نهاية تعليق الالتزام</value>     
-   </data>
+    <value>فترة نهاية تعليق الالتزام</value>
+  </data>
   <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
     <value>فترة تعليق الالتزام</value>
   </data>
@@ -8873,5 +8873,14 @@ info@gazt.gov.sa</value>
   </data>
   <data name="ACFilterApply" xml:space="preserve">
     <value>بحث</value>
+  </data>
+  <data name="AccountStatementsEnterAmount" xml:space="preserve">
+    <value>الرجاء إدخال الحد الادنى والأعلى لمبلغ العملية</value>
+  </data>
+  <data name="AccountStatementsTaxPeriod" xml:space="preserve">
+    <value>الرجاء تحديد تاريخ البداية والنهاية للفترة الضريبية</value>
+  </data>
+  <data name="AccountStatementsTransactionDate" xml:space="preserve">
+    <value>الرجاء تحديد تاريخ البداية والنهاية للعميلة</value>
   </data>
 </root>
