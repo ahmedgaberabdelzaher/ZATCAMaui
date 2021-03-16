@@ -32,7 +32,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"/>
             </Grid.RowDefinitions>
-            <Grid  BackgroundColor="White" Grid.Row="0" RowSpacing="0">
+            <Grid  BackgroundColor="White" Grid.Row="0" RowSpacing="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
