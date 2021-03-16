@@ -1761,21 +1761,18 @@
                                                     <custom1:CheckboxCustom  IsChecked="{Binding ESTLedge}"
                                                                        Style="{StaticResource CheckboxHeightWidth32}"
                                                                          VerticalOptions="CenterAndExpand"/>
-                                                    <custom:CustomLabel   >
-                                                        <custom:CustomLabel.FormattedText>
-                                                            <FormattedString>
-                                                                <Span  Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}"   />
-                                                            </FormattedString>
-                                                        </custom:CustomLabel.FormattedText>
-                                                        <custom:CustomLabel.Triggers>
-                                                                     <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding ESTLedge}" Value="True">
-                                                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
-                                                                     </DataTrigger>
-                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding ESTLedge}" Value="False">
+                                                    <Label Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}">
+                                                        <Label.Triggers>
+                                                                     <DataTrigger TargetType="Label" Binding="{Binding ESTLedge}" Value="True">
+                                                                          <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+                                                                          <Setter Property="FontSize" Value="12"/>
+                                                                          <Setter Property="TextColor" Value="{StaticResource NeutralBlack}"/>
+                                                                    </DataTrigger>
+                                                             <DataTrigger TargetType="Label" Binding="{Binding ESTLedge}" Value="False">
                                                                          <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                                                      </DataTrigger>
-                                                       </custom:CustomLabel.Triggers>
-                                                    </custom:CustomLabel>
+                                                       </Label.Triggers>
+                                                    </Label>
                                                 </StackLayout>
                     </StackLayout>
                 </ScrollView>
