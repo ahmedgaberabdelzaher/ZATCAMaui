@@ -29,6 +29,8 @@ namespace GAZT.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
+        static nint timerTaskID;
+
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -133,18 +135,21 @@ namespace GAZT.iOS
             Console.WriteLine("OnResignActivation called, App moving to inactive state.");
         }
 
-        public override void DidEnterBackground(UIApplication application)
+        void EndTimerTask()
         {
 
-            nint taskID = UIApplication.SharedApplication.BeginBackgroundTask(() => {
-                // Console.WriteLine("Background stopped");
+            if (timerTaskID != 0)
+            {
+                UIApplication.SharedApplication.EndBackgroundTask(timerTaskID);
+            }
+        }
 
+        public override void DidEnterBackground(UIApplication application)
+        {
+            timerTaskID = UIApplication.SharedApplication.BeginBackgroundTask(() =>
+            {
+                EndTimerTask();
             });
-
-            //var newTask= new Task(() => {
-            //       // UIApplication.SharedApplication.EndBackgroundTask(taskID); });
-            //        newTask.Start();
-            //     }
 
         }
 
