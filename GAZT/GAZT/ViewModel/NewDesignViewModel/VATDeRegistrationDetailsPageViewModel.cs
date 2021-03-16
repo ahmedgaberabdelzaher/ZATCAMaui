@@ -1454,42 +1454,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 SuspendedStartDate = Convert.ToDateTime(convertedDate);//filling period
                             }
 
-                            if(vATDeRegistration.d.SuspDtto != null)
+                            if (vATDeRegistration.d.SuspDtto != null)
                             {
                                 convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.SuspDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 SuspendedEndDate = Convert.ToDateTime(convertedDate);//filling perio end date
 
                             }
 
-                            if(vATDeRegistration.d.StartDate != null)
+                            if (vATDeRegistration.d.StartDate != null)
                             {
                                 convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.StartDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 FromDate = Convert.ToDateTime(convertedDate);//suspension start date
                             }
 
-                            if(vATDeRegistration.d.EndDate != null)
+                            if (vATDeRegistration.d.EndDate != null)
                             {
                                 convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.EndDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 ToDate = Convert.ToDateTime(convertedDate);//suspension end date
                             }
 
-                            if(vATDeRegistration.d.NextDtfrom != null)
+                            if (vATDeRegistration.d.NextDtfrom != null)
                             {
                                 convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 NextFilingStartDate = Convert.ToDateTime(convertedDate);//next filling start date
                             }
 
-                            if(vATDeRegistration.d.NextDtto != null)
+                            if (vATDeRegistration.d.NextDtto != null)
                             {
                                 convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.NextDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 NextFilingEndDate = Convert.ToDateTime(convertedDate);//next filling end date
                             }
-                           
+
                             //populateAttachments(vATDeRegistration);
                             //await suspendedDateValidation();
                             if (vATDeRegistration.d.NotesSet != null)
                             {
-                                if(vATDeRegistration.d.NotesSet.results!= null && vATDeRegistration.d.NotesSet.results.Count > 0)
+                                if (vATDeRegistration.d.NotesSet.results != null && vATDeRegistration.d.NotesSet.results.Count > 0)
                                 {
                                     OtherField = vATDeRegistration.d.NotesSet.results[0].Strline;
                                 }
@@ -2903,15 +2903,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 if (SelectedReasonListIndex == 0)
                 {
-                    reqType = "VT_DREG";
                     requestTyp = "D";
                 }
                 else
                 {
-                    //reqType = "VT_SUSP";
-                    reqType = "VT_DREG";
                     requestTyp = "S";
-
                     VATDeRegistrationDetailsData.d.StartDate = ConvertDateFormat(FromDate);
                     VATDeRegistrationDetailsData.d.EndDate = ConvertDateFormat(ToDate);
                     VATDeRegistrationDetailsData.d.SuspDtfrom = ConvertDateFormat(SuspendedStartDate);
@@ -2924,9 +2920,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
 
-                VATDeRegistrationDetailsData.d.TxnTpx = reqType;
-                VATDeRegistrationDetailsData.d.Reqtp = requestTyp;
-                if (IsDeclarationViewEnabled)
+                if (IsDeclarationViewEnabled || IsSummaryViewEnabled)
                 {
                     VATDeRegistrationDetailsData.d.StepNumber = "03";
                     VATDeRegistrationDetailsData.d.StepNumberx = "03";
@@ -2958,14 +2952,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeRegistrationDetailsData.d.Operationx = operation;
                 if (operation == "05")
                 {
+                    reqType = "VT_DREG";
                     VATDeRegistrationDetailsData.d.Fbustx = "E0013";
                     VATDeRegistrationDetailsData.d.Statusx = "E0013";
                 }
                 else if (operation == "01")
                 {
-                    VATDeRegistrationDetailsData.d.Fbustx = "E0002";
-                    VATDeRegistrationDetailsData.d.Statusx = "E0002";
+                    reqType = "";
+                    VATDeRegistrationDetailsData.d.Fbustx = "";// ""
+                    VATDeRegistrationDetailsData.d.Statusx = "E0001";//portal E0001
                 }
+                VATDeRegistrationDetailsData.d.Reqtp = requestTyp;// D in portal
+                VATDeRegistrationDetailsData.d.TxnTpx = reqType;
                 //Step3
 
                 //Step 4
@@ -3043,17 +3041,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         vATDeregNote.Noteno = noteNum.ToString();
                         vATDeregNote.Notenoz = noteNum.ToString();
                         vATDeregNote.Tdline = OtherField;
-
-                        VATDeRegistrationDetailsData.d.NotesSet.results.Clear();
                         VATDeRegistrationDetailsData.d.NotesSet.results.Add(vATDeregNote);
                     }
                 }
-                VATDeRegistrationDetailsData.d.AttdetSet.results = new List<Attachment>();
-                foreach (Attachment attachemnt in VatAttachmentsList)
-                {
-                    if (!VATDeRegistrationDetailsData.d.AttdetSet.results.Contains(attachemnt))
-                        VATDeRegistrationDetailsData.d.AttdetSet.results.Add(attachemnt);
-                }
+                VATDeRegistrationDetailsData.d.NotesSet?.results?.Clear();
+                VATDeRegistrationDetailsData.d.AttdetSet?.results.Clear();
+                VATDeRegistrationDetailsData.d.QuesListSet?.results.Clear();
+                VATDeRegistrationDetailsData.d.AddressSet?.results.Clear();
+                //foreach (Attachment attachemnt in VatAttachmentsList)
+                //{
+                //    if (!VATDeRegistrationDetailsData.d.AttdetSet.results.Contains(attachemnt))
+                //        VATDeRegistrationDetailsData.d.AttdetSet.results.Add(attachemnt);
+                //}
 
             }
             catch (Exception ex)
