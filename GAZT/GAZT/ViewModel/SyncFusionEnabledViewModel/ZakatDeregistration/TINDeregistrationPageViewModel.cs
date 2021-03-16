@@ -1254,7 +1254,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         // SurnameText.IsVisible = false;
                         GrandFathersNameText.IsVisible = false;
                         FamilyNameText.IsVisible = false;
-                        IsDobVisible = false;
+                        IsDobVisible = true;// false;
                     }
                     else
                     {
@@ -1459,7 +1459,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             {
                                 SelectedIdNumber = string.Empty;
                                 SelectedDob = string.Empty;
-                                IsDobVisible = false;
+                                IsDobVisible = true;
                                 GCCIdTypeSelected();
                             }
                         }
@@ -4492,7 +4492,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(SelectedIdtype)) // If Taxpayer enter TIN Number, That will point one of the Id Type from the list
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 return;
@@ -4500,7 +4500,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 return;
@@ -4508,7 +4508,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDobToDisplay))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 return;
@@ -4516,7 +4516,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 return;
@@ -6527,7 +6527,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             }
                             else if (obj.key == "ZS0005")
                             {
-                                IsDobVisible = false;
+                                IsDobVisible = true;// false;
                             }
                             else if (obj.key == "ZS0002")
                             {

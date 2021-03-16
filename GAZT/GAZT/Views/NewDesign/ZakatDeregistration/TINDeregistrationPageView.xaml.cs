@@ -765,7 +765,19 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 viewModel.FrameIDError = false;
             }
+            if (viewModel.SelectedIDTypeCode == "ZS0005" && e.NewTextValue.Length < 7)
+            {
+                FrmDBO1.IsEnabled = false;
+                DateEntry23.Text = string.Empty;
+            }
+            else
+            {
+                FrmDBO1.IsEnabled = true;
+            }
+
+            viewModel.PickerDOBDateDisplay = string.Empty;
         }
+
 
         private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)
         {
@@ -1351,6 +1363,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
 
         }
+
+
         public void OnDOBDateEntryFocussed(object sender, EventArgs args)
         {
             if (viewModel.IsEnteredTINValid == false)
@@ -1358,11 +1372,29 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 DateEntry23.TextColor = Color.Black;
                 if (viewModel.IsDOBHijriCal)
                 {
+
+                    if (viewModel.SelectedIDTypeCode == "ZS0005" && idNumber.Text.Length < 7)
+                    {
+                        DpDboHijri3.IsOpen = false;
+                        FrmDBO1.IsEnabled = false;
+                        return;
+                    }
+                  
                     DpDboHijri3.IsOpen = true;
+                    FrmDBO1.IsEnabled = true;
+
                 }
                 else
                 {
+                    if (viewModel.SelectedIDTypeCode == "ZS0005" && idNumber.Text.Length < 7)
+                    {
+                        DpDbo3.IsOpen = false;
+                        FrmDBO1.IsEnabled = false;
+                        return;
+                    }
                     DpDbo3.IsOpen = true;
+                    FrmDBO1.IsEnabled = true;
+
                 }
 
             }
