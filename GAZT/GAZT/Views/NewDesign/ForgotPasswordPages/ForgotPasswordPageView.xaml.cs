@@ -144,7 +144,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.ContinueORConfirmButtonText = AppResources.Confirm;
            viewModel.IsContinueButtonVisibe = viewModel.ValidateFirstStep();
 
-            // viewModel.GetCaptchAndGUID();
+             viewModel.GetCaptchAndGUID();
 
 
         }
