@@ -976,16 +976,16 @@
                     </StackLayout>
 
                     <!--</Grid>-->
-                    <Grid RowSpacing="10" ColumnDefinitions="1*,2*,7*">
+                    <Grid RowSpacing="10" ColumnDefinitions="1*,9*">
                         <custom1:CheckboxCustom x:Name="outletDeclaration" Grid.Row="0" Grid.Column="0"   VerticalOptions="CenterAndExpand" 
                                                 IsChecked="{Binding IsOutletChecked}" Style="{StaticResource CheckboxHeightWidth32}"/>
 
-                        <custom:CustomLabel Margin="5,10,0,15" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Style="{DynamicResource IsOutletCheckedStyle}">
-                            <custom:CustomLabel.FormattedText>
+                        <custom:CustomLabel Text="{Binding OutletCheckboxTitle}" Margin="5,10,0,15" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Style="{DynamicResource IsOutletCheckedStyle}">
+                            <!--<custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding OutletCheckboxTitle}"  />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel.FormattedText>-->
                         </custom:CustomLabel>
                     </Grid>
 
