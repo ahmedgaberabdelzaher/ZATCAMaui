@@ -140,8 +140,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else if (PaymentData.d.FinalStat == "01") {
 
-
-                        _ = UpdateMadaPaymentDetails(caseGuidNumber);
+                        PaymentData = await WebServiceManager.GAZTUpdateMadaPaymentDetails(caseGuidNumber, platform);
                     }
 
 
@@ -156,7 +155,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                    var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
+
+
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
