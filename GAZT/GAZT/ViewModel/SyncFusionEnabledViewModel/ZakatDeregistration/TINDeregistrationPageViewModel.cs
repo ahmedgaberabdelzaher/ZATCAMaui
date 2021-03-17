@@ -294,7 +294,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                if (_PickerCloseAllDeregDateDisplay == value) return;
+              //  if (_PickerCloseAllDeregDateDisplay == value) return;
 
                 _PickerCloseAllDeregDateDisplay = value;
                 RaisePropertyChanged("PickerCloseAllDeregDateDisplay");
