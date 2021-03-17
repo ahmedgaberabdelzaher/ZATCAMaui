@@ -1624,7 +1624,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                     <StackLayout Grid.Row="7">
 
                                                         <Label Text="{x:Static custom2:AppResources.MobileNumber}" Style="{StaticResource ComponentHeaderBlackBold}"/>
-                                                        <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
+                                                        <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"
+                                                                                       Margin="0,-6,0,-6" InputViewPadding="16,0,16,0"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="False"
                                                 Style="{StaticResource TextInputLayout}" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" 

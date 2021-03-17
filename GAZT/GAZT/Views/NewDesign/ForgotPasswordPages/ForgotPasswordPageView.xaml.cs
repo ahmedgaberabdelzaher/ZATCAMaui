@@ -110,6 +110,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.IDNumber = string.Empty;
             viewModel.UserNameLabelText = AppResources.UserName;
 
+            viewModel.GetCaptchAndGUID();
+
             viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
 
 
@@ -141,6 +143,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.UserNameLabelText = AppResources.IDNumber;
             viewModel.ContinueORConfirmButtonText = AppResources.Confirm;
            viewModel.IsContinueButtonVisibe = viewModel.ValidateFirstStep();
+
+            // viewModel.GetCaptchAndGUID();
 
 
         }

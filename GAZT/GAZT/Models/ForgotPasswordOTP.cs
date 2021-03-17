@@ -39,7 +39,7 @@ namespace EGAZT.Models
     public class D
     {
         // check metadata while calling for sentOTP
-        public Metadata __metadata { get; set; }
+       // public Metadata __metadata { get; set; }
         public string Action { get; set; }
         public string Tin { get; set; }
         public string Langu { get; set; }
@@ -53,6 +53,11 @@ namespace EGAZT.Models
         public int Minutes { get; set; }
         public string Name { get; set; }
         public int Attempts { get; set; }
+        public string Captcha { get; set; }
+        public string Application { get; set; }
+        public string Guid { get; set; }
+        //public string Refresh { get; set; }
+       // public string Taxpayer { get; set; }
         //public DateTime Dob { get; set; }
         public string NewPwd { get; set; }
         public string CnfPwd { get; set; }
@@ -82,9 +87,27 @@ namespace EGAZT.Models
     //    public string RdBt { get; set; }
     //    public string Hyperlink { get; set; }
     //}
+
     [Preserve(AllMembers = true)]
     public class ForgotPasswordOTP
     {
         public D d { get; set; }
+    }
+
+    public class GenerateCaptchaGUID
+    {
+        public GetCaptcha d { get; set; }
+
+    }
+
+    [Preserve(AllMembers = true)]
+    public class GetCaptcha
+    {
+        public Metadata __metadata { get; set; }
+        public string Captcha { get; set; }
+        public string Application { get; set; }
+        public string Guid { get; set; }
+        public string Refresh { get; set; }
+        public string Taxpayer { get; set; }
     }
 }

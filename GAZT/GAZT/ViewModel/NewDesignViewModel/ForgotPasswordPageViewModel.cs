@@ -27,6 +27,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        private string captcha = string.Empty;
+        private string GUID=string.Empty;
         //public ICommand OnSubmitClicked { get; set; }
         //public ICommand OnCaptchaRegenerateClicked { get; set; }
         //public ICommand OnChangePasswordSubmitClicked { get; set; }
@@ -1786,7 +1788,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     if (!string.IsNullOrEmpty(IDNumber))
                     {
-                        await SendUserNameToRegidteredEmail();
+                        await SendIDNumberToUsernameEmail();
                     }
                     else
                     {
@@ -2091,6 +2093,78 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             return isValidCaptcha;
         }
+        public async void GetCaptchAndGUID()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                    Enabled = false;
+                });
+                await Task.Run(async () =>
+                {
+                    try
+                    {
+                       string lang = UtilityManager.GetLanguageParameter();
+                        string st =  Constants.CaptchaAndGUID;
+                        string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                        GenerateCaptchaGUID forgotPasswordOTP = new GenerateCaptchaGUID();
+                        Metadata metadata = new Metadata();
+                        metadata.id = st;
+                        metadata.uri = st;
+                        metadata.type = type;
+
+                        GetCaptcha d = new GetCaptcha();  
+                        d.__metadata = metadata;
+                        d.Captcha = "";
+                        d.Guid = "";
+                        d.Taxpayer = "";
+                        d.Refresh = "";    
+                        d.Application = "FPWD";
+
+                        forgotPasswordOTP.d = d;
+                        forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
+                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                        if(forgotPasswordOTP.d!= null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
+                        {
+                            captcha = forgotPasswordOTP.d.Captcha;
+                            GUID = forgotPasswordOTP.d.Guid;
+                                IsAPICalledSuccessfully = true;
+                        }
+                        else
+                        {
+
+                        }
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (InternetException ex)
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+
+                    SetIDNumberEnability = true;
+                    IDNumber = String.Empty;
+                    // UserIDLayoutVisibility = true;
+                });
+            }
+        }
         private async Task SendOTPToRegisterMobileNumber()
         {
             try
@@ -2106,7 +2180,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         string idNumber = GetTinId();
                         string lang = UtilityManager.GetLanguageParameter();
-                        forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, idNumber);
+                        string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
+                        string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                        string st1 = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
+                        string uri = st1 + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                        string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                        ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
+                        Metadata metadata = new Metadata();
+                        metadata.id = id;
+                        metadata.uri = uri;
+                        metadata.type = type;
+                        D d = new D();
+                        //d.__metadata =  metadata;
+                        d.Action = "";
+                        d.Tin = idNumber;
+                        d.Langu = UtilityManager.GetLanguageParameter();
+                        d.EmailId = "";
+                        d.SubType = "";
+                        d.Idnumber = "";
+                        d.RdBt = "P";
+                        d.TpType = "";
+                        d.MobileNo = "";
+                       // d.Refresh = "";
+                        d.Hyperlink = "";
+                        //d.Taxpayer = "";
+                        d.Name = "";
+                        d.Otp = "";
+                        d.NewPwd = "";
+                        d.CnfPwd = "";
+                        d.Application = "FPWD";
+                        d.Captcha = captcha;
+                        d.Guid = GUID;
+                        forgotPasswordOTP.d = d;
+                        forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(forgotPasswordOTP);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
                         {
@@ -2214,9 +2320,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         currentAttempts++;
                         string idNumber = GetTinId();
                         string lang = UtilityManager.GetLanguageParameter();
-                        string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                        string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
                         string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
-                        string st1 = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                        string st1 = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
                         string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
                         string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                         ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
@@ -2225,7 +2331,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         metadata.uri = uri;
                         metadata.type = type;
                         D d = new D();
-                        d.__metadata = metadata;
+                        //d.__metadata = metadata;
                         if (currentAttempts < 3)
                         {
                             d.Action = "01";
@@ -2246,6 +2352,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         d.Minutes = 0;
                         d.Name = "";
                         d.Attempts = 0;
+                        d.Captcha = captcha;
+                        d.Guid = GUID;
                         // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
                         d.NewPwd = "";
                         d.CnfPwd = "";
@@ -2368,6 +2476,97 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
+        public async Task SendIDNumberToUsernameEmail()
+        {
+            try
+            {
+                string idNumber = GetTinId();
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    string lang = UtilityManager.GetLanguageParameter();
+                   
+                    ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
+                
+                    D d = new D();
+                    //d.__metadata = metadata;
+                    d.Action = "";
+                    d.Tin = "";
+                    d.Langu = UtilityManager.GetLanguageParameter();
+                    d.CurrAttmps = 0;
+                    d.EmailId = "";
+                    d.TpType = "1";
+                    d.MobileNo = "";
+                    d.SubType = "ZS0001";
+                    d.Idnumber = idNumber;
+                    d.Otp = EnteredOTP;
+                    d.Minutes = 0;
+                    d.Name = "";
+                    d.Attempts = 0;
+                    d.Captcha = captcha;
+                    d.Guid = GUID;
+                    d.NewPwd = "";
+                    d.CnfPwd = "";
+                    d.RdBt = "U";
+                    d.Hyperlink = "";
+                    d.Application = "FUSR";
+                    forgotPassword.d = d;
+                    forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
+                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    if (forgotPassword.d != null)
+                    {
+                        //IsAPICalledSuccessfully = true;
+                        //RecoverUserNameLayout = true;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            //  _navigationService.NavigateTo(App.GAZTNewDesignRecoverUsername);
+                            //await Application.Current.MainPage.Navigation.PopModalAsync(true);
+                            //await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverUsernamePageView());
+                            await SendUserNameToRegidteredEmail();
+
+                            //    await Navigation.PushModalAsync(new GAZTNewDesignRecoverUsername(), true);
+
+
+                            //await _dialogService.ShowMessageBox(AppResources.Usernamehasbeensenttoregisteredmobilenumber, AppResources.Information);
+                            // _navigationService.GoBack();
+                            //MainPageLayoutVisibility = false;
+                            //NewPasswordLayoutVisibility = false;
+                            //OTPLayoutVisibility = false;
+                            //NavigateToLoginLinkVisibility = true;
+                            //ForgotPasswordUserNameChangedMessage = AppResources.Usernamehasbeensenttoregisteredmobilenumber;
+                        });
+                    }
+                    else
+                    {
+                        IsAPICalledSuccessfully = false;
+                        IDNumber = string.Empty;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDEntervaliduserid));
+
+                            //   await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
+                        });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (InternetException ex)
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                //   await _dialogService.ShowMessageBox(ex.Message, AppResources.ZError);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+        }
         private async Task SendUserNameToRegidteredEmail()
         {
             try
@@ -2380,9 +2579,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 await Task.Run(async () =>
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                    string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
                     string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + idNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
-                    string st1 = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                    string st1 = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
                     string uri = st1 + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "1" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + IDNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
                     string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                     ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
@@ -2391,7 +2590,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     metadata.uri = uri;
                     metadata.type = type;
                     D d = new D();
-                    d.__metadata = metadata;
+                    //d.__metadata = metadata;
                     d.Action = "40";
                     d.Tin = "";
                     d.Langu = UtilityManager.GetLanguageParameter();
@@ -2399,17 +2598,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     d.EmailId = "";
                     d.TpType = "1";
                     d.MobileNo = "";
-                    d.SubType = "ZS001";
+                    d.SubType = "ZS0001";
                     d.Idnumber = idNumber;
                     d.Otp = EnteredOTP;
                     d.Minutes = 0;
                     d.Name = "";
                     d.Attempts = 0;
+                    d.Captcha = captcha;
+                    d.Guid = GUID;
                     // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
                     d.NewPwd = NewPassword;
                     d.CnfPwd = ConfirmPassword;
                     d.RdBt = "U";
                     d.Hyperlink = "";
+                    d.Application = "FUSR";
                     forgotPassword.d = d;
                     forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
@@ -2494,7 +2696,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         metadata.uri = uri;
                         metadata.type = type;
                         D d = new D();
-                        d.__metadata = metadata;
+                       // d.__metadata = metadata;
                         d.Action = "40";
                         d.Tin = idNumber;
                         d.Langu = UtilityManager.GetLanguageParameter();
@@ -2508,6 +2710,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         d.Minutes = 0;
                         d.Name = "";
                         d.Attempts = 0;
+                        d.Captcha = captcha;
+                        d.Guid = GUID;
                         // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
                         d.NewPwd = NewPassword;
                         d.CnfPwd = ConfirmPassword;
@@ -2777,37 +2981,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             });
         }
-        //private void TimerStart()
-        //{
-        //    CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
-        //    int TotalSec = 120;
-        //    CancellationTokenSource CTS = _CancellationTokenSource;
-        //    Device.StartTimer(new TimeSpan(0, 0, 1), () =>
-        //    {
-        //        if (CTS.IsCancellationRequested)
-        //        {
-        //            return false;
-        //        }
-        //        else
-        //        {
-        //            if (TotalSec == 0)
-        //            {
-        //                return false;
-        //            }
-        //            else if (!StopTimer)
-        //            {
-        //                return false;
-        //            }
-        //            Device.BeginInvokeOnMainThread(() =>
-        //            {
-        //                TotalSec = TotalSec - 1;
-        //                TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
-        //                OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
-        //            });
-        //            return true;
-        //        }
-        //    });
-        //}
         private bool IsMandatoryFieldEntered()
         {
             bool IsMandatoryFieldEntered = false;
@@ -2852,29 +3025,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             return false;
         }
-        //private async Task ShowNewPasswordAndOldPassowrdNotBeSameInformation()
-        //{
-        //        Device.BeginInvokeOnMainThread(async () =>
-        //        {
-        //            await _dialogService.ShowMessageBox(AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword, AppResources.Alerts);
-        //            await Task.Run(() =>
-        //            {
-        //                IsLoading = false;
-        //            });
-        //        });
-        //}
-        //private bool IsNewPasswordSameAsOldPasswordSame()
-        //{
-        //    //if (NewPassword.Equals(App.TP.Password))
-        //    //{
-        //    //    return true;
-        //    //}
-        //    //else
-        //    //{
-        //    //    return false;
-        //    //}
-        //    ret
-        //}
 
         public void ClearData()
         {

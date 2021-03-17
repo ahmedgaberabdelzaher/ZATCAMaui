@@ -1018,9 +1018,41 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 {
                     try
                     {
+                       
                         string idNumber = GetTinId();
                         string lang = UtilityManager.GetLanguageParameter();
-                        forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, idNumber);
+                        string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                        string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                        string st1 = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                        string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
+                        string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                        ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
+                        Metadata metadata = new Metadata();
+                        metadata.id = id;
+                        metadata.uri = uri;
+                        metadata.type = type;
+                        D d = new D();
+                      //  d.__metadata = metadata;
+                        d.Action = "";
+                        d.Tin = idNumber;
+                        d.Langu = UtilityManager.GetLanguageParameter();
+                        d.CurrAttmps = currentAttempts;
+                        d.EmailId = "";
+                        d.TpType = "";
+                        d.MobileNo = "";
+                        d.SubType = "";
+                        d.Idnumber = "";
+                        d.Otp = "";
+                        d.Minutes = 0;
+                        d.Name = "";
+                        d.Attempts = 0;
+                        // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
+                        d.NewPwd = "";
+                        d.CnfPwd = "";
+                        d.RdBt = "P";
+                        d.Hyperlink = "";
+                        forgotPassword.d = d;
+                        forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(forgotPassword);
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
                         {
@@ -1092,7 +1124,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                         metadata.uri = uri;
                         metadata.type = type;
                         D d = new D();
-                        d.__metadata = metadata;
+                        //d.__metadata = metadata;
                         if (currentAttempts < 3)
                         {
                             d.Action = "01";
@@ -1221,7 +1253,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                     metadata.uri = uri;
                     metadata.type = type;
                     D d = new D();
-                    d.__metadata = metadata;
+                 //   d.__metadata = metadata;
                     d.Action = "40";
                     d.Tin = "";
                     d.Langu = UtilityManager.GetLanguageParameter();
@@ -1306,7 +1338,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                         metadata.uri = uri;
                         metadata.type = type;
                         D d = new D();
-                        d.__metadata = metadata;
+                       // d.__metadata = metadata;
                         d.Action = "40";
                         d.Tin = idNumber;
                         d.Langu = UtilityManager.GetLanguageParameter();

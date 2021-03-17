@@ -76,6 +76,7 @@ namespace GAZT.Helper
         public static string GAZTSAMLLogoutService = BaseUrlOfODataServices + "/sap/public/bc/icf/logoff?keepMYSAPSSO2Cookie=true&dsmguid=1588829910165";
         //https://sapgatewayqa.gazt.gov.sa/sap/public/bc/icf/logoff?keepMYSAPSSO2Cookie=true&dsmguid=1588829910165
 
+        public static string CaptchaAndGUID = BaseUrlOfODataServices+ "/sap/opu/odata/SAP/ZDP_CREATE_CAPTCHA_SRV/HeaderSet";
         public static string ForgotPasswordServiceName = "ZDP_FRGT_USRNM_PWD_SRV";// service name has been used in Metadata in ForgotUserNamePassword Page
         public static string JSONContentType = "application/json";
         public static string GAZTSOAPWebRequestForAuthenticationService = BaseUrlOfAuthentication + "/local~mblgapi/AuthenticatedService";
@@ -94,10 +95,10 @@ namespace GAZT.Helper
 
         public static string GetAllCertificate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='";
         public static string GetMyBills = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_MYBILLS_SRV/MyBillsSet?$filter=";
-        public static string FogotPasswordSendOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='";
-        public static string SendUserNameToEmail = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=enabled";
-        public static string ValidateOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=enabled";
-        public static string ChangePassword = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=enabled";
+        public static string FogotPasswordSendOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/SecuredHeaderSet(Tin='";
+        public static string SendUserNameToEmail = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/SecuredHeaderSet?saml2=enabled";
+        public static string ValidateOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/SecuredHeaderSet?saml2=enabled";
+        public static string ChangePassword = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/SecuredHeaderSet?saml2=enabled";
         public static string GetTinStatus = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTIN_STAT_SRV/HeaderSet(Langz='";
         public static string GetVATLookUpDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZVAT_TAXPAYER_LOOKUP_SRV/TaxpayerSet?saml2=enabled&sap-language='";
         public static string GAZTGetAllVATDeclarationReturnData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet(Periodkeyz='";

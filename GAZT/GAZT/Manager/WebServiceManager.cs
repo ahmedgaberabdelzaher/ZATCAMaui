@@ -373,33 +373,105 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static async Task<ForgotPasswordOTP> GAZTFogotPasswordSendOTP(String Lang, String Tin)
+        //public static async Task<ForgotPasswordOTP> GAZTFogotPasswordSendOTP(String Lang, String Tin)
+        //{
+        //    if (CrossConnectivity.Current.IsConnected)
+        //    {
+        //        DateTime dt = DateTime.Now;
+        //        ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
+        //        char lang = GetLangZParameter();
+        //        string NewToken = string.Empty;
+        //        try
+        //        {
+        //            try
+        //            {
+        //                App.httpClientHandler.CookieContainer = null;
+        //            }
+        //            catch (Exception)
+        //            {
+
+        //            }
+        //            string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + lang + "'" + ")?saml2=enabled&$format=json";
+        //            HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await GetServiceManager.MakeGetAPICall(uri, false, string.Empty);
+        //            if (GAZTFogotPasswordSendOTPResponse != null)
+        //            {
+        //                HttpHeaders headers = GAZTFogotPasswordSendOTPResponse.Headers;
+        //                String GAZTGetSendOTPResponseJSON = GAZTFogotPasswordSendOTPResponse.Content.ReadAsStringAsync().Result;
+        //                forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(GAZTGetSendOTPResponseJSON);
+        //            }
+        //            return forgotPasswordOTP;
+        //        }
+        //        catch (Exception)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        throw new InternetException(AppResources.ZZInternetConnectionMessage);
+        //    }
+        //}
+
+        public static async Task<ForgotPasswordOTP> GAZTFogotPasswordSendOTP(ForgotPasswordOTP forgotPasswordOTP)
         {
+            //if (CrossConnectivity.Current.IsConnected)
+            //{
+            //    DateTime dt = DateTime.Now;
+            //    ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
+            //    char lang = GetLangZParameter();
+            //    string NewToken = string.Empty;
+            //    try
+            //    {
+            //        try
+            //        {
+            //            App.httpClientHandler.CookieContainer = null;
+            //        }
+            //        catch (Exception)
+            //        {
+
+            //        }
+            //        string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + lang + "'" + ")?saml2=enabled&$format=json";
+            //        HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await GetServiceManager.MakeGetAPICall(uri, false, string.Empty);
+            //        if (GAZTFogotPasswordSendOTPResponse != null)
+            //        {
+            //            HttpHeaders headers = GAZTFogotPasswordSendOTPResponse.Headers;
+            //            String GAZTGetSendOTPResponseJSON = GAZTFogotPasswordSendOTPResponse.Content.ReadAsStringAsync().Result;
+            //            forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(GAZTGetSendOTPResponseJSON);
+            //        }
+            //        return forgotPasswordOTP;
+            //    }
+            //    catch (Exception)
+            //    {
+            //        return null;
+            //    }
+            //}
+            //else
+            //{
+            //    throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            //}
             if (CrossConnectivity.Current.IsConnected)
             {
-                DateTime dt = DateTime.Now;
-                ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
-                char lang = GetLangZParameter();
-                string NewToken = string.Empty;
                 try
                 {
-                    try
-                    {
-                        App.httpClientHandler.CookieContainer = null;
-                    }
-                    catch (Exception)
-                    {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
-                    }
-                    string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + lang + "'" + ")?saml2=enabled&$format=json";
-                    HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await GetServiceManager.MakeGetAPICall(uri, false, string.Empty);
-                    if (GAZTFogotPasswordSendOTPResponse != null)
-                    {
-                        HttpHeaders headers = GAZTFogotPasswordSendOTPResponse.Headers;
-                        String GAZTGetSendOTPResponseJSON = GAZTFogotPasswordSendOTPResponse.Content.ReadAsStringAsync().Result;
-                        forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(GAZTGetSendOTPResponseJSON);
-                    }
-                    return forgotPasswordOTP;
+                    ForgotPasswordOTP forgotPasswordResponse = new ForgotPasswordOTP();
+                    string url = Constants.SendUserNameToEmail;
+                    var uri = new Uri(url);
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Token", "123");
+
+                    var serilized = JsonConvert.SerializeObject(forgotPasswordOTP);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                    forgotPasswordResponse = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
+                    return forgotPasswordResponse;
                 }
                 catch (Exception)
                 {
@@ -411,6 +483,46 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+
+        public static async Task<GenerateCaptchaGUID> GAZTCaptchaAndGUID(GenerateCaptchaGUID readCaptcha)
+        {
+            
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    GenerateCaptchaGUID forgotPasswordCaptcha = new GenerateCaptchaGUID();
+                    string url = Constants.CaptchaAndGUID;
+                    var uri = new Uri(url);
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Token", "123");
+
+                    var serilized = JsonConvert.SerializeObject(readCaptcha);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                    forgotPasswordCaptcha = JsonConvert.DeserializeObject<GenerateCaptchaGUID>(detailJson);
+                    return forgotPasswordCaptcha;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
         public static async Task<ForgotPasswordOTP> GAZTForgotPasswordValidateOTP(ForgotPasswordOTP ValidateOTP)
         {
             if (CrossConnectivity.Current.IsConnected)
