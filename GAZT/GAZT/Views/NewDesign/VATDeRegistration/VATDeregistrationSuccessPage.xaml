@@ -23,7 +23,8 @@ xmlns:custom2="clr-namespace:EGAZT"
         
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
+                    <StackLayout>
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
                 <Image Source="Forget_ic_success.png"   Aspect="AspectFit"/>
                 <Label Text="{x:Static custom2:AppResources.VATDeregistration}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
@@ -31,7 +32,7 @@ xmlns:custom2="clr-namespace:EGAZT"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <yummy:PancakeView BackgroundColor="White" CornerRadius="22,22,0,0" Padding="20"  Margin="0,20,0,0" VerticalOptions="Fill">
-                <StackLayout >
+                <StackLayout Padding="0,0,0,40">
               
                   <border:SfBorder   Margin="0,8,0,8"  Style="{StaticResource GreyBorderFrame}">
                <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
@@ -94,5 +95,7 @@ xmlns:custom2="clr-namespace:EGAZT"
                 </StackLayout>
             </yummy:PancakeView>
         </StackLayout>
+
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
