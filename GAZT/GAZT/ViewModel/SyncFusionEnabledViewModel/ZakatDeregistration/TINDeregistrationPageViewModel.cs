@@ -5816,7 +5816,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.AExpdtH = DeregistrationDate.ToString("yyyy/MM/dd");
 
                     IBANType idType = IBANTypesList.Where(m => m.Text == SelectedIdtype).FirstOrDefault();
-                    SelectedIDTypeCode = idType.key;
+
+                    if(idType != null)
+                        SelectedIDTypeCode = idType.key;
 
                     TinDeregistrationData.AIdType = SelectedIDTypeCode;// "ZS0005"
                     TinDeregistrationData.AIdNo = SelectedIdNumber;
