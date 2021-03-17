@@ -1484,6 +1484,7 @@
                                 </StackLayout>
                             </StackLayout>
                         </border:SfBorder >
+
                         <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout Padding="0" >
                                 <Grid Padding="15" RowSpacing="0" >
@@ -1580,6 +1581,7 @@
                                 </StackLayout>
                             </StackLayout>
                         </border:SfBorder >
+
                         <border:SfBorder Margin="0,16,0,10" Grid.Row="5" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout Padding="0">
                                 <Grid Padding="15" RowSpacing="0" >

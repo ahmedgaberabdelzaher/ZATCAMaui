@@ -4920,6 +4920,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
+                    TinDeregistrationData.AttDetSet.Results = attachmentList;
                     if (IsDeclarationChecked)
                     {
                         PopulateSummaryReasonData();
@@ -4949,6 +4951,43 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
             }
         }
+
+        //public void AddAttachmentToRequestPayload()
+        //{
+        //    TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
+        //    List<Attachment> list = new List<Attachment>();
+        //    if (AttachmentsListViewData != null && AttachmentsListViewData.Count > 0)
+        //    {
+        //        foreach(TinDeregestrationAttachmentsModel attachment in AttachmentsListViewData)
+        //        {
+        //            list.Add(attachment.AttachmentTypeList);
+        //        }
+        //    }
+        //}
+
+        //public List<Attachment> GetAllAttachemt(List<TinDeregestrationAttachmentsModel> attachmentList)
+        //{
+        //    try
+        //    {
+        //        List<Attachment> list = new List<Attachment>();
+        //        foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in attachmentList)
+        //        {
+        //            if (attachmentsModelsTemp.AttachmentTypeList != null)
+        //            {
+        //                foreach (Attachment attachment in attachmentsModelsTemp.AttachmentTypeList)
+        //                {
+        //                    list.Add(attachment);
+        //                }
+        //            }
+        //        }
+        //        return list;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new List<Attachment>();
+        //    }
+
+        //}
 
         public async void SummaryContinueBtnClicked()
         {
