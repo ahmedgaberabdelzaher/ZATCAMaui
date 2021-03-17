@@ -1373,7 +1373,7 @@ namespace GAZT.Manager
         إصدار = 54,
         ReviseDownPayment = 55,
         إضافةالملاحظات = 56
-
+            , عرضالملاحظات = 57
     }
 
 

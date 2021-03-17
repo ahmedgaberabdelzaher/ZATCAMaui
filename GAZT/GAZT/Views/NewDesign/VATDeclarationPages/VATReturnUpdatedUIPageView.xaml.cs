@@ -764,7 +764,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                 case ArButtons.إضافةالملاحظات:
                                     AddNotePopUp();
                                     break;
-                                case ArButtons.عرضملاحظات:
+                                case ArButtons.عرضالملاحظات:
                                     DisplayNotePopUp();
                                     break;
                                 case ArButtons.المرفقات:
