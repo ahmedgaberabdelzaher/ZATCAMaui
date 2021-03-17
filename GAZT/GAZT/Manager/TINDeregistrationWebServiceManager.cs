@@ -195,6 +195,7 @@ namespace EGAZT.Manager
             tinDeregistrationSendResponseModel.FormGuid = tinDeregistrationResponseModel.FormGuid;
             tinDeregistrationSendResponseModel.Fbnumz = tinDeregistrationResponseModel.Fbnumz;
             tinDeregistrationSendResponseModel.Fbnum = tinDeregistrationResponseModel.Fbnum;
+            tinDeregistrationSendResponseModel.Fbust = tinDeregistrationResponseModel.Fbust;
             tinDeregistrationSendResponseModel.Dflag = tinDeregistrationResponseModel.Dflag;
             tinDeregistrationSendResponseModel.CreateTxAssesz = tinDeregistrationResponseModel.CreateTxAssesz;
             tinDeregistrationSendResponseModel.Cflag = tinDeregistrationResponseModel.Cflag;

@@ -212,6 +212,8 @@ namespace EGAZT.Models
 
         [JsonProperty("Fbnum")]
         public string Fbnum { get; set; }
+        [JsonProperty("Fbust")]
+        public string Fbust { get; set; }
 
         [JsonProperty("Dflag")]
         public string Dflag { get; set; }
@@ -508,6 +510,8 @@ namespace EGAZT.Models
 
         [JsonProperty("Fbnum")]
         public string Fbnum { get; set; }
+        [JsonProperty("Fbust")]
+        public string Fbust { get; set; }
 
         [JsonProperty("Dflag")]
         public string Dflag { get; set; }

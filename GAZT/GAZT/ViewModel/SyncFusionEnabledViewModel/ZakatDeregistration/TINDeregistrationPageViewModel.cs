@@ -2974,7 +2974,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         if (!string.IsNullOrEmpty(IDTypeDataModel.GrandfatherName)) GrandFathersNameText.IsEditable = false;
                         if (!string.IsNullOrEmpty(IDTypeDataModel.FamilyName)) FamilyNameText.IsEditable = false;
                         //Disable DOB
-                        if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10)) DobText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10))
+                        {
+                            DobText.IsEditable = false;
+                            PickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
+                        }
+                        else
+                            PickerDOBDateDisplay = "";
                     }
 
                     if (_responseData == null)
@@ -4402,7 +4408,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                                     if (SelectedOutletOption.OutletOptionIndex != "3")
                                                     {
-                                                        if(!string.IsNullOrEmpty(PickerDobToDisplay))
+                                                        if (!string.IsNullOrEmpty(PickerDobToDisplay))
                                                         {
                                                             DateTime dt = Convert.ToDateTime(PickerDobToDisplay);
                                                             permitInfo.APermitDeregDisplayDate = dt.ToString("yyyy/MM/dd");//DeregistrationDate.ToString("dd MMM yyyy");
@@ -5612,6 +5618,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             TinDeregistrationData.Savez = "X";
             TinDeregistrationData.Submitz = "";
             TinDeregistrationData.Xvoidz = "";
+            TinDeregistrationData.Status = "IP017";
+            TinDeregistrationData.Fbust = "E0001";
             await SubmitRequest();
         }
         void SetDataForTransferToASingleTranferee()
@@ -5704,6 +5712,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 TinDeregistrationData.Submitz = "X";
                 TinDeregistrationData.Savez = "";
                 TinDeregistrationData.Xvoidz = "";
+                TinDeregistrationData.Status = "IP017";
+                TinDeregistrationData.Fbust = "E0001";
                 await SubmitRequest();
             }
             catch (InternetException ex)
@@ -5817,13 +5827,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     IBANType idType = IBANTypesList.Where(m => m.Text == SelectedIdtype).FirstOrDefault();
 
-                    if(idType != null)
+                    if (idType != null)
                         SelectedIDTypeCode = idType.key;
 
                     TinDeregistrationData.AIdType = SelectedIDTypeCode;// "ZS0005"
                     TinDeregistrationData.AIdNo = SelectedIdNumber;
-                    TinDeregistrationData.ATin = TINNumber;
-                    TinDeregistrationData.ATransTin = TINNumber;
+                    //TinDeregistrationData.ATin = TINNumber;
+                    if (TinDeregistrationData.ADregOpt == "2")
+                    {
+                        TinDeregistrationData.ATransTin = TINNumber;
+                    }
                     TinDeregistrationData.ANm1 = FirstNameFromIdType;
                     TinDeregistrationData.ANm2 = "";
                     TinDeregistrationData.ANm3 = FirstNameFromIdType;// IDTypeDataModel.Name1;
@@ -6544,7 +6557,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     //SelectedIdtype = TinDeregistrationData.AIdType;
 
-                    if(string.IsNullOrEmpty(SelectedIdtype))
+                    if (string.IsNullOrEmpty(SelectedIdtype))
                     {
                         IBANType idType = IBANTypesList.Where(m => m.Text == SelectedIdtype).FirstOrDefault();
                         SelectedIDTypeCode = idType.key;
@@ -6555,7 +6568,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     FirstNameFromIdType = TinDeregistrationData.ANm3;
                     PickerDOBDateDisplay = TinDeregistrationData.ADobH;//ADob, 
                     PickerDobToDisplay = TinDeregistrationData.AExpdtH;//ASubmissionDateH,ASubmissionDate
-                    TINNumber = TinDeregistrationData.ATin;
+                    TINNumber = TinDeregistrationData.ATransTin;
                 }
 
             }

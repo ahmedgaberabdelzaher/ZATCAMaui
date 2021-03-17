@@ -1019,7 +1019,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     idNumber.Focus();
                     return;
                 }
-                if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID && viewModel.DobText.IsEditable == false)
+                if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID && !string.IsNullOrEmpty(viewModel.PickerDOBDateDisplay))
                 {
                     return;
                 }
@@ -1155,7 +1155,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.DateOfBirth = date;
                         viewModel.SelectedDob = date;
                         viewModel.PickerDOBDateDisplay = viewModel.DateOfBirth;
-
+                        if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID)
+                            return;
                         viewModel.ValidateIDNumber(date);
 
                     }
@@ -1176,6 +1177,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.DateOfBirth = date;
                         viewModel.SelectedDob = date;
                         viewModel.PickerDOBDateDisplay = viewModel.DateOfBirth;
+                        if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID)
+                            return;
                         viewModel.ValidateIDNumber(date);
 
                     }
@@ -1379,7 +1382,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         FrmDBO1.IsEnabled = false;
                         return;
                     }
-                  
+
                     DpDboHijri3.IsOpen = true;
                     FrmDBO1.IsEnabled = true;
 
