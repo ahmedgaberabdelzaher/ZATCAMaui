@@ -3337,10 +3337,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.UserTypx = "TP";
                     taxPayerDetails.Acsactivitydet = "X";
                     taxPayerDetails.Acscontactper = "X";
-                    taxPayerDetails.Fbsta = "IP021";
-                    taxPayerDetails.Fbstax = "IP021";
-                    taxPayerDetails.Fbust = "E0015";
-                    taxPayerDetails.Fbustx = "E0015";
+                    //taxPayerDetails.Fbsta = taxPayerDetails.// "IP021";
+                    //taxPayerDetails.Fbstax = "IP021";
+                    //taxPayerDetails.Fbust = "E0015";
+                    //taxPayerDetails.Fbustx = "E0015";
                     taxPayerDetails.Mandt = "330";
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
