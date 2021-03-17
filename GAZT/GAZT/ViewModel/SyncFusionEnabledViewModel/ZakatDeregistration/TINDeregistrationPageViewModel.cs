@@ -1150,6 +1150,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        private bool _isIdtypePlaceHolderVisible { get; set; }
+        public bool IsIdtypePlaceHolderVisible
+        {
+            get
+            {
+                return _isIdtypePlaceHolderVisible;
+            }
+            set
+            {
+                if (_isIdtypePlaceHolderVisible == value)
+                    return;
+
+                _isIdtypePlaceHolderVisible = value;
+                RaisePropertyChanged("IsIdtypePlaceHolderVisible");
+            }
+        }
+
         private string _selectedIdtype { get; set; }
         public string SelectedIdtype
         {
@@ -1159,8 +1176,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                if (_selectedIdtype == value) return;
+                if(string.IsNullOrEmpty(value))
+                {
+                    IsIdtypePlaceHolderVisible = true;
+                }
+                else
+                {
+                    IsIdtypePlaceHolderVisible = false;
+                }
 
+                if (_selectedIdtype == value)
+                    return;
 
                 _selectedIdtype = value;
                 RaisePropertyChanged("SelectedIdtype");
