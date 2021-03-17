@@ -1838,7 +1838,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <custom:CustomLabel  Grid.Row="5" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"  Style="{StaticResource BodyLabelBlackMedium}">
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="(0966)"/>
+                                                                        <!--<Span Text="(0966)"/>-->
                                                                         <Span Text="{Binding BindingContext.MobNumberSum, Source={x:Reference VATRegistration}}" />
                                                                     </FormattedString>
                                                                 </custom:CustomLabel.FormattedText>

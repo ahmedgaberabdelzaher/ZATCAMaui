@@ -52,7 +52,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 this.BindingContext = viewModel;
-                if(App.IsArabic)
+                if (App.IsArabic)
                 {
                     label1.HorizontalTextAlignment = TextAlignment.End;
                     label2.HorizontalTextAlignment = TextAlignment.End;
@@ -1977,14 +1977,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     await PopupNavigation.Instance.PushAsync(popUp);
 
 
-                  //  String action = await DisplayActionSheet("", AppResources.VATAmendRegistrationCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
+                    //  String action = await DisplayActionSheet("", AppResources.VATAmendRegistrationCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
 
                 }
             }
             catch (Exception)
             {
             }
-         
+
         }
         private void DDlIDTypeSR_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -4166,13 +4166,16 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             if (viewModel.VATRegistrationDetailsData.d.CONTACTDTSet.results != null)
             {
-                bool flag1 = IsValid(viewModel.ListFinanceRepresenatives[0].SmtpAddrFR);
+                //bool flag1 = IsValid(viewModel.ListFinanceRepresenatives[0].SmtpAddrFR);
                 bool flag = IsValid(viewModel.SmtpAddrFR);
-                if (!flag1 || (viewModel.IsAddNewRepresentativeChecked && !flag))
+                if (viewModel.IsAddNewRepresentativeChecked && !flag)
                 {
                     ShowValidationPopup(AppResources.ZZPleaseenteravalidEmailAddress);
+                    FrmEmailAddress.HasError = true;
                     return;
                 }
+                else
+                    FrmEmailAddress.HasError = false;
 
             }
         }
@@ -4185,7 +4188,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 popUp.FlowDirections = "RightToLeft";
             else
                 popUp.FlowDirections = "LeftToRight";
-            FrmPhoneNumber.HasError = true;
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(sourceString));
         }
         private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
@@ -4204,11 +4206,15 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                     ShowValidationPopup(message);
+                    FrmPhoneNumber.HasError = true;
+                    return;
                 }
                 else if (viewModel.MobNumberFR.Substring(0, 6) != "009665")
                 {
                     message = AppResources.VATAmendMobileNumberValidation;
                     ShowValidationPopup(message);
+                    FrmPhoneNumber.HasError = true;
+                    return;
                 }
                 else
                 {
@@ -4221,7 +4227,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         if (Messages.Length > 0)
                         {
                             ShowValidationPopup(message);
+                            FrmPhoneNumber.HasError = true;
                         }
+                        else
+                            FrmPhoneNumber.HasError = false;
                     }
                 }
             }

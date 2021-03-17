@@ -4879,7 +4879,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>VAT Registration Amendment Successfull</value>
   </data>
   <data name="VATAmendMobileNumberValidation" xml:space="preserve">
-    <value>Mobile Number should be start with 009665</value>
+    <value>Mobile Number should start with 009665</value>
   </data>
   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
     <value>GAZT acknowledges your Change VAT registration application</value>
