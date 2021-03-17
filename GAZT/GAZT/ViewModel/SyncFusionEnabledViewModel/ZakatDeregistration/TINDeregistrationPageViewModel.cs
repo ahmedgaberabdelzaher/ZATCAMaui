@@ -3586,11 +3586,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 FirstNameLbl = AppResources.ZZZVATRFirstName;
                                 SurnameNameLbl = AppResources.TinDeregistrationSurName;
 
+                                await Task.Run(() =>
+                                {
+                                    TINNumber = IDTypeDataModel.Tin;
+                                    SelectedIdNumber = IDTypeDataModel.Idnum;
+                                });
+
                                 SelectedDob = IDTypeDataModel.Birthdt10;
                                 PickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
-                                SelectedIdNumber = IDTypeDataModel.Idnum;
-                                TINNumber = IDTypeDataModel.Tin;
-
 
                                 if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
                                 {
@@ -5683,8 +5686,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             TinDeregistrationData.Savez = "X";
             TinDeregistrationData.Submitz = "";
             TinDeregistrationData.Xvoidz = "";
-            TinDeregistrationData.Status = "IP017";
-            TinDeregistrationData.Fbust = "E0001";
             await SubmitRequest();
         }
         void SetDataForTransferToASingleTranferee()
@@ -5777,8 +5778,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 TinDeregistrationData.Submitz = "X";
                 TinDeregistrationData.Savez = "";
                 TinDeregistrationData.Xvoidz = "";
-                TinDeregistrationData.Status = "IP017";
-                TinDeregistrationData.Fbust = "E0001";
                 await SubmitRequest();
             }
             catch (InternetException ex)
@@ -5825,7 +5824,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             TinDeregistrationData.Savez = "";
             TinDeregistrationData.Submitz = "";
             TinDeregistrationData.Xvoidz = "X";
-
             await SubmitRequest();
 
         }

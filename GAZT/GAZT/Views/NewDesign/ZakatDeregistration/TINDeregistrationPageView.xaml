@@ -240,7 +240,7 @@
 
                         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
                             <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" >
-                                <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry" 
+                                <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}"  x:Name="DateEntry" 
                                                          Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
                                                          Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd"  BackgroundColor="Gray"
                                                              VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
@@ -345,7 +345,7 @@
 
                             <Grid >
                                 <inputLayout:SfTextInputLayout x:Name="FrmDBO2" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry21"
+                                    <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" FontAttributes="None"  FontFamily="{StaticResource SSTArRoman}" FontSize="Small" x:Name="DateEntry21"
                                                          Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
                                                          Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
                                                              VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
@@ -458,7 +458,7 @@
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                     <control:BorderlessEntry x:Name="EntryTIN" Text="{Binding TINNumber}" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused"
-                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand" TextChanged="OnTinEntered">
+                                                            TextColor="{DynamicResource BlackLabelTextColor}" HorizontalOptions="FillAndExpand" TextChanged="OnTinEntered">
                                         <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
                                         </control:BorderlessEntry.Behaviors>
@@ -512,8 +512,8 @@
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
                                     <control:BorderlessEntry x:Name="idNumber"  IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding SelectedIdNumber}"
-                                                            TextColor="#bbbbbb"  HorizontalOptions="FillAndExpand">
+                                                            VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" Text="{Binding SelectedIdNumber}"
+                                                            TextColor="{DynamicResource BlackLabelTextColor}"  HorizontalOptions="FillAndExpand">
                                         <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
                                         </control:BorderlessEntry.Behaviors>
@@ -538,7 +538,7 @@
 
                         <Grid IsVisible="{Binding IsDobVisible}">
                             <inputLayout:SfTextInputLayout x:Name="FrmDBO1" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry23"
+                                <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry23" FontAttributes="None"  FontFamily="{StaticResource SSTArRoman}" FontSize="Small"
                                                          Text ="{Binding PickerDOBDateDisplay}" Unfocused="DOBDatePicker_Unfocused" TextChanged="DOBDateEntry_TextChanged"
                                                          Focused="OnDOBDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
                                                              VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
