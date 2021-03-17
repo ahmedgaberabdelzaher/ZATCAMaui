@@ -32,8 +32,9 @@
             </Grid.RowDefinitions>
 
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="0,10,0,10" Grid.Row="0">
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZNote}" ></custom:CustomLabel>
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MultipleBillsThisBillHasOtherLiabilities}"></custom:CustomLabel>
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZNote}" 
+                                    Style="{StaticResource ButtonLabelBlackBold}"></custom:CustomLabel>
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MultipleBillsThisBillHasOtherLiabilities}" Style="{StaticResource ButtonLabelBlackBold}"></custom:CustomLabel>
             </StackLayout>
 
             <yummy:PancakeView Grid.Row="1" BackgroundColor="Transparent">

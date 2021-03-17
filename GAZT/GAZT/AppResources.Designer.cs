@@ -2218,7 +2218,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Well Done!.
+        ///   Looks up a localized string similar to ! Thanks.
         /// </summary>
         public static string DashBoardWellDone {
             get {
@@ -10361,7 +10361,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile Number should be start with 009665.
+        ///   Looks up a localized string similar to Mobile Number should start with 009665.
         /// </summary>
         public static string VATAmendMobileNumberValidation {
             get {
