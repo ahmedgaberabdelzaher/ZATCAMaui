@@ -244,7 +244,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
             isLoginLoaded = false;
 
-            if (e.Url.Contains("http://bank/?IsPmtSts"))
+            if (e.Url.Contains("bank/?IsPmtSts"))
             {
                 var splitString = e.Url.Split('=');
                 if (splitString.Length > 0)
