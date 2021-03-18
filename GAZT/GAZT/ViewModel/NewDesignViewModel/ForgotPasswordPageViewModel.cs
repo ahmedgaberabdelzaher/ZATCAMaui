@@ -2354,6 +2354,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         d.Attempts = 0;
                         d.Captcha = captcha;
                         d.Guid = GUID;
+                        d.Application = "FPWD";
                         // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
                         d.NewPwd = "";
                         d.CnfPwd = "";
@@ -2712,6 +2713,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         d.Attempts = 0;
                         d.Captcha = captcha;
                         d.Guid = GUID;
+                        d.Application = "FPWD";
                         // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
                         d.NewPwd = NewPassword;
                         d.CnfPwd = ConfirmPassword;
@@ -2835,7 +2837,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             SelectedTinId = null;
                             Tins = await WebServiceManager.GAZTGetAllTins(Email);
                             TINs = Tins;
-                            if (Tins.Count != 0 && SelectedTinId == null)
+                            if (Tins.Count != 0)
                             {
                                 IsAPICalledSuccessfully = true;
                                 UserNameLabelText = AppResources.UserName;
