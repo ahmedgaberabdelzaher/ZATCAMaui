@@ -1322,9 +1322,9 @@
   <data name="BillDetails" xml:space="preserve">
     <value>تفاصيل الفاتورة</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>تاكيد</value>
-  </data>
+   <data name="Confirm" xml:space="preserve">
+        <value>تأكيد</value>
+   </data>
   <data name="ZToolTipCorrectionsfrompreviousperiod" xml:space="preserve">
     <value>• اذا كانت تصحيحات الإقرار السابق تستلزم تعديل الالتزام الضريبي   أقل من 5,000 ريال أو رصيد دائن  لأكثر من -5,000 ريال ، يرجى تحديد التعديل الضريبي (وليست مبالغ توريدات أو  مشتريات) في هذا الحقل. لأي تعديلات ضريبية أخرى يرجى تقديم نموذج "تعديل ذاتي"</value>
   </data>
