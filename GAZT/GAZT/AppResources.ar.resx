@@ -6622,12 +6622,12 @@
   <data name="ESTEndOfFiscalDay" xml:space="preserve">
     <value>نهاية اليوم المالي</value>
   </data>
-  <data name="ESTBusinessCommencementDate" xml:space="preserve">
-    <value>تاريخ بدء العمل</value>
-  </data>
-  <data name="ESTTaxableDate" xml:space="preserve">
-    <value>تاريخ بدء تطبيق الضريبة</value>
-  </data>
+    <data name="ESTBusinessCommencementDate" xml:space="preserve">
+    <value>تاريخ بدء النشاط</value>
+     </data>
+    <data name="ESTTaxableDate" xml:space="preserve">
+     <value>تاريخ سنة المديونية الأولى</value>
+   </data>
   <data name="ESTDebtEndDate" xml:space="preserve">
     <value>نهاية سنة المديونية الأولى</value>
   </data>
