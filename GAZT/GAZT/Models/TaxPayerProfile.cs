@@ -162,6 +162,7 @@ namespace GAZT.Models
         public string Edit { get; set; }
         public string Cancel { get; set; }
         public string Conf { get; set; }
+        public string Login { get; set; }
 
         // * For UI + Other API Calls
         public string Name

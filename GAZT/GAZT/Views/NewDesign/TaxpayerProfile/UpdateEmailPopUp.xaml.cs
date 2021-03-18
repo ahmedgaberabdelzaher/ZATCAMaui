@@ -1,10 +1,19 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+﻿using EGAZT.Models;
+using EGAZT.Models.TPProfile;
+using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
+using GAZT.CustomControl;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
+using System.Globalization;
+using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -22,8 +31,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             InitializeComponent();
             viewModel = App.Locator.UpdateEmailPopUp;
             this.BindingContext = viewModel;
-
-            //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
 
@@ -42,22 +49,196 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     return;
                 }
 
-                TaxPayerProfile TPAPIResponse = await viewModel.VarifyEmail();
+                //TaxPayerProfile TPAPIResponse = await viewModel.VarifyEmail();
+                TaxPayerProfile TPAPIResponse = await UpdateEmailAdddress();
                 if (TPAPIResponse != null)
                 {
-                    // Navigating to Verification Screen
-                    this.CloseAllPopup();   
-
-                    Device.BeginInvokeOnMainThread(() =>
+                    App.TP.Email = TPAPIResponse.Email;
+                    this.CloseAllPopup();
+                    if (TPAPIResponse.Login == "X")
                     {
-                        // setup updated email's
-                        UpdateEmailDataModel updateEmailData = new UpdateEmailDataModel();
-                        updateEmailData.CurrentEmail = viewModel.CurrentEmailText;
-                        updateEmailData.NewEmail = viewModel.NewEmailText;
+                        var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.TPUpdateEmailSuccessConfirmation);
+                        confirmPopup.OnSelect = async (result) =>
+                         {
+                             if (result == "Yes")
+                             {
+                                 Device.BeginInvokeOnMainThread(async () =>
+                                 {
+                                     await Task.Run(() =>
+                                     {
+                                         App.DisplayProgressView();
+                                     });
+                                     if (App.TP != null)
+                                         App.TP = null;
+                                     if (App.PreviousIsArabic)
+                                     {
+                                         String langName = "ar-AE";
+                                         AppResources.Culture = new CultureInfo(langName);
+                                     }
+                                     else
+                                     {
+                                         String langName = "en-US";
+                                         AppResources.Culture = new CultureInfo(langName);
+                                     }
 
-                        viewModel._navigationService.NavigateTo(App.VerificationPageView, updateEmailData);
-                    });
+                                     try { await WebServiceManager.GAZTLogOff(); }
+                                     catch { }
+
+                                     await Task.Run(() =>
+                                     {
+                                         App.HideProgressView();
+                                     });
+
+                                     App.IsLogOut = true;
+                                     App.IsLoginCalled = false;
+                                     App.IsSamlApiCalledAndroid = false;
+
+                                     try
+                                     {
+                                         App.httpClientHandler = new HttpClientHandler();
+                                         App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                                         App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                                     }
+                                     catch (Exception)
+                                     {
+                                     }
+                                     await App.Current.MainPage.Navigation.PopToRootAsync();
+                                 });
+                                 //MessagingCenter.Send<UpdateEmailPopUp>(this, "redirectToLogin");
+                             }
+                         };
+                        await PopupNavigation.Instance.PushAsync(confirmPopup);
+                    }
+                    else
+                    {
+
+                        System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
+                        viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 1);
+                    }
                 }
+            }
+        }
+        public async Task<TaxPayerProfile> UpdateEmailAdddress()
+        {
+            viewModel.IsLoading = true;
+            TaxPayerProfile TP = null;
+
+            try
+            {
+                TPProfileAPIRequestDataModel APIRequestDataModel = new TPProfileAPIRequestDataModel();
+                APIRequestDataModel.RequestType = "VERIFYOTPEMAIL";
+                APIRequestDataModel.OTP = "";
+                APIRequestDataModel.OldEmail = viewModel.CurrentEmailText;
+                APIRequestDataModel.NewEmail = viewModel.NewEmailText;
+                APIRequestDataModel.OldPassword = "";
+                APIRequestDataModel.NewPassword = "";
+
+                TPProfileAPIRequest TPProfileAPIRequestData = TPProfileAPIRequest.PrepareRequestData(APIRequestDataModel);
+                TP = await WebServiceManager.POSTTPProfileAPICalls(TPProfileAPIRequestData, "VERIFYOTPEMAIL");
+
+                viewModel.IsLoading = false;
+            }
+            catch (Exception ex)
+            {
+                viewModel.IsLoading = false;
+                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+            return TP;
+        }
+        public static TPProfileAPIRequest PrepareRequestData(TPProfileAPIRequestDataModel APIRequestDataModel)
+        {
+            var metaData = new Metadata();
+            metaData.id = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet(Euser1='00000000000000000000',Euser='',Euser2='00000000000000000000',Euser3='00000000000000000000',Euser4='00000000000000000000',Fbguid='',Euser5='00000000000000000000',Taxpayerz='" + App.TP.Tin + "',Langz='E')";
+            metaData.uri = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet(Euser1='00000000000000000000',Euser='',Euser2='00000000000000000000',Euser3='00000000000000000000',Euser4='00000000000000000000',Fbguid='',Euser5='00000000000000000000',Taxpayerz='" + App.TP.Tin + "',Langz='E')";
+            metaData.type = "Z_TP_PROFILE_N_SRV.TPFL_HEADER";
+
+            string lang = "E";
+            if (App.IsArabic == true) { lang = "A"; }
+
+            var TPProfileAPIRequestData = new TPProfileAPIRequest();
+            TPProfileAPIRequestData.__metadata = metaData;
+
+            switch (APIRequestDataModel.RequestType)
+            {
+                case "GETOTPMOBILE":
+                    TPProfileAPIRequestData.Mobile = APIRequestDataModel.NewMobile;
+                    TPProfileAPIRequestData.MobileChk = "1";
+                    TPProfileAPIRequestData.VerifyMobile = "X";
+                    TPProfileAPIRequestData.MobileCountry = APIRequestDataModel.CountryCode;
+                    break;
+
+                case "VERIFYOTPMOBILE":
+                    TPProfileAPIRequestData.Mobile = APIRequestDataModel.NewMobile;
+                    TPProfileAPIRequestData.Conf = "X";
+                    TPProfileAPIRequestData.MobileLoginCd = APIRequestDataModel.OTP;
+                    TPProfileAPIRequestData.MobileChk = "1";
+                    TPProfileAPIRequestData.MobileCountry = APIRequestDataModel.CountryCode;
+                    break;
+
+                case "GETOTPEMAIL":
+                    TPProfileAPIRequestData.Email = APIRequestDataModel.NewEmail;
+                    TPProfileAPIRequestData.PrevEmail = APIRequestDataModel.OldEmail;
+                    TPProfileAPIRequestData.EmailChk = "1";
+                    TPProfileAPIRequestData.VerifyEmail = "X";
+                    break;
+
+                case "VERIFYOTPEMAIL":
+                    TPProfileAPIRequestData.Conf = "X";
+                    TPProfileAPIRequestData.PrevEmail = APIRequestDataModel.OldEmail;
+                    TPProfileAPIRequestData.EmailLoginCd = "";
+                    TPProfileAPIRequestData.EmailChk = "1";
+                    TPProfileAPIRequestData.PasswordChk = "";
+                    TPProfileAPIRequestData.PasswordNew = "";
+                    TPProfileAPIRequestData.PasswordOld = "";
+                    TPProfileAPIRequestData.PreviousPwd = APIRequestDataModel.OldPassword;
+                    TPProfileAPIRequestData.MobileChk = "";
+                    TPProfileAPIRequestData.Email = APIRequestDataModel.NewEmail;
+                    break;
+
+                default:
+                    break;
+            }
+
+            TPProfileAPIRequestData.Langz = lang;
+            return TPProfileAPIRequestData;
+        }
+        private bool TaxpayerProfileOTPEmailUpdateValidation(string CurrentPassword, string NewPassword, string ConfirmPassword)
+        {
+            string validationError = VerifyOTPPasswords(CurrentPassword, NewPassword, ConfirmPassword);
+
+            if (validationError == string.Empty)
+                return true;
+            else
+            {
+                viewModel.ShowValidationPopup(validationError);
+                return false;
+            }
+        }
+        private string VerifyOTPPasswords(string CurrentPassword, string NewPassword, string ConfirmPassword)
+        {
+            bool compareStringFlag = string.Equals(NewPassword, ConfirmPassword);
+
+            if (string.IsNullOrEmpty(CurrentPassword) && string.IsNullOrEmpty(NewPassword))
+                return AppResources.TPOldNewPasswordEmpty;
+            else if (string.IsNullOrEmpty(CurrentPassword))
+                return AppResources.TPOldPasswordEmpty;
+            else if (string.IsNullOrEmpty(NewPassword))
+                return AppResources.TPNewPasswordEmpty;
+            else if (string.Equals(CurrentPassword, NewPassword))
+                return AppResources.TPOldAndNewPasswordSame;
+            else if (!compareStringFlag)
+                return AppResources.NewPasswordandRetypePasswordNotMatch;
+            else
+            {
+                bool passwordValidationRegXFlag = UtilityManager.ValidateNewPasswordForTP(NewPassword);
+                if (passwordValidationRegXFlag)
+                    return string.Empty;
+                else
+                    return AppResources.PasswordValidationMesseg;
             }
         }
 
@@ -111,7 +292,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             base.OnAppearing();
 
             // Show existing email
-            viewModel.CurrentEmailText = App.TP.Email;
+            viewModel.CurrentEmailText = App.TP?.Email;
             RefreshControlsData();
         }
 
@@ -132,4 +313,3 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         private void ConfirmEmail_Entry_Unfocused(object sender, FocusEventArgs e) { }
     }
 }
- 

@@ -103,13 +103,13 @@ namespace EGAZT.Models.TPProfile
                 case "VERIFYOTPEMAIL":
                     TPProfileAPIRequestData.Conf = "X";
                     TPProfileAPIRequestData.PrevEmail = APIRequestDataModel.OldEmail;
-                    TPProfileAPIRequestData.EmailLoginCd = APIRequestDataModel.OTP;
+                    TPProfileAPIRequestData.EmailLoginCd = "";
                     TPProfileAPIRequestData.EmailChk = "1";
-                    TPProfileAPIRequestData.PasswordChk = "1";
-                    TPProfileAPIRequestData.PasswordNew = APIRequestDataModel.NewPassword;
-                    TPProfileAPIRequestData.PasswordOld = APIRequestDataModel.NewPassword;
+                    TPProfileAPIRequestData.PasswordChk = "";
+                    TPProfileAPIRequestData.PasswordNew = "";
+                    TPProfileAPIRequestData.PasswordOld = "";
                     TPProfileAPIRequestData.PreviousPwd = APIRequestDataModel.OldPassword;
-                    TPProfileAPIRequestData.MobileChk = "0";
+                    TPProfileAPIRequestData.MobileChk = "";
                     TPProfileAPIRequestData.Email = APIRequestDataModel.NewEmail;
                     break;
 

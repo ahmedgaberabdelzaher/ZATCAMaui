@@ -95,16 +95,17 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 catch (Exception) { }
                 try
                 {
-                    if(viewModel.TPProfileSuccessId == 1)
+                    if (viewModel.TPProfileSuccessId == 1)
                     {
-                        var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                        Navigation.RemovePage(firstPageToRemove);
+                        //var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        //Navigation.RemovePage(firstPageToRemove);
 
-                        var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                        Navigation.RemovePage(secondPageToRemove);
+                        //var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        //Navigation.RemovePage(secondPageToRemove);
 
-                        var thirdPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                        Navigation.RemovePage(thirdPageToRemove);
+                        //var thirdPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        //Navigation.RemovePage(thirdPageToRemove);
+                        Navigation.PopToRootAsync();
                     }
                     else
                     {
@@ -113,8 +114,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
                         var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                         Navigation.RemovePage(secondPageToRemove);
+                        viewModel._navigationService.GoBack();
                     }
-                    viewModel._navigationService.GoBack();
+                    //viewModel._navigationService.GoBack();
                 }
                 catch (Exception) { }
             });

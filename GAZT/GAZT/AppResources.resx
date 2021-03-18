@@ -8963,4 +8963,7 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="AccountStatementsTransactionDate" xml:space="preserve">
     <value>Please select start and end date for transaction date</value>
   </data>
+	<data name="TPUpdateEmailSuccessConfirmation" xml:space="preserve">
+    <value>Dear taxpayer, after choosing (accept) You will be asked to login again.</value>
+  </data>
 </root>

@@ -10117,6 +10117,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear taxpayer, after choosing (accept) You will be asked to login again..
+        /// </summary>
+        public static string TPUpdateEmailSuccessConfirmation {
+            get {
+                return ResourceManager.GetString("TPUpdateEmailSuccessConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Mobile Number.
         /// </summary>
         public static string TPUpdateMobile {
