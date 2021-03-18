@@ -70,6 +70,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
+            SetPickerFont();
             viewModel?.OnAppearing();
             MessagingCenter.Subscribe<EstablishmentAmendUpdatePageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
             {
@@ -79,6 +80,91 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                     Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
             });
         }
+
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            dobPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            dobPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            dobPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            dobPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+                            dobHijiriPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            dobHijiriPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            dobHijiriPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            dobHijiriPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+                            passportIssuePicker.HeaderFontFamily = "SSTArabic-Medium";
+                            passportIssuePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            passportIssuePicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            passportIssuePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+                            passportIssueHijiriPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            passportIssueHijiriPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            passportIssueHijiriPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            passportIssueHijiriPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+                            passportExpiryPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            passportExpiryPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            passportExpiryPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            passportExpiryPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+                            passportExpiryHijiriPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            passportExpiryHijiriPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            passportExpiryHijiriPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            passportExpiryHijiriPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        {
+
+                            dobPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            dobPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            dobPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            dobPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+
+                            dobHijiriPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            dobHijiriPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            dobHijiriPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            dobHijiriPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+
+                            passportIssuePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            passportIssuePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            passportIssuePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            passportIssuePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+
+                            passportIssueHijiriPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            passportIssueHijiriPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            passportIssueHijiriPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            passportIssueHijiriPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+
+                            passportExpiryPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            passportExpiryPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            passportExpiryPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            passportExpiryPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+
+                            passportExpiryHijiriPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            passportExpiryHijiriPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            passportExpiryHijiriPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            passportExpiryHijiriPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+        }
+
 
         protected override void OnDisappearing()
         {

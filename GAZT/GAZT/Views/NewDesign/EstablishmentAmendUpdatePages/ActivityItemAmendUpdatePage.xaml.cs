@@ -81,9 +81,76 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
+            SetPickerFont();
             viewModel?.OnAppearing();
 
         }
+
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            validFromPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            validFromPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            validFromPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            validFromPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+                            validFromHijiriPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            validFromHijiriPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            validFromHijiriPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            validFromHijiriPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+                            crValidFromPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            crValidFromPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            crValidFromPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            crValidFromPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+                            crValidFromHijiriPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            crValidFromHijiriPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            crValidFromHijiriPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            crValidFromHijiriPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        {
+
+                            validFromPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            validFromPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            validFromPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            validFromPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+
+                            validFromHijiriPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            validFromHijiriPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            validFromHijiriPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            validFromHijiriPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";//ddlLIssuedBy
+
+                            crValidFromPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            crValidFromPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            crValidFromPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            crValidFromPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";//ddlLIssuedBy
+
+                            crValidFromHijiriPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            crValidFromHijiriPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                            crValidFromHijiriPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            crValidFromHijiriPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";//ddlLIssuedBy
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+        }
+
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
