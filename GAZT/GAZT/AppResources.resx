@@ -3596,7 +3596,7 @@ Should we require further information, we would be in contact.</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZContinue" xml:space="preserve">
-    <value>Continue</value>
+    <value>Next</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZCreateasecurePassword" xml:space="preserve">
@@ -5137,7 +5137,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Yearly</value>
   </data>
   <data name="ZakatInstalmetContinue" xml:space="preserve">
-    <value>Continue</value>
+    <value>Next</value>
   </data>
   <data name="ZakatInstalmentAttachments" xml:space="preserve">
     <value>Attachments</value>
@@ -5933,7 +5933,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Percentage</value>
   </data>
   <data name="CRContinue" xml:space="preserve">
-    <value>Continue</value>
+    <value>Next</value>
   </data>
   <data name="CRAttachments" xml:space="preserve">
     <value>Attachments</value>
@@ -6608,7 +6608,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Residence</value>
   </data>
   <data name="ESTContinueLabel" xml:space="preserve">
-    <value>Continue</value>
+    <value>Next</value>
   </data>
   <data name="ESTPassportDetailsMandatoryNoteLabel" xml:space="preserve">
     <value>Passport Details are mandatory for Non-Saudi Individuals.</value>
@@ -6965,7 +6965,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Request Date</value>
   </data>
   <data name="VRContinue" xml:space="preserve">
-    <value>Continue</value>
+    <value>Next</value>
   </data>
   <data name="VRViewApplication" xml:space="preserve">
     <value>View Application</value>

@@ -3589,7 +3589,7 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZContinue" xml:space="preserve">
-    <value>استمر</value>
+    <value>التالي</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZCreateasecurePassword" xml:space="preserve">
@@ -5075,7 +5075,7 @@
     <value>سنوي</value>
   </data>
   <data name="ZakatInstalmetContinue" xml:space="preserve">
-    <value>المتابعة</value>
+    <value>التالي</value>
   </data>
   <data name="ZakatInstalmentAttachments" xml:space="preserve">
     <value>المرفقات</value>
@@ -6050,7 +6050,7 @@
     <value>النسبة</value>
   </data>
   <data name="CRContinue" xml:space="preserve">
-    <value>المتابعة</value>
+    <value>التالي</value>
   </data>
   <data name="CRAttachments" xml:space="preserve">
     <value>المرفقات</value>

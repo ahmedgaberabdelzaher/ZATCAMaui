@@ -1340,7 +1340,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continue.
+        ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string CRContinue {
             get {
@@ -2218,7 +2218,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ! Thanks.
+        ///   Looks up a localized string similar to Thanks!.
         /// </summary>
         public static string DashBoardWellDone {
             get {
@@ -3010,7 +3010,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continue.
+        ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string ESTContinueLabel {
             get {
@@ -12612,7 +12612,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continue.
+        ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string VRContinue {
             get {
@@ -14459,7 +14459,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continue.
+        ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string ZakatInstalmetContinue {
             get {
@@ -23011,7 +23011,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continue.
+        ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string ZZZZContinue {
             get {
