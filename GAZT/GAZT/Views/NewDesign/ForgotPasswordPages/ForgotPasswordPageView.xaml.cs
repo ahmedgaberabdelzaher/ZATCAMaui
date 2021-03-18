@@ -349,5 +349,11 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             Navigation.PopModalAsync(true);
             //viewModel._navigationService.GoBack();
         }
+
+        void Btn_TinPicker_Clicked_1(System.Object sender, System.EventArgs e)
+        {
+            Picker_Tins.IsOpen = true;
+
+        }
     }
 }
