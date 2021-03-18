@@ -1849,9 +1849,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
                 AppResources. VATRFinancialDetails, AppResources.ZVatSummary };
             SetUIAvailability();
-            bindingOutletList();
             if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             {
+                bindingOutletList();
+
                 fetchTabDataAndBind(currentTab);
             }
         }
