@@ -324,7 +324,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             {
                                 ReferenceNumber = EstimatedZAKATSADADNumber.Sopbel;
                                 SADADNumber = EstimatedZAKATSADADNumber.Sadadid;
-                                ZAKATAmount = EstimatedZAKATSADADNumber.Stotamt;
+                                //ZAKATAmount = EstimatedZAKATSADADNumber.Stotamt;
+                                ZAKATAmount = EstimatedZAKATSADADNumber.Totamt;
                                 IsrefreshEnabled = false;
                                 RefreshIconImageSource = "";
 

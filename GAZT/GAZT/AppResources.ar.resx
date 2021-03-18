@@ -1322,9 +1322,9 @@
   <data name="BillDetails" xml:space="preserve">
     <value>تفاصيل الفاتورة</value>
   </data>
-   <data name="Confirm" xml:space="preserve">
-        <value>تأكيد</value>
-   </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>تأكيد</value>
+  </data>
   <data name="ZToolTipCorrectionsfrompreviousperiod" xml:space="preserve">
     <value>• اذا كانت تصحيحات الإقرار السابق تستلزم تعديل الالتزام الضريبي   أقل من 5,000 ريال أو رصيد دائن  لأكثر من -5,000 ريال ، يرجى تحديد التعديل الضريبي (وليست مبالغ توريدات أو  مشتريات) في هذا الحقل. لأي تعديلات ضريبية أخرى يرجى تقديم نموذج "تعديل ذاتي"</value>
   </data>
@@ -5861,7 +5861,8 @@
     <value>في حال سدادكم مبلغ الفاتورة أعلاه يمكنكم الحصول على الشهادة آلياً</value>
   </data>
   <data name="VATInstalmentRequestToVatInstalment" xml:space="preserve">
-    <value>طلب أو عرض خطة تقسيط ضريبة القيمة المضافة</value>
+    <value>طلب أو عرض خطة التقسيط</value>
+    <comment>طلب أو عرض خطة تقسيط ضريبة القيمة المضافة</comment>
   </data>
   <data name="ZakatFinancialCrisis" xml:space="preserve">
     <value>الأزمة المالية - عدم القدرة على تسوية الرسوم</value>
@@ -5945,7 +5946,8 @@
     <value>خطة تقسيط ضريبة القيمة المضافة</value>
   </data>
   <data name="VATInstalmentRequestToVatDisplayInstalment" xml:space="preserve">
-    <value>عرض خطة التقسيط</value>
+    <value>عرض اتفاقية خطة التقسيط</value>
+    <comment>عرض خطة التقسيط</comment>
   </data>
   <data name="VatInstalmetPlanTitle" xml:space="preserve">
     <value>خطة التقسيط لضريبة القيمة المضافة</value>
@@ -8883,7 +8885,7 @@ info@gazt.gov.sa</value>
   <data name="AccountStatementsTransactionDate" xml:space="preserve">
     <value>الرجاء تحديد تاريخ البداية والنهاية للعميلة</value>
   </data>
-	<data name="TPUpdateEmailSuccessConfirmation" xml:space="preserve">
+  <data name="TPUpdateEmailSuccessConfirmation" xml:space="preserve">
     <value>عزيزي المكلف، بعد اختيار موافق، سيتطلب منك تسجيل الدخول مرة أخرى</value>
   </data>
 </root>

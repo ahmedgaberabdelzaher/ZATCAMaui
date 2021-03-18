@@ -200,20 +200,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
             _ = _ZakatReturnSuccessPageViewModel.OnPageLoad(ZakatReturnDetail);
 
-            /*ToolbarItem Refresh = new ToolbarItem
-            {
-                Order = ToolbarItemOrder.Primary,
-                Priority = 1,
-                Command = new Command(() =>
-                {
-                    //  await OnRefreshButtonClicked();
-                    // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
-                })
-            };
-            this.ToolbarItems.Add(Refresh);*/
-            //  Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
-
-
+            
         }
         
         public async void RefreshForSadad()

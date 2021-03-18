@@ -2218,7 +2218,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thanks!.
+        ///   Looks up a localized string similar to Thanks !.
         /// </summary>
         public static string DashBoardWellDone {
             get {
