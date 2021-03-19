@@ -217,6 +217,10 @@ namespace GAZT.Models
 
                         }
 
+                       
+                        // Month = Convert.ToDateTime(_dueDate).ToString("MMM", new CultureInfo("en-US"));
+                        FormatedSingleDueDate = Convert.ToDateTime(_dueDtC).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        DueDateDateTime = Convert.ToDateTime(_dueDtC);
                     }
                     //else {
 
@@ -298,7 +302,7 @@ namespace GAZT.Models
                 _dueDate = value;
                 if (_dueDate != null)
                 {
-                    Day= Convert.ToDateTime(_dueDate).ToString("dd", new CultureInfo("en-US"));
+                    Day = Convert.ToDateTime(_dueDate).ToString("dd", new CultureInfo("en-US"));
                     if (App.IsArabic)
                     {
                         Month = UtilityManager.GetMonthName(Convert.ToDateTime(_dueDate).ToString("MMMM", new CultureInfo("en-US")));
@@ -324,6 +328,7 @@ namespace GAZT.Models
                 }
             }
         }
+
         public bool IsPaymentOverdue { get; set; }
         private bool _isUnSubmittedReturn;
         public bool IsUnSubmittedReturn

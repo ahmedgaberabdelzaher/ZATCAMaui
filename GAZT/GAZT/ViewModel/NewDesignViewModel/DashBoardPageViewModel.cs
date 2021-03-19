@@ -2720,7 +2720,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     DateTime Today = DateTime.Now;
                     var BillsAndReturnsCommitmentsLocal = new List<OverduePaymentAndUnSubmittedReturn>();
                     var BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
-                    BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsOverdurItems.OrderByDescending(i => DateTime.Parse(i.DueDate)).ToList();
+                    BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsOverdurItems.OrderByDescending(i => (i.DueDtC)).ToList();
 
                     var tempList = new List<OverduePaymentAndUnSubmittedReturn>();
 
@@ -2732,7 +2732,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
                             {
-                                var date = Convert.ToDateTime(item.DueDate);
+                                var date = Convert.ToDateTime(item.DueDtC);
                                 if (date.Year != Today.Year)
                                 {
                                     if (App.IsArabic)
@@ -2807,7 +2807,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                     }
 
-                    BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderByDescending(i => DateTime.Parse(i.DueDate)).ToList();
+                    BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderByDescending(i => (i.DueDtC)).ToList();
                     BillsAndReturnsCommitmentsTemp.Clear();
                     BillsAndReturnsCommitments = BillsAndReturnsCommitmentsLocal;
 
