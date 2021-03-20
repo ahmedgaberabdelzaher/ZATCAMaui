@@ -8780,7 +8780,7 @@ info@gazt.gov.sa</value>
     <value>تم استكمال دفع إقراراتك الزكوية بنجاح</value>
   </data>
   <data name="NDVAtReturnSubmittedSuccessMessage" xml:space="preserve">
-    <value>تم استكمال دفع إقرارك الضريبي على القيمة المضافة بنجاح</value>
+    <value>تم دفع اقرارك الضريبي على ضريبة القيمة المضافة بنجاح</value>
   </data>
   <data name="DashboardBillsInTotal" xml:space="preserve">
     <value>اجمالي الفواتير</value>
