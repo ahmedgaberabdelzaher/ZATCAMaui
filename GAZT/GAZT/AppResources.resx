@@ -5694,7 +5694,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Net VAT</value>
   </data>
   <data name="ZZZZRemembertocompletepayment" xml:space="preserve">
-    <value>Please remember to complete the payment</value>
+    <value>Please complete the payment</value>
   </data>
   <data name="ZZZZSadadGeneratedSuccessfully" xml:space="preserve">
     <value>Your VAT Return is submitted successfully and SADAD Bill generated</value>

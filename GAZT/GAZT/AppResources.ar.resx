@@ -5624,7 +5624,7 @@
     <value>صافي ضريبة القيمة المضافة</value>
   </data>
   <data name="ZZZZRemembertocompletepayment" xml:space="preserve">
-    <value>الرجاء التذكر لإتمام عملية الدفع</value>
+    <value>الرجاء إتمام عملية الدفع</value>
   </data>
   <data name="ZZZZSadadGeneratedSuccessfully" xml:space="preserve">
     <value>تم تقديم إقرار الضريبة المضافة بنجاح وتم انشاء رقم فاتورة سداد</value>
