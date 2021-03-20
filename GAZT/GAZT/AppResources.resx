@@ -5667,7 +5667,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Zakat Return</value>
   </data>
   <data name="NDTaxEvasionReport" xml:space="preserve">
-    <value>Tax Evasion Report</value>
+    <value>File a Report</value>
   </data>
   <data name="NDYourTaxEvasionReportissubmittedsuccessfully" xml:space="preserve">
     <value>Your Tax Evasion Report is submitted successfully</value>

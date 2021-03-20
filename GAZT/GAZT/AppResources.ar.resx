@@ -5597,7 +5597,7 @@
     <value> إقرار زكاة</value>
   </data>
   <data name="NDTaxEvasionReport" xml:space="preserve">
-    <value>الإبلاغ عن التهرب الضريبي</value>
+    <value>تقديم بلاغ</value>
   </data>
   <data name="NDYourTaxEvasionReportissubmittedsuccessfully" xml:space="preserve">
     <value>تم استلام بلاغ التهرب الضريبي بنجاح</value>
