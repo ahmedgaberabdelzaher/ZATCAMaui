@@ -67,6 +67,13 @@
                 <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />
                 <On Platform="iOS" Value="SSTArabic-Bold" />
             </OnPlatform>
+
+             <!-- SST Arabic Bold.ttf for picker -->
+            <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBoldForSfPicker">
+                <On Platform="Android" Value="SSTArabic-Bold.ttf" />
+                <On Platform="iOS" Value="SSTArabic-Bold" />
+            </OnPlatform>
+
             <!-- SST Arabic Light.ttf -->
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArLight">
                 <On Platform="Android" Value="SSTArabic-Light.ttf#SSTArabic" />

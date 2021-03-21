@@ -22,7 +22,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             viewModel.PickerItemSource = _pickerSource;
             ChangeAeroIcon();
             SetLTR();
-            SetPickerFont();
+           // SetPickerFont();
             //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             
 
@@ -51,13 +51,22 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        PickerDoneButton.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        PickerTitle.FontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        PickerCancelButton.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        //PickerDoneButton.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        //PickerTitle.FontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        //PickerCancelButton.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
 
-                        genericPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                        genericPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        genericPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        //genericPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                        //genericPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        //genericPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        PickerDoneButton.FontFamily = "SSTArabic-Medium";
+                        PickerCancelButton.FontFamily = "SSTArabic-Medium";
+
+                        PickerTitle.FontFamily = "SSTArabic-Medium";
+
+                        genericPicker.HeaderFontFamily = "SSTArabic-Medium";
+                        genericPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                        genericPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
                         break;
                 }
             }
@@ -101,7 +110,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                 genericPicker.SelectedItem = viewModel.SelectedItem;
             }
             this.BindingContext = viewModel;
-            SetPickerFont();
+           // SetPickerFont();
         }
 
         void genericPicker_SelectionChanged(System.Object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)

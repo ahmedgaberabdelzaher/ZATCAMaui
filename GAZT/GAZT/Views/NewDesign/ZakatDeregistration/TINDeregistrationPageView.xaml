@@ -153,7 +153,7 @@
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
 
-                                    <Label Text="{Binding SelectedReason.ReasonDesc}" x:Name="selectedReasonLbl" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding SelectedReason.ReasonDesc}" x:Name="selectedReasonLbl" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" FontFamily ="{StaticResource SSTArLight}"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center">
@@ -243,7 +243,7 @@
                                 <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}"  x:Name="DateEntry" 
                                                          Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
                                                          Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd"  BackgroundColor="Gray"
-                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
+                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}" FontFamily ="{StaticResource SSTArLight}">
 
                                 </custom:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -348,7 +348,7 @@
                                     <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" FontAttributes="None"  FontFamily="{StaticResource SSTArRoman}" FontSize="Small" x:Name="DateEntry21"
                                                          Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
                                                          Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
-                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
+                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}" >
 
                                     </custom:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -458,7 +458,7 @@
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                     <control:BorderlessEntry x:Name="EntryTIN" Text="{Binding TINNumber}" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused"
-                                                            TextColor="{DynamicResource BlackLabelTextColor}" HorizontalOptions="FillAndExpand" TextChanged="OnTinEntered">
+                                                            TextColor="{DynamicResource BlackLabelTextColor}" HorizontalOptions="FillAndExpand" TextChanged="OnTinEntered" FontFamily ="{StaticResource SSTArLight}">
                                         <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
                                         </control:BorderlessEntry.Behaviors>
@@ -482,7 +482,7 @@
 
                                         <Label Text="{x:Static ResourceManager:AppResources.ZZIDType}" Padding="7,0,0,0" IsVisible="{Binding IsIdtypePlaceHolderVisible}" FontSize="Small"
                                                Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start"/>
-                                        <Label Text="{Binding SelectedIdtype}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding SelectedIdtype}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" FontFamily ="{StaticResource SSTArLight}"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center">
@@ -498,7 +498,7 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding IdNumberText.IsVisible}">
-                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  FontFamily ="{StaticResource SSTArLight}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.IDNumber}"/>
@@ -513,7 +513,7 @@
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
                                     <control:BorderlessEntry x:Name="idNumber"  IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" Text="{Binding SelectedIdNumber}"
-                                                            TextColor="{DynamicResource BlackLabelTextColor}"  HorizontalOptions="FillAndExpand">
+                                                            TextColor="{DynamicResource BlackLabelTextColor}"  HorizontalOptions="FillAndExpand" FontFamily ="{StaticResource SSTArLight}">
                                         <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
                                         </control:BorderlessEntry.Behaviors>
@@ -1383,7 +1383,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
 
-                                        <Label Text="{Binding SubmissionDate}" IsEnabled="False" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding SubmissionDate}" IsEnabled="False" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" FontFamily ="{StaticResource SSTArLight}"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                             <Image Margin="5,0">
                                                 <Image.Source>

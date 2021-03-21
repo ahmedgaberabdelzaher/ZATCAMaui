@@ -405,7 +405,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
 
-                                        <Label Text="{Binding SelectedIdtype}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding SelectedIdtype}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" FontFamily ="{StaticResource SSTArLight}"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="End" VerticalOptions="Center">
@@ -829,7 +829,7 @@
 
                                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
 
-                                                        <Label Text="{Binding APermitDisplayReason}"  Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                        <Label Text="{Binding APermitDisplayReason}"  Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" FontFamily ="{StaticResource SSTArLight}"/>
                                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                             <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                                         HorizontalOptions="Start" VerticalOptions="Center">
@@ -888,7 +888,7 @@
 
                                                             <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
 
-                                                                <Label Text="{Binding PermitIdTypeName}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" />
+                                                                <Label Text="{Binding PermitIdTypeName}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" FontFamily ="{StaticResource SSTArLight}"/>
                                                                 <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                                                     <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                                            HorizontalOptions="Start" VerticalOptions="Center">
