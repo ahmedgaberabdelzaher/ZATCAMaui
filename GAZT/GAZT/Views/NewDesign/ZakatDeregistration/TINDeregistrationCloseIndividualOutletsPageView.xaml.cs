@@ -1620,16 +1620,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             var permit = ((Button)sender).CommandParameter as PermitSetResult;
             viewModel.selectedCalPermitNo = permit.APermitNoTb;
 
-            Device.BeginInvokeOnMainThread(() => {
-                if (permit.IsDOBHijiri)
-                {
-                    ClosePermitDOBPickerHijri.IsOpen = true;
-                }
-                else
-                {
-                    ClosePermitDOBPicker.IsOpen = true;
-                }
-            });
+            if(viewModel.PickerModel.SelectedValue.Equals("National Id") || viewModel.PickerModel.SelectedValue.Equals("Iqama Number")) // DOB enable only in case of Natioanl Id and Iquama Id
+            {
+                Device.BeginInvokeOnMainThread(() => {
+                    if (permit.IsDOBHijiri)
+                    {
+                        ClosePermitDOBPickerHijri.IsOpen = true;
+                    }
+                    else
+                    {
+                        ClosePermitDOBPicker.IsOpen = true;
+                    }
+                });
+            }
+          
         }
 
         public void SetLayoutVisibilityOnPageAppearing(TINDeregistrationModel selectedItem)
