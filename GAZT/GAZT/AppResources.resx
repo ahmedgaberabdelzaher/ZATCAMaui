@@ -6129,10 +6129,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>I certify that the information given in this request is, to the best of my knowledge, true, correct and complete in every respect. I am the person who is required to file this request or i am authorized to sign on behalf of that person.</value>
   </data>
   <data name="VATInstalmentRequestToVatDisplayInstalment" xml:space="preserve">
-    <value>Display installment schedule plan</value>
+    <value>Display instalment plan schedule</value>
   </data>
   <data name="VATInstalmentRequestToVatInstalment" xml:space="preserve">
-    <value>Create VAT Installment Plan request</value>
+    <value>Create / Display installment plan request</value>
   </data>
   <data name="VatInstalmentPlan" xml:space="preserve">
     <value>Instalment Plans</value>
