@@ -2839,6 +2839,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             TINs = Tins;
                             if (Tins.Count != 0)
                             {
+                                Enabled = true;
                                 IsAPICalledSuccessfully = true;
                                 UserNameLabelText = AppResources.UserName;
                                 IsVisibleTinIds = true;
