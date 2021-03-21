@@ -1730,12 +1730,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
             OnVoidOrSaveDraftClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid, AppResources.FORM5CalendarType });
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.ZZSaveAsDraft, AppResources.ZZVoid, AppResources.FORM5CalendarType });
                 poupWindow.OnItemSelect = async (item) =>
                 {
                     var actionName = item as string;
                     Console.WriteLine(item);
-                    if (actionName == AppResources.Save)
+                    if (actionName == AppResources.ZZSaveAsDraft)
                     {
                         IsLoading = true;
                         try

@@ -11,6 +11,7 @@ using System.Globalization;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using EGAZT.Views.NewDesign.Common;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -29,6 +30,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel = App.Locator.EstablishmentRegistrationPage;
             BindingContext = viewModel;
             viewModel.IsNavigationCompletedToSuccessfulPage = false;
+
+            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
+            {
+                PopupNavigation.Instance.PopAsync();
+                viewModel._navigationService.GoBack();
+            });
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
         }
