@@ -285,7 +285,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 //MessagingCenterCallBacks();
             }
-            viewModel.PopulateSummaryReasonData();
+                //viewModel.PopulateSummaryReasonData();
             viewModel.PopulateSummaryDeclarationData();
            // viewModel.PopulateAttachmentsListViewTemplate();
 

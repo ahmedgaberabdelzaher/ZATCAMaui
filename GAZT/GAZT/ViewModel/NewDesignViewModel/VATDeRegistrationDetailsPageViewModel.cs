@@ -2218,7 +2218,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     });
                 }
 
-                PopulateSummaryReasonData();
+                // PopulateSummaryReasonData();
                 PopulateSummaryDeclarationData();
                 EnableSummaryView();
                 PopulateAttachmentsListViewTemplate();
@@ -2425,7 +2425,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
 
             //PopulateAttachmentsListViewTemplate();
-            // PopulateSummaryReasonData();
+            PopulateSummaryReasonData();
             //PopulateSummaryDeclarationData();
         }
 
@@ -3031,7 +3031,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 vATDeregNote.Strtime = "";
                 vATDeregNote.Strline = "";
 
-
+                VATDeRegistrationDetailsData.d.NotesSet?.results?.Clear();
                 if (ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                 {
                     if (!string.IsNullOrEmpty(OtherField))
@@ -3044,7 +3044,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         VATDeRegistrationDetailsData.d.NotesSet.results.Add(vATDeregNote);
                     }
                 }
-                VATDeRegistrationDetailsData.d.NotesSet?.results?.Clear();
                 VATDeRegistrationDetailsData.d.AttdetSet?.results.Clear();
                 VATDeRegistrationDetailsData.d.QuesListSet?.results.Clear();
                 VATDeRegistrationDetailsData.d.AddressSet?.results.Clear();
