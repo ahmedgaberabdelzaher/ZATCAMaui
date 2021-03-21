@@ -1653,7 +1653,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             x.APermitDeregDisplayDate = SingleOutletDeregistrationDate.ToString("dd/MM/yyyy");
                             if (Convert.ToDateTime(x.APermitValfrDtHTb) > SingleOutletDeregistrationDate)
                             {
-                                _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                               // _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
                                 x.APermitDeregDisplayDate = string.Empty;
                             }
                         }
@@ -1738,7 +1739,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 x.APermitDeregDisplayDate = _singleDeregistrationDate == null ? "" : _singleDeregistrationDate;//.ToString("dd MMM yyyy");
                                 if (Convert.ToDateTime(x.APermitValfrDtHTb) > Convert.ToDateTime(SingleDeregistrationDate))
                                 {
-                                    _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                                    //_dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
+
                                     x.APermitDeregDisplayDate = string.Empty;
                                 }
                                 return x;
@@ -2771,7 +2774,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                       // await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                      await  PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+
                     });
                 }
                 catch (Exception mex)
@@ -2845,7 +2850,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -2879,7 +2886,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -2908,7 +2917,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                  //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -2933,7 +2944,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -3017,14 +3030,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             FrameIDError = true;
 
-                            await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                           // await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                         }
                         else
                         {
                             FrameIDError = false;
 
 
-                            await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            //await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                         }
                     }
                     else
@@ -3046,7 +3063,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
                             FrameIDError = true;
-                            await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            //await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
                         }
                         else
                         {
@@ -3054,7 +3073,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             FrameIDError = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            //await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
                         }
 
                         FirstNameFromIdType = string.Empty;
@@ -3089,7 +3110,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
 
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
                             _navigationService.GoBack();
                         });
                     }
@@ -3099,7 +3122,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                           // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
 
                         });
                     }
@@ -3114,7 +3139,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             // IsLoading = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                           // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
                             //_navigationService.GoBack();
                         });
                     }
@@ -3126,7 +3153,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                          //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
                             //_navigationService.GoBack();
                         });
                     }
@@ -3208,14 +3237,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             FrameIDError = true;
 
-                            await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                          //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                         }
                         else
                         {
                             FrameIDError = false;
 
 
-                            await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            // await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                         }
                     }
                     else
@@ -3237,7 +3270,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
                             FrameIDError = true;
-                            await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            //await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
                         }
                         else
                         {
@@ -3245,7 +3280,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             FrameIDError = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                           // await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
                         }
 
                         FirstNameFromIdType = string.Empty;
@@ -3281,7 +3318,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
 
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                         //   await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
                             _navigationService.GoBack();
                         });
                     }
@@ -3291,7 +3330,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                           // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
 
                         });
                     }
@@ -3304,7 +3345,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             // IsLoading = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                           // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
                             //_navigationService.GoBack();
                         });
                     }
@@ -3316,7 +3359,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                          //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
                             //_navigationService.GoBack();
                         });
                     }
@@ -3375,14 +3420,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             FrameIDError = true;
 
-                            await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            //await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                         }
                         else
                         {
                             FrameIDError = false;
 
 
-                            await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                           // await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                         }
                     }
                     else
@@ -3404,7 +3453,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
                             FrameIDError = true;
-                            await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                           // await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
                         }
                         else
                         {
@@ -3412,7 +3463,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             FrameIDError = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                          //  await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
                         }
 
                         selectedPermit.APermitTransTinTb = string.Empty;
@@ -3452,7 +3505,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
 
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                          //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
                             _navigationService.GoBack();
                         });
                     }
@@ -3462,7 +3517,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        //    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
 
                         });
                     }
@@ -3475,7 +3532,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             // IsLoading = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                          //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
                             //_navigationService.GoBack();
                         });
                     }
@@ -3487,7 +3546,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
                             //_navigationService.GoBack();
                         });
                     }
@@ -3558,7 +3619,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                 FrameIDError = true;
 
-                                await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                             }
                             else
                             {
@@ -3568,7 +3631,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     App.HideProgressView();
                                 });
 
-                                await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                              //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                             }
                         }
                         else
@@ -3633,7 +3698,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                           // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
@@ -3649,7 +3716,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                 //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -3658,7 +3727,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                 });
             }
             catch (Exception ex)
@@ -3671,7 +3742,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                  //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
                     _navigationService.GoBack();
                 });
             }
@@ -3713,7 +3786,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                 FrameIDError = true;
 
-                                await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                              //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                             }
                             else
                             {
@@ -3723,7 +3798,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     App.HideProgressView();
                                 });
 
-                                await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                              //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                             }
                         }
                         else
@@ -3766,7 +3843,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                           // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
@@ -3782,7 +3861,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -3796,7 +3877,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                   // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -4188,7 +4271,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 else
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                //    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                 }
             }
         }
@@ -4291,7 +4376,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -4306,22 +4393,30 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     if (SelectedReason == null)
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                     //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     else if (SelectedOutletOption == null)
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     else if (SelectedOutletOption.OutletOptionIndex == null)
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     else if (IsDeRegistrationValid == false)
                     {
-                        await _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                        // await _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     else
@@ -4501,7 +4596,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else
                         {
-                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                             return;
                         }
                     }
@@ -4516,21 +4613,27 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedReason.ReasonDesc) || string.IsNullOrEmpty(SelectedIdtype))
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                       // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     else
                     {
                         if (TINNumber == App.LoginDataRetrieved.TIN)
                         {
-                            await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
+                         //   await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                             return;
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(SelectedIdtype)) // If Taxpayer enter TIN Number, That will point one of the Id Type from the list
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                                 return;
                             }
                         }
@@ -4538,7 +4641,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                                 return;
                             }
                         }
@@ -4546,7 +4651,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                                 return;
                             }
                         }
@@ -4554,7 +4661,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                //    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                                 return;
                             }
                         }
@@ -4572,7 +4681,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (SelectedReason == null)
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                      //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     else
@@ -4585,7 +4696,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (SelectedReason == null || string.IsNullOrEmpty(PickerDobToDisplay))
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                       // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
 
@@ -4614,7 +4727,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -4629,7 +4744,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SingleDeregistrationDate) || string.IsNullOrEmpty(SelectedIdtype))
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                      //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     else
@@ -4638,7 +4755,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber))
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                                 return;
                             }
                         }
@@ -4646,7 +4765,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                             //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                                 return;
                             }
                         }
@@ -4654,7 +4775,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                           //     await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                                 return;
                             }
                         }
@@ -4662,7 +4785,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                              //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                                 return;
                             }
                         }
@@ -4679,17 +4804,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     //TODO validation for transfer/close to indiviual case missing
                     if (SelectedReason == null)
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                       // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDate)) != null)
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDregRsnTb)) != null)
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitDregRsnTb == "3") != null)
@@ -4698,17 +4829,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         if (transferrred.FirstOrDefault(x => x.APermitTransTinTb == App.LoginDataRetrieved.TIN) != null)
                         {
-                            await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
+                         //   await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationSameNotAllow));
                             return;
                         }
                         else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitIdNoTb)) != null)
                         {
-                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                         //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                             return;
                         }
                         else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDobDate)) != null)
                         {
-                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                             return;
                         }
                     }
@@ -4719,7 +4855,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (SelectedReason == null || string.IsNullOrEmpty(SingleDeregistrationDate))
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                      //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         return;
                     }
                     SelectedOutletForCloseTranser.ReasonDescription = AppResources.TinDeregistrationClosed;
@@ -4780,7 +4918,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -4788,7 +4928,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                 });
             }
         }
@@ -4807,7 +4949,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -4833,7 +4977,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             if (!IsOutletContinueButtonEnabled)
             {
-                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                //     await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                 return;
             }
             try
@@ -4863,7 +5009,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                 //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -4891,7 +5039,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         isMandatoryDocAttached = TinDeregistrationData.AttDetSet.Results.Any(attachedDocs => attachedDocs.Dotyp == reqAttachment.DocType);
                         if (!isMandatoryDocAttached)
                         {
-                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                             break;
                         }
                     }
@@ -4912,7 +5062,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                 //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -4932,7 +5084,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         PopulateSummaryDeclarationData();
                         if (TinDeregistrationData.ADecName == string.Empty || TinDeregistrationData.ADecDesig == string.Empty || TinDeregistrationData.ADecTelNo == string.Empty)
                         {
-                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                          //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+
                         }
                         else
                         {
@@ -4950,7 +5104,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -5018,7 +5174,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -5097,7 +5255,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                         _navigationService.GoBack();
                     });
                 }
@@ -5111,7 +5271,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -5138,7 +5300,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                         _navigationService.GoBack();
                     });
                 }
@@ -5152,7 +5316,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -5557,7 +5723,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                  //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     _navigationService.GoBack();
                 });
             }
@@ -5792,7 +5960,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                  //  await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+
                 });
             }
             catch (GAZTErrorException ex)
@@ -5806,7 +5976,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(message, AppResources.Information);
+                    // await _dialogService.ShowMessage(message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+
                 });
             }
             catch (Exception ex)
@@ -6116,7 +6288,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         string number = TinDeregistrationData.Fbnum;
                         string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                        await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                       // await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+
                         //await Task.Run(() =>
                         //{
                         //    App.HideProgressView();
@@ -6141,7 +6315,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                      //  await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+
                     });
                 }
                 catch (GAZTErrorException ex)
@@ -6157,7 +6333,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(message, AppResources.Information);
+                        // await _dialogService.ShowMessage(message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+
                     });
                 }
                 catch (Exception ex)
@@ -6188,7 +6366,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    //  await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+
                 });
             }
             catch (GAZTErrorException ex)
@@ -6204,7 +6384,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(message, AppResources.Information);
+                   // await _dialogService.ShowMessage(message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+
                 });
             }
             catch (Exception ex)

@@ -10,6 +10,7 @@ using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
@@ -1055,7 +1056,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && viewModel.SelectedOutletOption.OutletOptionIndex != "1" && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
-                            viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                          //  viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
                             viewModel.PickerDOBDateDisplay = "";
                             viewModel.SelectedDob = "";
                         }
@@ -1078,7 +1080,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && viewModel.SelectedOutletOption.OutletOptionIndex != "1" && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
-                            viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                           // viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+
                             viewModel.PickerDOBDateDisplay = "";
                             viewModel.SelectedDob = "";
                         }
@@ -1126,7 +1130,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     viewModel.IsDeRegistrationValid = false;
                     FrmDBO.HasError = true;
-                    viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                   // viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
+
                 }
 
             }
@@ -1149,7 +1155,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
                         {
-                            viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                           // viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+
                             return;
                         }
                         viewModel.DateOfBirth = date;
@@ -1171,7 +1179,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
                         {
-                            viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            //viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+
                             return;
                         }
                         viewModel.DateOfBirth = date;
