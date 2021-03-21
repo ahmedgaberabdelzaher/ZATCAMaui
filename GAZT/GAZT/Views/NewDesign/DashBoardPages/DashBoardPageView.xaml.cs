@@ -217,7 +217,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             try
             {
-                MessagingCenter.Subscribe<Object, string>(this, "Card_Payment", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
                     Console.WriteLine("Card Payment Clicked");
 
@@ -234,7 +234,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             try
             {
-                MessagingCenter.Subscribe<Object, string>(this, "Apple_Pay", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
                     viewModel.ApplePaySelected();
                     viewModel.isPayNowTapped = false;
@@ -249,7 +249,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             try
             {
-                MessagingCenter.Subscribe<Object, string>(this, "SADAD", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
                 {
 
                     Console.WriteLine("SADAD Clicked");
@@ -548,9 +548,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
             MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
             MessagingCenter.Unsubscribe<Object>(this, "UpdateProgressBar");
-            MessagingCenter.Unsubscribe<Object, string>(this, "Card_Payment");
-            MessagingCenter.Unsubscribe<Object, string>(this, "Apple_Pay");
-            MessagingCenter.Unsubscribe<Object, string>(this, "SADAD");
+            MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
+            MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
+            MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
             MessagingCenter.Unsubscribe<App, string>(this, "DashboardApplePayData");
             MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
 

@@ -2801,6 +2801,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 IDTypeDataModel.FamilyName = string.Empty;
                 SelectedIdNumber = string.Empty;
                 IDTypeDataModel.Name1 = string.Empty;
+                IDTypeDataModel.Name2 = string.Empty;
             }
             PkrDBO = string.Empty;
             DateOfBirth = string.Empty;

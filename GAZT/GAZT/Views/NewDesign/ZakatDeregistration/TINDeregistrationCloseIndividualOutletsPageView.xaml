@@ -923,6 +923,7 @@
                                                             </inputLayout:SfTextInputLayout>
                                                         </StackLayout>
                                                     </StackLayout>
+
                                                     <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding APermitIsCompanyId,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
                                                                             Style="{StaticResource CaptionLabelGrey}" />

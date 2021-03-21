@@ -113,7 +113,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             PaymentOptionsModel selectedItem = e.AddedItems[0] as PaymentOptionsModel;
             if (selectedItem.CardLabel == AppResources.PaymentMethodCardPayment)
             {
-                MessagingCenter.Send<Object, string>(this, "Card_Payment", "Yes");
+                MessagingCenter.Send<object, string>(this, "Card_Payment", "Yes");
                 OnSelect?.Invoke("Card_Payment");
                 await PopupNavigation.Instance.PopAsync();
 
@@ -124,11 +124,11 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
                 await PopupNavigation.Instance.PopAsync();
 
-                MessagingCenter.Send<Object, string>(this, "Apple_Pay", "Yes");
+                MessagingCenter.Send<object, string>(this, "Apple_Pay", "Yes");
             }
             else
             {
-                MessagingCenter.Send<Object, string>(this, "SADAD", "Yes");
+                MessagingCenter.Send<object, string>(this, "SADAD", "Yes");
                 OnSelect?.Invoke("SADAD");
                 await PopupNavigation.Instance.PopAsync();
             }
