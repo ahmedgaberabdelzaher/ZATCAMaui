@@ -1224,7 +1224,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             InputViewPadding="16,0,16,0" >
                                                             <custom:BorderlessEntry Text="{Binding MobNumberFR}"
                                                                                     HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber"
-                                                                                    Placeholder="{x:Static custom2:AppResources.MobileNumber}"
+                                                                                    Placeholder="{x:Static custom2:AppResources.MobileNumber}" Unfocused="EntryPhoneNumber_Unfocused_1"
                                                                                     IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" Style="{StaticResource DefaultEntry}">
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
