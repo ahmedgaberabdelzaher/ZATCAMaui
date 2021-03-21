@@ -679,7 +679,7 @@
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentRelevantTax}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <Label Text="{Binding PeriodText,Converter={StaticResource commaSeparatorConverter}}"  Style="{StaticResource ValueLabelBlack}" />
+                                                    <Label Text="{Binding PeriodText}"  Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                             </Grid>
 

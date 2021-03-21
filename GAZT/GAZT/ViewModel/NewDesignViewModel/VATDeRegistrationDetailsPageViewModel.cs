@@ -924,8 +924,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public ObservableCollection<VATDeregistrationSummaryModel> _vatDeregistrationSummaryReasonData { get; set; }
-        public ObservableCollection<VATDeregistrationSummaryModel> VATDeregistrationSummaryReasonData
+        public List<VATDeregistrationSummaryModel> _vatDeregistrationSummaryReasonData { get; set; }
+        public List<VATDeregistrationSummaryModel> VATDeregistrationSummaryReasonData
         {
             get
             {
@@ -936,10 +936,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (_vatDeregistrationSummaryReasonData == value) return;
 
-                if (value != null)
-                {
-                    _vatDeregistrationSummaryReasonData = value;
-                }
+                _vatDeregistrationSummaryReasonData = value;
 
                 RaisePropertyChanged("VATDeregistrationSummaryReasonData");
             }
@@ -2507,7 +2504,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsEditVisible = true
                 });
 
-                VATDeregistrationSummaryReasonData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
+                VATDeregistrationSummaryReasonData = new List<VATDeregistrationSummaryModel>(check);
             }
             catch (Exception ex)
             {
@@ -2899,12 +2896,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 string reqType = string.Empty;
                 string requestTyp = string.Empty;
 
-
-
-                if (SelectedReasonListIndex == 0)
+                if (SelectedOutletOption.ActiveOutletDecisionOptions == AppResources.VATDeregistrationReasonType1)
                 {
                     requestTyp = "D";
                 }
+                //if (SelectedReasonListIndex == 0)
+                //{
+
+                //}
                 else
                 {
                     requestTyp = "S";
