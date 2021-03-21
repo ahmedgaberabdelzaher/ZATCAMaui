@@ -1496,12 +1496,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnVoidOrSaveDraftClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid, AppResources.FORM5CalendarType });
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.ZZSaveAsDraft, AppResources.ZZVoid, AppResources.FORM5CalendarType });
                 poupWindow.OnItemSelect = async (item) =>
                 {
                     var actionName = item as string;
                     Console.WriteLine(item);
-                    if (actionName == AppResources.Save)
+                    if (actionName == AppResources.ZZSaveAsDraft)
                     {
                         IsLoading = true;
                         try
@@ -1510,6 +1510,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                             taxPayerDetails.UserTypx = "TP";
                             var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                            if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
+                            {
+                                await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully", string.Empty), true);
+                            }
                         }
                         catch (Exception e)
                         {
