@@ -4555,195 +4555,105 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<ValidatePaymentResponse> GAZTValidatePayment(string fbNum, string TIN, string devicetype, string PaymentType)
+
+        public async static Task<ValidatePaymentResponse> GAZTValidatePayment(ValidatePayment PayDetails)
 
         {
 
             ValidatePaymentResponse paymentResponse = null;
 
-            if (CrossConnectivity.Current.IsConnected)
+
+
+            string _paymentsubmitResponse = string.Empty;
+
+            try
 
             {
 
-                DateTime currentDate = DateTime.Now;
+                String url = Constants.ValidatePaymentInformation + "?sap-language=" + UtilityManager.GetLanguageParameter() + "";
 
-                string NewToken = string.Empty;
 
-                try
+
+                var uri = new Uri(url);
+
+                HttpClient client = new HttpClient(App.httpClientHandler);
+
+                var serilized = JsonConvert.SerializeObject(PayDetails);
+
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+
+                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+
+                _paymentsubmitResponse = res.Content.ReadAsStringAsync().Result;
+
+                paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(_paymentsubmitResponse);
+
+                if (!string.IsNullOrEmpty(_paymentsubmitResponse))
 
                 {
 
-                    if (false == CrossConnectivity.Current.IsConnected)
+                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_paymentsubmitResponse);
+
+                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
 
                     {
 
-                        throw new GAZTInternetException();
+                        string errorMessage = string.Empty;
 
-                    }
+                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
 
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
-                    // String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='"+devicetype+"')" + "?$format=json";
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
 
-                    String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='" + devicetype + "',Sadad='',Pymntty='" + PaymentType + "')" + "?$format=json";
+                        errorMessage = WithReplacedString;
 
-
-
-
-
-
-
-                    HttpResponseMessage GAZTValidatePaymentResponse = new HttpResponseMessage();
-
-                    try
-
-                    {
-
-                        GAZTValidatePaymentResponse = await client.GetAsync(uri);
-
-                    }
-
-                    catch (Exception ex)
-
-                    {
-
-
-
-                    }
-
-                    if (GAZTValidatePaymentResponse != null)
-
-                    {
-
-                        if (GAZTValidatePaymentResponse.StatusCode == HttpStatusCode.Unauthorized)
-
-                        {
-
-                            throw new GAZTSessionExpiredException();
-
-                        }
-
-
-
-                        HttpHeaders headers = GAZTValidatePaymentResponse.Headers;
-
-                        IEnumerable<string> values = null;
-
-                        if (headers.TryGetValues("token", out values))
-
-                        {
-
-                            NewToken = values.First();
-
-                        }
-
-                        if ((!string.IsNullOrEmpty(NewToken)))
-
-                        {
-
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
-
-                            {
-
-                                throw new GAZTSessionExpiredException();
-
-                            }
-
-                            App.Token = NewToken;
-
-                        }
-
-
-
-                        String paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
-
-                        paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(paymentData);
-
-                        if (!string.IsNullOrEmpty(paymentData) && paymentResponse.d == null)
-
-                        {
-
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(paymentData);
-
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-
-                            {
-
-                                string errorMessage = string.Empty;
-
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-
-                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-
-                                errorMessage = WithReplacedString;
-
-                                throw new GAZTValidatePaymentInProcessException(errorMessage);
-
-                            }
-
-                        }
-
-
+                        throw new GAZTVATRegistrationInProcessException(errorMessage);
 
                     }
 
                 }
 
-                catch (JsonReaderException ex)
 
-                {
-
-                    throw new GAZTInvalidDataException();
-
-                }
-
-                catch (HttpRequestException ex)
-
-                {
-
-                    throw ex;
-
-                }
-
-                catch (GAZTSessionExpiredException gex)
-
-                {
-
-                    throw gex;
-
-                }
-
-                catch (GAZTException gex)
-
-                {
-
-                    throw gex;
-
-                }
-
-                catch (Exception)
-
-                {
-
-                    throw new GAZTNetworkConnectivityIssueException();
-
-                }
 
             }
 
-            else
+            catch (GAZTVATRegistrationInProcessException ex)
 
             {
 
-                throw new GAZTInternetException();
+                throw new GAZTVATRegistrationInProcessException(ex.Message);
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+
+
+                App.IsSessionExpired = true;
+
+                return null;
 
             }
 
             return paymentResponse;
 
+
+
+
+
         }
+
 
         public static DashboardInstalmentplan GAZTGetDashboardInstalmentPlanData(string lang, string TIN)
         {
@@ -5434,6 +5344,8 @@ namespace GAZT.Manager
                 client.DefaultRequestHeaders.Add("X-Requested-With", "X");
 
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+
 
 
 

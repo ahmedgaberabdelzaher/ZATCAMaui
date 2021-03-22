@@ -556,8 +556,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     {
                         platform = "C3";
                     }
-                    PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform, paymentType);
+                   // PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform, paymentType);
 
+
+                    ValidatePayment modelDetails = new ValidatePayment();
+                    modelDetails.Fbnum = fbNum;
+                    modelDetails.Pymntty = paymentType;
+                    modelDetails.Tin = App.LoginDataRetrieved.TIN;
+                    modelDetails.Srcid = platform;
+                    modelDetails.Srctile = "12";
+                    modelDetails.Sadad = "";
+
+                     PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
 
                     if (PaymentData != null && PaymentData.d != null)
                     {

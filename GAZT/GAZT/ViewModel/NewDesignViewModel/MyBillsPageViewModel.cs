@@ -873,8 +873,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
 
 
+                    ValidatePayment modelDetails = new ValidatePayment();
+                    modelDetails.Fbnum = fbNum;
+                    modelDetails.Pymntty = paymentType;
+                    modelDetails.Tin = App.LoginDataRetrieved.TIN;
+                    modelDetails.Srcid = platform;
+                    modelDetails.Srctile = "53";
+                    modelDetails.Sadad = sdadNo;
 
-                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, paymentType);
+                    PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
 
                     if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                     {

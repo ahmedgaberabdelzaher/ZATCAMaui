@@ -1792,6 +1792,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, paymentType);
 
 
+                    ValidatePayment modelDetails = new ValidatePayment();
+                    modelDetails.Fbnum = fbNum;
+                    modelDetails.Pymntty = paymentType;
+                    modelDetails.Tin = App.LoginDataRetrieved.TIN;
+                    modelDetails.Srcid = platform;
+                    modelDetails.Srctile = "53";
+                    modelDetails.Sadad = sdadNo;
+
+                    PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
 
                     if (PaymentData != null && PaymentData.d != null)
                     {

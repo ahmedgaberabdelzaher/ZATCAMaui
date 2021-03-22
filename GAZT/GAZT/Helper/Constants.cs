@@ -426,7 +426,7 @@ namespace GAZT.Helper
 
         #region Payment Integration
 
-        public static string ValidatePaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMADA_CALL_SRV/HeaderSet(Fbnum=";
+        public static string ValidatePaymentInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMADA_CALL_SRV/HeaderSet";
         public static string CancelPaymentService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_MADA_PYMNT_CANCEL_SRV/MADAPYMNTCNLSet(GUID=";
 
 

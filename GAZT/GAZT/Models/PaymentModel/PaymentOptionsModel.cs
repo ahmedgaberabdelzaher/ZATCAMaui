@@ -19,23 +19,6 @@ namespace EGAZT.Models.PaymentModel
 
     }
 
-    [Preserve(AllMembers = true)]
-    public class D
-    {
-        public Metadata __metadata { get; set; }
-        public string Fbnum { get; set; }
-        public string Link { get; set; }
-        public string Srcid { get; set; }
-        public string Guid { get; set; }
-        public string Tin { get; set; }
-        public string Amount { get; set; }
-
-    }
-    [Preserve(AllMembers = true)]
-    public class ValidatePaymentResponse
-    {
-        public D d { get; set; }
-    }
 
     [Preserve(AllMembers = true)]
     public class MadaPayment
@@ -173,6 +156,43 @@ namespace EGAZT.Models.PaymentModel
         public string Paymentref { get; set; }
         public string Period { get; set; }
     }
+
+
+    [Preserve(AllMembers = true)]
+    public class ValidatePayment
+    {
+        public string Fbnum { get; set; }
+        public string Tin { get; set; }
+        public string Srcid { get; set; }
+        public string Pymntty { get; set; }
+        public string Sadad { get; set; }
+        public string Srctile { get; set; }
+
+    }
+
+    [Preserve(AllMembers = true)]
+    public class ValidatePaymentResult
+    {
+        public Metadata __metadata { get; set; }
+        public string Fbnum { get; set; }
+        public string Srcid { get; set; }
+        public string Sadad { get; set; }
+        public string Amount { get; set; }
+        public string Link { get; set; }
+        public string Srctile { get; set; }
+        public string Guid { get; set; }
+        public string Pymntty { get; set; }
+        public string Tin { get; set; }
+
+    }
+
+    [Preserve(AllMembers = true)]
+    public class ValidatePaymentResponse
+    {
+        public ValidatePaymentResult d { get; set; }
+
+    }
+
 
 
 }
