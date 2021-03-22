@@ -914,7 +914,7 @@ namespace GAZT.Manager
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
                                 ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
-                                ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                                ErrorMessageForVAT += " "+errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForVAT = WithReplacedString;
                             }
