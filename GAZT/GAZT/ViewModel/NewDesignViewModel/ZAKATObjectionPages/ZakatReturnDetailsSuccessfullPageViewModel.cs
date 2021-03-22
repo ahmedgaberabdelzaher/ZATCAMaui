@@ -48,6 +48,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
+        private ZakatReturnDetails _zakatReturnDetails;
+        public ZakatReturnDetails ZakatReturnDetails
+        {
+            get
+            {
+                return _zakatReturnDetails;
+            }
+            set
+            {
+                if (_zakatReturnDetails == value) return;
+
+                _zakatReturnDetails = value;
+                RaisePropertyChanged("ZakatReturnDetails");
+            }
+        }
+
         private EstimatedZAKATReturnsSADADNumberResult _estimatedZAKATSADADNumber;
         public EstimatedZAKATReturnsSADADNumberResult EstimatedZAKATSADADNumber
         {
@@ -243,6 +259,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
+        private bool _isPayNowVisible;
+        public bool IsPayNowVisible
+        {
+            get
+            {
+                return _isPayNowVisible;
+            }
+            set
+            {
+                if (_isPayNowVisible == value) return;
+
+                _isPayNowVisible = value;
+                RaisePropertyChanged("IsPayNowVisible");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -367,6 +399,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             //    IsrefreshEnabled = false;
                         }
                         GetUpdatedDataAfterAddingComma();
+
+
+                        _ = doValidateZakatAmount();
                     }
                     else
                     {
@@ -395,6 +430,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             {
                 IsLoading = false;
             });
+        }
+
+
+        public async Task doValidateZakatAmount()
+        {
+
+
+
+            ZakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(App.selectedForm12Fbguid);
+
+
+            if (ZakatReturnDetails.d.OpenliMsg == "There is no open liability to be paid against this declaration" || ZakatReturnDetails.d.OpenliMsg == "لا يوجد التزامات حالية متاحة للدفع لهذا الاقرار")
+            {
+                IsPayNowVisible = false;
+            }
+            else
+            {
+                IsPayNowVisible = true;
+            }
+
+            if (ZakatReturnDetails.d.MadabutFg == "X")
+            {
+
+                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+            }
+            else
+            {
+
+                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+            }
+
         }
 
         protected void OnDownLoadInvoiceClicked()

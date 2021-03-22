@@ -117,7 +117,17 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    viewModel.IsPayNowVisible = true;
+                    if(viewModel.VATDeclarationData.d.OpenliMsg == "There is no open liability to be paid against this declaration" || viewModel.VATDeclarationData.d.OpenliMsg == "لا يوجد التزامات حالية متاحة للدفع لهذا الاقرار") {
+
+                        viewModel.IsPayNowVisible = false;
+                    }
+                    else {
+
+                        viewModel.IsPayNowVisible = true;
+                    }
+
+
+                    
                     VatTotalAmountclicked();
                 });
             }

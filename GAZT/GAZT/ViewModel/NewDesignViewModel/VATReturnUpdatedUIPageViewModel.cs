@@ -3421,14 +3421,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             else if (currentTab == VATReturnUpdatedUITabEnum.Summery)
             {
                 IsCreditForwardBtnVisible = false;
-                if (Convert.ToDouble(NetdueVat) > 0)
-                {
-                    IsPayNowVisible = true;
-                }
-                else
-                {
-                    IsPayNowVisible = false;
-                }
+                //if (Convert.ToDouble(NetdueVat) > 0)
+                //{
+                //    IsPayNowVisible = true;
+                //}
+                //else
+                //{
+                //    IsPayNowVisible = false;
+                //}
 
                 if(IsAmendButtonAvailable)
                 {

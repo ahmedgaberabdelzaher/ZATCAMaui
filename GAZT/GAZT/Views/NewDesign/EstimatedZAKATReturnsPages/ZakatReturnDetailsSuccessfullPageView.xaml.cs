@@ -194,31 +194,12 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
 
 
-            doValidateZakatAmount();
+            _ = viewModel.doValidateZakatAmount();
 
         }
 
 
-        public async Task doValidateZakatAmount()
-        {
-
-
-            ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(App.selectedForm12Fbguid);
-
-
-            if (zakatReturnDetails.d.MadabutFg == "X")
-            {
-
-                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
-            }
-            else
-            {
-
-                PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, zakatReturnDetails.d.OpenliMsg));
-
-            }
-
-        }
+        
 
         private async void OnCopyTaxablePeriodClicked(object sender, EventArgs e)
         {

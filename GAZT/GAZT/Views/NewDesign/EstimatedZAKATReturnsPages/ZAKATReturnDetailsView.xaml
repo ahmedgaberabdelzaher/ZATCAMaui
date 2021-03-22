@@ -1314,7 +1314,7 @@
                                 <On Platform="Android" Value="0"/>
                             </OnPlatform>
                             </StackLayout.Margin>
-                            <buttons:SfButton Text="{Binding ReleaseOrBillDetailsButtonText}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnReleaseBillsButtonClicked"/>
+                            <buttons:SfButton Text="{Binding ReleaseOrBillDetailsButtonText}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnReleaseBillsButtonClicked" IsVisible="{Binding ReleaseOrBillDetailsVisible}"/>
                             <buttons:SfButton x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.Submit}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnSubmitClicked}" IsVisible="{Binding SetSubmitButtonVisibility}" Margin="0,10,0,0"/>
                             <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.Confirm}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnConfirmClicked" IsVisible="{Binding SetConfirmButtonVisibility}" Margin="0,10,0,0"/>
                             <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZAmend}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnAmendClick" IsVisible="{Binding SetAmendButtonVisibility}" Margin="0,10,0,0"/>

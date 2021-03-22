@@ -163,7 +163,7 @@
                         </StackLayout>
                     </ScrollView>
                     <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="8" BackgroundColor="White" Padding="0,8,0,0">
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" Clicked="PayNowClicked" Style="{StaticResource PrimaryButtonStyle}"/>
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" Clicked="PayNowClicked" Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsPayNowVisible}"/>
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZVATInvoiceButton}" TextColor="{StaticResource NewDullOrangeColor}" BackgroundColor="Transparent" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnInvoiceClicked}"/>
                         <!--<Label Text="{x:Static ResourceManager:AppResources.NDReturns}" TextColor="{StaticResource NewDullOrangeColor}" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}" >
                             <Label.GestureRecognizers>
