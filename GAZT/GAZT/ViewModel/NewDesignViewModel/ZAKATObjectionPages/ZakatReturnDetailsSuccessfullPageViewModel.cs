@@ -419,7 +419,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                         GetUpdatedDataAfterAddingComma();
 
 
-                        _ = doValidateZakatAmount();
                     }
                     else
                     {
@@ -459,14 +458,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             ZakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(App.selectedForm12Fbguid);
 
 
-            if (ZakatReturnDetails.d.OpenliMsg == "There is no open liability to be paid against this declaration" || ZakatReturnDetails.d.OpenliMsg == "لا يوجد التزامات حالية متاحة للدفع لهذا الاقرار")
-            {
-                IsPayNowVisible = false;
-            }
-            else
-            {
-                IsPayNowVisible = true;
-            }
+          
 
             if (ZakatReturnDetails.d.MadabutFg == "X")
             {
