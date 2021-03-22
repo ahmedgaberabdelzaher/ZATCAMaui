@@ -1343,7 +1343,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
 
                         IsLoading = false;
-                        if (ex.Message == "There is no open liability to be paid against this declaration")
+                        if (ex.Message == "There is no open liability to be paid against this declaration" || ex.Message == "لا يوجد التزامات حالية متاحة للدفع لهذا الاقرار")
                         {
 
                             await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, AppResources.NoOpenLiabilityToBePaid));
