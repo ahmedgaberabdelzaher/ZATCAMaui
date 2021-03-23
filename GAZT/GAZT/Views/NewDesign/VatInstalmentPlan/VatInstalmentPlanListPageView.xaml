@@ -720,7 +720,7 @@
 
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentDisplayInstalmentSchedule}"  ></Span>
+                                    <Span Text="{x:Static ResourceManager:AppResources.VATInstalmentAgreementNumber}"  ></Span>
                                     <Span Text=": " ></Span>
                                     <Span Text="{Binding AgreementNumber}" ></Span>
                                 </FormattedString>

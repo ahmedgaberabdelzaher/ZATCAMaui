@@ -5940,7 +5940,7 @@
     <value>يشمل هذا الرقم مبالغ بموجب خطة تقسيط قائمة أو في إطار مراجعة الهيئة العامة للزكاة والدخل</value>
   </data>
   <data name="VATInstalmentListInstalmentDisplayInstalmentSchedule" xml:space="preserve">
-    <value>اتفاقية التقسيط رقم</value>
+    <value>عرض خطة اتفاقية التقسيط</value>
   </data>
   <data name="VATInstalmentListInstalmentVatInstalmentPlan" xml:space="preserve">
     <value>خطة تقسيط ضريبة القيمة المضافة</value>
@@ -8887,5 +8887,8 @@ info@gazt.gov.sa</value>
   </data>
   <data name="TPUpdateEmailSuccessConfirmation" xml:space="preserve">
     <value>عزيزي المكلف، بعد اختيار موافق، سيتطلب منك تسجيل الدخول مرة أخرى</value>
+  </data>
+  <data name="VATInstalmentAgreementNumber" xml:space="preserve">
+    <value>اتفاقية التقسيط رقم</value>
   </data>
 </root>

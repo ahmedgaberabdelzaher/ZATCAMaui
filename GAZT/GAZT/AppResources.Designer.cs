@@ -11027,6 +11027,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Installment Agreement No..
+        /// </summary>
+        public static string VATInstalmentAgreementNumber {
+            get {
+                return ResourceManager.GetString("VATInstalmentAgreementNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Instalment Agreement.
         /// </summary>
         public static string VATInstalmentAgrement {
@@ -11072,7 +11081,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Installment Agreement No..
+        ///   Looks up a localized string similar to Display Instalment Agreement schedule plan.
         /// </summary>
         public static string VATInstalmentListInstalmentDisplayInstalmentSchedule {
             get {

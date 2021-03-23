@@ -6159,7 +6159,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Instalment Agreement No.</value>
   </data>
   <data name="VATInstalmentListInstalmentDisplayInstalmentSchedule" xml:space="preserve">
-    <value>Installment Agreement No.</value>
+    <value>Display Instalment Agreement schedule plan</value>
   </data>
   <data name="VATInstalmentListInstalmentRelevantTax" xml:space="preserve">
     <value>Relevant Tax Period</value>
@@ -8965,5 +8965,8 @@ I acknowledge that the above bank account information is correct and assume full
   </data>
   <data name="TPUpdateEmailSuccessConfirmation" xml:space="preserve">
     <value>Dear taxpayer, after choosing (accept) You will be asked to login again.</value>
+  </data>
+  <data name="VATInstalmentAgreementNumber" xml:space="preserve">
+    <value>Installment Agreement No.</value>
   </data>
 </root>
