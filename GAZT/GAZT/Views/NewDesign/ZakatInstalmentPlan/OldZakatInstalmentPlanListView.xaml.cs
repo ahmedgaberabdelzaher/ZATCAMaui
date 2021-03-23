@@ -41,6 +41,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel = App.Locator.OldZakatInstalmentPlanListPageView;
                 this.BindingContext = viewModel;
 
+
                // viewModel.onPageLoad();
 
             }

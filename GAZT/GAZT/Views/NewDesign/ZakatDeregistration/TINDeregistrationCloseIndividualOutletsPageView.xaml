@@ -788,7 +788,7 @@
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
-                                                <Switch x:Name="HijriCalSwitch4" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijiri, Mode=TwoWay}" />
+                                                <Switch x:Name="HijriCalSwitch4" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijiri, Mode=TwoWay}"  />
                                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                                             </StackLayout>
                                             <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5" >

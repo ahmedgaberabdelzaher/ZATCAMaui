@@ -394,6 +394,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsHijriCal");
             }
         }
+        private bool _IsPermitHijriCal = false;
+        public bool IsPermitHijriCal
+        {
+            get
+            {
+                return _IsPermitHijriCal;
+            }
+            set
+            {
+                if (_IsPermitHijriCal == value) return;
+
+                _IsPermitHijriCal = value;
+                RaisePropertyChanged("IsPermitHijriCal");
+            }
+        }
 
         private bool _IsDOBHijriCal = false;
         public bool IsDOBHijriCal
@@ -1647,7 +1662,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (x.APermitNoTb == selectedAPermitOutletnoTb)
                         {
-                            x.APermitEffDtTb = ConvertDateFormat(SingleOutletDeregistrationDate);
+
+                            if (IsHijriCal)
+                            {
+                                string date = UtilityManager.HijriToGreg(SingleOutletDeregistrationDate.ToString("yyyy/MM/dd"));
+                                x.APermitEffDtTb = ConvertDateFormat(date);
+                                //x.APermitEffDtTb = _singleDeregistrationDate == null ? "" : ConvertDateFormat(_singleDeregistrationDate);
+
+                            }
+                            else
+                            {
+                                x.APermitEffDtTb = ConvertDateFormat(SingleOutletDeregistrationDate);
+
+                            }
                             x.APermitEffDtCTb = "G";
                             x.APermitEffDtHTb = SingleOutletDeregistrationDate.ToString("yyyy/MM/dd");
                             x.APermitDeregDisplayDate = SingleOutletDeregistrationDate.ToString("dd/MM/yyyy");
@@ -1733,7 +1760,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             x =>
                             {
 
-                                x.APermitEffDtTb = _singleDeregistrationDate == null ? "" : ConvertDateFormat(_singleDeregistrationDate);
+                                if(IsHijriCal)
+                                {
+                                    string date = UtilityManager.HijriToGreg(_singleDeregistrationDate);
+                                    x.APermitEffDtTb = ConvertDateFormat(date);
+                                    //x.APermitEffDtTb = _singleDeregistrationDate == null ? "" : ConvertDateFormat(_singleDeregistrationDate);
+
+                                }
+                                else
+                                {
+                                    x.APermitEffDtTb = _singleDeregistrationDate == null ? "" : ConvertDateFormat(_singleDeregistrationDate);
+
+                                }
                                 x.APermitEffDtCTb = "G";
                                 x.APermitEffDtHTb = _singleDeregistrationDate == null ? "" : _singleDeregistrationDate;//.ToString("yyyyMMdd");
                                 x.APermitDeregDisplayDate = _singleDeregistrationDate == null ? "" : _singleDeregistrationDate;//.ToString("dd MMM yyyy");
@@ -4884,13 +4922,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (IsHijriCal)
                             {
                                 item.APermitEffDtCTb = "H";
+                                string date = UtilityManager.HijriToGreg(SingleDeregistrationDate);
+                                item.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
+
                             }
                             else
                             {
                                 item.APermitEffDtCTb = "G";
+                                item.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
+
                             }
                             item.APermitEffDtHTb = SingleDeregistrationDate;
-                            item.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
                         }
                     }
                     // await SaveAsDraft();
@@ -6051,6 +6093,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DeregistrationDate);
                     TinDeregistrationData.ASubmissionDateH = DeregistrationDate.ToString("yyyy/MM/dd");
 
+
                     TinDeregistrationData.AEffectiveDt = ConvertDateFormat(DeregistrationDate);
 
                     TinDeregistrationData.AEffectiveDtH = DeregistrationDate.ToString("yyyy/MM/dd");
@@ -6161,6 +6204,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (!string.IsNullOrEmpty(permitInfo.APermitEffDtTb))
                             {
+
                                 if (permitInfo.APermitValfrDtTb != null)
                                 {
                                     if (!permitInfo.APermitValfrDtTb.Contains("/Date("))
@@ -6181,11 +6225,33 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (TinDeregistrationData.ADregOpt == "3")
                             {
-                                permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitEffDtTb);
+                                if (permitInfo.IsHijiri)
+                                {
+
+                                    string date = UtilityManager.HijriToGreg(permitInfo.APermitDeregDisplayDate);
+                                    permitInfo.APermitEffDtTb = ConvertDateFormat(date);
+                                }
+                                else
+                                {
+                                    permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitDeregDisplayDate);
+
+                                }
+                               // permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitEffDtTb);
                                 permitInfo.APermitEffDtCTb = "G";
 
                                 permitInfo.APermitDobCTb = string.IsNullOrEmpty(permitInfo.APermitDobTb) ? "" : "G";
-                                permitInfo.APermitDobTb = ConvertDateFormat(permitInfo.APermitDobTb);
+                                if (permitInfo.IsDOBHijiri)
+                                {
+
+                                    string date = UtilityManager.HijriToGreg(permitInfo.APermitDobTb);
+                                    permitInfo.APermitDobTb = ConvertDateFormat(date);
+                                }
+                                else
+                                {
+                                    permitInfo.APermitDobTb = ConvertDateFormat(permitInfo.APermitDobTb);
+
+                                }
+                                //permitInfo.APermitDobTb = ConvertDateFormat(permitInfo.APermitDobTb);
                             }
                         }
                         catch (Exception ex)

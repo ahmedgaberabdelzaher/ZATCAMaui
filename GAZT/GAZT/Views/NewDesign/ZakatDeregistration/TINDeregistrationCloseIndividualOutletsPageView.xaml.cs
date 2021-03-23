@@ -416,8 +416,65 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 var permitType = viewModel.SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitNoTb == viewModel.selectedCalPermitNo);
                 if (permitType == null) return;
                 var isHijiri = permitType.IsHijiri;
-
                 object tempCal =null;
+                if (isHijiri)
+                {
+                    viewModel.IsPermitHijriCal = true;
+
+                    if (ClosePermitDeregDatePickerHijri.SelectedItem != null && (ClosePermitDeregDatePickerHijri.SelectedItem as IList<object>).Count == 3)
+                    {
+                        tempCal = ClosePermitDeregDatePickerHijri.SelectedItem;
+                    }
+                }
+                else
+                {
+                    viewModel.IsPermitHijriCal = false;
+
+                    if (CloseDeregDatePicker.SelectedItem != null && (CloseDeregDatePicker.SelectedItem as IList<object>).Count == 3)
+                    {
+                        tempCal = CloseDeregDatePicker.SelectedItem;
+                    }
+                }
+                if (tempCal == null) return;
+                string month = (tempCal as IList<object>)[1].ToString();
+                string day = (tempCal as IList<object>)[0].ToString();
+                string year = (tempCal as IList<object>)[2].ToString();
+                permitType.APermitDeregDisplayDate= year + "/" + month + "/" + day;
+                if (isHijiri)
+                {
+
+                    string date = UtilityManager.HijriToGreg(permitType.APermitDeregDisplayDate);
+                    permitType.APermitEffDtTb = viewModel.ConvertDateFormat(date);
+                }
+                else
+                {
+                    permitType.APermitEffDtTb = viewModel.ConvertDateFormat(permitType.APermitDeregDisplayDate);
+
+                }
+                viewModel.SelectedOutletForCloseTranser.PermitTypes= viewModel.SelectedOutletForCloseTranser.PermitTypes.Select(x =>
+                {
+                   if (x.APermitNoTb == viewModel.selectedCalPermitNo)
+                   { x.APermitDeregDisplayDate = permitType.APermitDeregDisplayDate;
+                       x.APermitEffDtTb = permitType.APermitEffDtTb;
+                   }
+                   return x;
+                }
+               ).ToList();
+            }
+            catch (Exception)
+            {
+            }
+
+        }
+        private void HijriCal4Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                var permitType = viewModel.SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitNoTb == viewModel.selectedCalPermitNo);
+                if (permitType == null) return;
+                var isHijiri = permitType.IsHijiri;
+
+                object tempCal = null;
                 if (isHijiri)
                 {
                     if (ClosePermitDeregDatePickerHijri.SelectedItem != null && (ClosePermitDeregDatePickerHijri.SelectedItem as IList<object>).Count == 3)
@@ -436,22 +493,34 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 string month = (tempCal as IList<object>)[1].ToString();
                 string day = (tempCal as IList<object>)[0].ToString();
                 string year = (tempCal as IList<object>)[2].ToString();
-                permitType.APermitDeregDisplayDate= year + "/" + month + "/" + day;
-                permitType.APermitEffDtTb = viewModel.ConvertDateFormat(permitType.APermitDeregDisplayDate);
-                viewModel.SelectedOutletForCloseTranser.PermitTypes= viewModel.SelectedOutletForCloseTranser.PermitTypes.Select(x =>
+                permitType.APermitDeregDisplayDate = year + "/" + month + "/" + day;
+
+                if (isHijiri)
                 {
-                   if (x.APermitNoTb == viewModel.selectedCalPermitNo)
-                   { x.APermitDeregDisplayDate = permitType.APermitDeregDisplayDate;
-                       x.APermitEffDtTb = permitType.APermitEffDtTb;
-                   }
-                   return x;
+
+                    string date = UtilityManager.HijriToGreg(permitType.APermitDeregDisplayDate);
+                    permitType.APermitEffDtTb = viewModel.ConvertDateFormat(date);
+                }
+                else
+                {
+                    permitType.APermitEffDtTb = viewModel.ConvertDateFormat(permitType.APermitDeregDisplayDate);
+
+                }
+                viewModel.SelectedOutletForCloseTranser.PermitTypes = viewModel.SelectedOutletForCloseTranser.PermitTypes.Select(x =>
+                {
+                    if (x.APermitNoTb == viewModel.selectedCalPermitNo)
+                    {
+                        x.APermitDeregDisplayDate = permitType.APermitDeregDisplayDate;
+                        x.APermitEffDtTb = permitType.APermitEffDtTb;
+                    }
+                    return x;
                 }
                ).ToList();
+
             }
             catch (Exception)
             {
             }
-
         }
 
 
@@ -484,7 +553,18 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 string day = (tempCal as IList<object>)[0].ToString();
                 string year = (tempCal as IList<object>)[2].ToString();
                 permitType.APermitDeregDisplayDobDate = year + "/" + month + "/" + day;
-                permitType.APermitDobTb = viewModel.ConvertDateFormat(permitType.APermitDeregDisplayDobDate);
+                if (isDOBHijiri)
+                {
+
+                    string date = UtilityManager.HijriToGreg(permitType.APermitDeregDisplayDobDate);
+                    permitType.APermitDobTb = viewModel.ConvertDateFormat(date);
+                }
+                else
+                {
+                    permitType.APermitDobTb = viewModel.ConvertDateFormat(permitType.APermitDeregDisplayDobDate);
+
+                }
+                //permitType.APermitDobTb = viewModel.ConvertDateFormat(permitType.APermitDeregDisplayDobDate);
                 viewModel.SelectedOutletForCloseTranser.PermitTypes = viewModel.SelectedOutletForCloseTranser.PermitTypes.Select(x =>
                 {
                     if (x.APermitNoTb == viewModel.selectedCalPermitNo)

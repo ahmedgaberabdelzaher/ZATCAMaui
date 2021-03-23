@@ -409,6 +409,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
+        private string _AgreementNumber= "";
+        public string AgreementNumber
+        {
+            get
+            {
+                return _AgreementNumber;
+            }
+            set
+            {
+                if (_AgreementNumber == value) return;
+
+                _AgreementNumber = value;
+                RaisePropertyChanged("AgreementNumber");
+            }
+        }
+
         private InstalmentPlanModel _selectedOutletOption;
         public InstalmentPlanModel SelectedOutletOption
         {
@@ -1152,6 +1168,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         var selectedItem = RequestForScheduleList[index];
 
+                        AgreementNumber = selectedItem.AgreementNo;
 
                         var itemDetails = await VATInstalationPlanWebServiceManager.GetDisplayInstallmentScheduleDetails(selectedItem.Opbel, FormGuidValue, "");
                         // var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", getFormID.d.Fbguid);
