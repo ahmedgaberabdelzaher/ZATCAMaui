@@ -6159,7 +6159,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Instalment Agreement No.</value>
   </data>
   <data name="VATInstalmentListInstalmentDisplayInstalmentSchedule" xml:space="preserve">
-    <value>Display Instalment Agreement schedule plan</value>
+    <value>Installment Agreement No.</value>
   </data>
   <data name="VATInstalmentListInstalmentRelevantTax" xml:space="preserve">
     <value>Relevant Tax Period</value>

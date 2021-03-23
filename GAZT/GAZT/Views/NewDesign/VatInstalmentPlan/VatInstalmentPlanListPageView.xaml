@@ -716,7 +716,16 @@
                         <custom:CustomLabel Grid.Row="0"  Text="{x:Static ResourceManager:AppResources.VATCertificates}" HorizontalOptions="StartAndExpand"
                                          Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
                         <custom:CustomLabel Grid.Row="1"  Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentDisplayInstalmentSchedule}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}"/>
+                                        Style="{StaticResource BodyLabelGrey}">
+
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentDisplayInstalmentSchedule}"  ></Span>
+                                    <Span Text=": " ></Span>
+                                    <Span Text="{Binding AgreementNumber}" ></Span>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
 
                         <BoxView Grid.Row="2"  Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 

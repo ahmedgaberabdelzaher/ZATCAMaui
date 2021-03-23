@@ -5940,7 +5940,7 @@
     <value>يشمل هذا الرقم مبالغ بموجب خطة تقسيط قائمة أو في إطار مراجعة الهيئة العامة للزكاة والدخل</value>
   </data>
   <data name="VATInstalmentListInstalmentDisplayInstalmentSchedule" xml:space="preserve">
-    <value>عرض خطة اتفاقية التقسيط</value>
+    <value>اتفاقية التقسيط رقم</value>
   </data>
   <data name="VATInstalmentListInstalmentVatInstalmentPlan" xml:space="preserve">
     <value>خطة تقسيط ضريبة القيمة المضافة</value>
@@ -6622,7 +6622,7 @@
   <data name="ESTEndOfFiscalDay" xml:space="preserve">
     <value>نهاية اليوم المالي</value>
   </data>
-     <data name="ESTBusinessCommencementDate" xml:space="preserve">
+  <data name="ESTBusinessCommencementDate" xml:space="preserve">
     <value>تاريخ بدء النشاط</value>
   </data>
   <data name="ESTTaxableDate" xml:space="preserve">
