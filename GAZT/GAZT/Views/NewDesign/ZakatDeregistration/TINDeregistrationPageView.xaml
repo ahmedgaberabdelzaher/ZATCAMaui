@@ -1331,7 +1331,7 @@
 							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                     <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecName}" 
-                                                                TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
+                                                                TextColor="Black" HorizontalOptions="FillAndExpand">
                                         <custom:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </custom:BorderlessEntry.Behaviors>
@@ -1346,7 +1346,7 @@
 							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                     <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationDesignation}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecDesig}" 
-                                                                TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                TextColor="Black" HorizontalOptions="FillAndExpand">
                                         <custom:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </custom:BorderlessEntry.Behaviors>
@@ -1369,7 +1369,7 @@
 
                                     <control:BorderlessEntry Keyboard="Numeric" Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" Unfocused="EntryMobileNo_Unfocused"
-                                                                TextColor="#bbbbbb" HorizontalOptions="FillAndExpand" MaxLength="10">
+                                                                TextColor="Black" HorizontalOptions="FillAndExpand" MaxLength="10">
                                         <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
                                         </control:BorderlessEntry.Behaviors>
