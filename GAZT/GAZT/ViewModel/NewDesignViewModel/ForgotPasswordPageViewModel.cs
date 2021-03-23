@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         private string captcha = string.Empty;
-        private string GUID=string.Empty;
+        private string GUID = string.Empty;
         //public ICommand OnSubmitClicked { get; set; }
         //public ICommand OnCaptchaRegenerateClicked { get; set; }
         //public ICommand OnChangePasswordSubmitClicked { get; set; }
@@ -46,7 +46,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnContinueClick { get; set; }
 
         public int currentAttempts = 0;
-  
+
         public bool IsPasswordCardSelected = true;
         public bool IsAPICalledSuccessfully = true;
         int TotalSec;
@@ -117,7 +117,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     try
                     {
-                    if (IDNumber.Length > 0)
+                        if (IDNumber.Length > 0)
                         {
                             string firstlettorOfIdNumber = IDNumber.Substring(0, 1);
                             if (!firstlettorOfIdNumber.Equals("7"))
@@ -129,12 +129,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Console.Write(ex.ToString());
                         Console.Write(ex.StackTrace.ToString());
                     }
-                    
+
 
 
                 }
@@ -249,7 +249,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
 
         private bool _passwordLayoutVisibility = false;
         public bool PasswordLayoutVisibility
@@ -917,6 +917,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ForgotTypeList");
             }
         }
+        private bool _isDropImageVisible;
+        public bool IsDropImageVisible
+        {
+            get => _isDropImageVisible;
+            set
+            {
+                _isDropImageVisible = value;
+                RaisePropertyChanged("IsDropImageVisible");
+            }
+        }
         private List<TIN> _tINs;
         public List<TIN> TINs
         {
@@ -935,8 +945,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         IsTinDopDownVisible = true;
                     }
+                    if (_tINs.Count > 1)
+                    {
+                        IsDropImageVisible = true;
+                    }
                     else
                     {
+                        IsDropImageVisible = false;
                         IsTinDopDownVisible = false;
                     }
                 }
@@ -1679,7 +1694,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-            OnContinueClick = new Command(async() =>
+            OnContinueClick = new Command(async () =>
             {
                 if (StartPage == 2)
                 {
@@ -1700,9 +1715,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
 
-                             //   _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
+                                //   _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
                             }
                         }
 
@@ -1734,7 +1749,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TypeYourUserName));
 
-                                 //   _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
+                                    //   _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
 
                                 }
                             }
@@ -1754,7 +1769,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
 
-                           // _dialogService.ShowMessageBox(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber, AppResources.Information);
+                            // _dialogService.ShowMessageBox(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber, AppResources.Information);
 
                         }
                     }
@@ -1770,7 +1785,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch));
 
-                              //  _dialogService.ShowMessageBox(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch, AppResources.Information);
+                                //  _dialogService.ShowMessageBox(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch, AppResources.Information);
                             }
 
                         }
@@ -1778,7 +1793,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PasswordValidationMesseg));
 
-                       //     _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
+                            //     _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
 
                         }
                     }
@@ -1794,7 +1809,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
 
-                    //    _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
+                        //    _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
                     }
 
 
@@ -1803,7 +1818,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZPleaseSelect));
 
-                  //  _dialogService.ShowMessageBox(AppResources.ZZZZPleaseSelect, AppResources.Information);
+                    //  _dialogService.ShowMessageBox(AppResources.ZZZZPleaseSelect, AppResources.Information);
 
                 }
                 else
@@ -2106,8 +2121,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     try
                     {
-                       string lang = UtilityManager.GetLanguageParameter();
-                        string st =  Constants.CaptchaAndGUID;
+                        string lang = UtilityManager.GetLanguageParameter();
+                        string st = Constants.CaptchaAndGUID;
                         string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                         GenerateCaptchaGUID forgotPasswordOTP = new GenerateCaptchaGUID();
                         Metadata metadata = new Metadata();
@@ -2115,29 +2130,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         metadata.uri = st;
                         metadata.type = type;
 
-                        GetCaptcha d = new GetCaptcha();  
+                        GetCaptcha d = new GetCaptcha();
                         d.__metadata = metadata;
                         d.Captcha = "";
                         d.Guid = "";
                         d.Taxpayer = "";
-                        d.Refresh = "";    
+                        d.Refresh = "";
                         d.Application = "FPWD";
 
                         forgotPasswordOTP.d = d;
                         forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                        if(forgotPasswordOTP.d!= null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
+                        if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
                         {
                             captcha = forgotPasswordOTP.d.Captcha;
                             GUID = forgotPasswordOTP.d.Guid;
-                                IsAPICalledSuccessfully = true;
+                            IsAPICalledSuccessfully = true;
                         }
                         else
                         {
 
                         }
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -2201,7 +2216,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         d.RdBt = "P";
                         d.TpType = "";
                         d.MobileNo = "";
-                       // d.Refresh = "";
+                        // d.Refresh = "";
                         d.Hyperlink = "";
                         //d.Taxpayer = "";
                         d.Name = "";
@@ -2271,11 +2286,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDEntervaliduserid));
 
-                             //   await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
+                                //   await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
 
                                 SetIDNumberEnability = true;
                                 IDNumber = String.Empty;
-                              //  UserIDLayoutVisibility = true;
+                                //  UserIDLayoutVisibility = true;
                             });
                         }
                     }
@@ -2294,14 +2309,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-             //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
 
                     SetIDNumberEnability = true;
                     IDNumber = String.Empty;
-                   // UserIDLayoutVisibility = true;
+                    // UserIDLayoutVisibility = true;
                 });
             }
         }
@@ -2376,7 +2391,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleasechangepassword));
 
-                             //   await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
+                                //   await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
                             });
                             OTPLayoutVisibility = false;
                             NewPasswordLayoutVisibility = true;
@@ -2407,7 +2422,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(messagefordialogue));
 
-                              //  await _dialogService.ShowMessageBox(messagefordialogue, AppResources.Information);
+                                //  await _dialogService.ShowMessageBox(messagefordialogue, AppResources.Information);
                                 _navigationService.GoBack();
                             });
                         }
@@ -2440,7 +2455,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     String message = String.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
 
-                                  //  await _dialogService.ShowMessageBox(message, AppResources.ZError);
+                                    //  await _dialogService.ShowMessageBox(message, AppResources.ZError);
                                 });
                             }
                             else
@@ -2457,7 +2472,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.EnterVerificationCode));
 
-                          //  await _dialogService.ShowMessageBox(AppResources.EnterVerificationCode, AppResources.Information);
+                            //  await _dialogService.ShowMessageBox(AppResources.EnterVerificationCode, AppResources.Information);
                         });
                     }
                 });
@@ -2470,7 +2485,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-               // await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                // await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2489,9 +2504,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 await Task.Run(async () =>
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                   
+
                     ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
-                
+
                     D d = new D();
                     //d.__metadata = metadata;
                     d.Action = "";
@@ -2625,9 +2640,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //  _navigationService.NavigateTo(App.GAZTNewDesignRecoverUsername);
                             await Application.Current.MainPage.Navigation.PopModalAsync(true);
                             await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverUsernamePageView());
-                           
-                        //    await Navigation.PushModalAsync(new GAZTNewDesignRecoverUsername(), true);
-                            
+
+                            //    await Navigation.PushModalAsync(new GAZTNewDesignRecoverUsername(), true);
+
 
                             //await _dialogService.ShowMessageBox(AppResources.Usernamehasbeensenttoregisteredmobilenumber, AppResources.Information);
                             // _navigationService.GoBack();
@@ -2646,7 +2661,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDEntervaliduserid));
 
-                         //   await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
+                            //   await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
                         });
                     }
                 });
@@ -2659,7 +2674,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-             //   await _dialogService.ShowMessageBox(ex.Message, AppResources.ZError);
+                //   await _dialogService.ShowMessageBox(ex.Message, AppResources.ZError);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2697,7 +2712,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         metadata.uri = uri;
                         metadata.type = type;
                         D d = new D();
-                       // d.__metadata = metadata;
+                        // d.__metadata = metadata;
                         d.Action = "40";
                         d.Tin = idNumber;
                         d.Langu = UtilityManager.GetLanguageParameter();
@@ -2736,7 +2751,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     await Application.Current.MainPage.Navigation.PopModalAsync(true);
                                     await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverPasswordPageView());
-                                  //  _navigationService.NavigateTo(App.GAZTNewDesignRecoverPasswordPageView);
+                                    //  _navigationService.NavigateTo(App.GAZTNewDesignRecoverPasswordPageView);
                                 });
 
                                 ForgotPasswordUserNameChangedMessage = AppResources.ZZYourPasswordhasbeenChangedsuccessfully;
@@ -2748,7 +2763,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
-                                   // await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                                    // await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                                 });
                             }
                         }
@@ -2758,7 +2773,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Boththepasswordfieldsshouldmatch));
 
-                              //  await _dialogService.ShowMessageBox(AppResources.Boththepasswordfieldsshouldmatch, AppResources.Information);
+                                //  await _dialogService.ShowMessageBox(AppResources.Boththepasswordfieldsshouldmatch, AppResources.Information);
                             });
                         }
                     }
@@ -2768,7 +2783,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PasswordGuidelineText));
 
-                          //  await _dialogService.ShowMessageBox(AppResources.PasswordGuidelineText, AppResources.Alerts);
+                            //  await _dialogService.ShowMessageBox(AppResources.PasswordGuidelineText, AppResources.Alerts);
                         });
                     }
                 });
@@ -2781,7 +2796,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-             //   await _dialogService.ShowMessageBox(ex.Message, AppResources.Alerts);
+                //   await _dialogService.ShowMessageBox(ex.Message, AppResources.Alerts);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2855,7 +2870,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     IsVisibleTinIds = false;
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NoTINsAvailable));
 
-                                   // await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
+                                    // await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
                                 });
                                 //IsVisibleTinIds = false;
                             }
@@ -2876,7 +2891,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IsVisibleTinIds = false;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
 
-                              //  await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                                //  await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
                             });
                             await Task.Run(() =>
                             {
@@ -2888,7 +2903,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                      //  await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                        //  await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                         await Task.Run(() =>
                         {
                             IsLoading = false;
@@ -3017,14 +3032,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public bool ValidateFirstStep()
         {
             if (UserNameCardBackgroundImg == "FP_selected_tile")
-            { if (CorporateCardBackgroundImg == "FP_selected_tile" || IndividualOrPersonalBusinessCardBackgroundImg == "FP_selected_tile")
+            {
+                if (CorporateCardBackgroundImg == "FP_selected_tile" || IndividualOrPersonalBusinessCardBackgroundImg == "FP_selected_tile")
                 {
                     return true;
                 }
             }
             if (PasswordCardBackgroundImg == "FP_selected_tile")
             {
-                return true;    
+                return true;
             }
             return false;
         }
