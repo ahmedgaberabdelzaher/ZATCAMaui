@@ -76,6 +76,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsContinueButtonEnabled");
             }
         }
+        private bool _isInstructionCheckedEnable = true;
+        public bool isInstructionCheckedEnable
+        {
+            get => _isInstructionCheckedEnable;
+            set
+            {
+                _isInstructionCheckedEnable = value;
+                RaisePropertyChanged(nameof(isInstructionCheckedEnable));
+            }
+        }
         public ICommand VATDeregistrationClicked { get; set; }
 
         public VATDeRegistrationInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService)

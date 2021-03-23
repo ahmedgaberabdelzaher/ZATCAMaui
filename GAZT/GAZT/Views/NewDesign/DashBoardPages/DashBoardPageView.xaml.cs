@@ -1083,7 +1083,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration eService");
             Device.BeginInvokeOnMainThread(() =>
             {
-                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage(false));
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }

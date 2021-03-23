@@ -157,10 +157,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration eService");
                     //viewModel._navigationService.NavigateTo(App.VATDeregistrationInstructionsPage);
-
+                    bool IsInstructionChecked = false;
                     try
                     {
-                        _ = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
+                        VATDeRegistrationDetails vATDeRegistrationDetails = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
+                        IsInstructionChecked = vATDeRegistrationDetails?.d?.Agreeflg == true;
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
@@ -178,7 +179,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+                        PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage(IsInstructionChecked));
                     });
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                     /*Device.BeginInvokeOnMainThread(() =>

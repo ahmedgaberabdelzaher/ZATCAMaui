@@ -12,7 +12,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
     public partial class VATDeregistrationInstructionsPage : PopupPage
     {
         VATDeRegistrationInstructionsPageViewModel viewModel;
-        public VATDeregistrationInstructionsPage()
+        public VATDeregistrationInstructionsPage(bool InstructionChecked)
         {
             InitializeComponent();
 
@@ -22,7 +22,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             viewModel = App.Locator.VATDeregistrationInstructionsPage;
             this.BindingContext = viewModel;
             SetLTR();
-            //this.FlowDirection = FlowDirection.LeftToRight;
+            viewModel.IsInstructionChecked = InstructionChecked;
+            viewModel.isInstructionCheckedEnable = !InstructionChecked;
         }
         private void SetLTR()
         {

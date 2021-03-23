@@ -118,7 +118,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage(false));
             });
         }
 

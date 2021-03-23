@@ -42,7 +42,7 @@
                 </StackLayout>
             </border:SfBorder>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End">
- <custom1:CheckboxCustom  Grid.Row="0" Grid.Column="0" IsChecked="{Binding IsInstructionChecked}" 
+ <custom1:CheckboxCustom  Grid.Row="0" Grid.Column="0" IsChecked="{Binding IsInstructionChecked}" IsEnabled="{Binding isInstructionCheckedEnable}"
                                                                              Style="{StaticResource CheckboxHeightWidth32}"/>
          
 

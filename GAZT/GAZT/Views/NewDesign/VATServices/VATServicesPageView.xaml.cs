@@ -94,7 +94,7 @@ namespace EGAZT.Views.NewDesign.VATServices
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration Request eService");
             Device.BeginInvokeOnMainThread(() =>
             {
-                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage(false));
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
