@@ -7,12 +7,14 @@ using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using GAZT;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.XForms.TextInputLayout;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -4016,40 +4018,51 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void EntryPhoneNumber_Unfocused_1(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
+            string mobileNUmber = ((BorderlessEntry)sender).Text;
+
+         //  SfTextInputLayout str = (SfTextInputLayout)((BorderlessEntry)sender).Parent;
+
+            if (string.IsNullOrEmpty(mobileNUmber))
             {
-                StringBuilder Message = new StringBuilder();
-                PopUp popUp = new PopUp();
-                if (EntryPhoneNumber.Text.Substring(0, 1) != "5")
+
+                ///str.HasError = true;
+                return;
+            }
+            StringBuilder Messages = new StringBuilder();
+            string message = string.Empty;
+            if (!string.IsNullOrEmpty(mobileNUmber))
+            {
+                if (mobileNUmber.Length < 9)
                 {
-                    Message.Append(AppResources.ZZMobilenumberhastostartwithnumber5);
+                    message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+                    ShowValidationPopup(message);
+
+                   // str.HasError = true;
+                    return;
                 }
-                if (EntryPhoneNumber.Text.Length != 9)
+                else if (mobileNUmber.Substring(0, 6) != "009665")
                 {
-                    if (Message.Length > 0)
-                    {
-                        Message.Append(Environment.NewLine);
-                    }
-                    Message.AppendLine(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
-                }
-                if (Message.Length > 0)
-                {
-                    popUp.Message = Message.ToString();
-                    popUp.IsLinkAvailable = false;
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-                    EntryPhoneNumber.Text = string.Empty;
+                    message = AppResources.VATAmendMobileNumberValidation;
+                    ShowValidationPopup(message);
+                   // str.HasError = true;
+                    return;
                 }
                 else
                 {
+                    if (mobileNUmber.Length != 10)
+                    {
+                        if (mobileNUmber.Length < 9)
+                        {
+                            message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+                        }
+                        if (Messages.Length > 0)
+                        {
+                            ShowValidationPopup(message);
+                           // str.HasError = true;
+                        }
+                      //  else
+                            //str.HasError = false;
+                    }
                 }
             }
         }

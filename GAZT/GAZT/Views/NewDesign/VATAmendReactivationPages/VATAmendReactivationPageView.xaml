@@ -1344,9 +1344,10 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"
                             Style="{StaticResource TextInputLayout}"
+
                             FocusedColor="#005e4b" ErrorColor="#B00020"
                             InputViewPadding="16,0,16,0"  >
-                                                                        <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Unfocused="EntryPhoneNumber_Unfocused" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="15" Keyboard="Telephone" Style="{StaticResource DefaultEntry}">
+                                                                        <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Unfocused="EntryPhoneNumber_Unfocused_1" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="15" Keyboard="Telephone" Style="{StaticResource DefaultEntry}">
                                                                             <Entry.Behaviors>
                                                                                 <custom1:OnlyNumericValuesBehaviour/>
                                                                             </Entry.Behaviors>
@@ -1826,7 +1827,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
                                                          <Label  Grid.Row="0" Grid.Column="0"  Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource BodyLabelGrey}"/>
-                                                            <Label  Grid.Row="0" Grid.Column="1"  Text="{Binding BindingContext.GpartSum, Source={x:Reference VATRegistration}}" Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                            <Label  Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="End"  Text="{Binding BindingContext.GpartSum, Source={x:Reference VATRegistration}}" Style="{StaticResource BodyLabelBlackMedium}"/>
                                                 <Label  Grid.Row="1" Grid.Column="0"  Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource BodyLabelGrey}"/>
                                                             <Label  Grid.Row="1" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Text="{Binding BindingContext.TxtIDTypeSum, Source={x:Reference VATRegistration}}" Style="{StaticResource BodyLabelBlackMedium}"/>
                                                             <Label  Grid.Row="2" Grid.Column="0"  Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}"/>
