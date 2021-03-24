@@ -6320,7 +6320,8 @@
     <value>الرجاء اختيار فاتورة واحدة على الاقل للمتابعة</value>
   </data>
   <data name="VatInstalmentPlanSubmittedSuccess" xml:space="preserve">
-    <value>تم استلام خطة التقسيط بنجاح</value>
+    <value>تم تقديم خطة التقسيط بنجاح</value>
+    <comment>تم استلام خطة التقسيط بنجاح</comment>
   </data>
   <data name="VATInstalmentStatusRefunded" xml:space="preserve">
     <value>مسترده</value>

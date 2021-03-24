@@ -349,24 +349,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 return false;
             }
         }
+        DateTime tempCheckerOne, tempCheckerTwo;
+       
 
         public void StartOTPTimer()
         {
-            // Timer            
+            // Timer
             otpTimer = new System.Timers.Timer();
             otpTimer.Interval = 1000;
 
             // Event
             otpTimer.Elapsed += OnCountDownTimedOTPEvent;
 
-            countDownSeconds = 120;
+            tempCheckerOne = DateTime.Now;
+            //countDownSeconds = 120;
 
             otpTimer.Enabled = true;
         }
 
         private void OnCountDownTimedOTPEvent(object sender, ElapsedEventArgs e)
         {
-            countDownSeconds--;
+            tempCheckerTwo = DateTime.Now;
+            countDownSeconds = 120 - Convert.ToInt32(tempCheckerTwo.Subtract(tempCheckerOne).TotalSeconds);
 
             if (countDownSeconds <= 9)
                 LblCountDownTimer = "0:0" + countDownSeconds.ToString();
@@ -381,7 +385,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             else
                 LblCountDownTimer = "0:" + countDownSeconds.ToString();
 
-
             // Stop timer
             if (countDownSeconds == 0)
             {
@@ -389,6 +392,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 ResendOTPTextColor = Color.FromHex("#006450");
             }
         }
+        //public void StartOTPTimer()
+        //{
+        //    // Timer            
+        //    otpTimer = new System.Timers.Timer();
+        //    otpTimer.Interval = 1000;
+
+        //    // Event
+        //    otpTimer.Elapsed += OnCountDownTimedOTPEvent;
+
+        //    countDownSeconds = 120;
+
+        //    otpTimer.Enabled = true;
+        //}
+
+        //private void OnCountDownTimedOTPEvent(object sender, ElapsedEventArgs e)
+        //{
+        //    countDownSeconds--;
+
+        //    if (countDownSeconds <= 9)
+        //        LblCountDownTimer = "0:0" + countDownSeconds.ToString();
+        //    else if (countDownSeconds > 60)
+        //    {
+        //        int countDownSecondsL = countDownSeconds - 60;
+        //        LblCountDownTimer = "1:" + countDownSecondsL.ToString();
+
+        //        if (countDownSecondsL <= 9)
+        //            LblCountDownTimer = "1:0" + countDownSecondsL.ToString();
+        //    }
+        //    else
+        //        LblCountDownTimer = "0:" + countDownSeconds.ToString();
+
+
+        //    // Stop timer
+        //    if (countDownSeconds == 0)
+        //    {
+        //        otpTimer.Stop();
+        //        ResendOTPTextColor = Color.FromHex("#006450");
+        //    }
+        //}
 
         public async Task<TaxPayerProfile> VarifyMobileNumber()
         {

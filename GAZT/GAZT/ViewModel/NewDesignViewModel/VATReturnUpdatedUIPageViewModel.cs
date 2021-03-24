@@ -5988,8 +5988,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
 
                                 await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                                //PaymentSucess paymentInfo = new PaymentSucess();
+                                //paymentInfo.Paymentref = "";
+                                //if (response.d.PerslTxt != null)
+                                //{
+                                //    paymentInfo.Period = response.d.PerslTxt;
+                                //}
 
-                              
+                                //_navigationService.NavigateTo(App.VatReturnNewSuccessPageView, paymentInfo);
+
                             });
 
                         }

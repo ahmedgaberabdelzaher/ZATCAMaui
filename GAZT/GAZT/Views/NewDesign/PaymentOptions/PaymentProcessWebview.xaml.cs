@@ -28,6 +28,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         private double height = 0;
         WebView webView;
         private bool isLoginLoaded = false;
+        private bool isPaymentProcessed = false;
 
         public PaymentProcessWebview(int type)
         {
@@ -50,6 +51,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         {
             base.OnAppearing();
 
+            isPaymentProcessed = false;
             webView = new WebView();
 
 
@@ -249,6 +251,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                 var splitString = e.Url.Split('=');
                 if (splitString.Length > 0)
                 {
+
                     var responseGUID = splitString[1];
                     //Console.WriteLine("Payment Successful:" + e.Url);
 
@@ -256,17 +259,28 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                     viewModel.IsLoading = true;
 
 
+                    if (!isPaymentProcessed) {
 
-                    await viewModel.UpdateMadaPaymentDetails(responseGUID);
+                        isPaymentProcessed = true;
+
+                        await viewModel.UpdateMadaPaymentDetails(responseGUID);
+
+
+                    }
+
+
 
                 }
 
             }
-            else if (e.Url.Contains("http://error/?isAuthErr"))
+            else if (e.Url.Contains("error/?isAuthErr"))
             {
                 var splitString = e.Url.Split('&');
                 if (splitString.Length > 0)
                 {
+
+                    isPaymentProcessed = false;
+
                     var responseMessage = splitString[1].Replace("msg","");
 
                     //Console.WriteLine("Payment Successful:" + e.Url);

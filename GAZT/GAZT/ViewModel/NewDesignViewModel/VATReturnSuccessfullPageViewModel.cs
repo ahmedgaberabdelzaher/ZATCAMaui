@@ -542,9 +542,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                                _navigationService.GoBack();
+                             
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+
+                                    await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                                    //PaymentSucess paymentInfo = new PaymentSucess();
+                                    //paymentInfo.Paymentref = "";
+                                    //if (response.d.PerslTxt != null)
+                                    //{
+                                    //    paymentInfo.Period = response.d.PerslTxt;
+                                    //}
+
+                                    //_navigationService.NavigateTo(App.VatReturnNewSuccessPageView, paymentInfo);
+
+                                });
                             });
 
                         }
