@@ -27,6 +27,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         #endregion
 
         #region Properties
+
+        private bool _isOTPEntryEnable { get; set; }
+        public bool IsOTPEntryEnable
+        {
+            get => _isOTPEntryEnable;
+            set
+            {
+                _isOTPEntryEnable = value;
+                RaisePropertyChanged("IsOTPEntryEnable");
+            }
+        }
         private bool _IsLoading = false;
         public bool IsLoading
         {
@@ -127,7 +138,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (value.Length > 0)
                     BtnEnableFlag = true;*/
 
-                if(!string.IsNullOrEmpty(NewMobileNumberEntryText) && !string.IsNullOrEmpty(CountryCode))
+                if (!string.IsNullOrEmpty(NewMobileNumberEntryText) && !string.IsNullOrEmpty(CountryCode))
                 {
                     try
                     {
@@ -138,7 +149,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                             if (!firstlettorOfNewMobileNumberEntryText.Equals("5"))
                             {
                                 NewMobileNumberEntryText = string.Empty;
-                                if((ch >= 48 && ch <= 57))
+                                if ((ch >= 48 && ch <= 57))
                                 {
                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDMobileNumberMustStartWithFive));
                                 }
@@ -146,7 +157,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                         }
                         else
                         {
-                            if(NewMobileNumberEntryText.Length > 0 && CountryCode.Length > 0)
+                            if (NewMobileNumberEntryText.Length > 0 && CountryCode.Length > 0)
                             {
                                 string firstlettorOfNewMobileNumberEntryText = NewMobileNumberEntryText.Substring(0, 1);
                                 if (firstlettorOfNewMobileNumberEntryText.Equals("0"))
@@ -156,7 +167,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                             }
                         }
                     }
-                    catch (Exception ex) {
+                    catch (Exception ex)
+                    {
                         Console.Write(ex.ToString());
                         Console.Write(ex.StackTrace.ToString());
                     }
@@ -350,7 +362,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
         DateTime tempCheckerOne, tempCheckerTwo;
-       
+
 
         public void StartOTPTimer()
         {
@@ -365,6 +377,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             //countDownSeconds = 120;
 
             otpTimer.Enabled = true;
+            IsOTPEntryEnable = true;
+            BtnEnableFlag = true;
         }
 
         private void OnCountDownTimedOTPEvent(object sender, ElapsedEventArgs e)
@@ -389,6 +403,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             if (countDownSeconds == 0)
             {
                 otpTimer.Stop();
+                IsOTPEntryEnable = false;
+                BtnEnableFlag = false;
                 ResendOTPTextColor = Color.FromHex("#006450");
             }
         }
@@ -436,7 +452,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         {
             IsLoading = true;
             TaxPayerProfile TP = null;
-            
+
             try
             {
                 await Task.Run(async () =>
@@ -528,7 +544,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(sourceString));
 
-           // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
     }
 }
