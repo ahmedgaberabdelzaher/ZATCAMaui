@@ -107,6 +107,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             var _navigation = Application.Current.MainPage.Navigation;
 
+            //viewModel._navigationService.GoBack();
+
+
             foreach (var item in _navigation.NavigationStack)
             {
                 if (item.GetType().Name == App.GAZTNewDesignMyReturnsNewPageView)
@@ -133,6 +136,14 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     break;
                 }
             }
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.VATReturnSuccessfullPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
 
             foreach (var item in _navigation.NavigationStack)
             {
@@ -142,17 +153,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     break;
                 }
             }
-            
-            //foreach (var item in _navigation.NavigationStack)
-            //{
-            //    if (item.GetType().Name == App.VATReturnSuccessfullPageView)
-            //    {
-            //        _navigation.RemovePage(item);
-            //        break;
-            //    }
-            //}
 
-            viewModel._navigationService.GoBack();
+           
+
 
 
 
