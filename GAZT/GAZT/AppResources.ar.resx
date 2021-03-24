@@ -4426,11 +4426,11 @@
   <data name="UnlockAccountCreateNewPassword" xml:space="preserve">
     <value>يرجى إنشاء كلمة مرور جديدة</value>
   </data>
-    <data name="UnlockAccountPasswordChangedSuccessfully" xml:space="preserve">
-       <value>عزيزي المكلف ،
+  <data name="UnlockAccountPasswordChangedSuccessfully" xml:space="preserve">
+    <value>عزيزي المكلف ،
 تم فك الحجب عن الحساب وتعيين كلمة
 المرور بنجاح للرقم المميز xxxxxx. </value>
-        </data>
+  </data>
   <data name="AccountUnlocked" xml:space="preserve">
     <value>تم فتح الحساب</value>
   </data>
@@ -5946,7 +5946,7 @@
     <value>خطة تقسيط ضريبة القيمة المضافة</value>
   </data>
   <data name="VATInstalmentRequestToVatDisplayInstalment" xml:space="preserve">
-    <value>عرض خطة اتفاقية خطة التقسيط</value>
+    <value>عرض خطة اتفاقية التقسيط</value>
     <comment>عرض خطة التقسيط</comment>
   </data>
   <data name="VatInstalmetPlanTitle" xml:space="preserve">
