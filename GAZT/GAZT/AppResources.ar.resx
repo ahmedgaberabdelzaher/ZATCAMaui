@@ -1645,10 +1645,10 @@
     <value>تحديث</value>
     <comment>VAT Declaration button</comment>
   </data>
-  <data name="ZZReset" xml:space="preserve">
-    <value>عادة تعيين</value>
-    <comment>VAT Declaration button</comment>
-  </data>
+    <data name="ZZReset" xml:space="preserve">
+        <value>إعادة تعيين</value>
+         <comment>VAT Declaration button</comment>
+        </data>
   <data name="ZZSavAndClose" xml:space="preserve">
     <value>حفظ وإغلاق</value>
     <comment>VAT Declaration button</comment>
