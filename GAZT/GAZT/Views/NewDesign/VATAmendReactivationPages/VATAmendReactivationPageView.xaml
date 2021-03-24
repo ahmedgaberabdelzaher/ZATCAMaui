@@ -1347,7 +1347,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                             FocusedColor="#005e4b" ErrorColor="#B00020"
                             InputViewPadding="16,0,16,0"  >
-                                                                        <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Unfocused="EntryPhoneNumber_Unfocused_1" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="15" Keyboard="Telephone" Style="{StaticResource DefaultEntry}">
+                                                                        <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Unfocused="EntryPhoneNumber_Unfocused_1" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="14" Keyboard="Telephone" Style="{StaticResource DefaultEntry}">
                                                                             <Entry.Behaviors>
                                                                                 <custom1:OnlyNumericValuesBehaviour/>
                                                                             </Entry.Behaviors>
@@ -1631,7 +1631,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                 Style="{StaticResource TextInputLayout}" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" 
                                                                                     x:Name="EntryPhoneNumber" Placeholder="{x:Static custom2:AppResources.MobileNumber}" 
-                                                                                    IsSpellCheckEnabled="False" MaxLength="15" Keyboard="Telephone" 
+                                                                                    IsSpellCheckEnabled="False" MaxLength="14" Keyboard="Telephone" 
                                                                                     Style="{StaticResource GAZTEntry}" Unfocused="EntryPhoneNumber_Unfocused" >
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>

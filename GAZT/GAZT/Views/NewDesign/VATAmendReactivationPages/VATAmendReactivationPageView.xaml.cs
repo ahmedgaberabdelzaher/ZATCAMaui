@@ -4051,7 +4051,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                    // if (mobileNUmber.Length != 15)
                     //{
-                        if (mobileNUmber.Length < 15)
+                        if (mobileNUmber.Length < 14)
                         {
                             message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                         ShowValidationPopup(message);
@@ -4235,7 +4235,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     //if (viewModel.MobNumberFR.Length != 15)
                     //{
-                        if (viewModel.MobNumberFR.Length < 15)
+                        if (viewModel.MobNumberFR.Length < 14)
                         {
                             message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                         ShowValidationPopup(message);
