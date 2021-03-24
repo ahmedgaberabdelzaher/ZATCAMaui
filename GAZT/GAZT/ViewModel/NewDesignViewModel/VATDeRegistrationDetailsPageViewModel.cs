@@ -48,6 +48,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public int NumberOfAttachmentComingFromServer = 0;
         public VATDeregistrationModelRootObject reasonList;
         public int SelectedReasonListIndex = 0;
+        private string DeregRequestTypeSerialised { get; set; }
         #endregion
 
         #region Commands
@@ -1067,6 +1068,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (_selectedOutletOption == value) return;
                 _selectedOutletOption = value;
+                if (value != null)
+                {
+                    DeregRequestTypeSerialised = JsonConvert.SerializeObject(new List<string> { _selectedOutletOption.ActiveOutletDecisionOptions });
+                }
 
                 if (OutletDecisionOptions == null)
                     AddOutletDecisionOptions();
@@ -2385,6 +2390,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsOutletViewEnabled = false;
                     IsAttachmentsViewEnabled = false;
                     IsDeclarationViewEnabled = false;
+                    PopulateSummaryReasonData();
                     IsSummaryViewEnabled = true;
                 }
             }
@@ -2418,11 +2424,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsOutletViewEnabled = false;
                 IsAttachmentsViewEnabled = false;
                 IsDeclarationViewEnabled = false;
+                PopulateSummaryReasonData();
                 IsSummaryViewEnabled = true;
             }
 
             //PopulateAttachmentsListViewTemplate();
-            PopulateSummaryReasonData();
             //PopulateSummaryDeclarationData();
         }
 
@@ -2485,29 +2491,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Summary View
+        private string _deregReason;
+        public string DeregReason
+        {
+            get => _deregReason; set
+            {
+                _deregReason = value;
+                RaisePropertyChanged("DeregReason");
+            }
+        }
+        private string _deregRequestType;
+        public string DeregRequestType
+        {
+            get => _deregRequestType; set
+            {
+                _deregRequestType = value;
+                RaisePropertyChanged("DeregRequestType");
+            }
+        }
         public void PopulateSummaryReasonData()
         {
-            VATDeregistrationSummaryReasonData = null;
             List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
             try
             {
-                check.Add(new VATDeregistrationSummaryModel
-                {
-                    SummaryTitle = AppResources.VatDeregRequestType,
-                    SummaryData = SelectedOutletOption.ActiveOutletDecisionOptions,
-                    IsEditVisible = true
-                });
-                check.Add(new VATDeregistrationSummaryModel
-                {
-                    SummaryTitle = AppResources.VatDeregReasonTitle,
-                    SummaryData = !string.IsNullOrEmpty(OtherField) ? OtherField : ReasonTitle,
-                    IsEditVisible = true
-                });
+                DeregRequestType = JsonConvert.DeserializeObject<List<string>>(DeregRequestTypeSerialised)[0];
+                DeregReason = !string.IsNullOrEmpty(OtherField) ? OtherField : ReasonTitle;
 
-                VATDeregistrationSummaryReasonData = new List<VATDeregistrationSummaryModel>(check);
+                // VATDeregistrationSummaryReasonData = new List<VATDeregistrationSummaryModel>(check);
             }
             catch (Exception ex)
             {
+                App.Current.MainPage.DisplayAlert("", ex.Message, "ok");
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
@@ -2889,14 +2903,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public void setDATA(string operation)
+        public async void setDATA(string operation)
         {
             try
             {
                 string reqType = string.Empty;
                 string requestTyp = string.Empty;
-
-                if (SelectedOutletOption.ActiveOutletDecisionOptions == AppResources.VATDeregistrationReasonType1)
+                var str = JsonConvert.DeserializeObject<List<string>>(DeregRequestTypeSerialised)[0];
+                if ((SelectedOutletOption != null ? SelectedOutletOption.ActiveOutletDecisionOptions : str) == AppResources.VATDeregistrationReasonType1)
                 {
                     requestTyp = "D";
                 }
