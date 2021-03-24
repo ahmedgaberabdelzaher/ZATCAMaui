@@ -5,7 +5,6 @@
              xmlns:custom2="clr-namespace:EGAZT"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-       <ScrollView>
             <Grid IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}" Margin="-10,-30,-10,-10" >
                     <Grid VerticalOptions="FillAndExpand" IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}">
                         <Grid.RowDefinitions>
@@ -36,6 +35,5 @@
                    
                     </Grid>
             </Grid>
-       </ScrollView>
     </ContentPage.Content>
 </ContentPage>
