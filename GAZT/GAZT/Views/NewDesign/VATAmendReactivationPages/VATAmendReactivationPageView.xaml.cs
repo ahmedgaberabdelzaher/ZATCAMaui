@@ -4049,20 +4049,22 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 else
                 {
-                    if (mobileNUmber.Length != 10)
-                    {
-                        if (mobileNUmber.Length < 9)
+                   // if (mobileNUmber.Length != 15)
+                    //{
+                        if (mobileNUmber.Length < 15)
                         {
                             message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
-                        }
-                        if (Messages.Length > 0)
+                        ShowValidationPopup(message);
+
+                    }
+                    if (Messages.Length > 0)
                         {
                             ShowValidationPopup(message);
                            // str.HasError = true;
                         }
                       //  else
                             //str.HasError = false;
-                    }
+                    //}
                 }
             }
         }
@@ -4231,20 +4233,24 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 else
                 {
-                    if (viewModel.MobNumberFR.Length != 10)
-                    {
-                        if (viewModel.MobNumberFR.Length < 9)
+                    //if (viewModel.MobNumberFR.Length != 15)
+                    //{
+                        if (viewModel.MobNumberFR.Length < 15)
                         {
                             message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
-                        }
-                        if (Messages.Length > 0)
+                        ShowValidationPopup(message);
+                        FrmPhoneNumber.HasError = true;
+                        return;
+
+                    }
+                    if (Messages.Length > 0)
                         {
                             ShowValidationPopup(message);
                             FrmPhoneNumber.HasError = true;
                         }
                         else
                             FrmPhoneNumber.HasError = false;
-                    }
+                   // }
                 }
             }
         }
