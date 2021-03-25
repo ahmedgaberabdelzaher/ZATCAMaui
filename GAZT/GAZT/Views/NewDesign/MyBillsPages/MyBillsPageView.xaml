@@ -217,7 +217,7 @@
                                             </StackLayout>
 
                                             <StackLayout Grid.Row="2" Grid.Column="0"  IsVisible="{Binding IsPartiallyPaidVisibile}"  
-                                                         HorizontalOptions="StartAndExpand" Spacing="-5"  Margin="0,0,0,14">
+                                                         HorizontalOptions="StartAndExpand" Spacing="-5"  Margin="0,0,0,10">
                                                 <StackLayout.Triggers>
                                                     <DataTrigger TargetType="StackLayout"
                                                                  Binding="{Binding IsPartiallyPaidVisibile}"
@@ -238,7 +238,7 @@
                                             </StackLayout>
 
                                             <StackLayout Grid.Row="2" Grid.Column="1" IsVisible="{Binding IsPartiallyPaidVisibile}"
-                                                         HorizontalOptions="StartAndExpand" Spacing="-5"  Margin="0,0,0,14">
+                                                         HorizontalOptions="StartAndExpand" Spacing="-5"  Margin="0,0,0,10">
                                                 <StackLayout.Triggers>
                                                     <DataTrigger TargetType="StackLayout"
                                                                  Binding="{Binding IsPartiallyPaidVisibile}"
@@ -258,14 +258,14 @@
                                                 </custom:CustomLabel>
                                             </StackLayout>
 
-                                            <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5"  Margin="0,0,0,14">
+                                            <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5"  Margin="0,0,0,20">
                                                 <Label Text="{x:Static ResourceManager:AppResources.InvoiceStatus}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <Label Text="{Binding StatusText}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
 
 
 
-                                            <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
+                                                <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5" Margin="0,0,0,20">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <StackLayout HorizontalOptions="Start">
                                                     <custom:CustomLabel Text="{Binding FormatedFaedn}" Style="{StaticResource ValueLabelBlack}"/>

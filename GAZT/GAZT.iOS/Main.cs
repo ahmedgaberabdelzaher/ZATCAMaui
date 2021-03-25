@@ -2,6 +2,8 @@
 using System.IO;
 using Newtonsoft.Json;
 using UIKit;
+using Xamarin.Essentials;
+
 namespace GAZT.iOS
 {
     public class Application
@@ -35,6 +37,8 @@ namespace GAZT.iOS
             }
             catch(Exception ex)
             {
+
+                Console.WriteLine(ex.Message);
                 // just suppress any error logging exceptions
             }
         }

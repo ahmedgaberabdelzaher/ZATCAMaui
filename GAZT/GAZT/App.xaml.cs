@@ -632,6 +632,7 @@ namespace EGAZT
             {
                
             }
+        
         }
 
         public static Task ResetAndContinueSession()
@@ -679,6 +680,7 @@ namespace EGAZT
             TimeAtResume = DateTime.Now;
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
+        
         }
 
         public static void InitializeAppDynamics()

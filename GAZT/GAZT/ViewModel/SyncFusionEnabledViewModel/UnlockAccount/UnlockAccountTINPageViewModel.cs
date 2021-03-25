@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Manager;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -931,8 +932,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         OtpFourthDigit = string.Empty;
 
 
-                        App.HideProgressView();
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        if (PopupNavigation.Instance.PopupStack.Count > 0)
+                           await PopupNavigation.Instance.PopAsync(true);
+
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                 
 
                     }
                     catch (InternetException ex)
@@ -940,8 +945,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             IsOtpAPICalled = false;
-                            App.HideProgressView();
-                            await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                            if (PopupNavigation.Instance.PopupStack.Count > 0)
+                                await PopupNavigation.Instance.PopAsync(true);
+
+                        
+
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                            
                         });
                     }
                     catch (Exception ex)
@@ -956,7 +966,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                             OtpFourthDigit = string.Empty;
 
                             App.HideProgressView();
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
+                           
                         });
                     }
                 }
@@ -1099,10 +1112,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     PasswordChangedSuccessfully = AppResources.UnlockAccountPasswordChangedSuccessfully;
                     PasswordChangedSuccessfully = PasswordChangedSuccessfully.Replace("xxxxxx", UnlockAccountModelChangePassword.Tin);
 
-                    await Task.Run(() =>
-                     {
                          App.HideProgressView();
-                     });
 
                     Device.BeginInvokeOnMainThread(async ()=> {
 
