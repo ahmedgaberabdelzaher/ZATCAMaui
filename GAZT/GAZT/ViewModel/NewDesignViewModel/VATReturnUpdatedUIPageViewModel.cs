@@ -32,7 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnBackStepClicked { get; set; }
         public ICommand OnMoreClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
-        
+
         public ICommand onCountinueClicked { get; set; }
 
         public ICommand onSecondButtonClicked { get; set; }
@@ -61,9 +61,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_currentTab == value) return;
 
                 _currentTab = value;
-            
-                    CurrentOpenedTab = _currentTab;
-                
+
+                CurrentOpenedTab = _currentTab;
+
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)_currentTab;
                 RaisePropertyChanged(nameof(CurrentIndex));
@@ -113,26 +113,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_currenrIndex == value) return;
 
                 if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.GoliveFg == "X")
-                 {
+                {
                     _currenrIndex = value;
-                 }
-                 else
-                 {
+                }
+                else
+                {
 
                     _currenrIndex = value > 1 ? value - 1 : value;
-                 }
-                
+                }
+
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
-                    {
-                        MarkComplete = true;
-                        RaisePropertyChanged(nameof(MarkComplete));
-                    }
-                    else
-                    {
-                        MarkComplete = false;
-                        RaisePropertyChanged(nameof(MarkComplete));
-                    }
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+                else
+                {
+                    MarkComplete = false;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
             }
         }
         public bool MarkComplete { get; private set; } = false;
@@ -140,7 +140,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
 
-        private int _maxIndex=6;
+        private int _maxIndex = 6;
         public int MaxIndex
         {
             get
@@ -188,7 +188,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         public string ApplePayTokenData;
-        
+
         private bool _isRefundButtonVisible;
         public bool IsRefundButtonVisible
         {
@@ -251,7 +251,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsCreditForwardBtnVisible");
             }
         }
-        
+
         private bool _isVATReturnFieldCheckForSaveAsDraft = false;
         public bool IsVATReturnFieldCheckForSaveAsDraft
         {
@@ -798,13 +798,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_isDeclarationCheckedForInstruction == true)
                 {
                     IsMainButtonEnabled = true;
-                    
+
                     VATDeclarationData.d.TcFg = "1";
                 }
                 else
                 {
                     IsMainButtonEnabled = false;
-                   
+
                     VATDeclarationData.d.TcFg = "0";
                 }
                 RaisePropertyChanged("IsDeclarationCheckedForInstruction");
@@ -825,12 +825,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _isCheckedTaxPayerDetailsInfo = value;
                 if (_isCheckedTaxPayerDetailsInfo == true)
                 {
-                    
+
                     VATDeclarationData.d.ConfStp2 = "1";
                 }
                 else
                 {
-                    
+
                     VATDeclarationData.d.ConfStp2 = "0";
                 }
                 RaisePropertyChanged("IsCheckedTaxPayerDetailsInfo");
@@ -1144,7 +1144,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        
+
 
         public string _totaldueVat = "0.00";
         public string TotaldueVat
@@ -1721,7 +1721,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
 
         public string _refundButtonText;
         public string RefundButtonText
@@ -1771,7 +1771,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool _isVoidClicked=false;
+        public bool _isVoidClicked = false;
         public bool IsVoidClicked
         {
             get
@@ -1787,7 +1787,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool _isResetClicked=false;
+        public bool _isResetClicked = false;
         public bool IsResetClicked
         {
             get
@@ -2061,7 +2061,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_isVisibleAmendButton == value) return;
 
                 _isVisibleAmendButton = value;
-                if(_isVisibleAmendButton==true)
+                if (_isVisibleAmendButton == true)
                 {
                     RefundButtonText = AppResources.ZZZZViewRefund;
                 }
@@ -2104,7 +2104,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _isAmendClicked = value;
                 if (_isAmendClicked == true)
                 {
-                   // IsGetAcknowledgementClicked = false;
+                    // IsGetAcknowledgementClicked = false;
                     IsAmend = true;
                 }
                 else
@@ -2182,18 +2182,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_isSwitchToggledFor15PercentChange == value) return;
 
                 _isSwitchToggledFor15PercentChange = value;
-               
-                    if (_isSwitchToggledFor15PercentChange == true)
-                    {
-                        IsYesChecked = true;
-                        IsNoChecked = false;
-                    }
-                    else
-                    {
-                        IsNoChecked = true;
-                        IsYesChecked = false;
-                    }
-                
+
+                if (_isSwitchToggledFor15PercentChange == true)
+                {
+                    IsYesChecked = true;
+                    IsNoChecked = false;
+                }
+                else
+                {
+                    IsNoChecked = true;
+                    IsYesChecked = false;
+                }
+
                 RaisePropertyChanged("IsSwitchToggledFor15PercentChange");
             }
         }
@@ -2456,9 +2456,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public GAZTNewDesignVATReturnUpdatedUIPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-           
 
-         
+
+
             ContinueText = AppResources.ZZZZContinue;
 
 
@@ -2479,60 +2479,60 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                  
-                        bool value = IsCheckedDraftMode();
-                        if (IsDeclarationCheckedForSummary)
+
+                    bool value = IsCheckedDraftMode();
+                    if (IsDeclarationCheckedForSummary)
+                    {
+                        if (checkforrefundclicked())
                         {
-                            if (checkforrefundclicked())
+                            if (App.ICRStatus == "E0001" || App.ICRStatus == "E0013")
                             {
-                                if (App.ICRStatus == "E0001" || App.ICRStatus == "E0013")
-                                {
-                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                    headerAmountInfo.HeaderText = AppResources.ZZZConfirmationMsg;
-                                    headerAmountInfo.IsLinkAvailable = false;
-                                    headerAmountInfo.Message = AppResources.ZZZRefundEnableMessage;
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                headerAmountInfo.HeaderText = AppResources.ZZZConfirmationMsg;
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = AppResources.ZZZRefundEnableMessage;
 
-                                    headerWithInfos.Add(headerAmountInfo);
+                                headerWithInfos.Add(headerAmountInfo);
 
 
-                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                    newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
 
-                                    PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
-                                }
-                                else
-                                {
+                                PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+                            }
+                            else
+                            {
                                 SetDataForRefundPopup();
                                 PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(VATDeclarationData));
-                                }
                             }
                         }
-                        else
-                        {
-                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    }
+                    else
+                    {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                         headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                         headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
+                        headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
 
-                            headerWithInfos.Add(headerAmountInfo);
+                        headerWithInfos.Add(headerAmountInfo);
 
 
-                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-                        }
-                        // _navigationService.NavigateTo(App.RefundAccountPopupPageView,VATDeclarationData);
-                        //_navigationService.GoBack();
-                    
+                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    }
+                    // _navigationService.NavigateTo(App.RefundAccountPopupPageView,VATDeclarationData);
+                    //_navigationService.GoBack();
+
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.Write(ex.ToString());
                     Console.Write(ex.StackTrace.ToString());
@@ -2545,7 +2545,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     PopupNavigation.Instance.PushAsync(new VATCreditCarriedForwardPopUpPageView(VATDeclarationData));
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.Write(ex.ToString());
                     Console.Write(ex.StackTrace.ToString());
@@ -2573,61 +2573,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.Write(ex.ToString());
                     Console.Write(ex.StackTrace.ToString());
                 }
-               // await _dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
+                // await _dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
             });
 
 
 
 
-            onSecondButtonClicked = new Xamarin.Forms.Command(async() =>
+            onSecondButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 if (CreditDetailsText == AppResources.Confirm)
                 {
-                   
-                        if (IsDeclarationCheckedForSummary)
+
+                    if (IsDeclarationCheckedForSummary)
+                    {
+                        if (IsDeclarationCheckedForSummary && (IsVoidClicked == false && IsResetClicked == false))
                         {
-                            if (IsDeclarationCheckedForSummary && (IsVoidClicked == false && IsResetClicked == false))
+                            if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (App.ICRStatus == "E0001" || IsCheckedDraftMode()))
                             {
-                                if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (App.ICRStatus == "E0001" || IsCheckedDraftMode()))
+                                Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    Device.BeginInvokeOnMainThread(() =>
-                                    {
-                                        IsNewLoading = true;
-                                    });
-                                    await SubmitClicked();
-                                    Device.BeginInvokeOnMainThread(() =>
-                                    {
-                                        IsNewLoading = false;
-                                    });
-                                }
+                                    IsNewLoading = true;
+                                });
+                                await SubmitClicked();
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    IsNewLoading = false;
+                                });
                             }
                         }
-                        else
-                        {
-                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    }
+                    else
+                    {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                         headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                         headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
+                        headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
 
-                            headerWithInfos.Add(headerAmountInfo);
+                        headerWithInfos.Add(headerAmountInfo);
 
 
-                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                           await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-                        }
-                    
+                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    }
+
                 }
-                else if(CreditDetailsText == AppResources.ZZZZGetAckNew)
+                else if (CreditDetailsText == AppResources.ZZZZGetAckNew)
                 {
                     _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationData);
                 }
@@ -2669,30 +2669,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         break;
                 }
 
-                
+
             });
         }
 
         public bool checkforrefundclicked()
         {
             bool result = false;
-            if (App.ICRStatus=="E0045" || App.ICRStatus=="E0006")
+            if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
             {
                 if (VATDeclarationData.d.RefundFg == "1")
                 {
                     result = true;
                 }
-                else if(IsAmendClicked==true)
+                else if (IsAmendClicked == true)
                 {
                     result = true;
                 }
             }
-            else if((App.ICRStatus == "E0001" || IsCheckedDraftMode()))
+            else if ((App.ICRStatus == "E0001" || IsCheckedDraftMode()))
             {
                 result = true;
             }
             return result;
-          }
+        }
 
         public bool IsCheckedDraftMode()
         {
@@ -2733,55 +2733,82 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
             //if (answer)
             //{
-                await Task.Run(() =>
+            await Task.Run(() =>
+            {
+                IsNewLoading = true;
+            });
+            await Task.Run(async () =>
+            {
+                try
                 {
-                    IsNewLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    try
+                    CreateDataForPost();
+                    string operation = "04";// Passed 04 to set void
+                    VATDeclarationData.d.Operationz = operation;
+                    StepNumber = "01";
+                    if (IsDeclarationCheckedForInstruction == true)
                     {
-                        CreateDataForPost();
-                        string operation = "04";// Passed 04 to set void
-                        VATDeclarationData.d.Operationz = operation;
-                        StepNumber = "01";
-                        if (IsDeclarationCheckedForInstruction == true)
-                        {
-                            StepNumber = "02";
-                        }
-                        if (IsCheckedTaxPayerDetailsInfo == true)
-                        {
-                            StepNumber = "03";
-                        }
-                        if (IsDeclarationCheckedForSummary == true)
-                        {
-                            StepNumber = "04";
-                        }
-                        VATDeclarationData.d.StepNumber = StepNumber;
-                        VATDeclarationData.d.UserTypz = "TP";
-                        var response = WebServiceManager.GAZTSetVATReturnVoid(VATDeclarationData);
-                        PopToRootPage();
-                        var res = await SaveReturnAndGetReturnAndSetButtons();
-                        if (res != null && res.d != null && response != null)
-                        {
-                            Device.BeginInvokeOnMainThread( () =>
-                            {
-                                ManageEnabledProperty(false);
-                                IsVoidClicked = true;
+                        StepNumber = "02";
+                    }
+                    if (IsCheckedTaxPayerDetailsInfo == true)
+                    {
+                        StepNumber = "03";
+                    }
+                    if (IsDeclarationCheckedForSummary == true)
+                    {
+                        StepNumber = "04";
+                    }
+                    VATDeclarationData.d.StepNumber = StepNumber;
+                    VATDeclarationData.d.UserTypz = "TP";
+                    var response = WebServiceManager.GAZTSetVATReturnVoid(VATDeclarationData);
+                    PopToRootPage();
+                    var res = await SaveReturnAndGetReturnAndSetButtons();
+                    if (res != null && res.d != null && response != null)
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                           {
+                               ManageEnabledProperty(false);
+                               IsVoidClicked = true;
                                // IsMainButtonVisible = false;
-                                
-                            });
-                            // ManageEnabledProperty(false);
+
+                           });
+                        // ManageEnabledProperty(false);
+                        Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //  await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_VATReturnFormCancelled, AppResources.ZInstructions);
+
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATReturnFormCancelled;
+
+                        headerWithInfos.Add(headerAmountInfo);
+
+
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                    });
+                    }
+                    else
+                    {
+                        IsLoading = false;
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                        {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                              //  await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_VATReturnFormCancelled, AppResources.ZInstructions);
+
 
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                                 headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATReturnFormCancelled;
+                                headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
                                 headerWithInfos.Add(headerAmountInfo);
 
@@ -2792,81 +2819,56 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
+
+
+                                //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
                             });
                         }
                         else
                         {
-                            IsLoading = false;
-                            if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
-                                Device.BeginInvokeOnMainThread(async () => {
+
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
+
+                                headerWithInfos.Add(headerAmountInfo);
 
 
-                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                    headerAmountInfo.IsLinkAvailable = false;
-                                    headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    headerWithInfos.Add(headerAmountInfo);
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-
-                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                                   await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-
-
-                                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                    _navigationService.GoBack();
-                                });
-                            }
-                            else
-                            {
-                                Device.BeginInvokeOnMainThread(async () => {
-
-                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                    headerAmountInfo.IsLinkAvailable = false;
-                                    headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
-
-                                    headerWithInfos.Add(headerAmountInfo);
-
-
-                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                                  await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-                                    //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
-                                    // _navigationService.GoBack();
-                                    WebServiceManager.ErrorMessageForVAT = string.Empty;
-                                });
-                            }
-                            //Device.BeginInvokeOnMainThread(async () =>
-                            //{
-                            //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.ZInstructions);
-                            //});
+                                //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                                // _navigationService.GoBack();
+                                WebServiceManager.ErrorMessageForVAT = string.Empty;
+                            });
                         }
+                        //Device.BeginInvokeOnMainThread(async () =>
+                        //{
+                        //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.ZInstructions);
+                        //});
                     }
-                    catch (InternetException ex)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                           await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        });
-                    }
-                });
-                await Task.Run(() =>
+                }
+                catch (InternetException ex)
                 {
-                    IsNewLoading = false;
-                });
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
+            });
+            await Task.Run(() =>
+            {
+                IsNewLoading = false;
+            });
             //}
         }
         public async Task OnSaveDraftClicked()
@@ -2904,7 +2906,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            if (currentTab== VATReturnUpdatedUITabEnum.Instrunction)
+                            if (currentTab == VATReturnUpdatedUITabEnum.Instrunction)
                             {
                                 if (IsDeclarationCheckedForInstruction == false)
                                 {
@@ -2912,7 +2914,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     IsRefundButtonEnabled = false;
                                 }
                             }
-                         
+
 
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -2928,7 +2930,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             newDesignPopUp.HeaderWithInfos = headerWithInfos;
                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                           await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
@@ -2957,10 +2959,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                              await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
-                                
+
                             });
                         }
                         else
@@ -2981,7 +2983,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                               await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                                 WebServiceManager.ErrorMessageForVAT = string.Empty;
                             });
@@ -2999,7 +3001,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception)
             {
-                Device.BeginInvokeOnMainThread(async () => {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
 
                     List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                     HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -3015,7 +3018,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                   await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
@@ -3025,7 +3028,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        public async Task VATReturnResetAsync()
+        public async Task VATReturnResetAsync(bool showPopupMsg = true)
         {
             await Task.Run(() =>
             {
@@ -3085,7 +3088,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //IsMainButtonVisible = false;
 
                         });
-                        Device.BeginInvokeOnMainThread(async () =>
+                        if (showPopupMsg)
+                            Device.BeginInvokeOnMainThread(async () =>
                         {
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -3101,11 +3105,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             newDesignPopUp.HeaderWithInfos = headerWithInfos;
                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                           await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
-                           // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
+                            // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
                         });
                     }
                     else
@@ -3113,7 +3117,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         IsLoading = false;
                         if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                         {
-                            Device.BeginInvokeOnMainThread(async () => {
+                            if (showPopupMsg)
+                                Device.BeginInvokeOnMainThread(async () =>
+                            {
 
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -3129,7 +3135,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                              await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
@@ -3139,7 +3145,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            Device.BeginInvokeOnMainThread(async () => {
+                            if (showPopupMsg)
+                                Device.BeginInvokeOnMainThread(async () =>
+                            {
 
 
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
@@ -3160,7 +3168,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-                               // await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                                // await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                                 // _navigationService.GoBack();
                                 WebServiceManager.ErrorMessageForVAT = string.Empty;
                             });
@@ -3173,28 +3181,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 catch (InternetException ex)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
+                    if (showPopupMsg)
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
 
-                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                        headerAmountInfo.IsLinkAvailable = false;
-                        headerAmountInfo.Message = ex.Message;
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = ex.Message;
 
-                        headerWithInfos.Add(headerAmountInfo);
-
-
-                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                            headerWithInfos.Add(headerAmountInfo);
 
 
-                       // _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+                            // _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
                 }
             });
             await Task.Run(() =>
@@ -3232,11 +3241,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         newDesignPopUp.HeaderWithInfos = headerWithInfos;
                         newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                       await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
-                       // await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed, AppResources.Information);
+                        // await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed, AppResources.Information);
                     });
                     return;
                 }
@@ -3293,7 +3302,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = false;
                     if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                     {
-                        Device.BeginInvokeOnMainThread(async () => {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
 
 
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
@@ -3310,18 +3320,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             newDesignPopUp.HeaderWithInfos = headerWithInfos;
                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                           await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
 
-                           // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                         });
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () => {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
 
 
 
@@ -3339,7 +3350,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             newDesignPopUp.HeaderWithInfos = headerWithInfos;
                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                           await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
@@ -3430,7 +3441,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //    IsPayNowVisible = false;
                 //}
 
-                if(IsAmendButtonAvailable)
+                if (IsAmendButtonAvailable)
                 {
                     IsVisibleAmendButton = true;
                 }
@@ -3540,7 +3551,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 string FormBundleNumber = VATDeclarationData.d.Fbnum;
                 string Gpart = VATDeclarationData.d.Gpart;
-                
+
                 TaxpayerPeriodFromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                 TaxpayerPeriodToDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                 //if (App.IsArabic)
@@ -3597,33 +3608,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (App.IsArabic)
                             {
                                 CarriedValueString = AppResources.ZVatCorrectionsfrompreviousperiod.Replace("±", CorrectionPeriodAmount + " ± ");
-                                CarriedValueStringNew= AppResources.ZVatCorrectionsfrompreviousperiod1.Replace("±", CorrectionPeriodAmount + " ± ");
+                                CarriedValueStringNew = AppResources.ZVatCorrectionsfrompreviousperiod1.Replace("±", CorrectionPeriodAmount + " ± ");
                             }
                             else
                             {
                                 CarriedValueString = AppResources.ZVatCorrectionsfrompreviousperiod.Replace("±", " ± " + CorrectionPeriodAmount);
-                                CarriedValueStringNew= AppResources.ZVatCorrectionsfrompreviousperiod1.Replace("±", " ± " + CorrectionPeriodAmount);
+                                CarriedValueStringNew = AppResources.ZVatCorrectionsfrompreviousperiod1.Replace("±", " ± " + CorrectionPeriodAmount);
                             }
                         }
                     }
                 }
                 if (VATDeclarationData.d.TcFg == "1")
                 {
-                   
-                        IsDeclarationCheckedForInstruction = true;
-                
+
+                    IsDeclarationCheckedForInstruction = true;
+
                 }
                 if (VATDeclarationData.d.ConfStp2 == "1")
                 {
-                    
-                        IsCheckedTaxPayerDetailsInfo = true;
-              
+
+                    IsCheckedTaxPayerDetailsInfo = true;
+
                 }
                 if (VATDeclarationData.d.DecFg == "1")
                 {
-                   
-                        IsDeclarationCheckedForSummary = true;
-                  
+
+                    IsDeclarationCheckedForSummary = true;
+
                 }
 
 
@@ -3675,14 +3686,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
         }
 
         public void SetEnableForSubmitButton()
         {
-            if (IsDeclarationCheckedForSummary==true)
+            if (IsDeclarationCheckedForSummary == true)
             {
                 IsGetSadadNumberEnabled = true;
             }
@@ -3761,7 +3772,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //}
                 if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
                 {
-                    DummyATTACHSetsList = new List<Attachment>();
+                    DummyATTACHSetsList = new List<Attachment>();   
                     DummyATTACHSetsList = VATDeclarationData.d.ATTACHSet.results;
                 }
                 if (ATTACHSetsList != null && ATTACHSetsList.Count() != 0)
@@ -3780,9 +3791,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             ResponseVATDeclarationD = VATDeclarationData.d;
                             if (VATDeclarationData.d.VATPERITEMSet.results != null)
                             {
-                                if (VATDeclarationData.d.GoliveFg == "X" )
+                                if (VATDeclarationData.d.GoliveFg == "X")
                                 {
-                                    if(VATDeclarationData.d.Yesno == "X")
+                                    if (VATDeclarationData.d.Yesno == "X")
                                     {
                                         VATNewModelFor15Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
                                         VATNewModelFor5Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "003").FirstOrDefault();
@@ -3791,7 +3802,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         VATNewModelFor15Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
                                     }
-                               }
+                                }
                             }
                             SetCommasforAll();
                             if (DummyATTACHSetsList != null && DummyATTACHSetsList.Count() != 0)
@@ -3875,11 +3886,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
-                                  //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                   
-                                    
-                                    
-                                    
+                                    //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+
+
+
+
                                     _navigationService.GoBack();
                                 });
                             }
@@ -3906,7 +3917,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
-                               // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                 _navigationService.GoBack();
                             });
                         }
@@ -3947,8 +3958,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await Task.Delay(5000);
                         }
-                        _navigationService.NavigateTo(App.VATReturnSuccessfullPageView,VATDeclarationData);
-                       // _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
+                        _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationData);
+                        // _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
                     else
                     {
@@ -3972,11 +3983,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                               await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                 // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                 _navigationService.GoBack();
+                                _navigationService.GoBack();
                             });
                         }
                         else
@@ -3996,8 +4007,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                               await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                VATReturnResetAsync(false);
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                 //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
@@ -4074,7 +4085,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                         result = true;
-                       
+
                     }
                     else
                     {
@@ -4168,9 +4179,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                             newDesignPopUp.HeaderWithInfos = headerWithInfos;
                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                           await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
+                            VATReturnResetAsync(false);
+                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                             //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                             //_navigationService.GoBack();
@@ -4213,7 +4223,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeclarationData.d.StdpurchasesVat = vATDeclarationD.StdpurchasesVat;
                 VATDeclarationData.d.ImportspaidVat = vATDeclarationD.ImportspaidVat;
                 VATDeclarationData.d.ImportsaccVat = vATDeclarationD.ImportsaccVat;
-                VATDeclarationData.d.TotalpurchaseVat = vATDeclarationD.TotalpurchaseVat; 
+                VATDeclarationData.d.TotalpurchaseVat = vATDeclarationD.TotalpurchaseVat;
                 VATDeclarationData.d.TotaldueVat = vATDeclarationD.TotaldueVat;
                 VATDeclarationData.d.Preperiodcorr = vATDeclarationD.Preperiodcorr;
                 VATDeclarationData.d.CreditVat = vATDeclarationD.CreditVat;
@@ -4541,7 +4551,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             NetdueVat = ResponseVATDeclarationD.NetdueVat;
 
 
-            
+
         }
 
         public void SetCommasforAll()
@@ -4731,7 +4741,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IBANTypesList = IBANTypesDummyList;
         }
 
-        
+
 
 
         #region CalculationsMethods
@@ -5572,7 +5582,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     ListOfActionButtonsApplicable = DummyListOfActionButtonsApplicable;
                 }
-                if(Isamend)
+                if (Isamend)
                 {
                     IsVisibleAmendButton = true;
                     IsAmendButtonAvailable = true;
@@ -5587,7 +5597,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
         }
@@ -5664,12 +5674,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        public bool IsCommaSeparatedValidAmount(string amount,int Max, int numberOfDigitAfterDecimal, int numberOfDigitBeforDecimal)
+        public bool IsCommaSeparatedValidAmount(string amount, int Max, int numberOfDigitAfterDecimal, int numberOfDigitBeforDecimal)
         {
             bool iSValiedNumber = false;
             try
             {
-               
+
                 if (amount != null && amount.Length < Max && amount.Length > 0)
                 {
                     amount = amount.Replace(",", "");
@@ -5715,7 +5725,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, _vATDeclarationData);
         }
-        public async Task DoValidatePayment(string fbNum,string paymentType)
+        public async Task DoValidatePayment(string fbNum, string paymentType)
         {
             try
             {
@@ -5750,12 +5760,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (PaymentData != null && PaymentData.d != null)
                     {
 
-                        if (PaymentData.d.Guid != null&&PaymentData.d.Guid == "")
+                        if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                         {
                             await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
                             return;
                         }
-                        
+
                         if (PaymentData.d.Guid != null)
                         {
 
@@ -5763,16 +5773,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         }
 
-                        if (paymentType == "M") {
+                        if (paymentType == "M")
+                        {
 
-                            Device.BeginInvokeOnMainThread(async () => {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
 
                                 _navigationService.NavigateTo(App.PaymentProcessWebview, 1);
                                 //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
 
                             });
                         }
-                        else {
+                        else
+                        {
 
                             ApplePayStatus = await ProcessApplePay();
                         }
@@ -5961,7 +5974,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
 
 
-                     
+
                         if (response.d.Success)
                         {
 
@@ -6049,8 +6062,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-     private async Task<bool> ProcessApplePay()
-    {
+        private async Task<bool> ProcessApplePay()
+        {
 
 
 
@@ -6060,15 +6073,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             var VatAmount = Math.Round(Amount, 2);
 
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(VatAmount, AppResources.ZAmount); 
-    }
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(VatAmount, AppResources.ZAmount);
+        }
 
-   
 
-    public void MadaPaymentSelected()
+
+        public void MadaPaymentSelected()
         {
 
-            DoValidatePayment(fbNum:VATDeclarationData.d.Fbnum,"M");
+            DoValidatePayment(fbNum: VATDeclarationData.d.Fbnum, "M");
 
             //Device.BeginInvokeOnMainThread(async () => {
 
@@ -6081,7 +6094,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void ApplePaySelected()
         {
-             //DoProcessApplePayPayment(VATDeclarationData.d.Fbnum);
+            //DoProcessApplePayPayment(VATDeclarationData.d.Fbnum);
 
             DoValidatePayment(fbNum: VATDeclarationData.d.Fbnum, "A");
 
@@ -6098,16 +6111,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-         public async void ApplePaySucess(){
+        public async void ApplePaySucess()
+        {
 
             Console.WriteLine("Apple pay status", ApplePayTokenData);
 
-            if(ApplePayTokenData != null) {
+            if (ApplePayTokenData != null)
+            {
 
-                 UpdateApplePayPaymentGuid();
+                UpdateApplePayPaymentGuid();
             }
 
-            
+
         }
     }
 }
