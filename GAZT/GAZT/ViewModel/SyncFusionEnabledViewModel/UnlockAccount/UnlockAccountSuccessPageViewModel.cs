@@ -23,6 +23,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
             set
             {
+                if (string.IsNullOrEmpty(value) || value == _passwordChangedSuccessfully) return;
                 _passwordChangedSuccessfully = value;
                 RaisePropertyChanged("PasswordChangedSuccessfully");
             }

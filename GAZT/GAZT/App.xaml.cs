@@ -632,6 +632,11 @@ namespace EGAZT
             {
                
             }
+            if (Preferences.ContainsKey("errorUnknown") && !string.IsNullOrEmpty(Preferences.Get("errorUnknown", string.Empty)))
+            {
+                Application.Current.MainPage.DisplayAlert("Error", Preferences.Get("errorUnknown", string.Empty), "Cancel");
+                Preferences.Set("errorUnknown", string.Empty);
+            }
         }
 
         public static Task ResetAndContinueSession()
@@ -679,6 +684,7 @@ namespace EGAZT
             TimeAtResume = DateTime.Now;
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
+        
         }
 
         public static void InitializeAppDynamics()
