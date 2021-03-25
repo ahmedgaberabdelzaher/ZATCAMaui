@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Manager;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -934,11 +935,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         if (PopupNavigation.Instance.PopupStack.Count > 0)
                            await PopupNavigation.Instance.PopAsync(true);
 
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                        PopMsg.Append(ex.Message);
-                        popUp.Message = PopMsg.ToString();
-                        await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                 
 
                     }
                     catch (InternetException ex)
@@ -949,10 +948,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                             if (PopupNavigation.Instance.PopupStack.Count > 0)
                                 await PopupNavigation.Instance.PopAsync(true);
 
-                            PopMsg.Append(AppResources.ZZInternetConnectionMessage);
-                            popUp.Message = PopMsg.ToString();
-                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            //await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        
+
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                            
                         });
                     }
                     catch (Exception ex)
@@ -968,10 +967,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
                             App.HideProgressView();
 
-                            PopMsg.Append(AppResources.ZZSomethingwentwrong);
-                            popUp.Message = PopMsg.ToString();
-                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                           // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
+                           
                         });
                     }
                 }

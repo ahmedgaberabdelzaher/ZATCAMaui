@@ -632,11 +632,7 @@ namespace EGAZT
             {
                
             }
-            if (Preferences.ContainsKey("errorUnknown") && !string.IsNullOrEmpty(Preferences.Get("errorUnknown", string.Empty)))
-            {
-                Application.Current.MainPage.DisplayAlert("Error", Preferences.Get("errorUnknown", string.Empty), "Cancel");
-                Preferences.Set("errorUnknown", string.Empty);
-            }
+        
         }
 
         public static Task ResetAndContinueSession()

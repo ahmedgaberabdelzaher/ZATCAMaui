@@ -21,7 +21,6 @@ namespace GAZT.iOS
             }
             catch (Exception ex)
             {
-                Preferences.Set("errorUnknown", ex.ToString() + "====" + ex.StackTrace);
                 Console.WriteLine(ex.Message);
                 LogUnhandledException(ex);
             }
