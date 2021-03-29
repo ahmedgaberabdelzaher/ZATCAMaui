@@ -3945,9 +3945,9 @@
     <value>المملكة العربية السعودية</value>
     <comment>New SignUp 5 </comment>
   </data>
-  <data name="ZZZZVATRAttachmentNote1" xml:space="preserve">
-    <value>1. يجب ان يكون حجم الملف اقل من 5 ميقا</value>
-  </data>
+    <data name="ZZZZVATRAttachmentNote1" xml:space="preserve">
+<value>1. يجب ان يكون حجم الملف اقل من 5 ميجا</value>
+    </data>
   <data name="ZZZZVATRAttachmentNote2" xml:space="preserve">
     <value>2. يجب ان تكون صيغة الملف من ضمن: Doc,Docx,Jpg,PDF,xlsx,xls</value>
   </data>
