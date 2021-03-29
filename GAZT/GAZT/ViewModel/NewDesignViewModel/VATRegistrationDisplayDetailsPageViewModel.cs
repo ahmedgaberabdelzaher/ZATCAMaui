@@ -615,11 +615,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                      
                         if (vATRegistration.d.ExFg=="1")
                         {
-                            ImportExportText = "Exporter";
+                            ImportExportText = AppResources.VATRExporter;//"Exporter";
                         }
                         else if(vATRegistration.d.ImFg == "1")
                         {
-                            ImportExportText = "Importer";
+                            ImportExportText = AppResources.VATRImporter;//"Importer";
 
                         }
 

@@ -3,9 +3,11 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -43,17 +45,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException)
             {
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
-
+                //await Task.Run(() =>
+                //{
+                //    App.HideProgressView();
+                //});
+                if (PopupNavigation.Instance.PopupStack.Count > 0)
+                    await PopupNavigation.Instance.PopAsync(true);
                 try
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    });
+                    //Device.BeginInvokeOnMainThread(async () =>
+                    //{
+                    //    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    //});
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+
 
                 }
                 catch (Exception mex)
@@ -63,16 +68,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
 
-                string message = ex.Message;
-                await _dialogService.ShowMessage(message, AppResources.Information, AppResources.ZZZOkayText, () =>
-                {
-                    _navigationService.GoBack();
-                });
+                if (PopupNavigation.Instance.PopupStack.Count > 0)
+                    await PopupNavigation.Instance.PopAsync(true);
+
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                //await Task.Run(() =>
+                //{
+                //    App.HideProgressView();
+                //});
+
+                //string message = ex.Message;
+                //await _dialogService.ShowMessage(message, AppResources.Information, AppResources.ZZZOkayText, () =>
+                //{
+                //    _navigationService.GoBack();
+                //});
             }
             catch (Exception mex)
             {

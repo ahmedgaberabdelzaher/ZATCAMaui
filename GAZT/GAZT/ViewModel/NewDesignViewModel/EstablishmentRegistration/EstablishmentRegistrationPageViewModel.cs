@@ -2529,7 +2529,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedResidence = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault();
 
                     bindingOutletList();
-                    taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
+                    
+                    //As per new CR changes this call is not needed anymore.
+
+                    //  taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {

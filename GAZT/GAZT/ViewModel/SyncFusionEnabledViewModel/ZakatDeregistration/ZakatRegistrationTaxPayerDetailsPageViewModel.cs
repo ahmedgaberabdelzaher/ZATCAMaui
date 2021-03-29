@@ -73,12 +73,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException)
             {
-              //  isLoading = true;
+                //  isLoading = true;
+                if (PopupNavigation.Instance.PopupStack.Count > 0)
+                    await PopupNavigation.Instance.PopAsync(true);
+
+
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    if (PopupNavigation.PopupStack.Count > 0)
-                        await PopupNavigation.PopAsync();
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+
+                    // await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                 });
 
             }
@@ -97,18 +102,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
 
                 }
+                if (PopupNavigation.Instance.PopupStack.Count > 0)
+                    await PopupNavigation.Instance.PopAsync(true);
+
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
 
-                if (PopupNavigation.PopupStack.Count > 0)
-                    await PopupNavigation.PopAsync();
+                //if (PopupNavigation.PopupStack.Count > 0)
+                //    await PopupNavigation.PopAsync();
 
-                string message = ex.Message;
+                //string message = ex.Message;
 
-                await _dialogService.ShowMessage(message, AppResources.Information, AppResources.ZZZOkayText, () =>
-                {
-                   // isLoading = false;
-                    _navigationService.GoBack();
-                });
+                //await _dialogService.ShowMessage(message, AppResources.Information, AppResources.ZZZOkayText, () =>
+                //{
+                //   // isLoading = false;
+                //    _navigationService.GoBack();
+                //});
             }
             catch (Exception mex)
             {
