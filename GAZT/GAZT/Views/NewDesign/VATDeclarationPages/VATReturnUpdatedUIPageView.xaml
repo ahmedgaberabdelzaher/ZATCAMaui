@@ -283,7 +283,7 @@
             </Grid>
 
 
-            <Grid Grid.Row="0" Margin="0,-15,0,0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.VATReturns}}" x:Name="VATReturnsSection" BackgroundColor="White" >
+            <Grid Grid.Row="0" Margin="0,-15,0,0"  x:Name="VATReturnsSection" BackgroundColor="White" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
@@ -300,14 +300,14 @@
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0" IsEnabled="{Binding IsYesBoxEnabled}">
                                     <Image x:Name="YesImg" Source="{Binding YesBackgroundImage}" />
-                                    <custom:CustomLabel x:Name="YesLbl"  Text="{x:Static ResourceManager:AppResources.ZZZYesText}" TextColor="{Binding YesLabelColor}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center" Margin="10,0,0,0"/>
+                                    <custom:CustomLabel x:Name="YesLbl"  Text="{x:Static ResourceManager:AppResources.ZZZYesText}" TextColor="{Binding YesLabelColor}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center" Margin="10"/>
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnYesTapped"/>
                                     </Grid.GestureRecognizers>
                                 </Grid>
                                 <Grid Grid.Column="1" IsEnabled="{Binding IsNoBoxEnabled}">
                                     <Image x:Name="NoImg"  Source="{Binding NoBackgroundImage}"  />
-                                    <custom:CustomLabel x:Name="NoLbl" Text="{x:Static ResourceManager:AppResources.ZZZNoText}" Style="{StaticResource ValueLabelBlack}" TextColor="{Binding NoLabelColor}" VerticalOptions="Center" Margin="10,0,0,0"/>
+                                    <custom:CustomLabel x:Name="NoLbl" Text="{x:Static ResourceManager:AppResources.ZZZNoText}" Style="{StaticResource ValueLabelBlack}" TextColor="{Binding NoLabelColor}" VerticalOptions="Center" Margin="10"/>
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnNoTapped"/>
                                     </Grid.GestureRecognizers>
