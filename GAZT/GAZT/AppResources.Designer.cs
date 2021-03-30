@@ -241,8 +241,8 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dear taxpayer, when calculating the amendments, found that your
-        ///amendments do not match what was calculated by the General Authority for Zakat and Income, and in case if you want to continue it will be created as an appeal.
+        ///   Looks up a localized string similar to Dear taxpayer, when calculating the amendments, if you found that your
+        ///amendments do not match what was calculated by the General Authority for Zakat and Income, and in case you want to continue, it will be created as an appeal.
         /// </summary>
         public static string AmendmentsDoNotMatchText {
             get {
@@ -656,7 +656,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Average number of employment.
+        ///   Looks up a localized string similar to Average number of employees.
         /// </summary>
         public static string AverageNumOfEmployment {
             get {
@@ -746,7 +746,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please accept Instructions &amp; Conditions.
+        ///   Looks up a localized string similar to Please accept the Instructions &amp; Conditions.
         /// </summary>
         public static string BPInstructionsAndConditionsAlert {
             get {
@@ -764,7 +764,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please accept Terms &amp; Conditions.
+        ///   Looks up a localized string similar to Please accept the Terms &amp; Conditions.
         /// </summary>
         public static string BPTermsAndConditionsAlert {
             get {
@@ -836,7 +836,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to discard the changes in this page?.
+        ///   Looks up a localized string similar to Are you sure you want to discard the changes on this page?.
         /// </summary>
         public static string ChangeEmailDiscardSave {
             get {
@@ -845,7 +845,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you are changing the Email ID, it is mandatory to change password.
+        ///   Looks up a localized string similar to If you are changing the Email ID, it is mandatory to change the password.
         /// </summary>
         public static string ChangeEmailVerification {
             get {
@@ -1632,7 +1632,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Multiply Estimated profit for contract with Non-Saudi share%.
+        ///   Looks up a localized string similar to Multiply the estimated profit for the contract by the percentage of non-Saudi shares%.
         /// </summary>
         public static string CREstimatedProfitforTaxDesc {
             get {
@@ -1650,7 +1650,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Multiply Estimated profit for contract with Saudi share %.
+        ///   Looks up a localized string similar to Multiply the estimated profit for the contract by the percentage of Saudi shares%.
         /// </summary>
         public static string CREstimatedProfitforZakatDesc {
             get {
@@ -1704,8 +1704,8 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
-        ///2. Must attached a copy of invoices and purchase orders required the release of their amount values..
+        ///   Looks up a localized string similar to 1. Must attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and, in the case the contract is in English, you must submit a translated Arabic version approved by a certified translation office.
+        ///2. Must attach a copy of invoices and purchase orders required for the release of the amount..
         /// </summary>
         public static string CRInstructions {
             get {
@@ -1831,7 +1831,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Multiply released amount with Estimated profit for contract.
+        ///   Looks up a localized string similar to Multiply the released amount by the estimated profit for the contract.
         /// </summary>
         public static string CRProfitEstimatedForContractDesc {
             get {
@@ -2056,7 +2056,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Multiply Estimated profit for ZAKAT with 2.5 %.
+        ///   Looks up a localized string similar to Multiply the estimated profit for ZAKAT by 2.5 %.
         /// </summary>
         public static string CRTheValueofZakatduesDesc {
             get {
@@ -2074,7 +2074,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Multiply Estimated profit for TAX with 20 %.
+        ///   Looks up a localized string similar to Multiply the estimated profit for TAX by 20 %.
         /// </summary>
         public static string CRTheValueTaxDuesDesc {
             get {
@@ -2695,7 +2695,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter valid mobile number.
+        ///   Looks up a localized string similar to Please enter a valid mobile number.
         /// </summary>
         public static string EnterValidMobileNumber {
             get {
@@ -2704,7 +2704,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter verification code received on mobile.
+        ///   Looks up a localized string similar to Please enter the verification code received on your mobile.
         /// </summary>
         public static string EnterVerificationCode {
             get {
@@ -2974,7 +2974,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can enter one CR (Commercial Registration Number) and multiple license numbers(maximum 4)while registering outlet.
+        ///   Looks up a localized string similar to You can enter one CR (Commercial Registration Number) and multiple license numbers(maximum 4)while registering an outlet.
         /// </summary>
         public static string ESTCommercialRegistrationNumberInfo {
             get {
@@ -3154,7 +3154,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please retain this number for future refernce and communication. GAZT will process your request and if needed contact for any additional information. You have late registration penalty and we verifying it, You will be informed when registration application processed For futher information, Please contact help desl @ 1993.
+        ///   Looks up a localized string similar to Please retain this number for future refernce and communication. GAZT will process your request and if needed contact for any additional information. You have late registration penalty and we verifying it, You will be informed when the registration application processed For futher information, Please contact help desl @ 1993.
         /// </summary>
         public static string ESTFutureRefernceAndCommunicationFinalMsg {
             get {
@@ -3667,7 +3667,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Given Pledge that the information on this form is correct and that I am Authorized to sign this application.
+        ///   Looks up a localized string similar to Giving a pledge that the information on this form is correct and that I am authorized to sign this application.
         /// </summary>
         public static string ESTPledgeLabel {
             get {
@@ -3694,7 +3694,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provinance.
+        ///   Looks up a localized string similar to Province.
         /// </summary>
         public static string ESTProvinance {
             get {
@@ -4027,7 +4027,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide street.
+        ///   Looks up a localized string similar to Please provide street name.
         /// </summary>
         public static string ESTValidateAddStreet {
             get {
@@ -4090,7 +4090,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please add one outlet atleast.
+        ///   Looks up a localized string similar to Please add at least one outlet.
         /// </summary>
         public static string ESTValidateAtleastOutlet {
             get {
@@ -4297,7 +4297,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide postal&apos;s street.
+        ///   Looks up a localized string similar to Please provide postal&apos;s street name.
         /// </summary>
         public static string ESTValidatePAddStreet {
             get {
@@ -4495,7 +4495,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to type of document that you are submitting to prove whether or not eligible..
+        ///   Looks up a localized string similar to type of document that you are submitting to prove whether or not you are eligible..
         /// </summary>
         public static string FDADocToProveEligiblity {
             get {
@@ -4675,7 +4675,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you Pay the Bill amount above you can obtain the certificate automatically.
+        ///   Looks up a localized string similar to If you Pay the above Bill amount above you can obtain the certificate automatically.
         /// </summary>
         public static string FORM5BillAmtAboveObtainCertificate {
             get {
@@ -4792,7 +4792,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you have Internal Procurement from Saudi?.
+        ///   Looks up a localized string similar to Do you have Internal Procurement from Saudi Arabia?.
         /// </summary>
         public static string FORM5DoInternalProcurementFromSaudi {
             get {
@@ -4810,7 +4810,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edu and Health.
+        ///   Looks up a localized string similar to Education and Health.
         /// </summary>
         public static string FORM5EduAndHealth {
             get {
@@ -4918,7 +4918,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to General Taxi Office.
+        ///   Looks up a localized string similar to General TAX Office.
         /// </summary>
         public static string FORM5GenTaxiOffice {
             get {
@@ -5035,7 +5035,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Internal Procurement from Saudi.
+        ///   Looks up a localized string similar to Internal Procurement from Saudi Arabia.
         /// </summary>
         public static string FORM5InternalProcurementFromSaudi {
             get {
@@ -6049,7 +6049,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have paid {} SAR for current fiscal year.
+        ///   Looks up a localized string similar to You have paid {} SAR for the current fiscal year.
         /// </summary>
         public static string ItHasPaidNumberForCurrentFiscalYear {
             get {
@@ -6157,7 +6157,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This bill has other liability and should be paid together.
+        ///   Looks up a localized string similar to This bill has other liabilities and should be paid together.
         /// </summary>
         public static string MultipleBillsThisBillHasOtherLiabilities {
             get {
@@ -7075,7 +7075,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you pay the bill amount above you can obtain the certificate Automatically.
+        ///   Looks up a localized string similar to If you pay the above bill amount, you can obtain the certificate automatically.
         /// </summary>
         public static string NDPayBillAmtObtainCertificateAutomaticall {
             get {
@@ -7093,7 +7093,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter verification code sent to your mobile.
+        ///   Looks up a localized string similar to Please enter the verification code sent to your mobile.
         /// </summary>
         public static string NDPleaseEnterVerificationSenttomobile {
             get {
@@ -7138,7 +7138,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Real State VAT with Ministry of Justice.
+        ///   Looks up a localized string similar to Real estate VAT with the Ministry of Justice.
         /// </summary>
         public static string NDRealStateVATMinistryJustice {
             get {
@@ -8075,8 +8075,8 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1. File size should be less than 10 MB
-        ///2. Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx
-        ///3. Maximum no. of allowed attachments are 3..
+        ///2. Choose only a file with these extensions: Doc,Docx,Jpg,PDF,xls,xlsx
+        ///3. Maximum no. of allowed attachments is 3..
         /// </summary>
         public static string OldZakatAttachmentTitle {
             get {
@@ -8096,9 +8096,9 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to 1. Acknowledged that I do not have enough financial liquidity to pay the full amount.
         ///2. Acknowledged that if I delay in payment of two consecutive instalments, GAZT has the right to cancel the instalment plan.
-        ///3. I promise that I provide recent statements to GAZT for all banking activity accounts and my personal accounts.
+        ///3. I promise that I will provide recent statements to GAZT for all banking activity accounts and my personal accounts.
         ///4. GAZT has the right to modify the amount and the period of the instalments as they consider appropriate.
-        ///5. GAZT has the right to cancel the instalment plan in the case of proven yo [rest of string was truncated]&quot;;.
+        ///5. GAZT has the right to cancel the instalment plan in the case of prov [rest of string was truncated]&quot;;.
         /// </summary>
         public static string OldZakatInstructions {
             get {
@@ -8296,7 +8296,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter verification code sent to your mobile number.
+        ///   Looks up a localized string similar to Please enter the verification code sent to your mobile number.
         /// </summary>
         public static string Pleaseenterconfirmationcodesenttoyourmobilenumber {
             get {
@@ -8323,7 +8323,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter the VAT Certificate No. composed of 15 digits.
+        ///   Looks up a localized string similar to Please enter the VAT Certificate No., which is composed of 15 digits.
         /// </summary>
         public static string PleaseentertheVATCertificateNocomposedof15digits {
             get {
@@ -8341,7 +8341,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter verification code received on mobile to Enter GAZT eServices App.
+        ///   Looks up a localized string similar to Please enter the verification code received on your mobile to Enter the GAZT eServices App.
         /// </summary>
         public static string PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal {
             get {
@@ -8368,7 +8368,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please review the calculation and submit again.
+        ///   Looks up a localized string similar to Please review the calculation and re-submit.
         /// </summary>
         public static string Pleasereviewthecalculationandsubmitagain {
             get {
@@ -8584,7 +8584,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show certificates list.
+        ///   Looks up a localized string similar to Show list of certificates.
         /// </summary>
         public static string QuickActionShowCertificates {
             get {
@@ -8593,7 +8593,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show the overdue returns list.
+        ///   Looks up a localized string similar to Show list of overdue returns list.
         /// </summary>
         public static string QuickActionShowOverDueReturns {
             get {
@@ -8620,7 +8620,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reason of amend.
+        ///   Looks up a localized string similar to Reason for amending.
         /// </summary>
         public static string ReasonOfAmend {
             get {
@@ -8854,7 +8854,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Same Tin can&apos;t be added as financial representative..
+        ///   Looks up a localized string similar to Same TIN can&apos;t be added as financial representative..
         /// </summary>
         public static string SameTincantbeaddedasfinancialrepresentative {
             get {
@@ -9118,7 +9118,7 @@ namespace EGAZT {
         ///   Looks up a localized string similar to 1.The maximum nuber of attachments you can upload is 5.
         ///2.Alert, you must adjust the settings of the scanner so that the compressed file size less than 1MB.
         ///3.Recommended settings for the scanner is: 1024 x 745
-        ///4.Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG.
+        ///4.Choose only file with these extension DOC, DOCX, XLS, XLSX, PDF, JPG.
         /// </summary>
         public static string TINDeregAttachmentsTitleTwo {
             get {
@@ -9298,7 +9298,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dear Taxpayer, you have a Registration Change Application saved in draft mode, do you want to discard it and proceed for Deregistration Application?.
+        ///   Looks up a localized string similar to Dear Taxpayer, you have a Registration Change Application saved as a draft mode, do you want to discard it and proceed for Deregistration Application?.
         /// </summary>
         public static string TinDeregistrationChangeApplicationInDraftError {
             get {
@@ -9532,7 +9532,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I agree about that, I see the outlets that will be de-registered..
+        ///   Looks up a localized string similar to I agree with that, I see the outlets that will be de-registered..
         /// </summary>
         public static string TinDeregistrationOutletCheckboxCloseAllOutlets {
             get {
@@ -9541,7 +9541,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I agree about that, I see the outlets that will be de-registered / transferred to another Taxpayer..
+        ///   Looks up a localized string similar to I agree with that, I see the outlets that will be de-registered / transferred to another Taxpayer..
         /// </summary>
         public static string TinDeregistrationOutletCheckboxCloseorTransferAllOutlets {
             get {
@@ -9550,7 +9550,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I agree about that, I see the outlets that will be transferred to another Taxpayer..
+        ///   Looks up a localized string similar to I agree with that, I see the outlets that will be transferred to another Taxpayer..
         /// </summary>
         public static string TinDeregistrationOutletCheckboxTransferAllOutlets {
             get {
@@ -9595,7 +9595,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dear Taxpayer, you already have an application saved in draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?.
+        ///   Looks up a localized string similar to Dear Taxpayer, you already have an application saved as a draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?.
         /// </summary>
         public static string TinDeregistrationPermitApplicationInDraftError {
             get {
@@ -10199,7 +10199,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Dear Taxpayer,
-        ///The account is now unlocked, and the password reset for TIN xxxxxx successfully..
+        ///The account is now unlocked, and the password has been reset for TIN xxxxxx successfully..
         /// </summary>
         public static string UnlockAccountPasswordChangedSuccessfully {
             get {
@@ -10217,7 +10217,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The password you entered is not match with security policy, should not be less than 8 characters, and not exceed 16 characters, contain English capital and small letters, numbers, and symbols..
+        ///   Looks up a localized string similar to The password you entered does is not match with security policy, should not be less than 8 characters, and not exceed 16 characters, contain English capital and small letters, numbers, and symbols..
         /// </summary>
         public static string UnlockAccountPasswordsSecurityPolicy {
             get {
@@ -10325,7 +10325,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username has been sent to registered mobile number and email Id.
+        ///   Looks up a localized string similar to Username has been sent to the registered mobile number and email Id.
         /// </summary>
         public static string Usernamehasbeensenttoregisteredmobilenumber {
             get {
@@ -10793,7 +10793,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total value of VAT eligible supplies falls below mandatory registration threshold (&lt;375,000 SAR).
+        ///   Looks up a localized string similar to Total value of VAT eligible supplies falls below the mandatory registration threshold (&lt;375,000 SAR).
         /// </summary>
         public static string VatDeregistrationofVATReason1 {
             get {
@@ -10991,7 +10991,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  This figure excludes amount under an existing installment plan or under GAZT review..
+        ///   Looks up a localized string similar to  This figure excludes the amount under an existing installment plan or under GAZT review..
         /// </summary>
         public static string VatDueAmountInstruction {
             get {
@@ -11565,7 +11565,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I hereby confirm that I will pay any outstanding liabilities and submit all due returns in GAZT before submitting the refund request or GAZT will offset the outstanding liabilities from my VAT credit balance before the refund paid. GAZT have also the right to reject my refund request if I have any overdue declaration..
+        ///   Looks up a localized string similar to I hereby confirm that I will pay any outstanding liabilities and submit all due returns in GAZT before submitting the refund request to GAZT will offset the outstanding liabilities from my VAT credit balance before the refund is paid. GAZT have also the right to reject my refund request if I have any overdue declaration..
         /// </summary>
         public static string VatRefundsConfirmDetails {
             get {
@@ -11939,7 +11939,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Go to login page.
+        ///   Looks up a localized string similar to Go to the login page.
         /// </summary>
         public static string VATRgotologinpage {
             get {
@@ -12065,7 +12065,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application.
+        ///   Looks up a localized string similar to Your application will be saved as draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application.
         /// </summary>
         public static string VATRSaveasdraftMessage {
             get {
@@ -12164,7 +12164,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Taxable Expenses Value (Upcoming 12 months).
+        ///   Looks up a localized string similar to VAT Taxable Expenses Value (next 12 months).
         /// </summary>
         public static string VATRSummeryofExpenseDetailsComming12Months {
             get {
@@ -12182,7 +12182,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Greater than 10,000,000 until 40,000,000 SAR.
+        ///   Looks up a localized string similar to Greater than 10,000,000 and up to 40,000,000 SAR.
         /// </summary>
         public static string VATRSummeryOfExpenseDetailsValue2 {
             get {
@@ -12191,7 +12191,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Greater than 10,000,000 until 40,000,000 SAR.
+        ///   Looks up a localized string similar to Greater than 10,000,000 and up to 40,000,000 SAR.
         /// </summary>
         public static string VATRSummeryOfExpensesDetailsValue1 {
             get {
@@ -12200,7 +12200,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Taxable Sales Value (Upcoming 12 months).
+        ///   Looks up a localized string similar to VAT Taxable Sales Value (next 12 months).
         /// </summary>
         public static string VATRSummeryOfSalesDetailsComming12months {
             get {
@@ -12218,7 +12218,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Greater than 10,000,000 until 40,000,000 SAR.
+        ///   Looks up a localized string similar to Greater than 10,000,000 and up to 40,000,000 SAR.
         /// </summary>
         public static string VATRSummeryOfSalesDetailsValue {
             get {
@@ -12227,7 +12227,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Greater than 10,000,000 until 40,000,000 SAR.
+        ///   Looks up a localized string similar to Greater than 10,000,000 and up to 40,000,000 SAR.
         /// </summary>
         public static string VATRSummeryOfSalesDetailsValue1 {
             get {
@@ -12281,9 +12281,9 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1. It is assumed that taxpayer has read and understood the Kingdom of Saudi Arbia&apos;s VAT Law and Regulations and all the information provided is, to the best of the taxpayer&apos;s knowledge, true, correct and complete.
+        ///   Looks up a localized string similar to 1. It is assumed that the taxpayer has read and understood the Kingdom of Saudi Arbia&apos;s VAT Law and Regulations and all the information provided is, to the best of the taxpayer&apos;s knowledge, true, correct and complete.
         ///2. GAZT holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this request.
-        ///3. GAZT holds the right to audit a business in order to verify that this request is valid,  [rest of string was truncated]&quot;;.
+        ///3. GAZT holds the right to audit a business in order to verify that this request is val [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VatTerms {
             get {
@@ -12355,7 +12355,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In Case you have revenue below SAR40 and want to request for quarterly filing kindly attach evidence that you have been filing for 2 years with a monthly Tax Period and your Revenurs during last 12 months.
+        ///   Looks up a localized string similar to In Case you have revenue below SAR40M and want to request for quarterly filing kindly attach evidence that you have been filing for 2 years with a monthly Tax Period and your Revenurs during last 12 months.
         ///In Case you want to request for an exception for quarterly filing, Kindly provide your previous 12 months average Days sales Outstanding.
         /// </summary>
         public static string VFCAttachmnetsInfo {
@@ -12410,7 +12410,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I want to apply for an exception to file quarterly due to severe cash flow implications caused by monthly VAT collections..
+        ///   Looks up a localized string similar to I want to apply for an exception to quarterly filing due to severe cash flow problems caused by monthly VAT collections..
         /// </summary>
         public static string VFCFrequencyDetailsCheckBoxString {
             get {
@@ -12448,9 +12448,9 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to 1. Check eligibility and review potential consequences of request
         ///− For taxpayers &lt;40M SAR annual taxable revenues requesting monthly VAT Tax Period:
-        ///Taxpayers are eligible without providing further evidence; reverting to a quarterly Tax Period is again possible after having filed 2 years with a monthly Tax Period with the last 12 months revenues being below SAR 40M
+        ///Taxpayers are eligible without providing further evidence; reverting to a quarterly Tax Period is again possible after having filed 2 years and with a monthly Tax Period with the last 12 months revenues being below SAR 40M
         ///− For taxpayers &lt;40M SAR annual taxable revenues requesting quarterly VAT Tax Period:
-        ///Taxpayer is required to provide evidence that he has  [rest of string was truncated]&quot;;.
+        ///Taxpayer is required to provide evidence that he  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VFCInstructions {
             get {
@@ -13032,7 +13032,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accept Terms and Conditions
+        ///   Looks up a localized string similar to Accept the Terms and Conditions
         ///I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes within 20 days, bearing in mind that the request will be cancelled automatically in the event of non-compliance.
         ///I acknowledge that the bank guarantee provided to the Authority is valid for at least one year and that it is extendable.
         ///I acknowledge to clarify in the original bank guarantee the TIN of the company and the objected period..
@@ -13044,7 +13044,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I acknowledge that bank guarantees need to be valid for at least one year and submitted in person to the GAZT branch assigned to me..
+        ///   Looks up a localized string similar to I acknowledge that the bank guarantees need to be valid for at least one year and are submitted in person to the GAZT branch assigned to me..
         /// </summary>
         public static string VRSecurityBankGurrantCheckBoxDesc2 {
             get {
@@ -13080,7 +13080,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I acknowledge that my application will not process until my security is paid in full within 20 Days..
+        ///   Looks up a localized string similar to I acknowledge that my application will not be processed until my security is paid in full within 20 days..
         /// </summary>
         public static string VRSecuritySadadCheckBoxDesc1 {
             get {
@@ -13640,7 +13640,7 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to 1. File size should be less than 5 MB
         ///2. Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx
-        ///3. Maximum no. of allowed attachments are 10..
+        ///3. Maximum no. of allowed attachments is 10..
         /// </summary>
         public static string ZakatAttachmentTitle {
             get {
@@ -13883,7 +13883,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum no. of allowed attachments are 10..
+        ///   Looks up a localized string similar to Maximum no. of allowed attachments is 10..
         /// </summary>
         public static string ZakatInstalmentAttachmentLimitReached {
             get {
@@ -14036,7 +14036,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dear taxpayer, you cannot proceed in requesting the instalments plan as there are due invoices that needs to paid and cannot be included in the instalments plan request:.
+        ///   Looks up a localized string similar to Dear taxpayer, you cannot proceed with a request for the installment plan as there are invoices due that need to be paid and cannot be included in the installment plan request:.
         /// </summary>
         public static string ZakatInstalmentDueInvoiceText {
             get {
@@ -14171,7 +14171,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To be able to proceed in the instalments plan request, you have to pay the down payment amount.
+        ///   Looks up a localized string similar to To be able to proceed with the installment plan request, you have to pay the down payment amount.
         /// </summary>
         public static string ZakatInstalmentPlanSubmittedPopUpMsg {
             get {
@@ -14723,7 +14723,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please visit portal to Provide additional information..
+        ///   Looks up a localized string similar to Please visit the portal to Provide additional information..
         /// </summary>
         public static string ZakatObjectionPortalMessage {
             get {
@@ -15148,7 +15148,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter valid user id.
+        ///   Looks up a localized string similar to Please enter a valid user id.
         /// </summary>
         public static string ZEntertherequiredfield {
             get {
@@ -15521,7 +15521,7 @@ namespace EGAZT {
         ///   Looks up a localized string similar to Attachment(Only One Allowed - Maximum Size 10MB)
         ///Caution, you must adjust the settings of the scanner so that the compressed file size less than 10MB.
         ///Recommended settings for the scanner are: 1024 x 745
-        ///Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG.
+        ///Choose only file with these extension DOC, DOCX, XLS, XLSX, PDF, JPG.
         /// </summary>
         public static string ZOAttachmentsTitleTwo {
             get {
@@ -15594,7 +15594,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I hereby declare that the information disclosed &amp; attachments are authenticated. I bear full liability for any information proven to be incorrect..
+        ///   Looks up a localized string similar to I hereby declare that the information disclosed and the attachments are authentic. I bear full responsibility for any information proven to be incorrect..
         /// </summary>
         public static string ZODeclarationCheckboxText {
             get {
@@ -15866,11 +15866,11 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to 1. Taxpayer can object within 60 days from the notice of assessment or reassessment.
         ///2. Taxpayer should pay the full undisputed amount (Revised Amount) before objecting.
-        ///3. Input the form bundle number for which objection is to be made.
+        ///3. Input the form bundle number for which an objection is to be made.
         ///4. Click on &quot;Return Details&quot; button and Amend the returns.
         ///5. Input correct amount in the &quot;Revised Amount&quot; column which taxpayer agrees to pay based on the amended returns.
         ///6. State reasons for your objections in the section provided.
-        ///7. Provide attachment if required  [rest of string was truncated]&quot;;.
+        ///7. Provide attachment if requir [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZOTerms {
             get {
@@ -16086,7 +16086,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter the CR composed of 10 digits.
+        ///   Looks up a localized string similar to Please enter the CR, which is composed of 10 digits.
         /// </summary>
         public static string ZPleaseentertheCRcomposedof10digits {
             get {
@@ -16095,7 +16095,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter the VAT Account No. composed of 15 digits.
+        ///   Looks up a localized string similar to Please enter the VAT Account No. which is composed of 15 digits.
         /// </summary>
         public static string ZPleaseentertheVATAccountNocomposedof15digits {
             get {
@@ -16393,7 +16393,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step 3: Click on “Search” button to obtain the results.
+        ///   Looks up a localized string similar to Step 3: Click on the “Search” button to obtain the results.
         /// </summary>
         public static string ZStepThree {
             get {
@@ -16438,7 +16438,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tin number must not be less than 10.
+        ///   Looks up a localized string similar to TIN number must not be less than 10 digits.
         /// </summary>
         public static string ZTaxEvasionTINDigitValidationMessage {
             get {
@@ -16447,7 +16447,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tin number must be start with 3.
+        ///   Looks up a localized string similar to TIN number must start with 3.
         /// </summary>
         public static string ZTaxEvasionTINValidationMessage {
             get {
@@ -16456,7 +16456,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT number must not be less than 15.
+        ///   Looks up a localized string similar to VAT number must not be less than 15 digits.
         /// </summary>
         public static string ZTaxEvasionVATDigitValidationMessage {
             get {
@@ -16825,7 +16825,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Private Joint Company.
+        ///   Looks up a localized string similar to Private Joint Stock Company.
         /// </summary>
         public static string ZTERReportDetailCompanyType9 {
             get {
@@ -17490,7 +17490,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to • Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+        ///   Looks up a localized string similar to • Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to nominal supplies and supplies subject to the margin scheme.
         ///• Please refer to the below FAQ URL for standard rated 5% goods and services..
         /// </summary>
         public static string ZToolTipStandardRatedSalesAmount {
@@ -17672,7 +17672,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For further information, please contact helpdesk - 19993
+        ///   Looks up a localized string similar to For further information, please contact the helpdesk No - 19993
         ///GAZT reserves the right to investigate your return form further..
         /// </summary>
         public static string ZVatAcknowledgmentHelpText {
@@ -17817,7 +17817,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose only file with extension Doc, Docx, Jpg, PDF, xlsx, xls, png, ppt, gif, txt..
+        ///   Looks up a localized string similar to Choose only the file with extension Doc, Docx, Jpg, PDF, xlsx, xls, png, ppt, gif, txt..
         /// </summary>
         public static string ZVatAttachmentTypeNotfication {
             get {
@@ -18276,7 +18276,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In case you don&apos;t agree with above information, click on this link and confirm.
+        ///   Looks up a localized string similar to In case you don&apos;t agree with the above information, click on this link and confirm.
         /// </summary>
         public static string ZVatNoteDetail {
             get {
@@ -18393,7 +18393,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kindly read the below instructions before completing return form:.
+        ///   Looks up a localized string similar to Kindly read the below instructions before completing the return form:.
         /// </summary>
         public static string ZVatReadInstructions {
             get {
@@ -18465,7 +18465,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Note: In case the ID information of the selected IBAN is missing or not match with the IBAN information, please update your registration information.
+        ///   Looks up a localized string similar to Note: In case the ID information of the selected IBAN is missing or does not match with the IBAN information, please update your registration information.
         /// </summary>
         public static string ZVatRefundInformationIBANIDNote {
             get {
@@ -18596,7 +18596,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please go to the user profile page if you need to update your bank account details that is stored in GAZT..
+        ///   Looks up a localized string similar to Please go to the user profile page if you need to update your bank account details that are stored in GAZT..
         /// </summary>
         public static string ZVatRefundRequestUpdateIBANInfo {
             get {
@@ -19398,7 +19398,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Date of Birth does not match with value in Ministry of Commerce.
+        ///   Looks up a localized string similar to Date of Birth does not match with the value in the Ministry of Commerce.
         /// </summary>
         public static string ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce {
             get {
@@ -19407,7 +19407,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dear taxpayer, based on the submitted amendments system found that your amendments do not match what was calculated by GAZT, if you wish to continue, an objection request will be created in GAZT.
+        ///   Looks up a localized string similar to Dear taxpayer, based on the submitted amendments, the system found that your amendments do not match what was calculated by GAZT, if you wish to continue, an objection request will be created in GAZT.
         /// </summary>
         public static string ZZDeartaxpayerbasedonthesubmittedamendments {
             get {
@@ -19488,7 +19488,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Address does not match with value in Ministry of Commerce.
+        ///   Looks up a localized string similar to Email Address does not match with the value in Ministry of Commerce.
         /// </summary>
         public static string ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce {
             get {
@@ -19663,7 +19663,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File with the same name already exists.
+        ///   Looks up a localized string similar to A File with the same name already exists.
         /// </summary>
         public static string ZZGeneralMessage_FileWithTheSameNameAlreadyExists {
             get {
@@ -19718,7 +19718,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Penalties from this return is higher than Net VAT reclaimed. Hence you are not allowed to claim refund.
+        ///   Looks up a localized string similar to Penalties from this return are higher than the Net VAT reclaimed. Hence you are not allowed to claim a refund.
         /// </summary>
         public static string ZZGeneralMessage_PenaltiesHigherThanNetVATReclaimed {
             get {
@@ -19918,7 +19918,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID length is between 7 to 15 digit.
+        ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID length is between 7 and 15 digits.
         /// </summary>
         public static string ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit {
             get {
@@ -19945,7 +19945,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I agree on terms &amp; conditions.
+        ///   Looks up a localized string similar to I agree with the terms &amp; conditions.
         /// </summary>
         public static string ZZIagreeontermsAndconditions {
             get {
@@ -20378,7 +20378,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password did not updated as it does not match password format.
+        ///   Looks up a localized string similar to Password did not update as it does not match the password format.
         /// </summary>
         public static string ZZPasswordGuideLineTextNew {
             get {
@@ -20540,7 +20540,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter confirmation code sent to your email address.
+        ///   Looks up a localized string similar to Please enter the confirmation code sent to your email address.
         /// </summary>
         public static string ZZPleaseenterconfirmationcodesenttoyouremailaddress {
             get {
@@ -20549,7 +20549,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter verification code sent to your mobile number.
+        ///   Looks up a localized string similar to Please enter the verification code sent to your mobile number.
         /// </summary>
         public static string ZZPleaseenterconfirmationcodesenttoyourmobilenumber {
             get {
@@ -21035,7 +21035,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The entered commercial registration number is not related to the entered ID number as per the values from Ministry of Commerce.
+        ///   Looks up a localized string similar to The entered commercial registration number is not related to the entered ID number as per the values from the Ministry of Commerce.
         /// </summary>
         public static string ZZTheenteredcommercialregistrationnumberisnotrelatedtotheenteredIDnumberasperthevaluesfromMinistryofCommerce {
             get {
@@ -21073,7 +21073,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The New Mobile Number should not be same as the Old Mobile Number.
+        ///   Looks up a localized string similar to The New Mobile Number should not be the same as the Old Mobile Number.
         /// </summary>
         public static string ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber {
             get {
@@ -21082,7 +21082,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Password can’t be same as Old Password..
+        ///   Looks up a localized string similar to New Password can’t be the same as the Old Password..
         /// </summary>
         public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
             get {
@@ -21235,7 +21235,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of domestic standard-rated sales. Please verify the amount entered in the return or continue if the amount entered is correct..
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% and larger than the amount of domestic standard-rated sales. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
         public static string ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
             get {
@@ -21253,7 +21253,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of sales to citizens (private healthcare, private education). Please verify the amount entered in the return or continue if the amount entered is correct..
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}%  and larger than the amount of sales to citizens (private healthcare, private education). Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
         public static string ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
             get {
@@ -21280,7 +21280,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of zero rated domestic sales. Please verify the amount entered in the return or continue if the amount entered is correct..
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}%  and larger than the amount of zero rated domestic sales. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
         public static string ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
             get {
@@ -21631,7 +21631,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months.
+        ///   Looks up a localized string similar to Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of the next 6 months.
         /// </summary>
         public static string ZZZAttachementSubmitNote {
             get {
@@ -21740,9 +21740,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Please note that this CR/Licence/Contract is already registered with another taxpayer in GAZT, 
-        ///            please correct the ID if wrongly input or proceed further with this Licence Number. 
-        ///            Note that your registration application will
-        ///        remain pending until the previous CR/Licence/Contract is not deregistered Do you want you continue?.
+        ///please correct the ID if entered wrongly or proceed with this Licence Number. Note that your registration application will remain pending until the previous CR/Licence/Contract is not deregistered. Do you want to continue?.
         /// </summary>
         public static string ZZZCRValidateMessg {
             get {
@@ -22297,7 +22295,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tin is not Active.
+        ///   Looks up a localized string similar to TIN is not Active.
         /// </summary>
         public static string ZZZTinisnotActive {
             get {
@@ -22369,10 +22367,10 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including without limits the below. In the case of non-restriction of VAT system, the General Authority for Zakat and Tax (GAZT) has the full right to apply the proper procedures in accordance with the rules and regulations.
+        ///   Looks up a localized string similar to I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including, without limit, the below. In the case of non-restriction in the VAT system, the General Authority for Zakat and Tax (GAZT) has the full right to apply the proper procedures in accordance with the rules and regulations.
         ///* Registration during the specified period, according to the VAT Law and its Regulations.
         ///* Submitting VAT filing on time based on the annual revenues.
-        ///* Payin [rest of string was truncated]&quot;;.
+        ///*  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZZZVATAmendInstrunctionsAndConditions7 {
             get {
@@ -22417,7 +22415,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vat number is not equal to 15.
+        ///   Looks up a localized string similar to VAT number is not equal to 15 digits.
         /// </summary>
         public static string ZZZVatnumberisnotequalto15 {
             get {
@@ -22435,10 +22433,9 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot be Less than January 1, 2018
-        ///Cannot be before the start of your business
-        ///You are eligible to defer your effective VAT registration date until 1/1/2019, provided that your annual taxable supplies do not exceed SAR 1 million
-        ///If you are a KSA resident taxpayers, it should reflect the date when you exceeded the mandatory (or voluntary) threshold either prospectively or retrospectively
+        ///   Looks up a localized string similar to Cannot be before January 1, 2018
+        ///Cannot be before the start of your business You are eligible to defer your effective VAT registration date until 1/1/2019, provided that your annual taxable supplies do not exceed SAR 1 million
+        ///If you are a KSA resident taxpayers, it should reflect the date when you exceeded the mandatory (or voluntary) threshold, either prospectively or retrospectively.
         ///If you are a non-resident taxpayer, it should reflect the date when you made your first taxable supply..
         /// </summary>
         public static string ZZZVATRAdditionalInformationInstrunctions {
@@ -22457,7 +22454,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot be Less than January 1, 2018.
+        ///   Looks up a localized string similar to Cannot be before January 1, 2018.
         /// </summary>
         public static string ZZZVATRAdditionalInformationInstrunctionsFirstLine {
             get {
@@ -22475,7 +22472,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot be Less than January 2018.
+        ///   Looks up a localized string similar to Cannot be before January 2018.
         /// </summary>
         public static string ZZZVATRAdditionalInformationInstrunctionsPart1 {
             get {
@@ -22484,7 +22481,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot be before the start of your Buisness.
+        ///   Looks up a localized string similar to Cannot be before the start of your buisness.
         /// </summary>
         public static string ZZZVATRAdditionalInformationInstrunctionsPart2 {
             get {
@@ -22657,7 +22654,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A VAT registration may be cancelled in accordance to the cases listed as per the VAT Law..
+        ///   Looks up a localized string similar to A VAT registration may be cancelled in accordance with the cases listed as per the VAT Law..
         /// </summary>
         public static string ZZZVATRInstrunctionsAndConditions4 {
             get {
@@ -22666,7 +22663,8 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The person registered in VAT tax system must notify GAZT of changing any of the information provided in the registration form, a change or cessation of business activity, or any major changes that affects liability to be VAT registered, in accordance with the VAT Regulations..
+        ///   Looks up a localized string similar to The person who has registered in the VAT tax system must notify GAZT of changes to any of the information provided in the registration form, a change or cessation of business activity, or any major changes that affect the liability to be VAT registered, in accordance with the VAT Regulations.
+        ///.
         /// </summary>
         public static string ZZZVATRInstrunctionsAndConditions5 {
             get {
@@ -22684,10 +22682,10 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including without limits the below. In the case of non-restriction of VAT system, the General Authority for Zakat and Tax (GAZT) has the full right to apply the proper procedures in accordance with the rules and regulations.
+        ///   Looks up a localized string similar to I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including, without limit, the below. In the case of non-restriction in the VAT system, the General Authority for Zakat and Tax (GAZT) has the full right to apply the proper procedures in accordance with the rules and regulations.
         ///* Registration during the specified period, according to the VAT Law and its Regulations.
         ///* Submitting VAT filing on time based on the annual revenues.
-        ///* Payin [rest of string was truncated]&quot;;.
+        ///*  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZZZVATRInstrunctionsAndConditions7 {
             get {
@@ -22705,7 +22703,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please fill the requested information for each step. This application cannot be successfully submitted until all of the mandatory fields and attachments have been completed. Applicants should ensure that their existing taxpayer details are completed and accurate before registering for VAT..
+        ///   Looks up a localized string similar to Please fill the requested information for each step. This application cannot be successfully submitted until all of the mandatory fields and attachments have been completed. Applicants should ensure that their existing taxpayer details are completed and are accurate before registering for VAT..
         /// </summary>
         public static string ZZZVATRInstrunctionsAndConditionsFirst {
             get {
@@ -22741,7 +22739,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What will be your total VAT taxable sales value in the upcoming 12 months (incl. this month)?.
+        ///   Looks up a localized string similar to What will be the total value of your VAT taxable sales in the upcoming 12 months (incl. this month)?.
         /// </summary>
         public static string ZZZVATRQuestion1 {
             get {
@@ -22750,7 +22748,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What was your total VAT taxable sales value for the last 12 months at the time of registration?.
+        ///   Looks up a localized string similar to What was the total value of your VAT taxable sales for the last 12 months at the time of registration?.
         /// </summary>
         public static string ZZZVATRQuestion2 {
             get {
@@ -22759,7 +22757,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What will be your total VAT taxable expenses value in the upcoming 12 months (incl. this month)?.
+        ///   Looks up a localized string similar to What will be the total value of your  VAT taxable expenses in the upcoming 12 months (incl. this month)?.
         /// </summary>
         public static string ZZZVATRQuestion3 {
             get {
@@ -22768,7 +22766,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What was your total VAT taxable expenses value for the last 12 months at the time of registration?.
+        ///   Looks up a localized string similar to What was the total value of your  VAT taxable expenses for the last 12 months at the time of registration?.
         /// </summary>
         public static string ZZZVATRQuestion4 {
             get {
@@ -23218,7 +23216,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please re-enter the verification code that be sent to your mobile correctly.
+        ///   Looks up a localized string similar to Please re-enter correctly the verification code that was sent to your mobile.
         /// </summary>
         public static string ZZZZErrorMessage007 {
             get {
@@ -23722,7 +23720,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2.Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx.
+        ///   Looks up a localized string similar to 2.Choose only a file with the extensions: Doc, Docx, Jpg, PDF, xls, xlsx.
         /// </summary>
         public static string ZZZZVATRAttachmentNote2 {
             get {
@@ -23758,7 +23756,8 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What is the type of document that you are submitting to prove whether or not eligible..
+        ///   Looks up a localized string similar to What is the type of document that you are submitting to prove whether or not you are eligible?
+        ///.
         /// </summary>
         public static string ZZZZVATRAttachmentSection3 {
             get {
@@ -23776,7 +23775,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In case you don&apos;t agree with above information, click on this link and confirm -.
+        ///   Looks up a localized string similar to In case you don&apos;t agree with the above information, click on this link and confirm -.
         /// </summary>
         public static string ZZZZVatRegistationFirstNote {
             get {
