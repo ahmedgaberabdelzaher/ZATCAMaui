@@ -94,7 +94,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
             
             generalServicesListData.Add(new GeneralServicesListModel
                 {
-                    ZDTitle = AppResources.DBSMTaxEvasionReport,
+                    ZDTitle = AppResources.NDTaxEvasionReport,
                     ZDImageSource = "tax_evasion_green.png",
                     ArrowImageSource = fileImage
                 });

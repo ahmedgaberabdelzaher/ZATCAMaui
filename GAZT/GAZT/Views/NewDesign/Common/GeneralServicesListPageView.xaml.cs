@@ -82,7 +82,7 @@ namespace EGAZT.Views.NewDesign.Common
                     _viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-                else if (selectedItem.ZDTitle == AppResources.DBSMTaxEvasionReport)
+                else if (selectedItem.ZDTitle == AppResources.NDTaxEvasionReport)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TaxEvasion_Tapped", "Tax Evasion eService");
                     _viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
