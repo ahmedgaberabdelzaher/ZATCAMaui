@@ -10,6 +10,7 @@ using System.Windows.Input;
 using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -410,7 +411,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                                 if (count >= 5)
                                 {
-                                    await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
+
                                     await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
@@ -424,7 +426,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 5)
                                 {
-                                    await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
+
                                     await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
@@ -439,7 +442,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 1)
                                 {
-                                    await _dialogService.ShowMessage(AppResources.VATReviewAttachmentLimitReached, AppResources.Information);
+
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATReviewAttachmentLimitReached));
+
                                     await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
@@ -453,7 +458,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 5)
                                 {
-                                    await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
+
                                     return;
                                 }
 
@@ -466,7 +472,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 3)
                                 {
-                                    await _dialogService.ShowMessage(AppResources.OldZakatInstalmentAttachmentLimitReached, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.OldZakatInstalmentAttachmentLimitReached));
+
                                     await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
@@ -479,7 +486,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 10)
                                 {
-                                    await _dialogService.ShowMessage(AppResources.ZakatInstalmentAttachmentLimitReached, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZakatInstalmentAttachmentLimitReached));
+
                                     await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
@@ -492,7 +500,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 1)
                                 {
-                                    await _dialogService.ShowMessage(AppResources.VATReviewAttachmentLimitReached, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATReviewAttachmentLimitReached));
+
                                     await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
@@ -605,7 +614,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                             {
                                                                 IsLoading = false;
                                                             });
-                                                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+
                                                         }
                                                     }
                                                     else
@@ -615,7 +625,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                         {
                                                             IsLoading = false;
                                                         });
-                                                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+
                                                     }
                                                 }
                                                 else
@@ -625,7 +636,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     {
                                                         IsLoading = false;
                                                     });
-                                                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
                                                 }
                                             }
                                             else
@@ -635,7 +647,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                 {
                                                     IsLoading = false;
                                                 });
-                                                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan1MB, AppResources.Information);
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan1MB));
+
                                             }
                                         }
                                         else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
@@ -720,7 +733,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                             {
                                                                 IsLoading = false;
                                                             });
-                                                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+
                                                         }
                                                     }
                                                     else
@@ -730,7 +744,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                         {
                                                             IsLoading = false;
                                                         });
-                                                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+
                                                     }
                                                 }
                                                 else
@@ -740,7 +755,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     {
                                                         IsLoading = false;
                                                     });
-                                                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+
+                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
                                                 }
                                             }
                                             else
@@ -751,7 +768,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     IsLoading = false;
                                                 });
 
-                                                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan10MB, AppResources.Information);
+
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan10MB));
 
                                             }
                                         }
@@ -856,7 +874,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                             {
                                                                 IsLoading = false;
                                                             });
-                                                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+
+                                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+
                                                         }
                                                     }
                                                     else
@@ -866,7 +886,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                         {
                                                             IsLoading = false;
                                                         });
-                                                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+
+                                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+
                                                     }
                                                 }
                                                 else
@@ -876,7 +898,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     {
                                                         IsLoading = false;
                                                     });
-                                                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+
+                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
                                                 }
                                             }
                                             else
@@ -886,7 +910,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                 {
                                                     IsLoading = false;
                                                 });
-                                                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan5MB, AppResources.Information);
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan5MB));
+
                                             }
                                         }
                                     }
@@ -897,7 +922,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                         {
                                             IsLoading = false;
                                         });
-                                        await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan300MB));
+
                                     }
                                 }
                                 else
@@ -907,7 +934,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                     {
                                         IsLoading = false;
                                     });
-                                    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+
                                 }
                             }
                             else
@@ -917,7 +945,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 {
                                     IsLoading = false;
                                 });
-                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+
                             }
                         }
                     }
@@ -928,7 +957,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         {
                             IsLoading = false;
                         });
-                        await _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
+
                     }
                 }
                 catch (InternetException ex)
@@ -939,7 +969,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     });
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                     });
                 }
             }

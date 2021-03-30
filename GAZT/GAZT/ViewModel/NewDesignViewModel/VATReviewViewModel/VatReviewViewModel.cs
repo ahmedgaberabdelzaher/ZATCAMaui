@@ -13,6 +13,7 @@ using EGAZT.Models.VatReviewModel;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using EGAZT.Views.NewDesign;
 using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.NewDesign.VatReview;
@@ -4467,7 +4468,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+
                             IDNumber = string.Empty;
                             //ZZPleaseenteravalidNationalID
                         }
@@ -4497,7 +4500,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     popUp.FlowDirections = "LeftToRight";
                                 }
 
-                                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+
                                 IDNumber = string.Empty;
                             }
                             else
@@ -4531,7 +4536,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+
                             IDNumber = string.Empty;
                         }
                         else
@@ -4544,6 +4552,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 }
 
                                 Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
+
                             }
 
                             if (Messages.Length > 0)
@@ -4560,7 +4569,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     popUp.FlowDirections = "LeftToRight";
                                 }
 
-                                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+
                                 IDNumber = string.Empty;
                             }
                             else
@@ -4593,7 +4605,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
+
                             IDNumber = string.Empty;
                         }
                         else if (!(IDNumber.Length <= 15 && IDNumber.Length >= 7))
@@ -4610,7 +4625,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
+
                             IDNumber = string.Empty;
                             // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
                         }
@@ -5127,7 +5145,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 IsLoading = false;
-                                await _dialogService.ShowMessage(resultData.errorMessage, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(resultData.errorMessage));
+
                             });
                         }
 
@@ -5422,7 +5441,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     IsLoading = false;
                 });
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
             }
             catch (InternetException ex)
             {
@@ -5433,6 +5453,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
                     _navigationService.GoBack();
                 });
             }
@@ -5445,7 +5466,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                 });
             }
         }
