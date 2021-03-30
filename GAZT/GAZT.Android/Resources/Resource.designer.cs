@@ -21869,11 +21869,11 @@ namespace GAZT.Droid
 			// aapt resource value: 0x7F0C0001
 			public const int group_114 = 2131492865;
 			
-			// aapt resource value: 0x7F0C0004
-			public const int icon = 2131492868;
-			
 			// aapt resource value: 0x7F0C0005
-			public const int icon_round = 2131492869;
+			public const int icon = 2131492869;
+			
+			// aapt resource value: 0x7F0C0006
+			public const int icon_round = 2131492870;
 			
 			// aapt resource value: 0x7F0C0002
 			public const int ic_check_circle_24px = 2131492866;
@@ -21881,35 +21881,38 @@ namespace GAZT.Droid
 			// aapt resource value: 0x7F0C0003
 			public const int ic_Check_Golden_TES = 2131492867;
 			
-			// aapt resource value: 0x7F0C0006
-			public const int launcher_foreground = 2131492870;
+			// aapt resource value: 0x7F0C0004
+			public const int ic_launcher = 2131492868;
 			
 			// aapt resource value: 0x7F0C0007
-			public const int ministry_justice_3_x = 2131492871;
+			public const int launcher_foreground = 2131492871;
 			
 			// aapt resource value: 0x7F0C0008
-			public const int partials_background = 2131492872;
+			public const int ministry_justice_3_x = 2131492872;
 			
 			// aapt resource value: 0x7F0C0009
-			public const int password = 2131492873;
+			public const int partials_background = 2131492873;
 			
 			// aapt resource value: 0x7F0C000A
-			public const int request_verification = 2131492874;
+			public const int password = 2131492874;
 			
 			// aapt resource value: 0x7F0C000B
-			public const int sf_ic = 2131492875;
+			public const int request_verification = 2131492875;
 			
 			// aapt resource value: 0x7F0C000C
-			public const int sf_icon = 2131492876;
+			public const int sf_ic = 2131492876;
 			
 			// aapt resource value: 0x7F0C000D
-			public const int sf_Launcher_Foreground = 2131492877;
-			
-			// aapt resource value: 0x7F0C000F
-			public const int taxEvasion_green = 2131492879;
+			public const int sf_icon = 2131492877;
 			
 			// aapt resource value: 0x7F0C000E
-			public const int tax_evasion = 2131492878;
+			public const int sf_Launcher_Foreground = 2131492878;
+			
+			// aapt resource value: 0x7F0C0010
+			public const int taxEvasion_green = 2131492880;
+			
+			// aapt resource value: 0x7F0C000F
+			public const int tax_evasion = 2131492879;
 			
 			static Mipmap()
 			{
