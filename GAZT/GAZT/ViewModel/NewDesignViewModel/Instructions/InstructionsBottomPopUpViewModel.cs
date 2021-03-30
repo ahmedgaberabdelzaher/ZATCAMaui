@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -217,8 +218,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 }
                 else
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.BPTermsAndConditionsAlert));
 
-                    await _dialogService.ShowMessage(AppResources.BPTermsAndConditionsAlert, AppResources.Information);
                 }
             });
 
@@ -234,7 +235,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 else
                 {
 
-                    await _dialogService.ShowMessage(AppResources.BPInstructionsAndConditionsAlert, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.BPInstructionsAndConditionsAlert));
+
                 }
             });
 
