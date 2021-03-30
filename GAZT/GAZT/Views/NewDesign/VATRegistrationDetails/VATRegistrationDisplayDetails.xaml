@@ -22,7 +22,7 @@
              xmlns:local1="clr-namespace:GAZT"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              x:Class="EGAZT.Views.NewDesign.VATRegistrationDetails.VATRegistrationDisplayDetails">
-   <ContentPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -38,8 +38,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-        <ContentPage.ControlTemplate>
-           <ControlTemplate>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
             <Grid>
 
                 <StackLayout>
@@ -53,7 +53,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                   <Label Grid.Row="0" Grid.Column="1" Text="{x:Static custom2:AppResources.VATRegistrationDetailsTitle}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{x:Static custom2:AppResources.VATRegistrationDetailsTitle}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" Style="{DynamicResource BackButtonArrow}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite">
                             <Image.GestureRecognizers>
@@ -81,111 +81,118 @@
 
     </ContentPage.ControlTemplate>
 
-     <ContentPage.Content>
-           <Grid x:Name="VATRDMainGrid" Padding="15,15,15,0">
+    <ContentPage.Content>
+        <Grid x:Name="VATRDMainGrid" Padding="15,15,15,0">
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
-                 
-                           <Grid Grid.Row="0" Grid.Column="0"  Padding="0,0,0,0" IsVisible="{Binding IsSummaryVisible}"
-                              x:Name="SummeryView">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                      
-                                        <StackLayout Grid.Row="0">
-                                            <Label  LineHeight="0.8" Text="{x:Static custom2:AppResources.VATRegistrationDetailsTitle}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}"
-                                                  FontSize="28" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="End"/>
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
-                                                <StackLayout>
-                                                    
-                                                               <Grid Padding="5" RowSpacing="0" >
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
 
-                                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start"
+                <Grid Grid.Row="0" Grid.Column="0"  Padding="0,0,0,0" IsVisible="{Binding IsSummaryVisible}"
+                              x:Name="SummeryView">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0">
+                        <Label  LineHeight="0.8" Text="{x:Static custom2:AppResources.VATRegistrationDetailsTitle}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}"
+                                                  FontSize="28" FontAttributes="Bold" HorizontalOptions="StartAndExpand">
+                            <Label.HorizontalTextAlignment>
+                                <OnPlatform x:TypeArguments="TextAlignment">
+                                    <On Platform="iOS" Value="End"/>
+                                    <On Platform="Android" Value="Start"/>
+                                </OnPlatform>
+                            </Label.HorizontalTextAlignment>
+                        </Label>
+                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
+                            <StackLayout>
+
+                                <Grid Padding="5" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start"
                                                                VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True"
                                                                BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                                         HasShadow="False">
-                                                        </Frame> 
-                                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                    </Frame>
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
                                                                VerticalOptions="Center"  Aspect="AspectFit"  Source="details"/>
-                                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                            <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                                        </StackLayout>
-                                                    </Grid>   
-                    
-                                                    <BoxView Style="{StaticResource lineSeperator}"/>
-                                                    <Grid Padding="10,5,10,10">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="50*"/>
-                                                            <ColumnDefinition Width="50*"/>
-                                                        </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                        <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    </StackLayout>
+                                </Grid>
 
-                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource BodyLabelBlack}"/>
-                                                         <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRImportExport}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding ImportExportText}" Style="{StaticResource BodyLabelBlack}"/>
-                                                         <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.Attachment}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding AttachmentName}" Style="{StaticResource BodyLabelBlack}"/>
+                                <BoxView Style="{StaticResource lineSeperator}"/>
+                                <Grid Padding="10,5,10,10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50*"/>
+                                        <ColumnDefinition Width="50*"/>
+                                    </Grid.ColumnDefinitions>
 
-
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRImportExport}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding ImportExportText}" Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.Attachment}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding AttachmentName}" Style="{StaticResource BodyLabelBlack}"/>
 
 
-                                                        <!--<Label Grid.Row="1" Grid.Column="0" Text="Import or Export" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+
+
+                                    <!--<Label Grid.Row="1" Grid.Column="0" Text="Import or Export" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                     <Label Grid.Row="1" Grid.Column="1" Text="Import" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
 
-                                                    </Grid>
-                                                </StackLayout>
-                                            </Frame>
-                                            <!--Bank Details Summery-->
-                                            <Frame BorderColor="LightGray"  HasShadow="False" Padding="0" CornerRadius="8" Margin="0,10,0,0">
-                                                <StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                        <!--Bank Details Summery-->
+                        <Frame BorderColor="LightGray"  HasShadow="False" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                            <StackLayout>
 
-                                                               <Grid Padding="5" RowSpacing="0" >
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
+                                <Grid Padding="5" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
 
-                                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                                         HasShadow="False">
-                                                        </Frame> 
-                                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                    </Frame>
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
                                                                VerticalOptions="Center"  Aspect="AspectFit"  Source="positive"/>
-                                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                            
-                                                            <Label Text="{x:Static custom2:AppResources.NAIBANDetails}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                                        </StackLayout>
-                                                    </Grid>     
-                              <BoxView Style="{StaticResource lineSeperator}"/>
-                              <listView:SfListView Grid.Row="1"  HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+
+                                        <Label Text="{x:Static custom2:AppResources.NAIBANDetails}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    </StackLayout>
+                                </Grid>
+                                <BoxView Style="{StaticResource lineSeperator}"/>
+                                <listView:SfListView Grid.Row="1"  HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                     VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IbanList}"
                                                     SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
-                              <listView:SfListView.ItemTemplate>
-                                    <DataTemplate>
-					                        <Grid Padding="0" RowSpacing="0" >
+                                    <listView:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Padding="0" RowSpacing="0" >
                                                 <Grid.RowDefinitions >
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
-                                               <ColumnDefinition Width="40*"/>
-                                                 <ColumnDefinition Width="50*"/>
+                                                    <ColumnDefinition Width="40*"/>
+                                                    <ColumnDefinition Width="50*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
                                                     <Label x:Name="{Binding IbanText}" Text="{x:Static custom2:AppResources.NAIBAN}" Style="{StaticResource BodyLabelGrey}" FontSize="Small"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
@@ -194,179 +201,179 @@
                                                     <Label Text="{Binding Iban}" Style="{StaticResource BodyLabelBlack}" FontSize="Small" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                             </Grid>
-			                        </DataTemplate>
-                                </listView:SfListView.ItemTemplate>
-                              </listView:SfListView>
+                                        </DataTemplate>
+                                    </listView:SfListView.ItemTemplate>
+                                </listView:SfListView>
 
-                                       
-                                            </StackLayout>
-                                        </Frame>
-                                            <!--Sales Details Summery-->
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
-                                                <StackLayout>
-                                                          <Grid Padding="5" RowSpacing="0" >
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
 
-                                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                            </StackLayout>
+                        </Frame>
+                        <!--Sales Details Summery-->
+                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
+                            <StackLayout>
+                                <Grid Padding="5" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                                         HasShadow="False">
-                                                        </Frame> 
-                                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                    </Frame>
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
                                                                VerticalOptions="Center"  Aspect="AspectFit"  Source="finances"/>
-                                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                            <Label Text="{x:Static custom2:AppResources.FORM5FinancialInfo}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                                        </StackLayout>
-                                                    </Grid>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                        <Label Text="{x:Static custom2:AppResources.FORM5FinancialInfo}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    </StackLayout>
+                                </Grid>
 
-                                                    <BoxView Style="{StaticResource lineSeperator}"/>
-                                                     <Grid Padding="10,5,10,10">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="40*"/>
-                                                            <ColumnDefinition Width="50*"/>
-                                                        </Grid.ColumnDefinitions>
-                                                
-                                                        <!--SliderLable1-->
-                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsComming12months}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion1answerSelected}" Style="{StaticResource BodyLabelBlack}"/>
-                                                        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsLast12months}"  Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion2answerSelected}" Style="{StaticResource BodyLabelBlack}"/>
-                                                        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryofExpenseDetailsComming12Months}"  Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion3answerSelected}"  Style="{StaticResource BodyLabelBlack}"/>
-                                                        <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfExpenseDetailsLast12Months}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion4answerSelected}"  Style="{StaticResource BodyLabelBlack}"/>
-                                                         </Grid>
-                                                </StackLayout>
-                                            </Frame>
+                                <BoxView Style="{StaticResource lineSeperator}"/>
+                                <Grid Padding="10,5,10,10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="50*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
-                                                <StackLayout>
-                                                <Grid Padding="5" RowSpacing="0" >
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
+                                    <!--SliderLable1-->
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsComming12months}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion1answerSelected}" Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsLast12months}"  Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion2answerSelected}" Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryofExpenseDetailsComming12Months}"  Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion3answerSelected}"  Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfExpenseDetailsLast12Months}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion4answerSelected}"  Style="{StaticResource BodyLabelBlack}"/>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
 
-                                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
+                            <StackLayout>
+                                <Grid Padding="5" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                                         HasShadow="False">
-                                                        </Frame> 
-                                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                    </Frame>
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
                                                                VerticalOptions="Center"  Aspect="AspectFit"  Source="vat_user"/>
-                                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                            <Label Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                                        </StackLayout>
-                                                    </Grid>
-                                             
-                                                    <BoxView Style="{StaticResource lineSeperator}"/>
-                                                    <Grid Padding="10,5,10,10">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="40*"/>
-                                                            <ColumnDefinition Width="50*"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource BodyLabelBlack}"/>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                        <Label Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    </StackLayout>
+                                </Grid>
 
-                                                        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.TxtIDTypeFR}" Style="{StaticResource BodyLabelBlack}"/>
+                                <BoxView Style="{StaticResource lineSeperator}"/>
+                                <Grid Padding="10,5,10,10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="50*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="0" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource BodyLabelBlack}"/>
 
-                                                        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IdnumberFR}"  Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.TxtIDTypeFR}" Style="{StaticResource BodyLabelBlack}"/>
 
-                                                        <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="3" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.FirstnmFR}" Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IdnumberFR}"  Style="{StaticResource BodyLabelBlack}"/>
 
-                                                        <Label Grid.Row="4" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRSurName}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="4" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.LastnmFR}"  Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="3" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.FirstnmFR}" Style="{StaticResource BodyLabelBlack}"/>
 
-                                                        <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.MobileNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                                   
-                                                        <Label Grid.Row="5" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.MobNumberFR}" Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Grid.Row="4" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRSurName}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="4" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.LastnmFR}"  Style="{StaticResource BodyLabelBlack}"/>
 
-                                                        <Label Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}" Style="{StaticResource BodyLabelGrey}"/>
-                                                        <Label Grid.Row="6" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.SmtpAddrFR}" Style="{StaticResource BodyLabelBlack}"/>
-                                                    </Grid>
-                                                </StackLayout>
-                                            </Frame>
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
-                         <StackLayout Padding="0">
-                            <Grid Padding="5" RowSpacing="0" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.MobileNumber}" Style="{StaticResource BodyLabelGrey}"/>
 
-                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                    <Label Grid.Row="5" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.MobNumberFR}" Style="{StaticResource BodyLabelBlack}"/>
+
+                                    <Label Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="6" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.SmtpAddrFR}" Style="{StaticResource BodyLabelBlack}"/>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
+                            <StackLayout Padding="0">
+                                <Grid Padding="5" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                    </Frame>
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
                                        VerticalOptions="Center"  Aspect="AspectFit"  Source="declaration"/>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="{x:Static custom2:AppResources.VatDeregDeclarationTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                </StackLayout>
-                            </Grid>
-                             <BoxView Style="{StaticResource lineSeperator}"/>
-                            
-					                        <Grid Padding="10,5,10,10" RowSpacing="0">
-                                                <Grid.RowDefinitions >
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-                                             <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource BodyLabelGrey}"/>
-                                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding IDType}" Style="{StaticResource BodyLabelBlack}"/>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                        <Label Text="{x:Static custom2:AppResources.VatDeregDeclarationTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    </StackLayout>
+                                </Grid>
+                                <BoxView Style="{StaticResource lineSeperator}"/>
 
-                                             <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                             <Label Grid.Row="1" Grid.Column="1"  Text="{Binding IDNumber}" Style="{StaticResource BodyLabelBlack}"/>
+                                <Grid Padding="10,5,10,10" RowSpacing="0">
+                                    <Grid.RowDefinitions >
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding IDType}" Style="{StaticResource BodyLabelBlack}"/>
 
-                                             <!--<Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.VatDeregDOBTitle}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="1" Grid.Column="1"  Text="{Binding IDNumber}" Style="{StaticResource BodyLabelBlack}"/>
+
+                                    <!--<Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.VatDeregDOBTitle}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                              <Label Grid.Row="2" Grid.Column="1"  Text="{Binding DOB}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>-->
 
-                                             <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRContactPersonName}" Style="{StaticResource BodyLabelGrey}"/>
-                                             <Label Grid.Row="2" Grid.Column="1"  Text="{Binding ContactPersonName}" Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRContactPersonName}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Label Grid.Row="2" Grid.Column="1"  Text="{Binding ContactPersonName}" Style="{StaticResource BodyLabelBlack}"/>
 
-                                            </Grid>
-			                      
-                                            </StackLayout>
-                                            </Frame>
-                                        </StackLayout>
-                                    </Grid>
+                                </Grid>
 
-                </ScrollView>
-           </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+
+            </ScrollView>
+        </Grid>
 
     </ContentPage.Content>
 </ContentPage>
