@@ -1107,9 +1107,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_selectedDocumentOption == value) return;
+                if (_selectedDocumentOption==null && _selectedDocumentOption == value) return;
 
                 _selectedDocumentOption = value;
+              //  _selectedDocumentOption.TextCol = Color.White;
+              ////  _selectedDocumentOption.ImgSource = "vat_tile_listofsignup";
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
                 RaisePropertyChanged("SelectedDocumentOption");
             }

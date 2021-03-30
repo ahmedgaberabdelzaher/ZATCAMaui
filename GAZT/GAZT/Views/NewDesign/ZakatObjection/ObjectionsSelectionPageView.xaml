@@ -100,7 +100,7 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSelectType}" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.Objections}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource PageTitleBlack}" />
                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRChooseaZakatObjectionorVATReview}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}" Margin="0,-10,0,15"/>

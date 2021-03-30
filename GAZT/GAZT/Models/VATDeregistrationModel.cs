@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using static Xamarin.Forms.Internals.Profile;
 
@@ -148,8 +149,15 @@ namespace EGAZT.Models
 
     }
     [Preserve(AllMembers = true)]
-    public class ResultsAttachmentItemForElgblDocSet
+    public class ResultsAttachmentItemForElgblDocSet:INotifyPropertyChanged
     {
+        private void OnPropertyRaised(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
         public __metadata __metadata { get; set; }
         public string Mandt { get; set; }
         public string Spras { get; set; }
@@ -159,7 +167,33 @@ namespace EGAZT.Models
         public string StartDt { get; set; }
         public string EndDt { get; set; }
         public string Txt50 { get; set; }
-    }
+        private Color textCol = Color.Black;
+        public Color TextCol {
+            get { return textCol; }
+            set {
+                if (value != textCol)
+                    textCol = value; OnPropertyRaised("TextCol");
+
+            }
+        }
+
+        private string imgSource= "vat_tile_listofsignup_W";
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string ImgSource
+        {
+            get { return imgSource; }
+            set
+            {
+                if (value != imgSource)
+                    imgSource = value; OnPropertyRaised("ImgSource");
+
+
+            }
+        }
+
+
+        }
     [Preserve(AllMembers = true)]
     public class VATDeRegistrationDetails
     {

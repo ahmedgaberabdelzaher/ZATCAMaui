@@ -787,9 +787,20 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         void outletDocumentOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
+
+            ResultsAttachmentItemForElgblDocSet RemovedItem = null;
+            if(e.RemovedItems!=null&&e.RemovedItems.Count>0)
+                 RemovedItem = e.RemovedItems[0] as ResultsAttachmentItemForElgblDocSet;
             ResultsAttachmentItemForElgblDocSet selectedItem = e.AddedItems[0] as ResultsAttachmentItemForElgblDocSet;
             viewModel.SelectedOutletOptionIndex = viewModel.AttachmentTypes.IndexOf(selectedItem);
             viewModel?.updateattachmentList();
+            selectedItem.TextCol = Color.White;
+            selectedItem.ImgSource = "vat_tile_listofsignup";
+            if (RemovedItem != null)
+            {
+                RemovedItem.TextCol = Color.Black;
+                RemovedItem.ImgSource = "vat_tile_listofsignup_W";
+            }
         }
         async void VATDeregStartDateClicked(System.Object sender, System.EventArgs e)
         {
