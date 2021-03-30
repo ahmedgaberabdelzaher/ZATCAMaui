@@ -7041,9 +7041,9 @@
 	<data name="VRSelectType" xml:space="preserve">
     <value>اختر نوع</value>
   </data>
-	<data name="VRChooseaZakatObjectionorVATReview" xml:space="preserve">
-    <value>اختر مراجعة لضريبة القيمة المضافة أو اعتراض على الزكاة</value>
-  </data>
+    <data name="VRChooseaZakatObjectionorVATReview" xml:space="preserve">
+    <value>اختر نوع الاعتراض</value>
+    </data>
 	<data name="VRDecisionDate" xml:space="preserve">
     <value>تاريخ القرار</value>
   </data>
@@ -8623,9 +8623,9 @@ info@gazt.gov.sa</value>
 	<data name="ASAccountStatementTheBalances" xml:space="preserve">
     <value>الرصيد</value>
   </data>
-	<data name="Objections" xml:space="preserve">
-    <value>الاعتراضات</value>
-  </data>
+    <data name="Objections" xml:space="preserve">
+        <value>الاعتراضات</value>
+        </data>
 	<data name="NDContractRelease" xml:space="preserve">
     <value>طلب الافراج عن عقد</value>
   </data>
