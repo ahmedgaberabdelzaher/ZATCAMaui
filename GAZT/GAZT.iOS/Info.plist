@@ -38,7 +38,7 @@
 	<key>CFBundleName</key>
 	<string>GAZT</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon-1.appiconset</string>
+	<string>Assets.xcassets/AppIcon-2.appiconset</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>Custom Property</key>
