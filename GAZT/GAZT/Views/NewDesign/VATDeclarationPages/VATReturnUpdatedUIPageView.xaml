@@ -283,7 +283,7 @@
             </Grid>
 
 
-            <Grid Grid.Row="0" Margin="0,-15,0,0"  x:Name="VATReturnsSection" BackgroundColor="White" >
+            <Grid Grid.Row="0" Margin="0,-15,0,0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.VATReturns}}" x:Name="VATReturnsSection" BackgroundColor="White" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
