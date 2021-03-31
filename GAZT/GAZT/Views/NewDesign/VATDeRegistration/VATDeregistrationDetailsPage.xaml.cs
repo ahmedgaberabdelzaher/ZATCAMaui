@@ -793,6 +793,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                  RemovedItem = e.RemovedItems[0] as ResultsAttachmentItemForElgblDocSet;
             ResultsAttachmentItemForElgblDocSet selectedItem = e.AddedItems[0] as ResultsAttachmentItemForElgblDocSet;
             viewModel.SelectedOutletOptionIndex = viewModel.AttachmentTypes.IndexOf(selectedItem);
+            viewModel.SelectedDocumentOption = selectedItem;
             viewModel?.updateattachmentList();
             selectedItem.TextCol = Color.White;
             selectedItem.ImgSource = "vat_tile_listofsignup";
