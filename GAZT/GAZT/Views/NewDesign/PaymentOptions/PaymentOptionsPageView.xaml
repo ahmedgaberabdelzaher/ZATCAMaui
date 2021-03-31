@@ -41,7 +41,7 @@
                             <listView:SfListView.ItemTemplate>
 
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="False" BackgroundColor="#F0F0F0" CornerRadius="10" HeightRequest="106" WidthRequest="173" HorizontalOptions="Start">
+                                    <cards:SfCardView HasShadow="False" BackgroundColor="#F0F0F0" CornerRadius="10" HeightRequest="106" WidthRequest="173" HorizontalOptions="Start" VerticalOptions="Start">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="106"/>
@@ -49,9 +49,9 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Source="unselected171x136" HeightRequest="104" WidthRequest="171" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="1"/>
-                                            <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                <Image Source="{Binding SelectedCardIcon}" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="EndAndExpand" Aspect="AspectFit" Margin="0,0,0,10"></Image>
+                                            <Image Source="unselected171x136" HeightRequest="104" WidthRequest="171" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="1"/>
+                                            <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="CenterAndExpand">
+                                                <Image x:Name="PayIcon" Source="{Binding SelectedCardIcon}" HeightRequest="{Binding IconHeight}" HorizontalOptions="Start" VerticalOptions="EndAndExpand" Aspect="AspectFit" Margin="0,0,0,10"></Image>
                                                 <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}"  Padding="0" Margin="0,-10" HorizontalOptions="Start"/> 
                                             </StackLayout>
                                         </Grid>
@@ -63,19 +63,20 @@
 
                             <listView:SfListView.SelectedItemTemplate>
 
+
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                    <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="10" HeightRequest="106" WidthRequest="173" HorizontalOptions="Start" VerticalOptions="Start">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="104"/>
+                                                <RowDefinition Height="106"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Source="re_Tile_Background_S" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-                                            <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                <Image Source="{Binding UnSelectedCardIcon}" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="EndAndExpand" Aspect="AspectFit" Margin="0"></Image>
-                                                <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" TextColor="White" LineHeight="0.8" Padding="0" Margin="0,-10" HorizontalOptions="Start"/>
+                                            <Image Source="re_Tile_Background_S" HeightRequest="104" WidthRequest="171" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="1"/>
+                                            <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="CenterAndExpand">
+                                                <Image x:Name="PayIcon" Source="{Binding SelectedCardIcon}" HeightRequest="{Binding IconHeight}" HorizontalOptions="Start" VerticalOptions="EndAndExpand" Aspect="AspectFit" Margin="0,0,0,10"></Image>
+                                                <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}"  Padding="0" Margin="0,-10" HorizontalOptions="Start"/> 
                                             </StackLayout>
                                         </Grid>
                                     </cards:SfCardView>
