@@ -1673,6 +1673,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ApplePayText {
+            get {
+                return ResourceManager.GetString("ApplePayText", resourceCulture);
+            }
+        }
+        
         public static string ZTaxPayerDetails {
             get {
                 return ResourceManager.GetString("ZTaxPayerDetails", resourceCulture);
