@@ -17,7 +17,7 @@ using Android.Gms.Common;
 using Firebase.Iid;
 namespace GAZT.Droid
 {
-    [Activity(MainLauncher = true, Theme = "@style/Theme.Splash", NoHistory = true, Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(MainLauncher = true, Theme = "@style/Theme.Splash", NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class SplashScreen : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
