@@ -148,7 +148,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             viewModel.isPayNowTapped = false;
 
-            viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+            viewModel.NextCommitmentsString = AppResources.NDCommitments;
             viewModel.PaidString = AppResources.Paid + " " + viewModel.PaidBillCount;
             viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;
             viewModel.PartiallyPaidString = AppResources.Partiallynewui + " " + viewModel.PartiallyPaidBillCount;
@@ -993,7 +993,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                // this.FlowDirection = FlowDirection.RightToLeft;
                 viewModel.TranslateText = "English";
 
-                viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+                viewModel.NextCommitmentsString = AppResources.NDCommitments;
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
                 viewModel.ReturnString = AppResources.ZZZDBMyReturns;
 
@@ -1020,7 +1020,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                // this.FlowDirection = FlowDirection.LeftToRight;
                 viewModel.TranslateText = "عربي";
 
-                viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+                viewModel.NextCommitmentsString = AppResources.NDCommitments;
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
                 viewModel.ReturnString = AppResources.ZZZDBMyReturns;
 
