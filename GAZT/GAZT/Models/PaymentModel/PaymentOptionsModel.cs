@@ -16,6 +16,7 @@ namespace EGAZT.Models.PaymentModel
         public string SelectedCardIcon { get; set; }
         public bool IsSelectedCardIconVisible { get => true; }
         public bool IsUnSelectedCardIconVisible { get => true; }
+        public int IconHeight { get; set; }
 
     }
 

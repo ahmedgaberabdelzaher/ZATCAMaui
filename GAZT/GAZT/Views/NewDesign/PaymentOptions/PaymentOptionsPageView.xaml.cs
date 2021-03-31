@@ -28,7 +28,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         public PaymentOptionsPageView(bool isModaPaymentAvailable, bool isAlreadyPaid, bool isAmountLess, string messageText)
         {
             this.isModaPaymentAvailable = isModaPaymentAvailable;
-            this.isAlreadyPaid= isAlreadyPaid;
+            this.isAlreadyPaid = isAlreadyPaid;
             this.isAmountLess = isAmountLess;
             this.amountMsg = messageText;
             InitializeComponent();
@@ -41,18 +41,18 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             List<PaymentOptionsModel> paymentOptions = new List<PaymentOptionsModel>();
             if (isModaPaymentAvailable && !isAmountLess)
             {
-                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_iconpay", UnSelectedCardIcon = "ic_iconpay_white", CardLabel = AppResources.PaymentMethodCardPayment});
+                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_iconpay", UnSelectedCardIcon = "ic_iconpay_white", CardLabel = AppResources.PaymentMethodCardPayment, IconHeight = 30 });
             }
             if (Device.RuntimePlatform == Device.iOS)
             {
 
                 if (!isAlreadyPaid && !isAmountLess)
                 {
-                    paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo_white", CardLabel = AppResources.PaymentMethodApplePay });
+                    paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo_white", CardLabel = "", IconHeight = 60 });
 
                 }
             }
-            paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_sadad", UnSelectedCardIcon = "ic_sadad_white", CardLabel =AppResources.Sadad});
+            paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_sadad", UnSelectedCardIcon = "ic_sadad_white", CardLabel = AppResources.Sadad, IconHeight = 30 });
             paymentItemsListView.ItemsSource = paymentOptions;
 
             if (paymentOptions.Count > 2)
@@ -113,24 +113,24 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             PaymentOptionsModel selectedItem = e.AddedItems[0] as PaymentOptionsModel;
             if (selectedItem.CardLabel == AppResources.PaymentMethodCardPayment)
             {
-                MessagingCenter.Send<object, string>(this, "Card_Payment", "Yes");
+                MessagingCenter.Send<Object, string>(this, "Card_Payment", "Yes");
                 OnSelect?.Invoke("Card_Payment");
                 await PopupNavigation.Instance.PopAsync();
 
             }
-            else if (selectedItem.CardLabel == AppResources.PaymentMethodApplePay)
+            else if (selectedItem.CardLabel == AppResources.Sadad)
+            {
+                MessagingCenter.Send<Object, string>(this, "SADAD", "Yes");
+                OnSelect?.Invoke("SADAD");
+                await PopupNavigation.Instance.PopAsync();
+            }
+            else
             {
                 OnSelect?.Invoke("Apple Pay");
 
                 await PopupNavigation.Instance.PopAsync();
 
-                MessagingCenter.Send<object, string>(this, "Apple_Pay", "Yes");
-            }
-            else
-            {
-                MessagingCenter.Send<object, string>(this, "SADAD", "Yes");
-                OnSelect?.Invoke("SADAD");
-                await PopupNavigation.Instance.PopAsync();
+                MessagingCenter.Send<Object, string>(this, "Apple_Pay", "Yes");
             }
 
         }
