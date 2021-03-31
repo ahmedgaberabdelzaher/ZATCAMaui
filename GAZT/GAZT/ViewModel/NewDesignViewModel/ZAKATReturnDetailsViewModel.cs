@@ -1532,7 +1532,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             var Amount = Convert.ToDouble(PaymentData.d.Amount);
             var ZakatAmount = Math.Round(Amount, 2);
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(ZakatAmount, AppResources.ZAmount);
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(ZakatAmount, AppResources.ApplePayText);
         }
 
         public async Task SadadPaymentSelected()

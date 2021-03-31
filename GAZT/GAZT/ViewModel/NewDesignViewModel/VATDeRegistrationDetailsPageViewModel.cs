@@ -1107,11 +1107,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_selectedDocumentOption==null || _selectedDocumentOption == value) return;
+                if (_selectedDocumentOption == value) return;
 
                 _selectedDocumentOption = value;
-                _selectedDocumentOption.TextCol = Color.White;
-                _selectedDocumentOption.ImgSource = "vat_tile_listofsignup";
+                if (_selectedDocumentOption != null)
+                {
+                    _selectedDocumentOption.TextCol = Color.White;
+                    _selectedDocumentOption.ImgSource = "vat_tile_listofsignup";
+                }
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
                 RaisePropertyChanged("SelectedDocumentOption");
             }
@@ -1965,7 +1968,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
                 string reqType = string.Empty;
-                if (SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.VATDeregistrationReasonType1))
+                if (SelectedOutletOption != null && SelectedOutletOption.ActiveOutletDecisionOptions !=null && SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.VATDeregistrationReasonType1))
                 // if (SelectedOutletOptionIndex == 0)
                 {
                     reqType = "VT_DREG";

@@ -1084,7 +1084,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             var Amount = Convert.ToDouble(PaymentData.d.Amount);
             var BillAmount = Math.Round(Amount, 2);
             DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ZAmount);
+            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
         }
 
         public void MadaPaymentSelected()
