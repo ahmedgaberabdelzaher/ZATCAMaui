@@ -142,6 +142,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARM64</MtouchArch>
     <MtouchLink>Full</MtouchLink>
+    <MtouchExtraArgs>-gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_iOS.cs" />

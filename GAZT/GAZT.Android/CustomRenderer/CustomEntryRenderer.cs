@@ -19,6 +19,9 @@ namespace GAZT.Droid.CustomRenderer
         {
             base.OnElementChanged(e);
             string StyleId = e.NewElement.StyleId;
+
+            e.NewElement.IsTextPredictionEnabled = false;
+            e.NewElement.IsSpellCheckEnabled = false;
             if (Control != null)
             {
                 Control.SetBackgroundColor(global::Android.Graphics.Color.White);
