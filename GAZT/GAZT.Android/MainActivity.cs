@@ -72,7 +72,7 @@ namespace GAZT.Droid
 
 
             //Code for holding screenshots 
-            //Window.SetFlags(WindowManagerFlags.Secure, WindowManagerFlags.Secure);
+            Window.SetFlags(WindowManagerFlags.Secure, WindowManagerFlags.Secure);
 
 
 
