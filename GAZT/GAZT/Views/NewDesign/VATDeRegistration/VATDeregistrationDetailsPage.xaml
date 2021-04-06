@@ -173,15 +173,15 @@
                                     <DataTemplate>
                                         <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                                <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                <Image Source="{Binding ImgSource}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand"  VerticalOptions="EndAndExpand"
-                                                       Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start">
+                                                       Margin="20,0,20,20" TextColor="{Binding TextCol}" HorizontalTextAlignment="Start">
                                                 </Label>
                                             </Grid>
                                         </cards1:SfCardView>
                                     </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
-                                <listView:SfListView.SelectedItemTemplate>
+                                <!--<listView:SfListView.SelectedItemTemplate>
                                     <DataTemplate>
                                         <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
@@ -192,7 +192,7 @@
                                             </Grid>
                                         </cards1:SfCardView>
                                     </DataTemplate>
-                                </listView:SfListView.SelectedItemTemplate>
+                                </listView:SfListView.SelectedItemTemplate>-->
                                 <listView:SfListView.LayoutManager>
                                     <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                                 </listView:SfListView.LayoutManager>

@@ -1068,6 +1068,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (_selectedOutletOption == value) return;
                 _selectedOutletOption = value;
+                if (_selectedOutletOption != null)
+                {
+                    _selectedOutletOption.TextCol = Color.White;
+                    _selectedOutletOption.ImgSource = "vat_tile_listofsignup";
+                }
                 if (value != null)
                 {
                     DeregRequestTypeSerialised = JsonConvert.SerializeObject(new List<string> { _selectedOutletOption.ActiveOutletDecisionOptions });

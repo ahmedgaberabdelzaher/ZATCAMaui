@@ -629,9 +629,20 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             //VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
             //viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             //viewModel.SelectedReasonListIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+
+            VATDeregistrationModel RemovedItem = null;
+            if (e.RemovedItems != null && e.RemovedItems.Count > 0)
+                RemovedItem = e.RemovedItems[0] as VATDeregistrationModel;
+            VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
             viewModel.ReasonTitle = string.Empty;
             viewModel.OtherField = string.Empty;
-
+            selectedItem.TextCol = Color.White;
+            selectedItem.ImgSource = "vat_tile_listofsignup";
+            if (RemovedItem != null)
+            {
+                RemovedItem.TextCol = Color.Black;
+                RemovedItem.ImgSource = "vat_tile_listofsignup_W";
+            }
             viewModel.AddOutletDocumentOptions();
 
         }

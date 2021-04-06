@@ -52,6 +52,31 @@ namespace EGAZT.Models
 
         public string ActiveOutletDocumentOptions { get; set; }
         public bool ActiveOutletDocumentOptionsIsSelected { get; set; }
+        private Color textCol = Color.Black;
+        public Color TextCol
+        {
+            get { return textCol; }
+            set
+            {
+                if (value != textCol)
+                    textCol = value; OnPropertyRaised("TextCol");
+
+            }
+        }
+
+        private string imgSource = "vat_tile_listofsignup_W";
+        public string ImgSource
+        {
+            get { return imgSource; }
+            set
+            {
+                if (value != imgSource)
+                    imgSource = value; OnPropertyRaised("ImgSource");
+
+
+            }
+        }
+
     }
     [Preserve(AllMembers = true)]
     public class VATDeregistrationModelRootObject
