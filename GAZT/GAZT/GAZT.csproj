@@ -53,8 +53,6 @@
 	  <None Remove="Views\SyncFusionEnabledViews\SigupPages\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\TaxEvasionPages\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
-	  <EmbeddedResource Remove="Views\NewDesign\MyBillsPages\MyBillsPageView.xaml" />
-	  <Compile Remove="AppResources.Designer.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.4" />
@@ -198,9 +196,6 @@
 		</Compile>
 		<Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationFinancialDetails.xaml.cs">
 			<DependentUpon>ZakatRegistrationFinancialDetails.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="AppResources.Designer.cs">
-		  <DependentUpon>AppResources.resx</DependentUpon>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
