@@ -871,62 +871,62 @@ namespace GAZT.Manager
             {
                 Month = "Rabi II";
             }
-            else if (Month == "01" || Month == "1")
+            else if (Month == "01" || Month == "1" || Month == "January")
             {
                 Month = !App.IsArabic ? "Muharram" : " محرم";
             }
-            else if (Month == "02" || Month == "2")
+            else if (Month == "02" || Month == "2" || Month == "February")
             {
                 //Month = "Safar";
                 Month = !App.IsArabic ? "Safar" : "صفر";
             }
-            else if (Month == "03" || Month == "3")
+            else if (Month == "03" || Month == "3" || Month == "March")
             {
                 // Month = "Rabi I";
                 Month = !App.IsArabic ? "Rabi-Al-Awal" : "ربيع أول";
             }
-            else if (Month == "04" || Month == "4")
+            else if (Month == "04" || Month == "4" || Month == "April")
             {
                 // Month = "Rabi-Al-Thani";
                 Month = !App.IsArabic ? "Rabi-Al-Thani" : "ربيع ثاني";
             }
-            else if (Month == "05" || Month == "5")
+            else if (Month == "05" || Month == "5" || Month == "May")
             {
                 //  Month = " Jumada-Al-Awal";
                 Month = !App.IsArabic ? " Jumada-Al-Awal" : "جمادي أولى";
             }
-            else if (Month == "06" || Month == "6")
+            else if (Month == "06" || Month == "6" || Month == "June")
             {
                 //Month = "Jumada II"; Jumada - Al - Thani
                 Month = !App.IsArabic ? " Jumada-Al-Thani" : "جمادي ثاني";
             }
-            else if (Month == "07" || Month == "7")
+            else if (Month == "07" || Month == "7" || Month == "July")
             {
                 //   Month = "Rajab";
                 Month = !App.IsArabic ? "Rajab" : "رجب";
             }
-            else if (Month == "08" || Month == "8")
+            else if (Month == "08" || Month == "8" || Month == "August")
             {
                 // Month = "Sha ban"; 
                 Month = !App.IsArabic ? "Shaban" : "شعبان";
             }
-            else if (Month == "09" || Month == "9")
+            else if (Month == "09" || Month == "9" || Month == "September")
             {
                 //Month = "Ramadan";
                 Month = !App.IsArabic ? "Ramadan" : "رمضان";
             }
-            else if (Month == "10")
+            else if (Month == "10" || Month == "October")
             {
 
                 //   Month = "shawwal";
                 Month = !App.IsArabic ? "Shawwal" : "شوال";
             }
-            else if (Month == "11")
+            else if (Month == "11" || Month == "November")
             {
                 // Month = "Dhul-Qi dah"; 
                 Month = !App.IsArabic ? "Dhul-Qa'dah" : "ذو القعدة";
             }
-            else if (Month == "12")
+            else if (Month == "12" || Month == "December")
             {
                 // Month = "Dhul-Hijjah"; Dhul - Hijjah
                 Month = !App.IsArabic ? "Dhul-Hijjah" : "ذو الحجة";

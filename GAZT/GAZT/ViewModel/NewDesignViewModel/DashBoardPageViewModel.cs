@@ -2737,22 +2737,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
                         {
-                            BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) < 0).ToList();
+                             BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) <= 0).ToList();
 
                             foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
                             {
                                
-                               var date = Convert.ToDateTime(item.DueDtC);
+                               var date = Convert.ToDateTime(item.DueDateDateTime);
                              
                                    // if (date.Year != Today.Year)
                                     //{
                                         if (App.IsArabic)
                                         {
-                                            item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                            if (item.CalendarTyp.Equals("H"))
+                                            {
+                                            item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+
+                                            }
+                                            else
+                                            {
+                                                item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                            }
                                         }
                                         else
                                         {
-                                            item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
+                                            if (item.CalendarTyp.Equals("H"))
+                                            {
+                                                item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+
+                                            }
+                                            else
+                                            {
+                                                item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
+                                            }
                                         }
                                         item.Month = date.Year.ToString();
                                     //}
