@@ -2741,15 +2741,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
                             {
-                               
-                               var date = Convert.ToDateTime(item.DueDateDateTime);
+                                var date = new DateTime();
+
+                                if (item.IsPaymentOverdue)
+                                { date = Convert.ToDateTime(item.DueDtC); }
+                                else { date = Convert.ToDateTime(item.DueDt); }
                              
                                    // if (date.Year != Today.Year)
                                     //{
                                         if (App.IsArabic)
                                         {
-                                            if (item.CalendarTyp.Equals("H"))
-                                            {
+                                            if (item.CalendarTyp.Equals("H") || item.Incotyp.StartsWith("H"))
+                                          {
                                             item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
 
                                             }
@@ -2760,7 +2763,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         }
                                         else
                                         {
-                                            if (item.CalendarTyp.Equals("H"))
+                                            if (item.CalendarTyp.Equals("H")|| item.Incotyp.StartsWith("H"))
                                             {
                                                 item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
 
