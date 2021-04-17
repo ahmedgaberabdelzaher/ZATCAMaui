@@ -378,9 +378,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         async void LvwContacts_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            var item = e.Item as ASResult;
+            /*var item = e.Item as ASResult;
 
-            await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));
+            await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));*/
 
             if (e.Item == null) return;
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
@@ -388,8 +388,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         async void LVNormalStatements_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            var item = e.Item as ASResult;
-            await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));
+            /*var item = e.Item as ASResult;
+            await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));*/
 
             if (e.Item == null) return;
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;

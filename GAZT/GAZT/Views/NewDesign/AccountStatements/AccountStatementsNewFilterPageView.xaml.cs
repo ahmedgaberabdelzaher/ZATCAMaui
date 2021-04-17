@@ -26,8 +26,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
     [Preserve(AllMembers = true)]
     public partial class AccountStatementsNewFilterPageView : ContentPage
     {
-        AccountStatementsPageViewModel viewModel;
-        
+        AccountStatementBillsPageViewModel viewModel;
+
         public AccountStatementsNewFilterPageView()
         {
             InitializeComponent();
@@ -45,14 +45,16 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             viewModel.TxToDate = "";
             viewModel.TPFromDate = "";
             viewModel.TPToDate = "";
+            viewModel.FromTxAmount = "";
+            viewModel.ToTxAmount = "";
             viewModel.SetDefaultDate();
-            viewModel.IsHijriCal = (viewModel.HeaderSet.D.CalType != "G");
+            viewModel.IsHijriCal = viewModel.MyBillsOriginal!=null && viewModel.MyBillsOriginal.Count > 0 ? (viewModel.MyBillsOriginal[0].CalTyp != "G") : false;
 
             Grid layout = new Grid();
             Grid layout1 = new Grid();
             Grid layout2 = new Grid();
             Grid layout3 = new Grid();
-        
+
 
             var doneButton = new Button
             {
@@ -421,7 +423,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
-            
+
         }
 
         /*protected override void OnAppearing()
@@ -611,11 +613,13 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
 
             viewModel.ToTxAmount = TxToAmountEntry.Text;
-            if(!string.IsNullOrEmpty(viewModel.FromTxAmount) && !string.IsNullOrEmpty(viewModel.ToTxAmount)) {
+            if (!string.IsNullOrEmpty(viewModel.FromTxAmount) && !string.IsNullOrEmpty(viewModel.ToTxAmount))
+            {
                 var fromAmount = Convert.ToDouble(viewModel.FromTxAmount);
                 var toAmount = Convert.ToDouble(viewModel.ToTxAmount);
 
-                if(fromAmount > toAmount) {
+                if (fromAmount > toAmount)
+                {
 
                     //viewModel._dialogService.ShowMessage(AppResources.ACFilterAmountValidation,AppResources.Information);
 
@@ -628,7 +632,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         }
 
-        void ShowValidationMessage(string message) {
+        void ShowValidationMessage(string message)
+        {
 
 
             Device.BeginInvokeOnMainThread(async () =>
@@ -649,17 +654,17 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         private void TxDateNormalCalendar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void TxDateNormalCalendar_OkButtonClicked(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void TxDateNormalCalendar_CancelButtonClicked(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void TxDateNormalCalendar_Closed(object sender, EventArgs e)
@@ -676,7 +681,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         string year = selectedItem[2].ToString();
                         if (viewModel.isTxStartDate)
                         {
-                            viewModel.TxFromDate = year + "/" + month + "/" + day;   
+                            viewModel.TxFromDate = year + "/" + month + "/" + day;
                         }
                         else
                         {
@@ -692,10 +697,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         string month = selectedItem[1].ToString();
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
-                        
+
                         if (viewModel.isTxStartDate)
                         {
-                            viewModel.TxFromDate = year + "/" + month + "/" + day;   
+                            viewModel.TxFromDate = year + "/" + month + "/" + day;
                         }
                         else
                         {
@@ -707,7 +712,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 if (!string.IsNullOrEmpty(viewModel.TxFromDate) && !string.IsNullOrEmpty(viewModel.TxToDate))
                 {
 
-                    try {
+                    try
+                    {
 
                         CultureInfo calCul;
 
@@ -729,14 +735,15 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         }
 
                     }
-                    catch (Exception ex) {
+                    catch (Exception ex)
+                    {
 
                         Console.WriteLine("Date exception", ex.Message);
                     }
 
 
 
-                   
+
 
                 }
 
@@ -752,7 +759,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         private void TaxPeriodDateNormalCalendar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void TaxPeriodDateNormalCalendar_Closed(object sender, EventArgs e)
@@ -798,7 +805,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         }
 
 
-                       
+
                     }
                 }
 
@@ -829,17 +836,17 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
-   
+
         }
 
         private void TaxPeriodDateNormalCalendar_OkButtonClicked(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void TaxPeriodDateNormalCalendar_CancelButtonClicked(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
     }
 }

@@ -125,7 +125,6 @@
 		<Folder Include="GAZTDLL\Droid\" />
 		<Folder Include="GAZTDLL\iOS\" />
 		<Folder Include="Views\NewDesign\VATRegistrationDetails\" />
-		<Folder Include="ViewModel\NewDesignViewModel\AccountStatements\" />
 		<Folder Include="Models\AccountStatements\" />
 		<Folder Include="ViewModel\NewDesignViewModel\Common\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\ChecKTINStatusPage\" />
@@ -140,10 +139,18 @@
 		<Compile Update="AppResources.ar.Designer.cs">
 			<DependentUpon>AppResources.ar.resx</DependentUpon>
 		</Compile>
+		<Compile Update="AppResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>AppResources.resx</DependentUpon>
+		</Compile>
 		<Compile Update="SyncfusionControl.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>SyncfusionControl.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\AccountStatements\AccountStatementBillsPageView.xaml.cs">
+		  <DependentUpon>AccountStatementBillsPageView.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Views\NewDesign\TaxpayerProfile\UpdatePasswordPopUp.xaml.cs">
 			<DependentUpon>UpdatePasswordPopUp.xaml</DependentUpon>
@@ -217,6 +224,9 @@
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\AccountStatements\AccountStatementsDetailPageView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\AccountStatements\AccountStatementBillsPageView.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\Common\ListPopUpViewPage.xaml">

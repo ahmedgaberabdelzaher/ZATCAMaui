@@ -931,7 +931,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZAmount" xml:space="preserve">
     <value>Amount</value>
   </data>
-   <data name="ApplePayText" xml:space="preserve">
+  <data name="ApplePayText" xml:space="preserve">
     <value>GAZT</value>
   </data>
   <data name="ZTaxPayerDetails" xml:space="preserve">
@@ -8401,7 +8401,7 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
     <value />
   </data>
   <data name="ASAllTransactions" xml:space="preserve">
-    <value />
+    <value>ALL TRANSACTIONS</value>
   </data>
   <data name="ASIncomeTax" xml:space="preserve">
     <value />

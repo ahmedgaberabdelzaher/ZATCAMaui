@@ -780,7 +780,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.IsToolbarTaxVisible = false;
 */
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "AccountStatements_Tapped", "Account Statements eService");
-                viewModel._navigationService.NavigateTo(App.AccountStatementsPageView);
+                // viewModel._navigationService.NavigateTo(App.AccountStatementsPageView);
+                viewModel._navigationService.NavigateTo(App.AccountStatementBillsPageView);
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
             catch (Exception ex)
@@ -1268,7 +1269,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void AccountStatements_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "AccountStatements_Tapped", "Account Statements eService");
-            viewModel._navigationService.NavigateTo(App.AccountStatementsPageView);
+            //viewModel._navigationService.NavigateTo(App.AccountStatementsPageView);
+            viewModel._navigationService.NavigateTo(App.AccountStatementBillsPageView);
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 

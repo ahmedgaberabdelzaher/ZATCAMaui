@@ -1,4 +1,5 @@
-﻿using EGAZT.Models.AccountStatements;
+﻿using EGAZT.Models;
+using EGAZT.Models.AccountStatements;
 using EGAZT.NewDesignConverters;
 using GAZT.Manager;
 using System;
@@ -20,13 +21,14 @@ namespace EGAZT.Views.NewDesign.AccountStatements
     [Preserve(AllMembers = true)]
     public partial class AccountStatementsDetailPageView : ContentPage
     {
-        ASResult aSResult;
-        public AccountStatementsDetailPageView(ASResult aSResult)
+        MyBills myBills;
+        //ASResult aSResult;
+        public AccountStatementsDetailPageView(/*ASResult aSResult*/MyBills myBills)
         {
             InitializeComponent();
             SetLTR();
             ChangeAeroIcon();
-            this.aSResult = aSResult;
+            this.myBills = myBills;
         }
 
         private async void backButton_Tapped(object sender, EventArgs e)
@@ -62,60 +64,61 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
-            LableTaxPeriod.Text = ""+aSResult.PeriodTxt;
-            LableFbNum.Text = "" + aSResult.Fbnum;
-            LableDueDate.Text = "" + aSResult.FormattedBldat2;
-            LableSadadNum.Text = "" + aSResult.Vtre2;
-            LableTransactionDate.Text = "" + aSResult.FormattedBldat;
+            LableTaxPeriod.Text = ""+ myBills.PeriodPart1 +" - "+myBills.PeriodPart2;
+            LableFbNum.Text = "" + myBills.Fbnum;
+            LableDueDate.Text = "" + myBills.FormatedFaedn;
+            LableSadadNum.Text = "" + myBills.VTRE2;
+            LableTransactionDate.Text = "" + myBills.FormatedFaedn;
            // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
-            LableCardStatus.Text = "" + aSResult.StatusDesc;
-            LableCardTitle.Text = "" + aSResult.TaxtypeDesc;
+            LableCardStatus.Text = "" + myBills.StatusText;
+            LableCardTitle.Text = "" + myBills.Txt30;
             //LableCardSubTitle.Text = "" + aSResult.Desc;
 
-            Color color = stringToColor(aSResult.Status);
+            Color color = stringToColor(myBills.StatusText);
 
             FrameCardStatus.BackgroundColor = color;
             CardAmount.BackgroundColor = color;
-            var commaAmount = "";
-            if (aSResult.Betrh != null && !string.IsNullOrEmpty(aSResult.Betrh.ToString()))
+            CardAmountRemaining.BackgroundColor = color;
+
+            var paidAmount = "";
+            if (myBills.Paidamt != null && !string.IsNullOrEmpty(myBills.Paidamt.ToString()))
             {
-                commaAmount = UtilityManager.GetCommaSeparatedAmount(aSResult.Betrh.ToString());
+                paidAmount = UtilityManager.GetCommaSeparatedAmount(myBills.Paidamt.ToString());
             }
             else
             {
-                commaAmount= "0.00";
+                paidAmount = "0.00";
+            }
+            var remainingAmount = "";
+            if (myBills.RemainingAmount != null && !string.IsNullOrEmpty(myBills.RemainingAmount.ToString()))
+            {
+                remainingAmount = UtilityManager.GetCommaSeparatedAmount(myBills.RemainingAmount.ToString());
+            }
+            else
+            {
+                remainingAmount = "0.00";
             }
 
-            LableAmount.Text = "" + commaAmount + " "+AppResources.ZSAR;
+            RemainingAmount.Text = remainingAmount + " " + AppResources.ZSAR;
+            LableAmount.Text = paidAmount + " "+AppResources.ZSAR;
         }
 
         private Color stringToColor(String value)
         {
             Color StatusColor;
-            if (value.ToString() == "1" || value.ToString() == "4")
+            if (value == AppResources.Paid)
             {
-                StatusColor = Color.FromHex("#FCE087");
+                StatusColor = Color.FromHex("#006450");
             }
-            else if (value.ToString() == "2" || value.ToString() == "8" || value.ToString() == "9")
+            else if (value==AppResources.PartiallyPaid)
             {
-                StatusColor = Color.FromHex("#99C97B");
+                StatusColor = Color.Orange;
             }
-            else if (value.ToString().Trim() == "3")
+            else 
             {
-                StatusColor = Color.FromHex("#E52027");
+                StatusColor = Color.FromHex("#AA0C19");
             }
-            else if (value.ToString() == "5" || value.ToString() == "7")
-            {
-                StatusColor = Color.FromHex("#39679A");
-            }
-            else if (value.ToString() == "6")
-            {
-                StatusColor = Color.FromHex("#999999");
-            }
-            else
-            {
-                StatusColor = Color.FromHex("#D99A29");
-            }
+
             return StatusColor;
         }
 

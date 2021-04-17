@@ -342,6 +342,8 @@ namespace EGAZT
             //Account Statements
             //AccountStatementsPageView
             SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
+
+            SimpleIoc.Default.Register<AccountStatementBillsPageViewModel>();
             SimpleIoc.Default.Register<AccountStatementsFiltersPageViewModel>();
             SimpleIoc.Default.Register<AccountStatementsDownloadPageViewModel>();
 
@@ -2164,7 +2166,25 @@ namespace EGAZT
             }
         }
 
-        public AccountStatementsPageViewModel AccountStatementsFilterPageView
+        public AccountStatementBillsPageViewModel AccountStatementBillsPageView
+        {
+            get
+            {
+                try
+                {
+
+                    SimpleIoc.Default.Unregister<AccountStatementBillsPageViewModel>();
+                    SimpleIoc.Default.Register<AccountStatementBillsPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<AccountStatementBillsPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public AccountStatementBillsPageViewModel AccountStatementsFilterPageView
         {
             get
             {
@@ -2173,7 +2193,7 @@ namespace EGAZT
 
                     //SimpleIoc.Default.Unregister<AccountStatementsPageViewModel>();
                     //SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
-                    return ServiceLocator.Current.GetInstance<AccountStatementsPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<AccountStatementBillsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -2407,6 +2427,7 @@ namespace EGAZT
 
             //Account Statements
             navigationService.Configure(App.AccountStatementsPageView, typeof(AccountStatementsPageView));
+            navigationService.Configure(App.AccountStatementBillsPageView, typeof(AccountStatementBillsPageView));
             navigationService.Configure(App.AccountStatementsFiltersPageView, typeof(AccountStatementsFiltersPageView));
             navigationService.Configure(App.AccountStatementsNewFilterPageView, typeof(AccountStatementsNewFilterPageView));
             navigationService.Configure(App.AccountStatementsDownloadPageView, typeof(AccountStatementsDownloadPageView));
