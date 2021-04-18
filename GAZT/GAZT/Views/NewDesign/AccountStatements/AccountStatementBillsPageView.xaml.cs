@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -21,8 +22,10 @@ using Application = Xamarin.Forms.Application;
 namespace EGAZT.Views.NewDesign.AccountStatements
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Preserve(AllMembers = true)]
     public partial class AccountStatementBillsPageView : ContentPage
     {
+
         AccountStatementBillsPageViewModel viewModel;
         public AccountStatementBillsPageView()
         {
