@@ -157,7 +157,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASTransactionDate}"
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASDueDate}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}" />
                         <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1" 

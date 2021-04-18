@@ -64,15 +64,16 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
-            LableTaxPeriod.Text = ""+ myBills.PeriodPart1 +" - "+myBills.PeriodPart2;
+            LableTaxPeriod.Text = "" + myBills.PeriodPart1 + " - " + myBills.PeriodPart2;
             LableFbNum.Text = "" + myBills.Fbnum;
             LableDueDate.Text = "" + myBills.FormatedFaedn;
             LableSadadNum.Text = "" + myBills.VTRE2;
-            LableTransactionDate.Text = "" + myBills.FormatedFaedn;
-           // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
+            //LableTransactionDate.Text = "" + myBills.FormatedFaedn;
+            // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
             LableCardStatus.Text = "" + myBills.StatusText;
-            LableCardTitle.Text = "" + myBills.Txt30;
+            LableCardTitle.Text = "" + myBills.Abtypt;
             //LableCardSubTitle.Text = "" + aSResult.Desc;
+            LableTaxType.Text = "" + myBills.Txt30;
 
             Color color = stringToColor(myBills.StatusText);
 
@@ -80,27 +81,55 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             CardAmount.BackgroundColor = color;
             CardAmountRemaining.BackgroundColor = color;
 
-            var paidAmount = "";
-            if (myBills.Paidamt != null && !string.IsNullOrEmpty(myBills.Paidamt.ToString()))
+
+
+
+
+            if (myBills.IsPartiallyPaidVisibile)
             {
-                paidAmount = UtilityManager.GetCommaSeparatedAmount(myBills.Paidamt.ToString());
+                LableAmountTitle.Text = AppResources.MyBillsPaidAmount;
+                GridAmountRemaining.IsVisible = true;
+
+                var paidAmount = "";
+                if (myBills.TotalPaidAmt != null && !string.IsNullOrEmpty(myBills.TotalPaidAmt.ToString()))
+                {
+                    paidAmount = UtilityManager.GetCommaSeparatedAmount(myBills.TotalPaidAmt.ToString());
+                }
+                else
+                {
+                    paidAmount = "0.00";
+                }
+                var remainingAmount = "";
+                if (myBills.TotalRemainingAmount != null && !string.IsNullOrEmpty(myBills.TotalRemainingAmount.ToString()))
+                {
+                    remainingAmount = UtilityManager.GetCommaSeparatedAmount(myBills._totalRemainingAmount.ToString());
+                }
+                else
+                {
+                    remainingAmount = "0.00";
+                }
+
+                RemainingAmount.Text = remainingAmount + " " + AppResources.ZSAR;
+                LableAmount.Text = paidAmount + " " + AppResources.ZSAR;
             }
             else
             {
-                paidAmount = "0.00";
-            }
-            var remainingAmount = "";
-            if (myBills.RemainingAmount != null && !string.IsNullOrEmpty(myBills.RemainingAmount.ToString()))
-            {
-                remainingAmount = UtilityManager.GetCommaSeparatedAmount(myBills.RemainingAmount.ToString());
-            }
-            else
-            {
-                remainingAmount = "0.00";
+                LableAmountTitle.Text = AppResources.ZAmount;
+                var paidAmount = "";
+                if (myBills.TestDueAmount != null && !string.IsNullOrEmpty(myBills.TestDueAmount.ToString()))
+                {
+                    paidAmount = UtilityManager.GetCommaSeparatedAmount(myBills.TestDueAmount.ToString());
+                }
+                else
+                {
+                    paidAmount = "0.00";
+                }
+                LableAmount.Text = paidAmount + " " + AppResources.ZSAR;
             }
 
-            RemainingAmount.Text = remainingAmount + " " + AppResources.ZSAR;
-            LableAmount.Text = paidAmount + " "+AppResources.ZSAR;
+
+
+
         }
 
         private Color stringToColor(String value)
@@ -110,11 +139,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             {
                 StatusColor = Color.FromHex("#006450");
             }
-            else if (value==AppResources.PartiallyPaid)
+            else if (value == AppResources.PartiallyPaid)
             {
                 StatusColor = Color.Orange;
             }
-            else 
+            else
             {
                 StatusColor = Color.FromHex("#AA0C19");
             }
