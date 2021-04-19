@@ -683,7 +683,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             if (isTaxTypeFilter)
             {
-                MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
 
                 FilterOnTaxType(MyBills);
                 await Task.Run(() =>
@@ -718,6 +718,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                             DateTimeStyles.AllowInnerWhite);
                         MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
                     }
+
+                    FilterOnTaxType(MyBills);
                 }
             }
             catch (Exception ex)
@@ -756,6 +758,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(p.PeriodPart1.Substring(p.PeriodPart1.Length - 4, 4)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(p.PeriodPart2.Substring(p.PeriodPart2.Length - 4, 4)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
 
                     }
+
+                    FilterOnTaxType(MyBills);
 
 
                 }
@@ -796,7 +800,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
                 }
                 FromStatus = "";
+
                 FilterOnTaxType(MyBills);
+
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -846,6 +852,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     || c.Txt30.ToLower().Contains(SearchText.ToLower())).ToList();
 
                 MyBills = new ObservableCollection<MyBills>(suggestion);
+                FilterOnTaxType(MyBills);
             }
 
             isFromFilter = false;
