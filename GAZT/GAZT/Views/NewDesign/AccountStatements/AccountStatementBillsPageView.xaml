@@ -124,7 +124,7 @@
                     <custom:CustomLabel Padding="0,-10,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="Start" VerticalTextAlignment="Start">
                         <custom:CustomLabel.FormattedText>
                             <FormattedString>
-                                <Span Text="{x:Static ResourceManager:AppResources.DashBoardMyTaxObligations}" Style="{StaticResource CaptionLabelGrey}" ></Span>
+                                <Span Text="{x:Static ResourceManager:AppResources.ACMyTaxObligations}" Style="{StaticResource CaptionLabelGrey}" ></Span>
                                 <Span Text="&#160;" Style="{StaticResource SectionTitleBlackBold}"></Span>
                                 <Span Text="{Binding AmountLabel}"  Style="{StaticResource CaptionLabelGrey}"></Span>
                             </FormattedString>

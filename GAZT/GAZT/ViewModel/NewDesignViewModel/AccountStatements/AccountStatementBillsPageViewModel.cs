@@ -363,7 +363,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 RaisePropertyChanged("isFromFilter");
             }
         }
-
+        
         private ObservableCollection<object> _todayDateinHijri;
         public ObservableCollection<object> TodayDateinHijri
         {
@@ -686,6 +686,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
 
                 FilterOnTaxType(MyBills);
+               // ApplyFilter();
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -693,8 +694,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 return;
             }
 
-            try
-            {
+            try {
                 if (TxFromDate != "" && TxToDate != "")
                 {
                     var filterItems = MyBills;
@@ -722,14 +722,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     FilterOnTaxType(MyBills);
                 }
             }
-            catch (Exception ex)
-            {
+            catch(Exception ex) {
 
             }
 
 
-            try
-            {
+            try {
 
 
 
@@ -755,7 +753,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
                             DateTimeStyles.AllowInnerWhite);
 
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(p.PeriodPart1.Substring(p.PeriodPart1.Length - 4, 4)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(p.PeriodPart2.Substring(p.PeriodPart2.Length - 4, 4)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
+                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(p.PeriodPart1.Substring(p.PeriodPart1.Length-4,4)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(p.PeriodPart2.Substring(p.PeriodPart2.Length - 4, 4)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
 
                     }
 
@@ -764,13 +762,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 }
             }
-            catch (Exception ex)
-            {
+            catch(Exception ex) {
 
             }
 
 
-
+                    
 
             if (FromTxAmount != "" && ToTxAmount != "")
             {
@@ -810,7 +807,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 return;
             }
-            else if (isFromFilter)
+            else if(isFromFilter)
             {
                 await Task.Run(() =>
                 {

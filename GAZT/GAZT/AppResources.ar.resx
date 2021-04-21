@@ -8275,7 +8275,7 @@ info@gazt.gov.sa</value>
     <value />
   </data>
   <data name="ASAllTransactions" xml:space="preserve">
-    <value>كل الحركات المالية</value>
+    <value>الحركات المالية كل</value>
   </data>
   <data name="ASIncomeTax" xml:space="preserve">
     <value />
@@ -8893,5 +8893,8 @@ info@gazt.gov.sa</value>
   </data>
   <data name="VATInstalmentAgreementNumber" xml:space="preserve">
     <value>اتفاقية التقسيط رقم</value>
+  </data>
+   <data name="ACMyTaxObligations" xml:space="preserve">
+    <value>المبالغ المستحقة: </value>
   </data>
 </root>

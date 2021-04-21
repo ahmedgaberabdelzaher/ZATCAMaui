@@ -8401,7 +8401,7 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
     <value />
   </data>
   <data name="ASAllTransactions" xml:space="preserve">
-    <value>ALL TRANSACTIONS</value>
+    <value>ALL TRANSACTION</value>
   </data>
   <data name="ASIncomeTax" xml:space="preserve">
     <value />
@@ -8971,5 +8971,8 @@ I acknowledge that the above bank account information is correct and assume full
   </data>
   <data name="VATInstalmentAgreementNumber" xml:space="preserve">
     <value>Installment Agreement No.</value>
+  </data>
+  <data name="ACMyTaxObligations" xml:space="preserve">
+    <value>My Obligations: </value>
   </data>
 </root>

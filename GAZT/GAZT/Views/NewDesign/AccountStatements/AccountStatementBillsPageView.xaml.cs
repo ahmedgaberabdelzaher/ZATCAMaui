@@ -25,7 +25,6 @@ namespace EGAZT.Views.NewDesign.AccountStatements
     [Preserve(AllMembers = true)]
     public partial class AccountStatementBillsPageView : ContentPage
     {
-
         AccountStatementBillsPageViewModel viewModel;
         public AccountStatementBillsPageView()
         {

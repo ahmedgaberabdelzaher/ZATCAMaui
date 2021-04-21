@@ -64,16 +64,16 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
-            LableTaxPeriod.Text = "" + myBills.PeriodPart1 + " - " + myBills.PeriodPart2;
+            LableTaxPeriod.Text = ""+ myBills.PeriodPart1 +" - "+myBills.PeriodPart2;
             LableFbNum.Text = "" + myBills.Fbnum;
             LableDueDate.Text = "" + myBills.FormatedFaedn;
             LableSadadNum.Text = "" + myBills.VTRE2;
             //LableTransactionDate.Text = "" + myBills.FormatedFaedn;
-            // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
+           // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
             LableCardStatus.Text = "" + myBills.StatusText;
             LableCardTitle.Text = "" + myBills.Abtypt;
             //LableCardSubTitle.Text = "" + aSResult.Desc;
-            LableTaxType.Text = "" + myBills.Txt30;
+            LableTaxType.Text = "" +myBills.Txt30;
 
             Color color = stringToColor(myBills.StatusText);
 
@@ -81,12 +81,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             CardAmount.BackgroundColor = color;
             CardAmountRemaining.BackgroundColor = color;
 
+           
 
+           
 
-
-
-            if (myBills.IsPartiallyPaidVisibile)
-            {
+            if (myBills.IsPartiallyPaidVisibile) {
                 LableAmountTitle.Text = AppResources.MyBillsPaidAmount;
                 GridAmountRemaining.IsVisible = true;
 
@@ -112,8 +111,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 RemainingAmount.Text = remainingAmount + " " + AppResources.ZSAR;
                 LableAmount.Text = paidAmount + " " + AppResources.ZSAR;
             }
-            else
-            {
+            else {
                 LableAmountTitle.Text = AppResources.ZAmount;
                 var paidAmount = "";
                 if (myBills.TestDueAmount != null && !string.IsNullOrEmpty(myBills.TestDueAmount.ToString()))
@@ -127,7 +125,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 LableAmount.Text = paidAmount + " " + AppResources.ZSAR;
             }
 
-
+          
 
 
         }
@@ -139,11 +137,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             {
                 StatusColor = Color.FromHex("#006450");
             }
-            else if (value == AppResources.PartiallyPaid)
+            else if (value==AppResources.PartiallyPaid)
             {
                 StatusColor = Color.Orange;
             }
-            else
+            else 
             {
                 StatusColor = Color.FromHex("#AA0C19");
             }
