@@ -1641,6 +1641,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private ObservableCollection<MyBills> _ACStatementBills;
+        public ObservableCollection<MyBills> ACStatementBills
+        {
+            get
+            {
+                return _ACStatementBills;
+            }
+            set
+            {
+                if (_ACStatementBills == value) return;
+
+                _ACStatementBills = value;
+                
+                 RaisePropertyChanged("ACStatementBills");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -2121,152 +2138,199 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public async Task GetAccountStatments()
         {
             IsAccountsStatementLoading = true;
-            TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-            HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A",true);
 
-            var items = new ObservableCollection<ASResult>();
-            foreach (ASResult singleItem in HeaderSet.D.StatmenetLineItemsSet.Results)
+
+
+            string lang = UtilityManager.GetLanguageParameter();
+
+            ObservableCollection<MyBills> ACBills = new ObservableCollection<MyBills>();
+
+            ObservableCollection<MyBills> TempBills =  WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+
+            if (TempBills != null)
             {
 
-                try{
+                var newItems = TempBills.ToList();
 
-                    if (singleItem.TaxType != null)
+                if (newItems != null)
+                {
+                    if (newItems.Count > 3)
                     {
-
-                        if (singleItem.TaxType.Equals("VATX") || singleItem.TaxType.Equals("ETAX"))
-                        {
-                            singleItem.FormattedBldat = string.Format(singleItem.Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
-
-                            string[] dts = singleItem.FormattedBldat.Split(' ');
-                            if (App.IsArabic)
-                            {
-
-                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                singleItem.FormattedBldat = date;
-                            }
-                            else
-                            {
-                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                singleItem.FormattedBldat = date;
-                            }
-                        }
-                        else
+                        for (int i = 0; i < 3; i++)
                         {
 
 
-                            if (App.CalType.Equals("G"))
-                            {
-                                singleItem.FormattedBldat = string.Format(singleItem.Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
-
-                                string[] dts = singleItem.FormattedBldat.Split(' ');
-                                if (App.IsArabic)
-                                {
-
-                                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                    singleItem.FormattedBldat = date;
-                                }
-                                else
-                                {
-                                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                    singleItem.FormattedBldat = date;
-                                }
-                            }
-                            else
-                            {
-
-                                singleItem.FormattedBldat = string.Format(singleItem.Bldat?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
-
-                                string[] dts = singleItem.FormattedBldat.Split('/');
-                                if (App.IsArabic)
-                                {
-
-                                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                                    singleItem.FormattedBldat = date;
-                                }
-                                else
-                                {
-                                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                                    singleItem.FormattedBldat = date;
-                                }
-                            }
+                            var singleItem = newItems[i];
 
 
-
-
-
+                            ACBills.Add(singleItem);
                         }
-
-
-
-                        if (singleItem.TaxType.Equals("VATX") || singleItem.TaxType.Equals("ETAX"))
-                        {
-                            singleItem.FormattedBldat2 = string.Format(singleItem.Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
-
-                            string[] dts = singleItem.FormattedBldat2.Split(' ');
-
-                            if (App.IsArabic)
-                            {
-
-                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                singleItem.FormattedBldat2 = date;
-                            }
-                            else
-                            {
-                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                singleItem.FormattedBldat2 = date;
-                            }
-                        }
-                        else
-                        {
-
-                            singleItem.FormattedBldat2 = string.Format(singleItem.Bldat2?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
-                            string[] dts = singleItem.FormattedBldat2.Split('/');
-                            if (App.IsArabic)
-                            {
-
-                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                                singleItem.FormattedBldat2 = date;
-                            }
-                            else
-                            {
-                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                                singleItem.FormattedBldat2 = date;
-                            }
-                        }
-
                     }
+                    else
+                    {
+                        for (int i = 0; i < newItems.Count; i++)
+                        {
+                            var singleItem = newItems[i];
+
+
+                            ACBills.Add(singleItem);
+                        }
+                    }
+
                 }
-                catch (Exception e) {
+
+                ACStatementBills = new ObservableCollection<MyBills>(ACBills);
 
 
-                }
-
-
-                
-
-
-                items.Add(singleItem);
             }
 
-            var newItems = items.OrderByDescending(i => i.Bldat).ToList();
 
-            AccountStatementsList = new ObservableCollection<ASResult>(newItems);
+            //TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
+            //HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A",true);
 
-            if (AccountStatementsList != null && AccountStatementsList.Count > 2)
+            //var items = new ObservableCollection<ASResult>();
+            //foreach (ASResult singleItem in HeaderSet.D.StatmenetLineItemsSet.Results)
+            //{
+
+            //    try{
+
+            //        if (singleItem.TaxType != null)
+            //        {
+
+            //            if (singleItem.TaxType.Equals("VATX") || singleItem.TaxType.Equals("ETAX"))
+            //            {
+            //                singleItem.FormattedBldat = string.Format(singleItem.Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+
+            //                string[] dts = singleItem.FormattedBldat.Split(' ');
+            //                if (App.IsArabic)
+            //                {
+
+            //                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+            //                    singleItem.FormattedBldat = date;
+            //                }
+            //                else
+            //                {
+            //                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+            //                    singleItem.FormattedBldat = date;
+            //                }
+            //            }
+            //            else
+            //            {
+
+
+            //                if (App.CalType.Equals("G"))
+            //                {
+            //                    singleItem.FormattedBldat = string.Format(singleItem.Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+
+            //                    string[] dts = singleItem.FormattedBldat.Split(' ');
+            //                    if (App.IsArabic)
+            //                    {
+
+            //                        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+            //                        singleItem.FormattedBldat = date;
+            //                    }
+            //                    else
+            //                    {
+            //                        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+            //                        singleItem.FormattedBldat = date;
+            //                    }
+            //                }
+            //                else
+            //                {
+
+            //                    singleItem.FormattedBldat = string.Format(singleItem.Bldat?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+
+            //                    string[] dts = singleItem.FormattedBldat.Split('/');
+            //                    if (App.IsArabic)
+            //                    {
+
+            //                        string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+            //                        singleItem.FormattedBldat = date;
+            //                    }
+            //                    else
+            //                    {
+            //                        string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+            //                        singleItem.FormattedBldat = date;
+            //                    }
+            //                }
+
+
+
+
+
+            //            }
+
+
+
+            //            if (singleItem.TaxType.Equals("VATX") || singleItem.TaxType.Equals("ETAX"))
+            //            {
+            //                singleItem.FormattedBldat2 = string.Format(singleItem.Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
+
+            //                string[] dts = singleItem.FormattedBldat2.Split(' ');
+
+            //                if (App.IsArabic)
+            //                {
+
+            //                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+            //                    singleItem.FormattedBldat2 = date;
+            //                }
+            //                else
+            //                {
+            //                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+            //                    singleItem.FormattedBldat2 = date;
+            //                }
+            //            }
+            //            else
+            //            {
+
+            //                singleItem.FormattedBldat2 = string.Format(singleItem.Bldat2?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+            //                string[] dts = singleItem.FormattedBldat2.Split('/');
+            //                if (App.IsArabic)
+            //                {
+
+            //                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+            //                    singleItem.FormattedBldat2 = date;
+            //                }
+            //                else
+            //                {
+            //                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+            //                    singleItem.FormattedBldat2 = date;
+            //                }
+            //            }
+
+            //        }
+            //    }
+            //    catch (Exception e) {
+
+
+            //    }
+
+
+
+
+
+            //    items.Add(singleItem);
+            //}
+
+            //var newItems = items.OrderByDescending(i => i.Bldat).ToList();
+
+            //AccountStatementsList = new ObservableCollection<ASResult>(newItems);
+
+            if (ACStatementBills != null && ACStatementBills.Count > 2)
             {
                 LastTransactionsListHeight = 220;
             }
-            else if (AccountStatementsList != null && AccountStatementsList.Count > 1)
+            else if (ACStatementBills != null && ACStatementBills.Count > 1)
             {
                 LastTransactionsListHeight = 150;
             }
@@ -2276,7 +2340,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             IsAccountsStatementLoading = false;
 
-            if (AccountStatementsList.Count == 0)
+            if (ACStatementBills.Count == 0)
             {
                 IsAccountStatementAvilable = false;
             }
@@ -2573,8 +2637,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
 
             Bills = temp1;
-            PendingBills = pendingBills;
-            if (PendingBills.Count == 0)
+            PendingBills = pendingBills;            if (PendingBills.Count == 0)
             {
                 IsPendingBillsVisible = false;
             }

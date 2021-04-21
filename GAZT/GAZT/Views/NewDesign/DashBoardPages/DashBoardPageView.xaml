@@ -620,7 +620,7 @@
                                             </StackLayout>
                                             <Grid>
 
-                                                <listView:SfListView HeightRequest="{Binding LastTransactionsListHeight}" ItemsSource="{Binding AccountStatementsList}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" Margin="0,10,0,0" >
+                                                <listView:SfListView HeightRequest="{Binding LastTransactionsListHeight}" ItemsSource="{Binding ACStatementBills,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" AutoFitMode="Height" SelectionBackgroundColor="Transparent" Margin="0,10,0,0" >
 
                                                     <listView:SfListView.ItemTemplate>
                                                         <DataTemplate>
@@ -636,17 +636,17 @@
 
                                                                         <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
 
-                                                                            <custom:CustomLabel Text="{Binding TaxtypeDesc}" 
+                                                                            <custom:CustomLabel Text="{Binding Abtypt}" 
                                                                                             Style="{StaticResource 
                                                                         BodyLabelBlackMedium}" Margin="0,-5,0,-5"></custom:CustomLabel>
                                                                             <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding 
-                                                                            FormattedBldat}" 
+                                                                            FormatedFaedn}" 
                                                                                         Style="{StaticResource 
                                                                         CaptionLabelGrey}"></custom:CustomLabel>
 
                                                                         </StackLayout>
 
-                                                                        <Frame Grid.Row="0" Grid.Column="1"
+                                                                        <!--<Frame Grid.Row="0" Grid.Column="1"
                                                            HorizontalOptions="FillAndExpand"
                                                     BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"
                                                     Padding="10,10,10,10" CornerRadius="14"
@@ -655,43 +655,75 @@
                                                     VerticalOptions="CenterAndExpand" >
                                                     </Frame>
                                                     <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" Padding="10,0,10,0">
-                                                        <!--<Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding Betrh}"
-                                               TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                                        </Label>-->
-
-                                                        
-
                                                         <custom:CustomLabel Style="{StaticResource CaptionLabelBlack}"
                                                                             TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{Binding Betrh,Converter={StaticResource commaSeparatorConverter}}" TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" Style="{StaticResource CaptionLabelBlack}" ></Span>
+                                                                    <Span Text="{Binding Amount,Converter={StaticResource commaSeparatorConverter}}" TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" Style="{StaticResource CaptionLabelBlack}" ></Span>
                                                                     <Span Text="&#160;" Style="{StaticResource CaptionLabelBlack}" ></Span>
                                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR} " TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  Style="{StaticResource CaptionLabelBlack}" ></Span>
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
                                                         </custom:CustomLabel>
-                                                    </StackLayout>
+                                                    </StackLayout>-->
 
-                                                                        <!--<cards:SfCardView Grid.Row="0" Grid.Column="1"  HasShadow="False" 
-                                                                                  BackgroundColor="{Binding StatusBG}" CornerRadius="14" 
-                                                                                  Padding="10,0,10,0" >
-                                                                            <Label 
-                                                                        VerticalOptions="CenterAndExpand" 
-                                                                       Style="{StaticResource 
-                                                                        CaptionLabelBlack}" TextColor="{Binding AmountTextColor}">
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span  Text="{Binding Betrh,Converter={StaticResource 
-                                                                        commaSeparatorConverter}}" ></Span>
-                                                                                        <Span Text=" "></Span>
-                                                                                        <Span Text="{x:Static 
-                                                                                        ResourceManager:AppResources.ZSAR}"></Span>
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
 
-                                                                            </Label>
-                                                                        </cards:SfCardView>-->
+
+
+                                                    <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Primary}" Padding="15" CornerRadius="14" Opacity=".2"    VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
+                                                    <Frame.Triggers>
+                                                        <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.Paid}">
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                            <Setter Property="BackgroundColor" Value="Orange" />
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
+                                                        </DataTrigger>
+                                                    </Frame.Triggers>
+                                                </Frame>
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" Padding="15,12,15,12" HorizontalOptions="FillAndExpand" >
+                                                    <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}"  Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding TestDueAmount}"></Span>
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                        <custom:CustomLabel.Triggers>
+                                                            <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.Paid}">
+                                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                                <Setter Property="TextColor" Value="Orange" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
+                                                                <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                                                            </DataTrigger>
+                                                        </custom:CustomLabel.Triggers>
+                                                    </custom:CustomLabel>
+
+                                                    <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                        <custom:CustomLabel.Triggers>
+                                                            <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.Paid}">
+                                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                                <Setter Property="TextColor" Value="Orange" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
+                                                                <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                                                            </DataTrigger>
+                                                        </custom:CustomLabel.Triggers>
+                                                    </custom:CustomLabel>
+
+                                                </StackLayout>
+    
                                                                     </Grid>
 
                                                                 </StackLayout>

@@ -15851,5 +15851,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("VATInstalmentAgreementNumber", resourceCulture);
             }
         }
+        
+        public static string ACMyTaxObligations {
+            get {
+                return ResourceManager.GetString("ACMyTaxObligations", resourceCulture);
+            }
+        }
     }
 }
