@@ -8274,9 +8274,12 @@ info@gazt.gov.sa</value>
   <data name="ASCustoms" xml:space="preserve">
     <value />
   </data>
-  <data name="ASAllTransactions" xml:space="preserve">
+<!--  <data name="ASAllTransactions" xml:space="preserve">
     <value>الحركات المالية كل</value>
-  </data>
+  </data>-->
+   <data name="ASAllTransactions" xml:space="preserve">
+   <value>كل العمليات</value>
+   </data>
   <data name="ASIncomeTax" xml:space="preserve">
     <value />
   </data>
