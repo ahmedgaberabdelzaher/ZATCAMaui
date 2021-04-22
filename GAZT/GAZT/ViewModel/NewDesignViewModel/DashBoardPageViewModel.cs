@@ -2433,7 +2433,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         for (int i = 0; i < 3; i++)
                         {
 
-
                             var singleItem = newItems[i];
 
                             try
@@ -2753,9 +2752,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-
-
-
         public void PopualateCommittmentsInformation()
         {
             try
@@ -2808,20 +2804,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 if (item.IsPaymentOverdue)
                                 { date = Convert.ToDateTime(item.DueDtC); }
-                                else { date = Convert.ToDateTime(item.DueDt); }
+                                else { date = Convert.ToDateTime(item.DueDt);
+                                }
                              
                                    // if (date.Year != Today.Year)
                                     //{
                                         if (App.IsArabic)
                                         {
                                             if (item.CalendarTyp.Equals("H") || item.Incotyp.StartsWith("H"))
-                                          {
+                                            {
                                             item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
-
+                                                if (!item.IsPaymentOverdue)
+                                                {
+                                                    var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
+                                                    string[] splitDate = hijriDate.Split('/');
+                                                    item.Month = splitDate[0];
+                                                }
+                                                else
+                                                {
+                                                    item.Month = date.Year.ToString();
+                                                }
                                             }
                                             else
                                             {
                                                 item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                                item.Month = date.Year.ToString();
                                             }
                                         }
                                         else
@@ -2829,14 +2836,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             if (item.CalendarTyp.Equals("H")|| item.Incotyp.StartsWith("H"))
                                             {
                                                 item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
-
+                                                if (!item.IsPaymentOverdue)
+                                                {
+                                                    var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
+                                                    string[] splitDate = hijriDate.Split('/');
+                                                    item.Month = splitDate[0];
+                                                }
+                                                else
+                                                {
+                                                  item.Month = date.Year.ToString();
+                                                }
                                             }
                                             else
                                             {
                                                 item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
+                                                item.Month = date.Year.ToString();
                                             }
                                         }
-                                        item.Month = date.Year.ToString();
+                                       // item.Month = date.Year.ToString();
                                     //}
                                   
                                 
