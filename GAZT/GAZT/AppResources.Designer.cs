@@ -15857,5 +15857,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ACMyTaxObligations", resourceCulture);
             }
         }
+        
+        public static string AcPenality {
+            get {
+                return ResourceManager.GetString("AcPenality", resourceCulture);
+            }
+        }
     }
 }

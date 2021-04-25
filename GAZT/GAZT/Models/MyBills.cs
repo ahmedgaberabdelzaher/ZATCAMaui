@@ -9,11 +9,12 @@ namespace EGAZT.Models
     [Preserve(AllMembers = true)]
     public class MyBills
     {
-        public string Abtypt { get; set; } //TaxType
+        //public string Abtypt { get; set; } //TaxType
         public string VTRE2 { get; set; } //SadadPaymentNumber
         public string MadabutFg { get; set; } //Mada Payment
         public string OpenliMsg { get; set; } //Mada Payment Message
         public string Persl { get; set; } //Mada Payment
+
         public string _cal_typ = String.Empty;
         public string CalTyp
         {
@@ -27,6 +28,43 @@ namespace EGAZT.Models
                 _cal_typ = value;
             }
         }
+
+        public string _blart = String.Empty;
+        public string Blart
+        {
+            get
+            {
+
+                return _blart;
+            }
+            set
+            {
+                _blart = value;
+                if (Blart == "IF")
+                {
+                    Abtypt = AppResources.AcPenality;
+                }
+            }
+        }
+
+        public string _abtypt = String.Empty;
+        public string Abtypt
+        {
+            get
+            {
+
+                return _abtypt;
+            }
+            set
+            {
+                _abtypt = value;
+                if(Blart == "IF") {
+                    _abtypt = AppResources.AcPenality;
+                }
+
+            }
+        }
+
         private string _fbnum;
         public string Fbnum
         {
