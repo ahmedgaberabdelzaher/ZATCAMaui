@@ -718,7 +718,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 });
                 IsLoading = false;
             }
-            IsLoading = false;
+            //IsLoading = false;
         }
 
         //public void PopulateReturnTypeList()
@@ -745,6 +745,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         public async Task PopulateDataForTransactionTypes(string taxType)
         {
+            IsLoading = true;
             var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
             foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.D.Results)
             {
@@ -759,7 +760,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             try
             {
-
+                IsLoading = true;
                 TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
                 TaxTypeForFilter = new ObservableCollection<ASReturnTypes>();
 
@@ -776,12 +777,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     TaxTypeForFilter.Add(tempInDirectTax);
                 }
+
+               // IsLoading = false;
             }
             catch (Exception ex)
             {
+                IsLoading = false;
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
+
         }
 
         public async Task PopulateASFilterData()
@@ -900,7 +905,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 PickerModel = genericPickerModel;
 
-
+                //IsLoading = false;
 
             }
             catch (GAZTErrorException ex)
@@ -1132,7 +1137,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             await Task.Run(() =>
             {
-                IsLoading = false;
+                //IsLoading = false;
             });
 
         }
