@@ -73,7 +73,19 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             LableCardStatus.Text = "" + myBills.StatusText;
             LableCardTitle.Text = "" + myBills.Abtypt;
             //LableCardSubTitle.Text = "" + aSResult.Desc;
-            LableTaxType.Text = "" +myBills.Txt30;
+
+
+
+            string str = myBills.Txt30.ToLower();
+            
+             if(str.Length > 0) {
+
+                str = char.ToUpper(str[0]) + str.Substring(1);
+            }
+
+          
+
+            LableTaxType.Text = myBills.Abtypt + " - " + str;
 
             Color color = stringToColor(myBills.StatusText);
 

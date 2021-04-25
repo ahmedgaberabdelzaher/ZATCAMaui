@@ -72,6 +72,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 _selectedTransactionTypeFilter = value;
 
 
+              
+
+                FilterIfTypeAndStausFilterSelected(true);
 
 
                 RaisePropertyChanged("SelectedTransactionTypeFilter");
@@ -245,24 +248,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public List<ReturnTypes> _TaxTypeForFilter = null;
-        public List<ReturnTypes> TaxTypeForFilter
-        {
-            get
-            {
-                return _TaxTypeForFilter;
-            }
-            set
-            {
-                if (_TaxTypeForFilter == value) return;
+        //public List<ReturnTypes> _TaxTypeForFilter = null;
+        //public List<ReturnTypes> TaxTypeForFilter
+        //{
+        //    get
+        //    {
+        //        return _TaxTypeForFilter;
+        //    }
+        //    set
+        //    {
+        //        if (_TaxTypeForFilter == value) return;
 
-                _TaxTypeForFilter = value;
-                RaisePropertyChanged("TaxTypeForFilter");
-            }
-        }
+        //        _TaxTypeForFilter = value;
+        //        RaisePropertyChanged("TaxTypeForFilter");
+        //    }
+        //}
 
-        public ReturnTypes _SelectedTaxTypeForFilter = null;
-        public ReturnTypes SelectedTaxTypeForFilter
+        public ASReturnTypes _SelectedTaxTypeForFilter = null;
+        public ASReturnTypes SelectedTaxTypeForFilter
         {
             get
             {
@@ -276,7 +279,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (_SelectedTaxTypeForFilter != null)
                 {
                     FilterLabelText = _SelectedTaxTypeForFilter.TaxType;
-                    FilterIfTypeAndStausFilterSelected(true);
+                    //FilterIfTypeAndStausFilterSelected(true);
                 }
                 RaisePropertyChanged("SelectedTaxTypeForFilter");
             }
@@ -462,8 +465,86 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        public ASTabIdentification _tabIdentification = null;
+        public ASTabIdentification TabIdentification
+        {
+            get
+            {
+                return _tabIdentification;
+            }
+            set
+            {
+                if (_tabIdentification == value) return;
 
+                _tabIdentification = value;
+                RaisePropertyChanged("TabIdentification");
+            }
+        }
 
+        public ASRevenueDropDownSet _transactionTypeDropDownParent = null;
+        public ASRevenueDropDownSet TransactionTypeDropDownParent
+        {
+            get
+            {
+                return _transactionTypeDropDownParent;
+            }
+            set
+            {
+                if (_transactionTypeDropDownParent == value) return;
+
+                _transactionTypeDropDownParent = value;
+                RaisePropertyChanged("TransactionTypeDropDownParent");
+            }
+        }
+
+        public ObservableCollection<ASReturnTypes> _TaxTypeForFilter = null;
+        public ObservableCollection<ASReturnTypes> TaxTypeForFilter
+        {
+            get
+            {
+                return _TaxTypeForFilter;
+            }
+            set
+            {
+                if (_TaxTypeForFilter == value) return;
+
+                _TaxTypeForFilter = value;
+                RaisePropertyChanged("TaxTypeForFilter");
+            }
+        }
+
+        public ObservableCollection<ASRevenueDropDownSetDataResults> _allTransactionFilters = null;
+        public ObservableCollection<ASRevenueDropDownSetDataResults> AllTransactionFilters
+        {
+            get
+            {
+                return _allTransactionFilters;
+            }
+            set
+            {
+                if (_allTransactionFilters == value) return;
+
+                _allTransactionFilters = value;
+                RaisePropertyChanged("AllTransactionFilters");
+            }
+        }
+        public ASStatementHeaderSet _headerSet = null;
+        public ASStatementHeaderSet HeaderSet
+        {
+            get
+            {
+                return _headerSet;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    _headerSet = value;
+                }
+
+                RaisePropertyChanged("HeaderSet");
+            }
+        }
         private ObservableCollection<MyBills> _myBills;
         public ObservableCollection<MyBills> MyBills
         {
@@ -640,26 +721,211 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             IsLoading = false;
         }
 
-        public void PopulateReturnTypeList()
+        //public void PopulateReturnTypeList()
+        //{
+        //    try
+        //    {
+        //        TaxTypeForFilter = new List<ReturnTypes>
+        //        {
+        //                new ReturnTypes {Id = "00",TaxType = AppResources.ASAllTransactions},
+        //                new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
+        //                new ReturnTypes {Id = "02",TaxType = AppResources.ZZVAT},
+        //                new ReturnTypes {Id = "03",TaxType = AppResources.ZZET},
+        //                new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
+        //                new ReturnTypes {Id = "05",TaxType = AppResources.ZZIncomeTax}
+        //        };
+
+        //        SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+        //    }
+        //    catch
+        //    {
+        //    }
+
+        //}
+
+        public async Task PopulateDataForTransactionTypes(string taxType)
+        {
+            var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
+            foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.D.Results)
+            {
+                aSRevenueDropDownSetDataResults.TaxType = taxType;
+                AllTransactionFilters.Add(aSRevenueDropDownSetDataResults);
+
+            }
+        }
+
+
+        public async Task PopulateReturnTypeList()
         {
             try
             {
-                TaxTypeForFilter = new List<ReturnTypes>
+
+                TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
+                TaxTypeForFilter = new ObservableCollection<ASReturnTypes>();
+
+               
+                var tempDirectTax = new ASReturnTypes { Id = "D", TaxType = AppResources.ASAccountStatementDirectTax };
+                var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = AppResources.ASAccountStatementInDirectTax };
+
+                if (TabIdentification.D.Direct == "X")
                 {
-                        new ReturnTypes {Id = "00",TaxType = AppResources.ASAllTransactions},
-                        new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
-                        new ReturnTypes {Id = "02",TaxType = AppResources.ZZVAT},
-                        new ReturnTypes {Id = "03",TaxType = AppResources.ZZET},
-                        new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
-                        new ReturnTypes {Id = "05",TaxType = AppResources.ZZIncomeTax}
-                };
+                    TaxTypeForFilter.Add(tempDirectTax);
+                }
 
-                SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+                if (TabIdentification.D.Indirect == "X")
+                {
+                    TaxTypeForFilter.Add(tempInDirectTax);
+                }
             }
-            catch
+            catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
+        }
 
+        public async Task PopulateASFilterData()
+        {
+            try
+            {
+                IsLoading = true;
+                TransactionTypeDropDownParent = new ASRevenueDropDownSet();
+                if (AllTransactionFilters == null)
+                {
+                    AllTransactionFilters = new ObservableCollection<ASRevenueDropDownSetDataResults>();
+                }
+                AllTransactionFilters.Clear();
+
+                /*  ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
+                  defautlValIndirectTax.Txt30 = AppResources.ASTransactionType;
+                  defautlValIndirectTax.TaxType = "I";
+                  defautlValIndirectTax.TaxType = "I";
+                  AllTransactionFilters.Insert(1, defautlValIndirectTax);*/
+                if (TabIdentification.D.Direct == "X")
+                {
+                    await PopulateDataForTransactionTypes("D");
+                }
+                if (TabIdentification.D.Indirect == "X")
+                {
+                    await PopulateDataForTransactionTypes("I");
+                }
+
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
+                    (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType, false);
+                
+                foreach (ASReturnTypes aSReturnTypes in TaxTypeForFilter)
+                {
+                    if (HeaderSet.D.TaxType == aSReturnTypes.Id)
+                    {
+                        SelectedTaxTypeForFilter = aSReturnTypes;
+                    }
+                    else
+                    {
+                        SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+                    }
+                }
+
+
+
+                foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
+                {
+                    if (TabIdentification.D.Direct == "X")
+                    {
+                        if (taxRelationSetResult.StatementFilter == "10")
+                        {
+                            taxRelationSetResult.DisplayId = 01;
+                        }
+                        if (taxRelationSetResult.StatementFilter == "01")
+                        {
+                            taxRelationSetResult.DisplayId = 02;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "02")
+                        {
+                            taxRelationSetResult.DisplayId = 03;
+                        }
+                        if (taxRelationSetResult.StatementFilter == "03")
+                        {
+                            taxRelationSetResult.DisplayId = 04;
+                        }
+                    }
+                    if (TabIdentification.D.Indirect == "X")
+                    {
+                        if (taxRelationSetResult.StatementFilter == "06")
+                        {
+                            taxRelationSetResult.DisplayId = 06;
+                        }
+                        if (taxRelationSetResult.StatementFilter == "07")
+                        {
+                            taxRelationSetResult.DisplayId = 07;
+                        }
+                        if (taxRelationSetResult.StatementFilter == "09")
+                        {
+                            taxRelationSetResult.DisplayId = 09;
+                        }
+                        if (taxRelationSetResult.StatementFilter == "10")
+                        {
+                            taxRelationSetResult.DisplayId = 01;
+                        }
+                    }
+                }
+                if (TransactionTypeFilter == null)
+                {
+                    TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
+                }
+                TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 04 || temp.DisplayId == 06 || temp.DisplayId == 07).ToList());
+
+
+                SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
+
+
+                var list = new List<string>();
+
+                foreach (TaxRelationSetResult dropdown in TransactionTypeFilter)
+                {
+
+
+                    list.Add(dropdown.Txt30.ToUpper());
+
+
+
+
+                }
+
+                GenericPickerModel genericPickerModel = new GenericPickerModel();
+                genericPickerModel.PickerData = list;
+                genericPickerModel.PickerTitle = "";
+                genericPickerModel.PickerId = "AccountStatement";
+                genericPickerModel.SelectedValue = SelectedTransactionTypeFilter.Txt30;
+
+                PickerModel = genericPickerModel;
+
+
+
+            }
+            catch (GAZTErrorException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+            catch (InternetException ex)
+            {
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
         }
 
 
@@ -677,7 +943,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 IsLoading = true;
             });
 
-            calculateMyBills = isTaxTypeFilter;
+            if(SelectedTransactionTypeFilter.StatementFilter == "10") {
+
+                calculateMyBills = true;
+
+            }
+            else {
+                calculateMyBills = false;
+
+            }
+
+
 
             MyBills = MyBillsOriginal;
 
@@ -869,9 +1145,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 IsLoading = true;
             });
 
-            switch (SelectedTaxTypeForFilter.Id)
+            switch (SelectedTransactionTypeFilter.StatementFilter)
             {
-                case "00":
+                case "10":
                     MyBills = new ObservableCollection<MyBills>(BillsToProcss);
                     break;
                 case "01":
@@ -884,7 +1160,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Zakat") || x.Abtypt.Equals("Voluntary Zakat")).ToList());
                     }
                     break;
-                case "02":
+                case "06":
                     if (App.IsArabic)
                     {
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة القيمة المضافة") || x.Abtypt.Equals("ضريبة القيمة المضافة")).ToList());
@@ -894,7 +1170,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("VAT") || x.Abtypt.Equals("VAT Eligible Person")).ToList());
                     }
                     break;
-                case "03":
+                case "07":
                     if (!App.IsArabic)
                     {
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Excise Tax") || x.Abtypt.Equals("ETAX")).ToList());
@@ -904,7 +1180,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("الضريبة الانتقائية")).ToList());
                     }
                     break;
-                case "04":
+                case "03":
                     if (!App.IsArabic)
                     {
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Withholding Tax")).ToList());
@@ -914,7 +1190,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
                     }
                     break;
-                case "05":
+                case "02":
                     if (!App.IsArabic)
                     {
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Income Tax")).ToList());
