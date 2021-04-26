@@ -1182,7 +1182,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                     else
                     {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("الضريبة الانتقائية")).ToList());
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة السلع الانتقائية")).ToList());
                     }
                     break;
                 case "03":
@@ -1192,7 +1192,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                     else
                     {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Withholding Tax")).ToList());
                     }
                     break;
                 case "02":
