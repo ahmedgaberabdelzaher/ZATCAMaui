@@ -2150,7 +2150,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             if (TempBills != null)
             {
 
+
+                //var newItems = TempBills.OrderByDescending(o => o.Faedn).ToList();
+                //newItems.Reverse();
+
                 var newItems = TempBills.ToList();
+               
+
 
                 if (newItems != null)
                 {
