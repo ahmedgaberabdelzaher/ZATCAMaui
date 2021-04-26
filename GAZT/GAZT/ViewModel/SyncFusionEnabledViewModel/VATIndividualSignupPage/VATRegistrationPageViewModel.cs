@@ -320,6 +320,66 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
         }
+
+        public async Task getVatEligibleDate(string vatEligibleStartDate)
+        {
+            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("we can proceed now"));
+
+            // throw new NotImplementedException();
+
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            await Task.Run(async () =>
+            {
+                VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate+ "T00:00:00");
+
+                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                if (vATcommencementData != null && vATcommencementData.d != null
+                &&vATcommencementData.d.__metadata!=null&& vATcommencementData.d.__metadata.uri!=null)
+                {
+                    try
+                    {
+                        if(!string.IsNullOrEmpty(vATcommencementData.d.__metadata.uri))
+                        {
+                          String dateSource=await filerDateFromResponse(vATcommencementData.d.__metadata.uri);
+
+                            // VatEligibleStartDate = String.Join("-", dateSource.Split('-').Reverse());
+                            VatEligibleStartDate =UtilityManager.ConvertDateFormatToDDMMYYYYY(dateSource);
+                        }
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
+                        IsLoading = false;                    }
+                }
+                IsLoading = false;
+            });
+        }
+
+        private async Task<string> filerDateFromResponse(string uri)
+        {
+            try
+            {
+                int startPos = uri.LastIndexOf("taxDateSet(datetime'") + "taxDateSet(datetime'".Length;
+                int length = uri.IndexOf("T00%3A00%3A00')") - startPos;
+                string sub = uri.Substring(startPos, length);
+                return sub;
+            }
+            catch(Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                return "";
+            }
+           
+        }
+
         private string _startdateToshow = string.Empty;
         public string StartdateToshow
         {
@@ -1779,7 +1839,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
                     //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
                     // Int32 unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                        string[] date1 = VatEligibleStartDate.Split('/');
+                        string[] date1 = VatEligibleStartDate.Split('-');
                         Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
                     
                 }
@@ -1858,6 +1918,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 string displayMessage = AppResources.VATRSaveasdraftMessage;
                                 //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                            }
+                            if (response.d.Operationz.Equals("25"))
+                            {
+                                //  string number = response.d.Fbnumz;
+                                string displayMessage = AppResources.VATRegistrationSuccessMessage + " " + response.d.Fbnumz + " " + AppResources.VatApproved;
+                                //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                                //_navigationService.GoBack();
                             }
 
 

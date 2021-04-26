@@ -45,25 +45,25 @@ namespace GAZT.Helper
 
         #endregion
 
-        //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = DevDomainForCookies;
-        //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
+        public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
+        public static string DomainUrlForCookies = DevDomainForCookies;
+        public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        /*public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;*/
 
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
-        //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = PreprodDomainForCookies;
-        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        /*public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
+        public static string DomainUrlForCookies = PreprodDomainForCookies;
+        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;*/
 
         //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
@@ -188,6 +188,7 @@ namespace GAZT.Helper
         public static string GAZTGetVATRegistrationOtherDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VRUH_SRV/VR_UI_HDRSet(Fbnum='";
         public static string SaveVATRegistrationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet";
         public static string SaveVATRegistration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet?sap-language=";
+        public static string GetVatEligilibilityDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV";
         #endregion
 
         #region GAZTUnlock Account
