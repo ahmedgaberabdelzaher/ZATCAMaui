@@ -85,7 +85,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
           
 
-            LableTaxType.Text = myBills.Abtypt + " - " + str;
+           // LableTaxType.Text = myBills.Abtypt + " - " + str;
+            LableTaxType.Text = str;
+
 
             Color color = stringToColor(myBills.StatusText);
 
