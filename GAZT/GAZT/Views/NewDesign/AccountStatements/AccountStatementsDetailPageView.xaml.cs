@@ -71,7 +71,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             //LableTransactionDate.Text = "" + myBills.FormatedFaedn;
            // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
             LableCardStatus.Text = "" + myBills.StatusText;
-            LableCardTitle.Text = "" + myBills.Abtypt;
+            LableCardTitle.Text = "" + myBills.BillTitle;
             //LableCardSubTitle.Text = "" + aSResult.Desc;
 
 
