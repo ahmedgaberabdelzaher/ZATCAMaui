@@ -297,11 +297,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         //viewModel.FromDate = year + "/" + month + "/" + day;
                         if (viewModel.isTaxPeriodStartDate)
                         {
-                            viewModel.TPFromDate = year; //+ "/" + month + "/" + day;   
+                            viewModel.TPFromDate = year+ "/" + month + "/" + day;   
                         }
                         else
                         {
-                            viewModel.TPToDate = year; // + "/" + month + "/" + day;
+                            viewModel.TPToDate = year + "/" + month + "/" + day;
                         }
 
                     }
@@ -317,11 +317,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         //viewModel.FromDate = year + "/" + month + "/" + day;
                         if (viewModel.isTaxPeriodStartDate)
                         {
-                            viewModel.TPFromDate = year; // + "/" + month + "/" + day;   
+                            viewModel.TPFromDate = year + "/" + month + "/" + day;   
                         }
                         else
                         {
-                            viewModel.TPToDate = year; // + "/" + month + "/" + day;
+                            viewModel.TPToDate = year + "/" + month + "/" + day;
                         }
 
 
@@ -742,9 +742,6 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     }
 
 
-
-
-
                 }
 
 
@@ -777,11 +774,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         //viewModel.FromDate = year + "/" + month + "/" + day;
                         if (viewModel.isTaxPeriodStartDate)
                         {
-                            viewModel.TPFromDate = year; //+ "/" + month + "/" + day;   
+                            viewModel.TPFromDate = year + "/" + month + "/" + day;   
                         }
                         else
                         {
-                            viewModel.TPToDate = year; // + "/" + month + "/" + day;
+                            viewModel.TPToDate = year + "/" + month + "/" + day;
                         }
 
                     }
@@ -797,11 +794,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         //viewModel.FromDate = year + "/" + month + "/" + day;
                         if (viewModel.isTaxPeriodStartDate)
                         {
-                            viewModel.TPFromDate = year; // + "/" + month + "/" + day;   
+                            viewModel.TPFromDate = year + "/" + month + "/" + day;   
                         }
                         else
                         {
-                            viewModel.TPToDate = year; // + "/" + month + "/" + day;
+                            viewModel.TPToDate = year + "/" + month + "/" + day;
                         }
 
 
@@ -810,24 +807,61 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 }
 
 
-                CultureInfo calCul;
 
-                if (viewModel.IsHijriCal)
+                if (!string.IsNullOrEmpty(viewModel.TPFromDate) && !string.IsNullOrEmpty(viewModel.TPToDate))
                 {
-                    calCul = new CultureInfo("ar-SA");
-                }
-                else
-                {
-                    calCul = new CultureInfo("en-US");
+
+                    try
+                    {
+
+                        CultureInfo calCul;
+
+                        if (viewModel.IsHijriCal)
+                        {
+                            calCul = new CultureInfo("ar-SA");
+                        }
+                        else
+                        {
+                            calCul = new CultureInfo("en-US");
+                        }
+
+
+                        if (DateTime.ParseExact(viewModel.TPFromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(viewModel.TPToDate, "yyyy/MM/dd", calCul))
+                        {
+                            viewModel.TPToDate = "";
+
+                            ShowValidationMessage(AppResources.ACFilterYearValidation);
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        Console.WriteLine("Date exception", ex.Message);
+                    }
+
+
                 }
 
 
-                if (DateTime.ParseExact(viewModel.TPFromDate, "yyyy", calCul) > DateTime.ParseExact(viewModel.TPToDate, "yyyy", calCul))
-                {
-                    viewModel.TPToDate = "";
-                    ShowValidationMessage(AppResources.ACFilterYearValidation);
+                //CultureInfo calCul;
 
-                }
+                //if (viewModel.IsHijriCal)
+                //{
+                //    calCul = new CultureInfo("ar-SA");
+                //}
+                //else
+                //{
+                //    calCul = new CultureInfo("en-US");
+                //}
+
+
+                //if (DateTime.ParseExact(viewModel.TPFromDate, "yyyy", calCul) > DateTime.ParseExact(viewModel.TPToDate, "yyyy", calCul))
+                //{
+                //    viewModel.TPToDate = "";
+                //    ShowValidationMessage(AppResources.ACFilterYearValidation);
+
+                //}
 
 
             }

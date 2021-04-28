@@ -318,18 +318,14 @@
                                          <custom:BorderlessEntry  Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}" 
                                                               Style="{StaticResource BodyLabelBlack}" Text="{Binding TPFromDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" HorizontalOptions="FillAndExpand"></custom:BorderlessEntry>
 
-                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                         <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                                                 <Image Margin="5,0">
-                                                    <Image.Source>
-                                                        <FontImageSource FontFamily="UserIconFont"
+                                                   <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont"
                                                                  Color="{StaticResource NeutralGreay}" Size="24"
                                                                  Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
-                                                    </Image.Source>
+                                                </Image.Source>
                                                 </Image>
-
-                                            </StackLayout>
-
                                         </StackLayout>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TaxPeriodStartDateClicked" />
