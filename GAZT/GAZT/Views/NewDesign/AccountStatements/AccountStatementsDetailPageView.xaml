@@ -161,8 +161,9 @@
             </border:SfBorder >
 
             <StackLayout>
+                            <border:SfBorder Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-               <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0" Padding="15,10,15,10" x:Name="TaxTypeGrid">
+               <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0" Padding="0" x:Name="TaxTypeGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
@@ -172,7 +173,7 @@
                     <custom:CustomLabel x:Name="LableTaxType" Text="" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></custom:CustomLabel>
                 </StackLayout>
             </Grid>
-
+</border:SfBorder>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
