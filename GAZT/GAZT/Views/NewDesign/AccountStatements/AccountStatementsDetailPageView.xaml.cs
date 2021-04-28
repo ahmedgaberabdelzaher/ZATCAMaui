@@ -82,6 +82,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
                 str = char.ToUpper(str[0]) + str.Substring(1);
             }
+             else {
+
+                TaxTypeGrid.IsVisible = false;
+            }
 
           
 
