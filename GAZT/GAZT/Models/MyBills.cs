@@ -42,7 +42,7 @@ namespace EGAZT.Models
                 _blart = value;
                 if (Blart == "IF")
                 {
-                    Abtypt = AppResources.AcPenality;
+                    BillTitle = AppResources.AcPenality;
                 }
             }
         }
@@ -59,8 +59,12 @@ namespace EGAZT.Models
             {
                 _abtypt = value;
                 if(Blart == "IF") {
-                    _abtypt = AppResources.AcPenality;
+                    BillTitle = AppResources.AcPenality;
                 }
+                else {
+                    BillTitle = _abtypt;
+                }
+
 
             }
         }
@@ -196,6 +200,19 @@ namespace EGAZT.Models
             set
             {
                 _totalPaidAmt = value;
+            }
+        }
+
+        public string _billTitle = String.Empty;
+        public string BillTitle
+        {
+            get
+            {
+                return _billTitle;
+            }
+            set
+            {
+                _billTitle = value;
             }
         }
 
