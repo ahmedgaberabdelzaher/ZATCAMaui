@@ -50,6 +50,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.IsNewAccountClicked = false;
                 viewModel.IsInstrunctionChecked = false;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
+               // viewModel.VatEligibleStartDate =string.Empty;
                 // App.IsArabic = false;
                 // App.IsArabic = false;
                 viewModel.SetDefaultDate();
@@ -189,6 +190,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 string year = selectedItem[2].ToString();
                 //viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
                 //          string DOB = year + month + day;
+              
                 await viewModel.getVatEligibleDate(year+"-"+ month+"-"+ day);
 
             }
@@ -549,7 +551,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 else
                 {
-                    string[] year = viewModel.VatEligibleStartDate.Split('-');
+                    string[] year = viewModel.VatEligibleStartDate.Split('/');
                     int yearnumber = Int32.Parse(year[2]);
                     if (yearnumber >= 2018)
                     {
@@ -593,7 +595,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (!string.IsNullOrEmpty(DateEntry.Text))
             {
 
-                string[] year = DateEntry.Text.Split('-');
+                string[] year = DateEntry.Text.Split('/');
                 int yearnumber = Int32.Parse(year[2]);
                 if (yearnumber >= 2018)
                 {
@@ -3305,7 +3307,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             if (!string.IsNullOrEmpty(DateEntry.Text))
             {
-                string[] year = viewModel.VatEligibleStartDate.Split('-');
+                string[] year = viewModel.VatEligibleStartDate.Split('/');
                 int yearnumber = Int32.Parse(year[2]);
                 if (yearnumber >= 2018)
                 {

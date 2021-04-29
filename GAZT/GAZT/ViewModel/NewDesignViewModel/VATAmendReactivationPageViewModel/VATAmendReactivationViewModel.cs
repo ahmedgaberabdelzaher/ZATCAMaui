@@ -2688,6 +2688,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     VATRegistrationDetailsData.d.CONTACTDTSet.results[i].MobNumber = ListFinanceRepresenatives[i].MobNumberFR;
                     VATRegistrationDetailsData.d.CONTACTDTSet.results[i].SmtpAddr = ListFinanceRepresenatives[i].SmtpAddrFR;
                 }
+                VATRegistrationDetailsData.d.NresBgFrom = null;
+                VATRegistrationDetailsData.d.NresBgTo = null;
+
                 var ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
                 response = await VatRegistrationWebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
                 PopToRootPage();
@@ -2726,6 +2729,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                     IsAddAdditionalInfoChecked = true;
                                 }
                             }
+                            if (response.d.Operationz.Equals("25"))
+                            {
+                                //  string number = response.d.Fbnumz;
+                                string displayMessage = AppResources.VATRegistrationSuccessMessage + " " + response.d.Fbnumz + " " + AppResources.VatApproved;
+                                //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                                //_navigationService.GoBack();
+                            }
+
                             VATRegistrationDetailsData = response;
                             VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetnew;
                             VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetObject;

@@ -156,7 +156,7 @@ namespace GAZT.Manager
         {
             String result = DateTime
                       .ParseExact(dateToConvert, "yyyy-MM-dd", CultureInfo.InvariantCulture)
-                      .ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
+                      .ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
             return result;
         }
         public static string SingleDateConversion(string Date)

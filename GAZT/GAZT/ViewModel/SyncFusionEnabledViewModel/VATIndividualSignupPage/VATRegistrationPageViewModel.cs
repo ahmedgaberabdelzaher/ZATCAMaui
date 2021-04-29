@@ -1839,7 +1839,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
                     //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
                     // Int32 unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                        string[] date1 = VatEligibleStartDate.Split('-');
+                        string[] date1 = VatEligibleStartDate.Split('/');
                         Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
                     
                 }
@@ -1895,6 +1895,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 setDATA();
                 ATTDETSet ATTDETSetnew = new ATTDETSet();
                 ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
+                VATRegistrationDetailsData.d.NresFg = string.Empty;
                 //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
                 response = await VatRegistrationWebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
                 PopToRootPage();
