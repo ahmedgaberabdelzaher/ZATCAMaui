@@ -576,6 +576,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                 Amount = Amount + Convert.ToDouble(item.TestDueAmount);
                             }
                         }
+                        if (item.Status == "P")
+                        {
+                            if (item.TestDueAmount != null)
+                            {
+                                Amount = Amount + Convert.ToDouble(item.TestDueAmount);
+                            }
+                        }
                         else if (item.Status == "I")
                         {
                             if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
@@ -718,7 +725,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 });
                 IsLoading = false;
             }
-            //IsLoading = false;
+            IsLoading = false;
         }
 
         //public void PopulateReturnTypeList()

@@ -391,9 +391,7 @@ namespace EGAZT.Models
                 }
             }
         }
-        public DateTime FormatedFromTaxPeriod { get; set; }
-        public DateTime FormatedToTaxPeriod { get; set; }
-
+      
     
         [JsonIgnore]
         public string StatusText { get; set; }

@@ -142,6 +142,7 @@
                                ItemsLayout="HorizontalList"
                           ItemsSource="{Binding ChipDataFilterlistForStatus}"
                                HeightRequest="50"
+                                WidthRequest="320"
                                HorizontalOptions="StartAndExpand" VerticalOptions="Start">
 
                                 <CollectionView.ItemTemplate>
