@@ -1017,47 +1017,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     var filterItems = MyBills;
 
 
-                    if (IsHijriCal)
-                    {
-                        CultureInfo arCI = new CultureInfo("ar-SA");
-                        DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
-                    }
-                    else
-                    {
-                        CultureInfo arCI = new CultureInfo("en-US");
-                        DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
-                    }
-
                     //if (IsHijriCal)
                     //{
                     //    CultureInfo arCI = new CultureInfo("ar-SA");
-                    //    DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
+                    //    DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
                     //        DateTimeStyles.AllowInnerWhite);
-                    //    DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
+                    //    DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
                     //        DateTimeStyles.AllowInnerWhite);
 
-                    //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart1)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart2)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
+                    //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
                     //}
                     //else
                     //{
-                    //    CultureInfo enCI = new CultureInfo("en-US");
-                    //    DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", enCI.DateTimeFormat,
+                    //    CultureInfo arCI = new CultureInfo("en-US");
+                    //    DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
                     //        DateTimeStyles.AllowInnerWhite);
-                    //    DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
+                    //    DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
                     //        DateTimeStyles.AllowInnerWhite);
-
-                    //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(p.PeriodPart1.Substring(p.PeriodPart1.Length-4,4)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(p.PeriodPart2.Substring(p.PeriodPart2.Length - 4, 4)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
-
+                    //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
                     //}
+
+                    if (IsHijriCal)
+                    {
+                        CultureInfo arCI = new CultureInfo("ar-SA");
+                        DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
+                            DateTimeStyles.AllowInnerWhite);
+                        DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
+                            DateTimeStyles.AllowInnerWhite);
+
+                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart1)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart2)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
+                    }
+                    else
+                    {
+                        CultureInfo enCI = new CultureInfo("en-US");
+                        DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", enCI.DateTimeFormat,
+                            DateTimeStyles.AllowInnerWhite);
+                        DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
+                            DateTimeStyles.AllowInnerWhite);
+
+                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(p.PeriodPart1.Substring(p.PeriodPart1.Length - 4, 4)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(p.PeriodPart2.Substring(p.PeriodPart2.Length - 4, 4)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
+
+                    }
 
                     FilterOnTaxType(MyBills);
 
