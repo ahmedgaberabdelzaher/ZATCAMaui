@@ -15863,5 +15863,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("AcPenality", resourceCulture);
             }
         }
+        
+        public static string AcFilterEmptyState {
+            get {
+                return ResourceManager.GetString("AcFilterEmptyState", resourceCulture);
+            }
+        }
     }
 }

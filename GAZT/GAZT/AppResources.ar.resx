@@ -8903,4 +8903,7 @@ info@gazt.gov.sa</value>
    <data name="AcPenality" xml:space="preserve">
     <value>غرامة</value>
   </data>
+  <data name="AcFilterEmptyState" xml:space="preserve">
+    <value>يرجى إدخال قيمة واحدة على الأقل</value>
+  </data>
 </root>

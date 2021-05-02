@@ -1368,8 +1368,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             FilterBtnCommand = new Command(() =>
             {
-                isFromFilter = true;
-                FilterIfTypeAndStausFilterSelected(false);
+
+                if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate)&& string.IsNullOrEmpty(TPToDate)&& string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount)) {
+
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AcFilterEmptyState));
+
+                }
+                else {
+
+                    isFromFilter = true;
+                    FilterIfTypeAndStausFilterSelected(false);
+                }
+
+
+            
 
             });
             FiltersTapped = new Command(() =>

@@ -76,22 +76,22 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
 
 
-            string str = myBills.Txt30.ToLower();
+            //string str = myBills.Txt30.ToLower();
             
-             if(str.Length > 0) {
+            // if(str.Length > 0) {
 
-                TaxTypeGrid.IsVisible = true;
-                str = char.ToUpper(str[0]) + str.Substring(1);
-            }
-             else {
+            //    TaxTypeGrid.IsVisible = true;
+            //    str = char.ToUpper(str[0]) + str.Substring(1);
+            //}
+            // else {
 
-                TaxTypeGrid.IsVisible = false;
-            }
+            //    TaxTypeGrid.IsVisible = false;
+            //}
 
           
 
            // LableTaxType.Text = myBills.Abtypt + " - " + str;
-            LableTaxType.Text = str;
+            LableTaxType.Text = myBills.Txt30;
 
 
             Color color = stringToColor(myBills.StatusText);
