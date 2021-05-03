@@ -170,8 +170,10 @@
                 </Grid.RowDefinitions>
                 <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"  x:Name="TaxTypeDesc" CornerRadius="8" Opacity=".2" >
                 </Frame>
-                <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="10">
-                    <custom:CustomLabel x:Name="LableTaxType" Text="" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></custom:CustomLabel>
+                <StackLayout Grid.Row="0" Padding="10" >
+                   <custom:CustomLabel x:Name="LableTaxType" Text="" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineHeight="0.7"></custom:CustomLabel>
+
+
                 </StackLayout>
             </Grid>
             </border:SfBorder>
