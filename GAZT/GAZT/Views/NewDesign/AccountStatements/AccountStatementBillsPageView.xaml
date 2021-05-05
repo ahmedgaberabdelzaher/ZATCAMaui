@@ -276,7 +276,7 @@
 
                                                 <!--<custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Txt30}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"   />-->
 
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding ACSFormatedFaedn}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding FormatedFaedn}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
                                                
                                             </Grid>
 
