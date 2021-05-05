@@ -187,7 +187,15 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             ChipModel chipModel = (ChipModel)chipGrid.BindingContext;
             if (chipModel != null)
             {
-                viewModel.FromStatus = chipModel.Text;
+                if(viewModel.FromStatus == chipModel.Text) {
+                    viewModel.FromStatus = "";
+
+                }
+                else {
+                    viewModel.FromStatus = chipModel.Text;
+                }
+
+                
                 viewModel.ApplyFilter();
             }
 

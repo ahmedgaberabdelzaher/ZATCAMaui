@@ -643,7 +643,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                     if (MyBills != null && MyBills.Count != 0)
                     {
-                        MyBillsOriginal = MyBills;
+
+                        var sortedBills = new ObservableCollection<MyBills>(MyBills.OrderByDescending(temp => temp.Faedn).ToList());
+                        MyBillsOriginal = sortedBills;
 
                         SelcectedBillsIndex = 0;
 
@@ -945,11 +947,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         public async void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
 
-            if (MyBillsOriginal == null)
-            {
-                _navigationService.GoBack();
-                return;
-            }
+            
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -974,7 +972,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
 
                 FilterOnTaxType(MyBills);
-               // ApplyFilter();
+                ApplyFilter();
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -982,142 +980,115 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 return;
             }
 
-            try {
-                if (TxFromDate != "" && TxToDate != "")
+            if (isFromFilter) {
+
+                try
+                {
+                    if (TxFromDate != "" && TxToDate != "")
+                    {
+                        var filterItems = MyBills;
+
+                        if (IsHijriCal)
+                        {
+                            CultureInfo arCI = new CultureInfo("ar-SA");
+                            DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                                DateTimeStyles.AllowInnerWhite);
+                            DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                                DateTimeStyles.AllowInnerWhite);
+
+                            MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
+                        }
+                        else
+                        {
+                            CultureInfo arCI = new CultureInfo("en-US");
+                            DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                                DateTimeStyles.AllowInnerWhite);
+                            DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                                DateTimeStyles.AllowInnerWhite);
+                            MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
+                        }
+
+                        FilterOnTaxType(MyBills);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
+                try
+                {
+
+
+
+                    if (TPFromDate != "" && TPToDate != "")
+                    {
+                        var filterItems = MyBills;
+
+
+                        //if (IsHijriCal)
+                        //{
+                        //    CultureInfo arCI = new CultureInfo("ar-SA");
+                        //    DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
+                        //        DateTimeStyles.AllowInnerWhite);
+                        //    DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
+                        //        DateTimeStyles.AllowInnerWhite);
+
+                        //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
+                        //}
+                        //else
+                        //{
+                        //    CultureInfo arCI = new CultureInfo("en-US");
+                        //    DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
+                        //        DateTimeStyles.AllowInnerWhite);
+                        //    DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
+                        //        DateTimeStyles.AllowInnerWhite);
+                        //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
+                        //}
+
+                        if (IsHijriCal)
+                        {
+                            CultureInfo arCI = new CultureInfo("ar-SA");
+                            DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
+                                DateTimeStyles.AllowInnerWhite);
+                            DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
+                                DateTimeStyles.AllowInnerWhite);
+
+                            MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart1)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart2)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
+                        }
+                        else
+                        {
+                            CultureInfo enCI = new CultureInfo("en-US");
+                            DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", enCI.DateTimeFormat,
+                                DateTimeStyles.AllowInnerWhite);
+                            DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
+                                DateTimeStyles.AllowInnerWhite);
+
+                            MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(p.PeriodPart1.Substring(p.PeriodPart1.Length - 4, 4)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(p.PeriodPart2.Substring(p.PeriodPart2.Length - 4, 4)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
+
+                        }
+
+                        FilterOnTaxType(MyBills);
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
+
+
+                if (FromTxAmount != "" && ToTxAmount != "")
                 {
                     var filterItems = MyBills;
-
-                    if (IsHijriCal)
-                    {
-                        CultureInfo arCI = new CultureInfo("ar-SA");
-                        DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
-                    }
-                    else
-                    {
-                        CultureInfo arCI = new CultureInfo("en-US");
-                        DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
-                    }
-
-                    FilterOnTaxType(MyBills);
-                }
-            }
-            catch(Exception ex) {
-
-            }
-
-
-            try {
-
-
-
-                if (TPFromDate != "" && TPToDate != "")
-                {
-                    var filterItems = MyBills;
-
-
-                    //if (IsHijriCal)
-                    //{
-                    //    CultureInfo arCI = new CultureInfo("ar-SA");
-                    //    DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
-                    //        DateTimeStyles.AllowInnerWhite);
-                    //    DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
-                    //        DateTimeStyles.AllowInnerWhite);
-
-                    //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
-                    //}
-                    //else
-                    //{
-                    //    CultureInfo arCI = new CultureInfo("en-US");
-                    //    DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
-                    //        DateTimeStyles.AllowInnerWhite);
-                    //    DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
-                    //        DateTimeStyles.AllowInnerWhite);
-                    //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
-                    //}
-
-                    if (IsHijriCal)
-                    {
-                        CultureInfo arCI = new CultureInfo("ar-SA");
-                        DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart1)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart2)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
-                    }
-                    else
-                    {
-                        CultureInfo enCI = new CultureInfo("en-US");
-                        DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", enCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(p.PeriodPart1.Substring(p.PeriodPart1.Length - 4, 4)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(p.PeriodPart2.Substring(p.PeriodPart2.Length - 4, 4)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
-
-                    }
-
-                    FilterOnTaxType(MyBills);
-
-
-                }
-            }
-            catch(Exception ex) {
-
-            }
-
-
-                    
-
-            if (FromTxAmount != "" && ToTxAmount != "")
-            {
-                var filterItems = MyBills;
-                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => Convert.ToDouble(p.BETRW) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.BETRW) <= Convert.ToDouble(ToTxAmount)));
-            }
-
-            if (FromStatus != "")
-            {
-                if (FromStatus.Equals(AppResources.Paid))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
+                    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => Convert.ToDouble(p.BETRW) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.BETRW) <= Convert.ToDouble(ToTxAmount)));
                 }
 
-                if (FromStatus.Equals(AppResources.PartiallyPaid))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
-                }
 
-                if (FromStatus.Equals(AppResources.UnPaid))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-                }
-
-                if (FromStatus.Equals(AppResources.All))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-                }
-                FromStatus = "";
-
-                FilterOnTaxType(MyBills);
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
-                return;
-            }
-            else if(isFromFilter)
-            {
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1147,26 +1118,80 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     //_dialogService.ShowMessage(AppResources.AccountStatementsTaxPeriod, AppResources.Information);
                     return;
                 }
+                isFromFilter = false;
                 _navigationService.GoBack();
             }
+            else {
+                if (FromStatus != "")
+                {
+                    if (FromStatus.Equals(AppResources.Paid))
+                    {
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
+                    }
 
-            if (SearchText != "")
-            {
-                var suggestion = MyBillsOriginal.Where(c => c.Abtypt.ToLower().Contains(SearchText.ToLower()) || c.Fbnum.ToLower().Contains(SearchText.ToLower())
-                    || c.Status.ToLower().Contains(SearchText.ToLower()) || c.StatusText.ToLower().Contains(SearchText.ToLower())
-                    || c.BETRW.ToLower().Contains(SearchText.ToLower()) || c.TestDueAmount.ToLower().Contains(SearchText.ToLower())
-                    || c.Txt30.ToLower().Contains(SearchText.ToLower())).ToList();
+                    if (FromStatus.Equals(AppResources.PartiallyPaid))
+                    {
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
+                    }
 
-                MyBills = new ObservableCollection<MyBills>(suggestion);
-                FilterOnTaxType(MyBills);
+                    if (FromStatus.Equals(AppResources.UnPaid))
+                    {
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                    }
+
+                    if (FromStatus.Equals(AppResources.All))
+                    {
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                    }
+                    //FromStatus = "";
+
+                    FilterOnTaxType(MyBills);
+
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    return;
+                }
+                else if (FromStatus == "")
+                {
+
+
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+
+                    //FromStatus = "";
+
+                    FilterOnTaxType(MyBills);
+
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    return;
+                }
+
+                if (SearchText != "")
+                {
+                    var suggestion = MyBillsOriginal.Where(c => c.Abtypt.ToLower().Contains(SearchText.ToLower()) || c.Fbnum.ToLower().Contains(SearchText.ToLower())
+                        || c.Status.ToLower().Contains(SearchText.ToLower()) || c.StatusText.ToLower().Contains(SearchText.ToLower())
+                        || c.BETRW.ToLower().Contains(SearchText.ToLower()) || c.TestDueAmount.ToLower().Contains(SearchText.ToLower())
+                        || c.Txt30.ToLower().Contains(SearchText.ToLower())).ToList();
+
+                    MyBills = new ObservableCollection<MyBills>(suggestion);
+                    FilterOnTaxType(MyBills);
+                }
+
+                isFromFilter = false;
+
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
 
-            isFromFilter = false;
 
-            await Task.Run(() =>
-            {
-                //IsLoading = false;
-            });
 
         }
 
@@ -1262,10 +1287,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         public void ApplyFilter()
         {
 
-            if (FromStatus != "")
-            {
+            //if (FromStatus != "")
+            //{
                 FilterIfTypeAndStausFilterSelected(false);
-            }
+            //}
 
         }
 
