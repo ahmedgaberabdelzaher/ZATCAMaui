@@ -386,7 +386,16 @@ namespace EGAZT.Models
                         string[] dts = FormatedFaedn.Split('-');
                         string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                         FormatedFaedn = date;
+                        ACSFormatedFaedn = date;
                     }
+                    else {
+
+                        ACSFormatedFaedn = _faedn.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        string[] dts = ACSFormatedFaedn.Split('-');
+                        string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                        ACSFormatedFaedn = date;
+                    }
+
 
                 }
             }
@@ -397,6 +406,8 @@ namespace EGAZT.Models
         public string StatusText { get; set; }
 
         public string FormatedFaedn { get; set; }
+        public string ACSFormatedFaedn { get; set; }
+
         private string _status = string.Empty;
         public string Status
         {
