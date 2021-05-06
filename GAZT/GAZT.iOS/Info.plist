@@ -77,7 +77,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>GAZT</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gazt.egazt</string>
+	<string>com.gazt.enterprise.egazt</string>
 	<key>CFBundleVersion</key>
 	<string>1.0.35</string>
 	<key>CFBundleShortVersionString</key>
