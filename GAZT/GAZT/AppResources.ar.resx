@@ -8906,4 +8906,31 @@ info@gazt.gov.sa</value>
   <data name="VATRegistrationSuccessMessage" xml:space="preserve">
     <value>Your request for VAT registration number</value>
   </data>
+  <data name="NDRelationContact" xml:space="preserve">
+    <value>عرض بيانات التواصل لمدير ومشرف العلقة</value>
+  </data>
+  <data name="RMName" xml:space="preserve">
+    <value>مدير العلاقة:</value>
+  </data>
+  <data name="RMSupName" xml:space="preserve">
+    <value>مشرف مدير العلاقة:</value>
+  </data>
+  <data name="RMTitle" xml:space="preserve">
+    <value>بيانات التوصل ومشرف العلامة:</value>
+  </data>
+  <data name="RM_Email" xml:space="preserve">
+    <value>البريد الاكتروني:</value>
+  </data>
+  <data name="RM_Name" xml:space="preserve">
+    <value>الاسم:</value>
+  </data>
+  <data name="RM_phone" xml:space="preserve">
+    <value>الهاتف:</value>
+  </data>
+  <data name="RM_ShareOpenion" xml:space="preserve">
+    <value>شاركنا برأيك عن مدير  العلاقة</value>
+  </data>
+  <data name="RM_SubmitComplaint" xml:space="preserve">
+    <value>تقديم شكوى</value>
+  </data>
 </root>

@@ -135,6 +135,8 @@ using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 
 using Xamarin.Forms.Internals;
 using EGAZT.Views.NewDesign.PaymentOptions;
+using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
+using EGAZT.Views.NewDesign.SupportPages;
 
 namespace EGAZT
 {
@@ -211,6 +213,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxManagementPageViewModel>();
             SimpleIoc.Default.Register<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionPageWebViewModel>();
+            SimpleIoc.Default.Register<RelationShipManagerInfoPageViewModel>();
             #endregion
 
             #region NewDesignRelease2IOC
@@ -258,6 +261,8 @@ namespace EGAZT
             #endregion
 
             #region OldIOC
+            
+
 
             SimpleIoc.Default.Register<SFLoginPageViewModel>();
             SimpleIoc.Default.Register<PdfViewModel>();
@@ -2279,6 +2284,8 @@ namespace EGAZT
             navigationService.Configure(App.VATServicesPageView, typeof(Views.NewDesign.VATServices.VATServicesPageView));
             navigationService.Configure(App.TaxEvasionPageWebView, typeof(TaxEvasionPageWebView));
 
+
+            navigationService.Configure(App.RelationShipManagerInfoPageView, typeof(RelationShipManagerInfoPageView));
             #endregion
 
             #region NewDesignRelease2
@@ -2578,6 +2585,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ViewNotePopUpViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        
+        public RelationShipManagerInfoPageViewModel RelationShipManagerInfoPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<RelationShipManagerInfoPageViewModel>();
                 }
                 catch (Exception)
                 {

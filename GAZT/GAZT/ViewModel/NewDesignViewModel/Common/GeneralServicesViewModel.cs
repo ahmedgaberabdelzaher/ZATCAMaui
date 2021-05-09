@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Manager;
+using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -46,6 +50,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                 RaisePropertyChanged("RefundRequestMenuList");
             }
         }
+
+        
         public ObservableCollection<GeneralServicesListModel> _fillingFrquencyMenuList { get; set; }
         public ObservableCollection<GeneralServicesListModel> FillingFrquencyMenuList
         {
@@ -98,6 +104,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     ZDImageSource = "tax_evasion_green.png",
                     ArrowImageSource = fileImage
                 });
+            generalServicesListData.Add(new GeneralServicesListModel
+            {
+                ZDTitle=AppResources.NDRelationContact,
+                ZDImageSource= "tax_evasion_green.png",
+                ArrowImageSource= fileImage
+            });
+
                 GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
         }
         

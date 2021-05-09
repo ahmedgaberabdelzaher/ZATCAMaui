@@ -7237,6 +7237,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display Relationship Manager and Supervisor Contact Information.
+        /// </summary>
+        public static string NDRelationContact {
+            get {
+                return ResourceManager.GetString("NDRelationContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reporter Information.
         /// </summary>
         public static string NDReporterInformation {
@@ -8787,6 +8796,78 @@ namespace EGAZT {
         public static string ReviewSADADBillDetailss {
             get {
                 return ResourceManager.GetString("ReviewSADADBillDetailss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email:.
+        /// </summary>
+        public static string RM_Email {
+            get {
+                return ResourceManager.GetString("RM_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        public static string RM_Name {
+            get {
+                return ResourceManager.GetString("RM_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone Number:.
+        /// </summary>
+        public static string RM_phone {
+            get {
+                return ResourceManager.GetString("RM_phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share your opinion on Relationship manager.
+        /// </summary>
+        public static string RM_ShareOpenion {
+            get {
+                return ResourceManager.GetString("RM_ShareOpenion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit a Complaint.
+        /// </summary>
+        public static string RM_SubmitComplaint {
+            get {
+                return ResourceManager.GetString("RM_SubmitComplaint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relationship Manager:.
+        /// </summary>
+        public static string RMName {
+            get {
+                return ResourceManager.GetString("RMName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relationship Manager Supervisor:.
+        /// </summary>
+        public static string RMSupName {
+            get {
+                return ResourceManager.GetString("RMSupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relationship Manager and Supervisor Contact Information.
+        /// </summary>
+        public static string RMTitle {
+            get {
+                return ResourceManager.GetString("RMTitle", resourceCulture);
             }
         }
         

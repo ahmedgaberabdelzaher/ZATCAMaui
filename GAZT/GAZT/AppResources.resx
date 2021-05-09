@@ -8984,4 +8984,31 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="VATRegistrationSuccessMessage" xml:space="preserve">
     <value>Your request for VAT registration number</value>
   </data>
+  <data name="NDRelationContact" xml:space="preserve">
+    <value>Display Relationship Manager and Supervisor Contact Information</value>
+  </data>
+  <data name="RMName" xml:space="preserve">
+    <value>Relationship Manager:</value>
+  </data>
+  <data name="RMSupName" xml:space="preserve">
+    <value>Relationship Manager Supervisor:</value>
+  </data>
+  <data name="RMTitle" xml:space="preserve">
+    <value>Relationship Manager and Supervisor Contact Information</value>
+  </data>
+  <data name="RM_Email" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="RM_Name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="RM_phone" xml:space="preserve">
+    <value>Phone Number:</value>
+  </data>
+  <data name="RM_ShareOpenion" xml:space="preserve">
+    <value>Share your opinion on Relationship manager</value>
+  </data>
+  <data name="RM_SubmitComplaint" xml:space="preserve">
+    <value>Submit a Complaint</value>
+  </data>
 </root>
