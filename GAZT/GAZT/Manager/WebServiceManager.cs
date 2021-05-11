@@ -164,7 +164,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static ObservableCollection<MyBills> GAZTGetMyBills(String Tin, string lang)
+        public static ObservableCollection<MyBills> GAZTGetMyBills(String Tin, string lang, string requestHeader)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -177,7 +177,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-
+                    client.DefaultRequestHeaders.Add("ServiceType", requestHeader);
 
                     String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=enabled&$format=json&sap-language=" + lang;
                     var uri = new Uri(url);

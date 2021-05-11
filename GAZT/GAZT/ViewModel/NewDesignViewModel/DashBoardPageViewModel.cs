@@ -2145,7 +2145,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             ObservableCollection<MyBills> ACBills = new ObservableCollection<MyBills>();
 
-            ObservableCollection<MyBills> TempBills =  WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+            ObservableCollection<MyBills> TempBills =  WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang,"Bills");
 
             if (TempBills != null)
             {

@@ -638,7 +638,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    MyBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+                    MyBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang,"AccountStatements");
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (MyBills != null && MyBills.Count != 0)
