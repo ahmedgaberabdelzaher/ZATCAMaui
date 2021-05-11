@@ -44,6 +44,10 @@ namespace EGAZT.Models
                 {
                     BillTitle = AppResources.AcPenality;
                 }
+                else if (Blart == "IP")
+                {
+                    BillTitle = AppResources.ZakatInstallmentPageTitle;
+                }
             }
         }
 
@@ -60,6 +64,10 @@ namespace EGAZT.Models
                 _abtypt = value;
                 if(Blart == "IF") {
                     BillTitle = AppResources.AcPenality;
+                }
+                else if (Blart == "IP")
+                {
+                    BillTitle = AppResources.ZakatInstallmentPageTitle;
                 }
                 else {
                     BillTitle = _abtypt;
