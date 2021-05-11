@@ -161,7 +161,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DpEStartDate_Closed(object sender, EventArgs e)
+        private async void DpEStartDate_Closed(object sender, EventArgs e)
         {
             try
             {
@@ -170,6 +170,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                
             }
             catch (Exception)
             {
@@ -177,7 +178,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DpEStartDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private async void DpEStartDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             try
             {
@@ -186,6 +187,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
             }
             catch (Exception)
             {
@@ -1128,7 +1130,9 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) => { PopupNavigation.Instance.PopAsync(); });
                 MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
                 {
-                    viewModel.VatEligibleStartDate = DateTime.Parse(arg.SelectedValue).Date.ToString("dd/MM/yyyy").Replace('-', '/');
+                    //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
+                    //viewModel.VatEligibleStartDate = DateTime.Parse(arg.SelectedValue).Date.ToString("dd/MM/yyyy").Replace('-', '/');
+                     viewModel.getVatEligibleDate(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
                 });
                 Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
                 {

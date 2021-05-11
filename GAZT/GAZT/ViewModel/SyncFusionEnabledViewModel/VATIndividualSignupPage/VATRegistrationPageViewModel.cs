@@ -1926,7 +1926,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 string displayMessage = AppResources.VATRegistrationSuccessMessage + " " + response.d.Fbnumz + " " + AppResources.VatApproved;
                                 //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
-                                //_navigationService.GoBack();
+                                _navigationService.GoBack();
                             }
 
 

@@ -498,7 +498,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     VATRegistrationDetails response = await viewModel.SubmitClicked();
                     if (response != null)
                     {
-                        viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
+                        if (response.d.Operationz.Equals("25"))
+                        {
+                            viewModel._navigationService.GoBack();
+                        }
+                        else
+                        {
+                            viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
+                        }
+                        
+
                     }
 
                 }
