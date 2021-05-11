@@ -500,16 +500,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         if (response.d.Operationz.Equals("25"))
                         {
-                            viewModel._navigationService.GoBack();
+                            if (Navigation.NavigationStack.Count > 0)
+                            {
+                                Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                                Navigation.RemovePage(pg1);
+                                this.Navigation.PopAsync();
+                            }
+                            //viewModel._navigationService.GoBack();
                         }
                         else
                         {
                             viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
                         }
-                        
-
                     }
-
                 }
                 else
                 {
