@@ -811,43 +811,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             calculateMyBills = isTaxTypeFilter;
 
-            if (isTaxTypeFilter)
+            if (MyBillsOriginal != null)
             {
-                MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
 
-                FilterOnTaxType(MyBills);
-                return;
+                if (isTaxTypeFilter)
+                {
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+
+                    FilterOnTaxType(MyBills);
+                    return;
+                }
+
+                if (SelectedChipFilterItem != null)
+                {
+                    if (SelectedChipFilterItem.TemplateType.Equals(AppResources.Paid))
+                    {
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
+                    }
+
+                    if (SelectedChipFilterItem.TemplateType.Equals(AppResources.PartiallyPaid))
+                    {
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
+                    }
+
+                    if (SelectedChipFilterItem.TemplateType.Equals(AppResources.UnPaid))
+                    {
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                    }
+
+                    if (SelectedChipFilterItem.TemplateType.Equals(AppResources.All))
+                    {
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                    }
+
+                    FilterOnTaxType(MyBills);
+                }
+
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
-
-            if (SelectedChipFilterItem != null)
+            else
             {
-                if (SelectedChipFilterItem.TemplateType.Equals(AppResources.Paid))
+                await Task.Run(() =>
                 {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
-                }
-
-                if (SelectedChipFilterItem.TemplateType.Equals(AppResources.PartiallyPaid))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
-                }
-
-                if (SelectedChipFilterItem.TemplateType.Equals(AppResources.UnPaid))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-                }
-
-                if (SelectedChipFilterItem.TemplateType.Equals(AppResources.All))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-                }
-
-                FilterOnTaxType(MyBills);
+                    IsLoading = false;
+                });
             }
-
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
 
         }
 

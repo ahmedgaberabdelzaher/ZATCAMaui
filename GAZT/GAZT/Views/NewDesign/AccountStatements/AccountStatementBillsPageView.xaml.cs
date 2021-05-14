@@ -47,17 +47,20 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     BillInfo billInfo = new BillInfo();
                     viewModel.onPageLoad(billInfo);
                     //viewModel.PopulateReturnTypeList();
-                   
+
                     //                viewModel.PopulateDataInChips();
                     //viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
-                    viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "P"));
+                    if (viewModel.MyBillsOriginal != null)
+                    {
+                        viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "P"));
+                    }
 
 
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
                 }
 
                 try
@@ -70,6 +73,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
 
                 }
             });
