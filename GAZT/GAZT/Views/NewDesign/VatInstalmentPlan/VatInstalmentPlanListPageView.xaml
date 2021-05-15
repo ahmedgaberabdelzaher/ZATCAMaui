@@ -382,9 +382,22 @@
 
  
 
-                                                    <custom:CustomLabel   Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" Style="{StaticResource CaptionLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                                    <custom:CustomLabel  Grid.Column="1" Text="{Binding amount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
-                                                </Grid>
+                                                    <custom:CustomLabel   Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                                    <!--<custom:CustomLabel  Grid.Column="1" Text="{Binding amount}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>-->
+
+                                                    <custom:CustomLabel Grid.Column="1" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand">
+                                                      <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding amount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                            <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                 </custom:CustomLabel>
+
+
+
+                                                 </Grid>
 
                                             </Grid>
 

@@ -889,12 +889,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             SummarySelectedBillsList = new ObservableCollection<ZakatSelectBillModel>();
             foreach (var bill in itemDetails.d.VTIASet.results)
             {
-                if(bill.Xsele == "X") {
+                if (bill.Xsele == "X")
+                {
 
                     SummarySelectedBillsList.Add(new ZakatSelectBillModel()
                     {
                         billNumber = AppResources.Bill + " " + (SummarySelectedBillsList.Count + 1).ToString("00") + ":",
-                        amount = bill.Betrh + " " + bill.Waers,
+                        amount = bill.Betrh,
                         saadNumber = bill.SadadNo,
                         taxPeriod = bill.Taxperioddsc,
                         isSelected = false,
@@ -904,7 +905,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
 
 
-             
+
             }
 
 
