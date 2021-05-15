@@ -2642,7 +2642,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
 
             Bills = temp1;
-            PendingBills = pendingBills;            if (PendingBills.Count == 0)
+            PendingBills = pendingBills;
+            if (PendingBills.Count == 0)
             {
                 IsPendingBillsVisible = false;
             }
@@ -2793,8 +2794,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     DateTime Today = DateTime.Now;
                     var BillsAndReturnsCommitmentsLocal = new List<OverduePaymentAndUnSubmittedReturn>();
-                    var BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
-                    BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsOverdurItems.OrderByDescending(i => (i.DueDtC)).ToList();
+                    var BillsAndReturnsCommitmentsOverdurItems = new List<OverduePaymentAndUnSubmittedReturn>();//BillsAndReturnsCommitmentsTemp.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
+
+                  //  BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsOverdurItems.OrderByDescending(i => (i.DueDtC)).OrderByDescending(i=>(i.DueDt)).ToList();
 
                     var tempList = new List<OverduePaymentAndUnSubmittedReturn>();
 
@@ -2802,7 +2804,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
                         {
-                             BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) <= 0).ToList();
+                             BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a =>
+                             (a.DueDtC!=null&&DateTime.Compare((DateTime)a.DueDtC, Today) <= 0)
+                             ||(a.DueDt != null && DateTime.Compare(Convert.ToDateTime(a.DueDt), Today) <= 0)).ToList();
 
                             foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
                             {
@@ -2812,9 +2816,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 { date = Convert.ToDateTime(item.DueDtC); }
                                 else { date = Convert.ToDateTime(item.DueDt);
                                 }
-                             
-                                   // if (date.Year != Today.Year)
-                                    //{
+                          
                                         if (App.IsArabic)
                                         {
                                             if (item.CalendarTyp.Equals("H") || item.Incotyp.StartsWith("H"))
@@ -2859,15 +2861,73 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                 item.Month = date.Year.ToString();
                                             }
                                         }
-                                       // item.Month = date.Year.ToString();
-                                    //}
-                                  
+                     
                                 
                             }
                         }
                         else if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
                         {
-                            BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) > 0).ToList();
+                            BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a =>
+                            (a.DueDtC != null && DateTime.Compare((DateTime)a.DueDtC, Today) > 0)
+                            || (a.DueDt != null && DateTime.Compare(Convert.ToDateTime(a.DueDt), Today) > 0)).ToList();
+                            foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
+                            {
+                                var date = new DateTime();
+
+                                if (item.IsPaymentOverdue)
+                                { date = Convert.ToDateTime(item.DueDtC); }
+                                else
+                                {
+                                    date = Convert.ToDateTime(item.DueDt);
+                                }
+
+                                if (App.IsArabic)
+                                {
+                                    if (item.CalendarTyp.Equals("H") || item.Incotyp.StartsWith("H"))
+                                    {
+                                        item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                        if (!item.IsPaymentOverdue)
+                                        {
+                                            var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
+                                            string[] splitDate = hijriDate.Split('/');
+                                            item.Month = splitDate[0];
+                                        }
+                                        else
+                                        {
+                                            item.Month = date.Year.ToString();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Month = date.Year.ToString();
+                                    }
+                                }
+                                else
+                                {
+                                    if (item.CalendarTyp.Equals("H") || item.Incotyp.StartsWith("H"))
+                                    {
+                                        item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                        if (!item.IsPaymentOverdue)
+                                        {
+                                            var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
+                                            string[] splitDate = hijriDate.Split('/');
+                                            item.Month = splitDate[0];
+                                        }
+                                        else
+                                        {
+                                            item.Month = date.Year.ToString();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
+                                        item.Month = date.Year.ToString();
+                                    }
+                                }
+
+
+                            }
                         }
                         if (BillsAndReturnsCommitmentsOverdurItems != null && BillsAndReturnsCommitmentsOverdurItems.Count > 0)
                         {
@@ -2924,6 +2984,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                         }
                     }
+
+                    var BillsAndReturnsCommitmentsLocalDueDTC = BillsAndReturnsCommitmentsLocal.Where(x => x.DueDtC != null).ToList();
+                    var BillsAndReturnsCommitmentsLocalDueDT = BillsAndReturnsCommitmentsLocal.Where(x => x.DueDt != null).ToList();
+                    BillsAndReturnsCommitmentsLocalDueDT = BillsAndReturnsCommitmentsLocalDueDT.Select(x =>
+                    { x.DueDtC = Convert.ToDateTime(x.DueDt);return x; }
+                        ).ToList() ;
+                    BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocalDueDTC.Concat(BillsAndReturnsCommitmentsLocalDueDT).ToList();
 
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderByDescending(i => (i.DueDtC)).ToList();
                     BillsAndReturnsCommitmentsTemp.Clear();
