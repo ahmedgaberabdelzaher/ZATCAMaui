@@ -27,7 +27,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>Full</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
     <MtouchFastDev>true</MtouchFastDev>
@@ -55,11 +55,26 @@
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>Full</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
     <CodesignProvision>VS: com.gazt.egazt Development</CodesignProvision>
+    <MtouchExtraArgs>--linkskip=AppDynamics.Agent --linkskip=UIKit   --linkskip=Syncfusion.SfPdfViewer.XForms        --linkskip=Newtonsoft.Json
+ --linkskip=Newtonsoft.Json.Linq --linkskip=Plugin.Connectivity
+ --linkskip=System
+ --linkskip=System.Collections.Generic --linkskip=System.Collections.ObjectModel
+ --linkskip=System.IO
+ --linkskip=System.Linq
+ --linkskip=System.Net
+ --linkskip=System.Net.Http
+ --linkskip=System.Net.Http.Headers
+ --linkskip=System.Text
+ --linkskip=System.Threading
+ --linkskip=System.Threading.Tasks
+ --linkskip=System.Xml
+ --linkskip=System.Xml.Linq
+ --linkskip=System.Xml.XPath  --linkskip=Xamarin.Forms</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
