@@ -123,7 +123,22 @@
     <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
     <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>Full</MtouchLink>
+    <MtouchExtraArgs>--linkskip=AppDynamics.Agent --linkskip=UIKit   --linkskip=Syncfusion.SfPdfViewer.XForms        --linkskip=Newtonsoft.Json
+ --linkskip=Newtonsoft.Json.Linq --linkskip=Plugin.Connectivity
+ --linkskip=System
+ --linkskip=System.Collections.Generic --linkskip=System.Collections.ObjectModel
+ --linkskip=System.IO
+ --linkskip=System.Linq
+ --linkskip=System.Net
+ --linkskip=System.Net.Http
+ --linkskip=System.Net.Http.Headers
+ --linkskip=System.Text
+ --linkskip=System.Threading
+ --linkskip=System.Threading.Tasks
+ --linkskip=System.Xml
+ --linkskip=System.Xml.Linq
+ --linkskip=System.Xml.XPath  --linkskip=Xamarin.Forms</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>
