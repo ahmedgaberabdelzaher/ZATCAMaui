@@ -970,20 +970,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             if (MyBillsOriginal != null)
             {
-                MyBills = MyBillsOriginal;
-
-                if (isTaxTypeFilter)
+                try
                 {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal);
 
-                    FilterOnTaxType(MyBills);
-                    ApplyFilter();
-                    await Task.Run(() =>
+                    if (isTaxTypeFilter)
                     {
-                        IsLoading = false;
-                    });
-                    return;
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+
+                        FilterOnTaxType(MyBills);
+                        ApplyFilter();
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                        return;
+                    }
                 }
+                catch (Exception ex)
+                {
+
+                }
+          
 
                 if (isFromFilter)
                 {
@@ -1163,32 +1171,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                     else if (FromStatus == "")
                     {
-
-
-                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-
-                        //FromStatus = "";
-
-                        FilterOnTaxType(MyBills);
-
-                        await Task.Run(() =>
+                        if (SearchText != "")
                         {
-                            IsLoading = false;
-                        });
+                            var suggestion = MyBillsOriginal.Where(c => c.Abtypt.ToLower().Contains(SearchText.ToLower()) || c.Fbnum.ToLower().Contains(SearchText.ToLower())
+                                || c.Status.ToLower().Contains(SearchText.ToLower()) || c.StatusText.ToLower().Contains(SearchText.ToLower())
+                                || c.BETRW.ToLower().Contains(SearchText.ToLower()) || c.TestDueAmount.ToLower().Contains(SearchText.ToLower())
+                                || c.Txt30.ToLower().Contains(SearchText.ToLower())).ToList();
 
-                        return;
+                            MyBills = new ObservableCollection<MyBills>(suggestion);
+                            FilterOnTaxType(MyBills);
+                        }
+                        else {
+
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+
+                            //FromStatus = "";
+
+                            FilterOnTaxType(MyBills);
+
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+
+                            return;
+
+                        }
+
+
                     }
 
-                    if (SearchText != "")
-                    {
-                        var suggestion = MyBillsOriginal.Where(c => c.Abtypt.ToLower().Contains(SearchText.ToLower()) || c.Fbnum.ToLower().Contains(SearchText.ToLower())
-                            || c.Status.ToLower().Contains(SearchText.ToLower()) || c.StatusText.ToLower().Contains(SearchText.ToLower())
-                            || c.BETRW.ToLower().Contains(SearchText.ToLower()) || c.TestDueAmount.ToLower().Contains(SearchText.ToLower())
-                            || c.Txt30.ToLower().Contains(SearchText.ToLower())).ToList();
-
-                        MyBills = new ObservableCollection<MyBills>(suggestion);
-                        FilterOnTaxType(MyBills);
-                    }
+                    
 
                     isFromFilter = false;
 

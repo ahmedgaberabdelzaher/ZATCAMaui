@@ -167,8 +167,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             viewModel.IsSearchButtonVisible = true;
             viewModel.IsCloseButtonVisible = false;
+            viewModel.SearchText = "";
             /*viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results);
             viewModel.IsVisible_SearchList = false;*/
+            viewModel.FilterIfTypeAndStausFilterSelected(false);
         }
 
         private void btn_Clicked(object sender, System.EventArgs e)
