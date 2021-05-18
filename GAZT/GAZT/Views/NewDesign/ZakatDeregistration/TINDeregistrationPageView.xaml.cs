@@ -1056,8 +1056,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && viewModel.SelectedOutletOption.OutletOptionIndex != "1" && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
-                          //  viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
-                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+                            //  viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
                             viewModel.PickerDOBDateDisplay = "";
                             viewModel.SelectedDob = "";
                         }
@@ -1080,7 +1080,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && viewModel.SelectedOutletOption.OutletOptionIndex != "1" && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
-                           // viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            // viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
 
                             viewModel.PickerDOBDateDisplay = "";
@@ -1130,7 +1130,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     viewModel.IsDeRegistrationValid = false;
                     FrmDBO.HasError = true;
-                   // viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                    // viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
 
                 }
@@ -1155,7 +1155,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
                         {
-                           // viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            // viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
 
                             return;
@@ -1887,7 +1887,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
 
                     viewModel.AddPermitOutletDecisionOptions();
-                    viewModel.AddPopUpPage();
+                    var viewModel1 = JsonConvert.SerializeObject(viewModel);
+                    var list = new List<TINDeregistrationPageViewModel>();
+                    foreach (var item1 in viewModel.SelectedOutletForCloseTranser.PermitTypes)
+                    {
+                        item1.APermitDeregDisplayDobDate = item1.APermitDobHTb;
+                    }
+                    list.Add(viewModel);
+                    viewModel.AddPopUpPage(list);
                     var view = sender as SfListView;
                     view.SelectedItem = null;
                 }

@@ -1910,6 +1910,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         public async void NewContractCopyAttachmentClicked()
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             _isInvoiceAttachments = false;
             if (ContractCopyAttachmentsListViewData == null)
             {
@@ -1943,6 +1944,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         public async void NewInvoiceAttachmentClicked()
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             _isInvoiceAttachments = true;
             if (InvoiceAttachmentsListViewData == null)
             {

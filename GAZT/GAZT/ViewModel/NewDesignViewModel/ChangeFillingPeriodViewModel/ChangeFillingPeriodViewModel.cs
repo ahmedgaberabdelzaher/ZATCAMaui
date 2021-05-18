@@ -1277,7 +1277,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             try
             {
-
+                if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
                 if (SelectedOutletOptionIndex == 0)
                 {
                     if (YearsattachmentsListViewData == null)

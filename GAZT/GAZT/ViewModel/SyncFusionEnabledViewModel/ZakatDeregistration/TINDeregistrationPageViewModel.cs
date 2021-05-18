@@ -77,6 +77,73 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         #endregion
 
         #region Properties
+
+        public bool _isTransferPermitViewVisible;
+        public bool IsTransferPermitViewVisible
+        {
+            get => _isTransferPermitViewVisible;
+            set
+            {
+                _isTransferPermitViewVisible = value;
+                RaisePropertyChanged("IsTransferPermitViewVisible");
+            }
+        }
+
+        private string _firstName;
+        public string FirstName
+        {
+            get => _firstName;
+            set
+            {
+                _firstName = value;
+                IDTypeDataModel.Name1 = value;
+                RaisePropertyChanged("FirstName");
+            }
+        }
+        private string _surName;
+        public string SurName
+        {
+            get => _surName;
+            set
+            {
+                _surName = value;
+                IDTypeDataModel.Name2 = value;
+                RaisePropertyChanged("SurName");
+            }
+        }
+        private string _familyName;
+        public string FamilyName
+        {
+            get => _familyName;
+            set
+            {
+                _familyName = value;
+                IDTypeDataModel.FamilyName = value;
+                RaisePropertyChanged("FamilyName");
+            }
+        }
+        private string _fatherName;
+        public string FatherName
+        {
+            get => _fatherName;
+            set
+            {
+                _fatherName = value;
+                IDTypeDataModel.FatherName = value;
+                RaisePropertyChanged("FatherName");
+            }
+        }
+        private string _gFatherName;
+        public string GrandfatherName
+        {
+            get => _gFatherName;
+            set
+            {
+                _gFatherName = value;
+                IDTypeDataModel.GrandfatherName = value;
+                RaisePropertyChanged("GrandfatherName");
+            }
+        }
         public string attachmentsListViewDataString { get; set; }
         private string _labelText;
         public string LabelText
@@ -294,10 +361,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-              //  if (_PickerCloseAllDeregDateDisplay == value) return;
+                //  if (_PickerCloseAllDeregDateDisplay == value) return;
 
                 _PickerCloseAllDeregDateDisplay = value;
                 RaisePropertyChanged("PickerCloseAllDeregDateDisplay");
+            }
+        }
+        private string _PickerCloseAllDeregDateDisplay1 = string.Empty;
+        public string PickerCloseAllDeregDateDisplay1
+        {
+            get
+            {
+                return _PickerCloseAllDeregDateDisplay1;
+            }
+            set
+            {
+                //  if (_PickerCloseAllDeregDateDisplay == value) return;
+
+                _PickerCloseAllDeregDateDisplay = value;
+                _PickerCloseAllDeregDateDisplay1 = value;
+                RaisePropertyChanged("PickerCloseAllDeregDateDisplay1");
             }
         }
 
@@ -1191,7 +1274,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             set
             {
-                if(string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     IsIdtypePlaceHolderVisible = true;
                 }
@@ -1358,6 +1441,64 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
         private GenericPickerModel _pickerModel { get; set; }
+        public void GetSetPermitTypeReason(string actionType = "set")
+        {
+            if (actionType == "get")
+            {
+                SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList());
+
+                foreach (var items in SelectedOutletForCloseTranser.PermitTypes)
+                {
+                    if (items.APermitDregRsnTb == "1")
+                    {
+                        items.APermitDisplayReason = AppResources.TinDeregistrationClosed;
+                        IsTransferPermitViewVisible = false;
+                    }
+                    else if (items.APermitDregRsnTb == "3")
+                    {
+                        items.APermitDisplayReason = AppResources.TinDeregistrationTransfer;
+                        IsTransferPermitViewVisible = true;
+                    }
+                }
+            }
+            else
+            {
+                string tempSelectedReason = PickerModel.SelectedValue;
+                SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList());
+
+                foreach (var items in SelectedOutletForCloseTranser.PermitTypes)
+                {
+                    if (items.APermitNoTb == selectedAPermitReason)
+                    {
+                        items.APermitDisplayReason = tempSelectedReason;
+                        if (tempSelectedReason == AppResources.TinDeregistrationClosed)
+                        {
+                            items.APermitDregRsnTb = "1";
+                            IsDetailsFieldEnabled = false;
+                            IsTransferPermitViewVisible = false;
+                        }
+                        else
+                        {
+                            items.APermitDregRsnTb = "3";
+                            IsDetailsFieldEnabled = true;
+                            IsTransferPermitViewVisible = true;
+                        }
+
+                    }
+                }
+
+                if (PickerModel.SelectedValue == AppResources.TinDeregistrationClosed)
+                {
+                    IsOutletTranferOutletGridVisible = false;
+                    IsDetailsFieldEnabled = false;
+                }
+                else
+                {
+                    IsOutletTranferOutletGridVisible = true;
+                    IsDetailsFieldEnabled = true;
+                }
+            }
+        }
         public GenericPickerModel PickerModel
         {
             get
@@ -1506,61 +1647,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (PickerModel.PickerId == "permitTypeReasonPicker")
                         {
-                            string tempSelectedReason = PickerModel.SelectedValue;
-
-                            //SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
-                            //  x =>
-                            //  {
-                            //      if (x.APermitNoTb == selectedAPermitReason)
-                            //      {
-                            //          x.APermitDisplayReason = tempSelectedReason;
-
-                            //          if (tempSelectedReason == AppResources.TinDeregistrationClosed)
-                            //          {
-                            //              x.APermitDregRsnTb = "1";
-                            //              IsDetailsFieldEnabled = false;
-                            //          }
-                            //          else
-                            //          {
-                            //              x.APermitDregRsnTb = "3";
-                            //              IsDetailsFieldEnabled = true;
-                            //          }
-                            //      }
-
-                            //      return x;
-                            //  }
-                            //  ).ToList());
-                            SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList());
-
-                            foreach (var items in SelectedOutletForCloseTranser.PermitTypes)
-                            {
-                                if (items.APermitNoTb == selectedAPermitReason)
-                                {
-                                    items.APermitDisplayReason = tempSelectedReason;
-                                    if (tempSelectedReason == AppResources.TinDeregistrationClosed)
-                                    {
-                                        items.APermitDregRsnTb = "1";
-                                        IsDetailsFieldEnabled = false;
-                                    }
-                                    else
-                                    {
-                                        items.APermitDregRsnTb = "3";
-                                        IsDetailsFieldEnabled = true;
-                                    }
-
-                                }
-                            }
-
-                            if (PickerModel.SelectedValue == AppResources.TinDeregistrationClosed)
-                            {
-                                IsOutletTranferOutletGridVisible = false;
-                                IsDetailsFieldEnabled = false;
-                            }
-                            else
-                            {
-                                IsOutletTranferOutletGridVisible = true;
-                                IsDetailsFieldEnabled = true;
-                            }
+                            GetSetPermitTypeReason();
                         }
                         else if (PickerModel.PickerId == "permitIdTypePicker")
                         {
@@ -1680,8 +1767,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             x.APermitDeregDisplayDate = SingleOutletDeregistrationDate.ToString("dd/MM/yyyy");
                             if (Convert.ToDateTime(x.APermitValfrDtHTb) > SingleOutletDeregistrationDate)
                             {
-                               // _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
-                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
+                                // _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
                                 x.APermitDeregDisplayDate = string.Empty;
                             }
                         }
@@ -1760,7 +1847,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             x =>
                             {
 
-                                if(IsHijriCal)
+                                if (IsHijriCal)
                                 {
                                     string date = UtilityManager.HijriToGreg(_singleDeregistrationDate);
                                     x.APermitEffDtTb = ConvertDateFormat(date);
@@ -2290,6 +2377,126 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
+        public void GetSelectedDataTemplate()
+        {
+            if (SelectedPermitOutletOptionIndex == 2)
+            {
+                outletEditIsVisible = true;
+                //  viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+                foreach (var items in SelectedOutletForCloseTranser.PermitTypes)
+                {
+                    //items.APermitDregRsnTb = "1";
+                    //items.APermitDisplayReason = AppResources.TinDeregistrationClosed;
+                    //items.ReasonDescription = AppResources.TinDeregistrationClosed;
+                    //items.APermitDeregDisplayDate = string.Empty;
+                    //items.APermitIdNoTb = string.Empty;
+                    //items.APermitDeregDisplayDobDate = string.Empty;
+
+                }
+            }
+            else if (SelectedPermitOutletOptionIndex == 1)
+            {
+                outletEditIsVisible = false;
+                //viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
+                SingleDeregistrationDate = string.Empty;
+                PickerCloseAllDeregDateDisplay = string.Empty;
+                SelectedIdNumber = string.Empty;
+                SelectedIdtype = string.Empty;
+                SelectedDob = string.Empty;
+                TINNumber = string.Empty;
+                IDTypeDataModel = new VATSignUpD();
+            }
+            else
+            {
+                outletEditIsVisible = false;
+                // viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+                SingleDeregistrationDate = string.Empty;
+                PickerCloseAllDeregDateDisplay = string.Empty;
+            }
+
+            int index = Convert.ToInt16(SelectedPermitOutletOptionIndex);
+            IsPermitOption1Visible = index == 0 ? true : false;
+            IsPermitOption2Visible = index == 1 ? true : false;
+        }
+
+        public void PopulateUI()
+        {
+            var selectedEditOutletIndex = TinDeregistrationData.OutletSet.Results.IndexOf(SelectedOutletForCloseTranser);
+            if (SelectedOutletForCloseTranser.AOutletDregOptTb == "1")
+            {
+                SelectedPermitTypeOutletOption = PermitOutletDecisionOptions[0];
+                SelectedPermitOutletOptionIndex = 0;
+            }
+            else if (SelectedOutletForCloseTranser.AOutletDregOptTb == "2")
+            {
+                SelectedPermitTypeOutletOption = PermitOutletDecisionOptions[1];
+                SelectedPermitOutletOptionIndex = 1;
+            }
+            else
+            {
+                SelectedPermitTypeOutletOption = PermitOutletDecisionOptions[2];
+                SelectedPermitOutletOptionIndex = 2;
+                if (SelectedOutletForCloseTranser != null)
+                {
+                    if (SelectedOutletForCloseTranser.PermitTypes != null)
+                    {
+                        if (SelectedOutletForCloseTranser.PermitTypes.Count > 0)
+                        {
+                            IsNodataAvailableVisible = false;
+                            IsMultiplePermitsVisible = true;
+                        }
+                        else
+                            IsNodataAvailableVisible = true;
+                    }
+                    else
+                        IsNodataAvailableVisible = true;
+                }
+                GetSetPermitTypeReason("get");
+            }
+            GetSelectedDataTemplate();
+            var outletItem = TinDeregistrationData.OutletSet.Results[selectedEditOutletIndex];
+            // viewModel.SelectedIdtype = viewModel.IBANTypesList.Where(m => m.key == outletItem.AOutletIdTypeTb)?.FirstOrDefault().Text;
+            if (outletItem.AOutletIdTypeTb == "ZS0001")
+            {
+                NationalTypeSelected();
+            }
+            else if (outletItem.AOutletIdTypeTb == "ZS0002")
+            {
+                IqamaTypeSelected();
+            }
+            else if (outletItem.AOutletIdTypeTb == "ZS0003")
+            {
+                GCCIdTypeSelected();
+            }
+            else
+            {
+                CompanyIdTypeSelected();
+            }
+            SingleDeregistrationDate = outletItem.AOutletEffDtHTb;
+            PickerCloseAllDeregDateDisplay = SingleDeregistrationDate;
+            TINNumber = outletItem.AOutletTransTinTb;
+            var SelectedIdtype1 = IBANTypesList.Where(m => m.key == outletItem.AOutletIdTypeTb);
+            SelectedIdtype = SelectedIdtype1 != null ? SelectedIdtype1.FirstOrDefault().Text : "";
+            SelectedIdNumber = outletItem.AOutletIdNoTb;
+            TransferPickerDOBDateDisplay = string.IsNullOrEmpty(outletItem.AOutletDobTb) ? "" : Convert.ToDateTime(outletItem.AOutletDobTb).ToString("yyyy/MM/dd");
+            FirstName = outletItem.AOutletNm1Tb;
+            SurName = outletItem.AOutletNm2Tb;
+            FatherName = outletItem.AOutletNm5Tb;
+            GrandfatherName = outletItem.AOutletNm6Tb;
+            FamilyName = outletItem.AOutletNm7Tb;
+
+            if (SelectedOutletForCloseTranser.AOutletDregOptTb != "3")
+            {
+                IsNodataAvailableVisible = false;
+                IsMultiplePermitsVisible = false;
+                if (SelectedOutletForCloseTranser.AOutletDregOptTb == "2")
+                {
+                    FirstNameLbl = AppResources.ZZZVATRFirstName;
+                    SurnameNameLbl = AppResources.TinDeregistrationSurName;
+                }
+            }
+            // GetSelectedDataTemplate();
+        }
 
         public void CompanyIdTypeSelected()
         {
@@ -2812,8 +3019,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                       // await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                      await  PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                        // await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
                     });
                 }
@@ -2832,7 +3039,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void ClearData()
         {
-            //Reason Section data
+            //Reason Section dnuata
             PickerDobToDisplay = string.Empty;
             if (IDTypeDataModel != null)
             {
@@ -2888,7 +3095,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -2924,7 +3131,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -2955,7 +3162,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                  //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -3046,13 +3253,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
                     {
-                        if (!string.IsNullOrEmpty(IDTypeDataModel.Name1)) FirstNameText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.Name1))
+                            FirstNameText.IsEditable = false;
                         if (!string.IsNullOrEmpty(IDTypeDataModel.Name2)) SurnameText.IsEditable = false;
                         if (!string.IsNullOrEmpty(IDTypeDataModel.FatherName)) FathersNameText.IsEditable = false;
                         if (!string.IsNullOrEmpty(IDTypeDataModel.GrandfatherName)) GrandFathersNameText.IsEditable = false;
                         if (!string.IsNullOrEmpty(IDTypeDataModel.FamilyName)) FamilyNameText.IsEditable = false;
+                        if (IDTypeDataModel != null)
+                        {
+                            FirstName = IDTypeDataModel.Name1;
+                            SurName = IDTypeDataModel.Name2;
+                            FatherName = IDTypeDataModel.FatherName;
+                            GrandfatherName = IDTypeDataModel.GrandfatherName;
+                            FamilyName = IDTypeDataModel.FamilyName;
+                        }
                         //Disable DOB
-                        if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10))
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10) && idTypeCode == "ZS0003")
                         {
                             DobText.IsEditable = false;
                             PickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
@@ -3068,7 +3284,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             FrameIDError = true;
 
-                           // await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            // await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                         }
@@ -3160,7 +3376,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                           // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
 
@@ -3177,7 +3393,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             // IsLoading = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                           // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
@@ -3191,7 +3407,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                          //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
@@ -3252,22 +3468,53 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     string _responseData = JObject.Parse(Result)["d"].ToString();
                     IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+                    if (IDTypeDataModel != null)
+                    {
+                        FirstName = IDTypeDataModel.Name1;
+                        SurName = IDTypeDataModel.Name2;
+                        FatherName = IDTypeDataModel.FatherName;
+                        GrandfatherName = IDTypeDataModel.GrandfatherName;
+                        FamilyName = IDTypeDataModel.FamilyName;
+                    }
 
                     if (!string.IsNullOrEmpty(IDTypeDataModel.Name1)) FirstNameFromIdType = IDTypeDataModel.Name1;
                     if (!string.IsNullOrEmpty(IDTypeDataModel.Tin)) TINNumber = IDTypeDataModel.Tin;
-                    if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10)) SelectedDob = IDTypeDataModel.Birthdt10;
-
-                    if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
+                    if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10))
                     {
-                        if (!string.IsNullOrEmpty(IDTypeDataModel.Name1)) FirstNameText.IsEditable = false;
-                        if (!string.IsNullOrEmpty(IDTypeDataModel.Name2)) SurnameText.IsEditable = false;
-                        if (!string.IsNullOrEmpty(IDTypeDataModel.FatherName)) FathersNameText.IsEditable = false;
-                        if (!string.IsNullOrEmpty(IDTypeDataModel.GrandfatherName)) GrandFathersNameText.IsEditable = false;
-                        if (!string.IsNullOrEmpty(IDTypeDataModel.FamilyName)) FamilyNameText.IsEditable = false;
-                        //Disable DOB
-                        if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10)) DobText.IsEditable = false;
+                        SelectedDob = IDTypeDataModel.Birthdt10;
+                        TransferPickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
+                    }
+                    else
+                    {
+                        SelectedDob = "";
+                        TransferPickerDOBDateDisplay = "";
                     }
 
+                    if (SelectedIdtype == AppResources.TinDeregistrationGCCID && (!string.IsNullOrEmpty(IDTypeDataModel.Name1) || !string.IsNullOrEmpty(TINNumber)))
+                    {
+                        //if (!string.IsNullOrEmpty(IDTypeDataModel.Name1)) FirstNameText.IsEditable = false;
+                        //if (!string.IsNullOrEmpty(IDTypeDataModel.Name2)) SurnameText.IsEditable = false;
+                        //if (!string.IsNullOrEmpty(IDTypeDataModel.FatherName)) FathersNameText.IsEditable = false;
+                        //if (!string.IsNullOrEmpty(IDTypeDataModel.GrandfatherName)) GrandFathersNameText.IsEditable = false;
+                        //if (!string.IsNullOrEmpty(IDTypeDataModel.FamilyName)) FamilyNameText.IsEditable = false;
+                        ////Disable DOB
+                        //if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10)) DobText.IsEditable = false;
+                        FirstNameText.IsEditable = false;
+                        SurnameText.IsEditable = false;
+                        FamilyNameText.IsEditable = false;
+                        FathersNameText.IsEditable = false;
+                        GrandFathersNameText.IsEditable = false;
+                        DobText.IsEditable = false;
+                    }
+                    else if (SelectedIdtype == AppResources.TinDeregistrationGCCID && (string.IsNullOrEmpty(IDTypeDataModel.Name1) && string.IsNullOrEmpty(TINNumber)))
+                    {
+                        FirstNameText.IsEditable = true;
+                        SurnameText.IsEditable = true;
+                        FamilyNameText.IsEditable = true;
+                        FathersNameText.IsEditable = true;
+                        GrandFathersNameText.IsEditable = true;
+                        DobText.IsEditable = true;
+                    }
                     if (_responseData == null)
                     {
                         IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
@@ -3275,7 +3522,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             FrameIDError = true;
 
-                          //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                         }
@@ -3318,7 +3565,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             FrameIDError = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                           // await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            // await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
                         }
@@ -3356,7 +3603,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
 
-                         //   await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //   await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             _navigationService.GoBack();
@@ -3368,7 +3615,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                           // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
 
@@ -3383,7 +3630,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             // IsLoading = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                           // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
@@ -3397,7 +3644,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                          //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
@@ -3412,15 +3659,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
 
-        public async void ValidateIDNumberForIndiviualPermit()
+        public async void ValidateIDNumberForIndiviualPermit(PermitSetResult selectedPermit = null)
         {
             string dob = PkrDBO.Replace("/", "");
             string idTypeCode = string.Empty;
-
-            var selectedPermit = SelectedOutletForCloseTranser?.PermitTypes.FirstOrDefault(x => x.APermitNoTb == tempIdTypePermitSetResult.APermitNoTb || x.APermitNoTb == selectedAPermitReason);
-            idTypeCode = selectedPermit?.aPermitIdTypeTb;
-
-
+            if (selectedPermit == null)
+            {
+                selectedPermit = SelectedOutletForCloseTranser?.PermitTypes.FirstOrDefault(x => x.APermitNoTb == tempIdTypePermitSetResult.APermitNoTb || x.APermitNoTb == selectedAPermitReason);
+                idTypeCode = selectedPermit?.aPermitIdTypeTb;
+            }
+            else
+                idTypeCode = selectedPermit.aPermitIdTypeTb;
             if (!string.IsNullOrEmpty(selectedPermit?.APermitIdNoTb))
             {
                 try
@@ -3435,7 +3684,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     selectedPermit.APermitTransTinTb = IDTypeDataModel.Tin;
                     selectedPermit.APermitNm3Tb = IDTypeDataModel.Name1;
-                    selectedPermit.APermitNm4Tb = IDTypeDataModel.Name2;
+                    selectedPermit.APermitNm4Tb = IDTypeDataModel.Name2.Replace('.', ' ');
                     selectedPermit.APermitNm5Tb = IDTypeDataModel.FatherName;
                     selectedPermit.APermitNm6Tb = IDTypeDataModel.GrandfatherName;
                     selectedPermit.APermitNm7Tb = IDTypeDataModel.FamilyName;
@@ -3445,9 +3694,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     if (selectedPermit?.PermitIdTypeName == AppResources.TinDeregistrationGCCID)
                     {
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.Name1))
+                            FirstNameText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.Name2)) SurnameText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.FatherName)) FathersNameText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.GrandfatherName)) GrandFathersNameText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.FamilyName)) FamilyNameText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10)) DobText.IsEditable = false;
+                        else
+                            DobText.IsEditable = true;
                         if (string.IsNullOrWhiteSpace(IDTypeDataModel?.Birthdt10) && string.IsNullOrWhiteSpace(IDTypeDataModel.TaxpDob))
                         {
                             selectedPermit.APermitEditable = true;
+                        }
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10))
+                        {
+                            DobText.IsEditable = false;
+                            PickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
+                        }
+                        else
+                        {
+                            DobText.IsEditable = true;
+                            PickerDOBDateDisplay = "";
                         }
                     }
 
@@ -3467,7 +3735,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             FrameIDError = false;
 
 
-                           // await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            // await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                         }
@@ -3491,7 +3759,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
                             FrameIDError = true;
-                           // await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            // await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
                         }
@@ -3501,7 +3769,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             FrameIDError = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                          //  await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            //  await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
                         }
@@ -3543,7 +3811,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
 
-                          //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             _navigationService.GoBack();
@@ -3555,7 +3823,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                        //    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            //    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
 
@@ -3570,7 +3838,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             // IsLoading = false;
                             if (PopupNavigation.PopupStack.Count() > 0)
                                 await PopupNavigation.PopAsync();
-                          //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
@@ -3669,7 +3937,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     App.HideProgressView();
                                 });
 
-                              //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                             }
@@ -3736,7 +4004,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                           // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                             IsLoading = false;
@@ -3754,7 +4022,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                 //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -3765,7 +4033,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                 });
@@ -3780,7 +4048,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                  //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
                     _navigationService.GoBack();
@@ -3824,7 +4092,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                 FrameIDError = true;
 
-                              //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                             }
@@ -3836,7 +4104,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     App.HideProgressView();
                                 });
 
-                              //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                             }
@@ -3881,7 +4149,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                           // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                             IsLoading = false;
@@ -3899,7 +4167,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -3915,7 +4183,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -4309,7 +4577,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 else
                 {
-                //    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                    //    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                 }
@@ -4431,7 +4699,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     if (SelectedReason == null)
                     {
-                     //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4503,19 +4771,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                                     if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2")
                                                     {
-                                                        permitInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
-                                                        permitInfo.APermitDregRsnTb = "1";
+                                                        if (string.IsNullOrEmpty(permitInfo.aPermitIdTypeTb) || string.IsNullOrEmpty(permitInfo.APermitIdNoTb) || string.IsNullOrEmpty(permitInfo.APermitTransTinTb))
+                                                        {
+                                                            permitInfo.APermitDregRsnTb = "1";
+                                                            permitInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
+                                                        }
                                                     }
 
                                                     if (SelectedOutletOptionIndex == 0 || SelectedOutletOptionIndex == 2)
                                                     {
-                                                        permitInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
-                                                        permitInfo.APermitDregRsnTb = "1";
+                                                        if (string.IsNullOrEmpty(permitInfo.aPermitIdTypeTb) || string.IsNullOrEmpty(permitInfo.APermitIdNoTb) || string.IsNullOrEmpty(permitInfo.APermitTransTinTb))
+                                                        {
+                                                            permitInfo.APermitDregRsnTb = "1";
+                                                            permitInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
+                                                        }
                                                     }
                                                     else
                                                     {
-                                                        permitInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
-                                                        permitInfo.APermitDregRsnTb = "3";
+                                                        if (string.IsNullOrEmpty(permitInfo.aPermitIdTypeTb) || string.IsNullOrEmpty(permitInfo.APermitIdNoTb) || string.IsNullOrEmpty(permitInfo.APermitTransTinTb))
+                                                        {
+                                                            permitInfo.APermitDregRsnTb = "3";
+                                                            permitInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
+                                                        }
                                                     }
 
                                                     if (permitInfo.APermitDregRsnTb == null)
@@ -4651,7 +4928,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedReason.ReasonDesc) || string.IsNullOrEmpty(SelectedIdtype))
                     {
-                       // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4660,7 +4937,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (TINNumber == App.LoginDataRetrieved.TIN)
                         {
-                         //   await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
+                            //   await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
@@ -4719,7 +4996,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (SelectedReason == null)
                     {
-                      //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4734,7 +5011,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (SelectedReason == null || string.IsNullOrEmpty(PickerDobToDisplay))
                     {
-                       // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4765,7 +5042,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -4782,7 +5059,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SingleDeregistrationDate) || string.IsNullOrEmpty(SelectedIdtype))
                     {
-                      //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4803,7 +5080,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
-                             //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -4811,9 +5088,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || (DobText.IsEditable && string.IsNullOrEmpty(SelectedDob)) || FirstNameText.IsEditable && string.IsNullOrEmpty(IDTypeDataModel.Name1) || SurnameText.IsEditable && string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
-                           //     await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                //     await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -4823,7 +5100,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
-                              //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                                //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -4842,7 +5119,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     //TODO validation for transfer/close to indiviual case missing
                     if (SelectedReason == null)
                     {
-                       // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4867,13 +5144,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         if (transferrred.FirstOrDefault(x => x.APermitTransTinTb == App.LoginDataRetrieved.TIN) != null)
                         {
-                         //   await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
+                            //   await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationSameNotAllow));
                             return;
                         }
                         else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitIdNoTb)) != null)
                         {
-                         //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
@@ -4893,7 +5170,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (SelectedReason == null || string.IsNullOrEmpty(SingleDeregistrationDate))
                     {
-                      //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4977,10 +5254,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public async void AddPopUpPage()
+        public async void AddPopUpPage(List<TINDeregistrationPageViewModel> viewModel = null)
         {
             try
             {
+                //await PopupNavigation.Instance.PushAsync(new TINDeregistrationCloseIndividualOutletsPageView(SelectedReason.ReasonDesc, viewModel[0]));
                 await PopupNavigation.Instance.PushAsync(new TINDeregistrationCloseIndividualOutletsPageView(SelectedReason.ReasonDesc, this));
             }
             catch (GAZTUnlockAccountException ex)
@@ -4991,7 +5269,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -5051,7 +5329,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                 //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -5104,7 +5382,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                 //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -5126,7 +5404,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         PopulateSummaryDeclarationData();
                         if (TinDeregistrationData.ADecName == string.Empty || TinDeregistrationData.ADecDesig == string.Empty || TinDeregistrationData.ADecTelNo == string.Empty)
                         {
-                          //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         }
@@ -5146,7 +5424,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -5716,6 +5994,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public async void NewAttachmentClicked()
         {
 
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             try
             {
                 foreach (TinDeregestrationAttachmentsModel tinDeregestrationAttachmentsModel in AttachmentsListViewData)
@@ -5765,7 +6044,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                  //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -6002,7 +6281,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                  //  await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    //  await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
                 });
@@ -6236,7 +6515,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitDeregDisplayDate);
 
                                 }
-                               // permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitEffDtTb);
+                                // permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitEffDtTb);
                                 permitInfo.APermitEffDtCTb = "G";
 
                                 permitInfo.APermitDobCTb = string.IsNullOrEmpty(permitInfo.APermitDobTb) ? "" : "G";
@@ -6354,7 +6633,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         string number = TinDeregistrationData.Fbnum;
                         string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                       // await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                        // await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
 
                         //await Task.Run(() =>
@@ -6381,7 +6660,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                      //  await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        //  await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
                     });
@@ -6450,7 +6729,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // await _dialogService.ShowMessage(message, AppResources.Information);
+                    // await _dialogService.ShowMessage(message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
 
                 });
@@ -6750,54 +7029,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
 
             AllOutlets = AllOutlets.Select(x =>
-              {
-                  x.PermitTypes = x.PermitTypes.Select(y =>
-                  {
-                      y.APermitDeregDisplayDate = null;
-                      return y;
-                  }).ToList();
-                  return x;
-              }).ToList();
+            {
+                x.PermitTypes = x.PermitTypes.Select(y =>
+                {
+                    y.APermitDeregDisplayDate = null;
+                    return y;
+                }).ToList();
+                return x;
+            }).ToList();
 
-            GetSelectedDataTemplate(SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
+            ToggleCheckboxText(SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
 
         }
-        void GetSelectedDataTemplate(bool isIndex1 = false)
+        void ToggleCheckboxText(bool isIndex1 = false)
         {
-            //var captionStyle = Resources["CaptionLabelBlack"] as Style;
-            //Grid cardView = new Grid() { HeightRequest = 100 };
-            //Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
-            //Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
-            //Label label = new Label()
-            //{
-            //    HorizontalOptions = LayoutOptions.StartAndExpand,
-            //    VerticalOptions = LayoutOptions.EndAndExpand,
-            //    Style = captionStyle,
-            //    Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions,
-            //    Margin = new Thickness(20, 0, 20, 20),
-            //    TextColor = Color.White,
-            //    HorizontalTextAlignment = TextAlignment.Start
-            //};
-            //grid.Children.Add(image);
-            //grid.Children.Add(label);
-
-            //cardView.Children.Add(grid);
-            //outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
-            //if (SelectedOutletOptionIndex == 2)
-            //{
-            //   outletEditIsVisible = true;
-            //    OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
-            //}
-            //else if (SelectedOutletOptionIndex == 1)
-            //{
-            //    outletEditIsVisible = false;
-            //    OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
-            //}
-            //else
-            //{
-            //    outletEditIsVisible = false;
-            //    OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
-            //}
             if (SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationCloseOutletsIndividually))
             {
                 outletEditIsVisible = true;
@@ -6813,11 +7058,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 outletEditIsVisible = false;
                 OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
             }
-            //int index = Convert.ToInt16(SelectedOutletOptionIndex);
-            //if (isIndex1)
-            //{
-            //    index = 1;
-            //}
             if (SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
                 IsOption2Visible = true;
@@ -6826,8 +7066,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 IsOption1Visible = true;
             }
-            //IsOption1Visible = index == 0 ? true : false;
-            //IsOption2Visible = index == 1 ? true : false;
         }
 
         public void SetAllTransferOutletData()

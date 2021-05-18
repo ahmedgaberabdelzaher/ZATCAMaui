@@ -4049,6 +4049,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         public async void BankStatementsAttachmentClicked()
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             _bankStatementsAttachment = true;
             if (BankStatementsAttachmentsListViewData == null)
             {
@@ -4085,6 +4086,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         public async void FinanceAttachmentClicked()
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             _bankStatementsAttachment = false;
             if (FinanceAttachmentsListViewData == null)
             {

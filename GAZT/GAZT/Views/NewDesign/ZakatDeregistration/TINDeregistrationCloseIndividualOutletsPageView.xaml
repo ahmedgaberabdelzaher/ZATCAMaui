@@ -69,9 +69,9 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
+                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationSelectReason}" HorizontalOptions="StartAndExpand"
+                        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationSelectReason}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
                     </Grid>
@@ -125,18 +125,18 @@
                     </listView:SfListView>
 
                     <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsPermitOption1Visible}">
-                        <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                            <custom:CustomLabel.FormattedText>
+                        <Label>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"/>
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    <Span  Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <StackLayout x:Name="CalLabel" Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"  />
+                            <Label Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"  />
                             <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" Toggled="HijriCalSwitch_Toggled" />
-                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
+                            <Label  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                         </StackLayout>
                         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
                             <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" >
@@ -262,18 +262,18 @@
 
                         <StackLayout>
                             <StackLayout>
-                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                                    <custom:CustomLabel.FormattedText>
+                                <Label>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <StackLayout Orientation="Horizontal" >
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}" HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                    <Label Text="{x:Static ResourceManager:AppResources.NDGregorian}" HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                     <Switch x:Name="HijriCalSwitch1" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal, Mode=TwoWay}" Toggled="HijriCal2Switch_Toggled" />
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
+                                    <Label  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                                 </StackLayout>
                                 <Grid >
                                     <inputLayout:SfTextInputLayout x:Name="FrmDBO2" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
@@ -376,7 +376,7 @@
                                 </border:SfBorder >-->
                             </StackLayout>
                             <StackLayout IsVisible="{Binding TinText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HasError="{Binding FrameTinError}"
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
@@ -392,14 +392,14 @@
                             </StackLayout>
 
                             <StackLayout >
-                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                                    <custom:CustomLabel.FormattedText>
+                                <Label>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZZIDType}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
@@ -421,14 +421,14 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding IdNumberText.IsVisible}">
-                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                                    <custom:CustomLabel.FormattedText>
+                                <Label>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.IDNumber}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*"  />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -443,23 +443,23 @@
                         </StackLayout>
 
                         <StackLayout IsVisible="{Binding DobText.IsVisible}">
-                            <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                                <custom:CustomLabel.FormattedText>
+                            <Label>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}"/>
-                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        <Span  Text="ssd"  />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <StackLayout Orientation="Horizontal" IsVisible="{Binding IsDobVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                <Label Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                 <Switch x:Name="HijriCalSwitch3" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijriCal, Mode=TwoWay}" Toggled="HijriCal3Switch_Toggled" />
-                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
+                                <Label  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                             </StackLayout>
                             <Grid IsVisible="{Binding IsDobVisible}">
                                 <inputLayout:SfTextInputLayout x:Name="FrmDBO1" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                     <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry23"
-                                                         Text ="{Binding TransferPickerDOBDateDisplay}" Unfocused="TransferDOBDatePicker_Unfocused" TextChanged="TransferDOBDateEntry_TextChanged"
+                                                         Text ="{Binding TransferPickerDOBDateDisplay,StringFormat='{0:yyyy/MM/dd}'}" Unfocused="TransferDOBDatePicker_Unfocused" TextChanged="TransferDOBDateEntry_TextChanged"
                                                          Focused="OnTransferDOBDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
                                                              VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
 
@@ -476,7 +476,7 @@
                                         </StackLayout>
                                     </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
-                                <Button BackgroundColor="Transparent" Clicked="OnTransferIDDOBClicked" Margin="0,0,0,0" >
+                                <Button BackgroundColor="Transparent" IsEnabled="{Binding DobText.IsEditable}"  Clicked="OnTransferIDDOBClicked" Margin="0,0,0,0" >
                                 </Button>
                                 <custom1:CustomDatePicker FlowDirection="RightToLeft" 
 								ShowHeader="False"
@@ -563,19 +563,19 @@
                         <StackLayout>
 
                             <StackLayout IsVisible="{Binding FirstNameText.IsVisible}">
-                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                                    <custom:CustomLabel.FormattedText>
+                                <Label>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding FirstNameLbl}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*"  />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name1}" IsEnabled="{Binding FirstNameText.IsEditable}"
+                                    <control:BorderlessEntry Text="{Binding FirstName}" IsEnabled="{Binding FirstNameText.IsEditable}"
                                                             Placeholder="{Binding FirstNameLbl}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
@@ -587,19 +587,19 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding SurnameText.IsVisible}">
-                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
-                                    <custom:CustomLabel.FormattedText>
+                                <Label>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding SurnameNameLbl}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" IsEnabled="{Binding SurnameText.IsEditable}"
+                                    <control:BorderlessEntry Text="{Binding SurName}" IsEnabled="{Binding SurnameText.IsEditable}"
                                                             Placeholder="{Binding SurnameNameLbl}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
@@ -611,12 +611,12 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding FathersNameText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.FatherName}" IsEnabled="{Binding FathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <control:BorderlessEntry Text="{Binding FatherName}" IsEnabled="{Binding FathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                         <control:BorderlessEntry.Behaviors>
@@ -627,12 +627,12 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding GrandFathersNameText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.GrandfatherName}" IsEnabled="{Binding GrandFathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <control:BorderlessEntry Text="{Binding GrandfatherName}" IsEnabled="{Binding GrandFathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                         <control:BorderlessEntry.Behaviors>
@@ -644,12 +644,12 @@
 
 
                             <StackLayout IsVisible="{Binding FamilyNameText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.FamilyName}" IsEnabled="{Binding FamilyNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <control:BorderlessEntry Text="{Binding FamilyName}" IsEnabled="{Binding FamilyNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                         <control:BorderlessEntry.Behaviors>
@@ -664,12 +664,12 @@
 
                         <StackLayout IsVisible="{Binding IsName1Visible}">
                             <StackLayout>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name1}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <control:BorderlessEntry Text="{Binding FirstName}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" IsEnabled="{Binding Name1Text.IsEditable}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                         <control:BorderlessEntry.Behaviors>
@@ -680,7 +680,7 @@
                             </StackLayout>
 
                             <StackLayout>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -698,7 +698,7 @@
 
                     </StackLayout>
 
-                    <custom:CustomLabel IsVisible="{Binding IsNodataAvailableVisible}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.Nodataavailable}" HorizontalOptions="CenterAndExpand"
+                    <Label IsVisible="{Binding IsNodataAvailableVisible}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.Nodataavailable}" HorizontalOptions="CenterAndExpand"
                                         Style="{StaticResource BodyLabelGrey}" />
 
                     <StackLayout  Margin="0,0,0,0" IsVisible="{Binding IsMultiplePermitsVisible}" BackgroundColor="White" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
@@ -783,13 +783,13 @@
                                                 <Label Text="{Binding APermitValfrDtHTb, StringFormat='{0:dd MMM yyyy}'}"  Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                             </StackLayout>
                                             <StackLayout  Grid.Row="3" Grid.Column="0" Spacing="-5" Grid.ColumnSpan="2">
-                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"  HorizontalOptions="StartAndExpand"
+                                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"  HorizontalOptions="StartAndExpand"
                                                 VerticalOptions="Center" Style="{StaticResource CaptionLabelGrey}" />
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
-                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                                <Label Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                                 <Switch x:Name="HijriCalSwitch4" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijiri, Mode=TwoWay}"  />
-                                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
+                                                <Label  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                                             </StackLayout>
                                             <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5" >
                                                 <Grid IsVisible="{Binding IsDobVisible}">
@@ -821,7 +821,7 @@
                                                 </Grid>
                                             </StackLayout>
                                             <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
-                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
+                                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
                                                                         Style="{StaticResource CaptionLabelGrey}" />
                                             </StackLayout>
                                             <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">
@@ -843,7 +843,7 @@
                                                     </StackLayout>
                                                 </border:SfBorder >
                                             </StackLayout>
-                                            <StackLayout x:Name="parentView" Grid.Row="8" Grid.ColumnSpan="2" IsVisible="{Binding APermitDregRsnTb, Converter={StaticResource dregRsnTbValueConverter}}"
+                                            <StackLayout x:Name="parentView" Grid.Row="8" Grid.ColumnSpan="2" IsVisible="{Binding BindingContext.IsTransferPermitViewVisible,Source={x:Reference TinDeregIndOutlets}}"
                                                          IsEnabled="{Binding APermitDregRsnTb, Converter={StaticResource dregRsnTbValueConverter}}">
                                                 <Grid RowSpacing="8">
                                                     <Grid.RowDefinitions >
@@ -861,7 +861,7 @@
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
                                                     <StackLayout>
-                                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
+                                                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
                                                                             Style="{StaticResource CaptionLabelGrey}" />
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
@@ -882,7 +882,7 @@
                                                         </StackLayout>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" HorizontalOptions="StartAndExpand"
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ZZIDType}" HorizontalOptions="StartAndExpand"
                                                                                 Style="{StaticResource CaptionLabelGrey}" />
                                                         <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
@@ -906,7 +906,7 @@
                                                     </StackLayout>
 
                                                     <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="FillAndExpand"
+                                                        <Label Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="FillAndExpand"
                                                                             Style="{StaticResource CaptionLabelGrey}" />
                                                         <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5,15,5,15">
 
@@ -915,7 +915,7 @@
 							                                    OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
                                                                 <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                                         VerticalTextAlignment="Start" Unfocused="PermitIDNo_Unfocused" Text="{Binding APermitIdNoTb, Mode=TwoWay}"
-                                                                                        TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                                        TextColor="#bbbbbb" HorizontalOptions="FillAndExpand" ReturnCommandParameter="{Binding .}">
                                                                     <Entry.Behaviors>
                                                                         <custom1:OnlyNumericValuesBehaviour/>
                                                                     </Entry.Behaviors>
@@ -925,12 +925,12 @@
                                                     </StackLayout>
 
                                                     <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding APermitIsCompanyId,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
                                                                             Style="{StaticResource CaptionLabelGrey}" />
                                                         <StackLayout Orientation="Horizontal" >
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                                            <Label Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                                             <Switch x:Name="HijriCalSwitch5" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijiri, Mode=TwoWay}" />
-                                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
+                                                            <Label  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                                                         </StackLayout>
                                                         <Grid >
                                                             <inputLayout:SfTextInputLayout x:Name="FrmDBO4" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
@@ -951,10 +951,10 @@
                                                                         </Image>
                                                                     </StackLayout>
                                                                 </inputLayout:SfTextInputLayout.TrailingView>
-
+<!--option 3 dob-->
                                                             </inputLayout:SfTextInputLayout>
-                                                            <Button BackgroundColor="Transparent"
-                                    CommandParameter="{Binding .}"
+                                                            <Button BackgroundColor="Transparent" 
+                                    CommandParameter="{Binding .}" IsEnabled="{Binding BindingContext.DobText.IsEditable,Source={x:Reference TinDeregIndOutlets}}"
                                     Clicked="OnClosePermitDOBDateClicked" Margin="0,0,0,0" >
                                                             </Button>
 
@@ -986,7 +986,7 @@
                                                     <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding APermitIsCompanyId,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                                         <!-- for non compnay-->
                                                         <StackLayout>
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" HorizontalOptions="StartAndExpand"
+                                                            <Label Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" HorizontalOptions="StartAndExpand"
                                                                                 Style="{StaticResource CaptionLabelGrey}" />
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1003,7 +1003,7 @@
                                                         </StackLayout>
 
                                                         <StackLayout>
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" HorizontalOptions="StartAndExpand"
+                                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" HorizontalOptions="StartAndExpand"
                                                                                 Style="{StaticResource CaptionLabelGrey}" />
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1020,7 +1020,7 @@
                                                         </StackLayout>
 
                                                         <StackLayout>
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" HorizontalOptions="StartAndExpand"
+                                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" HorizontalOptions="StartAndExpand"
                                                                                 Style="{StaticResource CaptionLabelGrey}" />
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1036,7 +1036,7 @@
                                                         </StackLayout>
 
                                                         <StackLayout>
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" HorizontalOptions="StartAndExpand"
+                                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" HorizontalOptions="StartAndExpand"
                                                                                 Style="{StaticResource CaptionLabelGrey}" />
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1055,7 +1055,7 @@
 
 
                                                         <StackLayout>
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" HorizontalOptions="StartAndExpand"
+                                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" HorizontalOptions="StartAndExpand"
                                                                                 Style="{StaticResource CaptionLabelGrey}" />
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1075,7 +1075,7 @@
                                                     <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding APermitIsCompanyId}">
                                                         <!-- for compnay-->
                                                         <StackLayout>
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" HorizontalOptions="StartAndExpand"
+                                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" HorizontalOptions="StartAndExpand"
                                                                                 Style="{StaticResource CaptionLabelGrey}" />
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1093,7 +1093,7 @@
                                                         </StackLayout>
 
                                                         <StackLayout>
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" HorizontalOptions="StartAndExpand"
+                                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" HorizontalOptions="StartAndExpand"
                                                                                 Style="{StaticResource CaptionLabelGrey}" />
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1135,7 +1135,7 @@
 
                         <StackLayout>
                             <StackLayout>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitType}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitType}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
@@ -1147,7 +1147,7 @@
                                 </border:SfBorder >
                             </StackLayout>
                             <StackLayout IsVisible="{Binding TinText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HasError="{Binding FrameTinError}"
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
@@ -1163,7 +1163,7 @@
                             </StackLayout>
 
                             <StackLayout >
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.ZZIDType}" HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}" />   
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
@@ -1185,7 +1185,7 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding IdNumberText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1200,7 +1200,7 @@
                         </StackLayout>
 
                         <StackLayout IsVisible="{Binding DobText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
@@ -1229,7 +1229,7 @@
                         <StackLayout>
                             
                             <StackLayout IsVisible="{Binding FirstNameText.IsVisible}">
-                                <custom:CustomLabel Text="{Binding FirstNameLbl}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{Binding FirstNameLbl}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1243,7 +1243,7 @@
                             </StackLayout>
                            
                             <StackLayout IsVisible="{Binding SurnameText.IsVisible}">
-                                <custom:CustomLabel Text="{Binding SurnameNameLbl}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{Binding SurnameNameLbl}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1257,7 +1257,7 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding FathersNameText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1270,7 +1270,7 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding GrandFathersNameText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1284,7 +1284,7 @@
 
                              
                              <StackLayout IsVisible="{Binding FamilyNameText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1301,7 +1301,7 @@
 
                         <StackLayout IsVisible="{Binding IsName1Visible}">
                              <StackLayout>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1314,7 +1314,7 @@
                             </StackLayout>
                            
                             <StackLayout>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" HorizontalOptions="StartAndExpand"
+                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
