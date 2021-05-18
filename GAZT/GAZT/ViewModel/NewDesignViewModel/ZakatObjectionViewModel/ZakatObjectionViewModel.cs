@@ -1942,6 +1942,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     TaxType = AppResources.FORM5Zakat;
                 }*/
 
+
+                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.AAssnmtAmt)) {
+
+                    AssessmentAmountGAZT = zakatObjectionRequestSummary.d.AAssnmtAmt;
+                }
+
+                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.ARevAmt))
+                {
+
+                    RevisedAmount = zakatObjectionRequestSummary.d.ARevAmt;
+                }
+
+                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.ADisputeAmt))
+                {
+
+                    DisputeAmount = zakatObjectionRequestSummary.d.ADisputeAmt;
+                }
+
+
                 ObjectionReasons = zakatObjectionRequestSummary.d.AObjSum;
             }
 
