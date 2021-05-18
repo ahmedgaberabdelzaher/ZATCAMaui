@@ -15,8 +15,6 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
     public partial class GAZTNewDesignForgotPasswordPageView : ContentPage
     {
 
- 
-
         GAZTNewDesignForgotPasswordPageViewModel viewModel;
         public GAZTNewDesignForgotPasswordPageView()
         {
@@ -119,7 +117,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         }
 
 
-        private void OnUserNameCardClicked(object sender, EventArgs e)
+        private async void OnUserNameCardClicked(object sender, EventArgs e)
         {
             viewModel.IsUserNameCardTapped = true;
             viewModel.IsPasswordCardTapped = false;
@@ -144,7 +142,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.ContinueORConfirmButtonText = AppResources.Confirm;
            viewModel.IsContinueButtonVisibe = viewModel.ValidateFirstStep();
 
-             viewModel.GetCaptchAndGUID();
+           await  viewModel.GetCaptchAndGUID();
 
 
         }

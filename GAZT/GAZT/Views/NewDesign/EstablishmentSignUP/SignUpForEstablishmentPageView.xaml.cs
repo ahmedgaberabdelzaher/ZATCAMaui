@@ -54,7 +54,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             ChangeAeroIcon();
             SetLTR();
             ClearFields();
-            _ = loadPageData();
             SetPickerFont();
             viewModel.TxtLOrCIssuedBy = string.Empty;
             viewModel.TxtCountryCode = "+966";
@@ -188,8 +187,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.SetDefaultDate();
             
             //ClearFields();
-            await viewModel.OnPageLoad();
-            await viewModel.SetIssueIdList();
+            viewModel.OnPageLoad();
+            viewModel.SetIssueIdList();
             await viewModel.SetCityList();
 
             try
@@ -341,9 +340,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
 
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+            await loadPageData();
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;

@@ -2108,19 +2108,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             return isValidCaptcha;
         }
-        public async void GetCaptchAndGUID()
+        public async Task GetCaptchAndGUID()
         {
             try
             {
-                await Task.Run(() =>
-                {
+                
                     IsLoading = true;
                     Enabled = false;
-                });
-                await Task.Run(async () =>
-                {
-                    try
-                    {
+                
+                    
                         string lang = UtilityManager.GetLanguageParameter();
                         string st = Constants.CaptchaAndGUID;
                         string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
@@ -2142,7 +2138,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                        if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
+                        if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
                         {
                             captcha = forgotPasswordOTP.d.Captcha;
                             GUID = forgotPasswordOTP.d.Guid;
@@ -2153,18 +2149,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         }
 
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+
+                IsLoading = false;
             }
+                    
             catch (InternetException ex)
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
@@ -2532,7 +2520,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     forgotPassword.d = d;
                     forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    if (forgotPassword.d != null)
+                    if (forgotPassword?.d != null)
                     {
                         //IsAPICalledSuccessfully = true;
                         //RecoverUserNameLayout = true;
@@ -2631,7 +2619,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     forgotPassword.d = d;
                     forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    if (forgotPassword.d != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
+                    if (forgotPassword!=null&&forgotPassword?.d != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                     {
                         //IsAPICalledSuccessfully = true;
                         //RecoverUserNameLayout = true;

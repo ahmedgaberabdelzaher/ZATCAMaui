@@ -195,20 +195,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 // IsLoading = false;
             });
         }
-        private async void OnEstablishmentSignupClicked(object obj)
+        private void OnEstablishmentSignupClicked(object obj)
         {
-            await Task.Run(() =>
-            {
+           
                 IsLoading = true;
                 ImageEstimatedTile= "vat_tile_listofsignup.png";
                 ImageEstimatedIcon = "vat_new_Establishment_W.png";
                 EstimatedTileColor = Color.White;
-            });
-
             Device.BeginInvokeOnMainThread(() =>
             {
                 _navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
-                // IsLoading = false;
+                 //IsLoading = false;
             });
         }
     }

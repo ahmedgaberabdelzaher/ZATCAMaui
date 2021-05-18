@@ -1257,6 +1257,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 _selectedRegion = value;
                 if (_selectedRegion != null)
                 {
+                    if(CityList==null||CityList.Count==0)
                     _ = SetCityList();
                 }
 
@@ -2455,14 +2456,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #region new Methods
 
 
-        public async Task OnPageLoad()
+        public  void OnPageLoad()
         {
             try
             {
-                await Task.Run(() =>
-                {
+                
                     IsLoading = true;
-                });
                 try
                 {
                     IsCRVisible = true;
@@ -2490,19 +2489,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     Console.Write(ex.ToString());
                     Console.Write(ex.StackTrace.ToString());
                 }
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
             }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await Task.Run(() =>
-                    {
                         IsLoading = false;
-                    });
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
@@ -2572,10 +2565,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {"90724", "وزارة البترول والثروة المعدنية" },
             {"90718", "غير معرف" }
         };
-        public async Task SetIssueIdList()
+        public void SetIssueIdList()
         {
-            await Task.Run(() =>
-            {
                 try
                 {
                     IsLoading = true;
@@ -2606,8 +2597,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
 
                 }
-                
-            });
             try
             {
                 if (!App.IsArabic)
@@ -2672,10 +2661,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
-            await Task.Run(() =>
-            {
+           
                 IsLoading = false;
-            });
+            
 
         }
 
@@ -2684,17 +2672,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         public async Task SetCityList()
         {
-            Device.BeginInvokeOnMainThread(() =>
-            {
                 IsLoading = true;
-
-            });
-
             try
             {
                 CityList = null;
                 SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
                 List<SignupCityResult> CityR = new List<SignupCityResult>();
+                if (CityListSignup.d.city_dropdownSet.results.Count == 0)
+                   await App.Current.MainPage.DisplayAlert("no records","no rec","OK");
                 CityR = CityListSignup.d.city_dropdownSet.results;
                 CityList = CityR;
             }

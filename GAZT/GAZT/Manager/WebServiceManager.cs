@@ -2251,7 +2251,7 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
