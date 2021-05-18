@@ -104,12 +104,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     ZDImageSource = "tax_evasion_green.png",
                     ArrowImageSource = fileImage
                 });
-            generalServicesListData.Add(new GeneralServicesListModel
+
+            if(App.LoginDataRetrieved.TpMpVip.Equals("X"))
             {
-                ZDTitle=AppResources.NDRelationContact,
-                ZDImageSource= "tax_evasion_green.png",
-                ArrowImageSource= fileImage
-            });
+                generalServicesListData.Add(new GeneralServicesListModel
+                {
+                    ZDTitle = AppResources.NDRelationContact,
+                    ZDImageSource = "tax_evasion_green.png",
+                    ArrowImageSource = fileImage
+                });
+            }
+           
 
                 GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
         }
