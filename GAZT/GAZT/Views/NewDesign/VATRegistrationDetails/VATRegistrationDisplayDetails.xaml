@@ -155,7 +155,7 @@
                             </StackLayout>
                         </Frame>
                         <!--Bank Details Summery-->
-                        <Frame BorderColor="LightGray"  HasShadow="False" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                        <Frame BorderColor="LightGray" IsVisible="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IbanVisibility}"   HasShadow="False" Padding="0" CornerRadius="8" Margin="0,10,0,0">
                             <StackLayout>
 
                                 <Grid Padding="5" RowSpacing="0" >
