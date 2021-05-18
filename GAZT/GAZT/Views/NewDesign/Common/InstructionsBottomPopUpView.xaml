@@ -384,26 +384,30 @@
 
 
 
-                                <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" >
-                                                    <custom1:CheckboxCustom  
-                                                                       Style="{StaticResource CheckboxHeightWidth32}"
-                                                                         VerticalOptions="CenterAndExpand" CheckChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsTermsChecked}" IsEnabled="{Binding IsCheckboxEditable}"/>
-                                                    <custom:CustomLabel   >
-                                                        <custom:CustomLabel.FormattedText>
-                                                            <FormattedString>
-                                                                <Span   Text="{Binding CheckBoxDescription}" />
-                                                            </FormattedString>
-                                                        </custom:CustomLabel.FormattedText>
-                                                        <custom:CustomLabel.Triggers>
-                                                                     <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsTermsChecked}" Value="True">
-                                                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
-                                                                     </DataTrigger>
-                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsTermsChecked}" Value="False">
-                                                                         <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
-                                                                     </DataTrigger>
-                                                       </custom:CustomLabel.Triggers>
-                                                    </custom:CustomLabel>
-                                </StackLayout>
+                            <custom1:CheckboxCustom 
+                                           Grid.Row="0" Grid.Column="0"           
+                                           Style="{StaticResource CheckboxHeightWidth32}"
+                                           VerticalOptions="CenterAndExpand"
+                                           CheckChanged="CheckBox_CheckedChanged" 
+                                           IsChecked="{Binding IsTermsChecked}" 
+                                           IsEnabled="{Binding IsCheckboxEditable}"/>
+
+                            <custom:CustomLabel VerticalOptions="Center"
+                                                                         Grid.Row="0" Grid.Column="1">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span   Text="{Binding CheckBoxDescription}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                                <custom:CustomLabel.Triggers>
+                                    <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsTermsChecked}" Value="True">
+                                        <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsTermsChecked}" Value="False">
+                                        <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
+                                    </DataTrigger>
+                                </custom:CustomLabel.Triggers>
+                            </custom:CustomLabel>
                         </Grid>
 
 
