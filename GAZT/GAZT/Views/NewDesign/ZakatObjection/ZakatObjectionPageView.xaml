@@ -1126,7 +1126,7 @@
                         </Frame>
                     </Grid>
 
-                    <Grid IsVisible="{Binding SummaryVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                    <Grid IsVisible="{Binding SummaryVisible}" BackgroundColor="Transparent" Margin="20,10,20,20"
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                         <StackLayout Orientation="Vertical">
@@ -1513,7 +1513,8 @@
                                                     </Grid>
                               </Frame>
 
-                            <buttons:SfButton Margin="0,16,0,16" 
+                            <buttons:SfButton Margin="0,16,0,16"
+                                           IsVisible="{Binding IsWithDrawEnable}"
                                            IsEnabled="{Binding IsWithDrawEnable}"
                                            BackgroundColor="{Binding WithdrawBackgroundColor}"
                                           Text="{x:Static ResourceManager:AppResources.ZOReasonWithDraw}"
@@ -1530,7 +1531,7 @@
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding Download_Acknowledgement}" />
                             
-                            <buttons:SfButton Margin="0,16,0,16"
+                            <buttons:SfButton Margin="0,16,0,20"
                                           Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding ZDownloadForm}" />
