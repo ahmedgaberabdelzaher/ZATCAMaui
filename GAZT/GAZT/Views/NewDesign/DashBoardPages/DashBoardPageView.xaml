@@ -82,7 +82,7 @@
                     <ScrollView Scrolled="ScrollView_Scrolled" VerticalScrollBarVisibility="Never">
                         <StackLayout Spacing="0">
 
-                            <StackLayout Padding="15,0,15,8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <StackLayout Padding="15,0,15,8" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
                             <custom:CustomLabel Text="{Binding TaxpayerName}"  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,0,0,10" VerticalOptions="Center" StyleId="SingleLabel" MaxLines="2"/>
 
                             <StackLayout IsVisible="{Binding IsMyObligationsClear}">
@@ -146,7 +146,10 @@
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
                             </StackLayout>
-                            <Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsEstablishmentRegistrationTileVisible}" BackgroundColor="{StaticResource NewDullOrangeColor}"  Padding="15,16,15,8">
+                            <Grid ColumnSpacing="16" RowSpacing="4"
+                                  IsVisible="{Binding IsEstablishmentRegistrationTileVisible}"
+                                  BackgroundColor="{StaticResource NewDullOrangeColor}"
+                                  Padding="15,16,15,8">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
@@ -172,7 +175,7 @@
                                 </yummy:PancakeView>
                             </Grid>
 
-
+                            <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="White">
                             <!--Pending Bills-->
                             <StackLayout IsVisible="{Binding IsPendingBillsVisible}">
                                 <yummy:PancakeView  BackgroundColor="White"  Padding="15,0,15,0">
@@ -881,7 +884,7 @@
 
                             </StackLayout>
 
-                            <StackLayout IsVisible="{Binding IsInstalmentPlanVisible}">
+                            <StackLayout IsVisible="{Binding IsInstalmentPlanVisible}" >
                                 
                                 
                                 <yummy:PancakeView BackgroundColor="White" CornerRadius="0" >
@@ -1000,7 +1003,7 @@
                                     </cards:SfCardView>
                                 </yummy:PancakeView>
                             </StackLayout>
-
+                            </StackLayout>
                         </StackLayout>
                     </ScrollView>
                 </yummy:PancakeView>
