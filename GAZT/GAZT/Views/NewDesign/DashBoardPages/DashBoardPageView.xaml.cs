@@ -1343,17 +1343,17 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             if (e.ScrollY > 120)
             {
-                await frameToolbar.FadeTo(1, 600);
-                await btn_frameToolbar.FadeTo(0, 600);
-                await btn_frameToolbar.TranslateTo(xPosition - 10, -100, 400);
+                await frameToolbar.FadeTo(1, 100);
+                await btn_frameToolbar.FadeTo(0, 100);
+                await btn_frameToolbar.TranslateTo(xPosition - 10, -100, 100);
 
                 //                  await btn_frameToolbar.TranslateTo(100, 0, 200, Easing.CubicInOut);
             }
             else
             {
-                await frameToolbar.FadeTo(0, 600);
-                await btn_frameToolbar.FadeTo(1, 600);
-                await btn_frameToolbar.TranslateTo(scrollView.X, scrollView.Y, 400);
+                await frameToolbar.FadeTo(0, 100);
+                await btn_frameToolbar.FadeTo(1, 100);
+                await btn_frameToolbar.TranslateTo(scrollView.X, scrollView.Y, 100);
 
                 //await btn_frameToolbar.TranslateTo(0, 0, 200, Easing.CubicInOut);
             }

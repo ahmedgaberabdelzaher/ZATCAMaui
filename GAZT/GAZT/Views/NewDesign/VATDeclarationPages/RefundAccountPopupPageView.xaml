@@ -37,6 +37,8 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -45,11 +47,11 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>  
 
-                <StackLayout Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="White">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefund}"  Style="{StaticResource PageTitleBlack}"/>
-                </StackLayout>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefund}"
+                                            Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="White"
+                                            Style="{StaticResource PageTitleBlack}"/>
 
                 <!--<StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
                     
@@ -84,7 +86,7 @@
                 </StackLayout>
 
 
-                    <StackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" IsEnabled="{Binding IsIdNumberEnabled}">
+                    <StackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" IsEnabled="{Binding IsIdNumberEnabled}" BackgroundColor="Red">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
                     <Grid>
                     <inputLayout:SfTextInputLayout InputViewPadding="16,0,16,0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" BackgroundColor="White">
@@ -114,8 +116,9 @@
                     </Grid>
                 </StackLayout>
 
-                    <StackLayout Grid.Row="3" Grid.Column="0" IsVisible="{Binding IsNewAccountButtonVisible}" IsEnabled="{Binding IsNewAccountEnabled}"  Grid.ColumnSpan="2" BackgroundColor="White">
-                <border:SfBorder Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" >
+                    <StackLayout Grid.Row="4" Grid.Column="0" IsVisible="{Binding IsNewAccountButtonVisible}" IsEnabled="{Binding IsNewAccountEnabled}"
+                                 Grid.ColumnSpan="2" BackgroundColor="White">
+                <border:SfBorder Margin="0,0,0,0"  Style="{StaticResource GreyBorderFrameWithShadow}" >
                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="15,10,15,10">
                         <Image Source="ic_add_plus.png">
 
@@ -128,7 +131,7 @@
                 </border:SfBorder>
                 </StackLayout>
 
-                    <StackLayout Grid.Row="4" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
+                    <StackLayout Grid.Row="5" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
                         <listView:SfListView Orientation="Horizontal" x:Name="OtherIbanlist"   AutoFitMode="Height" 
@@ -264,7 +267,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>-->
                 </StackLayout>
-                    <StackLayout Orientation="Horizontal" Grid.Row="5" IsEnabled="{Binding IsRefundCheckboxEnabled}" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
+                    <StackLayout Orientation="Horizontal" Grid.Row="6" IsEnabled="{Binding IsRefundCheckboxEnabled}" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
                         <CheckBox x:Name="chkForDeclarationRefund" VerticalOptions="CenterAndExpand"  IsChecked="{Binding IsDeclarationCheckedForRefund}">
                             <CheckBox.Triggers>
                                 <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkForDeclarationRefund}, Path=IsChecked}" Value="false">
@@ -285,7 +288,7 @@
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
                     </StackLayout>
-                    <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="{Binding IsConfirmRefundButtonEnabled}" BackgroundColor="White">
+                    <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="{Binding IsConfirmRefundButtonEnabled}" BackgroundColor="White">
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZConfirmRefund}" Clicked="Confirm_RefundClicked"  Margin="0,8,0,0" Style="{StaticResource PrimaryButtonStyle}"/>
                 </StackLayout>
             </Grid>
