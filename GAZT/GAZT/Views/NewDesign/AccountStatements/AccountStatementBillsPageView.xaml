@@ -108,7 +108,8 @@
                 <StackLayout Spacing="-5" Grid.Row="0" BackgroundColor="Transparent" Padding="0">
 
                     <StackLayout Orientation="Horizontal">
-                        <custom:CustomLabel Text="{Binding SelectedTransactionTypeFilter.Txt30, Mode=OneWay}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start"
+                        <custom:CustomLabel Text="{Binding SelectedTransactionTypeFilter.Txt30, Mode=OneWay}"
+                                            Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start"
                                         VerticalOptions="CenterAndExpand">
                             <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="btn_Clicked"/>

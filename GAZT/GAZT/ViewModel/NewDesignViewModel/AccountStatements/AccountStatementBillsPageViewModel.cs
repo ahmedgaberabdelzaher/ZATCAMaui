@@ -1336,6 +1336,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             try
             {
+                if(PickerModel!=null)
                 await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
             }
             catch (GAZTUnlockAccountException ex)
