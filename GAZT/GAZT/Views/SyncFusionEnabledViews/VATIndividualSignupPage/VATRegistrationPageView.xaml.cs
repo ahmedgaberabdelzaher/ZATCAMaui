@@ -480,15 +480,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     FrmContactName.HasError = true;
 
                 }
-                if (viewModel.SelectedIdTypeSR.Name != AppResources.ZZGCCID)
-                {
-                    if (string.IsNullOrEmpty(viewModel.ContactDOB))
-                    {
-                        flag = false;
-                        viewModel.FrameContactDOBError = true;
+                //if (viewModel.SelectedIdTypeSR.Name != AppResources.ZZGCCID)
+                //{
+                //    if (string.IsNullOrEmpty(viewModel.ContactDOB))
+                //    {
+                //        flag = false;
+                //        viewModel.FrameContactDOBError = true;
 
-                    }
-                }
+                //    }
+                //}
                 if (flag)
                 {
 
@@ -1494,12 +1494,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
+
         private void EntryIDNo_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
             {
                 viewModel.FrameIDError = false;
             }
+
+           
+
+               
+
+
         }
 
         private void EntryFirstName_Unfocused(object sender, FocusEventArgs e)
@@ -3353,6 +3360,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             viewModel.FrameContactIDError = false;
             FrmContactIDNumber.HasError = false;
+
+            var keyword = e.NewTextValue;
+            if (keyword.Length >= 1)
+            {
+
+
+                if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("ZS0003"))
+                {
+                    viewModel.DOBNonMandatoryVisibility = true;
+                    viewModel.DOBMandatoryVisibility = false;
+                }
+                else
+                {
+                    viewModel.DOBNonMandatoryVisibility = false;
+                    viewModel.DOBMandatoryVisibility = true;
+                }
+            }
         }
 
         private void EntryPhoneNumber_Unfocused_1(object sender, FocusEventArgs e)
