@@ -2497,8 +2497,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 {
                     string[] date1 = VatEligibleStartDate.Split('/');
                     Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
-
+                    if (App.VATType == Enums.PageExecutionType.Reactivation)
+                    {
+                        VATRegistrationDetailsData.d.VatTaxDt = Bdt;
+                    }
                 }
+               
+
 
                 //Step 4
                 if (IsAddNewRepresentativeChecked)
@@ -2692,6 +2697,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 VATRegistrationDetailsData.d.NresBgTo = null;
 
                 var ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
+                
                 response = await VatRegistrationWebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
                 PopToRootPage();
                 if (TempDataContacts != null)

@@ -492,7 +492,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             if (viewModel.IsDeclarationChecked == true)
             {
-                bool flag = true;
+
+        bool flag = true;
                 if (App.VATType == Enums.PageExecutionType.Reactivation)
                 {
                     if (viewModel.SelectedIdTypeSR == null)
