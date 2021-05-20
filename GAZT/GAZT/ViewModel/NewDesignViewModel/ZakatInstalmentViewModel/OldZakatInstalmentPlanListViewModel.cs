@@ -1547,19 +1547,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
 
-            if (zakatRequestDisplayModel.d.APaymentFreq != null && zakatRequestDisplayModel.d.APaymentFreq == "01")
+            if (zakatRequestDisplayModel.d.APaymentFreq != null && (zakatRequestDisplayModel.d.APaymentFreq == "01" || zakatRequestDisplayModel.d.APaymentFreq == "1"))
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetMonthly;
             }
-            else if (zakatRequestDisplayModel.d.APaymentFreq != null && zakatRequestDisplayModel.d.APaymentFreq == "02")
+            else if (zakatRequestDisplayModel.d.APaymentFreq != null && (zakatRequestDisplayModel.d.APaymentFreq == "02" || zakatRequestDisplayModel.d.APaymentFreq == "2"))
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetQuarterly;
             }
-            else if (zakatRequestDisplayModel.d.APaymentFreq != null && zakatRequestDisplayModel.d.APaymentFreq == "03")
+            else if (zakatRequestDisplayModel.d.APaymentFreq != null && (zakatRequestDisplayModel.d.APaymentFreq == "03" || zakatRequestDisplayModel.d.APaymentFreq == "3"))
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetHalfYearly;
             }
-            else if (zakatRequestDisplayModel.d.APaymentFreq != null && zakatRequestDisplayModel.d.APaymentFreq == "04")
+            else if (zakatRequestDisplayModel.d.APaymentFreq != null && (zakatRequestDisplayModel.d.APaymentFreq == "04" || zakatRequestDisplayModel.d.APaymentFreq == "4") )
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetYearly;
             }
