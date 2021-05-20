@@ -50,10 +50,10 @@ namespace GAZT.Helper
         //public static string DomainUrlForCookies = DevDomainForCookies;
         //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
-         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-         public static string DomainUrlForCookies = QADomainForCookies;
-         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        public static string DomainUrlForCookies = QADomainForCookies;
+        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
@@ -193,7 +193,8 @@ namespace GAZT.Helper
 
         //RM Contact details
         public static string GetRMContactDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_VOC_SURVEY_SRV/RelationManagerSurveySet(Gpart";
-        public static string ComplaintsUrl = "https://gazt.gov.sa/en/ContactUs/Pages/default.aspx";
+        public static string ComplaintsEngUrl = "https://gazt.gov.sa/en/ContactUs/Pages/default.aspx#topic_complaint";
+        public static string ComplaintsARUrl = "https://gazt.gov.sa/ar/ContactUs/Pages/default.aspx#topic_complaint";
         #region GAZTUnlock Account
         public static string GAZTUnlockAccountAllOperations = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_UNLOCK_USER_SRV/HeaderSet";
         #endregion

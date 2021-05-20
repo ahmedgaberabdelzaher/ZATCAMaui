@@ -1,5 +1,6 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
 using GAZT.Helper;
+using GAZT.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,7 +70,14 @@ namespace EGAZT.Views.NewDesign.SupportPages
         public async void submitComplaintToRelationShipManager(object sender, EventArgs e)
         {
             try {
-                await Task.Run(() => { Device.OpenUri(new Uri(Constants.ComplaintsUrl)); });
+                await Task.Run(() => {
+                    string lang = WebServiceManager.GetLangZParameterAREN();
+                    if(lang.Equals("AR"))
+                        Device.OpenUri(new Uri(Constants.ComplaintsARUrl));
+                    else
+                    Device.OpenUri(new Uri(Constants.ComplaintsEngUrl)); 
+
+                });
             }
             catch(Exception)
             {

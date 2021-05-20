@@ -7237,7 +7237,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display Relationship Manager and Supervisor Contact Information.
+        ///   Looks up a localized string similar to Relationship Manager and Supervisor Contact Information.
         /// </summary>
         public static string NDRelationContact {
             get {

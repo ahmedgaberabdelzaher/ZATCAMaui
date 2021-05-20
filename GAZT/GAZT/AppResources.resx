@@ -8985,7 +8985,7 @@ I acknowledge that the above bank account information is correct and assume full
     <value>Your request for VAT registration number</value>
   </data>
   <data name="NDRelationContact" xml:space="preserve">
-    <value>Display Relationship Manager and Supervisor Contact Information</value>
+    <value>Relationship Manager and Supervisor Contact Information</value>
   </data>
   <data name="RMName" xml:space="preserve">
     <value>Relationship Manager:</value>
