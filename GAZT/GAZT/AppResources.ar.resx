@@ -3185,10 +3185,10 @@
     <value>الهيئة العامة للزكاة والدخل - جميع الحقوق محفوظة © 2021م</value>
   </data>
   <data name="ETReturns" xml:space="preserve">
-    <value>إقرارات ضريبة السلع الانتقائية</value>
+    <value>ضريبة السلع الإنتقائية</value>
   </data>
   <data name="VatReturns" xml:space="preserve">
-    <value>إقرارات ضريبة القيمة المضافة</value>
+    <value>ضريبة القيمة المضافة</value>
   </data>
   <data name="WHTreturns" xml:space="preserve">
     <value>إقرارات ضريبة الاستقطاع</value>
