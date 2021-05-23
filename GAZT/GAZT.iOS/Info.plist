@@ -79,9 +79,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.gazt.enterprise.egazt</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.37</string>
+	<string>1.0.38</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.2.2.29</string>
+	<string>3.2.2.30</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
