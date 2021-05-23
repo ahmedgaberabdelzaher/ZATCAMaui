@@ -3361,22 +3361,35 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.FrameContactIDError = false;
             FrmContactIDNumber.HasError = false;
 
-            var keyword = e.NewTextValue;
-            if (keyword.Length >= 1)
+
+            if (e != null && e.OldTextValue != null && e.NewTextValue != null)
             {
 
+                var keyword = e.NewTextValue;
+                if (keyword.Length >= 1)
+                {
 
-                if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("ZS0003"))
-                {
-                    viewModel.DOBNonMandatoryVisibility = true;
-                    viewModel.DOBMandatoryVisibility = false;
-                }
-                else
-                {
-                    viewModel.DOBNonMandatoryVisibility = false;
-                    viewModel.DOBMandatoryVisibility = true;
+                    if (viewModel.SelectedIdTypeSR != null || !viewModel.SelectedIdTypeSR.ID.Equals("00000"))
+                    {
+
+                        if (viewModel.SelectedIdTypeSR.ID.Equals("ZS0003"))
+                        {
+
+                            viewModel.DOBNonMandatoryVisibility = true;
+                            viewModel.DOBMandatoryVisibility = false;
+                        }
+                        else
+                        {
+                            viewModel.DOBNonMandatoryVisibility = false;
+                            viewModel.DOBMandatoryVisibility = true;
+                        }
+
+
+                    }
+
                 }
             }
+
         }
 
         private void EntryPhoneNumber_Unfocused_1(object sender, FocusEventArgs e)
