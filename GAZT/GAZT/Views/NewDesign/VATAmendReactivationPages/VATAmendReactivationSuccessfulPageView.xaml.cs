@@ -68,16 +68,21 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             //  viewModel._navigationService.NavigateTo(App.SFLandingPageView);
             //App.TP = null;
             //viewModel.LogOut();
-            int dashboard = 0;
-            for (int i = 0; i < Navigation.NavigationStack.Count; i++)
+            int dashboard = 0, stackCount= Navigation.NavigationStack.Count;
+            
+            for (int i = 0; i < stackCount; i++)
             {
                 if (Navigation.NavigationStack[i].GetType().Name.Equals("GAZTNewDesignDashBoardPageView"))
-                    dashboard = i;
-                if (i > dashboard && i < Navigation.NavigationStack.Count - 1&&dashboard!=0)
                 {
-                    Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    dashboard = i;
+                    break;
                 }
             }
+            for(int i= stackCount-2; i > dashboard; i--)
+            {
+                    Navigation.RemovePage(Navigation.NavigationStack[i]);
+            }
+
             viewModel._navigationService.GoBack();
         }
 
