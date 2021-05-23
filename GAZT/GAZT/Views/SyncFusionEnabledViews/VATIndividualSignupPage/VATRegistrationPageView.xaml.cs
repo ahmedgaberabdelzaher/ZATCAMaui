@@ -3361,8 +3361,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.FrameContactIDError = false;
             FrmContactIDNumber.HasError = false;
 
+            
 
-            if (e != null && e.OldTextValue != null && e.NewTextValue != null)
+            if (e != null && !string.IsNullOrEmpty(e.OldTextValue) && !string.IsNullOrEmpty(e.NewTextValue))
             {
 
                 var keyword = e.NewTextValue;
