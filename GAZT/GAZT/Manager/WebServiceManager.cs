@@ -242,6 +242,84 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+        public static List<MyBillsFilterDropdown> GAZTGetMyBillsFilterDropdownValues(String Tin, string lang)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                List<MyBillsFilterDropdown> myBillsFilters = new List<MyBillsFilterDropdown>();
+              
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                    String url = Constants.GetMyBillsFilterDropdown + "Spras eq'" + lang + "'&saml2=enabled&$format=json&sap-language=" + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTMyBillsFilterResponse = client.GetAsync(uri).Result;
+                    if (GAZTMyBillsFilterResponse != null)
+                    {
+                        if (GAZTMyBillsFilterResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTMyBillsFilterResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String GAZTMyBillsResponseJSON = GAZTMyBillsFilterResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTMyBillsResponseJSON))
+                        {
+                            GAZTMyBillsResponseJSON = JObject.Parse(GAZTMyBillsResponseJSON)["d"].ToString();
+                            string GAZTMyBillsResponseJSONJToken = JObject.Parse(GAZTMyBillsResponseJSON)["results"].ToString();
+                            if (string.IsNullOrEmpty(GAZTMyBillsResponseJSONJToken) != true)
+                            {
+                                myBillsFilters = JsonConvert.DeserializeObject<List<MyBillsFilterDropdown>>(GAZTMyBillsResponseJSONJToken);
+                            }
+                            else
+                            {
+                                throw new Exception(AppResources.NoBillsAvailable);
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.NoBillsAvailable);
+                        }
+                    }
+                    return myBillsFilters;
+                }
+                catch (Exception ex)
+                {
+                    if (string.Equals(ex.Message, AppResources.NoBillsAvailable))
+                    {
+                        throw new Exception(AppResources.NoBillsAvailable);
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                    }
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
         public static ICR GAZTGetICRs(String Tin, string lang)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -5584,10 +5662,6 @@ namespace GAZT.Manager
                             isLoad = "X";
                         }
 
-                        
-
-
-
                     }
 
                     String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='" + statementFilter + "',FiscalYear='" + fiscalYear + "',TaxType='" + taxType + "',Lang='" + LangZ + "',Load='" + isLoad + "')?&$expand=StatmenetLineItemsSet,TaxRelationSet&$format=json";
@@ -5597,10 +5671,6 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Token", "123");
 
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-
-
-
-
 
 
 

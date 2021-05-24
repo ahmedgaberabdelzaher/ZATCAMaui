@@ -113,7 +113,7 @@
                                 </Image.GestureRecognizers>
                             </Image>
 
-                            <syncfusion:SfPicker FlowDirection="RightToLeft"   x:Name="TaxTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
+                            <!--<syncfusion:SfPicker FlowDirection="RightToLeft"   x:Name="TaxTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
@@ -121,7 +121,7 @@
                                 <syncfusion:SfPicker.Behaviors>
                                     <customcontrol:SfPickerBehavior />
                                 </syncfusion:SfPicker.Behaviors>
-                            </syncfusion:SfPicker>
+                            </syncfusion:SfPicker>-->
                         </Grid>
 
                         <ScrollView Orientation="Horizontal" HorizontalOptions="StartAndExpand" HorizontalScrollBarVisibility="Never" Margin="0,24,0,24">

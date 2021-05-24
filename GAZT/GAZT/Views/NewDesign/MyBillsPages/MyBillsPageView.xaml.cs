@@ -35,9 +35,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             this.BindingContext = viewModel;
             try
             {
-
+                viewModel.PopulateFilterDropdown();
                 viewModel.onPageLoad(billInfo);
-                viewModel.PopulateReturnTypeList();
                 viewModel.PopulateDataInChips();
                 //viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
 
@@ -108,6 +107,11 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             this.Padding = safeInsets;
 
             viewModel.isPayNowTapped = false;
+
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+                viewModel.PickerModel = arg;
+                viewModel.updatePicker();
+            });
 
             try
             {
@@ -204,6 +208,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
                 MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
                 MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
+                MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
 
             }
             catch (Exception ex)
@@ -239,13 +244,17 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
         private void btn_Clicked(object sender, System.EventArgs e)
         {
-            MessagingCenter.Subscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew", (a, arg) =>
-            {
-                viewModel.SelectedTaxTypeForFilter = arg;
-                MessagingCenter.Unsubscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew");
-            });
-            PopupNavigation.Instance.PushAsync(new NewPopupPageView(viewModel.TaxTypeForFilter, viewModel.SelectedTaxTypeForFilter), false);
+
+            viewModel.showPickerDialog();
+            //MessagingCenter.Subscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew", (a, arg) =>
+            //{
+            //    viewModel.SelectedTaxTypeForFilter = arg;
+            //    MessagingCenter.Unsubscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew");
+            //});
+            //PopupNavigation.Instance.PushAsync(new NewPopupPageView(viewModel.TaxTypeForFilter, viewModel.SelectedTaxTypeForFilter), false);
         }
+
+
 
 
         private void chipgroup_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)

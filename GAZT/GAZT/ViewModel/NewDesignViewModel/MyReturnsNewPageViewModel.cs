@@ -1,6 +1,7 @@
 ﻿using EGAZT.Models;
 using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.PaymentOptions;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -46,6 +47,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _returnTypeForFilter = value;
                 RaisePropertyChanged("ReturnTypeForFilter");
             }
+        }
+
+        public List<MyBillsFilterDropdown> _TaxTypeForFilter = null;
+        public List<MyBillsFilterDropdown> TaxTypeForFilter
+        {
+            get
+            {
+                return _TaxTypeForFilter;
+            }
+            set
+            {
+                if (_TaxTypeForFilter == value) return;
+
+                _TaxTypeForFilter = value;
+                RaisePropertyChanged("TaxTypeForFilter");
+            }
+        }
+
+        public MyBillsFilterDropdown _SelectedTaxTypeForFilter = null;
+        public MyBillsFilterDropdown SelectedTaxTypeForFilter
+        {
+            get
+            {
+                return _SelectedTaxTypeForFilter;
+            }
+            set
+            {
+
+                _SelectedTaxTypeForFilter = value;
+                if (_SelectedTaxTypeForFilter != null)
+                {
+                    FilterLabelText = _SelectedTaxTypeForFilter.Txt30;
+                    FilterOnBasisOfTaxType();
+
+                }
+                RaisePropertyChanged("SelectedTaxTypeForFilter");
+            }
+            
         }
         public bool _isListVisible = false;
         public bool IsListVisible
@@ -281,28 +320,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("FilterLabelText");
             }
         }
-        public ReturnTypes _selectedReturnTypeForFilter;
-        public ReturnTypes SelectedReturnTypeForFilter
-        {
-            get
-            {
-                return _selectedReturnTypeForFilter;
-            }
-            set
-            {
-                if (_selectedReturnTypeForFilter == value) return;
+        //public ReturnTypes _selectedReturnTypeForFilter;
+        //public ReturnTypes SelectedReturnTypeForFilter
+        //{
+        //    get
+        //    {
+        //        return _selectedReturnTypeForFilter;
+        //    }
+        //    set
+        //    {
+        //        if (_selectedReturnTypeForFilter == value) return;
 
-                _selectedReturnTypeForFilter = value;
-                if (_selectedReturnTypeForFilter != null)
-                {
-                    FilterLabelText = _selectedReturnTypeForFilter.TaxType;
-                    FilterOnBasisOfTaxType();
+        //        _selectedReturnTypeForFilter = value;
+        //        if (_selectedReturnTypeForFilter != null)
+        //        {
+        //            FilterLabelText = _selectedReturnTypeForFilter.TaxType;
+        //            FilterOnBasisOfTaxType();
 
-                }
+        //        }
 
-                RaisePropertyChanged("_selectedReturnTypeForFilter");
-            }
-        }
+        //        RaisePropertyChanged("_selectedReturnTypeForFilter");
+        //    }
+        //}
 
         private bool _isArabic = false;
         public bool IsArabic
@@ -329,7 +368,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_listToDisplay == value) return;
 
                 _listToDisplay = value;
                 if (_listToDisplay != null)
@@ -355,6 +393,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 //Sum(emp => emp.Salary);
                 RaisePropertyChanged("ListToDisplay");
+            }
+        }
+
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get { return _pickerModel; }
+            set
+            {
+                if (_pickerModel == value) return;
+
+                _pickerModel = value;
+                RaisePropertyChanged("PickerModel");
             }
         }
 
@@ -579,7 +630,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     MyReturns = await WebServiceManager.GAZTGetReturnData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
                     //});
-                    SelectedReturnTypeForFilter = ReturnTypeForFilter.FirstOrDefault();
+                    //SelectedReturnTypeForFilter = ReturnTypeForFilter.FirstOrDefault();
+                    SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
                     //try
                     //{
                     //    if (GetReturnDataTask != null)
@@ -653,15 +705,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             });
 
-            if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
-            {
-                AllReturns = MyReturns.d.results;
-                ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT" || x.TaxType == "VATX" || x.TaxType == "VTEP" || x.TaxType == "ETAX" || x.TaxType == "WHTX"));
-            }
-            else
-            {
+            //if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+            //{
+            //    AllReturns = MyReturns.d.results;
+            //    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT" || x.TaxType == "VATX" || x.TaxType == "VTEP" || x.TaxType == "ETAX" || x.TaxType == "WHTX"));
+            //}
+            //else
+            //{
 
-            }
+            //}
             await Task.Run(() =>
             {
                 IsLoading = false;
@@ -773,7 +825,101 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
                 {
                     //AllReturns = MyReturns.d.results;
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT"));
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ZAKT"));
+                    if (_selectedChipFilterItem != null)
+                    {
+
+                        if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+                        {
+
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "submitted";
+                                }
+
+                            }
+                        }
+                        if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
+                        {
+
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "unsubmitted";
+                                }
+                            }
+                        }
+
+                        if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
+                        {
+
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "overdue";
+                                }
+                            }
+
+                        }
+
+                        if (_selectedChipFilterItem.TemplateType.Equals("All"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay);
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    if (item.StatusTxt == "Non Submitted")
+                                    {
+                                        item.StatusMessage = "unsubmitted";
+
+                                    }
+                                    if (item.StatusTxt == "Non Submitted" && item.Due == "X")
+                                    {
+                                        item.StatusMessage = "overdue";
+                                    }
+                                    if (item.StatusTxt == "Submitted")
+                                    {
+                                        item.StatusMessage = "submitted";
+                                    }
+
+
+
+                                }
+                            }
+
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+
+        }
+
+        public void FilterIncomeTaxData()
+        {
+            try
+            {
+                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                {
+                    //AllReturns = MyReturns.d.results;
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX"));
                     if (_selectedChipFilterItem != null)
                     {
 
@@ -1214,27 +1360,103 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //    }
         public void PopulateReturnTypeList()
         {
+
+
             try
             {
-                List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>
+                string lang = UtilityManager.GetLanguageParameter();
+                var FilterValues = WebServiceManager.GAZTGetMyBillsFilterDropdownValues(App.TP.Tin, lang);
+                if (FilterValues != null)
                 {
-                    new ReturnTypes {Id = "00",TaxType = AppResources.AllReturns},
-                   // new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
-                    new ReturnTypes {Id = "01",TaxType = AppResources.ZakatandIncomeTax},
-                    new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
-                    new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
-                    new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
-            };
-                ReturnTypeForFilter = new List<ReturnTypes>();
-                ReturnTypeForFilter = ReturnTypesList;
+                    TaxTypeForFilter = FilterValues; 
+                    SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+
+
+                    var list = new List<string>();
+
+                    foreach (MyBillsFilterDropdown dropdown in TaxTypeForFilter)
+                    {
+                        try
+                        {
+                            list.Add(dropdown.Txt30.ToUpper());
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+
+                    }
+
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = list;
+                    genericPickerModel.PickerTitle = "";
+                    genericPickerModel.PickerId = "MyReturns";
+                    genericPickerModel.SelectedValue = SelectedTaxTypeForFilter.Txt30;
+
+                    PickerModel = genericPickerModel;
+                }
+
             }
             catch (Exception ex)
+            {
+
+            }
+
+
+            //try
+            //{
+            //    List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>
+            //    {
+            //        new ReturnTypes {Id = "00",TaxType = AppResources.AllReturns},
+            //       // new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
+            //        new ReturnTypes {Id = "01",TaxType = AppResources.ZakatandIncomeTax},
+            //        new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
+            //        new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
+            //        new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
+            //};
+            //    ReturnTypeForFilter = new List<ReturnTypes>();
+            //    ReturnTypeForFilter = ReturnTypesList;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.Write(ex.ToString());
+            //    Console.Write(ex.StackTrace.ToString());
+            //}
+
+
+        }
+
+        public void updatePicker()
+        {
+
+            var selectedFilter = new ObservableCollection<MyBillsFilterDropdown>(TaxTypeForFilter.Where(temp => temp.Txt30.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
+
+            SelectedTaxTypeForFilter = selectedFilter.FirstOrDefault();
+
+        }
+
+        public async void showPickerDialog()
+        {
+            try
+            {
+                if (PickerModel != null)
+                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
-
-
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
         }
         public void PopulateDataInChips()
         {
@@ -1247,26 +1469,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                };
 
         }
+
+        
         public void FilterOnBasisOfTaxType()
         {
-            if (_selectedReturnTypeForFilter.Id == "00")
+            if (SelectedTaxTypeForFilter.StatementFilter == "10")
             {
                 FilterAllData();
             }
-            if (_selectedReturnTypeForFilter.Id == "01")
+            if (SelectedTaxTypeForFilter.StatementFilter == "02")
             {
                 FilterZakatData();
             }
-            if (_selectedReturnTypeForFilter.Id == "02")
+            if (SelectedTaxTypeForFilter.StatementFilter == "01")
+            {
+                FilterIncomeTaxData();
+            }
+            if (SelectedTaxTypeForFilter.StatementFilter == "06")
             {
                 FilterVatData();
             }
-            if (_selectedReturnTypeForFilter.Id == "03")
+            if (SelectedTaxTypeForFilter.StatementFilter == "07")
             {
                 FilterETData();
 
             }
-            if (_selectedReturnTypeForFilter.Id == "04")
+            if (SelectedTaxTypeForFilter.StatementFilter == "03")
             {
                 FilterWTData();
             }

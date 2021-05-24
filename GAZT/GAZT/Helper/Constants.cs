@@ -45,10 +45,10 @@ namespace GAZT.Helper
 
         #endregion
 
-        //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = DevDomainForCookies;
-        //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
+        public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
+        public static string DomainUrlForCookies = DevDomainForCookies;
+        public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
         //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
@@ -60,10 +60,10 @@ namespace GAZT.Helper
         //public static string DomainUrlForCookies = UatDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
-        public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
-        public static string DomainUrlForCookies = PreprodDomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = PreprodDomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
         //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
@@ -95,6 +95,7 @@ namespace GAZT.Helper
 
         public static string GetAllCertificate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='";
         public static string GetMyBills = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_MYBILLS_SRV/MyBillsSet?$filter=";
+        public static string GetMyBillsFilterDropdown = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/TaxRelationSet?$filter=";
         public static string FogotPasswordSendOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/SecuredHeaderSet(Tin='";
         public static string SendUserNameToEmail = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/SecuredHeaderSet?saml2=enabled";
         public static string ValidateOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/SecuredHeaderSet?saml2=enabled";

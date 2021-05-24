@@ -22,6 +22,7 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using EGAZT.Views.NewDesign.MyBillsPages;
+using EGAZT.Views.NewDesign.GenericPickers;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -40,8 +41,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public bool isPayNowTapped = false;
 
         #region Property
-        public List<ReturnTypes> _TaxTypeForFilter = null;
-        public List<ReturnTypes> TaxTypeForFilter
+        public List<MyBillsFilterDropdown> _TaxTypeForFilter = null;
+        public List<MyBillsFilterDropdown> TaxTypeForFilter
         {
             get
             {
@@ -174,8 +175,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ChipDataFilterlist");
             }
         }
-        public ReturnTypes _SelectedTaxTypeForFilter = null;
-        public ReturnTypes SelectedTaxTypeForFilter
+        public MyBillsFilterDropdown _SelectedTaxTypeForFilter = null;
+        public MyBillsFilterDropdown SelectedTaxTypeForFilter
         {
             get
             {
@@ -188,7 +189,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _SelectedTaxTypeForFilter = value;
                 if (_SelectedTaxTypeForFilter != null)
                 {
-                    FilterLabelText = _SelectedTaxTypeForFilter.TaxType;
+                    FilterLabelText = _SelectedTaxTypeForFilter.Txt30;
                     FilterIfTypeAndStausFilterSelected(true);
                 }
                 RaisePropertyChanged("SelectedTaxTypeForFilter");
@@ -457,7 +458,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ApplePayStatus");
             }
         }
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get { return _pickerModel; }
+            set
+            {
+                if (_pickerModel == value) return;
 
+                _pickerModel = value;
+                RaisePropertyChanged("PickerModel");
+            }
+        }
         public string ApplePayTokenData = "";
 
         #endregion
@@ -639,28 +651,109 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             IsLoading = false;
         }
-        public void PopulateReturnTypeList()
+
+        public void updatePicker()
+        {
+
+            var selectedFilter = new ObservableCollection<MyBillsFilterDropdown>(TaxTypeForFilter.Where(temp => temp.Txt30.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
+
+            SelectedTaxTypeForFilter = selectedFilter.FirstOrDefault();
+
+        }
+
+        public async void showPickerDialog()
         {
             try
             {
-                TaxTypeForFilter = new List<ReturnTypes>
-                {
-                        new ReturnTypes {Id = "00",TaxType = AppResources.AllBills},
-                        new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
-                        new ReturnTypes {Id = "02",TaxType = AppResources.ZZVAT},
-                        new ReturnTypes {Id = "03",TaxType = AppResources.ZZET},
-                        new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
-                        new ReturnTypes {Id = "05",TaxType = AppResources.ZZIncomeTax}
-                };
-
-                SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+                if (PickerModel != null)
+                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
             }
-            catch
+            catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
-
-
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
         }
+
+        public void PopulateFilterDropdown() {
+
+            try
+            {
+                string lang = UtilityManager.GetLanguageParameter();
+                var FilterValues = WebServiceManager.GAZTGetMyBillsFilterDropdownValues(App.TP.Tin, lang);
+                if(FilterValues != null) {
+                    TaxTypeForFilter = FilterValues;
+                    SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+
+
+                    var list = new List<string>();
+
+                    foreach (MyBillsFilterDropdown dropdown in TaxTypeForFilter)
+                    {
+                        try
+                        {
+                            list.Add(dropdown.Txt30.ToUpper());
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+
+                    }
+
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = list;
+                    genericPickerModel.PickerTitle = "";
+                    genericPickerModel.PickerId = "MyBills";
+                    genericPickerModel.SelectedValue = SelectedTaxTypeForFilter.Txt30;
+
+                    PickerModel = genericPickerModel;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+     
+
+      
+
+        //public void PopulateReturnTypeList()
+        //{
+        //    try
+        //    {
+        //        TaxTypeForFilter = new List<ReturnTypes>
+        //        {
+        //                new ReturnTypes {Id = "00",TaxType = AppResources.AllBills},
+        //                new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
+        //                new ReturnTypes {Id = "02",TaxType = AppResources.ZZVAT},
+        //                new ReturnTypes {Id = "03",TaxType = AppResources.ZZET},
+        //                new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
+        //                new ReturnTypes {Id = "05",TaxType = AppResources.ZZIncomeTax}
+        //        };
+
+        //        SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+        //    }
+        //    catch
+        //    {
+        //    }
+
+
+        //}
         public void PopulateDataInChips()
 
         {
@@ -720,9 +813,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = true;
             });
 
-            switch (SelectedTaxTypeForFilter.Id)
+
+            switch (SelectedTaxTypeForFilter.StatementFilter)
             {
-                case "00":
+                case "10":
                     MyBills = new ObservableCollection<MyBills>(BillsToProcss);
                     break;
                 case "01":
@@ -735,7 +829,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Zakat") || x.Abtypt.Equals("Voluntary Zakat")).ToList());
                     }
                     break;
-                case "02":
+                case "06":
                     if (App.IsArabic)
                     {
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة القيمة المضافة") || x.Abtypt.Equals("ضريبة القيمة المضافة")).ToList());
@@ -745,27 +839,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("VAT") || x.Abtypt.Equals("VAT Eligible Person")).ToList());
                     }
                     break;
-                case "03":
+                case "07":
                     if (!App.IsArabic)
                     {
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Excise Tax") || x.Abtypt.Equals("ETAX")).ToList());
                     }
                     else
                     {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("الضريبة الانتقائية")).ToList());
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة السلع الانتقائية")).ToList());
                     }
                     break;
-                case "04":
+                case "03":
                     if (!App.IsArabic)
                     {
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Withholding Tax")).ToList());
                     }
                     else
                     {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Withholding Tax")).ToList());
                     }
                     break;
-                case "05":
+                case "02":
                     if (!App.IsArabic)
                     {
                         MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Income Tax")).ToList());

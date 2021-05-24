@@ -326,10 +326,6 @@ namespace EGAZT.Models
 
      
         public string PeriodPart1 { get; set; }
-
-
-
-      
         public string PeriodPart2 { get; set; }
         public string Txt30 { get; set; }
         public string _Faednar;
@@ -459,4 +455,6 @@ namespace EGAZT.Models
         //    }
         //}
     }
+
+
 }
