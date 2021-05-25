@@ -87,6 +87,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
             SetPickerFont();
+
+            _ = viewModel.GetCaptchAndGUID();
         }
 
         

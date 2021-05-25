@@ -96,6 +96,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
             }
 
+            _ = viewModel.GetCaptchAndGUID();
+
 
         }
         public void SetPickerFont()
@@ -1998,6 +2000,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
             // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
             SiguupModel.ACountry = viewModel.MobileCountryCode;
+            
 
             // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
 
@@ -2013,7 +2016,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 SiguupModel.AIdtype = "ZS0003";
             }
-            SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+            
+           // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+            SiguupModel.CaseGuid = viewModel.Guid; 
+
             string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
             viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -2607,7 +2613,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     {
                                         SiguupModel.AIdtype = "ZS0003";
                                     }
-                                    SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                                    SiguupModel.CaseGuid = viewModel.Guid;
                                     string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                     SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                     viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -2878,7 +2884,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.AIdtype = "ZS0003";
                                 }
-                                SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                                //SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                                SiguupModel.CaseGuid = viewModel.Guid;
+
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                 SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                 viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -3174,7 +3182,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.AIdtype = "ZS0003";
                                 }
-                                SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                               // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                                SiguupModel.CaseGuid = viewModel.Guid;
+
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                 SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                 viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -3435,7 +3445,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 SiguupModel.AIdtype = "ZS0003";
                             }
-                            SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                            //SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                            SiguupModel.CaseGuid = viewModel.Guid;
+
                             string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                             viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -3662,7 +3674,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.AIdtype = "ZS0003";
                                 }
-                                SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                                //SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                                SiguupModel.CaseGuid = viewModel.Guid;
+
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                 SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                 viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -3919,7 +3933,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 SiguupModel.AIdtype = "ZS0003";
                             }
-                            SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                            //SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                            SiguupModel.CaseGuid = viewModel.Guid;
+
                             string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                             viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;

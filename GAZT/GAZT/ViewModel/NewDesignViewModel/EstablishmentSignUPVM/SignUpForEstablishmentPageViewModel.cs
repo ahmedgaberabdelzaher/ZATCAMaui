@@ -35,6 +35,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public bool StopTimer = false;
         public VATSignUpData vATSignUpData { get; set; }
         public VATSignUpCaseId SignUpCaseIdD { get; set; }
+        public bool IsAPICalledSuccessfully = true;
+
         #region Variable
 
         private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
@@ -121,6 +123,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
+      
+        private string guid = string.Empty;
+        public string Guid
+        {
+            get
+            {
+                return guid;
+            }
+            set
+            {
+                if (guid == value) return;
+
+                guid = value;
+                RaisePropertyChanged("Guid");
+            }
+        }
         private string _maxDigids = "9";
         public string MaxDigids
         {
@@ -2352,7 +2370,65 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         //}
 
-        
+        public async Task GetCaptchAndGUID()
+        {
+            try
+            {
+
+                IsLoading = true;
+
+
+                string lang = UtilityManager.GetLanguageParameter();
+                string st = Constants.CaptchaAndGUID;
+                string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                GenerateCaptchaGUID forgotPasswordOTP = new GenerateCaptchaGUID();
+                Metadata metadata = new Metadata();
+                metadata.id = st;
+                metadata.uri = st;
+                metadata.type = type;
+
+                GetCaptcha d = new GetCaptcha();
+                d.__metadata = metadata;
+                d.Captcha = "";
+                d.Guid = "";
+                d.Taxpayer = "";
+                d.Refresh = "";
+                d.Application = "PUSR";
+
+                forgotPasswordOTP.d = d;
+                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
+                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
+                {
+                    Guid = forgotPasswordOTP.d.Guid;
+                }
+                else
+                {
+
+                }
+
+
+                IsLoading = false;
+            }
+
+            catch (InternetException ex)
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+
+                    //SetIDNumberEnability = true;
+                    //IDNumber = String.Empty;
+                    // UserIDLayoutVisibility = true;
+                });
+            }
+        }
+
+
 
         private async Task ResendOTPAsync()
         {
