@@ -3,6 +3,7 @@ using EGAZT.Models.EnumModels;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.PaymentOptions;
 using EGAZT.Views.NewDesign.VATDeRegistration;
+using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfChart.XForms;
@@ -60,7 +61,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.AccountStatementsList.Clear();
                 }
 
-                
+                DisplayUpdateActivityPopUp();
                 //InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
                 //{
                 //    ItemSpacing = 10
@@ -141,7 +142,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             getYesCommandToLogout();
             getNoCommandToLogout();
             SetPickerFont();
-
+            
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
@@ -281,6 +282,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 Console.Write(ex.StackTrace.ToString());
             }
 
+        }
+
+        private async void DisplayUpdateActivityPopUp()
+        {
+          await  viewModel.getActivityUpdateStatus();
         }
 
         public void SetPickerFont()

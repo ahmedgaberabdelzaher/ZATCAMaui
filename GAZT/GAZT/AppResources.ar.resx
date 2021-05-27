@@ -8933,4 +8933,10 @@ info@gazt.gov.sa</value>
   <data name="RM_SubmitComplaint" xml:space="preserve">
     <value>تقديم شكوى</value>
   </data>
+  <data name="ZZZZCRUpdateSuccess" xml:space="preserve">
+    <value>عزيزي المكلف، نفيدكم بأنه قد تم تحديث بيانات األنشطة في حسابكم لتتوافق مع بيانات األنشطة في سجالتكم لدى وزارة التجارة.</value>
+  </data>
+  <data name="ZZZZLicenseUpdateSuccess" xml:space="preserve">
+    <value>عزيزي المكلف، نفيدكم بأنه قد تم تحديث بيانات األنشطة في حسابكم لتتوافق مع بيانات األنشطة في سجالتكم لدى وزارة الشؤون البلدية والقروية.</value>
+  </data>
 </root>

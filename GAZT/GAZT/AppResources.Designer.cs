@@ -23182,6 +23182,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, we would like to inform you that activities details in your account have been updated as per the activity details in Ministry of Commerce.
+        /// </summary>
+        public static string ZZZZCRUpdateSuccess {
+            get {
+                return ResourceManager.GetString("ZZZZCRUpdateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Done.
         /// </summary>
         public static string ZZZZDone {
@@ -23457,6 +23466,15 @@ namespace EGAZT {
         public static string ZZZZKuwait {
             get {
                 return ResourceManager.GetString("ZZZZKuwait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, we would like to inform you that activities details in your account have been updated as per the activities details in Ministry of Municipal and Rural Affairs.
+        /// </summary>
+        public static string ZZZZLicenseUpdateSuccess {
+            get {
+                return ResourceManager.GetString("ZZZZLicenseUpdateSuccess", resourceCulture);
             }
         }
         

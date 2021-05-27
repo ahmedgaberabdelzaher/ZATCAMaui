@@ -174,6 +174,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
             SimpleIoc.Default.Register<VATDeRegistrationDetailsPageViewModel>();
             SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
+            SimpleIoc.Default.Register<UpdateActivityInstructionsPageViewModel>();
             SimpleIoc.Default.Register<CalendarPickerPageViewModel>();
             SimpleIoc.Default.Register<PickerPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
@@ -732,6 +733,23 @@ namespace EGAZT
                     SimpleIoc.Default.Unregister<VATDeRegistrationInstructionsPageViewModel>();
                     SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATDeRegistrationInstructionsPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        
+        public UpdateActivityInstructionsPageViewModel UpdateActivityInstructionsPage
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<UpdateActivityInstructionsPageViewModel>();
+                    SimpleIoc.Default.Register<UpdateActivityInstructionsPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<UpdateActivityInstructionsPageViewModel>();
                 }
                 catch (Exception)
                 {

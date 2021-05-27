@@ -318,6 +318,140 @@ namespace GAZT.Manager
             }
         }
 
+        public async static Task<DashBoardUpdateViewResponseModel> getTaxPayerActivityUpdateStatusAfterTermsChecked(TPUpdateActivityModel activityUpdateModel)
+        {
+            DashBoardUpdateViewResponseModel dashBoardViewResponse = new DashBoardUpdateViewResponseModel();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                        string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+
+                        char LangZ = WebServiceManager.GetLangZParameter();
+                        string lang = UtilityManager.GetLanguageParameter();
+                        String url = Constants.GAZTPostActivityStatus/* + "&$format=json"*/;
+                       
+                        var uri = new Uri(url);
+                        HttpClient client = new HttpClient(App.httpClientHandler);
+
+                       // client.DefaultRequestHeaders.Add("Token", "123");
+                       // client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+                       
+
+
+                        var serilized = JsonConvert.SerializeObject(activityUpdateModel);
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                        var detailJson = res.Content.ReadAsStringAsync().Result;
+                        dashBoardViewResponse = JsonConvert.DeserializeObject<DashBoardUpdateViewResponseModel>(detailJson);
+                        
+                        if (dashBoardViewResponse == null || dashBoardViewResponse.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                                WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                                WebServiceManager.ErrorMessageForVAT = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
+                            }
+                        }
+                        
+                    return dashBoardViewResponse;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+
+        public async static Task<DashBoardUpdateViewResponseModel> getTaxPayerActivityUpdateStatus()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DashBoardUpdateViewResponseModel dashBoardUpdateViewResponse = new DashBoardUpdateViewResponseModel();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    String url = Constants.GAZTGetTpActivityStatus+App.LoginDataRetrieved.TIN+ "%27&$format=json";
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    HttpResponseMessage GAZTVATRegistrationDataOtherResponse = await client.GetAsync(url);
+                    if (GAZTVATRegistrationDataOtherResponse != null)
+                    {
+                        if (GAZTVATRegistrationDataOtherResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATRegistrationDataOtherResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String VatRegistrationOtherData = GAZTVATRegistrationDataOtherResponse.Content.ReadAsStringAsync().Result;
+                        dashBoardUpdateViewResponse = JsonConvert.DeserializeObject<DashBoardUpdateViewResponseModel>(VatRegistrationOtherData);
+
+                        if (!string.IsNullOrEmpty(VatRegistrationOtherData) && dashBoardUpdateViewResponse == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationOtherData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                throw new Exception(errorMessage);
+                            }
+                        }
+
+                    }
+                    return dashBoardUpdateViewResponse;
+                }
+                catch (Exception e)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
         public static AllCertificate GAZTGetAllCertificate(String Lang, String Tin)
         {
             if (CrossConnectivity.Current.IsConnected)

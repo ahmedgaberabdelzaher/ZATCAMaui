@@ -30,6 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         public bool IsEditingMode { get; set; }
         public EstablishmentOutletActivitiesTabsEnum PageType { get; set; }
         private bool _displayCompleteDetailsLabel;
+
         public bool DisplayCompleteDetailsLabel
         {
             get => _displayCompleteDetailsLabel;
@@ -196,6 +197,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                 _AddLicenseEnabled = value;
                 RaisePropertyChanged(nameof(AddLicenseEnabled));
+            }
+        }
+
+
+        private bool _UpdateButtonEnabled = true;
+        public bool UpdateButtonEnabled
+        {
+            get => _UpdateButtonEnabled;
+            set
+            {
+                if (_UpdateButtonEnabled == value) return;
+
+                _UpdateButtonEnabled = value;
+                RaisePropertyChanged(nameof(UpdateButtonEnabled));
             }
         }
 
@@ -699,6 +714,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
         #region commands
         public Command OnNextButtonClick { get; private set; }
+        public Command OnUpdateButtonClick { get; private set; }
         public ICommand OnPreButtonClick { get; private set; }
         public Command OnIssueCountrySelectButtonClick { get; set; }
         public Command OnIssueBySelectButtonClick { get; set; }
@@ -722,6 +738,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             ActivityDetails = new ActivityDetails();
             LicenseDetails = new LicenseDetails();
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
+            OnUpdateButtonClick = new Command(() => updateActivityCrOrLicense(), () => CanExecute);
+
             OnPreButtonClick = new Command(() =>
             {
 
@@ -1366,6 +1384,93 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     break;
             }
         }
+
+        private async void updateActivityCrOrLicense()
+        {
+            string type = string.Empty;
+            try
+            {
+                if ((CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails))
+                {
+                    type = "1";
+                }
+                else if ((CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails))
+                {
+                    type = "2";
+                }
+                await updateActivityLicense(type);
+
+            }
+            catch(Exception e)
+            {
+
+            }
+        }
+
+        private async Task updateActivityLicense(String pageType)
+        {
+            IsLoading = true;
+            UpdateActivityLicenseModel updateActivityModel = new UpdateActivityLicenseModel();
+            updateActivityModel.Taxpayer = App.LoginDataRetrieved.TIN;
+            updateActivityModel.Idtype = "BUP002";
+            updateActivityModel.Idnumber = "1010419035";
+            updateActivityModel.Activity = "229999";
+            updateActivityModel.MainGrp = "";
+            updateActivityModel.SubGrp = "";
+            updateActivityModel.UpdFlg = false;
+
+
+            String Response = await EstablishmentRegistrationWebServiceManager.UpdateUserLicenseInActivityPage(updateActivityModel, pageType);
+
+            IsLoading = false;
+
+
+            /*Nreg_ActivityItem item;
+            try
+            {
+                if(await ValidateForm())
+                {
+                    if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails || CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                    {
+                        DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime crIssueDate);
+                        DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
+                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+                        item = new Nreg_ActivityItem
+                        {
+                            Type = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? "BUP002" : "ZS0004",
+                           
+                            Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber,
+                            
+                            Activity = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRAcitivity.IndSector : LicenseAcitivity.IndSector
+                        };
+                        *//*UpdateActivityLicenseModel updateActivityModel = new UpdateActivityLicenseModel();
+                        updateActivityModel.Taxpayer = App.LoginDataRetrieved.TIN;
+                        updateActivityModel.Idtype = item.Type;
+                        updateActivityModel.Idnumber = item.Idnumber;
+                        updateActivityModel.Activity = CRAcitivity.IndSector;
+                        updateActivityModel.MainGrp = "";
+                        updateActivityModel.SubGrp = "";
+                        updateActivityModel.UpdFlg = false;*//*
+
+                        UpdateActivityLicenseModel updateActivityModel = new UpdateActivityLicenseModel();
+                        updateActivityModel.Taxpayer = App.LoginDataRetrieved.TIN;
+                        updateActivityModel.Idtype = "BUP002";
+                        updateActivityModel.Idnumber = "1010419035";
+                        updateActivityModel.Activity = "229999";
+                        updateActivityModel.MainGrp = "";
+                        updateActivityModel.SubGrp = "";
+                        updateActivityModel.UpdFlg = false;
+
+
+                        String Response = await EstablishmentRegistrationWebServiceManager.UpdateUserLicenseInActivityPage(updateActivityModel);
+                    }
+                }
+            }catch(Exception e)
+            {
+
+            }*/
+        }
+
         private async void navigateToNext()
         {
             CanExecute = false;

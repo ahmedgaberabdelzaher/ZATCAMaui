@@ -9011,4 +9011,10 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="RM_SubmitComplaint" xml:space="preserve">
     <value>Submit a Complaint</value>
   </data>
+  <data name="ZZZZCRUpdateSuccess" xml:space="preserve">
+    <value>Dear Taxpayer, we would like to inform you that activities details in your account have been updated as per the activity details in Ministry of Commerce</value>
+  </data>
+  <data name="ZZZZLicenseUpdateSuccess" xml:space="preserve">
+    <value>Dear Taxpayer, we would like to inform you that activities details in your account have been updated as per the activities details in Ministry of Municipal and Rural Affairs</value>
+  </data>
 </root>

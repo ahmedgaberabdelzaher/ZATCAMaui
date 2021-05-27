@@ -1558,6 +1558,19 @@ namespace EGAZT.Models.EstablishmentRegistration
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
+    public class UpdateActivityLicenseModel
+    {
+        public string Taxpayer { get; set; }
+        public string Idtype { get; set; }
+        public string Idnumber { get; set; }
+        public string Activity { get; set; }
+        public string MainGrp { get; set; }
+        public string SubGrp { get; set; }
+        public bool UpdFlg { get; set; }
+    }
+
+
     [Preserve(AllMembers = true)]
     public class FinancialDetails : INotifyPropertyChanged
     {

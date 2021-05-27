@@ -3,6 +3,7 @@ using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.Models.EnumModels;
 using EGAZT.Models.PaymentModel;
+using EGAZT.Views.NewDesign.DashBoardPages;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.MyBillsPages;
 using EGAZT.Views.NewDesign.PaymentOptions;
@@ -321,6 +322,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public async Task  getActivityUpdateStatus()
+        {
+           
+            await Task.Run(async () =>
+            {
+                DashBoardUpdateViewResponseModel dashBoardUpdateViewResponse = await WebServiceManager.getTaxPayerActivityUpdateStatus();
+
+                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                if(dashBoardUpdateViewResponse != null && dashBoardUpdateViewResponse.d!=null&&dashBoardUpdateViewResponse.d.results!=null)
+                PopupNavigation.Instance.PushAsync(new UpdateActivityInstructionsPageView(false,"Response From Backend"));
+            });
+
+        }
 
         public List<TaxRelationSetResult> TaxTypeFilter
         {
