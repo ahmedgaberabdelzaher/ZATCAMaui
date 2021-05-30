@@ -1169,7 +1169,7 @@ namespace EGAZT.Manager
                     HttpContent contentPost = new StringContent(financeData, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(uri, contentPost);
 
-                   
+                  
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -1193,7 +1193,7 @@ namespace EGAZT.Manager
                         var ESTBranchesDropDownResponseJSON =  ESTBranchesDropDownResponse.Content.ReadAsStringAsync().Result;
                         financial = JsonConvert.DeserializeObject<ActivityUpdateViewResponseModel>(ESTBranchesDropDownResponseJSON);
 
-                        if(ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.OK)
+                        if(ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.OK|| ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Created)
                         {
                             if(financial!=null&&financial.d!=null)
                             {
