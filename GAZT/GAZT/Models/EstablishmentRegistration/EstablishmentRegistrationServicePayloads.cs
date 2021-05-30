@@ -416,6 +416,8 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Autoappfg { get; set; }
         public DateTime? Crexpdt { get; set; }
         public string Shldfg { get; set; }
+        public DateTime? LastFilledRetdt { get; set; }
+        public string Zyear { get; set; }
         public string Accmethod { get; set; }
         public string Qsrvfg { get; set; }
         public string Aoldappno { get; set; }
@@ -742,6 +744,52 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string IGregdate { get; set; }
         public string EIsldate { get; set; }
         public string EIslmedate { get; set; }
+        public PeriodSet PeriodSet { get; set; }
+
+    }
+    [Preserve(AllMembers = true)]
+
+    public class PeriodSetResult
+    {
+        public Metadata __metadata { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public string FinPeriodText { get; set; }
+
+        public string _finPeriod = String.Empty;
+        public string FinPeriod
+        {
+            get
+            {
+
+                return _finPeriod;
+            }
+            set
+            {
+                _finPeriod = value;
+                if (FinPeriod == "N")
+                {
+                    FinPeriodText = AppResources.FinacialPeriodNormal;
+                }
+                else if (FinPeriod == "S")
+                {
+                    FinPeriodText = AppResources.FinacialPeriodSmall;
+                }
+                else if (FinPeriod == "L")
+                {
+                    FinPeriodText = AppResources.FinacialPeriodLong;
+                }
+
+            }
+        }
+    }
+    
+    
+    [Preserve(AllMembers = true)]
+
+    public class PeriodSet
+    {
+        public List<PeriodSetResult> results { get; set; }
     }
     [Preserve(AllMembers = true)]
     public class FinancialDetailRequest
@@ -750,6 +798,16 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string AMonth { get; set; } = string.Empty;
         public DateTime? ADateComm { get; set; }
         public string EIslmedate { get; set; } = string.Empty;
+    }
+    [Preserve(AllMembers = true)]
+    public class FinancialDetailPeriodRequest
+    {
+        public string ACaltype { get; set; } = "H";
+        public string AMonth { get; set; } = string.Empty;
+        public DateTime? ADateComm { get; set; }
+        public string EIslmedate { get; set; } = string.Empty;
+        public List<PeriodSetResult> PeriodSet { get; set; }
+
     }
     [Preserve(AllMembers = true)]
     public class TaxPayerTypeAvailability : INotifyPropertyChanged

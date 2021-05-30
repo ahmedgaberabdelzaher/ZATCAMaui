@@ -9017,4 +9017,22 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="ZZZZLicenseUpdateSuccess" xml:space="preserve">
     <value>Dear Taxpayer, we would like to inform you that activities details in your account have been updated as per the activities details in Ministry of Municipal and Rural Affairs</value>
   </data>
+  <data name="FinacialPeriodNormal" xml:space="preserve">
+    <value>Normal Period</value>
+  </data>
+   <data name="FinacialPeriodSmall" xml:space="preserve">
+    <value>Small Period</value>
+  </data>
+  <data name="FinacialPeriodLong" xml:space="preserve">
+    <value>Long Period</value>
+  </data>
+  <data name="FinacialYearOptions" xml:space="preserve">
+    <value>Financial Year Options</value>
+  </data>
+   <data name="FinacialDetailsLastFulfilledreturn" xml:space="preserve">
+    <value>Last fulfilled Return</value>
+  </data>
+   <data name="FinacialDetailsZyear" xml:space="preserve">
+    <value>you are allowed to change financial year for yyyy only</value>
+  </data>
 </root>
