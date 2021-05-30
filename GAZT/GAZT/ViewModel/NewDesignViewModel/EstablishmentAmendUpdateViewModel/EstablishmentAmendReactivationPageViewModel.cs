@@ -2900,15 +2900,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 financialDetailPeriod = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDateForPeriod(new FinancialDetailPeriodRequest()
                 {
                     ACaltype = _CalendarType,
-                    AMonth = FiscalMonth,
-                    EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
+                    AMonth = taxPayerDetails.Fdmonth,
+                    EIslmedate = taxPayerDetails.Fdday,
                     ADateComm = taxPayerDetails?.Commdt,
+                    //AMonth = FiscalMonth,
+                    //EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
+                    //ADateComm = taxPayerDetails?.Commdt,
+                    Gpart = App.LoginDataRetrieved.TIN,
                     PeriodSet = new List<PeriodSetResult>()
                 }) ;
 
                 PeriodList = financialDetailPeriod.PeriodSet.results;
                 if(PeriodList.Count > 0) {
-                    SelectedPeriod = PeriodList.FirstOrDefault();
+
+                    if (!string.IsNullOrEmpty(taxPayerDetails.FinPeriod)) {
+                        SelectedPeriod = PeriodList.Where(temp => (temp.FinPeriod == taxPayerDetails.FinPeriod)).FirstOrDefault();
+
+                    }
+                    else {
+                       // SelectedPeriod = PeriodList.FirstOrDefault();
+                    }
+
+                   
+
+
+
+
+                    //SelectedPeriod = PeriodList.FirstOrDefault();
 
                 }
                 IsLoading = false;
@@ -3410,6 +3428,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.Fdenddt = Fdenddt;
                     taxPayerDetails.Chkfg = "X";
 
+                    if(SelectedPeriod != null) {
+                        taxPayerDetails.FinPeriod = SelectedPeriod.FinPeriod;
+                    }
+
+                    
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
                     taxPayerDetails.UserTypx = "TP";
@@ -3577,6 +3600,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
                     taxPayerDetails.UserTypx = "TP";
+                    if (SelectedPeriod != null)
+                    {
+                        taxPayerDetails.FinPeriod = SelectedPeriod.FinPeriod;
+                    }
                     flag = true;
                     return flag;
                 }

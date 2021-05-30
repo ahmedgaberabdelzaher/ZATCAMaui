@@ -489,6 +489,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Forward { get; set; }
         public string Forwardx { get; set; }
         public string FullName { get; set; }
+        public string FinPeriod { get; set; }
         public string Govttp { get; set; }
         public string Gpart { get; set; }
         public string Gpartx { get; set; }
@@ -806,6 +807,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string AMonth { get; set; } = string.Empty;
         public DateTime? ADateComm { get; set; }
         public string EIslmedate { get; set; } = string.Empty;
+        public string Gpart { get; set; } = string.Empty;
         public List<PeriodSetResult> PeriodSet { get; set; }
 
     }
