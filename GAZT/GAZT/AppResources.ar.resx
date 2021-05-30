@@ -8949,12 +8949,12 @@ info@gazt.gov.sa</value>
     <value>Long Period</value>
   </data>
   <data name="FinacialYearOptions" xml:space="preserve">
-    <value>Financial Year Options</value>
+    <value>خيارات الفترة المالية</value>
   </data>
   <data name="FinacialDetailsLastFulfilledreturn" xml:space="preserve">
-    <value>Last fulfilled Return</value>
+    <value>تاريخ اخر إقرار مقدم</value>
   </data>
   <data name="FinacialDetailsZyear" xml:space="preserve">
-    <value>you are allowed to change financial year for yyyy only</value>
+    <value>فقط yyyy يسمح لك تعديل السنة المالية لسنة</value>
   </data>
 </root>
