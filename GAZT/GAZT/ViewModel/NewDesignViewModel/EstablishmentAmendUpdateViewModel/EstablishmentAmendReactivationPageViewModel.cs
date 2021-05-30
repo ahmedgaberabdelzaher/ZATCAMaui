@@ -2921,11 +2921,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         SelectedPeriod = PeriodList.FirstOrDefault();
                     }
 
-                   
-
-
-
-
                     //SelectedPeriod = PeriodList.FirstOrDefault();
 
                 }
