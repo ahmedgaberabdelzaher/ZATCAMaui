@@ -23,7 +23,7 @@ namespace EGAZT.Models
     {
 
         [DataMember(Name = "results")]
-        public IList<object> results { get; set; }
+        public IList<DashBoardUpdateViewResponse> results { get; set; }
 
         [DataMember(Name = "Taxpayer")]
         public string Taxpayer { get; set; }

@@ -24,9 +24,7 @@
     <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="End" IsVisible="true">
         <StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
             <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
-            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource SectionTitleBlackBold}" Margin="0,0,0,16"  />
-           
+            
                 <StackLayout Margin="8">
                     
                     <StackLayout Orientation="Vertical" Spacing="0">
@@ -39,7 +37,7 @@
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End">
                 <custom1:CheckboxCustom  Grid.Row="0" Grid.Column="0" IsChecked="{Binding IsInstructionChecked}" IsEnabled="{Binding isInstructionCheckedEnable}"
                                                                              Style="{StaticResource CheckboxHeightWidth32}"/>
-                <custom:CustomLabel Margin="5,10,0,15"  Style="{DynamicResource IsInstructionCheckedStyle}" Text="Agree" >
+                <custom:CustomLabel Margin="5,10,0,15"  Style="{DynamicResource IsInstructionCheckedStyle}" Text="{x:Static ResourceManager:AppResources.VFCCheckBoxDesc}" >
                     
                     <custom:CustomLabel.Triggers>
                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IsInstructionChecked}" Value="True">
@@ -51,7 +49,7 @@
                     </custom:CustomLabel.Triggers>
                 </custom:CustomLabel>
             </StackLayout>
-            <buttons:SfButton Grid.ColumnSpan="2" Margin="0,24,0,24" IsEnabled="{Binding IsContinueButtonEnable}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" x:Name="btnVATDeregistration" Command="{Binding UpdateActivityClicked}" Text="Confirm"
+            <buttons:SfButton Grid.ColumnSpan="2" Margin="0,24,0,24" IsEnabled="{Binding IsContinueButtonEnable}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" x:Name="btnVATDeregistration" Command="{Binding UpdateActivityClicked}" Text="{x:Static ResourceManager:AppResources.ZDone}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
         </StackLayout>
     </yummy:PancakeView>

@@ -738,7 +738,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             ActivityDetails = new ActivityDetails();
             LicenseDetails = new LicenseDetails();
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
-            OnUpdateButtonClick = new Command(() => updateActivityCrOrLicense(), () => CanExecute);
+            OnUpdateButtonClick = new Command(() => updateActivityCrOrLicense());
 
             OnPreButtonClick = new Command(() =>
             {
@@ -1410,7 +1410,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         private async Task updateActivityLicense(String pageType)
         {
             IsLoading = true;
-            UpdateActivityLicenseModel updateActivityModel = new UpdateActivityLicenseModel();
+            /*UpdateActivityLicenseModel updateActivityModel = new UpdateActivityLicenseModel();
             updateActivityModel.Taxpayer = App.LoginDataRetrieved.TIN;
             updateActivityModel.Idtype = "BUP002";
             updateActivityModel.Idnumber = "1010419035";
@@ -1422,13 +1422,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
             String Response = await EstablishmentRegistrationWebServiceManager.UpdateUserLicenseInActivityPage(updateActivityModel, pageType);
 
-            IsLoading = false;
+            IsLoading = false;*/
 
 
-            /*Nreg_ActivityItem item;
+            Nreg_ActivityItem item;
             try
             {
-                if(await ValidateForm())
+                if (await ValidateForm())
                 {
                     if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails || CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
                     {
@@ -1438,37 +1438,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         item = new Nreg_ActivityItem
                         {
                             Type = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? "BUP002" : "ZS0004",
-                           
+
                             Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber,
-                            
+
                             Activity = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRAcitivity.IndSector : LicenseAcitivity.IndSector
                         };
-                        *//*UpdateActivityLicenseModel updateActivityModel = new UpdateActivityLicenseModel();
+                        UpdateActivityLicenseModel updateActivityModel = new UpdateActivityLicenseModel();
                         updateActivityModel.Taxpayer = App.LoginDataRetrieved.TIN;
                         updateActivityModel.Idtype = item.Type;
                         updateActivityModel.Idnumber = item.Idnumber;
                         updateActivityModel.Activity = CRAcitivity.IndSector;
                         updateActivityModel.MainGrp = "";
                         updateActivityModel.SubGrp = "";
-                        updateActivityModel.UpdFlg = false;*//*
-
-                        UpdateActivityLicenseModel updateActivityModel = new UpdateActivityLicenseModel();
-                        updateActivityModel.Taxpayer = App.LoginDataRetrieved.TIN;
-                        updateActivityModel.Idtype = "BUP002";
-                        updateActivityModel.Idnumber = "1010419035";
-                        updateActivityModel.Activity = "229999";
-                        updateActivityModel.MainGrp = "";
-                        updateActivityModel.SubGrp = "";
                         updateActivityModel.UpdFlg = false;
 
-
-                        String Response = await EstablishmentRegistrationWebServiceManager.UpdateUserLicenseInActivityPage(updateActivityModel);
+                        String Response = await EstablishmentRegistrationWebServiceManager.UpdateUserLicenseInActivityPage(updateActivityModel, pageType);
+                        IsLoading = false;
                     }
                 }
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
 
-            }*/
+            }
         }
 
         private async void navigateToNext()

@@ -331,8 +331,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if(dashBoardUpdateViewResponse != null && dashBoardUpdateViewResponse.d!=null&&dashBoardUpdateViewResponse.d.results!=null
-                && dashBoardUpdateViewResponse.d.results.Count>0)
-                PopupNavigation.Instance.PushAsync(new UpdateActivityInstructionsPageView(false,"Response From Backend"));
+                && dashBoardUpdateViewResponse.d.results.Count>0&& dashBoardUpdateViewResponse.d.results[0]!=null
+                && !string.IsNullOrEmpty(dashBoardUpdateViewResponse.d.results[0].Msg))
+                PopupNavigation.Instance.PushAsync(new UpdateActivityInstructionsPageView(false, dashBoardUpdateViewResponse.d.results[0].Msg));
             });
 
         }
