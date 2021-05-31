@@ -1196,8 +1196,14 @@ namespace EGAZT.Manager
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
-                            financial = JsonConvert.DeserializeObject<FinancialDetail>(ESTBranchesDropDownResponseJSON);
+
+                            if(!ESTBranchesDropDownResponseJSON.Contains("An exception was raised")) {
+
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                                financial = JsonConvert.DeserializeObject<FinancialDetail>(ESTBranchesDropDownResponseJSON);
+                            }
+
+                           
                         }
                     }
                 }

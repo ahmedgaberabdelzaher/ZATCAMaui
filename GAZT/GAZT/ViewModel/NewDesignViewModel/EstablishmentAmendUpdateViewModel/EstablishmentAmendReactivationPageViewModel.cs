@@ -2910,20 +2910,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     PeriodSet = new List<PeriodSetResult>()
                 }) ;
 
-                PeriodList = financialDetailPeriod.PeriodSet.results;
-                if(PeriodList.Count > 0) {
+                if(financialDetailPeriod != null) {
 
-                    if (!string.IsNullOrEmpty(taxPayerDetails.FinPeriod)) {
-                        SelectedPeriod = PeriodList.Where(temp => (temp.FinPeriod == taxPayerDetails.FinPeriod)).FirstOrDefault();
+                    PeriodList = financialDetailPeriod.PeriodSet.results;
+                    if (PeriodList.Count > 0)
+                    {
+
+                        if (!string.IsNullOrEmpty(taxPayerDetails.FinPeriod))
+                        {
+                            SelectedPeriod = PeriodList.Where(temp => (temp.FinPeriod == taxPayerDetails.FinPeriod)).FirstOrDefault();
+
+                        }
+                        else
+                        {
+                            SelectedPeriod = PeriodList.FirstOrDefault();
+                        }
+
+                        //SelectedPeriod = PeriodList.FirstOrDefault();
 
                     }
-                    else {
-                        SelectedPeriod = PeriodList.FirstOrDefault();
-                    }
-
-                    //SelectedPeriod = PeriodList.FirstOrDefault();
-
                 }
+
+               
                 IsLoading = false;
             }
             catch (Exception ex)
