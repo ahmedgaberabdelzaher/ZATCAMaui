@@ -2897,16 +2897,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 IsLoading = true;
 
+                var selectedFintype = "";
+
+                if (!string.IsNullOrEmpty(SelectedMethod))
+                {
+                    selectedFintype = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
+                }
+                else {
+                    selectedFintype = taxPayerDetails.Accmethod;
+                }
+
+
                 financialDetailPeriod = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDateForPeriod(new FinancialDetailPeriodRequest()
                 {
                     ACaltype = _CalendarType,
                     AMonth = taxPayerDetails.Fdmonth,
                     EIslmedate = taxPayerDetails.Fdday,
                     ADateComm = taxPayerDetails?.Commdt,
-                    //AMonth = FiscalMonth,
-                    //EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
-                    //ADateComm = taxPayerDetails?.Commdt,
                     Gpart = App.LoginDataRetrieved.TIN,
+                    Zfintype = selectedFintype,
                     PeriodSet = new List<PeriodSetResult>()
                 }) ;
 

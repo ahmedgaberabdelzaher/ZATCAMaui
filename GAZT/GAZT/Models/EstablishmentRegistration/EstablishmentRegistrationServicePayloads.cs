@@ -808,6 +808,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public DateTime? ADateComm { get; set; }
         public string EIslmedate { get; set; } = string.Empty;
         public string Gpart { get; set; } = string.Empty;
+        public string Zfintype { get; set; } = string.Empty;
         public List<PeriodSetResult> PeriodSet { get; set; }
 
     }
