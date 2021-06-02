@@ -248,6 +248,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             catch (Exception) { }
         }
 
+         void FinacialPeriodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            viewModel.isFinaceDetailsChanged = true;
+
+        }
+
+      
         async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
             Image item = sender as Image;

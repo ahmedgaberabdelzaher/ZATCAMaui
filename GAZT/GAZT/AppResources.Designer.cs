@@ -15977,5 +15977,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("FinacialDetailsZyear", resourceCulture);
             }
         }
+        
+        public static string AmendRegistrationSubmitWarning {
+            get {
+                return ResourceManager.GetString("AmendRegistrationSubmitWarning", resourceCulture);
+            }
+        }
     }
 }

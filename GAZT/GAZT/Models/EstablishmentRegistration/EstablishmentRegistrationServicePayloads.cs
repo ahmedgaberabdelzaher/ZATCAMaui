@@ -745,7 +745,9 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string IGregdate { get; set; }
         public string EIsldate { get; set; }
         public string EIslmedate { get; set; }
+        public string Draft { get; set; }
         public PeriodSet PeriodSet { get; set; }
+        
 
     }
     [Preserve(AllMembers = true)]

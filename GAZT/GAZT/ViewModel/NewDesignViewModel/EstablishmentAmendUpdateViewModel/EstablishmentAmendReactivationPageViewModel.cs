@@ -36,7 +36,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         public static TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         private FinancialDetail financialDetailPeriod { get; set; } = null;
-
+        public bool isFinaceDetailsChanged { get; set; } = false;
+        public string isDraftEnabled { get; set; } = "";
         public Nreg_IdItem idItem { get; set; } = null;
         public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
         private EstablishmentRegistrationTabsEnum _currentTab;
@@ -2058,10 +2059,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     if (await FormValidation(currentTab))
                     {
-                        if (await PushDatatoServer(currentTab))
-                        {
-                            _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+                        
+                        if ((isDraftEnabled == "X") || (isFinaceDetailsChanged)){
+
+                            var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                            {
+                                CloseWhenBackgroundIsClicked = false
+                            };
+                            somewarningpopup.OnDone = async () =>
+                            {
+                                if (await PushDatatoServer(currentTab))
+                                {
+                                    _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+                                }
+
+
+                            };
+                            await PopupNavigation.Instance.PushAsync(somewarningpopup);
                         }
+                        else {
+
+                            if (await PushDatatoServer(currentTab))
+                            {
+                                _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+                            }
+                        }
+
+                        
+
+
+                       
                     }
                 }
 
@@ -2922,6 +2949,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if(financialDetailPeriod != null) {
 
                     PeriodList = financialDetailPeriod.PeriodSet.results;
+                    isDraftEnabled = financialDetailPeriod.Draft;
                     if (PeriodList.Count > 0)
                     {
 
@@ -2930,10 +2958,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             SelectedPeriod = PeriodList.Where(temp => (temp.FinPeriod == taxPayerDetails.FinPeriod)).FirstOrDefault();
 
                         }
-                        else
-                        {
-                            SelectedPeriod = PeriodList.FirstOrDefault();
-                        }
+                       
 
                         //SelectedPeriod = PeriodList.FirstOrDefault();
 
