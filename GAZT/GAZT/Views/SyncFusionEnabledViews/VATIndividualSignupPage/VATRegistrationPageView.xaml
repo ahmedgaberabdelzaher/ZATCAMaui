@@ -1532,14 +1532,14 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
-                                                    <StackLayout Grid.Row="2" Grid.Column="0" IsVisible="{Binding DOBMandatoryVisibility}">
+                                                    <StackLayout Grid.Row="2" Grid.Column="0" IsVisible="{Binding DOBMandatoryVisibilitySM}">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto"/>
                                                                 <RowDefinition Height="auto"/>
                                                             </Grid.RowDefinitions>
 
-                                                            <custom:CustomLabel IsVisible="{Binding DOBMandatoryVisibility}" Grid.Row="0"   Style="{StaticResource CaptionLabelGrey}" >
+                                                            <custom:CustomLabel IsVisible="{Binding DOBMandatoryVisibilitySM}" Grid.Row="0"   Style="{StaticResource CaptionLabelGrey}" >
 
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
@@ -1551,14 +1551,14 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
 
                                                             <!--Focused="OnDateEntryFocussed" TextChanged="DateEntry_TextChanged" Unfocused="DatePicker_Unfocused"-->
-                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsVisible="{Binding DOBMandatoryVisibility}"
+                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsVisible="{Binding DOBMandatoryVisibilitySM}"
                                                             ContainerType="Outlined" x:Name="FrmContactDBO"      
                                                             HorizontalOptions="FillAndExpand"
                                                             LeadingViewPosition="Inside"
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0" 
                                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactDOBError}" >
-                                                                <StackLayout Orientation="Horizontal" IsVisible="{Binding DOBMandatoryVisibility}">
+                                                                <StackLayout Orientation="Horizontal" IsVisible="{Binding DOBMandatoryVisibilitySM}">
                                                                     <custom:BorderlessEntry  x:Name="ContactDateEntry"  Text ="{Binding ContactDOB}"
                                                                                              IsEnabled="False"  TextChanged="ContactDateEntry_TextChanged"
                                                                                              Placeholder="YYYY/MM/DD"  HorizontalOptions="FillAndExpand"

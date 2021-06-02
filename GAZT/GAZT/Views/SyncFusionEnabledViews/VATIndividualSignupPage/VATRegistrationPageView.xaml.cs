@@ -1501,12 +1501,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.FrameIDError = false;
             }
-
-           
-
-               
-
-
         }
 
         private void EntryFirstName_Unfocused(object sender, FocusEventArgs e)
@@ -1833,13 +1827,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IDNumberMandatoryVisibility = false;
 
                     viewModel.DOBNonMandatoryVisibility = true;
-                    viewModel.DOBMandatoryVisibility = false;
+                    viewModel.DOBMandatoryVisibilitySM = false;
                 }
                 else
                 {
                     viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
                     viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
-                    EntryIDNo.Text = string.Empty;
+                    EntryContactIDNumber.Text = string.Empty;
 
                     viewModel.IDNumberNonMandatoryVisibility = false;
                     viewModel.IDNumberMandatoryVisibility = true;
@@ -1849,12 +1843,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].ID.Equals("ZS0003"))
                     {
                         viewModel.DOBNonMandatoryVisibility = true;
-                        viewModel.DOBMandatoryVisibility = false;
+                        viewModel.DOBMandatoryVisibilitySM = false;
                     }
                     else
                     {
                         viewModel.DOBNonMandatoryVisibility = false;
-                        viewModel.DOBMandatoryVisibility = true;
+                        viewModel.DOBMandatoryVisibilitySM = true;
                     }
 
 
