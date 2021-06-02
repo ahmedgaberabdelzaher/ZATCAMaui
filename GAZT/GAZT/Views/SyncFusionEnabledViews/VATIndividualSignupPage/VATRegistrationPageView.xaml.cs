@@ -1828,6 +1828,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                     viewModel.DOBNonMandatoryVisibility = true;
                     viewModel.DOBMandatoryVisibilitySM = false;
+                    viewModel.DOBMandatoryVisibility = false;
+
                 }
                 else
                 {
@@ -1844,11 +1846,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         viewModel.DOBNonMandatoryVisibility = true;
                         viewModel.DOBMandatoryVisibilitySM = false;
+                        viewModel.DOBMandatoryVisibility = false;
+
                     }
                     else
                     {
                         viewModel.DOBNonMandatoryVisibility = false;
                         viewModel.DOBMandatoryVisibilitySM = true;
+                        viewModel.DOBMandatoryVisibility = false;
+
                     }
 
 
