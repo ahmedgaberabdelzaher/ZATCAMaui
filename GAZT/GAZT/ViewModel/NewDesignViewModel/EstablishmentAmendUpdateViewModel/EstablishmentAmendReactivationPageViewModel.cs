@@ -286,6 +286,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
         }
 
+        private bool _isFinancePeriodVisible = false;
+        public bool IsFinancePeriodVisible
+        {
+            get => _isFinancePeriodVisible;
+            set
+            {
+
+                _isFinancePeriodVisible = value;
+                RaisePropertyChanged("IsFinancePeriodVisible");
+            }
+        }
+
         private bool _isClickedNonResidentPartnerPE = false;
         public bool IsClickedNonResidentPartnerPE
         {
@@ -2737,6 +2749,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     CalendarTypeList.AddRange(EnCalendarTypeList.Values);
                     CalendarTypeList = new List<string>(CalendarTypeList);
                     SelectedMethod = EnMethodList?[taxPayerDetails?.Accmethod];
+
+                        if (SelectedMethod == AppResources.NDAccounting)
+                        {
+
+                            IsFinancePeriodVisible = true;
+                        }
+                        else
+                        {
+                            IsFinancePeriodVisible = false;
+
+                        }
                     CalendarType = EnCalendarTypeList?[taxPayerDetails?.Fdcalender];
                     udpdateDates();
                 }
@@ -2938,8 +2961,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 financialDetailPeriod = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDateForPeriod(new FinancialDetailPeriodRequest()
                 {
                     ACaltype = _CalendarType,
-                    AMonth = taxPayerDetails.Fdmonth,
-                    EIslmedate = taxPayerDetails.Fdday,
+                    AMonth = FiscalMonth,
+                    EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
                     ADateComm = taxPayerDetails?.Commdt,
                     Gpart = App.LoginDataRetrieved.TIN,
                     Zfintype = selectedFintype,

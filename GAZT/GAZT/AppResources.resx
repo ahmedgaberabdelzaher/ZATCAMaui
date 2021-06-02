@@ -9039,4 +9039,7 @@ I acknowledge that the above bank account information is correct and assume full
     <value>Dear Taxpayer the saved as draft return will be canceled/deleted once the change return period request has been approved.
 Then The system should cancel (/delete) the draft and apply the necessary changes on the ICRs once this request is approved by the Supervisor.</value>
   </data>
+  <data name="ZakatReturnsErrorMessage" xml:space="preserve">
+    <value>Dear Taxpayer you are not allowed to submit this application because you have a Change return period request in process.</value>
+  </data>
 </root>

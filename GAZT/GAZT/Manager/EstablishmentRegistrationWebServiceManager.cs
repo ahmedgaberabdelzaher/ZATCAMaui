@@ -1197,7 +1197,7 @@ namespace EGAZT.Manager
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
 
-                            if(!ESTBranchesDropDownResponseJSON.Contains("An exception was raised")) {
+                            if(!ESTBranchesDropDownResponseJSON.Contains("An exception was raised") || !ESTBranchesDropDownResponseJSON.Contains("error")) {
 
                                 ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
                                 financial = JsonConvert.DeserializeObject<FinancialDetail>(ESTBranchesDropDownResponseJSON);

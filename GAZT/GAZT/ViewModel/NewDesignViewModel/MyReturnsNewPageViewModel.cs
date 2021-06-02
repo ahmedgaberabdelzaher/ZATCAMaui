@@ -114,7 +114,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             IsLoading = true;
                         });
-                      
+
+                         if (_selectedListItem.Err2064 == "X")
+                        {
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
+                                //    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZakatReturnsErrorMessage));
+                            });
+                        }
+                         else {
+
                             if (_selectedListItem.Open)
                             {
                                 if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
@@ -157,8 +172,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
                                 {
-                                //Vat
-                                await GetVATAllReturnsAsync(_selectedListItem);
+                                    //Vat
+                                    await GetVATAllReturnsAsync(_selectedListItem);
                                 }
                                 if (_selectedListItem.TaxType.Equals("ETAX"))
                                 {
@@ -203,6 +218,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 });
 
                             }
+                        }
+
+
+
+                       
 
      
                     });

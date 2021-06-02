@@ -15983,5 +15983,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("AmendRegistrationSubmitWarning", resourceCulture);
             }
         }
+        
+        public static string ZakatReturnsErrorMessage {
+            get {
+                return ResourceManager.GetString("ZakatReturnsErrorMessage", resourceCulture);
+            }
+        }
     }
 }

@@ -254,7 +254,36 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         }
 
-      
+        void FinacialMethodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+
+            try {
+                string selectedItem = e.AddedItems[0] as string;
+
+                if(selectedItem == AppResources.NDAccounting) {
+
+                    viewModel.IsFinancePeriodVisible = true;
+                }
+                else {
+                    viewModel.IsFinancePeriodVisible = false;
+
+                }
+
+
+            }
+            catch (Exception ex) {
+
+            }
+
+
+
+
+
+            viewModel.isFinaceDetailsChanged = true;
+
+        }
+
+
         async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
             Image item = sender as Image;
