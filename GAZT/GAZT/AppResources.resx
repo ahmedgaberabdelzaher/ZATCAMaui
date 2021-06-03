@@ -9020,7 +9020,7 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="FinacialPeriodNormal" xml:space="preserve">
     <value>Normal Period</value>
   </data>
-   <data name="FinacialPeriodSmall" xml:space="preserve">
+  <data name="FinacialPeriodSmall" xml:space="preserve">
     <value>Small Period</value>
   </data>
   <data name="FinacialPeriodLong" xml:space="preserve">
@@ -9029,10 +9029,10 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="FinacialYearOptions" xml:space="preserve">
     <value>Financial Year Options</value>
   </data>
-   <data name="FinacialDetailsLastFulfilledreturn" xml:space="preserve">
+  <data name="FinacialDetailsLastFulfilledreturn" xml:space="preserve">
     <value>Last fulfilled Return</value>
   </data>
-   <data name="FinacialDetailsZyear" xml:space="preserve">
+  <data name="FinacialDetailsZyear" xml:space="preserve">
     <value>you are allowed to change financial year for yyyy only</value>
   </data>
   <data name="AmendRegistrationSubmitWarning" xml:space="preserve">
@@ -9041,5 +9041,8 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   </data>
   <data name="ZakatReturnsErrorMessage" xml:space="preserve">
     <value>Dear Taxpayer you are not allowed to submit this application because you have a Change return period request in process.</value>
+  </data>
+  <data name="RMNameInfo" xml:space="preserve">
+    <value>Relationship Manager Information</value>
   </data>
 </root>

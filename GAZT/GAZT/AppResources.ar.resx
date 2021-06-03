@@ -8939,10 +8939,10 @@ info@gazt.gov.sa</value>
   <data name="ZZZZLicenseUpdateSuccess" xml:space="preserve">
     <value>عزيزي المكلف، نفيدكم بأنه قد تم تحديث بيانات األنشطة في حسابكم لتتوافق مع بيانات األنشطة في سجالتكم لدى وزارة الشؤون البلدية والقروية.</value>
   </data>
-   <data name="FinacialPeriodNormal" xml:space="preserve">
+  <data name="FinacialPeriodNormal" xml:space="preserve">
     <value>العادية الفترة</value>
   </data>
-   <data name="FinacialPeriodSmall" xml:space="preserve">
+  <data name="FinacialPeriodSmall" xml:space="preserve">
     <value>القصيرة الفترة</value>
   </data>
   <data name="FinacialPeriodLong" xml:space="preserve">
@@ -8957,10 +8957,13 @@ info@gazt.gov.sa</value>
   <data name="FinacialDetailsZyear" xml:space="preserve">
     <value>فقط yyyy يسمح لك تعديل السنة المالية لسنة</value>
   </data>
-    <data name="AmendRegistrationSubmitWarning" xml:space="preserve">
+  <data name="AmendRegistrationSubmitWarning" xml:space="preserve">
     <value>عزيزي المكلف سوف يتم حذف الطلب المحفوظ كمسودة في حال تمت الموافقة على طلب تعديل فترة تقديم الإقرار المقدمة</value>
   </data>
-   <data name="ZakatReturnsErrorMessage" xml:space="preserve">
+  <data name="ZakatReturnsErrorMessage" xml:space="preserve">
     <value>عزيزي المكلف, الإقرار المحفوظ كمسودة سوف يتم حذفه عندما تتم الموافقة على طلب تغيير الفترة هذا , أيضا لن تتمكن من تقديم الإقرار المحفوظ كمسودة ولا الإقرارات اللاحقة حتى يتم اتخاذ قرار بخصوص طلب تغيير الفترة هذا</value>
+  </data>
+  <data name="RMNameInfo" xml:space="preserve">
+    <value>بيانات مدير العلاقة</value>
   </data>
 </root>

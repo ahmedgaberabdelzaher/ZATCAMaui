@@ -53,6 +53,10 @@
             <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,30" >
                 <ScrollView>
                     <StackLayout Orientation="Vertical">
+
+                        <Label  Text="{x:Static ResourceManager:AppResources.RMNameInfo}" FontSize="18"  TextColor="#d49504"  Grid.ColumnSpan="2"
+                                    Margin="0,0,0,20"/>
+
                         <!--Rm Details-->
                 <Grid RowSpacing="16">
                     <Grid.RowDefinitions>
