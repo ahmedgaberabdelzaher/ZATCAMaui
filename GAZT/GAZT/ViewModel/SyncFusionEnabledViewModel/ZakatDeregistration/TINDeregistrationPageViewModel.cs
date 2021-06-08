@@ -53,6 +53,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         List<Attachment> attachmentList;
         public bool IsDeRegistrationValid = true;
         public bool IsEnteredTINValid = false;
+        public string PopUpMsgFor2021 = string.Empty;
 
         //
         #endregion
@@ -6483,7 +6484,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            if (!string.IsNullOrEmpty(PopUpMsgFor2021))
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
+                            else
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
 
@@ -6494,7 +6499,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            if (!string.IsNullOrEmpty(PopUpMsgFor2021))
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
+                            else
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
                     }
@@ -6504,8 +6513,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             isSaveAsDraftCalledForAttachment = true;
+                            if (!string.IsNullOrEmpty(PopUpMsgFor2021))
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
+                            else
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
 
@@ -6516,9 +6529,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             // await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
                             isSaveAsDraftCalledForAttachment = true;
+                            if (!string.IsNullOrEmpty(PopUpMsgFor2021))
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
+                            else
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
                     }
@@ -6529,8 +6546,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             isSaveAsDraftCalledForAttachment = true;
+                            if (!string.IsNullOrEmpty(PopUpMsgFor2021))
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
+                            else
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         else
                         {

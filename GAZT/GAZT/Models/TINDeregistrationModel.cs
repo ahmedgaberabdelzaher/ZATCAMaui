@@ -171,6 +171,9 @@ namespace EGAZT.Models
         [JsonProperty("Submitz")]
         public string Submitz { get; set; }
 
+        [JsonProperty("Cr2021popup")]
+        public string Cr2021popup { get; set; }
+
         [JsonProperty("Status")]
         public string Status { get; set; }
 

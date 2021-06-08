@@ -45,15 +45,15 @@ namespace GAZT.Helper
 
         #endregion
 
-        /* public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
-         public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
-         public static string DomainUrlForCookies = DevDomainForCookies;
-         public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;*/
+        public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
+        public static string DomainUrlForCookies = DevDomainForCookies;
+        public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+       /* public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;*/
 
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
@@ -198,6 +198,8 @@ namespace GAZT.Helper
         public static string GetRMContactDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_VOC_SURVEY_SRV/RelationManagerSurveySet(Gpart";
         public static string ComplaintsEngUrl = "https://gazt.gov.sa/en/ContactUs/Pages/default.aspx#topic_complaint";
         public static string ComplaintsARUrl = "https://gazt.gov.sa/ar/ContactUs/Pages/default.aspx#topic_complaint";
+        public static string CheckVocAvailability = "https://vocstg.gazt.gov.sa/v1/response/survey/availability";
+
         #region GAZTUnlock Account
         public static string GAZTUnlockAccountAllOperations = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_UNLOCK_USER_SRV/HeaderSet";
         #endregion

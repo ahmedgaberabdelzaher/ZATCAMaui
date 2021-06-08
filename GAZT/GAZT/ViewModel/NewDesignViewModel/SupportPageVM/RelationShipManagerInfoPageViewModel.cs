@@ -14,13 +14,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SupportPageVM
     [Preserve(AllMembers = true)]
    public class RelationShipManagerInfoPageViewModel : BaseViewModel
     {
+
+        RMContactDetailsBaseModel RmContactsdetailsBaseModel;
         public RelationShipManagerInfoPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             GoBackBtnTapped = new Command(() =>
             {
                 _navigationService.GoBack();
             });
+
+            ShareOpenionClicked = new Command(async () =>
+            {
+                // await CheckTxPayerIsEligibleForSurveyOrNot();
+            });
         }
+
+        private async Task CheckTxPayerIsEligibleForSurveyOrNot()
+        {
+            VocEData edata = new VocEData();
+            edata.phone= RmContactsdetailsBaseModel.d.TpMobile;
+            edata.TIN= App.LoginDataRetrieved.TIN;
+
+            VocTimeFilter vocTimeFilter = new VocTimeFilter();
+            vocTimeFilter.amount = 0;
+            vocTimeFilter.period = "month";
+            vocTimeFilter.type = "relative";
+
+
+            CheckVocAvailabilityModel checkAvailabilityModel = new CheckVocAvailabilityModel();
+            checkAvailabilityModel.surId = RmContactsdetailsBaseModel.d.SurveyId;
+            checkAvailabilityModel.eData = edata;
+            checkAvailabilityModel.timeFilter = vocTimeFilter;
+
+
+
+
+            string check =  await RMContactDetailsWebServiceManager.GetVocSurveyCheckAvailability(checkAvailabilityModel);
+        }
+
+        public ICommand ShareOpenionClicked { get; set; }
+
 
         public ICommand GoBackBtnTapped { get; set; }
 
@@ -133,7 +166,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SupportPageVM
 
             await Task.Run(async () =>
             {
-                RMContactDetailsBaseModel RmContactsdetailsBaseModel = await RMContactDetailsWebServiceManager.GetGAZTRMContactDetails(App.LoginDataRetrieved.TIN);
+                 RmContactsdetailsBaseModel = await RMContactDetailsWebServiceManager.GetGAZTRMContactDetails(App.LoginDataRetrieved.TIN);
 
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 

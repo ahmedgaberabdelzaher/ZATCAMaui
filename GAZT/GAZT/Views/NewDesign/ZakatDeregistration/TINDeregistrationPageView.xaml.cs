@@ -48,6 +48,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
+            if (!string.IsNullOrEmpty(tinDeregistrationResponseModel.Cr2021popup))
+                viewModel.PopUpMsgFor2021 = tinDeregistrationResponseModel.Cr2021popup;
+
             //viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>();
             this.BindingContext = viewModel;
             viewModel.LoadReasonSet();
