@@ -33,6 +33,18 @@
     <!--#endregion-->
 
     <!--#region Buttons-->
+    <Style x:Key="RMDetailsPrimaryButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="WidthRequest" Value="366" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="BackgroundColor" Value="#d49504" />
+    </Style>
+
     <Style x:Key="PrimaryButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="TextColor" Value="White" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />

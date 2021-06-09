@@ -118,7 +118,7 @@
 
 
                         <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.RM_ShareOpenion}"  IsEnabled="{Binding IsContinueButtonEnable}"
-                                          CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}"
+                                          CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource RMDetailsPrimaryButtonStyle}"
                                           Command="{Binding ShareOpenionClicked}" 
                                           BackgroundColor="#d49504" >
                             <buttons:SfButton.Margin>
