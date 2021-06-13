@@ -28,6 +28,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         public static TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
+        private FinancialDetail financialDetailPeriod { get; set; } = null;
+        public bool isFinaceDetailsChanged { get; set; } = false;
+        public string isDraftEnabled { get; set; } = "";
         private Nreg_IdItem idItem { get; set; } = null;
         public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
         private EstablishmentRegistrationTabsEnum _currentTab;
@@ -273,6 +276,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 _isClickedAFixedBasePE = value;
                 RaisePropertyChanged("IsClickedAFixedBasePE");
+            }
+        }
+
+        private bool _isFinancePeriodVisible = false;
+        public bool IsFinancePeriodVisible
+        {
+            get => _isFinancePeriodVisible;
+            set
+            {
+
+                _isFinancePeriodVisible = value;
+                RaisePropertyChanged("IsFinancePeriodVisible");
             }
         }
 
@@ -1143,6 +1158,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
+
+        private List<PeriodSetResult> _periodList = new List<PeriodSetResult>();
+        public List<PeriodSetResult> PeriodList
+        {
+            get => _periodList;
+            set
+            {
+                if (_periodList == value) return;
+
+                if (value != null)
+                {
+                    _periodList = value;
+                    RaisePropertyChanged(nameof(PeriodList));
+                }
+            }
+        }
+        private PeriodSetResult _selectedPeriod = null;
+        public PeriodSetResult SelectedPeriod
+        {
+            get => _selectedPeriod;
+            set
+            {
+                if (_selectedPeriod == value) return;
+
+                if (value != null)
+                {
+                    _selectedPeriod = value;
+                    RaisePropertyChanged(nameof(SelectedPeriod));
+                    //if (taxPayerDetails != null)
+                    //    udpdateDates();
+                }
+            }
+        }
         private string _fiscalMonth = string.Empty;
         public string FiscalMonth
         {
@@ -1189,6 +1237,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 _taxDate = value;
                 RaisePropertyChanged(nameof(TaxDate));
+            }
+        }
+
+        private string _lastFulfilledReturn = string.Empty;
+        public string LastFulfilledReturn
+        {
+            get => _lastFulfilledReturn;
+            set
+            {
+                if (_lastFulfilledReturn == value) return;
+
+                _lastFulfilledReturn = value;
+                RaisePropertyChanged(nameof(LastFulfilledReturn));
+            }
+        }
+        private string _zYear = string.Empty;
+        public string ZYear
+        {
+            get => _zYear;
+            set
+            {
+                if (_zYear == value) return;
+
+                _zYear = value;
+                RaisePropertyChanged(nameof(ZYear));
             }
         }
         #endregion
@@ -1667,10 +1740,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (await FormValidation(currentTab))
                     {
-                        if (await PushDatatoServer(currentTab))
+
+                        if ((isDraftEnabled == "X") || (isFinaceDetailsChanged))
                         {
-                            _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+
+                            var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                            {
+                                CloseWhenBackgroundIsClicked = false
+                            };
+                            somewarningpopup.OnDone = async () =>
+                            {
+                                if (await PushDatatoServer(currentTab))
+                                {
+                                    _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                                }
+
+
+                            };
+                            await PopupNavigation.Instance.PushAsync(somewarningpopup);
                         }
+                        else
+                        {
+
+                            if (await PushDatatoServer(currentTab))
+                            {
+                                _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                            }
+                        }
+
+
+                        //if (await PushDatatoServer(currentTab))
+                        //{
+                        //    _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                        //}
                     }
                 }
             }
@@ -2203,20 +2305,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     else if (taxPayerDetails?.Tpnationality == "FOREIGN")
                         SelectedRegNationalityType = AppResources.ESTNationalityFOREIGN;
 
-                    if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
-                    {
-                        var someThingWhentWrong = new AttachmentInformationPopUp(AppResources.Somethingwentwrong)
+
+
+                        if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
                         {
-                            CloseWhenBackgroundIsClicked = false
-                        };
-                        someThingWhentWrong.OnDone = () =>
-                        {
-                            currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
-                        };
-                        await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
-                        return;
-                    }
+                            var someThingWhentWrong = new AttachmentInformationPopUp(AppResources.Somethingwentwrong)
+                            {
+                                CloseWhenBackgroundIsClicked = false
+                            };
+                            someThingWhentWrong.OnDone = () =>
+                            {
+                                currentTab = EstablishmentRegistrationTabsEnum.Unknown;
+                                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                            };
+                            await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
+                            return;
+                        }
+                    
+
+                    
                     IsSaudi = taxPayerDetails?.Tpnationality == "SAUDI";
                     if (IsSaudi)
                     {
@@ -2281,8 +2388,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
-                    SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
-                    CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
+
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Accmethod)) {
+
+                        SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
+
+                    }
+
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Fdcalender))
+                    {
+                        CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
+
+                    }
+
                     udpdateDates();
                 }
                 if (IsSaudi)
@@ -2709,6 +2827,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 });
                 TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
 
+                if (taxPayerDetails.LastFilledRetdt != null)
+                {
+
+                    LastFulfilledReturn = taxPayerDetails.LastFilledRetdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+
+                }
+                if (taxPayerDetails.Zyear != null)
+                {
+
+                    ZYear = AppResources.FinacialDetailsZyear.Replace("yyyy", taxPayerDetails.Zyear);
+
+                }
+
                 if (string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
                 {
                     if (financialDetail?.EIslmedate == "28")
@@ -2726,6 +2857,66 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         dates.Remove("30");
                     }
                 }
+                IsLoading = false;
+
+                IsLoading = true;
+
+                var selectedFintype = "";
+
+                if (!string.IsNullOrEmpty(SelectedMethod))
+                {
+                    selectedFintype = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
+                }
+                else
+                {
+                    selectedFintype = taxPayerDetails.Accmethod;
+                }
+
+
+                if (SelectedMethod == AppResources.NDAccounting)
+                {
+
+                    IsFinancePeriodVisible = true;
+                }
+                else
+                {
+                    IsFinancePeriodVisible = false;
+
+                }
+
+
+                financialDetailPeriod = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDateForPeriod(new FinancialDetailPeriodRequest()
+                {
+                    ACaltype = _CalendarType,
+                    AMonth = FiscalMonth,
+                    EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
+                    ADateComm = taxPayerDetails?.Commdt,
+                    Gpart = App.LoginDataRetrieved.TIN,
+                    Zfintype = selectedFintype,
+                    PeriodSet = new List<PeriodSetResult>()
+                });
+
+                if (financialDetailPeriod != null)
+                {
+
+                    PeriodList = financialDetailPeriod.PeriodSet.results;
+                    isDraftEnabled = financialDetailPeriod.Draft;
+                    if (PeriodList.Count > 0)
+                    {
+
+                        if (!string.IsNullOrEmpty(taxPayerDetails.FinPeriod))
+                        {
+                            SelectedPeriod = PeriodList.Where(temp => (temp.FinPeriod == taxPayerDetails.FinPeriod)).FirstOrDefault();
+
+                        }
+
+
+                        //SelectedPeriod = PeriodList.FirstOrDefault();
+
+                    }
+                }
+
+
                 IsLoading = false;
 
 

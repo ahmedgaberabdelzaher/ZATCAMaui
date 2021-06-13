@@ -198,6 +198,45 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             catch (Exception) { }
         }
 
+        void FinacialPeriodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            viewModel.isFinaceDetailsChanged = true;
+
+        }
+
+        void FinacialMethodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+
+            try
+            {
+                string selectedItem = e.AddedItems[0] as string;
+
+                if (selectedItem == AppResources.NDAccounting)
+                {
+
+                    viewModel.IsFinancePeriodVisible = true;
+                }
+                else
+                {
+                    viewModel.IsFinancePeriodVisible = false;
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+
+
+
+            viewModel.isFinaceDetailsChanged = true;
+
+        }
+
         private EstablishmentRegistrationTabsEnum getEnumFromChipsLabel(string label)
         {
             if (label.Equals(AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel))

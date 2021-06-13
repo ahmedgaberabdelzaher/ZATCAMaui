@@ -1437,6 +1437,88 @@
                         <custom:CustomLabel Text="{Binding CommDate}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTTaxableDate}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <custom:CustomLabel Text="{Binding TaxDate}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
+                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FinacialYearOptions}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" IsVisible="{Binding IsFinancePeriodVisible}"/>
+                        <listView:SfListView x:Name="FinancePeriodListView" VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding PeriodList}" 
+                                             SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}"  AutoFitMode="Height" 
+                                             ItemSpacing="5" SelectionMode="Single" Margin="0" IsScrollBarVisible="False" 
+                                             IsScrollingEnabled="False" IsEnabled="{Binding FinancialDetails.FinancialRecords}" SelectionChanged="FinacialPeriodSelectionChanged" IsVisible="{Binding IsFinancePeriodVisible}">
+                          
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <!--<cards:SfCardView HasShadow="False" BackgroundColor="Transparent" HeightRequest="108">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
+                                            <Image Source="vat_tile_listofsignup_W.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
+                                                                    Margin="26" HorizontalTextAlignment="Start" />
+                                        </Grid>
+                                    </cards:SfCardView>-->
+                                    <cards:SfCardView  HasShadow="False" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="104"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                <custom:CustomLabel  Text="{Binding FinPeriodText}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8"/>
+
+                                                <custom:CustomLabel  Style="{DynamicResource CardLabelBlack}" LineHeight="0.8">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding FromDate,StringFormat='{0:yyyy/MM/dd}'}"/>
+                                            <Span  Text=" " />
+                                            <Span  Text="{x:Static ResourceManager:AppResources.To}" />
+                                             <Span  Text=" " />
+                                            <Span Text="{Binding ToDate,StringFormat='{0:yyyy/MM/dd}'}"/>
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+                                            </StackLayout>
+                                        </Grid>
+                                    </cards:SfCardView>
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                            <listView:SfListView.SelectedItemTemplate>
+                                <DataTemplate>
+                                    <!--<cards:SfCardView HasShadow="False" BackgroundColor="Transparent" HeightRequest="108">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
+                                            <Image Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_tile_listofsignup.png"/>
+                                            <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
+                                                                  TextColor="White"  Margin="26" HorizontalTextAlignment="Start" />
+                                        </Grid>
+                                    </cards:SfCardView>-->
+                                    <cards:SfCardView HasShadow="False" Margin="0,0,24,0" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="104"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image  Source="selected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                <custom:CustomLabel  Text="{Binding FinPeriodText}" Style="{DynamicResource CardLabelWhite}" LineHeight="0.8"/>
+
+                                                <custom:CustomLabel  Style="{DynamicResource CardLabelWhite}" LineHeight="0.8">
+                                                <custom:CustomLabel.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding FromDate,StringFormat='{0:yyyy/MM/dd}'}"/>
+                                                         <Span  Text=" " />
+                                                        <Span  Text="{x:Static ResourceManager:AppResources.To}" />
+                                                         <Span  Text=" " />
+                                                        <Span Text="{Binding ToDate,StringFormat='{0:yyyy/MM/dd}'}"/>
+                                                    </FormattedString>
+                                                </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel>
+                                            </StackLayout>
+                                        </Grid>
+                                    </cards:SfCardView>
+                                </DataTemplate>
+                            </listView:SfListView.SelectedItemTemplate>
+                        </listView:SfListView>
                     </StackLayout>
                 </ScrollView>
                 <ScrollView x:Name="DeclarationMainTab" Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}">
