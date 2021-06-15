@@ -8907,7 +8907,7 @@ info@gazt.gov.sa</value>
     <value> تم اعتماد طلب التسجيل رقم</value>
   </data>
   <data name="NDRelationContact" xml:space="preserve">
-    <value>بيانات التواصل لمدير ومشرف العلاقة</value>
+    <value>عرض بيانات التواصل لمدير و مشرف العلاقة</value>
   </data>
   <data name="RMName" xml:space="preserve">
     <value>مدير العلاقة:</value>
@@ -8916,7 +8916,7 @@ info@gazt.gov.sa</value>
     <value>مشرف مدير العلاقة:</value>
   </data>
   <data name="RMTitle" xml:space="preserve">
-    <value>عرض بيانات التواصل لمدير ومشرف العلاقة</value>
+    <value>بيانات التواصل لمدير ومشرف العلاقة</value>
   </data>
   <data name="RM_Email" xml:space="preserve">
     <value>البريد الاكتروني:</value>
