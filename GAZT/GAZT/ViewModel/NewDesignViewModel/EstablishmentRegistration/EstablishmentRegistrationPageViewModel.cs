@@ -1721,10 +1721,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
 
-                    if (await PushDatatoServer(currentTab))
+                    if (await FormValidation(currentTab))
                     {
-                        currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+                        if (await PushDatatoServer(currentTab))
+                        {
+                            currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+                        }
                     }
+
+
+                    //if (await PushDatatoServer(currentTab))
+                    //{
+                    //    currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+                    //}
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
@@ -1741,38 +1750,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (await FormValidation(currentTab))
                     {
 
-                        if ((isDraftEnabled == "X") || (isFinaceDetailsChanged))
-                        {
-
-                            var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
-                            {
-                                CloseWhenBackgroundIsClicked = false
-                            };
-                            somewarningpopup.OnDone = async () =>
-                            {
-                                if (await PushDatatoServer(currentTab))
-                                {
-                                    _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
-                                }
-
-
-                            };
-                            await PopupNavigation.Instance.PushAsync(somewarningpopup);
-                        }
-                        else
-                        {
-
-                            if (await PushDatatoServer(currentTab))
-                            {
-                                _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
-                            }
-                        }
-
-
-                        //if (await PushDatatoServer(currentTab))
+                        //if ((isDraftEnabled == "X") || (isFinaceDetailsChanged))
                         //{
-                        //    _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+
+                        //    var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                        //    {
+                        //        CloseWhenBackgroundIsClicked = false
+                        //    };
+                        //    somewarningpopup.OnDone = async () =>
+                        //    {
+                        //        if (await PushDatatoServer(currentTab))
+                        //        {
+                        //            _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                        //        }
+
+
+                        //    };
+                        //    await PopupNavigation.Instance.PushAsync(somewarningpopup);
                         //}
+                        //else
+                        //{
+
+                        //    if (await PushDatatoServer(currentTab))
+                        //    {
+                        //        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                        //    }
+                        //}
+
+
+                        if (await PushDatatoServer(currentTab))
+                        {
+                            _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                        }
                     }
                 }
             }
@@ -3193,6 +3202,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
+                    if(SelectedPeriod == null ) {
+
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please select financial period"));
+                        return false;
+                    }
+
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Declaration)
                 {
@@ -3339,6 +3354,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Commdt = financialDetail?.ADateComm;
                     taxPayerDetails.Fdenddt = Fdenddt;
                     taxPayerDetails.Chkfg = "X";
+                    if (SelectedPeriod != null)
+                    {
+                        taxPayerDetails.FinPeriod = SelectedPeriod.FinPeriod;
+                    }
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
                     taxPayerDetails.UserTypx = "TP";

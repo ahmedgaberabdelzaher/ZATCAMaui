@@ -1371,7 +1371,7 @@
                 <ScrollView x:Name="FinancialDetailMainTab" Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
                     <StackLayout Spacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMethodOfFinancialRecordMaintained}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding MethodList}" SelectedItem="{Binding SelectedMethod, Mode=TwoWay}"  AutoFitMode="Height" ItemSpacing="5" SelectionMode="Single" Margin="0" IsScrollBarVisible="False" IsScrollingEnabled="False">
+                        <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding MethodList}" SelectedItem="{Binding SelectedMethod, Mode=TwoWay}"  AutoFitMode="Height" ItemSpacing="5" SelectionMode="Single" Margin="0" IsScrollBarVisible="False" IsScrollingEnabled="False" SelectionChanged="FinacialMethodSelectionChanged">
                             <listView:SfListView.LayoutManager>
                                 <listView:GridLayout SpanCount="2" />
                             </listView:SfListView.LayoutManager>
@@ -1437,7 +1437,16 @@
                         <custom:CustomLabel Text="{Binding CommDate}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTTaxableDate}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <custom:CustomLabel Text="{Binding TaxDate}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
-                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FinacialYearOptions}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" IsVisible="{Binding IsFinancePeriodVisible}"/>
+                         <custom:CustomLabel   IsVisible="{Binding IsFinancePeriodVisible}" >
+                         <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.FinacialYearOptions}"  TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                             </custom:CustomLabel>
+
+
                         <listView:SfListView x:Name="FinancePeriodListView" VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding PeriodList}" 
                                              SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}"  AutoFitMode="Height" 
                                              ItemSpacing="5" SelectionMode="Single" Margin="0" IsScrollBarVisible="False" 
