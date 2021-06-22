@@ -3243,17 +3243,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (string.IsNullOrEmpty(FiscalMonth)) {
 
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please Select Fisical Month"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TPFinacialPeriodMonthValidation));
                         return false;
                     }
                     else if (string.IsNullOrEmpty(FiscalDay)) {
 
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please Select Fisical Day"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TPFinacialPeriodMonthValidation));
                         return false;
                     }
                     else if(SelectedPeriod == null ) {
 
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please select financial period"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TPFinacialPeriodValidation));
                         return false;
                     }
 

@@ -9045,4 +9045,10 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="RMNameInfo" xml:space="preserve">
     <value>Relationship Manager Information</value>
   </data>
+  <data name="TPFinacialPeriodMonthValidation" xml:space="preserve">
+    <value>Please select the day and month for the desired period</value>
+  </data>
+  <data name="TPFinacialPeriodValidation" xml:space="preserve">
+    <value>Please select financial period</value>
+  </data>
 </root>
