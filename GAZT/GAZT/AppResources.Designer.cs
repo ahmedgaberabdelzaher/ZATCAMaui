@@ -15780,19 +15780,6 @@ namespace EGAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to The return is under GAZT review and you are only able to add attachments..
-        /// </summary>
-        public static string ZZZZReturnUnderReviewAddAttachments {
-            get {
-                return ResourceManager.GetString("ZZZZReturnUnderReviewAddAttachments", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Review information.
-        /// </summary>
-        public static string ZZZZReviewinformation {
         public static string VATRefundNoMsg {
             get {
                 return ResourceManager.GetString("VATRefundNoMsg", resourceCulture);
@@ -16018,6 +16005,12 @@ namespace EGAZT {
         public static string TPFinacialPeriodValidation {
             get {
                 return ResourceManager.GetString("TPFinacialPeriodValidation", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZReturnUnderReviewAddAttachments {
+            get {
+                return ResourceManager.GetString("ZZZZReturnUnderReviewAddAttachments", resourceCulture);
             }
         }
     }
