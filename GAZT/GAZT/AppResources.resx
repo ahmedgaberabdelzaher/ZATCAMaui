@@ -9045,4 +9045,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="RMNameInfo" xml:space="preserve">
     <value>Relationship Manager Information</value>
   </data>
+  <data name="ZZZZReturnUnderReviewAddAttachments" xml:space="preserve">
+    <value>The return is under GAZT review and you are only able to add attachments.</value>
+  </data>
 </root>

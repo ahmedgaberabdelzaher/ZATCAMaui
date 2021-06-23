@@ -1,4 +1,5 @@
 ﻿using System;
+using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -34,6 +35,13 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             OnDone?.Invoke();
             PopupNavigation.Instance.PopAsync();
+
+            if (InfromatationText.Text.Equals(AppResources.ZZZZReturnUnderReviewAddAttachments))
+            {
+                MessagingCenter.Send<App, string>
+                    ((App)Xamarin.Forms.Application.Current, "OnlyAddAttachments", "add vat attachments");
+
+            }
         }
 
              private void SetLTR()

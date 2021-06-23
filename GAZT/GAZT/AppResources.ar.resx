@@ -8966,4 +8966,8 @@ info@gazt.gov.sa</value>
   <data name="RMNameInfo" xml:space="preserve">
     <value>بيانات مدير العلاقة</value>
   </data>
+  <data name="ZZZZReturnUnderReviewAddAttachments" xml:space="preserve">
+    <value>الإقرار تحت المراجعة من قبل الهيئة و بإمكانكم رفع المستندات الإضافية
+المطلوبة</value>
+  </data>
 </root>

@@ -37,6 +37,8 @@ namespace GAZT.Models
         public string Fbsta { get; set; }
         public string Fbust { get; set; }
         public string Err2064 { get; set; }
+        public string Cr2215 { get; set; }
+
 
         private string _CalendarTyp;
         public string CalendarTyp 

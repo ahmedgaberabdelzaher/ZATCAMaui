@@ -415,6 +415,8 @@ namespace EGAZT.Models
         public string Idnumber { get; set; }
         [DataMember]
         public string TotalsalesAmt { get; set; }
+        [DataMember]
+        public string Cr2215 { get; set; }
         //public string _totalsalesAmt;
         //public string TotalsalesAmt
         //{ 

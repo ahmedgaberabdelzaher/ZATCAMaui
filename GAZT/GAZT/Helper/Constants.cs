@@ -45,15 +45,15 @@ namespace GAZT.Helper
 
         #endregion
 
-        /*public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
         public static string DomainUrlForCookies = DevDomainForCookies;
-        public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;*/
+        public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-        public static string DomainUrlForCookies = QADomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        /* public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+         public static string DomainUrlForCookies = QADomainForCookies;
+         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;*/
 
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
@@ -102,6 +102,7 @@ namespace GAZT.Helper
         public static string GetTinStatus = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTIN_STAT_SRV/HeaderSet(Langz='";
         public static string GetVATLookUpDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZVAT_TAXPAYER_LOOKUP_SRV/TaxpayerSet?saml2=enabled&sap-language='";
         public static string GAZTGetAllVATDeclarationReturnData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet(Periodkeyz='";
+        public static string GAZTGetNotifyAuditorForAddingAttachments = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet";
         public static string GetMyICRs = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_WI_SRV/ICR_HDRSet(Fbnum='',Lang='";
         public static string SaveVATDeclarationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?saml2=enabled";
         public static string GAZTSaveAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef=";

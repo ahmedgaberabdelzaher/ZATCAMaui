@@ -77,6 +77,21 @@ namespace EGAZT
                 RaisePropertyChanged("VATDeclarationDataForAttch");
             }
         }
+
+        private string _CR2215flag;
+        public string CR2215flag
+        {
+            get
+            {
+                return _CR2215flag;
+            }
+            set
+            {
+                _CR2215flag = value;
+                RaisePropertyChanged("CR2215flag");
+            }
+        }
+
         private string _dateSubmitted;
         public string DateSubmitted
         {
@@ -116,6 +131,22 @@ namespace EGAZT
                 RaisePropertyChanged("AttachmentSize");
             }
         }
+
+        private bool _isAttachEnabled = false;
+        public bool IsAttachEnabled
+        {
+            get
+            {
+                return _isAttachEnabled;
+            }
+            set
+            {
+                _isAttachEnabled = value;
+                RaisePropertyChanged("IsAttachEnabled");
+            }
+        }
+
+
         public decimal _totalAttachmentSize = 0;
         public decimal TotalAttachmentSize
         {
@@ -320,6 +351,14 @@ namespace EGAZT
                                                         AttachmentCount++;
                                                         CloneAttachmentList(VatAttachmentsList);
                                                         AttachmentName = string.Empty;
+
+                                                         if(CR2215flag.Equals("X"))
+                                                        {
+                                                            VATDeclarationDataForAttch.d.ATTACHSet.results.Clear();
+                                                            //Array.Clear(VATDeclarationDataForAttch.d.ATTACHSet.results, 0, VATDeclarationDataForAttch.d.ATTACHSet.results.Count);
+
+                                                            string NotifyResponse = await WebServiceManager.SendNotificationToAuditorafterUploadingAttachments(VATDeclarationDataForAttch.d);
+                                                        }
                                                     }
                                                     else
                                                     {

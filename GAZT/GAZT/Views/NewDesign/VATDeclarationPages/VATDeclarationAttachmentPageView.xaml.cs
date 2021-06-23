@@ -40,6 +40,18 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel = App.Locator.VATDeclarationAttachmentPageView;
             this.BindingContext = viewModel;
             SetLTR();
+
+            if (vATDeclaration.d.Cr2215 != null && vATDeclaration.d.Cr2215.Equals("X"))
+                viewModel.CR2215flag = vATDeclaration.d.Cr2215;
+
+
+            if (viewModel.CR2215flag != null && viewModel.CR2215flag.Equals("X"))
+                viewModel.IsAttachEnabled = true;
+            else
+                viewModel.IsAttachEnabled = false;
+
+
+
             List.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
@@ -147,7 +159,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-
+        
         private void SetLTR()
         {
             if (!App.IsArabic)

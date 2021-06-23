@@ -63,10 +63,10 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAttachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
                         </custom:CustomLabel>
                     <border:SfBorder   Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="1" BorderColor="{StaticResource DarkGrayTextColor}">
-                        <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
+                                    <StackLayout Orientation="Horizontal" Padding="15,10,15,10" IsEnabled="{Binding IsAttachEnabled}">
                             <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
 
-                            <Image HorizontalOptions="EndAndExpand" Rotation="90">
+                                        <Image HorizontalOptions="EndAndExpand" Rotation="90" IsEnabled="{Binding IsAttachEnabled}">
                                 <Image.Source>
                                     <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.Attachment}"/>

@@ -48,7 +48,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                 } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
         SetPickerFont();
-          //  App.HideProgressView();
+            //  App.HideProgressView();
         }
         public void SetPickerFont()
         {
