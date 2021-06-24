@@ -9054,4 +9054,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="ZZZZReturnUnderReviewAddAttachments" xml:space="preserve">
     <value>The return is under GAZT review and you are only able to add attachments.</value>
   </data>
+  <data name="GOTOPORTALFORSURVEY" xml:space="preserve">
+    <value>The survey functionality is not available on the App, kindly proceed from the taxpayer portal gazt.gov.sa.</value>
+  </data>
 </root>

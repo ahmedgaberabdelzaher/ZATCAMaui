@@ -1,6 +1,8 @@
 ﻿using EGAZT.Manager;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,7 +27,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SupportPageVM
 
             ShareOpenionClicked = new Command(async () =>
             {
-                // await CheckTxPayerIsEligibleForSurveyOrNot();
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.GOTOPORTALFORSURVEY));
             });
         }
 
