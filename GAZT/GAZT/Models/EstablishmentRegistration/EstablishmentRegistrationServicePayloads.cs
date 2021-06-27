@@ -757,6 +757,8 @@ namespace EGAZT.Models.EstablishmentRegistration
         public Metadata __metadata { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
+        public string ConvretedFromDate { get; set; }
+        public string ConvretedToDate { get; set; }
         public string FinPeriodText { get; set; }
 
         public string _finPeriod = String.Empty;

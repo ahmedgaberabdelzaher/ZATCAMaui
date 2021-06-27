@@ -1492,11 +1492,11 @@
                                                 <custom:CustomLabel  Style="{DynamicResource CardLabelBlack}" LineHeight="0.8">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding FromDate,StringFormat='{0:yyyy/MM/dd}'}"/>
+                                            <Span Text="{Binding ConvretedFromDate}"/>
                                             <Span  Text=" " />
                                             <Span  Text="{x:Static ResourceManager:AppResources.To}" />
                                              <Span  Text=" " />
-                                            <Span Text="{Binding ToDate,StringFormat='{0:yyyy/MM/dd}'}"/>
+                                            <Span Text="{Binding ConvretedToDate}"/>
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
@@ -1530,11 +1530,11 @@
                                                 <custom:CustomLabel  Style="{DynamicResource CardLabelWhite}" LineHeight="0.8">
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding FromDate,StringFormat='{0:yyyy/MM/dd}'}"/>
+                                                        <Span Text="{Binding ConvretedFromDate}"/>
                                                          <Span  Text=" " />
                                                         <Span  Text="{x:Static ResourceManager:AppResources.To}" />
                                                          <Span  Text=" " />
-                                                        <Span Text="{Binding ToDate,StringFormat='{0:yyyy/MM/dd}'}"/>
+                                                        <Span Text="{Binding ConvretedToDate}"/>
                                                     </FormattedString>
                                                 </custom:CustomLabel.FormattedText>
                                             </custom:CustomLabel>

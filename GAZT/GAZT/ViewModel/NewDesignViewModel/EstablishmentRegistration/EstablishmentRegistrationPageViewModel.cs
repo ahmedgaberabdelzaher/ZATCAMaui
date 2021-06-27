@@ -2869,7 +2869,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
                         ADateComm = taxPayerDetails?.Commdt
                     });
-                    TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
+                   // TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
 
                     if (taxPayerDetails.LastFilledRetdt != null)
                     {
@@ -2943,7 +2943,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (financialDetailPeriod != null)
                     {
 
-                        PeriodList = financialDetailPeriod.PeriodSet.results;
+
+                        var fincialPeriodDetials = financialDetailPeriod.PeriodSet.results;
+
+                        foreach (var s in fincialPeriodDetials)
+                        {
+                            var fromDate = string.Empty;
+                            var toDay = string.Empty;
+                            if (_CalendarType == "H")
+                            {
+
+                                fromDate = s.FromDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                                toDay = s.ToDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+
+                            }
+                            else
+                            {
+
+                                fromDate = s.FromDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                                toDay = s.ToDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+
+                            }
+
+                            s.ConvretedFromDate = fromDate;
+                            s.ConvretedToDate = toDay;
+
+
+                        }
+
+                        PeriodList = fincialPeriodDetials;
+                        TaxDate = String.Empty;
+
+
                         isDraftEnabled = financialDetailPeriod.Draft;
                         if (PeriodList.Count > 0)
                         {
@@ -2951,6 +2982,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             if (!string.IsNullOrEmpty(taxPayerDetails.FinPeriod))
                             {
                                 SelectedPeriod = PeriodList.Where(temp => (temp.FinPeriod == taxPayerDetails.FinPeriod)).FirstOrDefault();
+                                TaxDate = SelectedPeriod.ConvretedToDate;
 
                             }
 
@@ -2965,8 +2997,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 }
 
-               
 
+                IsLoading = false;
 
             }
             catch (Exception)

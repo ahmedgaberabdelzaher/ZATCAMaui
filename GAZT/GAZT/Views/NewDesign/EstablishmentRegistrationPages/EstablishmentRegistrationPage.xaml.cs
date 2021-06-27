@@ -202,6 +202,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             viewModel.isFinaceDetailsChanged = true;
 
+            if(viewModel.SelectedPeriod != null) {
+
+                viewModel.TaxDate = viewModel.SelectedPeriod.ConvretedToDate;
+            }
+
+
         }
 
         void FinacialMethodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
