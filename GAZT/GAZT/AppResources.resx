@@ -8978,7 +8978,6 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="AcPenality" xml:space="preserve">
     <value>Penalty</value>
   </data>
-<<<<<<< HEAD
   <data name="VatApproved" xml:space="preserve">
     <value>has been successfully approved</value>
   </data>
@@ -9057,9 +9056,8 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   </data>
   <data name="GOTOPORTALFORSURVEY" xml:space="preserve">
     <value>The survey functionality is not available on the App, kindly proceed from the taxpayer portal gazt.gov.sa.</value>
-=======
+</data>
   <data name="AcFilterEmptyState" xml:space="preserve">
     <value>Please enter at least one value</value>
->>>>>>> GAZTPostSoftGoLive
   </data>
 </root>

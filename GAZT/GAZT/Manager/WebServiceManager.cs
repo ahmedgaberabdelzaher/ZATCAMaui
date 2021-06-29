@@ -5799,13 +5799,6 @@ namespace GAZT.Manager
                             isLoad = "X";
                         }
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> GAZTPostSoftGoLive
                     }
 
                     String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='" + statementFilter + "',FiscalYear='" + fiscalYear + "',TaxType='" + taxType + "',Lang='" + LangZ + "',Load='" + isLoad + "')?&$expand=StatmenetLineItemsSet,TaxRelationSet&$format=json";

@@ -417,11 +417,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-<<<<<<< HEAD
         private MyReturnsResult _selectedReturnsVATItem;
         public MyReturnsResult selectedReturnsVATItem
         {
-            get {
+            get
+            {
                 return _selectedReturnsVATItem;
             }
             set
@@ -430,7 +430,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _selectedReturnsVATItem = value;
                 RaisePropertyChanged("selectedReturnsVATItem");
-=======
+
+            }
+        }
         private GenericPickerModel _pickerModel { get; set; }
         public GenericPickerModel PickerModel
         {
@@ -441,7 +443,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _pickerModel = value;
                 RaisePropertyChanged("PickerModel");
->>>>>>> GAZTPostSoftGoLive
             }
         }
 

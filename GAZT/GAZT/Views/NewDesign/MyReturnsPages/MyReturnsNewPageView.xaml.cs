@@ -49,13 +49,10 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     return;
                 } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
-<<<<<<< HEAD
-        SetPickerFont();
-            //  App.HideProgressView();
-=======
+
        // SetPickerFont();
           //  App.HideProgressView();
->>>>>>> GAZTPostSoftGoLive
+
         }
         //public void SetPickerFont()
         //{

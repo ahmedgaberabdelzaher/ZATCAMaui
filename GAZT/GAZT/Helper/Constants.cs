@@ -60,17 +60,11 @@ namespace GAZT.Helper
         //public static string DomainUrlForCookies = UatDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
-<<<<<<< HEAD
-        /* public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
-         public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
-         public static string DomainUrlForCookies = PreprodDomainForCookies;
-         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;*/
-=======
+
         /*public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
         public static string DomainUrlForCookies = PreprodDomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;*/
->>>>>>> GAZTPostSoftGoLive
 
         //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;

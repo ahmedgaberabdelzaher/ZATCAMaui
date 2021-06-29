@@ -23,6 +23,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
@@ -79,18 +81,12 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.gazt.enterprise.egazt</string>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
 	<string>1.0.0.95</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.0.0.94</string>
-=======
-	<string>1.0.223</string>
-	<key>CFBundleShortVersionString</key>
-	<string>4.0.0.87</string>
+	<string>4.0.0.95</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
->>>>>>> GAZTPostSoftGoLive
 </dict>
 </plist>
