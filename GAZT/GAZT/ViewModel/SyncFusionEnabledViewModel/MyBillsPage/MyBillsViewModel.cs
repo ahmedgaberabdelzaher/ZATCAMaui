@@ -402,7 +402,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    myBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+                    myBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang,"Bills");
 
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 

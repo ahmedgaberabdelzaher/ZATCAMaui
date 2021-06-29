@@ -210,12 +210,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void btnImporter_Clicked(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             Models.VATRegistrationDetails vatReg = null;
             PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
         }
 
         private void btnExporter_Clicked(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             Models.VATRegistrationDetails vatReg = null;
             PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
         }
@@ -1708,6 +1710,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void btnAttachmentDocuments_Clicked(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             Models.VATRegistrationDetails vATRegistrationDetails = null;
             PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vATRegistrationDetails));
         }
@@ -1739,6 +1742,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private async void NewAttachment_Clicked(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             try
             {
                 DataToPassTofinancialDetailAttachmentPopup sendtoPopup = new DataToPassTofinancialDetailAttachmentPopup();
@@ -2100,6 +2104,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private async void ImporterExporterAttachment(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             try
             {
                 bool isImporter = false;

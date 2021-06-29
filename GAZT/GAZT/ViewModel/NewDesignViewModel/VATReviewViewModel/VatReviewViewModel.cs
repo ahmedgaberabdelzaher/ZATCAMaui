@@ -3063,6 +3063,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public async void NewAttachmentClicked()
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             if (AttachmentsListViewData == null)
             {
                 AttachmentsListViewData = new ObservableCollection<Attachment>();
@@ -3103,6 +3104,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public async void NewBankGuranteeAttachmentClicked()
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             if (BankGuranteeAttachmentsListViewData == null)
             {
                 BankGuranteeAttachmentsListViewData = new ObservableCollection<Attachment>();

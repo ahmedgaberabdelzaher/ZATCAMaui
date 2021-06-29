@@ -3185,10 +3185,10 @@
     <value>الهيئة العامة للزكاة والدخل - جميع الحقوق محفوظة © 2021م</value>
   </data>
   <data name="ETReturns" xml:space="preserve">
-    <value>إقرارات ضريبة السلع الانتقائية</value>
+    <value>ضريبة السلع الإنتقائية</value>
   </data>
   <data name="VatReturns" xml:space="preserve">
-    <value>إقرارات ضريبة القيمة المضافة</value>
+    <value>ضريبة القيمة المضافة</value>
   </data>
   <data name="WHTreturns" xml:space="preserve">
     <value>إقرارات ضريبة الاستقطاع</value>
@@ -8897,8 +8897,16 @@ info@gazt.gov.sa</value>
   <data name="ACMyTaxObligations" xml:space="preserve">
     <value>المبالغ المستحقة: </value>
   </data>
+<<<<<<< HEAD
   <data name="AcPenality" xml:space="preserve">
     <value>العقوبات</value>
+=======
+   <data name="AcPenality" xml:space="preserve">
+    <value>غرامة</value>
+  </data>
+  <data name="AcFilterEmptyState" xml:space="preserve">
+    <value>يرجى إدخال قيمة واحدة على الأقل</value>
+>>>>>>> GAZTPostSoftGoLive
   </data>
   <data name="VatApproved" xml:space="preserve">
     <value> لضريبة القيمة المضافة بنجاح</value>

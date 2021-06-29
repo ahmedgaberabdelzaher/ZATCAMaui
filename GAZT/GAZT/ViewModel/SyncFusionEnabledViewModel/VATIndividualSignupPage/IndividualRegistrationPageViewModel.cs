@@ -1564,6 +1564,40 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+
+        private string captcha = string.Empty;
+        public string Captcha
+        {
+            get
+            {
+                return captcha;
+            }
+            set
+            {
+                if (captcha == value) return;
+
+                captcha = value;
+                RaisePropertyChanged("Captcha");
+            }
+        }
+        private string guid = string.Empty;
+        public string Guid
+        {
+            get
+            {
+                return guid;
+            }
+            set
+            {
+                if (guid == value) return;
+
+                guid = value;
+                RaisePropertyChanged("Guid");
+            }
+        }
+        public bool IsAPICalledSuccessfully = true;
+
+
         #endregion
 
         #region Constructor
@@ -2387,6 +2421,63 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             GCCCountryList = lst;
         }
 
+        public async Task GetCaptchAndGUID()
+        {
+            try
+            {
+
+                IsLoading = true;
+
+
+                string lang = UtilityManager.GetLanguageParameter();
+                string st = Constants.CaptchaAndGUID;
+                string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                GenerateCaptchaGUID forgotPasswordOTP = new GenerateCaptchaGUID();
+                Metadata metadata = new Metadata();
+                metadata.id = st;
+                metadata.uri = st;
+                metadata.type = type;
+
+                GetCaptcha d = new GetCaptcha();
+                d.__metadata = metadata;
+                d.Captcha = "";
+                d.Guid = "";
+                d.Taxpayer = "";
+                d.Refresh = "";
+                d.Application = "VTIA";
+
+                forgotPasswordOTP.d = d;
+                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
+
+                if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
+                {
+                    Guid = forgotPasswordOTP.d.Guid;
+                }
+                else
+                {
+
+                }
+
+
+                IsLoading = false;
+            }
+
+            catch (InternetException ex)
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+
+                    //SetIDNumberEnability = true;
+                    //IDNumber = String.Empty;
+                    // UserIDLayoutVisibility = true;
+                });
+            }
+        }
+
 
         public async Task SetRequestObjectFirst()
         {
@@ -2470,14 +2561,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Email = Email,
                     Mobile = newCountryCodeString + MobileNumber,
                     //Mobile = "00966" + MobileNumber,
-                    CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+                    //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+                    CaseGuid = Guid,
+
                     Birthdt = Bdt,//"/Date(1577846576000)/",
                     //Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",
                     Password = Password,
                     SmsCode = OTP,
                     EmailCode = "",
                     Submit = submitValue,
-
+                    
 
 
 
@@ -2676,14 +2769,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Email = Email,
                     Mobile = newCountryCodeString + MobileNumber,
                     //  Mobile = "00966" + MobileNumber,
-                    CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+                    //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+                    CaseGuid = Guid,
                     Birthdt = Bdt,//"/Date(1577846576000)/",
                     //Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",
                     Password = "",
                     SmsCode = "",
                     EmailCode = "",
                     Submit = submitValue,
-
+                   
                 };
 
                 string response = await TaxEvasionWebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);

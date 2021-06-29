@@ -72,7 +72,7 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <Grid>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid Padding="24,32,24,5" RowSpacing="12" x:Name="pageBinder">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>

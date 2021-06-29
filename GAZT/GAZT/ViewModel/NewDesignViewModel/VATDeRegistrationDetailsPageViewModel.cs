@@ -1580,6 +1580,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public async void NewAttachmentClicked()
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             try
             {
                 // need to set null

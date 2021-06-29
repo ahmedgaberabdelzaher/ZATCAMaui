@@ -576,6 +576,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                 Amount = Amount + Convert.ToDouble(item.TestDueAmount);
                             }
                         }
+                        if (item.Status == "P")
+                        {
+                            if (item.TestDueAmount != null)
+                            {
+                                Amount = Amount + Convert.ToDouble(item.TestDueAmount);
+                            }
+                        }
                         else if (item.Status == "I")
                         {
                             if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
@@ -631,12 +638,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    MyBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+                    MyBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang,"AccountStatements");
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (MyBills != null && MyBills.Count != 0)
                     {
-                        MyBillsOriginal = MyBills;
+
+                        var sortedBills = new ObservableCollection<MyBills>(MyBills.OrderByDescending(temp => temp.Faedn).ToList());
+                        MyBillsOriginal = sortedBills;
 
                         SelcectedBillsIndex = 0;
 
@@ -718,7 +727,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 });
                 IsLoading = false;
             }
-            //IsLoading = false;
+            IsLoading = false;
         }
 
         //public void PopulateReturnTypeList()
@@ -885,17 +894,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
 
                 var list = new List<string>();
+               
+                    foreach (TaxRelationSetResult dropdown in TransactionTypeFilter)
+                     {
+                        try
+                        {
+                                list.Add(dropdown.Txt30.ToUpper());
+                        }
+                        catch (Exception ex)
+                        {
 
-                foreach (TaxRelationSetResult dropdown in TransactionTypeFilter)
-                {
-
-
-                    list.Add(dropdown.Txt30.ToUpper());
-
-
-
-
-                }
+                        }
+                
+  
+                   }
+                
 
                 GenericPickerModel genericPickerModel = new GenericPickerModel();
                 genericPickerModel.PickerData = list;
@@ -938,11 +951,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         public async void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
 
-            if (MyBillsOriginal == null)
-            {
-                _navigationService.GoBack();
-                return;
-            }
+            
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -959,186 +968,257 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
 
 
-
-            MyBills = MyBillsOriginal;
-
-            if (isTaxTypeFilter)
+            if (MyBillsOriginal != null)
             {
-                MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-
-                FilterOnTaxType(MyBills);
-               // ApplyFilter();
-                await Task.Run(() =>
+                try
                 {
-                    IsLoading = false;
-                });
-                return;
-            }
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal);
 
-            try {
-                if (TxFromDate != "" && TxToDate != "")
-                {
-                    var filterItems = MyBills;
-
-                    if (IsHijriCal)
+                    if (isTaxTypeFilter)
                     {
-                        CultureInfo arCI = new CultureInfo("ar-SA");
-                        DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
 
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
+                        FilterOnTaxType(MyBills);
+                        ApplyFilter();
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                        return;
                     }
-                    else
-                    {
-                        CultureInfo arCI = new CultureInfo("en-US");
-                        DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
-                    }
-
-                    FilterOnTaxType(MyBills);
                 }
-            }
-            catch(Exception ex) {
-
-            }
-
-
-            try {
-
-
-
-                if (TPFromDate != "" && TPToDate != "")
+                catch (Exception ex)
                 {
-                    var filterItems = MyBills;
-
-                    if (IsHijriCal)
-                    {
-                        CultureInfo arCI = new CultureInfo("ar-SA");
-                        DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart1)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart2)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
-                    }
-                    else
-                    {
-                        CultureInfo enCI = new CultureInfo("en-US");
-                        DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", enCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-                        DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
-                            DateTimeStyles.AllowInnerWhite);
-
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(p.PeriodPart1.Substring(p.PeriodPart1.Length-4,4)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(p.PeriodPart2.Substring(p.PeriodPart2.Length - 4, 4)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
-
-                    }
-
-                    FilterOnTaxType(MyBills);
-
 
                 }
-            }
-            catch(Exception ex) {
+          
 
-            }
+                if (isFromFilter)
+                {
 
+                    try
+                    {
+                        if (TxFromDate != "" && TxToDate != "")
+                        {
+                            var filterItems = MyBills;
+
+                            if (IsHijriCal)
+                            {
+                                CultureInfo arCI = new CultureInfo("ar-SA");
+                                DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                                    DateTimeStyles.AllowInnerWhite);
+                                DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                                    DateTimeStyles.AllowInnerWhite);
+
+                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
+                            }
+                            else
+                            {
+                                CultureInfo arCI = new CultureInfo("en-US");
+                                DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                                    DateTimeStyles.AllowInnerWhite);
+                                DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
+                                    DateTimeStyles.AllowInnerWhite);
+                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
+                            }
+
+                            FilterOnTaxType(MyBills);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+
+                    try
+                    {
+
+
+
+                        if (TPFromDate != "" && TPToDate != "")
+                        {
+                            var filterItems = MyBills;
+
+
+                            //if (IsHijriCal)
+                            //{
+                            //    CultureInfo arCI = new CultureInfo("ar-SA");
+                            //    DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
+                            //        DateTimeStyles.AllowInnerWhite);
+                            //    DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
+                            //        DateTimeStyles.AllowInnerWhite);
+
+                            //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
+                            //}
+                            //else
+                            //{
+                            //    CultureInfo arCI = new CultureInfo("en-US");
+                            //    DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
+                            //        DateTimeStyles.AllowInnerWhite);
+                            //    DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
+                            //        DateTimeStyles.AllowInnerWhite);
+                            //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
+                            //}
+
+                            if (IsHijriCal)
+                            {
+                                CultureInfo arCI = new CultureInfo("ar-SA");
+                                DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
+                                    DateTimeStyles.AllowInnerWhite);
+                                DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
+                                    DateTimeStyles.AllowInnerWhite);
+
+                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart1)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodPart2)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
+                            }
+                            else
+                            {
+                                CultureInfo enCI = new CultureInfo("en-US");
+                                DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", enCI.DateTimeFormat,
+                                    DateTimeStyles.AllowInnerWhite);
+                                DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
+                                    DateTimeStyles.AllowInnerWhite);
+
+                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => (Convert.ToInt32(p.PeriodPart1.Substring(p.PeriodPart1.Length - 4, 4)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(p.PeriodPart2.Substring(p.PeriodPart2.Length - 4, 4)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
+
+                            }
+
+                            FilterOnTaxType(MyBills);
+
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+
+
+
+                    if (FromTxAmount != "" && ToTxAmount != "")
+                    {
+                        var filterItems = MyBills;
+                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => Convert.ToDouble(p.BETRW) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.BETRW) <= Convert.ToDouble(ToTxAmount)));
+                    }
+
+
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                    if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
+                    {
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
+
+                        //                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
+                        return;
+                    }
+                    else if ((string.IsNullOrEmpty(FromTxAmount) && !string.IsNullOrEmpty(ToTxAmount)) || (!string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount)))
+                    {
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
+                        //                _dialogService.ShowMessage(AppResources.AccountStatementsEnterAmount, AppResources.Information);
+                        return;
+                    }
+                    else if ((!string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate)) || (string.IsNullOrEmpty(TxFromDate) && !string.IsNullOrEmpty(TxToDate)))
+                    {
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTransactionDate));
+                        //                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
+                        return;
+                    }
+                    else if ((!string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate)) || (string.IsNullOrEmpty(TPFromDate) && !string.IsNullOrEmpty(TPToDate)))
+                    {
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTaxPeriod));
+                        //_dialogService.ShowMessage(AppResources.AccountStatementsTaxPeriod, AppResources.Information);
+                        return;
+                    }
+                    isFromFilter = false;
+                    _navigationService.GoBack();
+                }
+                else
+                {
+                    if (FromStatus != "")
+                    {
+                        if (FromStatus.Equals(AppResources.Paid))
+                        {
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
+                        }
+
+                        if (FromStatus.Equals(AppResources.PartiallyPaid))
+                        {
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
+                        }
+
+                        if (FromStatus.Equals(AppResources.UnPaid))
+                        {
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                        }
+
+                        if (FromStatus.Equals(AppResources.All))
+                        {
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                        }
+                        //FromStatus = "";
+
+                        FilterOnTaxType(MyBills);
+
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+
+                        return;
+                    }
+                    else if (FromStatus == "")
+                    {
+                        if (SearchText != "")
+                        {
+                            var suggestion = MyBillsOriginal.Where(c => c.Abtypt.ToLower().Contains(SearchText.ToLower()) || c.Fbnum.ToLower().Contains(SearchText.ToLower())
+                                || c.Status.ToLower().Contains(SearchText.ToLower()) || c.StatusText.ToLower().Contains(SearchText.ToLower())
+                                || c.BETRW.ToLower().Contains(SearchText.ToLower()) || c.TestDueAmount.ToLower().Contains(SearchText.ToLower())
+                                || c.Txt30.ToLower().Contains(SearchText.ToLower())).ToList();
+
+                            MyBills = new ObservableCollection<MyBills>(suggestion);
+                            FilterOnTaxType(MyBills);
+                        }
+                        else {
+
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+
+                            //FromStatus = "";
+
+                            FilterOnTaxType(MyBills);
+
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+
+                            return;
+
+                        }
+
+
+                    }
 
                     
 
-            if (FromTxAmount != "" && ToTxAmount != "")
-            {
-                var filterItems = MyBills;
-                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => Convert.ToDouble(p.BETRW) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.BETRW) <= Convert.ToDouble(ToTxAmount)));
+                    isFromFilter = false;
+
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                }
+
             }
-
-            if (FromStatus != "")
-            {
-                if (FromStatus.Equals(AppResources.Paid))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
-                }
-
-                if (FromStatus.Equals(AppResources.PartiallyPaid))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
-                }
-
-                if (FromStatus.Equals(AppResources.UnPaid))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-                }
-
-                if (FromStatus.Equals(AppResources.All))
-                {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-                }
-                FromStatus = "";
-
-                FilterOnTaxType(MyBills);
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
-                return;
-            }
-            else if(isFromFilter)
+            else
             {
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
-                if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
-                {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
-
-                    //                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
-                    return;
-                }
-                else if ((string.IsNullOrEmpty(FromTxAmount) && !string.IsNullOrEmpty(ToTxAmount)) || (!string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount)))
-                {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
-                    //                _dialogService.ShowMessage(AppResources.AccountStatementsEnterAmount, AppResources.Information);
-                    return;
-                }
-                else if ((!string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate)) || (string.IsNullOrEmpty(TxFromDate) && !string.IsNullOrEmpty(TxToDate)))
-                {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTransactionDate));
-                    //                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
-                    return;
-                }
-                else if ((!string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate)) || (string.IsNullOrEmpty(TPFromDate) && !string.IsNullOrEmpty(TPToDate)))
-                {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTaxPeriod));
-                    //_dialogService.ShowMessage(AppResources.AccountStatementsTaxPeriod, AppResources.Information);
-                    return;
-                }
-                _navigationService.GoBack();
             }
-
-            if (SearchText != "")
-            {
-                var suggestion = MyBillsOriginal.Where(c => c.Abtypt.ToLower().Contains(SearchText.ToLower()) || c.Fbnum.ToLower().Contains(SearchText.ToLower())
-                    || c.Status.ToLower().Contains(SearchText.ToLower()) || c.StatusText.ToLower().Contains(SearchText.ToLower())
-                    || c.BETRW.ToLower().Contains(SearchText.ToLower()) || c.TestDueAmount.ToLower().Contains(SearchText.ToLower())
-                    || c.Txt30.ToLower().Contains(SearchText.ToLower())).ToList();
-
-                MyBills = new ObservableCollection<MyBills>(suggestion);
-                FilterOnTaxType(MyBills);
-            }
-
-            isFromFilter = false;
-
-            await Task.Run(() =>
-            {
-                //IsLoading = false;
-            });
 
         }
 
@@ -1182,7 +1262,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                     else
                     {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("الضريبة الانتقائية")).ToList());
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة السلع الانتقائية")).ToList());
                     }
                     break;
                 case "03":
@@ -1192,7 +1272,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                     else
                     {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Withholding Tax")).ToList());
                     }
                     break;
                 case "02":
@@ -1234,10 +1314,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         public void ApplyFilter()
         {
 
-            if (FromStatus != "")
-            {
+            //if (FromStatus != "")
+            //{
                 FilterIfTypeAndStausFilterSelected(false);
-            }
+            //}
 
         }
 
@@ -1256,6 +1336,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             try
             {
+                if(PickerModel!=null)
                 await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
             }
             catch (GAZTUnlockAccountException ex)
@@ -1347,8 +1428,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             FilterBtnCommand = new Command(() =>
             {
-                isFromFilter = true;
-                FilterIfTypeAndStausFilterSelected(false);
+
+                if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate)&& string.IsNullOrEmpty(TPToDate)&& string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount)) {
+
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AcFilterEmptyState));
+
+                }
+                else {
+
+                    isFromFilter = true;
+                    FilterIfTypeAndStausFilterSelected(false);
+                }
+
+
+            
 
             });
             FiltersTapped = new Command(() =>

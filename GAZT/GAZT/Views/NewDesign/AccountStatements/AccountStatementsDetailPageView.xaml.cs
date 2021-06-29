@@ -71,21 +71,28 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             //LableTransactionDate.Text = "" + myBills.FormatedFaedn;
            // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
             LableCardStatus.Text = "" + myBills.StatusText;
-            LableCardTitle.Text = "" + myBills.Abtypt;
+            LableCardTitle.Text = "" + myBills.BillTitle;
             //LableCardSubTitle.Text = "" + aSResult.Desc;
 
 
 
-            string str = myBills.Txt30.ToLower();
+            //string str = myBills.Txt30.ToLower();
             
-             if(str.Length > 0) {
+            // if(str.Length > 0) {
 
-                str = char.ToUpper(str[0]) + str.Substring(1);
-            }
+            //    TaxTypeGrid.IsVisible = true;
+            //    str = char.ToUpper(str[0]) + str.Substring(1);
+            //}
+            // else {
+
+            //    TaxTypeGrid.IsVisible = false;
+            //}
 
           
 
-            LableTaxType.Text = myBills.Abtypt + " - " + str;
+           // LableTaxType.Text = myBills.Abtypt + " - " + str;
+            LableTaxType.Text = myBills.Txt30;
+
 
             Color color = stringToColor(myBills.StatusText);
 

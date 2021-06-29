@@ -1344,6 +1344,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         private bool _isFirstAttachment = false;
         public async void WithdrawAttachmentTappedAsync()
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             _isFirstAttachment = true;
             if (WithdrawAttachmentsListViewData == null)
             {
@@ -1383,6 +1384,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
         public async void WithdrawAttachmentTappedAsyncTwo()
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             _isFirstAttachment = false;
             if (WithdrawAttachmentsListViewDataTwo == null)
             {
@@ -1939,6 +1941,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 {
                     TaxType = AppResources.FORM5Zakat;
                 }*/
+
+
+                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.AAssnmtAmt)) {
+
+                    AssessmentAmountGAZT = zakatObjectionRequestSummary.d.AAssnmtAmt;
+                }
+
+                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.ARevAmt))
+                {
+
+                    RevisedAmount = zakatObjectionRequestSummary.d.ARevAmt;
+                }
+
+                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.ADisputeAmt))
+                {
+
+                    DisputeAmount = zakatObjectionRequestSummary.d.ADisputeAmt;
+                }
+
 
                 ObjectionReasons = zakatObjectionRequestSummary.d.AObjSum;
             }

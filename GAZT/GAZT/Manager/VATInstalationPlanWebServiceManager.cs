@@ -141,7 +141,7 @@ namespace EGAZT.Manager
         //Request To VAT Installment Plan Details
         public static async Task<RequestToVATInstallmentPlanDetails> GetRequestToVATInstalmentPlanDetails(string euser, string formGuid)
         {
-            RequestToVATInstallmentPlanDetails _requestToVATInstallmentPlanDetails = new EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails();
+            RequestToVATInstallmentPlanDetails _requestToVATInstallmentPlanDetails = new RequestToVATInstallmentPlanDetails();
 
             if (CrossConnectivity.Current.IsConnected)
             {

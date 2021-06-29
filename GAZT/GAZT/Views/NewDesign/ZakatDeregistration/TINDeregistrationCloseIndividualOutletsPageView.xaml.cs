@@ -8,10 +8,12 @@ using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -29,14 +31,21 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         public TINDeregistrationCloseIndividualOutletsPageView(string reasonDesc, TINDeregistrationPageViewModel tINDeregistrationPageViewModel)
         {
             InitializeComponent();
-            tINDeregistrationPageViewModel.SelectedPermitTypeOutletOption = null;
-            tINDeregistrationPageViewModel.IsMultiplePermitsVisible = false;
-            viewModel = tINDeregistrationPageViewModel;
+            try
+            {
+                ChangeAeroIcon();
+                SetLTR();
+                tINDeregistrationPageViewModel.IsMultiplePermitsVisible = false;
+                viewModel = tINDeregistrationPageViewModel;
+                this.BindingContext = viewModel;
+                viewModel.PopulateUI();
 
-            ChangeAeroIcon();
-            SetLTR();
-            // viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
-            this.BindingContext = viewModel;
+            }
+            catch (Exception ex)
+            {
+
+                return;
+            }
         }
 
         private void SetLTR()
@@ -79,9 +88,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
 
         }
-            
-     private void ClosePermitDeregDatePicker_Unfocused(object sender, FocusEventArgs e)
-            {
+
+        private void ClosePermitDeregDatePicker_Unfocused(object sender, FocusEventArgs e)
+        {
 
 
             if (viewModel.IsHijriCal)
@@ -215,7 +224,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         private void DeregDateEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+            if (viewModel != null && !string.IsNullOrEmpty(viewModel.PkrDBO))
             {
                 FrmDBO.HasError = false;
             }
@@ -223,8 +232,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private void CloseDeregDatePicker_Closed(object sender, EventArgs e)
         {
-           // bool isHIjri;
-         
+            // bool isHIjri;
+
             try
             {
                 if (viewModel.IsHijriCal)
@@ -247,7 +256,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PickerCloseAllDeregDateDisplay = date;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
-                   // isHIjri = true;
+                    // isHIjri = true;
                 }
                 else
                 {
@@ -270,7 +279,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PickerCloseAllDeregDateDisplay = viewModel.PkrDBO; //DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
-                   // isHIjri = false;
+                    // isHIjri = false;
                 }
 
 
@@ -340,7 +349,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             finally
             {
-                if(viewModel != null)
+                if (viewModel != null)
                 {
                     Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
                 }
@@ -350,7 +359,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                if(viewModel != null)
+                if (viewModel != null)
                 {
                     if (viewModel.IsDOBHijriCal)
                     {
@@ -416,7 +425,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 var permitType = viewModel.SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitNoTb == viewModel.selectedCalPermitNo);
                 if (permitType == null) return;
                 var isHijiri = permitType.IsHijiri;
-                object tempCal =null;
+                object tempCal = null;
                 if (isHijiri)
                 {
                     viewModel.IsPermitHijriCal = true;
@@ -439,7 +448,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 string month = (tempCal as IList<object>)[1].ToString();
                 string day = (tempCal as IList<object>)[0].ToString();
                 string year = (tempCal as IList<object>)[2].ToString();
-                permitType.APermitDeregDisplayDate= year + "/" + month + "/" + day;
+                permitType.APermitDeregDisplayDate = year + "/" + month + "/" + day;
                 if (isHijiri)
                 {
 
@@ -451,13 +460,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     permitType.APermitEffDtTb = viewModel.ConvertDateFormat(permitType.APermitDeregDisplayDate);
 
                 }
-                viewModel.SelectedOutletForCloseTranser.PermitTypes= viewModel.SelectedOutletForCloseTranser.PermitTypes.Select(x =>
+                viewModel.SelectedOutletForCloseTranser.PermitTypes = viewModel.SelectedOutletForCloseTranser.PermitTypes.Select(x =>
                 {
-                   if (x.APermitNoTb == viewModel.selectedCalPermitNo)
-                   { x.APermitDeregDisplayDate = permitType.APermitDeregDisplayDate;
-                       x.APermitEffDtTb = permitType.APermitEffDtTb;
-                   }
-                   return x;
+                    if (x.APermitNoTb == viewModel.selectedCalPermitNo)
+                    {
+                        x.APermitDeregDisplayDate = permitType.APermitDeregDisplayDate;
+                        x.APermitEffDtTb = permitType.APermitEffDtTb;
+                    }
+                    return x;
                 }
                ).ToList();
             }
@@ -701,20 +711,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         void GetSelectedDataTemplate()
         {
-            //var captionStyle = Resources["CaptionLabelBlack"] as Style;
-            //Grid cardView = new Grid() { HeightRequest = 100 };
-            //Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
-            //Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
-            //Label label = new Label() { HorizontalOptions = LayoutOptions.StartAndExpand, VerticalOptions = LayoutOptions.EndAndExpand, Style = captionStyle, Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions, Margin = new Thickness(20, 0, 20, 20), TextColor = Color.White, HorizontalTextAlignment = TextAlignment.Start };
-            //grid.Children.Add(image);
-            //grid.Children.Add(label);
-
-            //cardView.Children.Add(grid);
-            //outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
             if (viewModel.SelectedPermitOutletOptionIndex == 2)
             {
                 viewModel.outletEditIsVisible = true;
-              //  viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+                //  viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
                 foreach (var items in viewModel.SelectedOutletForCloseTranser.PermitTypes)
                 {
                     items.APermitDregRsnTb = "1";
@@ -730,6 +730,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.outletEditIsVisible = false;
                 //viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
                 viewModel.SingleDeregistrationDate = string.Empty;
+                viewModel.PickerCloseAllDeregDateDisplay = string.Empty;
                 viewModel.SelectedIdNumber = string.Empty;
                 viewModel.SelectedIdtype = string.Empty;
                 viewModel.SelectedDob = string.Empty;
@@ -739,8 +740,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             else
             {
                 viewModel.outletEditIsVisible = false;
-               // viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+                // viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
                 viewModel.SingleDeregistrationDate = string.Empty;
+                viewModel.PickerCloseAllDeregDateDisplay = string.Empty;
             }
 
             int index = Convert.ToInt16(viewModel.SelectedPermitOutletOptionIndex);
@@ -750,20 +752,21 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if(viewModel.SelectedPermitTypeOutletOption != null && viewModel.PermitOutletDecisionOptions != null && viewModel.PermitOutletDecisionOptions.Count > 0)
-            {
-                Device.BeginInvokeOnMainThread(() => {
+            //if (viewModel.SelectedPermitTypeOutletOption != null && viewModel.PermitOutletDecisionOptions != null && viewModel.PermitOutletDecisionOptions.Count > 0)
+            //{
+            //    Device.BeginInvokeOnMainThread(() =>
+            //    {
 
-                    int index = Convert.ToInt16(viewModel.SelectedPermitTypeOutletOption.OutletOptionIndex) - 1;
-                    viewModel.SelectedPermitOutletOptionIndex = index;
-                    viewModel.SelectedPermitTypeOutletOption = viewModel.PermitOutletDecisionOptions[index];
-                    SetLayoutVisibilityOnPageAppearing(viewModel.SelectedPermitTypeOutletOption);
-                    GetSelectedDataTemplate();
-                    //TINDeregistrationModel selectedPermitTypeOutletOption = new TINDeregistrationModel();
-                    //selectedPermitTypeOutletOption = viewModel.SelectedPermitTypeOutletOption;
-                    //viewModel.SelectedPermitTypeOutletOption = selectedPermitTypeOutletOption;
-                });
-            }
+            //        int index = Convert.ToInt16(viewModel.SelectedPermitTypeOutletOption.OutletOptionIndex) - 1;
+            //        viewModel.SelectedPermitOutletOptionIndex = index;
+            //        viewModel.SelectedPermitTypeOutletOption = viewModel.PermitOutletDecisionOptions[index];
+            //        SetLayoutVisibilityOnPageAppearing(viewModel.SelectedPermitTypeOutletOption);
+            //        viewModel.GetSelectedDataTemplate();
+            //        //TINDeregistrationModel selectedPermitTypeOutletOption = new TINDeregistrationModel();
+            //        //selectedPermitTypeOutletOption = viewModel.SelectedPermitTypeOutletOption;
+            //        //viewModel.SelectedPermitTypeOutletOption = selectedPermitTypeOutletOption;
+            //    });
+            //}
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
@@ -778,7 +781,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption", (arg) =>
             {
-                GetSelectedDataTemplate();
+                viewModel.GetSelectedDataTemplate();
             });
         }
         private void SetDate()
@@ -816,45 +819,52 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
-            viewModel.SelectedPermitOutletOptionIndex = viewModel.PermitOutletDecisionOptions.IndexOf(selectedItem);
-
-            if (viewModel.SelectedPermitOutletOptionIndex == 2)
+            try
             {
-                if (viewModel.SelectedOutletForCloseTranser != null)
-                {
-                    if (viewModel.SelectedOutletForCloseTranser.PermitTypes != null)
-                    {
-                        if (viewModel.SelectedOutletForCloseTranser.PermitTypes.Count > 0)
-                        {
-                            viewModel.IsNodataAvailableVisible = false;
+                TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
+                viewModel.SelectedPermitOutletOptionIndex = viewModel.PermitOutletDecisionOptions.IndexOf(selectedItem);
 
-                            viewModel.IsMultiplePermitsVisible = true;
+                if (viewModel.SelectedPermitOutletOptionIndex == 2)
+                {
+                    if (viewModel.SelectedOutletForCloseTranser != null)
+                    {
+                        if (viewModel.SelectedOutletForCloseTranser.PermitTypes != null)
+                        {
+                            if (viewModel.SelectedOutletForCloseTranser.PermitTypes.Count > 0)
+                            {
+                                viewModel.IsNodataAvailableVisible = false;
+
+                                viewModel.IsMultiplePermitsVisible = true;
+                            }
+                            else
+                            {
+                                viewModel.IsNodataAvailableVisible = true;
+
+                            }
                         }
                         else
                         {
                             viewModel.IsNodataAvailableVisible = true;
-
                         }
                     }
-                    else
+                }
+                else
+                {
+                    viewModel.IsNodataAvailableVisible = false;
+                    viewModel.IsMultiplePermitsVisible = false;
+                    if (viewModel.SelectedPermitOutletOptionIndex == 1)
                     {
-                        viewModel.IsNodataAvailableVisible = true;
+                        viewModel.FirstNameLbl = AppResources.ZZZVATRFirstName;
+                        viewModel.SurnameNameLbl = AppResources.TinDeregistrationSurName;
                     }
                 }
+                viewModel.GetSelectedDataTemplate();
             }
-            else
+            catch (Exception ex)
             {
-                viewModel.IsNodataAvailableVisible = false;
-                viewModel.IsMultiplePermitsVisible = false;
-                if (viewModel.SelectedPermitOutletOptionIndex == 1)
-                {
-                    viewModel.FirstNameLbl = AppResources.ZZZVATRFirstName;
-                    viewModel.SurnameNameLbl = AppResources.TinDeregistrationSurName;
-                }
-            }
-            GetSelectedDataTemplate();
 
+                throw;
+            }
         }
 
         private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
@@ -875,7 +885,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             {
                                 popUp.FlowDirections = "RightToLeft";
                                 popUp.isFontSet = true;
-                            } 
+                            }
                             else
                             {
                                 popUp.FlowDirections = "LeftToRight";
@@ -1246,16 +1256,16 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
 
                 }
-                catch (InternetException )
+                catch (InternetException)
                 {
 
                 }
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException)
             {
 
             }
-            catch (InternetException )
+            catch (InternetException)
             {
             }
         }
@@ -1318,20 +1328,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     datepickermessagecenter();
                     await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
-                catch (GAZTUnlockAccountException )
+                catch (GAZTUnlockAccountException)
                 {
 
                 }
-                catch (InternetException )
+                catch (InternetException)
                 {
 
                 }
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException)
             {
 
             }
-            catch (InternetException )
+            catch (InternetException)
             {
             }
         }
@@ -1361,7 +1371,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 Console.WriteLine(ex.Message);
             }
-            catch (InternetException )
+            catch (InternetException)
             {
 
             }
@@ -1423,11 +1433,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             try
             {
+                var permit = ((BorderlessEntry)sender).ReturnCommandParameter as PermitSetResult;
                 var permitIDNum = sender as GAZT.BorderlessEntry;
                 PopUp popUp = new PopUp();
                 StringBuilder Messages = new StringBuilder();
 
-                var selectedPermit = viewModel?.SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitNoTb == viewModel.tempIdTypePermitSetResult.APermitNoTb || x.APermitNoTb == viewModel.selectedAPermitReason);
+                var selectedPermit = viewModel?.SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitNoTb == permit.APermitNoTb || x.APermitNoTb == permit.APermitNoTb);
 
                 if (!string.IsNullOrEmpty(selectedPermit?.PermitIdTypeName))
                 {
@@ -1485,7 +1496,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 //viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(selectedPermit?.APermitDeregDisplayDobDate))
                                 {
-                                    viewModel.ValidateIDNumberForIndiviualPermit();
+                                    viewModel.ValidateIDNumberForIndiviualPermit(permit);
                                 }
                             }
                         }
@@ -1545,7 +1556,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 //viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(selectedPermit.APermitDeregDisplayDobDate))
                                 {
-                                    viewModel.ValidateIDNumberForIndiviualPermit();
+                                    viewModel.ValidateIDNumberForIndiviualPermit(permit);
                                 }
                             }
                         }
@@ -1594,7 +1605,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         else
                         {
                             //viewModel.FrameIDError = false;
-                            viewModel.ValidateIDNumberForIndiviualPermit();
+                            viewModel.ValidateIDNumberForIndiviualPermit(permit);
                         }
                     }
 
@@ -1641,7 +1652,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         else
                         {
                             //viewModel.FrameIDError = false;
-                            viewModel.ValidateIDNumberForIndiviualPermit();
+                            viewModel.ValidateIDNumberForIndiviualPermit(permit);
                         }
                     }
                 }
@@ -1658,30 +1669,31 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         private void OnClosePermitDeregDateClicked(System.Object sender, System.EventArgs e)
         {
-                //if (!viewModel.IsHijriCal)
-                //{
-                //    CloseDeregDatePicker.IsOpen = true;
-                //}
-                //else
-                //{
-                //    CloseDeregDatePickerHijri.IsOpen = true;
-                //}
+            //if (!viewModel.IsHijriCal)
+            //{
+            //    CloseDeregDatePicker.IsOpen = true;
+            //}
+            //else
+            //{
+            //    CloseDeregDatePickerHijri.IsOpen = true;
+            //}
         }
-         
+
         void Button_Clicked(System.Object sender, System.EventArgs e)
         {
 
-            
+
             var permit = ((Button)sender).CommandParameter as PermitSetResult;
             viewModel.selectedCalPermitNo = permit.APermitNoTb;
-            Device.BeginInvokeOnMainThread(() => { 
-                if( permit.IsHijiri)
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                if (permit.IsHijiri)
                 {
-                        ClosePermitDeregDatePickerHijri.IsOpen = true;
+                    ClosePermitDeregDatePickerHijri.IsOpen = true;
                 }
                 else
                 {
-                        ClosePermitDeregDatePicker.IsOpen = true;
+                    ClosePermitDeregDatePicker.IsOpen = true;
                 }
             });
         }
@@ -1697,12 +1709,15 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         void OnClosePermitDOBDateClicked(System.Object sender, System.EventArgs e)
         {
+            viewModel.DobText.IsEditable = true;
             var permit = ((Button)sender).CommandParameter as PermitSetResult;
             viewModel.selectedCalPermitNo = permit.APermitNoTb;
-
-            if(viewModel.PickerModel.SelectedValue.Equals("National Id") || viewModel.PickerModel.SelectedValue.Equals("Iqama Number")) // DOB enable only in case of Natioanl Id and Iquama Id
+            if (permit != null && permit != null && !string.IsNullOrEmpty(permit.aPermitIdTypeTb))
             {
-                Device.BeginInvokeOnMainThread(() => {
+                //if (permit.PermitIdTypeName.Equals(AppResources.TinDeregistrationNationalID) || permit.PermitIdTypeName.Equals(AppResources.TinDeregistrationIQAMANumber)) // DOB enable only in case of Natioanl Id and Iquama Id
+                //{
+                Device.BeginInvokeOnMainThread(() =>
+                {
                     if (permit.IsDOBHijiri)
                     {
                         ClosePermitDOBPickerHijri.IsOpen = true;
@@ -1712,13 +1727,30 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         ClosePermitDOBPicker.IsOpen = true;
                     }
                 });
+                //}
             }
-          
+            else if (viewModel.PickerModel != null)
+            {
+                //if (viewModel.PickerModel.SelectedValue.Equals(AppResources.TinDeregistrationNationalID) || viewModel.PickerModel.SelectedValue.Equals(AppResources.TinDeregistrationIQAMANumber)) // DOB enable only in case of Natioanl Id and Iquama Id
+                //{
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    if (permit.IsDOBHijiri)
+                    {
+                        ClosePermitDOBPickerHijri.IsOpen = true;
+                    }
+                    else
+                    {
+                        ClosePermitDOBPicker.IsOpen = true;
+                    }
+                });
+                //}
+            }
         }
 
         public void SetLayoutVisibilityOnPageAppearing(TINDeregistrationModel selectedItem)
         {
-          //  TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
+            //  TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
             viewModel.SelectedPermitOutletOptionIndex = viewModel.PermitOutletDecisionOptions.IndexOf(selectedItem);
 
             if (viewModel.SelectedPermitOutletOptionIndex == 2)
@@ -1755,6 +1787,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.SurnameNameLbl = AppResources.TinDeregistrationSurName;
                 }
             }
+
+        }
+
+        private void OnDateEntryFocussed(object sender, FocusEventArgs e)
+        {
 
         }
     }

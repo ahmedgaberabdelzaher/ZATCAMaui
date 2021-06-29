@@ -228,7 +228,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"/>
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    <Span  Text="*"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -333,7 +333,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"/>
-                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        <Span  Text="*" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -471,7 +471,7 @@
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZZIDType}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*"  />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
@@ -502,7 +502,7 @@
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.IDNumber}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
@@ -526,7 +526,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}"/>
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    <Span  Text="*"  />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -655,7 +655,7 @@
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*"  />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
@@ -679,7 +679,7 @@
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>

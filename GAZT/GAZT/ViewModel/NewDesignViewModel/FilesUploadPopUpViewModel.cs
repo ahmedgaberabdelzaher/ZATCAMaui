@@ -651,7 +651,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                                             }
                                         }
-                                        else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
+                                        else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice || IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment || IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
                                         {
                                             if (fileSize <= 10)
                                             {

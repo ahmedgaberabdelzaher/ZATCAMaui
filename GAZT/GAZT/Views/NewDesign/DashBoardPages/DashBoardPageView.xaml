@@ -82,7 +82,7 @@
                     <ScrollView Scrolled="ScrollView_Scrolled" VerticalScrollBarVisibility="Never">
                         <StackLayout Spacing="0">
 
-                            <StackLayout Padding="15,0,15,8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <StackLayout Padding="15,0,15,8" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
                             <custom:CustomLabel Text="{Binding TaxpayerName}"  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,0,0,10" VerticalOptions="Center" StyleId="SingleLabel" MaxLines="2"/>
 
                             <StackLayout IsVisible="{Binding IsMyObligationsClear}">
@@ -146,7 +146,10 @@
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
                             </StackLayout>
-                            <Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsEstablishmentRegistrationTileVisible}" BackgroundColor="{StaticResource NewDullOrangeColor}"  Padding="15,16,15,8">
+                            <Grid ColumnSpacing="16" RowSpacing="4"
+                                  IsVisible="{Binding IsEstablishmentRegistrationTileVisible}"
+                                  BackgroundColor="{StaticResource NewDullOrangeColor}"
+                                  Padding="15,16,15,8">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
@@ -172,7 +175,7 @@
                                 </yummy:PancakeView>
                             </Grid>
 
-
+                            <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="White">
                             <!--Pending Bills-->
                             <StackLayout IsVisible="{Binding IsPendingBillsVisible}">
                                 <yummy:PancakeView  BackgroundColor="White"  Padding="15,0,15,0">
@@ -625,10 +628,10 @@
                                                     <listView:SfListView.ItemTemplate>
                                                         <DataTemplate>
 
-                                                            <cards:SfCardView CornerRadius="16" Margin="3" HeightRequest="65">
+                                                            <cards:SfCardView CornerRadius="16" Margin="3" VerticalOptions="Fill">
 
                                                                 <StackLayout Spacing="8" Margin="10" Orientation="Vertical">
-                                                                    <Grid HorizontalOptions="FillAndExpand">
+                                                                    <Grid HorizontalOptions="FillAndExpand" >
                                                                         <Grid.ColumnDefinitions>
                                                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                                                             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -670,7 +673,8 @@
 
 
 
-                                                    <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Primary}" Padding="15" CornerRadius="14" Opacity=".2"    VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
+                                                    <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Primary}" Padding="15" CornerRadius="14" Opacity=".2"
+                                                           VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
                                                     <Frame.Triggers>
                                                         <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.Paid}">
                                                             <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
@@ -683,8 +687,13 @@
                                                         </DataTrigger>
                                                     </Frame.Triggers>
                                                 </Frame>
-                                                <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" Padding="15,12,15,12" HorizontalOptions="FillAndExpand" >
-                                                    <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}"  Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" 
+                                                             Spacing="2"   Padding="15,12,15,12" HorizontalOptions="FillAndExpand"  >
+                                                    <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}"
+                                                                         Style="{StaticResource CaptionLabelBlack}"
+                                                                         
+                                                                         HorizontalOptions="EndAndExpand"
+                                                                         VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
                                                                 <Span Text="{Binding TestDueAmount}"></Span>
@@ -703,7 +712,9 @@
                                                         </custom:CustomLabel.Triggers>
                                                     </custom:CustomLabel>
 
-                                                    <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                    <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}"
+                                                                         Style="{StaticResource CaptionLabelBlack}"
+                                                                         HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
                                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
@@ -881,7 +892,7 @@
 
                             </StackLayout>
 
-                            <StackLayout IsVisible="{Binding IsInstalmentPlanVisible}">
+                            <StackLayout IsVisible="{Binding IsInstalmentPlanVisible}" >
                                 
                                 
                                 <yummy:PancakeView BackgroundColor="White" CornerRadius="0" >
@@ -1000,7 +1011,7 @@
                                     </cards:SfCardView>
                                 </yummy:PancakeView>
                             </StackLayout>
-
+                            </StackLayout>
                         </StackLayout>
                     </ScrollView>
                 </yummy:PancakeView>

@@ -1277,7 +1277,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             try
             {
-
+                if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
                 if (SelectedOutletOptionIndex == 0)
                 {
                     if (YearsattachmentsListViewData == null)
@@ -1940,18 +1940,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     IsLoading = true;
                 });
 
+                int index1 = EffectiveDateResponse.d.EffDateSet.results.IndexOf(EffectiveDateResponse.d.EffDateSet.results.Where(p => p.Txt50 == EffectiveDatePicked).FirstOrDefault());
 
-
-                foreach (var date in EffectiveDateResponse.d.EffDateSet.results)
+                if (index1 != -1)
                 {
-                    int index = EffectiveDateResponse.d.EffDateSet.results.ToList().FindIndex(item => date.Txt50 == EffectiveDatePicked);
+                    ChangeFillingResponse.d.Persl = EffectiveDateResponse.d.EffDateSet.results[index1].Persl;
 
-                    if (index != -1)
-                    {
-                        ChangeFillingResponse.d.Persl = EffectiveDateResponse.d.EffDateSet.results[index].Persl;
-
-                    }
                 }
+                //foreach (var date in EffectiveDateResponse.d.EffDateSet.results)
+                //{
+                //    int index = EffectiveDateResponse.d.EffDateSet.results.ToList().FindIndex(item => date.Txt50 == EffectiveDatePicked);
+
+
+                //    if (index != -1)
+                //    {
+                //        ChangeFillingResponse.d.Persl = EffectiveDateResponse.d.EffDateSet.results[index].Persl;
+
+                //    }
+                //}
 
 
                 request = BuildRequestObject();

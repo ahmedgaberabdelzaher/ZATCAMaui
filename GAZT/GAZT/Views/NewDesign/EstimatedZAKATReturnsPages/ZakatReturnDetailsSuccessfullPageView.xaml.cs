@@ -203,7 +203,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private async void OnCopyTaxablePeriodClicked(object sender, EventArgs e)
         {
-            await Clipboard.SetTextAsync(viewModel.ReferenceNumber);
+            await Clipboard.SetTextAsync(viewModel.TaxablePeriod);
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();

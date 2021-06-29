@@ -25,6 +25,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void OnAttachmentTapped(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             await attach.TranslateTo(0, 0, 0, Easing.BounceOut);
             VATRegistrationDetails vatReg = null;
 

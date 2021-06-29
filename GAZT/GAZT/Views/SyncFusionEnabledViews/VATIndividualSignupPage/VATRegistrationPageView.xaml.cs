@@ -230,12 +230,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnImporter_Clicked(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             VATRegistrationDetails vatReg = null;
             PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
         }
 
         private void btnExporter_Clicked(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             VATRegistrationDetails vatReg = null;
             PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
         }
@@ -481,15 +483,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     FrmContactName.HasError = true;
 
                 }
-                if (viewModel.SelectedIdTypeSR.Name != AppResources.ZZGCCID)
-                {
-                    if (string.IsNullOrEmpty(viewModel.ContactDOB))
-                    {
-                        flag = false;
-                        viewModel.FrameContactDOBError = true;
+                //if (viewModel.SelectedIdTypeSR.Name != AppResources.ZZGCCID)
+                //{
+                //    if (string.IsNullOrEmpty(viewModel.ContactDOB))
+                //    {
+                //        flag = false;
+                //        viewModel.FrameContactDOBError = true;
 
-                    }
-                }
+                //    }
+                //}
                 if (flag)
                 {
 
@@ -1506,6 +1508,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
+
         private void EntryIDNo_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
@@ -1603,6 +1606,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnAttachmentDocuments_Clicked(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             VATRegistrationDetails vATRegistrationDetails = null;
             PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vATRegistrationDetails));
         }
@@ -1636,6 +1640,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void NewAttachment_Clicked(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             try
             {
                 DataToPassTofinancialDetailAttachmentPopup sendtoPopup = new DataToPassTofinancialDetailAttachmentPopup();
@@ -1836,13 +1841,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IDNumberMandatoryVisibility = false;
 
                     viewModel.DOBNonMandatoryVisibility = true;
+                    viewModel.DOBMandatoryVisibilitySM = false;
                     viewModel.DOBMandatoryVisibility = false;
+
                 }
                 else
                 {
                     viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
                     viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
-                    EntryIDNo.Text = string.Empty;
+                    EntryContactIDNumber.Text = string.Empty;
 
                     viewModel.IDNumberNonMandatoryVisibility = false;
                     viewModel.IDNumberMandatoryVisibility = true;
@@ -1852,12 +1859,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].ID.Equals("ZS0003"))
                     {
                         viewModel.DOBNonMandatoryVisibility = true;
+                        viewModel.DOBMandatoryVisibilitySM = false;
                         viewModel.DOBMandatoryVisibility = false;
+
                     }
                     else
                     {
                         viewModel.DOBNonMandatoryVisibility = false;
-                        viewModel.DOBMandatoryVisibility = true;
+                        viewModel.DOBMandatoryVisibilitySM = true;
+                        viewModel.DOBMandatoryVisibility = false;
+
                     }
 
 
@@ -1934,6 +1945,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void ImporterExporterAttachment(object sender, EventArgs e)
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             try
             {
                 VATRegistrationPageViewModel.IsComeFromForAttachment = IsComeFromForAttachment.Import;
@@ -3362,6 +3374,37 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             viewModel.FrameContactIDError = false;
             FrmContactIDNumber.HasError = false;
+
+            
+
+            if (e != null && !string.IsNullOrEmpty(e.OldTextValue) && !string.IsNullOrEmpty(e.NewTextValue))
+            {
+
+                var keyword = e.NewTextValue;
+                if (keyword.Length >= 1)
+                {
+
+                    if (viewModel.SelectedIdTypeSR != null || !viewModel.SelectedIdTypeSR.ID.Equals("00000"))
+                    {
+
+                        if (viewModel.SelectedIdTypeSR.ID.Equals("ZS0003"))
+                        {
+
+                            viewModel.DOBNonMandatoryVisibility = true;
+                            viewModel.DOBMandatoryVisibility = false;
+                        }
+                        else
+                        {
+                            viewModel.DOBNonMandatoryVisibility = false;
+                            viewModel.DOBMandatoryVisibility = true;
+                        }
+
+
+                    }
+
+                }
+            }
+
         }
 
         private void EntryPhoneNumber_Unfocused_1(object sender, FocusEventArgs e)

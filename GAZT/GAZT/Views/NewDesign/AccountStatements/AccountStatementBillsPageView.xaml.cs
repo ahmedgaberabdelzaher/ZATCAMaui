@@ -40,64 +40,45 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             Task.Run(async () =>
             {
+
+
+                try
+                {
+                    BillInfo billInfo = new BillInfo();
+                    viewModel.onPageLoad(billInfo);
+                    //viewModel.PopulateReturnTypeList();
+
+                    //                viewModel.PopulateDataInChips();
+                    //viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
+                    if (viewModel.MyBillsOriginal != null)
+                    {
+                        viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "P"));
+                    }
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
                 try
                 {
                     await viewModel.PopulateReturnTypeList();
                     await viewModel.PopulateASFilterData();
+                    viewModel.populateStatusChips();
+
+
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
 
                 }
             });
 
-            try
-            {
-                BillInfo billInfo = new BillInfo();
-                viewModel.onPageLoad(billInfo);
-                //viewModel.PopulateReturnTypeList();
-                viewModel.populateStatusChips();
-                //                viewModel.PopulateDataInChips();
-                //viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
-                viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "P"));
-
-
-                /*if (billInfo != null)
-                {
-                    if (billInfo.BillTypeName.Equals(AppResources.Paid))
-                    {
-                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.Paid)).FirstOrDefault();
-
-                    }
-                    if (billInfo.BillTypeName.Equals(AppResources.UnPaid))
-                    {
-                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
-                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#AA0C19");
-                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#f6e6e8");
-                        viewModel.FilterIfTypeAndStausFilterSelected(false);
-
-                    }
-                    if (billInfo.BillTypeName.Equals(AppResources.PartiallyPaid))
-                    {
-                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.PartiallyPaid)).FirstOrDefault();
-                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#D99A29");
-                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#fbf4e9");
-                        viewModel.FilterIfTypeAndStausFilterSelected(false);
-                    }
-                    ChipGroup_statusFilter.SelectedItem = viewModel.SelectedChipFilterItem;
-                    viewModel.SelectionColor = Color.AliceBlue;
-                }
-                else
-                {
-                    ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[0];
-                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist[0];
-                }*/
-
-            }
-            catch (Exception)
-            {
-
-            }
+            
 
 
         }
@@ -186,8 +167,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             viewModel.IsSearchButtonVisible = true;
             viewModel.IsCloseButtonVisible = false;
+            viewModel.SearchText = "";
             /*viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results);
             viewModel.IsVisible_SearchList = false;*/
+            viewModel.FilterIfTypeAndStausFilterSelected(false);
         }
 
         private void btn_Clicked(object sender, System.EventArgs e)
@@ -210,7 +193,15 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             ChipModel chipModel = (ChipModel)chipGrid.BindingContext;
             if (chipModel != null)
             {
-                viewModel.FromStatus = chipModel.Text;
+                if(viewModel.FromStatus == chipModel.Text) {
+                    viewModel.FromStatus = "";
+
+                }
+                else {
+                    viewModel.FromStatus = chipModel.Text;
+                }
+
+                
                 viewModel.ApplyFilter();
             }
 

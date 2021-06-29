@@ -1,4 +1,4 @@
-﻿using EGAZT;
+using EGAZT;
 using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Models.Form5Models;
@@ -166,7 +166,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static ObservableCollection<MyBills> GAZTGetMyBills(String Tin, string lang)
+        public static ObservableCollection<MyBills> GAZTGetMyBills(String Tin, string lang, string requestHeader)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -179,7 +179,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-
+                    client.DefaultRequestHeaders.Add("ServiceType", requestHeader);
 
                     String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=enabled&$format=json&sap-language=" + lang;
                     var uri = new Uri(url);
@@ -226,6 +226,84 @@ namespace GAZT.Manager
                         }
                     }
                     return myBills;
+                }
+                catch (Exception ex)
+                {
+                    if (string.Equals(ex.Message, AppResources.NoBillsAvailable))
+                    {
+                        throw new Exception(AppResources.NoBillsAvailable);
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                    }
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static List<MyBillsFilterDropdown> GAZTGetMyBillsFilterDropdownValues(String Tin, string lang)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                List<MyBillsFilterDropdown> myBillsFilters = new List<MyBillsFilterDropdown>();
+              
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                    String url = Constants.GetMyBillsFilterDropdown + "Spras eq'" + lang + "'&saml2=enabled&$format=json&sap-language=" + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTMyBillsFilterResponse = client.GetAsync(uri).Result;
+                    if (GAZTMyBillsFilterResponse != null)
+                    {
+                        if (GAZTMyBillsFilterResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTMyBillsFilterResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String GAZTMyBillsResponseJSON = GAZTMyBillsFilterResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTMyBillsResponseJSON))
+                        {
+                            GAZTMyBillsResponseJSON = JObject.Parse(GAZTMyBillsResponseJSON)["d"].ToString();
+                            string GAZTMyBillsResponseJSONJToken = JObject.Parse(GAZTMyBillsResponseJSON)["results"].ToString();
+                            if (string.IsNullOrEmpty(GAZTMyBillsResponseJSONJToken) != true)
+                            {
+                                myBillsFilters = JsonConvert.DeserializeObject<List<MyBillsFilterDropdown>>(GAZTMyBillsResponseJSONJToken);
+                            }
+                            else
+                            {
+                                throw new Exception(AppResources.NoBillsAvailable);
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.NoBillsAvailable);
+                        }
+                    }
+                    return myBillsFilters;
                 }
                 catch (Exception ex)
                 {
@@ -2387,7 +2465,7 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -5721,10 +5799,13 @@ namespace GAZT.Manager
                             isLoad = "X";
                         }
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> GAZTPostSoftGoLive
                     }
 
                     String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='" + statementFilter + "',FiscalYear='" + fiscalYear + "',TaxType='" + taxType + "',Lang='" + LangZ + "',Load='" + isLoad + "')?&$expand=StatmenetLineItemsSet,TaxRelationSet&$format=json";
@@ -5734,10 +5815,6 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Token", "123");
 
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-
-
-
-
 
 
 

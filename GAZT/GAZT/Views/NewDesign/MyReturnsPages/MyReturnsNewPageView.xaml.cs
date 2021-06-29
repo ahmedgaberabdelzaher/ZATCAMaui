@@ -1,5 +1,7 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.DashBoardPages;
+using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.PaymentOptions;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
@@ -34,8 +36,8 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             viewModel.Index = Index;
             viewModel.PopulateReturnTypeList();
             viewModel.PopulateDataInChips();
-            viewModel.SelectedReturnTypeForFilter = viewModel.ReturnTypeForFilter.FirstOrDefault();
-            TaxTypePicker.SelectedItem = viewModel.ReturnTypeForFilter.FirstOrDefault();
+           // viewModel.SelectedReturnTypeForFilter = viewModel.ReturnTypeForFilter.FirstOrDefault();
+            //TaxTypePicker.SelectedItem = viewModel.ReturnTypeForFilter.FirstOrDefault();
             viewModel.SelectedChipFilterItem = null;
             ListView_Returns.ItemTapped += (sender, e) =>
             {
@@ -47,46 +49,57 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     return;
                 } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
+<<<<<<< HEAD
         SetPickerFont();
             //  App.HideProgressView();
+=======
+       // SetPickerFont();
+          //  App.HideProgressView();
+>>>>>>> GAZTPostSoftGoLive
         }
-        public void SetPickerFont()
-        {
-            try
-            {
-                switch (Xamarin.Forms.Device.RuntimePlatform)
-                {
+        //public void SetPickerFont()
+        //{
+        //    try
+        //    {
+        //        switch (Xamarin.Forms.Device.RuntimePlatform)
+        //        {
 
-                    case Xamarin.Forms.Device.iOS:
-                        {
+        //            case Xamarin.Forms.Device.iOS:
+        //                {
                          
-                                TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
-                                TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                                TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                                TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+        //                        TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
+        //                        TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+        //                        TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
+        //                        TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
 
-                        }
-                        break;
-                    case Xamarin.Forms.Device.Android:
-                        TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
-                        break;
-                }
-            }
-            catch (Exception)
-            {
+        //                }
+        //                break;
+        //            case Xamarin.Forms.Device.Android:
+        //                TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+        //                TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+        //                TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+        //                TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+        //                break;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
 
-            }
+        //    }
 
-        }
+        //}
         protected async override void OnAppearing()
         {
 
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
+
+
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+                viewModel.PickerModel = arg;
+                viewModel.updatePicker();
+            });
 
             try
             {
@@ -96,23 +109,23 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     viewModel.IsLoading = true;
                 });
 
-                if (Device.RuntimePlatform == Device.Android)
-                {
-                    TaxTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
-                }
-                else
-                {
-                    TaxTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
-                }
+                //if (Device.RuntimePlatform == Device.Android)
+                //{
+                //    TaxTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                //}
+                //else
+                //{
+                //    TaxTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                //}
                 await viewModel.OnPageLoad();
-                if (TaxTypePicker.SelectedItem != null)
-                {
-                    viewModel.SelectedReturnTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
-                }
-                else
-                {
-                    TaxTypePicker.SelectedItem = viewModel.ReturnTypeForFilter.FirstOrDefault();
-                }
+                //if (TaxTypePicker.SelectedItem != null)
+                //{
+                //    viewModel.SelectedReturnTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
+                //}
+                //else
+                //{
+                //    TaxTypePicker.SelectedItem = viewModel.ReturnTypeForFilter.FirstOrDefault();
+                //}
                 
                 viewModel.SelectedChipFilterItem = null;
                // viewModel.FilterAllData();
@@ -135,16 +148,19 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                 }
                 if (viewModel.Index == 5)
                 {
-                    TaxTypePicker.SelectedItem = (ReturnTypes)viewModel.ReturnTypeForFilter.Where(x => x.Id == "01").FirstOrDefault();
-                    viewModel.SelectedReturnTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
+                    // TaxTypePicker.SelectedItem = (ReturnTypes)viewModel.ReturnTypeForFilter.Where(x => x.Id == "01").FirstOrDefault();
+                    // viewModel.SelectedTaxTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
 
+                    viewModel.SelectedTaxTypeForFilter = viewModel.TaxTypeForFilter.Where(x => x.StatementFilter == "02").FirstOrDefault();
                     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
                     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
                 }
                 if (viewModel.Index == 6)
                 {
-                    TaxTypePicker.SelectedItem = (ReturnTypes)viewModel.ReturnTypeForFilter.Where(x => x.Id == "02").FirstOrDefault();
-                    viewModel.SelectedReturnTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
+                    // TaxTypePicker.SelectedItem = (ReturnTypes)viewModel.ReturnTypeForFilter.Where(x => x.Id == "02").FirstOrDefault();
+                    //viewModel.SelectedTaxTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
+
+                    viewModel.SelectedTaxTypeForFilter = viewModel.TaxTypeForFilter.Where(x => x.StatementFilter == "06").FirstOrDefault();
 
                     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
                     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
@@ -189,25 +205,33 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             }
         }
 
+      
         private void btn_Clicked(object sender, System.EventArgs e)
         {
-            TaxTypePicker.IsOpen = true;
+
+            viewModel.showPickerDialog();
+            //MessagingCenter.Subscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew", (a, arg) =>
+            //{
+            //    viewModel.SelectedTaxTypeForFilter = arg;
+            //    MessagingCenter.Unsubscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew");
+            //});
+            //PopupNavigation.Instance.PushAsync(new NewPopupPageView(viewModel.TaxTypeForFilter, viewModel.SelectedTaxTypeForFilter), false);
         }
 
-        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            try
-            {
-                ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
-                TaxTypePicker.SelectedItem = selectedReturntype;//Fbnum
-                viewModel.SelectedReturnTypeForFilter = selectedReturntype;
+        //private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
+        //        TaxTypePicker.SelectedItem = selectedReturntype;//Fbnum
+        //        //viewModel.SelectedReturnTypeForFilter = selectedReturntype;
 
-            }
-            catch (Exception)
-            { 
-            
-            }
-        }
+        //    }
+        //    catch (Exception)
+        //    { 
+
+        //    }
+        //}
 
         private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
         {

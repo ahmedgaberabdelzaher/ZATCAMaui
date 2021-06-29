@@ -2867,6 +2867,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
         public async void NewAttachmentClicked()
         {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
             try
             {
                 await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(AttachmentsListViewData.ToList(), Models.ZakatInstalationModels.WhichAttachment.VATInstalment, VatInstalments.d.ReturnIdz));

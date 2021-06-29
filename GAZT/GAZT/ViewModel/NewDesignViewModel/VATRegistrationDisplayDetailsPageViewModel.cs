@@ -464,6 +464,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
+        private bool ibanVisibility;
+        public bool IbanVisibility
+        {
+            get { return ibanVisibility; }
+            set
+            {
+                ibanVisibility = value;
+                RaisePropertyChanged("IbanVisibility");
+            }
+        }
+
         private ObservableCollection<Result2> _ibanList;
         public ObservableCollection<Result2> IbanList
         {
@@ -476,6 +487,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_ibanList == value) return;
 
                 _ibanList = value;
+                IbanVisibility=_ibanList.Count > 0;
                 RaisePropertyChanged("IbanList");
             }
         }

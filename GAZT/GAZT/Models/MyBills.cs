@@ -42,8 +42,9 @@ namespace EGAZT.Models
                 _blart = value;
                 if (Blart == "IF")
                 {
-                    Abtypt = AppResources.AcPenality;
+                    BillTitle = AppResources.AcPenality;
                 }
+             
             }
         }
 
@@ -59,8 +60,13 @@ namespace EGAZT.Models
             {
                 _abtypt = value;
                 if(Blart == "IF") {
-                    _abtypt = AppResources.AcPenality;
+                    BillTitle = AppResources.AcPenality;
                 }
+
+                else {
+                    BillTitle = _abtypt;
+                }
+
 
             }
         }
@@ -199,6 +205,19 @@ namespace EGAZT.Models
             }
         }
 
+        public string _billTitle = String.Empty;
+        public string BillTitle
+        {
+            get
+            {
+                return _billTitle;
+            }
+            set
+            {
+                _billTitle = value;
+            }
+        }
+
         private string _Period;
         public string Period
         {
@@ -231,10 +250,33 @@ namespace EGAZT.Models
                                 if (CalTyp.Equals("G"))
                                 {
                                     PeriodPart1 = UtilityManager.FormatAccordingToDeviceForVAT(day + "/" + month + "/" + year);
+
+                                    //try{
+                                    //    CultureInfo arCI = new CultureInfo("en-US");
+                                    //    FormatedFromTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                                    //}
+                                    //catch (Exception ex) {
+
+                                    //}
+
+
+
                                 }
+
+
                                 else
                                 {
                                     PeriodPart1 = UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
+                                    //try
+                                    //{
+                                    //    CultureInfo arCI = new CultureInfo("ar-SA");
+                                    //    FormatedFromTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                                    //}
+                                    //catch (Exception ex)
+                                    //{
+
+                                    //}
+                                    
                                 }
 
                             }
@@ -246,10 +288,30 @@ namespace EGAZT.Models
                                 if (CalTyp.Equals("G"))
                                 {
                                     PeriodPart2 = UtilityManager.FormatAccordingToDeviceForVAT(day + "/" + month + "/" + year);
+                                    //try
+                                    //{
+                                    //    CultureInfo arCI = new CultureInfo("en-US");
+                                    //    FormatedToTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                                    //}
+                                    //catch (Exception ex)
+                                    //{
+
+                                    //}
+                                  
                                 }
                                 else
                                 {
                                     PeriodPart2 = UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
+                                    //try
+                                    //{
+                                    //    CultureInfo arCI = new CultureInfo("ar-SA");
+                                    //    FormatedToTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                                    //}
+                                    //catch (Exception ex)
+                                    //{
+
+                                    //}
+                                   
                                 }
 
                             }
@@ -264,10 +326,6 @@ namespace EGAZT.Models
 
      
         public string PeriodPart1 { get; set; }
-
-
-
-      
         public string PeriodPart2 { get; set; }
         public string Txt30 { get; set; }
         public string _Faednar;
@@ -326,15 +384,28 @@ namespace EGAZT.Models
                         string[] dts = FormatedFaedn.Split('-');
                         string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                         FormatedFaedn = date;
+                        ACSFormatedFaedn = date;
                     }
+                    else {
+
+                        ACSFormatedFaedn = _faedn.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        string[] dts = ACSFormatedFaedn.Split('-');
+                        string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                        ACSFormatedFaedn = date;
+                    }
+
 
                 }
             }
         }
+      
+    
         [JsonIgnore]
         public string StatusText { get; set; }
 
         public string FormatedFaedn { get; set; }
+        public string ACSFormatedFaedn { get; set; }
+
         private string _status = string.Empty;
         public string Status
         {
@@ -384,4 +455,6 @@ namespace EGAZT.Models
         //    }
         //}
     }
+
+
 }

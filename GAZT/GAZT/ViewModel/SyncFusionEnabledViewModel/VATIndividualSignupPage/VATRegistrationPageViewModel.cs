@@ -279,6 +279,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private bool _dOBMandatoryVisibilitySM = false;
+        public bool DOBMandatoryVisibilitySM
+        {
+            get
+            {
+                return _dOBMandatoryVisibilitySM;
+            }
+            set
+            {
+                if (_dOBMandatoryVisibilitySM == value) return;
+
+                _dOBMandatoryVisibilitySM = value;
+
+                RaisePropertyChanged("DOBMandatoryVisibilitySM");
+            }
+        }
 
         private bool _isAttachmentImporterExporterVisible = false;
         public bool isAttachmentImporterExporterVisible
@@ -2114,12 +2130,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             try
             {
-                await Task.Run(() =>
-                {
                     IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
                     GetSignUpIdType();
                     IsLoading = true;
                     VATRegistrationDetailsData = null;
@@ -2310,11 +2321,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         //   {
                         //  });
                     }
-                });
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
 
             }
             catch (GAZTVATRegistrationInProcessException ex)

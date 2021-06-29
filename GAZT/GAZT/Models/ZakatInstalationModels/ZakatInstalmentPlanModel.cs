@@ -21,10 +21,10 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string FrequencyOptions { get; set; }
         public bool IsSelected { get; set; }
     }
-     [Preserve(AllMembers = true)]
+    [Preserve(AllMembers = true)]
     public class InstalmentAgreementAttachmentsModel
     {
-       
+
         public string FieldTitle { get; set; }
         public string FieldSubTitle { get; set; }
         public string AttachmentName { get; set; }
@@ -54,7 +54,7 @@ namespace EGAZT.Models.ZakatInstalationModels
     [Preserve(AllMembers = true)]
     public class ZakatSelectBillModel
     {
-      
+
         public string billNumber { get; set; }
         public string amount { get; set; }
         public string saadNumber { get; set; }
@@ -63,9 +63,8 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string billType { get; set; }
         public string frequency { get; set; }
     }
-    [Preserve(AllMembers = true)]
 
-   
+    [Preserve(AllMembers = true)]
     public class ZakatSummaryViewModel
     {
 
@@ -78,7 +77,6 @@ namespace EGAZT.Models.ZakatInstalationModels
 
     }
     [Preserve(AllMembers = true)]
-
     public class InstalmentAgreementInstalmentPlansModel
     {
         public string DueDate { get; set; }
@@ -87,7 +85,6 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string TotalAmountPaid { get; set; }
         public string TotalAmountRemaining { get; set; }
     }
-    [Preserve(AllMembers = true)]
 
     //-----API Object will starts from herer-------
 
@@ -96,14 +93,13 @@ namespace EGAZT.Models.ZakatInstalationModels
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
 
-    //[Preserve(AllMembers = true)]
+    [Preserve(AllMembers = true)]
     public partial class ZakatInstalmentPlanResponse
     {
         public ZakatInstalment d { get; set; }
     }
+
     [Preserve(AllMembers = true)]
-
-
     public partial class ZakatInstalment
     {
         public Metadata __metadata { get; set; }
@@ -158,33 +154,27 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string Zdays { get; set; }
     }
     [Preserve(AllMembers = true)]
-
-
-
     public partial class AttachSet
     {
         public Attachment[] results { get; set; }
     }
-    [Preserve(AllMembers = true)]
 
+    [Preserve(AllMembers = true)]
     public partial class FnDtlSet
     {
         public FnDtlSetObject[] results { get; set; }
     }
     [Preserve(AllMembers = true)]
-
     public partial class InsPlanOffSet
     {
         public object[] result { get; set; }
     }
     [Preserve(AllMembers = true)]
-
     public partial class InsPlanSet
     {
         public Results4[] results { get; set; }
     }
     [Preserve(AllMembers = true)]
-
     public partial class Results4
     {
         public Metadata __metadata { get; set; }
@@ -207,13 +197,11 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string ReturnId { get; set; }
     }
     [Preserve(AllMembers = true)]
-
     public partial class InvDtlsSet
     {
         public Results5[] results { get; set; }
     }
     [Preserve(AllMembers = true)]
-
     public partial class Results5
     {
         public Metadata Metadata { get; set; }
@@ -243,16 +231,12 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string Waers { get; set; }
     }
     [Preserve(AllMembers = true)]
-
-
-
     public partial class RetmsgSet
     {
         public object[] results { get; set; }
     }
+
     [Preserve(AllMembers = true)]
-
-
     public partial class ZakatInstalmentPlanRequest
     {
         public string Fbguid { get; set; }
@@ -303,7 +287,7 @@ namespace EGAZT.Models.ZakatInstalationModels
     }
 
 
- 
+    [Preserve(AllMembers = true)]
     public class ZAKATRequestPlanModel
     {
         [Preserve(AllMembers = true)]
@@ -394,8 +378,8 @@ namespace EGAZT.Models.ZakatInstalationModels
         {
             public List<object> results { get; set; }
         }
-        [Preserve(AllMembers = true)]
 
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
@@ -487,7 +471,6 @@ namespace EGAZT.Models.ZakatInstalationModels
         public ZakatInvoices d { get; set; }
     }
     [Preserve(AllMembers = true)]
-
     public partial class ZakatInvoices
     {
         public List<ZakatInvoicesResult> results { get; set; }
@@ -522,12 +505,11 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string Waers { get; set; }
     }
 
-    
 
+    [Preserve(AllMembers = true)]
     public class ZakatInstalmentPlanRequestListModel
     {
         [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-
         public D d { get; set; }
         [Preserve(AllMembers = true)]
         public class Metadata
@@ -903,7 +885,7 @@ namespace EGAZT.Models.ZakatInstalationModels
     {
         public List<object> results { get; set; }
     }
-  
+    [Preserve(AllMembers = true)]
     public class ZakatSummaryInputModel
     {
         [Preserve(AllMembers = true)]
@@ -970,7 +952,6 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string TaxOffUid { get; set; }
         }
         [Preserve(AllMembers = true)]
-
         public D d { get; set; }
 
 
@@ -1038,7 +1019,6 @@ namespace EGAZT.Models.ZakatInstalationModels
     }
 
     [Preserve(AllMembers = true)]
-
     public partial class AttachSetResults
     {
         public Metadata __metadata { get; set; }
@@ -1065,7 +1045,6 @@ namespace EGAZT.Models.ZakatInstalationModels
 
 
     [Preserve(AllMembers = true)]
-
     public partial class Set
     {
         public Deferred Deferred { get; set; }
@@ -1102,7 +1081,6 @@ namespace EGAZT.Models.ZakatInstalationModels
 
     }
     [Preserve(AllMembers = true)]
-
     public partial class ZakatInstalmentPlanRevokeRequest
     {
         public string Fbguid { get; set; }
@@ -1152,8 +1130,8 @@ namespace EGAZT.Models.ZakatInstalationModels
         public object[] retmsgSet { get; set; }
         public object[] insPlan_OffSet { get; set; }
     }
-  
 
+    [Preserve(AllMembers = true)]
     public class ZakatInstalmentInvListModel
     {
         [Preserve(AllMembers = true)]
@@ -1206,7 +1184,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class SummaryDisplayModel
     {
         [Preserve(AllMembers = true)]
@@ -1263,7 +1241,6 @@ namespace EGAZT.Models.ZakatInstalationModels
         }
 
         [Preserve(AllMembers = true)]
-
         public class Result
         {
             public Metadata2 __metadata { get; set; }

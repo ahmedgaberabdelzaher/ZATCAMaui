@@ -13,7 +13,7 @@ namespace EGAZT.Models.VATInstalmentModels
     }
 
 
-   
+    [Preserve(AllMembers = true)]
     public class RequestToVATInstallmentPlan
     {
         [Preserve(AllMembers = true)]
@@ -38,11 +38,10 @@ namespace EGAZT.Models.VATInstalmentModels
         [Preserve(AllMembers = true)]
         public class REQTYPSet
         {
-            public IList<Results> results { get; set; }
+            public List<Results> results { get; set; }
 
         }
         [Preserve(AllMembers = true)]
-
         public class STATUSSetResults
         {
             public __metadata __metadata { get; set; }
@@ -62,7 +61,6 @@ namespace EGAZT.Models.VATInstalmentModels
 
         }
         [Preserve(AllMembers = true)]
-
         public class ASSLISTSetResults
         {
             public __metadata __metadata { get; set; }
@@ -140,7 +138,7 @@ namespace EGAZT.Models.VATInstalmentModels
 
     }
 
-    
+    [Preserve(AllMembers = true)]
     public class RequestToVATInstallmentPlanDetails
     {
         [Preserve(AllMembers = true)]
@@ -192,7 +190,7 @@ namespace EGAZT.Models.VATInstalmentModels
         [Preserve(AllMembers = true)]
         public class VTADSet
         {
-            public IList<VTADSetResults> results { get; set; }
+            public List<VTADSetResults> results { get; set; }
 
         }
         [Preserve(AllMembers = true)]
@@ -226,7 +224,7 @@ namespace EGAZT.Models.VATInstalmentModels
         [Preserve(AllMembers = true)]
         public class VATNOTESSet
         {
-            public IList<NOTESSetResults> results { get; set; }
+            public List<NOTESSetResults> results { get; set; }
 
         }
         [Preserve(AllMembers = true)]
@@ -250,7 +248,7 @@ namespace EGAZT.Models.VATInstalmentModels
         [Preserve(AllMembers = true)]
         public class VTISSet
         {
-            public IList<VTISSetResults> results { get; set; }
+            public List<VTISSetResults> results { get; set; }
 
         }
         [Preserve(AllMembers = true)]
@@ -276,7 +274,7 @@ namespace EGAZT.Models.VATInstalmentModels
         [Preserve(AllMembers = true)]
         public class VTIASet
         {
-            public IList<VTIASetResults> results { get; set; }
+            public List<VTIASetResults> results { get; set; }
 
         }
         [Preserve(AllMembers = true)]
@@ -304,7 +302,7 @@ namespace EGAZT.Models.VATInstalmentModels
         [Preserve(AllMembers = true)]
         public class ATTACHMENTSet
         {
-            public IList<ATTACHMENTSetResults> results { get; set; }
+            public List<ATTACHMENTSetResults> results { get; set; }
 
         }
         [Preserve(AllMembers = true)]
@@ -316,12 +314,12 @@ namespace EGAZT.Models.VATInstalmentModels
             public string Officer { get; set; }
             public string TotInvAmt { get; set; }
             public string Xstep1Conf { get; set; }
-            public object Begdaz { get; set; }
+            //public string Begdaz { get; set; }
             public string Xstep2Conf { get; set; }
             public string Betrw { get; set; }
             public string Decflg { get; set; }
             public string DataVersion { get; set; }
-            public object Enddaz { get; set; }
+            //public string Enddaz { get; set; }
             public string Euser { get; set; }
             public string Fbnumz { get; set; }
             public string FormGuid { get; set; }
@@ -359,6 +357,7 @@ namespace EGAZT.Models.VATInstalmentModels
 
 
         #region VATInstalmentList
+
         [Preserve(AllMembers = true)]
         public class Metadata
         {
@@ -560,7 +559,6 @@ namespace EGAZT.Models.VATInstalmentModels
                 public List<VtiaIaSetResult> Results { get; set; }
             }
             [Preserve(AllMembers = true)]
-
             public partial class VtiaIaSetResult
             {
                 [JsonProperty("__metadata")]
@@ -585,11 +583,10 @@ namespace EGAZT.Models.VATInstalmentModels
                 public string AgreementNo { get; set; }
             }
         }
-
+        [Preserve(AllMembers = true)]
         public class VATInstalmentDetailsInputModel
         {
             [Preserve(AllMembers = true)]
-            // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
             public class Metadata
             {
                 public string id { get; set; }
@@ -651,7 +648,7 @@ namespace EGAZT.Models.VATInstalmentModels
             public D d { get; set; }
 
         }
-
+        [Preserve(AllMembers = true)]
         public class VATInstalmentScheduleDetailsModel
         {
             [Preserve(AllMembers = true)]
