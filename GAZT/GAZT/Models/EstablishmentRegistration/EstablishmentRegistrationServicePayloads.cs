@@ -490,6 +490,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Forwardx { get; set; }
         public string FullName { get; set; }
         public string FinPeriod { get; set; }
+        public DateTime? FromDt { get; set; }
         public string Govttp { get; set; }
         public string Gpart { get; set; }
         public string Gpartx { get; set; }

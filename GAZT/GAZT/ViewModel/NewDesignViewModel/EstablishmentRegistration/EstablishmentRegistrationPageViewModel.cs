@@ -1544,6 +1544,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
                 poupWindow.OnItemSelect = (item) =>
                 {
+
+                    if (!FiscalMonth.Equals(item)) {
+                        FiscalDay = string.Empty;
+                        udpdateDates(FiscalDay);
+                        IsFinancePeriodVisible = false;
+                    }
+
                     FiscalMonth = item as string;
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
@@ -2942,7 +2949,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     if (financialDetailPeriod != null)
                     {
-
+                        IsFinancePeriodVisible = true;
 
                         var fincialPeriodDetials = financialDetailPeriod.PeriodSet.results;
 
@@ -2983,6 +2990,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             {
                                 SelectedPeriod = PeriodList.Where(temp => (temp.FinPeriod == taxPayerDetails.FinPeriod)).FirstOrDefault();
                                 TaxDate = SelectedPeriod.ConvretedToDate;
+                                
 
                             }
 
@@ -2991,12 +2999,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                         }
                     }
+                    
+
 
 
                     IsLoading = false;
 
                 }
+                else
+                {
 
+                    PeriodList.Clear();
+                    SelectedPeriod = null;
+                    TaxDate = string.Empty;
+                    taxPayerDetails.FinPeriod = string.Empty;
+                }
 
                 IsLoading = false;
 
@@ -3438,6 +3455,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (SelectedPeriod != null)
                     {
                         taxPayerDetails.FinPeriod = SelectedPeriod.FinPeriod;
+                        taxPayerDetails.FromDt = SelectedPeriod.FromDate;
                     }
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
