@@ -55,7 +55,7 @@
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
