@@ -3450,12 +3450,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Fdmonth = FiscalMonth;
                     taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
                     taxPayerDetails.Commdt = financialDetail?.ADateComm;
-                    taxPayerDetails.Fdenddt = Fdenddt;
+                    //taxPayerDetails.Fdenddt = Fdenddt;
                     taxPayerDetails.Chkfg = "X";
                     if (SelectedPeriod != null)
                     {
                         taxPayerDetails.FinPeriod = SelectedPeriod.FinPeriod;
                         taxPayerDetails.FromDt = SelectedPeriod.FromDate;
+                        taxPayerDetails.Fdenddt = SelectedPeriod.ToDate;
                     }
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
