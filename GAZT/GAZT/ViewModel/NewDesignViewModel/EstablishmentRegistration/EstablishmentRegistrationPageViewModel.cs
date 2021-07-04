@@ -2830,6 +2830,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
 
 
+                if (!string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
+                {
+                    if (financialDetail?.EIslmedate == "28")
+                    {
+                        dates.Remove("29");
+                        dates.Remove("30");
+                    }
+                    else if (financialDetail?.EIslmedate == "29")
+                    {
+                        dates.Remove("29");
+                        dates.Remove("30");
+                    }
+                    else if (financialDetail?.EIslmedate == "30")
+                    {
+                        dates.Remove("30");
+                    }
+                }
+
                 //if (selectedDate == null)
                 //{
                 //    string dd = financialDetail?.ACommDate.Substring(6, 2);
@@ -2867,7 +2885,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 //    }
                 //}
 
-                if(!string.IsNullOrEmpty(FiscalDay) && !string.IsNullOrEmpty(FiscalMonth)) {
+                if (!string.IsNullOrEmpty(FiscalDay) && !string.IsNullOrEmpty(FiscalMonth)) {
 
                     financialDetail = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
                     {
@@ -2891,23 +2909,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     }
 
-                    if (string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
-                    {
-                        if (financialDetail?.EIslmedate == "28")
-                        {
-                            dates.Remove("29");
-                            dates.Remove("30");
-                        }
-                        else if (financialDetail?.EIslmedate == "29")
-                        {
-                            dates.Remove("29");
-                            dates.Remove("30");
-                        }
-                        else if (financialDetail?.EIslmedate == "30")
-                        {
-                            dates.Remove("30");
-                        }
-                    }
+                   
                     IsLoading = false;
 
                     IsLoading = true;
