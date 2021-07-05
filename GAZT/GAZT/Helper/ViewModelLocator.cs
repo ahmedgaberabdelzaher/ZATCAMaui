@@ -137,6 +137,8 @@ using Xamarin.Forms.Internals;
 using EGAZT.Views.NewDesign.PaymentOptions;
 using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
 using EGAZT.Views.NewDesign.SupportPages;
+using EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
+using EGAZT.Views.NewDesign.IBanAccountsManagements;
 
 namespace EGAZT
 {
@@ -166,6 +168,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxpayerCorrespondanceDetailPageViewModel>();
             SimpleIoc.Default.Register<VATAmendReactivationSuccesssulPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionPageWebView>();
+            SimpleIoc.Default.Register<BankAccountManagementPageViewModel>();
             // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
 
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
@@ -2301,7 +2304,7 @@ namespace EGAZT
             navigationService.Configure(App.VATAmendReactivationPageView, typeof(VATAmendReactivationPageView));
             navigationService.Configure(App.VATServicesPageView, typeof(Views.NewDesign.VATServices.VATServicesPageView));
             navigationService.Configure(App.TaxEvasionPageWebView, typeof(TaxEvasionPageWebView));
-
+            navigationService.Configure(App.GAZTBankAccountManagementPageView, typeof(BankAccountManagementPageView));
 
             navigationService.Configure(App.RelationShipManagerInfoPageView, typeof(RelationShipManagerInfoPageView));
             #endregion
@@ -2610,7 +2613,21 @@ namespace EGAZT
                 }
             }
         }
-        
+
+        public BankAccountManagementPageViewModel BankAccountManagementPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BankAccountManagementPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
         public RelationShipManagerInfoPageViewModel RelationShipManagerInfoPageView
         {
             get

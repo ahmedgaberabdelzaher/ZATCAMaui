@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:yummyy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             NavigationPage.HasNavigationBar="False"
+             x:Name="IBanReg" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:custom="clr-namespace:GAZT" 
+             BackgroundImageSource="partials_background"
+             x:Class="EGAZT.Views.NewDesign.IBanAccountsManagements.BankAccountManagementPageView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <StackLayout>
+                    <Grid Padding="15,5,15,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDBankAccManagement}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                               Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource BackButtonArrow}" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <yummyy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                  Padding="0,0,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="0" BackgroundColor="White"/>
+                        </Grid>
+                    </yummyy:PancakeView>
+                </StackLayout>
+
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0" AutoFitMode="Height" ItemSpacing="5"
+                                      ItemsSource="{Binding MainListData}" >
+            <listView:SfListView.ItemTemplate>
+                <DataTemplate>
+                        <border:SfBorder Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <StackLayout Padding="0" Spacing="0" >
+                                <Grid  Padding="10" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="0" Orientation="Horizontal">
+
+                                      
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANRefNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></custom:CustomLabel>
+                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Text=": "></custom:CustomLabel>
+                                            <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                        
+                                    </StackLayout>
+                                    
+                                    <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" Margin="0,5" />
+
+                                    <StackLayout Grid.Row="2" Grid.Column="0" Margin="0,4">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANAccName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{Binding Koinh}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="2" Grid.Column="1" Margin="0,4" HorizontalOptions="End">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANStatus}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{Binding StatusDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></custom:CustomLabel>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="4"    Margin="0,4">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{Binding IdtypeDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="3"    Margin="0,4">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{Binding Idnumber}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="5"    Margin="0,4">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBAN}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{Binding Iban}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="3"  Grid.Column="1"   Margin="0,4">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANBankName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{Binding Bkext}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                    </StackLayout>
+                                    <buttons:SfButton  Grid.Row="6" Grid.ColumnSpan="2" HorizontalOptions="Center" Text="{x:Static ResourceManager:AppResources.IBANUpdate}"
+                                          CornerRadius="14"  Style="{StaticResource PrimaryButtonStyle}" >
+                                        <buttons:SfButton.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness" >
+                                                <On Platform="iOS" Value="0,-10,0,50"/>
+                                                <On Platform="Android" Value="0,-10,0,50"/>
+                                            </OnPlatform>
+                                        </buttons:SfButton.Margin>
+                                    </buttons:SfButton>
+                                    <!--<StackLayout Grid.Row="5" Grid.ColumnSpan="3" Margin="0,4">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{Binding IdtypeDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                    </StackLayout>-->
+
+
+                                </Grid>
+
+                            </StackLayout>
+                        </border:SfBorder >
+                    </DataTemplate>
+            </listView:SfListView.ItemTemplate>
+        </listView:SfListView>
+
+
+        <Grid Grid.Row="0"   Grid.Column="0"   IsVisible="{Binding IsLoading}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                
+            <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+            </StackLayout>
+            <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center"
+                             HorizontalOptions="Center" Padding="15,15">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="Center"
+                                           IsBusy="{Binding IsLoading}"
+                                       ViewBoxWidth = "70" 
+                                         
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#006450"/>
+                </StackLayout>
+                <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
+        </StackLayout>
+        </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

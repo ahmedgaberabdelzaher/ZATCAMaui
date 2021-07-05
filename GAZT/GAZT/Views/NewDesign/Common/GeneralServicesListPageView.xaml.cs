@@ -96,7 +96,11 @@ namespace EGAZT.Views.NewDesign.Common
                     _viewModel._navigationService.NavigateTo(App.RelationShipManagerInfoPageView);
                    // AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-            
+                else if (selectedItem.ZDTitle == AppResources.NDBankAccManagement)
+                {
+                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+                }
+
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }

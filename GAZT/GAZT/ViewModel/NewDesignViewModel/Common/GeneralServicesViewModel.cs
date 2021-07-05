@@ -114,9 +114,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     ArrowImageSource = fileImage
                 });
             }
-           
 
-                GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
+            generalServicesListData.Add(new GeneralServicesListModel
+            {
+                ZDTitle = AppResources.NDBankAccManagement,
+                ZDImageSource = "tax_evasion_green.png",
+                ArrowImageSource = fileImage
+            });
+            
+
+            GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
         }
         
         public void PopulateRefundRequestMenuListData()
