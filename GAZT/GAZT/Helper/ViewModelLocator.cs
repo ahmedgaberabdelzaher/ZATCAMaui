@@ -169,6 +169,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATAmendReactivationSuccesssulPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionPageWebView>();
             SimpleIoc.Default.Register<BankAccountManagementPageViewModel>();
+            SimpleIoc.Default.Register<BankAccountAddorUpdateIBANViewModel>();
+
             // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
 
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
@@ -2305,6 +2307,7 @@ namespace EGAZT
             navigationService.Configure(App.VATServicesPageView, typeof(Views.NewDesign.VATServices.VATServicesPageView));
             navigationService.Configure(App.TaxEvasionPageWebView, typeof(TaxEvasionPageWebView));
             navigationService.Configure(App.GAZTBankAccountManagementPageView, typeof(BankAccountManagementPageView));
+            navigationService.Configure(App.GAZTBankAccountAddOrUpdatePageView, typeof(BankAccountAddorUpdateIBANPageView));
 
             navigationService.Configure(App.RelationShipManagerInfoPageView, typeof(RelationShipManagerInfoPageView));
             #endregion
@@ -2621,6 +2624,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<BankAccountManagementPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public BankAccountAddorUpdateIBANViewModel BankAccountAddOrUpdatePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BankAccountAddorUpdateIBANViewModel>();
                 }
                 catch (Exception)
                 {

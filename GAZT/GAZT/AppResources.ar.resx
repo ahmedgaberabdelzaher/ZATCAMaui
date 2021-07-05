@@ -9009,4 +9009,22 @@ info@gazt.gov.sa</value>
   <data name="IBANUpdate" xml:space="preserve">
     <value>Update</value>
   </data>
+   <data name="NDBankAccAddNewIBan" xml:space="preserve">
+    <value>Add New IBAN</value>
+  </data>
+   <data name="NDBankAccOwnerName" xml:space="preserve">
+    <value>Account Owner Name</value>
+  </data>
+   <data name="NDBankAccIDType" xml:space="preserve">
+    <value>ID Type</value>
+  </data>
+   <data name="NDBankAccIBAN" xml:space="preserve">
+    <value>IBAN</value>
+  </data>
+   <data name="NDBankAccIdNumber" xml:space="preserve">
+    <value>ID Number</value>
+  </data>
+  <data name="NDBankAccBankName" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
 </root>

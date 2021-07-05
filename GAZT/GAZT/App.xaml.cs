@@ -48,6 +48,8 @@ namespace EGAZT
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
         public static string RelationShipManagerInfoPageView = "RelationShipManagerInfoPageView";
         public static string GAZTBankAccountManagementPageView = "BankAccountManagementPageView";
+        public static string GAZTBankAccountAddOrUpdatePageView = "BankAccountAddorUpdateIBANPageView";
+
         public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
         public static string TaxEvasionVerifyMobileNumberPage = "TaxEvasionVerifyMobileNumberPage";
         public static string TaxEvasionPageWebView = "TaxEvasionPageWebView";

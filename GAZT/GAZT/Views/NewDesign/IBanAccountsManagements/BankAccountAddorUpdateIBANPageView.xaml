@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:yummyy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             NavigationPage.HasNavigationBar="False"
+             x:Name="IBanReg" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:custom="clr-namespace:GAZT" xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common" 
+             BackgroundImageSource="partials_background"
+             x:Class="EGAZT.Views.NewDesign.IBanAccountsManagements.BankAccountAddorUpdateIBANPageView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+
+            
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <StackLayout>
+                    <Grid Padding="15,5,15,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDBankAccAddNewIBan}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                               Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource BackButtonArrow}" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <yummyy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                  Padding="0,0,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="0" BackgroundColor="White"/>
+                        </Grid>
+                    </yummyy:PancakeView>
+                </StackLayout>
+
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                   <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <commonView:PageIndicatorView Margin="20,32,20,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="16"/>
+                        </Grid>
+                <Grid Grid.Row="1">
+                        <Grid  BackgroundColor="Transparent" Margin="20,0,20,0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="24">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="80" />
+                                <RowDefinition Height="80" />
+                             <RowDefinition Height="80" />
+                             <RowDefinition Height="80" />
+                                <RowDefinition Height="80" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                            Text="{x:Static ResourceManager:AppResources.CRRequestDetails}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource PageTitleBlack}" />
+                                <custom:CustomLabel Grid.Row="1" Grid.Column="0" Margin="0,-10,0,15"
+                                            Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}" />
+                                <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                            </Grid>
+
+                            <Grid Grid.Row="1" WidthRequest="171">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+
+                                <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDBankAccOwnerName}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+                                <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <custom:BorderlessEntry x:Name="AccountOwnerName"
+                                                    HorizontalOptions="FillAndExpand" 
+                                                            TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="15"/>
+                                </border:SfBorder>
+
+                            </Grid>
+                           
+
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}" >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDBankAccIDType}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+                                <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedIDType}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+
+                                           <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
+                                                         Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowPicker}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        
+
+                                    </Grid>
+                                </border:SfBorder>
+
+                            </Grid>
+
+                            <Grid Grid.Row="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}" >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDBankAccIdNumber}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+                                <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedIDNumber}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+
+                                           <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
+                                                         Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowPicker}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        
+
+                                    </Grid>
+                                </border:SfBorder>
+
+                            </Grid>
+
+                             <Grid Grid.Row="4" WidthRequest="171">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+
+                                <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDBankAccIBAN}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+                                <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <custom:BorderlessEntry x:Name="BankAccountIBAN"
+                                                    HorizontalOptions="FillAndExpand" 
+                                                            TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="15"/>
+                                </border:SfBorder>
+
+                            </Grid>
+
+                             <Grid Grid.Row="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}" >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDBankAccBankName}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+                                <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedBankName}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+
+                                           <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
+                                                         Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowPicker}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        
+
+                                    </Grid>
+                                </border:SfBorder>
+
+                            </Grid>
+
+                              <Grid Grid.Row="6">
+
+                                <buttons:SfButton  Margin="0,16,0,16" 
+                                          Text="{x:Static ResourceManager:AppResources.CRContinue}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                           HeightRequest="48"
+                                           WidthRequest="366"
+                                          Command="{Binding ContinueButtonTapped}" />
+                            </Grid>
+
+                            </Grid>
+
+                    </Grid>
+
+                </Grid>
+             </ScrollView>
+        </ContentPage.Content>
+    </ContentPage>
+

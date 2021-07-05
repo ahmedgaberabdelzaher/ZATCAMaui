@@ -1,6 +1,8 @@
 ﻿using EGAZT.Manager;
 using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,12 +20,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
     public class BankAccountManagementPageViewModel : BaseViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
+        public ICommand AddNewIBANTapped { get; set; }
+
         public BankAccountManagementPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             GoBackBtnTapped = new Command(() =>
             {
                 _navigationService.GoBack();
             });
+
+            AddNewIBANTapped = new Command(this.AddNewIBANTappedClicked);
+
         }
 
         private string _SupName = string.Empty;
@@ -56,6 +63,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                 _mainListData = value;
                 RaisePropertyChanged("MainListData");
+            }
+        }
+
+        public void AddNewIBANTappedClicked()
+        {
+            try
+            {
+                _navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView);
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
             }
         }
 
