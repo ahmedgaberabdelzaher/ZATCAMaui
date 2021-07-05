@@ -120,8 +120,8 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
-    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
+    <CodesignProvision> eGAZT Distribution Profile</CodesignProvision>
+    <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>Full</MtouchLink>
   </PropertyGroup>
