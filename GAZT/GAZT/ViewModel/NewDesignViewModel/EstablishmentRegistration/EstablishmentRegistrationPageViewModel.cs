@@ -2806,7 +2806,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 Console.WriteLine(e.StackTrace);
             }
         }
-        private async void udpdateDates(string selectedDate = null)
+        public async void udpdateDates(string selectedDate = null)
         {
             try
             {

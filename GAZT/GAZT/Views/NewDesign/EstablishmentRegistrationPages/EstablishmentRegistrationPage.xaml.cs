@@ -221,6 +221,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 {
 
                     viewModel.IsFinancePeriodVisible = true;
+                    viewModel.udpdateDates();
                 }
                 else
                 {
