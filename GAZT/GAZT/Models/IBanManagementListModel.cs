@@ -93,7 +93,7 @@ namespace EGAZT.Models
         {
 
             [DataMember(Name = "results")]
-            public IList<Result> results { get; set; }
+            public List<Result> results { get; set; }
         }
 
         [DataContract]
@@ -112,7 +112,7 @@ namespace EGAZT.Models
         {
 
             [DataMember(Name = "results")]
-            public IList<IdNumberListSetResult> results { get; set; }
+            public List<IdNumberListSetResult> results { get; set; }
         }
 
         [DataContract]
@@ -130,7 +130,7 @@ namespace EGAZT.Models
         {
 
             [DataMember(Name = "results")]
-            public IList<IdTypeListSetResult> results { get; set; }
+            public List<IdTypeListSetResult> results { get; set; }
         }
 
         [DataContract]
@@ -176,4 +176,21 @@ namespace EGAZT.Models
     }
 
 
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
+    public class IBANPostRequest
+    {
+        public string Action { get; set; }
+        public string Fbnum { get; set; }
+        public string Koinh { get; set; }
+        public string Type { get; set; }
+        public string IdtypeDesc { get; set; }
+        public string Idnumber { get; set; }
+        public string Iban { get; set; }
+        public string Bankid { get; set; }
+        public string Bkext { get; set; }
+        public string AgreeFg { get; set; }
+        public string Tin { get; set; }
+    }
 }

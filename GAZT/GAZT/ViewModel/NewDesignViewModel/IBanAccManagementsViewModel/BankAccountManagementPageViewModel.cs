@@ -125,7 +125,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             {
                 try
                     {
-                        IBANAccountData = IbanAccounts;
                         MainListData = IbanAccounts.d.IbanListSet.results;
                     }
                     catch (Exception ex)
@@ -135,6 +134,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                         IsLoading = false;
                     }
                 }
+
+
+            if(IbanAccounts != null && IbanAccounts.d != null) {
+
+                    IBANAccountData = IbanAccounts;
+
+                }
+
                 IsLoading = false;
             });
         }

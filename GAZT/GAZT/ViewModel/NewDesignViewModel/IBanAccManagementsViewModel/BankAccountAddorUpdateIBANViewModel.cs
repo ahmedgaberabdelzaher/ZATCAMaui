@@ -1,5 +1,6 @@
 ﻿using EGAZT.Manager;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -27,8 +28,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         public ICommand ShowIDNumberPicker { get; set; }
         public ICommand ShowBankNamePicker { get; set; }
         public ICommand GoBackToNewForm { get; set; }
+        public ICommand SummaryConBtnTapped { get; set; }
 
-        
+
 
 
         #region Enums
@@ -251,6 +253,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             ShowIDNumberPicker = new Command(() => { showPickerDialog(2); });
             ShowBankNamePicker = new Command(() => { showPickerDialog(3); });
             GoBackToNewForm = new Command(() => { SummaryEditClicked(); });
+            SummaryConBtnTapped = new Command(() => { SummaryConButtonClicked(); });
 
             NewFormVisible = true;
 
@@ -417,11 +420,82 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
+        private async void SummaryConButtonClicked()
+        {
+            try
+            {
+
+     
+                IBANPostRequest requestObj = new IBANPostRequest();
+                requestObj.Action = "N";
+                requestObj.AgreeFg = "X";
+                requestObj.Fbnum = "";
+                requestObj.Tin = App.LoginDataRetrieved.TIN;
+                requestObj.Iban = IBANValue;
+                requestObj.Bkext = SelectedBankName;
+                requestObj.Idnumber = SelectedIDNumber;
+                requestObj.IdtypeDesc = SelectedIDType;
+                requestObj.Koinh = AccountOwnerName;
+                requestObj.Bankid = SelectedBankNameValue;
+                requestObj.Type = SelectedIDTypeValue;
+
+
+                var IBANPostResponse = await IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
+
+
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+               
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
         public void ContinueButtonClicked()
         {
             try
             {
-                EnableSummaryView();
+                if(string.IsNullOrEmpty(SelectedBankName) || string.IsNullOrEmpty(SelectedIDNumber) || string.IsNullOrEmpty(SelectedIDType) || string.IsNullOrEmpty(AccountOwnerName) || string.IsNullOrEmpty(IBANValue)) {
+
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                }
+                else {
+
+
+                    var selectedType = IBANAccountData.d.IdTypeListSet.results.Find(selectedValue => (selectedValue.IdDesc == SelectedIDType));
+
+                    if(selectedType != null) {
+                        SelectedIDTypeValue = selectedType.IdType;
+                    }
+
+                    var BankID = IBANAccountData.d.BankListSet.results.Find(selectedValue => (selectedValue.Bkext == SelectedBankName));
+
+                    if (selectedType != null)
+                    {
+                        SelectedBankNameValue = BankID.Bankid;
+                    }
+
+
+
+                    EnableSummaryView();
+                }
+
+
+                
             }
             catch (GAZTUnlockAccountException ex)
             {

@@ -455,6 +455,14 @@ namespace GAZT.Helper
 
         #endregion
 
+        #region Bank Account Management
+
+        public static string GetBankAccountInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/HeaderSet(";
+        public static string PostBankAccountIBAN = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/IbanListSet?&sap-language=";
+
+
+        #endregion
+
         public static string GAZTChatPartialUrl = "I3root/ChatingPage.html#";
     }
 }

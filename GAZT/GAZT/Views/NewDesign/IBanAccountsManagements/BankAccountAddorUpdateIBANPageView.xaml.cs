@@ -40,6 +40,12 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             this.Padding = safeInsets;
             //Check for Large Tax payer or not
 
+            _viewModel.SelectedIDType = "";
+            _viewModel.SelectedBankName = "";
+            _viewModel.SelectedIDNumber = "";
+            _viewModel.AccountOwnerName = "";
+            _viewModel.IBANValue = "";
+
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 _viewModel.PickerModel = arg;
 
@@ -55,10 +61,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                 {
                     _viewModel.SelectedBankName = arg.SelectedValue;
                 }
-
-
-                Console.WriteLine(arg);
-                OnAppearing();
+               
             });
         }
 

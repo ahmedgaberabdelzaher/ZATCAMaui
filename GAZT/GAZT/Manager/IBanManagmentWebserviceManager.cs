@@ -1,6 +1,7 @@
 ﻿using EGAZT.Models;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;
@@ -28,11 +29,14 @@ namespace EGAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    Char lang = WebServiceManager.GetLangZParameter();
-                    String url = Constants.GetVatEligilibilityDate;
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    var uri = new Uri("https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/HeaderSet(Tin=%273000004986%27,Fbguid=%27%27,Euser=%27%27)?sap-language=EN&$expand=BankListSet,IbanListSet,IdNumberListSet,IdTypeListSet" + "&$format=json");
+                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+
+
+                    String url = Constants.GetBankAccountInformation + "Tin=" + "'" + App.LoginDataRetrieved.TIN + "'"+ ",Fbguid=''," + "Euser='')?sap-language=" + LangZAREN + "&$expand=BankListSet,IbanListSet,IdNumberListSet,IdTypeListSet&$format=json";
+
+                    var uri = new Uri(url);
                     HttpResponseMessage GAZTIBanAccountsResponse = await client.GetAsync(uri);
                     if (GAZTIBanAccountsResponse != null)
                     {
@@ -89,5 +93,70 @@ namespace EGAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+
+
+        public async static Task<DashBoardUpdateViewResponseModel> GAZTSubmitBankAccountIBAN(IBANPostRequest postdata)
+        {
+            DashBoardUpdateViewResponseModel IBANPostResponse = new DashBoardUpdateViewResponseModel();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+
+                    char LangZ = WebServiceManager.GetLangZParameter();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    String url = Constants.PostBankAccountIBAN + lang;
+
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+
+
+                    var serilized = JsonConvert.SerializeObject(postdata);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                    IBANPostResponse = JsonConvert.DeserializeObject<DashBoardUpdateViewResponseModel>(detailJson);
+
+                    if (IBANPostResponse == null || IBANPostResponse.d == null)
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                            WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                            WebServiceManager.ErrorMessageForVAT = WithReplacedString;
+                            //ErrorMessageForVAT
+                            throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
+                        }
+                    }
+
+                    return IBANPostResponse;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
     }
 }
