@@ -9027,6 +9027,12 @@ info@gazt.gov.sa</value>
   <data name="NDBankAccBankName" xml:space="preserve">
     <value>Bank Name</value>
   </data>
+  <data name="NDIBANValidationforSA" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+   <data name="NDIBANValidationforLenght" xml:space="preserve">
+    <value>IBAN number must be 24 digits</value>
+  </data>
   <data name="AddNewIban" xml:space="preserve">
     <value>إضافة ايبان جديد</value>
   </data>

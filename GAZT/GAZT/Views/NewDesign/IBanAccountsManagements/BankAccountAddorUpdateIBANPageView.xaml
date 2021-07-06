@@ -253,6 +253,7 @@
                                     <custom:BorderlessEntry x:Name="BankAccountIBAN"
                                                     HorizontalOptions="FillAndExpand"
                                                              TextChanged="IBANTextChanged"
+                                                            Unfocused="IBANFocusChnaged"
                                                             TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="15"/>
                                 </border:SfBorder>
 

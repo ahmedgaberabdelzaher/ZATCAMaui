@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
@@ -109,11 +111,43 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
         private void AccountOwnerNameTextChanged(object sender, TextChangedEventArgs e)
         {
             _viewModel.AccountOwnerName = e.NewTextValue;
+
+
         }
 
         private void IBANTextChanged(object sender, TextChangedEventArgs e)
         {
-            _viewModel.IBANValue = e.NewTextValue;
+
+            if(e.NewTextValue.Length > 0) {
+
+                string str = e.NewTextValue.Substring(0, 1);
+
+                if (str.Equals("SA") || str.Equals("S"))
+                {
+                    _viewModel.IBANValue = e.NewTextValue;
+                }
+                else {
+
+                    BankAccountIBAN.Text = "";
+                    _viewModel.IBANValue = "";
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforSA));
+
+                }
+
+            }
+           
+        }
+
+        private void IBANFocusChnaged(object sender, TextChangedEventArgs e)
+        {
+
+            if ((_viewModel.IBANValue.Length > 0) && (_viewModel.IBANValue.Length < 24))
+            {
+               
+                  PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
+
+            }
+
         }
     }
 }

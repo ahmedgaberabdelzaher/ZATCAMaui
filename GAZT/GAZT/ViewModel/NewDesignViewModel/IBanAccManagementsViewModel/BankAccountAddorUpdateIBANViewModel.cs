@@ -475,6 +475,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
                 else {
 
+                    if(IBANValue.Length < 24) {
+
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
+
+                        return;
+
+                    }
+
 
                     var selectedType = IBANAccountData.d.IdTypeListSet.results.Find(selectedValue => (selectedValue.IdDesc == SelectedIDType));
 
