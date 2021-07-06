@@ -50,7 +50,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         }
 
 
-        public List<IbanListSetResult> _mainListData ;
+        public List<IbanListSetResult> _mainListData;
         public List<IbanListSetResult> MainListData
         {
             get
@@ -103,8 +103,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
+        public void SummaryConButtonClicked(IbanListSetResult selectedItem, string actionFlag)
+        {
+            try
+            {
+                IBANPostRequest requestObj = new IBANPostRequest();
+                requestObj.Action = actionFlag;
+                requestObj.AgreeFg = "X";
+                requestObj.Fbnum = "";
+                requestObj.Tin = App.LoginDataRetrieved.TIN;
+                requestObj.Iban = selectedItem.Iban;
+                requestObj.Bkext = selectedItem.Bkext;
+                requestObj.Idnumber = selectedItem.Idnumber;
+                requestObj.IdtypeDesc = selectedItem.IdtypeDesc;
+                requestObj.Koinh = selectedItem.Koinh;
+                requestObj.Bankid = selectedItem.Bankid;
+                requestObj.Type = selectedItem.Type;
 
-        public  async Task LoadAllIBanAccounts()
+                var IBANPostResponse =  IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                   {
+                       await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                       _navigationService.GoBack();
+                   });
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+
+        public async Task LoadAllIBanAccounts()
         {
             MainListData = new List<IbanListSetResult>();
             MainListData.Clear();
@@ -120,10 +158,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 IsLoading = false;
 
-            if (IbanAccounts != null && IbanAccounts.d !=null&& IbanAccounts.d.IbanListSet!= null
-            && IbanAccounts.d.IbanListSet.results!=null&& IbanAccounts.d.IbanListSet.results.Count>0)
-            {
-                try
+                if (IbanAccounts != null && IbanAccounts.d != null && IbanAccounts.d.IbanListSet != null
+                && IbanAccounts.d.IbanListSet.results != null && IbanAccounts.d.IbanListSet.results.Count > 0)
+                {
+                    try
                     {
                         MainListData = IbanAccounts.d.IbanListSet.results;
                     }
@@ -136,7 +174,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
 
 
-            if(IbanAccounts != null && IbanAccounts.d != null) {
+                if (IbanAccounts != null && IbanAccounts.d != null)
+                {
 
                     IBANAccountData = IbanAccounts;
 

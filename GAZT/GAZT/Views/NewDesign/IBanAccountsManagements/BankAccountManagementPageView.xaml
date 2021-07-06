@@ -96,7 +96,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" Margin="0"></Image>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="Add New IBAN" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" />
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.AddNewIban}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" />
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AddNewIBANTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>

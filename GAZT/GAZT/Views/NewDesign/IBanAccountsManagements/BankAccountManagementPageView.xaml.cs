@@ -25,6 +25,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
     public partial class BankAccountManagementPageView : ContentPage
     {
         private BankAccountManagementPageViewModel _viewModel;
+        private IbanListSetResult selectedItem;
         public BankAccountManagementPageView()
         {
             InitializeComponent();
@@ -51,7 +52,17 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             {
                 await PopupNavigation.Instance.PopAsync();
                 string message = arg;
-               
+                if(message.Equals("DEACTIVATE"))
+                {
+                     _viewModel.SummaryConButtonClicked(selectedItem, "A");
+                }
+                
+                else if(message.Equals("ACTIVATE"))
+                {
+                     _viewModel.SummaryConButtonClicked(selectedItem, "D");
+                }
+                    
+
             });
          }
 
@@ -88,14 +99,22 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
 
         }
 
-      
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
+
+        }
+
 
 
         private  async void IBanAccountsListItemTapped(object sender, ItemSelectionChangedEventArgs e)
         {
             var textToDisplayInButton = string.Empty;
             var selectedLv = sender as SfListView;
-            IbanListSetResult selectedItem = (IbanListSetResult)selectedLv.SelectedItem;
+             selectedItem = (IbanListSetResult)selectedLv.SelectedItem;
+           
             //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("" + selectedItem.Bkext));
             if(selectedItem.VisibleUpdate!=null)
             {
