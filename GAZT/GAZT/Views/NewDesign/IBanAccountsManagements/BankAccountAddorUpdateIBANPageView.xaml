@@ -87,7 +87,7 @@
                         <Grid Grid.Row="0">
                             <commonView:PageIndicatorView Margin="20,32,20,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="16"/>
                         </Grid>
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" IsVisible="{Binding NewFormVisible}">
                         <Grid  BackgroundColor="Transparent" Margin="20,0,20,0"
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="24">
                             <Grid.RowDefinitions>
@@ -135,7 +135,8 @@
 
                                 <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
                                     <custom:BorderlessEntry x:Name="AccountOwnerName"
-                                                    HorizontalOptions="FillAndExpand" 
+                                                    HorizontalOptions="FillAndExpand"
+                                                            TextChanged="AccountOwnerNameTextChanged"
                                                             TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="15"/>
                                 </border:SfBorder>
 
@@ -177,7 +178,7 @@
                                                          Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
                                             </Image.Source>
                                             <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding ShowPicker}"/>
+                                                <TapGestureRecognizer Command="{Binding ShowIDTypePicker}"/>
                                             </Image.GestureRecognizers>
                                         </Image>
                                         
@@ -222,7 +223,7 @@
                                                          Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
                                             </Image.Source>
                                             <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding ShowPicker}"/>
+                                                <TapGestureRecognizer Command="{Binding ShowIDNumberPicker}"/>
                                             </Image.GestureRecognizers>
                                         </Image>
                                         
@@ -250,7 +251,8 @@
 
                                 <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
                                     <custom:BorderlessEntry x:Name="BankAccountIBAN"
-                                                    HorizontalOptions="FillAndExpand" 
+                                                    HorizontalOptions="FillAndExpand"
+                                                             TextChanged="IBANTextChanged"
                                                             TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="15"/>
                                 </border:SfBorder>
 
@@ -291,7 +293,7 @@
                                                          Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
                                             </Image.Source>
                                             <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding ShowPicker}"/>
+                                                <TapGestureRecognizer Command="{Binding ShowBankNamePicker}"/>
                                             </Image.GestureRecognizers>
                                         </Image>
                                         
@@ -314,6 +316,182 @@
                             </Grid>
 
                     </Grid>
+
+                 <Grid Grid.Row="1" IsVisible="{Binding SummaryVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+
+                            </Grid.RowDefinitions>
+
+                            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+                                <Grid Margin="0,5,0,10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRSummary}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource PageTitleBlack}" />
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Margin="0,-10,0,15"
+                                                Text="{x:Static ResourceManager:AppResources.CRReviewthebelowinformation}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource BodyLabelGrey}" />
+                                    <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                </Grid>
+
+                                <border:SfBorder Margin="0,16,0,10" HasShadow="False"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                    <StackLayout Orientation="Vertical">
+
+                                        <Grid Padding="15" RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
+                                           Opacity=".2" IsClippedToBounds="True"
+                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                           HasShadow="False" />
+                                            <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                           Source="details" />
+                                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                 Padding="8,0">
+                                                <Label Text="{x:Static ResourceManager:AppResources.CRRequestDetails}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="0,0">
+                                                <Label 
+                                               Text="{x:Static ResourceManager:AppResources.CREdit}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding GoBackToNewForm}" />
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </StackLayout>
+                                        </Grid>
+
+                                        <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+
+                                        <Grid Padding="15,15,15,15">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackLayout Grid.Row="0" Grid.Column="0">
+                                                <Label Text="{x:Static ResourceManager:AppResources.NDBankAccOwnerName}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="0" Grid.Column="1" >
+                                                <Label Text="{Binding AccountOwnerName}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="1" Grid.Column="0">
+                                                <Label Text="{x:Static ResourceManager:AppResources.NDBankAccIDType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="1" Grid.Column="1" >
+                                                <Label Text="{Binding SelectedIDType}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="2" Grid.Column="0">
+                                                <Label Text="{x:Static ResourceManager:AppResources.NDBankAccIdNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="2" Grid.Column="1" >
+                                                <Label Text="{Binding SelectedIDNumber}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="3" Grid.Column="0">
+                                                <Label Text="{x:Static ResourceManager:AppResources.NDBankAccIBAN}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="3" Grid.Column="1" >
+                                                <Label Text="{Binding IBANValue}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                            </StackLayout>
+                                               <StackLayout Grid.Row="4" Grid.Column="0">
+                                                <Label Text="{x:Static ResourceManager:AppResources.NDBankAccBankName}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="4" Grid.Column="1" >
+                                                <Label Text="{Binding SelectedBankName}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                            </StackLayout>
+                                            
+                                          
+                                        </Grid>
+
+                                    </StackLayout>
+
+                                </border:SfBorder>
+
+
+                                <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                    <StackLayout Padding="15,15,15,0" VerticalOptions="FillAndExpand">
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="40" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid Grid.Row="0" Grid.Column="0">
+                                                <Image >
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                                    </Image.Source>
+
+                                                </Image>
+                                            </Grid>
+
+                                            <Grid Grid.Row="0" Grid.Column="1">
+                                                <Label Text="{x:Static ResourceManager:AppResources.CRInformation}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                            </Grid>
+                                        </Grid>
+
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRIherebycertify}"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start"
+                                       Style="{StaticResource BodyLabelGrey}" />
+
+                                    </StackLayout>
+
+                                </border:SfBorder>
+
+                                <buttons:SfButton Margin="0,16,0,16"
+                                          Text="{x:Static ResourceManager:AppResources.Confirm}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                          Command="{Binding SummaryConBtnTapped}"
+                                          HeightRequest="48"
+                                          WidthRequest="366"/>
+
+                            </StackLayout>
+                        </Grid>
 
                 </Grid>
              </ScrollView>

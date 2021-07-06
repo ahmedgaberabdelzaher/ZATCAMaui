@@ -1,8 +1,10 @@
 ﻿using EGAZT.Manager;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,8 +23,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand ContinueButtonTapped { get; set; }
+        public ICommand ShowIDTypePicker { get; set; }
+        public ICommand ShowIDNumberPicker { get; set; }
+        public ICommand ShowBankNamePicker { get; set; }
+        public ICommand GoBackToNewForm { get; set; }
+
+        
 
 
+        #region Enums
+
+        enum PagesEnum
+        {
+            IBANNewForm,
+            IBANSummary,
+
+        }
+
+        #endregion
+
+
+        int selectedPage = (int)PagesEnum.IBANNewForm;
 
         private int _currenrIndex = 1;
 
@@ -93,23 +114,314 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
+        private string _selectedIDTypeValue = "";
+
+        public string SelectedIDTypeValue
+        {
+            get { return _selectedIDTypeValue; }
+            set
+            {
+                if (_selectedIDTypeValue == value) return;
+
+                _selectedIDTypeValue = value;
+                RaisePropertyChanged("SelectedIDTypeValue");
+            }
+        }
+
+        private string _selectedIDNumberValue = "";
+
+        public string SelectedIDNumberValue
+        {
+            get { return _selectedIDNumberValue; }
+            set
+            {
+                if (_selectedIDNumberValue == value) return;
+
+                _selectedIDNumberValue = value;
+                RaisePropertyChanged("SelectedIDNumberValue");
+            }
+        }
+
+        private string _selectedBankNameValue = "";
+
+        public string SelectedBankNameValue
+        {
+            get { return _selectedBankNameValue; }
+            set
+            {
+                if (_selectedBankNameValue == value) return;
+
+                _selectedBankNameValue = value;
+                RaisePropertyChanged("SelectedBankNameValue");
+            }
+        }
+
+        private string _accountOwnerName = "";
+
+        public string AccountOwnerName
+        {
+            get { return _accountOwnerName; }
+            set
+            {
+                if (_accountOwnerName == value) return;
+
+                _accountOwnerName = value;
+                RaisePropertyChanged("AccountOwnerName");
+            }
+        }
+
+        private string _IBANValue = "";
+
+        public string IBANValue
+        {
+            get { return _IBANValue; }
+            set
+            {
+                if (_IBANValue == value) return;
+
+                _IBANValue = value;
+                RaisePropertyChanged("IBANValue");
+            }
+        }
+        private IBanAccountManagementResponseModel _iBANAccountData;
+
+        public IBanAccountManagementResponseModel IBANAccountData
+        {
+            get { return _iBANAccountData; }
+            set
+            {
+                if (_iBANAccountData == value) return;
+
+                _iBANAccountData = value;
+                RaisePropertyChanged("IBANAccountData");
+            }
+        }
+
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get { return _pickerModel; }
+            set
+            {
+                if (_pickerModel == value) return;
+
+                _pickerModel = value;
+                RaisePropertyChanged("PickerModel");
+            }
+        }
+
+
+        private bool _newFormVisible = false;
+
+        public bool NewFormVisible
+        {
+            get { return _newFormVisible; }
+            set
+            {
+                if (_newFormVisible == value) return;
+
+                _newFormVisible = value;
+                RaisePropertyChanged("NewFormVisible");
+            }
+        }
+        private bool _summaryVisible = false;
+
+        public bool SummaryVisible
+        {
+            get { return _summaryVisible; }
+            set
+            {
+                if (_summaryVisible == value) return;
+
+                _summaryVisible = value;
+                RaisePropertyChanged("SummaryVisible");
+            }
+        }
+
         public BankAccountAddorUpdateIBANViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackBtnTapped = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
+           
+
+
+            GoBackBtnTapped = new Command(async () => { BackNavigations(); });
 
             ContinueButtonTapped = new Command(this.ContinueButtonClicked);
 
+            ShowIDTypePicker = new Command(() => { showPickerDialog(1); });
+            ShowIDNumberPicker = new Command(() => { showPickerDialog(2); });
+            ShowBankNamePicker = new Command(() => { showPickerDialog(3); });
+            GoBackToNewForm = new Command(() => { SummaryEditClicked(); });
 
+            NewFormVisible = true;
+
+
+        }
+
+        private void SummaryEditClicked()
+        {
+            EnableNewFormView();
+        }
+
+          private void BackNavigations()
+        {
+            switch (selectedPage)
+            {
+                case (int)PagesEnum.IBANNewForm:
+                    _navigationService.GoBack();
+                    break;
+                case (int)PagesEnum.IBANSummary:
+                    EnableNewFormView();
+                    break;
+            }
+        }
+
+        private void EnableNewFormView()
+        {
+            CurrentIndex = 1;
+            NewFormVisible = true;
+            SummaryVisible = false;
+            selectedPage = (int)PagesEnum.IBANNewForm;
+        }
+
+        private void EnableSummaryView()
+        {
+            CurrentIndex = 2;
+            NewFormVisible = false;
+            SummaryVisible = true;
+            selectedPage = (int)PagesEnum.IBANSummary;
+        }
+
+        private void setIDTypePickerModel()
+        {
+
+            if (PickerModel != null) {
+
+                PickerModel = null;
+            }
+
+
+            var list = new List<string>();
+
+            foreach (IdTypeListSetResult dropdown in IBANAccountData.d.IdTypeListSet.results)
+            {
+                try
+                {
+                    list.Add(dropdown.IdDesc);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
+            }
+
+
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = list;
+            genericPickerModel.PickerTitle = "";
+            genericPickerModel.PickerId = "IBANIdTypePicker";
+            PickerModel = genericPickerModel;
+        }
+
+        private void setIDNumberPickerModel()
+        {
+
+            if (PickerModel != null)
+            {
+
+                PickerModel = null;
+            }
+            var list = new List<string>();
+
+            foreach (IdNumberListSetResult dropdown in IBANAccountData.d.IdNumberListSet.results)
+            {
+                try
+                {
+                    list.Add(dropdown.IdNumber);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = list;
+            genericPickerModel.PickerTitle = "";
+            genericPickerModel.PickerId = "IBANIdNumberPicker";
+            PickerModel = genericPickerModel;
+        }
+
+        private void setBankNamePickerModel()
+        {
+            if (PickerModel != null)
+            {
+
+                PickerModel = null;
+            }
+
+            var list = new List<string>();
+
+            foreach (Result dropdown in IBANAccountData.d.BankListSet.results)
+            {
+                try
+                {
+                    list.Add(dropdown.Bkext);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = list;
+            genericPickerModel.PickerTitle = "";
+            genericPickerModel.PickerId = "IBANBankNamePicker";
+            PickerModel = genericPickerModel;
+        }
+
+        private async void showPickerDialog(int pickerID)
+        {
+            try
+            {
+
+                if(pickerID == 1) {
+
+                    setIDTypePickerModel();
+                }
+                else if (pickerID == 2)
+                {
+                    setIDNumberPickerModel();
+                }
+                else if (pickerID == 3)
+                {
+                    setBankNamePickerModel();
+                }
+
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
         }
 
         public void ContinueButtonClicked()
         {
             try
             {
-                
+                EnableSummaryView();
             }
             catch (GAZTUnlockAccountException ex)
             {

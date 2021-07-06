@@ -66,11 +66,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
+        private IBanAccountManagementResponseModel _iBANAccountData;
+
+        public IBanAccountManagementResponseModel IBANAccountData
+        {
+            get { return _iBANAccountData; }
+            set
+            {
+                if (_iBANAccountData == value) return;
+
+                _iBANAccountData = value;
+                RaisePropertyChanged("IBANAccountData");
+            }
+        }
+
         public void AddNewIBANTappedClicked()
         {
             try
             {
-                _navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView);
+                _navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, IBANAccountData);
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -111,6 +125,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             {
                 try
                     {
+                        IBANAccountData = IbanAccounts;
                         MainListData = IbanAccounts.d.IbanListSet.results;
                     }
                     catch (Exception ex)
