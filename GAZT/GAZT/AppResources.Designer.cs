@@ -16115,5 +16115,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDBankAccBankName", resourceCulture);
             }
         }
+        
+        public static string NDIBANValidationforSA {
+            get {
+                return ResourceManager.GetString("NDIBANValidationforSA", resourceCulture);
+            }
+        }
+        
+        public static string NDIBANValidationforLenght {
+            get {
+                return ResourceManager.GetString("NDIBANValidationforLenght", resourceCulture);
+            }
+        }
     }
 }

@@ -9105,4 +9105,10 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="NDBankAccBankName" xml:space="preserve">
     <value>Bank Name</value>
   </data>
+  <data name="NDIBANValidationforSA" xml:space="preserve">
+    <value>IBAN number should start with SA</value>
+  </data>
+  <data name="NDIBANValidationforLenght" xml:space="preserve">
+    <value>IBAN number must be 24 digits</value>
+  </data>
 </root>
