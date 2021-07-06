@@ -105,7 +105,8 @@
             <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                             <listView:SfListView  x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding MainListData}" >
+                                      ItemsSource="{Binding MainListData}"  BackgroundColor="Transparent" 
+                           SelectionChanged="IBanAccountsListItemTapped" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}" SelectionMode="Single">
             <listView:SfListView.ItemTemplate>
                 <DataTemplate>
                         <border:SfBorder Margin="0,10,0,0" Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -150,7 +151,7 @@
                                         <custom:CustomLabel Text="{Binding IdtypeDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
                                     </StackLayout>
 
-                                    <StackLayout Grid.Row="3"    Margin="0,4">
+                                    <StackLayout Grid.Row="6"    Margin="0,4">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
                                         <custom:CustomLabel Text="{Binding Idnumber}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
                                     </StackLayout>
@@ -158,19 +159,11 @@
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBAN}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
                                         <custom:CustomLabel Text="{Binding Iban}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
                                     </StackLayout>
-                                    <StackLayout Grid.Row="3"  Grid.Column="1"   Margin="0,4">
+                                    <StackLayout Grid.Row="3"   Margin="0,4">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANBankName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
                                         <custom:CustomLabel Text="{Binding Bkext}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
                                     </StackLayout>
-                                    <buttons:SfButton  Grid.Row="6" Grid.ColumnSpan="2" HorizontalOptions="Center" Text="{x:Static ResourceManager:AppResources.IBANUpdate}"
-                                          CornerRadius="14"  Style="{StaticResource PrimaryButtonStyle}" >
-                                        <buttons:SfButton.Margin>
-                                            <OnPlatform x:TypeArguments="Thickness" >
-                                                <On Platform="iOS" Value="0,-10,0,50"/>
-                                                <On Platform="Android" Value="0,-10,0,50"/>
-                                            </OnPlatform>
-                                        </buttons:SfButton.Margin>
-                                    </buttons:SfButton>
+                                    
                                     <!--<StackLayout Grid.Row="5" Grid.ColumnSpan="3" Margin="0,4">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
                                         <custom:CustomLabel Text="{Binding IdtypeDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
