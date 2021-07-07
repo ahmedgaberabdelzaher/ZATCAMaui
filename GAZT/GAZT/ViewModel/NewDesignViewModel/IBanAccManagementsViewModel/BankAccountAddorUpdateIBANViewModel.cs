@@ -431,15 +431,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (string.IsNullOrEmpty(App.SelectedIBAN)) {
 
                     requestObj.Action = "N";
-
+                    requestObj.Fbnum = "";
                 }
                 else {
                     requestObj.Action = "U";
+                    requestObj.Fbnum = App.SelectedIBAN;
 
                 }
 
                 requestObj.AgreeFg = "X";
-                requestObj.Fbnum = "";
+                
                 requestObj.Tin = App.LoginDataRetrieved.TIN;
                 requestObj.Iban = IBANValue;
                 requestObj.Bkext = SelectedBankName;
@@ -461,6 +462,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     {
                         _navigationService.GoBack();
                     };
+                    await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                }
+                else if (IBANPostResponse.d.Action.Equals("U"))
+                {
+                    var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                    {
+                        CloseWhenBackgroundIsClicked = false
+                    };
+                    somewarningpopup.OnDone = async () =>
+                    {
+                        _navigationService.GoBack();
+                    };
+                    await PopupNavigation.Instance.PushAsync(somewarningpopup);
                 }
 
             }

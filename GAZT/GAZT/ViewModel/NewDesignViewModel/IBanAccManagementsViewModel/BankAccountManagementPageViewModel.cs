@@ -106,7 +106,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
-        public async void SummaryConButtonClicked(IbanListSetResult selectedItem, string actionFlag)
+        public async Task SummaryConButtonClickedAsync(IbanListSetResult selectedItem, string actionFlag)
         {
             IsLoading = true;
             try
@@ -114,7 +114,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 IBANPostRequest requestObj = new IBANPostRequest();
                 requestObj.Action = actionFlag;
                 requestObj.AgreeFg = "X";
-                requestObj.Fbnum = "";
+                requestObj.Fbnum = selectedItem.Fbnum;
                 requestObj.Tin = App.LoginDataRetrieved.TIN;
                 requestObj.Iban = selectedItem.Iban;
                 requestObj.Bkext = selectedItem.Bkext;
@@ -124,15 +124,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 requestObj.Bankid = selectedItem.Bankid;
                 requestObj.Type = selectedItem.Type;
 
-                var IBANPostResponse =  IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
+                var IBANPostResponse =  await IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
                 
-                if (IBANPostResponse!=null&&IBANPostResponse.Result!=null&&IBANPostResponse.Result.d!=null)
+                if (IBANPostResponse!=null)
                 {
                     IsLoading = false;
-                    if (actionFlag=="D")
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIsActivated));
-                   else if(actionFlag=="A")
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIsDeActivated));
+                    if (actionFlag == "D") {
+
+                        var somewarningpopup = new AttachmentInformationPopUp(AppResources.NDIBANIsDeActivated)
+                        {
+                            CloseWhenBackgroundIsClicked = false
+                        };
+                        somewarningpopup.OnDone = async () =>
+                        {
+                            await LoadAllIBanAccounts();
+                        };
+                        await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                    }
+                    else if (actionFlag == "A")
+                    {
+                        
+                        var somewarningpopup = new AttachmentInformationPopUp(AppResources.NDIBANIsActivated)
+                        {
+                            CloseWhenBackgroundIsClicked = false
+                        };
+                        somewarningpopup.OnDone = async () =>
+                        {
+                            await LoadAllIBanAccounts();
+                        };
+                        await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                    }
+
+                   
 
                 }
                 IsLoading = false;

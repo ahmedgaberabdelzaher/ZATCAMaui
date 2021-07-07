@@ -176,9 +176,7 @@ namespace EGAZT.Models
     }
 
 
-    [Serializable]
     [Preserve(AllMembers = true)]
-    [DataContract]
     public class IBANPostRequest
     {
         public string Action { get; set; }
@@ -194,9 +192,7 @@ namespace EGAZT.Models
         public string Tin { get; set; }
     }
 
-    [Serializable]
     [Preserve(AllMembers = true)]
-    [DataContract]
     public class IBANNewData
     {
         public Metadata __metadata { get; set; }
