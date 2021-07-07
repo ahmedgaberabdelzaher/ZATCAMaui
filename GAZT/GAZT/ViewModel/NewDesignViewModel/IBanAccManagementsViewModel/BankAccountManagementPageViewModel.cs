@@ -1,12 +1,15 @@
 ﻿using EGAZT.Manager;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -103,8 +106,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
-        public void SummaryConButtonClicked(IbanListSetResult selectedItem, string actionFlag)
+        public async void SummaryConButtonClicked(IbanListSetResult selectedItem, string actionFlag)
         {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
             try
             {
                 IBANPostRequest requestObj = new IBANPostRequest();
@@ -121,6 +128,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 requestObj.Type = selectedItem.Type;
 
                 var IBANPostResponse =  IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
+                IsLoading = false;
+                if (IBANPostResponse!=null&&IBANPostResponse.Result!=null&&IBANPostResponse.Result.d!=null)
+                {
+                    IsLoading = false;
+                    if (actionFlag=="D")
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIsActivated));
+                   else if(actionFlag=="A")
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIsDeActivated));
+
+                }
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
@@ -129,6 +146,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                    {
                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                        //_navigationService.GoBack();
+                       IsLoading = false;
                    });
             }
             catch (InternetException ex)
@@ -137,6 +155,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
+                    IsLoading = false;
                 });
             }
         }
@@ -164,6 +183,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     try
                     {
                         MainListData = IbanAccounts.d.IbanListSet.results;
+
+                        var RejectMatch = MainListData.Find(selectedValue => (selectedValue.StatusDesc == "Rejected"));
+                        var MissingIfoMatch = MainListData.Find(selectedValue => (selectedValue.StatusDesc == "Missing Information"));
+
+
+                         if (MissingIfoMatch!=null|| RejectMatch!=null)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIncomplete));
+
+                        }
                     }
                     catch (Exception ex)
                     {

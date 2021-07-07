@@ -9114,7 +9114,16 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="AddNewIban" xml:space="preserve">
     <value>Add a new IBAN</value>
   </data>
+  <data name="NDIBANIsActivated" xml:space="preserve">
+    <value>This IBAN is activated</value>
+  </data>
+  <data name="NDIBANIsDeActivated" xml:space="preserve">
+    <value>This IBAN is deactivated</value>
+  </data>
   <data name="NDIBANSuccessMessage" xml:space="preserve">
     <value>You can use the bank account for refund requests after it has been approved by GAZT</value>
+  </data>
+  <data name="NDIBANIncomplete" xml:space="preserve">
+    <value>You have an incomplete IBAN account. Please complete the required information and ensure its accuracy in order to avoid any delay in your recovery procedures</value>
   </data>
 </root>
