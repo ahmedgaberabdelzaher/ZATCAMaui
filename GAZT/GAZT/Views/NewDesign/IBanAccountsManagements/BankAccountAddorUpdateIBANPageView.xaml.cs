@@ -32,6 +32,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             this.BindingContext = _viewModel;
 
             _viewModel.IBANAccountData = IBANAccountData;
+            AckText.Text = string.Format(AppResources.NDIBANCertifyAck, App.LoginDataRetrieved.NameOrg1);
         }
 
         protected override void OnAppearing()

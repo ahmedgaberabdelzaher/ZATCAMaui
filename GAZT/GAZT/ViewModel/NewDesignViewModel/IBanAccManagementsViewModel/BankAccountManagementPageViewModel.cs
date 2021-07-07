@@ -108,10 +108,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
         public async void SummaryConButtonClicked(IbanListSetResult selectedItem, string actionFlag)
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             try
             {
                 IBANPostRequest requestObj = new IBANPostRequest();
@@ -128,7 +125,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 requestObj.Type = selectedItem.Type;
 
                 var IBANPostResponse =  IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
-                IsLoading = false;
+                
                 if (IBANPostResponse!=null&&IBANPostResponse.Result!=null&&IBANPostResponse.Result.d!=null)
                 {
                     IsLoading = false;
@@ -138,6 +135,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIsDeActivated));
 
                 }
+                IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)

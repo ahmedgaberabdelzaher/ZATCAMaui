@@ -477,7 +477,7 @@
                                             </Grid>
                                         </Grid>
 
-                                        <Label Text="{x:Static ResourceManager:AppResources.CRIherebycertify}"
+                                        <Label  x:Name="AckText" 
                                        HorizontalOptions="Start"
                                        VerticalOptions="Start"
                                        Style="{StaticResource BodyLabelGrey}" />

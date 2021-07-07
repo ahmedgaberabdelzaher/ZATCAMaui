@@ -7031,6 +7031,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I, the taxpayer {0} acknowledge and confirm that all information and data provided regarding my bank account is correct and valid and that the account is belongs to me directly or indirectly and I take full responsibility for any consequences that may result from intentional or unintentional mistake in the data entered and acknowledge and agree that GAZT shall not be liable wholly or partially for any direct or indirect incidental or collateral or punitive, general or special mistake or damage arising from  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string NDIBANCertifyAck {
+            get {
+                return ResourceManager.GetString("NDIBANCertifyAck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have an incomplete IBAN account. Please complete the required information and ensure its accuracy in order to avoid any delay in your recovery procedures.
         /// </summary>
         public static string NDIBANIncomplete {
