@@ -439,10 +439,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 requestObj.Bankid = SelectedBankNameValue;
                 requestObj.Type = SelectedIDTypeValue;
 
+               var IBANPostResponse = await IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
 
-                var IBANPostResponse = await IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
 
-
+                string chaaarFlag = "N";
+                
+                if(IBANPostResponse.d.Action.Equals("N"))
+                {
+                    var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                    {
+                        CloseWhenBackgroundIsClicked = false
+                    };
+                    somewarningpopup.OnDone = async () =>
+                    {
+                        _navigationService.GoBack();
+                    };
+                }
 
             }
             catch (GAZTVATRegistrationInProcessException ex)

@@ -9030,10 +9030,13 @@ info@gazt.gov.sa</value>
   <data name="NDIBANValidationforSA" xml:space="preserve">
     <value>Bank Name</value>
   </data>
-   <data name="NDIBANValidationforLenght" xml:space="preserve">
+  <data name="NDIBANValidationforLenght" xml:space="preserve">
     <value>IBAN number must be 24 digits</value>
   </data>
   <data name="AddNewIban" xml:space="preserve">
     <value>إضافة ايبان جديد</value>
+  </data>
+  <data name="NDIBANSuccessMessage" xml:space="preserve">
+    <value>يمكنكم استخدام الحساب البنكي في طلبات الاسترداد بعد اعتماده من قبل الهيئة.</value>
   </data>
 </root>

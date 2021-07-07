@@ -1660,7 +1660,7 @@ namespace EGAZT {
         ///Thank you for submitting your VAT return. Please provide us with the following information for us to be able to process your request as soon as possible
         ///• Trial balance (TB) for the submitted return extracted from the system in PDF format which contains: beginning balances, movement, and ending balance for the return period
         ///• Trial balance (TB) for the submitted return in MS Excel format which contains: beginning balances, movement, and ending balance for the return period
-        ///• Bank account [rest of string was truncated]&quot;;.
+        ///• Bank account sta [rest of string was truncated]&quot;;.
         /// </summary>
         public static string CreditReturnMsg {
             get {
@@ -2536,7 +2536,7 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to The General Authority of Zakat and Tax underwent several developmental phases and changed its name several times. It was established in 1355 AH / 1936 AD as the &quot;Zakat and Income Bureau&quot;, and then it became the &quot;Zakat and Income Authority&quot; in 1370 AH, and ultimately, the Royal Decree No. (A/133) dated 30/7/1437 AH, specified in Section 11 that the &quot;Zakat and Income Authority&quot; will be converted into the &quot;General Authority of Zakat and Tax&quot; (GAZT), and chaired by the Minister of Finance.
         ///
-        ///In accordance with [rest of string was truncated]&quot;;.
+        ///In accordance with i [rest of string was truncated]&quot;;.
         /// </summary>
         public static string DroidAboutUS {
             get {
@@ -2558,7 +2558,7 @@ namespace EGAZT {
         ///
         ///The General Authority of Zakat and Tax (&quot;GAZT&quot;) may collect and process the following information about you:
         ///
-        ///Information you give GAZT: You may give GAZT information about you by filling in forms and options on the GAZT&apos;s sites or by corresponding with GAZT by phone, e-mail or otherwise. This includes information you provide when you register to use the site (&quot;Site&quot;), set up a user profile, and when you send GAZT an email or repor [rest of string was truncated]&quot;;.
+        ///Information you give GAZT: You may give GAZT information about you by filling in forms and options on the GAZT&apos;s sites or by corresponding with GAZT by phone, e-mail or otherwise. This includes information you provide when you register to use the site (&quot;Site&quot;), set up a user profile, and when you send GAZT an email or report a  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string DroidPrivacyPolicy {
             get {
@@ -6217,7 +6217,7 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to The General Authority of Zakat and Tax underwent several developmental phases and changed its name several times. It was established in 1355 AH / 1936 AD as the &quot;Zakat and Income Bureau&quot;, and then it became the &quot;Zakat and Income Authority&quot; in 1370 AH, and ultimately, the Royal Decree No. (A/133) dated 30/7/1437 AH, specified in Section 11 that the &quot;Zakat and Income Authority&quot; will be converted into the &quot;General Authority of Zakat and Tax&quot; (GAZT), and chaired by the Minister of Finance.
         ///
-        ///In accordance with [rest of string was truncated]&quot;;.
+        ///In accordance with i [rest of string was truncated]&quot;;.
         /// </summary>
         public static string IosAboutUs {
             get {
@@ -6230,7 +6230,7 @@ namespace EGAZT {
         ///
         ///The General Authority of Zakat and Tax (&quot;GAZT&quot;) may collect and process the following information about you:
         ///
-        ///Information you give GAZT: You may give GAZT information about you by filling in forms and options on the GAZT&apos;s sites or by corresponding with GAZT by phone, e-mail or otherwise. This includes information you provide when you register to use the site (&quot;Site&quot;), set up a user profile, and when you send GAZT an email or repor [rest of string was truncated]&quot;;.
+        ///Information you give GAZT: You may give GAZT information about you by filling in forms and options on the GAZT&apos;s sites or by corresponding with GAZT by phone, e-mail or otherwise. This includes information you provide when you register to use the site (&quot;Site&quot;), set up a user profile, and when you send GAZT an email or report a  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string IosPrivacyPolicy {
             get {
@@ -7027,6 +7027,33 @@ namespace EGAZT {
         public static string NDHijri {
             get {
                 return ResourceManager.GetString("NDHijri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can use the bank account for refund requests after it has been approved by GAZT.
+        /// </summary>
+        public static string NDIBANSuccessMessage {
+            get {
+                return ResourceManager.GetString("NDIBANSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IBAN number must be 24 digits.
+        /// </summary>
+        public static string NDIBANValidationforLenght {
+            get {
+                return ResourceManager.GetString("NDIBANValidationforLenght", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IBAN number should start with SA.
+        /// </summary>
+        public static string NDIBANValidationforSA {
+            get {
+                return ResourceManager.GetString("NDIBANValidationforSA", resourceCulture);
             }
         }
         
@@ -8360,7 +8387,7 @@ namespace EGAZT {
         ///2. Acknowledged that if I delay in payment of two consecutive instalments, GAZT has the right to cancel the instalment plan.
         ///3. I promise that I provide recent statements to GAZT for all banking activity accounts and my personal accounts.
         ///4. GAZT has the right to modify the amount and the period of the instalments as they consider appropriate.
-        ///5. GAZT has the right to cancel the instalment plan in the case of proven yo [rest of string was truncated]&quot;;.
+        ///5. GAZT has the right to cancel the instalment plan in the case of proven yours  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string OldZakatInstructions {
             get {
@@ -11876,7 +11903,7 @@ namespace EGAZT {
         ///    
         ///    2. GAZT holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this refund request.
         ///    
-        ///    3. GAZT holds the right to open an audit case in orde [rest of string was truncated]&quot;;.
+        ///    3. GAZT holds the right to open an audit case in order to  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VATRefundRequestTermsAndConditions {
             get {
@@ -12057,7 +12084,7 @@ namespace EGAZT {
         ///    
         ///    2. GAZT holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this refund request.
         ///    
-        ///    3. GAZT holds the right to open an audit case in orde [rest of string was truncated]&quot;;.
+        ///    3. GAZT holds the right to open an audit case in order to  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VATRefundSummaryTermsandConditions {
             get {
@@ -12662,7 +12689,7 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to 1. It is assumed that taxpayer has read and understood the Kingdom of Saudi Arbia&apos;s VAT Law and Regulations and all the information provided is, to the best of the taxpayer&apos;s knowledge, true, correct and complete.
         ///2. GAZT holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this request.
-        ///3. GAZT holds the right to audit a business in order to verify that this request is valid,  [rest of string was truncated]&quot;;.
+        ///3. GAZT holds the right to audit a business in order to verify that this request is valid, if [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VatTerms {
             get {
@@ -12829,7 +12856,7 @@ namespace EGAZT {
         ///− For taxpayers &lt;40M SAR annual taxable revenues requesting monthly VAT Tax Period:
         ///Taxpayers are eligible without providing further evidence; reverting to a quarterly Tax Period is again possible after having filed 2 years with a monthly Tax Period with the last 12 months revenues being below SAR 40M
         ///− For taxpayers &lt;40M SAR annual taxable revenues requesting quarterly VAT Tax Period:
-        ///Taxpayer is required to provide evidence that he has  [rest of string was truncated]&quot;;.
+        ///Taxpayer is required to provide evidence that he has been [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VFCInstructions {
             get {
@@ -13195,7 +13222,7 @@ namespace EGAZT {
         ///2.The request cannot be successfully submitted until all of the mandatory fields have been completed.
         ///3.Applicants should ensure that they have the reference or request number related to the decision they would like to review.
         ///4.If you are submitting a review on a penalty related to a specific VAT return, you may be asked to submit a security deposit that includes the VAT due for that period.
-        ///5.Correction penalties and penalties for error in tax ret [rest of string was truncated]&quot;;.
+        ///5.Correction penalties and penalties for error in tax return  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VRInstructions {
             get {
@@ -15021,7 +15048,7 @@ namespace EGAZT {
         ///   Looks up a localized string similar to 1. I acknowledge that I do not have sufficient liquidity to pay the full amount.
         ///2. I pledge to provide the General Authority for Zakat &amp; Tax with all recent bank statements of the business activity, as well as my personal account statements for the past three months.
         ///3. I pledge to provide the General Authority for Zakat &amp; Tax with any documents that are requested for the purpose of processing the application.
-        ///4. The General Authority for Zakat &amp; Tax has the right to estimate the amount and period of th [rest of string was truncated]&quot;;.
+        ///4. The General Authority for Zakat &amp; Tax has the right to estimate the amount and period of the i [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZakatInstructions {
             get {
@@ -16258,7 +16285,7 @@ namespace EGAZT {
         ///4. Click on &quot;Return Details&quot; button and Amend the returns.
         ///5. Input correct amount in the &quot;Revised Amount&quot; column which taxpayer agrees to pay based on the amended returns.
         ///6. State reasons for your objections in the section provided.
-        ///7. Provide attachment if required  [rest of string was truncated]&quot;;.
+        ///7. Provide attachment if required to sup [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZOTerms {
             get {
@@ -18912,7 +18939,7 @@ namespace EGAZT {
         ///The request cannot be successfully submitted until all of the mandatory fields have been completed.
         ///You should ensure that the existing details are complete and up to date before submitting your refund request.
         ///Please refer to the FAQ section before filling out the refund form.
-        ///GAZT has the right to audit and amend any credit balance that is requested to be refunded before al [rest of string was truncated]&quot;;.
+        ///GAZT has the right to audit and amend any credit balance that is requested to be refunded before allow t [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZVatRefundInstructions {
             get {
@@ -22760,7 +22787,7 @@ namespace EGAZT {
         ///   Looks up a localized string similar to I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including without limits the below. In the case of non-restriction of VAT system, the General Authority for Zakat and Tax (GAZT) has the full right to apply the proper procedures in accordance with the rules and regulations.
         ///* Registration during the specified period, according to the VAT Law and its Regulations.
         ///* Submitting VAT filing on time based on the annual revenues.
-        ///* Payin [rest of string was truncated]&quot;;.
+        ///* Paying V [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZZZVATAmendInstrunctionsAndConditions7 {
             get {
@@ -23075,7 +23102,7 @@ namespace EGAZT {
         ///   Looks up a localized string similar to I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including without limits the below. In the case of non-restriction of VAT system, the General Authority for Zakat and Tax (GAZT) has the full right to apply the proper procedures in accordance with the rules and regulations.
         ///* Registration during the specified period, according to the VAT Law and its Regulations.
         ///* Submitting VAT filing on time based on the annual revenues.
-        ///* Payin [rest of string was truncated]&quot;;.
+        ///* Paying V [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZZZVATRInstrunctionsAndConditions7 {
             get {
@@ -24340,18 +24367,6 @@ namespace EGAZT {
         public static string ZZZZZakatReturnSubmittedNew {
             get {
                 return ResourceManager.GetString("ZZZZZakatReturnSubmittedNew", resourceCulture);
-            }
-        }
-        
-        public static string NDIBANValidationforSA {
-            get {
-                return ResourceManager.GetString("NDIBANValidationforSA", resourceCulture);
-            }
-        }
-        
-        public static string NDIBANValidationforLenght {
-            get {
-                return ResourceManager.GetString("NDIBANValidationforLenght", resourceCulture);
             }
         }
     }

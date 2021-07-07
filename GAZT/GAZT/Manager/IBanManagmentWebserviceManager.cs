@@ -96,9 +96,9 @@ namespace EGAZT.Manager
 
 
 
-        public async static Task<DashBoardUpdateViewResponseModel> GAZTSubmitBankAccountIBAN(IBANPostRequest postdata)
+        public async static Task<IBANPostResponse> GAZTSubmitBankAccountIBAN(IBANPostRequest postdata)
         {
-            DashBoardUpdateViewResponseModel IBANPostResponse = new DashBoardUpdateViewResponseModel();
+            IBANPostResponse IBANPostResponse = new IBANPostResponse();
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
@@ -124,7 +124,7 @@ namespace EGAZT.Manager
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
-                    IBANPostResponse = JsonConvert.DeserializeObject<DashBoardUpdateViewResponseModel>(detailJson);
+                    IBANPostResponse = JsonConvert.DeserializeObject<IBANPostResponse>(detailJson);
 
                     if (IBANPostResponse == null || IBANPostResponse.d == null)
                     {

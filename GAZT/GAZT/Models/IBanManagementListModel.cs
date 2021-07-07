@@ -193,4 +193,36 @@ namespace EGAZT.Models
         public string AgreeFg { get; set; }
         public string Tin { get; set; }
     }
+
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
+    public class IBANNewData
+    {
+        public Metadata __metadata { get; set; }
+        public string FormGuid { get; set; }
+        public string Status { get; set; }
+        public string StatusDesc { get; set; }
+        public string Tin { get; set; }
+        public string AgreeFg { get; set; }
+        public string IdtypeDesc { get; set; }
+        public string ActiveIban { get; set; }
+        public string Fbnum { get; set; }
+        public string VisibleUpdate { get; set; }
+        public string Koinh { get; set; }
+        public string Type { get; set; }
+        public string Idnumber { get; set; }
+        public string Iban { get; set; }
+        public string Bankid { get; set; }
+        public string Bkext { get; set; }
+        public string EnableUpdate { get; set; }
+        public string Action { get; set; }
+    }
+
+
+
+    public class IBANPostResponse
+    {
+        public IBANNewData d { get; set; }
+    }
 }
