@@ -1444,7 +1444,8 @@ namespace GAZT.Manager
         Invoice = 53,
         Release = 54,
         ReviseDownPayment = 55,
-        AddNote = 56
+        AddNote = 56,
+        Update = 57
     }
 
 

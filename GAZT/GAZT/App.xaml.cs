@@ -328,6 +328,9 @@ namespace EGAZT
         //in Seconds
         public static int IdleTimeToLogout = 100;
 
+        public static string SelectedIBAN = string.Empty;
+
+
         public static bool IsLoginPageRefreshed;
         private INavigationService _navigationService;
         private IDialogService _dialogService;
@@ -350,6 +353,8 @@ namespace EGAZT
 
         public string acntStatementsSelectedTaxTypeFilterId = string.Empty;
         public string acntStatementsStatementFilterId = string.Empty;
+
+
 
         public static ActivityIndicatorPageView ActivityIndicatorView;
         public static HttpClientHandler httpClientHandler = null;

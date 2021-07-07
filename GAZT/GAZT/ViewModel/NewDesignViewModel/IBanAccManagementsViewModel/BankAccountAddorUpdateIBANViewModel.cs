@@ -427,7 +427,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
      
                 IBANPostRequest requestObj = new IBANPostRequest();
-                requestObj.Action = "N";
+
+                if (string.IsNullOrEmpty(App.SelectedIBAN)) {
+
+                    requestObj.Action = "N";
+
+                }
+                else {
+                    requestObj.Action = "U";
+
+                }
+
                 requestObj.AgreeFg = "X";
                 requestObj.Fbnum = "";
                 requestObj.Tin = App.LoginDataRetrieved.TIN;
@@ -441,9 +451,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                var IBANPostResponse = await IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
 
-
-                string chaaarFlag = "N";
-                
                 if(IBANPostResponse.d.Action.Equals("N"))
                 {
                     var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)

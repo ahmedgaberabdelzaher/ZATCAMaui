@@ -136,6 +136,7 @@
                                 <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
                                     <custom:BorderlessEntry x:Name="AccountOwnerName"
                                                     HorizontalOptions="FillAndExpand"
+                                                            Text="{Binding AccountOwnerName}"
                                                             TextChanged="AccountOwnerNameTextChanged"
                                                             TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="15"/>
                                 </border:SfBorder>
@@ -253,6 +254,7 @@
                                     <custom:BorderlessEntry x:Name="BankAccountIBAN"
                                                     HorizontalOptions="FillAndExpand"
                                                              TextChanged="IBANTextChanged"
+                                                            Text="{Binding IBANValue}"
                                                             Unfocused="IBANFocusChnaged"
                                                             TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="15"/>
                                 </border:SfBorder>

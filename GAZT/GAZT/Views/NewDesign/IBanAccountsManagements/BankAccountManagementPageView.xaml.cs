@@ -48,6 +48,56 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             //Check for Large Tax payer or not
             await _viewModel.LoadAllIBanAccounts();
 
+            App.SelectedIBAN = string.Empty;
+
+
+            //MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
+            //{
+            //    await PopupNavigation.Instance.PopAsync();
+            //    if (arg != null)
+            //    {
+            //        string message = arg;
+            //        if (App.IsArabic)
+            //        {
+            //            ArButtons buttonId = ArButtons.None;
+            //            if (!string.IsNullOrEmpty(message))
+            //            {
+            //                message = message.Replace(" ", "");
+            //            }
+            //            Enum.TryParse(message, out buttonId);
+            //            switch (buttonId)
+            //            {
+
+
+            //                case ArButtons.حفظكمسودة:
+
+            //                    break;
+            //                default:
+            //                    break;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Buttons buttonId = Buttons.None;
+            //            if (!string.IsNullOrEmpty(message))
+            //            {
+            //                message = message.Replace(" ", "");
+            //            }
+            //            Enum.TryParse(message, out buttonId);
+            //            switch (buttonId)
+            //            {
+            //                case Buttons.Update:
+            //                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, _viewModel.IBANAccountData);
+
+            //                    break;
+
+            //                default:
+            //                    break;
+            //            }
+            //        }
+            //    }
+            //});
+
             MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
             {
                 await PopupNavigation.Instance.PopAsync();
@@ -56,12 +106,15 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                 {
                      _viewModel.SummaryConButtonClicked(selectedItem, "A");
                 }
-                
                 else if(message.Equals("ACTIVATE"))
                 {
                      _viewModel.SummaryConButtonClicked(selectedItem, "D");
                 }
-                    
+                else if (message.Equals("Update"))
+                {
+                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, _viewModel.IBANAccountData);
+                }
+
 
             });
          }
@@ -103,6 +156,8 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+
+            
             MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
 
         }
@@ -113,10 +168,10 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
         {
             var textToDisplayInButton = string.Empty;
             var selectedLv = sender as SfListView;
-             selectedItem = (IbanListSetResult)selectedLv.SelectedItem;
-           
+            selectedItem = (IbanListSetResult)selectedLv.SelectedItem;
+            App.SelectedIBAN = selectedItem.Fbnum;
             //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("" + selectedItem.Bkext));
-            if(selectedItem.VisibleUpdate!=null)
+            if (selectedItem.VisibleUpdate!=null)
             {
                 if(selectedItem.VisibleUpdate=="")
                 {
@@ -134,7 +189,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                     //IsEnabled Update or disble update button
                     if(selectedItem.EnableUpdate=="X")
                     {
-                        textToDisplayInButton = "UpdatedEnabled";
+                        textToDisplayInButton = "Update";
                     }
                     else if(selectedItem.EnableUpdate == "")
                     {

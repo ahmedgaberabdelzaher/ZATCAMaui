@@ -4,6 +4,7 @@ using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
+using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -42,11 +43,34 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             this.Padding = safeInsets;
             //Check for Large Tax payer or not
 
-            _viewModel.SelectedIDType = "";
-            _viewModel.SelectedBankName = "";
-            _viewModel.SelectedIDNumber = "";
-            _viewModel.AccountOwnerName = "";
-            _viewModel.IBANValue = "";
+
+            if (string.IsNullOrEmpty(App.SelectedIBAN)) {
+
+                _viewModel.SelectedIDType = "";
+                _viewModel.SelectedBankName = "";
+                _viewModel.SelectedIDNumber = "";
+                _viewModel.AccountOwnerName = "";
+                _viewModel.IBANValue = "";
+            }
+            else {
+
+
+                var selectedIBAN = _viewModel.IBANAccountData.d.IbanListSet.results.Find(selectedValue => (selectedValue.Fbnum == App.SelectedIBAN));
+
+                if (selectedIBAN != null)
+                {
+                    _viewModel.SelectedIDType = selectedIBAN.IdtypeDesc;
+                    _viewModel.SelectedBankName = selectedIBAN.Bkext;
+                    _viewModel.SelectedIDNumber = selectedIBAN.Idnumber;
+                    _viewModel.AccountOwnerName = selectedIBAN.Koinh;
+                    _viewModel.IBANValue = selectedIBAN.Iban;
+                }
+
+             
+            }
+
+
+         
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 _viewModel.PickerModel = arg;
@@ -65,6 +89,9 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                 }
                
             });
+
+           
+
         }
 
         protected override void OnDisappearing()
