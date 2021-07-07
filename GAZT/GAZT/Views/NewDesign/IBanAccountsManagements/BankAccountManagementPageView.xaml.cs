@@ -104,11 +104,11 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                 string message = arg;
                 if(message.Equals("DEACTIVATE"))
                 {
-                     _viewModel.SummaryConButtonClicked(selectedItem, "A");
+                     _viewModel.SummaryConButtonClicked(selectedItem, "D");
                 }
                 else if(message.Equals("ACTIVATE"))
                 {
-                     _viewModel.SummaryConButtonClicked(selectedItem, "D");
+                     _viewModel.SummaryConButtonClicked(selectedItem, "A");
                 }
                 else if (message.Equals("Update"))
                 {
