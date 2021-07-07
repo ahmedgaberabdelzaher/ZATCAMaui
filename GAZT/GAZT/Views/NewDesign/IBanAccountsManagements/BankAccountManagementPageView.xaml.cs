@@ -196,10 +196,14 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                         textToDisplayInButton = "UpdateDisabled";
                     }
                 }
-                var listOfActionButtonsApplicable = new List<string>();
-                listOfActionButtonsApplicable.Add(textToDisplayInButton);
-                await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(listOfActionButtonsApplicable));
+                if(textToDisplayInButton!="UpdateDisabled")
+                {
+                  var listOfActionButtonsApplicable = new List<string>();
+                  listOfActionButtonsApplicable.Add(textToDisplayInButton);
+                  await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(listOfActionButtonsApplicable));
 
+                }
+                
             }
             var view = sender as SfListView;
             view.SelectedItem = null;

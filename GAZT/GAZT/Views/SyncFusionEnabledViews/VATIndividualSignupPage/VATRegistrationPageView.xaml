@@ -227,6 +227,7 @@
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="20*"/>
                                                 </Grid.RowDefinitions>
                                                 <!--Start Of Read Only or pre-populated-->
@@ -474,8 +475,21 @@
                                                         </custom1:CustomDatePicker>
                                                     </Grid>
                                                 </StackLayout>
-
-                                                <StackLayout Grid.Row="8">
+                                                <Frame Grid.Row="8" BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,15,15,15" HasShadow="False">
+                                                    <custom:CustomLabel  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" LineSpacing="1" VerticalOptions="EndAndExpand"   >
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="To add or edit registered bank accounts data for GAZT, please go to "/>
+                                                                <Span Text="Bank Accounts Management" TextColor="#006450"  >
+                                                                    <Span.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="IBANAccManagementTapped"></TapGestureRecognizer>
+                                                                    </Span.GestureRecognizers>
+                                                                </Span>
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                    </custom:CustomLabel>
+                                                </Frame>
+                                                <StackLayout Grid.Row="9">
                                                     <Label Text="{x:Static custom2:AppResources.VATRImportExport}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                                                     <Grid ColumnSpacing="30">
                                                         <Grid.RowDefinitions>
@@ -550,7 +564,7 @@
                                                 </StackLayout>
 
 
-                                                <StackLayout Grid.Row="9">
+                                                <StackLayout Grid.Row="10">
                                                     <Grid>
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
@@ -590,7 +604,7 @@
                                                     </Grid>
                                                 </StackLayout>
 
-                                                <StackLayout Grid.Row="10">
+                                                <StackLayout Grid.Row="11">
 
                                                     <Grid>
                                                         <Grid.RowDefinitions>
@@ -722,7 +736,7 @@
                                                                 <!--<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
                                                                 <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True"  Margin="3" Padding="0"  CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                                     <Grid>
-                                                                        <Image Margin="0" Source="{Binding ImageforTextQuestion3First}" Aspect="AspectFill"  Grid.Row="0">
+                                                                        <Image Margin="0" Source="{Binding ImageforFGroTextQuestion3First}" Aspect="AspectFill"  Grid.Row="0">
                                                                         </Image>
                                                                         <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
                                                                             <Grid.RowDefinitions>

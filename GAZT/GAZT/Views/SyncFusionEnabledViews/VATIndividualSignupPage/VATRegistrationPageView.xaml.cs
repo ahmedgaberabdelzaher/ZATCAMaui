@@ -3509,5 +3509,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel._navigationService.GoBack();
         }
 
+        private void IBANAccManagementTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+
+        }
     }
 }
