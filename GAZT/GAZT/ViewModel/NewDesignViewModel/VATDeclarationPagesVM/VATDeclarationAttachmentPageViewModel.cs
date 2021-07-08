@@ -30,6 +30,7 @@ namespace EGAZT
         public ICommand GoBackClick { get; set; }
         public static Decimal AttachmentUploadedSize = 0;
         public static bool isToBeFilled = false;
+        public bool isUploadHappened = false;
         public static bool attachmentSizeVisibility = false;
         public List<decimal> SizeList = new List<decimal>();
         byte[] attachment;
@@ -351,14 +352,14 @@ namespace EGAZT
                                                         AttachmentCount++;
                                                         CloneAttachmentList(VatAttachmentsList);
                                                         AttachmentName = string.Empty;
-
-                                                         if(CR2215flag.Equals("X"))
+                                                        isUploadHappened = true;
+                                                         /*if(CR2215flag.Equals("X"))
                                                         {
                                                             VATDeclarationDataForAttch.d.ATTACHSet.results.Clear();
                                                             //Array.Clear(VATDeclarationDataForAttch.d.ATTACHSet.results, 0, VATDeclarationDataForAttch.d.ATTACHSet.results.Count);
 
                                                             string NotifyResponse = await WebServiceManager.SendNotificationToAuditorafterUploadingAttachments(VATDeclarationDataForAttch.d);
-                                                        }
+                                                        }*/
                                                     }
                                                     else
                                                     {
@@ -432,6 +433,7 @@ namespace EGAZT
         }
         private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType)
         {
+
             AttachmentRootOject _attachment = null;
             await Task.Run(() =>
             {

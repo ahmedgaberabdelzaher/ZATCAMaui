@@ -34,6 +34,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         VATAttachment attachment;
         public static string AttachmentName = string.Empty;
         string downloadFilePath;
+        private VATDeclaration vATDeclarationResponse;
         public VATDeclarationAttachmentPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
@@ -41,8 +42,14 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             this.BindingContext = viewModel;
             SetLTR();
 
+            vATDeclarationResponse = vATDeclaration;
+
             if (vATDeclaration.d.Cr2215 != null && vATDeclaration.d.Cr2215.Equals("X"))
+            {
                 viewModel.CR2215flag = vATDeclaration.d.Cr2215;
+                PopUpPageView.CloseWhenBackgroundIsClicked = false;
+            }
+                
 
 
             if (viewModel.CR2215flag != null && viewModel.CR2215flag.Equals("X"))
@@ -167,11 +174,22 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        private void OnCloseTapped(object sender, EventArgs e)
+        private async void OnCloseTapped(object sender, EventArgs e)
         {
             try
             {
-                PopupNavigation.Instance.PopAsync();
+                await PopupNavigation.Instance.PopAsync();
+                if(viewModel.isUploadHappened)
+                if (vATDeclarationResponse.d.Cr2215 != null && vATDeclarationResponse.d.Cr2215.Equals("X"))
+                    {
+                    vATDeclarationResponse.d.ATTACHSet.results.Clear();
+                        //Array.Clear(VATDeclarationDataForAttch.d.ATTACHSet.results, 0, VATDeclarationDataForAttch.d.ATTACHSet.results.Count);
+
+                         string NotifyResponse = await WebServiceManager.SendNotificationToAuditorafterUploadingAttachments(viewModel.VATDeclarationDataForAttch.d);
+                        viewModel.isUploadHappened = false;
+                }
+               
+               
             }
             catch (Exception)
             {
