@@ -611,7 +611,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         _vATDeclaration.d.Cr2215 = SelectedReturnsVAT.Cr2215;
                         PopupNavigation.Instance.PushAsync(new VATDeclarationAttachmentPageView(_vATDeclaration));
-                        MessagingCenter.Send<Object, string>(this, "IsCR2215AttachmentEnable", SelectedReturnsVAT.Cr2215);
+                        //MessagingCenter.Send<Object, string>(this, "IsCR2215AttachmentEnable", SelectedReturnsVAT.Cr2215);
 
                 }
                     else

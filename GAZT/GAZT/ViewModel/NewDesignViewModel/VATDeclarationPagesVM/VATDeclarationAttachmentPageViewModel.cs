@@ -17,6 +17,7 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Xamarin.Forms.Internals;
+using System.IO;
 
 namespace EGAZT
 {
@@ -279,9 +280,16 @@ namespace EGAZT
                         {
                             attachment = fileData.DataArray;
                             AttachmentName = fileData.FileName;
-                            if (fileData.FileName.Contains("."))
+
+                            string ext = Path.GetExtension(fileData.FileName);
+
+
+                            //if (fileData.FileName.Contains("."))
+                            if (ext != null && ext != "")
                             {
-                                string Extention = fileData.FileName.Split('.')[1];
+                                if (ext.Contains("."))
+                                {
+                                string Extention = ext.Split('.')[1];
                                 if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
                                 {
                                     if (TotalAttachmentSize <= 300)
@@ -345,7 +353,7 @@ namespace EGAZT
                                                                     }
                                                                 }
                                                             }
-                                                            catch (Exception )
+                                                            catch (Exception)
                                                             {
                                                             }
                                                         }
@@ -353,13 +361,13 @@ namespace EGAZT
                                                         CloneAttachmentList(VatAttachmentsList);
                                                         AttachmentName = string.Empty;
                                                         isUploadHappened = true;
-                                                         /*if(CR2215flag.Equals("X"))
-                                                        {
-                                                            VATDeclarationDataForAttch.d.ATTACHSet.results.Clear();
-                                                            //Array.Clear(VATDeclarationDataForAttch.d.ATTACHSet.results, 0, VATDeclarationDataForAttch.d.ATTACHSet.results.Count);
+                                                        /*if(CR2215flag.Equals("X"))
+                                                       {
+                                                           VATDeclarationDataForAttch.d.ATTACHSet.results.Clear();
+                                                           //Array.Clear(VATDeclarationDataForAttch.d.ATTACHSet.results, 0, VATDeclarationDataForAttch.d.ATTACHSet.results.Count);
 
-                                                            string NotifyResponse = await WebServiceManager.SendNotificationToAuditorafterUploadingAttachments(VATDeclarationDataForAttch.d);
-                                                        }*/
+                                                           string NotifyResponse = await WebServiceManager.SendNotificationToAuditorafterUploadingAttachments(VATDeclarationDataForAttch.d);
+                                                       }*/
                                                     }
                                                     else
                                                     {
@@ -402,12 +410,13 @@ namespace EGAZT
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                                 }
                             }
-                            else
-                            {
-                                AttachmentName = string.Empty;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                        }
+                        else
+                        {
+                            AttachmentName = string.Empty;
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
-                            }
+                        }
                         }
                     }
                     else

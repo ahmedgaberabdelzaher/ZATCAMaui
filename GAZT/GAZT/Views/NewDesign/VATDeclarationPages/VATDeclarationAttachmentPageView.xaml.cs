@@ -41,21 +41,25 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel = App.Locator.VATDeclarationAttachmentPageView;
             this.BindingContext = viewModel;
             SetLTR();
-
-            vATDeclarationResponse = vATDeclaration;
-
-            if (vATDeclaration.d.Cr2215 != null && vATDeclaration.d.Cr2215.Equals("X"))
+            try
             {
-                viewModel.CR2215flag = vATDeclaration.d.Cr2215;
-                PopUpPageView.CloseWhenBackgroundIsClicked = false;
+                vATDeclarationResponse = vATDeclaration;
+
+                if (vATDeclaration.d.Cr2215 != null && vATDeclaration.d.Cr2215.Equals("X"))
+                {
+                    viewModel.CR2215flag = vATDeclaration.d.Cr2215;
+                    PopUpPageView.CloseWhenBackgroundIsClicked = false;
+                }
+
+                if (viewModel.CR2215flag != null && viewModel.CR2215flag.Equals("X"))
+                    viewModel.IsAttachEnabled = true;
+                else
+                    viewModel.IsAttachEnabled = false;
             }
-                
+            catch (Exception e)
+            {
+            }
 
-
-            if (viewModel.CR2215flag != null && viewModel.CR2215flag.Equals("X"))
-                viewModel.IsAttachEnabled = true;
-            else
-                viewModel.IsAttachEnabled = false;
 
 
 
@@ -154,9 +158,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "YesCommandToDeleteVATAttachment", async (sender, arg) =>
                 {
-                    if(attachment != null)
+                    if (attachment != null)
                     {
-                      await  DeleteAttachment(attachment);
+                        await DeleteAttachment(attachment);
                     }
                 });
             }
@@ -166,7 +170,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        
+
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -178,18 +182,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                await PopupNavigation.Instance.PopAsync();
-                if(viewModel.isUploadHappened)
-                if (vATDeclarationResponse.d.Cr2215 != null && vATDeclarationResponse.d.Cr2215.Equals("X"))
+                
+                if (viewModel.isUploadHappened)
+                    if (vATDeclarationResponse.d.Cr2215 != null && vATDeclarationResponse.d.Cr2215.Equals("X"))
                     {
-                    vATDeclarationResponse.d.ATTACHSet.results.Clear();
+                        viewModel.IsLoading = true;
+                        vATDeclarationResponse.d.ATTACHSet.results.Clear();
                         //Array.Clear(VATDeclarationDataForAttch.d.ATTACHSet.results, 0, VATDeclarationDataForAttch.d.ATTACHSet.results.Count);
 
-                         string NotifyResponse = await WebServiceManager.SendNotificationToAuditorafterUploadingAttachments(viewModel.VATDeclarationDataForAttch.d);
+                        string NotifyResponse = await WebServiceManager.SendNotificationToAuditorafterUploadingAttachments(viewModel.VATDeclarationDataForAttch.d);
                         viewModel.isUploadHappened = false;
-                }
-               
-               
+                        viewModel.IsLoading = false;
+                    }
+                await PopupNavigation.Instance.PopAsync();
+
+
             }
             catch (Exception)
             {
@@ -218,7 +225,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     try
                     {
                         Image arrowImage = sender as Image;
-                         attachment = (VATAttachment)arrowImage.BindingContext;
+                        attachment = (VATAttachment)arrowImage.BindingContext;
                         if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                         {
                             int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
@@ -229,7 +236,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     //  var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
                                     AttachmentName = attachment.Filename;
                                     await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView("DeleteVATAttachment"));
-                                   // DeleteAttachment(result, attachment);
+                                    // DeleteAttachment(result, attachment);
                                 }
                             }
                         }
@@ -248,7 +255,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     try
                     {
                         Image arrowImage = sender as Image;
-                         attachment = (VATAttachment)arrowImage.BindingContext;
+                        attachment = (VATAttachment)arrowImage.BindingContext;
 
                         if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                         {
@@ -279,7 +286,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                   // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
         }
@@ -293,29 +300,29 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
                 await Task.Run(() =>
                 {
-                    
-                        int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-                        string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-                        PopToRootPage(); 
-                        if (results == "X")
-                        {
-                            Attachment listitem = (from itm in viewModel.VatAttachmentsList
-                                                   where itm.Doguid == attachment.Doguid.ToString()
-                                                   select itm)
-                                            .FirstOrDefault<Attachment>();
 
-                            VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
-                                                         where itm.Doguid == attachment.Doguid.ToString()
-                                                         select itm)
-                                            .FirstOrDefault<VATAttachment>();
+                    int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                    string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
+                    PopToRootPage();
+                    if (results == "X")
+                    {
+                        Attachment listitem = (from itm in viewModel.VatAttachmentsList
+                                               where itm.Doguid == attachment.Doguid.ToString()
+                                               select itm)
+                                        .FirstOrDefault<Attachment>();
 
-                            viewModel.VatAttachmentsList.Remove(listitem);
-                            viewModel.AttachmentList.Remove(listitemTwo);
-                            viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
-                            if (indexToReduceTheSize != -1)
-                                viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
-                        }
-                    
+                        VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
+                                                     where itm.Doguid == attachment.Doguid.ToString()
+                                                     select itm)
+                                        .FirstOrDefault<VATAttachment>();
+
+                        viewModel.VatAttachmentsList.Remove(listitem);
+                        viewModel.AttachmentList.Remove(listitemTwo);
+                        viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
+                        if (indexToReduceTheSize != -1)
+                            viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                    }
+
                 });
                 await Task.Run(() =>
                 {
@@ -503,56 +510,56 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         }
         public async Task email(string doguid, VATAttachment attachment)
         {
-            await Task.Run( () =>
-            {
-                viewModel.IsLoading = true;
-            });
-            await Task.Run( () =>
-            {
-                try
-                {
-                    string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+            await Task.Run(() =>
+           {
+               viewModel.IsLoading = true;
+           });
+            await Task.Run(() =>
+           {
+               try
+               {
+                   string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
                     byte[] PdfBytes;
-                    HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
-                    WebResponse myResp = myReq.GetResponse();
-                    using (Stream streams = myResp.GetResponseStream())
-                    using (MemoryStream Ms = new MemoryStream())
-                    {
-                        int count = 0;
-                        do
-                        {
-                            byte[] buf = new byte[1024];
-                            count = streams.Read(buf, 0, 1024);
-                            Ms.Write(buf, 0, count);
-                        } while (streams.CanRead && count > 0);
-                        PdfBytes = Ms.ToArray();
-                    }
-                    var message = new EmailMessage
-                    {
-                        Subject = "Attached Form :",
-                    };
-                    var fn = attachment.Filename;
-                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
-                    File.WriteAllBytes(file, PdfBytes);
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Share.RequestAsync(new ShareFileRequest
-                        {
-                            Title = Title,
-                            File = new ShareFile(file)
-                        });
-                    });
+                   HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
+                   WebResponse myResp = myReq.GetResponse();
+                   using (Stream streams = myResp.GetResponseStream())
+                   using (MemoryStream Ms = new MemoryStream())
+                   {
+                       int count = 0;
+                       do
+                       {
+                           byte[] buf = new byte[1024];
+                           count = streams.Read(buf, 0, 1024);
+                           Ms.Write(buf, 0, count);
+                       } while (streams.CanRead && count > 0);
+                       PdfBytes = Ms.ToArray();
+                   }
+                   var message = new EmailMessage
+                   {
+                       Subject = "Attached Form :",
+                   };
+                   var fn = attachment.Filename;
+                   var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                   File.WriteAllBytes(file, PdfBytes);
+                   Device.BeginInvokeOnMainThread(async () =>
+                   {
+                       await Share.RequestAsync(new ShareFileRequest
+                       {
+                           Title = Title,
+                           File = new ShareFile(file)
+                       });
+                   });
 
-                }
-                catch (Exception )
-                {
-                    viewModel.IsLoading = false;
-                }
-            });
-            await Task.Run( () =>
-            {
-                viewModel.IsLoading = false;
-            });
+               }
+               catch (Exception)
+               {
+                   viewModel.IsLoading = false;
+               }
+           });
+            await Task.Run(() =>
+           {
+               viewModel.IsLoading = false;
+           });
         }
         public void ChangeAeroIcon()
         {
