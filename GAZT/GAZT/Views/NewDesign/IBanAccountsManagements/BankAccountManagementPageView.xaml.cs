@@ -163,8 +163,26 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
         }
 
 
+        private async void UpdateButton_Tapped(object sender, EventArgs eventArgs)
+        {
 
-        private  async void IBanAccountsListItemTapped(object sender, ItemSelectionChangedEventArgs e)
+
+        }
+
+        private async void ActivateButton_Tapped(object sender, EventArgs eventArgs)
+        {
+
+
+        }
+
+        private async void DeactivateButton_Tapped(object sender, EventArgs eventArgs)
+        {
+
+
+        }
+
+
+        private async void IBanAccountsListItemTapped(object sender, ItemSelectionChangedEventArgs e)
         {
             var textToDisplayInButton = string.Empty;
             var selectedLv = sender as SfListView;
