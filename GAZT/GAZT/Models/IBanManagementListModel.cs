@@ -52,11 +52,11 @@ namespace EGAZT.Models
                         // Display ActionSheet Radio buttons 
                         if (ActiveIban == "X")
                         {
-                            StatusText = "DEACTIVATE";
+                            StatusText = "Deactivate";
                         }
                         else if (ActiveIban == "")
                         {
-                            StatusText = "ACTIVATE";
+                            StatusText = "Activate";
                         }
                     }
                     else
@@ -113,11 +113,11 @@ namespace EGAZT.Models
                         // Display ActionSheet Radio buttons 
                         if (ActiveIban == "X")
                         {
-                            StatusText = "DEACTIVATE";
+                            StatusText = "Deactivate";
                         }
                         else if (ActiveIban == "")
                         {
-                            StatusText = "ACTIVATE";
+                            StatusText = "Activate";
                         }
                     }
                     else

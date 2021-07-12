@@ -196,10 +196,10 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                    // Display ActionSheet Radio buttons 
                    if(selectedItem.ActiveIban=="X")
                     {
-                        textToDisplayInButton = "DEACTIVATE";
+                        textToDisplayInButton = "Deactivate";
                     }else if(selectedItem.ActiveIban=="")
                     {
-                        textToDisplayInButton = "ACTIVATE";
+                        textToDisplayInButton = "Activate";
                     }
                 }
                 else
