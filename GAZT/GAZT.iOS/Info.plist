@@ -77,13 +77,13 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>CFBundleDisplayName</key>
-	<string>GAZT</string>
+	<string>ZATCA</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gazt.egazt</string>
+	<string>com.gazt.enterprise.egazt</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.1.5</string>
+	<string>2.0.1.1</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.0.4.1</string>
+	<string>4.0.4.3</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
