@@ -8943,13 +8943,13 @@ info@gazt.gov.sa</value>
     <value>عزيزي المكلف، نفيدكم بأنه قد تم تحديث بيانات األنشطة في حسابكم لتتوافق مع بيانات األنشطة في سجالتكم لدى وزارة الشؤون البلدية والقروية.</value>
   </data>
   <data name="FinacialPeriodNormal" xml:space="preserve">
-    <value>العادية الفترة</value>
+    <value>الفترة العادية</value>
   </data>
   <data name="FinacialPeriodSmall" xml:space="preserve">
-    <value>القصيرة الفترة</value>
+    <value>الفترة القصيرة</value>
   </data>
   <data name="FinacialPeriodLong" xml:space="preserve">
-    <value>الطويلة الفترة</value>
+    <value>الفترة الطويلة</value>
   </data>
   <data name="FinacialYearOptions" xml:space="preserve">
     <value>خيارات الفترة المالية</value>

@@ -9021,7 +9021,7 @@ I acknowledge that the above bank account information is correct and assume full
     <value>Normal Period</value>
   </data>
   <data name="FinacialPeriodSmall" xml:space="preserve">
-    <value>Small Period</value>
+    <value>Short Period</value>
   </data>
   <data name="FinacialPeriodLong" xml:space="preserve">
     <value>Long Period</value>
