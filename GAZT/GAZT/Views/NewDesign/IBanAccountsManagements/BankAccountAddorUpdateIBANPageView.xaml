@@ -48,7 +48,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDBankAccAddNewIBan}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.AddNewIban}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
                                Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource BackButtonArrow}" >
@@ -127,7 +127,7 @@
                                 <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDBankAccOwnerName}"  />
+                                            <Span Text="{x:Static ResourceManager:AppResources.IBAN}"  />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -154,7 +154,7 @@
                                             Style="{StaticResource ValueLabelBlack}" >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDBankAccIDType}"  />
+                                            <Span Text="{x:Static ResourceManager:AppResources.IBANIdType}"  />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -199,7 +199,7 @@
                                             Style="{StaticResource ValueLabelBlack}" >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDBankAccIdNumber}"  />
+                                            <Span Text="{x:Static ResourceManager:AppResources.IBANIdNumber}"  />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -244,7 +244,7 @@
                                 <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDBankAccIBAN}"  />
+                                            <Span Text="{x:Static ResourceManager:AppResources.IBAN}"  />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -271,7 +271,7 @@
                                             Style="{StaticResource ValueLabelBlack}" >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDBankAccBankName}"  />
+                                            <Span Text="{x:Static ResourceManager:AppResources.IBANBankName}"  />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>

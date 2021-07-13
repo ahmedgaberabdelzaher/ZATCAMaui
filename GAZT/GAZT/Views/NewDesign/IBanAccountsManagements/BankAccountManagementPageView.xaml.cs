@@ -226,5 +226,32 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             var view = sender as SfListView;
             view.SelectedItem = null;
         }
+
+        private async void StatusViewButtons_Tapped(object sender, EventArgs e)
+        {
+            StackLayout chipView = sender as StackLayout;
+            IbanListSetResult IBanSetResultModel = (IbanListSetResult)chipView.BindingContext;
+            if(!IBanSetResultModel.isUpdateDisabled)
+            {
+App.SelectedIBAN = IBanSetResultModel.Fbnum;
+            if(IBanSetResultModel!=null&& !string.IsNullOrEmpty (IBanSetResultModel.StatusText))
+            {
+                if (IBanSetResultModel.StatusText.Equals("Deactivate"))
+                {
+                    await _viewModel.SummaryConButtonClickedAsync(IBanSetResultModel, "D");
+                }
+                else if (IBanSetResultModel.StatusText.Equals("Activate"))
+                {
+                    await _viewModel.SummaryConButtonClickedAsync(IBanSetResultModel, "A");
+                }
+                else if (IBanSetResultModel.StatusText.Equals("Update"))
+                {
+                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, _viewModel.IBANAccountData);
+                }
+            }
+            }
+            
+            
+        }
     }
 }

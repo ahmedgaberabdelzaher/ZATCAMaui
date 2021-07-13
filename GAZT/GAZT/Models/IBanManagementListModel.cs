@@ -30,7 +30,7 @@ namespace EGAZT.Models
 
             public string Fbnum { get; set; }
 
-           // public string VisibleUpdate { get; set; }
+            // public string VisibleUpdate { get; set; }
             public string StatusText { get; set; }
 
 
@@ -53,10 +53,14 @@ namespace EGAZT.Models
                         if (ActiveIban == "X")
                         {
                             StatusText = "Deactivate";
+                            isUpdateEnabled = true;
+                            isUpdateDisabled = false;
                         }
                         else if (ActiveIban == "")
                         {
                             StatusText = "Activate";
+                            isUpdateEnabled = true;
+                            isUpdateDisabled = false;
                         }
                     }
                     else
@@ -65,10 +69,14 @@ namespace EGAZT.Models
                         if (EnableUpdate == "X")
                         {
                             StatusText = "Update";
+                            isUpdateEnabled = true;
+                            isUpdateDisabled = false;
                         }
                         else if (EnableUpdate == "")
                         {
                             StatusText = "Update";
+                            isUpdateEnabled = false;
+                            isUpdateDisabled = true;
                         }
                     }
 
@@ -76,11 +84,14 @@ namespace EGAZT.Models
             }
 
 
-             
+
 
             public string Koinh { get; set; }
 
             public string Type { get; set; }
+
+            public bool isUpdateEnabled {get;set;}
+            public bool isUpdateDisabled {get;set;}
 
             public string Idnumber { get; set; }
 
@@ -114,10 +125,14 @@ namespace EGAZT.Models
                         if (ActiveIban == "X")
                         {
                             StatusText = "Deactivate";
+                            isUpdateEnabled = true;
+                            isUpdateDisabled = false;
                         }
                         else if (ActiveIban == "")
                         {
                             StatusText = "Activate";
+                            isUpdateEnabled = true;
+                            isUpdateDisabled = false;
                         }
                     }
                     else
@@ -126,10 +141,14 @@ namespace EGAZT.Models
                         if (EnableUpdate == "X")
                         {
                             StatusText = "Update";
+                            isUpdateEnabled = true;
+                            isUpdateDisabled = false;
                         }
                         else if (EnableUpdate == "")
                         {
                             StatusText = "Update";
+                            isUpdateEnabled = false;
+                            isUpdateDisabled = true;
                         }
                     }
 
