@@ -102,6 +102,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
+        public string selectedOtherBankName = "";
+        public bool isIBanValid = false;
         private string _selectedBankName = "";
 
         public string SelectedBankName
@@ -240,9 +242,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
+
+        private bool _otherBanksVisible = false;
+
+        public bool OtherBanksVisible
+        {
+            get { return _otherBanksVisible; }
+            set
+            {
+                if (_otherBanksVisible == value) return;
+
+                _otherBanksVisible = value;
+                RaisePropertyChanged("OtherBanksVisible");
+            }
+        }
+
         public BankAccountAddorUpdateIBANViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-           
+
 
 
             GoBackBtnTapped = new Command(async () => { BackNavigations(); });
@@ -265,7 +282,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             EnableNewFormView();
         }
 
-          private void BackNavigations()
+        private void BackNavigations()
         {
             switch (selectedPage)
             {
@@ -292,12 +309,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             NewFormVisible = false;
             SummaryVisible = true;
             selectedPage = (int)PagesEnum.IBANSummary;
+
+            if (SelectedBankName.Equals("OTHER"))
+            {
+                SelectedBankName = selectedOtherBankName;
+            }
         }
 
         private void setIDTypePickerModel()
         {
 
-            if (PickerModel != null) {
+            if (PickerModel != null)
+            {
 
                 PickerModel = null;
             }
@@ -390,7 +413,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             try
             {
 
-                if(pickerID == 1) {
+                if (pickerID == 1)
+                {
 
                     setIDTypePickerModel();
                 }
@@ -425,22 +449,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             try
             {
 
-     
+
                 IBANPostRequest requestObj = new IBANPostRequest();
 
-                if (string.IsNullOrEmpty(App.SelectedIBAN)) {
+                if (string.IsNullOrEmpty(App.SelectedIBAN))
+                {
 
                     requestObj.Action = "N";
                     requestObj.Fbnum = "";
                 }
-                else {
+                else
+                {
                     requestObj.Action = "U";
                     requestObj.Fbnum = App.SelectedIBAN;
 
                 }
 
                 requestObj.AgreeFg = "X";
-                
+
                 requestObj.Tin = App.LoginDataRetrieved.TIN;
                 requestObj.Iban = IBANValue;
                 requestObj.Bkext = SelectedBankName;
@@ -450,9 +476,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 requestObj.Bankid = SelectedBankNameValue;
                 requestObj.Type = SelectedIDTypeValue;
 
-               var IBANPostResponse = await IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
+                var IBANPostResponse = await IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
 
-                if(IBANPostResponse.d.Action.Equals("N"))
+                if (IBANPostResponse.d.Action.Equals("N"))
                 {
                     var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
                     {
@@ -480,7 +506,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-               
+
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -502,13 +528,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         {
             try
             {
-                if(string.IsNullOrEmpty(SelectedBankName) || string.IsNullOrEmpty(SelectedIDNumber) || string.IsNullOrEmpty(SelectedIDType) || string.IsNullOrEmpty(AccountOwnerName) || string.IsNullOrEmpty(IBANValue)) {
+                if(!string.IsNullOrEmpty(SelectedBankName)&&(SelectedBankName.Equals("OTHER")))
+                {
+                    if(selectedOtherBankName.Equals(""))
+                    {
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        return;
+                    }
+                }
+                
+                if(!isIBanValid)
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
+                    
+                    return;
+                }
+                if (string.IsNullOrEmpty(SelectedBankName) || string.IsNullOrEmpty(SelectedIDNumber) || string.IsNullOrEmpty(SelectedIDType) || string.IsNullOrEmpty(AccountOwnerName) || string.IsNullOrEmpty(IBANValue))
+                {
 
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                 }
-                else {
+                else
+                {
 
-                    if(IBANValue.Length < 24) {
+                    if (IBANValue.Length < 24)
+                    {
 
                         PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
 
@@ -519,7 +563,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                     var selectedType = IBANAccountData.d.IdTypeListSet.results.Find(selectedValue => (selectedValue.IdDesc == SelectedIDType));
 
-                    if(selectedType != null) {
+                    if (selectedType != null)
+                    {
                         SelectedIDTypeValue = selectedType.IdType;
                     }
 
@@ -536,7 +581,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
 
 
-                
+
             }
             catch (GAZTUnlockAccountException ex)
             {
