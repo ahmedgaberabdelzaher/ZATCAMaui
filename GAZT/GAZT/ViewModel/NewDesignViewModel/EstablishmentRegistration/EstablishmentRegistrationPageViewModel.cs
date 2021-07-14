@@ -3020,7 +3020,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = false;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
