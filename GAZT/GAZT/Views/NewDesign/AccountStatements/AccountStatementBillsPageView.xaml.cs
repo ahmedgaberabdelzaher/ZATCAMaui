@@ -18,6 +18,7 @@ using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Application = Xamarin.Forms.Application;
+using SearchBar = Xamarin.Forms.SearchBar;
 
 namespace EGAZT.Views.NewDesign.AccountStatements
 {
@@ -26,6 +27,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
     public partial class AccountStatementBillsPageView : ContentPage
     {
         AccountStatementBillsPageViewModel viewModel;
+        SearchBar searchBar;
+
+
         public AccountStatementBillsPageView()
         {
             InitializeComponent();
@@ -36,7 +40,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             ChangeAeroIcon();
             SetLTR();
             ChangeArrowDirection();
-
+         
 
             Task.Run(async () =>
             {
@@ -178,8 +182,20 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             viewModel.IsSearchButtonVisible = true;
             viewModel.IsCloseButtonVisible = false;
             viewModel.SearchText = "";
+
+
+            if(searchBar != null) {
+
+                searchBar.Text = "";
+            }
+
+
+
+
+
             /*viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results);
             viewModel.IsVisible_SearchList = false;*/
+
             viewModel.FilterIfTypeAndStausFilterSelected(false);
         }
 
@@ -217,8 +233,16 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         }
 
+        
+       
+
+
         void SearchBar_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
+
+            searchBar = (sender as SearchBar);
+
+
             var keyword = e.NewTextValue;
             if (keyword.Length >= 1)
             {

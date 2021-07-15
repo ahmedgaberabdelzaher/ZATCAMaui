@@ -319,7 +319,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public string _searchText = "";
+      
+
+        public string _searchText = "VAT";
         public string SearchText
         {
             get
@@ -328,13 +330,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
-                if (_searchText == value) return;
-
                 _searchText = value;
 
                 RaisePropertyChanged("SearchText");
             }
         }
+
+
 
         private ObservableCollection<object> _todayDateNormal;
         public ObservableCollection<object> TodayDateNormal
