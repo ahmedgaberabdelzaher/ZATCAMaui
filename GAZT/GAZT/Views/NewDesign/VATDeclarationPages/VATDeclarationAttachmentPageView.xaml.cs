@@ -45,6 +45,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 vATDeclarationResponse = vATDeclaration;
 
+                if(vATDeclarationResponse.d.ATTACHSet != null) {
+
+                    viewModel.AttachmentCount = vATDeclarationResponse.d.ATTACHSet.results.Count;
+                }
+
+
                 if (vATDeclaration.d.Cr2215 != null && vATDeclaration.d.Cr2215.Equals("X"))
                 {
                     viewModel.CR2215flag = vATDeclaration.d.Cr2215;
@@ -306,6 +312,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     PopToRootPage();
                     if (results == "X")
                     {
+
+                        viewModel.AttachmentCount--;
                         Attachment listitem = (from itm in viewModel.VatAttachmentsList
                                                where itm.Doguid == attachment.Doguid.ToString()
                                                select itm)

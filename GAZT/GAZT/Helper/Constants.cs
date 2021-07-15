@@ -45,10 +45,10 @@ namespace GAZT.Helper
 
         #endregion
 
-        /*public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
-        public static string DomainUrlForCookies = DevDomainForCookies;
-        public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;*/
+        //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = DevDomainForCookies;
+        //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;

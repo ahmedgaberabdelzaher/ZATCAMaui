@@ -9132,4 +9132,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="IBANRefundInfo" xml:space="preserve">
     <value>Refund amount will be transferred to banks that are licensed by the Saudi Arabian Monetary Agency only.</value>
   </data>
+   <data name="ReturnAttachmentLimitMessage" xml:space="preserve">
+    <value>You have exceeded the limit of allowable attachments</value>
+  </data>
 </root>
