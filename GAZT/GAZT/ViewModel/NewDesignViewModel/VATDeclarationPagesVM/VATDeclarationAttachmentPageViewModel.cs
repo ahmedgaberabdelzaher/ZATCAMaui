@@ -270,7 +270,7 @@ namespace EGAZT
             {
                 try
                 {
-                    if (AttachmentCount <= 40)
+                    if (AttachmentCount < 40)
                     {
                         string[] filetypes;
 
@@ -422,7 +422,7 @@ namespace EGAZT
                     else
                     {
                         AttachmentName = string.Empty;
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ReturnAttachmentLimitMessage));
 
                     }
                 }
