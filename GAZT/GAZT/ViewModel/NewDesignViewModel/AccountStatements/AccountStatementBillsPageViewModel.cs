@@ -1100,6 +1100,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     {
                         var filterItems = MyBills;
                         MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => Convert.ToDouble(p.BETRW) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.BETRW) <= Convert.ToDouble(ToTxAmount)));
+
+                        FilterOnTaxType(MyBills);
+
                     }
 
 

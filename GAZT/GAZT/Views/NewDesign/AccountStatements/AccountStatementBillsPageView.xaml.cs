@@ -141,6 +141,16 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 viewModel.updatePicker();
             });
 
+
+            if(viewModel.MyBills != null) {
+
+               // viewModel.FilterOnTaxType(viewModel.MyBills);
+            }
+
+
+            
+
+
         }
         protected override void OnDisappearing()
         {
