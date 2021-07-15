@@ -329,6 +329,7 @@ namespace EGAZT
         public static int IdleTimeToLogout = 100;
 
         public static string SelectedIBAN = string.Empty;
+        public static string IBanValidatedResponse = string.Empty;
 
 
         public static bool IsLoginPageRefreshed;

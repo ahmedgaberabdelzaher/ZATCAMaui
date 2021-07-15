@@ -1324,6 +1324,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
                         String IBANIdNumber = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        App.IBanValidatedResponse = IBANIdNumber;
                         try
                         {
                             if (!string.IsNullOrEmpty(IBANIdNumber))

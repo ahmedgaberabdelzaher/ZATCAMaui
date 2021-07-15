@@ -9,6 +9,7 @@
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              NavigationPage.HasNavigationBar="False"
              x:Name="IBanReg" 
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
@@ -492,23 +493,22 @@
                                     <StackLayout Grid.Row="4" Grid.Column="1" >
                                         <Label Text="{Binding SelectedBankName}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                     </StackLayout>
-
-
                                 </Grid>
 
                             </StackLayout>
 
                         </border:SfBorder>
-
+                        
 
                         <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
                                          Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                            <StackLayout Padding="15,15,15,0" VerticalOptions="FillAndExpand">
+                            <StackLayout Padding="15,15,15,0" VerticalOptions="FillAndExpand" BackgroundColor="White">
 
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="40" />
+                                        <RowDefinition Height="340"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto" />
@@ -530,20 +530,29 @@
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
+
+                                    <custom1:CheckboxCustom  Grid.Row="1" Grid.Column="0" IsChecked="{Binding IsInstrunctionChecked}" WidthRequest="32" HeightRequest="32"
+                                                                        x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand"/>
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" x:Name="AckText" Style="{StaticResource BodyLabelGrey}"/>
+
                                 </Grid>
 
-                                <Label  x:Name="AckText" 
+                                
+                        <!--<Label  x:Name="AckText" 
                                        HorizontalOptions="Start"
                                        VerticalOptions="Start"
-                                       Style="{StaticResource BodyLabelGrey}" />
+                                       Style="{StaticResource BodyLabelGrey}" />-->
+                                
+                                
 
                             </StackLayout>
 
                         </border:SfBorder>
 
-                        <buttons:SfButton Margin="0,16,0,16"
+                        <buttons:SfButton  IsEnabled="{Binding IsContinueButtonEnable}" Margin="0,16,0,16"
                                           Text="{x:Static ResourceManager:AppResources.Confirm}"
                                           Style="{StaticResource PrimaryButtonStyle}"
+                                          
                                           Command="{Binding SummaryConBtnTapped}"
                                           HeightRequest="48"
                                           WidthRequest="366"/>

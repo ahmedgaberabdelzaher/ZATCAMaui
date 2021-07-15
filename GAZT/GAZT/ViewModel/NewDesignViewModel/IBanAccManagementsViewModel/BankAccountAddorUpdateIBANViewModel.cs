@@ -4,6 +4,7 @@ using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
+using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -16,6 +17,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using static EGAZT.Models.IBanManagementListModel;
+using Result = EGAZT.Models.IBanManagementListModel.Result;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 {
@@ -242,6 +244,74 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
+        private bool _isInstrunctionChecked = false;
+        public bool IsInstrunctionChecked
+        {
+            get
+            {
+                return _isInstrunctionChecked;
+            }
+            set
+            {
+                //MessagingCenter.Send<VATRegistrationPageViewModel, bool>(this, "IsInstrunctionChecked", value);
+
+                if (_isInstrunctionChecked == value) return;
+
+                _isInstrunctionChecked = value;
+
+                if (_isInstrunctionChecked)
+                {
+                    IsContinueButtonEnable = true;
+                }
+                else
+                {
+                    IsContinueButtonEnable = false;
+                }
+
+
+                RaisePropertyChanged("IsInstrunctionChecked");
+            }
+        }
+
+        private bool _isContinueButtonEnable = false;
+        public bool IsContinueButtonEnable
+        {
+            get
+            {
+                return _isContinueButtonEnable;
+            }
+            set
+            {
+                if (_isContinueButtonEnable == value) return;
+
+                _isContinueButtonEnable = value;
+                /*if (_isContinueButtonEnable)
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                }
+                else
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                }*/
+                RaisePropertyChanged("IsContinueButtonEnable");
+            }
+        }
+
+        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+        public Color ContinueButtonnBackroundColor
+        {
+            get
+            {
+                return _continueButtonnBackroundColor;
+            }
+            set
+            {
+                if (_continueButtonnBackroundColor == value) return;
+
+                _continueButtonnBackroundColor = value;
+                RaisePropertyChanged("ContinueButtonnBackroundColor");
+            }
+        }
 
         private bool _otherBanksVisible = false;
 
@@ -348,6 +418,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             genericPickerModel.PickerTitle = "";
             genericPickerModel.PickerId = "IBANIdTypePicker";
             PickerModel = genericPickerModel;
+            SelectedIDNumber = "";
         }
 
         private void setIDNumberPickerModel()
@@ -359,8 +430,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 PickerModel = null;
             }
             var list = new List<string>();
+            var selectedType = IBANAccountData.d.IdTypeListSet.results.Find(selectedValue => (selectedValue.IdDesc == SelectedIDType));
 
-            foreach (IdNumberListSetResult dropdown in IBANAccountData.d.IdNumberListSet.results)
+            if (selectedType != null)
+            {
+                SelectedIDTypeValue = selectedType.IdType;
+            }
+
+            for (int i = 0; i < IBANAccountData.d.IdNumberListSet.results.Count; i++)
+            {
+                if (IBANAccountData.d.IdNumberListSet.results[i].IdType.Equals(SelectedIDTypeValue))
+                {
+                    try
+                    {
+                        list.Add(IBANAccountData.d.IdNumberListSet.results[i].IdNumber);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+            }
+
+
+
+            /*foreach (IdNumberListSetResult dropdown in IBANAccountData.d.IdNumberListSet.results)
             {
                 try
                 {
@@ -371,7 +465,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                 }
 
-            }
+            }*/
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = list;
             genericPickerModel.PickerTitle = "";
@@ -417,17 +511,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 {
 
                     setIDTypePickerModel();
+                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
                 }
                 else if (pickerID == 2)
                 {
-                    setIDNumberPickerModel();
+                    try
+                    {
+                        if (SelectedIDType == "")
+                            return;
+                        else
+                        {
+                            setIDNumberPickerModel();
+                            await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+
                 }
                 else if (pickerID == 3)
                 {
+
                     setBankNamePickerModel();
+                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
                 }
 
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -446,101 +558,125 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
         private async void SummaryConButtonClicked()
         {
-            try
+
+
+            if (IsInstrunctionChecked == true)
             {
+                try
+                {
+                    IBANPostRequest requestObj = new IBANPostRequest();
 
+                    if (string.IsNullOrEmpty(App.SelectedIBAN))
+                    {
 
-                IBANPostRequest requestObj = new IBANPostRequest();
+                        requestObj.Action = "N";
+                        requestObj.Fbnum = "";
+                    }
+                    else
+                    {
+                        requestObj.Action = "U";
+                        requestObj.Fbnum = App.SelectedIBAN;
 
-                if (string.IsNullOrEmpty(App.SelectedIBAN))
+                    }
+
+                    requestObj.AgreeFg = "X";
+
+                    requestObj.Tin = App.LoginDataRetrieved.TIN;
+                    requestObj.Iban = IBANValue;
+                    requestObj.Bkext = SelectedBankName;
+                    requestObj.Idnumber = SelectedIDNumber;
+                    requestObj.IdtypeDesc = SelectedIDType;
+                    requestObj.Koinh = AccountOwnerName;
+                    requestObj.Bankid = SelectedBankNameValue;
+                    requestObj.Type = SelectedIDTypeValue;
+
+                    var IBANPostResponse = await IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
+
+                    if (IBANPostResponse.d.Action.Equals("N"))
+                    {
+                        var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                        {
+                            CloseWhenBackgroundIsClicked = false
+                        };
+                        somewarningpopup.OnDone = async () =>
+                        {
+                            _navigationService.GoBack();
+                        };
+                        await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                    }
+                    else if (IBANPostResponse.d.Action.Equals("U"))
+                    {
+                        var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                        {
+                            CloseWhenBackgroundIsClicked = false
+                        };
+                        somewarningpopup.OnDone = async () =>
+                        {
+                            _navigationService.GoBack();
+                        };
+                        await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                    }
+
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
 
-                    requestObj.Action = "N";
-                    requestObj.Fbnum = "";
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+
+            }
+            else
+            {
+                PopUp popUp = new PopUp();
+                popUp.Message = AppResources.ZZPleaseselecttermsandconditions;
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                    popUp.isFontSet = true;
                 }
                 else
                 {
-                    requestObj.Action = "U";
-                    requestObj.Fbnum = App.SelectedIBAN;
-
+                    popUp.FlowDirections = "LeftToRight";
                 }
 
-                requestObj.AgreeFg = "X";
-
-                requestObj.Tin = App.LoginDataRetrieved.TIN;
-                requestObj.Iban = IBANValue;
-                requestObj.Bkext = SelectedBankName;
-                requestObj.Idnumber = SelectedIDNumber;
-                requestObj.IdtypeDesc = SelectedIDType;
-                requestObj.Koinh = AccountOwnerName;
-                requestObj.Bankid = SelectedBankNameValue;
-                requestObj.Type = SelectedIDTypeValue;
-
-                var IBANPostResponse = await IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
-
-                if (IBANPostResponse.d.Action.Equals("N"))
-                {
-                    var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
-                    {
-                        CloseWhenBackgroundIsClicked = false
-                    };
-                    somewarningpopup.OnDone = async () =>
-                    {
-                        _navigationService.GoBack();
-                    };
-                    await PopupNavigation.Instance.PushAsync(somewarningpopup);
-                }
-                else if (IBANPostResponse.d.Action.Equals("U"))
-                {
-                    var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
-                    {
-                        CloseWhenBackgroundIsClicked = false
-                    };
-                    somewarningpopup.OnDone = async () =>
-                    {
-                        _navigationService.GoBack();
-                    };
-                    await PopupNavigation.Instance.PushAsync(somewarningpopup);
-                }
-
+                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselecttermsandconditions));
             }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
 
 
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+
         }
 
         public void ContinueButtonClicked()
         {
             try
             {
-                if(!string.IsNullOrEmpty(SelectedBankName)&&(SelectedBankName.Equals("OTHER")))
+                if (!string.IsNullOrEmpty(SelectedBankName) && (SelectedBankName.Equals("OTHER")))
                 {
-                    if(selectedOtherBankName.Equals(""))
+                    if (selectedOtherBankName.Equals(""))
                     {
                         PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                         return;
                     }
                 }
-                
-                if(!isIBanValid)
+
+                if (!isIBanValid)
                 {
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
-                    
+
                     return;
                 }
                 if (string.IsNullOrEmpty(SelectedBankName) || string.IsNullOrEmpty(SelectedIDNumber) || string.IsNullOrEmpty(SelectedIDType) || string.IsNullOrEmpty(AccountOwnerName) || string.IsNullOrEmpty(IBANValue))

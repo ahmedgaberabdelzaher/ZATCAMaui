@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZT.Models;
+using Newtonsoft.Json.Linq;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -24,10 +27,15 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
         private BankAccountAddorUpdateIBANViewModel _viewModel;
         private int count = 0;
         private int IBanClickCount = 0;
+        private string TpName = "";
         public BankAccountAddorUpdateIBANPageView(IBanAccountManagementResponseModel IBANAccountData)
         {
+            Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+
             InitializeComponent();
             ChangeAeroIcon();
+            
+            
 
             SetLTR();
 
@@ -35,9 +43,57 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
 
+            _viewModel.IsInstrunctionChecked = false;
+            _viewModel.SummaryVisible = false;
+            _viewModel.NewFormVisible = true;
+            _viewModel.IsContinueButtonEnable = false;
+           // _viewModel.ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+
             _viewModel.IBANAccountData = IBANAccountData;
-            AckText.Text = string.Format(AppResources.NDIBANCertifyAck, App.LoginDataRetrieved.NameOrg1);
+           
+            if(!App.LoginDataRetrieved.NameFirst.Equals(""))
+            {
+                TpName = App.LoginDataRetrieved.NameFirst;
+            }
+            else if(!App.LoginDataRetrieved.NameLast.Equals(""))
+            {
+                TpName = App.LoginDataRetrieved.NameLast;
+            }
+            else if(!App.LoginDataRetrieved.NameOrg1.Equals(""))
+            {
+                TpName = App.LoginDataRetrieved.NameOrg1;
+            }
+            AckText.Text = string.Format(AppResources.NDIBANCertifyAck, TpName);
         }
+
+        /*private async void ValidateTermsAndConditions()
+        {
+            if (_viewModel.IsInstrunctionChecked == true)
+            {
+                
+            }
+            else
+            {
+                PopUp popUp = new PopUp();
+                popUp.Message = AppResources.ZZPleaseselecttermsandconditions;
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                    popUp.isFontSet = true;
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+                await Task.Run(() =>
+                {
+                    _viewModel.IsLoading = false;
+                });
+                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselecttermsandconditions));
+                chkDeclaration.Focus();
+            }
+        }*/
 
         protected override void OnAppearing()
         {
@@ -86,6 +142,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                 if (arg.PickerId == "IBANIdTypePicker")
                 {
                     _viewModel.SelectedIDType = arg.SelectedValue;
+                    _viewModel.SelectedIDNumber ="";
                 }
                 else if (arg.PickerId == "IBANIdNumberPicker")
                 {
@@ -296,6 +353,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
 
         private void checkIBanIsValidOrNot()
         {
+            App.IBanValidatedResponse = string.Empty;
             _viewModel.IsLoading = true;
             try
             {
@@ -307,6 +365,10 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                         //IBan is Valid
                         _viewModel.isIBanValid = true;
                         _viewModel.IsLoading = false;
+                        string bankName = string.Empty;
+                        bankName = JObject.Parse(App.IBanValidatedResponse)["d"].ToString();
+                        _viewModel.SelectedBankName = JObject.Parse(bankName)["Bkext"].ToString();
+                        App.IBanValidatedResponse = string.Empty;
                     }
                     else
                     {
