@@ -374,7 +374,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        
+
 
         private bool _isCheckedRefund;
         public bool IsCheckedRefund
@@ -431,6 +431,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private void FilterIBANIDTypeList(string idType)
+        {
+            IBANTypesList = new List<IBANType>();
+            if (idType == "ZS0005")
+            {
+                IBANTypesList.Add(new IBANType
+                {
+                    key = "ZS0005",
+                    Text = AppResources.ZIBANCompanyID
+                });
+            }
+            else if (idType == "ZS0001")
+            {
+                IBANTypesList.Add(new IBANType
+                {
+                    key = "ZS0001",
+                    Text = AppResources.ZIBANNationalID
+                });
+            }
+            else if (idType == "BUP002")
+            {
+                IBANTypesList.Add(new IBANType
+                {
+                    key = "BUP002",
+                    Text = AppResources.ZIBANCommercialRegistrationID
+                });
+            }
+        }
+
+        private void FilterIBANIDNumberList(IBanResponseModelResults banResponseModelResults)
+        {
+            try
+            {
+                IBANIDNumberList.Add(new IBANIDNumber
+                {
+                    Idnumber = banResponseModelResults.IdNumber,
+                    Type = ""
+                });
+            }
+            catch(Exception e)
+            {
+
+            }
+        }
+
         private Result2 _selectedIBAN;
         public Result2 SelectedIBAN
         {
@@ -446,7 +491,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     TxtSelectedIBAN = _selectedIBAN.Iban;
                     if (IsNewAccountButtonVisible == true)
                     {
-                        IbanNumberText = _selectedIBAN.Iban;
+                        if (VATDeclarationDetails.d.Cr1645GoliveFg.Equals("X"))
+                        {
+                            for (int i = 0; i < CR1645IBanListModel.Count; i++)
+                            {
+                                if (CR1645IBanListModel[i].Iban.Equals(SelectedIBAN.Iban))
+                                {
+                                    //ID Type list
+                                    FilterIBANIDTypeList(CR1645IBanListModel[i].IdType);
+                                    SelectedIBANType = IBANTypesList[0];
+                                    SelectedIBANTypePrev = IBANTypesList[0];
+                                    TxtSelectedIBANType = IBANTypesList[0].Text;
+
+                                    //ID Number List
+                                    FilterIBANIDNumberList(CR1645IBanListModel[i]);
+                                    SelectedIBANIDNumber = IBANIDNumberList[0];
+                                    SelectedIBANIDNumberPrev = IBANIDNumberList[0];
+                                    TxtSelectedIBANIDNumber = IBANIDNumberList[0].Idnumber;
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            IbanNumberText = _selectedIBAN.Iban;
+                        }
+
                     }
                 }
                 RaisePropertyChanged("SelectedIBAN");
@@ -549,7 +619,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
         private string _isNewAccountText;
         public string NewAccountText
 
@@ -668,6 +738,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //    IsEnableIBANType = false;
                 //}
                 RaisePropertyChanged("IBANTypesList");
+            }
+        }
+
+        private List<IBanResponseModelResults> _cR1645IBanListModel;
+        public List<IBanResponseModelResults> CR1645IBanListModel
+        {
+            get
+            {
+                return _cR1645IBanListModel;
+            }
+            set
+            {
+                _cR1645IBanListModel = value;
+
+                RaisePropertyChanged("CR1645IBanListModel");
             }
         }
 
@@ -797,7 +882,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-               // MessagingCenter.Send<Object, string>(this, "RefundClicked", "Yes");
+                // MessagingCenter.Send<Object, string>(this, "RefundClicked", "Yes");
                 bool Result = await FirstCall();
                 if (Result)
                 {
@@ -963,7 +1048,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-                              //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
+                                //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
                                 //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                                 WebServiceManager.ErrorMessageForVAT = string.Empty;
                             });
@@ -977,7 +1062,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception)
             {
-               // MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
+                // MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
             }
         }
         public async Task<bool> FirstCall()
@@ -1037,7 +1122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                         result = true;
-                  
+
                     }
                     else
                     {
@@ -1148,7 +1233,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception)
             {
-              //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
+                //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
                 result = false;
                 return result;
             }
@@ -1226,11 +1311,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     }
                                     else
                                     {
-                                       // VATNewModelFor15Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
+                                        // VATNewModelFor15Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
                                     }
                                 }
                             }
-                          //  SetCommasforAll();
+                            //  SetCommasforAll();
                             if (DummyATTACHSetsList != null && DummyATTACHSetsList.Count() != 0)
                             {
                                 VATDeclarationDetails.d.ATTACHSet.results = DummyATTACHSetsList;
@@ -1251,10 +1336,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 //ManageEnabledProperty(true);
                             });
                         }
-                       // await SetButtons(VATDeclarationData);
+                        // await SetButtons(VATDeclarationData);
                         return response;
                     }
-                    catch (Exception )
+                    catch (Exception)
                     {
                         return null;
                     }
@@ -1331,32 +1416,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public void setIbanData()
         {
-           // IsNewAccountButtonVisible
+            // IsNewAccountButtonVisible
             //if (IsVisibleDropdownForRefund == true)
             //{
-                VATDeclarationDetails.d.RefundFg = "1";
-                if (IsNewAccountButtonVisible == true)
-                {
+            VATDeclarationDetails.d.RefundFg = "1";
+            if (IsNewAccountButtonVisible == true)
+            {
                 VATDeclarationDetails.d.Iban = IbanNumberText;
                 VATDeclarationDetails.d.IbanCb = "1";
-                }
-                else
+            }
+            else
+            {
+                if (SelectedIBAN != null)
                 {
-                    if (SelectedIBAN != null)
-                    {
                     VATDeclarationDetails.d.Iban = SelectedIBAN.Iban;
                     VATDeclarationDetails.d.IbanCb = "0";
-                    }
                 }
-                if (SelectedIBANType != null)
-                {
+            }
+            if (SelectedIBANType != null)
+            {
                 VATDeclarationDetails.d.Idtype = SelectedIBANType.key;
-                }
-                if (SelectedIBANIDNumber != null)
-                {
+            }
+            if (SelectedIBANIDNumber != null)
+            {
                 VATDeclarationDetails.d.Idnum = SelectedIBANIDNumber.Idnumber;
-                }
-            if(IsDeclarationCheckedForRefund)
+            }
+            if (IsDeclarationCheckedForRefund)
             {
                 VATDeclarationDetails.d.TcFlg = "1";
             }

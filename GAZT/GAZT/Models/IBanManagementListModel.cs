@@ -304,9 +304,35 @@ namespace EGAZT.Models
     }
 
 
-
+    [Preserve(AllMembers = true)]
     public class IBANPostResponse
     {
         public IBANNewData d { get; set; }
     }
+
+    [Preserve(AllMembers = true)]
+    public partial class IBanListResponseModel
+    {
+        public IBanListResponseModelD D { get; set; }
+    }
+
+    [Preserve(AllMembers = true)]
+    public partial class IBanListResponseModelD
+    {
+        public List<IBanResponseModelResults> Results { get; set; }
+    }
+
+    public partial class IBanResponseModelResults
+    {
+        public string Iban { get; set; }
+        public string Koinh { get; set; }
+        public string FormGuid { get; set; }
+        public string IdType { get; set; }
+        public string Euser { get; set; }
+        public string IdtypeDesc { get; set; }
+        public string IdNumber { get; set; }
+        public string Tin { get; set; }
+    }
+
+    
 }

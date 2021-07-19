@@ -322,6 +322,63 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+        public async static Task<IBanListResponseModel> GetIBanDataForCR1645()
+        {
+            List<IBANIDNumber> iBANIDNumbers = new List<IBANIDNumber>();
+            String IbanNumber = string.Empty;
+            IBanListResponseModel IBanListModel=null;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    string lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTGetValidIBanNumbers + "Euser eq '" + "' and FormGuid eq '" + "' and Tin eq '" + App.LoginDataRetrieved.TIN + "'" + "&$format=json&sap-language=" + lang;
+                    //String url = Constants.GAZTGetValidIBanNumbers + "Euser eq '" + "' and FormGuid eq '" + "' and Tin eq '" + "reimbursement" + "'" + "&$format=json&sap-language=" + lang;
+                    
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTValidateOTPResponse = client.GetAsync(uri).Result;
+                    if (GAZTValidateOTPResponse != null)
+                    {
+                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String IBANList = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        IBanListModel = JsonConvert.DeserializeObject<IBanListResponseModel>(IBANList);
+                        return IBanListModel;
+                    }
+                    return IBanListModel;
+                }
+                catch (Exception)
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
         public static ICR GAZTGetICRs(String Tin, string lang)
         {
             if (CrossConnectivity.Current.IsConnected)
