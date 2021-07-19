@@ -2830,23 +2830,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
 
 
-                if (!string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
-                {
-                    if (financialDetail?.EIslmedate == "28")
-                    {
-                        dates.Remove("29");
-                        dates.Remove("30");
-                    }
-                    else if (financialDetail?.EIslmedate == "29")
-                    {
-                        dates.Remove("29");
-                        dates.Remove("30");
-                    }
-                    else if (financialDetail?.EIslmedate == "30")
-                    {
-                        dates.Remove("30");
-                    }
-                }
+               
 
                 //if (selectedDate == null)
                 //{
@@ -2885,15 +2869,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 //    }
                 //}
 
-                if (!string.IsNullOrEmpty(FiscalDay) && !string.IsNullOrEmpty(FiscalMonth)) {
+                if (!string.IsNullOrEmpty(FiscalMonth) && string.IsNullOrEmpty(FiscalDay))
+                {
 
-                    financialDetail = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
+                    var selectedFintype = "";
+
+                    if (!string.IsNullOrEmpty(SelectedMethod))
+                    {
+                        selectedFintype = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
+                    }
+                    else
+                    {
+                        selectedFintype = taxPayerDetails.Accmethod;
+                    }
+
+                    financialDetail = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDateForPeriod(new FinancialDetailPeriodRequest()
                     {
                         ACaltype = _CalendarType,
                         AMonth = FiscalMonth,
-                        EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
-                        ADateComm = taxPayerDetails?.Commdt
+                        ADateComm = taxPayerDetails?.Commdt,
+                        Gpart = "",
+                        Zfintype = selectedFintype,
+                        PeriodSet = new List<PeriodSetResult>()
                     });
+
+                    dates = new List<string> { AppResources.ESTFinLastDay, "30", "29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" };
+
+
+                    if (!string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
+                    {
+                        if (financialDetail?.EIslmedate == "28")
+                        {
+                            dates.Remove("29");
+                            dates.Remove("30");
+                        }
+                        else if (financialDetail?.EIslmedate == "29")
+                        {
+                            dates.Remove("29");
+                            dates.Remove("30");
+                        }
+                        else if (financialDetail?.EIslmedate == "30")
+                        {
+                            dates.Remove("30");
+                        }
+                    }
+
+                }
+                else if (!string.IsNullOrEmpty(FiscalDay) && !string.IsNullOrEmpty(FiscalMonth)) {
+
+                    //financialDetail = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
+                    //{
+                    //    ACaltype = _CalendarType,
+                    //    AMonth = FiscalMonth,
+                    //    EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
+                    //    ADateComm = taxPayerDetails?.Commdt
+                    //});
                    // TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
 
                     if (taxPayerDetails.LastFilledRetdt != null)
