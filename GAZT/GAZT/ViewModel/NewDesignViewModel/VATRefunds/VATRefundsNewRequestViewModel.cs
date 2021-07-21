@@ -250,6 +250,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+
+
+        private bool _isTypeEditable = true;
+        public bool IsTypeEditable
+        {
+            get
+            {
+                return _isTypeEditable;
+            }
+
+            set
+            {
+                if (_isTypeEditable == value) return;
+
+                _isTypeEditable = value;
+                RaisePropertyChanged("IsTypeEditable");
+            }
+        }
+
         private bool _isVoidBtnVisible = false;
         public bool IsVoidBtnVisible
         {
@@ -368,6 +387,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
+
+        public IBanListResponseModel IBanListResponse;
+
 
 
         public VATRefundsNewRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
@@ -630,6 +652,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
                 VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
 
+                if (VatRefundsDisplayDataModel.Cr1645GoliveFg == "X") {
+
+                    GetAllIbanList();
+                }
+
+
                 if(VatRefundsDisplayDataModel.Fbnumx == string.Empty)
                 {
                     IsVoidBtnVisible = false;
@@ -735,6 +763,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     Console.WriteLine(mex.Message);
                 }
             }
+        }
+
+
+
+        public async void GetAllIbanList()
+        {
+            
+                try
+                {
+                     IBanListResponse = await WebServiceManager.GetIBanDataForCR1645();
+
+                IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>();
+
+                if (IBanListResponse != null && IBanListResponse.D != null && IBanListResponse.D.Results != null && IBanListResponse.D.Results.Count > 0)
+                {
+
+
+                    for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
+                    {
+                        var IbanListsResults = new VarRefundIbanDataModelMetadataResult()
+                        {
+                            Iban = IBanListResponse.D.Results[i].Iban
+                        };
+                        IbanData.Add(IbanListsResults);
+                    }
+
+                    var SlectedType = IBanListResponse.D.Results.FirstOrDefault();
+
+                    IBANType idType = IBANTypesList.Where(m => m.key == SlectedType.IdType).FirstOrDefault();
+                    SelectedIDTypeCode = idType.key;
+                    SelectedIdNumber = AppResources.IDNumber;
+                    _ = SetIBANIdNumber(idType.key);
+
+
+                }
+                if(IbanData.Count > 0) {
+
+                    SelectedIbanData = IbanData.FirstOrDefault();
+
+                    IsTypeEditable = false;
+                }
+
+
+
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _ = _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
+            
+            
         }
 
         public async Task LoadDraftsData(VatRefundsListResultModel draftsData)

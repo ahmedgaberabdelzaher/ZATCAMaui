@@ -116,7 +116,7 @@
                         </Grid>
 
 
-                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1"  Margin="0,16,0,0" >
+                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1"  Margin="0,16,0,0" IsEnabled="{Binding IsTypeEditable}" >
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}" />
                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -138,7 +138,7 @@
                             </border:SfBorder >
                         </StackLayout>
 
-                        <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"  Margin="0,16,0,0" >
+                        <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"  Margin="0,16,0,0" IsEnabled="{Binding IsTypeEditable}">
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}" />
                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">

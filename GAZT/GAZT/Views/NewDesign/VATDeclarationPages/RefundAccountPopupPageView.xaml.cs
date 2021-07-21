@@ -366,7 +366,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _ = viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
                 }
             }
