@@ -85,8 +85,15 @@
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
-         
-               <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Padding="16" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" >
+
+
+             <Grid Grid.Row="0" Margin="0,20,0,20"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <border:SfBorder Grid.Row="0" CornerRadius="15"  HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" VerticalOptions="FillAndExpand">
                             <Grid >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -95,13 +102,16 @@
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" Margin="0"></Image>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.AddNewIban}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" />
+                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Image>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.AddNewIban}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AddNewIBANTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>
                             </Grid>
                         </border:SfBorder>
+                 </Grid>
+
+        
             <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                  <listView:SfListView  x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False"  VerticalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0" AutoFitMode="Height" ItemSpacing="5"
