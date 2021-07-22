@@ -9138,4 +9138,10 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="IBanRefundsInfo" xml:space="preserve">
     <value>You can choose the IBAN number you wish to have the refund to from the list below, please note that refund process will not be completed if the IBAN is not correct and match the bank account ID number and bank account name.</value>
   </data>
+  <data name="PleaseGoToIBan" xml:space="preserve">
+    <value>To add or edit registered bank accounts data for GAZT, please go to </value>
+  </data>
+  <data name="VisitIBanManagement" xml:space="preserve">
+    <value>Bank Accounts Management</value>
+  </data>
 </root>

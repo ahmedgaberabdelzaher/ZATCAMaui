@@ -8702,6 +8702,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To add or edit registered bank accounts data for GAZT, please go to .
+        /// </summary>
+        public static string PleaseGoToIBan {
+            get {
+                return ResourceManager.GetString("PleaseGoToIBan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please re-verify.
         /// </summary>
         public static string PleaseReVerify {
@@ -12969,6 +12978,15 @@ namespace EGAZT {
         public static string VFCSuccessDesc {
             get {
                 return ResourceManager.GetString("VFCSuccessDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Accounts Management.
+        /// </summary>
+        public static string VisitIBanManagement {
+            get {
+                return ResourceManager.GetString("VisitIBanManagement", resourceCulture);
             }
         }
         
