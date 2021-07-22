@@ -9132,7 +9132,10 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="IBANRefundInfo" xml:space="preserve">
     <value>Refund amount will be transferred to banks that are licensed by the Saudi Arabian Monetary Agency only.</value>
   </data>
-   <data name="ReturnAttachmentLimitMessage" xml:space="preserve">
+  <data name="ReturnAttachmentLimitMessage" xml:space="preserve">
     <value>You have exceeded the limit of allowable attachments</value>
+  </data>
+  <data name="IBanRefundsInfo" xml:space="preserve">
+    <value>You can choose the IBAN number you wish to have the refund to from the list below, please note that refund process will not be completed if the IBAN is not correct and match the bank account ID number and bank account name.</value>
   </data>
 </root>

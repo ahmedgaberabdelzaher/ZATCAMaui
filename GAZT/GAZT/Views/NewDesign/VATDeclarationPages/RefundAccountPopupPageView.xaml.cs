@@ -33,16 +33,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 this.BindingContext = viewModel;
                 SetLTR();
                 SetPickerFont();
+                
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
+                    viewModel.VATDeclarationDetails = vATDeclaration;
                     if (vATDeclaration.d.Cr1645GoliveFg != "")
                     {
-                        viewModel.VATDeclarationDetails = vATDeclaration;
+                        vATDeclaration.d.IBANSet.results.Clear();
                     }
-
-                    ClonedvATDeclaration = vATDeclaration;
-                    onPageLoad();
-
+                    
                     viewModel.IsSwichButtonEnable = true;
                     viewModel.IsCarriedForwandReviewMessageForRefund = false;
                     viewModel.IsRefundYesMsgDisplayed = false;
@@ -74,9 +73,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         viewModel.IsIdTypeEnabled = false;
                         viewModel.IsIdNumberEnabled = false;
                     }
-
+                    onPageLoad();
                 }
+                
             }
+
             catch (Exception)
             {
 
@@ -299,7 +300,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (IBanListResponse != null && IBanListResponse.D != null && IBanListResponse.D.Results != null && IBanListResponse.D.Results.Count > 0)
                     {
                         viewModel.CR1645IBanListModel = IBanListResponse.D.Results;
-                        
+
 
                         for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
                         {
@@ -311,10 +312,18 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             };
                             viewModel.VATDeclarationDetails.d.IBANSet.results.Add(IbanListsResults);
                         }
+                        if (viewModel.VATDeclarationDetails.d.IBANSet.results.Count > 0)
+                        {
+                            viewModel.IBANList = new ObservableCollection<Result2>();
+                            viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.d.IBANSet.results);
+                           
+                            viewModel.SelectedIBAN = viewModel.IBANList.FirstOrDefault();
+                            getAllChecks();
+                        }
 
-                        getAllChecks();
 
-                        /*for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
+
+                        for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
                         {
                             if (IBanListResponse.D.Results[i].IdType == "ZS0005")
                             {
@@ -350,8 +359,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                 Idnumber = IBanListResponse.D.Results[i].IdNumber,
                                 Type = ""
                             });
-                        }*/
-                        
+                        }
+
 
                         //viewModel.IBANList = true;
                     }
@@ -1065,6 +1074,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
             await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+        }
+
+        private void IBANAccManagementTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+
         }
 
         //private void ListItemClicked(object sender, ItemSelectionChangedEventArgs e)

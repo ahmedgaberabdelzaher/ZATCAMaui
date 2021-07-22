@@ -462,6 +462,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private void FilterIBANIDNumberList(IBanResponseModelResults banResponseModelResults)
         {
+            IBANIDNumberList = new List<IBANIDNumber>();
             try
             {
                 IBANIDNumberList.Add(new IBANIDNumber
@@ -489,34 +490,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_selectedIBAN != null)
                 {
                     TxtSelectedIBAN = _selectedIBAN.Iban;
+
+                    if (VATDeclarationDetails.d.Cr1645GoliveFg.Equals("X"))
+                    {
+                        for (int i = 0; i < CR1645IBanListModel.Count; i++)
+                        {
+                            if (CR1645IBanListModel[i].Iban.Equals(SelectedIBAN.Iban))
+                            {
+                                //ID Type list
+                                FilterIBANIDTypeList(CR1645IBanListModel[i].IdType);
+                                SelectedIBANType = IBANTypesList[0];
+                                SelectedIBANTypePrev = IBANTypesList[0];
+                                TxtSelectedIBANType = IBANTypesList[0].Text;
+
+                                //ID Number List
+                                FilterIBANIDNumberList(CR1645IBanListModel[i]);
+                                SelectedIBANIDNumber = IBANIDNumberList[0];
+                                SelectedIBANIDNumberPrev = IBANIDNumberList[0];
+                                TxtSelectedIBANIDNumber = IBANIDNumberList[0].Idnumber;
+                                IbanNumberText = _selectedIBAN.Iban;
+                            }
+                        }
+
+                    }
                     if (IsNewAccountButtonVisible == true)
                     {
-                        if (VATDeclarationDetails.d.Cr1645GoliveFg.Equals("X"))
-                        {
-                            for (int i = 0; i < CR1645IBanListModel.Count; i++)
-                            {
-                                if (CR1645IBanListModel[i].Iban.Equals(SelectedIBAN.Iban))
-                                {
-                                    //ID Type list
-                                    FilterIBANIDTypeList(CR1645IBanListModel[i].IdType);
-                                    SelectedIBANType = IBANTypesList[0];
-                                    SelectedIBANTypePrev = IBANTypesList[0];
-                                    TxtSelectedIBANType = IBANTypesList[0].Text;
-
-                                    //ID Number List
-                                    FilterIBANIDNumberList(CR1645IBanListModel[i]);
-                                    SelectedIBANIDNumber = IBANIDNumberList[0];
-                                    SelectedIBANIDNumberPrev = IBANIDNumberList[0];
-                                    TxtSelectedIBANIDNumber = IBANIDNumberList[0].Idnumber;
-                                }
-                            }
-
-                        }
-                        else
-                        {
-                            IbanNumberText = _selectedIBAN.Iban;
-                        }
-
+                        IbanNumberText = _selectedIBAN.Iban;
+                    }
+                    else
+                    {
+                        IbanNumberText = _selectedIBAN.Iban;
                     }
                 }
                 RaisePropertyChanged("SelectedIBAN");

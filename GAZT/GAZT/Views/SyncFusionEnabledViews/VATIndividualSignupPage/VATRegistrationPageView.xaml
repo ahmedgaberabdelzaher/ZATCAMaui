@@ -476,7 +476,9 @@
                                                     </Grid>
                                                 </StackLayout>
                                                 <Frame Grid.Row="8" BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,15,15,15" HasShadow="False">
-                                                    <custom:CustomLabel  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" LineSpacing="1" VerticalOptions="EndAndExpand"   >
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <Image Source="ic_vat_info"/>
+                                                        <custom:CustomLabel  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" LineSpacing="1" VerticalOptions="EndAndExpand"   >
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
                                                                 <Span Text="To add or edit registered bank accounts data for GAZT, please go to "/>
@@ -488,6 +490,7 @@
                                                             </FormattedString>
                                                         </custom:CustomLabel.FormattedText>
                                                     </custom:CustomLabel>
+                                                        </StackLayout>
                                                 </Frame>
                                                 <StackLayout Grid.Row="9">
                                                     <Label Text="{x:Static custom2:AppResources.VATRImportExport}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>

@@ -9058,7 +9058,10 @@ info@gazt.gov.sa</value>
     <value>يتم التحويل على البنوك المرخصة من قبل مؤسسة النقد العربي السعودي في
 إجراءات الاسترداد</value>
   </data>
-   <data name="ReturnAttachmentLimitMessage" xml:space="preserve">
+  <data name="ReturnAttachmentLimitMessage" xml:space="preserve">
     <value>تجاوزت الحد المسموح لتحميل المرفقات</value>
+  </data>
+  <data name="IBanRefundsInfo" xml:space="preserve">
+    <value>الرجاء اختيار رقم الايبان الذي ترغب باسترداد المبلغ عليه من قائمة حساباتكم البنكية الموضحة أدناه. مع ملاحظة أنه لن نتمكن من إتمام إجراءات عملية الاسترداد إذا لم يكن رقم الحساب البنكي الدولي صحيح ومتطابق مع رقم معرف الحساب البنكي واسم الحساب البنكي</value>
   </data>
 </root>
