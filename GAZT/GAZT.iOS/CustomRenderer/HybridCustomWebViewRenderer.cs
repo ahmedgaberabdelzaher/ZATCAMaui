@@ -119,6 +119,8 @@ namespace GAZT.iOS.CustomRenderer
             isUserLogingApiCalled = false;
             Uri apiUrl = webView.Url;
 
+            //speradsso.eradsso
+
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.ArePreLoginLangCookiesSet == true && App.IsLoginCalled == false)
             {
                 element.InvokeAction("displayLoadingIndicator");

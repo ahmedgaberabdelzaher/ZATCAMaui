@@ -226,10 +226,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
-                if (_selectedIbanData == value) return;
+                //if (_selectedIbanData == value) return;
 
                 _selectedIbanData = value;
-                RaisePropertyChanged("SelectedIbanData");
+
+
+                if (IBanListResponse != null && IBanListResponse.D != null && IBanListResponse.D.Results != null && IBanListResponse.D.Results.Count > 0)
+                {
+                    try {
+                        var SlectedIban = IBanListResponse.D.Results.Where(m => m.Iban == SelectedIbanData.Iban).FirstOrDefault();
+
+                        if(SlectedIban != null) {
+
+                            SelectedIdtype = SlectedIban.IdtypeDesc;
+
+                            IBANType idType = IBANTypesList.Where(m => m.key == SlectedIban.IdType).FirstOrDefault();
+                            SelectedIDTypeCode = idType.key;
+                            SelectedIdNumber = SlectedIban.IdNumber;
+                            _ = SetIBANIdNumber(idType.key);
+                        }
+
+
+                       
+
+                    }
+                    catch(Exception ex) {
+
+                    }
+
+               
+                }
+
+
+                    RaisePropertyChanged("SelectedIbanData");
             }
         }
 
@@ -789,18 +818,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         IbanData.Add(IbanListsResults);
                     }
 
-                    var SlectedType = IBanListResponse.D.Results.FirstOrDefault();
+                    for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
+                    {
+                        var IbanListsResults = new VarRefundIbanDataModelMetadataResult()
+                        {
+                            Iban = IBanListResponse.D.Results[i].Iban
+                        };
+                        IbanData.Add(IbanListsResults);
+                    }
 
-                    IBANType idType = IBANTypesList.Where(m => m.key == SlectedType.IdType).FirstOrDefault();
-                    SelectedIDTypeCode = idType.key;
-                    SelectedIdNumber = AppResources.IDNumber;
-                    _ = SetIBANIdNumber(idType.key);
 
 
                 }
                 if(IbanData.Count > 0) {
 
                     SelectedIbanData = IbanData.FirstOrDefault();
+
+                  
 
                     IsTypeEditable = false;
                 }

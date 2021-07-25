@@ -295,6 +295,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             {
                                 hybridWebView.Opacity = 1;
                                 viewModel.IsLoading = false;
+
                             }
 
                             if (data == "hideLoginLoadingIndicator")
@@ -411,6 +412,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                             if (data == "navigateBackToLoginPage")
                             {
+                                App.IsLoginCalled = false;
                                 OnAppearing();
                             }
 
