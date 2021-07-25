@@ -128,7 +128,7 @@
                         </Grid>
                     </StackLayout>
 
-                    <StackLayout  Grid.Row="6" Grid.ColumnSpan="2" Spacing="15" Margin="0,0,0,7">
+                    <StackLayout  Grid.Row="7" Grid.ColumnSpan="2" Spacing="15" Margin="0,0,0,7">
 
                         <StackLayout>
                             <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,15,15,15" HasShadow="False">
@@ -165,7 +165,7 @@
                         </border:SfBorder>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="7" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
+                    <StackLayout Grid.Row="6" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
                         <listView:SfListView Orientation="Horizontal" x:Name="OtherIbanlist"   AutoFitMode="Height" 

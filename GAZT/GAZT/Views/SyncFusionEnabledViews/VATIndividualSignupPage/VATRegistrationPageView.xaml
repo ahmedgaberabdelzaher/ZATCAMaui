@@ -481,9 +481,9 @@
                                                         <custom:CustomLabel  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" LineSpacing="1" VerticalOptions="EndAndExpand"   >
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="To add or edit registered bank accounts data for GAZT, please go to "/>
-                                                                <Span Text="Bank Accounts Management" TextColor="#006450"  >
-                                                                    <Span.GestureRecognizers>
+                                                                    <Span Text="{x:Static custom2:AppResources.PleaseGoToIBan}"/>
+                                                                    <Span Text="{x:Static custom2:AppResources.VisitIBanManagement}" TextColor="#006450"  >
+                                                                        <Span.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="IBANAccManagementTapped"></TapGestureRecognizer>
                                                                     </Span.GestureRecognizers>
                                                                 </Span>

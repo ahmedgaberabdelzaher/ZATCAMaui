@@ -36,17 +36,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
-                    viewModel.VATDeclarationDetails = vATDeclaration;
+                    
                     if (vATDeclaration.d.Cr1645GoliveFg != "")
                     {
                         vATDeclaration.d.IBANSet.results.Clear();
                     }
                     
+
                     viewModel.IsSwichButtonEnable = true;
                     viewModel.IsCarriedForwandReviewMessageForRefund = false;
                     viewModel.IsRefundYesMsgDisplayed = false;
                     viewModel.SelectedIBANIDNumber = null;
 
+                    //viewModel.SelectedIBAN = null;
+
+                    viewModel.VATDeclarationDetails = vATDeclaration;
 
                     if (App.ICRStatus != "E0001" && App.ICRStatus != "E0013")
                     {
@@ -548,7 +552,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         {
                             if (viewModel.IBANIDNumberList != null && viewModel.IBANIDNumberList.Count != 0)
                             {
-                                viewModel.SelectedIBANIDNumber = viewModel.IBANIDNumberList[0];
+                                //viewModel.SelectedIBANIDNumber = viewModel.IBANIDNumberList[0];
                             }
                         }
                         else
@@ -1076,8 +1080,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
         }
 
-        private void IBANAccManagementTapped(object sender, EventArgs e)
+        private async void IBANAccManagementTapped(object sender, EventArgs e)
         {
+            await PopupNavigation.Instance.PopAsync();
             viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
 
         }

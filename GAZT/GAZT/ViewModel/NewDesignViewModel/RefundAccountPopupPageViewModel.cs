@@ -135,6 +135,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _selectedIBANType = value;
                 if (_selectedIBANType != null)
                 {
+                    if(!VATDeclarationDetails.d.Cr1645GoliveFg.Equals("X"))
                     SetIBANIdNumber();
                     TxtSelectedIBANType = _selectedIBANType.Text;
                 }
@@ -505,10 +506,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 //ID Number List
                                 FilterIBANIDNumberList(CR1645IBanListModel[i]);
-                                SelectedIBANIDNumber = IBANIDNumberList[0];
-                                SelectedIBANIDNumberPrev = IBANIDNumberList[0];
+                                SelectedIBANIDNumber = IBANIDNumberList.FirstOrDefault();
+                                SelectedIBANIDNumberPrev = IBANIDNumberList.FirstOrDefault();
                                 TxtSelectedIBANIDNumber = IBANIDNumberList[0].Idnumber;
                                 IbanNumberText = _selectedIBAN.Iban;
+                                break;
                             }
                         }
 
