@@ -41,7 +41,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     {
                         vATDeclaration.d.IBANSet.results.Clear();
                     }
-                    
+
+                    viewModel.SelectedIBAN = null;
 
                     viewModel.IsSwichButtonEnable = true;
                     viewModel.IsCarriedForwandReviewMessageForRefund = false;
@@ -773,6 +774,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel.SelectedIBANType = selectedIBANType;
             viewModel.SelectedIBANTypePrev = selectedIBANType;
             viewModel.TxtSelectedIBANType = selectedIBANType.Text;
+            if(viewModel.VATDeclarationDetails.d.Cr1645GoliveFg!="X")
             await viewModel.SetIBANIdNumber();
             //if (viewModel.IsVisibleSummary == true)
             //{
@@ -882,6 +884,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.SelectedIBANType = selectedIBANType;
                     viewModel.SelectedIBANTypePrev = selectedIBANType;
                     viewModel.TxtSelectedIBANType = selectedIBANType.Text;
+                    if(viewModel.VATDeclarationDetails.d.Cr1645GoliveFg!="X")
                     await viewModel.SetIBANIdNumber();
                 }
             }

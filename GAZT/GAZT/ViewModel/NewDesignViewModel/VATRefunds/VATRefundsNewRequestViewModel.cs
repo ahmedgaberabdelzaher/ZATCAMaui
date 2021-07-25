@@ -818,14 +818,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         IbanData.Add(IbanListsResults);
                     }
 
-                    for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
-                    {
-                        var IbanListsResults = new VarRefundIbanDataModelMetadataResult()
-                        {
-                            Iban = IBanListResponse.D.Results[i].Iban
-                        };
-                        IbanData.Add(IbanListsResults);
-                    }
 
 
 

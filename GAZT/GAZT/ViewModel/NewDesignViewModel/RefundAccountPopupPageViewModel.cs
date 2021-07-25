@@ -264,7 +264,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_txtSelectedIBANType == value) return;
+               if (_txtSelectedIBANType == value) return;
 
                 _txtSelectedIBANType = value;
                 RaisePropertyChanged("TxtSelectedIBANType");
