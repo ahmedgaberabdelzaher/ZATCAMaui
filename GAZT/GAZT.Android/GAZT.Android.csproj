@@ -56,6 +56,11 @@
     <EnableLLVM>false</EnableLLVM>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>/Users/ravikiran.pantangi/Downloads/E-GAZT.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Pm@dmin**</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>EGAZT</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Pm@dmin**</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
