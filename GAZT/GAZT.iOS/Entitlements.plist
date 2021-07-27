@@ -8,9 +8,5 @@
 	<string>NSFileProtectionComplete</string>
 	<key>aps-environment</key>
 	<string>production</string>
-	<key>com.apple.developer.in-app-payments</key>
-	<array>
-		<string>merchant.gazt.egazt</string>
-	</array>
 </dict>
 </plist>
