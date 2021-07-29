@@ -52,13 +52,16 @@ namespace EGAZT.Models
                         // Display ActionSheet Radio buttons 
                         if (ActiveIban == "X")
                         {
-                            StatusText = "Deactivate";
+                            //StatusText = "Deactivate";
+                            StatusText =AppResources.IBanDeactivate;
+
                             isUpdateEnabled = true;
                             isUpdateDisabled = false;
                         }
                         else if (ActiveIban == "")
                         {
-                            StatusText = "Activate";
+                            // StatusText = "Activate";
+                            StatusText = AppResources.IBanActivate;
                             isUpdateEnabled = true;
                             isUpdateDisabled = false;
                         }
@@ -68,13 +71,15 @@ namespace EGAZT.Models
                         //IsEnabled Update or disble update button
                         if (EnableUpdate == "X")
                         {
-                            StatusText = "Update";
+                            //StatusText = "Update";
+                            StatusText = AppResources.IBANUpdate;
                             isUpdateEnabled = true;
                             isUpdateDisabled = false;
                         }
                         else if (EnableUpdate == "")
                         {
-                            StatusText = "Update";
+                            //StatusText = "Update";
+                            StatusText = AppResources.IBANUpdate;
                             isUpdateEnabled = false;
                             isUpdateDisabled = true;
                         }
@@ -124,13 +129,15 @@ namespace EGAZT.Models
                         // Display ActionSheet Radio buttons 
                         if (ActiveIban == "X")
                         {
-                            StatusText = "Deactivate";
+                           // StatusText = "Deactivate";
+                            StatusText = AppResources.IBanDeactivate;
                             isUpdateEnabled = true;
                             isUpdateDisabled = false;
                         }
                         else if (ActiveIban == "")
                         {
-                            StatusText = "Activate";
+                            //StatusText = "Activate";
+                            StatusText = AppResources.IBanActivate;
                             isUpdateEnabled = true;
                             isUpdateDisabled = false;
                         }
@@ -140,13 +147,15 @@ namespace EGAZT.Models
                         //IsEnabled Update or disble update button
                         if (EnableUpdate == "X")
                         {
-                            StatusText = "Update";
+                            // StatusText = "Update";
+                            StatusText = AppResources.IBANUpdate;
                             isUpdateEnabled = true;
                             isUpdateDisabled = false;
                         }
                         else if (EnableUpdate == "")
                         {
-                            StatusText = "Update";
+                            // StatusText = "Update";
+                            StatusText = AppResources.IBANUpdate;
                             isUpdateEnabled = false;
                             isUpdateDisabled = true;
                         }
@@ -237,6 +246,7 @@ namespace EGAZT.Models
             
             public string Euser { get; set; }
 
+            public bool isUpdateFlag { get; set; }
             
             public string Name { get; set; }
 

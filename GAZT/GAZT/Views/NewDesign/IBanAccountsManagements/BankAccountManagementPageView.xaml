@@ -101,7 +101,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Image>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.AddNewIban}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.AddNewIban}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AddNewIBANTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>
@@ -112,11 +112,12 @@
 
                             <listView:SfListView  x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False"  VerticalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding MainListData}"  BackgroundColor="Transparent" 
-                            SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
+                            SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}" SelectionChanged="StatusViewButtons_Tapped" SelectionMode="Single" SelectionBackgroundColor="Transparent">
 
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0" HasShadow="True" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <Frame Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0"
+                                                         HasShadow="True" Style="{StaticResource GreyBorderFWithShadow}">
                                             <StackLayout Padding="0" Spacing="0" >
                                                 <Grid  Padding="10" RowSpacing="0" >
                                                     <Grid.RowDefinitions>
@@ -136,8 +137,8 @@
 
 
                                                     <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,4" HorizontalOptions="Start">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANRefNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                                        <custom:CustomLabel Text="{Binding Fbnum}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></custom:CustomLabel>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.IBANRefNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></Label>
+                                                        <Label Text="{Binding Fbnum}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Label>
                                                     </StackLayout>
 
                                                     <StackLayout IsVisible="{Binding isUpdateDisabled}" Margin="5" Grid.Row="0" Grid.Column="1" HorizontalOptions="End">
@@ -160,11 +161,11 @@
                                                         </Frame.Triggers>-->
                                                             <StackLayout Grid.Row="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                                                 <!--TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" -->
-                                                                <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}" 
+                                                                <Label Style="{StaticResource CaptionLabelWhite}" 
                                                                              Text="{Binding StatusText}" HorizontalOptions="CenterAndExpand"  
                                                                                 VerticalOptions="CenterAndExpand" >
 
-                                                                </custom:CustomLabel>
+                                                                </Label>
                                                             </StackLayout>
                                                         </Frame>
 
@@ -197,11 +198,11 @@
                                                             </Frame.Triggers>
                                                             <StackLayout Grid.Row="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                                                 <!--TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" -->
-                                                                <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}" 
+                                                                <Label Style="{StaticResource CaptionLabelWhite}" 
                                                                              Text="{Binding StatusText}" HorizontalOptions="CenterAndExpand"  
                                                                                 VerticalOptions="CenterAndExpand" >
 
-                                                                </custom:CustomLabel>
+                                                                </Label>
                                                             </StackLayout>
                                                         </Frame>
 
@@ -223,7 +224,7 @@
                                                 <StackLayout BindingContext="{Binding .}"  Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
 
 
-                                                    <custom:CustomLabel FontFamily="{StaticResource SSTArRoman}" Text="{Binding StatusText}" FontSize="12" TextColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand" Margin="10,0,10,0"/>
+                                                    <Label FontFamily="{StaticResource SSTArRoman}" Text="{Binding StatusText}" FontSize="12" TextColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand" Margin="10,0,10,0"/>
                                                     <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer CommandParameter="" Tapped="UpdateButton_Tapped" />
                                                     </StackLayout.GestureRecognizers>
@@ -234,45 +235,45 @@
                                                     <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" Margin="0,5" />
 
                                                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,4">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANAccName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                                        <custom:CustomLabel Text="{Binding Koinh}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.IBANAccName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                        <Label Text="{Binding Koinh}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                                     </StackLayout>
 
 
 
                                                     <StackLayout Grid.Row="5"  Grid.ColumnSpan="2"  Margin="0,4">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                                        <custom:CustomLabel Text="{Binding IdtypeDesc}"  Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                        <Label Text="{Binding IdtypeDesc}"  Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                                     </StackLayout>
 
                                                     <StackLayout Grid.Row="6" Grid.ColumnSpan="2" Margin="0,4">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                                        <custom:CustomLabel Text="{Binding Idnumber}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.IBANIdNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                        <Label Text="{Binding Idnumber}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Margin="0,4">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBAN}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                                        <custom:CustomLabel Text="{Binding Iban}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.IBAN}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                        <Label Text="{Binding Iban}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Margin="0,4">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANBankName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                                        <custom:CustomLabel Text="{Binding Bkext}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.IBANBankName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                        <Label Text="{Binding Bkext}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                                     </StackLayout>
 
                                                     <StackLayout Grid.Row="7" Grid.Column="0" Margin="0,4" HorizontalOptions="Start">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANStatus}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                                        <custom:CustomLabel Text="{Binding StatusDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></custom:CustomLabel>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.IBANStatus}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></Label>
+                                                        <Label Text="{Binding StatusDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Label>
                                                     </StackLayout>
 
                                                     <!--<StackLayout Grid.Row="5" Grid.ColumnSpan="3" Margin="0,4">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{Binding IdtypeDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <Label Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                        <Label Text="{Binding IdtypeDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                     </StackLayout>-->
 
 
                                                 </Grid>
 
                                             </StackLayout>
-                                        </border:SfBorder>
+                                        </Frame>
                                     </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
                             </listView:SfListView>
@@ -328,7 +329,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Image>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.AddNewIban}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.AddNewIban}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AddNewIBANTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>
@@ -364,8 +365,8 @@
 
 
                                     <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,4" HorizontalOptions="Start">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANRefNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{Binding Fbnum}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></custom:CustomLabel>
+                                        <Label Text="{x:Static ResourceManager:AppResources.IBANRefNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></Label>
+                                        <Label Text="{Binding Fbnum}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Label>
                                     </StackLayout>
 
                                                 <StackLayout IsVisible="{Binding isUpdateDisabled}" Margin="5" Grid.Row="0" Grid.Column="1" HorizontalOptions="End">
@@ -388,11 +389,11 @@
                                                         </Frame.Triggers>--><!--
                                                         <StackLayout Grid.Row="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                                             --><!--TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" --><!--
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}" 
+                                                            <Label Style="{StaticResource CaptionLabelWhite}" 
                                                                              Text="{Binding StatusText}" HorizontalOptions="CenterAndExpand"  
                                                                                 VerticalOptions="CenterAndExpand" >
 
-                                                            </custom:CustomLabel>
+                                                            </Label>
                                                         </StackLayout>
                                                     </Frame>
 
@@ -425,11 +426,11 @@
                                                         </Frame.Triggers>
                                                         <StackLayout Grid.Row="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                                             --><!--TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" --><!--
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}" 
+                                                            <Label Style="{StaticResource CaptionLabelWhite}" 
                                                                              Text="{Binding StatusText}" HorizontalOptions="CenterAndExpand"  
                                                                                 VerticalOptions="CenterAndExpand" >
 
-                                                            </custom:CustomLabel>
+                                                            </Label>
                                                         </StackLayout>
                                                     </Frame>
 
@@ -451,7 +452,7 @@
                                                 <StackLayout BindingContext="{Binding .}"  Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
 
 
-                                                    <custom:CustomLabel FontFamily="{StaticResource SSTArRoman}" Text="{Binding StatusText}" FontSize="12" TextColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand" Margin="10,0,10,0"/>
+                                                    <Label FontFamily="{StaticResource SSTArRoman}" Text="{Binding StatusText}" FontSize="12" TextColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand" Margin="10,0,10,0"/>
                                                     <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer CommandParameter="" Tapped="UpdateButton_Tapped" />
                                                     </StackLayout.GestureRecognizers>
@@ -462,38 +463,38 @@
                                     <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" Margin="0,5" />
 
                                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,4">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANAccName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{Binding Koinh}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <Label Text="{x:Static ResourceManager:AppResources.IBANAccName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                        <Label Text="{Binding Koinh}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                     </StackLayout>
 
                                    
 
                                     <StackLayout Grid.Row="5"  Grid.ColumnSpan="2"  Margin="0,4">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{Binding IdtypeDesc}"  Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <Label Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                        <Label Text="{Binding IdtypeDesc}"  Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                     </StackLayout>
 
                                     <StackLayout Grid.Row="6" Grid.ColumnSpan="2" Margin="0,4">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{Binding Idnumber}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <Label Text="{x:Static ResourceManager:AppResources.IBANIdNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                        <Label Text="{Binding Idnumber}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                     </StackLayout>
                                     <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Margin="0,4">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBAN}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{Binding Iban}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <Label Text="{x:Static ResourceManager:AppResources.IBAN}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                        <Label Text="{Binding Iban}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                     </StackLayout>
                                     <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Margin="0,4">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANBankName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{Binding Bkext}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <Label Text="{x:Static ResourceManager:AppResources.IBANBankName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                        <Label Text="{Binding Bkext}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                     </StackLayout>
 
                                       <StackLayout Grid.Row="7" Grid.Column="0" Margin="0,4" HorizontalOptions="Start">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANStatus}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{Binding StatusDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></custom:CustomLabel>
+                                        <Label Text="{x:Static ResourceManager:AppResources.IBANStatus}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></Label>
+                                        <Label Text="{Binding StatusDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Label>
                                     </StackLayout>
                                     
                                     --><!--<StackLayout Grid.Row="5" Grid.ColumnSpan="3" Margin="0,4">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{Binding IdtypeDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                                        <Label Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                        <Label Text="{Binding IdtypeDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                     </StackLayout>--><!--
 
 

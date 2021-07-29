@@ -34,8 +34,6 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
 
             InitializeComponent();
             ChangeAeroIcon();
-            
-            
 
             SetLTR();
 
@@ -43,29 +41,41 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
 
+
+
             _viewModel.IsInstrunctionChecked = false;
             _viewModel.SummaryVisible = false;
             _viewModel.NewFormVisible = true;
             _viewModel.IsContinueButtonEnable = false;
-           // _viewModel.ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+            // _viewModel.ContinueButtonnBackroundColor = Color.FromHex("#d49504");
 
             _viewModel.IBANAccountData = IBANAccountData;
-           
-            if(!App.LoginDataRetrieved.NameFirst.Equals(""))
+            if (_viewModel.IBANAccountData.d != null)
+            {
+                if (_viewModel.IBANAccountData.d.isUpdateFlag) {
+                    _viewModel.isIBanValid = true;
+                }
+                else
+                {
+                    _viewModel.isIBanValid = false;
+                }
+            }
+
+
+            if (!App.LoginDataRetrieved.NameFirst.Equals(""))
             {
                 TpName = App.LoginDataRetrieved.NameFirst;
             }
-            else if(!App.LoginDataRetrieved.NameLast.Equals(""))
+            else if (!App.LoginDataRetrieved.NameLast.Equals(""))
             {
                 TpName = App.LoginDataRetrieved.NameLast;
             }
-            else if(!App.LoginDataRetrieved.NameOrg1.Equals(""))
+            else if (!App.LoginDataRetrieved.NameOrg1.Equals(""))
             {
                 TpName = App.LoginDataRetrieved.NameOrg1;
             }
             AckText.Text = string.Format(AppResources.NDIBANCertifyAck, TpName);
         }
-
         /*private async void ValidateTermsAndConditions()
         {
             if (_viewModel.IsInstrunctionChecked == true)
@@ -142,7 +152,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                 if (arg.PickerId == "IBANIdTypePicker")
                 {
                     _viewModel.SelectedIDType = arg.SelectedValue;
-                    _viewModel.SelectedIDNumber ="";
+                    _viewModel.SelectedIDNumber = "";
                 }
                 else if (arg.PickerId == "IBANIdNumberPicker")
                 {
@@ -248,11 +258,11 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                         if (!_viewModel.IBANValue.Substring(2).All(allowedchar.Contains))
                         {
                             _viewModel.IBANValue = _viewModel.IBANValue.Remove(_viewModel.IBANValue.Length - 1);
-/*
-                            if (_viewModel.IBANValue.Length == 24)
-                            {
-                                checkIBanIsValidOrNot();
-                            }*/
+                            /*
+                                                        if (_viewModel.IBANValue.Length == 24)
+                                                        {
+                                                            checkIBanIsValidOrNot();
+                                                        }*/
                             /*if (_viewModel.IBANValue.Length > 24)
                             {
                                 _viewModel.IBANValue = _viewModel.IBANValue.Remove(_viewModel.IBANValue.Length - 1);  // Remove Last character
@@ -375,6 +385,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                         _viewModel.IsLoading = false;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
+                            _viewModel.isIBanValid = false;
                             //_viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
                         });
@@ -414,7 +425,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
 
             }
-            if((_viewModel.IBANValue.Length > 0) && (_viewModel.IBANValue.Length == 24))
+            if ((_viewModel.IBANValue.Length > 0) && (_viewModel.IBANValue.Length == 24))
             {
                 checkIBanIsValidOrNot();
             }
@@ -433,12 +444,12 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
         private void OtherBanksTextChanged(object sender, TextChangedEventArgs e)
         {
             _viewModel.selectedOtherBankName = e.NewTextValue;
-           
+
         }
 
         private void OtherBanksFocusChnaged(object sender, FocusEventArgs e)
         {
-           // _viewModel.selectedOtherBankName = OtherBankName.Text;
+            // _viewModel.selectedOtherBankName = OtherBankName.Text;
 
             if (_viewModel.selectedOtherBankName.Length == 0)
             {

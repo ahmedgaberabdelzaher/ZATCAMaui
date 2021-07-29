@@ -9144,4 +9144,10 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="VisitIBanManagement" xml:space="preserve">
     <value>Bank Accounts Management</value>
   </data>
+  <data name="IBanActivate" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="IBanDeactivate" xml:space="preserve">
+    <value>Deactivate</value>
+  </data>
 </root>

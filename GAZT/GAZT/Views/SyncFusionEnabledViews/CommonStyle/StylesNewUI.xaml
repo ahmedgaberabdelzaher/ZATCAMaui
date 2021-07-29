@@ -366,6 +366,15 @@
         <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
         <Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />
     </Style>
+    <Style x:Key="GreyBorderFWithShadow" TargetType="Frame">
+        <!--<Setter Property="Margin" Value="10,0,10,0" />
+         <Setter Property="VerticalOptions" Value="Center" />-->
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HasShadow" Value="True" />
+        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+    </Style>
+    
     <Style x:Key="GreyBorderFrameWithShadow1" TargetType="yummy:PancakeView">
         <!--<Setter Property="Margin" Value="10,0,10,0" />
          <Setter Property="VerticalOptions" Value="Center" />-->

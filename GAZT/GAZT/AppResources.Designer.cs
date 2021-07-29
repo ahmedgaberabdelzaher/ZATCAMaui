@@ -5990,11 +5990,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activate.
+        /// </summary>
+        public static string IBanActivate {
+            get {
+                return ResourceManager.GetString("IBanActivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bank Name.
         /// </summary>
         public static string IBANBankName {
             get {
                 return ResourceManager.GetString("IBANBankName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deactivate.
+        /// </summary>
+        public static string IBanDeactivate {
+            get {
+                return ResourceManager.GetString("IBanDeactivate", resourceCulture);
             }
         }
         

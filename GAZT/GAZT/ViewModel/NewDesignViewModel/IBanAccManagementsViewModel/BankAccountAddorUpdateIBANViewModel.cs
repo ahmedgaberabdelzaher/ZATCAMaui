@@ -21,9 +21,11 @@ using Result = EGAZT.Models.IBanManagementListModel.Result;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 {
+
     [Preserve(AllMembers = true)]
     public class BankAccountAddorUpdateIBANViewModel : BaseViewModel
     {
+        public bool isUpdate = false;
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand ContinueButtonTapped { get; set; }
         public ICommand ShowIDTypePicker { get; set; }
