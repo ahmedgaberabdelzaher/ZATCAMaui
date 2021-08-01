@@ -467,31 +467,31 @@
                                         <Label Text="{x:Static ResourceManager:AppResources.NDBankAccOwnerName}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="0" Grid.Column="1" >
-                                        <Label Text="{Binding AccountOwnerName}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        <Label Text="{Binding AccountOwnerName}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="1" Grid.Column="0">
                                         <Label Text="{x:Static ResourceManager:AppResources.NDBankAccIDType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="1" Grid.Column="1" >
-                                        <Label Text="{Binding SelectedIDType}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        <Label Text="{Binding SelectedIDType}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="2" Grid.Column="0">
                                         <Label Text="{x:Static ResourceManager:AppResources.NDBankAccIdNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="2" Grid.Column="1" >
-                                        <Label Text="{Binding SelectedIDNumber}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        <Label Text="{Binding SelectedIDNumber}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="3" Grid.Column="0">
                                         <Label Text="{x:Static ResourceManager:AppResources.NDBankAccIBAN}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="3" Grid.Column="1" >
-                                        <Label Text="{Binding IBANValue}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        <Label Text="{Binding IBANValue}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="4" Grid.Column="0">
                                         <Label Text="{x:Static ResourceManager:AppResources.NDBankAccBankName}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="4" Grid.Column="1" >
-                                        <Label Text="{Binding SelectedBankName}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        <Label Text="{Binding SelectedBankName}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                 </Grid>
 
@@ -531,9 +531,10 @@
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 
+                   
                                     <custom1:CheckboxCustom  Grid.Row="1" Grid.Column="0" IsChecked="{Binding IsInstrunctionChecked}" WidthRequest="32" HeightRequest="32"
-                                                                        x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand"/>
-                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" x:Name="AckText" Style="{StaticResource BodyLabelGrey}"/>
+                                                                        x:Name="chkDeclaration"  VerticalOptions="Start"/>
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" x:Name="AckText" Style="{StaticResource BodyLabelGrey}" VerticalOptions="CenterAndExpand"/>
 
                                 </Grid>
 
