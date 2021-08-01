@@ -231,7 +231,8 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
         private async void StatusViewButtons_Tapped(object sender, EventArgs e)
         {
             StackLayout chipView = sender as StackLayout;
-            IbanListSetResult IBanSetResultModel = (IbanListSetResult)chipView.BindingContext;
+            IbanListSetResult IBanSetResultModel = new IbanListSetResult();
+            IBanSetResultModel = (IbanListSetResult)chipView.BindingContext;
             if (!IBanSetResultModel.isUpdateDisabled)
             {
                 App.SelectedIBAN = IBanSetResultModel.Fbnum;

@@ -186,13 +186,13 @@
                                                     HeightRequest="20" Opacity=".8" BackgroundColor="{StaticResource Primary}"
                                                      HasShadow="False" >
                                                             <Frame.Triggers>
-                                                                <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="Deactivate">
+                                                                <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.IBanDeactivate}">
                                                                     <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                                                                 </DataTrigger>
-                                                                <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="Update">
+                                                                <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.IBANUpdate}">
                                                                     <Setter Property="BackgroundColor" Value="Orange" />
                                                                 </DataTrigger>
-                                                                <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="Activate">
+                                                                <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.IBanActivate}">
                                                                     <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
                                                                 </DataTrigger>
                                                             </Frame.Triggers>
