@@ -534,7 +534,7 @@
                    
                                     <custom1:CheckboxCustom  Grid.Row="1" Grid.Column="0" IsChecked="{Binding IsInstrunctionChecked}" WidthRequest="32" HeightRequest="32"
                                                                         x:Name="chkDeclaration"  VerticalOptions="Start"/>
-                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" x:Name="AckText" Style="{StaticResource BodyLabelGrey}" VerticalOptions="CenterAndExpand"/>
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" x:Name="AckText" Style="{StaticResource BodyLabelGrey}" VerticalOptions="Start"/>
 
                                 </Grid>
 

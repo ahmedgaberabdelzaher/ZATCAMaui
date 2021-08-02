@@ -9150,4 +9150,19 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="IBanDeactivate" xml:space="preserve">
     <value>Deactivate</value>
   </data>
+  <data name="IBanInsertIDNumber" xml:space="preserve">
+    <value>Please select valid ID Number.</value>
+  </data>
+  <data name="IBanInsertIDType" xml:space="preserve">
+    <value>Please select valid Id Type.</value>
+  </data>
+  <data name="IBanInsertName" xml:space="preserve">
+    <value>Please insert your full name.</value>
+  </data>
+  <data name="IBanSelectBank" xml:space="preserve">
+    <value>Please select valid Bank.</value>
+  </data>
+  <data name="ZZIBANRequired" xml:space="preserve">
+    <value>Please Select Valid Iban.</value>
+  </data>
 </root>

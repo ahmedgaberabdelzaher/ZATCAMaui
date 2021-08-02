@@ -88,6 +88,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             try
             {
                 IBANAccountData.d.isUpdateFlag = false;
+                App.SelectedIBAN = "";
                 _navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, IBANAccountData);
             }
             catch (GAZTUnlockAccountException ex)

@@ -9072,4 +9072,19 @@ info@gazt.gov.sa</value>
   <data name="IBanDeactivate" xml:space="preserve">
     <value>تعطيل</value>
   </data>
+  <data name="IBanInsertIDNumber" xml:space="preserve">
+    <value>الرجاء اختيار رقم هوية صحيح</value>
+  </data>
+  <data name="IBanInsertIDType" xml:space="preserve">
+    <value>الرجاء اختيار نوع هوية صحيح</value>
+  </data>
+  <data name="IBanInsertName" xml:space="preserve">
+    <value>الرجاء إدخال الاسم الكامل</value>
+  </data>
+  <data name="IBanSelectBank" xml:space="preserve">
+    <value>الرجاء اختيار بنك صحيح</value>
+  </data>
+  <data name="ZZIBANRequired" xml:space="preserve">
+    <value>الرجاء اختيار ايبان صحيح</value>
+  </data>
 </root>

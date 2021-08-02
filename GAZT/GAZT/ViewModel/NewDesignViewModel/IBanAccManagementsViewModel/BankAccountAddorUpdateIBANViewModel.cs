@@ -666,6 +666,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         {
             try
             {
+                if (AccountOwnerName.Equals(""))
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertName));
+
+                    return;
+                }
+                if (SelectedIDType.Equals(""))
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDType));
+
+                    return;
+                }
+                if (SelectedIDNumber.Equals(""))
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDNumber));
+
+                    return;
+                }
+                if (IBANValue.Equals(""))
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANRequired));
+
+                    return;
+                }
+
+                if (!isIBanValid)
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
+
+                    return;
+                }
+                if (SelectedBankName.Equals(""))
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanSelectBank));
+
+                    return;
+                }
                 if (!string.IsNullOrEmpty(SelectedBankName) && (SelectedBankName.Equals("OTHER")))
                 {
                     if (selectedOtherBankName.Equals(""))
@@ -675,19 +712,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     }
                 }
 
-                if (!isIBanValid)
-                {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
-
-                    return;
-                }
                 if (string.IsNullOrEmpty(SelectedBankName) || string.IsNullOrEmpty(SelectedIDNumber) || string.IsNullOrEmpty(SelectedIDType) || string.IsNullOrEmpty(AccountOwnerName) || string.IsNullOrEmpty(IBANValue))
                 {
 
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    return;
                 }
-                else
-                {
+                /*else
+                {*/
 
                     if (IBANValue.Length < 24)
                     {
@@ -710,13 +742,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                     if (selectedType != null)
                     {
-                        SelectedBankNameValue = BankID.Bankid;
+                        if (BankID!=null&&BankID.Bankid != null)
+                            SelectedBankNameValue = BankID.Bankid;
+                        else
+                            SelectedBankNameValue ="9999";
                     }
 
 
 
                     EnableSummaryView();
-                }
+                //}
 
 
 
