@@ -21,6 +21,8 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using static EGAZT.ViewModel.NewDesignViewModel.GAZTNewDesignDashBoardPageViewModel;
 using Application = Xamarin.Forms.Application;
+using Xamarin.Essentials;
+
 
 namespace EGAZT.Views.NewDesign.DashBoardPages
 {       
@@ -1406,5 +1408,21 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.selectedTaxablePeriod = BModel.Persl;*/
 
         }
+
+        private void OnEduLinkTapped(object sender, EventArgs e)
+        {
+
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardPageView", "EduLink_Tapped", "Education Link");
+            //  viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+            Uri uri = new Uri("https://edujourneys.gazt.gov.sa/home/tracks");
+            OpenBrowser(uri);
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+        public async void OpenBrowser(Uri uri)
+        {
+            await Launcher.OpenAsync(uri);
+        }
+
+
     }
 }

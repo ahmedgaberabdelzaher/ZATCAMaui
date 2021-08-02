@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Essentials;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -139,6 +140,22 @@ namespace EGAZT.Views.NewDesign.Template
         private void SwitchUser_Tapped(object sender, EventArgs e)
         {
             viewModel._navigationService.GoBack();
+        }
+
+
+        private void OnEduLinkTapped(object sender, EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "EduLink_Tapped", "Education Link");
+            //  viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+            Uri uri = new Uri("https://edujourneys.gazt.gov.sa/home/tracks");
+            OpenBrowser(uri);
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
+        
+        public async void OpenBrowser(Uri uri)
+        {
+            await Launcher.OpenAsync(uri);
         }
     }
 }

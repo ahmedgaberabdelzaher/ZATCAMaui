@@ -16235,5 +16235,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZIBANRequired", resourceCulture);
             }
         }
+        
+        public static string ZZZEducationLink {
+            get {
+                return ResourceManager.GetString("ZZZEducationLink", resourceCulture);
+            }
+        }
     }
 }
