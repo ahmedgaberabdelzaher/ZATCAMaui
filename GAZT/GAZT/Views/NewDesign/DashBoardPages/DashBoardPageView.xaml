@@ -1272,6 +1272,8 @@
                                         </StackLayout.GestureRecognizers>
                                     </StackLayout>
 
+                                    <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
                                     <StackLayout Orientation="Horizontal" Spacing="20">
 
                                         <Image Source="customerService.png" Style="{StaticResource SmallIcon}"/>
