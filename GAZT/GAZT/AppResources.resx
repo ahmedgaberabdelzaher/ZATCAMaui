@@ -9165,4 +9165,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="ZZIBANRequired" xml:space="preserve">
     <value>Please Select Valid Iban.</value>
   </data>
+  <data name="ZZZEducationLink" xml:space="preserve">
+    <value>Education Journey</value>
+  </data>
 </root>
