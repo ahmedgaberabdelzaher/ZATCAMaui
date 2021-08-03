@@ -52,7 +52,8 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             _viewModel.IBANAccountData = IBANAccountData;
             if (_viewModel.IBANAccountData.d != null)
             {
-                if (_viewModel.IBANAccountData.d.isUpdateFlag) {
+                if (_viewModel.IBANAccountData.d.isUpdateFlag)
+                {
                     _viewModel.isIBanValid = true;
                 }
                 else
@@ -75,6 +76,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                 TpName = App.LoginDataRetrieved.NameOrg1;
             }
             AckText.Text = string.Format(AppResources.NDIBANCertifyAck, TpName);
+            BindInfoToViews();
         }
         /*private async void ValidateTermsAndConditions()
         {
@@ -112,65 +114,70 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
-            //Check for Large Tax payer or not
+        }
 
-
-            if (string.IsNullOrEmpty(App.SelectedIBAN))
+        private void BindInfoToViews()
+        {
+            try
             {
-
-                _viewModel.SelectedIDType = "";
-                _viewModel.SelectedBankName = "";
-                _viewModel.SelectedIDNumber = "";
-                _viewModel.AccountOwnerName = "";
-                _viewModel.IBANValue = "";
-            }
-            else
-            {
-
-
-                var selectedIBAN = _viewModel.IBANAccountData.d.IbanListSet.results.Find(selectedValue => (selectedValue.Fbnum == App.SelectedIBAN));
-
-                if (selectedIBAN != null)
+                if (string.IsNullOrEmpty(App.SelectedIBAN))
                 {
-                    _viewModel.SelectedIDType = selectedIBAN.IdtypeDesc;
-                    _viewModel.SelectedBankName = selectedIBAN.Bkext;
-                    _viewModel.SelectedIDNumber = selectedIBAN.Idnumber;
-                    _viewModel.AccountOwnerName = selectedIBAN.Koinh;
-                    _viewModel.IBANValue = selectedIBAN.Iban;
-                }
 
-
-            }
-
-
-
-
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
-            {
-                _viewModel.PickerModel = arg;
-
-                if (arg.PickerId == "IBANIdTypePicker")
-                {
-                    _viewModel.SelectedIDType = arg.SelectedValue;
+                    _viewModel.SelectedIDType = "";
+                    _viewModel.SelectedBankName = "";
                     _viewModel.SelectedIDNumber = "";
+                    _viewModel.AccountOwnerName = "";
+                    _viewModel.IBANValue = "";
                 }
-                else if (arg.PickerId == "IBANIdNumberPicker")
+                else
                 {
-                    _viewModel.SelectedIDNumber = arg.SelectedValue;
+
+
+                    var selectedIBAN = _viewModel.IBANAccountData.d.IbanListSet.results.Find(selectedValue => (selectedValue.Fbnum == App.SelectedIBAN));
+
+                    if (selectedIBAN != null)
+                    {
+                        _viewModel.SelectedIDType = selectedIBAN.IdtypeDesc;
+                        _viewModel.SelectedBankName = selectedIBAN.Bkext;
+                        _viewModel.SelectedIDNumber = selectedIBAN.Idnumber;
+                        _viewModel.AccountOwnerName = selectedIBAN.Koinh;
+                        _viewModel.IBANValue = selectedIBAN.Iban;
+                    }
+
+
                 }
-                else if (arg.PickerId == "IBANBankNamePicker")
+
+
+
+
+                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
                 {
-                    _viewModel.SelectedBankName = arg.SelectedValue;
-                    if (arg.SelectedValue == "OTHER")
-                        _viewModel.OtherBanksVisible = true;
-                    else
-                        _viewModel.OtherBanksVisible = false;
-                }
+                    _viewModel.PickerModel = arg;
 
-            });
+                    if (arg.PickerId == "IBANIdTypePicker")
+                    {
+                        _viewModel.SelectedIDType = arg.SelectedValue;
+                        _viewModel.SelectedIDNumber = "";
+                    }
+                    else if (arg.PickerId == "IBANIdNumberPicker")
+                    {
+                        _viewModel.SelectedIDNumber = arg.SelectedValue;
+                    }
+                    else if (arg.PickerId == "IBANBankNamePicker")
+                    {
+                        _viewModel.SelectedBankName = arg.SelectedValue;
+                        if (arg.SelectedValue == "OTHER")
+                            _viewModel.OtherBanksVisible = true;
+                        else
+                            _viewModel.OtherBanksVisible = false;
+                    }
 
+                });
+            }
+            catch (Exception e)
+            {
 
-
+            }
         }
 
         protected override void OnDisappearing()
