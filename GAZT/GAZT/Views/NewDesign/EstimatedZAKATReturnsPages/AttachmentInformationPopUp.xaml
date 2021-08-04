@@ -28,7 +28,7 @@
                 </Image.GestureRecognizers>
             </Image>-->
 
-            <Label x:Name="InfromatationText" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
+            <Label x:Name="InfromatationText" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
                             <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,0,10" />
 
         </StackLayout>

@@ -18,6 +18,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             InfromatationText.Text = infromationText;
+          
             SetLTR();
         }
 

@@ -166,7 +166,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                     else if (arg.PickerId == "IBANBankNamePicker")
                     {
                         _viewModel.SelectedBankName = arg.SelectedValue;
-                        if (arg.SelectedValue == "OTHER")
+                        if (arg.SelectedValue == "OTHER BANK NAME")
                             _viewModel.OtherBanksVisible = true;
                         else
                             _viewModel.OtherBanksVisible = false;
