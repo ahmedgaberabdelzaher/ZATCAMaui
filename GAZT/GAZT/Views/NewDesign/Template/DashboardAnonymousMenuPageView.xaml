@@ -106,9 +106,9 @@
                                 <Image Source="customerService" Style="{StaticResource SmallIcon}"/>
 
 
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZEducationLink}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSupport}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
                                 <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnEduLinkTapped" NumberOfTapsRequired="1"/>
+                                    <TapGestureRecognizer Tapped="OnSupportTapped" NumberOfTapsRequired="1"/>
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <BoxView Style="{StaticResource WhiteLineSeperator}"/>
@@ -117,9 +117,9 @@
                                 <Image Source="customerService" Style="{StaticResource SmallIcon}"/>
 
 
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSupport}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZEducationLink}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
                                 <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnSupportTapped" NumberOfTapsRequired="1"/>
+                                    <TapGestureRecognizer Tapped="OnEduLinkTapped" NumberOfTapsRequired="1"/>
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <BoxView Style="{StaticResource WhiteLineSeperator}"/>

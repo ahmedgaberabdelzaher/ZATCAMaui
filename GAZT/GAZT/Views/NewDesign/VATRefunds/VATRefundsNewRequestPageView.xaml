@@ -257,7 +257,6 @@
                         </listView:SfListView>
 
                         <StackLayout  Grid.Row="5" Grid.ColumnSpan="2" Spacing="15" Margin="0,0,0,7">
-
                             <StackLayout>
                                 <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,15,15,15" HasShadow="False">
                                     <StackLayout Orientation="Horizontal" >
@@ -266,7 +265,7 @@
                                             <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static ResourceManager:AppResources.PleaseGoToIBan}"/>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}" TextColor="#006450"  >
+                                                    <Span Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}" TextColor="#006450" >
                                                         <Span.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="IBANAccManagementTapped"></TapGestureRecognizer>
                                                         </Span.GestureRecognizers>
