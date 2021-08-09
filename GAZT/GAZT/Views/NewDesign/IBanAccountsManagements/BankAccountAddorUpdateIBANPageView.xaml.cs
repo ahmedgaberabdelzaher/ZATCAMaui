@@ -147,9 +147,6 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
 
                 }
 
-
-
-
                 MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
                 {
                     _viewModel.PickerModel = arg;
@@ -166,7 +163,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                     else if (arg.PickerId == "IBANBankNamePicker")
                     {
                         _viewModel.SelectedBankName = arg.SelectedValue;
-                        if (arg.SelectedValue == "OTHER BANK NAME")
+                        if (arg.SelectedValue == "OTHER BANK NAME" || arg.SelectedValue == "اسم بنك آخر")
                             _viewModel.OtherBanksVisible = true;
                         else
                             _viewModel.OtherBanksVisible = false;

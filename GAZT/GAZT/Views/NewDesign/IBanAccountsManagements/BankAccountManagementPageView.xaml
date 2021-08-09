@@ -112,7 +112,7 @@
 
                             <listView:SfListView  x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False"  VerticalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding MainListData}"  BackgroundColor="Transparent" 
-                            SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}" SelectionChanged="StatusViewButtons_Tapped" SelectionMode="Single" SelectionBackgroundColor="Transparent">
+                            SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
 
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>

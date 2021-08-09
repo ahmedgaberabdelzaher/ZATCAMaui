@@ -264,6 +264,7 @@
     <BundleResource Include="Resources\ic_GAZT_Logo_Text.png" />
     <BundleResource Include="Resources\ic_star_180.png" />
     <BundleResource Include="Resources\log_out%402x.png" />
+    <BundleResource Include="Resources\education%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
