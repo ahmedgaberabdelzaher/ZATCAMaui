@@ -1265,7 +1265,7 @@
                                     
                                     <StackLayout Orientation="Horizontal" Spacing="20">
 
-                                        <Image Source="customerService.png" Style="{StaticResource SmallIcon}"/>
+                                        <Image Source="education.png" Style="{StaticResource SmallIcon}"/>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZEducationLink}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnEduLinkTapped"/>

@@ -114,7 +114,7 @@
                             <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                             <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="customerService" Style="{StaticResource SmallIcon}"/>
+                                <Image Source="education" Style="{StaticResource SmallIcon}"/>
 
 
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZEducationLink}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
