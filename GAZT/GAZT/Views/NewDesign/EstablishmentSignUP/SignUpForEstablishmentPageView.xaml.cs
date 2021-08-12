@@ -187,7 +187,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         public async Task loadPageData()
         {
             viewModel.SetDefaultDate();
-            
+
             //ClearFields();
             viewModel.OnPageLoad();
             viewModel.SetIssueIdList();
@@ -200,7 +200,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.IsHijriCal = false;
 
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -620,7 +620,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             }
                         }
                     }
-                    catch (InternetException )
+                    catch (InternetException)
                     {
                         //viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                         PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
@@ -1247,7 +1247,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 });
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1260,7 +1260,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1391,7 +1391,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 });
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1404,7 +1404,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1535,7 +1535,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 });
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1548,7 +1548,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1657,7 +1657,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
             if (!string.IsNullOrEmpty(viewModel.PkrDBO))
@@ -1669,7 +1669,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             }
         }
-        private  void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
             {
@@ -1895,7 +1895,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     //  TxtIDType = _selectedSignUpUsing.SUType;
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
                 viewModel.SelectedSignUpUsingSetForCancle = viewModel.SelectedSignUpUsing;
@@ -1986,7 +1986,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     SiguupModel.ACommId = "";
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
                 //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -2000,7 +2000,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
             // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
             SiguupModel.ACountry = viewModel.MobileCountryCode;
-            
+
 
             // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
 
@@ -2016,9 +2016,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 SiguupModel.AIdtype = "ZS0003";
             }
-            
-           // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
-            SiguupModel.CaseGuid = viewModel.Guid; 
+
+            // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+            SiguupModel.CaseGuid = viewModel.Guid;
 
             string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
@@ -2037,6 +2037,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         }
                         Message.Append(itemerror.message);
                     }
+
+
                 }
                 //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
@@ -2111,6 +2113,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
                 else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.MobileVerification)
                 {
+                    viewModel.IsResendOTPEnabled = false;
                     //viewModel.TimerStart(viewModel.numberOfSeconds);
                     await EstablishmentSignUpDataAsync();
                 }
@@ -2727,7 +2730,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     viewModel._navigationService.GoBack();
                                 });
                             }
-                            catch (HttpRequestException )
+                            catch (HttpRequestException)
                             {
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2750,7 +2753,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 });
                             }
-                            catch (Exception )
+                            catch (Exception)
                             {
 
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2848,7 +2851,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         SiguupModel.ACommId = "";
                                     }
-                                    catch (Exception )
+                                    catch (Exception)
                                     {
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -2904,6 +2907,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                             }
                                             Message.Append(itemerror.message);
                                         }
+
                                     }
                                     // viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
@@ -2958,7 +2962,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 });
                             }
-                            catch (HttpRequestException )
+                            catch (HttpRequestException)
                             {
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2971,7 +2975,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     //_navigationService.GoBack();
                                 });
                             }
-                            catch (Exception )
+                            catch (Exception)
                             {
 
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3030,7 +3034,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     });
                 }
-                catch (HttpRequestException )
+                catch (HttpRequestException)
                 {
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3043,7 +3047,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         viewModel._navigationService.GoBack();
                     });
                 }
-                catch (Exception )
+                catch (Exception)
                 {
 
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3182,7 +3186,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.AIdtype = "ZS0003";
                                 }
-                               // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                                // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
                                 SiguupModel.CaseGuid = viewModel.Guid;
 
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
@@ -3303,7 +3307,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3316,7 +3320,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3409,7 +3413,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     }
                                     SiguupModel.ACommId = "";
                                 }
-                                catch (Exception )
+                                catch (Exception)
                                 {
                                 }
                                 //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -3513,7 +3517,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3526,7 +3530,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3636,7 +3640,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         SiguupModel.ACommId = "";
                                     }
-                                    catch (Exception )
+                                    catch (Exception)
                                     {
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -3694,6 +3698,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                             }
                                             Message.Append(itemerror.message);
                                         }
+
                                     }
                                     //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
@@ -3793,7 +3798,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3806,7 +3811,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3899,7 +3904,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     }
                                     SiguupModel.ACommId = "";
                                 }
-                                catch (Exception )
+                                catch (Exception)
                                 {
                                 }
                             }
@@ -3953,18 +3958,26 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         Message.Append(itemerror.message);
                                     }
+                                    else if (itemerror.code.Contains("ZD_AUTH_TAXPAYER/006"))
+                                    {
+                                        if (Message.Length > 0)
+                                        {
+                                            Message.Append(Environment.NewLine);
+                                        }
+                                        Message.Append(itemerror.message);
+                                    }
                                 }
                                 //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                             }
                             else
                             {
-                                Device.BeginInvokeOnMainThread( () =>
-                                {
-                                    viewModel.IsLoading = true;
+                                Device.BeginInvokeOnMainThread(() =>
+                               {
+                                   viewModel.IsLoading = true;
 
 
-                                });
+                               });
                                 await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                 //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                             }
@@ -4007,7 +4020,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -4020,7 +4033,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;

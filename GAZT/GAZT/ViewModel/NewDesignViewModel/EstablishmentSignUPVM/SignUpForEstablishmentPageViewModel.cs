@@ -89,7 +89,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     MarkComplete = true;
                     RaisePropertyChanged(nameof(MarkComplete));
                 }
-                else if (MarkComplete==true && _currenrIndex < MaxIndex)
+                else if (MarkComplete == true && _currenrIndex < MaxIndex)
                 {
                     MarkComplete = false;
                     RaisePropertyChanged(nameof(MarkComplete));
@@ -123,7 +123,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-      
+
         private string guid = string.Empty;
         public string Guid
         {
@@ -455,13 +455,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsMainButtonEnabled = true;
 
-                   // VATDeclarationData.d.TcFg = "1";
+                    // VATDeclarationData.d.TcFg = "1";
                 }
                 else
                 {
                     IsMainButtonEnabled = false;
 
-                   // VATDeclarationData.d.TcFg = "0";
+                    // VATDeclarationData.d.TcFg = "0";
                 }
                 RaisePropertyChanged("IsDeclarationCheckedForInstruction");
             }
@@ -1275,8 +1275,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 _selectedRegion = value;
                 if (_selectedRegion != null)
                 {
-                    if(CityList==null||CityList.Count==0)
-                    _ = SetCityList();
+                    if (CityList == null || CityList.Count == 0)
+                        _ = SetCityList();
                 }
 
                 RaisePropertyChanged("SelectedRegion");
@@ -1629,7 +1629,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 _todayDate = value;
                 RaisePropertyChanged("TodayDate");
             }
-        }  
+        }
         private ObservableCollection<object> _todayDateinHijri;
         public ObservableCollection<object> TodayDateinHijri
         {
@@ -1842,7 +1842,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-       
+
 
         private SignUpUsing _selectedSignUpUsingSetForCancle = null;
         public SignUpUsing SelectedSignUpUsingSetForCancle
@@ -2029,19 +2029,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
 
 
-   public async void navigateToNext()
+        public async void navigateToNext()
         {
             switch (CurrentTab)
             {
                 case EstablishmentSignUPTabEnum.TermsAndConditions:
                     if (IsDeclarationCheckedForInstruction == true)
                     {
-                       // _navigationService.NavigateTo(App.SignUpFormPageView);
+                        // _navigationService.NavigateTo(App.SignUpFormPageView);
                         PageTitle = AppResources.ZZZIndividualInformation;
                         BodyText = AppResources.ZZZZCompletethebelowdetails;
                         NextBTN = AppResources.ZZZZContinue;
                         CurrentTab = EstablishmentSignUPTabEnum.IndividualInformation;
-                       
+
                         IsDeclarationCheckedForInstruction = false;
                         IsMainButtonEnabled = true;
                     }
@@ -2062,22 +2062,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselecttermsandconditions));
                     }
 
-                        
+
                     break;
 
                 case EstablishmentSignUPTabEnum.IndividualInformation:
-                        if (IsAllValidDataEntered)
-                        {
-                            PageTitle = AppResources.ZZZBusinessInformation;
-                            BodyText = AppResources.ZZZZCompletethebelowdetails;
-                            CurrentTab = EstablishmentSignUPTabEnum.BusinessInformation;
+                    if (IsAllValidDataEntered)
+                    {
+                        PageTitle = AppResources.ZZZBusinessInformation;
+                        BodyText = AppResources.ZZZZCompletethebelowdetails;
+                        CurrentTab = EstablishmentSignUPTabEnum.BusinessInformation;
                     }
-                        else
-                        {
-                       //     _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                    else
+                    {
+                        //     _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                     }
-                    
+
                     break;
 
                 case EstablishmentSignUPTabEnum.BusinessInformation:
@@ -2094,7 +2094,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         }
                         else
                         {
-                           // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                            // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                         }
                     }
@@ -2106,10 +2106,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                         //AllValid Data Entered
                         if (!string.IsNullOrEmpty(TxtLicenseNumber)
-                            &&TxtLicenseNumber.Length == 20
+                            && TxtLicenseNumber.Length == 20
                             && IssuedByTapped
                             && IssuedByCityTapped)
-                            
+
                         {
                             PageTitle = AppResources.ZZZContactInformation;
                             BodyText = AppResources.ZZZZCompletethebelowdetails;
@@ -2117,19 +2117,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                             CurrentTab = EstablishmentSignUPTabEnum.ContactInformation;
 
                         }
-                        else {
-//                            //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                        else
+                        {
+                            //                            //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                         }
-                        
+
                     }
-                    
+
                     break;
 
                 case EstablishmentSignUPTabEnum.ContactInformation:
 
                     if (IsAllValidContactDataEnteredEmail &&
-                        IsAllValidContactDataEnteredMobileNbr&&
+                        IsAllValidContactDataEnteredMobileNbr &&
                         IsAllValidContactDataEnteredPhoneNbr)
                     {
                         PageTitle = AppResources.CRSummary;
@@ -2139,13 +2140,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         //PageTitle = AppResources.VerificationCode;
                         //BodyText = AppResources.ZZPleaseenteraccessCode;
                         //NextBTN = AppResources.ZZZZContinue;
-//                        CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                        //                        CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
                         //StartTimer(0, 2, 0);
                         //TimerStart(numberOfSeconds);
                     }
                     else
                     {
-                       // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                        // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                     }
 
@@ -2172,7 +2173,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         }
 
 
-        
+
         private void navigateBack()
         {
             switch (CurrentTab)
@@ -2183,21 +2184,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     break;
 
                 case EstablishmentSignUPTabEnum.EmailVerification:
-                                            PageTitle = AppResources.CRSummary;
+                    if (IsResendOTPEnabled)
+                    {
+                        PageTitle = AppResources.CRSummary;
                         BodyText = AppResources.CRReviewthebelowinformation;
                         NextBTN = AppResources.ZZZZContinue;
-                    IsNextButtonEnable = true; IsResendOTPEnabled = false;
-                    try
-                    {
-                        otpTimer.Stop();
+                        IsNextButtonEnable = true; IsResendOTPEnabled = false;
+                        try
+                        {
+                            otpTimer.Stop();
 
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+
+                        CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
                     }
-                    catch (Exception)
-                    { 
-                    
-                    }
-                    
-                    CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+
                     break;
 
                 case EstablishmentSignUPTabEnum.MobileVerification:
@@ -2238,7 +2243,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             IdNumber = string.Empty;
             Name = string.Empty;
             DOB = string.Empty;
-            IsNextButtonEnable = true; 
+            IsNextButtonEnable = true;
             IsResendOTPEnabled = false;
             Email = string.Empty;
             //ConfirmEmail = string.Empty;
@@ -2304,7 +2309,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
             todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
             TodayDateinHijri = todaycollectionHijri;
-       //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
+            //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
 
 
         }
@@ -2434,7 +2439,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         {
             if (IsResendOTPEnabled)
             {
-                
+
                 OTPFirstDigit = string.Empty;
                 OTPSecondDigit = string.Empty;
                 OTPThirdDigit = string.Empty;
@@ -2479,7 +2484,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                                 SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
                                 });
                             }
                             else
@@ -2514,7 +2519,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 }
             }
-            
+
 
         }
 
@@ -2532,18 +2537,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #region new Methods
 
 
-        public  void OnPageLoad()
+        public void OnPageLoad()
         {
             try
             {
-                
-                    IsLoading = true;
+
+                IsLoading = true;
                 try
                 {
                     IsCRVisible = true;
                     IsLicenseVisible = false;
                     SignUpUsingList = new List<SignUpUsing>();
-                    List <SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
+                    List<SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
                     ListSignUpUsing.Add(new SignUpUsing { ID = 1, SUType = AppResources.ZZNationalID });
                     ListSignUpUsing.Add(new SignUpUsing { ID = 2, SUType = AppResources.ZZIqamaID });
                     ListSignUpUsing.Add(new SignUpUsing { ID = 3, SUType = AppResources.ZZGCCID });
@@ -2553,7 +2558,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     SignUpUsingM.ID = 1;
                     SignUpUsingM.SUType = AppResources.ZZNationalID;
                     SelectedSignUpUsing = SignUpUsingM;
-                   
+
                     LicenseOrCRModel LicenseOrCRModelM = new LicenseOrCRModel();
                     LicenseOrCRModelM.ID = 2;
                     LicenseOrCRModelM.LCType = AppResources.ZZCRNumber;
@@ -2565,13 +2570,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     Console.Write(ex.ToString());
                     Console.Write(ex.StackTrace.ToString());
                 }
-                    IsLoading = false;
+                IsLoading = false;
             }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                        IsLoading = false;
+                    IsLoading = false;
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
@@ -2643,43 +2648,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         };
         public void SetIssueIdList()
         {
-                try
+            try
+            {
+                IsLoading = true;
+                //Hardcoded List
+                IssuedByList = new List<IssuedByResponse>();
+                List<IssuedByResponse> IssuedByListTest = new List<IssuedByResponse>();
+
+                if (!App.IsArabic)
                 {
-                    IsLoading = true;
-                    //Hardcoded List
-                    IssuedByList = new List<IssuedByResponse>();
-                    List<IssuedByResponse> IssuedByListTest = new List<IssuedByResponse>();
-
-                    if (!App.IsArabic)
+                    foreach (var item in EnIssueBy)
                     {
-                        foreach (var item in EnIssueBy)
-                        {
-                            IssuedByListTest.Add(new IssuedByResponse() { mandt = " ", lang = "En", procsType = " ", elementCode = item.Key, txt50 = item.Value });
+                        IssuedByListTest.Add(new IssuedByResponse() { mandt = " ", lang = "En", procsType = " ", elementCode = item.Key, txt50 = item.Value });
 
-                        }
                     }
-                    else
-                    {
-
-                        foreach (var item in ArIssueBy)
-                        {
-                            IssuedByListTest.Add(new IssuedByResponse() { mandt = " ", lang = "AR", procsType = " ", elementCode = item.Key, txt50 = item.Value });
-
-                        }
-                    }
-                    IssuedByList = IssuedByListTest;
                 }
-                catch
+                else
                 {
 
+                    foreach (var item in ArIssueBy)
+                    {
+                        IssuedByListTest.Add(new IssuedByResponse() { mandt = " ", lang = "AR", procsType = " ", elementCode = item.Key, txt50 = item.Value });
+
+                    }
                 }
+                IssuedByList = IssuedByListTest;
+            }
+            catch
+            {
+
+            }
             try
             {
                 if (!App.IsArabic)
                 {
                     foreach (var item in EnIssueBy)
                     {
-                       
+
                     }
                 }
                 else
@@ -2715,7 +2720,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 });
             }
 
-            catch (HttpRequestException )
+            catch (HttpRequestException)
             {
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2726,7 +2731,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2737,9 +2742,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
-           
-                IsLoading = false;
-            
+
+            IsLoading = false;
+
 
         }
 
@@ -2748,14 +2753,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         public async Task SetCityList()
         {
-                IsLoading = true;
+            IsLoading = true;
             try
             {
                 CityList = null;
                 SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
                 List<SignupCityResult> CityR = new List<SignupCityResult>();
                 if (CityListSignup.d.city_dropdownSet.results.Count == 0)
-                   await App.Current.MainPage.DisplayAlert("no records","no rec","OK");
+                    await App.Current.MainPage.DisplayAlert("no records", "no rec", "OK");
                 CityR = CityListSignup.d.city_dropdownSet.results;
                 CityList = CityR;
             }
@@ -2869,7 +2874,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         IsOTPEntryEnable = false;
                         return false;
                     }
-                   
+
                     TotalSec = TotalSec - 1;
                     numberOfSeconds = TotalSec;
                     TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
@@ -2940,7 +2945,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 _txtEmailCode = value;
                 RaisePropertyChanged("TxtEmailCode");
             }
-        } 
+        }
         public async void CreateGaZTAccount()
         {
             try
@@ -2969,7 +2974,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 CreateModel.AType = SignUpModelRootObjectM.d.AType;
                 CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
                 CreateModel.APassword = TxtPassword;
-                string FinalSMSCode = MOTPFirstDigit+ MOTPSecondDigit + MOTPThirdDigit + MOTPFourthDigit;
+                string FinalSMSCode = MOTPFirstDigit + MOTPSecondDigit + MOTPThirdDigit + MOTPFourthDigit;
 
                 CreateModel.ASmsCode = FinalSMSCode;
                 string FinalEMailCode = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
@@ -2988,10 +2993,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                             IsLoading = false;
                         });
                         SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                       // _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
-                      await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+                        // _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
                         OTPFirstDigit = string.Empty;
-                       OTPSecondDigit = string.Empty;
+                        OTPSecondDigit = string.Empty;
                         OTPThirdDigit = string.Empty;
                         OTPFourthDigit = string.Empty;
 
@@ -3038,7 +3043,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                  IsLoading = false;
+                    IsLoading = false;
 
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
@@ -3050,18 +3055,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
-            catch (HttpRequestException )
+            catch (HttpRequestException)
             {
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                  IsLoading = false;
+                    IsLoading = false;
 
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3070,7 +3075,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     IsLoading = false;
 
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                  
+
                 });
             }
         }
