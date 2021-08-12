@@ -29,7 +29,9 @@ namespace GAZT.CustomControl
         public bool FutureDay
         {
             get { return (bool)GetValue(FutureDayProperty); }
-            set { SetValue(FutureDayProperty, value);  if(value) PopulateFutureDateCollection(); else PopulateDateCollection(); }
+            set { SetValue(FutureDayProperty, value);
+                if(months!=null)
+                if(value) PopulateFutureDateCollection(); else PopulateDateCollection(); }
         }
 
 
@@ -91,14 +93,14 @@ namespace GAZT.CustomControl
             //        Headers.Add("عام");
             //    }
             //}
-            //if (FutureDay)
-            //{
-            //    PopulateFutureDateCollection();
-            //}
-            //else
-            //{
-            //    PopulateDateCollection();
-            //}
+            if (FutureDay)
+            {
+                PopulateFutureDateCollection();
+            }
+            else
+            {
+                PopulateDateCollection();
+            }
             this.ItemsSource = Date;
             this.ColumnHeaderText = Headers;
             this.SelectionChanged += CustomDatePicker_SelectionChanged;
