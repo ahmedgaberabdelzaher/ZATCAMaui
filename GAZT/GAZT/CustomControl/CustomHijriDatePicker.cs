@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Runtime.CompilerServices;
-using System.Text;
 using Xamarin.Forms.Internals;
 
 namespace GAZT.CustomControl
@@ -30,8 +29,9 @@ namespace GAZT.CustomControl
         public bool FutureDay
         {
             get { return (bool)GetValue(FutureDayProperty); }
-            set { SetValue(FutureDayProperty, value); }
+            set { SetValue(FutureDayProperty, value);  if(value) PopulateFutureDateCollection(); else PopulateDateCollection(); }
         }
+
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -57,8 +57,8 @@ namespace GAZT.CustomControl
             Month = new ObservableCollection<object>();
             Year = new ObservableCollection<object>();
             Headers = new ObservableCollection<string>();
-            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
-            {
+            //if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+            //{
                 if (!App.IsArabic)
                 {
 
@@ -73,32 +73,32 @@ namespace GAZT.CustomControl
                     Headers.Add("شهر");//month
                     Headers.Add("عام");
                 }
-            }
-            else
-            {
-                if (!App.IsArabic)
-                {
+            //}
+            //else
+            //{
+            //    if (!App.IsArabic)
+            //    {
 
-                    Headers.Add("Day");
-                    Headers.Add("Month");
-                    Headers.Add("Year");
-                }
-                else
-                {
+            //        Headers.Add("Day");
+            //        Headers.Add("Month");
+            //        Headers.Add("Year");
+            //    }
+            //    else
+            //    {
 
-                    Headers.Add("يوم");
-                    Headers.Add("شهر");//Month
-                    Headers.Add("عام");
-                }
-            }
-            if (FutureDay)
-            {
-                PopulateFutureDateCollection();
-            }
-            else
-            {
-                PopulateDateCollection();
-            }
+            //        Headers.Add("يوم");
+            //        Headers.Add("شهر");//Month
+            //        Headers.Add("عام");
+            //    }
+            //}
+            //if (FutureDay)
+            //{
+            //    PopulateFutureDateCollection();
+            //}
+            //else
+            //{
+            //    PopulateDateCollection();
+            //}
             this.ItemsSource = Date;
             this.ColumnHeaderText = Headers;
             this.SelectionChanged += CustomDatePicker_SelectionChanged;
@@ -255,58 +255,6 @@ namespace GAZT.CustomControl
                 }
             });
         }
-        private void PopulateDateCollection()
-        {
-            Date?.Clear();
-            months?.Clear();
-            Day?.Clear();
-            Year?.Clear();
-            //populate months
-            HijriCalendar calender = new HijriCalendar();
-            var monthHijri = calender.GetMonth(DateTime.Today);
-            for (int i = 1; i <= monthHijri; i++)
-            {
-                if (i < 10)
-                {
-                    Month.Add("0" + i);
-                    if (!months.ContainsKey("0" + i))
-                    {
-                        months.Add("0" + i, "0" + i);
-                    }
-                }
-                else
-                {
-                    Month.Add(i.ToString());
-                    if (!months.ContainsKey(i.ToString()))
-                    {
-                        months.Add(i.ToString(), i.ToString());
-                    }
-                }
-                // Month.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
-            }
-            //populate year
-            
-            var year = calender.GetYear(DateTime.Today);
-            for (int i = 1000; i <= year; i++)
-            {
-                Year.Add(i.ToString());
-            }
-            //populate Days
-            var days = calender.GetDayOfMonth(DateTime.Today);
-            for (int i = 1; i <= days; i++)
-            {
-                if (i < 10)
-                {
-                    Day.Add("0" + i);
-                }
-                else
-                    Day.Add(i.ToString());
-            }
-            Date.Add(Day);
-            Date.Add(Month);
-
-            Date.Add(Year);
-        }
         public void UpdateFutureDays(ObservableCollection<object> Date, SelectionChangedEventArgs e)
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
@@ -316,6 +264,7 @@ namespace GAZT.CustomControl
                     if (Date.Count == 3)
                     {
                         bool isupdate = false;
+                        
                         if (e.OldValue != null && e.NewValue != null && (e.OldValue as ObservableCollection<object>).Count == 3 && (e.NewValue as ObservableCollection<object>).Count == 3)
                         {
                             if (!object.Equals((e.OldValue as IList)[1], (e.NewValue as IList)[1]))
@@ -327,6 +276,7 @@ namespace GAZT.CustomControl
                                 isupdate = true;
                             }
                         }
+                       
                         //@DivyaJannapureddy replace from line number 107 to 189
                         if (isupdate)
                         {
@@ -417,6 +367,58 @@ namespace GAZT.CustomControl
                 {
                 }
             });
+        }
+        private void PopulateDateCollection()
+        {
+            Date?.Clear();
+            months?.Clear();
+            Day?.Clear();
+            Year?.Clear();
+            //populate months
+            HijriCalendar calender = new HijriCalendar();
+            var monthHijri = calender.GetMonth(DateTime.Today);
+            for (int i = 1; i <= monthHijri; i++)
+            {
+                if (i < 10)
+                {
+                    Month.Add("0" + i);
+                    if (!months.ContainsKey("0" + i))
+                    {
+                        months.Add("0" + i, "0" + i);
+                    }
+                }
+                else
+                {
+                    Month.Add(i.ToString());
+                    if (!months.ContainsKey(i.ToString()))
+                    {
+                        months.Add(i.ToString(), i.ToString());
+                    }
+                }
+                // Month.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
+            }
+            //populate year
+
+            var year = calender.GetYear(DateTime.Today);
+            for (int i = 1000; i <= year; i++)
+            {
+                Year.Add(i.ToString());
+            }
+            //populate Days
+            var days = calender.GetDayOfMonth(DateTime.Today);
+            for (int i = 1; i <= days; i++)
+            {
+                if (i < 10)
+                {
+                    Day.Add("0" + i);
+                }
+                else
+                    Day.Add(i.ToString());
+            }
+            Date.Add(Day);
+            Date.Add(Month);
+
+            Date.Add(Year);
         }
         private void PopulateFutureDateCollection()
         {

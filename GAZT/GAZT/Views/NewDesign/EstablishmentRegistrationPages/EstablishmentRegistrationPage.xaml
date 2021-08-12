@@ -1163,6 +1163,7 @@
                                                         SelectedItem="{Binding SelectedPassportIssueHijiriDate}"
                                                         HorizontalOptions="FillAndExpand"
                                                         Closed="passportIssuePicker_Closed"
+                                    FutureDay="True"
 								                        ItemHeight="40">
                                 </custom1:CustomHijriDatePicker>
                             </StackLayout>

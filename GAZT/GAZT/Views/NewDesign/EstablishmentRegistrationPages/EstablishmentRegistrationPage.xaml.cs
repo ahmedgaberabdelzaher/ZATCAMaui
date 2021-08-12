@@ -103,7 +103,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
             else
             {
-                passportIssueHijiriPicker.IsOpen = true;
+                Device.BeginInvokeOnMainThread(() => { passportIssueHijiriPicker.FutureDay = false;
+                    Device.StartTimer(TimeSpan.FromSeconds(1), () => {
+                        viewModel.updateDatePickers();
+                        passportIssueHijiriPicker.IsOpen = true; return false; });
+                     });
+                
             }
         }
 
@@ -298,6 +303,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
             else
             {
+                Device.BeginInvokeOnMainThread(() => passportIssueHijiriPicker.FutureDay = true);
                 selectedItem = passportIssueHijiriPicker.SelectedItem as ObservableCollection<object>;
                 viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
                 DateTime.TryParseExact(viewModel?.DisplayPassportIssueDate, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _issueDate);

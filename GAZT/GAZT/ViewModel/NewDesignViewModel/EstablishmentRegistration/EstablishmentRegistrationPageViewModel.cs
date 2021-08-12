@@ -2806,6 +2806,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 Console.WriteLine(e.StackTrace);
             }
         }
+
+        public void updateDatePickers()
+        {
+            try
+            {
+                DateTime dob = DateTime.Now;
+                ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
+                if (taxPayerDetails?.Caltp == "G")
+                {
+                    _selectedDOBDate?.Clear();
+                    _selectedDOBDate.Add($"{dob.Day:00}");
+                    _selectedDOBDate.Add($"{dob.Month:00}");
+                    _selectedDOBDate.Add(dob.Year.ToString());
+                }
+                else
+                {
+                    _selectedDOBDate?.Clear();
+                    var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                    var arr = hijiriDate.Split('/');
+                    _selectedDOBDate.Add(arr[2]);
+                    _selectedDOBDate.Add(arr[1]);
+                    _selectedDOBDate.Add(arr[0]);
+                }
+                
+               
+                    DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _issueDate);
+                    DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _expiryDate);
+                    if (taxPayerDetails?.Caltp == "G")
+                    {
+                        SelectedPassportIssueDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(PassportIssueDate))
+                            DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    }
+                    else
+                    {
+                        SelectedPassportIssueHijiriDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(PassportIssueDate))
+                            DisplayPassportIssueDate = HijriDateString(_issueDate);
+                    }
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+        }
+
         public async void udpdateDates(string selectedDate = null)
         {
             try
