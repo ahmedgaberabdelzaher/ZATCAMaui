@@ -142,7 +142,7 @@
 
         </Grid>
                 </ScrollView>
-              <StackLayout BackgroundColor="White" Padding="10">
+              <StackLayout BackgroundColor="White" Margin="0,0,0,10" Padding="10">
                         <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />-->
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDone}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />
 

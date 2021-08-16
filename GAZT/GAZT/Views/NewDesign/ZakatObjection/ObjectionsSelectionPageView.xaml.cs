@@ -31,9 +31,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             this.Padding = safeInsets;
 
             _viewModel = App.Locator.ObjectionsSelectionPageView;
-
             this.BindingContext = _viewModel;
-
             _viewModel.AddSelectionOptions();
 
         }
@@ -71,9 +69,6 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             {
                 _viewModel._navigationService.NavigateTo(App.ZakatObjectionsListPageView);
             }
-
-
-
         }
 
         protected override void OnAppearing()

@@ -34,7 +34,7 @@
 		<string>ar</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>12.0</string>
+	<string>11.0</string>
 	<key>CFBundleName</key>
 	<string>GAZT</string>
 	<key>XSAppIconAssets</key>
@@ -81,9 +81,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.gazt.enterprise.egazt</string>
 	<key>CFBundleVersion</key>
-	<string>5.0.1.9</string>
+	<string>6.0.1.1</string>
 	<key>CFBundleShortVersionString</key>
-	<string>5.0.1.9</string>
+	<string>6.0.1.1</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
