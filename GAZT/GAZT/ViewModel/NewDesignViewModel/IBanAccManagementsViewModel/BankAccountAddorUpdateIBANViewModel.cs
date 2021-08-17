@@ -596,7 +596,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                     if (IBANPostResponse.d.Action.Equals("N"))
                     {
-                        var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                        var somewarningpopup = new AttachmentInformationPopUp(AppResources.IBanSubmitSuccess)
                         {
                             CloseWhenBackgroundIsClicked = false
                         };
@@ -608,7 +608,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     }
                     else if (IBANPostResponse.d.Action.Equals("U"))
                     {
-                        var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                        var somewarningpopup = new AttachmentInformationPopUp(AppResources.IBanSubmitSuccess)
                         {
                             CloseWhenBackgroundIsClicked = false
                         };

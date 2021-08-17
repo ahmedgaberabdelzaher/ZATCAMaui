@@ -134,18 +134,20 @@
                             <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,15,15,15" HasShadow="False">
                                 <StackLayout Orientation="Horizontal" >
                                     <Image Source="ic_vat_info"/>
-                                    <custom:CustomLabel  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" LineSpacing="1" VerticalOptions="EndAndExpand"   >
-                                        <custom:CustomLabel.FormattedText>
-                                            <FormattedString>
+                                        <custom:CustomLabel  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" LineSpacing="1" VerticalOptions="EndAndExpand"   >
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+
                                                     <Span Text="{x:Static ResourceManager:AppResources.PleaseGoToIBan}"/>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}" TextColor="#006450"  >
-                                                    <Span.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="IBANAccManagementTapped"></TapGestureRecognizer>
-                                                    </Span.GestureRecognizers>
-                                                </Span>
-                                            </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+
+
+                                                    <Span x:Name="VisitIbanNav" Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}" TextColor="#006450" />
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="IBANAccManagementTapped" CommandParameter="false"/>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>

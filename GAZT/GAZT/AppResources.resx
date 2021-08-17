@@ -9168,4 +9168,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="ZZZEducationLink" xml:space="preserve">
     <value>Education Journey</value>
   </data>
+  <data name="IBanSubmitSuccess" xml:space="preserve">
+    <value>You can use the bank account for refund requests after it has been approved by GAZT</value>
+  </data>
 </root>
