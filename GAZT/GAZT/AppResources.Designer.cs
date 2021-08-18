@@ -13582,6 +13582,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes before {0}, bearing in mind that the request will be cancelled automatically in the event of non-compliance..
+        /// </summary>
+        public static string VRSecurityBankGuarante {
+            get {
+                return ResourceManager.GetString("VRSecurityBankGuarante", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accept Terms and Conditions
         ///I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes within 20 days, bearing in mind that the request will be cancelled automatically in the event of non-compliance.
         ///I acknowledge that the bank guarantee provided to the Authority is valid for at least one year and that it is extendable.

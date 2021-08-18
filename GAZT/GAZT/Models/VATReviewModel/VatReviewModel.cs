@@ -369,6 +369,7 @@ namespace EGAZT.Models.VatReviewModel
             public string Aenam { get; set; }
             public string TrnTyp { get; set; }
             public DateTime? DecDt { get; set; }
+            public DateTime? LastFulfilledDt { get; set; }
         }
         [Preserve(AllMembers = true)]
         public class RejectedFormSet
@@ -415,7 +416,7 @@ namespace EGAZT.Models.VatReviewModel
     [Preserve(AllMembers = true)]
     public class ReasonSetResult
     {
-        
+
         public Metadata2 __metadata { get; set; }
         public string Pentyp { get; set; }
         public string ProcCd { get; set; }
@@ -642,7 +643,7 @@ namespace EGAZT.Models.VatReviewModel
             public string Persl { get; set; }
             public string Actno { get; set; }
             public bool AgreeFg { get; set; }
-            public string Branchx { get; set; }
+            public string Branchx { get; set; }    
             public string CalTyp { get; set; }
             public string CrNo { get; set; }
             public string DataVersion { get; set; }

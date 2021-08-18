@@ -1021,7 +1021,8 @@
                                     </CheckBox.Triggers>
                                 </CheckBox>
                                 <custom:CustomLabel Grid.Column="1"
-                                                    Text="{x:Static ResourceManager:AppResources.VRSecurityBankGurrantCheckBoxDesc1}"
+                                                    x:Name="VatObjAckTest"
+                                                    Text="{Binding LastFulfilmentDateText}"
                                                     Style="{StaticResource BodyLabelBlack}"
                                                     HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
                             </Grid>

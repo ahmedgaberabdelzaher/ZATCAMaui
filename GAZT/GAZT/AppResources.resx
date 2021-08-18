@@ -9171,4 +9171,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="IBanSubmitSuccess" xml:space="preserve">
     <value>You can use the bank account for refund requests after it has been approved by GAZT</value>
   </data>
+  <data name="VRSecurityBankGuarante" xml:space="preserve">
+    <value>I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes before {0}, bearing in mind that the request will be cancelled automatically in the event of non-compliance.</value>
+  </data>
 </root>

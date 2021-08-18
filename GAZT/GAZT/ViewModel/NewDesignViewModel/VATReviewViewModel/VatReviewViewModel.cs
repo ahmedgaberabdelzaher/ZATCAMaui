@@ -91,6 +91,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         int selectedPage = (int)PagesEnum.ReviewReason;
 
+        public string lastFulfilmentDate = string.Empty;
+
         private List<String> _ListOfActionButtonsApplicable;
         public List<String> ListOfActionButtonsApplicable
         {
@@ -2713,6 +2715,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("VrVRImportExportText");
             }
         }
+        
+        private string _lastFulfilmentDate = string.Empty;
+        public string LastFulfilmentDateText
+        {
+            get
+            {
+                return _lastFulfilmentDate;
+            }
+            set
+            {
+                if (_lastFulfilmentDate == value) return;
+
+                _lastFulfilmentDate = value;
+                RaisePropertyChanged("LastFulfilmentDateText");
+            }
+        }
         private string _VrVRAttachmentName = string.Empty;
         public string VrVRAttachmentName
         {
@@ -4281,6 +4299,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                     strTaxPeriodFrom = dt1;
                 }
+
+                lastFulfilmentDate = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(selectedApplicationRef.LastFulfilledDt);
+
+                LastFulfilmentDateText= string.Format(AppResources.VRSecurityBankGuarante, lastFulfilmentDate);
 
                 string strTaxPeriodTo = "";
                 if (selectedApplicationRef.Abrzo != null)

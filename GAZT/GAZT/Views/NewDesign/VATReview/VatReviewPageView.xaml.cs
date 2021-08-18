@@ -43,7 +43,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
 
             viewModel.setMoreOptioButtons();
-            
+
         }
 
         private void SetLTR()
