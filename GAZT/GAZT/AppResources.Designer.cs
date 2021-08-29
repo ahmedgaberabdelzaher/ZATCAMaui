@@ -6008,6 +6008,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commercial Registration must be 10 digits..
+        /// </summary>
+        public static string IBanCommercialIdShouldbe10 {
+            get {
+                return ResourceManager.GetString("IBanCommercialIdShouldbe10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company number must be 10 numbers starts with 7..
+        /// </summary>
+        public static string IBanCompanyIdStartswith7 {
+            get {
+                return ResourceManager.GetString("IBanCompanyIdStartswith7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deactivate.
         /// </summary>
         public static string IBanDeactivate {
@@ -6062,6 +6080,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other Bank Name.
+        /// </summary>
+        public static string IBanOtherBankName {
+            get {
+                return ResourceManager.GetString("IBanOtherBankName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ref. Number.
         /// </summary>
         public static string IBANRefNum {
@@ -6094,6 +6121,15 @@ namespace EGAZT {
         public static string IBanSelectBank {
             get {
                 return ResourceManager.GetString("IBanSelectBank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OTHER BANK NAME.
+        /// </summary>
+        public static string IBanSelectedOtherBankName {
+            get {
+                return ResourceManager.GetString("IBanSelectedOtherBankName", resourceCulture);
             }
         }
         
@@ -11834,6 +11870,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reasons for exceeding the statutory period for filing an objection.
+        /// </summary>
+        public static string VatLateFilingObjection {
+            get {
+                return ResourceManager.GetString("VatLateFilingObjection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Registration Lookup.
         /// </summary>
         public static string VATLookup {
@@ -12422,6 +12467,33 @@ namespace EGAZT {
         public static string VATReviewDraftSaved {
             get {
                 return ResourceManager.GetString("VATReviewDraftSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If the submission delay was due to technical issue, please write the ticket number.
+        /// </summary>
+        public static string VATReviewlateFilingHint {
+            get {
+                return ResourceManager.GetString("VATReviewlateFilingHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The second article of the tax committees’ work rules stipulated that objecting to the Authority’s decisions within 60 days from the date of notification, therefore, please explain the reasons for non-compliance and attach supporting documents.
+        /// </summary>
+        public static string VatReviewLateFilingInfo {
+            get {
+                return ResourceManager.GetString("VatReviewLateFilingInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Late filing an objection.
+        /// </summary>
+        public static string VatReviewLateObj {
+            get {
+                return ResourceManager.GetString("VatReviewLateObj", resourceCulture);
             }
         }
         

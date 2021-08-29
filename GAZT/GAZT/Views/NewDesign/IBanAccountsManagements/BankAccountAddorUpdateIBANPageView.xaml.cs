@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
@@ -40,8 +41,9 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             _viewModel = App.Locator.BankAccountAddOrUpdatePageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
+            EntryIDNumber.IsEnabled = false;
 
-
+            _viewModel.OtherBanksVisible = false;
 
             _viewModel.IsInstrunctionChecked = false;
             _viewModel.SummaryVisible = false;
@@ -150,11 +152,28 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                 MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
                 {
                     _viewModel.PickerModel = arg;
-
+                    //EntryIDNumber.Text = string.Empty;
+                    EntryIDNumber.IsEnabled = true;
+                    var selectedType=string.Empty;
+                    string SelectedIDTypeValue = string.Empty;
                     if (arg.PickerId == "IBANIdTypePicker")
                     {
+                        EntryIDNumber.Text = string.Empty;
                         _viewModel.SelectedIDType = arg.SelectedValue;
                         _viewModel.SelectedIDNumber = "";
+                        if (_viewModel.SelectedIDType == "Company ID" || _viewModel.SelectedIDType == "معرف الشركة")
+                        {
+                            EntryIDNumber.MaxLength = 10;
+                        }
+                        else if (_viewModel.SelectedIDType == "Commercial Register Number" || (_viewModel.SelectedIDType == "رقم السجل التجاري"))
+                        {
+                            EntryIDNumber.MaxLength = 10;
+                        }
+                        else
+                        {
+                            EntryIDNumber.MaxLength = 25;
+                        }
+                        
                     }
                     else if (arg.PickerId == "IBANIdNumberPicker")
                     {
@@ -163,7 +182,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                     else if (arg.PickerId == "IBANBankNamePicker")
                     {
                         _viewModel.SelectedBankName = arg.SelectedValue;
-                        if (arg.SelectedValue == "OTHER BANK NAME" || arg.SelectedValue == "اسم بنك آخر")
+                        if (arg.SelectedValue == AppResources.IBanSelectedOtherBankName)
                             _viewModel.OtherBanksVisible = true;
                         else
                             _viewModel.OtherBanksVisible = false;
@@ -373,6 +392,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             {
                 try
                 {
+                    App.IBanValidatedResponse = string.Empty;
                     var response = WebServiceManager.GAZTCheckIBAN(_viewModel.IBANValue);
                     if (response != null)
                     {
@@ -382,7 +402,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                         string bankName = string.Empty;
                         bankName = JObject.Parse(App.IBanValidatedResponse)["d"].ToString();
                         _viewModel.SelectedBankName = JObject.Parse(bankName)["Bkext"].ToString();
-                        App.IBanValidatedResponse = string.Empty;
+                        _viewModel.OtherBanksVisible = false;
                     }
                     else
                     {
@@ -431,6 +451,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             }
             if ((_viewModel.IBANValue.Length > 0) && (_viewModel.IBANValue.Length == 24))
             {
+                //_viewModel.isIBanValid = true;
                 checkIBanIsValidOrNot();
             }
 
@@ -459,6 +480,254 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             {
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
             }
+        }
+
+        private void IdNumberTextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                _viewModel.SelectedIDNumber = e.NewTextValue;
+
+                if (_viewModel.SelectedIDType == "")
+                {
+
+                }
+                else if (_viewModel.SelectedIDType == "")
+                {
+
+                }
+                else if (_viewModel.SelectedIDType == "")
+                {
+
+                }
+                else if (_viewModel.SelectedIDType == "")
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void EntryIDNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            StringBuilder Messages = new StringBuilder();
+            
+            if (!string.IsNullOrEmpty(EntryIDNumber.Text))
+            {
+
+                if (_viewModel.SelectedIDType == "National ID Number"||_viewModel.SelectedIDType== "رقم الهوية الوطنية")                {
+                    if (EntryIDNumber.Text.Substring(0, 1) != "1")
+                    {
+                        popUp.Message = AppResources.ZZNationalIDstartswith1;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
+                        EntryIDNumber.Text = string.Empty;
+                        _viewModel.SelectedIDNumber = string.Empty;
+                        //ZZPleaseenteravalidNationalID
+                    }
+                    else
+                    {
+                        if (EntryIDNumber.Text.Length != 10)
+                        {
+                            if (Messages.Length > 0)
+                            {
+                                Messages.Append(Environment.NewLine);
+                            }
+                            Messages.Append(AppResources.ZZNationalIDlengthis10digit);
+                        }
+                        if (Messages.Length > 0)
+                        {
+                            popUp.Message = Messages.ToString();
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                            EntryIDNumber.Text = string.Empty;
+                            _viewModel.SelectedIDNumber = string.Empty;
+                        }
+
+                    }
+                }
+                else if (_viewModel.SelectedIDType == "Iqama Number"||_viewModel.SelectedIDType== "رقم الإقامة")
+                {
+                    if (EntryIDNumber.Text.Substring(0, 1) != "2")
+                    {
+                        popUp.Message = AppResources.ZZIqamaIDstartswith2;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
+                        EntryIDNumber.Text = string.Empty;
+                        _viewModel.SelectedIDNumber = string.Empty;
+                    }
+                    else
+                    {
+                        if (EntryIDNumber.Text.Length != 10)
+                        {
+                            if (Messages.Length > 0)
+                            {
+                                Messages.Append(Environment.NewLine);
+                            }
+                            Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
+                        }
+                        if (Messages.Length > 0)
+                        {
+                            popUp.Message = Messages.ToString();
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+
+                            EntryIDNumber.Text = string.Empty;
+                            _viewModel.SelectedIDNumber = string.Empty;
+                        }
+
+                    }
+                }
+                else if (_viewModel.SelectedIDType == "GCC ID"||_viewModel.SelectedIDType== "رقم هوية مواطني دول الخليج")
+                {
+                    bool flag = true;
+                    if (EntryIDNumber.Text.Substring(0, 1) == "0")
+                    {
+                        //Have to change to neww error message
+                        popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
+                        EntryIDNumber.Text = string.Empty;
+                        _viewModel.SelectedIDNumber = string.Empty;
+                    }
+                    else if (!(EntryIDNumber.Text.Length <= 15 && EntryIDNumber.Text.Length >= 7))
+                    {
+                        popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
+                        EntryIDNumber.Text = string.Empty;
+                        _viewModel.SelectedIDNumber = string.Empty;
+                        // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                    }
+
+                }
+                else if (_viewModel.SelectedIDType == "Company ID"||_viewModel.SelectedIDType== "معرف الشركة")
+                {
+                    if (EntryIDNumber.Text.Substring(0, 1) != "7")
+                    {
+                        //Have to change to neww error message
+                        popUp.Message = AppResources.IBanCompanyIdStartswith7;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanCompanyIdStartswith7));
+                        EntryIDNumber.Text = string.Empty;
+                        _viewModel.SelectedIDNumber = string.Empty;
+                    }
+                    else if ((EntryIDNumber.Text.Length <= 9))
+                    {
+                        popUp.Message = AppResources.IBanCompanyIdStartswith7;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanCompanyIdStartswith7));
+                        EntryIDNumber.Text = string.Empty;
+                        _viewModel.SelectedIDNumber = string.Empty;
+                        // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                    }
+                }
+                else if (_viewModel.SelectedIDType == "Commercial Register Number"||(_viewModel.SelectedIDType== "رقم السجل التجاري"))
+                {
+                    EntryIDNumber.MaxLength = 10;
+                    if ((EntryIDNumber.Text.Length <= 9))
+                    {
+                        popUp.Message = AppResources.IBanCommercialIdShouldbe10;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanCommercialIdShouldbe10));
+                        EntryIDNumber.Text = string.Empty;
+                        _viewModel.SelectedIDNumber = string.Empty;
+                        // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                    }
+                }
+            }
+
         }
     }
 }

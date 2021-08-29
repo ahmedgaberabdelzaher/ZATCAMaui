@@ -9174,4 +9174,28 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="VRSecurityBankGuarante" xml:space="preserve">
     <value>I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes before {0}, bearing in mind that the request will be cancelled automatically in the event of non-compliance.</value>
   </data>
+  <data name="VatLateFilingObjection" xml:space="preserve">
+    <value>Reasons for exceeding the statutory period for filing an objection</value>
+  </data>
+  <data name="VATReviewlateFilingHint" xml:space="preserve">
+    <value>If the submission delay was due to technical issue, please write the ticket number</value>
+  </data>
+  <data name="VatReviewLateObj" xml:space="preserve">
+    <value>Late filing an objection</value>
+  </data>
+  <data name="VatReviewLateFilingInfo" xml:space="preserve">
+    <value>The second article of the tax committees’ work rules stipulated that objecting to the Authority’s decisions within 60 days from the date of notification, therefore, please explain the reasons for non-compliance and attach supporting documents</value>
+  </data>
+  <data name="IBanOtherBankName" xml:space="preserve">
+    <value>Other Bank Name</value>
+  </data>
+  <data name="IBanSelectedOtherBankName" xml:space="preserve">
+    <value>OTHER BANK NAME</value>
+  </data>
+  <data name="IBanCommercialIdShouldbe10" xml:space="preserve">
+    <value>Commercial Registration must be 10 digits.</value>
+  </data>
+  <data name="IBanCompanyIdStartswith7" xml:space="preserve">
+    <value>Company number must be 10 numbers starts with 7.</value>
+  </data>
 </root>

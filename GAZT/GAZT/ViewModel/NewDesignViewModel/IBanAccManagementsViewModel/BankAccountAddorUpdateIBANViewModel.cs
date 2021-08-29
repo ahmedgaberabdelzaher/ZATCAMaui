@@ -191,6 +191,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 RaisePropertyChanged("IBANValue");
             }
         }
+        
+        private string _idNumber = "";
+
+        public string IdNumber
+        {
+            get { return _idNumber; }
+            set
+            {
+                if (_idNumber == value) return;
+
+                _idNumber = value;
+                RaisePropertyChanged("IdNumber");
+            }
+        }
         private IBanAccountManagementResponseModel _iBANAccountData;
 
         public IBanAccountManagementResponseModel IBANAccountData
@@ -382,10 +396,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             SummaryVisible = true;
             selectedPage = (int)PagesEnum.IBANSummary;
 
-            if (SelectedBankName.Equals("OTHER"))
+            /*if (SelectedBankName.Equals(AppResources.IBanSelectedOtherBankName))
             {
                 SelectedBankName = selectedOtherBankName;
-            }
+            }*/
         }
 
         private void setIDTypePickerModel()
@@ -680,7 +694,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
                 if (SelectedIDNumber.Equals(""))
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDNumber));
+                    //PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDNumber));
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                     return;
                 }
@@ -703,7 +718,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                     return;
                 }
-                if (!string.IsNullOrEmpty(SelectedBankName) && (SelectedBankName.Equals("OTHER")))
+                if (!string.IsNullOrEmpty(SelectedBankName) && (SelectedBankName.Equals(AppResources.IBanSelectedOtherBankName)))
                 {
                     if (selectedOtherBankName.Equals(""))
                     {
@@ -721,36 +736,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 /*else
                 {*/
 
-                    if (IBANValue.Length < 24)
+                if (IBANValue.Length < 24)
+                {
+
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
+
+                    return;
+
+                }
+
+
+                var selectedType = IBANAccountData.d.IdTypeListSet.results.Find(selectedValue => (selectedValue.IdDesc == SelectedIDType));
+
+                if (selectedType != null)
+                {
+                    SelectedIDTypeValue = selectedType.IdType;
+                }
+
+                var BankID = IBANAccountData.d.BankListSet.results.Find(selectedValue => (selectedValue.Bkext == SelectedBankName));
+
+
+                if (selectedType != null)
+                {
+                    if (BankID != null && BankID.Bankid != null)
                     {
-
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
-
-                        return;
-
+                        SelectedBankNameValue = BankID.Bankid;
+                        if(!string.IsNullOrEmpty(SelectedBankName)&&SelectedBankName.Equals(AppResources.IBanSelectedOtherBankName))
+                        SelectedBankName = String.Copy(selectedOtherBankName);
                     }
 
-
-                    var selectedType = IBANAccountData.d.IdTypeListSet.results.Find(selectedValue => (selectedValue.IdDesc == SelectedIDType));
-
-                    if (selectedType != null)
-                    {
-                        SelectedIDTypeValue = selectedType.IdType;
-                    }
-
-                    var BankID = IBANAccountData.d.BankListSet.results.Find(selectedValue => (selectedValue.Bkext == SelectedBankName));
-
-                    if (selectedType != null)
-                    {
-                        if (BankID!=null&&BankID.Bankid != null)
-                            SelectedBankNameValue = BankID.Bankid;
-                        else
-                            SelectedBankNameValue ="9999";
-                    }
+                    else
+                        SelectedBankNameValue = "9999";
+                }
 
 
 
-                    EnableSummaryView();
+                EnableSummaryView();
                 //}
 
 

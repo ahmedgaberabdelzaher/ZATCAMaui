@@ -190,6 +190,27 @@
                             </border:SfBorder>
 
                         </Grid>
+                        <!--<Grid Grid.Row="3" WidthRequest="171">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+
+                            <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10"  Style="{StaticResource GreyBorderFrame}">
+                                <custom:BorderlessEntry x:Name="EntryIDNumber"
+                                                    HorizontalOptions="FillAndExpand"
+                                                            Text="{Binding SelectedIDNumber}"
+                                                            TextChanged="IdNumberTextChanged"
+                                                            Unfocused="EntryIDNumber_Unfocused"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                         Placeholder="{x:Static ResourceManager:AppResources.NDIDNumber}"
+                                                     VerticalTextAlignment="Center" Keyboard="Numeric" 
+                                                            TextColor="{StaticResource NeutralBlack}" 
+                                                            FontFamily="{StaticResource SSTArRoman}" 
+                                                            FontSize="15"/>
+                            </border:SfBorder>
+
+                        </Grid>-->
 
                         <Grid Grid.Row="3">
                             <Grid.RowDefinitions>
@@ -206,8 +227,18 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-
-                            <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10"  Style="{StaticResource GreyBorderFrame}">
+                                <custom:BorderlessEntry x:Name="EntryIDNumber"
+                                                    HorizontalOptions="FillAndExpand"
+                                                            Text="{Binding SelectedIDNumber}"
+                                                            TextChanged="IdNumberTextChanged"
+                                                            Unfocused="EntryIDNumber_Unfocused"
+                                                     VerticalTextAlignment="Center" Keyboard="Numeric" 
+                                                            TextColor="{StaticResource NeutralBlack}" 
+                                                            FontFamily="{StaticResource SSTArRoman}" 
+                                                            FontSize="15"/>
+                            </border:SfBorder>
+                            <!--<border:SfBorder Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
@@ -232,7 +263,7 @@
 
 
                                 </Grid>
-                            </border:SfBorder>
+                            </border:SfBorder>-->
 
                         </Grid>
                         <StackLayout Margin="0,0,0,15" Grid.Row="4">
@@ -342,7 +373,7 @@
                             <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Other Bank Name"  />
+                                        <Span Text="{x:Static ResourceManager:AppResources.IBanOtherBankName}"  />
                                         <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
