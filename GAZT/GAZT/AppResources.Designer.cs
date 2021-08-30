@@ -4007,28 +4007,6 @@ namespace EGAZT {
         }
         
         public static string ZZNationalID {
-        /// <summary>
-        ///   Looks up a localized string similar to Commercial Registration must be 10 digits..
-        /// </summary>
-        public static string IBanCommercialIdShouldbe10 {
-            get {
-                return ResourceManager.GetString("IBanCommercialIdShouldbe10", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Company number must be 10 numbers starts with 7..
-        /// </summary>
-        public static string IBanCompanyIdStartswith7 {
-            get {
-                return ResourceManager.GetString("IBanCompanyIdStartswith7", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Deactivate.
-        /// </summary>
-        public static string IBanDeactivate {
             get {
                 return ResourceManager.GetString("ZZNationalID", resourceCulture);
             }
@@ -4065,19 +4043,6 @@ namespace EGAZT {
         }
         
         public static string ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce {
-        /// <summary>
-        ///   Looks up a localized string similar to Other Bank Name.
-        /// </summary>
-        public static string IBanOtherBankName {
-            get {
-                return ResourceManager.GetString("IBanOtherBankName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ref. Number.
-        /// </summary>
-        public static string IBANRefNum {
             get {
                 return ResourceManager.GetString("ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce", resourceCulture);
             }
@@ -4102,19 +4067,6 @@ namespace EGAZT {
         }
         
         public static string ZZGulfCooperationCouncilGCCIDstartswith0 {
-        /// <summary>
-        ///   Looks up a localized string similar to OTHER BANK NAME.
-        /// </summary>
-        public static string IBanSelectedOtherBankName {
-            get {
-                return ResourceManager.GetString("IBanSelectedOtherBankName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Status.
-        /// </summary>
-        public static string IBANStatus {
             get {
                 return ResourceManager.GetString("ZZGulfCooperationCouncilGCCIDstartswith0", resourceCulture);
             }
@@ -7927,19 +7879,6 @@ namespace EGAZT {
         }
         
         public static string TinDeregistrationDownloadConfirmation {
-        /// <summary>
-        ///   Looks up a localized string similar to Reasons for exceeding the statutory period for filing an objection.
-        /// </summary>
-        public static string VatLateFilingObjection {
-            get {
-                return ResourceManager.GetString("VatLateFilingObjection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to VAT Registration Lookup.
-        /// </summary>
-        public static string VATLookup {
             get {
                 return ResourceManager.GetString("TinDeregistrationDownloadConfirmation", resourceCulture);
             }
@@ -8324,37 +8263,6 @@ namespace EGAZT {
         }
         
         public static string VatDeregistrationSubmitSuccessful {
-        /// <summary>
-        ///   Looks up a localized string similar to If the submission delay was due to technical issue, please write the ticket number.
-        /// </summary>
-        public static string VATReviewlateFilingHint {
-            get {
-                return ResourceManager.GetString("VATReviewlateFilingHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The second article of the tax committees’ work rules stipulated that objecting to the Authority’s decisions within 60 days from the date of notification, therefore, please explain the reasons for non-compliance and attach supporting documents.
-        /// </summary>
-        public static string VatReviewLateFilingInfo {
-            get {
-                return ResourceManager.GetString("VatReviewLateFilingInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Late filing an objection.
-        /// </summary>
-        public static string VatReviewLateObj {
-            get {
-                return ResourceManager.GetString("VatReviewLateObj", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can save and go back to your request anytime within 30 days of the decision date. The request will be cancelled automatically if it is not submitted within 30 days..
-        /// </summary>
-        public static string VATReviewNewDraftSaved {
             get {
                 return ResourceManager.GetString("VatDeregistrationSubmitSuccessful", resourceCulture);
             }
@@ -16343,6 +16251,54 @@ namespace EGAZT {
         public static string VRSecurityBankGuarante {
             get {
                 return ResourceManager.GetString("VRSecurityBankGuarante", resourceCulture);
+            }
+        }
+        
+        public static string VatLateFilingObjection {
+            get {
+                return ResourceManager.GetString("VatLateFilingObjection", resourceCulture);
+            }
+        }
+        
+        public static string VATReviewlateFilingHint {
+            get {
+                return ResourceManager.GetString("VATReviewlateFilingHint", resourceCulture);
+            }
+        }
+        
+        public static string VatReviewLateObj {
+            get {
+                return ResourceManager.GetString("VatReviewLateObj", resourceCulture);
+            }
+        }
+        
+        public static string VatReviewLateFilingInfo {
+            get {
+                return ResourceManager.GetString("VatReviewLateFilingInfo", resourceCulture);
+            }
+        }
+        
+        public static string IBanOtherBankName {
+            get {
+                return ResourceManager.GetString("IBanOtherBankName", resourceCulture);
+            }
+        }
+        
+        public static string IBanSelectedOtherBankName {
+            get {
+                return ResourceManager.GetString("IBanSelectedOtherBankName", resourceCulture);
+            }
+        }
+        
+        public static string IBanCommercialIdShouldbe10 {
+            get {
+                return ResourceManager.GetString("IBanCommercialIdShouldbe10", resourceCulture);
+            }
+        }
+        
+        public static string IBanCompanyIdStartswith7 {
+            get {
+                return ResourceManager.GetString("IBanCompanyIdStartswith7", resourceCulture);
             }
         }
     }
