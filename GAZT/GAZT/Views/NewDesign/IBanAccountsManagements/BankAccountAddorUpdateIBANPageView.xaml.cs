@@ -161,17 +161,13 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                         EntryIDNumber.Text = string.Empty;
                         _viewModel.SelectedIDType = arg.SelectedValue;
                         _viewModel.SelectedIDNumber = "";
-                        if (_viewModel.SelectedIDType == "Company ID" || _viewModel.SelectedIDType == "معرف الشركة")
+                        if (_viewModel.SelectedIDType == "GCC ID" || _viewModel.SelectedIDType == "رقم هوية مواطني دول الخليج")
                         {
-                            EntryIDNumber.MaxLength = 10;
-                        }
-                        else if (_viewModel.SelectedIDType == "Commercial Register Number" || (_viewModel.SelectedIDType == "رقم السجل التجاري"))
-                        {
-                            EntryIDNumber.MaxLength = 10;
+                            EntryIDNumber.MaxLength = 25;
                         }
                         else
                         {
-                            EntryIDNumber.MaxLength = 25;
+                            EntryIDNumber.MaxLength = 10;
                         }
                         
                     }

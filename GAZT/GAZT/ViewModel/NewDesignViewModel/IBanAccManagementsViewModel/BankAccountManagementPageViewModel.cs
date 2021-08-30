@@ -207,8 +207,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     {
                         MainListData = IbanAccounts.d.IbanListSet.results;
 
-                        var RejectMatch = MainListData.Find(selectedValue => (selectedValue.StatusDesc == "Rejected"));
-                        var MissingIfoMatch = MainListData.Find(selectedValue => (selectedValue.StatusDesc == "Missing Informaiton"));
+                        var RejectMatch = MainListData.Find(selectedValue => (selectedValue.StatusDesc == "Rejected")||(selectedValue.StatusDesc== "مرفوض"));
+                        var MissingIfoMatch = MainListData.Find(selectedValue => (selectedValue.StatusDesc == "Missing Informaiton")||(selectedValue.StatusDesc== "معلومات الحساب غير مكتملة"));
 
 
                          if (MissingIfoMatch!=null|| RejectMatch!=null)
