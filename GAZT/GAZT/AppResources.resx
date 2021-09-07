@@ -9043,7 +9043,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <value>Dear Taxpayer you are not allowed to submit this application because you have a Change return period request in process.</value>
   </data>
   <data name="RMNameInfo" xml:space="preserve">
-    <value>Relationship Manager Information</value>
+    <value>Relationship Manager and Supervisor Contact information</value>
   </data>
   <data name="TPFinacialPeriodMonthValidation" xml:space="preserve">
     <value>Please select the day and month for the desired period</value>

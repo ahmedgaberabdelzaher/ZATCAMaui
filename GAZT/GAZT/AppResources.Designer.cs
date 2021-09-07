@@ -9350,7 +9350,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Relationship Manager Information.
+        ///   Looks up a localized string similar to Relationship Manager and Supervisor Contact information.
         /// </summary>
         public static string RMNameInfo {
             get {
