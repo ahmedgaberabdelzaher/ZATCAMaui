@@ -127,6 +127,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
 
                     _viewModel.SelectedIDType = "";
                     _viewModel.SelectedBankName = "";
+                    _viewModel.SelectedBankNameField = "";
                     _viewModel.SelectedIDNumber = "";
                     _viewModel.AccountOwnerName = "";
                     _viewModel.IBANValue = "";
@@ -141,6 +142,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                     {
                         _viewModel.SelectedIDType = selectedIBAN.IdtypeDesc;
                         _viewModel.SelectedBankName = selectedIBAN.Bkext;
+                        _viewModel.SelectedBankNameField = selectedIBAN.Bkext;
                         _viewModel.SelectedIDNumber = selectedIBAN.Idnumber;
                         _viewModel.AccountOwnerName = selectedIBAN.Koinh;
                         _viewModel.IBANValue = selectedIBAN.Iban;
@@ -178,6 +180,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                     else if (arg.PickerId == "IBANBankNamePicker")
                     {
                         _viewModel.SelectedBankName = arg.SelectedValue;
+                        _viewModel.SelectedBankNameField = arg.SelectedValue;
                         if (arg.SelectedValue == AppResources.IBanSelectedOtherBankName)
                             _viewModel.OtherBanksVisible = true;
                         else
@@ -398,6 +401,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                         string bankName = string.Empty;
                         bankName = JObject.Parse(App.IBanValidatedResponse)["d"].ToString();
                         _viewModel.SelectedBankName = JObject.Parse(bankName)["Bkext"].ToString();
+                        _viewModel.SelectedBankNameField = JObject.Parse(bankName)["Bkext"].ToString();
                         _viewModel.OtherBanksVisible = false;
                     }
                     else

@@ -346,7 +346,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedBankName}"
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedBankNameField}"
                                                     HorizontalOptions="FillAndExpand"
                                                     Style="{StaticResource BodyLabelBlack}" />
 

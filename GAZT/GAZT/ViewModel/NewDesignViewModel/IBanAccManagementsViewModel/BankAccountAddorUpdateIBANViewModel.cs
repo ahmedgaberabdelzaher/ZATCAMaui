@@ -122,6 +122,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
+        private string _selectedBankNameField = "";
+        public string SelectedBankNameField
+        {
+            get { return _selectedBankNameField; }
+            set
+            {
+                if (_selectedBankNameField == value) return;
+
+                _selectedBankNameField = value;
+                RaisePropertyChanged("SelectedBankNameField");
+            }
+        }
+
         private string _selectedIDTypeValue = "";
 
         public string SelectedIDTypeValue
