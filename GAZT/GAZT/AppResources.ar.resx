@@ -9119,4 +9119,28 @@ info@gazt.gov.sa</value>
   <data name="IBanCompanyIdStartswith7" xml:space="preserve">
     <value>رقم الشركة يجب أن يتكون من10 أرقام تبدأ برقم 7.</value>
   </data>
+  <data name="REQToUpdateVatEffDate" xml:space="preserve">
+    <value>طلب تعديل تاريخ نفاذ التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="EffectDateAfterUpdate" xml:space="preserve">
+    <value>تاريخ النفاذ بعد التعديل</value>
+  </data>
+  <data name="EffectDateBeforeUpdate" xml:space="preserve">
+    <value>تاريخ نفاذ التسجيل قبل التعديل</value>
+  </data>
+  <data name="EffectModifyDate" xml:space="preserve">
+    <value>تاريخ التعديل</value>
+  </data>
+  <data name="EffectUpdatedBy" xml:space="preserve">
+    <value>تم التعديل بواسطة</value>
+  </data>
+  <data name="EffectSortfromNewToOld" xml:space="preserve">
+    <value>من الأحدث الى الأقدم</value>
+  </data>
+  <data name="EffectSortfromOldToNew" xml:space="preserve">
+    <value>من الأقدم الى الاحدث</value>
+  </data>
+  <data name="RMHeading" xml:space="preserve">
+    <value>بيانات التواصل لمدير ومشرف العلاقة</value>
+  </data>
 </root>

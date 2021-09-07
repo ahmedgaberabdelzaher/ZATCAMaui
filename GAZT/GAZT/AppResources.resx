@@ -9198,4 +9198,28 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="IBanCompanyIdStartswith7" xml:space="preserve">
     <value>Company number must be 10 numbers starts with 7.</value>
   </data>
+  <data name="REQToUpdateVatEffDate" xml:space="preserve">
+    <value>Request to Update Value Added Tax Registration Effective Date.</value>
+  </data>
+  <data name="EffectDateAfterUpdate" xml:space="preserve">
+    <value>Effective Date (After Update)</value>
+  </data>
+  <data name="EffectDateBeforeUpdate" xml:space="preserve">
+    <value>Effective Date (Before Update)</value>
+  </data>
+  <data name="EffectModifyDate" xml:space="preserve">
+    <value>Modifying Date</value>
+  </data>
+  <data name="EffectUpdatedBy" xml:space="preserve">
+    <value>Updated by</value>
+  </data>
+  <data name="EffectSortfromNewToOld" xml:space="preserve">
+    <value>Sort from new to old</value>
+  </data>
+  <data name="EffectSortfromOldToNew" xml:space="preserve">
+    <value>Sort from old to new</value>
+  </data>
+  <data name="RMHeading" xml:space="preserve">
+    <value>Relationship Manager and Supervisor Contact information</value>
+  </data>
 </root>

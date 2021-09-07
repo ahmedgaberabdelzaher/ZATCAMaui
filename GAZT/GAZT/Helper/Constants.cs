@@ -203,6 +203,9 @@ namespace GAZT.Helper
         public static string ComplaintsARUrl = "https://gazt.gov.sa/ar/ContactUs/Pages/default.aspx#topic_complaint";
         public static string CheckVocAvailability = "https://vocstg.gazt.gov.sa/v1/response/survey/availability";
 
+        //Update Vat effective date.
+        public static string GetRequestedUpdateVatEffDates = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VT_EFDT_SRV/HeaderSet(Gpart='{0}')?&$expand=ItemSet&$format=json";
+
         //CR1645 GETIBAN URLS                                                                                                           
         public static string GAZTGetValidIBanNumbers= BaseUrlOfODataServices+ "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/IbanDataSet?$filter=";
         #region GAZTUnlock Account
