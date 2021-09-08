@@ -346,6 +346,7 @@ namespace EGAZT.Models.VatReviewModel
             public DateTime? Abrzu { get; set; }
             public string Msgflg { get; set; }
             public string Pentyp { get; set; }
+            public string OVERDUEFG { get; set; }
             public string Cokey { get; set; }
             public string Msgtxt { get; set; }
             public string Opbel { get; set; }
@@ -639,6 +640,7 @@ namespace EGAZT.Models.VatReviewModel
             public string Actnm { get; set; }
             public string Golivefg { get; set; }
             public string DecDt { get; set; }
+            public string OVERDUEFG { get; set; }
             public string Appfg { get; set; }
             public string Persl { get; set; }
             public string Actno { get; set; }
@@ -816,6 +818,7 @@ namespace EGAZT.Models.VatReviewModel
         public string DateToOld { get; set; }
         public string PeriodKey { get; set; }
         public bool DecFlg1 { get; set; }
+        public string OVERDUEFG { get; set; }
         public bool DecFlg2 { get; set; }
         public string DecIdNo { get; set; }
         public string Declarationdt { get; set; }

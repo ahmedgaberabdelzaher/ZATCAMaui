@@ -1032,6 +1032,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
                         }
+                        else if (IsComeForWhichAttachment == WhichAttachment.VatReviewLateFiling)
+                        {
+                            APiMethod = "ZDP_INDTAX_ATT_SRV";
+                        }
                         else if (IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
@@ -1191,6 +1195,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         AttachmentName = attName;
                     }
                     else if (IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
+                    {
+                        APiMethod = "ZDP_INDTAX_ATT_SRV";
+                        AttachmentName = AttachmentName.Replace("-", "_").Replace(" ", "");
+                        string attName = "1SpaceAdded-SpaceAdded" + AttachmentName;
+                        AttachmentName = attName;
+                    }
+                    else if (IsComeForWhichAttachment == WhichAttachment.VatReviewLateFiling)
                     {
                         APiMethod = "ZDP_INDTAX_ATT_SRV";
                         AttachmentName = AttachmentName.Replace("-", "_").Replace(" ", "");

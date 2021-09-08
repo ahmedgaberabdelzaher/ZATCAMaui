@@ -219,6 +219,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.DocTypeString = "RVBT";
             }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VatReviewLateFiling)
+            {
+                viewModel.DocTypeString = "ZVRA";
+            }
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment)
             {
                 viewModel.DocTypeString = "N03A";

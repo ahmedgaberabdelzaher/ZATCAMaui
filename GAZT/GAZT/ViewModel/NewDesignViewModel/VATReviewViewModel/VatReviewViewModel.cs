@@ -44,6 +44,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ReviewReason,
             ReviewDetails,
             ReportDetails,
+            LateFiling,
             SecurityPayments,
             Declaration,
             Summary
@@ -64,6 +65,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand ReviewReasonConBtnTapped { get; set; }
         public ICommand ReviewDetailsConBtnTapped { get; set; }
         public ICommand ReportDetailsConBtnTapped { get; set; }
+        public ICommand LateFilingContdButtonClicked { get; set; }
         public ICommand SecurityPaymentConBtnTapped { get; set; }
         public ICommand DeclarationConBtnTapped { get; set; }
         public ICommand SummaryConBtnTapped { get; set; }
@@ -75,6 +77,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand ViewApplicationTapped { get; set; }
         public ICommand NewAttachmentTapped { get; set; }
         public ICommand NewBankGuranteeAttachmentTapped { get; set; }
+        public ICommand LateFilingAttachmentTapped { get; set; }
         public ICommand ReviewReasonCommand { get; set; }
         public ICommand SubReviewReasonCommand { get; set; }
         public ICommand ShowDatePicker { get; set; }
@@ -82,6 +85,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand ApplicationNumRefCommand { get; set; }
         public ICommand SadadGenerateBtnTapped { get; set; }
         public ICommand GoBackToReportDetails { get; set; }
+        public ICommand GoBackToLateFilingDetails { get; set; }
         public ICommand onMoreOptionClicked { get; set; }
 
         #endregion
@@ -92,6 +96,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         int selectedPage = (int)PagesEnum.ReviewReason;
 
         public string lastFulfilmentDate = string.Empty;
+        public string OverdueFlag = string.Empty;
 
         private List<String> _ListOfActionButtonsApplicable;
         public List<String> ListOfActionButtonsApplicable
@@ -189,6 +194,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 _securityPaymentVisible = value;
                 RaisePropertyChanged("SecurityPaymentVisible");
+            }
+        }
+
+        private bool _lateFilingObjectionsVisible = false;
+
+        public bool LateFilingObjectionsVisible
+        {
+            get { return _lateFilingObjectionsVisible; }
+            set
+            {
+                if (_lateFilingObjectionsVisible == value) return;
+
+                _lateFilingObjectionsVisible = value;
+                RaisePropertyChanged("LateFilingObjectionsVisible");
             }
         }
 
@@ -511,6 +530,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("ReportDetails");
             }
         }
+        
+        public string _lateFlngDetails = "";
+
+        public string LateFlngDetails
+        {
+            get { return _lateFlngDetails; }
+            set
+            {
+                if (_lateFlngDetails == value) return;
+
+                _lateFlngDetails = value;
+                RaisePropertyChanged("LateFlngDetails");
+            }
+        }
 
         public string _sADADNumber = "";
 
@@ -655,7 +688,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-   
+
         private bool isSadadCheckBox3 = false;
 
         public bool IsSadadCheckBox3
@@ -682,6 +715,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("IsSadadCheckBox4");
             }
         }
+
+        private int _MaxIndex = 6;
+
+        public int MaxIndex
+        {
+            get { return _MaxIndex; }
+            set
+            {
+                if (_MaxIndex == value) return;
+
+                _MaxIndex = value;
+                RaisePropertyChanged("MaxIndex");
+            }
+        }
+
 
         private bool isGeneratingFormbundle = false;
 
@@ -745,6 +793,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 isReportDetailsEditable = value;
                 RaisePropertyChanged("IsReportDetailsEditable");
+            }
+        }
+        private bool _isLateFilingDetailsEditable = true;
+        public bool IsLateFilingDetailsEditable
+        {
+            get
+            {
+                return _isLateFilingDetailsEditable;
+            }
+            set
+            {
+                if (_isLateFilingDetailsEditable == value) return;
+
+                _isLateFilingDetailsEditable = value;
+                RaisePropertyChanged("IsLateFilingDetailsEditable");
             }
         }
         private bool isDisputeDetailsEditable = true;
@@ -913,6 +976,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("IsReportDetailsEnabled");
             }
         }
+        
+        private bool _isLateFlngDetailsEnabled = false;
+
+        public bool IsLateFlngDetailsEnabled
+        {
+            get { return _isLateFlngDetailsEnabled; }
+            set
+            {
+                if (_isLateFlngDetailsEnabled == value) return;
+
+                _isLateFlngDetailsEnabled = value;
+                LateFilingDetailsButtonBackGroundColor = Color.FromHex(_isLateFlngDetailsEnabled ? "#d49504" : "#9EA4A9");
+                RaisePropertyChanged("IsLateFlngDetailsEnabled");
+            }
+        }
 
         private Color _reportDetailsButtonBackGroundColor = Color.FromHex("#9EA4A9");
 
@@ -960,6 +1038,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 _ReviewDetailsButtonBackGroundColor = value;
                 RaisePropertyChanged("ReviewDetailsButtonBackGroundColor");
+            }
+        }
+        
+        private Color _LateFilingDetailsButtonBackGroundColor = Color.FromHex("#d49504");
+
+        public Color LateFilingDetailsButtonBackGroundColor
+        {
+            get { return _LateFilingDetailsButtonBackGroundColor; }
+            set
+            {
+                if (_LateFilingDetailsButtonBackGroundColor == value)
+                {
+                    return;
+                }
+
+                _LateFilingDetailsButtonBackGroundColor = value;
+                RaisePropertyChanged("LateFilingDetailsButtonBackGroundColor");
             }
         }
 
@@ -2016,6 +2111,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("charCountReportDetails");
             }
         }
+        
+        private string _charCountLateFilingDetails = 0 + "/" + 3000;
+        public string charCountLateFilingDetails
+        {
+            get
+            {
+                return _charCountReportDetails;
+            }
+            set
+            {
+                if (_charCountReportDetails == value) return;
+
+                _charCountReportDetails = value;
+                RaisePropertyChanged("charCountReportDetails");
+            }
+        }
 
         private bool fullPaymentCheckBox = false;
         public bool FullPaymentCheckBox
@@ -2037,7 +2148,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
          };
 
         public bool MarkComplete { get; private set; } = false;
-        public int MaxIndex { get; private set; } = 6;
+        //public int MaxIndex { get; private set; } = 6;
 
         private Color _declarationButtonBackGroundColor = Color.FromHex("#9EA4A9");
 
@@ -2172,6 +2283,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 attachmentsListViewData = value;
                 RaisePropertyChanged("AttachmentsListViewData");
+            }
+        }
+
+        public ObservableCollection<Attachment> _lateFilingAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> LateFilingAttachmentsListViewData
+        {
+            get { return _lateFilingAttachmentsListViewData; }
+
+            set
+            {
+                if (_lateFilingAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                _lateFilingAttachmentsListViewData = value;
+                RaisePropertyChanged("LateFilingAttachmentsListViewData");
             }
         }
 
@@ -2715,7 +2844,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("VrVRImportExportText");
             }
         }
-        
+
         private string _lastFulfilmentDate = string.Empty;
         public string LastFulfilmentDateText
         {
@@ -2801,6 +2930,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
         private bool _isBankGuranteeAttachments = false;
+        private bool _isReportDetailsAttachments = false;
+        private bool _isLateFilingAttachments = false;
+
         private VATObjectionFormModel.ReviewReason selectedReviewReason;
         private VATObjectionFormModel.SubReason selectedSubReviewReason;
         private VATObjectionRejectedFormModel.AppRefNumResult selectedApplicationRef;
@@ -2838,6 +2970,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             ReviewDetailsConBtnTapped = new Command(() => { ReviewDetailsConBtnClicked(); });
             ReportDetailsConBtnTapped = new Command(() => { ReportDetailsConBtnClicked(); });
+            LateFilingContdButtonClicked = new Command(() => { LateFilingConBtnClicked(); });
             SecurityPaymentConBtnTapped = new Command(() => { SecurityPaymentConBtnClicked(); });
 
             DeclarationConBtnTapped = new Command(() => { DeclarationConBtnClicked(); });
@@ -2850,6 +2983,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ViewApplicationTapped = new Command(() => { ViewApplicationClicked(); });
             NewAttachmentTapped = new Command(() => { NewAttachmentClicked(); });
             NewBankGuranteeAttachmentTapped = new Command(NewBankGuranteeAttachmentClicked);
+            LateFilingAttachmentTapped = new Command(LateFilingAttachmentClicked);
             ReviewReasonCommand = new Command(() => { showReviewReasonPickerDialog(); });
             SubReviewReasonCommand = new Command(() => { showSubReviewReasonPickerDialog(); });
             ApplicationNumRefCommand = new Command(() => { showAppRefNumberPickerDialog(); });
@@ -2857,6 +2991,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ShowDatePicker = new Command(() => { showDatePickerDialog(); });
             IdTypeSpinnerTapped = new Command(() => { showIdTypePickerDialog(); });
             GoBackToReportDetails = new Command(() => { EnableReportDetailsView(); });
+            GoBackToLateFilingDetails = new Command(() => { EnableLateFilingDetailsView(); });
             onMoreOptionClicked = new Command(() =>
             {
                 PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
@@ -3006,7 +3141,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     headerAmountInfo.IsLinkAvailable = false;
                     // headerAmountInfo.Message = string.Format(AppResources.VATReviewDraftSaved, "  " + modelVATReview.d.Fbnumx);
                     headerAmountInfo.Message = string.Format(AppResources.VATReviewNewDraftSaved);
-                    
+
                     headerWithInfos.Add(headerAmountInfo);
 
                     newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
@@ -3091,6 +3226,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
 
                 _isBankGuranteeAttachments = false;
+                _isReportDetailsAttachments = true;
+                _isLateFilingAttachments = false;
 
 
                 if (string.IsNullOrEmpty(SADADNumber))
@@ -3131,11 +3268,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             try
             {
                 _isBankGuranteeAttachments = true;
-
+                _isReportDetailsAttachments = false;
+                _isLateFilingAttachments = false;
 
                 await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
                     BankGuranteeAttachmentsListViewData.ToList(),
                     Models.ZakatInstalationModels.WhichAttachment.VatReviewBankGuranteeAttach,
+                    modelVATReview.d.ReturnIdx));
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public async void LateFilingAttachmentClicked()
+        {
+            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (LateFilingAttachmentsListViewData == null)
+            {
+                LateFilingAttachmentsListViewData = new ObservableCollection<Attachment>();
+            }
+
+            try
+            {
+                _isBankGuranteeAttachments = false;
+                _isLateFilingAttachments = true;
+                _isReportDetailsAttachments = false;
+
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    LateFilingAttachmentsListViewData.ToList(),
+                    Models.ZakatInstalationModels.WhichAttachment.VatReviewLateFiling,
                     modelVATReview.d.ReturnIdx));
 
             }
@@ -3402,6 +3578,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     EnableReportDetailsView();
                     EnableReviewDetailsConButton();
 
+
                 }
 
             }
@@ -3460,6 +3637,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 if (IsReviewDetailsEnabled)
                 {
 
+                    if (IsSecurityPaymentsTabVisible)
+                    {
+
+                        EnableLateFilingDetailsView();
+                    }
+                    else
+                    {
+                        EnableDeclarationView();
+                    }
+
+                }
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        private void LateFilingConBtnClicked()
+        {
+            try
+            {
+                if (IsLateFlngDetailsEnabled)
+                {
                     if (IsSecurityPaymentsTabVisible)
                     {
                         EnableSecurityPaymentsView();
@@ -3672,6 +3883,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ReviewDetailsVisible = false;
             ReportDetailsVisible = false;
             SecurityPaymentVisible = false;
+            LateFilingObjectionsVisible = false;
             DeclarationVisible = false;
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.ReviewReason;
@@ -3683,11 +3895,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReviewDetailsVisible = true;
+            LateFilingObjectionsVisible = false;
             ReportDetailsVisible = false;
             SecurityPaymentVisible = false;
             DeclarationVisible = false;
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.ReviewDetails;
+        }
+        private void EnableLateFilingDetailsView()
+        {
+            CurrentIndex = 4;
+            IsBackVisible = true;
+            ReviewReasonVisible = false;
+            ReviewDetailsVisible = false;
+            LateFilingObjectionsVisible = true;
+            ReportDetailsVisible = false;
+            SecurityPaymentVisible = false;
+            DeclarationVisible = false;
+            SummaryVisible = false;
+            selectedPage = (int)PagesEnum.LateFiling;
         }
 
         private void EnableReportDetailsView()
@@ -3697,6 +3923,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ReviewReasonVisible = false;
             ReportDetailsVisible = true;
             ReviewDetailsVisible = false;
+            LateFilingObjectionsVisible = false;
             SecurityPaymentVisible = false;
             DeclarationVisible = false;
             SummaryVisible = false;
@@ -3705,9 +3932,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableSecurityPaymentsView()
         {
-            CurrentIndex = 4;
+            if (OverdueFlag == "X")
+                CurrentIndex = 5;
+            else
+                CurrentIndex = 4;
+
             IsBackVisible = true;
             ReviewReasonVisible = false;
+            LateFilingObjectionsVisible = false;
             ReportDetailsVisible = false;
             ReviewDetailsVisible = false;
             SecurityPaymentVisible = true;
@@ -3718,12 +3950,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableDeclarationView()
         {
-            CurrentIndex = 5;
+            if (OverdueFlag == "X")
+                CurrentIndex = 6;
+            else
+                CurrentIndex = 5;
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReviewDetailsVisible = false;
             ReportDetailsVisible = false;
             SecurityPaymentVisible = false;
+            LateFilingObjectionsVisible = false;
             DeclarationVisible = true;
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.Declaration;
@@ -3733,12 +3969,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableSummaryView()
         {
-            CurrentIndex = 6;
+            if (OverdueFlag == "X")
+                CurrentIndex = 7;
+            else
+                CurrentIndex = 6;
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReportDetailsVisible = false;
             ReviewDetailsVisible = false;
             SecurityPaymentVisible = false;
+            LateFilingObjectionsVisible = false;
             DeclarationVisible = false;
             SummaryVisible = true;
             selectedPage = (int)PagesEnum.Summary;
@@ -3853,6 +4093,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public void MakeViewOnlyItems()
         {
             IsReportDetailsEditable = false;
+            IsLateFilingDetailsEditable = false;
             DAPOptionsEditable = false;
             IsRRAmountEdit = false;
             IsDisputeDetailsEditable = false;
@@ -3936,10 +4177,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 EnableSecurityPaymentsConButton();
             }
-            else
+            else if(_isReportDetailsAttachments)
             {
                 AttachmentsListViewData = attachmentsListViewData;
+                
                 EnableReviewDetailsConButton();
+            }
+            else if(_isLateFilingAttachments)
+            {
+                LateFilingAttachmentsListViewData = attachmentsListViewData;
+                EnableLateFilingsDetailsConButton();
+                //EnableSecurityPaymentsConButton();
             }
 
 
@@ -3997,12 +4245,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             var attachmentsListViewData = new ObservableCollection<Attachment>();
             foreach (Attachment attachemnt in attachments)
             {
-                if (attachemnt.Dotyp == "ZVTD"||attachemnt.Dotyp == "ZVTG"||attachemnt.Dotyp == "ZVTH"||attachemnt.Dotyp == "ZVTI")
+                if (attachemnt.Dotyp == "ZVTD" || attachemnt.Dotyp == "ZVTG" || attachemnt.Dotyp == "ZVTH" || attachemnt.Dotyp == "ZVTI" || attachemnt.Dotyp == "ZVRA")
                 {
                     attachmentsListViewData.Add(attachemnt);
                 }
             }
             VatDeRegAttachmentsList = attachmentsListViewData;
+
         }
 
         public void PopulateVatDeRegSummaryDeclarationData(string idType, string iDNumber, string dateOfBirth, string contactPersonName)
@@ -4071,8 +4320,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 case (int)PagesEnum.ReportDetails:
                     EnableReviewReasonView();
                     break;
-                case (int)PagesEnum.SecurityPayments:
+                case (int)PagesEnum.LateFiling:
                     EnableReviewDetailsView();
+                    break;
+                case (int)PagesEnum.SecurityPayments:
+                    if (OverdueFlag == "X")
+                    {
+                        EnableLateFilingDetailsView();
+                    }
+                    else
+                    {
+                        EnableReviewDetailsView();
+                    }
+
                     break;
                 case (int)PagesEnum.Declaration:
                     if (IsSecurityPaymentsTabVisible)
@@ -4240,7 +4500,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     //if (App.IsArabic)
                     //{
 
-                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
                     //}
                     //else
@@ -4287,7 +4547,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     //if (App.IsArabic)
                     //{
 
-                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
                     //}
                     //else
@@ -4300,9 +4560,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     strTaxPeriodFrom = dt1;
                 }
 
+                OverdueFlag = selectedApplicationRef.OVERDUEFG;
+                if (OverdueFlag == "X")
+                    MaxIndex = 7;
+                else
+                    MaxIndex = 6;
+                CurrentIndex = 1;
+
                 lastFulfilmentDate = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(selectedApplicationRef.LastFulfilledDt);
 
-                LastFulfilmentDateText= string.Format(AppResources.VRSecurityBankGuarante, lastFulfilmentDate);
+                LastFulfilmentDateText = string.Format(AppResources.VRSecurityBankGuarante, lastFulfilmentDate);
 
                 string strTaxPeriodTo = "";
                 if (selectedApplicationRef.Abrzo != null)
@@ -4328,7 +4595,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     //if (App.IsArabic)
                     //{
 
-                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
                     //}
                     //else
@@ -4348,7 +4615,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 TotalTaxLiability = selectedApplicationRef.Liaamt;
                 TaxPaid = selectedApplicationRef.Clramt;
-                RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString()); 
+                RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString());
 
                 SecurityAmount =
                     (Double.Parse(selectedApplicationRef.Liaamt) - Double.Parse(selectedApplicationRef.Clramt))
@@ -4402,7 +4669,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     {
                         await _dialogService.ShowMessage(selectedApplicationRef.Msgtxt, AppResources.CRWarning);
                     });
-                }else if(selectedApplicationRef.Fbtyp== "VATR")
+                }
+                else if (selectedApplicationRef.Fbtyp == "VATR")
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -4410,7 +4678,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         EnableReviewReasonConButton();
                     });
                 }
-                else if (selectedApplicationRef.Fbtyp== "VTPN" && selectedApplicationRef.Pentyp == "R")
+                else if (selectedApplicationRef.Fbtyp == "VTPN" && selectedApplicationRef.Pentyp == "R")
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -4738,6 +5006,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             TaxPeriodTo = null;
             PenalityAmountInQuestion = "";
             ReportDetails = "";
+            LateFlngDetails = "";
             SADADNumber = "";
             SecurityAmount = "";
             IDNumber = "";
@@ -4753,6 +5022,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ReviewReasonButtonBackGroundColor = Color.FromHex("#9EA4A9");
             IsReviewDetailsEnabled = false;
             ReviewDetailsButtonBackGroundColor = Color.FromHex("#9EA4A9");
+            LateFilingDetailsButtonBackGroundColor = Color.FromHex("#9EA4A9");
             IsSecurityPaymentEnabled = false;
             SecurityPaymentButtonBackGroundColor = Color.FromHex("#9EA4A9");
             IsDeclarationEnabled = false;
@@ -4762,6 +5032,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             SadadGenerateProgressVisible = false;
             SadadAmountVisible = false;
             BankGuranteeAttachmentsListViewData = null;
+            LateFilingAttachmentsListViewData = null;
             IsSadadCheckBox3 = false;
             IsSadadCheckBox1 = false;
             IsApplicationVisible = false;
@@ -4774,6 +5045,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             DefaultReq = 0;
 
             IsReportDetailsEditable = true;
+            IsLateFilingDetailsEditable = true;
             DAPOptionsEditable = true;
             IsRRAmountEdit = false;
             IsDisputeDetailsEditable = true;
@@ -4791,15 +5063,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             if (ReviewReason == "" || SubReviewReason == "" || ApplicationRefNumber == "" || RequestDate == null)
             {
 
-                if (!string.IsNullOrEmpty(SADADNumber)) {
+                if (!string.IsNullOrEmpty(SADADNumber))
+                {
 
                     IsReviewReasonEnabled = true;
                 }
-                else {
+                else
+                {
                     IsReviewReasonEnabled = false;
                 }
 
-               
+
             }
             else
             {
@@ -4818,6 +5092,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 IsReportDetailsEnabled = true;
             }
         }
+
+        public void EnableLateFilingsDetailsConButton()
+        {
+           if (!string.IsNullOrEmpty(LateFlngDetails) && LateFilingAttachmentsListViewData!=null&& LateFilingAttachmentsListViewData.Count>0)
+            {
+                IsLateFlngDetailsEnabled = true;
+            }
+            else
+            {
+                IsLateFlngDetailsEnabled = false; ;
+            }
+        }
+
 
         public void EnableReviewDetailsConButton()
         {
@@ -4958,7 +5245,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             MessagingCenter.Send<object, int>(this, "draftSecurity", modelVATReview.d.SecurityDtl.Sectp == "B" ? 1 : 0);
             MessagingCenter.Send<object, int>(this, "draftRequest", modelVATReview.d.SecurityDtl.Amttp == "P" ? 1 : 0);
 
-            
+
             if (modelVATReview.d.IdType == "ZS0001")
             {
                 IDType = AppResources.VFCNationalID;
@@ -4979,7 +5266,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 IsDOBVisible = false;
             }
 
-            
+
             IDNumber = modelVATReview.d.DecIdNo;
             ContactPersonName = modelVATReview.d.Decnm;
             if (!string.IsNullOrEmpty(ContactPersonName))
@@ -4996,6 +5283,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             var bankAttachments = new ObservableCollection<Attachment>();
             var attachments = new ObservableCollection<Attachment>();
+            var lateFilngAttachments = new ObservableCollection<Attachment>();
             foreach (var attach in modelVATReview.d.AttdetSet.results)
             {
                 if (attach.Dotyp == "RAGA")
@@ -5006,11 +5294,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     bankAttachments.Add(attach);
                 }
+                else if (attach.Dotyp == "ZVRA")
+                {
+                    lateFilngAttachments.Add(attach);
+                }
             }
             BankGuranteeAttachmentsListViewData = bankAttachments;
             AttachmentsListViewData = attachments;
+            LateFilingAttachmentsListViewData = lateFilngAttachments;
 
-            
+
             if (modelVATReview.d.SecurityDtl.ChkBank == "X")
             {
                 IsSadadCheckBox1 = true;
@@ -5062,25 +5355,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     if (note.Rcodez == "RAVT_SDCAS" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(DisputeDetailsDesc))
                     {
                         DisputeDetailsDesc = note.Strline;
-                        
+
                     }
-                   
+
                 }
 
                 foreach (var note in modelVATReview.d.NotesSet.results)
                 {
-                    
+
                     if (note.Rcodez == "RAVT_BOX" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(ReportDetails))
                     {
                         ReportDetails = note.Strline;
-                       
+
+                    }
+
+                }
+                foreach (var note in modelVATReview.d.NotesSet.results)
+                {
+
+                    if (note.Rcodez == "RVT_OVRDUE" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(LateFlngDetails))
+                    {
+                        LateFlngDetails = note.Strline;
+
                     }
 
                 }
 
             }
 
-            if(selectedApplicationRef != null) {
+            if (selectedApplicationRef != null)
+            {
 
                 if (selectedApplicationRef.Msgflg == "X")
                 {
@@ -5106,16 +5410,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 }
             }
-            else {
+            else
+            {
                 EnableReviewReasonConButton();
             }
 
 
 
-           
+
 
 
             EnableReportDetailsConButton();
+            EnableLateFilingsDetailsConButton();
             EnableDeclarationConButton();
             EnableReviewDetailsConButton();
             EnableSecurityPaymentsConButton();
@@ -5768,7 +6074,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     //if (App.IsArabic)
                                     //{
 
-                                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
                                     //}
                                     //else
@@ -5804,7 +6110,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     //if (App.IsArabic)
                                     //{
 
-                                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
                                     //}
                                     //else
@@ -5840,7 +6146,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     //if (App.IsArabic)
                                     //{
 
-                                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
                                     //}
                                     //else
@@ -5876,7 +6182,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     //if (App.IsArabic)
                                     //{
 
-                                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
                                     //}
                                     //else
@@ -5980,6 +6286,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             _postData.DateToOld = modelVATReview.d.DateToOld;
             _postData.DecDt = modelVATReview.d.DecDt;
             _postData.DecFlg1 = modelVATReview.d.DecFlg1;
+            _postData.OVERDUEFG = OverdueFlag;
             _postData.DecFlg2 = modelVATReview.d.DecFlg2;
             _postData.DecIdNo = modelVATReview.d.DecIdNo;
             _postData.Declarationdt = modelVATReview.d.DecDt;
@@ -6091,8 +6398,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             notes.Erftmz = null;
             notes.Erfusrz = "";
             notes.Lineno = 1;
-            notes.Noteno = "";
-            notes.Notenoz = "";
+            notes.Noteno = "1";
+            notes.Notenoz = "1";
             notes.Rcodez = "RAVT_BOX";
             notes.Refnamez = "";
             notes.Tdformat = "";
@@ -6101,7 +6408,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             notes.DataVersionz = "00000";
             notes.ByGpartz = App.LoginDataRetrieved.TIN;
 
+            NotesSetResults notes2 = new Models.VatReviewModel.NotesSetResults();
+            if (OverdueFlag == "X")
+            {
+                /*--------adding noteset in late filing--------*/
+                if (LateFlngDetails != null)
+                {
 
+                    notes2.Tdline = LateFlngDetails.ToString();
+
+                }
+                else
+                {
+                    notes2.Tdline = "";
+
+                }
+
+                Metadata _metdata2 = new Metadata();
+
+                _metdata2.uri = Constants.VATObjectionsNotesSet;
+                _metdata2.type = "ZDP_VAT_NW_REV_SRV.Notes";
+                _metdata2.id = Constants.VATObjectionsNotesSet;
+                notes2.__metadata = _metdata;
+                notes2.AttByz = "TP";
+                notes2.ElemNo = 0;
+
+                notes2.Erfdtz = null;
+                notes2.Erftmz = null;
+                notes2.Erfusrz = "";
+                notes2.Lineno = 2;
+                notes2.Noteno = "2";
+                notes2.Notenoz = "2";
+                notes2.Rcodez = "RVT_OVRDUE";
+                notes2.Refnamez = "";
+                notes2.Tdformat = "";
+                notes2.XInvoicez = "";
+                notes2.XObsoletez = "";
+                notes2.DataVersionz = "00000";
+                notes2.ByGpartz = App.LoginDataRetrieved.TIN;
+
+                /*-------end of note set  addition in latefiling---------*/
+            }
 
             NotesSetResults notes1 = new Models.VatReviewModel.NotesSetResults();
             if (DisputeDetailsDesc != null)
@@ -6128,7 +6475,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             notes1.Erfdtz = null;
             notes1.Erftmz = null;
             notes1.Erfusrz = "";
-            notes1.Lineno = 1;
+            notes1.Lineno = 3;
             notes1.Noteno = "3";
             notes1.Notenoz = "3";
             notes1.Rcodez = "RAVT_SDCAS";
@@ -6143,6 +6490,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             var noteSetList = new List<NotesSetResults>();
             noteSetList.Add(notes);
             noteSetList.Add(notes1);
+            if(OverdueFlag=="X")
+            {
+                noteSetList.Add(notes2);
+            }
 
             NotesetResult.results = noteSetList;
             //modelVATReview.d.NotesSet = NotesetResult;
@@ -6291,6 +6642,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     modelVATReview.d.DateFrm = selectedApplicationRef.DateFrm;
                     modelVATReview.d.DateFrmOld = selectedApplicationRef.DateFrm;
                     modelVATReview.d.DecDt = RequestDate.ToString();
+                    modelVATReview.d.OVERDUEFG = OverdueFlag;
 
                     var strDecDate = "";
                     if (!string.IsNullOrEmpty(RequestDate.ToString()))
@@ -6336,7 +6688,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                             modelVATReview.d.SecurityDtl.Sectp = "B";
                             modelVATReview.d.SecurityDtl.ChkCash = "";
-                            modelVATReview.d.SecurityDtl.ChkBank = IsSadadCheckBox1? "X" : "";
+                            modelVATReview.d.SecurityDtl.ChkBank = IsSadadCheckBox1 ? "X" : "";
 
 
                         }
@@ -6350,7 +6702,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         }
 
                         modelVATReview.d.SecurityDtl.DataVersion = "00001";
-                        modelVATReview.d.SecurityDtl.Disamt = (Double.Parse(RequestedReviewAmount))+"";
+                        modelVATReview.d.SecurityDtl.Disamt = (Double.Parse(RequestedReviewAmount)) + "";
                         modelVATReview.d.SecurityDtl.Liaamt = selectedApplicationRef.Liaamt;
                         modelVATReview.d.SecurityDtl.Opbel = selectedApplicationRef.Opbel;
                         modelVATReview.d.SecurityDtl.Penamount = selectedApplicationRef.Penamount;
@@ -6478,7 +6830,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     IsLoading = true;
 
                     VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVRVATReturns(Fbguid, Fbnumz, EUser, "");
-                   
+
                     if (_vATDeclaration != null && _vATDeclaration.d != null)
                     {
                         VATinNumber = _vATDeclaration.d.Gpart;
@@ -6577,7 +6929,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     try
                     {
                         vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDisplayDetailsData();
-                        
+
 
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
@@ -7049,38 +7401,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         if (_VATReviewRequestVTGR != null && _VATReviewRequestVTGR.d != null)
                         {
 
-                            try{
+                            try
+                            {
                                 VRVGEffectivedate = _VATReviewRequestVTGR.d.EFFDATESet.results.Where(x => x.Persl == _VATReviewRequestVTGR.d.Persl).FirstOrDefault().Txt50;
                             }
-                            catch (Exception e) {
+                            catch (Exception e)
+                            {
 
                             }
 
 
-                            if(_VATReviewRequestVTGR.d.DecidTy != null) {
+                            if (_VATReviewRequestVTGR.d.DecidTy != null)
+                            {
 
                                 VRVGIDType = IDToNameDictionary[_VATReviewRequestVTGR.d.DecidTy];
                             }
 
-                            if(_VATReviewRequestVTGR.d.DecidNo != null) {
+                            if (_VATReviewRequestVTGR.d.DecidNo != null)
+                            {
 
                                 VRVGIDNumber = _VATReviewRequestVTGR.d.DecidNo;
 
                             }
-                            if(_VATReviewRequestVTGR.d.Decname != null) {
+                            if (_VATReviewRequestVTGR.d.Decname != null)
+                            {
 
                                 VRVGContactPersonName = _VATReviewRequestVTGR.d.Decname;
 
                             }
 
-                            if(_VATReviewRequestVTGR.d.AggreSupply != null)
+                            if (_VATReviewRequestVTGR.d.AggreSupply != null)
                             {
 
                                 VRVGVATeligiblesupplies = VGSupplicesDictionary[_VATReviewRequestVTGR.d.AggreSupply];
 
                             }
 
-                            if(_VATReviewRequestVTGR.d.AggrePurchase != null) {
+                            if (_VATReviewRequestVTGR.d.AggrePurchase != null)
+                            {
 
                                 VRVGVATeligiblepurchases = VGPurchasesDictionary[_VATReviewRequestVTGR.d.AggrePurchase];
 
@@ -7088,7 +7446,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
 
-                            if(_VATReviewRequestVTGR.d.TABLESet.results != null) {
+                            if (_VATReviewRequestVTGR.d.TABLESet.results != null)
+                            {
 
                                 var tinsListViewData = new ObservableCollection<VATReviewRequestVTGRModel.TABLESetResult>();
                                 foreach (VATReviewRequestVTGRModel.TABLESetResult tin in _VATReviewRequestVTGR.d.TABLESet.results)
@@ -7100,7 +7459,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 VRVGTinsListViewData = tinsListViewData;
                             }
 
-                            if(_VATReviewRequestVTGR.d.ATTDETSet.results != null) {
+                            if (_VATReviewRequestVTGR.d.ATTDETSet.results != null)
+                            {
 
                                 var attachmentsListViewData = new ObservableCollection<Attachment>();
                                 foreach (Attachment attachemnt in _VATReviewRequestVTGR.d.ATTDETSet.results)
@@ -7113,8 +7473,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             }
 
 
-                          
-                          
+
+
 
                             Device.BeginInvokeOnMainThread(() =>
                             {
