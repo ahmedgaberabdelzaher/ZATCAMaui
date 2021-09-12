@@ -139,6 +139,8 @@ using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
 using EGAZT.Views.NewDesign.SupportPages;
 using EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
 using EGAZT.Views.NewDesign.IBanAccountsManagements;
+using EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM;
+using EGAZT.Views.NewDesign.UpdateVatEffectiveDate;
 
 namespace EGAZT
 {
@@ -184,6 +186,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<PickerPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
             SimpleIoc.Default.Register<GeneralServicesViewModel>();
+            SimpleIoc.Default.Register<UpdateVatEffectiveDateViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationOutletsDetailsPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationTaxPayerDetailsPageViewModel>();
@@ -220,6 +223,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionPageWebViewModel>();
             SimpleIoc.Default.Register<RelationShipManagerInfoPageViewModel>();
+            SimpleIoc.Default.Register<FilterVatEffectiveDatePageViewModel>();
             #endregion
 
             #region NewDesignRelease2IOC
@@ -2310,6 +2314,7 @@ namespace EGAZT
             navigationService.Configure(App.GAZTBankAccountAddOrUpdatePageView, typeof(BankAccountAddorUpdateIBANPageView));
 
             navigationService.Configure(App.RelationShipManagerInfoPageView, typeof(RelationShipManagerInfoPageView));
+            navigationService.Configure(App.UpdateVatEffectiveDatePageView, typeof(UpdateVatEffectiveDatePageView));
             #endregion
 
             #region NewDesignRelease2
@@ -2413,6 +2418,7 @@ namespace EGAZT
 
             navigationService.Configure(App.ZakatRegistrationDetailsListPageView, typeof(ZakatRegistrationDetailsListPageView));
             navigationService.Configure(App.GeneralServicesListPageView, typeof(GeneralServicesListPageView));
+            navigationService.Configure(App.FilterVatEffectiveDatePageView, typeof(FilterVatEffectiveDatePageView));
             navigationService.Configure(App.RefundRequestMenuListPageView, typeof(RefundRequestMenuListPageView));
             navigationService.Configure(App.FillingFreuencyMenuListPageView, typeof(FillingFreuencyMenuListPageView));
             navigationService.Configure(App.ZakatRegistrationTaxPayerDetails, typeof(ZakatRegistrationTaxPayerDetails));
@@ -2652,6 +2658,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<RelationShipManagerInfoPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        
+        public FilterVatEffectiveDatePageViewModel FilterVatEffectiveDatePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FilterVatEffectiveDatePageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2981,6 +3002,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<GeneralServicesViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        
+        public UpdateVatEffectiveDateViewModel UpdateVatEffectiveDateView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UpdateVatEffectiveDateViewModel>();
                 }
                 catch (Exception)
                 {

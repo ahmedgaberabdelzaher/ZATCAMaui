@@ -49,6 +49,8 @@ namespace EGAZT
         public static string RelationShipManagerInfoPageView = "RelationShipManagerInfoPageView";
         public static string GAZTBankAccountManagementPageView = "BankAccountManagementPageView";
         public static string GAZTBankAccountAddOrUpdatePageView = "BankAccountAddorUpdateIBANPageView";
+        public static string UpdateVatEffectiveDatePageView = "UpdateVatEffectiveDatePageView";
+        public static string FilterVatEffectiveDatePageView = "FilterVatEffectiveDatePageView";
 
         public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
         public static string TaxEvasionVerifyMobileNumberPage = "TaxEvasionVerifyMobileNumberPage";
@@ -324,6 +326,8 @@ namespace EGAZT
         public static bool isFromDashboard = false;
         public static string selectedForm12Fbguid = string.Empty;
         public static bool isMybillsRefresh = false;
+
+        public static bool isVatEffectDateNav = false;
 
         //in Seconds
         public static int IdleTimeToLogout = 100;

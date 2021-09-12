@@ -22742,6 +22742,33 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1. The start date of the new VAT Eligibility Commencement date must be greater than or equal to 01/01/2018 and less than the current VAT start date..
+        /// </summary>
+        public static string ZZZNewVATRAdditionalInformationInstrunctionsFirstLine {
+            get {
+                return ResourceManager.GetString("ZZZNewVATRAdditionalInformationInstrunctionsFirstLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2. The start date of the new VAT Eligibility Commencement date can be during or prior VAT Deregistration period..
+        /// </summary>
+        public static string ZZZNewVATRAdditionalInformationInstrunctionsSecondLine {
+            get {
+                return ResourceManager.GetString("ZZZNewVATRAdditionalInformationInstrunctionsSecondLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3.The day entered in the new VAT Eligibility commencement date must be from the beginning of the month.
+        /// </summary>
+        public static string ZZZNewVATRAdditionalInformationInstrunctionsThirdLine {
+            get {
+                return ResourceManager.GetString("ZZZNewVATRAdditionalInformationInstrunctionsThirdLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Data found against given parameters.
         /// </summary>
         public static string ZZZNoDatafoundagainstgivenparameters {
@@ -24151,6 +24178,15 @@ namespace EGAZT {
         public static string ZZZZNetVATDueSecond {
             get {
                 return ResourceManager.GetString("ZZZZNetVATDueSecond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I acknowledge and pledge my consent on amending the effective date of registration for VAT. I acknowledge my full awareness of the violations and penalties that may result from this procedure. I hold myself liable to all legal effects resulting from this procedure, and that the General Authority of Zakat and Tax is not liable, in whole or in part, for any direct or non-direct error or damage, whether accidental, consequential, or punitive, whether private or public. General Authority of Zakat and Tax is not [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ZZZZNewVatDateTerms {
+            get {
+                return ResourceManager.GetString("ZZZZNewVatDateTerms", resourceCulture);
             }
         }
         

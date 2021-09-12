@@ -350,7 +350,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             await Task.Run(async () =>
             {
-                VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate+ "T00:00:00");
+                VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate+ "T00:00:00","");
 
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 

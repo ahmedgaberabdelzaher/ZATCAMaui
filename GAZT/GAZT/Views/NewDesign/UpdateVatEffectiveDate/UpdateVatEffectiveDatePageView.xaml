@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters" 
+             xmlns:local="clr-namespace:EGAZT.CustomControl"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+              xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:custom="clr-namespace:GAZT" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             x:Class="EGAZT.Views.NewDesign.UpdateVatEffectiveDate.UpdateVatEffectiveDatePageView"
+             NavigationPage.HasNavigationBar="False"
+                 xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:local1="clr-namespace:EGAZT.Helper"
+             BackgroundImageSource="partials_background.png">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StringToColorConvertor x:Key="StringToColorConvertor" />
+            <local:IntToBoolConverter x:Key="IntToBoolConverter" />
+            <local1:DateToStringConverter x:Key="DateToStringConverter"/>
+
+            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+
+                    
+
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid>
+                <StackLayout>
+                    <Grid Padding="15,5,15,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.REQToUpdateVatEffDate}" MaxLines="3"  Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Start"/>
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
+                               HeightRequest="24" WidthRequest="24">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <StackLayout Spacing="15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2">
+                            <Image Source="search" IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}" HeightRequest="20" WidthRequest="20">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="searchButtonTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="filter" HeightRequest="20" WidthRequest="20">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="filterButtonTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                      Grid.Row="1" Grid.ColumnSpan="3">
+
+                            <Grid HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <SearchBar x:Name="searchBar" Grid.Column="0"  BackgroundColor="White" custom:RoundCornersEffect.CornerRadius="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" TextChanged="SearchBar_TextChanged" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
+                                </SearchBar>
+
+                                <Image Grid.Column="1" WidthRequest="24" HeightRequest="24" Source="close" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="CloseSearchButton_Tapped">
+                                        </TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" BackgroundColor="White"/>
+                        </Grid>
+                    </yummy:PancakeView>
+                </StackLayout>
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <Grid>
+                <Grid  BackgroundColor="Transparent"  Margin="20,20,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1"   BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,0,0,5" HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" VerticalOptions="FillAndExpand">
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Image>
+                                <Label Grid.Row="0" Grid.Column="1" Text="New Request" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AddNewRequestTapped}"></TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </border:SfBorder>
+
+                        <Grid Grid.Row="1" Margin="0,0,0,0"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                            <listView:SfListView  x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False"  VerticalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0" AutoFitMode="Height" ItemSpacing="5"
+                                      ItemsSource="{Binding CopiedVatLogs}"  BackgroundColor="Transparent" 
+                            SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
+
+                                <listView:SfListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0"
+                                                         HasShadow="True" Style="{StaticResource GreyBorderFWithShadow}">
+                                            <StackLayout Padding="0" Spacing="0" >
+                                                <Grid  Padding="10" RowSpacing="0" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="auto"/>
+                                                    </Grid.ColumnDefinitions>
+
+
+
+                                                    <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,4" HorizontalOptions="Start">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.IBANRefNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></Label>
+                                                        <Label Text="{Binding Fbnum}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Label>
+                                                    </StackLayout>
+
+                                                    <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" Margin="0,5" />
+
+                                                    <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,4">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.EffectModifyDate}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                        <Label Text="{Binding ModifyDate,Converter={StaticResource DateToStringConverter}}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="3"  Grid.ColumnSpan="2"  Margin="0,4">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.EffectDateBeforeUpdate}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                        <Label Text="{Binding EffDtBefore,Converter={StaticResource DateToStringConverter}}"  Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Margin="0,4">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.EffectDateAfterUpdate}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                        <Label Text="{Binding EffDtAfter,Converter={StaticResource DateToStringConverter}}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Margin="0,4">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.EffectUpdatedBy} " Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                        <Label Text="{Binding UpdatedBy}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                                                    </StackLayout>
+                                                </Grid>
+
+                                            </StackLayout>
+                                        </Frame>
+                                    </DataTemplate>
+                                </listView:SfListView.ItemTemplate>
+                            </listView:SfListView>
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
+                                 Opacity="0.4" VerticalOptions="FillAndExpand" />
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
+                                 Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
+                                                           EnableAnimation="True"
+                                                           AnimationType="SingleCircle"
+                                                           HorizontalOptions="CenterAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                           IsBusy="True"
+                                                           ViewBoxWidth="70"
+                                                           TitlePlacement="Bottom"
+                                                           ViewBoxHeight="70"
+                                                           TextColor="#D99A29" />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

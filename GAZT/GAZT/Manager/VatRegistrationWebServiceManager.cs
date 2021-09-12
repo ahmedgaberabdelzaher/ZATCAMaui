@@ -22,7 +22,7 @@ namespace EGAZT.Manager
     {
         #region VatRegistration
 
-        public async static Task<VatCommencementDateFormat> GAZTGetVATEligibilityDate(string vatEligibleStartDate)
+        public async static Task<VatCommencementDateFormat> GAZTGetVATEligibilityDate(string vatEligibleStartDate,string txntpz)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -35,7 +35,9 @@ namespace EGAZT.Manager
                     String url = Constants.GetVatEligilibilityDate;
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    var uri = new Uri(url+ "/taxDateSet(VatTaxDt=datetime%27"+ vatEligibleStartDate + "%27)?&$format=json");
+                    //var uri = new Uri(url+ "/taxDateSet(VatTaxDt=datetime%27"+ vatEligibleStartDate + "%27)?&$format=json");
+                    var uri = new Uri(url+ "/taxDateSet(VatTaxDt=datetime%27"+ vatEligibleStartDate + "%27TxnTpz=%27"+ txntpz + "%27,Gpartz=%27"+App.LoginDataRetrieved.TIN+"%27)?&$format=json");
+                                                       //(VatTaxDt=datetime%272021-07-01T00:00:00%27,TxnTpz=%27%27,Gpartz=%27%27)?&$format=json
                     HttpResponseMessage GAZTVATRegistrationDataOtherResponse = await client.GetAsync(uri);
                     if (GAZTVATRegistrationDataOtherResponse != null)
                     {

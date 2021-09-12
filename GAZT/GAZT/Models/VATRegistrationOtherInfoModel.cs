@@ -166,7 +166,7 @@ namespace EGAZT.Models
         [DataMember]
         public VatCommencementDateFormatModel __metadata { get; set; }
         [DataMember]
-        public string VatTaxDt { get; set; }
+        public DateTime? VatTaxDt { get; set; }
     }
 
     public class VatCommencementDateFormat

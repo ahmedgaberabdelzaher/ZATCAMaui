@@ -1107,6 +1107,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
+        private void RequestToVatEffDate_Tapped(object sender, EventArgs e)
+        {
+            //var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TinRegistrationDetails_Tapped", "Registration Details");
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.UpdateVatEffectiveDatePageView);
+            });
+            //AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
 
         private void VatRegistrationTile_Tapped(object sender, EventArgs e)
         {

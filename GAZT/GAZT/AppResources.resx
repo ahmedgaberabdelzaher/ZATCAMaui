@@ -9222,4 +9222,16 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="RMHeading" xml:space="preserve">
     <value>Relationship Manager and Supervisor Contact information</value>
   </data>
+  <data name="ZZZNewVATRAdditionalInformationInstrunctionsFirstLine" xml:space="preserve">
+    <value>1. The start date of the new VAT Eligibility Commencement date must be greater than or equal to 01/01/2018 and less than the current VAT start date.</value>
+  </data>
+  <data name="ZZZNewVATRAdditionalInformationInstrunctionsSecondLine" xml:space="preserve">
+    <value>2. The start date of the new VAT Eligibility Commencement date can be during or prior VAT Deregistration period.</value>
+  </data>
+  <data name="ZZZNewVATRAdditionalInformationInstrunctionsThirdLine" xml:space="preserve">
+    <value>3.The day entered in the new VAT Eligibility commencement date must be from the beginning of the month</value>
+  </data>
+  <data name="ZZZZNewVatDateTerms" xml:space="preserve">
+    <value>I acknowledge and pledge my consent on amending the effective date of registration for VAT. I acknowledge my full awareness of the violations and penalties that may result from this procedure. I hold myself liable to all legal effects resulting from this procedure, and that the General Authority of Zakat and Tax is not liable, in whole or in part, for any direct or non-direct error or damage, whether accidental, consequential, or punitive, whether private or public. General Authority of Zakat and Tax is not liable to any missed opportunity, loss or damage resulting from any of the information or data entered.</value>
+  </data>
 </root>

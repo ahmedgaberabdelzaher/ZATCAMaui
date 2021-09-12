@@ -176,6 +176,21 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
 
             }
+        } private async void DpENewStartDate_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedItem = DpENewStartDate.SelectedItem as List<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private async void DpEStartDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -193,9 +208,28 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
 
             }
+        }private async void DpENewDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var selectedItem = DpENewStartDate.SelectedItem as List<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void DpEStartDate_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+        private void DpENewDate_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
 
         }
@@ -205,6 +239,13 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             if (App.VATType == Enums.PageExecutionType.Reactivation)
             {
                 DpEStartDate.IsOpen = true;
+            }
+        }
+        private void btn2_Clicked(object sender, EventArgs e)
+        {
+            if (App.VATType == Enums.PageExecutionType.Amend)
+            {
+                DpENewStartDate.IsOpen = true;
             }
         }
 
@@ -4163,6 +4204,33 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         private async void VATEligibleDateClicked(object sender, EventArgs e)
         {
             if (App.VATType == Enums.PageExecutionType.Reactivation)
+            {
+                GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+                genericDatePickerModel.DatePickerTitle = "";
+                genericDatePickerModel.PickerId = "EndDateTypePicker";
+                try
+                {
+                    var ssd = App.Locator.CalendarPickerPageView.SelectedDate;
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                }
+                catch (GAZTUnlockAccountException)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        viewModel._navigationService.GoBack();
+                    });
+                }
+            }
+        }
+        
+        private async void NewVATEligibleDateClicked(object sender, EventArgs e)
+        {
+            if (App.VATType == Enums.PageExecutionType.Amend)
             {
                 GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
                 genericDatePickerModel.DatePickerTitle = "";

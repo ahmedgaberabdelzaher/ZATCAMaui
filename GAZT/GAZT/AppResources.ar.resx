@@ -9143,4 +9143,18 @@ info@gazt.gov.sa</value>
   <data name="RMHeading" xml:space="preserve">
     <value>بيانات التواصل لمدير ومشرف العلاقة</value>
   </data>
+  <data name="ZZZNewVATRAdditionalInformationInstrunctionsFirstLine" xml:space="preserve">
+    <value>1.تاريخ بداية الخضوع لضريبة القيمة المضافة المعدل يجب أن يكون أكبر من او يساوي 01 / 01 / 2018 م وأقل من تاريخ بداية الخضوع الحالي.</value>
+  </data>
+  <data name="ZZZNewVATRAdditionalInformationInstrunctionsSecondLine" xml:space="preserve">
+    <value>2.تاريخ بداية الخضوع لضريبة القيمة المضافة المعدل يمكن أن يكون خلال إيقاف التسجيل لضريبة القيمة المضافة.</value>
+  </data>
+  <data name="ZZZNewVATRAdditionalInformationInstrunctionsThirdLine" xml:space="preserve">
+    <value>3.اليوم المدخل في تاريخ الخضوع المعدل يجب أن يكون في بداية الشهر.</value>
+  </data>
+  <data name="ZZZZNewVatDateTerms" xml:space="preserve">
+    <value>أقرُ وأتعهَد بالموافقة على تعديل تاريخ نفاذ التسجيل في ضريبة القيمةالمضافة، وبالدراية
+ الكاملة عن المخالفات والعقوبات التي قد تترتب على ذلك وبتحملي لكافة الآثار النظامية المترتبة عن هذا الإجراء، وأن الهيئة غير مسؤولة سواء بشكل كامل أو جزئي عن أي خطأ أو ضرر مباشر أو غير مباشر، عرضي أو تبعي أو عقابي، خاصاً كان أو عاماً، كما أنَ الهيئة لا تتحمَل
+ أيَ مسؤولية عن أي فرصة ضائعة أو خسارة أو ضرر نتج عن أي من المعلومات أو البيانات المدخلة.</value>
+  </data>
 </root>
