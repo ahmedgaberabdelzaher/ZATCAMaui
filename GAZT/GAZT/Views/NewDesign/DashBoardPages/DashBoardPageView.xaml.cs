@@ -1113,7 +1113,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.UpdateVatEffectiveDatePageView);
+               // viewModel._navigationService.NavigateTo(App.UpdateVatEffectiveDatePageView);
             });
             //AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
