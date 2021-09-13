@@ -1811,7 +1811,7 @@
                                 </StackLayout>
 
                             </border:SfBorder>
-                            <border:SfBorder Margin="0,16,0,10" HasShadow="False"
+                            <border:SfBorder Margin="0,16,0,10" HasShadow="False" IsVisible="{Binding LateFilingObjectionsSummaryVisible}"
                                              Style="{StaticResource GreyBorderFrameWithShadow}">
 
                                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

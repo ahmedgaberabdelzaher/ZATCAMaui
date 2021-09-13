@@ -211,6 +211,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        private bool _lateFilingObjectionsSummaryVisible = false;
+
+        public bool LateFilingObjectionsSummaryVisible
+        {
+            get { return _lateFilingObjectionsSummaryVisible; }
+            set
+            {
+                if (_lateFilingObjectionsSummaryVisible == value) return;
+
+                _lateFilingObjectionsSummaryVisible = value;
+                RaisePropertyChanged("LateFilingObjectionsSummaryVisible");
+            }
+        }
+
         private bool _declarationVisible = false;
 
         public bool DeclarationVisible
@@ -530,7 +544,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("ReportDetails");
             }
         }
-        
+
         public string _lateFlngDetails = "";
 
         public string LateFlngDetails
@@ -976,7 +990,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("IsReportDetailsEnabled");
             }
         }
-        
+
         private bool _isLateFlngDetailsEnabled = false;
 
         public bool IsLateFlngDetailsEnabled
@@ -1040,7 +1054,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("ReviewDetailsButtonBackGroundColor");
             }
         }
-        
+
         private Color _LateFilingDetailsButtonBackGroundColor = Color.FromHex("#d49504");
 
         public Color LateFilingDetailsButtonBackGroundColor
@@ -2111,7 +2125,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("charCountReportDetails");
             }
         }
-        
+
         private string _charCountLateFilingDetails = 0 + "/" + 3000;
         public string charCountLateFilingDetails
         {
@@ -3639,8 +3653,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                     if (IsSecurityPaymentsTabVisible)
                     {
-
-                        EnableLateFilingDetailsView();
+                        if (OverdueFlag == "X")
+                            EnableLateFilingDetailsView();
+                        else
+                            EnableSecurityPaymentsView();
                     }
                     else
                     {
@@ -3970,9 +3986,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         private void EnableSummaryView()
         {
             if (OverdueFlag == "X")
+            {
                 CurrentIndex = 7;
+                LateFilingObjectionsSummaryVisible = true;
+            }
+
             else
+            {
                 CurrentIndex = 6;
+                LateFilingObjectionsSummaryVisible = false;
+            }
+
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReportDetailsVisible = false;
@@ -4177,13 +4201,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 EnableSecurityPaymentsConButton();
             }
-            else if(_isReportDetailsAttachments)
+            else if (_isReportDetailsAttachments)
             {
                 AttachmentsListViewData = attachmentsListViewData;
-                
+
                 EnableReviewDetailsConButton();
             }
-            else if(_isLateFilingAttachments)
+            else if (_isLateFilingAttachments)
             {
                 LateFilingAttachmentsListViewData = attachmentsListViewData;
                 EnableLateFilingsDetailsConButton();
@@ -4569,7 +4593,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 lastFulfilmentDate = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(selectedApplicationRef.LastFulfilledDt);
 
-                LastFulfilmentDateText = string.Format(AppResources.VRSecurityBankGuarante, lastFulfilmentDate);
+                if (OverdueFlag == "X")
+                    LastFulfilmentDateText = AppResources.VRSecurityBankGurrantCheckBoxDesc1;
+                else
+                    LastFulfilmentDateText = string.Format(AppResources.VRSecurityBankGuarante, lastFulfilmentDate);
 
                 string strTaxPeriodTo = "";
                 if (selectedApplicationRef.Abrzo != null)
@@ -5095,7 +5122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public void EnableLateFilingsDetailsConButton()
         {
-           if (!string.IsNullOrEmpty(LateFlngDetails) && LateFilingAttachmentsListViewData!=null&& LateFilingAttachmentsListViewData.Count>0)
+            if (!string.IsNullOrEmpty(LateFlngDetails) && LateFilingAttachmentsListViewData != null && LateFilingAttachmentsListViewData.Count > 0)
             {
                 IsLateFlngDetailsEnabled = true;
             }
@@ -6490,7 +6517,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             var noteSetList = new List<NotesSetResults>();
             noteSetList.Add(notes);
             noteSetList.Add(notes1);
-            if(OverdueFlag=="X")
+            if (OverdueFlag == "X")
             {
                 noteSetList.Add(notes2);
             }
