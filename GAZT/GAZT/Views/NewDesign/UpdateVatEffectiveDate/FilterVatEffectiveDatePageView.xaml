@@ -139,7 +139,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedIDType}"
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedUpdatedSortText}"
                                                     HorizontalOptions="FillAndExpand"
                                                     Style="{StaticResource BodyLabelBlack}" />
 
@@ -183,7 +183,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedIDType}"
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedDateSortText}"
                                                     HorizontalOptions="FillAndExpand"
                                                     Style="{StaticResource BodyLabelBlack}" />
 
@@ -193,7 +193,7 @@
                                                          Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
                                     </Image.Source>
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ShowIDTypePicker}"/>
+                                        <TapGestureRecognizer Command="{Binding ShowUpdatedByTypePicker}"/>
                                     </Image.GestureRecognizers>
                                 </Image>
 

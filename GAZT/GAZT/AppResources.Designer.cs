@@ -11640,6 +11640,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General authority of Zakat and Tax.
+        /// </summary>
+        public static string VatEffGazt {
+            get {
+                return ResourceManager.GetString("VatEffGazt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taxpayer.
+        /// </summary>
+        public static string VatEffTaxPayer {
+            get {
+                return ResourceManager.GetString("VatEffTaxPayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Filling frequency form saved successfully{0}.
         /// </summary>
         public static string VATFillingDraftSaved {

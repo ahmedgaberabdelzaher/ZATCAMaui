@@ -24,6 +24,7 @@ namespace EGAZT.Manager
 
         public async static Task<VatCommencementDateFormat> GAZTGetVATEligibilityDate(string vatEligibleStartDate,string txntpz)
         {
+           
             if (CrossConnectivity.Current.IsConnected)
             {
                 VatCommencementDateFormat vATcommencementDateResponse = new VatCommencementDateFormat();
@@ -35,9 +36,7 @@ namespace EGAZT.Manager
                     String url = Constants.GetVatEligilibilityDate;
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    //var uri = new Uri(url+ "/taxDateSet(VatTaxDt=datetime%27"+ vatEligibleStartDate + "%27)?&$format=json");
-                    var uri = new Uri(url+ "/taxDateSet(VatTaxDt=datetime%27"+ vatEligibleStartDate + "%27TxnTpz=%27"+ txntpz + "%27,Gpartz=%27"+App.LoginDataRetrieved.TIN+"%27)?&$format=json");
-                                                       //(VatTaxDt=datetime%272021-07-01T00:00:00%27,TxnTpz=%27%27,Gpartz=%27%27)?&$format=json
+                    var uri = new Uri(url+ "/taxDateSet(VatTaxDt=datetime%27"+ vatEligibleStartDate + "%27,TxnTpz=%27"+ txntpz + "%27,Gpartz=%27"+App.LoginDataRetrieved.TIN+"%27)?&$format=json");
                     HttpResponseMessage GAZTVATRegistrationDataOtherResponse = await client.GetAsync(uri);
                     if (GAZTVATRegistrationDataOtherResponse != null)
                     {
@@ -65,22 +64,27 @@ namespace EGAZT.Manager
                         String VatRegistrationOtherData = GAZTVATRegistrationDataOtherResponse.Content.ReadAsStringAsync().Result;
                         vATcommencementDateResponse = JsonConvert.DeserializeObject<VatCommencementDateFormat>(VatRegistrationOtherData);
 
-                        if (!string.IsNullOrEmpty(VatRegistrationOtherData) && vATcommencementDateResponse == null)
+                        if (!string.IsNullOrEmpty(VatRegistrationOtherData))
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationOtherData);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
                                 string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                                WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                throw new Exception(errorMessage);
+                                //throw new Exception(errorMessage);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
-                        }
-
+                        } 
+                       
                     }
                     return vATcommencementDateResponse;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (Exception)
                 {

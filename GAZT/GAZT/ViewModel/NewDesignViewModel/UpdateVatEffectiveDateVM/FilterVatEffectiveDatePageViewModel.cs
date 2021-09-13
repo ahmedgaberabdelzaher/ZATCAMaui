@@ -19,6 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
     [Preserve(AllMembers = true)]
     public class FilterVatEffectiveDatePageViewModel : BaseViewModel
     {
+
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand FilterCloseClick { get; set; }
         public ICommand FilterBtnCommand { get; set; }
@@ -26,20 +27,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
         public ICommand ShowDateSortTypePicker { get; set; }
         public ICommand ShowUpdatedByTypePicker { get; set; }
 
-        public ObservableCollection<ASFilters> _filterList = null;
-        public ObservableCollection<ASFilters> FilterList
+
+        private string _selectedDateSortText = string.Empty;
+        public string SelectedDateSortText
         {
-            get
-            {
-                return _filterList;
-            }
+            get { return _selectedDateSortText; }
             set
             {
-                if (_filterList == value) return;
-                _filterList = value;
-                RaisePropertyChanged("FilterList");
+                if (_selectedDateSortText == value) return;
+
+                _selectedDateSortText = value;
+                RaisePropertyChanged("SelectedDateSortText");
             }
         }
+
+
+
+
+        private string _selectedUpdatedSortText = string.Empty;
+        public string SelectedUpdatedSortText
+        {
+            get { return _selectedUpdatedSortText; }
+            set
+            {
+                if (_selectedUpdatedSortText == value) return;
+
+                _selectedUpdatedSortText = value;
+                RaisePropertyChanged("SelectedUpdatedSortText");
+            }
+        }
+
 
         private GenericPickerModel _pickerModel { get; set; }
         public GenericPickerModel PickerModel
@@ -51,6 +68,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
 
                 _pickerModel = value;
                 RaisePropertyChanged("PickerModel");
+            }
+        }
+
+        private List<VatEffectDateFilterModel> _filterList = new List<VatEffectDateFilterModel>();
+        public List<VatEffectDateFilterModel> FilterList
+        {
+            get { return _filterList; }
+            set
+            {
+                if (_filterList == value) return;
+
+                _filterList = value;
+                RaisePropertyChanged("FilterList");
             }
         }
 
@@ -77,22 +107,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
 
             FilterBtnCommand = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AcFilterEmptyState));
-               /* if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
-                {
-
-
-
-                }
-                else
-                {
-
-                    isFromFilter = true;
-                    FilterIfTypeAndStausFilterSelected(false);
-                }*/
-
-
-
+                Application.Current.MainPage.Navigation.PopAsync();
+                MessagingCenter.Send<App, List<VatEffectDateFilterModel>>((App)Xamarin.Forms.Application.Current, "filterList", FilterList);
+                //MessagingCenter.Unsubscribe<App, List<VatEffectDateFilterModel>>(this, "filterList");
 
             });
             FiltersTapped = new Command(() =>
@@ -104,33 +121,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
             ShowUpdatedByTypePicker = new Command(() => { showPickerDialog(1); });
         }
 
+
+
         private void FiltersClicked()
         {
             _navigationService.NavigateTo(App.AccountStatementsNewFilterPageView);
         }
+
+        private void setUpdatedBySortTypePickerModel()
+        {
+            if (PickerModel != null)
+            {
+                PickerModel = null;
+            }
+            var list = new List<string>();
+            try
+            {
+                list.Add(AppResources.VatEffTaxPayer);
+                list.Add(AppResources.VatEffGazt);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = list;
+            genericPickerModel.PickerTitle = "";
+            genericPickerModel.PickerId = "UpdatedBySortTypePicker";
+            PickerModel = genericPickerModel;
+        }
+
+        public class VatEffectDateFilterModel
+        {
+            public int filterId { get; set; }
+            public string filterName { get; set; }
+            public string filterType { get; set; }
+
+        }
+
         private void setDateSortTypePickerModel()
         {
 
             if (PickerModel != null)
             {
-
                 PickerModel = null;
             }
-
-
             var list = new List<string>();
+            try
+            {
+                list.Add(AppResources.EffectSortfromOldToNew);
+                list.Add(AppResources.EffectSortfromNewToOld);
+            }
+            catch (Exception ex)
+            {
 
-                try
-                {
-                    list.Add(AppResources.EffectSortfromOldToNew);
-                    list.Add(AppResources.EffectSortfromNewToOld);
-                }
-                catch (Exception ex)
-                {
-
-                }
-
-
+            }
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = list;
             genericPickerModel.PickerTitle = "";
@@ -153,10 +198,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                 {
                     try
                     {
-                        setDateSortTypePickerModel();
+                        setUpdatedBySortTypePickerModel();
                         await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
-
-
                     }
                     catch (Exception e)
                     {

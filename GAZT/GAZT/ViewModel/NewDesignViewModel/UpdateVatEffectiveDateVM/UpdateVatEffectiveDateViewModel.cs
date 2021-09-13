@@ -1,6 +1,8 @@
-﻿using EGAZT.Manager;
+﻿using EGAZT.Enums;
+using EGAZT.Manager;
 using EGAZT.Models.UpdateEffDateModel;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
     {
 
         public ICommand GoBackBtnTapped { get; set; }
+        public ICommand AddNewRequestTapped { get; set; }
 
         private bool _isLoading = false;
         public bool IsLoading
@@ -34,7 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                 RaisePropertyChanged("IsLoading");
             }
         }
-      
+
         private ObservableCollection<ItemSetResult> _vatLogs;
         public ObservableCollection<ItemSetResult> VatLogs
         {
@@ -51,7 +54,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                 RaisePropertyChanged("VatLogs");
             }
         }
-        private ObservableCollection<ItemSetResult> _copiedVatLogs=new ObservableCollection<ItemSetResult>();
+        private ObservableCollection<ItemSetResult> _copiedVatLogs = new ObservableCollection<ItemSetResult>();
         public ObservableCollection<ItemSetResult> CopiedVatLogs
         {
             get
@@ -124,6 +127,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
             {
                 _navigationService.GoBack();
             });
+            AddNewRequestTapped = new Command(() => { NavigateToVatUpdateForm(); });
+        }
+
+        private void NavigateToVatUpdateForm()
+        {
+            App.isVatEffectDateNav = true;
+            App.VATType = PageExecutionType.Amend;
+            _navigationService.NavigateTo(App.VATAmendReactivationPageView);
         }
 
         public async void GetAllVatEffectiveDateLogs()
@@ -139,7 +150,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                 UpdateVatEffectiveDateModel LogResponse = await VatEffectiveDateWebServiceManager.GAZTGetIBanAccounts();
 
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    IsLoading = false;
+                IsLoading = false;
 
                 if (LogResponse != null && LogResponse.d != null && LogResponse.d.ItemSet != null
                 && LogResponse.d.ItemSet.results != null && LogResponse.d.ItemSet.results.Count > 0)
@@ -149,7 +160,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                         //VatLogss = ;
                         VatLogs = new ObservableCollection<ItemSetResult>(LogResponse.d.ItemSet.results);
                         CopiedVatLogs.Clear();
-                        CopiedVatLogs=VatLogs; 
+                        CopiedVatLogs = VatLogs;
 
 
                         //ModifyingDate=UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(VatLogs.)
@@ -173,6 +184,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                         Console.Write(ex.StackTrace.ToString());
                         IsLoading = false;
                     }
+
                 }
                 IsLoading = false;
             });
@@ -180,7 +192,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
 
         public void FilterWithReferenceNumber()
         {
-           // CopiedVatLogs.Clear();
+            // CopiedVatLogs.Clear();
             CopiedVatLogs = new ObservableCollection<ItemSetResult>(VatLogs.Where(searchedObjects => searchedObjects.Fbnum.Contains(SearchText)));
 
         }
