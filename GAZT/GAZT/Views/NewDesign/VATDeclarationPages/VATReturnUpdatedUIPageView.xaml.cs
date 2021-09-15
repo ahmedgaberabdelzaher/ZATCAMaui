@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.DashBoardPages;
 using EGAZT.Views.NewDesign.PaymentOptions;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
@@ -36,8 +37,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel = App.Locator.GAZTNewDesignVATReturnUpdatedUIPageView;
                 this.BindingContext = viewModel;
                 InitializeComponent();
-             
-              //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+                //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
                 SetLTR();
 
@@ -72,7 +73,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 IntilizeAsync();
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -117,17 +118,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    if(viewModel.VATDeclarationData.d.OpenliMsg == "There is no open liability to be paid against this declaration" || viewModel.VATDeclarationData.d.OpenliMsg == "لا يوجد التزامات حالية متاحة للدفع لهذا الاقرار") {
+                    if (viewModel.VATDeclarationData.d.OpenliMsg == "There is no open liability to be paid against this declaration" || viewModel.VATDeclarationData.d.OpenliMsg == "لا يوجد التزامات حالية متاحة للدفع لهذا الاقرار")
+                    {
 
                         viewModel.IsPayNowVisible = false;
                     }
-                    else {
+                    else
+                    {
 
                         viewModel.IsPayNowVisible = true;
                     }
 
 
-                    
+
                     VatTotalAmountclicked();
                 });
             }
@@ -188,7 +191,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -617,17 +620,17 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     {
                         //  viewModel.IsNavigatedToBilled = true;
 
-                        Device.BeginInvokeOnMainThread( () =>
-                        {
-                            viewModel.ManageEnabledProperty(false);
-                            viewModel.IsGetSadadNumberEnabled = false;
-                            viewModel.IsMainButtonEnabled = false;
-                            viewModel.IsMainButtonVisible = false;
-                            viewModel.IsRefundButtonEnabled = false;
-                            viewModel.IsRefundButtonVisible = false;
-                            viewModel.isBtnVisible = false;
-                            viewModel.IsEnableSwitchToggledFor15PercentChange = false;
-                            viewModel.IsNavigatedToSubmitted = true;
+                        Device.BeginInvokeOnMainThread(() =>
+                       {
+                           viewModel.ManageEnabledProperty(false);
+                           viewModel.IsGetSadadNumberEnabled = false;
+                           viewModel.IsMainButtonEnabled = false;
+                           viewModel.IsMainButtonVisible = false;
+                           viewModel.IsRefundButtonEnabled = false;
+                           viewModel.IsRefundButtonVisible = false;
+                           viewModel.isBtnVisible = false;
+                           viewModel.IsEnableSwitchToggledFor15PercentChange = false;
+                           viewModel.IsNavigatedToSubmitted = true;
                             //IsMainButtonVisible = false;
                             //IsSwichButtonEnableToTap = false;
                             //IsEnableIBAN = false;
@@ -652,77 +655,77 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 PopupNavigation.Instance.PushAsync(new VATDeclarationAttachmentPageView(viewModel.VATDeclarationData));
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
         }
-        public  void getRefundClickedCommand()
+        public void getRefundClickedCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "RefundClicked",  (sender, arg) =>
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsNewLoading = true;
-                    });
-                });
+                MessagingCenter.Subscribe<object, string>(this, "RefundClicked", (sender, arg) =>
+               {
+                   Device.BeginInvokeOnMainThread(() =>
+                   {
+                       viewModel.IsNewLoading = true;
+                   });
+               });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
         }
-        public  void getRefundClickedForStopLoaderCommand()
+        public void getRefundClickedForStopLoaderCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "RefundClickedForStop",  (sender, arg) =>
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsNewLoading = false;
-                    });
-                });
+                MessagingCenter.Subscribe<object, string>(this, "RefundClickedForStop", (sender, arg) =>
+               {
+                   Device.BeginInvokeOnMainThread(() =>
+                   {
+                       viewModel.IsNewLoading = false;
+                   });
+               });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
         }
 
-        public  void getAddNoteCommand()
+        public void getAddNoteCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "AddNoteForVATDeclaration",  (sender, arg) =>
-                {
-                    AddNote();
-                });
+                MessagingCenter.Subscribe<object, string>(this, "AddNoteForVATDeclaration", (sender, arg) =>
+               {
+                   AddNote();
+               });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
         }
 
-        public  void getClearNoteCommand()
+        public void getClearNoteCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "ClearNoteForVATDeclaration",  (sender, arg) =>
-                {
-                    AddNote();
-                });
+                MessagingCenter.Subscribe<object, string>(this, "ClearNoteForVATDeclaration", (sender, arg) =>
+               {
+                   AddNote();
+               });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
         }
 
-        public  void getNoCommand()
+        public void getNoCommand()
         {
             try
             {
@@ -744,7 +747,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -804,23 +807,23 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     }
                                     else
                                     {
-                                        Device.BeginInvokeOnMainThread( async() =>
-                                        {
-                                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                            headerAmountInfo.IsLinkAvailable = false;
-                                            headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                       {
+                                           List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                           HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                           NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                           headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                           headerAmountInfo.IsLinkAvailable = false;
+                                           headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
 
-                                            headerWithInfos.Add(headerAmountInfo);
+                                           headerWithInfos.Add(headerAmountInfo);
 
 
-                                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                                           newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                           newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                           newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                           await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                             // await viewModel._dialogService.ShowMessage(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields, AppResources.Information);
@@ -875,24 +878,24 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     }
                                     else
                                     {
-                                        Device.BeginInvokeOnMainThread( async() =>
-                                        {
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                       {
 
-                                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                            headerAmountInfo.IsLinkAvailable = false;
-                                            headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
+                                           List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                           HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                           NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                           headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                           headerAmountInfo.IsLinkAvailable = false;
+                                           headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
 
-                                            headerWithInfos.Add(headerAmountInfo);
+                                           headerWithInfos.Add(headerAmountInfo);
 
 
-                                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                                           newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                           newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                           newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                           await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                                             //await viewModel._dialogService.ShowMessage(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields, AppResources.Information);
                                         });
@@ -907,13 +910,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 });
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
         }
 
-        public  void getRefundYesMsgCommand()
+        public void getRefundYesMsgCommand()
         {
             try
             {
@@ -926,12 +929,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
         }
-        public  void getRefundNoMsgCommand()
+        public void getRefundNoMsgCommand()
         {
             try
             {
@@ -945,7 +948,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -957,7 +960,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 PopupNavigation.Instance.PushAsync(new NotesPopUpPageView(viewModel.VATDeclarationData));
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -969,7 +972,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 PopupNavigation.Instance.PushAsync(new NotesDescriptionPopUpPageView(viewModel.VATDeclarationData));
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -1015,7 +1018,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsNewLoading = false;
                 });
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -1054,6 +1057,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             getRefundYesMsgCommand();
             getRefundNoMsgCommand();
+
+            getNoCommandToSubmit();
+            getYesCommandToSubmit();
 
 
             AddNote();
@@ -1253,7 +1259,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     NotesPopUpPageViewModel.NoteString = string.Empty;
                 }
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -1304,7 +1310,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NotesPopUpPageViewModel.IsComingFromNotePage = false;
                 //AddNotePageViewModel.NoteString = string.Empty;
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -1364,7 +1370,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NotesPopUpPageViewModel.IsComingFromNotePage = false;
                 //AddNotePageViewModel.NoteString = string.Empty;
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -1408,7 +1414,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     SetEnabledProperty();
                     //viewModel.IsMainButtonVisible = true;
                 }
-                catch(Exception )
+                catch (Exception)
                 {
 
                 }
@@ -2218,7 +2224,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //  BtnNextStep.IsEnabled = true;
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -2697,7 +2703,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //  BtnNextStep.IsEnabled = true;
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -3145,7 +3151,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //  BtnNextStep.IsEnabled = true;
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -6754,8 +6760,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     {
                         viewModel.IsUnFocusedTextBox = false;
                     }
-                   }
-               }
+                }
+            }
             catch (Exception)
             {
 
@@ -6937,7 +6943,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -6958,7 +6964,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -7720,7 +7726,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //PopupNavigation.Instance.PushAsync(new ShowVatInformationForPrivatehealthCare());
 
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -7780,7 +7786,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -7841,7 +7847,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -7900,7 +7906,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -7959,7 +7965,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -8017,7 +8023,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -8074,7 +8080,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -8133,7 +8139,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -8191,7 +8197,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -8248,7 +8254,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -8306,7 +8312,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -8364,7 +8370,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -8421,7 +8427,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -8537,7 +8543,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -8572,7 +8578,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -8611,7 +8617,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -8646,7 +8652,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch(Exception )
+            catch (Exception)
             {
 
             }
@@ -8713,15 +8719,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             else
             {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsNewLoading = true;
-                });
-                await viewModel.SubmitClicked();
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsNewLoading = false;
-                });
+                if (viewModel.VATDeclarationData.d.ReviewNaMsg == "X")
+                    displayPopUpToSubmitOrCancelApplication();
+                else
+                    submitTheApplication();
+
             }
         }
 
@@ -8866,7 +8868,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -9000,7 +9002,60 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
 
-            
+
+        }
+
+        private async void displayPopUpToSubmitOrCancelApplication()
+        {
+            await PopupNavigation.Instance.PushAsync(new LogoutPageView("Click YES to Submit else Click NO To Cancel Submission"));
+
+        }
+
+        private async void submitTheApplication()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsNewLoading = true;
+            });
+            await viewModel.SubmitClicked();
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsNewLoading = false;
+            });
+        }
+
+        public void getYesCommandToSubmit()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesPressedToLogout", async (sender, arg) =>
+                {
+                    //write submit command here.
+                    submitTheApplication();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+        }
+
+        public void getNoCommandToSubmit()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoPressedToLogout", (sender, arg) =>
+                {
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
     }
+
+
 }

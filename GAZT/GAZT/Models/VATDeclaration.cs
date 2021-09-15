@@ -395,6 +395,9 @@ namespace EGAZT.Models
         public string GoliveFg { get; set; }
         [DataMember]
         public string Yesno { get; set; }
+        
+        [DataMember]
+        public string ReviewNaMsg { get; set; }
         [DataMember]
         public string TcFlg { get; set; }
         [DataMember]
