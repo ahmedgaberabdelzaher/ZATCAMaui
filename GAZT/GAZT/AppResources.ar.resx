@@ -7350,9 +7350,11 @@
     <value>يرجى دفع جميع المبالغ المستحقة للتقييم الأساسي للضريبة الصادرة التي لم تدفع أو تقدم كضمانات لطلبات المراجعة</value>
   </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc1" xml:space="preserve">
-    <value>للموافقة على الشروط والأحكام
-أتعهد بأن أقدم أصل الضمان البنكي إلى الهيئة العامة للزكاة والدخل خلال 20 يومًا، علمًا بأن الطلب سيتم إلغاؤه آليًا فى حال عدم الالتزام بذلك.
+    <value>للموافقة على الشروط والأحكام *
+تعهد بأن أقدم أصل الضمان البنكي إلى الهيئة العامة للزكاة والدخل خلال 20 يومًا، علمًا بأن الطلب سيتم إلغاؤه آليًا فى حال عدم الالتزام بذلك.
+
 أتعهد بأن يكون الضمان البنكي المقدم للهيئة ساري المفعول لمدة عام واحد على الأقل وأن يكون قابلًا للتمديد.
+
 أتعهد بأن أوضح في أصل الضمان الرقم المميز الخاص بالمنشأة والفترة المعترض عليها.</value>
   </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc2" xml:space="preserve">
@@ -9162,5 +9164,11 @@ info@gazt.gov.sa</value>
   </data>
   <data name="VatEffTaxPayer" xml:space="preserve">
     <value>المكلف</value>
+  </data>
+  <data name="VatEffNoData" xml:space="preserve">
+    <value>لا توجد بيانات</value>
+  </data>
+  <data name="VATRNewVATEligibleStartDate" xml:space="preserve">
+    <value>تاريخ بداية الخضوع لضريبة القيمة المضافة الجديدة</value>
   </data>
 </root>

@@ -436,6 +436,32 @@ namespace GAZT.Manager
             requiredDate = dt1;
 
             return dateStr;
+        } 
+        
+        public static string DDMMFormatDateToYYYYFromDateTypeString(DateTime? dateToConvert)
+        {
+            string requiredDate = string.Empty;
+
+            DateTime dateStart = new DateTime();
+
+            dateStart = (DateTime)dateToConvert;
+
+            GregorianCalendar hjCalendar = new GregorianCalendar();
+            int year = hjCalendar.GetYear(dateStart);
+            int month = hjCalendar.GetMonth(dateStart);
+            int day = hjCalendar.GetDayOfMonth(dateStart);
+
+            string dateStr = ""+day +"/"+month +"/"+ year;
+            string dt1 = string.Empty;
+            string[] dts = null;
+            dts = dateStr.Split('/');
+
+            dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+
+            requiredDate = dt1;
+
+            return dateStr;
         }
 
 

@@ -74,6 +74,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 clearDATA();
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
+                viewModel.IsNewStartDateInfoChecked = false;
+                viewModel.NewVatEligibleStartDate = string.Empty;
                 viewModel.CurrentStep = AppResources.VATRStep2;
                 SetfirstBoxColor();
                 viewModel.IsNewAccountClicked = false;
@@ -170,13 +172,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
-                
+
             }
             catch (Exception)
             {
 
             }
-        } private async void DpENewStartDate_Closed(object sender, EventArgs e)
+        }
+        private async void DpENewStartDate_Closed(object sender, EventArgs e)
         {
             try
             {
@@ -184,8 +187,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
-                viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
-                
+                viewModel.NewVatEligibleStartDate = day + "/" + month + "/" + year;
+
             }
             catch (Exception)
             {
@@ -208,7 +211,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
 
             }
-        }private async void DpENewDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        }
+        private async void DpENewDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             try
             {
@@ -216,7 +220,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
-                viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                viewModel.NewVatEligibleStartDate = day + "/" + month + "/" + year;
                 //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
             }
             catch (Exception)
@@ -331,6 +335,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     step2Validation();
                     setAttachmentImporterExporterVisibility();
+
+                    if (App.isVatEffectDateNav)
+                    {
+                        viewModel.CheckCR1450FieldsValid();
+                    }
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep3)
                 {
@@ -536,7 +545,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             if (viewModel.IsDeclarationChecked == true)
             {
 
-        bool flag = true;
+                bool flag = true;
                 if (App.VATType == Enums.PageExecutionType.Reactivation)
                 {
                     if (viewModel.SelectedIdTypeSR == null)
@@ -565,11 +574,19 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     if (App.VATType == Enums.PageExecutionType.Amend)
                     {
-                        if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
+                        if (App.isVatEffectDateNav)
                         {
-                            await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage, string.Empty));
-                            return;
                         }
+                        else
+                        {
+                            if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
+                            {
+                                await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage, string.Empty));
+                                return;
+                            }
+                        }
+
+
                     }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "01";
 
@@ -674,7 +691,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         }
         public void step3Validation()
         {
-
             if (!string.IsNullOrEmpty(DateEntry.Text))
             {
 
@@ -715,7 +731,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 FrmEStartDate.Focus();
                 FrmEStartDate.HasError = true;
             }
-
         }
         public async void setDefaultAnswerThree()
         {
@@ -1190,7 +1205,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
                     //viewModel.VatEligibleStartDate = DateTime.Parse(arg.SelectedValue).Date.ToString("dd/MM/yyyy").Replace('-', '/');
-                     viewModel.getVatEligibleDate(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
+                    if (App.isVatEffectDateNav)
+                        viewModel.GetNewVatEligibleDateAsync(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
+                    else
+                        viewModel.getVatEligibleDate(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
                 });
                 Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
                 {
@@ -4085,7 +4103,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             string mobileNUmber = ((BorderlessEntry)sender).Text;
 
-         //  SfTextInputLayout str = (SfTextInputLayout)((BorderlessEntry)sender).Parent;
+            //  SfTextInputLayout str = (SfTextInputLayout)((BorderlessEntry)sender).Parent;
 
             if (string.IsNullOrEmpty(mobileNUmber))
             {
@@ -4102,33 +4120,33 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                     ShowValidationPopup(message);
 
-                   // str.HasError = true;
+                    // str.HasError = true;
                     return;
                 }
                 else if (mobileNUmber.Substring(0, 6) != "009665")
                 {
                     message = AppResources.VATAmendMobileNumberValidation;
                     ShowValidationPopup(message);
-                   // str.HasError = true;
+                    // str.HasError = true;
                     return;
                 }
                 else
                 {
-                   // if (mobileNUmber.Length != 15)
+                    // if (mobileNUmber.Length != 15)
                     //{
-                        if (mobileNUmber.Length < 14)
-                        {
-                            message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+                    if (mobileNUmber.Length < 14)
+                    {
+                        message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                         ShowValidationPopup(message);
 
                     }
                     if (Messages.Length > 0)
-                        {
-                            ShowValidationPopup(message);
-                           // str.HasError = true;
-                        }
-                      //  else
-                            //str.HasError = false;
+                    {
+                        ShowValidationPopup(message);
+                        // str.HasError = true;
+                    }
+                    //  else
+                    //str.HasError = false;
                     //}
                 }
             }
@@ -4227,7 +4245,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
             }
         }
-        
+
         private async void NewVATEligibleDateClicked(object sender, EventArgs e)
         {
             if (App.VATType == Enums.PageExecutionType.Amend)
@@ -4327,22 +4345,22 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     //if (viewModel.MobNumberFR.Length != 15)
                     //{
-                        if (viewModel.MobNumberFR.Length < 14)
-                        {
-                            message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+                    if (viewModel.MobNumberFR.Length < 14)
+                    {
+                        message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                         ShowValidationPopup(message);
                         FrmPhoneNumber.HasError = true;
                         return;
 
                     }
                     if (Messages.Length > 0)
-                        {
-                            ShowValidationPopup(message);
-                            FrmPhoneNumber.HasError = true;
-                        }
-                        else
-                            FrmPhoneNumber.HasError = false;
-                   // }
+                    {
+                        ShowValidationPopup(message);
+                        FrmPhoneNumber.HasError = true;
+                    }
+                    else
+                        FrmPhoneNumber.HasError = false;
+                    // }
                 }
             }
         }
@@ -4367,6 +4385,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private async void AddNewRepresentative_Tapped(object sender, EventArgs e)
         {
+            if(App.isVatEffectDateNav)
+            {
+                return;
+            }
             if (!viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
             {
                 var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATAmendAddNewFinancialRepresentativeWarning);

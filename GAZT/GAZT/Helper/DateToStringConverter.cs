@@ -12,7 +12,7 @@ namespace EGAZT.Helper
         {
             if (value == null)
                 return string.Empty;
-            return UtilityManager.FormatDateToYYYYDDMMFromDateTypeString((DateTime)value);
+            return UtilityManager.DDMMFormatDateToYYYYFromDateTypeString((DateTime)value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

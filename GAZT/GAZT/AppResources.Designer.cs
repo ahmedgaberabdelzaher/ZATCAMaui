@@ -9188,7 +9188,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Request to Update Value Added Tax Registration Effective Date..
+        ///   Looks up a localized string similar to Request to Update Value Added Tax Registration Effective Date.
         /// </summary>
         public static string REQToUpdateVatEffDate {
             get {
@@ -11649,6 +11649,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Data.
+        /// </summary>
+        public static string VatEffNoData {
+            get {
+                return ResourceManager.GetString("VatEffNoData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Taxpayer.
         /// </summary>
         public static string VatEffTaxPayer {
@@ -12732,6 +12741,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New VAT Eligibility Commencement Date.
+        /// </summary>
+        public static string VATRNewVATEligibleStartDate {
+            get {
+                return ResourceManager.GetString("VATRNewVATEligibleStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter valid Tin..
         /// </summary>
         public static string VATRPleaseEnterValidTin {
@@ -13753,9 +13771,11 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accept Terms and Conditions
+        ///   Looks up a localized string similar to Accept Terms and Conditions *
         ///I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes within 20 days, bearing in mind that the request will be cancelled automatically in the event of non-compliance.
+        ///
         ///I acknowledge that the bank guarantee provided to the Authority is valid for at least one year and that it is extendable.
+        ///
         ///I acknowledge to clarify in the original bank guarantee the TIN of the company and the objected period..
         /// </summary>
         public static string VRSecurityBankGurrantCheckBoxDesc1 {

@@ -24,12 +24,14 @@
              xmlns:local1="clr-namespace:GAZT"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
+             xmlns:local2="clr-namespace:EGAZT.Helper"
              FlowDirection="RightToLeft"
              x:Name="VATRegistration"
              BackgroundImageSource="partials_background.png"
              x:Class="EGAZT.Views.NewDesign.VATAmendReactivationPages.VATAmendReactivationPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <local2:DateToStringConverter x:Key="DateToStringConverter"/>
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
             <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector"/>
             <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector"/>
@@ -579,7 +581,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
 
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span  Text="New Vat "  />
+                                                                        <Span  Text="{x:Static custom2:AppResources.VATRNewVATEligibleStartDate}"  />
                                                                         <Span  Text="*" TextColor="#ff0000"/>
                                                                     </FormattedString>
                                                                 </custom:CustomLabel.FormattedText>
@@ -594,7 +596,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                             InputViewPadding="16,0,16,0" HasError="False" >
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <custom:BorderlessEntry  x:Name="NewDateEntry" Focused="DateEntry_Focused"  TextChanged="DateEntry_TextChanged_1" IsEnabled="False"
-                                                                                             Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
+                                                                                             Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}"
                                                                                              Unfocused="DateEntry_Unfocused"   Placeholder="DD/MM/YYYY" Style="{StaticResource DefaultEntry}" >
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="EndAndExpand">
@@ -609,7 +611,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
                                                             <StackLayout IsVisible="false" Grid.Row="1" Orientation="Horizontal" HorizontalOptions="End">
-                                                                <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                                <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                                                 <StackLayout HorizontalOptions="End" Orientation="Horizontal" >
                                                                     <Image Margin="5,0">
                                                                         <Image.Source>
@@ -655,19 +657,58 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                     <custom1:SfPickerBehavior />
                                                                 </custom1:CustomDatePicker.Behaviors>
                                                             </custom1:CustomDatePicker>
-                                                            <StackLayout  Grid.Row="2" Orientation="Horizontal">
-                                                                <custom1:CheckboxCustom   VerticalOptions="CenterAndExpand" Style="{StaticResource CheckboxHeightWidth32}"
-                                                                    
-                                                                    IsChecked="{Binding BindingContext.IsNewStartDateInfoChecked,Source={x:Reference VATRegistration}}" 
-                                                                    CheckChanged="AddAdditionalInfo_CheckedChanged" />
+                                                            <StackLayout  Grid.Row="2" Orientation="Horizontal" >
 
-                                                                <custom:CustomLabel  Style="{DynamicResource IsAddAdditionalInfoCheckedStyle}">
-                                                                    <custom:CustomLabel.FormattedText>
-                                                                        <FormattedString>
-                                                                            <Span Text="{x:Static custom2:AppResources.ZZZZNewVatDateTerms}" />
-                                                                        </FormattedString>
-                                                                    </custom:CustomLabel.FormattedText>
-                                                                </custom:CustomLabel>
+                                                                <!--<StackLayout Orientation="Horizontal" IsVisible="{Binding BindingContext.TaxPayerDetails.AddInformationCBVisible,Source={x:Reference VATRegistration}}">
+                                                                    <custom1:CheckboxCustom   VerticalOptions="CenterAndExpand" Style="{StaticResource CheckboxHeightWidth32}" HorizontalOptions="FillAndExpand"
+                                                                    
+                                                                   IsChecked="{Binding BindingContext.IsNewStartDateInfoChecked,Source={x:Reference VATRegistration}}"
+                                                                    CheckChanged="AddAdditionalInfo_CheckedChanged" IsEnabled="{Binding BindingContext.IsCheckEnabled,Source={x:Reference VATRegistration}}"/>
+
+                                                                    <custom:CustomLabel  Style="{DynamicResource IsAddAdditionalInfoCheckedStyle}">
+                                                                        <custom:CustomLabel.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{x:Static custom2:AppResources.ZZZZNewVatDateTerms}" />
+                                                                            </FormattedString>
+                                                                        </custom:CustomLabel.FormattedText>
+                                                                    </custom:CustomLabel>
+                                                                </StackLayout>-->
+
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                        <ColumnDefinition Width="8*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <custom1:CheckboxCustom   Grid.Row="0" Grid.Column="0"
+                                                                        IsChecked="{Binding BindingContext.IsNewStartDateInfoChecked,Source={x:Reference VATRegistration}}"
+                                                                                              Style="{StaticResource CheckboxHeightWidth32}"
+                                                                                              VerticalOptions="CenterAndExpand"
+                                                                                              CheckChanged="AddAdditionalInfo_CheckedChanged"/>
+                                                                    <custom:CustomLabel  Grid.Row="0" Grid.Column="1"  Style="{DynamicResource IsInstrunctionCheckedStyle}">
+                                                                        <custom:CustomLabel.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{x:Static custom2:AppResources.ZZZZNewVatDateTerms}"  />
+                                                                            </FormattedString>
+                                                                        </custom:CustomLabel.FormattedText>
+                                                                    </custom:CustomLabel>
+                                                                   
+                                                                </Grid>
+
+                                                                <!--<StackLayout Orientation="Horizontal">
+                                                                    <custom1:CheckboxCustom  
+                                                                        IsChecked="{Binding IsNewStartDateInfoChecked}" Style="{StaticResource CheckboxHeightWidth32}"
+                                                                         VerticalOptions="CenterAndExpand"/>
+                                                                    <custom:CustomLabel   Style="{DynamicResource IsInstrunctionCheckedStyle}">
+                                                                        <custom:CustomLabel.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{x:Static custom2:AppResources.ZZZZNewVatDateTerms}"  />
+                                                                            </FormattedString>
+                                                                        </custom:CustomLabel.FormattedText>
+                                                                    </custom:CustomLabel>
+                                                                </StackLayout>-->
+
+
+
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
@@ -1830,8 +1871,11 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <ColumnDefinition Width="60*"/>
                                                             <ColumnDefinition Width="40*"/>
                                                         </Grid.ColumnDefinitions>
-                                                        <Label Grid.Row="0" Grid.Column="0"   Text="{x:Static custom2:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="End"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
+                                                        <Label IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible,Source={x:Reference VATRegistration}}" Grid.Row="0" Grid.Column="0"   Text="{x:Static custom2:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                                        <Label IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible,Source={x:Reference VATRegistration}}" Grid.Row="0" Grid.Column="1" HorizontalOptions="End"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
+                                                               Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                        <Label IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible,Source={x:Reference VATRegistration}}" Grid.Row="0" Grid.Column="0"   Text="{x:Static custom2:AppResources.VATRNewVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="End" IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible,Source={x:Reference VATRegistration}}"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}"
                                                                Style="{StaticResource BodyLabelBlackMedium}"/>
                                                     </Grid>
 

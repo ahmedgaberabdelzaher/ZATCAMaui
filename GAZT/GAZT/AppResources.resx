@@ -7127,9 +7127,11 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Please ensure you pay any outstanding dues on the original re-assessment bill that were not paid or submitted as security</value>
   </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc1" xml:space="preserve">
-    <value>Accept Terms and Conditions
+    <value>Accept Terms and Conditions *
 I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes within 20 days, bearing in mind that the request will be cancelled automatically in the event of non-compliance.
+
 I acknowledge that the bank guarantee provided to the Authority is valid for at least one year and that it is extendable.
+
 I acknowledge to clarify in the original bank guarantee the TIN of the company and the objected period.</value>
   </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc2" xml:space="preserve">
@@ -9199,7 +9201,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <value>Company number must be 10 numbers starts with 7.</value>
   </data>
   <data name="REQToUpdateVatEffDate" xml:space="preserve">
-    <value>Request to Update Value Added Tax Registration Effective Date.</value>
+    <value>Request to Update Value Added Tax Registration Effective Date</value>
   </data>
   <data name="EffectDateAfterUpdate" xml:space="preserve">
     <value>Effective Date (After Update)</value>
@@ -9239,5 +9241,11 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   </data>
   <data name="VatEffTaxPayer" xml:space="preserve">
     <value>Taxpayer</value>
+  </data>
+  <data name="VatEffNoData" xml:space="preserve">
+    <value>No Data</value>
+  </data>
+  <data name="VATRNewVATEligibleStartDate" xml:space="preserve">
+    <value>New VAT Eligibility Commencement Date</value>
   </data>
 </root>

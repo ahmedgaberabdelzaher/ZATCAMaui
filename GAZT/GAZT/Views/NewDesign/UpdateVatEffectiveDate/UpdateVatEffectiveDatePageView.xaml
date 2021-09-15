@@ -116,7 +116,8 @@
                     <Grid Grid.Row="1"   BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
 
                         <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,0,0,5" HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" VerticalOptions="FillAndExpand">
@@ -135,7 +136,7 @@
                             </Grid>
                         </border:SfBorder>
 
-                        <Grid Grid.Row="1" Margin="0,0,0,0"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid Grid.Row="1" Margin="0,0,0,0"  BackgroundColor="Transparent" IsVisible="{Binding IsListVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                             <listView:SfListView  x:Name="EffectiveDateListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False"  VerticalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding CopiedVatLogs}"  BackgroundColor="Transparent" 
@@ -195,6 +196,10 @@
                             </listView:SfListView>
 
                         </Grid>
+
+                        <Grid Grid.Row="1" Margin="0,0,0,0"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding NoDataAvailable}">
+                            <Label Text="{x:Static ResourceManager:AppResources.VatEffNoData}" HorizontalOptions="Center"/>
+                        </Grid>
                     </Grid>
 
                 </Grid>
@@ -202,7 +207,7 @@
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
                                  Opacity="0.4" VerticalOptions="FillAndExpand" />
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
-                                 Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                                 Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15">
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                             <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
                                                            EnableAnimation="True"

@@ -1,6 +1,7 @@
 ﻿using EGAZT.Enums;
 using EGAZT.Manager;
 using EGAZT.Models.UpdateEffDateModel;
+using EGAZT.Views.NewDesign.UpdateVatEffectiveDate;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -13,13 +14,14 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using static EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM.FilterVatEffectiveDatePageViewModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
 {
     [Preserve(AllMembers = true)]
     public class UpdateVatEffectiveDateViewModel : BaseViewModel
     {
-
+        public UpdateVatEffectiveDateModel LogResponse;
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand AddNewRequestTapped { get; set; }
 
@@ -35,6 +37,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                 if (_isLoading == value) return;
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
+            }
+        }
+        private bool _noDataAvailable = false;
+        public bool NoDataAvailable
+        {
+            get
+            {
+                return _noDataAvailable;
+            }
+            set
+            {
+                if (_noDataAvailable == value) return;
+                _noDataAvailable = value;
+                RaisePropertyChanged("NoDataAvailable");
+            }
+        }
+        private bool _isListVisible = true;
+        public bool IsListVisible
+        {
+            get
+            {
+                return _isListVisible;
+            }
+            set
+            {
+                if (_isListVisible == value) return;
+                _isListVisible = value;
+                RaisePropertyChanged("IsListVisible");
             }
         }
 
@@ -128,13 +158,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                 _navigationService.GoBack();
             });
             AddNewRequestTapped = new Command(() => { NavigateToVatUpdateForm(); });
+            handleFilterData();
         }
 
         private void NavigateToVatUpdateForm()
         {
-            App.isVatEffectDateNav = true;
-            App.VATType = PageExecutionType.Amend;
-            _navigationService.NavigateTo(App.VATAmendReactivationPageView);
+
+            if (LogResponse.d.RegTp == "RGVT")
+            {
+                App.isVatEffectDateNav = true;
+                App.VATType = PageExecutionType.Amend;
+                _navigationService.NavigateTo(App.VATAmendReactivationPageView);
+            }
+
         }
 
         public async void GetAllVatEffectiveDateLogs()
@@ -147,7 +183,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
 
             await Task.Run(async () =>
             {
-                UpdateVatEffectiveDateModel LogResponse = await VatEffectiveDateWebServiceManager.GAZTGetIBanAccounts();
+                LogResponse = await VatEffectiveDateWebServiceManager.GAZTGetIBanAccounts();
 
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 IsLoading = false;
@@ -157,6 +193,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                 {
                     try
                     {
+                        IsListVisible = true;
+                        NoDataAvailable = false;
                         //VatLogss = ;
                         VatLogs = new ObservableCollection<ItemSetResult>(LogResponse.d.ItemSet.results);
                         CopiedVatLogs.Clear();
@@ -186,6 +224,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                     }
 
                 }
+                else
+                {
+                    IsListVisible = false;
+                    NoDataAvailable = true;
+                }
                 IsLoading = false;
             });
         }
@@ -200,6 +243,56 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
         {
             _navigationService.NavigateTo(App.FilterVatEffectiveDatePageView);
             /*IsSortByVisible = !IsSortByVisible;*/
+        }
+
+        public void handleFilterData()
+        {
+            MessagingCenter.Unsubscribe<App, List<VatEffectDateFilterModel>>(this, "filterList");
+
+            MessagingCenter.Subscribe<App, List<VatEffectDateFilterModel>>(this, "filterList", (sender, arg) =>
+            {
+                // MessagingCenter.Unsubscribe<App, List<VatEffectDateFilterModel>>(this, "filterList");
+
+                List<VatEffectDateFilterModel> FilterList = new List<VatEffectDateFilterModel>();
+                FilterList = arg;
+
+                if (FilterList != null && FilterList.Count > 0)
+                {
+                    for (int i = 0; i < FilterList.Count; i++)
+                    {
+                        //filter Id=1 if filter is DateType
+                        if (FilterList[i].filterId == 2)
+                        {
+                            CopiedVatLogs = new ObservableCollection<ItemSetResult>(CopiedVatLogs.Where(filteredObjects => filteredObjects.UpdatedBy == FilterList[i].filterName));
+                        }
+                        //filter Id=1 if filter is DateType
+                        else if (FilterList[i].filterId == 1)
+                        {
+                            if (FilterList[i].filterName == AppResources.EffectSortfromOldToNew)
+                            {
+                                new UpdateVatEffectiveDatePageView().SortListInAscendingOrder();
+                            }
+                            else if (FilterList[i].filterName == AppResources.EffectSortfromNewToOld)
+                            {
+                                new UpdateVatEffectiveDatePageView().SortListInDescendingOrder();
+
+                            }
+                        }
+                    }
+                }
+
+                if (CopiedVatLogs.Count > 0)
+                {
+                    NoDataAvailable = false;
+                    IsListVisible = true;
+                }
+                else
+                {
+                    NoDataAvailable = true;
+                    IsListVisible = false;
+                }
+
+            });
         }
     }
 }

@@ -109,7 +109,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
             {
                 Application.Current.MainPage.Navigation.PopAsync();
                 MessagingCenter.Send<App, List<VatEffectDateFilterModel>>((App)Xamarin.Forms.Application.Current, "filterList", FilterList);
-                //MessagingCenter.Unsubscribe<App, List<VatEffectDateFilterModel>>(this, "filterList");
+
 
             });
             FiltersTapped = new Command(() =>

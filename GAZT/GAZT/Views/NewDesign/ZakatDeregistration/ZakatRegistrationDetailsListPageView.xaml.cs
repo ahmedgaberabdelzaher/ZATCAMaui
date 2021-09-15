@@ -38,7 +38,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override  void OnAppearing()
         {
             base.OnAppearing();
-
+            App.isVatEffectDateNav = false;
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;

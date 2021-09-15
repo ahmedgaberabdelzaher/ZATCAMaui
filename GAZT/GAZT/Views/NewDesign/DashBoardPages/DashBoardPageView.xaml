@@ -1226,7 +1226,7 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                             <StackLayout Orientation="Horizontal" Spacing="20">
-                                                <Image Source="refund" Style="{StaticResource SmallIcon}"/>
+                                                <Image Source="ic_RegistrationDetails" Style="{StaticResource SmallIcon}"/>
                                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.REQToUpdateVatEffDate}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="RequestToVatEffDate_Tapped" />

@@ -43,8 +43,12 @@ namespace EGAZT.Views.NewDesign.UpdateVatEffectiveDate
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
+       /*     MessagingCenter.Unsubscribe<App, List<VatEffectDateFilterModel>>(this, "filterList");
+
             MessagingCenter.Subscribe<App, List<VatEffectDateFilterModel>>(this, "filterList", (sender, arg) =>
             {
+                //MessagingCenter.Unsubscribe<App, List<VatEffectDateFilterModel>>(this, "filterList");
+
                 List<VatEffectDateFilterModel> FilterList = new List<VatEffectDateFilterModel>();
                 FilterList = arg;
 
@@ -53,12 +57,12 @@ namespace EGAZT.Views.NewDesign.UpdateVatEffectiveDate
                     for (int i = 0; i < FilterList.Count; i++)
                     {
                         //filter Id=1 if filter is DateType
-                        if (FilterList[i].filterId == 1)
+                        if (FilterList[i].filterId == 2)
                         {
                             viewModel.CopiedVatLogs = new ObservableCollection<ItemSetResult>(viewModel.CopiedVatLogs.Where(filteredObjects => filteredObjects.UpdatedBy== FilterList[i].filterName));
                         }
                         //filter Id=1 if filter is DateType
-                        else if (FilterList[i].filterId == 2)
+                        else if (FilterList[i].filterId == 1)
                         {
                             if (FilterList[i].filterName == AppResources.EffectSortfromOldToNew)
                             {
@@ -73,10 +77,21 @@ namespace EGAZT.Views.NewDesign.UpdateVatEffectiveDate
                     }
                 }
 
-            });
+                if(viewModel.CopiedVatLogs.Count>0)
+                {
+                    viewModel.NoDataAvailable = false;
+                    viewModel.IsListVisible = true;
+                }
+                else
+                {
+                    viewModel.NoDataAvailable = true;
+                    viewModel.IsListVisible = false;
+                }
+
+            });*/
         }
 
-        private void SortListInAscendingOrder()
+        public void SortListInAscendingOrder()
         {
             EffectiveDateListView.DataSource.SortDescriptors.Add(new SortDescriptor()
             {
@@ -85,8 +100,9 @@ namespace EGAZT.Views.NewDesign.UpdateVatEffectiveDate
             });
             EffectiveDateListView.RefreshView();
         }
-        private void SortListInDescendingOrder()
+        public void SortListInDescendingOrder()
         {
+            
             EffectiveDateListView.DataSource.SortDescriptors.Add(new SortDescriptor()
             {
                 PropertyName = "EffDtAfter",
@@ -178,5 +194,12 @@ namespace EGAZT.Views.NewDesign.UpdateVatEffectiveDate
         {
 
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+        }
+
     }
 }

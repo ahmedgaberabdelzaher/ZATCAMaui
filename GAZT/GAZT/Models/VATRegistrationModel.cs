@@ -388,6 +388,9 @@ namespace EGAZT.Models
         public string Euser { get; set; }
         [DataMember]
         public string ExAttch { get; set; }
+        
+        [DataMember]
+        public string EffDtAfter { get; set; }
         [DataMember]
         public string ExFg { get; set; }
         [DataMember]
