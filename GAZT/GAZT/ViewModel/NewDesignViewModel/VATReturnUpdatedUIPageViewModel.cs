@@ -22,6 +22,7 @@ using EGAZT.Views.NewDesign.PaymentOptions;
 using EGAZT.Models.PaymentModel;
 using EGAZT.Helper;
 using Newtonsoft.Json.Linq;
+using EGAZT.Views.NewDesign.DashBoardPages;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -2595,15 +2596,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (App.ICRStatus == "E0001" || IsCheckedDraftMode()))
                             {
-                                Device.BeginInvokeOnMainThread(() =>
+                                if(VATDeclarationData.d.ReviewNaMsg.Equals(""))
                                 {
-                                    IsNewLoading = true;
-                                });
-                                await SubmitClicked();
-                                Device.BeginInvokeOnMainThread(() =>
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        IsNewLoading = true;
+                                    });
+                                    await SubmitClicked();
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        IsNewLoading = false;
+                                    });
+                                }else if (VATDeclarationData.d.ReviewNaMsg == "X")
                                 {
-                                    IsNewLoading = false;
-                                });
+                                    displayPopUpToSubmitOrCancelApplication();
+                                }
                             }
                         }
                     }
@@ -2671,6 +2678,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
             });
+        }
+
+        public async void displayPopUpToSubmitOrCancelApplication()
+        {
+            await PopupNavigation.Instance.PushAsync(new LogoutPageView("Click YES to Submit else Click NO To Cancel Submission"));
+
         }
 
         public bool checkforrefundclicked()

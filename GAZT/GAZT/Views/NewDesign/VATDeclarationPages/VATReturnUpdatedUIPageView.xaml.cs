@@ -8719,9 +8719,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             else
             {
-                if (viewModel.VATDeclarationData.d.ReviewNaMsg == "X")
+               /* if (viewModel.VATDeclarationData.d.ReviewNaMsg == "X")
                     displayPopUpToSubmitOrCancelApplication();
-                else
+                else*/
                     submitTheApplication();
 
             }
@@ -9005,7 +9005,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         }
 
-        private async void displayPopUpToSubmitOrCancelApplication()
+        public async void displayPopUpToSubmitOrCancelApplication()
         {
             await PopupNavigation.Instance.PushAsync(new LogoutPageView("Click YES to Submit else Click NO To Cancel Submission"));
 
