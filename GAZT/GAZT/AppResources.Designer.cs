@@ -11073,6 +11073,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string VatCancel {
+            get {
+                return ResourceManager.GetString("VatCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT.
         /// </summary>
         public static string VATCertificates {
@@ -11983,6 +11992,15 @@ namespace EGAZT {
         public static string VATLookup {
             get {
                 return ResourceManager.GetString("VATLookup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Okay.
+        /// </summary>
+        public static string VatOkay {
+            get {
+                return ResourceManager.GetString("VatOkay", resourceCulture);
             }
         }
         

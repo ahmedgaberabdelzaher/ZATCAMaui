@@ -995,8 +995,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForYesRefundMsg");
                 MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForNoRefundMsg");
                 
-                MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
-                MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
+                MessagingCenter.Unsubscribe<object, string>(this, "OkayToSubmit");
+                MessagingCenter.Unsubscribe<object, string>(this, "NoToCancel");
 
                 MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
 
@@ -9032,7 +9032,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "YesPressedToLogout", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "OkayToSubmit", async (sender, arg) =>
                 {
                     //write submit command here.
                     submitTheApplication();
@@ -9049,7 +9049,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "NoPressedToLogout", (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "NoToCancel", (sender, arg) =>
                 {
                 });
             }

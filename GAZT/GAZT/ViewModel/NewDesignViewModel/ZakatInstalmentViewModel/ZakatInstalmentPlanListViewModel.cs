@@ -617,15 +617,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (response != null)
                 {
                     if (cmdType==1)
-                    {
-                        _navigationService.GoBack();
+                    {     
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(String.Format(AppResources.ZakatInstalmentApproved, ZakatListObjec.fbNum)));
+                        _navigationService.GoBack();
                         
                     }
                     else 
                     {
-                        _navigationService.GoBack();
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(String.Format(AppResources.ZakatInstalmentRejected, ZakatListObjec.fbNum)));
+                        _navigationService.GoBack();
                     }
                     try
                     {

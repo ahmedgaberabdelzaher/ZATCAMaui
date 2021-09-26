@@ -9254,4 +9254,10 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="ZakatInstalmentRejected" xml:space="preserve">
     <value>Instalment Plan request {0} submitted by the Tax Officer is cancelled by TP successfully.</value>
   </data>
+  <data name="VatCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="VatOkay" xml:space="preserve">
+    <value>Okay</value>
+  </data>
 </root>

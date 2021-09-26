@@ -405,6 +405,9 @@
 		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATCreditCarriedForwardPopUpPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VatReturnNewYesCancelPopUp.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATReturnSuccessfullPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
