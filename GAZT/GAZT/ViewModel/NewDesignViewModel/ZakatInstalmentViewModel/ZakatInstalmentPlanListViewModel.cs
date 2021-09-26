@@ -12,6 +12,7 @@ using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.Models.ZakatInstalmentModels;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
+using EGAZT.Views.NewDesign.ZakatRejectPopUp;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -22,6 +23,7 @@ using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using static EGAZT.Models.ZakatInstalationModels.ZAKATRequestPlanModel;
 using Metadata = EGAZT.Models.ZakatInstalationModels.Metadata;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
@@ -41,9 +43,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         private bool _isZakatSummaryRevokeVisible = false;
         private bool _isAttachmentsViewEnabled = false;
         ZakatInstalmentValidateNewRequestModel result = null;
+        public List<ZakatInvoicesResult> selectedList = new List<ZakatInvoicesResult>();
 
         public Timer otpTimer;
         public int countDownSeconds;
+
+        public ZakatListModel ZakatListObjec;
 
         #endregion
 
@@ -54,6 +59,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public ICommand OnContinueClick { get; set; }
         public ICommand SummaryContinueBtnTapped { get; set; }
         public ICommand SummaryRevokeBtnTapped { get; set; }
+        public ICommand ApproveButtonTapped { get; set; }
+        public ICommand RejecteButtonTapped { get; set; }
         public Command NoteContinueTapped { get; set; }
         public Command OnResendOTPClicked { get; set; }
         public Command Download_Acknowledgement { get; set; }
@@ -168,6 +175,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 CheckDueInvoices();
                 // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
             });
+            ApproveButtonTapped = new Command((Object Item) =>
+            {
+                ZakatListObjec = Item as ZakatListModel;
+
+               // onApproveTappedOperation(obj);
+                Task.Run(async () => await GetZakatInstalmentData( 1,""));
+
+            });
+            RejecteButtonTapped = new Command((Object Item) =>
+            {
+                ZakatListObjec = Item as ZakatListModel;
+                PopupNavigation.Instance.PushAsync(new ZakatRejectionReasonPopupPageView());
+            });
+
+            // ApproveButtonTapped = new Command(OnGridTapped);
+            /* ApproveButtonTapped = new Command(async () =>
+             {
+                 await GetZakatInstalmentData();
+             });*/
             SummaryContinueBtnTapped = new Command(() =>
             {
                 //EnableOTPPage();
@@ -235,6 +261,489 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             });
 
+        }
+
+
+        ZakatInstalmentPlanResponse _zakatInstalmentsData;
+        public ZakatInstalmentPlanResponse ZakatInstalmentsData
+        {
+
+            get
+            {
+                return _zakatInstalmentsData;
+            }
+            set
+            {
+                if (_zakatInstalmentsData == value) return;
+
+                _zakatInstalmentsData = value;
+                RaisePropertyChanged("ZakatInstalmentsData");
+            }
+        }
+
+        private List<ZakatInvoicesResult> _zakatInvoicesList;
+        public List<ZakatInvoicesResult> ZakatInvoicesList
+        {
+            get
+            {
+                return _zakatInvoicesList;
+            }
+            set
+            {
+                if (_zakatInvoicesList == value) return;
+
+                _zakatInvoicesList = value;
+                RaisePropertyChanged("ZakatInvoicesList");
+            }
+        }
+
+
+        public async Task GetZaktaInvoiceList( int cmdType, string offset)
+        {
+            try
+            {
+                selectedList.Clear();
+
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatInvoiceList invoiceList = null;
+                    // ZakatInvoicesList = null;
+                    try
+                    {
+                        invoiceList = await ZakatInstallmentPlanWebServiceManager.GetZakatInvoicesList(true, ZakatListObjec.fbNum);
+                        if (invoiceList != null && invoiceList.d != null)
+                        {
+                            ZakatInvoicesList = invoiceList.d.results;
+                            for (int i = 0; i < ZakatInvoicesList.Count; i++)
+                            {
+                                if (ZakatInvoicesList[i].Abtyp.Equals("ITAX"))
+                                {
+                                    ZakatInvoicesList[i].Abtyp = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                                }
+                                else if (ZakatInvoicesList[i].Abtyp.Equals("ZAKT"))
+                                {
+                                    ZakatInvoicesList[i].Abtyp = AppResources.FORM5Zakat;
+                                }
+
+                                DateTime dateStart = new DateTime();
+                                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                                string apiDate = @"""" + ZakatInvoicesList[i].DueDt + @"""";
+                                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                                GregorianCalendar hjCalendar = new GregorianCalendar();
+                                int year = hjCalendar.GetYear(dateStart);
+                                int month = hjCalendar.GetMonth(dateStart);
+                                int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                                ZakatInvoicesList[i].DueDt = dateStr;
+
+                                string dt1 = string.Empty;
+                                string[] dts = null;
+                                dts = ZakatInvoicesList[i].DueDt.Split('/');
+                                dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                                ZakatInvoicesList[i].DueDt = dt1;
+
+
+                                if (ZakatInvoicesList[i].InvCb == "X")
+                                {
+                                    selectedList.Add(ZakatInvoicesList[i]);
+                                }
+                            }
+                            await ApproveSubmitClicked( cmdType, offset);
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public ZakatInstalmentPlanRequest BuildRequestObject(int cmdType, string offset)
+        {
+            ZakatInstalmentPlanRequest _postData = new ZakatInstalmentPlanRequest();
+
+
+
+            _postData.Fbguid = App.LoginDataRetrieved.FbGuid;
+            _postData.UserTyp = "TP";
+            _postData.TxnTp = ZakatInstalmentsData.d.TxnTp;
+            _postData.MobNo = ZakatInstalmentsData.d.MobNo;
+            _postData.FormGuid = "";
+            _postData.Fbnum = ZakatListObjec.fbNum;
+            _postData.DataVersion = ZakatInstalmentsData.d.DataVersion;
+            _postData.DownPayReq = ZakatInstalmentsData.d.DownPayReq;
+            _postData.OfcReason = ZakatInstalmentsData.d.OfcReason;
+            //to approve
+            if (cmdType == 1)
+            {
+                _postData.Operation = "02";
+            }
+            //to reject
+            else
+            {
+                _postData.Operation = "03";
+            }
+           
+            _postData.Euser = "";
+            _postData.StepNumber = ZakatInstalmentsData.d.StepNumber;
+            _postData.Email = ZakatInstalmentsData.d.Email;
+            _postData.Officer = ZakatInstalmentsData.d.Officer;
+            _postData.Langz = GetLangZParameterAREN();
+            _postData.Status = ZakatInstalmentsData.d.Status;
+            _postData.SuAmt = ZakatInstalmentsData.d.SuAmt;
+            _postData.SuAmtFg = ZakatInstalmentsData.d.SuAmtFg;
+            _postData.Formproc = ZakatInstalmentsData.d.Formproc;
+            _postData.Tin = App.LoginDataRetrieved.TIN;
+            _postData.Periodkey = ZakatInstalmentsData.d.Periodkey;
+            _postData.ReturnId = ZakatInstalmentsData.d.ReturnId;
+            _postData.TinNm = ZakatInstalmentsData.d.TinNm;
+            _postData.AltMobNo = ZakatInstalmentsData.d.AltMobNo;
+            _postData.InstReqFor = ZakatInstalmentsData.d.InstReqFor;
+            _postData.InstReqReason = ZakatInstalmentsData.d.InstReqReason;
+            _postData.TotAmt = ZakatInstalmentsData.d.TotAmt;
+            _postData.DpAmt = ZakatInstalmentsData.d.DpAmt;
+            _postData.PymntFreq = ZakatInstalmentsData.d.PymntFreq;
+            _postData.PlanDur = ZakatInstalmentsData.d.PlanDur;
+            _postData.OffPymntFreq = ZakatInstalmentsData.d.OffPymntFreq;
+            _postData.OffPlanDur = ZakatInstalmentsData.d.OffPlanDur;
+            _postData.DecCb = ZakatInstalmentsData.d.DecCb;
+            _postData.Waers = ZakatInstalmentsData.d.Waers;
+            _postData.AccMethod = ZakatInstalmentsData.d.AccMethod;
+            _postData.Sopbel = "";
+            _postData.OffAmt = ZakatInstalmentsData.d.OffAmt;
+            _postData.PaymtDt = ZakatInstalmentsData.d.PaymtDt;
+            _postData.PenlAmt = ZakatInstalmentsData.d.PenlAmt;
+            _postData.InsDtOff = ZakatInstalmentsData.d.InsDtOff;
+
+            if (ZakatInstalmentsData.d.NotesSet.results == null)
+            {
+
+                _postData.NotesSet = new NotesSet[0];
+            }
+            else
+            {
+                _postData.NotesSet = ZakatInstalmentsData.d.NotesSet.results;
+            }
+
+            if (cmdType.Equals("2"))
+            {
+                _postData.NotesSet[0].Rcodez = "IPRA_APPRV";
+                _postData.NotesSet[0].Tdline = "";
+            }
+            else if (cmdType.Equals("1"))
+            {
+                _postData.NotesSet[0].Rcodez = "IPRA_REJEC";
+                 _postData.NotesSet[0].Tdline = offset;
+            }
+
+
+            if (ZakatInstalmentsData.d.insPlanSet.results == null)
+            {
+
+                _postData.insPlanSet = new Array[0];
+
+            }
+            else
+            {
+                _postData.insPlanSet = ZakatInstalmentsData.d.insPlanSet.results.ToArray();
+            }
+            if (ZakatInstalmentsData.d.AttachSet.results == null)
+            {
+                _postData.AttachSet = new Array[0];
+            }
+            else
+            {
+                //_postData.AttachSet = ZakatInstalments.d.AttachSet.results.ToArray();
+                _postData.AttachSet = new Array[0];
+            }
+
+            if (ZakatInstalmentsData.d.insPlan_OffSet.result == null)
+            {
+
+                _postData.insPlan_OffSet = new Array[0];
+
+            }
+            else
+            {
+                _postData.insPlan_OffSet = ZakatInstalmentsData.d.insPlan_OffSet.result.ToArray();
+
+            }
+
+            if (ZakatInstalmentsData.d.retmsgSet.results == null)
+            {
+                _postData.retmsgSet = new Array[0];
+            }
+            else
+            {
+                _postData.retmsgSet = ZakatInstalmentsData.d.retmsgSet.results.ToArray();
+            }
+            if (ZakatInstalmentsData.d.FnDtlSet.results == null || ZakatInstalmentsData.d.Operation == "04")
+            {
+                _postData.FnDtlSet = new FnDtlSetObject[0];
+            }
+            else
+            {
+                _postData.FnDtlSet = ZakatInstalmentsData.d.FnDtlSet.results.ToArray();
+
+            }
+
+            for (int i = 0; i < selectedList.Count; i++)
+            {
+                var dataItem = selectedList[i] as ZakatInvoicesResult;
+
+
+                int index = ZakatInvoicesList.ToList().FindIndex(item => item.InvNo == dataItem.InvNo);
+
+                if (ZakatInvoicesList[i].Abtyp.Equals(AppResources.ZakatInstalmetSelectTypeIncomeTax))
+                {
+                    ZakatInvoicesList[i].Abtyp = "ITAX";
+                }
+                else if (ZakatInvoicesList[i].Abtyp.Equals(AppResources.FORM5Zakat))
+                {
+                    ZakatInvoicesList[i].Abtyp = "ZAKT";
+                }
+                ZakatInvoicesList[index].InvCb = "X";
+            }
+            if (ZakatInvoicesList != null)
+            {
+                var invoicesList = ZakatInvoicesList.ToList();
+                if (invoicesList.Count != 0)
+                {
+                    string apiDate = invoicesList[0].DueDt;
+                    if (!apiDate.Contains("Date"))
+                    {
+                        for (int i = 0; i < invoicesList.Count; i++)
+                        {
+                            DateTime dt = Convert.ToDateTime(invoicesList[i].DueDt);
+                            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                            {
+                                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                            };
+                            var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                            string[] dateList = jsonDateTime.Split('+');
+                            jsonDateTime = dateList[0].Replace("\"\\", "");
+                            jsonDateTime = jsonDateTime + ")/";
+                            invoicesList[i].DueDt = jsonDateTime;
+
+                        }
+                    }
+                    _postData.invDtlsSet = invoicesList.ToArray();
+                }
+                else
+                {
+                    _postData.invDtlsSet = new ZakatInvoicesResult[0];
+                }
+
+            }
+            else
+            {
+                _postData.invDtlsSet = new ZakatInvoicesResult[0];
+            }
+            return _postData;
+        }
+
+
+        public async Task ApproveSubmitClicked(int cmdType, string offset)
+        {
+            ZakatInstalmentPlanResponse response = new ZakatInstalmentPlanResponse();
+            ZakatInstalmentPlanRequest request = new ZakatInstalmentPlanRequest();
+
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+                request = BuildRequestObject(cmdType,offset);
+
+                response = await ZakatInstallmentPlanWebServiceManager.SaveZakatInstalmentData(request);
+                PopToRootPage();
+                if (response != null)
+                {
+                    if (cmdType==1)
+                    {
+                        _navigationService.GoBack();
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(String.Format(AppResources.ZakatInstalmentApproved, ZakatListObjec.fbNum)));
+                        
+                    }
+                    else 
+                    {
+                        _navigationService.GoBack();
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(String.Format(AppResources.ZakatInstalmentRejected, ZakatListObjec.fbNum)));
+                    }
+                    try
+                    {
+                        if (response != null)
+                        {
+                        }
+                        IsLoading = false;
+                        //return response;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
+                        IsLoading = false;
+                        //return null;
+
+                    }
+                }
+                IsLoading = false;
+                //return response;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+
+                });
+               // return response;
+            }
+
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                //return response;
+            }
+
+        }
+
+
+        public async Task GetZakatInstalmentData(int cmdType, string offset)
+        {
+            try
+            {
+                await Task.Run(() =>
+
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+
+                    IsLoading = true;
+                    ZakatInstalmentsData = null;
+                    try
+                    {
+                        ZakatInstalmentsData = await ZakatInstallmentPlanWebServiceManager.GetZakatInstalmentPostData(ZakatListObjec.fbNum);
+
+                        if (ZakatInstalmentsData != null)
+                        {
+                            await GetZaktaInvoiceList(cmdType, offset);
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
         }
         public async Task onPageLoad()
         {
@@ -950,6 +1459,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
+        private bool _isShowApproveView = false;
+        public bool isShowApproveView
+        {
+            get
+            {
+                return _isShowApproveView;
+            }
+            set
+            {
+                if (_isShowApproveView == value) return;
+
+                _isShowApproveView = value;
+                RaisePropertyChanged("isShowApproveView");
+            }
+        }
+
         public bool IsZakatLandingPageVisible
         {
             get
@@ -1425,7 +1950,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         dateOfSubmission = submitDate,
                         Fbtyp = zakatbill,
                         statusType = RequestForInstalmentPlanList[i].Fbust,
-                        fbNum = RequestForInstalmentPlanList[i].Fbnum
+                        fbNum = RequestForInstalmentPlanList[i].Fbnum,
+                        isShowApproveView = RequestForInstalmentPlanList[i].Fbsta.Equals("IP021") && RequestForInstalmentPlanList[i].Fbust.Equals("E0077")
 
 
                     });
@@ -1959,6 +2485,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
+        private static String GetLangZParameterAREN()
+        {
+            if (App.IsArabic)
+                return "AR";
+            else
+                return "EN";
+        }
+
         public async Task GetZakatRevokList()
         {
             try
@@ -2050,7 +2584,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                     frequency = RevokeListItem[i].PymntFreq,
                                     SelectedType = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax,
                                     statusType = RevokeListItem[i].Fbust,
-                                    fbNum = RevokeListItem[i].Fbnum
+                                    fbNum = RevokeListItem[i].Fbnum,
+                                    isShowApproveView = RevokeListItem[i].Fbsta.Equals("IP021") && RevokeListItem[i].Fbust.Equals("E0077")
                                 });
 
                                 if (ZakatListData.Count > 0)

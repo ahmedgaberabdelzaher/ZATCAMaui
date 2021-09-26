@@ -9248,4 +9248,10 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="VATRNewVATEligibleStartDate" xml:space="preserve">
     <value>New VAT Eligibility Commencement Date</value>
   </data>
+  <data name="ZakatInstalmentApproved" xml:space="preserve">
+    <value>Instalment Plan request {0} submitted by the Tax Officer is approved by TP successfully.</value>
+  </data>
+  <data name="ZakatInstalmentRejected" xml:space="preserve">
+    <value>Instalment Plan request {0} submitted by the Tax Officer is cancelled by TP successfully.</value>
+  </data>
 </root>

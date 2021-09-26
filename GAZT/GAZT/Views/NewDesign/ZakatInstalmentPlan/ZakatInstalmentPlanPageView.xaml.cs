@@ -15,9 +15,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
     [Preserve(AllMembers = true)]
     public partial class ZakatInstalmentPlanPageView : ContentPage
     {
-
-
-
         #region Variable
         ZakatInstalmentPlanViewModel viewModel;
 
@@ -36,9 +33,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 ChangeAeroIcon();
                 SetLTR();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
-
-
                 viewModel = App.Locator.ZakatInstalmentPlanPageView;
                 this.BindingContext = viewModel;
                 viewModel.ResetData();
@@ -51,11 +45,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.setMoreOptioButtons();
 
             }
-            catch (Exception )
+            catch (Exception e)
             {
-
-
-
+                Console.WriteLine("===", e.Message);
             }
 
 

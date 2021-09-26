@@ -62,7 +62,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
         {
             try
             {
-                _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
+                //_navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
+                _navigationService.NavigateTo(App.ZakatInstalmentPlanListPageView);
             }
             catch (GAZTUnlockAccountException)
             {

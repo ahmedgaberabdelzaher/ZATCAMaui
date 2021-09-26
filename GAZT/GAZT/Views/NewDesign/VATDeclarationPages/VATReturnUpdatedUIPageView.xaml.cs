@@ -994,6 +994,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForYesRefundMsg");
                 MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForNoRefundMsg");
+                
+                MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
+                MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
+
                 MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
 
                 //viewModel.DesClaimerVisibility = false;

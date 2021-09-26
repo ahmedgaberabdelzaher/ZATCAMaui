@@ -2682,7 +2682,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async void displayPopUpToSubmitOrCancelApplication()
         {
-            await PopupNavigation.Instance.PushAsync(new LogoutPageView("Click YES to Submit else Click NO To Cancel Submission"));
+            await PopupNavigation.Instance.PushAsync(new LogoutPageView("This is the Dummy message - If you submit the VAT return after Audit case is closed, You cannot raise review request for this VAT Return."));
 
         }
 

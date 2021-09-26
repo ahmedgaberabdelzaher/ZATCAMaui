@@ -212,7 +212,7 @@ namespace EGAZT.Manager
                     string euser = "00000000000000000000";
                     string fbguid = summaryInputs.d.Fbguid;
                     Char lang = WebServiceManager.GetLangZParameter();
-                    String url = Constants.ZakatRequestDisplayUrl + "Tin='',Euser='00000000000000000000',Langz='EN',Fbguid='" + fbguid + "'," +
+                    String url = Constants.ZakatRequestDisplayUrl + "Tin='',Euser='00000000000000000000',SearchTin='" + "',Langz='EN',Fbguid='" + fbguid + "'," +
                         "Fbnum='" + fbnum + "',FormMode='S')?$expand=AttachSet,NotesSet,FnDtlSet&$format=json";
                     HttpResponseMessage GAZTzakatDisplayResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 

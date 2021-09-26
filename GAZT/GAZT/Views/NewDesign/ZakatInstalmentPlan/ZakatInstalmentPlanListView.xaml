@@ -13,8 +13,8 @@
              ios:Page.UseSafeArea="true"
              mc:Ignorable="d" FlowDirection="RightToLeft"
                                                                 xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
-
-              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             x:Name="zakatListPage"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.NewDesign.ZakatInstalmentPlan.ZakatInstalmentPlanListPageView" 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
@@ -211,9 +211,10 @@
 
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0" HasShadow="True" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <border:SfBorder x:Name="Item"  Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0" HasShadow="True" Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <Grid Padding="0" RowSpacing="0" Margin="0">
                                         <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
@@ -254,11 +255,11 @@
 
                                         <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
                                             <Label Text="{x:Static ResourceManager:AppResources.ZakatDueAmount}" Style="{StaticResource CaptionLabelGrey}"/>
-                                            <Label Text="{Binding dueamount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" />
-                                        </StackLayout>
+                                            <Label Text="{Binding dueamount}" Style="{StaticResource ValueLabelBlack}" />
+                                        </StackLayout><!--,Converter={StaticResource commaSeparatorConverter}-->
                                         <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
                                             <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInstalmentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
-                                            <Label Text="{Binding instalmentAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" />
+                                            <Label Text="{Binding instalmentAmount}" Style="{StaticResource ValueLabelBlack}" />
                                         </StackLayout>
 
                                         <StackLayout Grid.Row="4" Grid.Column="0" Spacing="-5">
@@ -267,11 +268,39 @@
                                         </StackLayout>
                                         <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDownPaymentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
-                                            <Label Text="{Binding downpayment,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                        </StackLayout>
+                                            <Label Text="{Binding downpayment}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                        </StackLayout><!--,Converter={StaticResource commaSeparatorConverter}-->
                                         <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Spacing="-5">
                                             <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSubmissionDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                             <Label Text="{Binding dateOfSubmission}" Style="{StaticResource ValueLabelBlack}" />
+                                        </StackLayout>
+                                        <BoxView Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" IsVisible="{Binding isShowApproveView}" Margin="0,5,0,5" HeightRequest="1" />
+
+                                        <StackLayout Grid.Row="7" Grid.Column="0" Spacing="-5" IsVisible="{Binding isShowApproveView}">
+                                            <buttons:SfButton  Margin="0,16,0,16" 
+                                          Text="Approve"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                           HeightRequest="48"
+                                           WidthRequest="366"
+                                           BindingContext="{Binding Source={x:Reference zakatListPage},Path=BindingContext}"                   
+                                           Command="{Binding BindingContext.ApproveButtonTapped,Source={x:Reference zakatListPage}}"
+                                           CommandParameter="{Binding Source={x:Reference Item},Path=BindingContext}">
+                                                <!--Clicked="ApproveTapped"-->
+                                          <!--BindingContext="{Binding.}"--> <!--Command="{Binding BindingContext.ApproveButtonTapped,Source={x:Reference zakatListPage}}"--> 
+                                                <!--<buttons:SfButton.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding BindingContext.ApproveButtonTapped,Source={x:Reference zakatListPage}}" 
+                                                                          CommandParameter="{Binding Source={x:Reference zakatListPage}, Path=BindingContext}"/>
+                                                </buttons:SfButton.GestureRecognizers>-->
+                                            </buttons:SfButton>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="7" Grid.Column="1" Spacing="-5" IsVisible="{Binding isShowApproveView}">
+                                            <buttons:SfButton  Margin="0,16,0,16" 
+                                          Text="Reject"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                           HeightRequest="48"
+                                           WidthRequest="366"
+                                           Command="{Binding BindingContext.RejecteButtonTapped,Source={x:Reference zakatListPage}}"
+                                           CommandParameter="{Binding Source={x:Reference Item},Path=BindingContext}" />
                                         </StackLayout>
 
 

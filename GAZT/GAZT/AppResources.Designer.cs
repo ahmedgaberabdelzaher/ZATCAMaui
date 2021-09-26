@@ -14597,6 +14597,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Instalment Plan request {0} submitted by the Tax Officer is approved by TP successfully..
+        /// </summary>
+        public static string ZakatInstalmentApproved {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentApproved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachment.
         /// </summary>
         public static string ZakatInstalmentAttachment {
@@ -14971,6 +14980,15 @@ namespace EGAZT {
         public static string ZakatInstalmentReferenceNumber {
             get {
                 return ResourceManager.GetString("ZakatInstalmentReferenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instalment Plan request {0} submitted by the Tax Officer is cancelled by TP successfully..
+        /// </summary>
+        public static string ZakatInstalmentRejected {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentRejected", resourceCulture);
             }
         }
         

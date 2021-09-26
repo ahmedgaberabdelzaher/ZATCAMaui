@@ -141,6 +141,8 @@ using EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
 using EGAZT.Views.NewDesign.IBanAccountsManagements;
 using EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM;
 using EGAZT.Views.NewDesign.UpdateVatEffectiveDate;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatRejectionPopUpViewModel;
+using EGAZT.Views.NewDesign.ZakatRejectPopUp;
 
 namespace EGAZT
 {
@@ -223,6 +225,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionPageWebViewModel>();
             SimpleIoc.Default.Register<RelationShipManagerInfoPageViewModel>();
+            SimpleIoc.Default.Register<ZakatRejectionReasonPopupViewModel>();
             SimpleIoc.Default.Register<FilterVatEffectiveDatePageViewModel>();
             #endregion
 
@@ -2314,6 +2317,7 @@ namespace EGAZT
             navigationService.Configure(App.GAZTBankAccountAddOrUpdatePageView, typeof(BankAccountAddorUpdateIBANPageView));
 
             navigationService.Configure(App.RelationShipManagerInfoPageView, typeof(RelationShipManagerInfoPageView));
+            navigationService.Configure(App.ZakatRejectionReasonPopupPageView, typeof(ZakatRejectionReasonPopupPageView));
             navigationService.Configure(App.UpdateVatEffectiveDatePageView, typeof(UpdateVatEffectiveDatePageView));
             #endregion
 
@@ -2666,6 +2670,21 @@ namespace EGAZT
             }
         }
         
+        public ZakatRejectionReasonPopupViewModel ZakatRejectionReasonPopupPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatRejectionReasonPopupViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        
         public FilterVatEffectiveDatePageViewModel FilterVatEffectiveDatePageView
         {
             get
@@ -2689,6 +2708,8 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatInstalmentPlanViewModel>();
+                    SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception)

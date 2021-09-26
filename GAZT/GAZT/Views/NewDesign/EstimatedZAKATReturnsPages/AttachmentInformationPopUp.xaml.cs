@@ -43,6 +43,13 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     ((App)Xamarin.Forms.Application.Current, "OnlyAddAttachments", "add vat attachments");
 
             }
+            /*else if (InfromatationText.Text.Contains("Instalment Plan request"))
+            {
+                MessagingCenter.Send<App, string>
+                    ((App)Xamarin.Forms.Application.Current, "InstallmentPlanApproveOrReject", "InstallmentPlanApproveOrReject");
+
+            }*/
+
         }
 
              private void SetLTR()

@@ -429,6 +429,9 @@
 		<EmbeddedResource Update="Views\NewDesign\ZAKATObjectionPages\ZakatObjectionSuccessfullPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\ZakatRejectPopUp\ZakatRejectionReasonPopupPageView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>

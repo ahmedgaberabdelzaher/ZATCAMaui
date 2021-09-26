@@ -47,8 +47,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string SelectedType { get; set; }
         public string statusType { get; set; }
         public string fbNum { get; set; }
-
-
+        public bool isShowApproveView { get; set; }
 
     }
     [Preserve(AllMembers = true)]
@@ -109,6 +108,8 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string DataVersion { get; set; }
         public string DecCb { get; set; }
         public string DpAmt { get; set; }
+        public string DownPayReq { get; set; }
+        public string OfcReason { get; set; }
         public string Email { get; set; }
         public string Euser { get; set; }
         public string Fbguid { get; set; }
@@ -246,7 +247,10 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string FormGuid { get; set; }
         public string Fbnum { get; set; }
         public string DataVersion { get; set; }
+        public string DownPayReq { get; set; }
         public string Operation { get; set; }
+        public string OfcReason { get; set; }
+
         public string Euser { get; set; }
         public string StepNumber { get; set; }
         public string Email { get; set; }
@@ -962,6 +966,11 @@ namespace EGAZT.Models.ZakatInstalationModels
     public partial class ZakatInstalmentPlanRevokeResponse
     {
         public ZakatRevoke d { get; set; }
+
+        //public static implicit operator ZakatInstalmentPlanRevokeResponse(ZakatInstalmentPlanResponse v)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
     [Preserve(AllMembers = true)]
     public partial class ZakatRevoke
