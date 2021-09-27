@@ -315,7 +315,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     // ZakatInvoicesList = null;
                     try
                     {
-                        invoiceList = await ZakatInstallmentPlanWebServiceManager.GetZakatInvoicesList(true, ZakatListObjec.fbNum);
+                        invoiceList = await ZakatInstallmentPlanWebServiceManager.GetZakatInvoicesList(IsZakat, ZakatListObjec.fbNum);
                         if (invoiceList != null && invoiceList.d != null)
                         {
                             ZakatInvoicesList = invoiceList.d.results;
