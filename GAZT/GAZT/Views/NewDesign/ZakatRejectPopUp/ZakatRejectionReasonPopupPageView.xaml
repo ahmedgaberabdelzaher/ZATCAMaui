@@ -65,14 +65,14 @@
                               Grid.Column="0"
                               Clicked="RejectButtonClicked"
                               Margin="10,0,10,0"
-                              Text="Reject"
+                              Text="{x:Static ResourceManager:AppResources.ZakatInstalmetReject}"
                               Style="{StaticResource PrimaryButtonStyle}" />
             <buttons:SfButton x:Name="btnprimary1"
                               Clicked="CancelButtonClicked"
                               Grid.Row="2"
                               Grid.Column="1"
                               Margin="10,0,10,0"
-                              Text="Cancel"
+                              Text="{x:Static ResourceManager:AppResources.ZakatInstalmetClose}"
                               Style="{StaticResource PrimaryButtonStyle}" />
         </Grid>
     </yummy:PancakeView>

@@ -9260,4 +9260,16 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="VatOkay" xml:space="preserve">
     <value>Okay</value>
   </data>
+  <data name="ZakatInstalmetClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ZakatInstalmetConfirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ZakatInstalmetReason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="ZakatInstalmetReject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
 </root>

@@ -15245,6 +15245,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string ZakatInstalmetClose {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string ZakatInstalmetConfirm {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string ZakatInstalmetContinue {
@@ -15340,6 +15358,24 @@ namespace EGAZT {
         public static string ZakatInstalmetQuarterly {
             get {
                 return ResourceManager.GetString("ZakatInstalmetQuarterly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reason.
+        /// </summary>
+        public static string ZakatInstalmetReason {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reject.
+        /// </summary>
+        public static string ZakatInstalmetReject {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetReject", resourceCulture);
             }
         }
         

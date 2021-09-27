@@ -36,6 +36,8 @@ namespace EGAZT.Views.NewDesign.ZakatRejectPopUp
             }
         }
 
+
+
         private async void CancelButtonClicked(object sender, System.EventArgs e)
         {
             MessagingCenter.Send<Object, string>(this, "RejectCancelled", "No");

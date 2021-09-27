@@ -9183,4 +9183,16 @@ info@gazt.gov.sa</value>
   <data name="VatOkay" xml:space="preserve">
     <value>حسنآ</value>
   </data>
+  <data name="ZakatInstalmetClose" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="ZakatInstalmetConfirm" xml:space="preserve">
+    <value>تأكيد تقديم الطلب</value>
+  </data>
+  <data name="ZakatInstalmetReason" xml:space="preserve">
+    <value>السبب</value>
+  </data>
+  <data name="ZakatInstalmetReject" xml:space="preserve">
+    <value>مرفوض</value>
+  </data>
 </root>
