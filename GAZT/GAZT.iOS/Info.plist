@@ -79,7 +79,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>ZATCA</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gazt.egazt</string>
+	<string>com.gazt.enterprise.egazt</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -90,8 +90,13 @@
 		<true/>
 	</dict>
 	<key>CFBundleShortVersionString</key>
-	<string>4.0.4.41</string>
+	<string>4.0.4.42</string>
 	<key>CFBundleVersion</key>
-	<string>4.0.4.41</string>
+	<string>4.0.4.42</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+	</dict>
 </dict>
 </plist>

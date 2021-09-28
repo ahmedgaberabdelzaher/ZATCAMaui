@@ -9175,7 +9175,7 @@ info@gazt.gov.sa</value>
     <value>تم الموافقة  من قبل المكلف على طلب انشاء خطة التقسيط {0} المنشأ بواسطة الموظف</value>
   </data>
   <data name="ZakatInstalmentRejected" xml:space="preserve">
-    <value>Instalment Plan request {0} submitted by the Tax Officer is cancelled by TP successfully.تم الرفض  من قبل المكلف على طلب انشاء خطة التقسيط {0}  المنشأ بواسطة الموظف</value>
+    <value>تم الرفض  من قبل المكلف على طلب انشاء خطة التقسيط  {0} المنشأ بواسطة الموظف</value>
   </data>
   <data name="VatCancel" xml:space="preserve">
     <value>إلغاء</value>

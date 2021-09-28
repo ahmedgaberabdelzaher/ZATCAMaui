@@ -43,7 +43,7 @@
                                     HorizontalOptions="StartAndExpand">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
-                            <Span Text="Reason" />
+                        <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmetReject}" />
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
