@@ -16222,6 +16222,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maximum no. of 9 attachments can be uploaded..
+        /// </summary>
+        public static string ZMaximumnoof9attachmentscanbeuploaded1 {
+            get {
+                return ResourceManager.GetString("ZMaximumnoof9attachmentscanbeuploaded1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum no. of allowed attachments are 40..
         /// </summary>
         public static string ZMaximumnoofallowedattachmentsare40 {

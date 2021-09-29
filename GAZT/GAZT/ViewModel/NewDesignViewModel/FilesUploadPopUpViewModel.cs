@@ -436,6 +436,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             }
 
                         }
+                        else if (IsComeForWhichAttachment == WhichAttachment.VatReviewLateFiling)
+                        {
+                           
+                            if (VatAttachmentsList != null)
+                            {
+                                int ListCount = VatAttachmentsList.Count();
+                                if (ListCount >=9)
+                                {
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof9attachmentscanbeuploaded1));
+
+                                   // await PopupNavigation.Instance.PopAsync();
+                                    return;
+                                }
+                            }
+
+                        }
 
                         else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
                         {
@@ -509,6 +525,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 }
                             }
                         }
+
 
 
                         /*FilePickerFileType customFileType =

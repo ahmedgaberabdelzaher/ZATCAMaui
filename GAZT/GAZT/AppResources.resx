@@ -9278,4 +9278,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="SortEffectiveDateAUpdate" xml:space="preserve">
     <value>Sort effective date after update</value>
   </data>
+  <data name="ZMaximumnoof9attachmentscanbeuploaded1" xml:space="preserve">
+    <value>Maximum no. of 9 attachments can be uploaded.</value>
+  </data>
 </root>

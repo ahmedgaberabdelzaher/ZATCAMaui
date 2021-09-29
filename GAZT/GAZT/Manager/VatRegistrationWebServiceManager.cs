@@ -33,10 +33,11 @@ namespace EGAZT.Manager
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     Char lang = WebServiceManager.GetLangZParameter();
+                    string langz = UtilityManager.GetLanguageParameter();
                     String url = Constants.GetVatEligilibilityDate;
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    var uri = new Uri(url+ "/taxDateSet(VatTaxDt=datetime%27"+ vatEligibleStartDate + "%27,TxnTpz=%27"+ txntpz + "%27,Gpartz=%27"+App.LoginDataRetrieved.TIN+"%27)?&$format=json");
+                    var uri = new Uri(url+ "/taxDateSet(VatTaxDt=datetime%27"+ vatEligibleStartDate + "%27,TxnTpz=%27"+ txntpz + "%27,Gpartz=%27"+App.LoginDataRetrieved.TIN+ "%27)?saml2=enabled&sap-langauge=" + langz + "&$format=json");
                     HttpResponseMessage GAZTVATRegistrationDataOtherResponse = await client.GetAsync(uri);
                     if (GAZTVATRegistrationDataOtherResponse != null)
                     {
