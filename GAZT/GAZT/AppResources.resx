@@ -9272,4 +9272,10 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="ZakatInstalmetReject" xml:space="preserve">
     <value>Reject</value>
   </data>
+  <data name="VATEffNewRequest" xml:space="preserve">
+    <value>New Request</value>
+  </data>
+  <data name="SortEffectiveDateAUpdate" xml:space="preserve">
+    <value>Sort effective date after update</value>
+  </data>
 </root>

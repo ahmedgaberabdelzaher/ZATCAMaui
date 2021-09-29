@@ -9566,6 +9566,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sort effective date after update.
+        /// </summary>
+        public static string SortEffectiveDateAUpdate {
+            get {
+                return ResourceManager.GetString("SortEffectiveDateAUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start chatting.
         /// </summary>
         public static string StartChatting {
@@ -11654,6 +11663,15 @@ namespace EGAZT {
         public static string VatEffGazt {
             get {
                 return ResourceManager.GetString("VatEffGazt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Request.
+        /// </summary>
+        public static string VATEffNewRequest {
+            get {
+                return ResourceManager.GetString("VATEffNewRequest", resourceCulture);
             }
         }
         

@@ -124,8 +124,7 @@
                                             Style="{StaticResource ValueLabelBlack}" >
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="Updated by"  />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    <Span Text="{x:Static ResourceManager:AppResources.EffectUpdatedBy}"  />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -168,8 +167,7 @@
                                             Style="{StaticResource ValueLabelBlack}" >
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="Sort effective date after update"  />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    <Span Text="{x:Static ResourceManager:AppResources.SortEffectiveDateAUpdate}"  />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>

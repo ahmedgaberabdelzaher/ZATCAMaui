@@ -90,9 +90,9 @@
 		<true/>
 	</dict>
 	<key>CFBundleShortVersionString</key>
-	<string>4.0.4.45</string>
+	<string>4.0.4.46</string>
 	<key>CFBundleVersion</key>
-	<string>4.0.4.45</string>
+	<string>4.0.4.46</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

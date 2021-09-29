@@ -129,7 +129,7 @@
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Image>
-                                <Label Grid.Row="0" Grid.Column="1" Text="New Request" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.VATEffNewRequest}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AddNewRequestTapped}"></TapGestureRecognizer>
                                 </Grid.GestureRecognizers>

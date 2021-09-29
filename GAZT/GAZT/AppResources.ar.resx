@@ -9195,4 +9195,10 @@ info@gazt.gov.sa</value>
   <data name="ZakatInstalmetReject" xml:space="preserve">
     <value>مرفوض</value>
   </data>
+  <data name="VATEffNewRequest" xml:space="preserve">
+    <value>انشاء طلب</value>
+  </data>
+  <data name="SortEffectiveDateAUpdate" xml:space="preserve">
+    <value>فرز تاريخ النفاذ بعد التعديل</value>
+  </data>
 </root>
