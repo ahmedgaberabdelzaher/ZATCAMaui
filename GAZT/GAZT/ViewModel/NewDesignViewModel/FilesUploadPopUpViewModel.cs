@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -17,6 +18,7 @@ using GAZT.Manager;
 using Newtonsoft.Json;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -508,11 +510,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             }
                         }
 
-                        var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-                        VatAttachmentCount++;
-                        if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
+
+                        /*FilePickerFileType customFileType =
+    new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+    {
+        { DevicePlatform.iOS, filetypes }, // or general UTType values
+        { DevicePlatform.Android, filetypes } // or general UTType values
+    });
+                        var options = new PickOptions
                         {
-                            attachment = fileData.DataArray;
+                            PickerTitle = "",
+                            FileTypes = customFileType,
+                        };*/
+                        PickOptions options= UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+
+                        // var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                        var fileData = await FilePicker.PickAsync(options);
+                        var stream = await fileData.OpenReadAsync();
+                        attachment = UtilityManager.ReadFully(stream as Stream);
+                        VatAttachmentCount++;
+                        if (fileData != null && attachment != null && attachment.Length > 0)
+                        {
+                            //attachment = fileData.DataArray;
                             AttachmentName = fileData.FileName;
                             if (fileData.FileName.Contains("."))
                             {
@@ -527,7 +546,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                                         if (IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
                                         {
-                                            if(AttachmentName.Contains(" "))
+                                            if (AttachmentName.Contains(" "))
                                             {
                                                 string updatedName = AttachmentName.Replace(' ', '_');
                                                 AttachmentName = updatedName;
@@ -988,6 +1007,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             });
         }
 
+      
         public async Task DeleteAttachment(bool result, VATAttachment attachment)
         {
             try

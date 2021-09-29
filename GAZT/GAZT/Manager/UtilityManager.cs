@@ -14,6 +14,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -150,6 +151,45 @@ namespace GAZT.Manager
             char[] arr = s.ToCharArray();
             Array.Reverse(arr);
             return new string(arr);
+        }
+
+        public static byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
+        }
+
+        public static PickOptions GetFilePickerOptionsForChooser(string[] filetypes)
+        {
+            PickOptions options = null;
+            try
+            {
+                FilePickerFileType customFileType = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+    {
+        { DevicePlatform.iOS, filetypes }, // or general UTType values
+        { DevicePlatform.Android, filetypes } // or general UTType values
+    });
+                options = new PickOptions
+                {
+                    PickerTitle = "",
+                    FileTypes = customFileType,
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return options;
+
         }
 
         public static String ConvertDateFormatToDDMMYYYYY(string dateToConvert)
@@ -436,8 +476,8 @@ namespace GAZT.Manager
             requiredDate = dt1;
 
             return dateStr;
-        } 
-        
+        }
+
         public static string DDMMFormatDateToYYYYFromDateTypeString(DateTime? dateToConvert)
         {
             string requiredDate = string.Empty;
@@ -451,7 +491,7 @@ namespace GAZT.Manager
             int month = hjCalendar.GetMonth(dateStart);
             int day = hjCalendar.GetDayOfMonth(dateStart);
 
-            string dateStr = ""+day +"/"+month +"/"+ year;
+            string dateStr = "" + day + "/" + month + "/" + year;
             string dt1 = string.Empty;
             string[] dts = null;
             dts = dateStr.Split('/');
@@ -1198,11 +1238,11 @@ namespace GAZT.Manager
                 DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
                 return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
-           
+
         }
 
 
