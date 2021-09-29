@@ -684,10 +684,14 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand" 
                                                                                               Style="{StaticResource CheckboxHeightWidth32}"
                                                                                               VerticalOptions="CenterAndExpand"
                                                                                               CheckChanged="AddAdditionalInfo_CheckedChanged"/>
-                                                                    <custom:CustomLabel  Grid.Row="0" Grid.Column="1"  Style="{DynamicResource IsInstrunctionCheckedStyle}">
+                                                                    <custom:CustomLabel  Grid.Row="0"
+                                                                                         Grid.Column="1"
+                                                                                         HorizontalOptions="Start"
+                                                                                         HorizontalTextAlignment="Start"
+                                                                                         Style="{DynamicResource IsInstrunctionCheckedStyle}">
                                                                         <custom:CustomLabel.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{x:Static custom2:AppResources.ZZZZNewVatDateTerms}"  />
+                                                                                <Span Text="{x:Static custom2:AppResources.ZZZZNewVatDateTerms}"/>
                                                                             </FormattedString>
                                                                         </custom:CustomLabel.FormattedText>
                                                                     </custom:CustomLabel>
