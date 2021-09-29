@@ -18,6 +18,7 @@ using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Xamarin.Forms.Internals;
 using System.IO;
+using Xamarin.Essentials;
 
 namespace EGAZT
 {
@@ -273,12 +274,30 @@ namespace EGAZT
                     if (AttachmentCount < 40)
                     {
                         string[] filetypes;
-
                         filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
-                        var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-                        if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
+
+                        PickOptions options= UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+
+                        /*FilePickerFileType customFileType =
+    new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+    {
+        { DevicePlatform.iOS, filetypes }, // or general UTType values
+        { DevicePlatform.Android, filetypes } // or general UTType values
+    });
+                        var options = new PickOptions
                         {
-                            attachment = fileData.DataArray;
+                            PickerTitle = "Please select a file",
+                            FileTypes = customFileType,
+                        };*/
+                        
+                       // var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+
+                        var fileData = await FilePicker.PickAsync(options);
+                        var stream = await fileData.OpenReadAsync();
+                        attachment = UtilityManager.ReadFully(stream as Stream);
+                        if (fileData != null && attachment != null && attachment.Length > 0)
+                        {
+                           // attachment = fileData.DataArray;
                             AttachmentName = fileData.FileName;
 
                             string ext = Path.GetExtension(fileData.FileName);
