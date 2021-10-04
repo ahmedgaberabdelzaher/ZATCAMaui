@@ -22,6 +22,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
     [Preserve(AllMembers = true)]
     public class UnlockAccountTINPageViewModel: ViewModelBase
     {
+
+        private string captcha = string.Empty;
+        private string GUID = string.Empty;
+        public bool IsAPICalledSuccessfully = false;
+
         public ICommand OnContinueButtonClick { get; set; } 
         public ICommand OnBackButtonClick { get; set; }
         public ICommand OnResendButtonClick { get; set; }
@@ -817,6 +822,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
         public async void VerifyTinBtnCommand()
         {
+            if(!IsAPICalledSuccessfully)
+            {
+                return;
+            }
             try
             {
                 await Task.Run(() =>
@@ -825,6 +834,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 });
                 
                 UnlockAccountModel.Tin = TxtTIN;
+                UnlockAccountModel.TaxpayerGuid = GUID;
+                UnlockAccountModel.Zcaptcha = captcha;
                 //Action for validating TIN and sending OTP
                 UnlockAccountModel.Action = "01";
                 UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccount(UnlockAccountModel);
@@ -857,6 +868,76 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     App.HideProgressView();
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task GetCaptchAndGUID()
+        {
+            try
+            {
+
+                IsLoading = true;
+
+                string lang = UtilityManager.GetLanguageParameter();
+                string st = Constants.CaptchaAndGUID;
+                string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                GenerateCaptchaGUID forgotPasswordOTP = new GenerateCaptchaGUID();
+                Metadata metadata = new Metadata();
+                metadata.id = st;
+                metadata.uri = st;
+                metadata.type = type;
+
+                GetCaptcha d = new GetCaptcha();
+                d.__metadata = metadata;
+                d.Captcha = "";
+                d.Guid = "";
+                d.Taxpayer = "";
+                d.Refresh = "";
+                d.Application = "FPWD";
+
+                forgotPasswordOTP.d = d;
+                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
+                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
+                {
+                    captcha = forgotPasswordOTP.d.Captcha;
+                    GUID = forgotPasswordOTP.d.Guid;
+                    IsAPICalledSuccessfully = true;
+                }
+                else
+                {
+
+                }
+
+
+                IsLoading = false;
+            }
+
+            catch (InternetException ex)
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                    // UserIDLayoutVisibility = true;
+                });
+            }
+        }
+
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    
+                    //var _navigation = Application.Current.MainPage.Navigation;
+                    //_navigation.PopToRootAsync();
+                    await PopupNavigation.Instance.PopAsync();
                 });
             }
         }
@@ -912,6 +993,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         UnlockAccountModelOtp.Tin = UnlockAccountModel.Tin;
                         UnlockAccountModelOtp.Action = "02";
                         UnlockAccountModelOtp.Otp = otp;
+                        UnlockAccountModelOtp.TaxpayerGuid = GUID;
+                        UnlockAccountModelOtp.Zcaptcha = captcha;
                         UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccountOtp(UnlockAccountModelOtp);
                         App.HideProgressView();
 
@@ -1108,6 +1191,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     UnlockAccountModelChangePassword.Action = "03";
                     UnlockAccountModelChangePassword.NewPassword = Password;
                     UnlockAccountModelChangePassword.ConfirmPassword = ConfirmPassword;
+                    UnlockAccountModelChangePassword.TaxpayerGuid = GUID;
+                    UnlockAccountModelChangePassword.Zcaptcha = captcha;
                     UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccountChangePassword(UnlockAccountModelChangePassword);
                     PasswordChangedSuccessfully = AppResources.UnlockAccountPasswordChangedSuccessfully;
                     PasswordChangedSuccessfully = PasswordChangedSuccessfully.Replace("xxxxxx", UnlockAccountModelChangePassword.Tin);
