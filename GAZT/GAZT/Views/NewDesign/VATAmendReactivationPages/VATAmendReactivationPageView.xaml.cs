@@ -4556,5 +4556,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             viewModel.IsFDChangeSectionEnabled = e;
         }
+
+        private void IBANAccManagementTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+
+        }
     }
 }
