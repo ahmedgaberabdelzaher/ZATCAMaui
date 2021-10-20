@@ -9281,4 +9281,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="ZMaximumnoof9attachmentscanbeuploaded1" xml:space="preserve">
     <value>Maximum no. of 9 attachments can be uploaded.</value>
   </data>
+  <data name="CR2406PopUp" xml:space="preserve">
+    <value>Dear taxpayer, please note that amendment of the declaration with higher amount will be considered as an acknowledgment to ZATCA Assessment, therefore, objecting on this self-amended return will not be allowed and the amounts resulted from your amendment will be final and due.</value>
+  </data>
 </root>

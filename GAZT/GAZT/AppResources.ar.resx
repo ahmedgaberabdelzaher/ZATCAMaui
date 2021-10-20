@@ -9202,4 +9202,7 @@ info@gazt.gov.sa</value>
   <data name="ZMaximumnoof9attachmentscanbeuploaded1" xml:space="preserve">
     <value>لا يمكن تحميل أكثر من 9 مرفقات</value>
   </data>
+  <data name="CR2406PopUp" xml:space="preserve">
+    <value>عزيزي المكلف يرجى الإحاطة بأن تعديل الإقرار بالزيادة يعد إقرار بصحة ربط الهيئة وعليه لا يمكنك الاعتراض على الإقرار بعد التعديل، كما أن المبالغ الناتجة عن التعديل تعد نهائية ومستحقة.</value>
+  </data>
 </root>

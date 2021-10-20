@@ -1260,6 +1260,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear taxpayer, please note that amendment of the declaration with higher amount will be considered as an acknowledgment to ZATCA Assessment, therefore, objecting on this self-amended return will not be allowed and the amounts resulted from your amendment will be final and due..
+        /// </summary>
+        public static string CR2406PopUp {
+            get {
+                return ResourceManager.GetString("CR2406PopUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         public static string CRAmount {

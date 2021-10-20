@@ -9011,7 +9011,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         public async void displayPopUpToSubmitOrCancelApplication()
         {
-            await PopupNavigation.Instance.PushAsync(new LogoutPageView("Click YES to Submit else Click NO To Cancel Submission"));
+            await PopupNavigation.Instance.PushAsync(new LogoutPageView(AppResources.CR2406PopUp));
 
         }
 
