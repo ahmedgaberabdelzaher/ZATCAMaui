@@ -545,7 +545,7 @@
                                         </inputLayout:SfTextInputLayout>
 
                                         <!--One Added as of now-->
-                                        <Grid Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2">
+                                        <Grid Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
@@ -553,20 +553,20 @@
                                                 <ColumnDefinition Width="80*"/>
                                                 <ColumnDefinition Width="20*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSalessubjecttoVATat5}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" ></custom:CustomLabel>
-                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Grid.Row="0" Grid.Column="1">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSalessubjecttoVATat5}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" ></custom:CustomLabel>
+                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Grid.Row="0" Grid.Column="1">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnNewStandardRatedSalesAmount5Clicked"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </Grid>
 
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></custom:CustomLabel>
 
 
                                         <inputLayout:SfTextInputLayout  HorizontalOptions="FillAndExpand" OutlineCornerRadius="8" Margin="10,0,10,0"
-                                                            LeadingViewPosition="Inside" UnfocusedColor="#B1B1B1" ContainerType="Outlined"  InputViewPadding="16,0,16,0" x:Name="EntryVatAmountFrame5" ErrorColor="#B00020" HasError="False" Grid.Row="5" Grid.Column="0" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Style="{StaticResource TextInputLayout}">
+                                                            LeadingViewPosition="Inside" UnfocusedColor="#B1B1B1" ContainerType="Outlined"  InputViewPadding="16,0,16,0" x:Name="EntryVatAmountFrame5" ErrorColor="#B00020" HasError="False" Grid.Row="5" Grid.Column="0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctEditable}" Style="{StaticResource TextInputLayout}">
                                             <custom:GAZTBorderlessEntry  x:Name="EntryVatAmount5" PropertyChanged="EntryVatAmount5_PropertyChanged"   Focused="EntryVatAmount5Focused"  Unfocused="EntryVatAmount5_Unfocused" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount5Percent"   Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdsalesAmt}"     Style="{StaticResource DefaultEntry}" Margin="10,0,10,0">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
@@ -579,7 +579,7 @@
                                             </inputLayout:SfTextInputLayout.Triggers>
                                         </inputLayout:SfTextInputLayout>
                                         <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand" OutlineCornerRadius="8" Margin="10,0,10,0"
-                                                            LeadingViewPosition="Inside" UnfocusedColor="#B1B1B1" ContainerType="Outlined"  InputViewPadding="16,0,16,0" x:Name="EntryVatAdjustmentWithSARFrame5" ErrorColor="#B00020" HasError="False"  Grid.Row="5" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" Grid.Column="1"  Style="{StaticResource TextInputLayout}">
+                                                            LeadingViewPosition="Inside" UnfocusedColor="#B1B1B1" ContainerType="Outlined"  InputViewPadding="16,0,16,0" x:Name="EntryVatAdjustmentWithSARFrame5" ErrorColor="#B00020" HasError="False"  Grid.Row="5" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctEditable}" Grid.Column="1"  Style="{StaticResource TextInputLayout}">
                                             <custom:GAZTBorderlessEntry  x:Name="EntryVatAdjustmentWithSAR5" PropertyChanged="EntryVatAdjustmentWithSAR5_PropertyChanged"  Focused="EntryVatAdjustment5Focused" Unfocused="EntryVatAdjustmentWithSAR5_Unfocused" Keyboard="Numeric" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}"  TextChanged="ClickGestureRecognizer_ClickedForVatAmount5Percent"   Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdsalesAdj}"     Style="{StaticResource DefaultEntry}" Margin="10,0,10,0">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
@@ -607,7 +607,7 @@
 
                                         <!-- CR3486 starts -->
 
-                                         <Grid Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="2">
+                                         <Grid Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxVisible}">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
@@ -615,21 +615,21 @@
                                                 <ColumnDefinition Width="80*"/>
                                                 <ColumnDefinition Width="20*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSalessubjecttotax}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTax}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" ></custom:CustomLabel>
-                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTax}" Grid.Row="0" Grid.Column="1">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSalessubjecttotax}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxVisible}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" ></custom:CustomLabel>
+                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTax}" Grid.Row="0" Grid.Column="1">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnNewStandardRatedSalesAmount5Clicked"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </Grid>
 
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTax}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTax}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxVisible}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
 
 
                                         <inputLayout:SfTextInputLayout  HorizontalOptions="FillAndExpand" OutlineCornerRadius="8" Margin="10,0,10,0"
-                                                            LeadingViewPosition="Inside" UnfocusedColor="#B1B1B1" ContainerType="Outlined"  InputViewPadding="16,0,16,0" x:Name="EntryVatSalesTaxAmountFrame" ErrorColor="#B00020" HasError="False" Grid.Row="8" Grid.Column="0" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTax}" Style="{StaticResource TextInputLayout}">
-                                            <custom:GAZTBorderlessEntry  x:Name="EntryVatSalesTaxAmount" PropertyChanged="EntryVatSalesSubjecttoTaxAmount_PropertyChanged"   Focused="EntryVatSalesSubjecttoTaxAmountFocused"  Unfocused="EntryVatSalesSubjecttoTaxAmount_Unfocused" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount5Percent"   Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdsalesAmt}"     Style="{StaticResource DefaultEntry}" Margin="10,0,10,0">
+                                                            LeadingViewPosition="Inside" UnfocusedColor="#B1B1B1" ContainerType="Outlined"  InputViewPadding="16,0,16,0" x:Name="EntryVatSalesTaxAmountFrame" ErrorColor="#B00020" HasError="False" Grid.Row="8" Grid.Column="0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxVisible}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxEditable}" Style="{StaticResource TextInputLayout}">
+                                            <custom:GAZTBorderlessEntry  x:Name="EntryVatSalesTaxAmount" PropertyChanged="EntryVatSalesSubjecttoTaxAmount_PropertyChanged"   Focused="EntryVatSalesSubjecttoTaxAmountFocused"  Unfocused="EntryVatSalesSubjecttoTaxAmount_Unfocused" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatGovrenmentAmount"   Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.GovsupsalesAmt}"     Style="{StaticResource DefaultEntry}" Margin="10,0,10,0">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -641,8 +641,8 @@
                                             </inputLayout:SfTextInputLayout.Triggers>
                                         </inputLayout:SfTextInputLayout>
                                         <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand" OutlineCornerRadius="8" Margin="10,0,10,0"
-                                                            LeadingViewPosition="Inside" UnfocusedColor="#B1B1B1" ContainerType="Outlined"  InputViewPadding="16,0,16,0" x:Name="EntryVatSalesTaxAdjustmentWithSARFrame" ErrorColor="#B00020" HasError="False"  Grid.Row="8" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTax}" Grid.Column="1"  Style="{StaticResource TextInputLayout}">
-                                            <custom:GAZTBorderlessEntry  x:Name="EntryVatSalesTaxAdjustmentWithSAR" PropertyChanged="EntryVatSalesSubjectToTaxAdjustmentWithSAR_PropertyChanged"  Focused="EntryVatSalesSubjectToTaxAdjustmentFocused" Unfocused="EntryVatSalesSubjectToTaxAdjustmentWithSAR_Unfocused" Keyboard="Numeric" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}"  TextChanged="ClickGestureRecognizer_ClickedForVatAmount5Percent"   Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdsalesAdj}"     Style="{StaticResource DefaultEntry}" Margin="10,0,10,0">
+                                                            LeadingViewPosition="Inside" UnfocusedColor="#B1B1B1" ContainerType="Outlined"  InputViewPadding="16,0,16,0" x:Name="EntryVatSalesTaxAdjustmentWithSARFrame" ErrorColor="#B00020" HasError="False"  Grid.Row="8" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxVisible}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxEditable}" Grid.Column="1"  Style="{StaticResource TextInputLayout}">
+                                            <custom:GAZTBorderlessEntry  x:Name="EntryVatSalesTaxAdjustmentWithSAR" PropertyChanged="EntryVatSalesSubjectToTaxAdjustmentWithSAR_PropertyChanged"  Focused="EntryVatSalesSubjectToTaxAdjustmentFocused" Unfocused="EntryVatSalesSubjectToTaxAdjustmentWithSAR_Unfocused" Keyboard="Numeric" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}"  TextChanged="ClickGestureRecognizer_ClickedForVatAmount5Percent"   Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.GovsupsalesAdj}"     Style="{StaticResource DefaultEntry}" Margin="10,0,10,0">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>

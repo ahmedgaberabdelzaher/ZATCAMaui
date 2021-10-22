@@ -1276,6 +1276,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public string _stdsalesVatGovt = "0.00";
+        public string StdsalesVatGovt
+        {
+            get
+            {
+                return _stdsalesVatGovt;
+            }
+            set
+            {
+                if (_stdsalesVatGovt == value) return;
+
+                _stdsalesVatGovt = value;
+                RaisePropertyChanged("StdsalesVatGovt");
+            }
+        }
+
         public string _stdsalesVat5 = "0.00";
         public string StdsalesVat5
         {
@@ -2307,12 +2323,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_isTaxNoChecked == true)
                 {
 
-                    IsSaleSubjecttoTax = true;
+                    IsSaleSubjecttoTaxEditable = false;
                 }
                 else
                 {
-                  
-                    IsSaleSubjecttoTax = false;
+
+                    IsSaleSubjecttoTaxEditable = true;
                 }
                 RaisePropertyChanged("IsTaxNoChecked");
             }
@@ -2423,6 +2439,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _isFivePersenctEditable = false;
+        public bool IsFivePersenctEditable
+        {
+            get
+            {
+                return _isFivePersenctEditable;
+            }
+            set
+            {
+                if (_isFivePersenctEditable == value) return;
+
+                _isFivePersenctEditable = value;
+                RaisePropertyChanged("IsFivePersenctEditable");
+            }
+        }
+
         private bool _isFifteenPersenctVisible = false;
         public bool IsFifteenPersenctVisible
         {
@@ -2438,19 +2470,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsFifteenPersenctVisible");
             }
         }
-        private bool _isSaleSubjecttoTax = false;
-        public bool IsSaleSubjecttoTax
+        private bool _isSaleSubjecttoTaxVisible = false;
+        public bool IsSaleSubjecttoTaxVisible
         {
             get
             {
-                return _isSaleSubjecttoTax;
+                return _isSaleSubjecttoTaxVisible;
             }
             set
             {
-                if (_isSaleSubjecttoTax == value) return;
+                if (_isSaleSubjecttoTaxVisible == value) return;
 
-                _isSaleSubjecttoTax = value;
-                RaisePropertyChanged("IsSaleSubjecttoTax");
+                _isSaleSubjecttoTaxVisible = value;
+                RaisePropertyChanged("IsSaleSubjecttoTaxVisible");
+            }
+        }
+        private bool _isSaleSubjecttoTaxEditable = false;
+        public bool IsSaleSubjecttoTaxEditable
+        {
+            get
+            {
+                return _isSaleSubjecttoTaxEditable;
+            }
+            set
+            {
+                if (_isSaleSubjecttoTaxEditable == value) return;
+
+                _isSaleSubjecttoTaxEditable = value;
+                RaisePropertyChanged("IsSaleSubjecttoTaxEditable");
             }
         }
         private bool _isPrevReturn = false;
@@ -3498,6 +3545,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             IsEnableSwitchToggledFor15PercentChange = true;
                         }
+
+                        if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && VATDeclarationData.d.GovsupYesno == "X")
+                        {
+                            IsEnableSwitchToggledFor15PercentChange = false;
+
+                        }
+                        else
+                        {
+                            IsEnableSwitchToggledFor15PercentChange = true;
+                        }
                         IsDeclarationCheckEnabled = false;
                         IsTaxPayerCheckEnabled = false;
                         IsAmendClicked = true;
@@ -3925,6 +3982,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeclarationData.d.Yesno = string.Empty;
             }
 
+            if (IsTaxYesChecked == true)
+            {
+                VATDeclarationData.d.GovsupYesno = "X";
+            }
+            else
+            {
+                VATDeclarationData.d.GovsupYesno = string.Empty;
+            }
 
 
 
@@ -3951,6 +4016,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 else
                 {
                     VATDeclarationData.d.Yesno = string.Empty;
+                }
+
+                if (IsTaxYesChecked == true)
+                {
+                    VATDeclarationData.d.GovsupYesno = "X";
+                }
+                else
+                {
+                    VATDeclarationData.d.GovsupYesno = string.Empty;
                 }
 
 
@@ -4012,6 +4086,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         VATNewModelFor15Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
                                     }
+
+                                    
                                 }
                             }
                             SetCommasforAll();
@@ -5233,7 +5309,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5)
+        public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5 , string Amount6)
         {
             String TotalAmount = "0.00";
             try
@@ -5258,13 +5334,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Amount5 = Amount5.Replace(",", "");
                 }
-                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5))
+                if (!string.IsNullOrEmpty(Amount6) && Amount5.Contains(","))
                 {
-                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != ".")
+                    Amount6 = Amount6.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) && !string.IsNullOrEmpty(Amount6))
+                {
+                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." && Amount6 != ".")
                     {
-                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-"))
+                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-") && !Amount6.Contains("-"))
                         {
-                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)))).ToString();
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount6) ? 0.00 : Convert.ToDouble(Amount6)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)))).ToString();
                             if (TotalAmount == "0")
                             {
                                 TotalAmount = "0.00";

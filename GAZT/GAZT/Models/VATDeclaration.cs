@@ -394,6 +394,8 @@ namespace EGAZT.Models
 
         public string GoliveFg { get; set; }
         [DataMember]
+        public string GovsupYesno { get; set; }
+        [DataMember]
         public string Yesno { get; set; }
         
         [DataMember]
@@ -920,6 +922,12 @@ namespace EGAZT.Models
         public string TimestampCh { get; set; }
         [DataMember]
         public string Waers { get; set; }
+        [DataMember]
+        public string GovsupsalesAdj { get; set; }
+        [DataMember]
+        public string GovsupsalesVat { get; set; }
+        [DataMember]
+        public string GovsupsalesAmt { get; set; }
     }
 
     #endregion
