@@ -105,14 +105,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     ArrowImageSource = fileImage
                 });
 
-            if(App.LoginDataRetrieved.TpMpVip.Equals("X"))
+            if (App.LoginDataRetrieved.TpMpVip == null)
             {
-                generalServicesListData.Add(new GeneralServicesListModel
+
+            }
+            else
+            {
+                if (App.LoginDataRetrieved.TpMpVip.Equals("X"))
                 {
-                    ZDTitle = AppResources.NDRelationContact,
-                    ZDImageSource = "details.png",
-                    ArrowImageSource = fileImage
-                });
+                    generalServicesListData.Add(new GeneralServicesListModel
+                    {
+                        ZDTitle = AppResources.NDRelationContact,
+                        ZDImageSource = "details.png",
+                        ArrowImageSource = fileImage
+                    });
+                }
             }
 
             generalServicesListData.Add(new GeneralServicesListModel
