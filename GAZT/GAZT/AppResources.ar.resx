@@ -9205,4 +9205,11 @@ info@gazt.gov.sa</value>
   <data name="CR2406PopUp" xml:space="preserve">
     <value>عزيزي المكلف يرجى الإحاطة بأن تعديل الإقرار بالزيادة يعد إقرار بصحة ربط الهيئة وعليه لا يمكنك الاعتراض على الإقرار بعد التعديل، كما أن المبالغ الناتجة عن التعديل تعد نهائية ومستحقة.</value>
   </data>
+   <data name="ZZZDoyouhavesalesorpurchasessubjecttoTax" xml:space="preserve">
+    <value>Do you have government agencies supplies that are subject to Tax according to the government competition and procurement regulations?</value>
+  </data>
+   <data name="ZZZSalessubjecttotax" xml:space="preserve">
+    <value>Government Supplies Sales Subject to Tax</value>
+    <comment>VAT Declarartion</comment>
+  </data>
 </root>

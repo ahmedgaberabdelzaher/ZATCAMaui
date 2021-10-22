@@ -237,6 +237,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsMainButtonEnabled");
             }
         }
+
+        private bool _TaxisMainButtonEnabled = false;
+        public bool TaxIsMainButtonEnabled
+        {
+            get
+            {
+                return _TaxisMainButtonEnabled;
+            }
+            set
+            {
+                if (_TaxisMainButtonEnabled == value) return;
+
+                _isMainButtonEnabled = value;
+                RaisePropertyChanged("TaxIsMainButtonEnabled");
+            }
+        }
         private bool _isCreditForwardBtnVisible = false;
         public bool IsCreditForwardBtnVisible
         {
@@ -392,6 +408,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _isNoBoxEnabled = value;
                 RaisePropertyChanged("IsNoBoxEnabled");
+            }
+        }
+
+        private bool _isTaxYesBoxEnabled = false;
+        public bool IsTaxYesBoxEnabled
+        {
+            get
+            {
+                return _isTaxYesBoxEnabled;
+            }
+            set
+            {
+                if (_isTaxYesBoxEnabled == value) return;
+
+                _isTaxYesBoxEnabled = value;
+                RaisePropertyChanged("IsTaxYesBoxEnabled");
+            }
+        }
+
+        private bool _isTaxNoBoxEnabled = false;
+        public bool IsTaxNoBoxEnabled
+        {
+            get
+            {
+                return _isTaxNoBoxEnabled;
+            }
+            set
+            {
+                if (_isTaxNoBoxEnabled == value) return;
+
+                _isTaxNoBoxEnabled = value;
+                RaisePropertyChanged("IsTaxNoBoxEnabled");
             }
         }
         private bool _iSSwichButtonEnable = false;
@@ -2199,6 +2247,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _isSwitchToggledForSaleTax = false;
+        public bool IsSwitchToggledForSaleTax
+        {
+            get
+            {
+                return _isSwitchToggledForSaleTax;
+            }
+            set
+            {
+                if (_isSwitchToggledForSaleTax == value) return;
+
+                _isSwitchToggledForSaleTax = value;
+
+                if (_isSwitchToggledForSaleTax == true)
+                {
+                    IsTaxYesChecked = true;
+                    IsTaxNoChecked = false;
+                }
+                else
+                {
+                    IsTaxNoChecked = true;
+                    IsTaxYesChecked = false;
+                }
+
+                RaisePropertyChanged("IsSwitchToggledForSaleTax");
+            }
+        }
+
 
         private bool _isYesChecked = false;
         public bool IsYesChecked
@@ -2213,6 +2289,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _isYesChecked = value;
                 RaisePropertyChanged("IsYesChecked");
+            }
+        }
+
+        private bool _isTaxNoChecked = true;
+        public bool IsTaxNoChecked
+        {
+            get
+            {
+                return _isTaxNoChecked;
+            }
+            set
+            {
+                if (_isTaxNoChecked == value) return;
+
+                _isTaxNoChecked = value;
+                if (_isTaxNoChecked == true)
+                {
+
+                    IsSaleSubjecttoTax = true;
+                }
+                else
+                {
+                  
+                    IsSaleSubjecttoTax = false;
+                }
+                RaisePropertyChanged("IsTaxNoChecked");
+            }
+        }
+
+        private bool _isTaxYesChecked = false;
+        public bool IsTaxYesChecked
+        {
+            get
+            {
+                return _isTaxYesChecked;
+            }
+            set
+            {
+                if (_isTaxYesChecked == value) return;
+
+                _isTaxYesChecked = value;
+                RaisePropertyChanged("IsTaxYesChecked");
             }
         }
 
@@ -2320,6 +2438,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsFifteenPersenctVisible");
             }
         }
+        private bool _isSaleSubjecttoTax = false;
+        public bool IsSaleSubjecttoTax
+        {
+            get
+            {
+                return _isSaleSubjecttoTax;
+            }
+            set
+            {
+                if (_isSaleSubjecttoTax == value) return;
+
+                _isSaleSubjecttoTax = value;
+                RaisePropertyChanged("IsSaleSubjecttoTax");
+            }
+        }
         private bool _isPrevReturn = false;
         public bool IsPrevReturn
         {
@@ -2417,6 +2550,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private string _TaxyesBackgroundImage;
+        public string TaxYesBackgroundImage
+        {
+            get
+            {
+                return _TaxyesBackgroundImage;
+            }
+            set
+            {
+                if (_TaxyesBackgroundImage == value) return;
+
+                _TaxyesBackgroundImage = value;
+                RaisePropertyChanged("TaxYesBackgroundImage");
+            }
+        }
+
+        private string _TaxnoBackgroundImage;
+        public string TaxNoBackgroundImage
+        {
+            get
+            {
+                return _TaxnoBackgroundImage;
+            }
+            set
+            {
+                if (_TaxnoBackgroundImage == value) return;
+
+                _TaxnoBackgroundImage = value;
+                RaisePropertyChanged("TaxNoBackgroundImage");
+            }
+        }
+
         private Color _yesLabelColor;
         public Color YesLabelColor
         {
@@ -2449,6 +2614,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        private Color _TaxyesLabelColor;
+        public Color TaxYesLabelColor
+        {
+            get
+            {
+                return _TaxyesLabelColor;
+            }
+            set
+            {
+                if (_TaxyesLabelColor == value) return;
+
+                _TaxyesLabelColor = value;
+                RaisePropertyChanged("TaxYesLabelColor");
+            }
+        }
+
+        private Color _TaxnoLabelColor;
+        public Color TaxNoLabelColor
+        {
+            get
+            {
+                return _TaxnoLabelColor;
+            }
+            set
+            {
+                if (_TaxnoLabelColor == value) return;
+
+                _TaxnoLabelColor = value;
+                RaisePropertyChanged("TaxNoLabelColor");
+            }
+        }
 
         #endregion
 
@@ -4543,6 +4740,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             // IsMainButtonEnabled = value;
             IsYesBoxEnabled = value;
             IsNoBoxEnabled = value;
+            IsTaxNoBoxEnabled = value;
+            IsTaxYesBoxEnabled = value;
 
             IsControlEnabled = value;
         }

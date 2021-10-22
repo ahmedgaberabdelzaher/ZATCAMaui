@@ -530,6 +530,17 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                     viewModel.YesLabelColor = Color.White;
                     viewModel.NoLabelColor = Color.FromHex("#232323");
+
+
+                
+                    viewModel.IsSaleSubjecttoTax = true;
+                    viewModel.IsTaxYesChecked = true;
+
+                    viewModel.TaxYesBackgroundImage = "re_Tile_Background";
+                    viewModel.TaxNoBackgroundImage = "re_Property_Tile_Background_White";
+
+                    viewModel.TaxYesLabelColor = Color.White;
+                    viewModel.TaxNoLabelColor = Color.FromHex("#232323");
                 }
                 else
                 {
@@ -543,6 +554,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                     viewModel.YesLabelColor = Color.FromHex("#232323");
                     viewModel.NoLabelColor = Color.White;
+
+                    viewModel.IsSaleSubjecttoTax = false;
+                    viewModel.IsNoChecked = true;
+
+                    viewModel.TaxYesBackgroundImage = "re_Property_Tile_Background_White";
+                    viewModel.TaxNoBackgroundImage = "re_Tile_Background";
+
+                    viewModel.TaxNoLabelColor = Color.White;
+                    viewModel.TaxYesLabelColor = Color.FromHex("#232323");
                 }
             }
             else
@@ -551,6 +571,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.IsNewReturn = false;
                 viewModel.IsFifteenPersenctVisible = false;
                 viewModel.IsFivePersenctVisible = false;
+                viewModel.IsSaleSubjecttoTax = false;
+
             }
         }
         public void SetNewVATRate()
@@ -1600,6 +1622,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel.YesLabelColor = Color.White;
             viewModel.NoLabelColor = Color.FromHex("#232323");
             viewModel.IsMainButtonEnabled = true;
+        }
+
+        private void OnTaxYesTapped(object sender, EventArgs e)
+        {
+            viewModel.IsSwitchToggledForSaleTax = true;
+
+            viewModel.IsSaleSubjecttoTax = true;
+            //Clear15And5PercentObject();
+
+            viewModel.TaxYesBackgroundImage = "re_Tile_Background";
+            viewModel.TaxNoBackgroundImage = "re_Property_Tile_Background_White";
+
+            viewModel.TaxYesLabelColor = Color.White;
+            viewModel.TaxNoLabelColor = Color.FromHex("#232323");
+            viewModel.TaxIsMainButtonEnabled = true;
         }
 
         public bool CheckMandetoryFields()
@@ -3180,6 +3217,24 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel.IsMainButtonEnabled = true;
         }
 
+        private void OnTaxNoTapped(object sender, EventArgs e)
+        {
+
+            viewModel.IsSwitchToggledForSaleTax = false;
+            viewModel.IsSaleSubjecttoTax = false;
+           // Clear5PercentObject();
+
+            viewModel.TaxNoBackgroundImage = "re_Tile_Background";
+            viewModel.TaxYesBackgroundImage = "re_Property_Tile_Background_White";
+
+            viewModel.TaxNoLabelColor = Color.White;
+            viewModel.TaxYesLabelColor = Color.FromHex("#232323");
+            viewModel.TaxIsMainButtonEnabled = true;
+             
+            EntryVatSalesTaxAmount.Text = "";
+            EntryVatSalesTaxAdjustmentWithSAR.Text = "";
+
+        }
         public void Clear5PercentObject()
         {
             try
@@ -5659,11 +5714,72 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
+        private void EntryVatSalesSubjecttoTaxAmount_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckSalesMandetoryFields();
+        }
+
+        private void EntryVatSalesSubjecttoTaxAmountFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                viewModel.IsUnFocusedTextBox = false;
+                if (EntryVatSalesTaxAmount.Text == "0.00")
+                {
+                    EntryVatSalesTaxAmount.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(EntryVatSalesTaxAmount.Text) && EntryVatSalesTaxAmount.Text.Contains(","))
+                {
+                    EntryVatSalesTaxAmount.Text = EntryVatSalesTaxAmount.Text.Replace(",", "");
+                    EntryVatSalesTaxAmount.TextColor = Color.Black;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void EntryVatSalesSubjecttoTaxAmount_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+
+                if (viewModel.currentTab == VATReturnUpdatedUITabEnum.VATReturns || viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales || viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
+                {
+                    if (!string.IsNullOrEmpty(EntryVatSalesTaxAmount.Text) && !string.IsNullOrEmpty(EntrySalesTaxStdsalesVat.Text) && EntryVatSalesTaxAmount.Text != "." && EntrySalesTaxStdsalesVat.Text != "." && EntryVatSalesTaxAmount.Text != "," && EntrySalesTaxStdsalesVat.Text != ",")
+                    {
+                        CheckOneaOneb(Convert.ToDecimal(EntryVatSalesTaxAmount.Text), Convert.ToDecimal(EntrySalesTaxStdsalesVat.Text));
+                    }
+                }
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatSalesTaxAmount.Text);
+                    EntryVatSalesTaxAmount.Text = ValueWithComma;
+                    EntryVatSalesTaxAmount.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckSalesMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         private void EntryVatAdjustmentWithSAR5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             CheckSalesMandetoryFields();
         }
 
+        private void EntryVatSalesSubjectToTaxAdjustmentWithSAR_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckSalesMandetoryFields();
+        }
         private void EntryVatAdjustment5Focused(object sender, FocusEventArgs e)
         {
             try
@@ -5703,6 +5819,59 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR5.Text);
                     EntryVatAdjustmentWithSAR5.Text = ValueWithComma;
                     EntryVatAdjustmentWithSAR5.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckSalesMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void EntryVatSalesSubjectToTaxAdjustmentFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                viewModel.IsUnFocusedTextBox = false;
+                if (EntryVatSalesTaxAdjustmentWithSAR.Text == "0.00")
+                {
+                    EntryVatSalesTaxAdjustmentWithSAR.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(EntryVatSalesTaxAdjustmentWithSAR.Text) && EntryVatSalesTaxAdjustmentWithSAR.Text.Contains(","))
+                {
+                    EntryVatSalesTaxAdjustmentWithSAR.Text = EntryVatSalesTaxAdjustmentWithSAR.Text.Replace(",", "");
+                    EntryVatSalesTaxAdjustmentWithSAR.TextColor = Color.Black;
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+        }
+
+        private void EntryVatSalesSubjectToTaxAdjustmentWithSAR_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+
+                if (viewModel.currentTab == VATReturnUpdatedUITabEnum.VATReturns || viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales || viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
+                {
+                    if (!string.IsNullOrEmpty(EntryVatSalesTaxAmount.Text) && !string.IsNullOrEmpty(EntryVatSalesTaxAdjustmentWithSAR.Text) && EntryVatSalesTaxAmount.Text != "." && EntryVatSalesTaxAdjustmentWithSAR.Text != "." && EntryVatSalesTaxAmount.Text != "," && EntryVatSalesTaxAdjustmentWithSAR.Text != ",")
+                    {
+                        CheckOneaOneb(Convert.ToDecimal(EntryVatSalesTaxAmount.Text), Convert.ToDecimal(EntryVatSalesTaxAdjustmentWithSAR.Text));
+                    }
+                }
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatSalesTaxAdjustmentWithSAR.Text);
+                    EntryVatSalesTaxAdjustmentWithSAR.Text = ValueWithComma;
+                    EntryVatSalesTaxAdjustmentWithSAR.TextColor = Color.Black;
                 }
                 else
                 {
@@ -9059,6 +9228,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 Console.Write(ex.StackTrace.ToString());
             }
         }
+
+        
     }
 
 
