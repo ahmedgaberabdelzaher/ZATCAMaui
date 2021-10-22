@@ -426,7 +426,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsTaxYesBoxEnabled");
             }
         }
+        private bool _isTaxAmendGrid = true;
+        public bool IsTaxAmendGrid
+        {
+            get
+            {
+                return _isTaxAmendGrid;
+            }
+            set
+            {
 
+                _isTaxAmendGrid = value;
+                RaisePropertyChanged("IsTaxAmendGrid");
+            }
+        }
         private bool _isTaxNoBoxEnabled = false;
         public bool IsTaxNoBoxEnabled
         {
@@ -2905,6 +2918,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     case VATReturnUpdatedUITabEnum.Sales:
                         currentTab = VATReturnUpdatedUITabEnum.VATReturns;
+
                         break;
 
                     case VATReturnUpdatedUITabEnum.Purchase:
@@ -3665,6 +3679,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsVisibleAmendButton = false;
                 IsPayNowVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
+
+
+                if (IsAmendClicked)
+                {
+
+                    if (VATDeclarationData.d.GovsupYesno == "X")
+                    {
+
+                        IsTaxAmendGrid = false;
+                      
+                    }
+                    else
+                    {
+
+                        IsTaxAmendGrid = true;
+                       
+
+
+                    }
+                }
+                else {
+                    IsTaxAmendGrid = true;
+                }
+
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Sales)
             {
@@ -3675,6 +3713,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsVisibleAmendButton = false;
                 IsPayNowVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
+
+
+                
+               
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Purchase)
             {
@@ -5152,11 +5194,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Amount6 = Amount6.Replace(",", "");
                 }
-                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) && !string.IsNullOrEmpty(Amount6))
+                
+                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) && !string.IsNullOrEmpty(Amount6) )
                 {
-                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." && Amount6 != ".")
+                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." && Amount6 != "." )
                     {
-                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-") && !Amount6.Contains("-"))
+                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-") && !Amount6.Contains("-") )
                         {
                             TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)) + (String.IsNullOrEmpty(Amount6) ? 0.00 : Convert.ToDouble(Amount6)))).ToString();
                             if (TotalAmount == "0")
@@ -5309,7 +5352,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5 , string Amount6)
+        public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5 )
         {
             String TotalAmount = "0.00";
             try
@@ -5334,17 +5377,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Amount5 = Amount5.Replace(",", "");
                 }
-                if (!string.IsNullOrEmpty(Amount6) && Amount5.Contains(","))
+               
+                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) )
                 {
-                    Amount6 = Amount6.Replace(",", "");
-                }
-                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) && !string.IsNullOrEmpty(Amount6))
-                {
-                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." && Amount6 != ".")
+                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." )
                     {
-                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-") && !Amount6.Contains("-"))
+                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-") )
                         {
-                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount6) ? 0.00 : Convert.ToDouble(Amount6)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)))).ToString();
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) +  (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)))).ToString();
                             if (TotalAmount == "0")
                             {
                                 TotalAmount = "0.00";

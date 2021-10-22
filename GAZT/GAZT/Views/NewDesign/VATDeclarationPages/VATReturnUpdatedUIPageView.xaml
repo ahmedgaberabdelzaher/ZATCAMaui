@@ -320,7 +320,7 @@
                          <StackLayout Margin="15,0,15,0">
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDoyouhavesalesorpurchasessubjecttoTax}" Style="{StaticResource CaptionLabelBlack}"/>
 
-                            <Grid>
+                            <Grid IsEnabled="{Binding IsTaxAmendGrid}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
