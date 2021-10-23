@@ -618,7 +618,7 @@
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSalessubjecttotax}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxVisible}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" ></custom:CustomLabel>
                                             <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTax}" Grid.Row="0" Grid.Column="1">
                                                 <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="OnNewStandardRatedSalesAmount5Clicked"/>
+                                                    <TapGestureRecognizer Tapped="OnNewStandardRatedSalesGovtAmountClicked"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </Grid>
@@ -642,7 +642,13 @@
                                         </inputLayout:SfTextInputLayout>
                                         <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand" OutlineCornerRadius="8" Margin="10,0,10,0"
                                                             LeadingViewPosition="Inside" UnfocusedColor="#B1B1B1" ContainerType="Outlined"  InputViewPadding="16,0,16,0" x:Name="EntryVatSalesTaxAdjustmentWithSARFrame" ErrorColor="#B00020" HasError="False"  Grid.Row="8" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxVisible}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxEditable}" Grid.Column="1"  Style="{StaticResource TextInputLayout}">
-                                            <custom:GAZTBorderlessEntry  x:Name="EntryVatSalesTaxAdjustmentWithSAR" PropertyChanged="EntryVatSalesSubjectToTaxAdjustmentWithSAR_PropertyChanged"  Focused="EntryVatSalesSubjectToTaxAdjustmentFocused" Unfocused="EntryVatSalesSubjectToTaxAdjustmentWithSAR_Unfocused" Keyboard="Numeric" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}"  TextChanged="ClickGestureRecognizer_ClickedForVatAmount5Percent"   Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.GovsupsalesAdj}"     Style="{StaticResource DefaultEntry}" Margin="10,0,10,0">
+                                            <custom:GAZTBorderlessEntry  x:Name="EntryVatSalesTaxAdjustmentWithSAR"
+                                                                         PropertyChanged="EntryVatSalesSubjectToTaxAdjustmentWithSAR_PropertyChanged"
+                                                                         Focused="EntryVatSalesSubjectToTaxAdjustmentFocused"
+                                                                         Unfocused="EntryVatSalesSubjectToTaxAdjustmentWithSAR_Unfocused"
+                                                                         Keyboard="Numeric"
+                                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}"
+                                                                         TextChanged="ClickGestureRecognizer_ClickedForVatGovrenmentAmount"   Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.GovsupsalesAdj}"     Style="{StaticResource DefaultEntry}" Margin="10,0,10,0">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>

@@ -9287,9 +9287,14 @@ Then The system should cancel (/delete) the draft and apply the necessary change
   <data name="ZZZDoyouhavesalesorpurchasessubjecttoTax" xml:space="preserve">
     <value>Do you have government agencies supplies that are subject to Tax according to the government competition and procurement regulations?</value>
   </data>
-   <data name="ZZZSalessubjecttotax" xml:space="preserve">
+  <data name="ZZZSalessubjecttotax" xml:space="preserve">
     <value>Government Supplies Sales Subject to Tax</value>
     <comment>VAT Declarartion</comment>
   </data>
-
+  <data name="GovtSalesAdjText" xml:space="preserve">
+    <value>Adjustments value of supplied goods or services done by Taxable Persons contracting with government entities under the government competitiveness and procurement law</value>
+  </data>
+  <data name="GovtSalesAmountText" xml:space="preserve">
+    <value>Value of supplied goods or services done by Taxable Persons contracting with government entities under the government competitiveness and procurement law</value>
+  </data>
 </root>
