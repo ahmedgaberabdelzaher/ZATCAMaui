@@ -480,7 +480,7 @@ Margin="0,-6,0,-6"                            HorizontalOptions="FillAndExpand"
 
                                                 </StackLayout>
                                                 <StackLayout  Grid.Row="7">
-                                                    <StackLayout IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible,Source={x:Reference VATRegistration}}">
+                                                    <StackLayout >
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto"/>
