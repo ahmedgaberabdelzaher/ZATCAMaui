@@ -95,8 +95,6 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
@@ -117,21 +115,8 @@
                             <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
                         </Grid>
 
-                        <StackLayout  Grid.Row="1" Grid.ColumnSpan="2" Spacing="15" Margin="0,0,0,7">
 
-                            <StackLayout>
-                                <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,15,15,15" HasShadow="False">
-                                    <StackLayout Orientation="Horizontal" >
-                                        <Image Source="ic_vat_info" VerticalOptions="StartAndExpand"/>
-                                        <custom:CustomLabel  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.IBanRefundsInfo}" LineSpacing="1" VerticalOptions="EndAndExpand"   />
-                                    </StackLayout>
-                                </Frame>
-                            </StackLayout>
-                        </StackLayout>
-
-
-
-                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1"  Margin="0,16,0,0" IsEnabled="{Binding IsTypeEditable}" >
+                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1"  Margin="0,16,0,0" >
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}" />
                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -153,7 +138,7 @@
                             </border:SfBorder >
                         </StackLayout>
 
-                        <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"  Margin="0,16,0,0" IsEnabled="{Binding IsTypeEditable}">
+                        <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"  Margin="0,16,0,0" >
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}" />
                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -175,7 +160,7 @@
                             </border:SfBorder >
                         </StackLayout>
 
-                        <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,8" >
+                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,8" >
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefundAccounts}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}" />
                             <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding IsAddAccountVisisble}">
@@ -192,7 +177,8 @@
                             </border:SfBorder >
                         </StackLayout>
 
-                        <listView:SfListView x:Name="BankOptionsListView" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+
+                        <listView:SfListView x:Name="BankOptionsListView" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                           ItemsSource="{Binding IbanData}" SelectedItem="{Binding SelectedIbanData, Mode=TwoWay}"  SelectionMode="Single"
                                           SelectionBackgroundColor="Transparent" SelectionChanged="BankOptionsListView_SelectionChanged" >
                             <listView:SfListView.ItemTemplate>
@@ -207,15 +193,18 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                            <StackLayout  Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Spacing="0" Margin="5,0,5,30">
+                                            <Image Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Grid.RowSpan="3"
+                                                   Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <StackLayout  Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Spacing="0" Margin="5,0,5,30">
                                                 <Image Margin="15,0,15,15" IsVisible="false"  HeightRequest="32" WidthRequest="32"  Source="positive" Aspect="Fill" HorizontalOptions="End" VerticalOptions="Center"/>
 
                                                 <Label  Text="" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start" VerticalOptions="End"
-                                                                        Margin="20,0,20,0" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                                        Margin="20,0,20,0" TextColor="Black" HorizontalTextAlignment="Start"    >
                                                 </Label>
                                                 <Label Text="{Binding Iban}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
-                                                                        Margin="20,0,20,0" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                                        Margin="20,0,20,0" TextColor="Black" HorizontalTextAlignment="Start"    >
                                                 </Label>
                                             </StackLayout>
 
@@ -235,15 +224,18 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Source="re_Tile_Background_S" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                            <StackLayout Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Spacing="0" Margin="5,0,5,30">
+                                            <Image Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Grid.RowSpan="3"
+                                                   Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <StackLayout Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Spacing="0" Margin="5,0,5,30">
                                                 <Image Margin="15,0,15,15" IsVisible="false" HeightRequest="32" WidthRequest="32"  Source="negative" Aspect="Fill" HorizontalOptions="End" VerticalOptions="Center"/>
 
                                                 <Label  Text="{Binding BankDetails.IBAN}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start" VerticalOptions="End"
-                                                                        Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                                        Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start"    >
                                                 </Label>
                                                 <Label Text="{Binding Iban}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
-                                                                        Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                                        Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start"    >
                                                 </Label>
                                             </StackLayout>
 
@@ -255,31 +247,7 @@
                                 <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                             </listView:SfListView.LayoutManager>
                         </listView:SfListView>
-
-                        <StackLayout  Grid.Row="5" Grid.ColumnSpan="2" Spacing="15" Margin="0,0,0,7">
-                            <StackLayout>
-                                <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,15,15,15" HasShadow="False">
-                                    <StackLayout Orientation="Horizontal" >
-                                        <Image Source="ic_vat_info"/>
-                                        <custom:CustomLabel  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" LineSpacing="1" VerticalOptions="EndAndExpand"   >
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.PleaseGoToIBan}"/>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}" TextColor="#006450" >
-                                                        <Span.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="IBANAccManagementTapped"></TapGestureRecognizer>
-                                                        </Span.GestureRecognizers>
-                                                    </Span>
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
-                                    </StackLayout>
-                                </Frame>
-                            </StackLayout>
-                        </StackLayout>
-
-
-                        <border:SfBorder Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
+                        <border:SfBorder Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
                             <StackLayout Margin="8">
                                 <StackLayout Orientation="Horizontal" Spacing="0">
                                     <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -291,9 +259,9 @@
 
                             </StackLayout>
                         </border:SfBorder>
-                        <Frame HasShadow="False" Opacity="0.1"  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource Primary}" Margin="0,16,0,8" CornerRadius="15" Padding="18" HeightRequest="24" HorizontalOptions="FillAndExpand">
+                        <Frame HasShadow="False" Opacity="0.1"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource Primary}" Margin="0,16,0,8" CornerRadius="15" Padding="18" HeightRequest="24" HorizontalOptions="FillAndExpand">
                         </Frame>
-                        <StackLayout Orientation="Horizontal" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
+                        <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" Padding="16,8,16,0">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefundAmounts}" LineSpacing="0.8" Style="{StaticResource BodyLabelBlack}" />
                             </StackLayout>
@@ -309,7 +277,7 @@
                                 </custom:CustomLabel>
                             </StackLayout>
                         </StackLayout>
-                        <border:SfBorder Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
+                        <border:SfBorder Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
                             <StackLayout Margin="8">
                                 <StackLayout Orientation="Horizontal" Spacing="0">
                                     <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -321,7 +289,7 @@
 
                             </StackLayout>
                         </border:SfBorder>
-                        <buttons:SfButton Grid.Row="11" Grid.Column="0" HeightRequest="48"
+                        <buttons:SfButton Grid.Row="8" Grid.Column="0" 
                                        Grid.ColumnSpan="2" Margin="0,0,0,16"  x:Name="btnReasonContinue" Clicked="ContinueButton_Tapped" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                     Style="{StaticResource PrimaryButtonStyle}"/>
 
@@ -344,7 +312,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

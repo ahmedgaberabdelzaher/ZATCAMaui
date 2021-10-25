@@ -239,10 +239,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         if(SlectedIban != null) {
 
                             SelectedIdtype = SlectedIban.IdtypeDesc;
+                            SelectedIdNumber = SlectedIban.IdNumber;
 
                             IBANType idType = IBANTypesList.Where(m => m.key == SlectedIban.IdType).FirstOrDefault();
                             SelectedIDTypeCode = idType.key;
-                            SelectedIdNumber = SlectedIban.IdNumber;
+                          
                             _ = SetIBANIdNumber(idType.key);
                         }
 
