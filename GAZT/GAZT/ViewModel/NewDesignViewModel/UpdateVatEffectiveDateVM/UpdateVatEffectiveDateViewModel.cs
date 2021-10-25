@@ -263,22 +263,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
                         //filter Id=1 if filter is DateType
                         if (FilterList[i].filterId == 2)
                         {
-                            CopiedVatLogs = new ObservableCollection<ItemSetResult>(CopiedVatLogs.Where(filteredObjects => filteredObjects.UpdatedBy == FilterList[i].filterName));
+                            CopiedVatLogs = new ObservableCollection<ItemSetResult>(VatLogs.Where(filteredObjects => filteredObjects.UpdatedBy == FilterList[i].filterName));
                         }
                         //filter Id=1 if filter is DateType
                         else if (FilterList[i].filterId == 1)
                         {
                             if (FilterList[i].filterName == AppResources.EffectSortfromOldToNew)
                             {
-                                new UpdateVatEffectiveDatePageView().SortListInAscendingOrder();
+                                CopiedVatLogs = new ObservableCollection<ItemSetResult>(CopiedVatLogs.OrderBy(s => s.EffDtAfter));
+                                //new UpdateVatEffectiveDatePageView().SortListInAscendingOrder();
                             }
                             else if (FilterList[i].filterName == AppResources.EffectSortfromNewToOld)
                             {
-                                new UpdateVatEffectiveDatePageView().SortListInDescendingOrder();
-
+                                CopiedVatLogs = new ObservableCollection<ItemSetResult>(CopiedVatLogs.OrderByDescending(s => s.EffDtAfter));
+                                // new UpdateVatEffectiveDatePageView().SortListInDescendingOrder();
                             }
                         }
                     }
+                    RaisePropertyChanged("CopiedVatLogs");
                 }
 
                 if (CopiedVatLogs.Count > 0)
