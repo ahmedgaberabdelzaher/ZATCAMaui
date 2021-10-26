@@ -552,7 +552,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             AttachmentName = fileData.FileName;
                             if (fileData.FileName.Contains("."))
                             {
-                                string Extention = fileData.FileName.Split('.')[1];
+                                string Extention = (Path.GetExtension(fileData.FileName)).Split('.')[1];//fileData.FileName.Split('.')[1];
                                 if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
                                 {
                                     if (TotalAttachmentSize <= 300)

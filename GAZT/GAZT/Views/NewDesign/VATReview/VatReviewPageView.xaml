@@ -1075,7 +1075,7 @@
 
                             <Grid HorizontalOptions="FillAndExpand">
 
-                                <Frame HorizontalOptions="FillAndExpand"
+                                <Frame HorizontalOptions="FillAndExpand" IsVisible="{Binding IsSadadSecuritySelected}"
                                    Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False"
                                    CornerRadius="12"
                                    Margin="0,20,0,0" Padding="10,3,10,3">
@@ -1088,7 +1088,7 @@
 
                             <Grid HorizontalOptions="FillAndExpand">
 
-                                <Frame HorizontalOptions="FillAndExpand"
+                                <Frame HorizontalOptions="FillAndExpand" IsVisible="{Binding IsSadadSecuritySelected}"
                                    Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False"
                                    CornerRadius="12"
                                    Margin="0,20,0,0" Padding="10,3,10,3">
