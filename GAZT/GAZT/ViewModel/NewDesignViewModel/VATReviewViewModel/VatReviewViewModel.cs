@@ -5402,7 +5402,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                     if (note.Rcodez == "RVT_OVRDUE" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(LateFlngDetails))
                     {
-                        LateFlngDetails = note.Strline;
+                        LateFlngDetails = string.Concat(LateFlngDetails, note.Strline);
 
                     }
 
@@ -6400,6 +6400,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
             NotesSetResults notes = new Models.VatReviewModel.NotesSetResults();
+            var noteSetList = new List<NotesSetResults>();
             if (ReportDetails != null)
             {
 
@@ -6442,8 +6443,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 if (LateFlngDetails != null)
                 {
 
-                    notes2.Tdline = LateFlngDetails.ToString();
-
                 }
                 else
                 {
@@ -6451,29 +6450,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 }
 
-                Metadata _metdata2 = new Metadata();
+                string input = LateFlngDetails.ToString();
+                double partSize = 132;
+                int k = 0;
+                int lineNumber = 1;
+                IEnumerable<string> splitteNotes = input
+                    .ToLookup(c => Math.Floor(k++ / partSize))
+                    .Select(e => new String(e.ToArray()));
+                foreach (var splittedNotesData in splitteNotes)
+                {
+                    notes2 = new Models.VatReviewModel.NotesSetResults();
+                    Metadata _metdata2 = new Metadata();
 
-                _metdata2.uri = Constants.VATObjectionsNotesSet;
-                _metdata2.type = "ZDP_VAT_NW_REV_SRV.Notes";
-                _metdata2.id = Constants.VATObjectionsNotesSet;
-                notes2.__metadata = _metdata;
-                notes2.AttByz = "TP";
-                notes2.ElemNo = 0;
+                    _metdata2.uri = Constants.VATObjectionsNotesSet;
+                    _metdata2.type = "ZDP_VAT_NW_REV_SRV.Notes";
+                    _metdata2.id = Constants.VATObjectionsNotesSet;
+                    notes2.__metadata = _metdata;
+                    notes2.AttByz = "TP";
+                    notes2.ElemNo = 0;
 
-                notes2.Erfdtz = null;
-                notes2.Erftmz = null;
-                notes2.Erfusrz = "";
-                notes2.Lineno = 2;
-                notes2.Noteno = "2";
-                notes2.Notenoz = "2";
-                notes2.Rcodez = "RVT_OVRDUE";
-                notes2.Refnamez = "";
-                notes2.Tdformat = "";
-                notes2.XInvoicez = "";
-                notes2.XObsoletez = "";
-                notes2.DataVersionz = "00000";
-                notes2.ByGpartz = App.LoginDataRetrieved.TIN;
-
+                    notes2.Erfdtz = null;
+                    notes2.Erftmz = null;
+                    notes2.Erfusrz = "";
+                    notes2.Lineno = lineNumber;
+                    notes2.Noteno = "2";
+                    notes2.Notenoz = "2";
+                    notes2.Rcodez = "RVT_OVRDUE";
+                    notes2.Tdline = splittedNotesData;
+                    notes2.Refnamez = "";
+                    notes2.Tdformat = "";
+                    notes2.XInvoicez = "";
+                    notes2.XObsoletez = "";
+                    notes2.DataVersionz = "00000";
+                    notes2.ByGpartz = App.LoginDataRetrieved.TIN;
+                    noteSetList.Add(notes2);
+                    lineNumber++;
+                }
                 /*-------end of note set  addition in latefiling---------*/
             }
 
@@ -6514,13 +6526,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             notes1.ByGpartz = App.LoginDataRetrieved.TIN;
 
             var NotesetResult = new Models.VatReviewModel.NotesSet();
-            var noteSetList = new List<NotesSetResults>();
+
             noteSetList.Add(notes);
             noteSetList.Add(notes1);
-            if (OverdueFlag == "X")
-            {
-                noteSetList.Add(notes2);
-            }
 
             NotesetResult.results = noteSetList;
             //modelVATReview.d.NotesSet = NotesetResult;

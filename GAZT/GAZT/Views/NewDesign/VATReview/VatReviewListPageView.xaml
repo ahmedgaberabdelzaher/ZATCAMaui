@@ -450,6 +450,130 @@
                             </StackLayout>
 
                         </border:SfBorder>
+                        <border:SfBorder Margin="0,16,0,10"
+                                         HasShadow="False"
+                                         IsVisible="{Binding LateFilingObjectionsSummaryVisible}"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                            <StackLayout Orientation="Vertical"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand">
+
+                                <Grid Padding="15"
+                                      RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0"
+                                           Grid.Column="0"
+                                           HeightRequest="24"
+                                           WidthRequest="24"
+                                           CornerRadius="32"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           Opacity=".2"
+                                           IsClippedToBounds="True"
+                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                           HasShadow="False" />
+                                    <Image Grid.Row="0"
+                                           Grid.Column="0"
+                                           HeightRequest="24"
+                                           WidthRequest="24"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Aspect="AspectFit"
+                                           Source="establishments" />
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                 Grid.Row="0"
+                                                 Grid.Column="1"
+                                                 Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VatReviewLateObj}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                    </StackLayout>
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                <StackLayout Padding="15,15,15,15"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout  Grid.Column="0">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatReviewLateObj}"
+                                                                Style="{StaticResource ValueLabelGrey}"
+                                                                HorizontalTextAlignment="Start"
+                                                                HorizontalOptions="StartAndExpand" />
+                                        </StackLayout>
+                                        <StackLayout  Grid.Column="1">
+                                            <Label Text="{Binding LateFlngDetails}"
+                                                   Style="{StaticResource BodyLabelBlack}"
+                                                   HorizontalOptions="EndAndExpand"
+                                                   HorizontalTextAlignment="End" />
+                                        </StackLayout>
+
+                                    </Grid>
+
+                                    <StackLayout HorizontalOptions="Center"
+                                                 BindableLayout.ItemsSource="{Binding LateFilingAttachmentsListViewData}"
+                                                 VerticalOptions="Center">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+
+
+
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <custom:CustomLabel Grid.Column="0"
+                                                                        Text="{x:Static ResourceManager:AppResources.VRAttachment}"
+                                                                        Style="{StaticResource ValueLabelGrey}" />
+                                                    <custom:CustomLabel Grid.Column="1"
+                                                                        Text="{Binding Filename}"
+                                                                        Style="{StaticResource BodyLabelBlack}"
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        HorizontalTextAlignment="End" />
+
+                                                    <Image  Grid.Column="2"
+                                                            Source="Generic_attachment_icon"
+                                                            Margin="5,0"
+                                                            WidthRequest="25"
+                                                            HeightRequest="25"
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center" />
+                                                </Grid>
+
+
+
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </StackLayout>
+
+                        </border:SfBorder>
 
                         <border:SfBorder IsVisible="{Binding IsSecurityPaymentsTabVisible}" Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
                                              Style="{StaticResource GreyBorderFrameWithShadow}">
