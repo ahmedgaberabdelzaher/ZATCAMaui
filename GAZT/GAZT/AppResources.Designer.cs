@@ -22708,7 +22708,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you have government agencies supplies that are subject to Tax according to the government competition and procurement regulations?.
+        ///   Looks up a localized string similar to Do you have government agencies supplies that are subject to VAT at basic rate according to the government tenders and procurement system?.
         /// </summary>
         public static string ZZZDoyouhavesalesorpurchasessubjecttoTax {
             get {
@@ -23092,7 +23092,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Government Supplies Sales Subject to Tax.
+        ///   Looks up a localized string similar to Government Supplies Sales Subject to VAT standard rate (15%).
         /// </summary>
         public static string ZZZSalessubjecttotax {
             get {

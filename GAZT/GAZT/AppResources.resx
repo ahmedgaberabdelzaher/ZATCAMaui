@@ -9285,10 +9285,10 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <value>Dear taxpayer, please note that amendment of the declaration with higher amount will be considered as an acknowledgment to ZATCA Assessment, therefore, objecting on this self-amended return will not be allowed and the amounts resulted from your amendment will be final and due.</value>
   </data>
   <data name="ZZZDoyouhavesalesorpurchasessubjecttoTax" xml:space="preserve">
-    <value>Do you have government agencies supplies that are subject to Tax according to the government competition and procurement regulations?</value>
+    <value>Do you have government agencies supplies that are subject to VAT at basic rate according to the government tenders and procurement system?</value>
   </data>
   <data name="ZZZSalessubjecttotax" xml:space="preserve">
-    <value>Government Supplies Sales Subject to Tax</value>
+    <value>Government Supplies Sales Subject to VAT standard rate (15%)</value>
     <comment>VAT Declarartion</comment>
   </data>
   <data name="GovtSalesAdjText" xml:space="preserve">
