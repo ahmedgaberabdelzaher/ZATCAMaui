@@ -612,8 +612,8 @@
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="80*"/>
-                                                <ColumnDefinition Width="20*"/>
+                                                <ColumnDefinition Width="80*" />
+                                                <ColumnDefinition Width="20*" />
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSalessubjecttotax}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTaxVisible}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" ></custom:CustomLabel>
                                             <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSaleSubjecttoTax}" Grid.Row="0" Grid.Column="1">

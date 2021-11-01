@@ -43,6 +43,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 SetLTR();
 
                 viewModel.IsPayNowVisible = false;
+                viewModel.IsTaxYesChecked = false;
 
 
                 if (_vATDeclarationInfo.d != null)

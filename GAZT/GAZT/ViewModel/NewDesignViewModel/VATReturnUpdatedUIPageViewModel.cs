@@ -2849,7 +2849,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     if (IsDeclarationCheckedForSummary)
                     {
-                        if (IsDeclarationCheckedForSummary && (IsVoidClicked == false && IsResetClicked == false))
+                        if (IsDeclarationCheckedForSummary && (IsVoidClicked == false /*&& IsResetClicked == false*/))
                         {
                             if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (App.ICRStatus == "E0001" || IsCheckedDraftMode()))
                             {
