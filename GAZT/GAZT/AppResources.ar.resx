@@ -9209,7 +9209,7 @@ info@gazt.gov.sa</value>
     <value>هل لديك توريدات خاضعة للضريبة بالنسبة الأساسية للجهات الحكومية وفق نظام المنافسات والمشتريات الحكومية؟</value>
   </data>
   <data name="ZZZSalessubjecttotax" xml:space="preserve">
-    <value>المبيعات للجهات الحكومية الخاضعة بالنسبة الاساسية(%15)</value>
+    <value>المبيعات للجهات الحكومية الخاضعة بالنسبة الاساسية (%15)</value>
     <comment>VAT Declarartion</comment>
   </data>
   <data name="GovtSalesAdjText" xml:space="preserve">
