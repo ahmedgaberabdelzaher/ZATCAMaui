@@ -564,10 +564,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                     viewModel.TaxYesLabelColor = Color.White;
                     viewModel.TaxNoLabelColor = Color.FromHex("#232323");
+
+                    viewModel.IsSaleSubjecttoTaxVisible = true;
+
                 }
                 else
                 {
-                    viewModel.IsSaleSubjecttoTaxVisible = true;
+                    //viewModel.IsSaleSubjecttoTaxVisible = true;
+                    viewModel.IsSaleSubjecttoTaxVisible = false;
+
 
                     viewModel.IsSaleSubjecttoTaxEditable = false;
                     viewModel.IsNoChecked = true;
@@ -1651,6 +1656,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel.IsSwitchToggledForSaleTax = true;
 
             viewModel.IsSaleSubjecttoTaxEditable = true;
+
+            viewModel.IsSaleSubjecttoTaxVisible = true;
             //Clear15And5PercentObject();
 
             viewModel.TaxYesBackgroundImage = "re_Tile_Background";
@@ -3231,6 +3238,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel.IsFivePersenctVisible = true;
             viewModel.IsFivePersenctEditable = false;
 
+            viewModel.IsFivePersenctVisible = false;
+
             Clear5PercentObject();
 
             viewModel.NoBackgroundImage = "re_Tile_Background";
@@ -3246,6 +3255,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             viewModel.IsSwitchToggledForSaleTax = false;
             viewModel.IsSaleSubjecttoTaxEditable = false;
+
+            viewModel.IsSaleSubjecttoTaxVisible = false;
+           
            // Clear5PercentObject();
 
             viewModel.TaxNoBackgroundImage = "re_Tile_Background";
