@@ -4105,6 +4105,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     VATDeclarationData.d.ATTACHSet.results = ATTACHSetsList;
                 }
+                
+
                 VATDeclaration response = await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
                 PopToRootPage();
                 if (response != null && response.d != null && !string.IsNullOrEmpty(response.d.Fbnum))
@@ -4620,6 +4622,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             vat15model.StdpurchasesVat = StdpurchasesVat15.Replace(",", "");
                             vat15model.StdsalesAdj = VATNewModelFor15Percent.StdsalesAdj.Replace(",", "");
                             vat15model.StdsalesAmt = VATNewModelFor15Percent.StdsalesAmt.Replace(",", "");
+                            vat15model.GovsupsalesAmt = VATNewModelFor15Percent.GovsupsalesAmt.Replace(",", "");
+                            vat15model.GovsupsalesAdj = VATNewModelFor15Percent.GovsupsalesAdj.Replace(",", "");
                             vat15model.StdsalesVat = StdsalesVat15.Replace(",", "");
                             vat15model.TimestampCh = VATNewModelFor15Percent.TimestampCh;
                             vat15model.TimestampCr = VATNewModelFor15Percent.TimestampCr;
@@ -4932,6 +4936,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATNewModelFor15Percent.StdsalesAdj = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor15Percent.StdsalesAdj);
                 VATNewModelFor15Percent.StdsalesAmt = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor15Percent.StdsalesAmt);
                 VATNewModelFor15Percent.StdsalesVat = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor15Percent.StdsalesVat);
+                VATNewModelFor15Percent.GovsupsalesAmt = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor15Percent.GovsupsalesAmt);
+                VATNewModelFor15Percent.GovsupsalesAdj = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor15Percent.GovsupsalesAdj);
 
 
                 VATNewModelFor5Percent.ImportsaccAdj = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor5Percent.ImportsaccAdj);
