@@ -9237,7 +9237,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <value>I acknowledge and pledge my consent on amending the effective date of registration for VAT. I acknowledge my full awareness of the violations and penalties that may result from this procedure. I hold myself liable to all legal effects resulting from this procedure, and that the General Authority of Zakat and Tax is not liable, in whole or in part, for any direct or non-direct error or damage, whether accidental, consequential, or punitive, whether private or public. General Authority of Zakat and Tax is not liable to any missed opportunity, loss or damage resulting from any of the information or data entered.</value>
   </data>
   <data name="VatEffGazt" xml:space="preserve">
-    <value>General authority of Zakat and Tax</value>
+    <value>ZAKAT, TAX AND CUSTOMS AUTHORITY</value>
   </data>
   <data name="VatEffTaxPayer" xml:space="preserve">
     <value>Taxpayer</value>
