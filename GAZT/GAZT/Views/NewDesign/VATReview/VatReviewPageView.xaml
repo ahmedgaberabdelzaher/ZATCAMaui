@@ -848,7 +848,7 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}" >
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span  Text="{Binding charCountReportDetails}" Style="{StaticResource MicroGrayLabelStyle}" />
+                                        <Span  Text="{Binding charCountLateFilingDetails}" Style="{StaticResource MicroGrayLabelStyle}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -1073,16 +1073,17 @@
 
                             </Grid>
 
-                            <Grid HorizontalOptions="FillAndExpand">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                 <Frame HorizontalOptions="FillAndExpand" IsVisible="{Binding IsSadadSecuritySelected}"
                                    Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False"
                                    CornerRadius="12"
-                                   Margin="0,20,0,0" Padding="10,3,10,3">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRSecurityNote1}"
+                                   Margin="0,20,0,0" >
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRSecurityNote1}"
                                                     HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}" />
-
+                                                    Style="{StaticResource BodyLabelBlack}"  VerticalOptions="StartAndExpand" />
+                                    </StackLayout>
                                 </Frame>
                             </Grid>
 
@@ -1091,10 +1092,12 @@
                                 <Frame HorizontalOptions="FillAndExpand" IsVisible="{Binding IsSadadSecuritySelected}"
                                    Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False"
                                    CornerRadius="12"
-                                   Margin="0,20,0,0" Padding="10,3,10,3">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRSecurityNote2}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}" />
+                                   Margin="0,20,0,0" >
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRSecurityNote2}"
+                                                        HorizontalOptions="StartAndExpand"
+                                                        Style="{StaticResource BodyLabelBlack}" />
+                                    </StackLayout>
                                 </Frame>
                             </Grid>
 

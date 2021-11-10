@@ -465,7 +465,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             viewModel.LateFlngDetails = LateFiling_Details_Txx.Text;
 
             viewModel.EnableLateFilingsDetailsConButton();
-
+            
 
         }
 

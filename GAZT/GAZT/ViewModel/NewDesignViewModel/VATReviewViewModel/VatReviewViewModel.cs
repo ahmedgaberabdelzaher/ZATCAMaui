@@ -2138,7 +2138,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 if (_charCountReportDetails == value) return;
 
                 _charCountReportDetails = value;
-                RaisePropertyChanged("charCountReportDetails");
+                RaisePropertyChanged("charCountLateFilingDetails");
             }
         }
 
