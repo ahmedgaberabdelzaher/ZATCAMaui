@@ -114,7 +114,7 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         
-                        <Grid Grid.Row="1" Margin="0,0,0,0"  BackgroundColor="Transparent" IsVisible="{Binding IsListVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid Grid.Row="1" Margin="0,0,0,0"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <listView:SfListView  x:Name="EffectiveDateListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False"  VerticalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding CopiedVatLogs}"  BackgroundColor="Transparent" 
                             SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
@@ -143,7 +143,7 @@
                                         </DataTemplate>
                                 </listView:SfListView.HeaderTemplate>
 
-                                <listView:SfListView.ItemTemplate>
+                                <listView:SfListView.ItemTemplate IsVisible="{Binding IsListVisible}" >
                                     <DataTemplate>
                                         <Frame Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0"
                                                          HasShadow="True" Style="{StaticResource GreyBorderFWithShadow}">
@@ -197,7 +197,7 @@
                             </listView:SfListView>
                         </Grid>
 
-                        <Grid Grid.Row="1" Margin="0,0,0,0"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding NoDataAvailable}">
+                        <Grid Grid.Row="1" Margin="0,100,0,0"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding NoDataAvailable}">
                             <Label Text="{x:Static ResourceManager:AppResources.VatEffNoData}" HorizontalOptions="Center"/>
                         </Grid>
                     </Grid>

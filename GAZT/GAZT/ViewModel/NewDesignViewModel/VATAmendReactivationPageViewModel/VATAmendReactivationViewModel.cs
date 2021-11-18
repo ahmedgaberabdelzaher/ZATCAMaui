@@ -3315,6 +3315,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             {
                                 SelectedIdTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy)?.FirstOrDefault();
                                 TxtIDTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy)?.FirstOrDefault()?.Name;
+                            
+                                //myList.FindIndex(a => a.Prop == oProp);
+
+                                IDTypeIndexSR = IdTypeListSR.FindIndex(x => x.ID == SelectedIdTypeSR.ID);
                             }
                             if (vATRegistration.d.Decconno != null)
                                 IdNumberSR = vATRegistration.d.DecidNo;
