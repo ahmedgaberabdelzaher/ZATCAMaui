@@ -118,6 +118,7 @@
                             <listView:SfListView  x:Name="EffectiveDateListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False"  VerticalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding CopiedVatLogs}"  BackgroundColor="Transparent" 
                             SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
+                                <!--Header Template added-->
                                 <listView:SfListView.HeaderTemplate>
                                     <DataTemplate>
                                         <ViewCell>
