@@ -48,6 +48,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
         #endregion
 
+        public Result BankIDResult = null;
+        public string UserBankid = "";
 
         int selectedPage = (int)PagesEnum.IBANNewForm;
 
@@ -272,6 +274,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 RaisePropertyChanged("IsIBanDropDownEnabled");
             }
         }
+
+        private bool _isIBanUpdatePage = false;
+
+        public bool IsIBanUpdatePage
+        {
+            get { return _isIBanUpdatePage; }
+            set
+            {
+                if (_isIBanUpdatePage == value) return;
+
+                _isIBanUpdatePage = value;
+                RaisePropertyChanged("IsIBanUpdatePage");
+            }
+        }
+
 
         private bool _summaryVisible = false;
 
@@ -780,14 +797,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     SelectedIDTypeValue = selectedType.IdType;
                 }
 
-                var BankID = IBANAccountData.d.BankListSet.results.Find(selectedValue => (selectedValue.Bkext == SelectedBankName));
 
+
+                if(IsIBanUpdatePage)
+                {
+                    
+                       BankIDResult = IBANAccountData.d.BankListSet.results.Find(selectedValue => (selectedValue.Bankid == UserBankid));
+                }
+                else
+                {
+                    BankIDResult = IBANAccountData.d.BankListSet.results.Find(selectedValue => (selectedValue.Bkext == SelectedBankName));
+
+                }
 
                 if (selectedType != null)
                 {
-                    if (BankID != null && BankID.Bankid != null)
+                    if (BankIDResult != null && BankIDResult.Bankid != null)
                     {
-                        SelectedBankNameValue = BankID.Bankid;
+                        SelectedBankNameValue = BankIDResult.Bankid;
                         if(!string.IsNullOrEmpty(SelectedBankName)&&SelectedBankName.Equals(AppResources.IBanSelectedOtherBankName))
                         SelectedBankName = String.Copy(selectedOtherBankName);
                     }

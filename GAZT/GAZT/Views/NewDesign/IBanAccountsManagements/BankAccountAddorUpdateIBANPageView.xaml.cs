@@ -49,6 +49,8 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
             _viewModel.SummaryVisible = false;
             _viewModel.NewFormVisible = true;
             _viewModel.IsContinueButtonEnable = false;
+            _viewModel.IsIBanDropDownEnabled = true;
+            _viewModel.IsIBanUpdatePage = false;
             // _viewModel.ContinueButtonnBackroundColor = Color.FromHex("#d49504");
 
             _viewModel.IBANAccountData = IBANAccountData;
@@ -146,9 +148,17 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                         _viewModel.SelectedIDNumber = selectedIBAN.Idnumber;
                         _viewModel.AccountOwnerName = selectedIBAN.Koinh;
                         _viewModel.IBANValue = selectedIBAN.Iban;
+                        _viewModel.IsIBanDropDownEnabled = false;
+                        var MissingIfoMatch = _viewModel.IBANAccountData.d.IbanListSet.results.Find(selectedValue => (selectedValue.StatusDesc == "Missing Informaiton") || (selectedValue.StatusDesc == "معلومات الحساب غير مكتملة"));
+                        if (MissingIfoMatch != null)
+                        {
+                            BankAccountIBAN.IsEnabled = false;
+                            _viewModel.IsIBanUpdatePage = true;
+                            _viewModel.UserBankid = selectedIBAN.Bankid;
+                        }
+                        
+                        
                     }
-
-
                 }
 
                 MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
@@ -401,10 +411,22 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                         _viewModel.IsLoading = false;
                         string bankName = string.Empty;
                         bankName = JObject.Parse(App.IBanValidatedResponse)["d"].ToString();
-                        _viewModel.SelectedBankName = JObject.Parse(bankName)["Bkext"].ToString();
-                        _viewModel.SelectedBankNameField = JObject.Parse(bankName)["Bkext"].ToString();
-                        _viewModel.OtherBanksVisible = false;
+                        string IBanSelectedBankName = JObject.Parse(bankName)["Bkext"].ToString();
+
                         _viewModel.IsIBanDropDownEnabled = false;
+
+                        if(string.IsNullOrEmpty(IBanSelectedBankName))
+                        {
+                            _viewModel.SelectedBankName = AppResources.IBanSelectedOtherBankName;
+                            _viewModel.SelectedBankNameField = AppResources.IBanSelectedOtherBankName;
+                            _viewModel.OtherBanksVisible = true;                        }
+                        else
+                        {
+                            _viewModel.SelectedBankName = JObject.Parse(bankName)["Bkext"].ToString();
+                            _viewModel.SelectedBankNameField = JObject.Parse(bankName)["Bkext"].ToString();
+                            _viewModel.OtherBanksVisible = false;
+                        }
+
                     }
                     else
                     {
