@@ -321,7 +321,7 @@
 
                         </Grid>
 
-                        <Grid Grid.Row="6">
+                        <Grid Grid.Row="6" IsEnabled="{Binding IsIBanDropDownEnabled}" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />

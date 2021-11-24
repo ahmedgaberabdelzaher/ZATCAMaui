@@ -245,6 +245,7 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
 
         private void IBANTextChanged(object sender, TextChangedEventArgs e)
         {
+            _viewModel.IsIBanDropDownEnabled = true;
             string allowedchar = "0123456789";
             // if (e.NewTextValue.Length > 0) {
 
@@ -403,9 +404,11 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagements
                         _viewModel.SelectedBankName = JObject.Parse(bankName)["Bkext"].ToString();
                         _viewModel.SelectedBankNameField = JObject.Parse(bankName)["Bkext"].ToString();
                         _viewModel.OtherBanksVisible = false;
+                        _viewModel.IsIBanDropDownEnabled = false;
                     }
                     else
                     {
+                        _viewModel.IsIBanDropDownEnabled = true;
                         _viewModel.IsLoading = false;
                         Device.BeginInvokeOnMainThread(async () =>
                         {

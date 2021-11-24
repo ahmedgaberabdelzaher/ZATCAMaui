@@ -259,6 +259,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 RaisePropertyChanged("NewFormVisible");
             }
         }
+        private bool isIBanDropDownEnabled = true;
+
+        public bool IsIBanDropDownEnabled
+        {
+            get { return isIBanDropDownEnabled; }
+            set
+            {
+                if (isIBanDropDownEnabled == value) return;
+
+                isIBanDropDownEnabled = value;
+                RaisePropertyChanged("IsIBanDropDownEnabled");
+            }
+        }
+
         private bool _summaryVisible = false;
 
         public bool SummaryVisible

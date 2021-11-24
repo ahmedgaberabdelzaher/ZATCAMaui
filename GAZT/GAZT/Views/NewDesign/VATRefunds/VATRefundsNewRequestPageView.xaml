@@ -159,11 +159,12 @@
                                 </StackLayout>
                             </border:SfBorder >
                         </StackLayout>
-
+<!--IsVisible="{Binding IsAddAccountVisisble}">-->
                         <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,8" >
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefundAccounts}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}" />
-                            <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding IsAddAccountVisisble}">
+                            
+                            <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="False">
                                 <StackLayout Orientation="Horizontal"  Padding="15,10,15,10" IsVisible="{Binding IsAddAccountVisisble}">
                                     <Image Source="add" HeightRequest="20" WidthRequest="20">
                                     </Image>
