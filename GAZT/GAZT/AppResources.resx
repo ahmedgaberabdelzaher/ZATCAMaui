@@ -9132,7 +9132,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <value>I, the taxpayer "{0}" acknowledge and confirm that all information and data provided regarding my bank account is correct and valid and that the account is belongs to me directly or indirectly and I take full responsibility for any consequences that may result from intentional or unintentional mistake in the data entered and acknowledge and agree that GAZT shall not be liable wholly or partially for any direct or indirect incidental or collateral or punitive, general or special mistake or damage arising from the same and GAZT shall hold GAZT harmless against any claim or liability for lost opportunity, loss or damage resulting from any of the information or data entered.</value>
   </data>
   <data name="IBANRefundInfo" xml:space="preserve">
-    <value>Refund amount will be transferred to banks that are licensed by the Saudi Arabian Monetary Agency only.</value>
+    <value>Refund amount will be transferred to banks that are licensed by the Saudi Central Bank only.</value>
   </data>
   <data name="ReturnAttachmentLimitMessage" xml:space="preserve">
     <value>You have exceeded the limit of allowable attachments</value>
